@@ -12,12 +12,18 @@ keywords = ["github", "octokit"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+httpx = "^0.23.0"
+pydantic = "^1.9.1"
+typing-extensions = "^4.3.0"
 
 [tool.poetry.dev-dependencies]
+tomli = "^2.0.1"
 isort = "^5.10.1"
 black = "^22.3.0"
 nonemoji = "^0.1.2"
+jsonpointer = "^2.3"
 pre-commit = "^2.16.0"
+openapi-schema-pydantic = "^1.2.4"
 
 [tool.black]
 line-length = 88
@@ -33,6 +39,12 @@ length_sort = true
 skip_gitignore = true
 force_sort_within_sections = true
 extra_standard_library = ["typing_extensions"]
+
+[tool.pyright]
+reportPrivateImportUsage = false
+
+[tool.codegen]
+source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
