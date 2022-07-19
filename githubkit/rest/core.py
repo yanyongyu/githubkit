@@ -7,6 +7,7 @@ from typing import (
     Type,
     Tuple,
     Union,
+    TypeVar,
     Optional,
     Generator,
     AsyncGenerator,
@@ -15,8 +16,11 @@ from typing import (
 
 import httpx
 
+from .response import Response
 from .auth import BaseAuthStrategy, TokenAuthStrategy
-from .typing import URLTypes, HeaderTypes, QueryParamTypes
+from .typing import URLTypes, HeaderTypes, QueryParamTypes, ResponseModelTypes
+
+T = TypeVar("T")
 
 
 class GitHubCore:
@@ -115,10 +119,18 @@ class GitHubCore:
             finally:
                 await client.aclose()
 
-    def request(
+    @staticmethod
+    def _get_response_model(
+        response: httpx.Response,
+        response_models: Optional[Dict[int, Dict[str, Type[T]]]],
+    ) -> Type[T]:
+        ...
+
+    def _request(
         self,
         method: str,
         url: URLTypes,
+        *,
         params: Optional[QueryParamTypes] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
@@ -128,10 +140,11 @@ class GitHubCore:
                 method, url, params=params, json=json, headers=headers
             )
 
-    async def arequest(
+    async def _arequest(
         self,
         method: str,
         url: URLTypes,
+        *,
         params: Optional[QueryParamTypes] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
@@ -140,3 +153,41 @@ class GitHubCore:
             return await client.request(
                 method, url, params=params, json=json, headers=headers
             )
+
+    def request(
+        self,
+        method: str,
+        url: URLTypes,
+        *,
+        params: Optional[QueryParamTypes] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
+        response_models: Optional[Dict[int, Dict[str, Type[T]]]] = None,
+    ) -> Response[T]:
+        raw_resp = self._request(method, url, params=params, json=json, headers=headers)
+        model = self._get_response_model(raw_resp, response_models)
+        response = Response(raw_resp, model)
+        if raw_resp.is_error:
+            # TODO: raise error if request failed
+            raise
+        return response
+
+    async def arequest(
+        self,
+        method: str,
+        url: URLTypes,
+        *,
+        params: Optional[QueryParamTypes] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
+        response_models: Optional[Dict[int, Dict[str, Type[T]]]] = None,
+    ) -> Response[T]:
+        raw_resp = await self._arequest(
+            method, url, params=params, json=json, headers=headers
+        )
+        model = self._get_response_model(raw_resp, response_models)
+        response = Response(raw_resp, model)
+        if raw_resp.is_error:
+            # TODO: raise error if request failed
+            raise
+        return response
