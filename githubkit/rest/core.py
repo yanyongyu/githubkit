@@ -1,9 +1,22 @@
 from types import TracebackType
-from typing import Any, Type, Union, Optional, cast
+from contextlib import contextmanager, asynccontextmanager
+from typing import (
+    Any,
+    Dict,
+    List,
+    Type,
+    Tuple,
+    Union,
+    Optional,
+    Generator,
+    AsyncGenerator,
+    cast,
+)
 
 import httpx
 
 from .auth import BaseAuthStrategy, TokenAuthStrategy
+from .typing import URLTypes, HeaderTypes, QueryParamTypes
 
 
 class GitHubCore:
@@ -66,7 +79,10 @@ class GitHubCore:
         return {
             "auth": self.auth.get_auth_flow(self),
             "base_url": self.base_url,
-            "headers": {"User-Agent": self.user_agent},
+            "headers": {
+                "User-Agent": self.user_agent,
+                "Accept": "application/vnd.github.v3+json",
+            },
             "timeout": self.timeout,
             "follow_redirects": True,
         }
@@ -74,25 +90,53 @@ class GitHubCore:
     def _create_sync_client(self) -> httpx.Client:
         return httpx.Client(**self._get_client_defaults())
 
-    def get_sync_client(self) -> httpx.Client:
-        return self.__sync_client or self._create_sync_client()
+    @contextmanager
+    def get_sync_client(self) -> Generator[httpx.Client, None, None]:
+        if self.__sync_client:
+            yield self.__sync_client
+        else:
+            client = self._create_sync_client()
+            try:
+                yield client
+            finally:
+                client.close()
 
     def _create_async_client(self) -> httpx.AsyncClient:
         return httpx.AsyncClient(**self._get_client_defaults())
 
-    def get_async_client(self) -> httpx.AsyncClient:
-        return self.__async_client or self._create_async_client()
+    @asynccontextmanager
+    async def get_async_client(self) -> AsyncGenerator[httpx.AsyncClient, None]:
+        if self.__async_client:
+            yield self.__async_client
+        else:
+            client = self._create_async_client()
+            try:
+                yield client
+            finally:
+                await client.aclose()
 
     def request(
-        self, method: str, url: Union[str, httpx.URL], json: Optional[Any] = None
+        self,
+        method: str,
+        url: URLTypes,
+        params: Optional[QueryParamTypes] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
     ) -> httpx.Response:
-        client = self.get_sync_client()
-        try:
-            response = client.request(method, url, json=json)
-            response.raise_for_status()
-            return response
-        except httpx.HTTPStatusError as e:
-            # TODO: handle response error
-            if e.response.status_code == 401:
-                ...
-            raise
+        with self.get_sync_client() as client:
+            return client.request(
+                method, url, params=params, json=json, headers=headers
+            )
+
+    async def arequest(
+        self,
+        method: str,
+        url: URLTypes,
+        params: Optional[QueryParamTypes] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
+    ) -> httpx.Response:
+        async with self.get_async_client() as client:
+            return await client.request(
+                method, url, params=params, json=json, headers=headers
+            )
