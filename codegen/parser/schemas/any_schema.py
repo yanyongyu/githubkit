@@ -1,13 +1,9 @@
-from typing import ClassVar, cast
+from typing import cast
 
 import openapi_schema_pydantic as oas
 
 from ...source import Source
-from .property import SchemaData
-
-
-class AnySchema(SchemaData):
-    _type_string: ClassVar[str] = "Any"
+from .schema import AnySchema
 
 
 def build_any_schema(source: Source) -> AnySchema:

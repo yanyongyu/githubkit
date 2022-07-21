@@ -1,14 +1,9 @@
-from typing import ClassVar, cast
+from typing import cast
 
 import openapi_schema_pydantic as oas
 
 from ...source import Source
-from .schema import SchemaData
-
-
-class BoolSchema(SchemaData):
-
-    _type_string: ClassVar[str] = "bool"
+from .schema import BoolSchema
 
 
 def build_bool_schema(source: Source) -> BoolSchema:

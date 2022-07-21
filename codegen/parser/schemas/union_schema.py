@@ -1,44 +1,18 @@
-from typing import Set, Dict, List, Union, Optional, cast
+from typing import List, Union, cast
 
 import openapi_schema_pydantic as oas
 
 from . import parse_schema
 from ...source import Source
-from .schema import SchemaData
 from ..utils import concat_snake_name
 from .int_schema import build_int_schema
 from .bool_schema import build_bool_schema
 from .list_schema import build_list_schema
 from .none_schema import build_none_schema
+from .schema import SchemaData, UnionSchema
 from .float_schema import build_float_schema
 from .model_schema import build_model_schema
 from .string_schema import build_string_schema
-
-
-class UnionSchema(SchemaData):
-    schemas: List[SchemaData]
-    discriminator: Optional[str] = None
-
-    def get_type_string(self) -> str:
-        return (
-            f"Union[{', '.join(schema.get_type_string() for schema in self.schemas)}]"
-        )
-
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
-        for schema in self.schemas:
-            imports.update(schema.get_imports())
-        imports.add("from typing import Union")
-        return imports
-
-    def get_default_args(self) -> Dict[str, str]:
-        args = {}
-        for schema in self.schemas:
-            args.update(schema.get_default_args())
-        args.update(super().get_default_args())
-        if self.discriminator:
-            args["discriminator"] = self.discriminator
-        return args
 
 
 def _build_sub_schema(source: Source, class_name: str) -> List[SchemaData]:

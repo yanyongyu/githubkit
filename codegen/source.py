@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from functools import cache
 from dataclasses import dataclass
@@ -70,13 +71,21 @@ class Source:
         return self.resolve_ref(str(httpx.URL(fragment=fragment)))
 
 
+def pre_process(spec: Any) -> Any:
+    """Patch to official rest api description"""
+    if isinstance(spec, dict):
+        # remove uncomplated webhook description
+        spec.pop("webhooks", None)
+    return spec
+
+
 @cache
 def get_spec(source: Union[httpx.URL, Path]) -> OpenAPI:
     if isinstance(source, Path):
-        content = source.read_text()
+        content = json.loads(source.read_text())
     else:
-        content = httpx.get(source).text
-    return OpenAPI.parse_raw(content)
+        content = httpx.get(source).json()
+    return OpenAPI.parse_obj(pre_process(content))
 
 
 def get_source(source: Union[httpx.URL, Path], path: Optional[str] = None) -> Source:

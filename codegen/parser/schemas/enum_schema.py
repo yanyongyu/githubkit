@@ -3,22 +3,8 @@ from typing import Any, Dict, List, cast
 import openapi_schema_pydantic as oas
 
 from ...source import Source
-from .property import SchemaData
+from .schema import EnumSchema
 from ..utils import sanitize, build_class_name
-
-
-class EnumSchema(SchemaData):
-    class_name: str
-    values: Dict[str, Any]
-
-    def is_str_enum(self) -> bool:
-        return all(isinstance(value, str) for value in self.values.values())
-
-    def is_int_enum(self) -> bool:
-        return all(isinstance(value, int) for value in self.values.values())
-
-    def get_type_string(self) -> str:
-        return self.class_name
 
 
 def _values_from_list(values: List[Any]) -> Dict[str, Any]:

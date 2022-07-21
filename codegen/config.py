@@ -5,4 +5,3 @@ from pydantic import BaseModel
 
 class Config(BaseModel):
     class_overrides: Dict[str, str] = {}
-    post_hooks: List[str] = ["isort .", "black ."]

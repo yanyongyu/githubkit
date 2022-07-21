@@ -1,5 +1,5 @@
-from typing import Dict, Optional
 from contextvars import ContextVar
+from typing import Dict, List, Optional
 
 import httpx
 
@@ -28,8 +28,9 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
 
 from ..config import Config
 from ..source import Source
-from .openapi import GeneratorData
+from .data import GeneratorData
 from .schemas import SchemaData, parse_schema
+from .endpoints import EndpointData, parse_endpoint
 
 
 def parse_openapi_spec(source: Source, config: Config) -> GeneratorData:
@@ -47,15 +48,16 @@ def parse_openapi_spec(source: Source, config: Config) -> GeneratorData:
                 schema_source = schemas_source / name
                 parse_schema(schema_source, name)
 
-        # endpoint_collections_by_tag, schemas = EndpointCollection.from_data(
-        #     data=openapi.paths, schemas=schemas, config=config
-        # )
+        endpoints: List[EndpointData] = []
+        if openapi.paths:
+            for path in openapi.paths:
+                endpoints.extend(parse_endpoint(source / "paths" / path, path))
 
         return GeneratorData(
             title=openapi.info.title,
             description=openapi.info.description,
             version=openapi.info.version,
-            # endpoint_collections_by_tag={},
+            endpoints=endpoints,
             schemas=list(get_schemas().values()),
         )
     finally:

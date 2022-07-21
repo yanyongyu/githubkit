@@ -1,13 +1,9 @@
-from typing import ClassVar, cast
+from typing import cast
 
 import openapi_schema_pydantic as oas
 
 from ...source import Source
-from .schema import SchemaData
-
-
-class NoneSchema(SchemaData):
-    _type_string: ClassVar[str] = "None"
+from .schema import NoneSchema
 
 
 def build_none_schema(source: Source) -> NoneSchema:
