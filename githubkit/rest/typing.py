@@ -26,5 +26,3 @@ HeaderTypes = Union[
     List[Tuple[str, str]],
     List[Tuple[bytes, bytes]],
 ]
-
-ResponseModelTypes = Dict[int, Dict[str, "Response[T]"]]

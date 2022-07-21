@@ -17,8 +17,9 @@ from typing import (
 import httpx
 
 from .response import Response
+from .exception import RequestFailed
 from .auth import BaseAuthStrategy, TokenAuthStrategy
-from .typing import URLTypes, HeaderTypes, QueryParamTypes, ResponseModelTypes
+from .typing import URLTypes, HeaderTypes, QueryParamTypes
 
 T = TypeVar("T")
 
@@ -27,8 +28,10 @@ class GitHubCore:
     def __init__(
         self,
         auth: Union[BaseAuthStrategy, str],
+        *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         user_agent: Optional[str] = None,
+        follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
         self.auth: BaseAuthStrategy = (
@@ -41,6 +44,7 @@ class GitHubCore:
         )
 
         self.user_agent: str = user_agent or "GitHubKit/Python"
+        self.follow_redirects: bool = follow_redirects
 
         self.timeout: httpx.Timeout = (
             timeout if isinstance(timeout, httpx.Timeout) else httpx.Timeout(timeout)
@@ -88,7 +92,7 @@ class GitHubCore:
                 "Accept": "application/vnd.github.v3+json",
             },
             "timeout": self.timeout,
-            "follow_redirects": True,
+            "follow_redirects": self.follow_redirects,
         }
 
     def _create_sync_client(self) -> httpx.Client:
@@ -119,13 +123,6 @@ class GitHubCore:
             finally:
                 await client.aclose()
 
-    @staticmethod
-    def _get_response_model(
-        response: httpx.Response,
-        response_models: Optional[Dict[int, Dict[str, Type[T]]]],
-    ) -> Type[T]:
-        ...
-
     def _request(
         self,
         method: str,
@@ -154,6 +151,23 @@ class GitHubCore:
                 method, url, params=params, json=json, headers=headers
             )
 
+    def _check(
+        self,
+        response: httpx.Response,
+        response_model: Optional[Type[T]] = None,
+        error_models: Optional[Dict[str, type]] = None,
+    ) -> Response[T]:
+        if response.is_error:
+            error_models = error_models or {}
+            status_code = str(response.status_code)
+            error_model = error_models.get(
+                status_code,
+                error_models.get(f"{status_code[:-2]}XX", error_models.get("default")),
+            )
+            rep = Response(response, error_model)
+            raise RequestFailed(rep)
+        return Response(response, response_model)
+
     def request(
         self,
         method: str,
@@ -162,15 +176,11 @@ class GitHubCore:
         params: Optional[QueryParamTypes] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
-        response_models: Optional[Dict[int, Dict[str, Type[T]]]] = None,
+        response_model: Optional[Type[T]] = None,
+        error_models: Optional[Dict[str, type]] = None,
     ) -> Response[T]:
         raw_resp = self._request(method, url, params=params, json=json, headers=headers)
-        model = self._get_response_model(raw_resp, response_models)
-        response = Response(raw_resp, model)
-        if raw_resp.is_error:
-            # TODO: raise error if request failed
-            raise
-        return response
+        return self._check(raw_resp, response_model, error_models)
 
     async def arequest(
         self,
@@ -180,14 +190,10 @@ class GitHubCore:
         params: Optional[QueryParamTypes] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
-        response_models: Optional[Dict[int, Dict[str, Type[T]]]] = None,
+        response_model: Optional[Type[T]] = None,
+        error_models: Optional[Dict[str, type]] = None,
     ) -> Response[T]:
         raw_resp = await self._arequest(
             method, url, params=params, json=json, headers=headers
         )
-        model = self._get_response_model(raw_resp, response_models)
-        response = Response(raw_resp, model)
-        if raw_resp.is_error:
-            # TODO: raise error if request failed
-            raise
-        return response
+        return self._check(raw_resp, response_model, error_models)
