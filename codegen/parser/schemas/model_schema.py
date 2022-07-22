@@ -18,7 +18,7 @@ from .schema import (
     StringSchema,
 )
 
-T = TypeVar("T")
+ST = TypeVar("ST", bound=SchemaData)
 
 
 def _is_nullable(schema: SchemaData) -> bool:
@@ -44,7 +44,7 @@ def _is_union_subset(first: SchemaData, second: SchemaData) -> Optional[SchemaDa
     return first if len(first_schemas) <= len(second_schemas) else second
 
 
-def _find_schema(schema: SchemaData, type: Type[T]) -> Optional[T]:
+def _find_schema(schema: SchemaData, type: Type[ST]) -> Optional[ST]:
     if isinstance(schema, type):
         return schema
     if isinstance(schema, UnionSchema):

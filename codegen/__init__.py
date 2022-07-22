@@ -19,4 +19,6 @@ def build(spec: Union[httpx.URL, Path]):
     source = get_source(spec)
 
     parsed_data = parse_openapi_spec(source, config)
-    print(len(parsed_data.endpoints))
+    print(
+        repr([e for e in parsed_data.endpoints if e.path == "/repos/{owner}/{repo}"][0])
+    )

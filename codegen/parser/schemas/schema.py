@@ -235,7 +235,6 @@ class EnumSchema(SchemaData):
 class ModelSchema(SchemaData):
     class_name: str = Field(..., exclude=True)
     properties: List[Property] = Field(default_factory=list)
-    is_multipart_body: bool = False
     allow_extra: bool = True
 
     @property

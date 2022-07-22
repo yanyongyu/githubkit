@@ -9,7 +9,7 @@ from ..schemas import SchemaData, parse_schema
 
 
 class RequestBodyData(BaseModel):
-    type: Literal["form", "json", "file"]
+    type: Literal["form", "json", "file", "str", "bytes"]
     body_schema: SchemaData
     required: bool = False
 
@@ -50,6 +50,35 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
             type="file",
             body_schema=parse_schema(
                 source / "content" / file_type / "media_type_schema",
+                concat_snake_name(prefix, "body"),
+            ),
+            required=data.required,
+        )
+    elif text_types := [type for type in media_types if "text" in type]:
+        text_type = text_types[0]
+        return RequestBodyData(
+            type="str",
+            body_schema=parse_schema(
+                source / "content" / text_type / "media_type_schema",
+                concat_snake_name(prefix, "body"),
+            ),
+            required=data.required,
+        )
+    elif binary_types := [type for type in media_types if "octet-stream" in type]:
+        binary_type = binary_types[0]
+        return RequestBodyData(
+            type="bytes",
+            body_schema=parse_schema(
+                source / "content" / binary_type / "media_type_schema",
+                concat_snake_name(prefix, "body"),
+            ),
+            required=data.required,
+        )
+    elif "*/*" in media_types:
+        return RequestBodyData(
+            type="bytes",
+            body_schema=parse_schema(
+                source / "content" / "*/*" / "media_type_schema",
                 concat_snake_name(prefix, "body"),
             ),
             required=data.required,
