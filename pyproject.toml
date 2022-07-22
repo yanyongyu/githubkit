@@ -44,7 +44,7 @@ extra_standard_library = ["typing_extensions"]
 reportPrivateImportUsage = false
 
 [tool.codegen]
-source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
+schema-source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
