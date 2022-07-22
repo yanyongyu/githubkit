@@ -4,11 +4,11 @@ if TYPE_CHECKING:
     from .response import Response
 
 
-class GitHubRestException(Exception):
+class GitHubException(Exception):
     ...
 
 
-class RequestFailed(GitHubRestException):
+class RequestFailed(GitHubException):
     def __init__(self, response: "Response"):
         self.response = response
 
