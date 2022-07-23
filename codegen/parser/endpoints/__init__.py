@@ -53,7 +53,7 @@ def parse_endpoint(source: Source, path: str) -> List[EndpointData]:
         responses = {
             code: build_response(
                 operation_source / "responses" / code,
-                concat_snake_name(sanitized_path, method),
+                concat_snake_name(sanitized_path, method, "response", code),
             )
             for code in (operation.responses or {}).keys()
         }

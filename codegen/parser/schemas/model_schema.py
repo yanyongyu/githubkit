@@ -5,7 +5,7 @@ import openapi_schema_pydantic as oas
 from .. import add_schema
 from . import parse_schema
 from ...source import Source
-from ..utils import build_class_name, concat_snake_name
+from ..utils import build_prop_name, build_class_name, concat_snake_name
 from .schema import (
     Property,
     IntSchema,
@@ -57,6 +57,8 @@ def _find_schema(schema: SchemaData, type: Type[ST]) -> Optional[ST]:
 def _is_enum_subset(first: SchemaData, second: SchemaData) -> Optional[EnumSchema]:
     first_schema = _find_schema(first, EnumSchema)
     second_schema = _find_schema(second, EnumSchema)
+
+    # both enum, check value subset
     if first_schema and second_schema:
         first_values = set(first_schema.values)
         second_values = set(second_schema.values)
@@ -65,6 +67,7 @@ def _is_enum_subset(first: SchemaData, second: SchemaData) -> Optional[EnumSchem
         elif second_values.issubset(first_values):
             return second_schema
 
+    # second enum, check type subset
     if second_schema:
         if second_schema.is_str_enum and _find_schema(first, StringSchema):
             return second_schema
@@ -82,7 +85,12 @@ def _merge_property(first: Property, second: Property) -> Property:
     nullable = _is_nullable(first.schema_data) or _is_nullable(second.schema_data)
 
     if schema := _is_union_subset(first.schema_data, second.schema_data):
-        return Property(name=second.name, required=required, schema_data=schema)
+        return Property(
+            name=second.name,
+            prop_name=second.prop_name,
+            required=required,
+            schema_data=schema,
+        )
 
     # enum subset
     if schema := _is_enum_subset(first.schema_data, second.schema_data):
@@ -94,7 +102,12 @@ def _merge_property(first: Property, second: Property) -> Property:
                 examples=schema.examples,
                 schemas=[schema, NoneSchema()],
             )
-        return Property(name=second.name, required=required, schema_data=schema)
+        return Property(
+            name=second.name,
+            prop_name=second.prop_name,
+            required=required,
+            schema_data=schema,
+        )
 
     raise RuntimeError(f"Cannot merge property {first!r} {second!r}")
 
@@ -139,7 +152,12 @@ def _process_properties(source: Source, class_name: str) -> List[Property]:
             prop_source, concat_snake_name(class_name, "prop", name)
         )
         _add_if_no_conflict(
-            Property(name=name, required=name in required_set, schema_data=prop_schema)
+            Property(
+                name=name,
+                prop_name=build_prop_name(name),
+                required=name in required_set,
+                schema_data=prop_schema,
+            )
         )
 
     return list(properties.values())

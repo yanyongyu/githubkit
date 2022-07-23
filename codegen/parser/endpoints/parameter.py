@@ -3,7 +3,7 @@ from typing import Literal
 import openapi_schema_pydantic as oas
 
 from ...source import Source
-from ..utils import concat_snake_name
+from ..utils import build_prop_name, concat_snake_name
 from ..schemas import Property, parse_schema, build_any_schema
 
 
@@ -29,6 +29,7 @@ def build_param(source: Source, prefix: str) -> Parameter:
 
     return Parameter(
         name=data.name,
+        prop_name=build_prop_name(data.name),
         required=data.required,
         schema_data=schema,
         param_in=data.param_in,  # type: ignore

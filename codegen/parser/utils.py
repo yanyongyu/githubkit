@@ -70,5 +70,11 @@ def concat_snake_name(*names: str) -> str:
 
 def build_class_name(name: str) -> str:
     config = get_config()
-    class_name = fix_reserved_words(pascal_case(sanitize(name)))
+    class_name = fix_reserved_words(pascal_case(name))
     return config.class_overrides.get(class_name, class_name)
+
+
+def build_prop_name(name: str) -> str:
+    config = get_config()
+    name = config.field_overrides.get(name, name)
+    return fix_reserved_words(snake_case(name))

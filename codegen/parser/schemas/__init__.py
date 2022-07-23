@@ -38,9 +38,11 @@ def parse_schema(source: Source, class_name: str) -> SchemaData:
     )
 
     if data.enum:
-        schema = build_enum_schema(source, class_name)
+        schema = build_enum_schema(source)
     elif isinstance(data.type, list) or data.anyOf or data.oneOf:
         schema = build_union_schema(source, class_name)
+        if len(schema.schemas) == 1:
+            schema = schema.schemas[0]
     elif schema_type == "null":
         schema = build_none_schema(source)
     elif schema_type == "string":
@@ -61,12 +63,6 @@ def parse_schema(source: Source, class_name: str) -> SchemaData:
     if source.uri not in get_schemas():
         add_schema(source.uri, schema)
     return schema
-
-
-def parse_property(source: Source, name: str, required: bool) -> Property:
-    return Property(
-        name=name, required=required, schema_data=parse_schema(source, name)
-    )
 
 
 from .any_schema import build_any_schema

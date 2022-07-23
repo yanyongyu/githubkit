@@ -2,8 +2,6 @@ from typing import Any, Set, Dict, List, ClassVar, Optional
 
 from pydantic import Field, BaseModel
 
-from ..utils import sanitize, snake_case
-
 
 class SchemaData(BaseModel):
 
@@ -36,12 +34,9 @@ class SchemaData(BaseModel):
 
 class Property(BaseModel):
     name: str
+    prop_name: str
     required: bool
     schema_data: SchemaData
-
-    @property
-    def snake_name(self) -> str:
-        return snake_case(sanitize(self.name))
 
     def get_type_string(self) -> str:
         type_string = self.schema_data.get_type_string()
@@ -59,34 +54,31 @@ class Property(BaseModel):
         args = self.schema_data.get_default_args()
         if "default" not in args and "default_factory" not in args:
             args["default"] = "..." if self.required else "UNSET"
-        if self.snake_name != self.name:
-            args["alias"] = self.name
+        if self.prop_name != self.name:
+            args["alias"] = repr(self.name)
 
-        arg_string = [f"{k}={v!r}" for k, v in args.items()]
+        arg_string = [f"{k}={v}" for k, v in args.items()]
         return f"Field({', '.join(arg_string)})"
 
     def get_param_string(self) -> str:
         type_ = self.get_type_string()
         if self.schema_data.default is None:
-            return f"{self.snake_name}: {type_}"
-        return f"{self.snake_name}: {type_} = {self.schema_data.default!r}"
+            return f"{self.prop_name}: {type_}"
+        return f"{self.prop_name}: {type_} = {self.schema_data.default!r}"
 
     def get_attr_string(self) -> str:
         type_ = self.get_type_string()
         default = self.get_default_string()
-        return f"{self.snake_name}: {type_} = {default}"
-
-    def get_docstring(self) -> str:
-        doc = f"{self.name} ({self.get_type_string()}): {self.schema_data.description or ''}."
-        if self.schema_data.default:
-            doc += f" Default: {self.schema_data.default}."
-        if self.schema_data.examples:
-            doc += f" Examples: {self.schema_data.examples}."
-        return doc
+        return f"{self.prop_name}: {type_} = {default}"
 
 
 class AnySchema(SchemaData):
     _type_string: ClassVar[str] = "Any"
+
+    def get_imports(self) -> Set[str]:
+        imports = super().get_imports()
+        imports.add("from typing import Any")
+        return imports
 
 
 class NoneSchema(SchemaData):
@@ -159,7 +151,7 @@ class StringSchema(SchemaData):
         if self.max_length is not None:
             args["max_length"] = str(self.max_length)
         if self.pattern is not None:
-            args["regex"] = self.pattern
+            args["regex"] = repr(self.pattern)
         return args
 
 
@@ -168,7 +160,7 @@ class DateTimeSchema(SchemaData):
 
     def get_imports(self) -> Set[str]:
         imports = super().get_imports()
-        imports.add("from datatime import datetime")
+        imports.add("from datetime import datetime")
         return imports
 
 
@@ -216,20 +208,24 @@ class ListSchema(SchemaData):
 
 
 class EnumSchema(SchemaData):
-    class_name: str = Field(..., exclude=True)
-    values: Dict[str, Any]
+    values: List[Any]
 
     def is_str_enum(self) -> bool:
-        return all(isinstance(value, str) for value in self.values.values())
+        return all(isinstance(value, str) for value in self.values)
 
     def is_int_enum(self) -> bool:
-        return all(isinstance(value, int) for value in self.values.values())
+        return all(isinstance(value, int) for value in self.values)
 
     def is_float_enum(self) -> bool:
-        return all(isinstance(value, (int, float)) for value in self.values.values())
+        return all(isinstance(value, (int, float)) for value in self.values)
 
     def get_type_string(self) -> str:
-        return self.class_name
+        return f"Literal[{', '.join(repr(value) for value in self.values)}]"
+
+    def get_imports(self) -> Set[str]:
+        imports = super().get_imports()
+        imports.add("from typing import Literal")
+        return imports
 
 
 class ModelSchema(SchemaData):
@@ -252,12 +248,19 @@ class ModelSchema(SchemaData):
             if isinstance(prop.schema_data, ModelSchema)
         ]
 
+    def get_inherit_string(self) -> str:
+        return "BaseModel" + (", extra=Extra.allow" if self.allow_extra else "")
+
     def get_type_string(self) -> str:
         return self.class_name
 
     def get_imports(self) -> Set[str]:
         imports = super().get_imports()
         imports.add("from pydantic import BaseModel")
+        if self.allow_extra:
+            imports.add("from pydantic import Extra")
+        for prop in self.properties:
+            imports.update(prop.get_imports())
         return imports
 
 

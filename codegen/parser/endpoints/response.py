@@ -4,7 +4,6 @@ from pydantic import BaseModel
 import openapi_schema_pydantic as oas
 
 from ...source import Source
-from ..utils import concat_snake_name
 from ..schemas import SchemaData, parse_schema
 
 
@@ -26,8 +25,7 @@ def build_response(source: Source, prefix: str) -> ResponseData:
     if data.content:
         media_type = next(iter(data.content.keys()))
         response_schema = parse_schema(
-            source / "content" / media_type / "media_type_schema",
-            concat_snake_name(prefix, "response"),
+            source / "content" / media_type / "media_type_schema", prefix
         )
 
     return ResponseData(description=data.description, response_schema=response_schema)

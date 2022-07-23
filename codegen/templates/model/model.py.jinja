@@ -1,0 +1,29 @@
+from __future__ import annotations
+
+{% for import_ in data.imports %}
+{{import_}}
+{% endfor %}
+
+{# model #}
+{% for model in data.models %}
+
+class {{ model.class_name }}({{ model.get_inherit_string() }}):
+    """{{ model.title or model.class_name | wordwrap(80) }}
+    {% if model.description %}
+
+    {{ model.description | wordwrap(80) | indent(4) }}
+    {% endif %}
+    {% if model.examples %}
+
+    Examples:
+        {% for example in model.examples %}
+        {{ example | string | wordwrap(82) }}
+        {% endfor %}
+    {% endif %}
+    """
+
+    {% for prop in model.properties %}
+    {{ prop.get_attr_string() }}
+    {% endfor %}
+
+{% endfor %}
