@@ -1,9 +1,6 @@
-from typing import TYPE_CHECKING, Dict, List, Tuple, Union, TypeVar, Optional
+from typing import IO, TYPE_CHECKING, Dict, List, Tuple, Union, TypeVar, Optional
 
 import httpx
-
-if TYPE_CHECKING:
-    from .response import Response
 
 T = TypeVar("T")
 
@@ -25,4 +22,14 @@ HeaderTypes = Union[
     Dict[bytes, bytes],
     List[Tuple[str, str]],
     List[Tuple[bytes, bytes]],
+]
+
+FileContent = Union[IO[bytes], bytes]
+FileTypes = Union[
+    # file (or bytes)
+    FileContent,
+    # (filename, file (or bytes))
+    Tuple[Optional[str], FileContent],
+    # (filename, file (or bytes), content_type)
+    Tuple[Optional[str], FileContent, Optional[str]],
 ]
