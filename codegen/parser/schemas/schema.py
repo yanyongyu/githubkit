@@ -47,7 +47,7 @@ class Property(BaseModel):
         imports.add("from pydantic import Field")
         if not self.required:
             imports.add("from typing import Union")
-            imports.add("from .types import UNSET, Unset")
+            imports.add("from githubkit.utils import UNSET, Unset")
         return imports
 
     def get_default_string(self) -> str:
@@ -178,7 +178,7 @@ class FileSchema(SchemaData):
 
     def get_imports(self) -> Set[str]:
         imports = super().get_imports()
-        imports.add("from .types import FileTypes")
+        imports.add("from githubkit.typing import FileTypes")
         return imports
 
 

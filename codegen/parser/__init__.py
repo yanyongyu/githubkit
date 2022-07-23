@@ -28,9 +28,15 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
 
 from ..config import Config
 from ..source import Source
-from .data import GeneratorData
+from .endpoints import parse_endpoint
+from .utils import sanitize as sanitize
+from .utils import kebab_case as kebab_case
+from .utils import snake_case as snake_case
 from .schemas import SchemaData, parse_schema
-from .endpoints import EndpointData, parse_endpoint
+from .utils import pascal_case as pascal_case
+from .data import GeneratorData as GeneratorData
+from .endpoints import EndpointData as EndpointData
+from .utils import fix_reserved_words as fix_reserved_words
 
 
 def parse_openapi_spec(source: Source, config: Config) -> GeneratorData:

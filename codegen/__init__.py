@@ -8,7 +8,14 @@ from jinja2 import Environment, PackageLoader
 from .log import logger
 from .config import Config
 from .source import get_source
-from .parser import GeneratorData, parse_openapi_spec
+from .parser import (
+    GeneratorData,
+    sanitize,
+    kebab_case,
+    snake_case,
+    pascal_case,
+    parse_openapi_spec,
+)
 
 
 def build_templates(data: GeneratorData, config: Config):
@@ -20,13 +27,32 @@ def build_templates(data: GeneratorData, config: Config):
     )
     env.globals.update(
         {
-            "repr": repr,
+            "sanitize": sanitize,
+            "snake_case": snake_case,
+            "pascal_case": pascal_case,
+            "kebab_case": kebab_case,
         }
     )
 
     # build models
+    logger.info("Building models...")
     model_template = env.get_template("model/model.py.jinja")
-    Path(config.model_output).write_text(model_template.render(data=data))
+    model_path = Path(config.model_output)
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    model_path.write_text(model_template.render(data=data))
+    logger.info("Successfully built models!")
+
+    # build endpoints
+    logger.info("Building endpoints...")
+    client_template = env.get_template("client/client.py.jinja")
+    client_path = Path(config.client_output)
+    client_path.mkdir(parents=True, exist_ok=True)
+    for tag, endpoints in data.endpoints_by_tag.items():
+        logger.info(f"Building endpoints for tag {tag}...")
+        tag_path = client_path / f"{tag}.py"
+        tag_path.write_text(client_template.render(tag=tag, endpoints=endpoints))
+        logger.info(f"Successfully built endpoints for tag {tag}!")
+    logger.info("Successfully built endpoints!")
 
 
 def build(spec: Optional[Union[httpx.URL, Path]] = None):

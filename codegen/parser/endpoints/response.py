@@ -1,15 +1,20 @@
-from typing import Optional
+from typing import Set, Optional
 
 from pydantic import BaseModel
 import openapi_schema_pydantic as oas
 
 from ...source import Source
-from ..schemas import SchemaData, parse_schema
+from ..schemas import SchemaData, ModelSchema, parse_schema
 
 
 class ResponseData(BaseModel):
     description: str
     response_schema: Optional[SchemaData] = None
+
+    def get_imports(self) -> Set[str]:
+        if isinstance(self.response_schema, ModelSchema):
+            return {f"from .models import {self.response_schema.class_name}"}
+        return self.response_schema.get_imports() if self.response_schema else set()
 
 
 def build_response(source: Source, prefix: str) -> ResponseData:

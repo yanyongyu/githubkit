@@ -37,9 +37,7 @@ def fix_reserved_words(value: str) -> str:
     Returns:
         `value` suffixed with `_` if it was a reserved word.
     """
-    if value in RESERVED_WORDS or iskeyword(value):
-        return f"{value}_"
-    return value
+    return f"{value}_" if value in RESERVED_WORDS or iskeyword(value) else value
 
 
 def snake_case(value: str) -> str:
@@ -65,7 +63,7 @@ def remove_string_escapes(value: str) -> str:
 
 
 def concat_snake_name(*names: str) -> str:
-    return "_".join(snake_case(sanitize(name)) for name in names)
+    return "_".join(snake_case(name) for name in names)
 
 
 def build_class_name(name: str) -> str:

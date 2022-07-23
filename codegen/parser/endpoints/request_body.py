@@ -1,17 +1,41 @@
-from typing import Literal
+from typing import Set, List, Literal
 
 from pydantic import BaseModel
 import openapi_schema_pydantic as oas
 
 from ...source import Source
 from ..utils import concat_snake_name
-from ..schemas import SchemaData, parse_schema
+from ..schemas import Property, SchemaData, ModelSchema, parse_schema
 
 
 class RequestBodyData(BaseModel):
     type: Literal["form", "json", "file", "str", "bytes"]
     body_schema: SchemaData
     required: bool = False
+
+    @property
+    def is_model(self) -> bool:
+        return isinstance(self.body_schema, ModelSchema)
+
+    def get_params_string(self) -> List[str]:
+        if not isinstance(self.body_schema, ModelSchema):
+            prop = Property(
+                name="body",
+                prop_name="body",
+                required=self.required,
+                schema_data=self.body_schema,
+            )
+            return [prop.get_param_string()]
+
+        results = []
+        for prop in self.body_schema.properties:
+            ...
+        return results
+
+    def get_imports(self) -> Set[str]:
+        if isinstance(self.body_schema, ModelSchema):
+            return {f"from .models import {self.body_schema.class_name}"}
+        return set()
 
 
 def build_request_body(source: Source, prefix: str) -> RequestBodyData:
