@@ -248,9 +248,6 @@ class ModelSchema(SchemaData):
             if isinstance(prop.schema_data, ModelSchema)
         ]
 
-    def get_inherit_string(self) -> str:
-        return "BaseModel" + (", extra=Extra.allow" if self.allow_extra else "")
-
     def get_type_string(self) -> str:
         return self.class_name
 
@@ -269,6 +266,8 @@ class UnionSchema(SchemaData):
     discriminator: Optional[str] = None
 
     def get_type_string(self) -> str:
+        if len(self.schemas) == 1:
+            return self.schemas[0].get_type_string()
         return (
             f"Union[{', '.join(schema.get_type_string() for schema in self.schemas)}]"
         )

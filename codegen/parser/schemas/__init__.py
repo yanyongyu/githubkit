@@ -41,8 +41,6 @@ def parse_schema(source: Source, class_name: str) -> SchemaData:
         schema = build_enum_schema(source)
     elif isinstance(data.type, list) or data.anyOf or data.oneOf:
         schema = build_union_schema(source, class_name)
-        if len(schema.schemas) == 1:
-            schema = schema.schemas[0]
     elif schema_type == "null":
         schema = build_none_schema(source)
     elif schema_type == "string":

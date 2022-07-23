@@ -4,10 +4,14 @@ from __future__ import annotations
 {{import_}}
 {% endfor %}
 
+
+class GitHubModel(BaseModel):
+    ...
+
 {# model #}
 {% for model in data.models %}
 
-class {{ model.class_name }}({{ model.get_inherit_string() }}):
+class {{ model.class_name }}(GitHubModel{{ ", extra=Extra.allow" if model.allow_extra else "" }}):
     """{{ model.title or model.class_name | wordwrap(80) }}
     {% if model.description %}
 
