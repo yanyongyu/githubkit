@@ -18,7 +18,7 @@
   </a>
 </p>
 
-<p align="center">
+<div align="center">
 
 <!-- markdownlint-capture -->
 <!-- markdownlint-disable MD036 -->
@@ -29,4 +29,4 @@ _✨ Always up to date, like octokit ✨_
 
 <!-- markdownlint-restore -->
 
-</p>
+</div>
