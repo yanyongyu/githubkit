@@ -19,6 +19,7 @@ from .parser import (
 
 
 def build_templates(data: GeneratorData, config: Config):
+    logger.info("Start generating codes...")
     env = Environment(
         loader=PackageLoader("codegen"),
         trim_blocks=True,
@@ -54,6 +55,18 @@ def build_templates(data: GeneratorData, config: Config):
         logger.info(f"Successfully built endpoints for tag {tag}!")
     logger.info("Successfully built endpoints!")
 
+    # build namespace
+    logger.info("Building namespace...")
+    namespace_template = env.get_template("namespace/namespace.py.jinja")
+    namespace_path = Path(config.namespace_output)
+    namespace_path.parent.mkdir(parents=True, exist_ok=True)
+    namespace_path.write_text(
+        namespace_template.render(tags=data.endpoints_by_tag.keys())
+    )
+    logger.info("Successfully built namespace!")
+
+    logger.info("Successfully generated codes!")
+
 
 def build(spec: Optional[Union[httpx.URL, Path]] = None):
     pyproject = tomli.loads(Path("./pyproject.toml").read_text())
@@ -74,6 +87,4 @@ def build(spec: Optional[Union[httpx.URL, Path]] = None):
         f"{len(parsed_data.schemas)} schemas, {len(parsed_data.endpoints)} endpoints"
     )
 
-    logger.info("Start generating codes...")
     build_templates(parsed_data, config)
-    logger.info("Successfully generated codes!")

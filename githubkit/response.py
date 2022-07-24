@@ -1,4 +1,4 @@
-from typing import Any, Type, Generic, TypeVar, Optional
+from typing import Any, Type, Generic, TypeVar
 
 import httpx
 from pydantic import parse_raw_as
@@ -7,7 +7,7 @@ RT = TypeVar("RT")
 
 
 class Response(Generic[RT]):
-    def __init__(self, response: httpx.Response, data_model: Optional[Type[RT]] = None):
+    def __init__(self, response: httpx.Response, data_model: Type[RT]):
         self._response = response
         self._data_model = data_model
 
@@ -44,6 +44,4 @@ class Response(Generic[RT]):
 
     @property
     def parsed_data(self) -> RT:
-        if self._data_model is None:
-            raise RuntimeError("Response data model not provided")
         return parse_raw_as(self._data_model, self._response.content)

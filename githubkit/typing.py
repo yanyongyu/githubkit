@@ -1,4 +1,4 @@
-from typing import IO, TYPE_CHECKING, Dict, List, Tuple, Union, TypeVar, Optional
+from typing import IO, Dict, List, Tuple, Union, TypeVar, Optional
 
 import httpx
 
@@ -24,6 +24,10 @@ HeaderTypes = Union[
     List[Tuple[bytes, bytes]],
 ]
 
+CookieTypes = Union[httpx.Cookies, Dict[str, str], List[Tuple[str, str]]]
+
+ContentTypes = Union[str, bytes]
+
 FileContent = Union[IO[bytes], bytes]
 FileTypes = Union[
     # file (or bytes)
@@ -33,3 +37,4 @@ FileTypes = Union[
     # (filename, file (or bytes), content_type)
     Tuple[Optional[str], FileContent, Optional[str]],
 ]
+RequestFiles = Union[Dict[str, FileTypes], List[Tuple[str, FileTypes]]]

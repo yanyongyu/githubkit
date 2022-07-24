@@ -1,6 +1,4 @@
-from typing import TypeVar
-
-DT = TypeVar("DT")
+from typing import Any
 
 
 class Unset:
@@ -14,7 +12,7 @@ class Unset:
 UNSET = Unset()
 
 
-def exclude_unset(data: DT) -> DT:
+def exclude_unset(data: Any) -> Any:
     if isinstance(data, dict):
         return data.__class__(
             (k, exclude_unset(v)) for k, v in data.items() if v is not UNSET

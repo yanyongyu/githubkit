@@ -48,6 +48,7 @@ reportPrivateImportUsage = false
 schema-source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
 model-output = "githubkit/rest/models.py"
 client-output = "githubkit/rest/"
+namespace-output = "githubkit/rest/__init__.py"
 
 [tool.codegen.field-overrides]
 "+1" = "plus_one"

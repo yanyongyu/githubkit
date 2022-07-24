@@ -1,0 +1,21 @@
+{% macro build_response_model(response) %}
+{% if response and response.response_schema %}
+{{ response.response_schema.get_type_string() }}
+{%- endif %}
+{% endmacro %}
+
+{% macro build_error_models(error_responses) %}
+{% for code, response in error_responses.items() %}
+{% if response and response.response_schema %}
+"{{ code }}": {{ build_response_model(response) }},
+{% endif %}
+{% endfor %}
+{% endmacro %}
+
+{% macro build_response_type(response) %}
+{% if response and response.response_schema %}
+Response[{{ build_response_model(response) }}]
+{%- else %}
+Response
+{%- endif %}
+{% endmacro %}

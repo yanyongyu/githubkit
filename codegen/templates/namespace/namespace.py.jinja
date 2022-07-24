@@ -1,0 +1,20 @@
+from typing import TYPE_CHECKING
+from functools import cached_property
+
+{% for tag in tags %}
+from .{{ tag }} import {{ pascal_case(tag) }}Client
+{% endfor %}
+
+if TYPE_CHECKING:
+    from githubkit.core import GitHubCore
+
+
+class RestNamespace:
+    def __init__(self, github: "GitHubCore"):
+        self._github = github
+
+    {% for tag in tags %}
+    @cached_property
+    def {{ tag }}(self) -> {{ pascal_case(tag) }}Client:
+        return {{ pascal_case(tag) }}Client(self._github)
+    {% endfor %}

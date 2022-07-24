@@ -9,7 +9,7 @@ from ..schemas import Property, SchemaData, ModelSchema, parse_schema
 
 
 class RequestBodyData(BaseModel):
-    type: Literal["form", "json", "file", "str", "bytes"]
+    type: Literal["form", "json", "file", "raw"]
     body_schema: SchemaData
     required: bool = False
 
@@ -27,15 +27,17 @@ class RequestBodyData(BaseModel):
             )
             return [prop.get_param_string()]
 
-        results = []
-        for prop in self.body_schema.properties:
-            ...
-        return results
+        return [prop.get_param_string() for prop in self.body_schema.properties]
 
     def get_imports(self) -> Set[str]:
+        imports = set()
         if isinstance(self.body_schema, ModelSchema):
-            return {f"from .models import {self.body_schema.class_name}"}
-        return set()
+            imports.update(self.body_schema.get_param_imports())
+            for prop in self.body_schema.properties:
+                imports.update(prop.get_param_imports())
+        else:
+            imports.update(self.body_schema.get_param_imports())
+        return imports
 
 
 def build_request_body(source: Source, prefix: str) -> RequestBodyData:
@@ -81,7 +83,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
     elif text_types := [type for type in media_types if "text" in type]:
         text_type = text_types[0]
         return RequestBodyData(
-            type="str",
+            type="raw",
             body_schema=parse_schema(
                 source / "content" / text_type / "media_type_schema",
                 concat_snake_name(prefix, "body"),
@@ -91,7 +93,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
     elif binary_types := [type for type in media_types if "octet-stream" in type]:
         binary_type = binary_types[0]
         return RequestBodyData(
-            type="bytes",
+            type="raw",
             body_schema=parse_schema(
                 source / "content" / binary_type / "media_type_schema",
                 concat_snake_name(prefix, "body"),
@@ -100,7 +102,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
         )
     elif "*/*" in media_types:
         return RequestBodyData(
-            type="bytes",
+            type="raw",
             body_schema=parse_schema(
                 source / "content" / "*/*" / "media_type_schema",
                 concat_snake_name(prefix, "body"),

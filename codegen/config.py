@@ -10,3 +10,4 @@ class Config(BaseModel):
 
     model_output: str
     client_output: str
+    namespace_output: str

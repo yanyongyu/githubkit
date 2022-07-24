@@ -1,3 +1,4 @@
+from itertools import chain
 from typing import Any, Set, Dict, List, ClassVar, Optional
 
 from pydantic import Field, BaseModel
@@ -12,11 +13,14 @@ class SchemaData(BaseModel):
 
     _type_string: ClassVar[str] = "Any"
 
-    def get_type_string(self) -> str:
+    def get_type_string(self, wrap_model: bool = False) -> str:
         return self._type_string
 
     def get_imports(self) -> Set[str]:
         return set()
+
+    def get_param_imports(self) -> Set[str]:
+        return self.get_imports()
 
     def get_default_args(self) -> Dict[str, str]:
         default = self.default
@@ -31,6 +35,9 @@ class SchemaData(BaseModel):
             args["default_factory"] = f"lambda: {default!r}"
         return args
 
+    def get_model_dependencies(self) -> List["ModelSchema"]:
+        return []
+
 
 class Property(BaseModel):
     name: str
@@ -38,13 +45,20 @@ class Property(BaseModel):
     required: bool
     schema_data: SchemaData
 
-    def get_type_string(self) -> str:
-        type_string = self.schema_data.get_type_string()
+    def get_type_string(self, wrap_model: bool = False) -> str:
+        type_string = self.schema_data.get_type_string(wrap_model)
         return type_string if self.required else f"Union[Unset, {type_string}]"
 
     def get_imports(self) -> Set[str]:
         imports = self.schema_data.get_imports()
         imports.add("from pydantic import Field")
+        if not self.required:
+            imports.add("from typing import Union")
+            imports.add("from githubkit.utils import UNSET, Unset")
+        return imports
+
+    def get_param_imports(self) -> Set[str]:
+        imports = self.schema_data.get_param_imports()
         if not self.required:
             imports.add("from typing import Union")
             imports.add("from githubkit.utils import UNSET, Unset")
@@ -60,14 +74,18 @@ class Property(BaseModel):
         arg_string = [f"{k}={v}" for k, v in args.items()]
         return f"Field({', '.join(arg_string)})"
 
-    def get_param_string(self) -> str:
-        type_ = self.get_type_string()
+    def get_param_string(self, wrap_model: bool = False) -> str:
+        type_ = self.get_type_string(wrap_model)
         if self.schema_data.default is None:
-            return f"{self.prop_name}: {type_}"
+            return (
+                f"{self.prop_name}: {type_}"
+                if self.required
+                else f"{self.prop_name}: {type_} = UNSET"
+            )
         return f"{self.prop_name}: {type_} = {self.schema_data.default!r}"
 
-    def get_attr_string(self) -> str:
-        type_ = self.get_type_string()
+    def get_attr_string(self, wrap_model: bool = False) -> str:
+        type_ = self.get_type_string(wrap_model)
         default = self.get_default_string()
         return f"{self.prop_name}: {type_} = {default}"
 
@@ -188,12 +206,18 @@ class ListSchema(SchemaData):
     max_items: Optional[int] = Field(default=None, ge=0)
     unique_items: Optional[bool] = None
 
-    def get_type_string(self) -> str:
-        return f"List[{self.item_schema.get_type_string()}]"
+    def get_type_string(self, wrap_model: bool = False) -> str:
+        return f"List[{self.item_schema.get_type_string(wrap_model)}]"
 
     def get_imports(self) -> Set[str]:
         imports = super().get_imports()
         imports.add("from typing import List")
+        imports.update(self.item_schema.get_imports())
+        return imports
+
+    def get_param_imports(self) -> Set[str]:
+        imports = {"from typing import List"}
+        imports.update(self.item_schema.get_param_imports())
         return imports
 
     def get_default_args(self) -> Dict[str, str]:
@@ -205,6 +229,13 @@ class ListSchema(SchemaData):
         if self.unique_items is not None:
             args["unique_items"] = repr(self.unique_items)
         return args
+
+    def get_model_dependencies(self) -> List["ModelSchema"]:
+        return (
+            [self.item_schema]
+            if isinstance(self.item_schema, ModelSchema)
+            else self.item_schema.get_model_dependencies()
+        )
 
 
 class EnumSchema(SchemaData):
@@ -219,7 +250,7 @@ class EnumSchema(SchemaData):
     def is_float_enum(self) -> bool:
         return all(isinstance(value, (int, float)) for value in self.values)
 
-    def get_type_string(self) -> str:
+    def get_type_string(self, wrap_model: bool = False) -> str:
         return f"Literal[{', '.join(repr(value) for value in self.values)}]"
 
     def get_imports(self) -> Set[str]:
@@ -242,14 +273,17 @@ class ModelSchema(SchemaData):
         return [prop for prop in self.properties if not prop.required]
 
     def get_model_dependencies(self) -> List["ModelSchema"]:
-        return [
-            prop.schema_data
-            for prop in self.properties
-            if isinstance(prop.schema_data, ModelSchema)
-        ]
+        return list(
+            chain.from_iterable(
+                [prop.schema_data]
+                if isinstance(prop.schema_data, ModelSchema)
+                else prop.schema_data.get_model_dependencies()
+                for prop in self.properties
+            )
+        )
 
-    def get_type_string(self) -> str:
-        return self.class_name
+    def get_type_string(self, wrap_model: bool = False) -> str:
+        return repr(self.class_name) if wrap_model else self.class_name
 
     def get_imports(self) -> Set[str]:
         imports = super().get_imports()
@@ -260,23 +294,35 @@ class ModelSchema(SchemaData):
             imports.update(prop.get_imports())
         return imports
 
+    def get_param_imports(self) -> Set[str]:
+        return {f"from .models import {self.class_name}"}
+
+    def need_update_forward_ref(self, generated_models: List[str]) -> bool:
+        return {model.class_name for model in self.get_model_dependencies()}.issubset(
+            generated_models
+        )
+
 
 class UnionSchema(SchemaData):
     schemas: List[SchemaData]
     discriminator: Optional[str] = None
 
-    def get_type_string(self) -> str:
+    def get_type_string(self, wrap_model: bool = False) -> str:
         if len(self.schemas) == 1:
-            return self.schemas[0].get_type_string()
-        return (
-            f"Union[{', '.join(schema.get_type_string() for schema in self.schemas)}]"
-        )
+            return self.schemas[0].get_type_string(wrap_model)
+        return f"Union[{', '.join(schema.get_type_string(wrap_model) for schema in self.schemas)}]"
 
     def get_imports(self) -> Set[str]:
         imports = super().get_imports()
         for schema in self.schemas:
             imports.update(schema.get_imports())
         imports.add("from typing import Union")
+        return imports
+
+    def get_param_imports(self) -> Set[str]:
+        imports = {"from typing import Union"}
+        for schema in self.schemas:
+            imports.update(schema.get_param_imports())
         return imports
 
     def get_default_args(self) -> Dict[str, str]:
@@ -287,3 +333,13 @@ class UnionSchema(SchemaData):
         if self.discriminator:
             args["discriminator"] = self.discriminator
         return args
+
+    def get_model_dependencies(self) -> List["ModelSchema"]:
+        return list(
+            chain.from_iterable(
+                [schema]
+                if isinstance(schema, ModelSchema)
+                else schema.get_model_dependencies()
+                for schema in self.schemas
+            )
+        )

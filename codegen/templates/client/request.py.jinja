@@ -1,0 +1,100 @@
+{% from "client/response.py.jinja" import build_response_model, build_error_models %}
+
+{% macro build_path(endpoint) %}
+{% if endpoint.path_params %}
+url = f"{{ endpoint.path }}"
+{% else %}
+url = "{{ endpoint.path }}"
+{% endif %}
+{% endmacro %}
+
+{% macro build_query(params) %}
+params = {
+    {% for param in params %}
+    "{{ param.name }}": {{ param.prop_name }},
+    {% endfor %}
+}
+{% endmacro %}
+
+{% macro build_header(params) %}
+headers = {
+    {% for param in params %}
+    "{{ param.name }}": {{ param.prop_name }},
+    {% endfor %}
+}
+{% endmacro %}
+
+{% macro build_cookie(params) %}
+cookies = {
+    {% for param in params %}
+    "{{ param.name }}": {{ param.prop_name }},
+    {% endfor %}
+}
+{% endmacro %}
+
+{% macro _get_body_name(request_body) %}
+{% if request_body.is_model %}
+{{ request_body.body_schema.class_name }}(**{
+    {% for prop in request_body.body_schema.properties %}
+    "{{ prop.name }}": {{ prop.prop_name }},
+    {% endfor %}
+}).dict(by_alias=True)
+{% else %}
+body
+{% endif %}
+{% endmacro %}
+
+{% macro build_body(request_body) %}
+{% if request_body.type == "json" %}
+json = {{ _get_body_name(request_body) }}
+{% elif request_body.type == "form" %}
+data = {{ _get_body_name(request_body) }}
+{% elif request_body.type == "file" %}
+files = {{ _get_body_name(request_body) }}
+{% elif request_body.type == "raw" %}
+content = {{ _get_body_name(request_body) }}
+{% endif %}
+{% endmacro %}
+
+{% macro build_request(endpoint) %}
+{{ build_path(endpoint) }}
+{% if endpoint.query_params %}
+{{ build_query(endpoint.query_params) }}
+{% endif %}
+{% if endpoint.request_body %}
+{{ build_body(endpoint.request_body) }}
+{% endif %}
+{% endmacro %}
+
+{% macro build_request_params(endpoint) %}
+"{{ endpoint.method | upper }}",
+url,
+{% if endpoint.query_params %}
+params=exclude_unset(params),
+{% endif %}
+{% if endpoint.request_body %}
+{% if endpoint.request_body.type == "raw" %}
+content=exclude_unset(content),
+{% elif endpoint.request_body.type == "form" %}
+data=exclude_unset(data),
+{% elif endpoint.request_body.type == "file" %}
+files=exclude_unset(files),
+{% elif endpoint.request_body.type == "json" %}
+json=exclude_unset(json),
+{% endif %}
+{% endif %}
+{% if endpoint.header_params %}
+headers=exclude_unset(headers),
+{% endif %}
+{% if endpoint.cookie_params %}
+cookies=exclude_unset(cookies),
+{% endif %}
+{% if endpoint.success_response and endpoint.success_response.response_schema %}
+response_model={{ build_response_model(endpoint.success_response) }},
+{% endif %}
+{% if endpoint.error_responses %}
+error_models={
+    {{ build_error_models(endpoint.error_responses) | indent(4) }}
+},
+{% endif %}
+{% endmacro %}

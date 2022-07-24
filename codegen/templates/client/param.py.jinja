@@ -1,0 +1,41 @@
+
+{% macro path_params(endpoint) %}
+{% for path_param in endpoint.path_params %}
+{{ path_param.get_param_string() }},
+{% endfor %}
+{% endmacro %}
+
+{% macro query_params(endpoint) %}
+{% for query_param in endpoint.query_params %}
+{{ query_param.get_param_string() }},
+{% endfor %}
+{% endmacro %}
+
+{% macro header_params(endpoint) %}
+{% for header_param in endpoint.header_params %}
+{{ header_param.get_param_string() }},
+{% endfor %}
+{% endmacro %}
+
+{% macro cookie_params(endpoint) %}
+{% for cookie_param in endpoint.cookie_params %}
+{{ cookie_param.get_param_string() }},
+{% endfor %}
+{% endmacro %}
+
+{% macro body_params(endpoint) %}
+{% for prop in endpoint.request_body.get_params_string() %}
+{{ prop }},
+{% endfor %}
+{% endmacro %}
+
+{% macro endpoint_params(endpoint) %}
+{{ path_params(endpoint) }}
+{{ query_params(endpoint) }}
+{{ header_params(endpoint) }}
+{{ cookie_params(endpoint) }}
+{%- if endpoint.request_body %}
+*,
+{{ body_params(endpoint) }}
+{%- endif %}
+{% endmacro %}

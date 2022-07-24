@@ -17,7 +17,14 @@ import httpx
 from .response import Response
 from .exception import RequestFailed
 from .auth import BaseAuthStrategy, TokenAuthStrategy
-from .typing import URLTypes, HeaderTypes, QueryParamTypes
+from .typing import (
+    URLTypes,
+    CookieTypes,
+    HeaderTypes,
+    ContentTypes,
+    RequestFiles,
+    QueryParamTypes,
+)
 
 T = TypeVar("T")
 
@@ -127,12 +134,24 @@ class GitHubCore:
         url: URLTypes,
         *,
         params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
+        cookies: Optional[CookieTypes] = None,
     ) -> httpx.Response:
         with self.get_sync_client() as client:
             return client.request(
-                method, url, params=params, json=json, headers=headers
+                method,
+                url,
+                params=params,
+                content=content,
+                data=data,
+                files=files,
+                json=json,
+                headers=headers,
+                cookies=cookies,
             )
 
     async def _arequest(
@@ -141,18 +160,30 @@ class GitHubCore:
         url: URLTypes,
         *,
         params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
+        cookies: Optional[CookieTypes] = None,
     ) -> httpx.Response:
         async with self.get_async_client() as client:
             return await client.request(
-                method, url, params=params, json=json, headers=headers
+                method,
+                url,
+                params=params,
+                content=content,
+                data=data,
+                files=files,
+                json=json,
+                headers=headers,
+                cookies=cookies,
             )
 
     def _check(
         self,
         response: httpx.Response,
-        response_model: Optional[Type[T]] = None,
+        response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[T]:
         if response.is_error:
@@ -160,7 +191,9 @@ class GitHubCore:
             status_code = str(response.status_code)
             error_model = error_models.get(
                 status_code,
-                error_models.get(f"{status_code[:-2]}XX", error_models.get("default")),
+                error_models.get(
+                    f"{status_code[:-2]}XX", error_models.get("default", Any)
+                ),
             )
             rep = Response(response, error_model)
             raise RequestFailed(rep)
@@ -172,12 +205,26 @@ class GitHubCore:
         url: URLTypes,
         *,
         params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
-        response_model: Optional[Type[T]] = None,
+        cookies: Optional[CookieTypes] = None,
+        response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[T]:
-        raw_resp = self._request(method, url, params=params, json=json, headers=headers)
+        raw_resp = self._request(
+            method,
+            url,
+            params=params,
+            content=content,
+            data=data,
+            files=files,
+            json=json,
+            headers=headers,
+            cookies=cookies,
+        )
         return self._check(raw_resp, response_model, error_models)
 
     async def arequest(
@@ -186,12 +233,24 @@ class GitHubCore:
         url: URLTypes,
         *,
         params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
-        response_model: Optional[Type[T]] = None,
+        cookies: Optional[CookieTypes] = None,
+        response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[T]:
         raw_resp = await self._arequest(
-            method, url, params=params, json=json, headers=headers
+            method,
+            url,
+            params=params,
+            content=content,
+            data=data,
+            files=files,
+            json=json,
+            headers=headers,
+            cookies=cookies,
         )
         return self._check(raw_resp, response_model, error_models)
