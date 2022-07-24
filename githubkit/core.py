@@ -36,6 +36,7 @@ class GitHubCore:
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         user_agent: Optional[str] = None,
+        accept: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
@@ -49,6 +50,7 @@ class GitHubCore:
         )
 
         self.user_agent: str = user_agent or "GitHubKit/Python"
+        self.accept: str = accept or "application/vnd.github.full+json"
         self.follow_redirects: bool = follow_redirects
 
         self.timeout: httpx.Timeout = (
@@ -94,7 +96,7 @@ class GitHubCore:
             "base_url": self.base_url,
             "headers": {
                 "User-Agent": self.user_agent,
-                "Accept": "application/vnd.github.v3+json",
+                "Accept": self.accept,
             },
             "timeout": self.timeout,
             "follow_redirects": self.follow_redirects,
