@@ -161,58 +161,6 @@ class ActivityClient:
             },
         )
 
-    def mark_notifications_as_read(
-        self,
-        *,
-        last_read_at: Union[Unset, datetime] = UNSET,
-        read: Union[Unset, bool] = UNSET,
-    ) -> "Response[NotificationsPutResponse202]":
-        url = "/notifications"
-
-        json = NotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-                "read": read,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            response_model=NotificationsPutResponse202,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_mark_notifications_as_read(
-        self,
-        *,
-        last_read_at: Union[Unset, datetime] = UNSET,
-        read: Union[Unset, bool] = UNSET,
-    ) -> "Response[NotificationsPutResponse202]":
-        url = "/notifications"
-
-        json = NotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-                "read": read,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            response_model=NotificationsPutResponse202,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
     def list_notifications_for_authenticated_user(
         self,
         all_: Union[Unset, bool] = False,
@@ -277,31 +225,55 @@ class ActivityClient:
             },
         )
 
-    def mark_thread_as_read(
+    def mark_notifications_as_read(
         self,
-        thread_id: int,
-    ) -> "Response":
-        url = f"/notifications/threads/{thread_id}"
+        *,
+        last_read_at: Union[Unset, datetime] = UNSET,
+        read: Union[Unset, bool] = UNSET,
+    ) -> "Response[NotificationsPutResponse202]":
+        url = "/notifications"
+
+        json = NotificationsPutBody(
+            **{
+                "last_read_at": last_read_at,
+                "read": read,
+            }
+        ).dict(by_alias=True)
 
         return self._github.request(
-            "PATCH",
+            "PUT",
             url,
+            json=exclude_unset(json),
+            response_model=NotificationsPutResponse202,
             error_models={
                 "403": BasicError,
+                "401": BasicError,
             },
         )
 
-    async def async_mark_thread_as_read(
+    async def async_mark_notifications_as_read(
         self,
-        thread_id: int,
-    ) -> "Response":
-        url = f"/notifications/threads/{thread_id}"
+        *,
+        last_read_at: Union[Unset, datetime] = UNSET,
+        read: Union[Unset, bool] = UNSET,
+    ) -> "Response[NotificationsPutResponse202]":
+        url = "/notifications"
+
+        json = NotificationsPutBody(
+            **{
+                "last_read_at": last_read_at,
+                "read": read,
+            }
+        ).dict(by_alias=True)
 
         return await self._github.arequest(
-            "PATCH",
+            "PUT",
             url,
+            json=exclude_unset(json),
+            response_model=NotificationsPutResponse202,
             error_models={
                 "403": BasicError,
+                "401": BasicError,
             },
         )
 
@@ -331,6 +303,66 @@ class ActivityClient:
             "GET",
             url,
             response_model=Thread,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def mark_thread_as_read(
+        self,
+        thread_id: int,
+    ) -> "Response":
+        url = f"/notifications/threads/{thread_id}"
+
+        return self._github.request(
+            "PATCH",
+            url,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    async def async_mark_thread_as_read(
+        self,
+        thread_id: int,
+    ) -> "Response":
+        url = f"/notifications/threads/{thread_id}"
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    def get_thread_subscription_for_authenticated_user(
+        self,
+        thread_id: int,
+    ) -> "Response[ThreadSubscription]":
+        url = f"/notifications/threads/{thread_id}/subscription"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ThreadSubscription,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_get_thread_subscription_for_authenticated_user(
+        self,
+        thread_id: int,
+    ) -> "Response[ThreadSubscription]":
+        url = f"/notifications/threads/{thread_id}/subscription"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -411,38 +443,6 @@ class ActivityClient:
         return await self._github.arequest(
             "DELETE",
             url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    def get_thread_subscription_for_authenticated_user(
-        self,
-        thread_id: int,
-    ) -> "Response[ThreadSubscription]":
-        url = f"/notifications/threads/{thread_id}/subscription"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ThreadSubscription,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_get_thread_subscription_for_authenticated_user(
-        self,
-        thread_id: int,
-    ) -> "Response[ThreadSubscription]":
-        url = f"/notifications/threads/{thread_id}/subscription"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -531,50 +531,6 @@ class ActivityClient:
             response_model=List[Event],
         )
 
-    def mark_repo_notifications_as_read(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        last_read_at: Union[Unset, datetime] = UNSET,
-    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
-        url = f"/repos/{owner}/{repo}/notifications"
-
-        json = ReposOwnerRepoNotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            response_model=ReposOwnerRepoNotificationsPutResponse202,
-        )
-
-    async def async_mark_repo_notifications_as_read(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        last_read_at: Union[Unset, datetime] = UNSET,
-    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
-        url = f"/repos/{owner}/{repo}/notifications"
-
-        json = ReposOwnerRepoNotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            response_model=ReposOwnerRepoNotificationsPutResponse202,
-        )
-
     def list_repo_notifications_for_authenticated_user(
         self,
         owner: str,
@@ -631,6 +587,50 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             response_model=List[Thread],
+        )
+
+    def mark_repo_notifications_as_read(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        last_read_at: Union[Unset, datetime] = UNSET,
+    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
+        url = f"/repos/{owner}/{repo}/notifications"
+
+        json = ReposOwnerRepoNotificationsPutBody(
+            **{
+                "last_read_at": last_read_at,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=ReposOwnerRepoNotificationsPutResponse202,
+        )
+
+    async def async_mark_repo_notifications_as_read(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        last_read_at: Union[Unset, datetime] = UNSET,
+    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
+        url = f"/repos/{owner}/{repo}/notifications"
+
+        json = ReposOwnerRepoNotificationsPutBody(
+            **{
+                "last_read_at": last_read_at,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=ReposOwnerRepoNotificationsPutResponse202,
         )
 
     def list_stargazers_for_repo(
@@ -723,6 +723,38 @@ class ActivityClient:
             response_model=List[SimpleUser],
         )
 
+    def get_repo_subscription(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[RepositorySubscription]":
+        url = f"/repos/{owner}/{repo}/subscription"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=RepositorySubscription,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    async def async_get_repo_subscription(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[RepositorySubscription]":
+        url = f"/repos/{owner}/{repo}/subscription"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=RepositorySubscription,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
     def set_repo_subscription(
         self,
         owner: str,
@@ -795,38 +827,6 @@ class ActivityClient:
             url,
         )
 
-    def get_repo_subscription(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[RepositorySubscription]":
-        url = f"/repos/{owner}/{repo}/subscription"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=RepositorySubscription,
-            error_models={
-                "403": BasicError,
-            },
-        )
-
-    async def async_get_repo_subscription(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[RepositorySubscription]":
-        url = f"/repos/{owner}/{repo}/subscription"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=RepositorySubscription,
-            error_models={
-                "403": BasicError,
-            },
-        )
-
     def list_repos_starred_by_authenticated_user(
         self,
         sort: Union[Unset, Literal["created", "updated"]] = "created",
@@ -878,6 +878,40 @@ class ActivityClient:
             error_models={
                 "403": BasicError,
                 "401": BasicError,
+            },
+        )
+
+    def check_repo_is_starred_by_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/user/starred/{owner}/{repo}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_check_repo_is_starred_by_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/user/starred/{owner}/{repo}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+                "401": BasicError,
+                "403": BasicError,
             },
         )
 
@@ -941,40 +975,6 @@ class ActivityClient:
 
         return await self._github.arequest(
             "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "401": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    def check_repo_is_starred_by_authenticated_user(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/user/starred/{owner}/{repo}"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={
-                "404": BasicError,
-                "401": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_check_repo_is_starred_by_authenticated_user(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/user/starred/{owner}/{repo}"
-
-        return await self._github.arequest(
-            "GET",
             url,
             error_models={
                 "404": BasicError,

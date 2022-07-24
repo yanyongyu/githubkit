@@ -35,9 +35,6 @@ class SchemaData(BaseModel):
             args["default_factory"] = f"lambda: {default!r}"
         return args
 
-    def get_model_dependencies(self) -> List["ModelSchema"]:
-        return []
-
 
 class Property(BaseModel):
     name: str
@@ -221,21 +218,14 @@ class ListSchema(SchemaData):
         return imports
 
     def get_default_args(self) -> Dict[str, str]:
-        args = super().get_default_args()
-        if self.max_items is not None:
-            args["max_items"] = repr(self.max_items)
-        if self.min_items is not None:
-            args["min_items"] = repr(self.min_items)
-        if self.unique_items is not None:
-            args["unique_items"] = repr(self.unique_items)
-        return args
-
-    def get_model_dependencies(self) -> List["ModelSchema"]:
-        return (
-            [self.item_schema]
-            if isinstance(self.item_schema, ModelSchema)
-            else self.item_schema.get_model_dependencies()
-        )
+        # FIXME: remove list constraints due to forwardref not supported
+        # if self.max_items is not None:
+        #     args["max_items"] = repr(self.max_items)
+        # if self.min_items is not None:
+        #     args["min_items"] = repr(self.min_items)
+        # if self.unique_items is not None:
+        #     args["unique_items"] = repr(self.unique_items)
+        return super().get_default_args()
 
 
 class EnumSchema(SchemaData):
@@ -272,16 +262,6 @@ class ModelSchema(SchemaData):
     def optional_properties(self) -> List[Property]:
         return [prop for prop in self.properties if not prop.required]
 
-    def get_model_dependencies(self) -> List["ModelSchema"]:
-        return list(
-            chain.from_iterable(
-                [prop.schema_data]
-                if isinstance(prop.schema_data, ModelSchema)
-                else prop.schema_data.get_model_dependencies()
-                for prop in self.properties
-            )
-        )
-
     def get_type_string(self, wrap_model: bool = False) -> str:
         return repr(self.class_name) if wrap_model else self.class_name
 
@@ -296,11 +276,6 @@ class ModelSchema(SchemaData):
 
     def get_param_imports(self) -> Set[str]:
         return {f"from .models import {self.class_name}"}
-
-    def need_update_forward_ref(self, generated_models: List[str]) -> bool:
-        return {model.class_name for model in self.get_model_dependencies()}.issubset(
-            generated_models
-        )
 
 
 class UnionSchema(SchemaData):
@@ -333,13 +308,3 @@ class UnionSchema(SchemaData):
         if self.discriminator:
             args["discriminator"] = self.discriminator
         return args
-
-    def get_model_dependencies(self) -> List["ModelSchema"]:
-        return list(
-            chain.from_iterable(
-                [schema]
-                if isinstance(schema, ModelSchema)
-                else schema.get_model_dependencies()
-                for schema in self.schemas
-            )
-        )

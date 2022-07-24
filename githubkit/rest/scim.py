@@ -175,67 +175,37 @@ class ScimClient:
             },
         )
 
-    def update_attribute_for_user(
+    def get_provisioning_information_for_user(
         self,
         org: str,
         scim_user_id: str,
-        *,
-        schemas: Union[Unset, List[str]] = UNSET,
-        operations: List[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
-        ],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
-        json = ScimV2OrganizationsOrgUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
-
         return self._github.request(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
                 "403": ScimError,
-                "400": ScimError,
-                "429": BasicError,
             },
         )
 
-    async def async_update_attribute_for_user(
+    async def async_get_provisioning_information_for_user(
         self,
         org: str,
         scim_user_id: str,
-        *,
-        schemas: Union[Unset, List[str]] = UNSET,
-        operations: List[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
-        ],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
-        json = ScimV2OrganizationsOrgUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
-
         return await self._github.arequest(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
                 "403": ScimError,
-                "400": ScimError,
-                "429": BasicError,
             },
         )
 
@@ -351,36 +321,66 @@ class ScimClient:
             },
         )
 
-    def get_provisioning_information_for_user(
+    def update_attribute_for_user(
         self,
         org: str,
         scim_user_id: str,
+        *,
+        schemas: Union[Unset, List[str]] = UNSET,
+        operations: List[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
+        ],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
+        json = ScimV2OrganizationsOrgUsersScimUserIdPatchBody(
+            **{
+                "schemas": schemas,
+                "Operations": operations,
+            }
+        ).dict(by_alias=True)
+
         return self._github.request(
-            "GET",
+            "PATCH",
             url,
+            json=exclude_unset(json),
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
                 "403": ScimError,
+                "400": ScimError,
+                "429": BasicError,
             },
         )
 
-    async def async_get_provisioning_information_for_user(
+    async def async_update_attribute_for_user(
         self,
         org: str,
         scim_user_id: str,
+        *,
+        schemas: Union[Unset, List[str]] = UNSET,
+        operations: List[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
+        ],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
+        json = ScimV2OrganizationsOrgUsersScimUserIdPatchBody(
+            **{
+                "schemas": schemas,
+                "Operations": operations,
+            }
+        ).dict(by_alias=True)
+
         return await self._github.arequest(
-            "GET",
+            "PATCH",
             url,
+            json=exclude_unset(json),
             response_model=ScimUser,
             error_models={
                 "404": ScimError,
                 "403": ScimError,
+                "400": ScimError,
+                "429": BasicError,
             },
         )

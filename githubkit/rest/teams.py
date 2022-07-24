@@ -292,6 +292,62 @@ class TeamsClient:
             },
         )
 
+    def get_by_name(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response[TeamFull]":
+        url = f"/orgs/{org}/teams/{team_slug}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamFull,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_by_name(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response[TeamFull]":
+        url = f"/orgs/{org}/teams/{team_slug}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamFull,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_in_org(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/teams/{team_slug}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_in_org(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/teams/{team_slug}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_in_org(
         self,
         org: str,
@@ -350,62 +406,6 @@ class TeamsClient:
             url,
             json=exclude_unset(json),
             response_model=TeamFull,
-        )
-
-    def delete_in_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_in_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_by_name(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[TeamFull]":
-        url = f"/orgs/{org}/teams/{team_slug}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamFull,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_by_name(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[TeamFull]":
-        url = f"/orgs/{org}/teams/{team_slug}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=TeamFull,
-            error_models={
-                "404": BasicError,
-            },
         )
 
     def list_discussions_in_org(
@@ -510,6 +510,60 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    def get_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+    ) -> "Response[TeamDiscussion]":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamDiscussion,
+        )
+
+    async def async_get_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+    ) -> "Response[TeamDiscussion]":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamDiscussion,
+        )
+
+    def delete_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_discussion_in_org(
         self,
         org: str,
@@ -557,60 +611,6 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=TeamDiscussion,
-        )
-
-    def delete_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-    ) -> "Response[TeamDiscussion]":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamDiscussion,
-        )
-
-    async def async_get_discussion_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-    ) -> "Response[TeamDiscussion]":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=TeamDiscussion,
         )
 
@@ -708,6 +708,64 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    def get_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response[TeamDiscussionComment]":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamDiscussionComment,
+        )
+
+    async def async_get_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response[TeamDiscussionComment]":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamDiscussionComment,
+        )
+
+    def delete_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_discussion_comment_in_org(
         self,
         org: str,
@@ -760,62 +818,54 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
-    def delete_discussion_comment_in_org(
+    def list_linked_external_idp_groups_to_team_for_org(
         self,
         org: str,
         team_slug: str,
-        discussion_number: int,
-        comment_number: int,
+    ) -> "Response[ExternalGroups]":
+        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ExternalGroups,
+        )
+
+    async def async_list_linked_external_idp_groups_to_team_for_org(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response[ExternalGroups]":
+        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ExternalGroups,
+        )
+
+    def unlink_external_idp_group_from_team_for_org(
+        self,
+        org: str,
+        team_slug: str,
     ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
 
         return self._github.request(
             "DELETE",
             url,
         )
 
-    async def async_delete_discussion_comment_in_org(
+    async def async_unlink_external_idp_group_from_team_for_org(
         self,
         org: str,
         team_slug: str,
-        discussion_number: int,
-        comment_number: int,
     ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
 
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def get_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-    ) -> "Response[TeamDiscussionComment]":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamDiscussionComment,
-        )
-
-    async def async_get_discussion_comment_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        discussion_number: int,
-        comment_number: int,
-    ) -> "Response[TeamDiscussionComment]":
-        url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=TeamDiscussionComment,
         )
 
     def link_external_idp_group_to_team_for_org(
@@ -860,56 +910,6 @@ class TeamsClient:
             url,
             json=exclude_unset(json),
             response_model=ExternalGroup,
-        )
-
-    def unlink_external_idp_group_from_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_unlink_external_idp_group_from_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def list_linked_external_idp_groups_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[ExternalGroups]":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ExternalGroups,
-        )
-
-    async def async_list_linked_external_idp_groups_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[ExternalGroups]":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ExternalGroups,
         )
 
     def list_pending_invitations_in_org(
@@ -1000,6 +1000,36 @@ class TeamsClient:
             response_model=List[SimpleUser],
         )
 
+    def get_membership_for_user_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        username: str,
+    ) -> "Response[TeamMembership]":
+        url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamMembership,
+            error_models={},
+        )
+
+    async def async_get_membership_for_user_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        username: str,
+    ) -> "Response[TeamMembership]":
+        url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamMembership,
+            error_models={},
+        )
+
     def add_or_update_membership_for_user_in_org(
         self,
         org: str,
@@ -1076,36 +1106,6 @@ class TeamsClient:
             error_models={},
         )
 
-    def get_membership_for_user_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        username: str,
-    ) -> "Response[TeamMembership]":
-        url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamMembership,
-            error_models={},
-        )
-
-    async def async_get_membership_for_user_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        username: str,
-    ) -> "Response[TeamMembership]":
-        url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=TeamMembership,
-            error_models={},
-        )
-
     def list_projects_in_org(
         self,
         org: str,
@@ -1146,6 +1146,36 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             response_model=List[TeamProject],
+        )
+
+    def check_permissions_for_project_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        project_id: int,
+    ) -> "Response[TeamProject]":
+        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamProject,
+            error_models={},
+        )
+
+    async def async_check_permissions_for_project_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        project_id: int,
+    ) -> "Response[TeamProject]":
+        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamProject,
+            error_models={},
         )
 
     def add_or_update_project_permissions_in_org(
@@ -1220,36 +1250,6 @@ class TeamsClient:
             url,
         )
 
-    def check_permissions_for_project_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-    ) -> "Response[TeamProject]":
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamProject,
-            error_models={},
-        )
-
-    async def async_check_permissions_for_project_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        project_id: int,
-    ) -> "Response[TeamProject]":
-        url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=TeamProject,
-            error_models={},
-        )
-
     def list_repos_in_org(
         self,
         org: str,
@@ -1290,6 +1290,38 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             response_model=List[MinimalRepository],
+        )
+
+    def check_permissions_for_repo_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        owner: str,
+        repo: str,
+    ) -> "Response[TeamRepository]":
+        url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamRepository,
+            error_models={},
+        )
+
+    async def async_check_permissions_for_repo_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        owner: str,
+        repo: str,
+    ) -> "Response[TeamRepository]":
+        url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamRepository,
+            error_models={},
         )
 
     def add_or_update_repo_permissions_in_org(
@@ -1370,36 +1402,30 @@ class TeamsClient:
             url,
         )
 
-    def check_permissions_for_repo_in_org(
+    def list_idp_groups_in_org(
         self,
         org: str,
         team_slug: str,
-        owner: str,
-        repo: str,
-    ) -> "Response[TeamRepository]":
-        url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
+    ) -> "Response[GroupMapping]":
+        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
 
         return self._github.request(
             "GET",
             url,
-            response_model=TeamRepository,
-            error_models={},
+            response_model=GroupMapping,
         )
 
-    async def async_check_permissions_for_repo_in_org(
+    async def async_list_idp_groups_in_org(
         self,
         org: str,
         team_slug: str,
-        owner: str,
-        repo: str,
-    ) -> "Response[TeamRepository]":
-        url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
+    ) -> "Response[GroupMapping]":
+        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=TeamRepository,
-            error_models={},
+            response_model=GroupMapping,
         )
 
     def create_or_update_idp_group_connections_in_org(
@@ -1452,32 +1478,6 @@ class TeamsClient:
             response_model=GroupMapping,
         )
 
-    def list_idp_groups_in_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=GroupMapping,
-        )
-
-    async def async_list_idp_groups_in_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=GroupMapping,
-        )
-
     def list_child_in_org(
         self,
         org: str,
@@ -1518,6 +1518,66 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             response_model=List[Team],
+        )
+
+    def get_legacy(
+        self,
+        team_id: int,
+    ) -> "Response[TeamFull]":
+        url = f"/teams/{team_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamFull,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_legacy(
+        self,
+        team_id: int,
+    ) -> "Response[TeamFull]":
+        url = f"/teams/{team_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamFull,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_legacy(
+        self,
+        team_id: int,
+    ) -> "Response":
+        url = f"/teams/{team_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_delete_legacy(
+        self,
+        team_id: int,
+    ) -> "Response":
+        url = f"/teams/{team_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def update_legacy(
@@ -1585,66 +1645,6 @@ class TeamsClient:
                 "404": BasicError,
                 "422": ValidationError,
                 "403": BasicError,
-            },
-        )
-
-    def delete_legacy(
-        self,
-        team_id: int,
-    ) -> "Response":
-        url = f"/teams/{team_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    async def async_delete_legacy(
-        self,
-        team_id: int,
-    ) -> "Response":
-        url = f"/teams/{team_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    def get_legacy(
-        self,
-        team_id: int,
-    ) -> "Response[TeamFull]":
-        url = f"/teams/{team_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamFull,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_legacy(
-        self,
-        team_id: int,
-    ) -> "Response[TeamFull]":
-        url = f"/teams/{team_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=TeamFull,
-            error_models={
-                "404": BasicError,
             },
         )
 
@@ -1742,6 +1742,56 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    def get_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+    ) -> "Response[TeamDiscussion]":
+        url = f"/teams/{team_id}/discussions/{discussion_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamDiscussion,
+        )
+
+    async def async_get_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+    ) -> "Response[TeamDiscussion]":
+        url = f"/teams/{team_id}/discussions/{discussion_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamDiscussion,
+        )
+
+    def delete_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+    ) -> "Response":
+        url = f"/teams/{team_id}/discussions/{discussion_number}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+    ) -> "Response":
+        url = f"/teams/{team_id}/discussions/{discussion_number}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_discussion_legacy(
         self,
         team_id: int,
@@ -1787,56 +1837,6 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=TeamDiscussion,
-        )
-
-    def delete_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-    ) -> "Response":
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-    ) -> "Response":
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-    ) -> "Response[TeamDiscussion]":
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamDiscussion,
-        )
-
-    async def async_get_discussion_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-    ) -> "Response[TeamDiscussion]":
-        url = f"/teams/{team_id}/discussions/{discussion_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=TeamDiscussion,
         )
 
@@ -1930,6 +1930,60 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    def get_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response[TeamDiscussionComment]":
+        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamDiscussionComment,
+        )
+
+    async def async_get_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response[TeamDiscussionComment]":
+        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamDiscussionComment,
+        )
+
+    def delete_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response":
+        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+    ) -> "Response":
+        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_discussion_comment_legacy(
         self,
         team_id: int,
@@ -1973,60 +2027,6 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=TeamDiscussionComment,
-        )
-
-    def delete_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-    ) -> "Response":
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-    ) -> "Response":
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-    ) -> "Response[TeamDiscussionComment]":
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamDiscussionComment,
-        )
-
-    async def async_get_discussion_comment_legacy(
-        self,
-        team_id: int,
-        discussion_number: int,
-        comment_number: int,
-    ) -> "Response[TeamDiscussionComment]":
-        url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=TeamDiscussionComment,
         )
 
@@ -2120,6 +2120,32 @@ class TeamsClient:
             },
         )
 
+    def get_member_legacy(
+        self,
+        team_id: int,
+        username: str,
+    ) -> "Response":
+        url = f"/teams/{team_id}/members/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={},
+        )
+
+    async def async_get_member_legacy(
+        self,
+        team_id: int,
+        username: str,
+    ) -> "Response":
+        url = f"/teams/{team_id}/members/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={},
+        )
+
     def add_member_legacy(
         self,
         team_id: int,
@@ -2176,30 +2202,36 @@ class TeamsClient:
             error_models={},
         )
 
-    def get_member_legacy(
+    def get_membership_for_user_legacy(
         self,
         team_id: int,
         username: str,
-    ) -> "Response":
-        url = f"/teams/{team_id}/members/{username}"
+    ) -> "Response[TeamMembership]":
+        url = f"/teams/{team_id}/memberships/{username}"
 
         return self._github.request(
             "GET",
             url,
-            error_models={},
+            response_model=TeamMembership,
+            error_models={
+                "404": BasicError,
+            },
         )
 
-    async def async_get_member_legacy(
+    async def async_get_membership_for_user_legacy(
         self,
         team_id: int,
         username: str,
-    ) -> "Response":
-        url = f"/teams/{team_id}/members/{username}"
+    ) -> "Response[TeamMembership]":
+        url = f"/teams/{team_id}/memberships/{username}"
 
         return await self._github.arequest(
             "GET",
             url,
-            error_models={},
+            response_model=TeamMembership,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def add_or_update_membership_for_user_legacy(
@@ -2278,38 +2310,6 @@ class TeamsClient:
             error_models={},
         )
 
-    def get_membership_for_user_legacy(
-        self,
-        team_id: int,
-        username: str,
-    ) -> "Response[TeamMembership]":
-        url = f"/teams/{team_id}/memberships/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamMembership,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_membership_for_user_legacy(
-        self,
-        team_id: int,
-        username: str,
-    ) -> "Response[TeamMembership]":
-        url = f"/teams/{team_id}/memberships/{username}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=TeamMembership,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def list_projects_legacy(
         self,
         team_id: int,
@@ -2354,6 +2354,34 @@ class TeamsClient:
             error_models={
                 "404": BasicError,
             },
+        )
+
+    def check_permissions_for_project_legacy(
+        self,
+        team_id: int,
+        project_id: int,
+    ) -> "Response[TeamProject]":
+        url = f"/teams/{team_id}/projects/{project_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamProject,
+            error_models={},
+        )
+
+    async def async_check_permissions_for_project_legacy(
+        self,
+        team_id: int,
+        project_id: int,
+    ) -> "Response[TeamProject]":
+        url = f"/teams/{team_id}/projects/{project_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamProject,
+            error_models={},
         )
 
     def add_or_update_project_permissions_legacy(
@@ -2440,34 +2468,6 @@ class TeamsClient:
             },
         )
 
-    def check_permissions_for_project_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-    ) -> "Response[TeamProject]":
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=TeamProject,
-            error_models={},
-        )
-
-    async def async_check_permissions_for_project_legacy(
-        self,
-        team_id: int,
-        project_id: int,
-    ) -> "Response[TeamProject]":
-        url = f"/teams/{team_id}/projects/{project_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=TeamProject,
-            error_models={},
-        )
-
     def list_repos_legacy(
         self,
         team_id: int,
@@ -2512,6 +2512,36 @@ class TeamsClient:
             error_models={
                 "404": BasicError,
             },
+        )
+
+    def check_permissions_for_repo_legacy(
+        self,
+        team_id: int,
+        owner: str,
+        repo: str,
+    ) -> "Response[TeamRepository]":
+        url = f"/teams/{team_id}/repos/{owner}/{repo}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=TeamRepository,
+            error_models={},
+        )
+
+    async def async_check_permissions_for_repo_legacy(
+        self,
+        team_id: int,
+        owner: str,
+        repo: str,
+    ) -> "Response[TeamRepository]":
+        url = f"/teams/{team_id}/repos/{owner}/{repo}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=TeamRepository,
+            error_models={},
         )
 
     def add_or_update_repo_permissions_legacy(
@@ -2592,34 +2622,36 @@ class TeamsClient:
             url,
         )
 
-    def check_permissions_for_repo_legacy(
+    def list_idp_groups_for_legacy(
         self,
         team_id: int,
-        owner: str,
-        repo: str,
-    ) -> "Response[TeamRepository]":
-        url = f"/teams/{team_id}/repos/{owner}/{repo}"
+    ) -> "Response[GroupMapping]":
+        url = f"/teams/{team_id}/team-sync/group-mappings"
 
         return self._github.request(
             "GET",
             url,
-            response_model=TeamRepository,
-            error_models={},
+            response_model=GroupMapping,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
-    async def async_check_permissions_for_repo_legacy(
+    async def async_list_idp_groups_for_legacy(
         self,
         team_id: int,
-        owner: str,
-        repo: str,
-    ) -> "Response[TeamRepository]":
-        url = f"/teams/{team_id}/repos/{owner}/{repo}"
+    ) -> "Response[GroupMapping]":
+        url = f"/teams/{team_id}/team-sync/group-mappings"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=TeamRepository,
-            error_models={},
+            response_model=GroupMapping,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def create_or_update_idp_group_connections_legacy(
@@ -2673,38 +2705,6 @@ class TeamsClient:
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
-            },
-        )
-
-    def list_idp_groups_for_legacy(
-        self,
-        team_id: int,
-    ) -> "Response[GroupMapping]":
-        url = f"/teams/{team_id}/team-sync/group-mappings"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=GroupMapping,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_list_idp_groups_for_legacy(
-        self,
-        team_id: int,
-    ) -> "Response[GroupMapping]":
-        url = f"/teams/{team_id}/team-sync/group-mappings"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=GroupMapping,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
             },
         )
 

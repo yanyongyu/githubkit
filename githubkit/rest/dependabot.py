@@ -97,6 +97,32 @@ class DependabotClient:
             response_model=DependabotPublicKey,
         )
 
+    def get_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response[OrganizationDependabotSecret]":
+        url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrganizationDependabotSecret,
+        )
+
+    async def async_get_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response[OrganizationDependabotSecret]":
+        url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OrganizationDependabotSecret,
+        )
+
     def create_or_update_org_secret(
         self,
         org: str,
@@ -177,30 +203,46 @@ class DependabotClient:
             url,
         )
 
-    def get_org_secret(
+    def list_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
-    ) -> "Response[OrganizationDependabotSecret]":
-        url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
 
         return self._github.request(
             "GET",
             url,
-            response_model=OrganizationDependabotSecret,
+            params=exclude_unset(params),
+            response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
-    async def async_get_org_secret(
+    async def async_list_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
-    ) -> "Response[OrganizationDependabotSecret]":
-        url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=OrganizationDependabotSecret,
+            params=exclude_unset(params),
+            response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
     def set_selected_repos_for_org_secret(
@@ -243,48 +285,6 @@ class DependabotClient:
             "PUT",
             url,
             json=exclude_unset(json),
-        )
-
-    def list_selected_repos_for_org_secret(
-        self,
-        org: str,
-        secret_name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
-        )
-
-    async def async_list_selected_repos_for_org_secret(
-        self,
-        org: str,
-        secret_name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
     def add_selected_repo_to_org_secret(
@@ -419,6 +419,34 @@ class DependabotClient:
             response_model=DependabotPublicKey,
         )
 
+    def get_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+    ) -> "Response[DependabotSecret]":
+        url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=DependabotSecret,
+        )
+
+    async def async_get_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+    ) -> "Response[DependabotSecret]":
+        url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=DependabotSecret,
+        )
+
     def create_or_update_repo_secret(
         self,
         owner: str,
@@ -493,32 +521,4 @@ class DependabotClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def get_repo_secret(
-        self,
-        owner: str,
-        repo: str,
-        secret_name: str,
-    ) -> "Response[DependabotSecret]":
-        url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=DependabotSecret,
-        )
-
-    async def async_get_repo_secret(
-        self,
-        owner: str,
-        repo: str,
-        secret_name: str,
-    ) -> "Response[DependabotSecret]":
-        url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=DependabotSecret,
         )

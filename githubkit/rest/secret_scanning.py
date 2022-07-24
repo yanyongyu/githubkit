@@ -253,6 +253,40 @@ class SecretScanningClient:
             },
         )
 
+    def get_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+    ) -> "Response[SecretScanningAlert]":
+        url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=SecretScanningAlert,
+            error_models={
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+    ) -> "Response[SecretScanningAlert]":
+        url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=SecretScanningAlert,
+            error_models={
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def update_alert(
         self,
         owner: str,
@@ -309,40 +343,6 @@ class SecretScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=SecretScanningAlert,
-            error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_alert(
-        self,
-        owner: str,
-        repo: str,
-        alert_number: int,
-    ) -> "Response[SecretScanningAlert]":
-        url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=SecretScanningAlert,
-            error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_alert(
-        self,
-        owner: str,
-        repo: str,
-        alert_number: int,
-    ) -> "Response[SecretScanningAlert]":
-        url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,

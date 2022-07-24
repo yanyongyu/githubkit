@@ -554,6 +554,66 @@ class IssuesClient:
             },
         )
 
+    def get_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response[IssueComment]":
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=IssueComment,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response[IssueComment]":
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=IssueComment,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_comment(
         self,
         owner: str,
@@ -603,66 +663,6 @@ class IssuesClient:
             response_model=IssueComment,
             error_models={
                 "422": ValidationError,
-            },
-        )
-
-    def delete_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response[IssueComment]":
-        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=IssueComment,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response[IssueComment]":
-        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=IssueComment,
-            error_models={
-                "404": BasicError,
             },
         )
 
@@ -749,6 +749,42 @@ class IssuesClient:
                 "404": BasicError,
                 "410": BasicError,
                 "403": BasicError,
+            },
+        )
+
+    def get(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+    ) -> "Response[Issue]":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Issue,
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_get(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+    ) -> "Response[Issue]":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Issue,
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
             },
         )
 
@@ -850,40 +886,50 @@ class IssuesClient:
             },
         )
 
-    def get(
+    def add_assignees(
         self,
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        assignees: Union[Unset, List[str]] = UNSET,
     ) -> "Response[Issue]":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}"
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
+
+        json = ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(
+            **{
+                "assignees": assignees,
+            }
+        ).dict(by_alias=True)
 
         return self._github.request(
-            "GET",
+            "POST",
             url,
+            json=exclude_unset(json),
             response_model=Issue,
-            error_models={
-                "404": BasicError,
-                "410": BasicError,
-            },
         )
 
-    async def async_get(
+    async def async_add_assignees(
         self,
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        assignees: Union[Unset, List[str]] = UNSET,
     ) -> "Response[Issue]":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}"
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
+
+        json = ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(
+            **{
+                "assignees": assignees,
+            }
+        ).dict(by_alias=True)
 
         return await self._github.arequest(
-            "GET",
+            "POST",
             url,
+            json=exclude_unset(json),
             response_model=Issue,
-            error_models={
-                "404": BasicError,
-                "410": BasicError,
-            },
         )
 
     def remove_assignees(
@@ -927,52 +973,6 @@ class IssuesClient:
 
         return await self._github.arequest(
             "DELETE",
-            url,
-            json=exclude_unset(json),
-            response_model=Issue,
-        )
-
-    def add_assignees(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        *,
-        assignees: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[Issue]":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
-
-        json = ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(
-            **{
-                "assignees": assignees,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=Issue,
-        )
-
-    async def async_add_assignees(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        *,
-        assignees: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[Issue]":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
-
-        json = ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(
-            **{
-                "assignees": assignees,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "POST",
             url,
             json=exclude_unset(json),
             response_model=Issue,
@@ -1178,6 +1178,56 @@ class IssuesClient:
             },
         )
 
+    def list_labels_on_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[Label]]":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[Label],
+            error_models={
+                "410": BasicError,
+            },
+        )
+
+    async def async_list_labels_on_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[Label]]":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[Label],
+            error_models={
+                "410": BasicError,
+            },
+        )
+
     def set_labels(
         self,
         owner: str,
@@ -1242,88 +1292,6 @@ class IssuesClient:
             },
         )
 
-    def remove_all_labels(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "410": BasicError,
-            },
-        )
-
-    async def async_remove_all_labels(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "410": BasicError,
-            },
-        )
-
-    def list_labels_on_issue(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[List[Label]]":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[Label],
-            error_models={
-                "410": BasicError,
-            },
-        )
-
-    async def async_list_labels_on_issue(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[List[Label]]":
-        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[Label],
-            error_models={
-                "410": BasicError,
-            },
-        )
-
     def add_labels(
         self,
         owner: str,
@@ -1385,6 +1353,38 @@ class IssuesClient:
             error_models={
                 "410": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def remove_all_labels(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "410": BasicError,
+            },
+        )
+
+    async def async_remove_all_labels(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "410": BasicError,
             },
         )
 
@@ -1722,6 +1722,66 @@ class IssuesClient:
             },
         )
 
+    def get_label(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response[Label]":
+        url = f"/repos/{owner}/{repo}/labels/{name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Label,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_label(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response[Label]":
+        url = f"/repos/{owner}/{repo}/labels/{name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Label,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_label(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/labels/{name}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_label(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/labels/{name}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_label(
         self,
         owner: str,
@@ -1774,66 +1834,6 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             response_model=Label,
-        )
-
-    def delete_label(
-        self,
-        owner: str,
-        repo: str,
-        name: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/labels/{name}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_label(
-        self,
-        owner: str,
-        repo: str,
-        name: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/labels/{name}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_label(
-        self,
-        owner: str,
-        repo: str,
-        name: str,
-    ) -> "Response[Label]":
-        url = f"/repos/{owner}/{repo}/labels/{name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Label,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_label(
-        self,
-        owner: str,
-        repo: str,
-        name: str,
-    ) -> "Response[Label]":
-        url = f"/repos/{owner}/{repo}/labels/{name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Label,
-            error_models={
-                "404": BasicError,
-            },
         )
 
     def list_milestones(
@@ -1960,6 +1960,72 @@ class IssuesClient:
             },
         )
 
+    def get_milestone(
+        self,
+        owner: str,
+        repo: str,
+        milestone_number: int,
+    ) -> "Response[Milestone]":
+        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Milestone,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_milestone(
+        self,
+        owner: str,
+        repo: str,
+        milestone_number: int,
+    ) -> "Response[Milestone]":
+        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Milestone,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_milestone(
+        self,
+        owner: str,
+        repo: str,
+        milestone_number: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_milestone(
+        self,
+        owner: str,
+        repo: str,
+        milestone_number: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_milestone(
         self,
         owner: str,
@@ -2016,72 +2082,6 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             response_model=Milestone,
-        )
-
-    def delete_milestone(
-        self,
-        owner: str,
-        repo: str,
-        milestone_number: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_milestone(
-        self,
-        owner: str,
-        repo: str,
-        milestone_number: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def get_milestone(
-        self,
-        owner: str,
-        repo: str,
-        milestone_number: int,
-    ) -> "Response[Milestone]":
-        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Milestone,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_milestone(
-        self,
-        owner: str,
-        repo: str,
-        milestone_number: int,
-    ) -> "Response[Milestone]":
-        url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Milestone,
-            error_models={
-                "404": BasicError,
-            },
         )
 
     def list_labels_for_milestone(

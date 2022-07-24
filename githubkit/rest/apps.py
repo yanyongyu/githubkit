@@ -104,6 +104,28 @@ class AppsClient:
             },
         )
 
+    def get_webhook_config_for_app(
+        self,
+    ) -> "Response[WebhookConfig]":
+        url = "/app/hook/config"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=WebhookConfig,
+        )
+
+    async def async_get_webhook_config_for_app(
+        self,
+    ) -> "Response[WebhookConfig]":
+        url = "/app/hook/config"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=WebhookConfig,
+        )
+
     def update_webhook_config_for_app(
         self,
         *,
@@ -153,28 +175,6 @@ class AppsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=WebhookConfig,
-        )
-
-    def get_webhook_config_for_app(
-        self,
-    ) -> "Response[WebhookConfig]":
-        url = "/app/hook/config"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=WebhookConfig,
-        )
-
-    async def async_get_webhook_config_for_app(
-        self,
-    ) -> "Response[WebhookConfig]":
-        url = "/app/hook/config"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=WebhookConfig,
         )
 
@@ -334,34 +334,6 @@ class AppsClient:
             response_model=List[Installation],
         )
 
-    def delete_installation(
-        self,
-        installation_id: int,
-    ) -> "Response":
-        url = f"/app/installations/{installation_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_installation(
-        self,
-        installation_id: int,
-    ) -> "Response":
-        url = f"/app/installations/{installation_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def get_installation(
         self,
         installation_id: int,
@@ -387,6 +359,34 @@ class AppsClient:
             "GET",
             url,
             response_model=Installation,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_installation(
+        self,
+        installation_id: int,
+    ) -> "Response":
+        url = f"/app/installations/{installation_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_installation(
+        self,
+        installation_id: int,
+    ) -> "Response":
+        url = f"/app/installations/{installation_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
             error_models={
                 "404": BasicError,
             },
@@ -556,7 +556,7 @@ class AppsClient:
             },
         )
 
-    def reset_token(
+    def check_token(
         self,
         client_id: str,
         *,
@@ -564,23 +564,24 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPatchBody(
+        json = ApplicationsClientIdTokenPostBody(
             **{
                 "access_token": access_token,
             }
         ).dict(by_alias=True)
 
         return self._github.request(
-            "PATCH",
+            "POST",
             url,
             json=exclude_unset(json),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
+                "404": BasicError,
             },
         )
 
-    async def async_reset_token(
+    async def async_check_token(
         self,
         client_id: str,
         *,
@@ -588,19 +589,20 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPatchBody(
+        json = ApplicationsClientIdTokenPostBody(
             **{
                 "access_token": access_token,
             }
         ).dict(by_alias=True)
 
         return await self._github.arequest(
-            "PATCH",
+            "POST",
             url,
             json=exclude_unset(json),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
+                "404": BasicError,
             },
         )
 
@@ -650,7 +652,7 @@ class AppsClient:
             },
         )
 
-    def check_token(
+    def reset_token(
         self,
         client_id: str,
         *,
@@ -658,24 +660,23 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPostBody(
+        json = ApplicationsClientIdTokenPatchBody(
             **{
                 "access_token": access_token,
             }
         ).dict(by_alias=True)
 
         return self._github.request(
-            "POST",
+            "PATCH",
             url,
             json=exclude_unset(json),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
-                "404": BasicError,
             },
         )
 
-    async def async_check_token(
+    async def async_reset_token(
         self,
         client_id: str,
         *,
@@ -683,20 +684,19 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPostBody(
+        json = ApplicationsClientIdTokenPatchBody(
             **{
                 "access_token": access_token,
             }
         ).dict(by_alias=True)
 
         return await self._github.arequest(
-            "POST",
+            "PATCH",
             url,
             json=exclude_unset(json),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
-                "404": BasicError,
             },
         )
 

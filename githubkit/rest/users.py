@@ -39,6 +39,36 @@ class UsersClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
+    def get_authenticated(
+        self,
+    ) -> "Response[Union[PrivateUser, PublicUser]]":
+        url = "/user"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Union[PrivateUser, PublicUser],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_get_authenticated(
+        self,
+    ) -> "Response[Union[PrivateUser, PublicUser]]":
+        url = "/user"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Union[PrivateUser, PublicUser],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def update_authenticated(
         self,
         *,
@@ -119,36 +149,6 @@ class UsersClient:
             },
         )
 
-    def get_authenticated(
-        self,
-    ) -> "Response[Union[PrivateUser, PublicUser]]":
-        url = "/user"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Union[PrivateUser, PublicUser],
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_get_authenticated(
-        self,
-    ) -> "Response[Union[PrivateUser, PublicUser]]":
-        url = "/user"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Union[PrivateUser, PublicUser],
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
     def list_blocked_by_authenticated_user(
         self,
     ) -> "Response[List[SimpleUser]]":
@@ -174,6 +174,38 @@ class UsersClient:
             "GET",
             url,
             response_model=List[SimpleUser],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def check_blocked(
+        self,
+        username: str,
+    ) -> "Response":
+        url = f"/user/blocks/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_check_blocked(
+        self,
+        username: str,
+    ) -> "Response":
+        url = f"/user/blocks/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -247,38 +279,6 @@ class UsersClient:
             },
         )
 
-    def check_blocked(
-        self,
-        username: str,
-    ) -> "Response":
-        url = f"/user/blocks/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_check_blocked(
-        self,
-        username: str,
-    ) -> "Response":
-        url = f"/user/blocks/{username}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
     def set_primary_email_visibility_for_authenticated_user(
         self,
         *,
@@ -323,48 +323,6 @@ class UsersClient:
             url,
             json=exclude_unset(json),
             response_model=List[Email],
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    def delete_email_for_authenticated_user(
-        self,
-        *,
-        body: Union[Unset, Union[UserEmailsDeleteBodyOneof0, List[str], str]] = UNSET,
-    ) -> "Response":
-        url = "/user/emails"
-
-        json = body
-
-        return self._github.request(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    async def async_delete_email_for_authenticated_user(
-        self,
-        *,
-        body: Union[Unset, Union[UserEmailsDeleteBodyOneof0, List[str], str]] = UNSET,
-    ) -> "Response":
-        url = "/user/emails"
-
-        json = body
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -465,6 +423,48 @@ class UsersClient:
             },
         )
 
+    def delete_email_for_authenticated_user(
+        self,
+        *,
+        body: Union[Unset, Union[UserEmailsDeleteBodyOneof0, List[str], str]] = UNSET,
+    ) -> "Response":
+        url = "/user/emails"
+
+        json = body
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_delete_email_for_authenticated_user(
+        self,
+        *,
+        body: Union[Unset, Union[UserEmailsDeleteBodyOneof0, List[str], str]] = UNSET,
+    ) -> "Response":
+        url = "/user/emails"
+
+        json = body
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def list_followers_for_authenticated_user(
         self,
         per_page: Union[Unset, int] = 30,
@@ -557,6 +557,38 @@ class UsersClient:
             },
         )
 
+    def check_person_is_followed_by_authenticated(
+        self,
+        username: str,
+    ) -> "Response":
+        url = f"/user/following/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_check_person_is_followed_by_authenticated(
+        self,
+        username: str,
+    ) -> "Response":
+        url = f"/user/following/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def follow(
         self,
         username: str,
@@ -613,38 +645,6 @@ class UsersClient:
 
         return await self._github.arequest(
             "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    def check_person_is_followed_by_authenticated(
-        self,
-        username: str,
-    ) -> "Response":
-        url = f"/user/following/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_check_person_is_followed_by_authenticated(
-        self,
-        username: str,
-    ) -> "Response":
-        url = f"/user/following/{username}"
-
-        return await self._github.arequest(
-            "GET",
             url,
             error_models={
                 "404": BasicError,
@@ -757,40 +757,6 @@ class UsersClient:
             },
         )
 
-    def delete_gpg_key_for_authenticated_user(
-        self,
-        gpg_key_id: int,
-    ) -> "Response":
-        url = f"/user/gpg_keys/{gpg_key_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_delete_gpg_key_for_authenticated_user(
-        self,
-        gpg_key_id: int,
-    ) -> "Response":
-        url = f"/user/gpg_keys/{gpg_key_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
     def get_gpg_key_for_authenticated_user(
         self,
         gpg_key_id: int,
@@ -820,6 +786,40 @@ class UsersClient:
             response_model=GpgKey,
             error_models={
                 "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def delete_gpg_key_for_authenticated_user(
+        self,
+        gpg_key_id: int,
+    ) -> "Response":
+        url = f"/user/gpg_keys/{gpg_key_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_delete_gpg_key_for_authenticated_user(
+        self,
+        gpg_key_id: int,
+    ) -> "Response":
+        url = f"/user/gpg_keys/{gpg_key_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
                 "403": BasicError,
                 "401": BasicError,
             },
@@ -929,38 +929,6 @@ class UsersClient:
             },
         )
 
-    def delete_public_ssh_key_for_authenticated_user(
-        self,
-        key_id: int,
-    ) -> "Response":
-        url = f"/user/keys/{key_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_delete_public_ssh_key_for_authenticated_user(
-        self,
-        key_id: int,
-    ) -> "Response":
-        url = f"/user/keys/{key_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
     def get_public_ssh_key_for_authenticated_user(
         self,
         key_id: int,
@@ -988,6 +956,38 @@ class UsersClient:
             "GET",
             url,
             response_model=Key,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def delete_public_ssh_key_for_authenticated_user(
+        self,
+        key_id: int,
+    ) -> "Response":
+        url = f"/user/keys/{key_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_delete_public_ssh_key_for_authenticated_user(
+        self,
+        key_id: int,
+    ) -> "Response":
+        url = f"/user/keys/{key_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
             error_models={
                 "404": BasicError,
                 "403": BasicError,

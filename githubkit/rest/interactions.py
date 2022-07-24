@@ -29,6 +29,34 @@ class InteractionsClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
+    def get_restrictions_for_org(
+        self,
+        org: str,
+    ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
+        url = f"/orgs/{org}/interaction-limits"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Union[
+                InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
+            ],
+        )
+
+    async def async_get_restrictions_for_org(
+        self,
+        org: str,
+    ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
+        url = f"/orgs/{org}/interaction-limits"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Union[
+                InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
+            ],
+        )
+
     def set_restrictions_for_org(
         self,
         org: str,
@@ -109,31 +137,35 @@ class InteractionsClient:
             url,
         )
 
-    def get_restrictions_for_org(
+    def get_restrictions_for_repo(
         self,
-        org: str,
-    ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
-        url = f"/orgs/{org}/interaction-limits"
+        owner: str,
+        repo: str,
+    ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
+        url = f"/repos/{owner}/{repo}/interaction-limits"
 
         return self._github.request(
             "GET",
             url,
             response_model=Union[
-                InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
+                InteractionLimitResponse,
+                ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
             ],
         )
 
-    async def async_get_restrictions_for_org(
+    async def async_get_restrictions_for_repo(
         self,
-        org: str,
-    ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
-        url = f"/orgs/{org}/interaction-limits"
+        owner: str,
+        repo: str,
+    ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
+        url = f"/repos/{owner}/{repo}/interaction-limits"
 
         return await self._github.arequest(
             "GET",
             url,
             response_model=Union[
-                InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
+                InteractionLimitResponse,
+                ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
             ],
         )
 
@@ -219,35 +251,29 @@ class InteractionsClient:
             error_models={},
         )
 
-    def get_restrictions_for_repo(
+    def get_restrictions_for_authenticated_user(
         self,
-        owner: str,
-        repo: str,
-    ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
-        url = f"/repos/{owner}/{repo}/interaction-limits"
+    ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
+        url = "/user/interaction-limits"
 
         return self._github.request(
             "GET",
             url,
             response_model=Union[
-                InteractionLimitResponse,
-                ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
+                InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
             ],
         )
 
-    async def async_get_restrictions_for_repo(
+    async def async_get_restrictions_for_authenticated_user(
         self,
-        owner: str,
-        repo: str,
-    ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
-        url = f"/repos/{owner}/{repo}/interaction-limits"
+    ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
+        url = "/user/interaction-limits"
 
         return await self._github.arequest(
             "GET",
             url,
             response_model=Union[
-                InteractionLimitResponse,
-                ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
+                InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
             ],
         )
 
@@ -325,30 +351,4 @@ class InteractionsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def get_restrictions_for_authenticated_user(
-        self,
-    ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
-        url = "/user/interaction-limits"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Union[
-                InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
-            ],
-        )
-
-    async def async_get_restrictions_for_authenticated_user(
-        self,
-    ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
-        url = "/user/interaction-limits"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Union[
-                InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
-            ],
         )

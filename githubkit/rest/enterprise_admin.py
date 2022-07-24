@@ -44,7 +44,7 @@ from .models import (
     ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName,
     EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody,
     EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody,
-    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
     ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems,
     ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems,
     EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -66,6 +66,30 @@ if TYPE_CHECKING:
 class EnterpriseAdminClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
+
+    def get_github_actions_permissions_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[ActionsEnterprisePermissions]":
+        url = f"/enterprises/{enterprise}/actions/permissions"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ActionsEnterprisePermissions,
+        )
+
+    async def async_get_github_actions_permissions_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[ActionsEnterprisePermissions]":
+        url = f"/enterprises/{enterprise}/actions/permissions"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ActionsEnterprisePermissions,
+        )
 
     def set_github_actions_permissions_enterprise(
         self,
@@ -102,70 +126,6 @@ class EnterpriseAdminClient:
             **{
                 "enabled_organizations": enabled_organizations,
                 "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    def get_github_actions_permissions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsEnterprisePermissions]":
-        url = f"/enterprises/{enterprise}/actions/permissions"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsEnterprisePermissions,
-        )
-
-    async def async_get_github_actions_permissions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsEnterprisePermissions]":
-        url = f"/enterprises/{enterprise}/actions/permissions"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsEnterprisePermissions,
-        )
-
-    def set_selected_organizations_enabled_github_actions_enterprise(
-        self,
-        enterprise: str,
-        *,
-        selected_organization_ids: List[int],
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/permissions/organizations"
-
-        json = EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(
-            **{
-                "selected_organization_ids": selected_organization_ids,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    async def async_set_selected_organizations_enabled_github_actions_enterprise(
-        self,
-        enterprise: str,
-        *,
-        selected_organization_ids: List[int],
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/permissions/organizations"
-
-        json = EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(
-            **{
-                "selected_organization_ids": selected_organization_ids,
             }
         ).dict(by_alias=True)
 
@@ -213,6 +173,46 @@ class EnterpriseAdminClient:
             url,
             params=exclude_unset(params),
             response_model=EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
+        )
+
+    def set_selected_organizations_enabled_github_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        selected_organization_ids: List[int],
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/actions/permissions/organizations"
+
+        json = EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(
+            **{
+                "selected_organization_ids": selected_organization_ids,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+        )
+
+    async def async_set_selected_organizations_enabled_github_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        selected_organization_ids: List[int],
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/actions/permissions/organizations"
+
+        json = EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(
+            **{
+                "selected_organization_ids": selected_organization_ids,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
         )
 
     def enable_selected_organization_github_actions_enterprise(
@@ -263,6 +263,30 @@ class EnterpriseAdminClient:
             url,
         )
 
+    def get_allowed_actions_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[SelectedActions]":
+        url = f"/enterprises/{enterprise}/actions/permissions/selected-actions"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=SelectedActions,
+        )
+
+    async def async_get_allowed_actions_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[SelectedActions]":
+        url = f"/enterprises/{enterprise}/actions/permissions/selected-actions"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=SelectedActions,
+        )
+
     def set_allowed_actions_enterprise(
         self,
         enterprise: str,
@@ -309,30 +333,6 @@ class EnterpriseAdminClient:
             "PUT",
             url,
             json=exclude_unset(json),
-        )
-
-    def get_allowed_actions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[SelectedActions]":
-        url = f"/enterprises/{enterprise}/actions/permissions/selected-actions"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=SelectedActions,
-        )
-
-    async def async_get_allowed_actions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[SelectedActions]":
-        url = f"/enterprises/{enterprise}/actions/permissions/selected-actions"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=SelectedActions,
         )
 
     def list_self_hosted_runner_groups_for_enterprise(
@@ -445,6 +445,56 @@ class EnterpriseAdminClient:
             response_model=RunnerGroupsEnterprise,
         )
 
+    def get_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+    ) -> "Response[RunnerGroupsEnterprise]":
+        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=RunnerGroupsEnterprise,
+        )
+
+    async def async_get_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+    ) -> "Response[RunnerGroupsEnterprise]":
+        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=RunnerGroupsEnterprise,
+        )
+
+    def delete_self_hosted_runner_group_from_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_self_hosted_runner_group_from_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_self_hosted_runner_group_for_enterprise(
         self,
         enterprise: str,
@@ -505,54 +555,46 @@ class EnterpriseAdminClient:
             response_model=RunnerGroupsEnterprise,
         )
 
-    def delete_self_hosted_runner_group_from_enterprise(
+    def list_org_access_to_self_hosted_runner_group_in_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200]":
+        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
 
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_self_hosted_runner_group_from_enterprise(
-        self,
-        enterprise: str,
-        runner_group_id: int,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_self_hosted_runner_group_for_enterprise(
-        self,
-        enterprise: str,
-        runner_group_id: int,
-    ) -> "Response[RunnerGroupsEnterprise]":
-        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         return self._github.request(
             "GET",
             url,
-            response_model=RunnerGroupsEnterprise,
+            params=exclude_unset(params),
+            response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         )
 
-    async def async_get_self_hosted_runner_group_for_enterprise(
+    async def async_list_org_access_to_self_hosted_runner_group_in_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
-    ) -> "Response[RunnerGroupsEnterprise]":
-        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200]":
+        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=RunnerGroupsEnterprise,
+            params=exclude_unset(params),
+            response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         )
 
     def set_org_access_to_self_hosted_runner_group_in_enterprise(
@@ -599,48 +641,6 @@ class EnterpriseAdminClient:
             "PUT",
             url,
             json=exclude_unset(json),
-        )
-
-    def list_org_access_to_self_hosted_runner_group_in_enterprise(
-        self,
-        enterprise: str,
-        runner_group_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200]":
-        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
-        )
-
-    async def async_list_org_access_to_self_hosted_runner_group_in_enterprise(
-        self,
-        enterprise: str,
-        runner_group_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200]":
-        url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         )
 
     def add_org_access_to_self_hosted_runner_group_in_enterprise(
@@ -695,52 +695,6 @@ class EnterpriseAdminClient:
             url,
         )
 
-    def set_self_hosted_runners_in_group_for_enterprise(
-        self,
-        enterprise: str,
-        runner_group_id: int,
-        *,
-        runners: List[int],
-    ) -> "Response":
-        url = (
-            f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
-        )
-
-        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    async def async_set_self_hosted_runners_in_group_for_enterprise(
-        self,
-        enterprise: str,
-        runner_group_id: int,
-        *,
-        runners: List[int],
-    ) -> "Response":
-        url = (
-            f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
-        )
-
-        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
     def list_self_hosted_runners_in_group_for_enterprise(
         self,
         enterprise: str,
@@ -785,6 +739,52 @@ class EnterpriseAdminClient:
             url,
             params=exclude_unset(params),
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        )
+
+    def set_self_hosted_runners_in_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        runners: List[int],
+    ) -> "Response":
+        url = (
+            f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
+        )
+
+        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
+            **{
+                "runners": runners,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+        )
+
+    async def async_set_self_hosted_runners_in_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        runners: List[int],
+    ) -> "Response":
+        url = (
+            f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
+        )
+
+        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
+            **{
+                "runners": runners,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
         )
 
     def add_self_hosted_runner_to_group_for_enterprise(
@@ -951,30 +951,6 @@ class EnterpriseAdminClient:
             response_model=AuthenticationToken,
         )
 
-    def delete_self_hosted_runner_from_enterprise(
-        self,
-        enterprise: str,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_self_hosted_runner_from_enterprise(
-        self,
-        enterprise: str,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
     def get_self_hosted_runner_for_enterprise(
         self,
         enterprise: str,
@@ -1001,13 +977,69 @@ class EnterpriseAdminClient:
             response_model=Runner,
         )
 
+    def delete_self_hosted_runner_from_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_self_hosted_runner_from_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    def list_labels_for_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_labels_for_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def set_custom_labels_for_self_hosted_runner_for_enterprise(
         self,
         enterprise: str,
         runner_id: int,
         *,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
         json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(
@@ -1020,7 +1052,7 @@ class EnterpriseAdminClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1033,7 +1065,7 @@ class EnterpriseAdminClient:
         runner_id: int,
         *,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
         json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(
@@ -1046,7 +1078,59 @@ class EnterpriseAdminClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def add_custom_labels_to_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
+
+        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(
+            **{
+                "labels": labels,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
+
+        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(
+            **{
+                "labels": labels,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1087,102 +1171,18 @@ class EnterpriseAdminClient:
             },
         )
 
-    def list_labels_for_self_hosted_runner_for_enterprise(
-        self,
-        enterprise: str,
-        runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_list_labels_for_self_hosted_runner_for_enterprise(
-        self,
-        enterprise: str,
-        runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def add_custom_labels_to_self_hosted_runner_for_enterprise(
-        self,
-        enterprise: str,
-        runner_id: int,
-        *,
-        labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
-
-        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
-    async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
-        self,
-        enterprise: str,
-        runner_id: int,
-        *,
-        labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
-
-        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
     def remove_custom_label_from_self_hosted_runner_for_enterprise(
         self,
         enterprise: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels/{name}"
 
         return self._github.request(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1194,13 +1194,13 @@ class EnterpriseAdminClient:
         enterprise: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels/{name}"
 
         return await self._github.arequest(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1369,55 +1369,41 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseGroup,
         )
 
-    def update_attribute_for_enterprise_group(
+    def get_provisioning_information_for_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
-        *,
-        schemas: List[str],
-        operations: List[
-            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
-        ],
+        excluded_attributes: Union[Unset, str] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        params = {
+            "excludedAttributes": excluded_attributes,
+        }
 
         return self._github.request(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
+            params=exclude_unset(params),
             response_model=ScimEnterpriseGroup,
         )
 
-    async def async_update_attribute_for_enterprise_group(
+    async def async_get_provisioning_information_for_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
-        *,
-        schemas: List[str],
-        operations: List[
-            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
-        ],
+        excluded_attributes: Union[Unset, str] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        params = {
+            "excludedAttributes": excluded_attributes,
+        }
 
         return await self._github.arequest(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
+            params=exclude_unset(params),
             response_model=ScimEnterpriseGroup,
         )
 
@@ -1503,41 +1489,55 @@ class EnterpriseAdminClient:
             url,
         )
 
-    def get_provisioning_information_for_enterprise_group(
+    def update_attribute_for_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
-        excluded_attributes: Union[Unset, str] = UNSET,
+        *,
+        schemas: List[str],
+        operations: List[
+            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
+        ],
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        params = {
-            "excludedAttributes": excluded_attributes,
-        }
+        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(
+            **{
+                "schemas": schemas,
+                "Operations": operations,
+            }
+        ).dict(by_alias=True)
 
         return self._github.request(
-            "GET",
+            "PATCH",
             url,
-            params=exclude_unset(params),
+            json=exclude_unset(json),
             response_model=ScimEnterpriseGroup,
         )
 
-    async def async_get_provisioning_information_for_enterprise_group(
+    async def async_update_attribute_for_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
-        excluded_attributes: Union[Unset, str] = UNSET,
+        *,
+        schemas: List[str],
+        operations: List[
+            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
+        ],
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        params = {
-            "excludedAttributes": excluded_attributes,
-        }
+        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(
+            **{
+                "schemas": schemas,
+                "Operations": operations,
+            }
+        ).dict(by_alias=True)
 
         return await self._github.arequest(
-            "GET",
+            "PATCH",
             url,
-            params=exclude_unset(params),
+            json=exclude_unset(json),
             response_model=ScimEnterpriseGroup,
         )
 
@@ -1647,55 +1647,29 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseUser,
         )
 
-    def update_attribute_for_enterprise_user(
+    def get_provisioning_information_for_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
-        *,
-        schemas: List[str],
-        operations: List[
-            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
-        ],
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
-        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
-
         return self._github.request(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
             response_model=ScimEnterpriseUser,
         )
 
-    async def async_update_attribute_for_enterprise_user(
+    async def async_get_provisioning_information_for_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
-        *,
-        schemas: List[str],
-        operations: List[
-            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
-        ],
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
-        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
-
         return await self._github.arequest(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
             response_model=ScimEnterpriseUser,
         )
 
@@ -1789,28 +1763,54 @@ class EnterpriseAdminClient:
             url,
         )
 
-    def get_provisioning_information_for_enterprise_user(
+    def update_attribute_for_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
+        *,
+        schemas: List[str],
+        operations: List[
+            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
+        ],
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
+        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(
+            **{
+                "schemas": schemas,
+                "Operations": operations,
+            }
+        ).dict(by_alias=True)
+
         return self._github.request(
-            "GET",
+            "PATCH",
             url,
+            json=exclude_unset(json),
             response_model=ScimEnterpriseUser,
         )
 
-    async def async_get_provisioning_information_for_enterprise_user(
+    async def async_update_attribute_for_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
+        *,
+        schemas: List[str],
+        operations: List[
+            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
+        ],
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
+        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(
+            **{
+                "schemas": schemas,
+                "Operations": operations,
+            }
+        ).dict(by_alias=True)
+
         return await self._github.arequest(
-            "GET",
+            "PATCH",
             url,
+            json=exclude_unset(json),
             response_model=ScimEnterpriseUser,
         )

@@ -9,7 +9,7 @@ from ..utils import concat_snake_name
 from .request_body import build_request_body
 from .endpoint import EndpointData as EndpointData
 
-METHODS = {"get", "put", "post", "delete", "options", "head", "patch", "trace"}
+METHODS = ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
 
 
 def parse_endpoint(source: Source, path: str) -> List[EndpointData]:

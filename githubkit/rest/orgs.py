@@ -115,6 +115,36 @@ class OrgsClient:
             response_model=OrganizationsOrganizationIdCustomRolesGetResponse200,
         )
 
+    def get(
+        self,
+        org: str,
+    ) -> "Response[OrganizationFull]":
+        url = f"/orgs/{org}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrganizationFull,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get(
+        self,
+        org: str,
+    ) -> "Response[OrganizationFull]":
+        url = f"/orgs/{org}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OrganizationFull,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update(
         self,
         org: str,
@@ -249,36 +279,6 @@ class OrgsClient:
             },
         )
 
-    def get(
-        self,
-        org: str,
-    ) -> "Response[OrganizationFull]":
-        url = f"/orgs/{org}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=OrganizationFull,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get(
-        self,
-        org: str,
-    ) -> "Response[OrganizationFull]":
-        url = f"/orgs/{org}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=OrganizationFull,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def get_audit_log(
         self,
         org: str,
@@ -359,6 +359,36 @@ class OrgsClient:
             response_model=List[SimpleUser],
         )
 
+    def check_blocked_user(
+        self,
+        org: str,
+        username: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/blocks/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_check_blocked_user(
+        self,
+        org: str,
+        username: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/blocks/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def block_user(
         self,
         org: str,
@@ -411,36 +441,6 @@ class OrgsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def check_blocked_user(
-        self,
-        org: str,
-        username: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/blocks/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_check_blocked_user(
-        self,
-        org: str,
-        username: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/blocks/{username}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={
-                "404": BasicError,
-            },
         )
 
     def list_saml_sso_authorizations(
@@ -671,6 +671,68 @@ class OrgsClient:
             },
         )
 
+    def get_webhook(
+        self,
+        org: str,
+        hook_id: int,
+    ) -> "Response[OrgHook]":
+        url = f"/orgs/{org}/hooks/{hook_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrgHook,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_webhook(
+        self,
+        org: str,
+        hook_id: int,
+    ) -> "Response[OrgHook]":
+        url = f"/orgs/{org}/hooks/{hook_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OrgHook,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_webhook(
+        self,
+        org: str,
+        hook_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/hooks/{hook_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_webhook(
+        self,
+        org: str,
+        hook_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/hooks/{hook_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_webhook(
         self,
         org: str,
@@ -735,66 +797,30 @@ class OrgsClient:
             },
         )
 
-    def delete_webhook(
+    def get_webhook_config_for_org(
         self,
         org: str,
         hook_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/hooks/{hook_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_webhook(
-        self,
-        org: str,
-        hook_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/hooks/{hook_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def get_webhook(
-        self,
-        org: str,
-        hook_id: int,
-    ) -> "Response[OrgHook]":
-        url = f"/orgs/{org}/hooks/{hook_id}"
+    ) -> "Response[WebhookConfig]":
+        url = f"/orgs/{org}/hooks/{hook_id}/config"
 
         return self._github.request(
             "GET",
             url,
-            response_model=OrgHook,
-            error_models={
-                "404": BasicError,
-            },
+            response_model=WebhookConfig,
         )
 
-    async def async_get_webhook(
+    async def async_get_webhook_config_for_org(
         self,
         org: str,
         hook_id: int,
-    ) -> "Response[OrgHook]":
-        url = f"/orgs/{org}/hooks/{hook_id}"
+    ) -> "Response[WebhookConfig]":
+        url = f"/orgs/{org}/hooks/{hook_id}/config"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=OrgHook,
-            error_models={
-                "404": BasicError,
-            },
+            response_model=WebhookConfig,
         )
 
     def update_webhook_config_for_org(
@@ -850,32 +876,6 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=WebhookConfig,
-        )
-
-    def get_webhook_config_for_org(
-        self,
-        org: str,
-        hook_id: int,
-    ) -> "Response[WebhookConfig]":
-        url = f"/orgs/{org}/hooks/{hook_id}/config"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=WebhookConfig,
-        )
-
-    async def async_get_webhook_config_for_org(
-        self,
-        org: str,
-        hook_id: int,
-    ) -> "Response[WebhookConfig]":
-        url = f"/orgs/{org}/hooks/{hook_id}/config"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=WebhookConfig,
         )
 
@@ -1317,6 +1317,32 @@ class OrgsClient:
             },
         )
 
+    def check_membership_for_user(
+        self,
+        org: str,
+        username: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/members/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={},
+        )
+
+    async def async_check_membership_for_user(
+        self,
+        org: str,
+        username: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/members/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={},
+        )
+
     def remove_member(
         self,
         org: str,
@@ -1347,30 +1373,38 @@ class OrgsClient:
             },
         )
 
-    def check_membership_for_user(
+    def get_membership_for_user(
         self,
         org: str,
         username: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/members/{username}"
+    ) -> "Response[OrgMembership]":
+        url = f"/orgs/{org}/memberships/{username}"
 
         return self._github.request(
             "GET",
             url,
-            error_models={},
+            response_model=OrgMembership,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
         )
 
-    async def async_check_membership_for_user(
+    async def async_get_membership_for_user(
         self,
         org: str,
         username: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/members/{username}"
+    ) -> "Response[OrgMembership]":
+        url = f"/orgs/{org}/memberships/{username}"
 
         return await self._github.arequest(
             "GET",
             url,
-            error_models={},
+            response_model=OrgMembership,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
         )
 
     def set_membership_for_user(
@@ -1454,40 +1488,6 @@ class OrgsClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-            },
-        )
-
-    def get_membership_for_user(
-        self,
-        org: str,
-        username: str,
-    ) -> "Response[OrgMembership]":
-        url = f"/orgs/{org}/memberships/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=OrgMembership,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_get_membership_for_user(
-        self,
-        org: str,
-        username: str,
-    ) -> "Response[OrgMembership]":
-        url = f"/orgs/{org}/memberships/{username}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=OrgMembership,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
             },
         )
 
@@ -1655,6 +1655,32 @@ class OrgsClient:
             response_model=List[SimpleUser],
         )
 
+    def check_public_membership_for_user(
+        self,
+        org: str,
+        username: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/public_members/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={},
+        )
+
+    async def async_check_public_membership_for_user(
+        self,
+        org: str,
+        username: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/public_members/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={},
+        )
+
     def set_public_membership_for_authenticated_user(
         self,
         org: str,
@@ -1709,32 +1735,6 @@ class OrgsClient:
             url,
         )
 
-    def check_public_membership_for_user(
-        self,
-        org: str,
-        username: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/public_members/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={},
-        )
-
-    async def async_check_public_membership_for_user(
-        self,
-        org: str,
-        username: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/public_members/{username}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={},
-        )
-
     def list_memberships_for_authenticated_user(
         self,
         state: Union[Unset, Literal["active", "pending"]] = UNSET,
@@ -1787,6 +1787,38 @@ class OrgsClient:
             },
         )
 
+    def get_membership_for_authenticated_user(
+        self,
+        org: str,
+    ) -> "Response[OrgMembership]":
+        url = f"/user/memberships/orgs/{org}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrgMembership,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_membership_for_authenticated_user(
+        self,
+        org: str,
+    ) -> "Response[OrgMembership]":
+        url = f"/user/memberships/orgs/{org}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OrgMembership,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def update_membership_for_authenticated_user(
         self,
         org: str,
@@ -1836,38 +1868,6 @@ class OrgsClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
-            },
-        )
-
-    def get_membership_for_authenticated_user(
-        self,
-        org: str,
-    ) -> "Response[OrgMembership]":
-        url = f"/user/memberships/orgs/{org}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=OrgMembership,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_membership_for_authenticated_user(
-        self,
-        org: str,
-    ) -> "Response[OrgMembership]":
-        url = f"/user/memberships/orgs/{org}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=OrgMembership,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
             },
         )
 

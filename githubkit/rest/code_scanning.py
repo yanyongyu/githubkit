@@ -268,6 +268,44 @@ class CodeScanningClient:
             },
         )
 
+    def get_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+    ) -> "Response[CodeScanningAlert]":
+        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CodeScanningAlert,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+    ) -> "Response[CodeScanningAlert]":
+        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CodeScanningAlert,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def update_alert(
         self,
         owner: str,
@@ -328,44 +366,6 @@ class CodeScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=CodeScanningAlert,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_alert(
-        self,
-        owner: str,
-        repo: str,
-        alert_number: int,
-    ) -> "Response[CodeScanningAlert]":
-        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=CodeScanningAlert,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_alert(
-        self,
-        owner: str,
-        repo: str,
-        alert_number: int,
-    ) -> "Response[CodeScanningAlert]":
-        url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=CodeScanningAlert,
             error_models={
                 "403": BasicError,
@@ -500,6 +500,44 @@ class CodeScanningClient:
             },
         )
 
+    def get_analysis(
+        self,
+        owner: str,
+        repo: str,
+        analysis_id: int,
+    ) -> "Response[CodeScanningAnalysis]":
+        url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CodeScanningAnalysis,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_analysis(
+        self,
+        owner: str,
+        repo: str,
+        analysis_id: int,
+    ) -> "Response[CodeScanningAnalysis]":
+        url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CodeScanningAnalysis,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def delete_analysis(
         self,
         owner: str,
@@ -546,44 +584,6 @@ class CodeScanningClient:
             response_model=CodeScanningAnalysisDeletion,
             error_models={
                 "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_analysis(
-        self,
-        owner: str,
-        repo: str,
-        analysis_id: int,
-    ) -> "Response[CodeScanningAnalysis]":
-        url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=CodeScanningAnalysis,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_analysis(
-        self,
-        owner: str,
-        repo: str,
-        analysis_id: int,
-    ) -> "Response[CodeScanningAnalysis]":
-        url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=CodeScanningAnalysis,
-            error_models={
                 "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,

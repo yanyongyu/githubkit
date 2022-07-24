@@ -338,6 +338,72 @@ class ReposClient:
             },
         )
 
+    def get(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[FullRepository]":
+        url = f"/repos/{owner}/{repo}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=FullRepository,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[FullRepository]":
+        url = f"/repos/{owner}/{repo}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=FullRepository,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def delete(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "403": ReposOwnerRepoDeleteResponse403,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "403": ReposOwnerRepoDeleteResponse403,
+                "404": BasicError,
+            },
+        )
+
     def update(
         self,
         owner: str,
@@ -472,72 +538,6 @@ class ReposClient:
             },
         )
 
-    def delete(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "403": ReposOwnerRepoDeleteResponse403,
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "403": ReposOwnerRepoDeleteResponse403,
-                "404": BasicError,
-            },
-        )
-
-    def get(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[FullRepository]":
-        url = f"/repos/{owner}/{repo}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=FullRepository,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_get(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[FullRepository]":
-        url = f"/repos/{owner}/{repo}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=FullRepository,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
     def list_autolinks(
         self,
         owner: str,
@@ -630,38 +630,6 @@ class ReposClient:
             },
         )
 
-    def delete_autolink(
-        self,
-        owner: str,
-        repo: str,
-        autolink_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_autolink(
-        self,
-        owner: str,
-        repo: str,
-        autolink_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def get_autolink(
         self,
         owner: str,
@@ -691,6 +659,38 @@ class ReposClient:
             "GET",
             url,
             response_model=Autolink,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_autolink(
+        self,
+        owner: str,
+        repo: str,
+        autolink_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_autolink(
+        self,
+        owner: str,
+        repo: str,
+        autolink_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
             error_models={
                 "404": BasicError,
             },
@@ -830,6 +830,40 @@ class ReposClient:
             },
         )
 
+    def get_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[BranchProtection]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=BranchProtection,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[BranchProtection]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=BranchProtection,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_branch_protection(
         self,
         owner: str,
@@ -964,72 +998,6 @@ class ReposClient:
             },
         )
 
-    def get_branch_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[BranchProtection]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=BranchProtection,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_branch_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[BranchProtection]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=BranchProtection,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def delete_admin_branch_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_admin_branch_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def get_admin_branch_protection(
         self,
         owner: str,
@@ -1084,6 +1052,98 @@ class ReposClient:
             "POST",
             url,
             response_model=ProtectedBranchAdminEnforced,
+        )
+
+    def delete_admin_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_admin_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def get_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[ProtectedBranchPullRequestReview]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ProtectedBranchPullRequestReview,
+        )
+
+    async def async_get_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[ProtectedBranchPullRequestReview]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ProtectedBranchPullRequestReview,
+        )
+
+    def delete_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def update_pull_request_review_protection(
@@ -1170,98 +1230,6 @@ class ReposClient:
             },
         )
 
-    def delete_pull_request_review_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_pull_request_review_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def get_pull_request_review_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[ProtectedBranchPullRequestReview]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ProtectedBranchPullRequestReview,
-        )
-
-    async def async_get_pull_request_review_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[ProtectedBranchPullRequestReview]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ProtectedBranchPullRequestReview,
-        )
-
-    def delete_commit_signature_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_commit_signature_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def get_commit_signature_protection(
         self,
         owner: str,
@@ -1328,6 +1296,106 @@ class ReposClient:
             error_models={
                 "404": BasicError,
             },
+        )
+
+    def delete_commit_signature_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_commit_signature_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def get_status_checks_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[StatusCheckPolicy]":
+        url = (
+            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
+        )
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=StatusCheckPolicy,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_status_checks_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[StatusCheckPolicy]":
+        url = (
+            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
+        )
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=StatusCheckPolicy,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def remove_status_check_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = (
+            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
+        )
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_remove_status_check_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = (
+            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
+        )
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
         )
 
     def update_status_check_protection(
@@ -1406,69 +1474,35 @@ class ReposClient:
             },
         )
 
-    def remove_status_check_protection(
+    def get_all_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response":
-        url = (
-            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
-        )
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_remove_status_check_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response":
-        url = (
-            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
-        )
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_status_checks_protection(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[StatusCheckPolicy]":
-        url = (
-            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
-        )
+    ) -> "Response[List[str]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
         return self._github.request(
             "GET",
             url,
-            response_model=StatusCheckPolicy,
+            response_model=List[str],
             error_models={
                 "404": BasicError,
             },
         )
 
-    async def async_get_status_checks_protection(
+    async def async_get_all_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response[StatusCheckPolicy]":
-        url = (
-            f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
-        )
+    ) -> "Response[List[str]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=StatusCheckPolicy,
+            response_model=List[str],
             error_models={
                 "404": BasicError,
             },
@@ -1528,98 +1562,6 @@ class ReposClient:
             response_model=List[str],
             error_models={
                 "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
-    def remove_status_check_contexts(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[str]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
-
-        json = body
-
-        return self._github.request(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
-            response_model=List[str],
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    async def async_remove_status_check_contexts(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[str]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
-
-        json = body
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
-            response_model=List[str],
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    def get_all_status_check_contexts(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[List[str]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=List[str],
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_all_status_check_contexts(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[List[str]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=List[str],
-            error_models={
                 "404": BasicError,
             },
         )
@@ -1684,30 +1626,62 @@ class ReposClient:
             },
         )
 
-    def delete_access_restrictions(
+    def remove_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[str]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
+
+        json = body
 
         return self._github.request(
             "DELETE",
             url,
+            json=exclude_unset(json),
+            response_model=List[str],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
-    async def async_delete_access_restrictions(
+    async def async_remove_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[str]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
+
+        json = body
 
         return await self._github.arequest(
             "DELETE",
             url,
+            json=exclude_unset(json),
+            response_model=List[str],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def get_access_restrictions(
@@ -1739,6 +1713,66 @@ class ReposClient:
             "GET",
             url,
             response_model=BranchRestrictionPolicy,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    def get_apps_with_access_to_protected_branch(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[List[Integration]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=List[Integration],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_apps_with_access_to_protected_branch(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[List[Integration]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=List[Integration],
             error_models={
                 "404": BasicError,
             },
@@ -1792,6 +1826,62 @@ class ReposClient:
 
         return await self._github.arequest(
             "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=List[Integration],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    def add_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[Integration]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+
+        json = body
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=List[Integration],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    async def async_add_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[Integration]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+
+        json = body
+
+        return await self._github.arequest(
+            "POST",
             url,
             json=exclude_unset(json),
             response_model=List[Integration],
@@ -1856,93 +1946,37 @@ class ReposClient:
             },
         )
 
-    def get_apps_with_access_to_protected_branch(
+    def get_teams_with_access_to_protected_branch(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response[List[Integration]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+    ) -> "Response[List[Team]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
         return self._github.request(
             "GET",
             url,
-            response_model=List[Integration],
+            response_model=List[Team],
             error_models={
                 "404": BasicError,
             },
         )
 
-    async def async_get_apps_with_access_to_protected_branch(
+    async def async_get_teams_with_access_to_protected_branch(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response[List[Integration]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+    ) -> "Response[List[Team]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=List[Integration],
+            response_model=List[Team],
             error_models={
                 "404": BasicError,
-            },
-        )
-
-    def add_app_access_restrictions(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[Integration]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
-
-        json = body
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=List[Integration],
-            error_models={
-                "422": ValidationError,
-            },
-        )
-
-    async def async_add_app_access_restrictions(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[Integration]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
-
-        json = body
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=List[Integration],
-            error_models={
-                "422": ValidationError,
             },
         )
 
@@ -1994,6 +2028,62 @@ class ReposClient:
 
         return await self._github.arequest(
             "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=List[Team],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    def add_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[Team]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
+
+        json = body
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=List[Team],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    async def async_add_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[Team]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
+
+        json = body
+
+        return await self._github.arequest(
+            "POST",
             url,
             json=exclude_unset(json),
             response_model=List[Team],
@@ -2058,93 +2148,37 @@ class ReposClient:
             },
         )
 
-    def get_teams_with_access_to_protected_branch(
+    def get_users_with_access_to_protected_branch(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response[List[Team]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
+    ) -> "Response[List[SimpleUser]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
         return self._github.request(
             "GET",
             url,
-            response_model=List[Team],
+            response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
             },
         )
 
-    async def async_get_teams_with_access_to_protected_branch(
+    async def async_get_users_with_access_to_protected_branch(
         self,
         owner: str,
         repo: str,
         branch: str,
-    ) -> "Response[List[Team]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
+    ) -> "Response[List[SimpleUser]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=List[Team],
+            response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
-            },
-        )
-
-    def add_team_access_restrictions(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[Team]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
-
-        json = body
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=List[Team],
-            error_models={
-                "422": ValidationError,
-            },
-        )
-
-    async def async_add_team_access_restrictions(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[Team]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
-
-        json = body
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=List[Team],
-            error_models={
-                "422": ValidationError,
             },
         )
 
@@ -2204,96 +2238,6 @@ class ReposClient:
             },
         )
 
-    def remove_user_access_restrictions(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[SimpleUser]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
-
-        json = body
-
-        return self._github.request(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
-            response_model=List[SimpleUser],
-            error_models={
-                "422": ValidationError,
-            },
-        )
-
-    async def async_remove_user_access_restrictions(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-        *,
-        body: Union[
-            Unset,
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
-                List[str],
-            ],
-        ] = UNSET,
-    ) -> "Response[List[SimpleUser]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
-
-        json = body
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
-            response_model=List[SimpleUser],
-            error_models={
-                "422": ValidationError,
-            },
-        )
-
-    def get_users_with_access_to_protected_branch(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[List[SimpleUser]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=List[SimpleUser],
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_users_with_access_to_protected_branch(
-        self,
-        owner: str,
-        repo: str,
-        branch: str,
-    ) -> "Response[List[SimpleUser]]":
-        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=List[SimpleUser],
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def add_user_access_restrictions(
         self,
         owner: str,
@@ -2342,6 +2286,62 @@ class ReposClient:
 
         return await self._github.arequest(
             "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=List[SimpleUser],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    def remove_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[SimpleUser]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
+
+        json = body
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            response_model=List[SimpleUser],
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    async def async_remove_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        body: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[SimpleUser]]":
+        url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
+
+        json = body
+
+        return await self._github.arequest(
+            "DELETE",
             url,
             json=exclude_unset(json),
             response_model=List[SimpleUser],
@@ -2498,6 +2498,34 @@ class ReposClient:
             },
         )
 
+    def check_collaborator(
+        self,
+        owner: str,
+        repo: str,
+        username: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/collaborators/{username}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={},
+        )
+
+    async def async_check_collaborator(
+        self,
+        owner: str,
+        repo: str,
+        username: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/collaborators/{username}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={},
+        )
+
     def add_collaborator(
         self,
         owner: str,
@@ -2582,34 +2610,6 @@ class ReposClient:
             url,
         )
 
-    def check_collaborator(
-        self,
-        owner: str,
-        repo: str,
-        username: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/collaborators/{username}"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={},
-        )
-
-    async def async_check_collaborator(
-        self,
-        owner: str,
-        repo: str,
-        username: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/collaborators/{username}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={},
-        )
-
     def get_collaborator_permission_level(
         self,
         owner: str,
@@ -2686,6 +2686,72 @@ class ReposClient:
             response_model=List[CommitComment],
         )
 
+    def get_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response[CommitComment]":
+        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CommitComment,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response[CommitComment]":
+        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CommitComment,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_commit_comment(
         self,
         owner: str,
@@ -2732,72 +2798,6 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=CommitComment,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def delete_commit_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_commit_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def get_commit_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response[CommitComment]":
-        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=CommitComment,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_commit_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response[CommitComment]":
-        url = f"/repos/{owner}/{repo}/comments/{comment_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -3292,6 +3292,54 @@ class ReposClient:
             },
         )
 
+    def get_content(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        ref: Union[Unset, str] = UNSET,
+    ) -> "Response[ContentTree]":
+        url = f"/repos/{owner}/{repo}/contents/{path}"
+
+        params = {
+            "ref": ref,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ContentTree,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_get_content(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        ref: Union[Unset, str] = UNSET,
+    ) -> "Response[ContentTree]":
+        url = f"/repos/{owner}/{repo}/contents/{path}"
+
+        params = {
+            "ref": ref,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ContentTree,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
     def create_or_update_file_contents(
         self,
         owner: str,
@@ -3443,54 +3491,6 @@ class ReposClient:
                 "404": BasicError,
                 "409": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_content(
-        self,
-        owner: str,
-        repo: str,
-        path: str,
-        ref: Union[Unset, str] = UNSET,
-    ) -> "Response[ContentTree]":
-        url = f"/repos/{owner}/{repo}/contents/{path}"
-
-        params = {
-            "ref": ref,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=ContentTree,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_get_content(
-        self,
-        owner: str,
-        repo: str,
-        path: str,
-        ref: Union[Unset, str] = UNSET,
-    ) -> "Response[ContentTree]":
-        url = f"/repos/{owner}/{repo}/contents/{path}"
-
-        params = {
-            "ref": ref,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=ContentTree,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
             },
         )
 
@@ -3692,40 +3692,6 @@ class ReposClient:
             },
         )
 
-    def delete_deployment(
-        self,
-        owner: str,
-        repo: str,
-        deployment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
-    async def async_delete_deployment(
-        self,
-        owner: str,
-        repo: str,
-        deployment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
     def get_deployment(
         self,
         owner: str,
@@ -3757,6 +3723,40 @@ class ReposClient:
             response_model=Deployment,
             error_models={
                 "404": BasicError,
+            },
+        )
+
+    def delete_deployment(
+        self,
+        owner: str,
+        repo: str,
+        deployment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_delete_deployment(
+        self,
+        owner: str,
+        repo: str,
+        deployment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -4036,6 +4036,34 @@ class ReposClient:
             response_model=ReposOwnerRepoEnvironmentsGetResponse200,
         )
 
+    def get_environment(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+    ) -> "Response[Environment]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Environment,
+        )
+
+    async def async_get_environment(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+    ) -> "Response[Environment]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Environment,
+        )
+
     def create_or_update_environment(
         self,
         owner: str,
@@ -4108,34 +4136,6 @@ class ReposClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def get_environment(
-        self,
-        owner: str,
-        repo: str,
-        environment_name: str,
-    ) -> "Response[Environment]":
-        url = f"/repos/{owner}/{repo}/environments/{environment_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Environment,
-        )
-
-    async def async_get_environment(
-        self,
-        owner: str,
-        repo: str,
-        environment_name: str,
-    ) -> "Response[Environment]":
-        url = f"/repos/{owner}/{repo}/environments/{environment_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Environment,
         )
 
     def list_forks(
@@ -4336,6 +4336,72 @@ class ReposClient:
             },
         )
 
+    def get_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+    ) -> "Response[Hook]":
+        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Hook,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+    ) -> "Response[Hook]":
+        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Hook,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_webhook(
         self,
         owner: str,
@@ -4406,70 +4472,32 @@ class ReposClient:
             },
         )
 
-    def delete_webhook(
+    def get_webhook_config_for_repo(
         self,
         owner: str,
         repo: str,
         hook_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_webhook(
-        self,
-        owner: str,
-        repo: str,
-        hook_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def get_webhook(
-        self,
-        owner: str,
-        repo: str,
-        hook_id: int,
-    ) -> "Response[Hook]":
-        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
+    ) -> "Response[WebhookConfig]":
+        url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
         return self._github.request(
             "GET",
             url,
-            response_model=Hook,
-            error_models={
-                "404": BasicError,
-            },
+            response_model=WebhookConfig,
         )
 
-    async def async_get_webhook(
+    async def async_get_webhook_config_for_repo(
         self,
         owner: str,
         repo: str,
         hook_id: int,
-    ) -> "Response[Hook]":
-        url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
+    ) -> "Response[WebhookConfig]":
+        url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=Hook,
-            error_models={
-                "404": BasicError,
-            },
+            response_model=WebhookConfig,
         )
 
     def update_webhook_config_for_repo(
@@ -4527,34 +4555,6 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=WebhookConfig,
-        )
-
-    def get_webhook_config_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        hook_id: int,
-    ) -> "Response[WebhookConfig]":
-        url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=WebhookConfig,
-        )
-
-    async def async_get_webhook_config_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        hook_id: int,
-    ) -> "Response[WebhookConfig]":
-        url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=WebhookConfig,
         )
 
@@ -4792,6 +4792,32 @@ class ReposClient:
             response_model=List[RepositoryInvitation],
         )
 
+    def delete_invitation(
+        self,
+        owner: str,
+        repo: str,
+        invitation_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_invitation(
+        self,
+        owner: str,
+        repo: str,
+        invitation_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_invitation(
         self,
         owner: str,
@@ -4840,32 +4866,6 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             response_model=RepositoryInvitation,
-        )
-
-    def delete_invitation(
-        self,
-        owner: str,
-        repo: str,
-        invitation_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_invitation(
-        self,
-        owner: str,
-        repo: str,
-        invitation_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
         )
 
     def list_deploy_keys(
@@ -4968,32 +4968,6 @@ class ReposClient:
             },
         )
 
-    def delete_deploy_key(
-        self,
-        owner: str,
-        repo: str,
-        key_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/keys/{key_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_deploy_key(
-        self,
-        owner: str,
-        repo: str,
-        key_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/keys/{key_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
     def get_deploy_key(
         self,
         owner: str,
@@ -5026,6 +5000,32 @@ class ReposClient:
             error_models={
                 "404": BasicError,
             },
+        )
+
+    def delete_deploy_key(
+        self,
+        owner: str,
+        repo: str,
+        key_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/keys/{key_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_deploy_key(
+        self,
+        owner: str,
+        repo: str,
+        key_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/keys/{key_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
         )
 
     def list_languages(
@@ -5212,6 +5212,38 @@ class ReposClient:
             },
         )
 
+    def get_pages(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[Page]":
+        url = f"/repos/{owner}/{repo}/pages"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Page,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_pages(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[Page]":
+        url = f"/repos/{owner}/{repo}/pages"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Page,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_information_about_pages_site(
         self,
         owner: str,
@@ -5251,70 +5283,6 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "400": BasicError,
-            },
-        )
-
-    def delete_pages_site(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/pages"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_pages_site(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/pages"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
-    def get_pages(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[Page]":
-        url = f"/repos/{owner}/{repo}/pages"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Page,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_pages(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[Page]":
-        url = f"/repos/{owner}/{repo}/pages"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Page,
-            error_models={
-                "404": BasicError,
             },
         )
 
@@ -5359,6 +5327,38 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "409": BasicError,
+            },
+        )
+
+    def delete_pages_site(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/pages"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_pages_site(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/pages"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
             },
         )
 
@@ -5738,6 +5738,66 @@ class ReposClient:
             },
         )
 
+    def get_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+    ) -> "Response[ReleaseAsset]":
+        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ReleaseAsset,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+    ) -> "Response[ReleaseAsset]":
+        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ReleaseAsset,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_release_asset(
         self,
         owner: str,
@@ -5790,66 +5850,6 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             response_model=ReleaseAsset,
-        )
-
-    def delete_release_asset(
-        self,
-        owner: str,
-        repo: str,
-        asset_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_release_asset(
-        self,
-        owner: str,
-        repo: str,
-        asset_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_release_asset(
-        self,
-        owner: str,
-        repo: str,
-        asset_id: int,
-    ) -> "Response[ReleaseAsset]":
-        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ReleaseAsset,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_release_asset(
-        self,
-        owner: str,
-        repo: str,
-        asset_id: int,
-    ) -> "Response[ReleaseAsset]":
-        url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ReleaseAsset,
-            error_models={
-                "404": BasicError,
-            },
         )
 
     def generate_release_notes(
@@ -5974,6 +5974,66 @@ class ReposClient:
             },
         )
 
+    def get_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+    ) -> "Response[Release]":
+        url = f"/repos/{owner}/{repo}/releases/{release_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Release,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+    ) -> "Response[Release]":
+        url = f"/repos/{owner}/{repo}/releases/{release_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Release,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/releases/{release_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/releases/{release_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_release(
         self,
         owner: str,
@@ -6044,66 +6104,6 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=Release,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def delete_release(
-        self,
-        owner: str,
-        repo: str,
-        release_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/releases/{release_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_release(
-        self,
-        owner: str,
-        repo: str,
-        release_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/releases/{release_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_release(
-        self,
-        owner: str,
-        repo: str,
-        release_id: int,
-    ) -> "Response[Release]":
-        url = f"/repos/{owner}/{repo}/releases/{release_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Release,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_release(
-        self,
-        owner: str,
-        repo: str,
-        release_id: int,
-    ) -> "Response[Release]":
-        url = f"/repos/{owner}/{repo}/releases/{release_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -6634,6 +6634,54 @@ class ReposClient:
             response_model=List[Team],
         )
 
+    def get_all_topics(
+        self,
+        owner: str,
+        repo: str,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[Topic]":
+        url = f"/repos/{owner}/{repo}/topics"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=Topic,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_all_topics(
+        self,
+        owner: str,
+        repo: str,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[Topic]":
+        url = f"/repos/{owner}/{repo}/topics"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=Topic,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def replace_all_topics(
         self,
         owner: str,
@@ -6683,54 +6731,6 @@ class ReposClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
-            },
-        )
-
-    def get_all_topics(
-        self,
-        owner: str,
-        repo: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[Topic]":
-        url = f"/repos/{owner}/{repo}/topics"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=Topic,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_all_topics(
-        self,
-        owner: str,
-        repo: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[Topic]":
-        url = f"/repos/{owner}/{repo}/topics"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=Topic,
-            error_models={
-                "404": BasicError,
             },
         )
 
@@ -6934,6 +6934,32 @@ class ReposClient:
             response_model=MinimalRepository,
         )
 
+    def check_vulnerability_alerts(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/vulnerability-alerts"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={},
+        )
+
+    async def async_check_vulnerability_alerts(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/vulnerability-alerts"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={},
+        )
+
     def enable_vulnerability_alerts(
         self,
         owner: str,
@@ -6980,32 +7006,6 @@ class ReposClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def check_vulnerability_alerts(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/vulnerability-alerts"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={},
-        )
-
-    async def async_check_vulnerability_alerts(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/vulnerability-alerts"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={},
         )
 
     def download_zipball_archive(
@@ -7388,38 +7388,6 @@ class ReposClient:
             },
         )
 
-    def accept_invitation_for_authenticated_user(
-        self,
-        invitation_id: int,
-    ) -> "Response":
-        url = f"/user/repository_invitations/{invitation_id}"
-
-        return self._github.request(
-            "PATCH",
-            url,
-            error_models={
-                "403": BasicError,
-                "409": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_accept_invitation_for_authenticated_user(
-        self,
-        invitation_id: int,
-    ) -> "Response":
-        url = f"/user/repository_invitations/{invitation_id}"
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            error_models={
-                "403": BasicError,
-                "409": BasicError,
-                "404": BasicError,
-            },
-        )
-
     def decline_invitation_for_authenticated_user(
         self,
         invitation_id: int,
@@ -7449,6 +7417,38 @@ class ReposClient:
                 "409": BasicError,
                 "404": BasicError,
                 "403": BasicError,
+            },
+        )
+
+    def accept_invitation_for_authenticated_user(
+        self,
+        invitation_id: int,
+    ) -> "Response":
+        url = f"/user/repository_invitations/{invitation_id}"
+
+        return self._github.request(
+            "PATCH",
+            url,
+            error_models={
+                "403": BasicError,
+                "409": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_accept_invitation_for_authenticated_user(
+        self,
+        invitation_id: int,
+    ) -> "Response":
+        url = f"/user/repository_invitations/{invitation_id}"
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            error_models={
+                "403": BasicError,
+                "409": BasicError,
+                "404": BasicError,
             },
         )
 

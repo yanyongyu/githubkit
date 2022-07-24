@@ -243,6 +243,68 @@ class GistsClient:
             },
         )
 
+    def get(
+        self,
+        gist_id: str,
+    ) -> "Response[GistSimple]":
+        url = f"/gists/{gist_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=GistSimple,
+            error_models={
+                "403": GistsGistIdGetResponse403,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get(
+        self,
+        gist_id: str,
+    ) -> "Response[GistSimple]":
+        url = f"/gists/{gist_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=GistSimple,
+            error_models={
+                "403": GistsGistIdGetResponse403,
+                "404": BasicError,
+            },
+        )
+
+    def delete(
+        self,
+        gist_id: str,
+    ) -> "Response":
+        url = f"/gists/{gist_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_delete(
+        self,
+        gist_id: str,
+    ) -> "Response":
+        url = f"/gists/{gist_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
     def update(
         self,
         gist_id: str,
@@ -281,68 +343,6 @@ class GistsClient:
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
-    def delete(
-        self,
-        gist_id: str,
-    ) -> "Response":
-        url = f"/gists/{gist_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_delete(
-        self,
-        gist_id: str,
-    ) -> "Response":
-        url = f"/gists/{gist_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    def get(
-        self,
-        gist_id: str,
-    ) -> "Response[GistSimple]":
-        url = f"/gists/{gist_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=GistSimple,
-            error_models={
-                "403": GistsGistIdGetResponse403,
-                "404": BasicError,
-            },
-        )
-
-    async def async_get(
-        self,
-        gist_id: str,
-    ) -> "Response[GistSimple]":
-        url = f"/gists/{gist_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=GistSimple,
-            error_models={
-                "403": GistsGistIdGetResponse403,
                 "404": BasicError,
             },
         )
@@ -445,6 +445,72 @@ class GistsClient:
             },
         )
 
+    def get_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+    ) -> "Response[GistComment]":
+        url = f"/gists/{gist_id}/comments/{comment_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=GistComment,
+            error_models={
+                "404": BasicError,
+                "403": GistsGistIdGetResponse403,
+            },
+        )
+
+    async def async_get_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+    ) -> "Response[GistComment]":
+        url = f"/gists/{gist_id}/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=GistComment,
+            error_models={
+                "404": BasicError,
+                "403": GistsGistIdGetResponse403,
+            },
+        )
+
+    def delete_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/gists/{gist_id}/comments/{comment_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_delete_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/gists/{gist_id}/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
     def update_comment(
         self,
         gist_id: str,
@@ -492,72 +558,6 @@ class GistsClient:
             response_model=GistComment,
             error_models={
                 "404": BasicError,
-            },
-        )
-
-    def delete_comment(
-        self,
-        gist_id: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/gists/{gist_id}/comments/{comment_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_delete_comment(
-        self,
-        gist_id: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/gists/{gist_id}/comments/{comment_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    def get_comment(
-        self,
-        gist_id: str,
-        comment_id: int,
-    ) -> "Response[GistComment]":
-        url = f"/gists/{gist_id}/comments/{comment_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=GistComment,
-            error_models={
-                "404": BasicError,
-                "403": GistsGistIdGetResponse403,
-            },
-        )
-
-    async def async_get_comment(
-        self,
-        gist_id: str,
-        comment_id: int,
-    ) -> "Response[GistComment]":
-        url = f"/gists/{gist_id}/comments/{comment_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=GistComment,
-            error_models={
-                "404": BasicError,
-                "403": GistsGistIdGetResponse403,
             },
         )
 
@@ -691,6 +691,36 @@ class GistsClient:
             },
         )
 
+    def check_is_starred(
+        self,
+        gist_id: str,
+    ) -> "Response":
+        url = f"/gists/{gist_id}/star"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={
+                "404": GistsGistIdStarGetResponse404,
+                "403": BasicError,
+            },
+        )
+
+    async def async_check_is_starred(
+        self,
+        gist_id: str,
+    ) -> "Response":
+        url = f"/gists/{gist_id}/star"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={
+                "404": GistsGistIdStarGetResponse404,
+                "403": BasicError,
+            },
+        )
+
     def star(
         self,
         gist_id: str,
@@ -747,36 +777,6 @@ class GistsClient:
             url,
             error_models={
                 "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    def check_is_starred(
-        self,
-        gist_id: str,
-    ) -> "Response":
-        url = f"/gists/{gist_id}/star"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={
-                "404": GistsGistIdStarGetResponse404,
-                "403": BasicError,
-            },
-        )
-
-    async def async_check_is_starred(
-        self,
-        gist_id: str,
-    ) -> "Response":
-        url = f"/gists/{gist_id}/star"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={
-                "404": GistsGistIdStarGetResponse404,
                 "403": BasicError,
             },
         )

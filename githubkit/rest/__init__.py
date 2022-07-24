@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 from functools import cached_property
 
+from .models import *
 from .git import GitClient
 from .apps import AppsClient
 from .meta import MetaClient

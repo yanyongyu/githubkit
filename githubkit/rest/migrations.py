@@ -206,36 +206,6 @@ class MigrationsClient:
             },
         )
 
-    def delete_archive_for_org(
-        self,
-        org: str,
-        migration_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/migrations/{migration_id}/archive"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_archive_for_org(
-        self,
-        org: str,
-        migration_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/migrations/{migration_id}/archive"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
     def download_archive_for_org(
         self,
         org: str,
@@ -260,6 +230,36 @@ class MigrationsClient:
 
         return await self._github.arequest(
             "GET",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_archive_for_org(
+        self,
+        org: str,
+        migration_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/migrations/{migration_id}/archive"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_archive_for_org(
+        self,
+        org: str,
+        migration_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/migrations/{migration_id}/archive"
+
+        return await self._github.arequest(
+            "DELETE",
             url,
             error_models={
                 "404": BasicError,
@@ -346,40 +346,36 @@ class MigrationsClient:
             },
         )
 
-    def update_import(
+    def get_import_status(
         self,
         owner: str,
         repo: str,
-        *,
-        body: Union[Unset, Union[ReposOwnerRepoImportPatchBody, None]] = UNSET,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
-
-        json = body
 
         return self._github.request(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
             response_model=Import,
+            error_models={
+                "404": BasicError,
+            },
         )
 
-    async def async_update_import(
+    async def async_get_import_status(
         self,
         owner: str,
         repo: str,
-        *,
-        body: Union[Unset, Union[ReposOwnerRepoImportPatchBody, None]] = UNSET,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        json = body
-
         return await self._github.arequest(
-            "PATCH",
+            "GET",
             url,
-            json=exclude_unset(json),
             response_model=Import,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def start_import(
@@ -474,36 +470,40 @@ class MigrationsClient:
             url,
         )
 
-    def get_import_status(
+    def update_import(
         self,
         owner: str,
         repo: str,
+        *,
+        body: Union[Unset, Union[ReposOwnerRepoImportPatchBody, None]] = UNSET,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
+
+        json = body
 
         return self._github.request(
-            "GET",
+            "PATCH",
             url,
+            json=exclude_unset(json),
             response_model=Import,
-            error_models={
-                "404": BasicError,
-            },
         )
 
-    async def async_get_import_status(
+    async def async_update_import(
         self,
         owner: str,
         repo: str,
+        *,
+        body: Union[Unset, Union[ReposOwnerRepoImportPatchBody, None]] = UNSET,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
+        json = body
+
         return await self._github.arequest(
-            "GET",
+            "PATCH",
             url,
+            json=exclude_unset(json),
             response_model=Import,
-            error_models={
-                "404": BasicError,
-            },
         )
 
     def get_commit_authors(
@@ -858,6 +858,36 @@ class MigrationsClient:
             },
         )
 
+    def get_archive_for_authenticated_user(
+        self,
+        migration_id: int,
+    ) -> "Response":
+        url = f"/user/migrations/{migration_id}/archive"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_get_archive_for_authenticated_user(
+        self,
+        migration_id: int,
+    ) -> "Response":
+        url = f"/user/migrations/{migration_id}/archive"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def delete_archive_for_authenticated_user(
         self,
         migration_id: int,
@@ -885,36 +915,6 @@ class MigrationsClient:
             url,
             error_models={
                 "404": BasicError,
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    def get_archive_for_authenticated_user(
-        self,
-        migration_id: int,
-    ) -> "Response":
-        url = f"/user/migrations/{migration_id}/archive"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_get_archive_for_authenticated_user(
-        self,
-        migration_id: int,
-    ) -> "Response":
-        url = f"/user/migrations/{migration_id}/archive"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={
                 "403": BasicError,
                 "401": BasicError,
             },

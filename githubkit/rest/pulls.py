@@ -254,6 +254,72 @@ class PullsClient:
             response_model=List[PullRequestReviewComment],
         )
 
+    def get_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response[PullRequestReviewComment]":
+        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=PullRequestReviewComment,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response[PullRequestReviewComment]":
+        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=PullRequestReviewComment,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def delete_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_review_comment(
         self,
         owner: str,
@@ -300,68 +366,38 @@ class PullsClient:
             response_model=PullRequestReviewComment,
         )
 
-    def delete_review_comment(
+    def get(
         self,
         owner: str,
         repo: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_review_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def get_review_comment(
-        self,
-        owner: str,
-        repo: str,
-        comment_id: int,
-    ) -> "Response[PullRequestReviewComment]":
-        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
+        pull_number: int,
+    ) -> "Response[PullRequest]":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
         return self._github.request(
             "GET",
             url,
-            response_model=PullRequestReviewComment,
+            response_model=PullRequest,
             error_models={
+                "500": BasicError,
                 "404": BasicError,
             },
         )
 
-    async def async_get_review_comment(
+    async def async_get(
         self,
         owner: str,
         repo: str,
-        comment_id: int,
-    ) -> "Response[PullRequestReviewComment]":
-        url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
+        pull_number: int,
+    ) -> "Response[PullRequest]":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=PullRequestReviewComment,
+            response_model=PullRequest,
             error_models={
+                "500": BasicError,
                 "404": BasicError,
             },
         )
@@ -433,42 +469,6 @@ class PullsClient:
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
-            },
-        )
-
-    def get(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-    ) -> "Response[PullRequest]":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=PullRequest,
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_get(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-    ) -> "Response[PullRequest]":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=PullRequest,
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
             },
         )
 
@@ -764,6 +764,34 @@ class PullsClient:
             },
         )
 
+    def check_if_merged(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={},
+        )
+
+    async def async_check_if_merged(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={},
+        )
+
     def merge(
         self,
         owner: str,
@@ -817,90 +845,6 @@ class PullsClient:
                 "422": ValidationError,
                 "403": BasicError,
                 "404": BasicError,
-            },
-        )
-
-    def check_if_merged(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
-
-        return self._github.request(
-            "GET",
-            url,
-            error_models={},
-        )
-
-    async def async_check_if_merged(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            error_models={},
-        )
-
-    def remove_requested_reviewers(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-        *,
-        reviewers: List[str],
-        team_reviewers: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[PullRequestSimple]":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
-
-        json = ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(
-            **{
-                "reviewers": reviewers,
-                "team_reviewers": team_reviewers,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
-            response_model=PullRequestSimple,
-            error_models={
-                "422": ValidationError,
-            },
-        )
-
-    async def async_remove_requested_reviewers(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-        *,
-        reviewers: List[str],
-        team_reviewers: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[PullRequestSimple]":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
-
-        json = ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(
-            **{
-                "reviewers": reviewers,
-                "team_reviewers": team_reviewers,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            json=exclude_unset(json),
-            response_model=PullRequestSimple,
-            error_models={
-                "422": ValidationError,
             },
         )
 
@@ -989,6 +933,62 @@ class PullsClient:
             response_model=PullRequestSimple,
             error_models={
                 "403": BasicError,
+            },
+        )
+
+    def remove_requested_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        reviewers: List[str],
+        team_reviewers: Union[Unset, List[str]] = UNSET,
+    ) -> "Response[PullRequestSimple]":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
+
+        json = ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(
+            **{
+                "reviewers": reviewers,
+                "team_reviewers": team_reviewers,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            response_model=PullRequestSimple,
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    async def async_remove_requested_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        reviewers: List[str],
+        team_reviewers: Union[Unset, List[str]] = UNSET,
+    ) -> "Response[PullRequestSimple]":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
+
+        json = ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(
+            **{
+                "reviewers": reviewers,
+                "team_reviewers": team_reviewers,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            response_model=PullRequestSimple,
+            error_models={
+                "422": ValidationError,
             },
         )
 
@@ -1106,6 +1106,42 @@ class PullsClient:
             },
         )
 
+    def get_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+    ) -> "Response[PullRequestReview]":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=PullRequestReview,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+    ) -> "Response[PullRequestReview]":
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=PullRequestReview,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def update_review(
         self,
         owner: str,
@@ -1194,42 +1230,6 @@ class PullsClient:
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
-                "404": BasicError,
-            },
-        )
-
-    def get_review(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-        review_id: int,
-    ) -> "Response[PullRequestReview]":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=PullRequestReview,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_review(
-        self,
-        owner: str,
-        repo: str,
-        pull_number: int,
-        review_id: int,
-    ) -> "Response[PullRequestReview]":
-        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=PullRequestReview,
-            error_models={
                 "404": BasicError,
             },
         )

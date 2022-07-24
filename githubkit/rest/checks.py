@@ -72,6 +72,34 @@ class ChecksClient:
             response_model=CheckRun,
         )
 
+    def get(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+    ) -> "Response[CheckRun]":
+        url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CheckRun,
+        )
+
+    async def async_get(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+    ) -> "Response[CheckRun]":
+        url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CheckRun,
+        )
+
     def update(
         self,
         owner: str,
@@ -107,34 +135,6 @@ class ChecksClient:
             "PATCH",
             url,
             json=exclude_unset(json),
-            response_model=CheckRun,
-        )
-
-    def get(
-        self,
-        owner: str,
-        repo: str,
-        check_run_id: int,
-    ) -> "Response[CheckRun]":
-        url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=CheckRun,
-        )
-
-    async def async_get(
-        self,
-        owner: str,
-        repo: str,
-        check_run_id: int,
-    ) -> "Response[CheckRun]":
-        url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
             response_model=CheckRun,
         )
 

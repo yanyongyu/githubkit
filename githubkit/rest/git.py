@@ -381,6 +381,38 @@ class GitClient:
             },
         )
 
+    def delete_ref(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/git/refs/{ref}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
+    async def async_delete_ref(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/git/refs/{ref}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "422": ValidationError,
+            },
+        )
+
     def update_ref(
         self,
         owner: str,
@@ -432,38 +464,6 @@ class GitClient:
             url,
             json=exclude_unset(json),
             response_model=GitRef,
-            error_models={
-                "422": ValidationError,
-            },
-        )
-
-    def delete_ref(
-        self,
-        owner: str,
-        repo: str,
-        ref: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/git/refs/{ref}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "422": ValidationError,
-            },
-        )
-
-    async def async_delete_ref(
-        self,
-        owner: str,
-        repo: str,
-        ref: str,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/git/refs/{ref}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
             error_models={
                 "422": ValidationError,
             },

@@ -74,6 +74,38 @@ class PackagesClient:
             },
         )
 
+    def get_package_for_organization(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        org: str,
+    ) -> "Response[Package]":
+        url = f"/orgs/{org}/packages/{package_type}/{package_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Package,
+        )
+
+    async def async_get_package_for_organization(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        org: str,
+    ) -> "Response[Package]":
+        url = f"/orgs/{org}/packages/{package_type}/{package_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Package,
+        )
+
     def delete_package_for_org(
         self,
         package_type: Literal[
@@ -112,38 +144,6 @@ class PackagesClient:
                 "403": BasicError,
                 "401": BasicError,
             },
-        )
-
-    def get_package_for_organization(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        org: str,
-    ) -> "Response[Package]":
-        url = f"/orgs/{org}/packages/{package_type}/{package_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Package,
-        )
-
-    async def async_get_package_for_organization(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        org: str,
-    ) -> "Response[Package]":
-        url = f"/orgs/{org}/packages/{package_type}/{package_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Package,
         )
 
     def restore_package_for_org(
@@ -260,6 +260,40 @@ class PackagesClient:
             },
         )
 
+    def get_package_version_for_organization(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        org: str,
+        package_version_id: int,
+    ) -> "Response[PackageVersion]":
+        url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=PackageVersion,
+        )
+
+    async def async_get_package_version_for_organization(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        org: str,
+        package_version_id: int,
+    ) -> "Response[PackageVersion]":
+        url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=PackageVersion,
+        )
+
     def delete_package_version_for_org(
         self,
         package_type: Literal[
@@ -300,40 +334,6 @@ class PackagesClient:
                 "403": BasicError,
                 "401": BasicError,
             },
-        )
-
-    def get_package_version_for_organization(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        org: str,
-        package_version_id: int,
-    ) -> "Response[PackageVersion]":
-        url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=PackageVersion,
-        )
-
-    async def async_get_package_version_for_organization(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        org: str,
-        package_version_id: int,
-    ) -> "Response[PackageVersion]":
-        url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=PackageVersion,
         )
 
     def restore_package_version_for_org(
@@ -420,6 +420,36 @@ class PackagesClient:
             response_model=List[Package],
         )
 
+    def get_package_for_authenticated_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+    ) -> "Response[Package]":
+        url = f"/user/packages/{package_type}/{package_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Package,
+        )
+
+    async def async_get_package_for_authenticated_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+    ) -> "Response[Package]":
+        url = f"/user/packages/{package_type}/{package_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Package,
+        )
+
     def delete_package_for_authenticated_user(
         self,
         package_type: Literal[
@@ -456,36 +486,6 @@ class PackagesClient:
                 "403": BasicError,
                 "401": BasicError,
             },
-        )
-
-    def get_package_for_authenticated_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-    ) -> "Response[Package]":
-        url = f"/user/packages/{package_type}/{package_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Package,
-        )
-
-    async def async_get_package_for_authenticated_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-    ) -> "Response[Package]":
-        url = f"/user/packages/{package_type}/{package_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Package,
         )
 
     def restore_package_for_authenticated_user(
@@ -598,6 +598,38 @@ class PackagesClient:
             },
         )
 
+    def get_package_version_for_authenticated_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        package_version_id: int,
+    ) -> "Response[PackageVersion]":
+        url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=PackageVersion,
+        )
+
+    async def async_get_package_version_for_authenticated_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        package_version_id: int,
+    ) -> "Response[PackageVersion]":
+        url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=PackageVersion,
+        )
+
     def delete_package_version_for_authenticated_user(
         self,
         package_type: Literal[
@@ -636,38 +668,6 @@ class PackagesClient:
                 "403": BasicError,
                 "401": BasicError,
             },
-        )
-
-    def get_package_version_for_authenticated_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        package_version_id: int,
-    ) -> "Response[PackageVersion]":
-        url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=PackageVersion,
-        )
-
-    async def async_get_package_version_for_authenticated_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        package_version_id: int,
-    ) -> "Response[PackageVersion]":
-        url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=PackageVersion,
         )
 
     def restore_package_version_for_authenticated_user(
@@ -762,6 +762,38 @@ class PackagesClient:
             },
         )
 
+    def get_package_for_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        username: str,
+    ) -> "Response[Package]":
+        url = f"/users/{username}/packages/{package_type}/{package_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Package,
+        )
+
+    async def async_get_package_for_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        username: str,
+    ) -> "Response[Package]":
+        url = f"/users/{username}/packages/{package_type}/{package_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Package,
+        )
+
     def delete_package_for_user(
         self,
         package_type: Literal[
@@ -800,38 +832,6 @@ class PackagesClient:
                 "403": BasicError,
                 "401": BasicError,
             },
-        )
-
-    def get_package_for_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        username: str,
-    ) -> "Response[Package]":
-        url = f"/users/{username}/packages/{package_type}/{package_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Package,
-        )
-
-    async def async_get_package_for_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        username: str,
-    ) -> "Response[Package]":
-        url = f"/users/{username}/packages/{package_type}/{package_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Package,
         )
 
     def restore_package_for_user(
@@ -928,6 +928,40 @@ class PackagesClient:
             },
         )
 
+    def get_package_version_for_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        package_version_id: int,
+        username: str,
+    ) -> "Response[PackageVersion]":
+        url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=PackageVersion,
+        )
+
+    async def async_get_package_version_for_user(
+        self,
+        package_type: Literal[
+            "npm", "maven", "rubygems", "docker", "nuget", "container"
+        ],
+        package_name: str,
+        package_version_id: int,
+        username: str,
+    ) -> "Response[PackageVersion]":
+        url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=PackageVersion,
+        )
+
     def delete_package_version_for_user(
         self,
         package_type: Literal[
@@ -968,40 +1002,6 @@ class PackagesClient:
                 "403": BasicError,
                 "401": BasicError,
             },
-        )
-
-    def get_package_version_for_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        package_version_id: int,
-        username: str,
-    ) -> "Response[PackageVersion]":
-        url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=PackageVersion,
-        )
-
-    async def async_get_package_version_for_user(
-        self,
-        package_type: Literal[
-            "npm", "maven", "rubygems", "docker", "nuget", "container"
-        ],
-        package_name: str,
-        package_version_id: int,
-        username: str,
-    ) -> "Response[PackageVersion]":
-        url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=PackageVersion,
         )
 
     def restore_package_version_for_user(

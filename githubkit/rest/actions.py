@@ -80,7 +80,7 @@ from .models import (
     ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
     ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
     OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
     OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
     ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
@@ -162,6 +162,30 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    def get_github_actions_default_workflow_permissions_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
+        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ActionsGetDefaultWorkflowPermissions,
+        )
+
+    async def async_get_github_actions_default_workflow_permissions_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
+        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ActionsGetDefaultWorkflowPermissions,
+        )
+
     def set_github_actions_default_workflow_permissions_enterprise(
         self,
         enterprise: str,
@@ -204,30 +228,6 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-        )
-
-    def get_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
-        )
-
-    async def async_get_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
     def get_actions_cache_usage_for_org(
@@ -294,6 +294,30 @@ class ActionsClient:
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         )
 
+    def get_github_actions_permissions_organization(
+        self,
+        org: str,
+    ) -> "Response[ActionsOrganizationPermissions]":
+        url = f"/orgs/{org}/actions/permissions"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ActionsOrganizationPermissions,
+        )
+
+    async def async_get_github_actions_permissions_organization(
+        self,
+        org: str,
+    ) -> "Response[ActionsOrganizationPermissions]":
+        url = f"/orgs/{org}/actions/permissions"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ActionsOrganizationPermissions,
+        )
+
     def set_github_actions_permissions_organization(
         self,
         org: str,
@@ -329,70 +353,6 @@ class ActionsClient:
             **{
                 "enabled_repositories": enabled_repositories,
                 "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    def get_github_actions_permissions_organization(
-        self,
-        org: str,
-    ) -> "Response[ActionsOrganizationPermissions]":
-        url = f"/orgs/{org}/actions/permissions"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsOrganizationPermissions,
-        )
-
-    async def async_get_github_actions_permissions_organization(
-        self,
-        org: str,
-    ) -> "Response[ActionsOrganizationPermissions]":
-        url = f"/orgs/{org}/actions/permissions"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsOrganizationPermissions,
-        )
-
-    def set_selected_repositories_enabled_github_actions_organization(
-        self,
-        org: str,
-        *,
-        selected_repository_ids: List[int],
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/permissions/repositories"
-
-        json = OrgsOrgActionsPermissionsRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    async def async_set_selected_repositories_enabled_github_actions_organization(
-        self,
-        org: str,
-        *,
-        selected_repository_ids: List[int],
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/permissions/repositories"
-
-        json = OrgsOrgActionsPermissionsRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
             }
         ).dict(by_alias=True)
 
@@ -440,6 +400,46 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
+        )
+
+    def set_selected_repositories_enabled_github_actions_organization(
+        self,
+        org: str,
+        *,
+        selected_repository_ids: List[int],
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/permissions/repositories"
+
+        json = OrgsOrgActionsPermissionsRepositoriesPutBody(
+            **{
+                "selected_repository_ids": selected_repository_ids,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+        )
+
+    async def async_set_selected_repositories_enabled_github_actions_organization(
+        self,
+        org: str,
+        *,
+        selected_repository_ids: List[int],
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/permissions/repositories"
+
+        json = OrgsOrgActionsPermissionsRepositoriesPutBody(
+            **{
+                "selected_repository_ids": selected_repository_ids,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
         )
 
     def enable_selected_repository_github_actions_organization(
@@ -490,6 +490,30 @@ class ActionsClient:
             url,
         )
 
+    def get_allowed_actions_organization(
+        self,
+        org: str,
+    ) -> "Response[SelectedActions]":
+        url = f"/orgs/{org}/actions/permissions/selected-actions"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=SelectedActions,
+        )
+
+    async def async_get_allowed_actions_organization(
+        self,
+        org: str,
+    ) -> "Response[SelectedActions]":
+        url = f"/orgs/{org}/actions/permissions/selected-actions"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=SelectedActions,
+        )
+
     def set_allowed_actions_organization(
         self,
         org: str,
@@ -538,28 +562,28 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
-    def get_allowed_actions_organization(
+    def get_github_actions_default_workflow_permissions_organization(
         self,
         org: str,
-    ) -> "Response[SelectedActions]":
-        url = f"/orgs/{org}/actions/permissions/selected-actions"
+    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
+        url = f"/orgs/{org}/actions/permissions/workflow"
 
         return self._github.request(
             "GET",
             url,
-            response_model=SelectedActions,
+            response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
-    async def async_get_allowed_actions_organization(
+    async def async_get_github_actions_default_workflow_permissions_organization(
         self,
         org: str,
-    ) -> "Response[SelectedActions]":
-        url = f"/orgs/{org}/actions/permissions/selected-actions"
+    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
+        url = f"/orgs/{org}/actions/permissions/workflow"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=SelectedActions,
+            response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
     def set_github_actions_default_workflow_permissions_organization(
@@ -606,30 +630,6 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             error_models={},
-        )
-
-    def get_github_actions_default_workflow_permissions_organization(
-        self,
-        org: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/orgs/{org}/actions/permissions/workflow"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
-        )
-
-    async def async_get_github_actions_default_workflow_permissions_organization(
-        self,
-        org: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/orgs/{org}/actions/permissions/workflow"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
     def list_self_hosted_runner_groups_for_org(
@@ -742,6 +742,56 @@ class ActionsClient:
             response_model=RunnerGroupsOrg,
         )
 
+    def get_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+    ) -> "Response[RunnerGroupsOrg]":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=RunnerGroupsOrg,
+        )
+
+    async def async_get_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+    ) -> "Response[RunnerGroupsOrg]":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=RunnerGroupsOrg,
+        )
+
+    def delete_self_hosted_runner_group_from_org(
+        self,
+        org: str,
+        runner_group_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_self_hosted_runner_group_from_org(
+        self,
+        org: str,
+        runner_group_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
     def update_self_hosted_runner_group_for_org(
         self,
         org: str,
@@ -802,54 +852,46 @@ class ActionsClient:
             response_model=RunnerGroupsOrg,
         )
 
-    def delete_self_hosted_runner_group_from_org(
+    def list_repo_access_to_self_hosted_runner_group_in_org(
         self,
         org: str,
         runner_group_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
 
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_self_hosted_runner_group_from_org(
-        self,
-        org: str,
-        runner_group_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def get_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
 
         return self._github.request(
             "GET",
             url,
-            response_model=RunnerGroupsOrg,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         )
 
-    async def async_get_self_hosted_runner_group_for_org(
+    async def async_list_repo_access_to_self_hosted_runner_group_in_org(
         self,
         org: str,
         runner_group_id: int,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=RunnerGroupsOrg,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         )
 
     def set_repo_access_to_self_hosted_runner_group_in_org(
@@ -892,48 +934,6 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-        )
-
-    def list_repo_access_to_self_hosted_runner_group_in_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-        )
-
-    async def async_list_repo_access_to_self_hosted_runner_group_in_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         )
 
     def add_repo_access_to_self_hosted_runner_group_in_org(
@@ -988,48 +988,6 @@ class ActionsClient:
             url,
         )
 
-    def set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        runners: List[int],
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
-
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    async def async_set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        runners: List[int],
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
-
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
     def list_self_hosted_runners_in_group_for_org(
         self,
         org: str,
@@ -1070,6 +1028,48 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        )
+
+    def set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        runners: List[int],
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+
+        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
+            **{
+                "runners": runners,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+        )
+
+    async def async_set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        runners: List[int],
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+
+        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
+            **{
+                "runners": runners,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
         )
 
     def add_self_hosted_runner_to_group_for_org(
@@ -1236,30 +1236,6 @@ class ActionsClient:
             response_model=AuthenticationToken,
         )
 
-    def delete_self_hosted_runner_from_org(
-        self,
-        org: str,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runners/{runner_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_self_hosted_runner_from_org(
-        self,
-        org: str,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runners/{runner_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
     def get_self_hosted_runner_for_org(
         self,
         org: str,
@@ -1286,13 +1262,69 @@ class ActionsClient:
             response_model=Runner,
         )
 
+    def delete_self_hosted_runner_from_org(
+        self,
+        org: str,
+        runner_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/runners/{runner_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_self_hosted_runner_from_org(
+        self,
+        org: str,
+        runner_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/runners/{runner_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    def list_labels_for_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_labels_for_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def set_custom_labels_for_self_hosted_runner_for_org(
         self,
         org: str,
         runner_id: int,
         *,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         json = OrgsOrgActionsRunnersRunnerIdLabelsPutBody(
@@ -1305,7 +1337,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1318,7 +1350,7 @@ class ActionsClient:
         runner_id: int,
         *,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         json = OrgsOrgActionsRunnersRunnerIdLabelsPutBody(
@@ -1331,7 +1363,59 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def add_custom_labels_to_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
+
+        json = OrgsOrgActionsRunnersRunnerIdLabelsPostBody(
+            **{
+                "labels": labels,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_add_custom_labels_to_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
+
+        json = OrgsOrgActionsRunnersRunnerIdLabelsPostBody(
+            **{
+                "labels": labels,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1370,102 +1454,18 @@ class ActionsClient:
             },
         )
 
-    def list_labels_for_self_hosted_runner_for_org(
-        self,
-        org: str,
-        runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_list_labels_for_self_hosted_runner_for_org(
-        self,
-        org: str,
-        runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def add_custom_labels_to_self_hosted_runner_for_org(
-        self,
-        org: str,
-        runner_id: int,
-        *,
-        labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
-
-        json = OrgsOrgActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
-    async def async_add_custom_labels_to_self_hosted_runner_for_org(
-        self,
-        org: str,
-        runner_id: int,
-        *,
-        labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
-
-        json = OrgsOrgActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
     def remove_custom_label_from_self_hosted_runner_for_org(
         self,
         org: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels/{name}"
 
         return self._github.request(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1477,13 +1477,13 @@ class ActionsClient:
         org: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels/{name}"
 
         return await self._github.arequest(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1552,6 +1552,32 @@ class ActionsClient:
             "GET",
             url,
             response_model=ActionsPublicKey,
+        )
+
+    def get_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response[OrganizationActionsSecret]":
+        url = f"/orgs/{org}/actions/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrganizationActionsSecret,
+        )
+
+    async def async_get_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response[OrganizationActionsSecret]":
+        url = f"/orgs/{org}/actions/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OrganizationActionsSecret,
         )
 
     def create_or_update_org_secret(
@@ -1634,30 +1660,46 @@ class ActionsClient:
             url,
         )
 
-    def get_org_secret(
+    def list_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
-    ) -> "Response[OrganizationActionsSecret]":
-        url = f"/orgs/{org}/actions/secrets/{secret_name}"
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
 
         return self._github.request(
             "GET",
             url,
-            response_model=OrganizationActionsSecret,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
-    async def async_get_org_secret(
+    async def async_list_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
-    ) -> "Response[OrganizationActionsSecret]":
-        url = f"/orgs/{org}/actions/secrets/{secret_name}"
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=OrganizationActionsSecret,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
     def set_selected_repos_for_org_secret(
@@ -1700,48 +1742,6 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-        )
-
-    def list_selected_repos_for_org_secret(
-        self,
-        org: str,
-        secret_name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
-        )
-
-    async def async_list_selected_repos_for_org_secret(
-        self,
-        org: str,
-        secret_name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
     def add_selected_repo_to_org_secret(
@@ -1842,32 +1842,6 @@ class ActionsClient:
             response_model=ReposOwnerRepoActionsArtifactsGetResponse200,
         )
 
-    def delete_artifact(
-        self,
-        owner: str,
-        repo: str,
-        artifact_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_artifact(
-        self,
-        owner: str,
-        repo: str,
-        artifact_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
     def get_artifact(
         self,
         owner: str,
@@ -1894,6 +1868,32 @@ class ActionsClient:
             "GET",
             url,
             response_model=Artifact,
+        )
+
+    def delete_artifact(
+        self,
+        owner: str,
+        repo: str,
+        artifact_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_artifact(
+        self,
+        owner: str,
+        repo: str,
+        artifact_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
         )
 
     def download_artifact(
@@ -1956,48 +1956,6 @@ class ActionsClient:
             response_model=ActionsCacheUsageByRepository,
         )
 
-    def delete_actions_cache_by_key(
-        self,
-        owner: str,
-        repo: str,
-        key: str,
-        ref: Union[Unset, str] = UNSET,
-    ) -> "Response[ActionsCacheList]":
-        url = f"/repos/{owner}/{repo}/actions/caches"
-
-        params = {
-            "key": key,
-            "ref": ref,
-        }
-
-        return self._github.request(
-            "DELETE",
-            url,
-            params=exclude_unset(params),
-            response_model=ActionsCacheList,
-        )
-
-    async def async_delete_actions_cache_by_key(
-        self,
-        owner: str,
-        repo: str,
-        key: str,
-        ref: Union[Unset, str] = UNSET,
-    ) -> "Response[ActionsCacheList]":
-        url = f"/repos/{owner}/{repo}/actions/caches"
-
-        params = {
-            "key": key,
-            "ref": ref,
-        }
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            params=exclude_unset(params),
-            response_model=ActionsCacheList,
-        )
-
     def get_actions_cache_list(
         self,
         owner: str,
@@ -2055,6 +2013,48 @@ class ActionsClient:
 
         return await self._github.arequest(
             "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ActionsCacheList,
+        )
+
+    def delete_actions_cache_by_key(
+        self,
+        owner: str,
+        repo: str,
+        key: str,
+        ref: Union[Unset, str] = UNSET,
+    ) -> "Response[ActionsCacheList]":
+        url = f"/repos/{owner}/{repo}/actions/caches"
+
+        params = {
+            "key": key,
+            "ref": ref,
+        }
+
+        return self._github.request(
+            "DELETE",
+            url,
+            params=exclude_unset(params),
+            response_model=ActionsCacheList,
+        )
+
+    async def async_delete_actions_cache_by_key(
+        self,
+        owner: str,
+        repo: str,
+        key: str,
+        ref: Union[Unset, str] = UNSET,
+    ) -> "Response[ActionsCacheList]":
+        url = f"/repos/{owner}/{repo}/actions/caches"
+
+        params = {
+            "key": key,
+            "ref": ref,
+        }
+
+        return await self._github.arequest(
+            "DELETE",
             url,
             params=exclude_unset(params),
             response_model=ActionsCacheList,
@@ -2188,6 +2188,40 @@ class ActionsClient:
             },
         )
 
+    def get_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[OptOutOidcCustomSub]":
+        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OptOutOidcCustomSub,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[OptOutOidcCustomSub]":
+        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OptOutOidcCustomSub,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def set_custom_oidc_sub_claim_for_repo(
         self,
         owner: str,
@@ -2242,38 +2276,30 @@ class ActionsClient:
             },
         )
 
-    def get_custom_oidc_sub_claim_for_repo(
+    def get_github_actions_permissions_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[OptOutOidcCustomSub]":
-        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+    ) -> "Response[ActionsRepositoryPermissions]":
+        url = f"/repos/{owner}/{repo}/actions/permissions"
 
         return self._github.request(
             "GET",
             url,
-            response_model=OptOutOidcCustomSub,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-            },
+            response_model=ActionsRepositoryPermissions,
         )
 
-    async def async_get_custom_oidc_sub_claim_for_repo(
+    async def async_get_github_actions_permissions_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[OptOutOidcCustomSub]":
-        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+    ) -> "Response[ActionsRepositoryPermissions]":
+        url = f"/repos/{owner}/{repo}/actions/permissions"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=OptOutOidcCustomSub,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-            },
+            response_model=ActionsRepositoryPermissions,
         )
 
     def set_github_actions_permissions_repository(
@@ -2322,30 +2348,30 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
-    def get_github_actions_permissions_repository(
+    def get_workflow_access_to_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[ActionsRepositoryPermissions]":
-        url = f"/repos/{owner}/{repo}/actions/permissions"
+    ) -> "Response[ActionsWorkflowAccessToRepository]":
+        url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
         return self._github.request(
             "GET",
             url,
-            response_model=ActionsRepositoryPermissions,
+            response_model=ActionsWorkflowAccessToRepository,
         )
 
-    async def async_get_github_actions_permissions_repository(
+    async def async_get_workflow_access_to_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[ActionsRepositoryPermissions]":
-        url = f"/repos/{owner}/{repo}/actions/permissions"
+    ) -> "Response[ActionsWorkflowAccessToRepository]":
+        url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=ActionsRepositoryPermissions,
+            response_model=ActionsWorkflowAccessToRepository,
         )
 
     def set_workflow_access_to_repository(
@@ -2390,30 +2416,30 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
-    def get_workflow_access_to_repository(
+    def get_allowed_actions_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[ActionsWorkflowAccessToRepository]":
-        url = f"/repos/{owner}/{repo}/actions/permissions/access"
+    ) -> "Response[SelectedActions]":
+        url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
         return self._github.request(
             "GET",
             url,
-            response_model=ActionsWorkflowAccessToRepository,
+            response_model=SelectedActions,
         )
 
-    async def async_get_workflow_access_to_repository(
+    async def async_get_allowed_actions_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[ActionsWorkflowAccessToRepository]":
-        url = f"/repos/{owner}/{repo}/actions/permissions/access"
+    ) -> "Response[SelectedActions]":
+        url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=ActionsWorkflowAccessToRepository,
+            response_model=SelectedActions,
         )
 
     def set_allowed_actions_repository(
@@ -2466,30 +2492,30 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
-    def get_allowed_actions_repository(
+    def get_github_actions_default_workflow_permissions_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[SelectedActions]":
-        url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
+    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
+        url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
         return self._github.request(
             "GET",
             url,
-            response_model=SelectedActions,
+            response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
-    async def async_get_allowed_actions_repository(
+    async def async_get_github_actions_default_workflow_permissions_repository(
         self,
         owner: str,
         repo: str,
-    ) -> "Response[SelectedActions]":
-        url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
+    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
+        url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=SelectedActions,
+            response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
     def set_github_actions_default_workflow_permissions_repository(
@@ -2538,32 +2564,6 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             error_models={},
-        )
-
-    def get_github_actions_default_workflow_permissions_repository(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
-        )
-
-    async def async_get_github_actions_default_workflow_permissions_repository(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
     def list_self_hosted_runners_for_repo(
@@ -2686,32 +2686,6 @@ class ActionsClient:
             response_model=AuthenticationToken,
         )
 
-    def delete_self_hosted_runner_from_repo(
-        self,
-        owner: str,
-        repo: str,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_self_hosted_runner_from_repo(
-        self,
-        owner: str,
-        repo: str,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
     def get_self_hosted_runner_for_repo(
         self,
         owner: str,
@@ -2740,6 +2714,66 @@ class ActionsClient:
             response_model=Runner,
         )
 
+    def delete_self_hosted_runner_from_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_self_hosted_runner_from_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    def list_labels_for_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_labels_for_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def set_custom_labels_for_self_hosted_runner_for_repo(
         self,
         owner: str,
@@ -2747,7 +2781,7 @@ class ActionsClient:
         runner_id: int,
         *,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(
@@ -2760,7 +2794,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -2774,7 +2808,7 @@ class ActionsClient:
         runner_id: int,
         *,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(
@@ -2787,7 +2821,61 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def add_custom_labels_to_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
+
+        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(
+            **{
+                "labels": labels,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_add_custom_labels_to_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
+
+        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(
+            **{
+                "labels": labels,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -2828,107 +2916,19 @@ class ActionsClient:
             },
         )
 
-    def list_labels_for_self_hosted_runner_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_list_labels_for_self_hosted_runner_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def add_custom_labels_to_self_hosted_runner_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        runner_id: int,
-        *,
-        labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
-
-        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
-    async def async_add_custom_labels_to_self_hosted_runner_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        runner_id: int,
-        *,
-        labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
-        url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
-
-        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
-            error_models={
-                "404": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
     def remove_custom_label_from_self_hosted_runner_for_repo(
         self,
         owner: str,
         repo: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}"
 
         return self._github.request(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -2941,13 +2941,13 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200]":
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}"
 
         return await self._github.arequest(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutResponse200,
+            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -3058,32 +3058,6 @@ class ActionsClient:
             response_model=ReposOwnerRepoActionsRunsGetResponse200,
         )
 
-    def delete_workflow_run(
-        self,
-        owner: str,
-        repo: str,
-        run_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_workflow_run(
-        self,
-        owner: str,
-        repo: str,
-        run_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
     def get_workflow_run(
         self,
         owner: str,
@@ -3122,6 +3096,32 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             response_model=WorkflowRun,
+        )
+
+    def delete_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
         )
 
     def get_reviews_for_run(
@@ -3436,6 +3436,32 @@ class ActionsClient:
             response_model=ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         )
 
+    def download_workflow_run_logs(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
+
+        return self._github.request(
+            "GET",
+            url,
+        )
+
+    async def async_download_workflow_run_logs(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+        )
+
     def delete_workflow_run_logs(
         self,
         owner: str,
@@ -3468,32 +3494,6 @@ class ActionsClient:
                 "403": BasicError,
                 "500": BasicError,
             },
-        )
-
-    def download_workflow_run_logs(
-        self,
-        owner: str,
-        repo: str,
-        run_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
-
-        return self._github.request(
-            "GET",
-            url,
-        )
-
-    async def async_download_workflow_run_logs(
-        self,
-        owner: str,
-        repo: str,
-        run_id: int,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
-
-        return await self._github.arequest(
-            "GET",
-            url,
         )
 
     def get_pending_deployments_for_run(
@@ -3758,6 +3758,34 @@ class ActionsClient:
             response_model=ActionsPublicKey,
         )
 
+    def get_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+    ) -> "Response[ActionsSecret]":
+        url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ActionsSecret,
+        )
+
+    async def async_get_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+    ) -> "Response[ActionsSecret]":
+        url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ActionsSecret,
+        )
+
     def create_or_update_repo_secret(
         self,
         owner: str,
@@ -3832,34 +3860,6 @@ class ActionsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def get_repo_secret(
-        self,
-        owner: str,
-        repo: str,
-        secret_name: str,
-    ) -> "Response[ActionsSecret]":
-        url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsSecret,
-        )
-
-    async def async_get_repo_secret(
-        self,
-        owner: str,
-        repo: str,
-        secret_name: str,
-    ) -> "Response[ActionsSecret]":
-        url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsSecret,
         )
 
     def list_repo_workflows(
@@ -4238,6 +4238,34 @@ class ActionsClient:
             response_model=ActionsPublicKey,
         )
 
+    def get_environment_secret(
+        self,
+        repository_id: int,
+        environment_name: str,
+        secret_name: str,
+    ) -> "Response[ActionsSecret]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ActionsSecret,
+        )
+
+    async def async_get_environment_secret(
+        self,
+        repository_id: int,
+        environment_name: str,
+        secret_name: str,
+    ) -> "Response[ActionsSecret]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ActionsSecret,
+        )
+
     def create_or_update_environment_secret(
         self,
         repository_id: int,
@@ -4316,32 +4344,4 @@ class ActionsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def get_environment_secret(
-        self,
-        repository_id: int,
-        environment_name: str,
-        secret_name: str,
-    ) -> "Response[ActionsSecret]":
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsSecret,
-        )
-
-    async def async_get_environment_secret(
-        self,
-        repository_id: int,
-        environment_name: str,
-        secret_name: str,
-    ) -> "Response[ActionsSecret]":
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsSecret,
         )

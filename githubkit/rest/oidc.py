@@ -22,6 +22,30 @@ class OidcClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
+    def get_oidc_custom_sub_template_for_org(
+        self,
+        org: str,
+    ) -> "Response[OidcCustomSub]":
+        url = f"/orgs/{org}/actions/oidc/customization/sub"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OidcCustomSub,
+        )
+
+    async def async_get_oidc_custom_sub_template_for_org(
+        self,
+        org: str,
+    ) -> "Response[OidcCustomSub]":
+        url = f"/orgs/{org}/actions/oidc/customization/sub"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OidcCustomSub,
+        )
+
     def update_oidc_custom_sub_template_for_org(
         self,
         org: str,
@@ -70,28 +94,4 @@ class OidcClient:
                 "404": BasicError,
                 "403": BasicError,
             },
-        )
-
-    def get_oidc_custom_sub_template_for_org(
-        self,
-        org: str,
-    ) -> "Response[OidcCustomSub]":
-        url = f"/orgs/{org}/actions/oidc/customization/sub"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=OidcCustomSub,
-        )
-
-    async def async_get_oidc_custom_sub_template_for_org(
-        self,
-        org: str,
-    ) -> "Response[OidcCustomSub]":
-        url = f"/orgs/{org}/actions/oidc/customization/sub"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=OidcCustomSub,
         )

@@ -514,6 +514,34 @@ class CodespacesClient:
             response_model=CodespacesPublicKey,
         )
 
+    def get_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+    ) -> "Response[RepoCodespacesSecret]":
+        url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=RepoCodespacesSecret,
+        )
+
+    async def async_get_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+    ) -> "Response[RepoCodespacesSecret]":
+        url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=RepoCodespacesSecret,
+        )
+
     def create_or_update_repo_secret(
         self,
         owner: str,
@@ -588,34 +616,6 @@ class CodespacesClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def get_repo_secret(
-        self,
-        owner: str,
-        repo: str,
-        secret_name: str,
-    ) -> "Response[RepoCodespacesSecret]":
-        url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=RepoCodespacesSecret,
-        )
-
-    async def async_get_repo_secret(
-        self,
-        owner: str,
-        repo: str,
-        secret_name: str,
-    ) -> "Response[RepoCodespacesSecret]":
-        url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=RepoCodespacesSecret,
         )
 
     def create_with_pr_for_authenticated_user(
@@ -822,6 +822,30 @@ class CodespacesClient:
             response_model=CodespacesUserPublicKey,
         )
 
+    def get_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+    ) -> "Response[CodespacesSecret]":
+        url = f"/user/codespaces/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CodespacesSecret,
+        )
+
+    async def async_get_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+    ) -> "Response[CodespacesSecret]":
+        url = f"/user/codespaces/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CodespacesSecret,
+        )
+
     def create_or_update_secret_for_authenticated_user(
         self,
         secret_name: str,
@@ -902,28 +926,40 @@ class CodespacesClient:
             url,
         )
 
-    def get_secret_for_authenticated_user(
+    def list_repositories_for_secret_for_authenticated_user(
         self,
         secret_name: str,
-    ) -> "Response[CodespacesSecret]":
-        url = f"/user/codespaces/secrets/{secret_name}"
+    ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
         return self._github.request(
             "GET",
             url,
-            response_model=CodespacesSecret,
+            response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
-    async def async_get_secret_for_authenticated_user(
+    async def async_list_repositories_for_secret_for_authenticated_user(
         self,
         secret_name: str,
-    ) -> "Response[CodespacesSecret]":
-        url = f"/user/codespaces/secrets/{secret_name}"
+    ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=CodespacesSecret,
+            response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def set_repositories_for_secret_for_authenticated_user(
@@ -970,42 +1006,6 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            error_models={
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-            },
-        )
-
-    def list_repositories_for_secret_for_authenticated_user(
-        self,
-        secret_name: str,
-    ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
-        url = f"/user/codespaces/secrets/{secret_name}/repositories"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
-            error_models={
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-            },
-        )
-
-    async def async_list_repositories_for_secret_for_authenticated_user(
-        self,
-        secret_name: str,
-    ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
-        url = f"/user/codespaces/secrets/{secret_name}/repositories"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -1086,6 +1086,78 @@ class CodespacesClient:
             },
         )
 
+    def get_for_authenticated_user(
+        self,
+        codespace_name: str,
+    ) -> "Response[Codespace]":
+        url = f"/user/codespaces/{codespace_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Codespace,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_for_authenticated_user(
+        self,
+        codespace_name: str,
+    ) -> "Response[Codespace]":
+        url = f"/user/codespaces/{codespace_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Codespace,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def delete_for_authenticated_user(
+        self,
+        codespace_name: str,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/user/codespaces/{codespace_name}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_for_authenticated_user(
+        self,
+        codespace_name: str,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/user/codespaces/{codespace_name}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def update_for_authenticated_user(
         self,
         codespace_name: str,
@@ -1140,78 +1212,6 @@ class CodespacesClient:
             json=exclude_unset(json),
             response_model=Codespace,
             error_models={
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    def delete_for_authenticated_user(
-        self,
-        codespace_name: str,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/user/codespaces/{codespace_name}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={
-                "500": BasicError,
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_for_authenticated_user(
-        self,
-        codespace_name: str,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/user/codespaces/{codespace_name}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={
-                "500": BasicError,
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    def get_for_authenticated_user(
-        self,
-        codespace_name: str,
-    ) -> "Response[Codespace]":
-        url = f"/user/codespaces/{codespace_name}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Codespace,
-            error_models={
-                "500": BasicError,
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_for_authenticated_user(
-        self,
-        codespace_name: str,
-    ) -> "Response[Codespace]":
-        url = f"/user/codespaces/{codespace_name}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Codespace,
-            error_models={
-                "500": BasicError,
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,

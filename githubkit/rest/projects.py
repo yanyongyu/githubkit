@@ -161,6 +161,72 @@ class ProjectsClient:
             },
         )
 
+    def get_card(
+        self,
+        card_id: int,
+    ) -> "Response[ProjectCard]":
+        url = f"/projects/columns/cards/{card_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ProjectCard,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_card(
+        self,
+        card_id: int,
+    ) -> "Response[ProjectCard]":
+        url = f"/projects/columns/cards/{card_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ProjectCard,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def delete_card(
+        self,
+        card_id: int,
+    ) -> "Response":
+        url = f"/projects/columns/cards/{card_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "403": ProjectsColumnsCardsCardIdDeleteResponse403,
+                "401": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_card(
+        self,
+        card_id: int,
+    ) -> "Response":
+        url = f"/projects/columns/cards/{card_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "403": ProjectsColumnsCardsCardIdDeleteResponse403,
+                "401": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def update_card(
         self,
         card_id: int,
@@ -216,72 +282,6 @@ class ProjectsClient:
                 "401": BasicError,
                 "404": BasicError,
                 "422": ValidationErrorSimple,
-            },
-        )
-
-    def delete_card(
-        self,
-        card_id: int,
-    ) -> "Response":
-        url = f"/projects/columns/cards/{card_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "403": ProjectsColumnsCardsCardIdDeleteResponse403,
-                "401": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete_card(
-        self,
-        card_id: int,
-    ) -> "Response":
-        url = f"/projects/columns/cards/{card_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "403": ProjectsColumnsCardsCardIdDeleteResponse403,
-                "401": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    def get_card(
-        self,
-        card_id: int,
-    ) -> "Response[ProjectCard]":
-        url = f"/projects/columns/cards/{card_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ProjectCard,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_card(
-        self,
-        card_id: int,
-    ) -> "Response[ProjectCard]":
-        url = f"/projects/columns/cards/{card_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ProjectCard,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-                "404": BasicError,
             },
         )
 
@@ -343,6 +343,70 @@ class ProjectsClient:
             },
         )
 
+    def get_column(
+        self,
+        column_id: int,
+    ) -> "Response[ProjectColumn]":
+        url = f"/projects/columns/{column_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ProjectColumn,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_get_column(
+        self,
+        column_id: int,
+    ) -> "Response[ProjectColumn]":
+        url = f"/projects/columns/{column_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ProjectColumn,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def delete_column(
+        self,
+        column_id: int,
+    ) -> "Response":
+        url = f"/projects/columns/{column_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_delete_column(
+        self,
+        column_id: int,
+    ) -> "Response":
+        url = f"/projects/columns/{column_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def update_column(
         self,
         column_id: int,
@@ -389,70 +453,6 @@ class ProjectsClient:
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    def delete_column(
-        self,
-        column_id: int,
-    ) -> "Response":
-        url = f"/projects/columns/{column_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_delete_column(
-        self,
-        column_id: int,
-    ) -> "Response":
-        url = f"/projects/columns/{column_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    def get_column(
-        self,
-        column_id: int,
-    ) -> "Response[ProjectColumn]":
-        url = f"/projects/columns/{column_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ProjectColumn,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_get_column(
-        self,
-        column_id: int,
-    ) -> "Response[ProjectColumn]":
-        url = f"/projects/columns/{column_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ProjectColumn,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
                 "401": BasicError,
             },
         )
@@ -617,6 +617,72 @@ class ProjectsClient:
             },
         )
 
+    def get(
+        self,
+        project_id: int,
+    ) -> "Response[Project]":
+        url = f"/projects/{project_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Project,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_get(
+        self,
+        project_id: int,
+    ) -> "Response[Project]":
+        url = f"/projects/{project_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Project,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def delete(
+        self,
+        project_id: int,
+    ) -> "Response":
+        url = f"/projects/{project_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "403": ProjectsProjectIdDeleteResponse403,
+                "401": BasicError,
+                "410": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete(
+        self,
+        project_id: int,
+    ) -> "Response":
+        url = f"/projects/{project_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "403": ProjectsProjectIdDeleteResponse403,
+                "401": BasicError,
+                "410": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def update(
         self,
         project_id: int,
@@ -688,72 +754,6 @@ class ProjectsClient:
                 "401": BasicError,
                 "410": BasicError,
                 "422": ValidationErrorSimple,
-            },
-        )
-
-    def delete(
-        self,
-        project_id: int,
-    ) -> "Response":
-        url = f"/projects/{project_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "403": ProjectsProjectIdDeleteResponse403,
-                "401": BasicError,
-                "410": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_delete(
-        self,
-        project_id: int,
-    ) -> "Response":
-        url = f"/projects/{project_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "403": ProjectsProjectIdDeleteResponse403,
-                "401": BasicError,
-                "410": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    def get(
-        self,
-        project_id: int,
-    ) -> "Response[Project]":
-        url = f"/projects/{project_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Project,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_get(
-        self,
-        project_id: int,
-    ) -> "Response[Project]":
-        url = f"/projects/{project_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Project,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
             },
         )
 

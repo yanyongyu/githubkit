@@ -83,36 +83,6 @@ class OauthAuthorizationsClient:
             },
         )
 
-    def delete_grant(
-        self,
-        grant_id: int,
-    ) -> "Response":
-        url = f"/applications/grants/{grant_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_delete_grant(
-        self,
-        grant_id: int,
-    ) -> "Response":
-        url = f"/applications/grants/{grant_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
     def get_grant(
         self,
         grant_id: int,
@@ -139,6 +109,36 @@ class OauthAuthorizationsClient:
             "GET",
             url,
             response_model=ApplicationGrant,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def delete_grant(
+        self,
+        grant_id: int,
+    ) -> "Response":
+        url = f"/applications/grants/{grant_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_delete_grant(
+        self,
+        grant_id: int,
+    ) -> "Response":
+        url = f"/applications/grants/{grant_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -399,6 +399,68 @@ class OauthAuthorizationsClient:
             },
         )
 
+    def get_authorization(
+        self,
+        authorization_id: int,
+    ) -> "Response[Authorization]":
+        url = f"/authorizations/{authorization_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Authorization,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_get_authorization(
+        self,
+        authorization_id: int,
+    ) -> "Response[Authorization]":
+        url = f"/authorizations/{authorization_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Authorization,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def delete_authorization(
+        self,
+        authorization_id: int,
+    ) -> "Response":
+        url = f"/authorizations/{authorization_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_delete_authorization(
+        self,
+        authorization_id: int,
+    ) -> "Response":
+        url = f"/authorizations/{authorization_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def update_authorization(
         self,
         authorization_id: int,
@@ -464,67 +526,5 @@ class OauthAuthorizationsClient:
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
-            },
-        )
-
-    def delete_authorization(
-        self,
-        authorization_id: int,
-    ) -> "Response":
-        url = f"/authorizations/{authorization_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_delete_authorization(
-        self,
-        authorization_id: int,
-    ) -> "Response":
-        url = f"/authorizations/{authorization_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    def get_authorization(
-        self,
-        authorization_id: int,
-    ) -> "Response[Authorization]":
-        url = f"/authorizations/{authorization_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=Authorization,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
-            },
-        )
-
-    async def async_get_authorization(
-        self,
-        authorization_id: int,
-    ) -> "Response[Authorization]":
-        url = f"/authorizations/{authorization_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=Authorization,
-            error_models={
-                "403": BasicError,
-                "401": BasicError,
             },
         )
