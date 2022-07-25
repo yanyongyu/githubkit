@@ -25,7 +25,7 @@
 
 _✨ The modern, all-batteries-included GitHub SDK for Python ✨_
 
-_✨ Support both sync and async calls, fully typed ✨_
+_✨ Support both **sync** and **async** calls, **fully typed** ✨_
 
 _✨ Always up to date, like octokit ✨_
 
