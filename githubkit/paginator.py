@@ -89,15 +89,3 @@ class Paginator(Generic[RT]):
         self._index = 0
         self._current_page += 1
         return self._cached_data
-
-
-def paginate(
-    request: Union[
-        Callable[CP, Response[List[RT]]], Callable[CP, Awaitable[Response[List[RT]]]]
-    ],
-    page: int = 1,
-    per_page: int = 100,
-    *args: CP.args,
-    **kwargs: CP.kwargs,
-) -> Paginator[RT]:
-    return Paginator(request, page, per_page, *args, **kwargs)
