@@ -7,8 +7,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .models import (
@@ -17,13 +15,18 @@ from .models import (
     BasicError,
     ScimUserList,
     ScimV2OrganizationsOrgUsersPostBody,
-    ScimV2OrganizationsOrgUsersPostBodyPropName,
     ScimV2OrganizationsOrgUsersScimUserIdPutBody,
     ScimV2OrganizationsOrgUsersScimUserIdPatchBody,
-    ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems,
-    ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName,
-    ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems,
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems,
+)
+from .types import (
+    ScimV2OrganizationsOrgUsersPostBodyType,
+    ScimV2OrganizationsOrgUsersPostBodyPropNameType,
+    ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
+    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
+    ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType,
+    ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
+    ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType,
+    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType,
 )
 
 if TYPE_CHECKING:
@@ -97,8 +100,8 @@ class ScimClient:
         *,
         user_name: str,
         display_name: Union[Unset, str] = UNSET,
-        name: ScimV2OrganizationsOrgUsersPostBodyPropName,
-        emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems],
+        name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
+        emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType],
         schemas: Union[Unset, List[str]] = UNSET,
         external_id: Union[Unset, str] = UNSET,
         groups: Union[Unset, List[str]] = UNSET,
@@ -139,8 +142,8 @@ class ScimClient:
         *,
         user_name: str,
         display_name: Union[Unset, str] = UNSET,
-        name: ScimV2OrganizationsOrgUsersPostBodyPropName,
-        emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems],
+        name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
+        emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType],
         schemas: Union[Unset, List[str]] = UNSET,
         external_id: Union[Unset, str] = UNSET,
         groups: Union[Unset, List[str]] = UNSET,
@@ -220,8 +223,8 @@ class ScimClient:
         groups: Union[Unset, List[str]] = UNSET,
         active: Union[Unset, bool] = UNSET,
         user_name: str,
-        name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName,
-        emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems],
+        name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
+        emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
@@ -260,8 +263,8 @@ class ScimClient:
         groups: Union[Unset, List[str]] = UNSET,
         active: Union[Unset, bool] = UNSET,
         user_name: str,
-        name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName,
-        emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems],
+        name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
+        emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
@@ -328,7 +331,7 @@ class ScimClient:
         *,
         schemas: Union[Unset, List[str]] = UNSET,
         operations: List[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
@@ -360,7 +363,7 @@ class ScimClient:
         *,
         schemas: Union[Unset, List[str]] = UNSET,
         operations: List[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"

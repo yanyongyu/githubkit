@@ -7,10 +7,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    OrgsOrgPatchBodyType,
+    OrgsOrgHooksPostBodyType,
+    OrgsOrgInvitationsPostBodyType,
+    OrgsOrgHooksHookIdPatchBodyType,
+    OrgsOrgHooksPostBodyPropConfigType,
+    UserMembershipsOrgsOrgPatchBodyType,
+    OrgsOrgHooksHookIdConfigPatchBodyType,
+    OrgsOrgMembershipsUsernamePutBodyType,
+    OrgsOrgHooksHookIdPatchBodyPropConfigType,
+    OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
+)
 from .models import (
     Team,
     OrgHook,
@@ -31,12 +41,10 @@ from .models import (
     CredentialAuthorization,
     OrgsOrgInvitationsPostBody,
     OrgsOrgHooksHookIdPatchBody,
-    OrgsOrgHooksPostBodyPropConfig,
     UserMembershipsOrgsOrgPatchBody,
     OrgsOrgHooksHookIdConfigPatchBody,
     OrgsOrgMembershipsUsernamePutBody,
     OrgsOrgInstallationsGetResponse200,
-    OrgsOrgHooksHookIdPatchBodyPropConfig,
     OrgsOrgOutsideCollaboratorsUsernamePutBody,
     OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -614,7 +622,7 @@ class OrgsClient:
         org: str,
         *,
         name: str,
-        config: OrgsOrgHooksPostBodyPropConfig,
+        config: OrgsOrgHooksPostBodyPropConfigType,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
     ) -> "Response[OrgHook]":
@@ -645,7 +653,7 @@ class OrgsClient:
         org: str,
         *,
         name: str,
-        config: OrgsOrgHooksPostBodyPropConfig,
+        config: OrgsOrgHooksPostBodyPropConfigType,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
     ) -> "Response[OrgHook]":
@@ -738,7 +746,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfig] = UNSET,
+        config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
         name: Union[Unset, str] = UNSET,
@@ -770,7 +778,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfig] = UNSET,
+        config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
         name: Union[Unset, str] = UNSET,

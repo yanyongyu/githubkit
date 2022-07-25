@@ -8,10 +8,12 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    ReposOwnerRepoCodeScanningSarifsPostBodyType,
+    ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+)
 from .models import (
     BasicError,
     CodeScanningAlert,

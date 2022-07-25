@@ -8,10 +8,71 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Any, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    UserReposPostBodyType,
+    OrgsOrgReposPostBodyType,
+    ReposOwnerRepoPatchBodyType,
+    ReposOwnerRepoKeysPostBodyType,
+    ReposOwnerRepoForksPostBodyType,
+    ReposOwnerRepoHooksPostBodyType,
+    ReposOwnerRepoPagesPostBodyType,
+    ReposOwnerRepoTopicsPutBodyType,
+    ReposOwnerRepoMergesPostBodyType,
+    ReposOwnerRepoReleasesPostBodyType,
+    ReposOwnerRepoTransferPostBodyType,
+    ReposOwnerRepoAutolinksPostBodyType,
+    ReposOwnerRepoDispatchesPostBodyType,
+    ReposOwnerRepoContentsPathPutBodyType,
+    ReposOwnerRepoDeploymentsPostBodyType,
+    ReposOwnerRepoStatusesShaPostBodyType,
+    ReposOwnerRepoHooksHookIdPatchBodyType,
+    ReposOwnerRepoMergeUpstreamPostBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyType,
+    ReposOwnerRepoTagsProtectionPostBodyType,
+    ReposOwnerRepoCommentsCommentIdPatchBodyType,
+    ReposOwnerRepoHooksHookIdConfigPatchBodyType,
+    ReposOwnerRepoReleasesReleaseIdPatchBodyType,
+    ReposOwnerRepoBranchesBranchRenamePostBodyType,
+    ReposOwnerRepoCollaboratorsUsernamePutBodyType,
+    ReposOwnerRepoContentsPathPutBodyPropAuthorType,
+    ReposOwnerRepoReleasesGenerateNotesPostBodyType,
+    ReposOwnerRepoHooksHookIdPatchBodyPropConfigType,
+    ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyType,
+    ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
+    ReposOwnerRepoContentsPathPutBodyPropCommitterType,
+    ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
+    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
+    ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
+    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
+    ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
+    ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
+    ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
+)
 from .models import (
     Tag,
     Hook,
@@ -101,44 +162,30 @@ from .models import (
     ReposOwnerRepoReleasesReleaseIdPatchBody,
     ReposOwnerRepoBranchesBranchRenamePostBody,
     ReposOwnerRepoCollaboratorsUsernamePutBody,
-    ReposOwnerRepoContentsPathPutBodyPropAuthor,
     ReposOwnerRepoReleasesGenerateNotesPostBody,
-    ReposOwnerRepoHooksHookIdPatchBodyPropConfig,
     ReposOwnerRepoReleasesAssetsAssetIdPatchBody,
     ReposOwnerRepoBranchesBranchProtectionPutBody,
     ReposOwnerRepoCommitsCommitShaCommentsPostBody,
-    ReposOwnerRepoContentsPathDeleteBodyPropAuthor,
-    ReposOwnerRepoContentsPathPutBodyPropCommitter,
     ReposOwnerRepoInvitationsInvitationIdPatchBody,
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysis,
     ReposTemplateOwnerTemplateRepoGeneratePostBody,
     ReposOwnerRepoEnvironmentsEnvironmentNamePutBody,
-    ReposOwnerRepoContentsPathDeleteBodyPropCommitter,
-    ReposOwnerRepoDispatchesPostBodyPropClientPayload,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-    ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0,
     EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
     ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
 )
 
 if TYPE_CHECKING:
@@ -415,7 +462,7 @@ class ReposClient:
         private: Union[Unset, bool] = False,
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
         security_and_analysis: Union[
-            Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysis, None]
+            Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
         ] = UNSET,
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
@@ -482,7 +529,7 @@ class ReposClient:
         private: Union[Unset, bool] = False,
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
         security_and_analysis: Union[
-            Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysis, None]
+            Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
         ] = UNSET,
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
@@ -871,15 +918,16 @@ class ReposClient:
         branch: str,
         *,
         required_status_checks: Union[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks, None
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
+            None,
         ],
         enforce_admins: Union[bool, None],
         required_pull_request_reviews: Union[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
             None,
         ],
         restrictions: Union[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions, None
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType, None
         ],
         required_linear_history: Union[Unset, bool] = UNSET,
         allow_force_pushes: Union[Unset, Union[bool, None]] = UNSET,
@@ -922,15 +970,16 @@ class ReposClient:
         branch: str,
         *,
         required_status_checks: Union[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks, None
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
+            None,
         ],
         enforce_admins: Union[bool, None],
         required_pull_request_reviews: Union[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
             None,
         ],
         restrictions: Union[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions, None
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType, None
         ],
         required_linear_history: Union[Unset, bool] = UNSET,
         allow_force_pushes: Union[Unset, Union[bool, None]] = UNSET,
@@ -1154,14 +1203,14 @@ class ReposClient:
         *,
         dismissal_restrictions: Union[
             Unset,
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
         ] = UNSET,
         dismiss_stale_reviews: Union[Unset, bool] = UNSET,
         require_code_owner_reviews: Union[Unset, bool] = UNSET,
         required_approving_review_count: Union[Unset, int] = UNSET,
         bypass_pull_request_allowances: Union[
             Unset,
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
@@ -1196,14 +1245,14 @@ class ReposClient:
         *,
         dismissal_restrictions: Union[
             Unset,
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
         ] = UNSET,
         dismiss_stale_reviews: Union[Unset, bool] = UNSET,
         require_code_owner_reviews: Union[Unset, bool] = UNSET,
         required_approving_review_count: Union[Unset, int] = UNSET,
         bypass_pull_request_allowances: Union[
             Unset,
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
@@ -1409,7 +1458,7 @@ class ReposClient:
         checks: Union[
             Unset,
             List[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ],
         ] = UNSET,
     ) -> "Response[StatusCheckPolicy]":
@@ -1447,7 +1496,7 @@ class ReposClient:
         checks: Union[
             Unset,
             List[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ],
         ] = UNSET,
     ) -> "Response[StatusCheckPolicy]":
@@ -1517,7 +1566,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1546,7 +1595,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1575,7 +1624,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1605,7 +1654,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1635,7 +1684,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1664,7 +1713,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1787,7 +1836,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1815,7 +1864,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1843,7 +1892,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1871,7 +1920,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1899,7 +1948,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1927,7 +1976,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -1989,7 +2038,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2017,7 +2066,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2045,7 +2094,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2073,7 +2122,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2101,7 +2150,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2129,7 +2178,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2191,7 +2240,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2219,7 +2268,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2247,7 +2296,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2275,7 +2324,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2303,7 +2352,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -2331,7 +2380,7 @@ class ReposClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
@@ -3350,8 +3399,10 @@ class ReposClient:
         content: str,
         sha: Union[Unset, str] = UNSET,
         branch: Union[Unset, str] = UNSET,
-        committer: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropCommitter] = UNSET,
-        author: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropAuthor] = UNSET,
+        committer: Union[
+            Unset, ReposOwnerRepoContentsPathPutBodyPropCommitterType
+        ] = UNSET,
+        author: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
@@ -3388,8 +3439,10 @@ class ReposClient:
         content: str,
         sha: Union[Unset, str] = UNSET,
         branch: Union[Unset, str] = UNSET,
-        committer: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropCommitter] = UNSET,
-        author: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropAuthor] = UNSET,
+        committer: Union[
+            Unset, ReposOwnerRepoContentsPathPutBodyPropCommitterType
+        ] = UNSET,
+        author: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
@@ -3426,9 +3479,11 @@ class ReposClient:
         sha: str,
         branch: Union[Unset, str] = UNSET,
         committer: Union[
-            Unset, ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+            Unset, ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
-        author: Union[Unset, ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = UNSET,
+        author: Union[
+            Unset, ReposOwnerRepoContentsPathDeleteBodyPropAuthorType
+        ] = UNSET,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
@@ -3465,9 +3520,11 @@ class ReposClient:
         sha: str,
         branch: Union[Unset, str] = UNSET,
         committer: Union[
-            Unset, ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+            Unset, ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
-        author: Union[Unset, ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = UNSET,
+        author: Union[
+            Unset, ReposOwnerRepoContentsPathDeleteBodyPropAuthorType
+        ] = UNSET,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
@@ -3616,7 +3673,7 @@ class ReposClient:
         auto_merge: Union[Unset, bool] = True,
         required_contexts: Union[Unset, List[str]] = UNSET,
         payload: Union[
-            Unset, Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]
+            Unset, Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
         ] = UNSET,
         environment: Union[Unset, str] = "production",
         description: Union[Unset, Union[str, None]] = "",
@@ -3659,7 +3716,7 @@ class ReposClient:
         auto_merge: Union[Unset, bool] = True,
         required_contexts: Union[Unset, List[str]] = UNSET,
         payload: Union[
-            Unset, Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]
+            Unset, Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
         ] = UNSET,
         environment: Union[Unset, str] = "production",
         description: Union[Unset, Union[str, None]] = "",
@@ -3945,7 +4002,7 @@ class ReposClient:
         *,
         event_type: str,
         client_payload: Union[
-            Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayload
+            Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
@@ -3973,7 +4030,7 @@ class ReposClient:
         *,
         event_type: str,
         client_payload: Union[
-            Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayload
+            Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
@@ -4071,7 +4128,7 @@ class ReposClient:
         environment_name: str,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None]
+            Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
@@ -4095,7 +4152,7 @@ class ReposClient:
         environment_name: str,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None]
+            Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
@@ -4199,7 +4256,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoForksPostBody, None]] = UNSET,
+        body: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
 
@@ -4223,7 +4280,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoForksPostBody, None]] = UNSET,
+        body: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
 
@@ -4295,7 +4352,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoHooksPostBody, None]] = UNSET,
+        body: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
 
@@ -4318,7 +4375,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoHooksPostBody, None]] = UNSET,
+        body: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
 
@@ -4408,7 +4465,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfig] = UNSET,
+        config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         add_events: Union[Unset, List[str]] = UNSET,
         remove_events: Union[Unset, List[str]] = UNSET,
@@ -4443,7 +4500,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfig] = UNSET,
+        config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         add_events: Union[Unset, List[str]] = UNSET,
         remove_events: Union[Unset, List[str]] = UNSET,
@@ -5291,7 +5348,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoPagesPostBody, None, Any],
+        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any],
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -5313,7 +5370,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoPagesPostBody, None, Any],
+        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any],
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 

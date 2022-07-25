@@ -8,19 +8,20 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, List, Union
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .models import (
-    Metadata,
     Snapshot,
     BasicError,
-    SnapshotPropJob,
-    SnapshotPropDetector,
-    SnapshotPropManifests,
     DependencyGraphDiffItems,
     ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+)
+from .types import (
+    MetadataType,
+    SnapshotType,
+    SnapshotPropJobType,
+    SnapshotPropDetectorType,
+    SnapshotPropManifestsType,
 )
 
 if TYPE_CHECKING:
@@ -86,12 +87,12 @@ class DependencyGraphClient:
         repo: str,
         *,
         version: int,
-        job: SnapshotPropJob,
+        job: SnapshotPropJobType,
         sha: str,
         ref: str,
-        detector: SnapshotPropDetector,
-        metadata: Union[Unset, Metadata] = UNSET,
-        manifests: Union[Unset, SnapshotPropManifests] = UNSET,
+        detector: SnapshotPropDetectorType,
+        metadata: Union[Unset, MetadataType] = UNSET,
+        manifests: Union[Unset, SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
@@ -122,12 +123,12 @@ class DependencyGraphClient:
         repo: str,
         *,
         version: int,
-        job: SnapshotPropJob,
+        job: SnapshotPropJobType,
         sha: str,
         ref: str,
-        detector: SnapshotPropDetector,
-        metadata: Union[Unset, Metadata] = UNSET,
-        manifests: Union[Unset, SnapshotPropManifests] = UNSET,
+        detector: SnapshotPropDetectorType,
+        metadata: Union[Unset, MetadataType] = UNSET,
+        manifests: Union[Unset, SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"

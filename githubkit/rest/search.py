@@ -7,8 +7,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .models import (

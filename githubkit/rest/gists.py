@@ -8,10 +8,15 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Any, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    GistsPostBodyType,
+    GistsGistIdPatchBodyType,
+    GistsPostBodyPropFilesType,
+    GistsGistIdCommentsPostBodyType,
+    GistsGistIdCommentsCommentIdPatchBodyType,
+)
 from .models import (
     BaseGist,
     BasicError,
@@ -21,7 +26,6 @@ from .models import (
     GistsPostBody,
     ValidationError,
     GistsGistIdPatchBody,
-    GistsPostBodyPropFiles,
     GistsGistIdGetResponse403,
     GistsGistIdCommentsPostBody,
     GistsGistIdStarGetResponse404,
@@ -89,7 +93,7 @@ class GistsClient:
         self,
         *,
         description: Union[Unset, str] = UNSET,
-        files: GistsPostBodyPropFiles,
+        files: GistsPostBodyPropFilesType,
         public: Union[Unset, Union[bool, Literal["true", "false"]]] = UNSET,
     ) -> "Response[GistSimple]":
         url = "/gists"
@@ -118,7 +122,7 @@ class GistsClient:
         self,
         *,
         description: Union[Unset, str] = UNSET,
-        files: GistsPostBodyPropFiles,
+        files: GistsPostBodyPropFilesType,
         public: Union[Unset, Union[bool, Literal["true", "false"]]] = UNSET,
     ) -> "Response[GistSimple]":
         url = "/gists"
@@ -309,7 +313,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        body: Union[GistsGistIdPatchBody, None, Any, Any],
+        body: Union[GistsGistIdPatchBodyType, None, Any, Any],
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
@@ -330,7 +334,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        body: Union[GistsGistIdPatchBody, None, Any, Any],
+        body: Union[GistsGistIdPatchBodyType, None, Any, Any],
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 

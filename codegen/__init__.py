@@ -37,11 +37,19 @@ def build_templates(data: GeneratorData, config: Config):
 
     # build models
     logger.info("Building models...")
-    model_template = env.get_template("model/model.py.jinja")
-    model_path = Path(config.model_output)
-    model_path.parent.mkdir(parents=True, exist_ok=True)
-    model_path.write_text(model_template.render(data=data))
+    models_template = env.get_template("models/models.py.jinja")
+    models_path = Path(config.models_output)
+    models_path.parent.mkdir(parents=True, exist_ok=True)
+    models_path.write_text(models_template.render(data=data))
     logger.info("Successfully built models!")
+
+    # build types
+    logger.info("Building types...")
+    types_template = env.get_template("types/types.py.jinja")
+    types_path = Path(config.types_output)
+    types_path.parent.mkdir(parents=True, exist_ok=True)
+    types_path.write_text(types_template.render(data=data))
+    logger.info("Successfully built types!")
 
     # build endpoints
     logger.info("Building endpoints...")

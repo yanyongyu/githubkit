@@ -7,10 +7,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
 from .models import (
     BasicError,
     SecretScanningAlert,

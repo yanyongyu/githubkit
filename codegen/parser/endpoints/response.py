@@ -11,9 +11,9 @@ class ResponseData(BaseModel):
     description: str
     response_schema: Optional[SchemaData] = None
 
-    def get_imports(self) -> Set[str]:
+    def get_using_imports(self) -> Set[str]:
         return (
-            self.response_schema.get_param_imports() if self.response_schema else set()
+            self.response_schema.get_using_imports() if self.response_schema else set()
         )
 
 

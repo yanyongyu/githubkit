@@ -7,10 +7,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    UserMigrationsPostBodyType,
+    OrgsOrgMigrationsPostBodyType,
+    ReposOwnerRepoImportPutBodyType,
+    ReposOwnerRepoImportPatchBodyType,
+    ReposOwnerRepoImportLfsPatchBodyType,
+    ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
+)
 from .models import (
     Import,
     Migration,
@@ -475,7 +481,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoImportPatchBody, None]] = UNSET,
+        body: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
@@ -493,7 +499,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoImportPatchBody, None]] = UNSET,
+        body: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 

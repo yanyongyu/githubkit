@@ -8,10 +8,18 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    AppPermissionsType,
+    AppHookConfigPatchBodyType,
+    ApplicationsClientIdTokenPostBodyType,
+    ApplicationsClientIdTokenPatchBodyType,
+    ApplicationsClientIdGrantDeleteBodyType,
+    ApplicationsClientIdTokenDeleteBodyType,
+    ApplicationsClientIdTokenScopedPostBodyType,
+    AppInstallationsInstallationIdAccessTokensPostBodyType,
+)
 from .models import (
     BasicError,
     Integration,
@@ -19,7 +27,6 @@ from .models import (
     Installation,
     Authorization,
     WebhookConfig,
-    AppPermissions,
     ValidationError,
     HookDeliveryItem,
     InstallationToken,
@@ -398,7 +405,7 @@ class AppsClient:
         *,
         repositories: Union[Unset, List[str]] = UNSET,
         repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissions] = UNSET,
+        permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
@@ -429,7 +436,7 @@ class AppsClient:
         *,
         repositories: Union[Unset, List[str]] = UNSET,
         repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissions] = UNSET,
+        permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
@@ -709,7 +716,7 @@ class AppsClient:
         target_id: Union[Unset, int] = UNSET,
         repositories: Union[Unset, List[str]] = UNSET,
         repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissions] = UNSET,
+        permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 
@@ -746,7 +753,7 @@ class AppsClient:
         target_id: Union[Unset, int] = UNSET,
         repositories: Union[Unset, List[str]] = UNSET,
         repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissions] = UNSET,
+        permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 

@@ -7,8 +7,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .models import (
@@ -26,10 +24,18 @@ from .models import (
     ReposOwnerRepoGitTreesPostBody,
     ReposOwnerRepoGitCommitsPostBody,
     ReposOwnerRepoGitRefsRefPatchBody,
-    ReposOwnerRepoGitTagsPostBodyPropTagger,
-    ReposOwnerRepoGitCommitsPostBodyPropAuthor,
-    ReposOwnerRepoGitTreesPostBodyPropTreeItems,
-    ReposOwnerRepoGitCommitsPostBodyPropCommitter,
+)
+from .types import (
+    ReposOwnerRepoGitRefsPostBodyType,
+    ReposOwnerRepoGitTagsPostBodyType,
+    ReposOwnerRepoGitBlobsPostBodyType,
+    ReposOwnerRepoGitTreesPostBodyType,
+    ReposOwnerRepoGitCommitsPostBodyType,
+    ReposOwnerRepoGitRefsRefPatchBodyType,
+    ReposOwnerRepoGitTagsPostBodyPropTaggerType,
+    ReposOwnerRepoGitCommitsPostBodyPropAuthorType,
+    ReposOwnerRepoGitTreesPostBodyPropTreeItemsType,
+    ReposOwnerRepoGitCommitsPostBodyPropCommitterType,
 )
 
 if TYPE_CHECKING:
@@ -147,8 +153,10 @@ class GitClient:
         message: str,
         tree: str,
         parents: Union[Unset, List[str]] = UNSET,
-        author: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropAuthor] = UNSET,
-        committer: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropCommitter] = UNSET,
+        author: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
+        committer: Union[
+            Unset, ReposOwnerRepoGitCommitsPostBodyPropCommitterType
+        ] = UNSET,
         signature: Union[Unset, str] = UNSET,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
@@ -183,8 +191,10 @@ class GitClient:
         message: str,
         tree: str,
         parents: Union[Unset, List[str]] = UNSET,
-        author: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropAuthor] = UNSET,
-        committer: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropCommitter] = UNSET,
+        author: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
+        committer: Union[
+            Unset, ReposOwnerRepoGitCommitsPostBodyPropCommitterType
+        ] = UNSET,
         signature: Union[Unset, str] = UNSET,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
@@ -478,7 +488,7 @@ class GitClient:
         message: str,
         object_: str,
         type: Literal["commit", "tree", "blob"],
-        tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTagger] = UNSET,
+        tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
@@ -511,7 +521,7 @@ class GitClient:
         message: str,
         object_: str,
         type: Literal["commit", "tree", "blob"],
-        tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTagger] = UNSET,
+        tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
@@ -574,7 +584,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItems],
+        tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Union[Unset, str] = UNSET,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
@@ -603,7 +613,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItems],
+        tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Union[Unset, str] = UNSET,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"

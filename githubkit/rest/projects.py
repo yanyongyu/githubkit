@@ -7,10 +7,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    UserProjectsPostBodyType,
+    OrgsOrgProjectsPostBodyType,
+    ProjectsProjectIdPatchBodyType,
+    ReposOwnerRepoProjectsPostBodyType,
+    ProjectsColumnsColumnIdPatchBodyType,
+    ProjectsProjectIdColumnsPostBodyType,
+    ProjectsColumnsCardsCardIdPatchBodyType,
+    ProjectsColumnsColumnIdMovesPostBodyType,
+    ProjectsColumnsCardsCardIdMovesPostBodyType,
+    ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
+    ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
+    ProjectsProjectIdCollaboratorsUsernamePutBodyType,
+)
 from .models import (
     Project,
     BasicError,
@@ -518,8 +530,8 @@ class ProjectsClient:
         column_id: int,
         *,
         body: Union[
-            ProjectsColumnsColumnIdCardsPostBodyOneof0,
-            ProjectsColumnsColumnIdCardsPostBodyOneof1,
+            ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
+            ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
@@ -544,8 +556,8 @@ class ProjectsClient:
         column_id: int,
         *,
         body: Union[
-            ProjectsColumnsColumnIdCardsPostBodyOneof0,
-            ProjectsColumnsColumnIdCardsPostBodyOneof1,
+            ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
+            ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
@@ -819,7 +831,7 @@ class ProjectsClient:
         username: str,
         *,
         body: Union[
-            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBody, None]
+            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
@@ -844,7 +856,7 @@ class ProjectsClient:
         username: str,
         *,
         body: Union[
-            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBody, None]
+            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"

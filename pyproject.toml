@@ -46,7 +46,8 @@ reportPrivateImportUsage = false
 
 [tool.codegen]
 schema-source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
-model-output = "githubkit/rest/models.py"
+models-output = "githubkit/rest/models.py"
+types-output = "githubkit/rest/types.py"
 client-output = "githubkit/rest/"
 namespace-output = "githubkit/rest/__init__.py"
 

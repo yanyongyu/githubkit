@@ -8,6 +8,7 @@ class Config(BaseModel):
     class_overrides: Dict[str, str] = {}
     field_overrides: Dict[str, str] = {}
 
-    model_output: str
+    models_output: str
+    types_output: str
     client_output: str
     namespace_output: str

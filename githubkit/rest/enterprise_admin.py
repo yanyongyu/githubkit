@@ -7,10 +7,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    SelectedActionsType,
+    ScimV2EnterprisesEnterpriseUsersPostBodyType,
+    ScimV2EnterprisesEnterpriseGroupsPostBodyType,
+    EnterprisesEnterpriseActionsPermissionsPutBodyType,
+    EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
+    ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType,
+    ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyType,
+    ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyType,
+    ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyType,
+    ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyType,
+    ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItemsType,
+    ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType,
+    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
+    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
+    ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType,
+    ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType,
+    EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+    ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItemsType,
+    ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType,
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItemsType,
+    ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType,
+    ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType,
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
+)
 from .models import (
     Runner,
     BasicError,
@@ -29,30 +54,20 @@ from .models import (
     ScimV2EnterprisesEnterpriseGroupsPostBody,
     EnterprisesEnterpriseActionsPermissionsPutBody,
     EnterprisesEnterpriseActionsRunnerGroupsPostBody,
-    ScimV2EnterprisesEnterpriseUsersPostBodyPropName,
     EnterprisesEnterpriseActionsRunnersGetResponse200,
     ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody,
     ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody,
     ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody,
     ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody,
     EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
-    ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems,
-    ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody,
-    ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems,
-    ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName,
     EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody,
     EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-    ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems,
-    ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems,
     EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
     EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
-    ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems,
-    ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems,
-    ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems,
     EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
     EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
     EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -1322,7 +1337,7 @@ class EnterpriseAdminClient:
         schemas: List[str],
         display_name: str,
         members: Union[
-            Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems]
+            Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
@@ -1349,7 +1364,7 @@ class EnterpriseAdminClient:
         schemas: List[str],
         display_name: str,
         members: Union[
-            Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems]
+            Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
@@ -1416,7 +1431,9 @@ class EnterpriseAdminClient:
         display_name: str,
         members: Union[
             Unset,
-            List[ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems],
+            List[
+                ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItemsType
+            ],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
@@ -1445,7 +1462,9 @@ class EnterpriseAdminClient:
         display_name: str,
         members: Union[
             Unset,
-            List[ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems],
+            List[
+                ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItemsType
+            ],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
@@ -1496,7 +1515,7 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         operations: List[
-            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
+            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
@@ -1522,7 +1541,7 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         operations: List[
-            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
+            ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
@@ -1591,10 +1610,10 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         user_name: str,
-        name: ScimV2EnterprisesEnterpriseUsersPostBodyPropName,
-        emails: List[ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems],
+        name: ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType,
+        emails: List[ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItemsType],
         groups: Union[
-            Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems]
+            Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users"
@@ -1622,10 +1641,10 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         user_name: str,
-        name: ScimV2EnterprisesEnterpriseUsersPostBodyPropName,
-        emails: List[ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems],
+        name: ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType,
+        emails: List[ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItemsType],
         groups: Union[
-            Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems]
+            Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users"
@@ -1680,11 +1699,13 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         user_name: str,
-        name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName,
-        emails: List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems],
+        name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType,
+        emails: List[
+            ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItemsType
+        ],
         groups: Union[
             Unset,
-            List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems],
+            List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
@@ -1713,11 +1734,13 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         user_name: str,
-        name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName,
-        emails: List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems],
+        name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType,
+        emails: List[
+            ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItemsType
+        ],
         groups: Union[
             Unset,
-            List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems],
+            List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
@@ -1770,7 +1793,7 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         operations: List[
-            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
+            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
@@ -1796,7 +1819,7 @@ class EnterpriseAdminClient:
         *,
         schemas: List[str],
         operations: List[
-            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
+            ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"

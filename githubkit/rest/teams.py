@@ -7,10 +7,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    OrgsOrgTeamsPostBodyType,
+    TeamsTeamIdPatchBodyType,
+    OrgsOrgTeamsTeamSlugPatchBodyType,
+    TeamsTeamIdDiscussionsPostBodyType,
+    TeamsTeamIdReposOwnerRepoPutBodyType,
+    TeamsTeamIdProjectsProjectIdPutBodyType,
+    TeamsTeamIdMembershipsUsernamePutBodyType,
+    OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
+    OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
+    TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
+    OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
+    OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
+    OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType,
+    TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
+    OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
+    TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType,
+    TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
+    OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
+    TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+)
 from .models import (
     Team,
     TeamFull,
@@ -46,9 +68,7 @@ from .models import (
     OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
     TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody,
     OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
-    TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems,
     OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
-    OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems,
     TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
     OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
 )
@@ -1185,7 +1205,7 @@ class TeamsClient:
         project_id: int,
         *,
         body: Union[
-            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None]
+            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
@@ -1208,7 +1228,7 @@ class TeamsClient:
         project_id: int,
         *,
         body: Union[
-            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None]
+            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
@@ -1435,7 +1455,7 @@ class TeamsClient:
         *,
         groups: Union[
             Unset,
-            List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems],
+            List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[GroupMapping]":
         url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
@@ -1460,7 +1480,7 @@ class TeamsClient:
         *,
         groups: Union[
             Unset,
-            List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems],
+            List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[GroupMapping]":
         url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
@@ -2658,7 +2678,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems],
+        groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Union[Unset, str] = UNSET,
     ) -> "Response[GroupMapping]":
         url = f"/teams/{team_id}/team-sync/group-mappings"
@@ -2685,7 +2705,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems],
+        groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Union[Unset, str] = UNSET,
     ) -> "Response[GroupMapping]":
         url = f"/teams/{team_id}/team-sync/group-mappings"

@@ -8,10 +8,29 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    ReposOwnerRepoIssuesPostBodyType,
+    ReposOwnerRepoLabelsPostBodyType,
+    ReposOwnerRepoMilestonesPostBodyType,
+    ReposOwnerRepoLabelsNamePatchBodyType,
+    ReposOwnerRepoIssuesIssueNumberPatchBodyType,
+    ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
+    ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
+    ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
+    ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
+    ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
+    ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
+    ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
+    ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
+    ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
+    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
+    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
+    ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
+    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
+    ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
+)
 from .models import (
     Issue,
     Label,
@@ -55,7 +74,6 @@ from .models import (
     ReposOwnerRepoIssuesIssueNumberCommentsPostBody,
     ReposOwnerRepoIssuesIssueNumberAssigneesPostBody,
     ReposOwnerRepoMilestonesMilestoneNumberPatchBody,
-    ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1,
     ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody,
     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
@@ -64,7 +82,6 @@ from .models import (
     EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
-    ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1,
 )
 
 if TYPE_CHECKING:
@@ -420,7 +437,8 @@ class IssuesClient:
         assignee: Union[Unset, Union[str, None]] = UNSET,
         milestone: Union[Unset, Union[None, str, int, str, int]] = UNSET,
         labels: Union[
-            Unset, List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+            Unset,
+            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]],
         ] = UNSET,
         assignees: Union[Unset, List[str]] = UNSET,
     ) -> "Response[Issue]":
@@ -461,7 +479,8 @@ class IssuesClient:
         assignee: Union[Unset, Union[str, None]] = UNSET,
         milestone: Union[Unset, Union[None, str, int, str, int]] = UNSET,
         labels: Union[
-            Unset, List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+            Unset,
+            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]],
         ] = UNSET,
         assignees: Union[Unset, List[str]] = UNSET,
     ) -> "Response[Issue]":
@@ -803,7 +822,8 @@ class IssuesClient:
             Unset,
             List[
                 Union[
-                    str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
                 ]
             ],
         ] = UNSET,
@@ -852,7 +872,8 @@ class IssuesClient:
             Unset,
             List[
                 Union[
-                    str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1
+                    str,
+                    ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
                 ]
             ],
         ] = UNSET,
@@ -1237,10 +1258,10 @@ class IssuesClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
+                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
                 List[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
+                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
+                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
             ],
         ] = UNSET,
@@ -1269,10 +1290,10 @@ class IssuesClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
+                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
                 List[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
+                ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
+                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
             ],
         ] = UNSET,
@@ -1301,10 +1322,10 @@ class IssuesClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
+                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 List[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
+                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
+                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
             ],
         ] = UNSET,
@@ -1333,10 +1354,10 @@ class IssuesClient:
         body: Union[
             Unset,
             Union[
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
+                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 List[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
+                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
+                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
             ],
         ] = UNSET,
@@ -1433,7 +1454,7 @@ class IssuesClient:
         issue_number: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBody, None]
+            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
@@ -1459,7 +1480,7 @@ class IssuesClient:
         issue_number: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBody, None]
+            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"

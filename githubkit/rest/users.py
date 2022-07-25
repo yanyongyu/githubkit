@@ -7,10 +7,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    UserPatchBodyType,
+    UserKeysPostBodyType,
+    UserGpgKeysPostBodyType,
+    UserEmailsPostBodyOneof0Type,
+    UserEmailsDeleteBodyOneof0Type,
+    UserEmailVisibilityPatchBodyType,
+)
 from .models import (
     Key,
     Email,
@@ -382,7 +388,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
-        body: Union[Unset, Union[UserEmailsPostBodyOneof0, List[str], str]] = UNSET,
+        body: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
@@ -404,7 +410,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        body: Union[Unset, Union[UserEmailsPostBodyOneof0, List[str], str]] = UNSET,
+        body: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
@@ -426,7 +432,9 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
-        body: Union[Unset, Union[UserEmailsDeleteBodyOneof0, List[str], str]] = UNSET,
+        body: Union[
+            Unset, Union[UserEmailsDeleteBodyOneof0Type, List[str], str]
+        ] = UNSET,
     ) -> "Response":
         url = "/user/emails"
 
@@ -447,7 +455,9 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        body: Union[Unset, Union[UserEmailsDeleteBodyOneof0, List[str], str]] = UNSET,
+        body: Union[
+            Unset, Union[UserEmailsDeleteBodyOneof0Type, List[str], str]
+        ] = UNSET,
     ) -> "Response":
         url = "/user/emails"
 

@@ -7,10 +7,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, Any, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    ReposOwnerRepoCheckSuitesPostBodyType,
+    ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
+    ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
+)
 from .models import (
     CheckRun,
     BasicError,
@@ -24,7 +27,6 @@ from .models import (
     ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201,
     ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
     ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201,
-    ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
 )
 
 if TYPE_CHECKING:
@@ -272,7 +274,7 @@ class ChecksClient:
         auto_trigger_checks: Union[
             Unset,
             List[
-                ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems
+                ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ],
         ] = UNSET,
     ) -> "Response[CheckSuitePreference]":
@@ -299,7 +301,7 @@ class ChecksClient:
         auto_trigger_checks: Union[
             Unset,
             List[
-                ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems
+                ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ],
         ] = UNSET,
     ) -> "Response[CheckSuitePreference]":

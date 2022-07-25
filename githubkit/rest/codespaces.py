@@ -7,10 +7,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    UserCodespacesPostBodyOneof0Type,
+    UserCodespacesPostBodyOneof1Type,
+    ReposOwnerRepoCodespacesPostBodyType,
+    UserCodespacesCodespaceNamePatchBodyType,
+    UserCodespacesSecretsSecretNamePutBodyType,
+    ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
+    ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
+    UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
+)
 from .models import (
     Codespace,
     BasicError,
@@ -243,7 +251,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoCodespacesPostBody, None],
+        body: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
@@ -266,7 +274,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoCodespacesPostBody, None],
+        body: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
@@ -624,7 +632,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        body: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None],
+        body: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
@@ -648,7 +656,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        body: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None],
+        body: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
@@ -723,7 +731,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
-        body: Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1],
+        body: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 
@@ -744,7 +752,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        body: Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1],
+        body: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 

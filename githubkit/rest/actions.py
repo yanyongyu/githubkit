@@ -8,10 +8,36 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    SelectedActionsType,
+    OptOutOidcCustomSubType,
+    OrgsOrgActionsPermissionsPutBodyType,
+    ActionsWorkflowAccessToRepositoryType,
+    OrgsOrgActionsRunnerGroupsPostBodyType,
+    ActionsSetDefaultWorkflowPermissionsType,
+    OrgsOrgActionsSecretsSecretNamePutBodyType,
+    ReposOwnerRepoActionsPermissionsPutBodyType,
+    ActionsOidcCustomIssuerPolicyForEnterpriseType,
+    OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
+    OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
+    ReposOwnerRepoActionsJobsJobIdRerunPostBodyType,
+    ReposOwnerRepoActionsRunsRunIdRerunPostBodyType,
+    OrgsOrgActionsPermissionsRepositoriesPutBodyType,
+    ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
+    OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+    ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
+    OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
+    ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
+    OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
+    ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
+    OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+    ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
+    ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+)
 from .models import (
     Job,
     Runner,
@@ -83,7 +109,6 @@ from .models import (
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
     OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-    ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
     ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
     RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
@@ -2147,7 +2172,7 @@ class ActionsClient:
         job_id: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None]
+            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
@@ -2171,7 +2196,7 @@ class ActionsClient:
         job_id: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None]
+            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
@@ -3585,7 +3610,7 @@ class ActionsClient:
         run_id: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None]
+            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
@@ -3606,7 +3631,7 @@ class ActionsClient:
         run_id: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None]
+            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
@@ -3627,7 +3652,8 @@ class ActionsClient:
         run_id: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None]
+            Unset,
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
@@ -3648,7 +3674,8 @@ class ActionsClient:
         run_id: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None]
+            Unset,
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
@@ -3966,7 +3993,8 @@ class ActionsClient:
         *,
         ref: str,
         inputs: Union[
-            Unset, ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+            Unset,
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
         ] = UNSET,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
@@ -3992,7 +4020,8 @@ class ActionsClient:
         *,
         ref: str,
         inputs: Union[
-            Unset, ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+            Unset,
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
         ] = UNSET,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"

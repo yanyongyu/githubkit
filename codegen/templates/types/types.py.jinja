@@ -6,18 +6,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing_extensions import TypedDict, NotRequired
+
 {% for import_ in data.get_imports() %}
 {{ import_ }}
 {% endfor %}
 
-
-class GitHubModel(BaseModel, arbitrary_types_allowed=True):
-    ...
-
 {# model #}
 {% for model in data.models %}
 
-class {{ model.class_name }}(GitHubModel{{ ", extra=Extra.allow" if model.allow_extra else "" }}):
+class {{ model.class_name }}Type(TypedDict):
     """{{ model.title or model.class_name | wordwrap(80) }}
     {% if model.description %}
 
@@ -33,17 +31,13 @@ class {{ model.class_name }}(GitHubModel{{ ", extra=Extra.allow" if model.allow_
     """
 
     {% for prop in model.properties %}
-    {{ prop.get_attr_string(wrap_model=True) }}
+    {{ prop.get_type_defination() }}
     {% endfor %}
 
 {% endfor %}
 
-{% for model in data.models %}
-{{ model.class_name }}.update_forward_refs()
-{% endfor %}
-
 __all__ = [
   {% for model in data.models %}
-  "{{ model.class_name }}",
+  "{{ model.class_name }}Type",
   {% endfor %}
 ]

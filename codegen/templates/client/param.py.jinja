@@ -1,30 +1,30 @@
 
 {% macro path_params(endpoint) %}
 {% for path_param in endpoint.path_params %}
-{{ path_param.get_param_string() }},
+{{ path_param.get_param_defination() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro query_params(endpoint) %}
 {% for query_param in endpoint.query_params %}
-{{ query_param.get_param_string() }},
+{{ query_param.get_param_defination() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro header_params(endpoint) %}
 {% for header_param in endpoint.header_params %}
-{{ header_param.get_param_string() }},
+{{ header_param.get_param_defination() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro cookie_params(endpoint) %}
 {% for cookie_param in endpoint.cookie_params %}
-{{ cookie_param.get_param_string() }},
+{{ cookie_param.get_param_defination() }},
 {% endfor %}
 {% endmacro %}
 
 {% macro body_params(endpoint) %}
-{% for prop in endpoint.request_body.get_params_string() %}
+{% for prop in endpoint.request_body.get_params_defination() %}
 {{ prop }},
 {% endfor %}
 {% endmacro %}

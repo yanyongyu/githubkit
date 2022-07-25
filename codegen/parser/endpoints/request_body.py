@@ -17,7 +17,7 @@ class RequestBodyData(BaseModel):
     def is_model(self) -> bool:
         return isinstance(self.body_schema, ModelSchema)
 
-    def get_params_string(self) -> List[str]:
+    def get_params_defination(self) -> List[str]:
         if not isinstance(self.body_schema, ModelSchema):
             prop = Property(
                 name="body",
@@ -25,11 +25,11 @@ class RequestBodyData(BaseModel):
                 required=self.required,
                 schema_data=self.body_schema,
             )
-            return [prop.get_param_string()]
+            return [prop.get_param_defination()]
 
-        return [prop.get_param_string() for prop in self.body_schema.properties]
+        return [prop.get_param_defination() for prop in self.body_schema.properties]
 
-    def get_imports(self) -> Set[str]:
+    def get_param_imports(self) -> Set[str]:
         imports = set()
         if isinstance(self.body_schema, ModelSchema):
             imports.update(self.body_schema.get_param_imports())
@@ -38,6 +38,9 @@ class RequestBodyData(BaseModel):
         else:
             imports.update(self.body_schema.get_param_imports())
         return imports
+
+    def get_using_imports(self) -> Set[str]:
+        return self.body_schema.get_using_imports()
 
 
 def build_request_body(source: Source, prefix: str) -> RequestBodyData:

@@ -8,10 +8,23 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Any, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    ReposOwnerRepoPullsPostBodyType,
+    ReposOwnerRepoPullsPullNumberPatchBodyType,
+    ReposOwnerRepoPullsPullNumberMergePutBodyType,
+    ReposOwnerRepoPullsPullNumberReviewsPostBodyType,
+    ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
+    ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+    ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType,
+    ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
+    ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
+    ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
+    ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
+    ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType,
+    ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
+)
 from .models import (
     Commit,
     DiffEntry,
@@ -39,7 +52,6 @@ from .models import (
     ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
     ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody,
-    ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
 )
 
@@ -799,7 +811,7 @@ class PullsClient:
         pull_number: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBody, None]
+            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
@@ -827,7 +839,7 @@ class PullsClient:
         pull_number: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBody, None]
+            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
@@ -1046,7 +1058,8 @@ class PullsClient:
         body: Union[Unset, str] = UNSET,
         event: Union[Unset, Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
         comments: Union[
-            Unset, List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
+            Unset,
+            List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType],
         ] = UNSET,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
@@ -1081,7 +1094,8 @@ class PullsClient:
         body: Union[Unset, str] = UNSET,
         event: Union[Unset, Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
         comments: Union[
-            Unset, List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
+            Unset,
+            List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType],
         ] = UNSET,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
@@ -1419,7 +1433,7 @@ class PullsClient:
         pull_number: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None]
+            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
@@ -1444,7 +1458,7 @@ class PullsClient:
         pull_number: int,
         *,
         body: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None]
+            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"

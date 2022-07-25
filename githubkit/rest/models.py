@@ -99,7 +99,7 @@ class Integration(GitHubModel):
         description="The slug name of the GitHub app", default=UNSET
     )
     node_id: str = Field(default=...)
-    owner: Union[None, "SimpleUser"] = Field(
+    owner: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     name: str = Field(description="The name of the GitHub app", default=...)
@@ -108,7 +108,7 @@ class Integration(GitHubModel):
     html_url: str = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    permissions: "IntegrationPropPermissions" = Field(
+    permissions: IntegrationPropPermissions = Field(
         description="The set of permissions for the GitHub app", default=...
     )
     events: List[str] = Field(
@@ -251,7 +251,7 @@ class ValidationError(GitHubModel):
 
     message: str = Field(default=...)
     documentation_url: str = Field(default=...)
-    errors: Union[Unset, List["ValidationErrorPropErrorsItems"]] = Field(default=UNSET)
+    errors: Union[Unset, List[ValidationErrorPropErrorsItems]] = Field(default=UNSET)
 
 
 class ValidationErrorPropErrorsItems(GitHubModel):
@@ -308,17 +308,17 @@ class HookDelivery(GitHubModel):
     url: Union[Unset, str] = Field(
         description="The URL target of the delivery.", default=UNSET
     )
-    request: "HookDeliveryPropRequest" = Field(default=...)
-    response: "HookDeliveryPropResponse" = Field(default=...)
+    request: HookDeliveryPropRequest = Field(default=...)
+    response: HookDeliveryPropResponse = Field(default=...)
 
 
 class HookDeliveryPropRequest(GitHubModel):
     """HookDeliveryPropRequest"""
 
-    headers: Union["HookDeliveryPropRequestPropHeaders", None] = Field(
+    headers: Union[HookDeliveryPropRequestPropHeaders, None] = Field(
         description="The request headers sent with the webhook delivery.", default=...
     )
-    payload: Union["HookDeliveryPropRequestPropPayload", None] = Field(
+    payload: Union[HookDeliveryPropRequestPropPayload, None] = Field(
         description="The webhook payload.", default=...
     )
 
@@ -340,7 +340,7 @@ class HookDeliveryPropRequestPropPayload(GitHubModel, extra=Extra.allow):
 class HookDeliveryPropResponse(GitHubModel):
     """HookDeliveryPropResponse"""
 
-    headers: Union["HookDeliveryPropResponsePropHeaders", None] = Field(
+    headers: Union[HookDeliveryPropResponsePropHeaders, None] = Field(
         description="The response headers received when the delivery was made.",
         default=...,
     )
@@ -519,7 +519,7 @@ class Installation(GitHubModel):
     """
 
     id: int = Field(description="The ID of the installation.", default=...)
-    account: Union[None, "InstallationPropAccount", "SimpleUser", "Enterprise"] = Field(
+    account: Union[None, InstallationPropAccount, SimpleUser, Enterprise] = Field(
         title="Enterprise", description="An enterprise account", default=...
     )
     repository_selection: Literal["all", "selected"] = Field(
@@ -535,7 +535,7 @@ class Installation(GitHubModel):
         default=...,
     )
     target_type: str = Field(default=...)
-    permissions: "AppPermissions" = Field(
+    permissions: AppPermissions = Field(
         title="App Permissions",
         description="The permissions granted to the user-to-server access token.",
         default=...,
@@ -547,7 +547,7 @@ class Installation(GitHubModel):
     has_multiple_single_files: Union[Unset, bool] = Field(default=UNSET)
     single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
     app_slug: str = Field(default=...)
-    suspended_by: Union[None, "SimpleUser"] = Field(
+    suspended_by: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     suspended_at: Union[datetime, None] = Field(default=...)
@@ -582,18 +582,18 @@ class Repository(GitHubModel):
     node_id: str = Field(default=...)
     name: str = Field(description="The name of the repository.", default=...)
     full_name: str = Field(default=...)
-    license_: Union[None, "LicenseSimple"] = Field(
+    license_: Union[None, LicenseSimple] = Field(
         title="License Simple",
         description="License Simple",
         default=...,
         alias="license",
     )
-    organization: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    organization: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     forks: int = Field(default=...)
-    permissions: Union[Unset, "RepositoryPropPermissions"] = Field(default=UNSET)
-    owner: "SimpleUser" = Field(
+    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
+    owner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     private: bool = Field(
@@ -685,7 +685,7 @@ class Repository(GitHubModel):
         description="Whether to allow rebase merges for pull requests.", default=True
     )
     template_repository: Union[
-        Unset, Union["RepositoryPropTemplateRepository", None]
+        Unset, Union[RepositoryPropTemplateRepository, None]
     ] = Field(default=UNSET)
     temp_clone_token: Union[Unset, str] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(
@@ -738,7 +738,7 @@ class RepositoryPropTemplateRepository(GitHubModel):
     node_id: Union[Unset, str] = Field(default=UNSET)
     name: Union[Unset, str] = Field(default=UNSET)
     full_name: Union[Unset, str] = Field(default=UNSET)
-    owner: Union[Unset, "RepositoryPropTemplateRepositoryPropOwner"] = Field(
+    owner: Union[Unset, RepositoryPropTemplateRepositoryPropOwner] = Field(
         default=UNSET
     )
     private: Union[Unset, bool] = Field(default=UNSET)
@@ -808,9 +808,9 @@ class RepositoryPropTemplateRepository(GitHubModel):
     pushed_at: Union[Unset, str] = Field(default=UNSET)
     created_at: Union[Unset, str] = Field(default=UNSET)
     updated_at: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[
-        Unset, "RepositoryPropTemplateRepositoryPropPermissions"
-    ] = Field(default=UNSET)
+    permissions: Union[Unset, RepositoryPropTemplateRepositoryPropPermissions] = Field(
+        default=UNSET
+    )
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
     temp_clone_token: Union[Unset, str] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(default=UNSET)
@@ -864,7 +864,7 @@ class InstallationToken(GitHubModel):
 
     token: str = Field(default=...)
     expires_at: str = Field(default=...)
-    permissions: Union[Unset, "AppPermissions"] = Field(
+    permissions: Union[Unset, AppPermissions] = Field(
         title="App Permissions",
         description="The permissions granted to the user-to-server access token.",
         default=UNSET,
@@ -872,7 +872,7 @@ class InstallationToken(GitHubModel):
     repository_selection: Union[Unset, Literal["all", "selected"]] = Field(
         default=UNSET
     )
-    repositories: Union[Unset, List["Repository"]] = Field(default=UNSET)
+    repositories: Union[Unset, List[Repository]] = Field(default=UNSET)
     single_file: Union[Unset, str] = Field(default=UNSET)
     has_multiple_single_files: Union[Unset, bool] = Field(default=UNSET)
     single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
@@ -886,11 +886,11 @@ class ApplicationGrant(GitHubModel):
 
     id: int = Field(default=...)
     url: str = Field(default=...)
-    app: "ApplicationGrantPropApp" = Field(default=...)
+    app: ApplicationGrantPropApp = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     scopes: List[str] = Field(default=...)
-    user: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    user: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
 
@@ -906,7 +906,7 @@ class ApplicationGrantPropApp(GitHubModel):
 class ScopedInstallation(GitHubModel):
     """Scoped Installation"""
 
-    permissions: "AppPermissions" = Field(
+    permissions: AppPermissions = Field(
         title="App Permissions",
         description="The permissions granted to the user-to-server access token.",
         default=...,
@@ -919,7 +919,7 @@ class ScopedInstallation(GitHubModel):
     has_multiple_single_files: Union[Unset, bool] = Field(default=UNSET)
     single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
     repositories_url: str = Field(default=...)
-    account: "SimpleUser" = Field(
+    account: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -938,16 +938,16 @@ class Authorization(GitHubModel):
     token: str = Field(default=...)
     token_last_eight: Union[str, None] = Field(default=...)
     hashed_token: Union[str, None] = Field(default=...)
-    app: "AuthorizationPropApp" = Field(default=...)
+    app: AuthorizationPropApp = Field(default=...)
     note: Union[str, None] = Field(default=...)
     note_url: Union[str, None] = Field(default=...)
     updated_at: datetime = Field(default=...)
     created_at: datetime = Field(default=...)
     fingerprint: Union[str, None] = Field(default=...)
-    user: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    user: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    installation: Union[Unset, Union[None, "ScopedInstallation"]] = Field(
+    installation: Union[Unset, Union[None, ScopedInstallation]] = Field(
         title="Scoped Installation", default=UNSET
     )
     expires_at: Union[datetime, None] = Field(default=...)
@@ -1131,7 +1131,7 @@ class Runner(GitHubModel):
     os: str = Field(description="The Operating System of the runner.", default=...)
     status: str = Field(description="The status of the runner.", default=...)
     busy: bool = Field(default=...)
-    labels: List["RunnerLabel"] = Field(default=...)
+    labels: List[RunnerLabel] = Field(default=...)
 
 
 class RunnerApplication(GitHubModel):
@@ -1159,10 +1159,8 @@ class AuthenticationToken(GitHubModel):
 
     token: str = Field(description="The token used for authentication", default=...)
     expires_at: datetime = Field(description="The time this token expires", default=...)
-    permissions: Union[Unset, "AuthenticationTokenPropPermissions"] = Field(
-        default=UNSET
-    )
-    repositories: Union[Unset, List["Repository"]] = Field(
+    permissions: Union[Unset, AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Union[Unset, List[Repository]] = Field(
         description="The repositories this token has access to", default=UNSET
     )
     single_file: Union[Unset, Union[str, None]] = Field(default=UNSET)
@@ -1200,17 +1198,15 @@ class AuditLogEvent(GitHubModel):
     actor_id: Union[Unset, int] = Field(
         description="The id of the actor who performed the action.", default=UNSET
     )
-    actor_location: Union[Unset, "AuditLogEventPropActorLocation"] = Field(
-        default=UNSET
-    )
-    data: Union[Unset, "AuditLogEventPropData"] = Field(default=UNSET)
+    actor_location: Union[Unset, AuditLogEventPropActorLocation] = Field(default=UNSET)
+    data: Union[Unset, AuditLogEventPropData] = Field(default=UNSET)
     org_id: Union[Unset, int] = Field(default=UNSET)
     blocked_user: Union[Unset, str] = Field(
         description="The username of the account being blocked.", default=UNSET
     )
     business: Union[Unset, str] = Field(default=UNSET)
-    config: Union[Unset, List["AuditLogEventPropConfigItems"]] = Field(default=UNSET)
-    config_was: Union[Unset, List["AuditLogEventPropConfigWasItems"]] = Field(
+    config: Union[Unset, List[AuditLogEventPropConfigItems]] = Field(default=UNSET)
+    config_was: Union[Unset, List[AuditLogEventPropConfigWasItems]] = Field(
         default=UNSET
     )
     content_type: Union[Unset, str] = Field(default=UNSET)
@@ -1225,8 +1221,8 @@ class AuditLogEvent(GitHubModel):
         alias="_document_id",
     )
     emoji: Union[Unset, str] = Field(default=UNSET)
-    events: Union[Unset, List["AuditLogEventPropEventsItems"]] = Field(default=UNSET)
-    events_were: Union[Unset, List["AuditLogEventPropEventsWereItems"]] = Field(
+    events: Union[Unset, List[AuditLogEventPropEventsItems]] = Field(default=UNSET)
+    events_were: Union[Unset, List[AuditLogEventPropEventsWereItems]] = Field(
         default=UNSET
     )
     explanation: Union[Unset, str] = Field(default=UNSET)
@@ -1379,8 +1375,8 @@ class CodeScanningAlertInstance(GitHubModel):
         description="State of a code scanning alert.", default=UNSET
     )
     commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, "CodeScanningAlertInstancePropMessage"] = Field(default=UNSET)
-    location: Union[Unset, "CodeScanningAlertLocation"] = Field(
+    message: Union[Unset, CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
+    location: Union[Unset, CodeScanningAlertLocation] = Field(
         description="Describe a region within a file for the alert.", default=UNSET
     )
     html_url: Union[Unset, str] = Field(default=UNSET)
@@ -1412,7 +1408,7 @@ class SimpleRepository(GitHubModel):
     full_name: str = Field(
         description="The full, globally unique, name of the repository.", default=...
     )
-    owner: "SimpleUser" = Field(
+    owner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     private: bool = Field(description="Whether the repository is private.", default=...)
@@ -1593,7 +1589,7 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
         description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
     )
-    dismissed_by: Union[None, "SimpleUser"] = Field(
+    dismissed_by: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     dismissed_at: Union[datetime, None] = Field(
@@ -1611,10 +1607,10 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
         max_length=280,
         default=UNSET,
     )
-    rule: "CodeScanningAlertRule" = Field(default=...)
-    tool: "CodeScanningAnalysisTool" = Field(default=...)
-    most_recent_instance: "CodeScanningAlertInstance" = Field(default=...)
-    repository: "SimpleRepository" = Field(
+    rule: CodeScanningAlertRule = Field(default=...)
+    tool: CodeScanningAnalysisTool = Field(default=...)
+    most_recent_instance: CodeScanningAlertInstance = Field(default=...)
+    repository: SimpleRepository = Field(
         title="Simple Repository", description="Simple Repository", default=...
     )
 
@@ -1657,7 +1653,7 @@ class OrganizationSecretScanningAlert(GitHubModel):
         description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
     )
-    resolved_by: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    resolved_by: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     secret_type: Union[Unset, str] = Field(
@@ -1670,14 +1666,14 @@ class OrganizationSecretScanningAlert(GitHubModel):
     secret: Union[Unset, str] = Field(
         description="The secret that was detected.", default=UNSET
     )
-    repository: Union[Unset, "SimpleRepository"] = Field(
+    repository: Union[Unset, SimpleRepository] = Field(
         title="Simple Repository", description="Simple Repository", default=UNSET
     )
     push_protection_bypassed: Union[Unset, Union[bool, None]] = Field(
         description="Whether push protection was bypassed for the detected secret.",
         default=UNSET,
     )
-    push_protection_bypassed_by: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    push_protection_bypassed_by: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     push_protection_bypassed_at: Union[Unset, Union[datetime, None]] = Field(
@@ -1699,7 +1695,7 @@ class ActionsBillingUsage(GitHubModel):
     included_minutes: int = Field(
         description="The amount of free GitHub Actions minutes available.", default=...
     )
-    minutes_used_breakdown: "ActionsBillingUsagePropMinutesUsedBreakdown" = Field(
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field(
         default=...
     )
 
@@ -1780,7 +1776,7 @@ class AdvancedSecurityActiveCommittersRepository(GitHubModel):
     name: str = Field(default=...)
     advanced_security_committers: int = Field(default=...)
     advanced_security_committers_breakdown: List[
-        "AdvancedSecurityActiveCommittersUser"
+        AdvancedSecurityActiveCommittersUser
     ] = Field(default=...)
 
 
@@ -1789,9 +1785,7 @@ class AdvancedSecurityActiveCommitters(GitHubModel):
 
     total_advanced_security_committers: Union[Unset, int] = Field(default=UNSET)
     total_count: Union[Unset, int] = Field(default=UNSET)
-    repositories: List["AdvancedSecurityActiveCommittersRepository"] = Field(
-        default=...
-    )
+    repositories: List[AdvancedSecurityActiveCommittersRepository] = Field(default=...)
 
 
 class PackagesBillingUsage(GitHubModel):
@@ -1855,7 +1849,7 @@ class Milestone(GitHubModel):
     )
     title: str = Field(description="The title of the milestone.", default=...)
     description: Union[str, None] = Field(default=...)
-    creator: Union[None, "SimpleUser"] = Field(
+    creator: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     open_issues: int = Field(default=...)
@@ -1910,18 +1904,18 @@ class Issue(GitHubModel):
     body: Union[Unset, Union[str, None]] = Field(
         description="Contents of the issue", default=UNSET
     )
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    labels: List[Union[str, "IssuePropLabelsItemsOneof1"]] = Field(
+    labels: List[Union[str, IssuePropLabelsItemsOneof1]] = Field(
         description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository",
         default=...,
     )
-    assignee: Union[None, "SimpleUser"] = Field(
+    assignee: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    assignees: Union[Unset, Union[List["SimpleUser"], None]] = Field(default=UNSET)
-    milestone: Union[None, "Milestone"] = Field(
+    assignees: Union[Unset, Union[List[SimpleUser], None]] = Field(default=UNSET)
+    milestone: Union[None, Milestone] = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
         default=...,
@@ -1929,21 +1923,21 @@ class Issue(GitHubModel):
     locked: bool = Field(default=...)
     active_lock_reason: Union[Unset, Union[str, None]] = Field(default=UNSET)
     comments: int = Field(default=...)
-    pull_request: Union[Unset, "IssuePropPullRequest"] = Field(default=UNSET)
+    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
     closed_at: Union[datetime, None] = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     draft: Union[Unset, bool] = Field(default=UNSET)
-    closed_by: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    closed_by: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     body_html: Union[Unset, str] = Field(default=UNSET)
     body_text: Union[Unset, str] = Field(default=UNSET)
     timeline_url: Union[Unset, str] = Field(default=UNSET)
-    repository: Union[Unset, "Repository"] = Field(
+    repository: Union[Unset, Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
@@ -1962,7 +1956,7 @@ class Issue(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -2004,7 +1998,7 @@ class IssueComment(GitHubModel):
     body_text: Union[Unset, str] = Field(default=UNSET)
     body_html: Union[Unset, str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: datetime = Field(default=...)
@@ -2024,12 +2018,12 @@ class IssueComment(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -2042,12 +2036,10 @@ class Event(GitHubModel):
 
     id: str = Field(default=...)
     type: Union[str, None] = Field(default=...)
-    actor: "Actor" = Field(title="Actor", description="Actor", default=...)
-    repo: "EventPropRepo" = Field(default=...)
-    org: Union[Unset, "Actor"] = Field(
-        title="Actor", description="Actor", default=UNSET
-    )
-    payload: "EventPropPayload" = Field(default=...)
+    actor: Actor = Field(title="Actor", description="Actor", default=...)
+    repo: EventPropRepo = Field(default=...)
+    org: Union[Unset, Actor] = Field(title="Actor", description="Actor", default=UNSET)
+    payload: EventPropPayload = Field(default=...)
     public: bool = Field(default=...)
     created_at: Union[datetime, None] = Field(default=...)
 
@@ -2064,17 +2056,17 @@ class EventPropPayload(GitHubModel):
     """EventPropPayload"""
 
     action: Union[Unset, str] = Field(default=UNSET)
-    issue: Union[Unset, "Issue"] = Field(
+    issue: Union[Unset, Issue] = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
         default=UNSET,
     )
-    comment: Union[Unset, "IssueComment"] = Field(
+    comment: Union[Unset, IssueComment] = Field(
         title="Issue Comment",
         description="Comments provide a way for people to collaborate on an issue.",
         default=UNSET,
     )
-    pages: Union[Unset, List["EventPropPayloadPropPagesItems"]] = Field(default=UNSET)
+    pages: Union[Unset, List[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
 
 
 class EventPropPayloadPropPagesItems(GitHubModel):
@@ -2112,36 +2104,34 @@ class Feed(GitHubModel):
     current_user_organization_url: Union[Unset, str] = Field(default=UNSET)
     current_user_organization_urls: Union[Unset, List[str]] = Field(default=UNSET)
     security_advisories_url: Union[Unset, str] = Field(default=UNSET)
-    links: "FeedPropLinks" = Field(default=..., alias="_links")
+    links: FeedPropLinks = Field(default=..., alias="_links")
 
 
 class FeedPropLinks(GitHubModel):
     """FeedPropLinks"""
 
-    timeline: "LinkWithType" = Field(
+    timeline: LinkWithType = Field(
         title="Link With Type", description="Hypermedia Link with Type", default=...
     )
-    user: "LinkWithType" = Field(
+    user: LinkWithType = Field(
         title="Link With Type", description="Hypermedia Link with Type", default=...
     )
-    security_advisories: Union[Unset, "LinkWithType"] = Field(
+    security_advisories: Union[Unset, LinkWithType] = Field(
         title="Link With Type", description="Hypermedia Link with Type", default=UNSET
     )
-    current_user: Union[Unset, "LinkWithType"] = Field(
+    current_user: Union[Unset, LinkWithType] = Field(
         title="Link With Type", description="Hypermedia Link with Type", default=UNSET
     )
-    current_user_public: Union[Unset, "LinkWithType"] = Field(
+    current_user_public: Union[Unset, LinkWithType] = Field(
         title="Link With Type", description="Hypermedia Link with Type", default=UNSET
     )
-    current_user_actor: Union[Unset, "LinkWithType"] = Field(
+    current_user_actor: Union[Unset, LinkWithType] = Field(
         title="Link With Type", description="Hypermedia Link with Type", default=UNSET
     )
-    current_user_organization: Union[Unset, "LinkWithType"] = Field(
+    current_user_organization: Union[Unset, LinkWithType] = Field(
         title="Link With Type", description="Hypermedia Link with Type", default=UNSET
     )
-    current_user_organizations: Union[Unset, List["LinkWithType"]] = Field(
-        default=UNSET
-    )
+    current_user_organizations: Union[Unset, List[LinkWithType]] = Field(default=UNSET)
 
 
 class BaseGist(GitHubModel):
@@ -2158,17 +2148,17 @@ class BaseGist(GitHubModel):
     git_pull_url: str = Field(default=...)
     git_push_url: str = Field(default=...)
     html_url: str = Field(default=...)
-    files: "BaseGistPropFiles" = Field(default=...)
+    files: BaseGistPropFiles = Field(default=...)
     public: bool = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     description: Union[str, None] = Field(default=...)
     comments: int = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     comments_url: str = Field(default=...)
-    owner: Union[Unset, "SimpleUser"] = Field(
+    owner: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     truncated: Union[Unset, bool] = Field(default=UNSET)
@@ -2218,7 +2208,7 @@ class PublicUser(GitHubModel):
     following: int = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    plan: Union[Unset, "PublicUserPropPlan"] = Field(default=UNSET)
+    plan: Union[Unset, PublicUserPropPlan] = Field(default=UNSET)
     suspended_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
     private_gists: Union[Unset, int] = Field(default=UNSET)
     total_private_repos: Union[Unset, int] = Field(default=UNSET)
@@ -2242,12 +2232,12 @@ class GistHistory(GitHubModel):
     Gist History
     """
 
-    user: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    user: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     version: Union[Unset, str] = Field(default=UNSET)
     committed_at: Union[Unset, datetime] = Field(default=UNSET)
-    change_status: Union[Unset, "GistHistoryPropChangeStatus"] = Field(default=UNSET)
+    change_status: Union[Unset, GistHistoryPropChangeStatus] = Field(default=UNSET)
     url: Union[Unset, str] = Field(default=UNSET)
 
 
@@ -2265,11 +2255,11 @@ class GistSimple(GitHubModel):
     Gist Simple
     """
 
-    forks: Union[Unset, Union[List["GistSimplePropForksItems"], None]] = Field(
+    forks: Union[Unset, Union[List[GistSimplePropForksItems], None]] = Field(
         default=UNSET
     )
-    history: Union[Unset, Union[List["GistHistory"], None]] = Field(default=UNSET)
-    fork_of: Union[Unset, Union["GistSimplePropForkOf", None]] = Field(
+    history: Union[Unset, Union[List[GistHistory], None]] = Field(default=UNSET)
+    fork_of: Union[Unset, Union[GistSimplePropForkOf, None]] = Field(
         title="Gist", description="Gist", default=UNSET
     )
     url: Union[Unset, str] = Field(default=UNSET)
@@ -2280,7 +2270,7 @@ class GistSimple(GitHubModel):
     git_pull_url: Union[Unset, str] = Field(default=UNSET)
     git_push_url: Union[Unset, str] = Field(default=UNSET)
     html_url: Union[Unset, str] = Field(default=UNSET)
-    files: Union[Unset, "GistSimplePropFiles"] = Field(default=UNSET)
+    files: Union[Unset, GistSimplePropFiles] = Field(default=UNSET)
     public: Union[Unset, bool] = Field(default=UNSET)
     created_at: Union[Unset, str] = Field(default=UNSET)
     updated_at: Union[Unset, str] = Field(default=UNSET)
@@ -2288,7 +2278,7 @@ class GistSimple(GitHubModel):
     comments: Union[Unset, int] = Field(default=UNSET)
     user: Union[Unset, Union[str, None]] = Field(default=UNSET)
     comments_url: Union[Unset, str] = Field(default=UNSET)
-    owner: Union[Unset, "SimpleUser"] = Field(
+    owner: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     truncated: Union[Unset, bool] = Field(default=UNSET)
@@ -2299,7 +2289,7 @@ class GistSimplePropForksItems(GitHubModel):
 
     id: Union[Unset, str] = Field(default=UNSET)
     url: Union[Unset, str] = Field(default=UNSET)
-    user: Union[Unset, "PublicUser"] = Field(
+    user: Union[Unset, PublicUser] = Field(
         title="Public User", description="Public User", default=UNSET
     )
     created_at: Union[Unset, datetime] = Field(default=UNSET)
@@ -2320,17 +2310,17 @@ class GistSimplePropForkOf(GitHubModel):
     git_pull_url: str = Field(default=...)
     git_push_url: str = Field(default=...)
     html_url: str = Field(default=...)
-    files: "GistSimplePropForkOfPropFiles" = Field(default=...)
+    files: GistSimplePropForkOfPropFiles = Field(default=...)
     public: bool = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     description: Union[str, None] = Field(default=...)
     comments: int = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     comments_url: str = Field(default=...)
-    owner: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    owner: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     truncated: Union[Unset, bool] = Field(default=UNSET)
@@ -2356,7 +2346,7 @@ class GistComment(GitHubModel):
     node_id: str = Field(default=...)
     url: str = Field(default=...)
     body: str = Field(description="The comment text.", max_length=65535, default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: datetime = Field(default=...)
@@ -2385,10 +2375,10 @@ class GistCommit(GitHubModel):
 
     url: str = Field(default=...)
     version: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    change_status: "GistCommitPropChangeStatus" = Field(default=...)
+    change_status: GistCommitPropChangeStatus = Field(default=...)
     committed_at: datetime = Field(default=...)
 
 
@@ -2465,9 +2455,9 @@ class MarketplacePurchase(GitHubModel):
     organization_billing_email: Union[Unset, str] = Field(default=UNSET)
     email: Union[Unset, Union[str, None]] = Field(default=UNSET)
     marketplace_pending_change: Union[
-        Unset, Union["MarketplacePurchasePropMarketplacePendingChange", None]
+        Unset, Union[MarketplacePurchasePropMarketplacePendingChange, None]
     ] = Field(default=UNSET)
-    marketplace_purchase: "MarketplacePurchasePropMarketplacePurchase" = Field(
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field(
         default=...
     )
 
@@ -2479,7 +2469,7 @@ class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
     effective_date: Union[Unset, str] = Field(default=UNSET)
     unit_count: Union[Unset, Union[int, None]] = Field(default=UNSET)
     id: Union[Unset, int] = Field(default=UNSET)
-    plan: Union[Unset, "MarketplaceListingPlan"] = Field(
+    plan: Union[Unset, MarketplaceListingPlan] = Field(
         title="Marketplace Listing Plan",
         description="Marketplace Listing Plan",
         default=UNSET,
@@ -2496,7 +2486,7 @@ class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
     on_free_trial: Union[Unset, bool] = Field(default=UNSET)
     free_trial_ends_on: Union[Unset, Union[str, None]] = Field(default=UNSET)
     updated_at: Union[Unset, str] = Field(default=UNSET)
-    plan: Union[Unset, "MarketplaceListingPlan"] = Field(
+    plan: Union[Unset, MarketplaceListingPlan] = Field(
         title="Marketplace Listing Plan",
         description="Marketplace Listing Plan",
         default=UNSET,
@@ -2510,7 +2500,7 @@ class ApiOverview(GitHubModel):
     """
 
     verifiable_password_authentication: bool = Field(default=...)
-    ssh_key_fingerprints: Union[Unset, "ApiOverviewPropSshKeyFingerprints"] = Field(
+    ssh_key_fingerprints: Union[Unset, ApiOverviewPropSshKeyFingerprints] = Field(
         default=UNSET
     )
     ssh_keys: Union[Unset, List[str]] = Field(default=UNSET)
@@ -2544,7 +2534,7 @@ class MinimalRepository(GitHubModel):
     node_id: str = Field(default=...)
     name: str = Field(default=...)
     full_name: str = Field(default=...)
-    owner: "SimpleUser" = Field(
+    owner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     private: bool = Field(default=...)
@@ -2614,19 +2604,19 @@ class MinimalRepository(GitHubModel):
     pushed_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
     created_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
     updated_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
-    permissions: Union[Unset, "MinimalRepositoryPropPermissions"] = Field(default=UNSET)
+    permissions: Union[Unset, MinimalRepositoryPropPermissions] = Field(default=UNSET)
     role_name: Union[Unset, str] = Field(default=UNSET)
-    template_repository: Union[Unset, Union[None, "Repository"]] = Field(
+    template_repository: Union[Unset, Union[None, Repository]] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     temp_clone_token: Union[Unset, str] = Field(default=UNSET)
     delete_branch_on_merge: Union[Unset, bool] = Field(default=UNSET)
     subscribers_count: Union[Unset, int] = Field(default=UNSET)
     network_count: Union[Unset, int] = Field(default=UNSET)
-    code_of_conduct: Union[Unset, "CodeOfConduct"] = Field(
+    code_of_conduct: Union[Unset, CodeOfConduct] = Field(
         title="Code Of Conduct", description="Code Of Conduct", default=UNSET
     )
-    license_: Union[Unset, Union["MinimalRepositoryPropLicense", None]] = Field(
+    license_: Union[Unset, Union[MinimalRepositoryPropLicense, None]] = Field(
         default=UNSET, alias="license"
     )
     forks: Union[Unset, int] = Field(default=UNSET)
@@ -2662,10 +2652,10 @@ class Thread(GitHubModel):
     """
 
     id: str = Field(default=...)
-    repository: "MinimalRepository" = Field(
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
-    subject: "ThreadPropSubject" = Field(default=...)
+    subject: ThreadPropSubject = Field(default=...)
     reason: str = Field(default=...)
     unread: bool = Field(default=...)
     updated_at: str = Field(default=...)
@@ -2748,7 +2738,7 @@ class OrganizationFull(GitHubModel):
     disk_usage: Union[Unset, Union[int, None]] = Field(default=UNSET)
     collaborators: Union[Unset, Union[int, None]] = Field(default=UNSET)
     billing_email: Union[Unset, Union[str, None]] = Field(default=UNSET)
-    plan: Union[Unset, "OrganizationFullPropPlan"] = Field(default=UNSET)
+    plan: Union[Unset, OrganizationFullPropPlan] = Field(default=UNSET)
     default_repository_permission: Union[Unset, Union[str, None]] = Field(default=UNSET)
     members_can_create_repositories: Union[Unset, Union[bool, None]] = Field(
         default=UNSET
@@ -2938,16 +2928,16 @@ class Codespace(GitHubModel):
     environment_id: Union[str, None] = Field(
         description="UUID identifying this codespace's environment.", default=...
     )
-    owner: "SimpleUser" = Field(
+    owner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    billable_owner: "SimpleUser" = Field(
+    billable_owner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    repository: "MinimalRepository" = Field(
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
-    machine: Union[None, "CodespaceMachine"] = Field(
+    machine: Union[None, CodespaceMachine] = Field(
         title="Codespace machine",
         description="A description of the machine powering a codespace.",
         default=...,
@@ -2984,7 +2974,7 @@ class Codespace(GitHubModel):
         "Rebuilding",
     ] = Field(description="State of this codespace.", default=...)
     url: str = Field(description="API URL for this codespace.", default=...)
-    git_status: "CodespacePropGitStatus" = Field(
+    git_status: CodespacePropGitStatus = Field(
         description="Details about the codespace's git repository.", default=...
     )
     location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
@@ -3008,7 +2998,7 @@ class Codespace(GitHubModel):
         default=...,
     )
     recent_folders: List[str] = Field(default=...)
-    runtime_constraints: Union[Unset, "CodespacePropRuntimeConstraints"] = Field(
+    runtime_constraints: Union[Unset, CodespacePropRuntimeConstraints] = Field(
         default=UNSET
     )
     pending_operation: Union[Unset, Union[bool, None]] = Field(
@@ -3145,10 +3135,10 @@ class ExternalGroup(GitHubModel):
     updated_at: Union[Unset, str] = Field(
         description="The date when the group was last updated_at", default=UNSET
     )
-    teams: List["ExternalGroupPropTeamsItems"] = Field(
+    teams: List[ExternalGroupPropTeamsItems] = Field(
         description="An array of teams linked to this group", default=...
     )
-    members: List["ExternalGroupPropMembersItems"] = Field(
+    members: List[ExternalGroupPropMembersItems] = Field(
         description="An array of external members linked to this group", default=...
     )
 
@@ -3179,7 +3169,7 @@ class ExternalGroups(GitHubModel):
     A list of external groups available to be connected to a team
     """
 
-    groups: Union[Unset, List["ExternalGroupsPropGroupsItems"]] = Field(
+    groups: Union[Unset, List[ExternalGroupsPropGroupsItems]] = Field(
         description="An array of external groups available to be mapped to a team",
         default=UNSET,
     )
@@ -3208,7 +3198,7 @@ class OrganizationInvitation(GitHubModel):
     created_at: str = Field(default=...)
     failed_at: Union[Unset, Union[str, None]] = Field(default=UNSET)
     failed_reason: Union[Unset, Union[str, None]] = Field(default=UNSET)
-    inviter: "SimpleUser" = Field(
+    inviter: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     team_count: int = Field(default=...)
@@ -3229,7 +3219,7 @@ class OrgHook(GitHubModel):
     name: str = Field(default=...)
     events: List[str] = Field(default=...)
     active: bool = Field(default=...)
-    config: "OrgHookPropConfig" = Field(default=...)
+    config: OrgHookPropConfig = Field(default=...)
     updated_at: datetime = Field(default=...)
     created_at: datetime = Field(default=...)
     type: str = Field(default=...)
@@ -3319,12 +3309,12 @@ class Team(GitHubModel):
     description: Union[str, None] = Field(default=...)
     privacy: Union[Unset, str] = Field(default=UNSET)
     permission: str = Field(default=...)
-    permissions: Union[Unset, "TeamPropPermissions"] = Field(default=UNSET)
+    permissions: Union[Unset, TeamPropPermissions] = Field(default=UNSET)
     url: str = Field(default=...)
     html_url: str = Field(default=...)
     members_url: str = Field(default=...)
     repositories_url: str = Field(default=...)
-    parent: Union[None, "TeamSimple"] = Field(
+    parent: Union[None, TeamSimple] = Field(
         title="Team Simple",
         description="Groups of organization members that gives permissions on specified repositories.",
         default=...,
@@ -3356,13 +3346,13 @@ class OrgMembership(GitHubModel):
         description="The user's membership type in the organization.", default=...
     )
     organization_url: str = Field(default=...)
-    organization: "OrganizationSimple" = Field(
+    organization: OrganizationSimple = Field(
         title="Organization Simple", description="Organization Simple", default=...
     )
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    permissions: Union[Unset, "OrgMembershipPropPermissions"] = Field(default=UNSET)
+    permissions: Union[Unset, OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
 class OrgMembershipPropPermissions(GitHubModel):
@@ -3378,7 +3368,7 @@ class Migration(GitHubModel):
     """
 
     id: int = Field(default=...)
-    owner: Union[None, "SimpleUser"] = Field(
+    owner: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     guid: str = Field(default=...)
@@ -3390,7 +3380,7 @@ class Migration(GitHubModel):
     exclude_releases: bool = Field(default=...)
     exclude_owner_projects: bool = Field(default=...)
     org_metadata_only: bool = Field(default=...)
-    repositories: List["Repository"] = Field(default=...)
+    repositories: List[Repository] = Field(default=...)
     url: str = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
@@ -3416,10 +3406,10 @@ class Package(GitHubModel):
         description="The number of versions of the package.", default=...
     )
     visibility: Literal["private", "public"] = Field(default=...)
-    owner: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    owner: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    repository: Union[Unset, Union[None, "MinimalRepository"]] = Field(
+    repository: Union[Unset, Union[None, MinimalRepository]] = Field(
         title="Minimal Repository", description="Minimal Repository", default=UNSET
     )
     created_at: datetime = Field(default=...)
@@ -3444,7 +3434,7 @@ class PackageVersion(GitHubModel):
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     deleted_at: Union[Unset, datetime] = Field(default=UNSET)
-    metadata: Union[Unset, "PackageVersionPropMetadata"] = Field(
+    metadata: Union[Unset, PackageVersionPropMetadata] = Field(
         title="Package Version Metadata", default=UNSET
     )
 
@@ -3455,10 +3445,10 @@ class PackageVersionPropMetadata(GitHubModel):
     package_type: Literal[
         "npm", "maven", "rubygems", "docker", "nuget", "container"
     ] = Field(default=...)
-    container: Union[Unset, "PackageVersionPropMetadataPropContainer"] = Field(
+    container: Union[Unset, PackageVersionPropMetadataPropContainer] = Field(
         title="Container Metadata", default=UNSET
     )
-    docker: Union[Unset, "PackageVersionPropMetadataPropDocker"] = Field(
+    docker: Union[Unset, PackageVersionPropMetadataPropDocker] = Field(
         title="Docker Metadata", default=UNSET
     )
 
@@ -3493,7 +3483,7 @@ class Project(GitHubModel):
     state: str = Field(
         description="State of the project; either 'open' or 'closed'", default=...
     )
-    creator: Union[None, "SimpleUser"] = Field(
+    creator: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: datetime = Field(default=...)
@@ -3516,7 +3506,7 @@ class GroupMapping(GitHubModel):
     External Groups to be mapped to a team for membership
     """
 
-    groups: Union[Unset, List["GroupMappingPropGroupsItems"]] = Field(
+    groups: Union[Unset, List[GroupMappingPropGroupsItems]] = Field(
         description="Array of groups to be mapped to this team", default=UNSET
     )
 
@@ -3559,7 +3549,7 @@ class TeamFull(GitHubModel):
     )
     members_url: str = Field(default=...)
     repositories_url: str = Field(default=...)
-    parent: Union[Unset, Union[None, "TeamSimple"]] = Field(
+    parent: Union[Unset, Union[None, TeamSimple]] = Field(
         title="Team Simple",
         description="Groups of organization members that gives permissions on specified repositories.",
         default=UNSET,
@@ -3568,7 +3558,7 @@ class TeamFull(GitHubModel):
     repos_count: int = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    organization: "OrganizationFull" = Field(
+    organization: OrganizationFull = Field(
         title="Organization Full", description="Organization Full", default=...
     )
     ldap_dn: Union[Unset, str] = Field(
@@ -3584,7 +3574,7 @@ class TeamDiscussion(GitHubModel):
     team.
     """
 
-    author: Union[None, "SimpleUser"] = Field(
+    author: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: str = Field(description="The main text of the discussion.", default=...)
@@ -3614,7 +3604,7 @@ class TeamDiscussion(GitHubModel):
     title: str = Field(description="The title of the discussion.", default=...)
     updated_at: datetime = Field(default=...)
     url: str = Field(default=...)
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -3625,7 +3615,7 @@ class TeamDiscussionComment(GitHubModel):
     A reply to a discussion within a team.
     """
 
-    author: Union[None, "SimpleUser"] = Field(
+    author: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: str = Field(description="The main text of the comment.", default=...)
@@ -3645,7 +3635,7 @@ class TeamDiscussionComment(GitHubModel):
     )
     updated_at: datetime = Field(default=...)
     url: str = Field(default=...)
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -3659,7 +3649,7 @@ class Reaction(GitHubModel):
 
     id: int = Field(default=...)
     node_id: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     content: Literal[
@@ -3699,7 +3689,7 @@ class TeamProject(GitHubModel):
     body: Union[str, None] = Field(default=...)
     number: int = Field(default=...)
     state: str = Field(default=...)
-    creator: "SimpleUser" = Field(
+    creator: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: str = Field(default=...)
@@ -3712,7 +3702,7 @@ class TeamProject(GitHubModel):
         description="Whether the project is private or not. Only present when owner is an organization.",
         default=UNSET,
     )
-    permissions: "TeamProjectPropPermissions" = Field(default=...)
+    permissions: TeamProjectPropPermissions = Field(default=...)
 
 
 class TeamProjectPropPermissions(GitHubModel):
@@ -3733,16 +3723,16 @@ class TeamRepository(GitHubModel):
     node_id: str = Field(default=...)
     name: str = Field(description="The name of the repository.", default=...)
     full_name: str = Field(default=...)
-    license_: Union[None, "LicenseSimple"] = Field(
+    license_: Union[None, LicenseSimple] = Field(
         title="License Simple",
         description="License Simple",
         default=...,
         alias="license",
     )
     forks: int = Field(default=...)
-    permissions: Union[Unset, "TeamRepositoryPropPermissions"] = Field(default=UNSET)
+    permissions: Union[Unset, TeamRepositoryPropPermissions] = Field(default=UNSET)
     role_name: Union[Unset, str] = Field(default=UNSET)
-    owner: Union[None, "SimpleUser"] = Field(
+    owner: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     private: bool = Field(
@@ -3833,7 +3823,7 @@ class TeamRepository(GitHubModel):
     allow_rebase_merge: Union[Unset, bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    template_repository: Union[Unset, Union[None, "Repository"]] = Field(
+    template_repository: Union[Unset, Union[None, Repository]] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     temp_clone_token: Union[Unset, str] = Field(default=UNSET)
@@ -3881,7 +3871,7 @@ class ProjectCard(GitHubModel):
     id: int = Field(description="The project card's ID", default=...)
     node_id: str = Field(default=...)
     note: Union[str, None] = Field(default=...)
-    creator: Union[None, "SimpleUser"] = Field(
+    creator: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: datetime = Field(default=...)
@@ -3921,7 +3911,7 @@ class ProjectCollaboratorPermission(GitHubModel):
     """
 
     permission: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -3941,28 +3931,28 @@ class RateLimitOverview(GitHubModel):
     Rate Limit Overview
     """
 
-    resources: "RateLimitOverviewPropResources" = Field(default=...)
-    rate: "RateLimit" = Field(title="Rate Limit", default=...)
+    resources: RateLimitOverviewPropResources = Field(default=...)
+    rate: RateLimit = Field(title="Rate Limit", default=...)
 
 
 class RateLimitOverviewPropResources(GitHubModel):
     """RateLimitOverviewPropResources"""
 
-    core: "RateLimit" = Field(title="Rate Limit", default=...)
-    graphql: Union[Unset, "RateLimit"] = Field(title="Rate Limit", default=UNSET)
-    search: "RateLimit" = Field(title="Rate Limit", default=...)
-    source_import: Union[Unset, "RateLimit"] = Field(title="Rate Limit", default=UNSET)
-    integration_manifest: Union[Unset, "RateLimit"] = Field(
+    core: RateLimit = Field(title="Rate Limit", default=...)
+    graphql: Union[Unset, RateLimit] = Field(title="Rate Limit", default=UNSET)
+    search: RateLimit = Field(title="Rate Limit", default=...)
+    source_import: Union[Unset, RateLimit] = Field(title="Rate Limit", default=UNSET)
+    integration_manifest: Union[Unset, RateLimit] = Field(
         title="Rate Limit", default=UNSET
     )
-    code_scanning_upload: Union[Unset, "RateLimit"] = Field(
+    code_scanning_upload: Union[Unset, RateLimit] = Field(
         title="Rate Limit", default=UNSET
     )
-    actions_runner_registration: Union[Unset, "RateLimit"] = Field(
+    actions_runner_registration: Union[Unset, RateLimit] = Field(
         title="Rate Limit", default=UNSET
     )
-    scim: Union[Unset, "RateLimit"] = Field(title="Rate Limit", default=UNSET)
-    dependency_snapshots: Union[Unset, "RateLimit"] = Field(
+    scim: Union[Unset, RateLimit] = Field(title="Rate Limit", default=UNSET)
+    dependency_snapshots: Union[Unset, RateLimit] = Field(
         title="Rate Limit", default=UNSET
     )
 
@@ -3982,14 +3972,14 @@ class CodeOfConductSimple(GitHubModel):
 class SecurityAndAnalysis(GitHubModel):
     """SecurityAndAnalysis"""
 
-    advanced_security: Union[Unset, "SecurityAndAnalysisPropAdvancedSecurity"] = Field(
+    advanced_security: Union[Unset, SecurityAndAnalysisPropAdvancedSecurity] = Field(
         default=UNSET
     )
-    secret_scanning: Union[Unset, "SecurityAndAnalysisPropSecretScanning"] = Field(
+    secret_scanning: Union[Unset, SecurityAndAnalysisPropSecretScanning] = Field(
         default=UNSET
     )
     secret_scanning_push_protection: Union[
-        Unset, "SecurityAndAnalysisPropSecretScanningPushProtection"
+        Unset, SecurityAndAnalysisPropSecretScanningPushProtection
     ] = Field(default=UNSET)
 
 
@@ -4021,7 +4011,7 @@ class FullRepository(GitHubModel):
     node_id: str = Field(default=...)
     name: str = Field(default=...)
     full_name: str = Field(default=...)
-    owner: "SimpleUser" = Field(
+    owner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     private: bool = Field(default=...)
@@ -4096,9 +4086,9 @@ class FullRepository(GitHubModel):
     pushed_at: datetime = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    permissions: Union[Unset, "FullRepositoryPropPermissions"] = Field(default=UNSET)
+    permissions: Union[Unset, FullRepositoryPropPermissions] = Field(default=UNSET)
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
-    template_repository: Union[Unset, Union[None, "Repository"]] = Field(
+    template_repository: Union[Unset, Union[None, Repository]] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
@@ -4111,19 +4101,19 @@ class FullRepository(GitHubModel):
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
     subscribers_count: int = Field(default=...)
     network_count: int = Field(default=...)
-    license_: Union[None, "LicenseSimple"] = Field(
+    license_: Union[None, LicenseSimple] = Field(
         title="License Simple",
         description="License Simple",
         default=...,
         alias="license",
     )
-    organization: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    organization: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    parent: Union[Unset, "Repository"] = Field(
+    parent: Union[Unset, Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
-    source: Union[Unset, "Repository"] = Field(
+    source: Union[Unset, Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     forks: int = Field(default=...)
@@ -4133,12 +4123,12 @@ class FullRepository(GitHubModel):
     anonymous_access_enabled: Union[Unset, bool] = Field(
         description="Whether anonymous git access is allowed.", default=True
     )
-    code_of_conduct: Union[Unset, "CodeOfConductSimple"] = Field(
+    code_of_conduct: Union[Unset, CodeOfConductSimple] = Field(
         title="Code Of Conduct Simple",
         description="Code of Conduct Simple",
         default=UNSET,
     )
-    security_and_analysis: Union[Unset, "SecurityAndAnalysis"] = Field(default=UNSET)
+    security_and_analysis: Union[Unset, SecurityAndAnalysis] = Field(default=UNSET)
 
 
 class FullRepositoryPropPermissions(GitHubModel):
@@ -4171,7 +4161,7 @@ class Artifact(GitHubModel):
     created_at: Union[datetime, None] = Field(default=...)
     expires_at: Union[datetime, None] = Field(default=...)
     updated_at: Union[datetime, None] = Field(default=...)
-    workflow_run: Union[Unset, Union["ArtifactPropWorkflowRun", None]] = Field(
+    workflow_run: Union[Unset, Union[ArtifactPropWorkflowRun, None]] = Field(
         default=UNSET
     )
 
@@ -4193,7 +4183,7 @@ class ActionsCacheList(GitHubModel):
     """
 
     total_count: int = Field(description="Total number of caches", default=...)
-    actions_caches: List["ActionsCacheListPropActionsCachesItems"] = Field(
+    actions_caches: List[ActionsCacheListPropActionsCachesItems] = Field(
         description="Array of caches", default=...
     )
 
@@ -4245,7 +4235,7 @@ class Job(GitHubModel):
         description="The time that the job finished, in ISO 8601 format.", default=...
     )
     name: str = Field(description="The name of the job.", default=...)
-    steps: Union[Unset, List["JobPropStepsItems"]] = Field(
+    steps: Union[Unset, List[JobPropStepsItems]] = Field(
         description="Steps in this job.", default=UNSET
     )
     check_run_url: str = Field(default=...)
@@ -4342,8 +4332,8 @@ class PullRequestMinimal(GitHubModel):
     id: int = Field(default=...)
     number: int = Field(default=...)
     url: str = Field(default=...)
-    head: "PullRequestMinimalPropHead" = Field(default=...)
-    base: "PullRequestMinimalPropBase" = Field(default=...)
+    head: PullRequestMinimalPropHead = Field(default=...)
+    base: PullRequestMinimalPropBase = Field(default=...)
 
 
 class PullRequestMinimalPropHead(GitHubModel):
@@ -4351,7 +4341,7 @@ class PullRequestMinimalPropHead(GitHubModel):
 
     ref: str = Field(default=...)
     sha: str = Field(default=...)
-    repo: "PullRequestMinimalPropHeadPropRepo" = Field(default=...)
+    repo: PullRequestMinimalPropHeadPropRepo = Field(default=...)
 
 
 class PullRequestMinimalPropHeadPropRepo(GitHubModel):
@@ -4367,7 +4357,7 @@ class PullRequestMinimalPropBase(GitHubModel):
 
     ref: str = Field(default=...)
     sha: str = Field(default=...)
-    repo: "PullRequestMinimalPropBasePropRepo" = Field(default=...)
+    repo: PullRequestMinimalPropBasePropRepo = Field(default=...)
 
 
 class PullRequestMinimalPropBasePropRepo(GitHubModel):
@@ -4388,8 +4378,8 @@ class SimpleCommit(GitHubModel):
     tree_id: str = Field(default=...)
     message: str = Field(default=...)
     timestamp: datetime = Field(default=...)
-    author: Union["SimpleCommitPropAuthor", None] = Field(default=...)
-    committer: Union["SimpleCommitPropCommitter", None] = Field(default=...)
+    author: Union[SimpleCommitPropAuthor, None] = Field(default=...)
+    committer: Union[SimpleCommitPropCommitter, None] = Field(default=...)
 
 
 class SimpleCommitPropAuthor(GitHubModel):
@@ -4437,7 +4427,7 @@ class WorkflowRun(GitHubModel):
         description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
         default=UNSET,
     )
-    referenced_workflows: Union[Unset, Union[List["ReferencedWorkflow"], None]] = Field(
+    referenced_workflows: Union[Unset, Union[List[ReferencedWorkflow], None]] = Field(
         default=UNSET
     )
     event: str = Field(default=...)
@@ -4446,13 +4436,13 @@ class WorkflowRun(GitHubModel):
     workflow_id: int = Field(description="The ID of the parent workflow.", default=...)
     url: str = Field(description="The URL to the workflow run.", default=...)
     html_url: str = Field(default=...)
-    pull_requests: Union[List["PullRequestMinimal"], None] = Field(default=...)
+    pull_requests: Union[List[PullRequestMinimal], None] = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    actor: Union[Unset, "SimpleUser"] = Field(
+    actor: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    triggering_actor: Union[Unset, "SimpleUser"] = Field(
+    triggering_actor: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     run_started_at: Union[Unset, datetime] = Field(
@@ -4481,13 +4471,13 @@ class WorkflowRun(GitHubModel):
         default=UNSET,
     )
     workflow_url: str = Field(description="The URL to the workflow.", default=...)
-    head_commit: Union[None, "SimpleCommit"] = Field(
+    head_commit: Union[None, SimpleCommit] = Field(
         title="Simple Commit", description="Simple Commit", default=...
     )
-    repository: "MinimalRepository" = Field(
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
-    head_repository: "MinimalRepository" = Field(
+    head_repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
     head_repository_id: Union[Unset, int] = Field(default=UNSET)
@@ -4499,7 +4489,7 @@ class EnvironmentApprovals(GitHubModel):
     An entry in the reviews log for environment deployments
     """
 
-    environments: List["EnvironmentApprovalsPropEnvironmentsItems"] = Field(
+    environments: List[EnvironmentApprovalsPropEnvironmentsItems] = Field(
         description="The list of environments that were approved or rejected",
         default=...,
     )
@@ -4507,7 +4497,7 @@ class EnvironmentApprovals(GitHubModel):
         description="Whether deployment to the environment(s) was approved or rejected",
         default=...,
     )
-    user: "SimpleUser" = Field(
+    user: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     comment: str = Field(
@@ -4543,7 +4533,7 @@ class PendingDeployment(GitHubModel):
     Details of a deployment that is waiting for protection rules to pass
     """
 
-    environment: "PendingDeploymentPropEnvironment" = Field(default=...)
+    environment: PendingDeploymentPropEnvironment = Field(default=...)
     wait_timer: int = Field(
         description="The set duration of the wait timer", default=...
     )
@@ -4554,7 +4544,7 @@ class PendingDeployment(GitHubModel):
         description="Whether the currently authenticated user can approve the deployment",
         default=...,
     )
-    reviewers: List["PendingDeploymentPropReviewersItems"] = Field(
+    reviewers: List[PendingDeploymentPropReviewersItems] = Field(
         description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
         default=...,
     )
@@ -4580,7 +4570,7 @@ class PendingDeploymentPropReviewersItems(GitHubModel):
     type: Union[Unset, Literal["User", "Team"]] = Field(
         description="The type of reviewer.", default=UNSET
     )
-    reviewer: Union[Unset, Union["SimpleUser", "Team"]] = Field(
+    reviewer: Union[Unset, Union[SimpleUser, Team]] = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
         default=UNSET,
@@ -4601,13 +4591,13 @@ class Deployment(GitHubModel):
         description="The ref to deploy. This can be a branch, tag, or sha.", default=...
     )
     task: str = Field(description="Parameter to specify a task to execute", default=...)
-    payload: Union["DeploymentPropPayloadOneof0", str] = Field(default=...)
+    payload: Union[DeploymentPropPayloadOneof0, str] = Field(default=...)
     original_environment: Union[Unset, str] = Field(default=UNSET)
     environment: str = Field(
         description="Name for the target deployment environment.", default=...
     )
     description: Union[str, None] = Field(default=...)
-    creator: Union[None, "SimpleUser"] = Field(
+    creator: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: datetime = Field(default=...)
@@ -4622,7 +4612,7 @@ class Deployment(GitHubModel):
         description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
         default=UNSET,
     )
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
@@ -4639,20 +4629,20 @@ class WorkflowRunUsage(GitHubModel):
     Workflow Run Usage
     """
 
-    billable: "WorkflowRunUsagePropBillable" = Field(default=...)
+    billable: WorkflowRunUsagePropBillable = Field(default=...)
     run_duration_ms: Union[Unset, int] = Field(default=UNSET)
 
 
 class WorkflowRunUsagePropBillable(GitHubModel):
     """WorkflowRunUsagePropBillable"""
 
-    ubuntu: Union[Unset, "WorkflowRunUsagePropBillablePropUbuntu"] = Field(
+    ubuntu: Union[Unset, WorkflowRunUsagePropBillablePropUbuntu] = Field(
         default=UNSET, alias="UBUNTU"
     )
-    macos: Union[Unset, "WorkflowRunUsagePropBillablePropMacos"] = Field(
+    macos: Union[Unset, WorkflowRunUsagePropBillablePropMacos] = Field(
         default=UNSET, alias="MACOS"
     )
-    windows: Union[Unset, "WorkflowRunUsagePropBillablePropWindows"] = Field(
+    windows: Union[Unset, WorkflowRunUsagePropBillablePropWindows] = Field(
         default=UNSET, alias="WINDOWS"
     )
 
@@ -4663,7 +4653,7 @@ class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
     total_ms: int = Field(default=...)
     jobs: int = Field(default=...)
     job_runs: Union[
-        Unset, List["WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"]
+        Unset, List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]
     ] = Field(default=UNSET)
 
 
@@ -4680,7 +4670,7 @@ class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
     total_ms: int = Field(default=...)
     jobs: int = Field(default=...)
     job_runs: Union[
-        Unset, List["WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"]
+        Unset, List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]
     ] = Field(default=UNSET)
 
 
@@ -4697,7 +4687,7 @@ class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
     total_ms: int = Field(default=...)
     jobs: int = Field(default=...)
     job_runs: Union[
-        Unset, List["WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"]
+        Unset, List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]
     ] = Field(default=UNSET)
 
 
@@ -4746,19 +4736,19 @@ class WorkflowUsage(GitHubModel):
     Workflow Usage
     """
 
-    billable: "WorkflowUsagePropBillable" = Field(default=...)
+    billable: WorkflowUsagePropBillable = Field(default=...)
 
 
 class WorkflowUsagePropBillable(GitHubModel):
     """WorkflowUsagePropBillable"""
 
-    ubuntu: Union[Unset, "WorkflowUsagePropBillablePropUbuntu"] = Field(
+    ubuntu: Union[Unset, WorkflowUsagePropBillablePropUbuntu] = Field(
         default=UNSET, alias="UBUNTU"
     )
-    macos: Union[Unset, "WorkflowUsagePropBillablePropMacos"] = Field(
+    macos: Union[Unset, WorkflowUsagePropBillablePropMacos] = Field(
         default=UNSET, alias="MACOS"
     )
-    windows: Union[Unset, "WorkflowUsagePropBillablePropWindows"] = Field(
+    windows: Union[Unset, WorkflowUsagePropBillablePropWindows] = Field(
         default=UNSET, alias="WINDOWS"
     )
 
@@ -4810,9 +4800,7 @@ class ProtectedBranchRequiredStatusCheck(GitHubModel):
     url: Union[Unset, str] = Field(default=UNSET)
     enforcement_level: Union[Unset, str] = Field(default=UNSET)
     contexts: List[str] = Field(default=...)
-    checks: List["ProtectedBranchRequiredStatusCheckPropChecksItems"] = Field(
-        default=...
-    )
+    checks: List[ProtectedBranchRequiredStatusCheckPropChecksItems] = Field(default=...)
     contexts_url: Union[Unset, str] = Field(default=UNSET)
     strict: Union[Unset, bool] = Field(default=UNSET)
 
@@ -4842,10 +4830,10 @@ class ProtectedBranchPullRequestReview(GitHubModel):
 
     url: Union[Unset, str] = Field(default=UNSET)
     dismissal_restrictions: Union[
-        Unset, "ProtectedBranchPullRequestReviewPropDismissalRestrictions"
+        Unset, ProtectedBranchPullRequestReviewPropDismissalRestrictions
     ] = Field(default=UNSET)
     bypass_pull_request_allowances: Union[
-        Unset, "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances"
+        Unset, ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
     ] = Field(
         description="Allow specific users, teams, or apps to bypass pull request requirements.",
         default=UNSET,
@@ -4860,13 +4848,13 @@ class ProtectedBranchPullRequestReview(GitHubModel):
 class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
     """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    users: Union[Unset, List["SimpleUser"]] = Field(
+    users: Union[Unset, List[SimpleUser]] = Field(
         description="The list of users with review dismissal access.", default=UNSET
     )
-    teams: Union[Unset, List["Team"]] = Field(
+    teams: Union[Unset, List[Team]] = Field(
         description="The list of teams with review dismissal access.", default=UNSET
     )
-    apps: Union[Unset, List["Integration"]] = Field(
+    apps: Union[Unset, List[Integration]] = Field(
         description="The list of apps with review dismissal access.", default=UNSET
     )
     url: Union[Unset, str] = Field(default=UNSET)
@@ -4880,15 +4868,15 @@ class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubMode
     Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    users: Union[Unset, List["SimpleUser"]] = Field(
+    users: Union[Unset, List[SimpleUser]] = Field(
         description="The list of users allowed to bypass pull request requirements.",
         default=UNSET,
     )
-    teams: Union[Unset, List["Team"]] = Field(
+    teams: Union[Unset, List[Team]] = Field(
         description="The list of teams allowed to bypass pull request requirements.",
         default=UNSET,
     )
-    apps: Union[Unset, List["Integration"]] = Field(
+    apps: Union[Unset, List[Integration]] = Field(
         description="The list of apps allowed to bypass pull request requirements.",
         default=UNSET,
     )
@@ -4904,9 +4892,9 @@ class BranchRestrictionPolicy(GitHubModel):
     users_url: str = Field(default=...)
     teams_url: str = Field(default=...)
     apps_url: str = Field(default=...)
-    users: List["BranchRestrictionPolicyPropUsersItems"] = Field(default=...)
-    teams: List["BranchRestrictionPolicyPropTeamsItems"] = Field(default=...)
-    apps: List["BranchRestrictionPolicyPropAppsItems"] = Field(default=...)
+    users: List[BranchRestrictionPolicyPropUsersItems] = Field(default=...)
+    teams: List[BranchRestrictionPolicyPropTeamsItems] = Field(default=...)
+    apps: List[BranchRestrictionPolicyPropAppsItems] = Field(default=...)
 
 
 class BranchRestrictionPolicyPropUsersItems(GitHubModel):
@@ -4955,7 +4943,7 @@ class BranchRestrictionPolicyPropAppsItems(GitHubModel):
     id: Union[Unset, int] = Field(default=UNSET)
     slug: Union[Unset, str] = Field(default=UNSET)
     node_id: Union[Unset, str] = Field(default=UNSET)
-    owner: Union[Unset, "BranchRestrictionPolicyPropAppsItemsPropOwner"] = Field(
+    owner: Union[Unset, BranchRestrictionPolicyPropAppsItemsPropOwner] = Field(
         default=UNSET
     )
     name: Union[Unset, str] = Field(default=UNSET)
@@ -4965,7 +4953,7 @@ class BranchRestrictionPolicyPropAppsItems(GitHubModel):
     created_at: Union[Unset, str] = Field(default=UNSET)
     updated_at: Union[Unset, str] = Field(default=UNSET)
     permissions: Union[
-        Unset, "BranchRestrictionPolicyPropAppsItemsPropPermissions"
+        Unset, BranchRestrictionPolicyPropAppsItemsPropPermissions
     ] = Field(default=UNSET)
     events: Union[Unset, List[str]] = Field(default=UNSET)
 
@@ -5015,46 +5003,46 @@ class BranchProtection(GitHubModel):
 
     url: Union[Unset, str] = Field(default=UNSET)
     enabled: Union[Unset, bool] = Field(default=UNSET)
-    required_status_checks: Union[Unset, "ProtectedBranchRequiredStatusCheck"] = Field(
+    required_status_checks: Union[Unset, ProtectedBranchRequiredStatusCheck] = Field(
         title="Protected Branch Required Status Check",
         description="Protected Branch Required Status Check",
         default=UNSET,
     )
-    enforce_admins: Union[Unset, "ProtectedBranchAdminEnforced"] = Field(
+    enforce_admins: Union[Unset, ProtectedBranchAdminEnforced] = Field(
         title="Protected Branch Admin Enforced",
         description="Protected Branch Admin Enforced",
         default=UNSET,
     )
     required_pull_request_reviews: Union[
-        Unset, "ProtectedBranchPullRequestReview"
+        Unset, ProtectedBranchPullRequestReview
     ] = Field(
         title="Protected Branch Pull Request Review",
         description="Protected Branch Pull Request Review",
         default=UNSET,
     )
-    restrictions: Union[Unset, "BranchRestrictionPolicy"] = Field(
+    restrictions: Union[Unset, BranchRestrictionPolicy] = Field(
         title="Branch Restriction Policy",
         description="Branch Restriction Policy",
         default=UNSET,
     )
     required_linear_history: Union[
-        Unset, "BranchProtectionPropRequiredLinearHistory"
+        Unset, BranchProtectionPropRequiredLinearHistory
     ] = Field(default=UNSET)
-    allow_force_pushes: Union[Unset, "BranchProtectionPropAllowForcePushes"] = Field(
+    allow_force_pushes: Union[Unset, BranchProtectionPropAllowForcePushes] = Field(
         default=UNSET
     )
-    allow_deletions: Union[Unset, "BranchProtectionPropAllowDeletions"] = Field(
+    allow_deletions: Union[Unset, BranchProtectionPropAllowDeletions] = Field(
         default=UNSET
     )
-    block_creations: Union[Unset, "BranchProtectionPropBlockCreations"] = Field(
+    block_creations: Union[Unset, BranchProtectionPropBlockCreations] = Field(
         default=UNSET
     )
     required_conversation_resolution: Union[
-        Unset, "BranchProtectionPropRequiredConversationResolution"
+        Unset, BranchProtectionPropRequiredConversationResolution
     ] = Field(default=UNSET)
     name: Union[Unset, str] = Field(default=UNSET)
     protection_url: Union[Unset, str] = Field(default=UNSET)
-    required_signatures: Union[Unset, "BranchProtectionPropRequiredSignatures"] = Field(
+    required_signatures: Union[Unset, BranchProtectionPropRequiredSignatures] = Field(
         default=UNSET
     )
 
@@ -5103,9 +5091,9 @@ class ShortBranch(GitHubModel):
     """
 
     name: str = Field(default=...)
-    commit: "ShortBranchPropCommit" = Field(default=...)
+    commit: ShortBranchPropCommit = Field(default=...)
     protected: bool = Field(default=...)
-    protection: Union[Unset, "BranchProtection"] = Field(
+    protection: Union[Unset, BranchProtection] = Field(
         title="Branch Protection", description="Branch Protection", default=UNSET
     )
     protection_url: Union[Unset, str] = Field(default=UNSET)
@@ -5170,36 +5158,36 @@ class Commit(GitHubModel):
     node_id: str = Field(default=...)
     html_url: str = Field(default=...)
     comments_url: str = Field(default=...)
-    commit: "CommitPropCommit" = Field(default=...)
-    author: Union[None, "SimpleUser"] = Field(
+    commit: CommitPropCommit = Field(default=...)
+    author: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    committer: Union[None, "SimpleUser"] = Field(
+    committer: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    parents: List["CommitPropParentsItems"] = Field(default=...)
-    stats: Union[Unset, "CommitPropStats"] = Field(default=UNSET)
-    files: Union[Unset, List["DiffEntry"]] = Field(default=UNSET)
+    parents: List[CommitPropParentsItems] = Field(default=...)
+    stats: Union[Unset, CommitPropStats] = Field(default=UNSET)
+    files: Union[Unset, List[DiffEntry]] = Field(default=UNSET)
 
 
 class CommitPropCommit(GitHubModel):
     """CommitPropCommit"""
 
     url: str = Field(default=...)
-    author: Union[None, "GitUser"] = Field(
+    author: Union[None, GitUser] = Field(
         title="Git User",
         description="Metaproperties for Git author/committer information.",
         default=...,
     )
-    committer: Union[None, "GitUser"] = Field(
+    committer: Union[None, GitUser] = Field(
         title="Git User",
         description="Metaproperties for Git author/committer information.",
         default=...,
     )
     message: str = Field(default=...)
     comment_count: int = Field(default=...)
-    tree: "CommitPropCommitPropTree" = Field(default=...)
-    verification: Union[Unset, "Verification"] = Field(
+    tree: CommitPropCommitPropTree = Field(default=...)
+    verification: Union[Unset, Verification] = Field(
         title="Verification", default=UNSET
     )
 
@@ -5234,10 +5222,10 @@ class BranchWithProtection(GitHubModel):
     """
 
     name: str = Field(default=...)
-    commit: "Commit" = Field(title="Commit", description="Commit", default=...)
-    links: "BranchWithProtectionPropLinks" = Field(default=..., alias="_links")
+    commit: Commit = Field(title="Commit", description="Commit", default=...)
+    links: BranchWithProtectionPropLinks = Field(default=..., alias="_links")
     protected: bool = Field(default=...)
-    protection: "BranchProtection" = Field(
+    protection: BranchProtection = Field(
         title="Branch Protection", description="Branch Protection", default=...
     )
     protection_url: str = Field(default=...)
@@ -5261,7 +5249,7 @@ class StatusCheckPolicy(GitHubModel):
     url: str = Field(default=...)
     strict: bool = Field(default=...)
     contexts: List[str] = Field(default=...)
-    checks: List["StatusCheckPolicyPropChecksItems"] = Field(default=...)
+    checks: List[StatusCheckPolicyPropChecksItems] = Field(default=...)
     contexts_url: str = Field(default=...)
 
 
@@ -5279,36 +5267,36 @@ class ProtectedBranch(GitHubModel):
     """
 
     url: str = Field(default=...)
-    required_status_checks: Union[Unset, "StatusCheckPolicy"] = Field(
+    required_status_checks: Union[Unset, StatusCheckPolicy] = Field(
         title="Status Check Policy", description="Status Check Policy", default=UNSET
     )
     required_pull_request_reviews: Union[
-        Unset, "ProtectedBranchPropRequiredPullRequestReviews"
+        Unset, ProtectedBranchPropRequiredPullRequestReviews
     ] = Field(default=UNSET)
-    required_signatures: Union[Unset, "ProtectedBranchPropRequiredSignatures"] = Field(
+    required_signatures: Union[Unset, ProtectedBranchPropRequiredSignatures] = Field(
         default=UNSET
     )
-    enforce_admins: Union[Unset, "ProtectedBranchPropEnforceAdmins"] = Field(
+    enforce_admins: Union[Unset, ProtectedBranchPropEnforceAdmins] = Field(
         default=UNSET
     )
     required_linear_history: Union[
-        Unset, "ProtectedBranchPropRequiredLinearHistory"
+        Unset, ProtectedBranchPropRequiredLinearHistory
     ] = Field(default=UNSET)
-    allow_force_pushes: Union[Unset, "ProtectedBranchPropAllowForcePushes"] = Field(
+    allow_force_pushes: Union[Unset, ProtectedBranchPropAllowForcePushes] = Field(
         default=UNSET
     )
-    allow_deletions: Union[Unset, "ProtectedBranchPropAllowDeletions"] = Field(
+    allow_deletions: Union[Unset, ProtectedBranchPropAllowDeletions] = Field(
         default=UNSET
     )
-    restrictions: Union[Unset, "BranchRestrictionPolicy"] = Field(
+    restrictions: Union[Unset, BranchRestrictionPolicy] = Field(
         title="Branch Restriction Policy",
         description="Branch Restriction Policy",
         default=UNSET,
     )
     required_conversation_resolution: Union[
-        Unset, "ProtectedBranchPropRequiredConversationResolution"
+        Unset, ProtectedBranchPropRequiredConversationResolution
     ] = Field(default=UNSET)
-    block_creations: Union[Unset, "ProtectedBranchPropBlockCreations"] = Field(
+    block_creations: Union[Unset, ProtectedBranchPropBlockCreations] = Field(
         default=UNSET
     )
 
@@ -5321,11 +5309,11 @@ class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
     require_code_owner_reviews: Union[Unset, bool] = Field(default=UNSET)
     required_approving_review_count: Union[Unset, int] = Field(default=UNSET)
     dismissal_restrictions: Union[
-        Unset, "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"
+        Unset, ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
     ] = Field(default=UNSET)
     bypass_pull_request_allowances: Union[
         Unset,
-        "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     ] = Field(default=UNSET)
 
 
@@ -5337,9 +5325,9 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
     url: str = Field(default=...)
     users_url: str = Field(default=...)
     teams_url: str = Field(default=...)
-    users: List["SimpleUser"] = Field(default=...)
-    teams: List["Team"] = Field(default=...)
-    apps: Union[Unset, List["Integration"]] = Field(default=UNSET)
+    users: List[SimpleUser] = Field(default=...)
+    teams: List[Team] = Field(default=...)
+    apps: Union[Unset, List[Integration]] = Field(default=UNSET)
 
 
 class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
@@ -5347,9 +5335,9 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowanc
 ):
     """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    users: List["SimpleUser"] = Field(default=...)
-    teams: List["Team"] = Field(default=...)
-    apps: Union[Unset, List["Integration"]] = Field(default=UNSET)
+    users: List[SimpleUser] = Field(default=...)
+    teams: List[Team] = Field(default=...)
+    apps: Union[Unset, List[Integration]] = Field(default=UNSET)
 
 
 class ProtectedBranchPropRequiredSignatures(GitHubModel):
@@ -5424,7 +5412,7 @@ class DeploymentSimple(GitHubModel):
         description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
         default=UNSET,
     )
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
@@ -5462,16 +5450,16 @@ class CheckRun(GitHubModel):
     ] = Field(default=...)
     started_at: Union[datetime, None] = Field(default=...)
     completed_at: Union[datetime, None] = Field(default=...)
-    output: "CheckRunPropOutput" = Field(default=...)
+    output: CheckRunPropOutput = Field(default=...)
     name: str = Field(description="The name of the check.", default=...)
-    check_suite: Union["CheckRunPropCheckSuite", None] = Field(default=...)
-    app: Union[None, "Integration"] = Field(
+    check_suite: Union[CheckRunPropCheckSuite, None] = Field(default=...)
+    app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    pull_requests: List["PullRequestMinimal"] = Field(default=...)
-    deployment: Union[Unset, "DeploymentSimple"] = Field(
+    pull_requests: List[PullRequestMinimal] = Field(default=...)
+    deployment: Union[Unset, DeploymentSimple] = Field(
         title="Deployment",
         description="A deployment created as the result of an Actions check run from a workflow that references an environment",
         default=UNSET,
@@ -5538,18 +5526,18 @@ class CheckSuite(GitHubModel):
     url: Union[str, None] = Field(default=...)
     before: Union[str, None] = Field(default=...)
     after: Union[str, None] = Field(default=...)
-    pull_requests: Union[List["PullRequestMinimal"], None] = Field(default=...)
-    app: Union[None, "Integration"] = Field(
+    pull_requests: Union[List[PullRequestMinimal], None] = Field(default=...)
+    app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    repository: "MinimalRepository" = Field(
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
     created_at: Union[datetime, None] = Field(default=...)
     updated_at: Union[datetime, None] = Field(default=...)
-    head_commit: "SimpleCommit" = Field(
+    head_commit: SimpleCommit = Field(
         title="Simple Commit", description="Simple Commit", default=...
     )
     latest_check_runs_count: int = Field(default=...)
@@ -5564,8 +5552,8 @@ class CheckSuitePreference(GitHubModel):
     Check suite configuration preferences for a repository.
     """
 
-    preferences: "CheckSuitePreferencePropPreferences" = Field(default=...)
-    repository: "MinimalRepository" = Field(
+    preferences: CheckSuitePreferencePropPreferences = Field(default=...)
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
 
@@ -5574,7 +5562,7 @@ class CheckSuitePreferencePropPreferences(GitHubModel):
     """CheckSuitePreferencePropPreferences"""
 
     auto_trigger_checks: Union[
-        Unset, List["CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"]
+        Unset, List[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
     ] = Field(default=UNSET)
 
 
@@ -5634,7 +5622,7 @@ class CodeScanningAlertItems(GitHubModel):
         description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
     )
-    dismissed_by: Union[None, "SimpleUser"] = Field(
+    dismissed_by: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     dismissed_at: Union[datetime, None] = Field(
@@ -5652,9 +5640,9 @@ class CodeScanningAlertItems(GitHubModel):
         max_length=280,
         default=UNSET,
     )
-    rule: "CodeScanningAlertRuleSummary" = Field(default=...)
-    tool: "CodeScanningAnalysisTool" = Field(default=...)
-    most_recent_instance: "CodeScanningAlertInstance" = Field(default=...)
+    rule: CodeScanningAlertRuleSummary = Field(default=...)
+    tool: CodeScanningAnalysisTool = Field(default=...)
+    most_recent_instance: CodeScanningAlertInstance = Field(default=...)
 
 
 class CodeScanningAlert(GitHubModel):
@@ -5684,7 +5672,7 @@ class CodeScanningAlert(GitHubModel):
         description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
     )
-    dismissed_by: Union[None, "SimpleUser"] = Field(
+    dismissed_by: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     dismissed_at: Union[datetime, None] = Field(
@@ -5702,9 +5690,9 @@ class CodeScanningAlert(GitHubModel):
         max_length=280,
         default=UNSET,
     )
-    rule: "CodeScanningAlertRule" = Field(default=...)
-    tool: "CodeScanningAnalysisTool" = Field(default=...)
-    most_recent_instance: "CodeScanningAlertInstance" = Field(default=...)
+    rule: CodeScanningAlertRule = Field(default=...)
+    tool: CodeScanningAnalysisTool = Field(default=...)
+    most_recent_instance: CodeScanningAlertInstance = Field(default=...)
 
 
 class CodeScanningAnalysis(GitHubModel):
@@ -5749,7 +5737,7 @@ class CodeScanningAnalysis(GitHubModel):
         description="The REST API URL of the analysis resource.", default=...
     )
     sarif_id: str = Field(description="An identifier for the upload.", default=...)
-    tool: "CodeScanningAnalysisTool" = Field(default=...)
+    tool: CodeScanningAnalysisTool = Field(default=...)
     deletable: bool = Field(default=...)
     warning: str = Field(
         description="Warning generated when processing the analysis", default=...
@@ -5807,7 +5795,7 @@ class CodeownersErrors(GitHubModel):
     A list of errors found in a repo's CODEOWNERS file
     """
 
-    errors: List["CodeownersErrorsPropErrorsItems"] = Field(default=...)
+    errors: List[CodeownersErrorsPropErrorsItems] = Field(default=...)
 
 
 class CodeownersErrorsPropErrorsItems(GitHubModel):
@@ -5887,7 +5875,7 @@ class Collaborator(GitHubModel):
     received_events_url: str = Field(default=...)
     type: str = Field(default=...)
     site_admin: bool = Field(default=...)
-    permissions: Union[Unset, "CollaboratorPropPermissions"] = Field(default=UNSET)
+    permissions: Union[Unset, CollaboratorPropPermissions] = Field(default=UNSET)
     role_name: str = Field(default=...)
 
 
@@ -5910,13 +5898,13 @@ class RepositoryInvitation(GitHubModel):
     id: int = Field(
         description="Unique identifier of the repository invitation.", default=...
     )
-    repository: "MinimalRepository" = Field(
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
-    invitee: Union[None, "SimpleUser"] = Field(
+    invitee: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    inviter: Union[None, "SimpleUser"] = Field(
+    inviter: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
@@ -5939,7 +5927,7 @@ class RepositoryCollaboratorPermission(GitHubModel):
 
     permission: str = Field(default=...)
     role_name: str = Field(default=...)
-    user: Union[None, "Collaborator"] = Field(
+    user: Union[None, Collaborator] = Field(
         title="Collaborator", description="Collaborator", default=...
     )
 
@@ -5959,7 +5947,7 @@ class CommitComment(GitHubModel):
     position: Union[int, None] = Field(default=...)
     line: Union[int, None] = Field(default=...)
     commit_id: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: datetime = Field(default=...)
@@ -5978,7 +5966,7 @@ class CommitComment(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -5990,7 +5978,7 @@ class BranchShort(GitHubModel):
     """
 
     name: str = Field(default=...)
-    commit: "BranchShortPropCommit" = Field(default=...)
+    commit: BranchShortPropCommit = Field(default=...)
     protected: bool = Field(default=...)
 
 
@@ -6016,7 +6004,7 @@ class AutoMerge(GitHubModel):
     The status of auto merging a pull request.
     """
 
-    enabled_by: "SimpleUser" = Field(
+    enabled_by: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     merge_method: Literal["merge", "squash", "rebase"] = Field(
@@ -6052,12 +6040,12 @@ class PullRequestSimple(GitHubModel):
     state: str = Field(default=...)
     locked: bool = Field(default=...)
     title: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: Union[str, None] = Field(default=...)
-    labels: List["PullRequestSimplePropLabelsItems"] = Field(default=...)
-    milestone: Union[None, "Milestone"] = Field(
+    labels: List[PullRequestSimplePropLabelsItems] = Field(default=...)
+    milestone: Union[None, Milestone] = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
         default=...,
@@ -6068,17 +6056,17 @@ class PullRequestSimple(GitHubModel):
     closed_at: Union[datetime, None] = Field(default=...)
     merged_at: Union[datetime, None] = Field(default=...)
     merge_commit_sha: Union[str, None] = Field(default=...)
-    assignee: Union[None, "SimpleUser"] = Field(
+    assignee: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    assignees: Union[Unset, Union[List["SimpleUser"], None]] = Field(default=UNSET)
-    requested_reviewers: Union[Unset, Union[List["SimpleUser"], None]] = Field(
+    assignees: Union[Unset, Union[List[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Union[Unset, Union[List[SimpleUser], None]] = Field(
         default=UNSET
     )
-    requested_teams: Union[Unset, Union[List["Team"], None]] = Field(default=UNSET)
-    head: "PullRequestSimplePropHead" = Field(default=...)
-    base: "PullRequestSimplePropBase" = Field(default=...)
-    links: "PullRequestSimplePropLinks" = Field(default=..., alias="_links")
+    requested_teams: Union[Unset, Union[List[Team], None]] = Field(default=UNSET)
+    head: PullRequestSimplePropHead = Field(default=...)
+    base: PullRequestSimplePropBase = Field(default=...)
+    links: PullRequestSimplePropLinks = Field(default=..., alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -6093,7 +6081,7 @@ class PullRequestSimple(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    auto_merge: "AutoMerge" = Field(
+    auto_merge: AutoMerge = Field(
         title="Auto merge",
         description="The status of auto merging a pull request.",
         default=...,
@@ -6121,11 +6109,11 @@ class PullRequestSimplePropHead(GitHubModel):
 
     label: str = Field(default=...)
     ref: str = Field(default=...)
-    repo: "Repository" = Field(
+    repo: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sha: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -6135,11 +6123,11 @@ class PullRequestSimplePropBase(GitHubModel):
 
     label: str = Field(default=...)
     ref: str = Field(default=...)
-    repo: "Repository" = Field(
+    repo: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sha: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -6147,18 +6135,18 @@ class PullRequestSimplePropBase(GitHubModel):
 class PullRequestSimplePropLinks(GitHubModel):
     """PullRequestSimplePropLinks"""
 
-    comments: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    commits: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    statuses: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    html: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    issue: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    review_comments: "Link" = Field(
+    comments: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    commits: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    statuses: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    html: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    issue: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    review_comments: Link = Field(
         title="Link", description="Hypermedia Link", default=...
     )
-    review_comment: "Link" = Field(
+    review_comment: Link = Field(
         title="Link", description="Hypermedia Link", default=...
     )
-    self_: "Link" = Field(
+    self_: Link = Field(
         title="Link", description="Hypermedia Link", default=..., alias="self"
     )
 
@@ -6186,10 +6174,10 @@ class CombinedCommitStatus(GitHubModel):
     """
 
     state: str = Field(default=...)
-    statuses: List["SimpleCommitStatus"] = Field(default=...)
+    statuses: List[SimpleCommitStatus] = Field(default=...)
     sha: str = Field(default=...)
     total_count: int = Field(default=...)
-    repository: "MinimalRepository" = Field(
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
     commit_url: str = Field(default=...)
@@ -6212,7 +6200,7 @@ class Status(GitHubModel):
     context: str = Field(default=...)
     created_at: str = Field(default=...)
     updated_at: str = Field(default=...)
-    creator: Union[None, "SimpleUser"] = Field(
+    creator: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -6233,7 +6221,7 @@ class CommunityProfile(GitHubModel):
     health_percentage: int = Field(default=...)
     description: Union[str, None] = Field(default=...)
     documentation: Union[str, None] = Field(default=...)
-    files: "CommunityProfilePropFiles" = Field(default=...)
+    files: CommunityProfilePropFiles = Field(default=...)
     updated_at: Union[datetime, None] = Field(default=...)
     content_reports_enabled: Union[Unset, bool] = Field(default=UNSET)
 
@@ -6241,30 +6229,30 @@ class CommunityProfile(GitHubModel):
 class CommunityProfilePropFiles(GitHubModel):
     """CommunityProfilePropFiles"""
 
-    code_of_conduct: Union[None, "CodeOfConductSimple"] = Field(
+    code_of_conduct: Union[None, CodeOfConductSimple] = Field(
         title="Code Of Conduct Simple",
         description="Code of Conduct Simple",
         default=...,
     )
-    code_of_conduct_file: Union[None, "CommunityHealthFile"] = Field(
+    code_of_conduct_file: Union[None, CommunityHealthFile] = Field(
         title="Community Health File", default=...
     )
-    license_: Union[None, "LicenseSimple"] = Field(
+    license_: Union[None, LicenseSimple] = Field(
         title="License Simple",
         description="License Simple",
         default=...,
         alias="license",
     )
-    contributing: Union[None, "CommunityHealthFile"] = Field(
+    contributing: Union[None, CommunityHealthFile] = Field(
         title="Community Health File", default=...
     )
-    readme: Union[None, "CommunityHealthFile"] = Field(
+    readme: Union[None, CommunityHealthFile] = Field(
         title="Community Health File", default=...
     )
-    issue_template: Union[None, "CommunityHealthFile"] = Field(
+    issue_template: Union[None, CommunityHealthFile] = Field(
         title="Community Health File", default=...
     )
-    pull_request_template: Union[None, "CommunityHealthFile"] = Field(
+    pull_request_template: Union[None, CommunityHealthFile] = Field(
         title="Community Health File", default=...
     )
 
@@ -6280,16 +6268,14 @@ class CommitComparison(GitHubModel):
     permalink_url: str = Field(default=...)
     diff_url: str = Field(default=...)
     patch_url: str = Field(default=...)
-    base_commit: "Commit" = Field(title="Commit", description="Commit", default=...)
-    merge_base_commit: "Commit" = Field(
-        title="Commit", description="Commit", default=...
-    )
+    base_commit: Commit = Field(title="Commit", description="Commit", default=...)
+    merge_base_commit: Commit = Field(title="Commit", description="Commit", default=...)
     status: Literal["diverged", "ahead", "behind", "identical"] = Field(default=...)
     ahead_by: int = Field(default=...)
     behind_by: int = Field(default=...)
     total_commits: int = Field(default=...)
-    commits: List["Commit"] = Field(default=...)
-    files: Union[Unset, List["DiffEntry"]] = Field(default=UNSET)
+    commits: List[Commit] = Field(default=...)
+    files: Union[Unset, List[DiffEntry]] = Field(default=UNSET)
 
 
 class ContentTree(GitHubModel):
@@ -6307,8 +6293,8 @@ class ContentTree(GitHubModel):
     git_url: Union[str, None] = Field(default=...)
     html_url: Union[str, None] = Field(default=...)
     download_url: Union[str, None] = Field(default=...)
-    entries: Union[Unset, List["ContentTreePropEntriesItems"]] = Field(default=UNSET)
-    links: "ContentTreePropLinks" = Field(default=..., alias="_links")
+    entries: Union[Unset, List[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(default=..., alias="_links")
 
 
 class ContentTreePropEntriesItems(GitHubModel):
@@ -6324,7 +6310,7 @@ class ContentTreePropEntriesItems(GitHubModel):
     git_url: Union[str, None] = Field(default=...)
     html_url: Union[str, None] = Field(default=...)
     download_url: Union[str, None] = Field(default=...)
-    links: "ContentTreePropEntriesItemsPropLinks" = Field(default=..., alias="_links")
+    links: ContentTreePropEntriesItemsPropLinks = Field(default=..., alias="_links")
 
 
 class ContentTreePropEntriesItemsPropLinks(GitHubModel):
@@ -6356,7 +6342,7 @@ class ContentDirectoryItems(GitHubModel):
     git_url: Union[str, None] = Field(default=...)
     html_url: Union[str, None] = Field(default=...)
     download_url: Union[str, None] = Field(default=...)
-    links: "ContentDirectoryItemsPropLinks" = Field(default=..., alias="_links")
+    links: ContentDirectoryItemsPropLinks = Field(default=..., alias="_links")
 
 
 class ContentDirectoryItemsPropLinks(GitHubModel):
@@ -6384,7 +6370,7 @@ class ContentFile(GitHubModel):
     git_url: Union[str, None] = Field(default=...)
     html_url: Union[str, None] = Field(default=...)
     download_url: Union[str, None] = Field(default=...)
-    links: "ContentFilePropLinks" = Field(default=..., alias="_links")
+    links: ContentFilePropLinks = Field(default=..., alias="_links")
     target: Union[Unset, str] = Field(default=UNSET)
     submodule_git_url: Union[Unset, str] = Field(default=UNSET)
 
@@ -6413,7 +6399,7 @@ class ContentSymlink(GitHubModel):
     git_url: Union[str, None] = Field(default=...)
     html_url: Union[str, None] = Field(default=...)
     download_url: Union[str, None] = Field(default=...)
-    links: "ContentSymlinkPropLinks" = Field(default=..., alias="_links")
+    links: ContentSymlinkPropLinks = Field(default=..., alias="_links")
 
 
 class ContentSymlinkPropLinks(GitHubModel):
@@ -6440,7 +6426,7 @@ class ContentSubmodule(GitHubModel):
     git_url: Union[str, None] = Field(default=...)
     html_url: Union[str, None] = Field(default=...)
     download_url: Union[str, None] = Field(default=...)
-    links: "ContentSubmodulePropLinks" = Field(default=..., alias="_links")
+    links: ContentSubmodulePropLinks = Field(default=..., alias="_links")
 
 
 class ContentSubmodulePropLinks(GitHubModel):
@@ -6457,8 +6443,8 @@ class FileCommit(GitHubModel):
     File Commit
     """
 
-    content: Union["FileCommitPropContent", None] = Field(default=...)
-    commit: "FileCommitPropCommit" = Field(default=...)
+    content: Union[FileCommitPropContent, None] = Field(default=...)
+    commit: FileCommitPropCommit = Field(default=...)
 
 
 class FileCommitPropContent(GitHubModel):
@@ -6473,7 +6459,7 @@ class FileCommitPropContent(GitHubModel):
     git_url: Union[Unset, str] = Field(default=UNSET)
     download_url: Union[Unset, str] = Field(default=UNSET)
     type: Union[Unset, str] = Field(default=UNSET)
-    links: Union[Unset, "FileCommitPropContentPropLinks"] = Field(
+    links: Union[Unset, FileCommitPropContentPropLinks] = Field(
         default=UNSET, alias="_links"
     )
 
@@ -6493,14 +6479,14 @@ class FileCommitPropCommit(GitHubModel):
     node_id: Union[Unset, str] = Field(default=UNSET)
     url: Union[Unset, str] = Field(default=UNSET)
     html_url: Union[Unset, str] = Field(default=UNSET)
-    author: Union[Unset, "FileCommitPropCommitPropAuthor"] = Field(default=UNSET)
-    committer: Union[Unset, "FileCommitPropCommitPropCommitter"] = Field(default=UNSET)
+    author: Union[Unset, FileCommitPropCommitPropAuthor] = Field(default=UNSET)
+    committer: Union[Unset, FileCommitPropCommitPropCommitter] = Field(default=UNSET)
     message: Union[Unset, str] = Field(default=UNSET)
-    tree: Union[Unset, "FileCommitPropCommitPropTree"] = Field(default=UNSET)
-    parents: Union[Unset, List["FileCommitPropCommitPropParentsItems"]] = Field(
+    tree: Union[Unset, FileCommitPropCommitPropTree] = Field(default=UNSET)
+    parents: Union[Unset, List[FileCommitPropCommitPropParentsItems]] = Field(
         default=UNSET
     )
-    verification: Union[Unset, "FileCommitPropCommitPropVerification"] = Field(
+    verification: Union[Unset, FileCommitPropCommitPropVerification] = Field(
         default=UNSET
     )
 
@@ -6596,7 +6582,7 @@ class DependencyGraphDiffItems(GitHubModel):
     package_url: Union[str, None] = Field(default=...)
     license_: Union[str, None] = Field(default=..., alias="license")
     source_repository_url: Union[str, None] = Field(default=...)
-    vulnerabilities: List["DependencyGraphDiffItemsPropVulnerabilitiesItems"] = Field(
+    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field(
         default=...
     )
 
@@ -6629,7 +6615,7 @@ class Dependency(GitHubModel):
         regex="^pkg",
         default=UNSET,
     )
-    metadata: Union[Unset, "Metadata"] = Field(
+    metadata: Union[Unset, Metadata] = Field(
         title="metadata",
         description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
         default=UNSET,
@@ -6656,8 +6642,8 @@ class Manifest(GitHubModel):
     """
 
     name: str = Field(description="The name of the manifest.", default=...)
-    file: Union[Unset, "ManifestPropFile"] = Field(default=UNSET)
-    metadata: Union[Unset, "Metadata"] = Field(
+    file: Union[Unset, ManifestPropFile] = Field(default=UNSET)
+    metadata: Union[Unset, Metadata] = Field(
         title="metadata",
         description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
         default=UNSET,
@@ -6683,7 +6669,7 @@ class Snapshot(GitHubModel):
     version: int = Field(
         description="The version of the repository snapshot submission.", default=...
     )
-    job: "SnapshotPropJob" = Field(default=...)
+    job: SnapshotPropJob = Field(default=...)
     sha: str = Field(
         description="The commit SHA associated with this dependency snapshot.",
         min_length=40,
@@ -6694,15 +6680,15 @@ class Snapshot(GitHubModel):
         regex="^refs/",
         default=...,
     )
-    detector: "SnapshotPropDetector" = Field(
+    detector: SnapshotPropDetector = Field(
         description="A description of the detector used.", default=...
     )
-    metadata: Union[Unset, "Metadata"] = Field(
+    metadata: Union[Unset, Metadata] = Field(
         title="metadata",
         description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
         default=UNSET,
     )
-    manifests: Union[Unset, "SnapshotPropManifests"] = Field(
+    manifests: Union[Unset, SnapshotPropManifests] = Field(
         description="A collection of package manifests", default=UNSET
     )
     scanned: datetime = Field(
@@ -6753,7 +6739,7 @@ class DeploymentStatus(GitHubModel):
     state: Literal[
         "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
     ] = Field(description="The state of the status.", default=...)
-    creator: Union[None, "SimpleUser"] = Field(
+    creator: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     description: str = Field(
@@ -6776,7 +6762,7 @@ class DeploymentStatus(GitHubModel):
     log_url: Union[Unset, str] = Field(
         description="The URL to associate with this status.", default=""
     )
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
@@ -6823,13 +6809,13 @@ class Environment(GitHubModel):
         Unset,
         List[
             Union[
-                "EnvironmentPropProtectionRulesItemsAnyof0",
-                "EnvironmentPropProtectionRulesItemsAnyof1",
-                "EnvironmentPropProtectionRulesItemsAnyof2",
+                EnvironmentPropProtectionRulesItemsAnyof0,
+                EnvironmentPropProtectionRulesItemsAnyof1,
+                EnvironmentPropProtectionRulesItemsAnyof2,
             ]
         ],
     ] = Field(default=UNSET)
-    deployment_branch_policy: Union[Unset, "DeploymentBranchPolicy"] = Field(
+    deployment_branch_policy: Union[Unset, DeploymentBranchPolicy] = Field(
         description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
         default=UNSET,
     )
@@ -6854,7 +6840,7 @@ class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
     node_id: str = Field(default=...)
     type: str = Field(default=...)
     reviewers: Union[
-        Unset, List["EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"]
+        Unset, List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
     ] = Field(
         description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
         default=UNSET,
@@ -6867,7 +6853,7 @@ class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
     type: Union[Unset, Literal["User", "Team"]] = Field(
         description="The type of reviewer.", default=UNSET
     )
-    reviewer: Union[Unset, Union["SimpleUser", "Team"]] = Field(
+    reviewer: Union[Unset, Union[SimpleUser, Team]] = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
         default=UNSET,
@@ -6916,18 +6902,18 @@ class GitCommit(GitHubModel):
     sha: str = Field(description="SHA for the commit", default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    author: "GitCommitPropAuthor" = Field(
+    author: GitCommitPropAuthor = Field(
         description="Identifying information for the git-user", default=...
     )
-    committer: "GitCommitPropCommitter" = Field(
+    committer: GitCommitPropCommitter = Field(
         description="Identifying information for the git-user", default=...
     )
     message: str = Field(
         description="Message describing the purpose of the commit", default=...
     )
-    tree: "GitCommitPropTree" = Field(default=...)
-    parents: List["GitCommitPropParentsItems"] = Field(default=...)
-    verification: "GitCommitPropVerification" = Field(default=...)
+    tree: GitCommitPropTree = Field(default=...)
+    parents: List[GitCommitPropParentsItems] = Field(default=...)
+    verification: GitCommitPropVerification = Field(default=...)
     html_url: str = Field(default=...)
 
 
@@ -6986,7 +6972,7 @@ class GitRef(GitHubModel):
     ref: str = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    object_: "GitRefPropObject" = Field(default=..., alias="object")
+    object_: GitRefPropObject = Field(default=..., alias="object")
 
 
 class GitRefPropObject(GitHubModel):
@@ -7012,9 +6998,9 @@ class GitTag(GitHubModel):
     message: str = Field(
         description="Message describing the purpose of the tag", default=...
     )
-    tagger: "GitTagPropTagger" = Field(default=...)
-    object_: "GitTagPropObject" = Field(default=..., alias="object")
-    verification: Union[Unset, "Verification"] = Field(
+    tagger: GitTagPropTagger = Field(default=...)
+    object_: GitTagPropObject = Field(default=..., alias="object")
+    verification: Union[Unset, Verification] = Field(
         title="Verification", default=UNSET
     )
 
@@ -7044,7 +7030,7 @@ class GitTree(GitHubModel):
     sha: str = Field(default=...)
     url: str = Field(default=...)
     truncated: bool = Field(default=...)
-    tree: List["GitTreePropTreeItems"] = Field(
+    tree: List[GitTreePropTreeItems] = Field(
         description="Objects specifying a tree structure", default=...
     )
 
@@ -7087,14 +7073,14 @@ class Hook(GitHubModel):
         description="Determines what events the hook is triggered for. Default: ['push'].",
         default=...,
     )
-    config: "HookPropConfig" = Field(default=...)
+    config: HookPropConfig = Field(default=...)
     updated_at: datetime = Field(default=...)
     created_at: datetime = Field(default=...)
     url: str = Field(default=...)
     test_url: str = Field(default=...)
     ping_url: str = Field(default=...)
     deliveries_url: Union[Unset, str] = Field(default=UNSET)
-    last_response: "HookResponse" = Field(title="Hook Response", default=...)
+    last_response: HookResponse = Field(title="Hook Response", default=...)
 
 
 class HookPropConfig(GitHubModel):
@@ -7163,7 +7149,7 @@ class Import(GitHubModel):
     has_large_files: Union[Unset, bool] = Field(default=UNSET)
     large_files_size: Union[Unset, int] = Field(default=UNSET)
     large_files_count: Union[Unset, int] = Field(default=UNSET)
-    project_choices: Union[Unset, List["ImportPropProjectChoicesItems"]] = Field(
+    project_choices: Union[Unset, List[ImportPropProjectChoicesItems]] = Field(
         default=UNSET
     )
     message: Union[Unset, str] = Field(default=UNSET)
@@ -7271,52 +7257,52 @@ class IssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: Union[None, "SimpleUser"] = Field(
+    actor: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: datetime = Field(default=...)
-    issue: Union[Unset, Union[None, "Issue"]] = Field(
+    issue: Union[Unset, Union[None, Issue]] = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
         default=UNSET,
     )
-    label: Union[Unset, "IssueEventLabel"] = Field(
+    label: Union[Unset, IssueEventLabel] = Field(
         title="Issue Event Label", description="Issue Event Label", default=UNSET
     )
-    assignee: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    assignee: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    assigner: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    assigner: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    review_requester: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    review_requester: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    requested_reviewer: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    requested_reviewer: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    requested_team: Union[Unset, "Team"] = Field(
+    requested_team: Union[Unset, Team] = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
         default=UNSET,
     )
-    dismissed_review: Union[Unset, "IssueEventDismissedReview"] = Field(
+    dismissed_review: Union[Unset, IssueEventDismissedReview] = Field(
         title="Issue Event Dismissed Review", default=UNSET
     )
-    milestone: Union[Unset, "IssueEventMilestone"] = Field(
+    milestone: Union[Unset, IssueEventMilestone] = Field(
         title="Issue Event Milestone",
         description="Issue Event Milestone",
         default=UNSET,
     )
-    project_card: Union[Unset, "IssueEventProjectCard"] = Field(
+    project_card: Union[Unset, IssueEventProjectCard] = Field(
         title="Issue Event Project Card",
         description="Issue Event Project Card",
         default=UNSET,
     )
-    rename: Union[Unset, "IssueEventRename"] = Field(
+    rename: Union[Unset, IssueEventRename] = Field(
         title="Issue Event Rename", description="Issue Event Rename", default=UNSET
     )
     author_association: Union[
@@ -7337,7 +7323,7 @@ class IssueEvent(GitHubModel):
         default=UNSET,
     )
     lock_reason: Union[Unset, Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
@@ -7353,19 +7339,19 @@ class LabeledIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    label: "LabeledIssueEventPropLabel" = Field(default=...)
+    label: LabeledIssueEventPropLabel = Field(default=...)
 
 
 class LabeledIssueEventPropLabel(GitHubModel):
@@ -7384,19 +7370,19 @@ class UnlabeledIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    label: "UnlabeledIssueEventPropLabel" = Field(default=...)
+    label: UnlabeledIssueEventPropLabel = Field(default=...)
 
 
 class UnlabeledIssueEventPropLabel(GitHubModel):
@@ -7415,22 +7401,22 @@ class AssignedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: "Integration" = Field(
+    performed_via_github_app: Integration = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    assignee: "SimpleUser" = Field(
+    assignee: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    assigner: "SimpleUser" = Field(
+    assigner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -7444,22 +7430,22 @@ class UnassignedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    assignee: "SimpleUser" = Field(
+    assignee: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    assigner: "SimpleUser" = Field(
+    assigner: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -7473,19 +7459,19 @@ class MilestonedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    milestone: "MilestonedIssueEventPropMilestone" = Field(default=...)
+    milestone: MilestonedIssueEventPropMilestone = Field(default=...)
 
 
 class MilestonedIssueEventPropMilestone(GitHubModel):
@@ -7503,19 +7489,19 @@ class DemilestonedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    milestone: "DemilestonedIssueEventPropMilestone" = Field(default=...)
+    milestone: DemilestonedIssueEventPropMilestone = Field(default=...)
 
 
 class DemilestonedIssueEventPropMilestone(GitHubModel):
@@ -7533,19 +7519,19 @@ class RenamedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    rename: "RenamedIssueEventPropRename" = Field(default=...)
+    rename: RenamedIssueEventPropRename = Field(default=...)
 
 
 class RenamedIssueEventPropRename(GitHubModel):
@@ -7564,27 +7550,27 @@ class ReviewRequestedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    review_requester: "SimpleUser" = Field(
+    review_requester: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    requested_team: Union[Unset, "Team"] = Field(
+    requested_team: Union[Unset, Team] = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
         default=UNSET,
     )
-    requested_reviewer: Union[Unset, "SimpleUser"] = Field(
+    requested_reviewer: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
 
@@ -7598,27 +7584,27 @@ class ReviewRequestRemovedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    review_requester: "SimpleUser" = Field(
+    review_requester: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    requested_team: Union[Unset, "Team"] = Field(
+    requested_team: Union[Unset, Team] = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
         default=UNSET,
     )
-    requested_reviewer: Union[Unset, "SimpleUser"] = Field(
+    requested_reviewer: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
 
@@ -7632,21 +7618,19 @@ class ReviewDismissedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    dismissed_review: "ReviewDismissedIssueEventPropDismissedReview" = Field(
-        default=...
-    )
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field(default=...)
 
 
 class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
@@ -7667,14 +7651,14 @@ class LockedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
@@ -7691,19 +7675,19 @@ class AddedToProjectIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    project_card: Union[Unset, "AddedToProjectIssueEventPropProjectCard"] = Field(
+    project_card: Union[Unset, AddedToProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
@@ -7728,19 +7712,19 @@ class MovedColumnInProjectIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    project_card: Union[Unset, "MovedColumnInProjectIssueEventPropProjectCard"] = Field(
+    project_card: Union[Unset, MovedColumnInProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
@@ -7765,19 +7749,19 @@ class RemovedFromProjectIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    project_card: Union[Unset, "RemovedFromProjectIssueEventPropProjectCard"] = Field(
+    project_card: Union[Unset, RemovedFromProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
@@ -7802,19 +7786,19 @@ class ConvertedNoteToIssueIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: "Integration" = Field(
+    performed_via_github_app: Integration = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    project_card: Union[Unset, "ConvertedNoteToIssueIssueEventPropProjectCard"] = Field(
+    project_card: Union[Unset, ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
@@ -7856,7 +7840,7 @@ class TimelineCommentEvent(GitHubModel):
     """
 
     event: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     id: int = Field(description="Unique identifier of the issue comment", default=...)
@@ -7868,7 +7852,7 @@ class TimelineCommentEvent(GitHubModel):
     body_text: Union[Unset, str] = Field(default=UNSET)
     body_html: Union[Unset, str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    user: "SimpleUser" = Field(
+    user: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     created_at: datetime = Field(default=...)
@@ -7888,12 +7872,12 @@ class TimelineCommentEvent(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -7905,19 +7889,19 @@ class TimelineCrossReferencedEvent(GitHubModel):
     """
 
     event: str = Field(default=...)
-    actor: Union[Unset, "SimpleUser"] = Field(
+    actor: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    source: "TimelineCrossReferencedEventPropSource" = Field(default=...)
+    source: TimelineCrossReferencedEventPropSource = Field(default=...)
 
 
 class TimelineCrossReferencedEventPropSource(GitHubModel):
     """TimelineCrossReferencedEventPropSource"""
 
     type: Union[Unset, str] = Field(default=UNSET)
-    issue: Union[Unset, "Issue"] = Field(
+    issue: Union[Unset, Issue] = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
         default=UNSET,
@@ -7934,18 +7918,18 @@ class TimelineCommittedEvent(GitHubModel):
     sha: str = Field(description="SHA for the commit", default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    author: "TimelineCommittedEventPropAuthor" = Field(
+    author: TimelineCommittedEventPropAuthor = Field(
         description="Identifying information for the git-user", default=...
     )
-    committer: "TimelineCommittedEventPropCommitter" = Field(
+    committer: TimelineCommittedEventPropCommitter = Field(
         description="Identifying information for the git-user", default=...
     )
     message: str = Field(
         description="Message describing the purpose of the commit", default=...
     )
-    tree: "TimelineCommittedEventPropTree" = Field(default=...)
-    parents: List["TimelineCommittedEventPropParentsItems"] = Field(default=...)
-    verification: "TimelineCommittedEventPropVerification" = Field(default=...)
+    tree: TimelineCommittedEventPropTree = Field(default=...)
+    parents: List[TimelineCommittedEventPropParentsItems] = Field(default=...)
+    verification: TimelineCommittedEventPropVerification = Field(default=...)
     html_url: str = Field(default=...)
 
 
@@ -8004,14 +7988,14 @@ class TimelineReviewedEvent(GitHubModel):
     event: str = Field(default=...)
     id: int = Field(description="Unique identifier of the review", default=...)
     node_id: str = Field(default=...)
-    user: "SimpleUser" = Field(
+    user: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: Union[str, None] = Field(description="The text of the review.", default=...)
     state: str = Field(default=...)
     html_url: str = Field(default=...)
     pull_request_url: str = Field(default=...)
-    links: "TimelineReviewedEventPropLinks" = Field(default=..., alias="_links")
+    links: TimelineReviewedEventPropLinks = Field(default=..., alias="_links")
     submitted_at: Union[Unset, datetime] = Field(default=UNSET)
     commit_id: str = Field(description="A commit SHA for the review.", default=...)
     body_html: Union[Unset, str] = Field(default=UNSET)
@@ -8035,8 +8019,8 @@ class TimelineReviewedEvent(GitHubModel):
 class TimelineReviewedEventPropLinks(GitHubModel):
     """TimelineReviewedEventPropLinks"""
 
-    html: "TimelineReviewedEventPropLinksPropHtml" = Field(default=...)
-    pull_request: "TimelineReviewedEventPropLinksPropPullRequest" = Field(default=...)
+    html: TimelineReviewedEventPropLinksPropHtml = Field(default=...)
+    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field(default=...)
 
 
 class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
@@ -8094,7 +8078,7 @@ class PullRequestReviewComment(GitHubModel):
     in_reply_to_id: Union[Unset, int] = Field(
         description="The comment ID to reply to.", default=UNSET
     )
-    user: "SimpleUser" = Field(
+    user: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: str = Field(description="The text of the comment.", default=...)
@@ -8121,7 +8105,7 @@ class PullRequestReviewComment(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    links: "PullRequestReviewCommentPropLinks" = Field(default=..., alias="_links")
+    links: PullRequestReviewCommentPropLinks = Field(default=..., alias="_links")
     start_line: Union[Unset, Union[int, None]] = Field(
         description="The first line of the range for a multi-line comment.",
         default=UNSET,
@@ -8146,7 +8130,7 @@ class PullRequestReviewComment(GitHubModel):
         description="The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment",
         default="RIGHT",
     )
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
     body_html: Union[Unset, str] = Field(default=UNSET)
@@ -8156,13 +8140,9 @@ class PullRequestReviewComment(GitHubModel):
 class PullRequestReviewCommentPropLinks(GitHubModel):
     """PullRequestReviewCommentPropLinks"""
 
-    self_: "PullRequestReviewCommentPropLinksPropSelf" = Field(
-        default=..., alias="self"
-    )
-    html: "PullRequestReviewCommentPropLinksPropHtml" = Field(default=...)
-    pull_request: "PullRequestReviewCommentPropLinksPropPullRequest" = Field(
-        default=...
-    )
+    self_: PullRequestReviewCommentPropLinksPropSelf = Field(default=..., alias="self")
+    html: PullRequestReviewCommentPropLinksPropHtml = Field(default=...)
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequest = Field(default=...)
 
 
 class PullRequestReviewCommentPropLinksPropSelf(GitHubModel):
@@ -8191,7 +8171,7 @@ class TimelineLineCommentedEvent(GitHubModel):
 
     event: Union[Unset, str] = Field(default=UNSET)
     node_id: Union[Unset, str] = Field(default=UNSET)
-    comments: Union[Unset, List["PullRequestReviewComment"]] = Field(default=UNSET)
+    comments: Union[Unset, List[PullRequestReviewComment]] = Field(default=UNSET)
 
 
 class TimelineCommitCommentedEvent(GitHubModel):
@@ -8203,7 +8183,7 @@ class TimelineCommitCommentedEvent(GitHubModel):
     event: Union[Unset, str] = Field(default=UNSET)
     node_id: Union[Unset, str] = Field(default=UNSET)
     commit_id: Union[Unset, str] = Field(default=UNSET)
-    comments: Union[Unset, List["CommitComment"]] = Field(default=UNSET)
+    comments: Union[Unset, List[CommitComment]] = Field(default=UNSET)
 
 
 class TimelineAssignedIssueEvent(GitHubModel):
@@ -8215,19 +8195,19 @@ class TimelineAssignedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    assignee: "SimpleUser" = Field(
+    assignee: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -8241,19 +8221,19 @@ class TimelineUnassignedIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    assignee: "SimpleUser" = Field(
+    assignee: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -8267,14 +8247,14 @@ class StateChangeIssueEvent(GitHubModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    actor: "SimpleUser" = Field(
+    actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
     event: str = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
-    performed_via_github_app: Union[None, "Integration"] = Field(
+    performed_via_github_app: Union[None, Integration] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
@@ -8321,8 +8301,8 @@ class LicenseContent(GitHubModel):
     type: str = Field(default=...)
     content: str = Field(default=...)
     encoding: str = Field(default=...)
-    links: "LicenseContentPropLinks" = Field(default=..., alias="_links")
-    license_: Union[None, "LicenseSimple"] = Field(
+    links: LicenseContentPropLinks = Field(default=..., alias="_links")
+    license_: Union[None, LicenseSimple] = Field(
         title="License Simple",
         description="License Simple",
         default=...,
@@ -8414,14 +8394,14 @@ class Page(GitHubModel):
     build_type: Union[Unset, Literal["legacy", "workflow", None]] = Field(
         description="The process in which the Page will be built.", default=UNSET
     )
-    source: Union[Unset, "PagesSourceHash"] = Field(
+    source: Union[Unset, PagesSourceHash] = Field(
         title="Pages Source Hash", default=UNSET
     )
     public: bool = Field(
         description="Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site.",
         default=...,
     )
-    https_certificate: Union[Unset, "PagesHttpsCertificate"] = Field(
+    https_certificate: Union[Unset, PagesHttpsCertificate] = Field(
         title="Pages Https Certificate", default=UNSET
     )
     https_enforced: Union[Unset, bool] = Field(
@@ -8437,8 +8417,8 @@ class PageBuild(GitHubModel):
 
     url: str = Field(default=...)
     status: str = Field(default=...)
-    error: "PageBuildPropError" = Field(default=...)
-    pusher: Union[None, "SimpleUser"] = Field(
+    error: PageBuildPropError = Field(default=...)
+    pusher: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     commit: str = Field(default=...)
@@ -8469,8 +8449,8 @@ class PagesHealthCheck(GitHubModel):
     Pages Health Check Status
     """
 
-    domain: Union[Unset, "PagesHealthCheckPropDomain"] = Field(default=UNSET)
-    alt_domain: Union[Unset, Union["PagesHealthCheckPropAltDomain", None]] = Field(
+    domain: Union[Unset, PagesHealthCheckPropDomain] = Field(default=UNSET)
+    alt_domain: Union[Unset, Union[PagesHealthCheckPropAltDomain, None]] = Field(
         default=UNSET
     )
 
@@ -8588,12 +8568,12 @@ class PullRequest(GitHubModel):
     )
     locked: bool = Field(default=...)
     title: str = Field(description="The title of the pull request.", default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: Union[str, None] = Field(default=...)
-    labels: List["PullRequestPropLabelsItems"] = Field(default=...)
-    milestone: Union[None, "Milestone"] = Field(
+    labels: List[PullRequestPropLabelsItems] = Field(default=...)
+    milestone: Union[None, Milestone] = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
         default=...,
@@ -8604,19 +8584,17 @@ class PullRequest(GitHubModel):
     closed_at: Union[datetime, None] = Field(default=...)
     merged_at: Union[datetime, None] = Field(default=...)
     merge_commit_sha: Union[str, None] = Field(default=...)
-    assignee: Union[None, "SimpleUser"] = Field(
+    assignee: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    assignees: Union[Unset, Union[List["SimpleUser"], None]] = Field(default=UNSET)
-    requested_reviewers: Union[Unset, Union[List["SimpleUser"], None]] = Field(
+    assignees: Union[Unset, Union[List[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Union[Unset, Union[List[SimpleUser], None]] = Field(
         default=UNSET
     )
-    requested_teams: Union[Unset, Union[List["TeamSimple"], None]] = Field(
-        default=UNSET
-    )
-    head: "PullRequestPropHead" = Field(default=...)
-    base: "PullRequestPropBase" = Field(default=...)
-    links: "PullRequestPropLinks" = Field(default=..., alias="_links")
+    requested_teams: Union[Unset, Union[List[TeamSimple], None]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field(default=...)
+    base: PullRequestPropBase = Field(default=...)
+    links: PullRequestPropLinks = Field(default=..., alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -8631,7 +8609,7 @@ class PullRequest(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    auto_merge: "AutoMerge" = Field(
+    auto_merge: AutoMerge = Field(
         title="Auto merge",
         description="The status of auto merging a pull request.",
         default=...,
@@ -8644,7 +8622,7 @@ class PullRequest(GitHubModel):
     mergeable: Union[bool, None] = Field(default=...)
     rebaseable: Union[Unset, Union[bool, None]] = Field(default=UNSET)
     mergeable_state: str = Field(default=...)
-    merged_by: Union[None, "SimpleUser"] = Field(
+    merged_by: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     comments: int = Field(default=...)
@@ -8676,9 +8654,9 @@ class PullRequestPropHead(GitHubModel):
 
     label: str = Field(default=...)
     ref: str = Field(default=...)
-    repo: Union["PullRequestPropHeadPropRepo", None] = Field(default=...)
+    repo: Union[PullRequestPropHeadPropRepo, None] = Field(default=...)
     sha: str = Field(default=...)
-    user: "PullRequestPropHeadPropUser" = Field(default=...)
+    user: PullRequestPropHeadPropUser = Field(default=...)
 
 
 class PullRequestPropHeadPropRepo(GitHubModel):
@@ -8718,7 +8696,7 @@ class PullRequestPropHeadPropRepo(GitHubModel):
     milestones_url: str = Field(default=...)
     name: str = Field(default=...)
     notifications_url: str = Field(default=...)
-    owner: "PullRequestPropHeadPropRepoPropOwner" = Field(default=...)
+    owner: PullRequestPropHeadPropRepoPropOwner = Field(default=...)
     private: bool = Field(default=...)
     pulls_url: str = Field(default=...)
     releases_url: str = Field(default=...)
@@ -8752,14 +8730,14 @@ class PullRequestPropHeadPropRepo(GitHubModel):
     mirror_url: Union[str, None] = Field(default=...)
     open_issues: int = Field(default=...)
     open_issues_count: int = Field(default=...)
-    permissions: Union[Unset, "PullRequestPropHeadPropRepoPropPermissions"] = Field(
+    permissions: Union[Unset, PullRequestPropHeadPropRepoPropPermissions] = Field(
         default=UNSET
     )
     temp_clone_token: Union[Unset, str] = Field(default=UNSET)
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
-    license_: Union["PullRequestPropHeadPropRepoPropLicense", None] = Field(
+    license_: Union[PullRequestPropHeadPropRepoPropLicense, None] = Field(
         default=..., alias="license"
     )
     pushed_at: datetime = Field(default=...)
@@ -8847,9 +8825,9 @@ class PullRequestPropBase(GitHubModel):
 
     label: str = Field(default=...)
     ref: str = Field(default=...)
-    repo: "PullRequestPropBasePropRepo" = Field(default=...)
+    repo: PullRequestPropBasePropRepo = Field(default=...)
     sha: str = Field(default=...)
-    user: "PullRequestPropBasePropUser" = Field(default=...)
+    user: PullRequestPropBasePropUser = Field(default=...)
 
 
 class PullRequestPropBasePropRepo(GitHubModel):
@@ -8890,7 +8868,7 @@ class PullRequestPropBasePropRepo(GitHubModel):
     milestones_url: str = Field(default=...)
     name: str = Field(default=...)
     notifications_url: str = Field(default=...)
-    owner: "PullRequestPropBasePropRepoPropOwner" = Field(default=...)
+    owner: PullRequestPropBasePropRepoPropOwner = Field(default=...)
     private: bool = Field(default=...)
     pulls_url: str = Field(default=...)
     releases_url: str = Field(default=...)
@@ -8924,14 +8902,14 @@ class PullRequestPropBasePropRepo(GitHubModel):
     mirror_url: Union[str, None] = Field(default=...)
     open_issues: int = Field(default=...)
     open_issues_count: int = Field(default=...)
-    permissions: Union[Unset, "PullRequestPropBasePropRepoPropPermissions"] = Field(
+    permissions: Union[Unset, PullRequestPropBasePropRepoPropPermissions] = Field(
         default=UNSET
     )
     temp_clone_token: Union[Unset, str] = Field(default=UNSET)
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
-    license_: Union[None, "LicenseSimple"] = Field(
+    license_: Union[None, LicenseSimple] = Field(
         title="License Simple",
         description="License Simple",
         default=...,
@@ -9009,18 +8987,18 @@ class PullRequestPropBasePropUser(GitHubModel):
 class PullRequestPropLinks(GitHubModel):
     """PullRequestPropLinks"""
 
-    comments: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    commits: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    statuses: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    html: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    issue: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    review_comments: "Link" = Field(
+    comments: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    commits: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    statuses: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    html: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    issue: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    review_comments: Link = Field(
         title="Link", description="Hypermedia Link", default=...
     )
-    review_comment: "Link" = Field(
+    review_comment: Link = Field(
         title="Link", description="Hypermedia Link", default=...
     )
-    self_: "Link" = Field(
+    self_: Link = Field(
         title="Link", description="Hypermedia Link", default=..., alias="self"
     )
 
@@ -9042,8 +9020,8 @@ class PullRequestReviewRequest(GitHubModel):
     Pull Request Review Request
     """
 
-    users: List["SimpleUser"] = Field(default=...)
-    teams: List["Team"] = Field(default=...)
+    users: List[SimpleUser] = Field(default=...)
+    teams: List[Team] = Field(default=...)
 
 
 class PullRequestReview(GitHubModel):
@@ -9054,14 +9032,14 @@ class PullRequestReview(GitHubModel):
 
     id: int = Field(description="Unique identifier of the review", default=...)
     node_id: str = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: str = Field(description="The text of the review.", default=...)
     state: str = Field(default=...)
     html_url: str = Field(default=...)
     pull_request_url: str = Field(default=...)
-    links: "PullRequestReviewPropLinks" = Field(default=..., alias="_links")
+    links: PullRequestReviewPropLinks = Field(default=..., alias="_links")
     submitted_at: Union[Unset, datetime] = Field(default=UNSET)
     commit_id: str = Field(description="A commit SHA for the review.", default=...)
     body_html: Union[Unset, str] = Field(default=UNSET)
@@ -9085,8 +9063,8 @@ class PullRequestReview(GitHubModel):
 class PullRequestReviewPropLinks(GitHubModel):
     """PullRequestReviewPropLinks"""
 
-    html: "PullRequestReviewPropLinksPropHtml" = Field(default=...)
-    pull_request: "PullRequestReviewPropLinksPropPullRequest" = Field(default=...)
+    html: PullRequestReviewPropLinksPropHtml = Field(default=...)
+    pull_request: PullRequestReviewPropLinksPropPullRequest = Field(default=...)
 
 
 class PullRequestReviewPropLinksPropHtml(GitHubModel):
@@ -9118,7 +9096,7 @@ class ReviewComment(GitHubModel):
     commit_id: str = Field(default=...)
     original_commit_id: str = Field(default=...)
     in_reply_to_id: Union[Unset, int] = Field(default=UNSET)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     body: str = Field(default=...)
@@ -9140,10 +9118,10 @@ class ReviewComment(GitHubModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    links: "ReviewCommentPropLinks" = Field(default=..., alias="_links")
+    links: ReviewCommentPropLinks = Field(default=..., alias="_links")
     body_text: Union[Unset, str] = Field(default=UNSET)
     body_html: Union[Unset, str] = Field(default=UNSET)
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
     side: Union[Unset, Literal["LEFT", "RIGHT"]] = Field(
@@ -9175,13 +9153,11 @@ class ReviewComment(GitHubModel):
 class ReviewCommentPropLinks(GitHubModel):
     """ReviewCommentPropLinks"""
 
-    self_: "Link" = Field(
+    self_: Link = Field(
         title="Link", description="Hypermedia Link", default=..., alias="self"
     )
-    html: "Link" = Field(title="Link", description="Hypermedia Link", default=...)
-    pull_request: "Link" = Field(
-        title="Link", description="Hypermedia Link", default=...
-    )
+    html: Link = Field(title="Link", description="Hypermedia Link", default=...)
+    pull_request: Link = Field(title="Link", description="Hypermedia Link", default=...)
 
 
 class ReleaseAsset(GitHubModel):
@@ -9204,7 +9180,7 @@ class ReleaseAsset(GitHubModel):
     download_count: int = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    uploader: Union[None, "SimpleUser"] = Field(
+    uploader: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -9240,17 +9216,17 @@ class Release(GitHubModel):
     )
     created_at: datetime = Field(default=...)
     published_at: Union[datetime, None] = Field(default=...)
-    author: "SimpleUser" = Field(
+    author: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    assets: List["ReleaseAsset"] = Field(default=...)
+    assets: List[ReleaseAsset] = Field(default=...)
     body_html: Union[Unset, str] = Field(default=UNSET)
     body_text: Union[Unset, str] = Field(default=UNSET)
     mentions_count: Union[Unset, int] = Field(default=UNSET)
     discussion_url: Union[Unset, str] = Field(
         description="The URL of the release discussion.", default=UNSET
     )
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -9306,7 +9282,7 @@ class SecretScanningAlert(GitHubModel):
         description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
     )
-    resolved_by: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    resolved_by: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     secret_type: Union[Unset, str] = Field(
@@ -9323,7 +9299,7 @@ class SecretScanningAlert(GitHubModel):
         description="Whether push protection was bypassed for the detected secret.",
         default=UNSET,
     )
-    push_protection_bypassed_by: Union[Unset, Union[None, "SimpleUser"]] = Field(
+    push_protection_bypassed_by: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     push_protection_bypassed_at: Union[Unset, Union[datetime, None]] = Field(
@@ -9375,7 +9351,7 @@ class SecretScanningLocation(GitHubModel):
         description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
         default=...,
     )
-    details: "SecretScanningLocationCommit" = Field(
+    details: SecretScanningLocationCommit = Field(
         description="Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.",
         default=...,
     )
@@ -9388,7 +9364,7 @@ class Stargazer(GitHubModel):
     """
 
     starred_at: datetime = Field(default=...)
-    user: Union[None, "SimpleUser"] = Field(
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
 
@@ -9410,11 +9386,11 @@ class ContributorActivity(GitHubModel):
     Contributor Activity
     """
 
-    author: Union[None, "SimpleUser"] = Field(
+    author: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     total: int = Field(default=...)
-    weeks: List["ContributorActivityPropWeeksItems"] = Field(default=...)
+    weeks: List[ContributorActivityPropWeeksItems] = Field(default=...)
 
 
 class ContributorActivityPropWeeksItems(GitHubModel):
@@ -9460,7 +9436,7 @@ class Tag(GitHubModel):
     """
 
     name: str = Field(default=...)
-    commit: "TagPropCommit" = Field(default=...)
+    commit: TagPropCommit = Field(default=...)
     zipball_url: str = Field(default=...)
     tarball_url: str = Field(default=...)
     node_id: str = Field(default=...)
@@ -9511,7 +9487,7 @@ class CloneTraffic(GitHubModel):
 
     count: int = Field(default=...)
     uniques: int = Field(default=...)
-    clones: List["Traffic"] = Field(default=...)
+    clones: List[Traffic] = Field(default=...)
 
 
 class ContentTraffic(GitHubModel):
@@ -9545,7 +9521,7 @@ class ViewTraffic(GitHubModel):
 
     count: int = Field(default=...)
     uniques: int = Field(default=...)
-    views: List["Traffic"] = Field(default=...)
+    views: List[Traffic] = Field(default=...)
 
 
 class ScimGroupListEnterprise(GitHubModel):
@@ -9555,7 +9531,7 @@ class ScimGroupListEnterprise(GitHubModel):
     total_results: float = Field(default=..., alias="totalResults")
     items_per_page: float = Field(default=..., alias="itemsPerPage")
     start_index: float = Field(default=..., alias="startIndex")
-    resources: List["ScimGroupListEnterprisePropResourcesItems"] = Field(
+    resources: List[ScimGroupListEnterprisePropResourcesItems] = Field(
         default=..., alias="Resources"
     )
 
@@ -9570,9 +9546,9 @@ class ScimGroupListEnterprisePropResourcesItems(GitHubModel):
     )
     display_name: Union[Unset, str] = Field(default=UNSET, alias="displayName")
     members: Union[
-        Unset, List["ScimGroupListEnterprisePropResourcesItemsPropMembersItems"]
+        Unset, List[ScimGroupListEnterprisePropResourcesItemsPropMembersItems]
     ] = Field(default=UNSET)
-    meta: Union[Unset, "ScimGroupListEnterprisePropResourcesItemsPropMeta"] = Field(
+    meta: Union[Unset, ScimGroupListEnterprisePropResourcesItemsPropMeta] = Field(
         default=UNSET
     )
 
@@ -9603,10 +9579,10 @@ class ScimEnterpriseGroup(GitHubModel):
         default=UNSET, alias="externalId"
     )
     display_name: Union[Unset, str] = Field(default=UNSET, alias="displayName")
-    members: Union[Unset, List["ScimEnterpriseGroupPropMembersItems"]] = Field(
+    members: Union[Unset, List[ScimEnterpriseGroupPropMembersItems]] = Field(
         default=UNSET
     )
-    meta: Union[Unset, "ScimEnterpriseGroupPropMeta"] = Field(default=UNSET)
+    meta: Union[Unset, ScimEnterpriseGroupPropMeta] = Field(default=UNSET)
 
 
 class ScimEnterpriseGroupPropMembersItems(GitHubModel):
@@ -9633,7 +9609,7 @@ class ScimUserListEnterprise(GitHubModel):
     total_results: float = Field(default=..., alias="totalResults")
     items_per_page: float = Field(default=..., alias="itemsPerPage")
     start_index: float = Field(default=..., alias="startIndex")
-    resources: List["ScimUserListEnterprisePropResourcesItems"] = Field(
+    resources: List[ScimUserListEnterprisePropResourcesItems] = Field(
         default=..., alias="Resources"
     )
 
@@ -9645,17 +9621,17 @@ class ScimUserListEnterprisePropResourcesItems(GitHubModel):
     id: str = Field(default=...)
     external_id: Union[Unset, str] = Field(default=UNSET, alias="externalId")
     user_name: Union[Unset, str] = Field(default=UNSET, alias="userName")
-    name: Union[Unset, "ScimUserListEnterprisePropResourcesItemsPropName"] = Field(
+    name: Union[Unset, ScimUserListEnterprisePropResourcesItemsPropName] = Field(
         default=UNSET
     )
     emails: Union[
-        Unset, List["ScimUserListEnterprisePropResourcesItemsPropEmailsItems"]
+        Unset, List[ScimUserListEnterprisePropResourcesItemsPropEmailsItems]
     ] = Field(default=UNSET)
     groups: Union[
-        Unset, List["ScimUserListEnterprisePropResourcesItemsPropGroupsItems"]
+        Unset, List[ScimUserListEnterprisePropResourcesItemsPropGroupsItems]
     ] = Field(default=UNSET)
     active: Union[Unset, bool] = Field(default=UNSET)
-    meta: Union[Unset, "ScimUserListEnterprisePropResourcesItemsPropMeta"] = Field(
+    meta: Union[Unset, ScimUserListEnterprisePropResourcesItemsPropMeta] = Field(
         default=UNSET
     )
 
@@ -9697,15 +9673,11 @@ class ScimEnterpriseUser(GitHubModel):
     id: str = Field(default=...)
     external_id: Union[Unset, str] = Field(default=UNSET, alias="externalId")
     user_name: Union[Unset, str] = Field(default=UNSET, alias="userName")
-    name: Union[Unset, "ScimEnterpriseUserPropName"] = Field(default=UNSET)
-    emails: Union[Unset, List["ScimEnterpriseUserPropEmailsItems"]] = Field(
-        default=UNSET
-    )
-    groups: Union[Unset, List["ScimEnterpriseUserPropGroupsItems"]] = Field(
-        default=UNSET
-    )
+    name: Union[Unset, ScimEnterpriseUserPropName] = Field(default=UNSET)
+    emails: Union[Unset, List[ScimEnterpriseUserPropEmailsItems]] = Field(default=UNSET)
+    groups: Union[Unset, List[ScimEnterpriseUserPropGroupsItems]] = Field(default=UNSET)
     active: Union[Unset, bool] = Field(default=UNSET)
-    meta: Union[Unset, "ScimEnterpriseUserPropMeta"] = Field(default=UNSET)
+    meta: Union[Unset, ScimEnterpriseUserPropMeta] = Field(default=UNSET)
 
 
 class ScimEnterpriseUserPropName(GitHubModel):
@@ -9744,7 +9716,9 @@ class ScimUser(GitHubModel):
     SCIM /Users provisioning endpoints
     """
 
-    schemas: List[str] = Field(description="SCIM schema used.", default=...)
+    schemas: List[str] = Field(
+        description="SCIM schema used.", min_items=1, default=...
+    )
     id: str = Field(
         description="Unique identifier of an external identity", default=...
     )
@@ -9761,16 +9735,16 @@ class ScimUser(GitHubModel):
         default=UNSET,
         alias="displayName",
     )
-    name: "ScimUserPropName" = Field(default=...)
-    emails: List["ScimUserPropEmailsItems"] = Field(
+    name: ScimUserPropName = Field(default=...)
+    emails: List[ScimUserPropEmailsItems] = Field(
         description="user emails", default=...
     )
     active: bool = Field(description="The active status of the User.", default=...)
-    meta: "ScimUserPropMeta" = Field(default=...)
+    meta: ScimUserPropMeta = Field(default=...)
     organization_id: Union[Unset, int] = Field(
         description="The ID of the organization.", default=UNSET
     )
-    operations: Union[Unset, List["ScimUserPropOperationsItems"]] = Field(
+    operations: Union[Unset, List[ScimUserPropOperationsItems]] = Field(
         description="Set of operations to be performed", default=UNSET
     )
     groups: Union[Unset, List[Any]] = Field(
@@ -9812,7 +9786,7 @@ class ScimUserPropOperationsItems(GitHubModel):
     op: Literal["add", "remove", "replace"] = Field(default=...)
     path: Union[Unset, str] = Field(default=UNSET)
     value: Union[
-        Unset, Union[str, "ScimUserPropOperationsItemsPropValueOneof1", List[Any]]
+        Unset, Union[str, ScimUserPropOperationsItemsPropValueOneof1, List[Any]]
     ] = Field(default=UNSET)
 
 
@@ -9826,11 +9800,13 @@ class ScimUserList(GitHubModel):
     SCIM User List
     """
 
-    schemas: List[str] = Field(description="SCIM schema used.", default=...)
+    schemas: List[str] = Field(
+        description="SCIM schema used.", min_items=1, default=...
+    )
     total_results: int = Field(default=..., alias="totalResults")
     items_per_page: int = Field(default=..., alias="itemsPerPage")
     start_index: int = Field(default=..., alias="startIndex")
-    resources: List["ScimUser"] = Field(default=..., alias="Resources")
+    resources: List[ScimUser] = Field(default=..., alias="Resources")
 
 
 class SearchResultTextMatchesItems(GitHubModel):
@@ -9840,7 +9816,7 @@ class SearchResultTextMatchesItems(GitHubModel):
     object_type: Union[Unset, Union[str, None]] = Field(default=UNSET)
     property_: Union[Unset, str] = Field(default=UNSET, alias="property")
     fragment: Union[Unset, str] = Field(default=UNSET)
-    matches: Union[Unset, List["SearchResultTextMatchesItemsPropMatchesItems"]] = Field(
+    matches: Union[Unset, List[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
         default=UNSET
     )
 
@@ -9864,7 +9840,7 @@ class CodeSearchResultItem(GitHubModel):
     url: str = Field(default=...)
     git_url: str = Field(default=...)
     html_url: str = Field(default=...)
-    repository: "MinimalRepository" = Field(
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
     score: float = Field(default=...)
@@ -9872,7 +9848,7 @@ class CodeSearchResultItem(GitHubModel):
     language: Union[Unset, Union[str, None]] = Field(default=UNSET)
     last_modified_at: Union[Unset, datetime] = Field(default=UNSET)
     line_numbers: Union[Unset, List[str]] = Field(default=UNSET)
-    text_matches: Union[Unset, List["SearchResultTextMatchesItems"]] = Field(
+    text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
 
@@ -9887,22 +9863,22 @@ class CommitSearchResultItem(GitHubModel):
     sha: str = Field(default=...)
     html_url: str = Field(default=...)
     comments_url: str = Field(default=...)
-    commit: "CommitSearchResultItemPropCommit" = Field(default=...)
-    author: Union[None, "SimpleUser"] = Field(
+    commit: CommitSearchResultItemPropCommit = Field(default=...)
+    author: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    committer: Union[None, "GitUser"] = Field(
+    committer: Union[None, GitUser] = Field(
         title="Git User",
         description="Metaproperties for Git author/committer information.",
         default=...,
     )
-    parents: List["CommitSearchResultItemPropParentsItems"] = Field(default=...)
-    repository: "MinimalRepository" = Field(
+    parents: List[CommitSearchResultItemPropParentsItems] = Field(default=...)
+    repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository", default=...
     )
     score: float = Field(default=...)
     node_id: str = Field(default=...)
-    text_matches: Union[Unset, List["SearchResultTextMatchesItems"]] = Field(
+    text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
 
@@ -9910,17 +9886,17 @@ class CommitSearchResultItem(GitHubModel):
 class CommitSearchResultItemPropCommit(GitHubModel):
     """CommitSearchResultItemPropCommit"""
 
-    author: "CommitSearchResultItemPropCommitPropAuthor" = Field(default=...)
-    committer: Union[None, "GitUser"] = Field(
+    author: CommitSearchResultItemPropCommitPropAuthor = Field(default=...)
+    committer: Union[None, GitUser] = Field(
         title="Git User",
         description="Metaproperties for Git author/committer information.",
         default=...,
     )
     comment_count: int = Field(default=...)
     message: str = Field(default=...)
-    tree: "CommitSearchResultItemPropCommitPropTree" = Field(default=...)
+    tree: CommitSearchResultItemPropCommitPropTree = Field(default=...)
     url: str = Field(default=...)
-    verification: Union[Unset, "Verification"] = Field(
+    verification: Union[Unset, Verification] = Field(
         title="Verification", default=UNSET
     )
 
@@ -9966,17 +9942,17 @@ class IssueSearchResultItem(GitHubModel):
     title: str = Field(default=...)
     locked: bool = Field(default=...)
     active_lock_reason: Union[Unset, Union[str, None]] = Field(default=UNSET)
-    assignees: Union[Unset, Union[List["SimpleUser"], None]] = Field(default=UNSET)
-    user: Union[None, "SimpleUser"] = Field(
+    assignees: Union[Unset, Union[List[SimpleUser], None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    labels: List["IssueSearchResultItemPropLabelsItems"] = Field(default=...)
+    labels: List[IssueSearchResultItemPropLabelsItems] = Field(default=...)
     state: str = Field(default=...)
     state_reason: Union[Unset, Union[str, None]] = Field(default=UNSET)
-    assignee: Union[None, "SimpleUser"] = Field(
+    assignee: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
-    milestone: Union[None, "Milestone"] = Field(
+    milestone: Union[None, Milestone] = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
         default=...,
@@ -9985,10 +9961,10 @@ class IssueSearchResultItem(GitHubModel):
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     closed_at: Union[datetime, None] = Field(default=...)
-    text_matches: Union[Unset, List["SearchResultTextMatchesItems"]] = Field(
+    text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
-    pull_request: Union[Unset, "IssueSearchResultItemPropPullRequest"] = Field(
+    pull_request: Union[Unset, IssueSearchResultItemPropPullRequest] = Field(
         default=UNSET
     )
     body: Union[Unset, str] = Field(default=UNSET)
@@ -10008,18 +9984,18 @@ class IssueSearchResultItem(GitHubModel):
         default=...,
     )
     draft: Union[Unset, bool] = Field(default=UNSET)
-    repository: Union[Unset, "Repository"] = Field(
+    repository: Union[Unset, Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     body_html: Union[Unset, str] = Field(default=UNSET)
     body_text: Union[Unset, str] = Field(default=UNSET)
     timeline_url: Union[Unset, str] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[None, "Integration"]] = Field(
+    performed_via_github_app: Union[Unset, Union[None, Integration]] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    reactions: Union[Unset, "ReactionRollup"] = Field(
+    reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
 
@@ -10060,7 +10036,7 @@ class LabelSearchResultItem(GitHubModel):
     default: bool = Field(default=...)
     description: Union[str, None] = Field(default=...)
     score: float = Field(default=...)
-    text_matches: Union[Unset, List["SearchResultTextMatchesItems"]] = Field(
+    text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
 
@@ -10075,7 +10051,7 @@ class RepoSearchResultItem(GitHubModel):
     node_id: str = Field(default=...)
     name: str = Field(default=...)
     full_name: str = Field(default=...)
-    owner: Union[None, "SimpleUser"] = Field(
+    owner: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     private: bool = Field(default=...)
@@ -10154,16 +10130,16 @@ class RepoSearchResultItem(GitHubModel):
         description="The repository visibility: public, private, or internal.",
         default=UNSET,
     )
-    license_: Union[None, "LicenseSimple"] = Field(
+    license_: Union[None, LicenseSimple] = Field(
         title="License Simple",
         description="License Simple",
         default=...,
         alias="license",
     )
-    permissions: Union[Unset, "RepoSearchResultItemPropPermissions"] = Field(
+    permissions: Union[Unset, RepoSearchResultItemPropPermissions] = Field(
         default=UNSET
     )
-    text_matches: Union[Unset, List["SearchResultTextMatchesItems"]] = Field(
+    text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
     temp_clone_token: Union[Unset, str] = Field(default=UNSET)
@@ -10205,14 +10181,14 @@ class TopicSearchResultItem(GitHubModel):
     score: float = Field(default=...)
     repository_count: Union[Unset, Union[int, None]] = Field(default=UNSET)
     logo_url: Union[Unset, Union[str, None]] = Field(default=UNSET)
-    text_matches: Union[Unset, List["SearchResultTextMatchesItems"]] = Field(
+    text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
     related: Union[
-        Unset, Union[List["TopicSearchResultItemPropRelatedItems"], None]
+        Unset, Union[List[TopicSearchResultItemPropRelatedItems], None]
     ] = Field(default=UNSET)
     aliases: Union[
-        Unset, Union[List["TopicSearchResultItemPropAliasesItems"], None]
+        Unset, Union[List[TopicSearchResultItemPropAliasesItems], None]
     ] = Field(default=UNSET)
 
 
@@ -10220,7 +10196,7 @@ class TopicSearchResultItemPropRelatedItems(GitHubModel):
     """TopicSearchResultItemPropRelatedItems"""
 
     topic_relation: Union[
-        Unset, "TopicSearchResultItemPropRelatedItemsPropTopicRelation"
+        Unset, TopicSearchResultItemPropRelatedItemsPropTopicRelation
     ] = Field(default=UNSET)
 
 
@@ -10237,7 +10213,7 @@ class TopicSearchResultItemPropAliasesItems(GitHubModel):
     """TopicSearchResultItemPropAliasesItems"""
 
     topic_relation: Union[
-        Unset, "TopicSearchResultItemPropAliasesItemsPropTopicRelation"
+        Unset, TopicSearchResultItemPropAliasesItemsPropTopicRelation
     ] = Field(default=UNSET)
 
 
@@ -10286,7 +10262,7 @@ class UserSearchResultItem(GitHubModel):
     location: Union[Unset, Union[str, None]] = Field(default=UNSET)
     site_admin: bool = Field(default=...)
     hireable: Union[Unset, Union[bool, None]] = Field(default=UNSET)
-    text_matches: Union[Unset, List["SearchResultTextMatchesItems"]] = Field(
+    text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
     blog: Union[Unset, Union[str, None]] = Field(default=UNSET)
@@ -10338,7 +10314,7 @@ class PrivateUser(GitHubModel):
     disk_usage: int = Field(default=...)
     collaborators: int = Field(default=...)
     two_factor_authentication: bool = Field(default=...)
-    plan: Union[Unset, "PrivateUserPropPlan"] = Field(default=UNSET)
+    plan: Union[Unset, PrivateUserPropPlan] = Field(default=UNSET)
     suspended_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
     business_plus: Union[Unset, bool] = Field(default=UNSET)
     ldap_dn: Union[Unset, str] = Field(default=UNSET)
@@ -10435,8 +10411,8 @@ class GpgKey(GitHubModel):
     primary_key_id: Union[int, None] = Field(default=...)
     key_id: str = Field(default=...)
     public_key: str = Field(default=...)
-    emails: List["GpgKeyPropEmailsItems"] = Field(default=...)
-    subkeys: List["GpgKeyPropSubkeysItems"] = Field(default=...)
+    emails: List[GpgKeyPropEmailsItems] = Field(default=...)
+    subkeys: List[GpgKeyPropSubkeysItems] = Field(default=...)
     can_sign: bool = Field(default=...)
     can_encrypt_comms: bool = Field(default=...)
     can_encrypt_storage: bool = Field(default=...)
@@ -10512,8 +10488,8 @@ class UserMarketplacePurchase(GitHubModel):
     on_free_trial: bool = Field(default=...)
     free_trial_ends_on: Union[datetime, None] = Field(default=...)
     updated_at: Union[datetime, None] = Field(default=...)
-    account: "MarketplaceAccount" = Field(title="Marketplace Account", default=...)
-    plan: "MarketplaceListingPlan" = Field(
+    account: MarketplaceAccount = Field(title="Marketplace Account", default=...)
+    plan: MarketplaceListingPlan = Field(
         title="Marketplace Listing Plan",
         description="Marketplace Listing Plan",
         default=...,
@@ -10527,7 +10503,7 @@ class StarredRepository(GitHubModel):
     """
 
     starred_at: datetime = Field(default=...)
-    repo: "Repository" = Field(
+    repo: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
 
@@ -10538,7 +10514,7 @@ class Hovercard(GitHubModel):
     Hovercard
     """
 
-    contexts: List["HovercardPropContextsItems"] = Field(default=...)
+    contexts: List[HovercardPropContextsItems] = Field(default=...)
 
 
 class HovercardPropContextsItems(GitHubModel):
@@ -10566,7 +10542,7 @@ class AppManifestsCodeConversionsPostResponse201(GitHubModel):
         description="The slug name of the GitHub app", default=UNSET
     )
     node_id: str = Field(default=...)
-    owner: Union[None, "SimpleUser"] = Field(
+    owner: Union[None, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=...
     )
     name: str = Field(description="The name of the GitHub app", default=...)
@@ -10575,7 +10551,7 @@ class AppManifestsCodeConversionsPostResponse201(GitHubModel):
     html_url: str = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    permissions: "IntegrationPropPermissions" = Field(
+    permissions: IntegrationPropPermissions = Field(
         description="The set of permissions for the GitHub app", default=...
     )
     events: List[str] = Field(
@@ -10635,7 +10611,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
         description="List of repository IDs that the token should have access to",
         default=UNSET,
     )
-    permissions: Union[Unset, "AppPermissions"] = Field(
+    permissions: Union[Unset, AppPermissions] = Field(
         title="App Permissions",
         description="The permissions granted to the user-to-server access token.",
         default=UNSET,
@@ -10699,7 +10675,7 @@ class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
         description="The list of repository IDs to scope the user-to-server access token to. `repository_ids` may not be specified if `repositories` is specified.",
         default=UNSET,
     )
-    permissions: Union[Unset, "AppPermissions"] = Field(
+    permissions: Union[Unset, AppPermissions] = Field(
         title="App Permissions",
         description="The permissions granted to the user-to-server access token.",
         default=UNSET,
@@ -10825,7 +10801,7 @@ class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubM
     """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
 
     total_count: float = Field(default=...)
-    organizations: List["OrganizationSimple"] = Field(default=...)
+    organizations: List[OrganizationSimple] = Field(default=...)
 
 
 class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
@@ -10841,7 +10817,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
     """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
     total_count: float = Field(default=...)
-    runner_groups: List["RunnerGroupsEnterprise"] = Field(default=...)
+    runner_groups: List[RunnerGroupsEnterprise] = Field(default=...)
 
 
 class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
@@ -10903,7 +10879,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetRespo
     """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
     total_count: float = Field(default=...)
-    organizations: List["OrganizationSimple"] = Field(default=...)
+    organizations: List[OrganizationSimple] = Field(default=...)
 
 
 class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
@@ -10923,7 +10899,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200
     """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
     total_count: float = Field(default=...)
-    runners: List["Runner"] = Field(default=...)
+    runners: List[Runner] = Field(default=...)
 
 
 class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
@@ -10938,14 +10914,14 @@ class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
     """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
     total_count: Union[Unset, float] = Field(default=UNSET)
-    runners: Union[Unset, List["Runner"]] = Field(default=UNSET)
+    runners: Union[Unset, List[Runner]] = Field(default=UNSET)
 
 
 class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
     """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
     total_count: int = Field(default=...)
-    labels: List["RunnerLabel"] = Field(default=...)
+    labels: List[RunnerLabel] = Field(default=...)
 
 
 class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
@@ -10953,6 +10929,8 @@ class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+        max_items=100,
+        min_items=0,
         default=...,
     )
 
@@ -10961,7 +10939,10 @@ class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
     """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
     labels: List[str] = Field(
-        description="The names of the custom labels to add to the runner.", default=...
+        description="The names of the custom labels to add to the runner.",
+        max_items=100,
+        min_items=1,
+        default=...,
     )
 
 
@@ -10969,7 +10950,7 @@ class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubM
     """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
     total_count: int = Field(default=...)
-    labels: List["RunnerLabel"] = Field(default=...)
+    labels: List[RunnerLabel] = Field(default=...)
 
 
 class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
@@ -10986,7 +10967,7 @@ class GistsPostBody(GitHubModel):
     description: Union[Unset, str] = Field(
         description="Description of the gist", default=UNSET
     )
-    files: "GistsPostBodyPropFiles" = Field(
+    files: GistsPostBodyPropFiles = Field(
         description="Names and content for the files that make up the gist", default=...
     )
     public: Union[Unset, Union[bool, Literal["true", "false"]]] = Field(
@@ -11007,7 +10988,7 @@ class GistsPostBodyPropFiles(GitHubModel, extra=Extra.allow):
 class GistsGistIdGetResponse403(GitHubModel):
     """GistsGistIdGetResponse403"""
 
-    block: Union[Unset, "GistsGistIdGetResponse403PropBlock"] = Field(default=UNSET)
+    block: Union[Unset, GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
@@ -11026,7 +11007,7 @@ class GistsGistIdPatchBody(GitHubModel):
     description: Union[Unset, str] = Field(
         description="Description of the gist", default=UNSET
     )
-    files: Union[Unset, "GistsGistIdPatchBodyPropFiles"] = Field(
+    files: Union[Unset, GistsGistIdPatchBodyPropFiles] = Field(
         description="Names of files to be updated", default=UNSET
     )
 
@@ -11061,7 +11042,7 @@ class InstallationRepositoriesGetResponse200(GitHubModel):
     """InstallationRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
-    repositories: List["Repository"] = Field(default=...)
+    repositories: List[Repository] = Field(default=...)
     repository_selection: Union[Unset, str] = Field(default=UNSET)
 
 
@@ -11111,7 +11092,7 @@ class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
     total_count: Union[Unset, int] = Field(
         description="The number of custom roles in this organization", default=UNSET
     )
-    custom_roles: Union[Unset, List["OrganizationCustomRepositoryRole"]] = Field(
+    custom_roles: Union[Unset, List[OrganizationCustomRepositoryRole]] = Field(
         default=UNSET
     )
 
@@ -11196,7 +11177,7 @@ class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
     """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int = Field(default=...)
-    repository_cache_usages: List["ActionsCacheUsageByRepository"] = Field(default=...)
+    repository_cache_usages: List[ActionsCacheUsageByRepository] = Field(default=...)
 
 
 class OrgsOrgActionsPermissionsPutBody(GitHubModel):
@@ -11216,7 +11197,7 @@ class OrgsOrgActionsPermissionsRepositoriesGetResponse200(GitHubModel):
     """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
 
     total_count: float = Field(default=...)
-    repositories: List["Repository"] = Field(default=...)
+    repositories: List[Repository] = Field(default=...)
 
 
 class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
@@ -11231,7 +11212,7 @@ class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
     """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
     total_count: float = Field(default=...)
-    runner_groups: List["RunnerGroupsOrg"] = Field(default=...)
+    runner_groups: List[RunnerGroupsOrg] = Field(default=...)
 
 
 class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
@@ -11289,7 +11270,7 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200(GitHubMo
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
 
     total_count: float = Field(default=...)
-    repositories: List["MinimalRepository"] = Field(default=...)
+    repositories: List[MinimalRepository] = Field(default=...)
 
 
 class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubModel):
@@ -11305,7 +11286,7 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(GitHubModel):
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
     total_count: float = Field(default=...)
-    runners: List["Runner"] = Field(default=...)
+    runners: List[Runner] = Field(default=...)
 
 
 class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
@@ -11320,7 +11301,7 @@ class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
     """OrgsOrgActionsRunnersGetResponse200"""
 
     total_count: int = Field(default=...)
-    runners: List["Runner"] = Field(default=...)
+    runners: List[Runner] = Field(default=...)
 
 
 class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
@@ -11328,6 +11309,8 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+        max_items=100,
+        min_items=0,
         default=...,
     )
 
@@ -11336,7 +11319,10 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
     """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
 
     labels: List[str] = Field(
-        description="The names of the custom labels to add to the runner.", default=...
+        description="The names of the custom labels to add to the runner.",
+        max_items=100,
+        min_items=1,
+        default=...,
     )
 
 
@@ -11344,7 +11330,7 @@ class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
     """OrgsOrgActionsSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
-    secrets: List["OrganizationActionsSecret"] = Field(default=...)
+    secrets: List[OrganizationActionsSecret] = Field(default=...)
 
 
 class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
@@ -11372,7 +11358,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
     """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
-    repositories: List["MinimalRepository"] = Field(default=...)
+    repositories: List[MinimalRepository] = Field(default=...)
 
 
 class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
@@ -11388,14 +11374,14 @@ class OrgsOrgCodespacesGetResponse200(GitHubModel):
     """OrgsOrgCodespacesGetResponse200"""
 
     total_count: int = Field(default=...)
-    codespaces: List["Codespace"] = Field(default=...)
+    codespaces: List[Codespace] = Field(default=...)
 
 
 class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
     """OrgsOrgDependabotSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
-    secrets: List["OrganizationDependabotSecret"] = Field(default=...)
+    secrets: List[OrganizationDependabotSecret] = Field(default=...)
 
 
 class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubModel):
@@ -11423,7 +11409,7 @@ class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
     """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
-    repositories: List["MinimalRepository"] = Field(default=...)
+    repositories: List[MinimalRepository] = Field(default=...)
 
 
 class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
@@ -11439,7 +11425,7 @@ class OrgsOrgHooksPostBody(GitHubModel):
     """OrgsOrgHooksPostBody"""
 
     name: str = Field(description='Must be passed as "web".', default=...)
-    config: "OrgsOrgHooksPostBodyPropConfig" = Field(
+    config: OrgsOrgHooksPostBodyPropConfig = Field(
         description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/orgs#create-hook-config-params).",
         default=...,
     )
@@ -11482,7 +11468,7 @@ class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
 class OrgsOrgHooksHookIdPatchBody(GitHubModel):
     """OrgsOrgHooksHookIdPatchBody"""
 
-    config: Union[Unset, "OrgsOrgHooksHookIdPatchBodyPropConfig"] = Field(
+    config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
         description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/orgs#update-hook-config-params).",
         default=UNSET,
     )
@@ -11545,7 +11531,7 @@ class OrgsOrgInstallationsGetResponse200(GitHubModel):
     """OrgsOrgInstallationsGetResponse200"""
 
     total_count: int = Field(default=...)
-    installations: List["Installation"] = Field(default=...)
+    installations: List[Installation] = Field(default=...)
 
 
 class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
@@ -11883,7 +11869,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubModel):
     """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
     groups: Union[
-        Unset, List["OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"]
+        Unset, List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems]
     ] = Field(
         description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
         default=UNSET,
@@ -11943,7 +11929,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
     errors: Union[
-        Unset, List["ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"]
+        Unset, List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
     ] = Field(default=UNSET)
 
 
@@ -11963,7 +11949,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
     errors: Union[
-        Unset, List["ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"]
+        Unset, List[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
     ] = Field(default=UNSET)
 
 
@@ -12005,7 +11991,7 @@ class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
     errors: Union[
-        Unset, List["ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"]
+        Unset, List[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
     ] = Field(default=UNSET)
 
 
@@ -12110,7 +12096,7 @@ class ReposOwnerRepoPatchBody(GitHubModel):
         default=UNSET,
     )
     security_and_analysis: Union[
-        Unset, Union["ReposOwnerRepoPatchBodyPropSecurityAndAnalysis", None]
+        Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysis, None]
     ] = Field(
         description='Specify which security and analysis features to enable or disable. For example, to enable GitHub Advanced Security, use this data in the body of the PATCH request: `{"security_and_analysis": {"advanced_security": {"status": "enabled"}}}`. If you have admin permissions for a private repository covered by an Advanced Security license, you can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.',
         default=UNSET,
@@ -12184,20 +12170,20 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubModel):
     """
 
     advanced_security: Union[
-        Unset, "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity"
+        Unset, ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
     ] = Field(
         description='Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."',
         default=UNSET,
     )
     secret_scanning: Union[
-        Unset, "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning"
+        Unset, ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
     ] = Field(
         description='Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."',
         default=UNSET,
     )
     secret_scanning_push_protection: Union[
         Unset,
-        "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
     ] = Field(
         description='Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
         default=UNSET,
@@ -12251,7 +12237,7 @@ class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
     total_count: int = Field(default=...)
-    artifacts: List["Artifact"] = Field(default=...)
+    artifacts: List[Artifact] = Field(default=...)
 
 
 class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
@@ -12278,7 +12264,7 @@ class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsRunnersGetResponse200"""
 
     total_count: int = Field(default=...)
-    runners: List["Runner"] = Field(default=...)
+    runners: List[Runner] = Field(default=...)
 
 
 class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
@@ -12286,6 +12272,8 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+        max_items=100,
+        min_items=0,
         default=...,
     )
 
@@ -12294,7 +12282,10 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
     """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
     labels: List[str] = Field(
-        description="The names of the custom labels to add to the runner.", default=...
+        description="The names of the custom labels to add to the runner.",
+        max_items=100,
+        min_items=1,
+        default=...,
     )
 
 
@@ -12302,14 +12293,14 @@ class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsRunsGetResponse200"""
 
     total_count: int = Field(default=...)
-    workflow_runs: List["WorkflowRun"] = Field(default=...)
+    workflow_runs: List[WorkflowRun] = Field(default=...)
 
 
 class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
 
     total_count: int = Field(default=...)
-    artifacts: List["Artifact"] = Field(default=...)
+    artifacts: List[Artifact] = Field(default=...)
 
 
 class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
@@ -12318,7 +12309,7 @@ class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
     """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
     total_count: int = Field(default=...)
-    jobs: List["Job"] = Field(default=...)
+    jobs: List[Job] = Field(default=...)
 
 
 class ReposOwnerRepoActionsRunsRunIdCancelPostResponse202(GitHubModel):
@@ -12329,7 +12320,7 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
     total_count: int = Field(default=...)
-    jobs: List["Job"] = Field(default=...)
+    jobs: List[Job] = Field(default=...)
 
 
 class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
@@ -12371,7 +12362,7 @@ class ReposOwnerRepoActionsSecretsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
-    secrets: List["ActionsSecret"] = Field(default=...)
+    secrets: List[ActionsSecret] = Field(default=...)
 
 
 class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
@@ -12395,7 +12386,7 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
     total_count: int = Field(default=...)
-    workflows: List["Workflow"] = Field(default=...)
+    workflows: List[Workflow] = Field(default=...)
 
 
 class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
@@ -12406,7 +12397,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
         default=...,
     )
     inputs: Union[
-        Unset, "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs"
+        Unset, ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
     ] = Field(
         description="Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
         default=UNSET,
@@ -12428,7 +12419,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
     total_count: int = Field(default=...)
-    workflow_runs: List["WorkflowRun"] = Field(default=...)
+    workflow_runs: List[WorkflowRun] = Field(default=...)
 
 
 class ReposOwnerRepoAutolinksPostBody(GitHubModel):
@@ -12448,7 +12439,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubModel):
     """ReposOwnerRepoBranchesBranchProtectionPutBody"""
 
     required_status_checks: Union[
-        "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks", None
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks, None
     ] = Field(
         description="Require status checks to pass before merging. Set to `null` to disable.",
         default=...,
@@ -12458,14 +12449,14 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubModel):
         default=...,
     )
     required_pull_request_reviews: Union[
-        "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews",
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
         None,
     ] = Field(
         description="Require at least one approving review on a pull request, before merging. Set to `null` to disable.",
         default=...,
     )
     restrictions: Union[
-        "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions", None
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions, None
     ] = Field(
         description="Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable.",
         default=...,
@@ -12510,7 +12501,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
     checks: Union[
         Unset,
         List[
-            "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems"
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
         ],
     ] = Field(
         description="The list of status checks to require in order to merge into this branch.",
@@ -12543,7 +12534,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
 
     dismissal_restrictions: Union[
         Unset,
-        "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions",
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
     ] = Field(
         description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
         default=UNSET,
@@ -12562,7 +12553,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     )
     bypass_pull_request_allowances: Union[
         Unset,
-        "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     ] = Field(
         description="Allow specific users, teams, or apps to bypass pull request requirements.",
         default=UNSET,
@@ -12641,7 +12632,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
 
     dismissal_restrictions: Union[
         Unset,
-        "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
     ] = Field(
         description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
         default=UNSET,
@@ -12660,7 +12651,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
     )
     bypass_pull_request_allowances: Union[
         Unset,
-        "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
     ] = Field(
         description="Allow specific users, teams, or apps to bypass pull request requirements.",
         default=UNSET,
@@ -12726,7 +12717,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHub
     checks: Union[
         Unset,
         List[
-            "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems"
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
         ],
     ] = Field(
         description="The list of status checks to require in order to merge into this branch.",
@@ -12906,7 +12897,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
 
     auto_trigger_checks: Union[
         Unset,
-        List["ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"],
+        List[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems],
     ] = Field(
         description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. See the [`auto_trigger_checks` object](https://docs.github.com/rest/reference/checks#auto_trigger_checks-object) description for details.",
         default=UNSET,
@@ -12929,7 +12920,7 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubModel):
     """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
     total_count: int = Field(default=...)
-    check_runs: List["CheckRun"] = Field(default=...)
+    check_runs: List[CheckRun] = Field(default=...)
 
 
 class ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201(GitHubModel):
@@ -12992,7 +12983,7 @@ class ReposOwnerRepoCodespacesGetResponse200(GitHubModel):
     """ReposOwnerRepoCodespacesGetResponse200"""
 
     total_count: int = Field(default=...)
-    codespaces: List["Codespace"] = Field(default=...)
+    codespaces: List[Codespace] = Field(default=...)
 
 
 class ReposOwnerRepoCodespacesPostBody(GitHubModel):
@@ -13042,7 +13033,7 @@ class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     devcontainers: List[
-        "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
     ] = Field(default=...)
 
 
@@ -13059,17 +13050,17 @@ class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubModel):
     """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
     total_count: int = Field(default=...)
-    machines: List["CodespaceMachine"] = Field(default=...)
+    machines: List[CodespaceMachine] = Field(default=...)
 
 
 class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
     """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    billable_owner: Union[Unset, "SimpleUser"] = Field(
+    billable_owner: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
     defaults: Union[
-        Unset, "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"
+        Unset, ReposOwnerRepoCodespacesNewGetResponse200PropDefaults
     ] = Field(default=UNSET)
 
 
@@ -13084,7 +13075,7 @@ class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
     """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
-    secrets: List["RepoCodespacesSecret"] = Field(default=...)
+    secrets: List[RepoCodespacesSecret] = Field(default=...)
 
 
 class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
@@ -13152,14 +13143,14 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
     """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
     total_count: int = Field(default=...)
-    check_runs: List["CheckRun"] = Field(default=...)
+    check_runs: List[CheckRun] = Field(default=...)
 
 
 class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
     """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
     total_count: int = Field(default=...)
-    check_suites: List["CheckSuite"] = Field(default=...)
+    check_suites: List[CheckSuite] = Field(default=...)
 
 
 class ReposOwnerRepoContentsPathPutBody(GitHubModel):
@@ -13177,11 +13168,11 @@ class ReposOwnerRepoContentsPathPutBody(GitHubModel):
         description="The branch name. Default: the repository’s default branch (usually `master`)",
         default=UNSET,
     )
-    committer: Union[Unset, "ReposOwnerRepoContentsPathPutBodyPropCommitter"] = Field(
+    committer: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
         description="The person that committed the file. Default: the authenticated user.",
         default=UNSET,
     )
-    author: Union[Unset, "ReposOwnerRepoContentsPathPutBodyPropAuthor"] = Field(
+    author: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
         description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
         default=UNSET,
     )
@@ -13233,12 +13224,10 @@ class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
         description="The branch name. Default: the repository’s default branch (usually `master`)",
         default=UNSET,
     )
-    committer: Union[
-        Unset, "ReposOwnerRepoContentsPathDeleteBodyPropCommitter"
-    ] = Field(
+    committer: Union[Unset, ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
         description="object containing information about the committer.", default=UNSET
     )
-    author: Union[Unset, "ReposOwnerRepoContentsPathDeleteBodyPropAuthor"] = Field(
+    author: Union[Unset, ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
         description="object containing information about the author.", default=UNSET
     )
 
@@ -13277,7 +13266,7 @@ class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
     """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
-    secrets: List["DependabotSecret"] = Field(default=...)
+    secrets: List[DependabotSecret] = Field(default=...)
 
 
 class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
@@ -13329,7 +13318,7 @@ class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
         default=UNSET,
     )
     payload: Union[
-        Unset, Union["ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0", str]
+        Unset, Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]
     ] = Field(
         description="JSON payload with extra information about the deployment.",
         default="",
@@ -13408,7 +13397,7 @@ class ReposOwnerRepoDispatchesPostBody(GitHubModel):
         default=...,
     )
     client_payload: Union[
-        Unset, "ReposOwnerRepoDispatchesPostBodyPropClientPayload"
+        Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayload
     ] = Field(
         description="JSON payload with extra information about the webhook event that your action or workflow may use.",
         default=UNSET,
@@ -13429,7 +13418,7 @@ class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
     total_count: Union[Unset, int] = Field(
         description="The number of environments in this repository", default=UNSET
     )
-    environments: Union[Unset, List["Environment"]] = Field(default=UNSET)
+    environments: Union[Unset, List[Environment]] = Field(default=UNSET)
 
 
 class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
@@ -13442,14 +13431,14 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
     reviewers: Union[
         Unset,
         Union[
-            List["ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"],
+            List[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
             None,
         ],
     ] = Field(
         description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
         default=UNSET,
     )
-    deployment_branch_policy: Union[Unset, "DeploymentBranchPolicy"] = Field(
+    deployment_branch_policy: Union[Unset, DeploymentBranchPolicy] = Field(
         description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
         default=UNSET,
     )
@@ -13501,11 +13490,11 @@ class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
         description="The SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
         default=UNSET,
     )
-    author: Union[Unset, "ReposOwnerRepoGitCommitsPostBodyPropAuthor"] = Field(
+    author: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
         description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
         default=UNSET,
     )
-    committer: Union[Unset, "ReposOwnerRepoGitCommitsPostBodyPropCommitter"] = Field(
+    committer: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
         description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
         default=UNSET,
     )
@@ -13594,7 +13583,7 @@ class ReposOwnerRepoGitTagsPostBody(GitHubModel):
         description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`.",
         default=...,
     )
-    tagger: Union[Unset, "ReposOwnerRepoGitTagsPostBodyPropTagger"] = Field(
+    tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
         description="An object with information about the individual creating the tag.",
         default=UNSET,
     )
@@ -13617,7 +13606,7 @@ class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
 class ReposOwnerRepoGitTreesPostBody(GitHubModel):
     """ReposOwnerRepoGitTreesPostBody"""
 
-    tree: List["ReposOwnerRepoGitTreesPostBodyPropTreeItems"] = Field(
+    tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
         description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.",
         default=...,
     )
@@ -13659,7 +13648,7 @@ class ReposOwnerRepoHooksPostBody(GitHubModel):
         description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
         default=UNSET,
     )
-    config: Union[Unset, "ReposOwnerRepoHooksPostBodyPropConfig"] = Field(
+    config: Union[Unset, ReposOwnerRepoHooksPostBodyPropConfig] = Field(
         description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/repos#create-hook-config-params).",
         default=UNSET,
     )
@@ -13702,7 +13691,7 @@ class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
 class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
     """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    config: Union[Unset, "ReposOwnerRepoHooksHookIdPatchBodyPropConfig"] = Field(
+    config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfig] = Field(
         description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/repos#create-hook-config-params).",
         default=UNSET,
     )
@@ -13871,7 +13860,7 @@ class ReposOwnerRepoIssuesPostBody(GitHubModel):
         default=UNSET,
     )
     labels: Union[
-        Unset, List[Union[str, "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"]]
+        Unset, List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
     ] = Field(
         description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
         default=UNSET,
@@ -13930,9 +13919,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
     )
     labels: Union[
         Unset,
-        List[
-            Union[str, "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"]
-        ],
+        List[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]],
     ] = Field(
         description="Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._",
         default=UNSET,
@@ -13981,6 +13968,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubModel):
 
     labels: Union[Unset, List[str]] = Field(
         description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/reference/issues#add-labels-to-an-issue)."',
+        min_items=1,
         default=UNSET,
     )
 
@@ -13989,7 +13977,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
     labels: Union[
-        Unset, List["ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"]
+        Unset, List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
     ] = Field(default=UNSET)
 
 
@@ -14010,6 +13998,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
 
     labels: Union[Unset, List[str]] = Field(
         description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/rest/reference/issues#set-labels-for-an-issue)."',
+        min_items=1,
         default=UNSET,
     )
 
@@ -14018,8 +14007,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
 
     labels: Union[
-        Unset,
-        List["ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"],
+        Unset, List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
     ] = Field(default=UNSET)
 
 
@@ -14186,7 +14174,7 @@ class ReposOwnerRepoPagesPostBody(GitHubModel):
     The source branch and directory used to publish your Pages site.
     """
 
-    source: Union[Unset, "ReposOwnerRepoPagesPostBodyPropSource"] = Field(
+    source: Union[Unset, ReposOwnerRepoPagesPostBodyPropSource] = Field(
         description="The source branch and directory used to publish your Pages site.",
         default=UNSET,
     )
@@ -14429,7 +14417,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
         default=UNSET,
     )
     comments: Union[
-        Unset, List["ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"]
+        Unset, List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
     ] = Field(
         description="Use the following table to specify the location, destination, and contents of the draft review comment.",
         default=UNSET,
@@ -14709,7 +14697,7 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200(
     """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
-    secrets: List["ActionsSecret"] = Field(default=...)
+    secrets: List[ActionsSecret] = Field(default=...)
 
 
 class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody(
@@ -14737,7 +14725,7 @@ class ScimV2EnterprisesEnterpriseGroupsPostBody(GitHubModel):
         alias="displayName",
     )
     members: Union[
-        Unset, List["ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems"]
+        Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems]
     ] = Field(default=UNSET)
 
 
@@ -14757,8 +14745,7 @@ class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody(GitHubModel):
         alias="displayName",
     )
     members: Union[
-        Unset,
-        List["ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems"],
+        Unset, List[ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems]
     ] = Field(default=UNSET)
 
 
@@ -14773,7 +14760,7 @@ class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(GitHubModel):
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
     operations: List[
-        "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems"
+        ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
     ] = Field(
         description="Array of [SCIM operations](https://tools.ietf.org/html/rfc7644#section-3.5.2).",
         default=...,
@@ -14802,12 +14789,12 @@ class ScimV2EnterprisesEnterpriseUsersPostBody(GitHubModel):
     user_name: str = Field(
         description="The username for the user.", default=..., alias="userName"
     )
-    name: "ScimV2EnterprisesEnterpriseUsersPostBodyPropName" = Field(default=...)
-    emails: List["ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems"] = Field(
+    name: ScimV2EnterprisesEnterpriseUsersPostBodyPropName = Field(default=...)
+    emails: List[ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems] = Field(
         description="List of user emails.", default=...
     )
     groups: Union[
-        Unset, List["ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems"]
+        Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems]
     ] = Field(
         description="List of SCIM group IDs the user is a member of.", default=UNSET
     )
@@ -14847,14 +14834,12 @@ class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody(GitHubModel):
     user_name: str = Field(
         description="The username for the user.", default=..., alias="userName"
     )
-    name: "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName" = Field(
-        default=...
-    )
+    name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName = Field(default=...)
     emails: List[
-        "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems"
+        ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems
     ] = Field(description="List of user emails.", default=...)
     groups: Union[
-        Unset, List["ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems"]
+        Unset, List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems]
     ] = Field(
         description="List of SCIM group IDs the user is a member of.", default=UNSET
     )
@@ -14892,7 +14877,7 @@ class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(GitHubModel):
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
     operations: List[
-        "ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems"
+        ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
     ] = Field(
         description="Array of [SCIM operations](https://tools.ietf.org/html/rfc7644#section-3.5.2).",
         default=...,
@@ -14919,8 +14904,8 @@ class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
         default=UNSET,
         alias="displayName",
     )
-    name: "ScimV2OrganizationsOrgUsersPostBodyPropName" = Field(default=...)
-    emails: List["ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"] = Field(
+    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field(default=...)
+    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
         description="user emails", default=...
     )
     schemas: Union[Unset, List[str]] = Field(default=UNSET)
@@ -14966,8 +14951,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
         default=...,
         alias="userName",
     )
-    name: "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName" = Field(default=...)
-    emails: List["ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"] = Field(
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field(default=...)
+    emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
         description="user emails", default=...
     )
 
@@ -14997,7 +14982,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
 
     schemas: Union[Unset, List[str]] = Field(default=UNSET)
     operations: List[
-        "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
     ] = Field(
         description="Set of operations to be performed", default=..., alias="Operations"
     )
@@ -15011,9 +14996,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubMo
     value: Union[
         Unset,
         Union[
-            "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
             List[
-                "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items"
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
             ],
             str,
         ],
@@ -15052,7 +15037,7 @@ class SearchCodeGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     incomplete_results: bool = Field(default=...)
-    items: List["CodeSearchResultItem"] = Field(default=...)
+    items: List[CodeSearchResultItem] = Field(default=...)
 
 
 class SearchCommitsGetResponse200(GitHubModel):
@@ -15060,7 +15045,7 @@ class SearchCommitsGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     incomplete_results: bool = Field(default=...)
-    items: List["CommitSearchResultItem"] = Field(default=...)
+    items: List[CommitSearchResultItem] = Field(default=...)
 
 
 class SearchIssuesGetResponse200(GitHubModel):
@@ -15068,7 +15053,7 @@ class SearchIssuesGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     incomplete_results: bool = Field(default=...)
-    items: List["IssueSearchResultItem"] = Field(default=...)
+    items: List[IssueSearchResultItem] = Field(default=...)
 
 
 class SearchLabelsGetResponse200(GitHubModel):
@@ -15076,7 +15061,7 @@ class SearchLabelsGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     incomplete_results: bool = Field(default=...)
-    items: List["LabelSearchResultItem"] = Field(default=...)
+    items: List[LabelSearchResultItem] = Field(default=...)
 
 
 class SearchRepositoriesGetResponse200(GitHubModel):
@@ -15084,7 +15069,7 @@ class SearchRepositoriesGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     incomplete_results: bool = Field(default=...)
-    items: List["RepoSearchResultItem"] = Field(default=...)
+    items: List[RepoSearchResultItem] = Field(default=...)
 
 
 class SearchTopicsGetResponse200(GitHubModel):
@@ -15092,7 +15077,7 @@ class SearchTopicsGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     incomplete_results: bool = Field(default=...)
-    items: List["TopicSearchResultItem"] = Field(default=...)
+    items: List[TopicSearchResultItem] = Field(default=...)
 
 
 class SearchUsersGetResponse200(GitHubModel):
@@ -15100,7 +15085,7 @@ class SearchUsersGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     incomplete_results: bool = Field(default=...)
-    items: List["UserSearchResultItem"] = Field(default=...)
+    items: List[UserSearchResultItem] = Field(default=...)
 
 
 class TeamsTeamIdPatchBody(GitHubModel):
@@ -15217,7 +15202,7 @@ class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
 class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
     """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    groups: List["TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"] = Field(
+    groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
         description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
         default=...,
     )
@@ -15270,7 +15255,7 @@ class UserCodespacesGetResponse200(GitHubModel):
     """UserCodespacesGetResponse200"""
 
     total_count: int = Field(default=...)
-    codespaces: List["Codespace"] = Field(default=...)
+    codespaces: List[Codespace] = Field(default=...)
 
 
 class UserCodespacesPostBodyOneof0(GitHubModel):
@@ -15321,7 +15306,7 @@ class UserCodespacesPostBodyOneof0(GitHubModel):
 class UserCodespacesPostBodyOneof1(GitHubModel):
     """UserCodespacesPostBodyOneof1"""
 
-    pull_request: "UserCodespacesPostBodyOneof1PropPullRequest" = Field(
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
         description="Pull request number for this codespace", default=...
     )
     location: Union[Unset, str] = Field(
@@ -15360,7 +15345,7 @@ class UserCodespacesSecretsGetResponse200(GitHubModel):
     """UserCodespacesSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
-    secrets: List["CodespacesSecret"] = Field(default=...)
+    secrets: List[CodespacesSecret] = Field(default=...)
 
 
 class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
@@ -15388,7 +15373,7 @@ class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
     """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
-    repositories: List["MinimalRepository"] = Field(default=...)
+    repositories: List[MinimalRepository] = Field(default=...)
 
 
 class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
@@ -15419,7 +15404,7 @@ class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
     """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
     total_count: int = Field(default=...)
-    machines: List["CodespaceMachine"] = Field(default=...)
+    machines: List[CodespaceMachine] = Field(default=...)
 
 
 class UserEmailVisibilityPatchBody(GitHubModel):
@@ -15476,7 +15461,7 @@ class UserInstallationsGetResponse200(GitHubModel):
     """UserInstallationsGetResponse200"""
 
     total_count: int = Field(default=...)
-    installations: List["Installation"] = Field(default=...)
+    installations: List[Installation] = Field(default=...)
 
 
 class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
@@ -15484,7 +15469,7 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
 
     total_count: int = Field(default=...)
     repository_selection: Union[Unset, str] = Field(default=UNSET)
-    repositories: List["Repository"] = Field(default=...)
+    repositories: List[Repository] = Field(default=...)
 
 
 class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):

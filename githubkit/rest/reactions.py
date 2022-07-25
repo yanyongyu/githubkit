@@ -7,10 +7,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, List, Union, Literal
 
-from pydantic import Field
-
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
+    ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
+    ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
+    ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
+    ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
+    TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
+    TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+)
 from .models import (
     Reaction,
     BasicError,
