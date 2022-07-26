@@ -111,10 +111,6 @@ async with github:
     repo: FullRepository = resp.parsed_data
 ```
 
-> **Warning**
->
-> Making sync calls in async context or making async calls in sync context will raise an error.
-
 ### Pagination
 
 ```python
