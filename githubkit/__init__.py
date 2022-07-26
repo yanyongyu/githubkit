@@ -1,6 +1,6 @@
 from functools import cached_property
 from typing_extensions import ParamSpec
-from typing import List, Union, TypeVar, Callable, Awaitable
+from typing import Any, Dict, List, Union, TypeVar, Callable, Optional, Awaitable
 
 from .core import GitHubCore
 from .rest import RestNamespace
@@ -17,6 +17,24 @@ class GitHub(GitHubCore):
     @cached_property
     def rest(self) -> RestNamespace:
         return RestNamespace(self)
+
+    def graphql(
+        self, query: str, variables: Optional[Dict[str, Any]] = None
+    ) -> Response[Any]:
+        json: Dict[str, Any] = {"query": query}
+        if variables:
+            json["variables"] = variables
+
+        return self.request("POST", "/graphql", json=json)
+
+    async def async_graphql(
+        self, query: str, variables: Optional[Dict[str, Any]] = None
+    ) -> Response[Any]:
+        json: Dict[str, Any] = {"query": query}
+        if variables:
+            json["variables"] = variables
+
+        return await self.arequest("POST", "/graphql", json=json)
 
     @staticmethod
     def paginate(

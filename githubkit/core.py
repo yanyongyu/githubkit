@@ -3,6 +3,7 @@ from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
     Dict,
+    List,
     Type,
     Union,
     TypeVar,
@@ -36,7 +37,8 @@ class GitHubCore:
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         user_agent: Optional[str] = None,
-        accept: Optional[str] = None,
+        accept_format: Optional[str] = None,
+        previews: Optional[List[str]] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
@@ -49,8 +51,22 @@ class GitHubCore:
             base_url if isinstance(base_url, httpx.URL) else httpx.URL(base_url)
         )
 
+        if accept_format:
+            accept_format = (
+                accept_format if accept_format.startswith(".") else f".{accept_format}"
+            )
+        accept_format = accept_format or "+json"
+
+        if previews:
+            accepts = [
+                f"application/vnd.github.{preview}{accept_format}"
+                for preview in previews
+            ]
+        else:
+            accepts = [f"application/vnd.github{accept_format}"]
+        self.accept: str = ",".join(accepts)
+
         self.user_agent: str = user_agent or "GitHubKit/Python"
-        self.accept: str = accept or "application/vnd.github.full+json"
         self.follow_redirects: bool = follow_redirects
 
         self.timeout: httpx.Timeout = (
