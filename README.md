@@ -132,3 +132,17 @@ async for issue in github.paginate(
     issue: Issue
     print(issue.number)
 ```
+
+### Call GraphQL API
+
+Simple sync call:
+
+```python
+data: Dict[str, Any] = github.graphql(query, variables={"foo": "bar"})
+```
+
+Simple async call:
+
+```python
+data: Dict[str, Any] = github.async_graphql(query, variables={"foo": "bar"})
+```
