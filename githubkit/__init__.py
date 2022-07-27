@@ -8,6 +8,7 @@ from .response import Response as Response
 from .paginator import Paginator as Paginator
 from .auth import BasicAuthStrategy as BasicAuthStrategy
 from .auth import TokenAuthStrategy as TokenAuthStrategy
+from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
 RT = TypeVar("RT")
 CP = ParamSpec("CP")
@@ -20,21 +21,23 @@ class GitHub(GitHubCore):
 
     def graphql(
         self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Response[Any]:
-        json: Dict[str, Any] = {"query": query}
-        if variables:
-            json["variables"] = variables
+    ) -> Dict[str, Any]:
+        json = build_graphql_request(query, variables)
 
-        return self.request("POST", "/graphql", json=json)
+        return parse_graphql_response(
+            self.request("POST", "/graphql", json=json, response_model=GraphQLResponse)
+        )
 
     async def async_graphql(
         self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Response[Any]:
-        json: Dict[str, Any] = {"query": query}
-        if variables:
-            json["variables"] = variables
+    ) -> Dict[str, Any]:
+        json = build_graphql_request(query, variables)
 
-        return await self.arequest("POST", "/graphql", json=json)
+        return parse_graphql_response(
+            await self.arequest(
+                "POST", "/graphql", json=json, response_model=GraphQLResponse
+            )
+        )
 
     @staticmethod
     def paginate(
