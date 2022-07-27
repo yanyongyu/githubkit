@@ -17,4 +17,6 @@ def exclude_unset(data: Any) -> Any:
         return data.__class__(
             (k, exclude_unset(v)) for k, v in data.items() if v is not UNSET
         )
+    elif data is UNSET:
+        return None
     return data
