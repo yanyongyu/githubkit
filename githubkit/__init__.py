@@ -6,6 +6,7 @@ from .core import GitHubCore
 from .rest import RestNamespace
 from .response import Response as Response
 from .paginator import Paginator as Paginator
+from .auth import NoneAuthStrategy as NoneAuthStrategy
 from .auth import BasicAuthStrategy as BasicAuthStrategy
 from .auth import TokenAuthStrategy as TokenAuthStrategy
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response

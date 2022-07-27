@@ -17,7 +17,7 @@ import httpx
 
 from .response import Response
 from .exception import RequestFailed
-from .auth import BaseAuthStrategy, TokenAuthStrategy
+from .auth import BaseAuthStrategy, NoneAuthStrategy, TokenAuthStrategy
 from .typing import (
     URLTypes,
     CookieTypes,
@@ -33,7 +33,7 @@ T = TypeVar("T")
 class GitHubCore:
     def __init__(
         self,
-        auth: Union[BaseAuthStrategy, str],
+        auth: Optional[Union[BaseAuthStrategy, str]] = None,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         user_agent: Optional[str] = None,
@@ -42,6 +42,7 @@ class GitHubCore:
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
+        auth = auth or NoneAuthStrategy()
         self.auth: BaseAuthStrategy = (
             TokenAuthStrategy(auth) if isinstance(auth, str) else auth
         )
@@ -59,7 +60,7 @@ class GitHubCore:
 
         if previews:
             accepts = [
-                f"application/vnd.github.{preview}{accept_format}"
+                f"application/vnd.github.{preview}-preview{accept_format}"
                 for preview in previews
             ]
         else:

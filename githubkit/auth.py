@@ -1,5 +1,5 @@
 import abc
-from typing import TYPE_CHECKING, Any, Dict, Generator
+from typing import TYPE_CHECKING, Generator
 
 import httpx
 
@@ -10,7 +10,12 @@ if TYPE_CHECKING:
 class BaseAuthStrategy(abc.ABC):
     @abc.abstractmethod
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
-        raise NotImplementedError()
+        raise NotImplementedError
+
+
+class NoneAuthStrategy(BaseAuthStrategy):
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
+        return httpx.Auth()
 
 
 class BasicAuthStrategy(BaseAuthStrategy):
