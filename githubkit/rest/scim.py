@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union
+from typing import TYPE_CHECKING, List, Union, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -94,10 +96,18 @@ class ScimClient:
             },
         )
 
+    @overload
+    def provision_and_invite_user(
+        self, org: str, *, data: ScimV2OrganizationsOrgUsersPostBodyType
+    ) -> "Response[ScimUser]":
+        ...
+
+    @overload
     def provision_and_invite_user(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         user_name: str,
         display_name: Union[Unset, str] = UNSET,
         name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
@@ -107,20 +117,23 @@ class ScimClient:
         groups: Union[Unset, List[str]] = UNSET,
         active: Union[Unset, bool] = UNSET,
     ) -> "Response[ScimUser]":
+        ...
+
+    def provision_and_invite_user(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users"
 
-        json = ScimV2OrganizationsOrgUsersPostBody(
-            **{
-                "userName": user_name,
-                "displayName": display_name,
-                "name": name,
-                "emails": emails,
-                "schemas": schemas,
-                "externalId": external_id,
-                "groups": groups,
-                "active": active,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2OrganizationsOrgUsersPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -136,10 +149,18 @@ class ScimClient:
             },
         )
 
+    @overload
+    async def async_provision_and_invite_user(
+        self, org: str, *, data: ScimV2OrganizationsOrgUsersPostBodyType
+    ) -> "Response[ScimUser]":
+        ...
+
+    @overload
     async def async_provision_and_invite_user(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         user_name: str,
         display_name: Union[Unset, str] = UNSET,
         name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
@@ -149,20 +170,23 @@ class ScimClient:
         groups: Union[Unset, List[str]] = UNSET,
         active: Union[Unset, bool] = UNSET,
     ) -> "Response[ScimUser]":
+        ...
+
+    async def async_provision_and_invite_user(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users"
 
-        json = ScimV2OrganizationsOrgUsersPostBody(
-            **{
-                "userName": user_name,
-                "displayName": display_name,
-                "name": name,
-                "emails": emails,
-                "schemas": schemas,
-                "externalId": external_id,
-                "groups": groups,
-                "active": active,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2OrganizationsOrgUsersPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -212,11 +236,23 @@ class ScimClient:
             },
         )
 
+    @overload
     def set_information_for_provisioned_user(
         self,
         org: str,
         scim_user_id: str,
         *,
+        data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
+    ) -> "Response[ScimUser]":
+        ...
+
+    @overload
+    def set_information_for_provisioned_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: Union[Unset, List[str]] = UNSET,
         display_name: Union[Unset, str] = UNSET,
         external_id: Union[Unset, str] = UNSET,
@@ -226,20 +262,24 @@ class ScimClient:
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
     ) -> "Response[ScimUser]":
+        ...
+
+    def set_information_for_provisioned_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Union[Unset, ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
-        json = ScimV2OrganizationsOrgUsersScimUserIdPutBody(
-            **{
-                "schemas": schemas,
-                "displayName": display_name,
-                "externalId": external_id,
-                "groups": groups,
-                "active": active,
-                "userName": user_name,
-                "name": name,
-                "emails": emails,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2OrganizationsOrgUsersScimUserIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -252,11 +292,23 @@ class ScimClient:
             },
         )
 
+    @overload
     async def async_set_information_for_provisioned_user(
         self,
         org: str,
         scim_user_id: str,
         *,
+        data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
+    ) -> "Response[ScimUser]":
+        ...
+
+    @overload
+    async def async_set_information_for_provisioned_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: Union[Unset, List[str]] = UNSET,
         display_name: Union[Unset, str] = UNSET,
         external_id: Union[Unset, str] = UNSET,
@@ -266,20 +318,24 @@ class ScimClient:
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
     ) -> "Response[ScimUser]":
+        ...
+
+    async def async_set_information_for_provisioned_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Union[Unset, ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
-        json = ScimV2OrganizationsOrgUsersScimUserIdPutBody(
-            **{
-                "schemas": schemas,
-                "displayName": display_name,
-                "externalId": external_id,
-                "groups": groups,
-                "active": active,
-                "userName": user_name,
-                "name": name,
-                "emails": emails,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2OrganizationsOrgUsersScimUserIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -324,24 +380,46 @@ class ScimClient:
             },
         )
 
+    @overload
     def update_attribute_for_user(
         self,
         org: str,
         scim_user_id: str,
         *,
+        data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
+    ) -> "Response[ScimUser]":
+        ...
+
+    @overload
+    def update_attribute_for_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: Union[Unset, List[str]] = UNSET,
         operations: List[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimUser]":
+        ...
+
+    def update_attribute_for_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Union[Unset, ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
-        json = ScimV2OrganizationsOrgUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2OrganizationsOrgUsersScimUserIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -356,24 +434,46 @@ class ScimClient:
             },
         )
 
+    @overload
     async def async_update_attribute_for_user(
         self,
         org: str,
         scim_user_id: str,
         *,
+        data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
+    ) -> "Response[ScimUser]":
+        ...
+
+    @overload
+    async def async_update_attribute_for_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: Union[Unset, List[str]] = UNSET,
         operations: List[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimUser]":
+        ...
+
+    async def async_update_attribute_for_user(
+        self,
+        org: str,
+        scim_user_id: str,
+        *,
+        data: Union[Unset, ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimUser]":
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
-        json = ScimV2OrganizationsOrgUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2OrganizationsOrgUsersScimUserIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

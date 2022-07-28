@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -126,26 +128,46 @@ class DependabotClient:
             response_model=OrganizationDependabotSecret,
         )
 
+    @overload
     def create_or_update_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Union[Unset, List[str]] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    def create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[Unset, OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        json = OrgsOrgDependabotSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-                "visibility": visibility,
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgDependabotSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -154,26 +176,46 @@ class DependabotClient:
             response_model=EmptyObject,
         )
 
+    @overload
     async def async_create_or_update_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Union[Unset, List[str]] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[Unset, OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        json = OrgsOrgDependabotSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-                "visibility": visibility,
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgDependabotSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -248,20 +290,45 @@ class DependabotClient:
             response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
+    @overload
     def set_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
-        json = OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -269,20 +336,45 @@ class DependabotClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
-        json = OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -450,23 +542,49 @@ class DependabotClient:
             response_model=DependabotSecret,
         )
 
+    @overload
     def create_or_update_repo_secret(
         self,
         owner: str,
         repo: str,
         secret_name: str,
         *,
+        data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    def create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoDependabotSecretsSecretNamePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        json = ReposOwnerRepoDependabotSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDependabotSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -475,23 +593,49 @@ class DependabotClient:
             response_model=EmptyObject,
         )
 
+    @overload
     async def async_create_or_update_repo_secret(
         self,
         owner: str,
         repo: str,
         secret_name: str,
         *,
+        data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoDependabotSecretsSecretNamePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        json = ReposOwnerRepoDependabotSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDependabotSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",

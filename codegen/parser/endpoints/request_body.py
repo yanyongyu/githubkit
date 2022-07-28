@@ -5,7 +5,7 @@ import openapi_schema_pydantic as oas
 
 from ...source import Source
 from ..utils import concat_snake_name
-from ..schemas import Property, SchemaData, ModelSchema, parse_schema
+from ..schemas import Property, SchemaData, ModelSchema, UnionSchema, parse_schema
 
 
 class RequestBodyData(BaseModel):
@@ -14,26 +14,40 @@ class RequestBodyData(BaseModel):
     required: bool = False
 
     @property
-    def is_model(self) -> bool:
-        return isinstance(self.body_schema, ModelSchema)
+    def allowed_models(self) -> List[ModelSchema]:
+        if isinstance(self.body_schema, ModelSchema):
+            return [self.body_schema]
+        elif isinstance(self.body_schema, UnionSchema):
+            return [
+                schema
+                for schema in self.body_schema.schemas
+                if isinstance(schema, ModelSchema)
+            ]
+        return []
 
-    def get_params_defination(self) -> List[str]:
-        if not isinstance(self.body_schema, ModelSchema):
-            prop = Property(
-                name="body",
-                prop_name="body",
-                required=self.required,
-                schema_data=self.body_schema,
-            )
-            return [prop.get_param_defination()]
+    def get_raw_definition(self) -> str:
+        prop = Property(
+            name="data",
+            prop_name="data",
+            required=self.required,
+            schema_data=self.body_schema,
+        )
+        return prop.get_param_defination()
 
-        return [prop.get_param_defination() for prop in self.body_schema.properties]
+    def get_endpoint_definition(self) -> str:
+        prop = Property(
+            name="data",
+            prop_name="data",
+            required=not bool(self.allowed_models),
+            schema_data=self.body_schema,
+        )
+        return prop.get_param_defination()
 
     def get_param_imports(self) -> Set[str]:
         imports = set()
         imports.update(self.body_schema.get_param_imports())
-        if isinstance(self.body_schema, ModelSchema):
-            for prop in self.body_schema.properties:
+        for model in self.allowed_models:
+            for prop in model.properties:
                 imports.update(prop.get_param_imports())
         return imports
 

@@ -6,7 +6,9 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -133,24 +135,35 @@ class AppsClient:
             response_model=WebhookConfig,
         )
 
+    @overload
+    def update_webhook_config_for_app(
+        self, *, data: AppHookConfigPatchBodyType
+    ) -> "Response[WebhookConfig]":
+        ...
+
+    @overload
     def update_webhook_config_for_app(
         self,
         *,
+        data: Unset = UNSET,
         url: Union[Unset, str] = UNSET,
         content_type: Union[Unset, str] = UNSET,
         secret: Union[Unset, str] = UNSET,
         insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
+        ...
+
+    def update_webhook_config_for_app(
+        self, *, data: Union[Unset, AppHookConfigPatchBodyType] = UNSET, **kwargs
+    ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
-        json = AppHookConfigPatchBody(
-            **{
-                "url": url,
-                "content_type": content_type,
-                "secret": secret,
-                "insecure_ssl": insecure_ssl,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AppHookConfigPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -159,24 +172,35 @@ class AppsClient:
             response_model=WebhookConfig,
         )
 
+    @overload
+    async def async_update_webhook_config_for_app(
+        self, *, data: AppHookConfigPatchBodyType
+    ) -> "Response[WebhookConfig]":
+        ...
+
+    @overload
     async def async_update_webhook_config_for_app(
         self,
         *,
+        data: Unset = UNSET,
         url: Union[Unset, str] = UNSET,
         content_type: Union[Unset, str] = UNSET,
         secret: Union[Unset, str] = UNSET,
         insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
+        ...
+
+    async def async_update_webhook_config_for_app(
+        self, *, data: Union[Unset, AppHookConfigPatchBodyType] = UNSET, **kwargs
+    ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
-        json = AppHookConfigPatchBody(
-            **{
-                "url": url,
-                "content_type": content_type,
-                "secret": secret,
-                "insecure_ssl": insecure_ssl,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AppHookConfigPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -399,23 +423,46 @@ class AppsClient:
             },
         )
 
+    @overload
     def create_installation_access_token(
         self,
         installation_id: int,
         *,
+        data: Union[
+            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
+        ] = UNSET,
+    ) -> "Response[InstallationToken]":
+        ...
+
+    @overload
+    def create_installation_access_token(
+        self,
+        installation_id: int,
+        *,
+        data: Unset = UNSET,
         repositories: Union[Unset, List[str]] = UNSET,
         repository_ids: Union[Unset, List[int]] = UNSET,
         permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[InstallationToken]":
+        ...
+
+    def create_installation_access_token(
+        self,
+        installation_id: int,
+        *,
+        data: Union[
+            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
-        json = AppInstallationsInstallationIdAccessTokensPostBody(
-            **{
-                "repositories": repositories,
-                "repository_ids": repository_ids,
-                "permissions": permissions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AppInstallationsInstallationIdAccessTokensPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -430,23 +477,46 @@ class AppsClient:
             },
         )
 
+    @overload
     async def async_create_installation_access_token(
         self,
         installation_id: int,
         *,
+        data: Union[
+            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
+        ] = UNSET,
+    ) -> "Response[InstallationToken]":
+        ...
+
+    @overload
+    async def async_create_installation_access_token(
+        self,
+        installation_id: int,
+        *,
+        data: Unset = UNSET,
         repositories: Union[Unset, List[str]] = UNSET,
         repository_ids: Union[Unset, List[int]] = UNSET,
         permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[InstallationToken]":
+        ...
+
+    async def async_create_installation_access_token(
+        self,
+        installation_id: int,
+        *,
+        data: Union[
+            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
-        json = AppInstallationsInstallationIdAccessTokensPostBody(
-            **{
-                "repositories": repositories,
-                "repository_ids": repository_ids,
-                "permissions": permissions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AppInstallationsInstallationIdAccessTokensPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -517,19 +587,37 @@ class AppsClient:
             },
         )
 
+    @overload
+    def delete_authorization(
+        self, client_id: str, *, data: ApplicationsClientIdGrantDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     def delete_authorization(
         self,
         client_id: str,
         *,
+        data: Unset = UNSET,
         access_token: str,
+    ) -> "Response":
+        ...
+
+    def delete_authorization(
+        self,
+        client_id: str,
+        *,
+        data: Union[Unset, ApplicationsClientIdGrantDeleteBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
 
-        json = ApplicationsClientIdGrantDeleteBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdGrantDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -539,20 +627,38 @@ class AppsClient:
                 "422": ValidationError,
             },
         )
+
+    @overload
+    async def async_delete_authorization(
+        self, client_id: str, *, data: ApplicationsClientIdGrantDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_delete_authorization(
+        self,
+        client_id: str,
+        *,
+        data: Unset = UNSET,
+        access_token: str,
+    ) -> "Response":
+        ...
 
     async def async_delete_authorization(
         self,
         client_id: str,
         *,
-        access_token: str,
+        data: Union[Unset, ApplicationsClientIdGrantDeleteBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
 
-        json = ApplicationsClientIdGrantDeleteBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdGrantDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -562,20 +668,38 @@ class AppsClient:
                 "422": ValidationError,
             },
         )
+
+    @overload
+    def check_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenPostBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
+    def check_token(
+        self,
+        client_id: str,
+        *,
+        data: Unset = UNSET,
+        access_token: str,
+    ) -> "Response[Authorization]":
+        ...
 
     def check_token(
         self,
         client_id: str,
         *,
-        access_token: str,
+        data: Union[Unset, ApplicationsClientIdTokenPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPostBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -587,20 +711,38 @@ class AppsClient:
                 "404": BasicError,
             },
         )
+
+    @overload
+    async def async_check_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenPostBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
+    async def async_check_token(
+        self,
+        client_id: str,
+        *,
+        data: Unset = UNSET,
+        access_token: str,
+    ) -> "Response[Authorization]":
+        ...
 
     async def async_check_token(
         self,
         client_id: str,
         *,
-        access_token: str,
+        data: Union[Unset, ApplicationsClientIdTokenPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPostBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -613,19 +755,37 @@ class AppsClient:
             },
         )
 
+    @overload
+    def delete_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     def delete_token(
         self,
         client_id: str,
         *,
+        data: Unset = UNSET,
         access_token: str,
+    ) -> "Response":
+        ...
+
+    def delete_token(
+        self,
+        client_id: str,
+        *,
+        data: Union[Unset, ApplicationsClientIdTokenDeleteBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenDeleteBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -635,20 +795,38 @@ class AppsClient:
                 "422": ValidationError,
             },
         )
+
+    @overload
+    async def async_delete_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_delete_token(
+        self,
+        client_id: str,
+        *,
+        data: Unset = UNSET,
+        access_token: str,
+    ) -> "Response":
+        ...
 
     async def async_delete_token(
         self,
         client_id: str,
         *,
-        access_token: str,
+        data: Union[Unset, ApplicationsClientIdTokenDeleteBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenDeleteBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -659,19 +837,37 @@ class AppsClient:
             },
         )
 
+    @overload
+    def reset_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenPatchBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
     def reset_token(
         self,
         client_id: str,
         *,
+        data: Unset = UNSET,
         access_token: str,
+    ) -> "Response[Authorization]":
+        ...
+
+    def reset_token(
+        self,
+        client_id: str,
+        *,
+        data: Union[Unset, ApplicationsClientIdTokenPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPatchBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -683,19 +879,37 @@ class AppsClient:
             },
         )
 
+    @overload
+    async def async_reset_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenPatchBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
     async def async_reset_token(
         self,
         client_id: str,
         *,
+        data: Unset = UNSET,
         access_token: str,
+    ) -> "Response[Authorization]":
+        ...
+
+    async def async_reset_token(
+        self,
+        client_id: str,
+        *,
+        data: Union[Unset, ApplicationsClientIdTokenPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        json = ApplicationsClientIdTokenPatchBody(
-            **{
-                "access_token": access_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -707,10 +921,18 @@ class AppsClient:
             },
         )
 
+    @overload
+    def scope_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenScopedPostBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
     def scope_token(
         self,
         client_id: str,
         *,
+        data: Unset = UNSET,
         access_token: str,
         target: Union[Unset, str] = UNSET,
         target_id: Union[Unset, int] = UNSET,
@@ -718,18 +940,23 @@ class AppsClient:
         repository_ids: Union[Unset, List[int]] = UNSET,
         permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    def scope_token(
+        self,
+        client_id: str,
+        *,
+        data: Union[Unset, ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 
-        json = ApplicationsClientIdTokenScopedPostBody(
-            **{
-                "access_token": access_token,
-                "target": target,
-                "target_id": target_id,
-                "repositories": repositories,
-                "repository_ids": repository_ids,
-                "permissions": permissions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenScopedPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -744,10 +971,18 @@ class AppsClient:
             },
         )
 
+    @overload
+    async def async_scope_token(
+        self, client_id: str, *, data: ApplicationsClientIdTokenScopedPostBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
     async def async_scope_token(
         self,
         client_id: str,
         *,
+        data: Unset = UNSET,
         access_token: str,
         target: Union[Unset, str] = UNSET,
         target_id: Union[Unset, int] = UNSET,
@@ -755,18 +990,23 @@ class AppsClient:
         repository_ids: Union[Unset, List[int]] = UNSET,
         permissions: Union[Unset, AppPermissionsType] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    async def async_scope_token(
+        self,
+        client_id: str,
+        *,
+        data: Union[Unset, ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 
-        json = ApplicationsClientIdTokenScopedPostBody(
-            **{
-                "access_token": access_token,
-                "target": target,
-                "target_id": target_id,
-                "repositories": repositories,
-                "repository_ids": repository_ids,
-                "permissions": permissions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ApplicationsClientIdTokenScopedPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

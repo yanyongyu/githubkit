@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -75,9 +77,17 @@ class UsersClient:
             },
         )
 
+    @overload
+    def update_authenticated(
+        self, *, data: Union[Unset, UserPatchBodyType] = UNSET
+    ) -> "Response[PrivateUser]":
+        ...
+
+    @overload
     def update_authenticated(
         self,
         *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         email: Union[Unset, str] = UNSET,
         blog: Union[Unset, str] = UNSET,
@@ -87,20 +97,19 @@ class UsersClient:
         hireable: Union[Unset, bool] = UNSET,
         bio: Union[Unset, str] = UNSET,
     ) -> "Response[PrivateUser]":
+        ...
+
+    def update_authenticated(
+        self, *, data: Union[Unset, UserPatchBodyType] = UNSET, **kwargs
+    ) -> "Response[PrivateUser]":
         url = "/user"
 
-        json = UserPatchBody(
-            **{
-                "name": name,
-                "email": email,
-                "blog": blog,
-                "twitter_username": twitter_username,
-                "company": company,
-                "location": location,
-                "hireable": hireable,
-                "bio": bio,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -115,9 +124,17 @@ class UsersClient:
             },
         )
 
+    @overload
+    async def async_update_authenticated(
+        self, *, data: Union[Unset, UserPatchBodyType] = UNSET
+    ) -> "Response[PrivateUser]":
+        ...
+
+    @overload
     async def async_update_authenticated(
         self,
         *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         email: Union[Unset, str] = UNSET,
         blog: Union[Unset, str] = UNSET,
@@ -127,20 +144,19 @@ class UsersClient:
         hireable: Union[Unset, bool] = UNSET,
         bio: Union[Unset, str] = UNSET,
     ) -> "Response[PrivateUser]":
+        ...
+
+    async def async_update_authenticated(
+        self, *, data: Union[Unset, UserPatchBodyType] = UNSET, **kwargs
+    ) -> "Response[PrivateUser]":
         url = "/user"
 
-        json = UserPatchBody(
-            **{
-                "name": name,
-                "email": email,
-                "blog": blog,
-                "twitter_username": twitter_username,
-                "company": company,
-                "location": location,
-                "hireable": hireable,
-                "bio": bio,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -285,18 +301,32 @@ class UsersClient:
             },
         )
 
+    @overload
+    def set_primary_email_visibility_for_authenticated_user(
+        self, *, data: UserEmailVisibilityPatchBodyType
+    ) -> "Response[List[Email]]":
+        ...
+
+    @overload
     def set_primary_email_visibility_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         visibility: Literal["public", "private"],
+    ) -> "Response[List[Email]]":
+        ...
+
+    def set_primary_email_visibility_for_authenticated_user(
+        self, *, data: Union[Unset, UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
-        json = UserEmailVisibilityPatchBody(
-            **{
-                "visibility": visibility,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserEmailVisibilityPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -311,18 +341,32 @@ class UsersClient:
             },
         )
 
+    @overload
+    async def async_set_primary_email_visibility_for_authenticated_user(
+        self, *, data: UserEmailVisibilityPatchBodyType
+    ) -> "Response[List[Email]]":
+        ...
+
+    @overload
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         visibility: Literal["public", "private"],
+    ) -> "Response[List[Email]]":
+        ...
+
+    async def async_set_primary_email_visibility_for_authenticated_user(
+        self, *, data: Union[Unset, UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
-        json = UserEmailVisibilityPatchBody(
-            **{
-                "visibility": visibility,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserEmailVisibilityPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -385,14 +429,37 @@ class UsersClient:
             },
         )
 
+    @overload
     def add_email_for_authenticated_user(
         self,
         *,
-        body: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        data: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+    ) -> "Response[List[Email]]":
+        ...
+
+    @overload
+    def add_email_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        emails: List[str],
+    ) -> "Response[List[Email]]":
+        ...
+
+    def add_email_for_authenticated_user(
+        self,
+        *,
+        data: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[UserEmailsPostBodyOneof0, List[str], str], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -407,14 +474,37 @@ class UsersClient:
             },
         )
 
+    @overload
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        body: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        data: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+    ) -> "Response[List[Email]]":
+        ...
+
+    @overload
+    async def async_add_email_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        emails: List[str],
+    ) -> "Response[List[Email]]":
+        ...
+
+    async def async_add_email_for_authenticated_user(
+        self,
+        *,
+        data: Union[Unset, Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[UserEmailsPostBodyOneof0, List[str], str], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -429,16 +519,41 @@ class UsersClient:
             },
         )
 
+    @overload
     def delete_email_for_authenticated_user(
         self,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[UserEmailsDeleteBodyOneof0Type, List[str], str]
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    @overload
+    def delete_email_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        emails: List[str],
+    ) -> "Response":
+        ...
+
+    def delete_email_for_authenticated_user(
+        self,
+        *,
+        data: Union[
+            Unset, Union[UserEmailsDeleteBodyOneof0Type, List[str], str]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = "/user/emails"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[UserEmailsDeleteBodyOneof0, List[str], str], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -452,16 +567,41 @@ class UsersClient:
             },
         )
 
+    @overload
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[UserEmailsDeleteBodyOneof0Type, List[str], str]
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    @overload
+    async def async_delete_email_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        emails: List[str],
+    ) -> "Response":
+        ...
+
+    async def async_delete_email_for_authenticated_user(
+        self,
+        *,
+        data: Union[
+            Unset, Union[UserEmailsDeleteBodyOneof0Type, List[str], str]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = "/user/emails"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[UserEmailsDeleteBodyOneof0, List[str], str], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -711,20 +851,33 @@ class UsersClient:
             },
         )
 
+    @overload
+    def create_gpg_key_for_authenticated_user(
+        self, *, data: UserGpgKeysPostBodyType
+    ) -> "Response[GpgKey]":
+        ...
+
+    @overload
     def create_gpg_key_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         armored_public_key: str,
     ) -> "Response[GpgKey]":
+        ...
+
+    def create_gpg_key_for_authenticated_user(
+        self, *, data: Union[Unset, UserGpgKeysPostBodyType] = UNSET, **kwargs
+    ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
-        json = UserGpgKeysPostBody(
-            **{
-                "name": name,
-                "armored_public_key": armored_public_key,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserGpgKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -739,20 +892,33 @@ class UsersClient:
             },
         )
 
+    @overload
+    async def async_create_gpg_key_for_authenticated_user(
+        self, *, data: UserGpgKeysPostBodyType
+    ) -> "Response[GpgKey]":
+        ...
+
+    @overload
     async def async_create_gpg_key_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         armored_public_key: str,
     ) -> "Response[GpgKey]":
+        ...
+
+    async def async_create_gpg_key_for_authenticated_user(
+        self, *, data: Union[Unset, UserGpgKeysPostBodyType] = UNSET, **kwargs
+    ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
-        json = UserGpgKeysPostBody(
-            **{
-                "name": name,
-                "armored_public_key": armored_public_key,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserGpgKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -883,20 +1049,33 @@ class UsersClient:
             },
         )
 
+    @overload
+    def create_public_ssh_key_for_authenticated_user(
+        self, *, data: UserKeysPostBodyType
+    ) -> "Response[Key]":
+        ...
+
+    @overload
     def create_public_ssh_key_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         key: str,
     ) -> "Response[Key]":
+        ...
+
+    def create_public_ssh_key_for_authenticated_user(
+        self, *, data: Union[Unset, UserKeysPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Key]":
         url = "/user/keys"
 
-        json = UserKeysPostBody(
-            **{
-                "title": title,
-                "key": key,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -911,20 +1090,33 @@ class UsersClient:
             },
         )
 
+    @overload
+    async def async_create_public_ssh_key_for_authenticated_user(
+        self, *, data: UserKeysPostBodyType
+    ) -> "Response[Key]":
+        ...
+
+    @overload
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         key: str,
     ) -> "Response[Key]":
+        ...
+
+    async def async_create_public_ssh_key_for_authenticated_user(
+        self, *, data: Union[Unset, UserKeysPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Key]":
         url = "/user/keys"
 
-        json = UserKeysPostBody(
-            **{
-                "title": title,
-                "key": key,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

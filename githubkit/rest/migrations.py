@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -86,10 +88,18 @@ class MigrationsClient:
             response_model=List[Migration],
         )
 
+    @overload
+    def start_for_org(
+        self, org: str, *, data: OrgsOrgMigrationsPostBodyType
+    ) -> "Response[Migration]":
+        ...
+
+    @overload
     def start_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         repositories: List[str],
         lock_repositories: Union[Unset, bool] = False,
         exclude_metadata: Union[Unset, bool] = False,
@@ -100,21 +110,23 @@ class MigrationsClient:
         org_metadata_only: Union[Unset, bool] = False,
         exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
     ) -> "Response[Migration]":
+        ...
+
+    def start_for_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgMigrationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
 
-        json = OrgsOrgMigrationsPostBody(
-            **{
-                "repositories": repositories,
-                "lock_repositories": lock_repositories,
-                "exclude_metadata": exclude_metadata,
-                "exclude_git_data": exclude_git_data,
-                "exclude_attachments": exclude_attachments,
-                "exclude_releases": exclude_releases,
-                "exclude_owner_projects": exclude_owner_projects,
-                "org_metadata_only": org_metadata_only,
-                "exclude": exclude,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgMigrationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -127,10 +139,18 @@ class MigrationsClient:
             },
         )
 
+    @overload
+    async def async_start_for_org(
+        self, org: str, *, data: OrgsOrgMigrationsPostBodyType
+    ) -> "Response[Migration]":
+        ...
+
+    @overload
     async def async_start_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         repositories: List[str],
         lock_repositories: Union[Unset, bool] = False,
         exclude_metadata: Union[Unset, bool] = False,
@@ -141,21 +161,23 @@ class MigrationsClient:
         org_metadata_only: Union[Unset, bool] = False,
         exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
     ) -> "Response[Migration]":
+        ...
+
+    async def async_start_for_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgMigrationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
 
-        json = OrgsOrgMigrationsPostBody(
-            **{
-                "repositories": repositories,
-                "lock_repositories": lock_repositories,
-                "exclude_metadata": exclude_metadata,
-                "exclude_git_data": exclude_git_data,
-                "exclude_attachments": exclude_attachments,
-                "exclude_releases": exclude_releases,
-                "exclude_owner_projects": exclude_owner_projects,
-                "org_metadata_only": org_metadata_only,
-                "exclude": exclude,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgMigrationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -384,28 +406,43 @@ class MigrationsClient:
             },
         )
 
+    @overload
+    def start_import(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoImportPutBodyType
+    ) -> "Response[Import]":
+        ...
+
+    @overload
     def start_import(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         vcs_url: str,
         vcs: Union[Unset, Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Union[Unset, str] = UNSET,
         vcs_password: Union[Unset, str] = UNSET,
         tfvc_project: Union[Unset, str] = UNSET,
     ) -> "Response[Import]":
+        ...
+
+    def start_import(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoImportPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        json = ReposOwnerRepoImportPutBody(
-            **{
-                "vcs_url": vcs_url,
-                "vcs": vcs,
-                "vcs_username": vcs_username,
-                "vcs_password": vcs_password,
-                "tfvc_project": tfvc_project,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoImportPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -418,28 +455,43 @@ class MigrationsClient:
             },
         )
 
+    @overload
+    async def async_start_import(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoImportPutBodyType
+    ) -> "Response[Import]":
+        ...
+
+    @overload
     async def async_start_import(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         vcs_url: str,
         vcs: Union[Unset, Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Union[Unset, str] = UNSET,
         vcs_password: Union[Unset, str] = UNSET,
         tfvc_project: Union[Unset, str] = UNSET,
     ) -> "Response[Import]":
+        ...
+
+    async def async_start_import(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoImportPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        json = ReposOwnerRepoImportPutBody(
-            **{
-                "vcs_url": vcs_url,
-                "vcs": vcs,
-                "vcs_username": vcs_username,
-                "vcs_password": vcs_password,
-                "tfvc_project": tfvc_project,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoImportPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -476,16 +528,46 @@ class MigrationsClient:
             url,
         )
 
+    @overload
     def update_import(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+    ) -> "Response[Import]":
+        ...
+
+    @overload
+    def update_import(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        vcs_username: Union[Unset, str] = UNSET,
+        vcs_password: Union[Unset, str] = UNSET,
+        vcs: Union[Unset, Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
+        tfvc_project: Union[Unset, str] = UNSET,
+    ) -> "Response[Import]":
+        ...
+
+    def update_import(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoImportPatchBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -494,16 +576,46 @@ class MigrationsClient:
             response_model=Import,
         )
 
+    @overload
     async def async_update_import(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+    ) -> "Response[Import]":
+        ...
+
+    @overload
+    async def async_update_import(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        vcs_username: Union[Unset, str] = UNSET,
+        vcs_password: Union[Unset, str] = UNSET,
+        vcs: Union[Unset, Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
+        tfvc_project: Union[Unset, str] = UNSET,
+    ) -> "Response[Import]":
+        ...
+
+    async def async_update_import(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoImportPatchBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -556,23 +668,47 @@ class MigrationsClient:
             },
         )
 
+    @overload
     def map_commit_author(
         self,
         owner: str,
         repo: str,
         author_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+    ) -> "Response[PorterAuthor]":
+        ...
+
+    @overload
+    def map_commit_author(
+        self,
+        owner: str,
+        repo: str,
+        author_id: int,
+        *,
+        data: Unset = UNSET,
         email: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
     ) -> "Response[PorterAuthor]":
+        ...
+
+    def map_commit_author(
+        self,
+        owner: str,
+        repo: str,
+        author_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
 
-        json = ReposOwnerRepoImportAuthorsAuthorIdPatchBody(
-            **{
-                "email": email,
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoImportAuthorsAuthorIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -585,23 +721,47 @@ class MigrationsClient:
             },
         )
 
+    @overload
     async def async_map_commit_author(
         self,
         owner: str,
         repo: str,
         author_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+    ) -> "Response[PorterAuthor]":
+        ...
+
+    @overload
+    async def async_map_commit_author(
+        self,
+        owner: str,
+        repo: str,
+        author_id: int,
+        *,
+        data: Unset = UNSET,
         email: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
     ) -> "Response[PorterAuthor]":
+        ...
+
+    async def async_map_commit_author(
+        self,
+        owner: str,
+        repo: str,
+        author_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
 
-        json = ReposOwnerRepoImportAuthorsAuthorIdPatchBody(
-            **{
-                "email": email,
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoImportAuthorsAuthorIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -640,20 +800,39 @@ class MigrationsClient:
             response_model=List[PorterLargeFile],
         )
 
+    @overload
+    def set_lfs_preference(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoImportLfsPatchBodyType
+    ) -> "Response[Import]":
+        ...
+
+    @overload
     def set_lfs_preference(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         use_lfs: Literal["opt_in", "opt_out"],
+    ) -> "Response[Import]":
+        ...
+
+    def set_lfs_preference(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
 
-        json = ReposOwnerRepoImportLfsPatchBody(
-            **{
-                "use_lfs": use_lfs,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoImportLfsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -665,20 +844,39 @@ class MigrationsClient:
             },
         )
 
+    @overload
+    async def async_set_lfs_preference(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoImportLfsPatchBodyType
+    ) -> "Response[Import]":
+        ...
+
+    @overload
     async def async_set_lfs_preference(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         use_lfs: Literal["opt_in", "opt_out"],
+    ) -> "Response[Import]":
+        ...
+
+    async def async_set_lfs_preference(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
 
-        json = ReposOwnerRepoImportLfsPatchBody(
-            **{
-                "use_lfs": use_lfs,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoImportLfsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -736,9 +934,17 @@ class MigrationsClient:
             },
         )
 
+    @overload
+    def start_for_authenticated_user(
+        self, *, data: UserMigrationsPostBodyType
+    ) -> "Response[Migration]":
+        ...
+
+    @overload
     def start_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         lock_repositories: Union[Unset, bool] = UNSET,
         exclude_metadata: Union[Unset, bool] = UNSET,
         exclude_git_data: Union[Unset, bool] = UNSET,
@@ -749,21 +955,19 @@ class MigrationsClient:
         exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
         repositories: List[str],
     ) -> "Response[Migration]":
+        ...
+
+    def start_for_authenticated_user(
+        self, *, data: Union[Unset, UserMigrationsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Migration]":
         url = "/user/migrations"
 
-        json = UserMigrationsPostBody(
-            **{
-                "lock_repositories": lock_repositories,
-                "exclude_metadata": exclude_metadata,
-                "exclude_git_data": exclude_git_data,
-                "exclude_attachments": exclude_attachments,
-                "exclude_releases": exclude_releases,
-                "exclude_owner_projects": exclude_owner_projects,
-                "org_metadata_only": org_metadata_only,
-                "exclude": exclude,
-                "repositories": repositories,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserMigrationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -777,9 +981,17 @@ class MigrationsClient:
             },
         )
 
+    @overload
+    async def async_start_for_authenticated_user(
+        self, *, data: UserMigrationsPostBodyType
+    ) -> "Response[Migration]":
+        ...
+
+    @overload
     async def async_start_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         lock_repositories: Union[Unset, bool] = UNSET,
         exclude_metadata: Union[Unset, bool] = UNSET,
         exclude_git_data: Union[Unset, bool] = UNSET,
@@ -790,21 +1002,19 @@ class MigrationsClient:
         exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
         repositories: List[str],
     ) -> "Response[Migration]":
+        ...
+
+    async def async_start_for_authenticated_user(
+        self, *, data: Union[Unset, UserMigrationsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Migration]":
         url = "/user/migrations"
 
-        json = UserMigrationsPostBody(
-            **{
-                "lock_repositories": lock_repositories,
-                "exclude_metadata": exclude_metadata,
-                "exclude_git_data": exclude_git_data,
-                "exclude_attachments": exclude_attachments,
-                "exclude_releases": exclude_releases,
-                "exclude_owner_projects": exclude_owner_projects,
-                "org_metadata_only": org_metadata_only,
-                "exclude": exclude,
-                "repositories": repositories,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserMigrationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

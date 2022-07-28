@@ -15,7 +15,7 @@ from pydantic import Extra, Field, BaseModel
 from githubkit.utils import UNSET, Unset
 
 
-class GitHubModel(BaseModel, arbitrary_types_allowed=True):
+class GitHubModel(BaseModel, allow_population_by_field_name=True):
     ...
 
 

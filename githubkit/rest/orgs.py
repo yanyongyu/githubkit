@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -153,10 +155,18 @@ class OrgsClient:
             },
         )
 
+    @overload
+    def update(
+        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET
+    ) -> "Response[OrganizationFull]":
+        ...
+
+    @overload
     def update(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         billing_email: Union[Unset, str] = UNSET,
         company: Union[Unset, str] = UNSET,
         email: Union[Unset, str] = UNSET,
@@ -182,32 +192,19 @@ class OrgsClient:
         members_can_fork_private_repositories: Union[Unset, bool] = False,
         blog: Union[Unset, str] = UNSET,
     ) -> "Response[OrganizationFull]":
+        ...
+
+    def update(
+        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET, **kwargs
+    ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
-        json = OrgsOrgPatchBody(
-            **{
-                "billing_email": billing_email,
-                "company": company,
-                "email": email,
-                "twitter_username": twitter_username,
-                "location": location,
-                "name": name,
-                "description": description,
-                "has_organization_projects": has_organization_projects,
-                "has_repository_projects": has_repository_projects,
-                "default_repository_permission": default_repository_permission,
-                "members_can_create_repositories": members_can_create_repositories,
-                "members_can_create_internal_repositories": members_can_create_internal_repositories,
-                "members_can_create_private_repositories": members_can_create_private_repositories,
-                "members_can_create_public_repositories": members_can_create_public_repositories,
-                "members_allowed_repository_creation_type": members_allowed_repository_creation_type,
-                "members_can_create_pages": members_can_create_pages,
-                "members_can_create_public_pages": members_can_create_public_pages,
-                "members_can_create_private_pages": members_can_create_private_pages,
-                "members_can_fork_private_repositories": members_can_fork_private_repositories,
-                "blog": blog,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -220,10 +217,18 @@ class OrgsClient:
             },
         )
 
+    @overload
+    async def async_update(
+        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET
+    ) -> "Response[OrganizationFull]":
+        ...
+
+    @overload
     async def async_update(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         billing_email: Union[Unset, str] = UNSET,
         company: Union[Unset, str] = UNSET,
         email: Union[Unset, str] = UNSET,
@@ -249,32 +254,19 @@ class OrgsClient:
         members_can_fork_private_repositories: Union[Unset, bool] = False,
         blog: Union[Unset, str] = UNSET,
     ) -> "Response[OrganizationFull]":
+        ...
+
+    async def async_update(
+        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET, **kwargs
+    ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
-        json = OrgsOrgPatchBody(
-            **{
-                "billing_email": billing_email,
-                "company": company,
-                "email": email,
-                "twitter_username": twitter_username,
-                "location": location,
-                "name": name,
-                "description": description,
-                "has_organization_projects": has_organization_projects,
-                "has_repository_projects": has_repository_projects,
-                "default_repository_permission": default_repository_permission,
-                "members_can_create_repositories": members_can_create_repositories,
-                "members_can_create_internal_repositories": members_can_create_internal_repositories,
-                "members_can_create_private_repositories": members_can_create_private_repositories,
-                "members_can_create_public_repositories": members_can_create_public_repositories,
-                "members_allowed_repository_creation_type": members_allowed_repository_creation_type,
-                "members_can_create_pages": members_can_create_pages,
-                "members_can_create_public_pages": members_can_create_public_pages,
-                "members_can_create_private_pages": members_can_create_private_pages,
-                "members_can_fork_private_repositories": members_can_fork_private_repositories,
-                "blog": blog,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -617,25 +609,40 @@ class OrgsClient:
             },
         )
 
+    @overload
+    def create_webhook(
+        self, org: str, *, data: OrgsOrgHooksPostBodyType
+    ) -> "Response[OrgHook]":
+        ...
+
+    @overload
     def create_webhook(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
     ) -> "Response[OrgHook]":
+        ...
+
+    def create_webhook(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgHooksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
-        json = OrgsOrgHooksPostBody(
-            **{
-                "name": name,
-                "config": config,
-                "events": events,
-                "active": active,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgHooksPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -648,25 +655,40 @@ class OrgsClient:
             },
         )
 
+    @overload
+    async def async_create_webhook(
+        self, org: str, *, data: OrgsOrgHooksPostBodyType
+    ) -> "Response[OrgHook]":
+        ...
+
+    @overload
     async def async_create_webhook(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
     ) -> "Response[OrgHook]":
+        ...
+
+    async def async_create_webhook(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgHooksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
-        json = OrgsOrgHooksPostBody(
-            **{
-                "name": name,
-                "config": config,
-                "events": events,
-                "active": active,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgHooksPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -741,26 +763,46 @@ class OrgsClient:
             },
         )
 
+    @overload
     def update_webhook(
         self,
         org: str,
         hook_id: int,
         *,
+        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+    ) -> "Response[OrgHook]":
+        ...
+
+    @overload
+    def update_webhook(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
         name: Union[Unset, str] = UNSET,
     ) -> "Response[OrgHook]":
+        ...
+
+    def update_webhook(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        json = OrgsOrgHooksHookIdPatchBody(
-            **{
-                "config": config,
-                "events": events,
-                "active": active,
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgHooksHookIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -773,26 +815,46 @@ class OrgsClient:
             },
         )
 
+    @overload
     async def async_update_webhook(
         self,
         org: str,
         hook_id: int,
         *,
+        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+    ) -> "Response[OrgHook]":
+        ...
+
+    @overload
+    async def async_update_webhook(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         active: Union[Unset, bool] = True,
         name: Union[Unset, str] = UNSET,
     ) -> "Response[OrgHook]":
+        ...
+
+    async def async_update_webhook(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        json = OrgsOrgHooksHookIdPatchBody(
-            **{
-                "config": config,
-                "events": events,
-                "active": active,
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgHooksHookIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -831,26 +893,46 @@ class OrgsClient:
             response_model=WebhookConfig,
         )
 
+    @overload
     def update_webhook_config_for_org(
         self,
         org: str,
         hook_id: int,
         *,
+        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+    ) -> "Response[WebhookConfig]":
+        ...
+
+    @overload
+    def update_webhook_config_for_org(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         url: Union[Unset, str] = UNSET,
         content_type: Union[Unset, str] = UNSET,
         secret: Union[Unset, str] = UNSET,
         insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
+        ...
+
+    def update_webhook_config_for_org(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
-        json = OrgsOrgHooksHookIdConfigPatchBody(
-            **{
-                "url": url,
-                "content_type": content_type,
-                "secret": secret,
-                "insecure_ssl": insecure_ssl,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgHooksHookIdConfigPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -859,26 +941,46 @@ class OrgsClient:
             response_model=WebhookConfig,
         )
 
+    @overload
     async def async_update_webhook_config_for_org(
         self,
         org: str,
         hook_id: int,
         *,
+        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+    ) -> "Response[WebhookConfig]":
+        ...
+
+    @overload
+    async def async_update_webhook_config_for_org(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         url: Union[Unset, str] = UNSET,
         content_type: Union[Unset, str] = UNSET,
         secret: Union[Unset, str] = UNSET,
         insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
+        ...
+
+    async def async_update_webhook_config_for_org(
+        self,
+        org: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
-        json = OrgsOrgHooksHookIdConfigPatchBody(
-            **{
-                "url": url,
-                "content_type": content_type,
-                "secret": secret,
-                "insecure_ssl": insecure_ssl,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgHooksHookIdConfigPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1125,10 +1227,18 @@ class OrgsClient:
             },
         )
 
+    @overload
+    def create_invitation(
+        self, org: str, *, data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET
+    ) -> "Response[OrganizationInvitation]":
+        ...
+
+    @overload
     def create_invitation(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         invitee_id: Union[Unset, int] = UNSET,
         email: Union[Unset, str] = UNSET,
         role: Union[
@@ -1136,16 +1246,23 @@ class OrgsClient:
         ] = "direct_member",
         team_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
+        ...
+
+    def create_invitation(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
 
-        json = OrgsOrgInvitationsPostBody(
-            **{
-                "invitee_id": invitee_id,
-                "email": email,
-                "role": role,
-                "team_ids": team_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgInvitationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1158,10 +1275,18 @@ class OrgsClient:
             },
         )
 
+    @overload
+    async def async_create_invitation(
+        self, org: str, *, data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET
+    ) -> "Response[OrganizationInvitation]":
+        ...
+
+    @overload
     async def async_create_invitation(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         invitee_id: Union[Unset, int] = UNSET,
         email: Union[Unset, str] = UNSET,
         role: Union[
@@ -1169,16 +1294,23 @@ class OrgsClient:
         ] = "direct_member",
         team_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
+        ...
+
+    async def async_create_invitation(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
 
-        json = OrgsOrgInvitationsPostBody(
-            **{
-                "invitee_id": invitee_id,
-                "email": email,
-                "role": role,
-                "team_ids": team_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgInvitationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1415,20 +1547,43 @@ class OrgsClient:
             },
         )
 
+    @overload
     def set_membership_for_user(
         self,
         org: str,
         username: str,
         *,
+        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+    ) -> "Response[OrgMembership]":
+        ...
+
+    @overload
+    def set_membership_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         role: Union[Unset, Literal["admin", "member"]] = "member",
+    ) -> "Response[OrgMembership]":
+        ...
+
+    def set_membership_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
-        json = OrgsOrgMembershipsUsernamePutBody(
-            **{
-                "role": role,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgMembershipsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1441,20 +1596,43 @@ class OrgsClient:
             },
         )
 
+    @overload
     async def async_set_membership_for_user(
         self,
         org: str,
         username: str,
         *,
+        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+    ) -> "Response[OrgMembership]":
+        ...
+
+    @overload
+    async def async_set_membership_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         role: Union[Unset, Literal["admin", "member"]] = "member",
+    ) -> "Response[OrgMembership]":
+        ...
+
+    async def async_set_membership_for_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
-        json = OrgsOrgMembershipsUsernamePutBody(
-            **{
-                "role": role,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgMembershipsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1543,20 +1721,43 @@ class OrgsClient:
             response_model=List[SimpleUser],
         )
 
+    @overload
     def convert_member_to_outside_collaborator(
         self,
         org: str,
         username: str,
         *,
+        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+    ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
+        ...
+
+    @overload
+    def convert_member_to_outside_collaborator(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         async_: Union[Unset, bool] = False,
+    ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
+        ...
+
+    def convert_member_to_outside_collaborator(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
-        json = OrgsOrgOutsideCollaboratorsUsernamePutBody(
-            **{
-                "async": async_,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgOutsideCollaboratorsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1568,20 +1769,43 @@ class OrgsClient:
             },
         )
 
+    @overload
     async def async_convert_member_to_outside_collaborator(
         self,
         org: str,
         username: str,
         *,
+        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+    ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
+        ...
+
+    @overload
+    async def async_convert_member_to_outside_collaborator(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         async_: Union[Unset, bool] = False,
+    ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
+        ...
+
+    async def async_convert_member_to_outside_collaborator(
+        self,
+        org: str,
+        username: str,
+        *,
+        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
-        json = OrgsOrgOutsideCollaboratorsUsernamePutBody(
-            **{
-                "async": async_,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgOutsideCollaboratorsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1827,19 +2051,37 @@ class OrgsClient:
             },
         )
 
+    @overload
+    def update_membership_for_authenticated_user(
+        self, org: str, *, data: UserMembershipsOrgsOrgPatchBodyType
+    ) -> "Response[OrgMembership]":
+        ...
+
+    @overload
     def update_membership_for_authenticated_user(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         state: Literal["active"],
+    ) -> "Response[OrgMembership]":
+        ...
+
+    def update_membership_for_authenticated_user(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, UserMembershipsOrgsOrgPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
-        json = UserMembershipsOrgsOrgPatchBody(
-            **{
-                "state": state,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserMembershipsOrgsOrgPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1853,19 +2095,37 @@ class OrgsClient:
             },
         )
 
+    @overload
+    async def async_update_membership_for_authenticated_user(
+        self, org: str, *, data: UserMembershipsOrgsOrgPatchBodyType
+    ) -> "Response[OrgMembership]":
+        ...
+
+    @overload
     async def async_update_membership_for_authenticated_user(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         state: Literal["active"],
+    ) -> "Response[OrgMembership]":
+        ...
+
+    async def async_update_membership_for_authenticated_user(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, UserMembershipsOrgsOrgPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
-        json = UserMembershipsOrgsOrgPatchBody(
-            **{
-                "state": state,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserMembershipsOrgsOrgPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

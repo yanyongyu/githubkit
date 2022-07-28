@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Any, List, Union, Literal
+from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -39,15 +41,16 @@ class ChecksClient:
         self._github = github
 
     def create(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        body: Union[Any, Any],
+        self, owner: str, repo: str, *, data: Union[Any, Any], **kwargs
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -57,15 +60,16 @@ class ChecksClient:
         )
 
     async def async_create(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        body: Union[Any, Any],
+        self, owner: str, repo: str, *, data: Union[Any, Any], **kwargs
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -108,11 +112,17 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        body: Union[Any, Any],
+        data: Union[Any, Any],
+        **kwargs,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -127,11 +137,17 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        body: Union[Any, Any],
+        data: Union[Any, Any],
+        **kwargs,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -222,20 +238,39 @@ class ChecksClient:
             },
         )
 
+    @overload
+    def create_suite(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoCheckSuitesPostBodyType
+    ) -> "Response[CheckSuite]":
+        ...
+
+    @overload
     def create_suite(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         head_sha: str,
+    ) -> "Response[CheckSuite]":
+        ...
+
+    def create_suite(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
 
-        json = ReposOwnerRepoCheckSuitesPostBody(
-            **{
-                "head_sha": head_sha,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCheckSuitesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -244,20 +279,39 @@ class ChecksClient:
             response_model=CheckSuite,
         )
 
+    @overload
+    async def async_create_suite(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoCheckSuitesPostBodyType
+    ) -> "Response[CheckSuite]":
+        ...
+
+    @overload
     async def async_create_suite(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         head_sha: str,
+    ) -> "Response[CheckSuite]":
+        ...
+
+    async def async_create_suite(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
 
-        json = ReposOwnerRepoCheckSuitesPostBody(
-            **{
-                "head_sha": head_sha,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCheckSuitesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -266,11 +320,23 @@ class ChecksClient:
             response_model=CheckSuite,
         )
 
+    @overload
     def set_suites_preferences(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
+    ) -> "Response[CheckSuitePreference]":
+        ...
+
+    @overload
+    def set_suites_preferences(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         auto_trigger_checks: Union[
             Unset,
             List[
@@ -278,13 +344,24 @@ class ChecksClient:
             ],
         ] = UNSET,
     ) -> "Response[CheckSuitePreference]":
+        ...
+
+    def set_suites_preferences(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
 
-        json = ReposOwnerRepoCheckSuitesPreferencesPatchBody(
-            **{
-                "auto_trigger_checks": auto_trigger_checks,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCheckSuitesPreferencesPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -293,11 +370,23 @@ class ChecksClient:
             response_model=CheckSuitePreference,
         )
 
+    @overload
     async def async_set_suites_preferences(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
+    ) -> "Response[CheckSuitePreference]":
+        ...
+
+    @overload
+    async def async_set_suites_preferences(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         auto_trigger_checks: Union[
             Unset,
             List[
@@ -305,13 +394,24 @@ class ChecksClient:
             ],
         ] = UNSET,
     ) -> "Response[CheckSuitePreference]":
+        ...
+
+    async def async_set_suites_preferences(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
 
-        json = ReposOwnerRepoCheckSuitesPreferencesPatchBody(
-            **{
-                "auto_trigger_checks": auto_trigger_checks,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCheckSuitesPreferencesPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

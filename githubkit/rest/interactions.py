@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Union, Literal
+from typing import TYPE_CHECKING, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -56,24 +58,37 @@ class InteractionsClient:
             ],
         )
 
+    @overload
+    def set_restrictions_for_org(
+        self, org: str, *, data: InteractionLimitType
+    ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    @overload
     def set_restrictions_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Union[
             Unset,
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"],
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    def set_restrictions_for_org(
+        self, org: str, *, data: Union[Unset, InteractionLimitType] = UNSET, **kwargs
+    ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
-        json = InteractionLimit(
-            **{
-                "limit": limit,
-                "expiry": expiry,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(InteractionLimit, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -85,24 +100,37 @@ class InteractionsClient:
             },
         )
 
+    @overload
+    async def async_set_restrictions_for_org(
+        self, org: str, *, data: InteractionLimitType
+    ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    @overload
     async def async_set_restrictions_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Union[
             Unset,
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"],
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    async def async_set_restrictions_for_org(
+        self, org: str, *, data: Union[Unset, InteractionLimitType] = UNSET, **kwargs
+    ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
-        json = InteractionLimit(
-            **{
-                "limit": limit,
-                "expiry": expiry,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(InteractionLimit, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -168,25 +196,43 @@ class InteractionsClient:
             ],
         )
 
+    @overload
+    def set_restrictions_for_repo(
+        self, owner: str, repo: str, *, data: InteractionLimitType
+    ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    @overload
     def set_restrictions_for_repo(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Union[
             Unset,
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"],
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    def set_restrictions_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, InteractionLimitType] = UNSET,
+        **kwargs,
+    ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        json = InteractionLimit(
-            **{
-                "limit": limit,
-                "expiry": expiry,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(InteractionLimit, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -196,25 +242,43 @@ class InteractionsClient:
             error_models={},
         )
 
+    @overload
+    async def async_set_restrictions_for_repo(
+        self, owner: str, repo: str, *, data: InteractionLimitType
+    ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    @overload
     async def async_set_restrictions_for_repo(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Union[
             Unset,
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"],
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    async def async_set_restrictions_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, InteractionLimitType] = UNSET,
+        **kwargs,
+    ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        json = InteractionLimit(
-            **{
-                "limit": limit,
-                "expiry": expiry,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(InteractionLimit, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -276,23 +340,36 @@ class InteractionsClient:
             ],
         )
 
+    @overload
+    def set_restrictions_for_authenticated_user(
+        self, *, data: InteractionLimitType
+    ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    @overload
     def set_restrictions_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Union[
             Unset,
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"],
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    def set_restrictions_for_authenticated_user(
+        self, *, data: Union[Unset, InteractionLimitType] = UNSET, **kwargs
+    ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 
-        json = InteractionLimit(
-            **{
-                "limit": limit,
-                "expiry": expiry,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(InteractionLimit, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -304,23 +381,36 @@ class InteractionsClient:
             },
         )
 
+    @overload
+    async def async_set_restrictions_for_authenticated_user(
+        self, *, data: InteractionLimitType
+    ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    @overload
     async def async_set_restrictions_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Union[
             Unset,
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"],
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
+        ...
+
+    async def async_set_restrictions_for_authenticated_user(
+        self, *, data: Union[Unset, InteractionLimitType] = UNSET, **kwargs
+    ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 
-        json = InteractionLimit(
-            **{
-                "limit": limit,
-                "expiry": expiry,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(InteractionLimit, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",

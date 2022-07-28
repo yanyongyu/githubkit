@@ -6,7 +6,9 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, List, Union, Literal
+from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -136,11 +138,19 @@ class PullsClient:
             },
         )
 
+    @overload
+    def create(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoPullsPostBodyType
+    ) -> "Response[PullRequest]":
+        ...
+
+    @overload
     def create(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         head: str,
         base: str,
@@ -149,19 +159,24 @@ class PullsClient:
         draft: Union[Unset, bool] = UNSET,
         issue: Union[Unset, int] = UNSET,
     ) -> "Response[PullRequest]":
+        ...
+
+    def create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
 
-        json = ReposOwnerRepoPullsPostBody(
-            **{
-                "title": title,
-                "head": head,
-                "base": base,
-                "body": body,
-                "maintainer_can_modify": maintainer_can_modify,
-                "draft": draft,
-                "issue": issue,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -174,11 +189,19 @@ class PullsClient:
             },
         )
 
+    @overload
+    async def async_create(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoPullsPostBodyType
+    ) -> "Response[PullRequest]":
+        ...
+
+    @overload
     async def async_create(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         head: str,
         base: str,
@@ -187,19 +210,24 @@ class PullsClient:
         draft: Union[Unset, bool] = UNSET,
         issue: Union[Unset, int] = UNSET,
     ) -> "Response[PullRequest]":
+        ...
+
+    async def async_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
 
-        json = ReposOwnerRepoPullsPostBody(
-            **{
-                "title": title,
-                "head": head,
-                "base": base,
-                "body": body,
-                "maintainer_can_modify": maintainer_can_modify,
-                "draft": draft,
-                "issue": issue,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -332,21 +360,46 @@ class PullsClient:
             },
         )
 
+    @overload
     def update_review_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    @overload
+    def update_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    def update_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        json = ReposOwnerRepoPullsCommentsCommentIdPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsCommentsCommentIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -355,21 +408,46 @@ class PullsClient:
             response_model=PullRequestReviewComment,
         )
 
+    @overload
     async def async_update_review_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    @overload
+    async def async_update_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    async def async_update_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        json = ReposOwnerRepoPullsCommentsCommentIdPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsCommentsCommentIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -414,29 +492,50 @@ class PullsClient:
             },
         )
 
+    @overload
     def update(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+    ) -> "Response[PullRequest]":
+        ...
+
+    @overload
+    def update(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
         state: Union[Unset, Literal["open", "closed"]] = UNSET,
         base: Union[Unset, str] = UNSET,
         maintainer_can_modify: Union[Unset, bool] = UNSET,
     ) -> "Response[PullRequest]":
+        ...
+
+    def update(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        json = ReposOwnerRepoPullsPullNumberPatchBody(
-            **{
-                "title": title,
-                "body": body,
-                "state": state,
-                "base": base,
-                "maintainer_can_modify": maintainer_can_modify,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -449,29 +548,50 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_update(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+    ) -> "Response[PullRequest]":
+        ...
+
+    @overload
+    async def async_update(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
         state: Union[Unset, Literal["open", "closed"]] = UNSET,
         base: Union[Unset, str] = UNSET,
         maintainer_can_modify: Union[Unset, bool] = UNSET,
     ) -> "Response[PullRequest]":
+        ...
+
+    async def async_update(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        json = ReposOwnerRepoPullsPullNumberPatchBody(
-            **{
-                "title": title,
-                "body": body,
-                "state": state,
-                "base": base,
-                "maintainer_can_modify": maintainer_can_modify,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -540,12 +660,25 @@ class PullsClient:
             response_model=List[PullRequestReviewComment],
         )
 
+    @overload
     def create_review_comment(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    @overload
+    def create_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
         commit_id: Union[Unset, str] = UNSET,
         path: Union[Unset, str] = UNSET,
@@ -556,21 +689,25 @@ class PullsClient:
         start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Union[Unset, int] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    def create_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
-        json = ReposOwnerRepoPullsPullNumberCommentsPostBody(
-            **{
-                "body": body,
-                "commit_id": commit_id,
-                "path": path,
-                "position": position,
-                "side": side,
-                "line": line,
-                "start_line": start_line,
-                "start_side": start_side,
-                "in_reply_to": in_reply_to,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberCommentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -583,12 +720,25 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_create_review_comment(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    @overload
+    async def async_create_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
         commit_id: Union[Unset, str] = UNSET,
         path: Union[Unset, str] = UNSET,
@@ -599,21 +749,25 @@ class PullsClient:
         start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Union[Unset, int] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    async def async_create_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
-        json = ReposOwnerRepoPullsPullNumberCommentsPostBody(
-            **{
-                "body": body,
-                "commit_id": commit_id,
-                "path": path,
-                "position": position,
-                "side": side,
-                "line": line,
-                "start_line": start_line,
-                "start_side": start_side,
-                "in_reply_to": in_reply_to,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberCommentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -626,6 +780,7 @@ class PullsClient:
             },
         )
 
+    @overload
     def create_reply_for_review_comment(
         self,
         owner: str,
@@ -633,15 +788,45 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    @overload
+    def create_reply_for_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    def create_reply_for_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
-        json = ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -653,6 +838,7 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_create_reply_for_review_comment(
         self,
         owner: str,
@@ -660,15 +846,45 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    @overload
+    async def async_create_reply_for_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[PullRequestReviewComment]":
+        ...
+
+    async def async_create_reply_for_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
-        json = ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -804,19 +1020,55 @@ class PullsClient:
             error_models={},
         )
 
+    @overload
     def merge(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
+        ...
+
+    @overload
+    def merge(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        commit_title: Union[Unset, str] = UNSET,
+        commit_message: Union[Unset, str] = UNSET,
+        sha: Union[Unset, str] = UNSET,
+        merge_method: Union[Unset, Literal["merge", "squash", "rebase"]] = UNSET,
+    ) -> "Response[PullRequestMergeResult]":
+        ...
+
+    def merge(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoPullsPullNumberMergePutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -832,19 +1084,55 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_merge(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
+        ...
+
+    @overload
+    async def async_merge(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        commit_title: Union[Unset, str] = UNSET,
+        commit_message: Union[Unset, str] = UNSET,
+        sha: Union[Unset, str] = UNSET,
+        merge_method: Union[Unset, Literal["merge", "squash", "rebase"]] = UNSET,
+    ) -> "Response[PullRequestMergeResult]":
+        ...
+
+    async def async_merge(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoPullsPullNumberMergePutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -910,11 +1198,17 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        body: Union[Unset, Union[Any, Any]] = UNSET,
+        data: Union[Any, Any],
+        **kwargs,
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -932,11 +1226,17 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        body: Union[Unset, Union[Any, Any]] = UNSET,
+        data: Union[Any, Any],
+        **kwargs,
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -948,23 +1248,51 @@ class PullsClient:
             },
         )
 
+    @overload
     def remove_requested_reviewers(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    @overload
+    def remove_requested_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         reviewers: List[str],
         team_reviewers: Union[Unset, List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
+        ...
+
+    def remove_requested_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        json = ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(
-            **{
-                "reviewers": reviewers,
-                "team_reviewers": team_reviewers,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -976,23 +1304,51 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_remove_requested_reviewers(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    @overload
+    async def async_remove_requested_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         reviewers: List[str],
         team_reviewers: Union[Unset, List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
+        ...
+
+    async def async_remove_requested_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        json = ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(
-            **{
-                "reviewers": reviewers,
-                "team_reviewers": team_reviewers,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -1048,12 +1404,25 @@ class PullsClient:
             response_model=List[PullRequestReview],
         )
 
+    @overload
     def create_review(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    def create_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         commit_id: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
         event: Union[Unset, Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -1062,16 +1431,25 @@ class PullsClient:
             List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType],
         ] = UNSET,
     ) -> "Response[PullRequestReview]":
+        ...
+
+    def create_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
-        json = ReposOwnerRepoPullsPullNumberReviewsPostBody(
-            **{
-                "commit_id": commit_id,
-                "body": body,
-                "event": event,
-                "comments": comments,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1084,12 +1462,25 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_create_review(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    async def async_create_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
         commit_id: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
         event: Union[Unset, Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -1098,16 +1489,25 @@ class PullsClient:
             List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType],
         ] = UNSET,
     ) -> "Response[PullRequestReview]":
+        ...
+
+    async def async_create_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
-        json = ReposOwnerRepoPullsPullNumberReviewsPostBody(
-            **{
-                "commit_id": commit_id,
-                "body": body,
-                "event": event,
-                "comments": comments,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1156,6 +1556,7 @@ class PullsClient:
             },
         )
 
+    @overload
     def update_review(
         self,
         owner: str,
@@ -1163,15 +1564,43 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    def update_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    def update_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        json = ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1183,6 +1612,7 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_update_review(
         self,
         owner: str,
@@ -1190,15 +1620,43 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    async def async_update_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    async def async_update_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        json = ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1300,6 +1758,7 @@ class PullsClient:
             },
         )
 
+    @overload
     def dismiss_review(
         self,
         owner: str,
@@ -1307,19 +1766,48 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    def dismiss_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Unset = UNSET,
         message: str,
         event: Union[Unset, Literal["DISMISS"]] = UNSET,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    def dismiss_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReview]":
         url = (
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
-        json = ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(
-            **{
-                "message": message,
-                "event": event,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1331,6 +1819,32 @@ class PullsClient:
                 "422": ValidationErrorSimple,
             },
         )
+
+    @overload
+    async def async_dismiss_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    async def async_dismiss_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Unset = UNSET,
+        message: str,
+        event: Union[Unset, Literal["DISMISS"]] = UNSET,
+    ) -> "Response[PullRequestReview]":
+        ...
 
     async def async_dismiss_review(
         self,
@@ -1339,19 +1853,23 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        message: str,
-        event: Union[Unset, Literal["DISMISS"]] = UNSET,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[PullRequestReview]":
         url = (
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
-        json = ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(
-            **{
-                "message": message,
-                "event": event,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1364,6 +1882,7 @@ class PullsClient:
             },
         )
 
+    @overload
     def submit_review(
         self,
         owner: str,
@@ -1371,17 +1890,46 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    def submit_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Unset = UNSET,
         body: Union[Unset, str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> "Response[PullRequestReview]":
+        ...
+
+    def submit_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
-        json = ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(
-            **{
-                "body": body,
-                "event": event,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1395,6 +1943,7 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_submit_review(
         self,
         owner: str,
@@ -1402,17 +1951,46 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
+    ) -> "Response[PullRequestReview]":
+        ...
+
+    @overload
+    async def async_submit_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Unset = UNSET,
         body: Union[Unset, str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> "Response[PullRequestReview]":
+        ...
+
+    async def async_submit_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        review_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
-        json = ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(
-            **{
-                "body": body,
-                "event": event,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1426,19 +2004,52 @@ class PullsClient:
             },
         )
 
+    @overload
     def update_branch(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
+        ...
+
+    @overload
+    def update_branch(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        expected_head_sha: Union[Unset, str] = UNSET,
+    ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
+        ...
+
+    def update_branch(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1451,19 +2062,52 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_update_branch(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
+        ...
+
+    @overload
+    async def async_update_branch(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        expected_head_sha: Union[Unset, str] = UNSET,
+    ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
+        ...
+
+    async def async_update_branch(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",

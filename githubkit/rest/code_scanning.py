@@ -6,7 +6,9 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -308,27 +310,52 @@ class CodeScanningClient:
             },
         )
 
+    @overload
     def update_alert(
         self,
         owner: str,
         repo: str,
         alert_number: int,
         *,
+        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+    ) -> "Response[CodeScanningAlert]":
+        ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Unset = UNSET,
         state: Literal["open", "dismissed"],
         dismissed_reason: Union[
             Unset, Literal[None, "false positive", "won't fix", "used in tests"]
         ] = UNSET,
         dismissed_comment: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAlert]":
+        ...
+
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
-        json = ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(
-            **{
-                "state": state,
-                "dismissed_reason": dismissed_reason,
-                "dismissed_comment": dismissed_comment,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -342,27 +369,52 @@ class CodeScanningClient:
             },
         )
 
+    @overload
     async def async_update_alert(
         self,
         owner: str,
         repo: str,
         alert_number: int,
         *,
+        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+    ) -> "Response[CodeScanningAlert]":
+        ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Unset = UNSET,
         state: Literal["open", "dismissed"],
         dismissed_reason: Union[
             Unset, Literal[None, "false positive", "won't fix", "used in tests"]
         ] = UNSET,
         dismissed_comment: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAlert]":
+        ...
+
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
-        json = ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(
-            **{
-                "state": state,
-                "dismissed_reason": dismissed_reason,
-                "dismissed_comment": dismissed_comment,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -592,11 +644,23 @@ class CodeScanningClient:
             },
         )
 
+    @overload
     def upload_sarif(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
+    ) -> "Response[CodeScanningSarifsReceipt]":
+        ...
+
+    @overload
+    def upload_sarif(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -604,18 +668,24 @@ class CodeScanningClient:
         started_at: Union[Unset, datetime] = UNSET,
         tool_name: Union[Unset, str] = UNSET,
     ) -> "Response[CodeScanningSarifsReceipt]":
+        ...
+
+    def upload_sarif(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
 
-        json = ReposOwnerRepoCodeScanningSarifsPostBody(
-            **{
-                "commit_sha": commit_sha,
-                "ref": ref,
-                "sarif": sarif,
-                "checkout_uri": checkout_uri,
-                "started_at": started_at,
-                "tool_name": tool_name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCodeScanningSarifsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -629,11 +699,23 @@ class CodeScanningClient:
             },
         )
 
+    @overload
     async def async_upload_sarif(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
+    ) -> "Response[CodeScanningSarifsReceipt]":
+        ...
+
+    @overload
+    async def async_upload_sarif(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -641,18 +723,24 @@ class CodeScanningClient:
         started_at: Union[Unset, datetime] = UNSET,
         tool_name: Union[Unset, str] = UNSET,
     ) -> "Response[CodeScanningSarifsReceipt]":
+        ...
+
+    async def async_upload_sarif(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
 
-        json = ReposOwnerRepoCodeScanningSarifsPostBody(
-            **{
-                "commit_sha": commit_sha,
-                "ref": ref,
-                "sarif": sarif,
-                "checkout_uri": checkout_uri,
-                "started_at": started_at,
-                "tool_name": tool_name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCodeScanningSarifsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

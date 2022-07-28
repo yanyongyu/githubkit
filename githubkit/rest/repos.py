@@ -6,13 +6,16 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, List, Union, Literal
+from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
     UserReposPostBodyType,
     OrgsOrgReposPostBodyType,
+    DeploymentBranchPolicyType,
     ReposOwnerRepoPatchBodyType,
     ReposOwnerRepoKeysPostBodyType,
     ReposOwnerRepoForksPostBodyType,
@@ -31,7 +34,9 @@ from .types import (
     ReposOwnerRepoMergeUpstreamPostBodyType,
     ReposOwnerRepoContentsPathDeleteBodyType,
     ReposOwnerRepoTagsProtectionPostBodyType,
+    ReposOwnerRepoHooksPostBodyPropConfigType,
     ReposOwnerRepoPagesDeploymentPostBodyType,
+    ReposOwnerRepoPagesPostBodyPropSourceType,
     ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ReposOwnerRepoHooksHookIdConfigPatchBodyType,
     ReposOwnerRepoReleasesReleaseIdPatchBodyType,
@@ -54,6 +59,7 @@ from .types import (
     ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
     ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
+    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
@@ -266,10 +272,18 @@ class ReposClient:
             response_model=List[MinimalRepository],
         )
 
+    @overload
+    def create_in_org(
+        self, org: str, *, data: OrgsOrgReposPostBodyType
+    ) -> "Response[Repository]":
+        ...
+
+    @overload
     def create_in_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
@@ -290,31 +304,23 @@ class ReposClient:
         delete_branch_on_merge: Union[Unset, bool] = False,
         use_squash_pr_title_as_default: Union[Unset, bool] = False,
     ) -> "Response[Repository]":
+        ...
+
+    def create_in_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgReposPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Repository]":
         url = f"/orgs/{org}/repos"
 
-        json = OrgsOrgReposPostBody(
-            **{
-                "name": name,
-                "description": description,
-                "homepage": homepage,
-                "private": private,
-                "visibility": visibility,
-                "has_issues": has_issues,
-                "has_projects": has_projects,
-                "has_wiki": has_wiki,
-                "is_template": is_template,
-                "team_id": team_id,
-                "auto_init": auto_init,
-                "gitignore_template": gitignore_template,
-                "license_template": license_template,
-                "allow_squash_merge": allow_squash_merge,
-                "allow_merge_commit": allow_merge_commit,
-                "allow_rebase_merge": allow_rebase_merge,
-                "allow_auto_merge": allow_auto_merge,
-                "delete_branch_on_merge": delete_branch_on_merge,
-                "use_squash_pr_title_as_default": use_squash_pr_title_as_default,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgReposPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -327,10 +333,18 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_in_org(
+        self, org: str, *, data: OrgsOrgReposPostBodyType
+    ) -> "Response[Repository]":
+        ...
+
+    @overload
     async def async_create_in_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
@@ -351,31 +365,23 @@ class ReposClient:
         delete_branch_on_merge: Union[Unset, bool] = False,
         use_squash_pr_title_as_default: Union[Unset, bool] = False,
     ) -> "Response[Repository]":
+        ...
+
+    async def async_create_in_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgReposPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Repository]":
         url = f"/orgs/{org}/repos"
 
-        json = OrgsOrgReposPostBody(
-            **{
-                "name": name,
-                "description": description,
-                "homepage": homepage,
-                "private": private,
-                "visibility": visibility,
-                "has_issues": has_issues,
-                "has_projects": has_projects,
-                "has_wiki": has_wiki,
-                "is_template": is_template,
-                "team_id": team_id,
-                "auto_init": auto_init,
-                "gitignore_template": gitignore_template,
-                "license_template": license_template,
-                "allow_squash_merge": allow_squash_merge,
-                "allow_merge_commit": allow_merge_commit,
-                "allow_rebase_merge": allow_rebase_merge,
-                "allow_auto_merge": allow_auto_merge,
-                "delete_branch_on_merge": delete_branch_on_merge,
-                "use_squash_pr_title_as_default": use_squash_pr_title_as_default,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgReposPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -454,11 +460,23 @@ class ReposClient:
             },
         )
 
+    @overload
     def update(
         self,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, ReposOwnerRepoPatchBodyType] = UNSET,
+    ) -> "Response[FullRepository]":
+        ...
+
+    @overload
+    def update(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
@@ -482,32 +500,24 @@ class ReposClient:
         archived: Union[Unset, bool] = False,
         allow_forking: Union[Unset, bool] = False,
     ) -> "Response[FullRepository]":
+        ...
+
+    def update(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
 
-        json = ReposOwnerRepoPatchBody(
-            **{
-                "name": name,
-                "description": description,
-                "homepage": homepage,
-                "private": private,
-                "visibility": visibility,
-                "security_and_analysis": security_and_analysis,
-                "has_issues": has_issues,
-                "has_projects": has_projects,
-                "has_wiki": has_wiki,
-                "is_template": is_template,
-                "default_branch": default_branch,
-                "allow_squash_merge": allow_squash_merge,
-                "allow_merge_commit": allow_merge_commit,
-                "allow_rebase_merge": allow_rebase_merge,
-                "allow_auto_merge": allow_auto_merge,
-                "delete_branch_on_merge": delete_branch_on_merge,
-                "allow_update_branch": allow_update_branch,
-                "use_squash_pr_title_as_default": use_squash_pr_title_as_default,
-                "archived": archived,
-                "allow_forking": allow_forking,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -521,11 +531,23 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update(
         self,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, ReposOwnerRepoPatchBodyType] = UNSET,
+    ) -> "Response[FullRepository]":
+        ...
+
+    @overload
+    async def async_update(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
@@ -549,32 +571,24 @@ class ReposClient:
         archived: Union[Unset, bool] = False,
         allow_forking: Union[Unset, bool] = False,
     ) -> "Response[FullRepository]":
+        ...
+
+    async def async_update(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
 
-        json = ReposOwnerRepoPatchBody(
-            **{
-                "name": name,
-                "description": description,
-                "homepage": homepage,
-                "private": private,
-                "visibility": visibility,
-                "security_and_analysis": security_and_analysis,
-                "has_issues": has_issues,
-                "has_projects": has_projects,
-                "has_wiki": has_wiki,
-                "is_template": is_template,
-                "default_branch": default_branch,
-                "allow_squash_merge": allow_squash_merge,
-                "allow_merge_commit": allow_merge_commit,
-                "allow_rebase_merge": allow_rebase_merge,
-                "allow_auto_merge": allow_auto_merge,
-                "delete_branch_on_merge": delete_branch_on_merge,
-                "allow_update_branch": allow_update_branch,
-                "use_squash_pr_title_as_default": use_squash_pr_title_as_default,
-                "archived": archived,
-                "allow_forking": allow_forking,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -626,22 +640,40 @@ class ReposClient:
             response_model=List[Autolink],
         )
 
+    @overload
+    def create_autolink(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoAutolinksPostBodyType
+    ) -> "Response[Autolink]":
+        ...
+
+    @overload
     def create_autolink(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         key_prefix: str,
         url_template: str,
     ) -> "Response[Autolink]":
+        ...
+
+    def create_autolink(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoAutolinksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks"
 
-        json = ReposOwnerRepoAutolinksPostBody(
-            **{
-                "key_prefix": key_prefix,
-                "url_template": url_template,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoAutolinksPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -653,22 +685,40 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_autolink(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoAutolinksPostBodyType
+    ) -> "Response[Autolink]":
+        ...
+
+    @overload
     async def async_create_autolink(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         key_prefix: str,
         url_template: str,
     ) -> "Response[Autolink]":
+        ...
+
+    async def async_create_autolink(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoAutolinksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks"
 
-        json = ReposOwnerRepoAutolinksPostBody(
-            **{
-                "key_prefix": key_prefix,
-                "url_template": url_template,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoAutolinksPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -914,12 +964,25 @@ class ReposClient:
             },
         )
 
+    @overload
     def update_branch_protection(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
+    ) -> "Response[ProtectedBranch]":
+        ...
+
+    @overload
+    def update_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -938,21 +1001,25 @@ class ReposClient:
         block_creations: Union[Unset, bool] = UNSET,
         required_conversation_resolution: Union[Unset, bool] = UNSET,
     ) -> "Response[ProtectedBranch]":
+        ...
+
+    def update_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ProtectedBranch]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
-        json = ReposOwnerRepoBranchesBranchProtectionPutBody(
-            **{
-                "required_status_checks": required_status_checks,
-                "enforce_admins": enforce_admins,
-                "required_pull_request_reviews": required_pull_request_reviews,
-                "restrictions": restrictions,
-                "required_linear_history": required_linear_history,
-                "allow_force_pushes": allow_force_pushes,
-                "allow_deletions": allow_deletions,
-                "block_creations": block_creations,
-                "required_conversation_resolution": required_conversation_resolution,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoBranchesBranchProtectionPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -966,12 +1033,25 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update_branch_protection(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
+    ) -> "Response[ProtectedBranch]":
+        ...
+
+    @overload
+    async def async_update_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -990,21 +1070,25 @@ class ReposClient:
         block_creations: Union[Unset, bool] = UNSET,
         required_conversation_resolution: Union[Unset, bool] = UNSET,
     ) -> "Response[ProtectedBranch]":
+        ...
+
+    async def async_update_branch_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ProtectedBranch]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
-        json = ReposOwnerRepoBranchesBranchProtectionPutBody(
-            **{
-                "required_status_checks": required_status_checks,
-                "enforce_admins": enforce_admins,
-                "required_pull_request_reviews": required_pull_request_reviews,
-                "restrictions": restrictions,
-                "required_linear_history": required_linear_history,
-                "allow_force_pushes": allow_force_pushes,
-                "allow_deletions": allow_deletions,
-                "block_creations": block_creations,
-                "required_conversation_resolution": required_conversation_resolution,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoBranchesBranchProtectionPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1198,12 +1282,28 @@ class ReposClient:
             },
         )
 
+    @overload
     def update_pull_request_review_protection(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+        ] = UNSET,
+    ) -> "Response[ProtectedBranchPullRequestReview]":
+        ...
+
+    @overload
+    def update_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         dismissal_restrictions: Union[
             Unset,
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
@@ -1216,19 +1316,31 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
+        ...
+
+    def update_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
-        json = (
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
-                **{
-                    "dismissal_restrictions": dismissal_restrictions,
-                    "dismiss_stale_reviews": dismiss_stale_reviews,
-                    "require_code_owner_reviews": require_code_owner_reviews,
-                    "required_approving_review_count": required_approving_review_count,
-                    "bypass_pull_request_allowances": bypass_pull_request_allowances,
-                }
-            ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1240,12 +1352,28 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update_pull_request_review_protection(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+        ] = UNSET,
+    ) -> "Response[ProtectedBranchPullRequestReview]":
+        ...
+
+    @overload
+    async def async_update_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         dismissal_restrictions: Union[
             Unset,
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
@@ -1258,19 +1386,31 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
+        ...
+
+    async def async_update_pull_request_review_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
-        json = (
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
-                **{
-                    "dismissal_restrictions": dismissal_restrictions,
-                    "dismiss_stale_reviews": dismiss_stale_reviews,
-                    "require_code_owner_reviews": require_code_owner_reviews,
-                    "required_approving_review_count": required_approving_review_count,
-                    "bypass_pull_request_allowances": bypass_pull_request_allowances,
-                }
-            ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1450,12 +1590,28 @@ class ReposClient:
             url,
         )
 
+    @overload
     def update_status_check_protection(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+        ] = UNSET,
+    ) -> "Response[StatusCheckPolicy]":
+        ...
+
+    @overload
+    def update_status_check_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         strict: Union[Unset, bool] = UNSET,
         contexts: Union[Unset, List[str]] = UNSET,
         checks: Union[
@@ -1465,17 +1621,32 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[StatusCheckPolicy]":
+        ...
+
+    def update_status_check_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[StatusCheckPolicy]":
         url = (
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
-        json = ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(
-            **{
-                "strict": strict,
-                "contexts": contexts,
-                "checks": checks,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1488,12 +1659,28 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update_status_check_protection(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+        ] = UNSET,
+    ) -> "Response[StatusCheckPolicy]":
+        ...
+
+    @overload
+    async def async_update_status_check_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         strict: Union[Unset, bool] = UNSET,
         contexts: Union[Unset, List[str]] = UNSET,
         checks: Union[
@@ -1503,17 +1690,32 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[StatusCheckPolicy]":
+        ...
+
+    async def async_update_status_check_protection(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[StatusCheckPolicy]":
         url = (
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
-        json = ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(
-            **{
-                "strict": strict,
-                "contexts": contexts,
-                "checks": checks,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1560,13 +1762,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def set_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
@@ -1574,9 +1777,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[str]]":
+        ...
+
+    @overload
+    def set_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        contexts: List[str],
+    ) -> "Response[List[str]]":
+        ...
+
+    def set_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1588,6 +1831,35 @@ class ReposClient:
                 "404": BasicError,
             },
         )
+
+    @overload
+    async def async_set_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[str]]":
+        ...
+
+    @overload
+    async def async_set_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        contexts: List[str],
+    ) -> "Response[List[str]]":
+        ...
 
     async def async_set_status_check_contexts(
         self,
@@ -1595,17 +1867,29 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
+        **kwargs,
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1618,13 +1902,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def add_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -1632,9 +1917,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[str]]":
+        ...
+
+    @overload
+    def add_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        contexts: List[str],
+    ) -> "Response[List[str]]":
+        ...
+
+    def add_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1648,13 +1973,14 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_add_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -1662,9 +1988,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[str]]":
+        ...
+
+    @overload
+    async def async_add_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        contexts: List[str],
+    ) -> "Response[List[str]]":
+        ...
+
+    async def async_add_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1678,13 +2044,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def remove_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -1692,9 +2059,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[str]]":
+        ...
+
+    @overload
+    def remove_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        contexts: List[str],
+    ) -> "Response[List[str]]":
+        ...
+
+    def remove_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -1707,13 +2114,14 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_remove_status_check_contexts(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
@@ -1721,9 +2129,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[str]]":
+        ...
+
+    @overload
+    async def async_remove_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        contexts: List[str],
+    ) -> "Response[List[str]]":
+        ...
+
+    async def async_remove_status_check_contexts(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -1830,13 +2278,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def set_app_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
@@ -1844,9 +2293,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Integration]]":
+        ...
+
+    @overload
+    def set_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        apps: List[str],
+    ) -> "Response[List[Integration]]":
+        ...
+
+    def set_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1857,6 +2346,35 @@ class ReposClient:
                 "422": ValidationError,
             },
         )
+
+    @overload
+    async def async_set_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[Integration]]":
+        ...
+
+    @overload
+    async def async_set_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        apps: List[str],
+    ) -> "Response[List[Integration]]":
+        ...
 
     async def async_set_app_access_restrictions(
         self,
@@ -1864,17 +2382,29 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
+        **kwargs,
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1886,13 +2416,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def add_app_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
@@ -1900,9 +2431,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Integration]]":
+        ...
+
+    @overload
+    def add_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        apps: List[str],
+    ) -> "Response[List[Integration]]":
+        ...
+
+    def add_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1914,13 +2485,14 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_add_app_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
@@ -1928,9 +2500,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Integration]]":
+        ...
+
+    @overload
+    async def async_add_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        apps: List[str],
+    ) -> "Response[List[Integration]]":
+        ...
+
+    async def async_add_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1942,13 +2554,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def remove_app_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
@@ -1956,9 +2569,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Integration]]":
+        ...
+
+    @overload
+    def remove_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        apps: List[str],
+    ) -> "Response[List[Integration]]":
+        ...
+
+    def remove_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -1970,13 +2623,14 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_remove_app_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
@@ -1984,9 +2638,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Integration]]":
+        ...
+
+    @overload
+    async def async_remove_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        apps: List[str],
+    ) -> "Response[List[Integration]]":
+        ...
+
+    async def async_remove_app_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -2032,13 +2726,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def set_team_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
@@ -2046,9 +2741,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Team]]":
+        ...
+
+    @overload
+    def set_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        teams: List[str],
+    ) -> "Response[List[Team]]":
+        ...
+
+    def set_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2059,6 +2794,35 @@ class ReposClient:
                 "422": ValidationError,
             },
         )
+
+    @overload
+    async def async_set_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[Team]]":
+        ...
+
+    @overload
+    async def async_set_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        teams: List[str],
+    ) -> "Response[List[Team]]":
+        ...
 
     async def async_set_team_access_restrictions(
         self,
@@ -2066,17 +2830,29 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
+        **kwargs,
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2088,13 +2864,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def add_team_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -2102,9 +2879,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Team]]":
+        ...
+
+    @overload
+    def add_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        teams: List[str],
+    ) -> "Response[List[Team]]":
+        ...
+
+    def add_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2116,13 +2933,14 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_add_team_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
@@ -2130,9 +2948,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Team]]":
+        ...
+
+    @overload
+    async def async_add_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        teams: List[str],
+    ) -> "Response[List[Team]]":
+        ...
+
+    async def async_add_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2144,13 +3002,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def remove_team_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -2158,9 +3017,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Team]]":
+        ...
+
+    @overload
+    def remove_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        teams: List[str],
+    ) -> "Response[List[Team]]":
+        ...
+
+    def remove_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -2172,13 +3071,14 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_remove_team_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
@@ -2186,9 +3086,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[Team]]":
+        ...
+
+    @overload
+    async def async_remove_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        teams: List[str],
+    ) -> "Response[List[Team]]":
+        ...
+
+    async def async_remove_team_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -2234,13 +3174,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def set_user_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
@@ -2248,9 +3189,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[SimpleUser]]":
+        ...
+
+    @overload
+    def set_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        users: List[str],
+    ) -> "Response[List[SimpleUser]]":
+        ...
+
+    def set_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2261,6 +3242,35 @@ class ReposClient:
                 "422": ValidationError,
             },
         )
+
+    @overload
+    async def async_set_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[SimpleUser]]":
+        ...
+
+    @overload
+    async def async_set_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        users: List[str],
+    ) -> "Response[List[SimpleUser]]":
+        ...
 
     async def async_set_user_access_restrictions(
         self,
@@ -2268,17 +3278,29 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
+        **kwargs,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2290,13 +3312,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def add_user_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
@@ -2304,9 +3327,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[SimpleUser]]":
+        ...
+
+    @overload
+    def add_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        users: List[str],
+    ) -> "Response[List[SimpleUser]]":
+        ...
+
+    def add_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2317,6 +3380,35 @@ class ReposClient:
                 "422": ValidationError,
             },
         )
+
+    @overload
+    async def async_add_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+    ) -> "Response[List[SimpleUser]]":
+        ...
+
+    @overload
+    async def async_add_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        users: List[str],
+    ) -> "Response[List[SimpleUser]]":
+        ...
 
     async def async_add_user_access_restrictions(
         self,
@@ -2324,17 +3416,29 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
                 List[str],
             ],
         ] = UNSET,
+        **kwargs,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2346,13 +3450,14 @@ class ReposClient:
             },
         )
 
+    @overload
     def remove_user_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
@@ -2360,9 +3465,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[SimpleUser]]":
+        ...
+
+    @overload
+    def remove_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        users: List[str],
+    ) -> "Response[List[SimpleUser]]":
+        ...
+
+    def remove_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -2374,13 +3519,14 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_remove_user_access_restrictions(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
@@ -2388,9 +3534,49 @@ class ReposClient:
             ],
         ] = UNSET,
     ) -> "Response[List[SimpleUser]]":
+        ...
+
+    @overload
+    async def async_remove_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
+        users: List[str],
+    ) -> "Response[List[SimpleUser]]":
+        ...
+
+    async def async_remove_user_access_restrictions(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
+                List[str],
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+                List[str],
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -2402,21 +3588,46 @@ class ReposClient:
             },
         )
 
+    @overload
     def rename_branch(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
+    ) -> "Response[BranchWithProtection]":
+        ...
+
+    @overload
+    def rename_branch(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         new_name: str,
+    ) -> "Response[BranchWithProtection]":
+        ...
+
+    def rename_branch(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
 
-        json = ReposOwnerRepoBranchesBranchRenamePostBody(
-            **{
-                "new_name": new_name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoBranchesBranchRenamePostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2430,21 +3641,46 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_rename_branch(
         self,
         owner: str,
         repo: str,
         branch: str,
         *,
+        data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
+    ) -> "Response[BranchWithProtection]":
+        ...
+
+    @overload
+    async def async_rename_branch(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Unset = UNSET,
         new_name: str,
+    ) -> "Response[BranchWithProtection]":
+        ...
+
+    async def async_rename_branch(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
 
-        json = ReposOwnerRepoBranchesBranchRenamePostBody(
-            **{
-                "new_name": new_name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoBranchesBranchRenamePostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2578,23 +3814,48 @@ class ReposClient:
             error_models={},
         )
 
+    @overload
     def add_collaborator(
         self,
         owner: str,
         repo: str,
         username: str,
         *,
+        data: Union[Unset, ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+    ) -> "Response[RepositoryInvitation]":
+        ...
+
+    @overload
+    def add_collaborator(
+        self,
+        owner: str,
+        repo: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         permission: Union[
             Unset, Literal["pull", "push", "admin", "maintain", "triage"]
         ] = "push",
     ) -> "Response[RepositoryInvitation]":
+        ...
+
+    def add_collaborator(
+        self,
+        owner: str,
+        repo: str,
+        username: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
-        json = ReposOwnerRepoCollaboratorsUsernamePutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCollaboratorsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2607,23 +3868,48 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_add_collaborator(
         self,
         owner: str,
         repo: str,
         username: str,
         *,
+        data: Union[Unset, ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+    ) -> "Response[RepositoryInvitation]":
+        ...
+
+    @overload
+    async def async_add_collaborator(
+        self,
+        owner: str,
+        repo: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         permission: Union[
             Unset, Literal["pull", "push", "admin", "maintain", "triage"]
         ] = "push",
     ) -> "Response[RepositoryInvitation]":
+        ...
+
+    async def async_add_collaborator(
+        self,
+        owner: str,
+        repo: str,
+        username: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
-        json = ReposOwnerRepoCollaboratorsUsernamePutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCollaboratorsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2804,21 +4090,46 @@ class ReposClient:
             },
         )
 
+    @overload
     def update_commit_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
+    ) -> "Response[CommitComment]":
+        ...
+
+    @overload
+    def update_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[CommitComment]":
+        ...
+
+    def update_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
-        json = ReposOwnerRepoCommentsCommentIdPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCommentsCommentIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -2830,21 +4141,46 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update_commit_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
+    ) -> "Response[CommitComment]":
+        ...
+
+    @overload
+    async def async_update_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[CommitComment]":
+        ...
+
+    async def async_update_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
-        json = ReposOwnerRepoCommentsCommentIdPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCommentsCommentIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -3008,27 +4344,49 @@ class ReposClient:
             response_model=List[CommitComment],
         )
 
+    @overload
     def create_commit_comment(
         self,
         owner: str,
         repo: str,
         commit_sha: str,
         *,
+        data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
+    ) -> "Response[CommitComment]":
+        ...
+
+    @overload
+    def create_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        commit_sha: str,
+        *,
+        data: Unset = UNSET,
         body: str,
         path: Union[Unset, str] = UNSET,
         position: Union[Unset, int] = UNSET,
         line: Union[Unset, int] = UNSET,
     ) -> "Response[CommitComment]":
+        ...
+
+    def create_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        commit_sha: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 
-        json = ReposOwnerRepoCommitsCommitShaCommentsPostBody(
-            **{
-                "body": body,
-                "path": path,
-                "position": position,
-                "line": line,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCommitsCommitShaCommentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3041,27 +4399,49 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_create_commit_comment(
         self,
         owner: str,
         repo: str,
         commit_sha: str,
         *,
+        data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
+    ) -> "Response[CommitComment]":
+        ...
+
+    @overload
+    async def async_create_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        commit_sha: str,
+        *,
+        data: Unset = UNSET,
         body: str,
         path: Union[Unset, str] = UNSET,
         position: Union[Unset, int] = UNSET,
         line: Union[Unset, int] = UNSET,
     ) -> "Response[CommitComment]":
+        ...
+
+    async def async_create_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        commit_sha: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 
-        json = ReposOwnerRepoCommitsCommitShaCommentsPostBody(
-            **{
-                "body": body,
-                "path": path,
-                "position": position,
-                "line": line,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCommitsCommitShaCommentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3392,12 +4772,25 @@ class ReposClient:
             },
         )
 
+    @overload
     def create_or_update_file_contents(
         self,
         owner: str,
         repo: str,
         path: str,
         *,
+        data: ReposOwnerRepoContentsPathPutBodyType,
+    ) -> "Response[FileCommit]":
+        ...
+
+    @overload
+    def create_or_update_file_contents(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Unset = UNSET,
         message: str,
         content: str,
         sha: Union[Unset, str] = UNSET,
@@ -3407,18 +4800,25 @@ class ReposClient:
         ] = UNSET,
         author: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
+        ...
+
+    def create_or_update_file_contents(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoContentsPathPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
-        json = ReposOwnerRepoContentsPathPutBody(
-            **{
-                "message": message,
-                "content": content,
-                "sha": sha,
-                "branch": branch,
-                "committer": committer,
-                "author": author,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoContentsPathPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3432,12 +4832,25 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_create_or_update_file_contents(
         self,
         owner: str,
         repo: str,
         path: str,
         *,
+        data: ReposOwnerRepoContentsPathPutBodyType,
+    ) -> "Response[FileCommit]":
+        ...
+
+    @overload
+    async def async_create_or_update_file_contents(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Unset = UNSET,
         message: str,
         content: str,
         sha: Union[Unset, str] = UNSET,
@@ -3447,18 +4860,25 @@ class ReposClient:
         ] = UNSET,
         author: Union[Unset, ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
+        ...
+
+    async def async_create_or_update_file_contents(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoContentsPathPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
-        json = ReposOwnerRepoContentsPathPutBody(
-            **{
-                "message": message,
-                "content": content,
-                "sha": sha,
-                "branch": branch,
-                "committer": committer,
-                "author": author,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoContentsPathPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3472,12 +4892,25 @@ class ReposClient:
             },
         )
 
+    @overload
     def delete_file(
         self,
         owner: str,
         repo: str,
         path: str,
         *,
+        data: ReposOwnerRepoContentsPathDeleteBodyType,
+    ) -> "Response[FileCommit]":
+        ...
+
+    @overload
+    def delete_file(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Unset = UNSET,
         message: str,
         sha: str,
         branch: Union[Unset, str] = UNSET,
@@ -3488,17 +4921,25 @@ class ReposClient:
             Unset, ReposOwnerRepoContentsPathDeleteBodyPropAuthorType
         ] = UNSET,
     ) -> "Response[FileCommit]":
+        ...
+
+    def delete_file(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
-        json = ReposOwnerRepoContentsPathDeleteBody(
-            **{
-                "message": message,
-                "sha": sha,
-                "branch": branch,
-                "committer": committer,
-                "author": author,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoContentsPathDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -3513,12 +4954,25 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_delete_file(
         self,
         owner: str,
         repo: str,
         path: str,
         *,
+        data: ReposOwnerRepoContentsPathDeleteBodyType,
+    ) -> "Response[FileCommit]":
+        ...
+
+    @overload
+    async def async_delete_file(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Unset = UNSET,
         message: str,
         sha: str,
         branch: Union[Unset, str] = UNSET,
@@ -3529,17 +4983,25 @@ class ReposClient:
             Unset, ReposOwnerRepoContentsPathDeleteBodyPropAuthorType
         ] = UNSET,
     ) -> "Response[FileCommit]":
+        ...
+
+    async def async_delete_file(
+        self,
+        owner: str,
+        repo: str,
+        path: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
-        json = ReposOwnerRepoContentsPathDeleteBody(
-            **{
-                "message": message,
-                "sha": sha,
-                "branch": branch,
-                "committer": committer,
-                "author": author,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoContentsPathDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -3666,11 +5128,19 @@ class ReposClient:
             response_model=List[Deployment],
         )
 
+    @overload
+    def create_deployment(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoDeploymentsPostBodyType
+    ) -> "Response[Deployment]":
+        ...
+
+    @overload
     def create_deployment(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         ref: str,
         task: Union[Unset, str] = "deploy",
         auto_merge: Union[Unset, bool] = True,
@@ -3683,21 +5153,24 @@ class ReposClient:
         transient_environment: Union[Unset, bool] = False,
         production_environment: Union[Unset, bool] = UNSET,
     ) -> "Response[Deployment]":
+        ...
+
+    def create_deployment(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments"
 
-        json = ReposOwnerRepoDeploymentsPostBody(
-            **{
-                "ref": ref,
-                "task": task,
-                "auto_merge": auto_merge,
-                "required_contexts": required_contexts,
-                "payload": payload,
-                "environment": environment,
-                "description": description,
-                "transient_environment": transient_environment,
-                "production_environment": production_environment,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDeploymentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3709,11 +5182,19 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_deployment(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoDeploymentsPostBodyType
+    ) -> "Response[Deployment]":
+        ...
+
+    @overload
     async def async_create_deployment(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         ref: str,
         task: Union[Unset, str] = "deploy",
         auto_merge: Union[Unset, bool] = True,
@@ -3726,21 +5207,24 @@ class ReposClient:
         transient_environment: Union[Unset, bool] = False,
         production_environment: Union[Unset, bool] = UNSET,
     ) -> "Response[Deployment]":
+        ...
+
+    async def async_create_deployment(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments"
 
-        json = ReposOwnerRepoDeploymentsPostBody(
-            **{
-                "ref": ref,
-                "task": task,
-                "auto_merge": auto_merge,
-                "required_contexts": required_contexts,
-                "payload": payload,
-                "environment": environment,
-                "description": description,
-                "transient_environment": transient_environment,
-                "production_environment": production_environment,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDeploymentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3870,12 +5354,25 @@ class ReposClient:
             },
         )
 
+    @overload
     def create_deployment_status(
         self,
         owner: str,
         repo: str,
         deployment_id: int,
         *,
+        data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
+    ) -> "Response[DeploymentStatus]":
+        ...
+
+    @overload
+    def create_deployment_status(
+        self,
+        owner: str,
+        repo: str,
+        deployment_id: int,
+        *,
+        data: Unset = UNSET,
         state: Literal[
             "error",
             "failure",
@@ -3892,19 +5389,27 @@ class ReposClient:
         environment_url: Union[Unset, str] = "",
         auto_inactive: Union[Unset, bool] = UNSET,
     ) -> "Response[DeploymentStatus]":
+        ...
+
+    def create_deployment_status(
+        self,
+        owner: str,
+        repo: str,
+        deployment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentStatus]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 
-        json = ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(
-            **{
-                "state": state,
-                "target_url": target_url,
-                "log_url": log_url,
-                "description": description,
-                "environment": environment,
-                "environment_url": environment_url,
-                "auto_inactive": auto_inactive,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3916,12 +5421,25 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_create_deployment_status(
         self,
         owner: str,
         repo: str,
         deployment_id: int,
         *,
+        data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
+    ) -> "Response[DeploymentStatus]":
+        ...
+
+    @overload
+    async def async_create_deployment_status(
+        self,
+        owner: str,
+        repo: str,
+        deployment_id: int,
+        *,
+        data: Unset = UNSET,
         state: Literal[
             "error",
             "failure",
@@ -3938,19 +5456,27 @@ class ReposClient:
         environment_url: Union[Unset, str] = "",
         auto_inactive: Union[Unset, bool] = UNSET,
     ) -> "Response[DeploymentStatus]":
+        ...
+
+    async def async_create_deployment_status(
+        self,
+        owner: str,
+        repo: str,
+        deployment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentStatus]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 
-        json = ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(
-            **{
-                "state": state,
-                "target_url": target_url,
-                "log_url": log_url,
-                "description": description,
-                "environment": environment,
-                "environment_url": environment_url,
-                "auto_inactive": auto_inactive,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3998,24 +5524,42 @@ class ReposClient:
             },
         )
 
+    @overload
+    def create_dispatch_event(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoDispatchesPostBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     def create_dispatch_event(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         event_type: str,
         client_payload: Union[
             Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    def create_dispatch_event(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoDispatchesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
 
-        json = ReposOwnerRepoDispatchesPostBody(
-            **{
-                "event_type": event_type,
-                "client_payload": client_payload,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDispatchesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4026,24 +5570,42 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_dispatch_event(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoDispatchesPostBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_create_dispatch_event(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         event_type: str,
         client_payload: Union[
             Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_create_dispatch_event(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoDispatchesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
 
-        json = ReposOwnerRepoDispatchesPostBody(
-            **{
-                "event_type": event_type,
-                "client_payload": client_payload,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDispatchesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4124,19 +5686,62 @@ class ReposClient:
             response_model=Environment,
         )
 
+    @overload
     def create_or_update_environment(
         self,
         owner: str,
         repo: str,
         environment_name: str,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
+        ...
+
+    @overload
+    def create_or_update_environment(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        wait_timer: Union[Unset, int] = UNSET,
+        reviewers: Union[
+            Unset,
+            Union[
+                List[
+                    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
+                ],
+                None,
+            ],
+        ] = UNSET,
+        deployment_branch_policy: Union[Unset, DeploymentBranchPolicyType] = UNSET,
+    ) -> "Response[Environment]":
+        ...
+
+    def create_or_update_environment(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -4148,19 +5753,62 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_create_or_update_environment(
         self,
         owner: str,
         repo: str,
         environment_name: str,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
+        ...
+
+    @overload
+    async def async_create_or_update_environment(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        wait_timer: Union[Unset, int] = UNSET,
+        reviewers: Union[
+            Unset,
+            Union[
+                List[
+                    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
+                ],
+                None,
+            ],
+        ] = UNSET,
+        deployment_branch_policy: Union[Unset, DeploymentBranchPolicyType] = UNSET,
+    ) -> "Response[Environment]":
+        ...
+
+    async def async_create_or_update_environment(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -4254,16 +5902,44 @@ class ReposClient:
             },
         )
 
+    @overload
     def create_fork(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        data: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+    ) -> "Response[FullRepository]":
+        ...
+
+    @overload
+    def create_fork(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        organization: Union[Unset, str] = UNSET,
+        name: Union[Unset, str] = UNSET,
+    ) -> "Response[FullRepository]":
+        ...
+
+    def create_fork(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoForksPostBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4278,16 +5954,44 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_create_fork(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        data: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+    ) -> "Response[FullRepository]":
+        ...
+
+    @overload
+    async def async_create_fork(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        organization: Union[Unset, str] = UNSET,
+        name: Union[Unset, str] = UNSET,
+    ) -> "Response[FullRepository]":
+        ...
+
+    async def async_create_fork(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoForksPostBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4350,16 +6054,46 @@ class ReposClient:
             },
         )
 
+    @overload
     def create_webhook(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        data: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+    ) -> "Response[Hook]":
+        ...
+
+    @overload
+    def create_webhook(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        config: Union[Unset, ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
+        events: Union[Unset, List[str]] = ["push"],
+        active: Union[Unset, bool] = True,
+    ) -> "Response[Hook]":
+        ...
+
+    def create_webhook(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoHooksPostBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4373,16 +6107,46 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_create_webhook(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        data: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+    ) -> "Response[Hook]":
+        ...
+
+    @overload
+    async def async_create_webhook(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        config: Union[Unset, ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
+        events: Union[Unset, List[str]] = ["push"],
+        active: Union[Unset, bool] = True,
+    ) -> "Response[Hook]":
+        ...
+
+    async def async_create_webhook(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoHooksPostBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4462,29 +6226,50 @@ class ReposClient:
             },
         )
 
+    @overload
     def update_webhook(
         self,
         owner: str,
         repo: str,
         hook_id: int,
         *,
+        data: ReposOwnerRepoHooksHookIdPatchBodyType,
+    ) -> "Response[Hook]":
+        ...
+
+    @overload
+    def update_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         add_events: Union[Unset, List[str]] = UNSET,
         remove_events: Union[Unset, List[str]] = UNSET,
         active: Union[Unset, bool] = True,
     ) -> "Response[Hook]":
+        ...
+
+    def update_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
-        json = ReposOwnerRepoHooksHookIdPatchBody(
-            **{
-                "config": config,
-                "events": events,
-                "add_events": add_events,
-                "remove_events": remove_events,
-                "active": active,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoHooksHookIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -4497,29 +6282,50 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update_webhook(
         self,
         owner: str,
         repo: str,
         hook_id: int,
         *,
+        data: ReposOwnerRepoHooksHookIdPatchBodyType,
+    ) -> "Response[Hook]":
+        ...
+
+    @overload
+    async def async_update_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Union[Unset, List[str]] = ["push"],
         add_events: Union[Unset, List[str]] = UNSET,
         remove_events: Union[Unset, List[str]] = UNSET,
         active: Union[Unset, bool] = True,
     ) -> "Response[Hook]":
+        ...
+
+    async def async_update_webhook(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
-        json = ReposOwnerRepoHooksHookIdPatchBody(
-            **{
-                "config": config,
-                "events": events,
-                "add_events": add_events,
-                "remove_events": remove_events,
-                "active": active,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoHooksHookIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -4560,27 +6366,49 @@ class ReposClient:
             response_model=WebhookConfig,
         )
 
+    @overload
     def update_webhook_config_for_repo(
         self,
         owner: str,
         repo: str,
         hook_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+    ) -> "Response[WebhookConfig]":
+        ...
+
+    @overload
+    def update_webhook_config_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         url: Union[Unset, str] = UNSET,
         content_type: Union[Unset, str] = UNSET,
         secret: Union[Unset, str] = UNSET,
         insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
+        ...
+
+    def update_webhook_config_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
-        json = ReposOwnerRepoHooksHookIdConfigPatchBody(
-            **{
-                "url": url,
-                "content_type": content_type,
-                "secret": secret,
-                "insecure_ssl": insecure_ssl,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -4589,27 +6417,49 @@ class ReposClient:
             response_model=WebhookConfig,
         )
 
+    @overload
     async def async_update_webhook_config_for_repo(
         self,
         owner: str,
         repo: str,
         hook_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+    ) -> "Response[WebhookConfig]":
+        ...
+
+    @overload
+    async def async_update_webhook_config_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Unset = UNSET,
         url: Union[Unset, str] = UNSET,
         content_type: Union[Unset, str] = UNSET,
         secret: Union[Unset, str] = UNSET,
         insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
+        ...
+
+    async def async_update_webhook_config_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        hook_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
-        json = ReposOwnerRepoHooksHookIdConfigPatchBody(
-            **{
-                "url": url,
-                "content_type": content_type,
-                "secret": secret,
-                "insecure_ssl": insecure_ssl,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -4878,23 +6728,48 @@ class ReposClient:
             url,
         )
 
+    @overload
     def update_invitation(
         self,
         owner: str,
         repo: str,
         invitation_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+    ) -> "Response[RepositoryInvitation]":
+        ...
+
+    @overload
+    def update_invitation(
+        self,
+        owner: str,
+        repo: str,
+        invitation_id: int,
+        *,
+        data: Unset = UNSET,
         permissions: Union[
             Unset, Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
     ) -> "Response[RepositoryInvitation]":
+        ...
+
+    def update_invitation(
+        self,
+        owner: str,
+        repo: str,
+        invitation_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
-        json = ReposOwnerRepoInvitationsInvitationIdPatchBody(
-            **{
-                "permissions": permissions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoInvitationsInvitationIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -4903,23 +6778,48 @@ class ReposClient:
             response_model=RepositoryInvitation,
         )
 
+    @overload
     async def async_update_invitation(
         self,
         owner: str,
         repo: str,
         invitation_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+    ) -> "Response[RepositoryInvitation]":
+        ...
+
+    @overload
+    async def async_update_invitation(
+        self,
+        owner: str,
+        repo: str,
+        invitation_id: int,
+        *,
+        data: Unset = UNSET,
         permissions: Union[
             Unset, Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
     ) -> "Response[RepositoryInvitation]":
+        ...
+
+    async def async_update_invitation(
+        self,
+        owner: str,
+        repo: str,
+        invitation_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
-        json = ReposOwnerRepoInvitationsInvitationIdPatchBody(
-            **{
-                "permissions": permissions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoInvitationsInvitationIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -4970,24 +6870,41 @@ class ReposClient:
             response_model=List[DeployKey],
         )
 
+    @overload
+    def create_deploy_key(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoKeysPostBodyType
+    ) -> "Response[DeployKey]":
+        ...
+
+    @overload
     def create_deploy_key(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         key: str,
         read_only: Union[Unset, bool] = UNSET,
     ) -> "Response[DeployKey]":
+        ...
+
+    def create_deploy_key(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoKeysPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys"
 
-        json = ReposOwnerRepoKeysPostBody(
-            **{
-                "title": title,
-                "key": key,
-                "read_only": read_only,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4999,24 +6916,41 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_deploy_key(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoKeysPostBodyType
+    ) -> "Response[DeployKey]":
+        ...
+
+    @overload
     async def async_create_deploy_key(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         key: str,
         read_only: Union[Unset, bool] = UNSET,
     ) -> "Response[DeployKey]":
+        ...
+
+    async def async_create_deploy_key(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoKeysPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys"
 
-        json = ReposOwnerRepoKeysPostBody(
-            **{
-                "title": title,
-                "key": key,
-                "read_only": read_only,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5166,20 +7100,39 @@ class ReposClient:
             url,
         )
 
+    @overload
+    def merge_upstream(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoMergeUpstreamPostBodyType
+    ) -> "Response[MergedUpstream]":
+        ...
+
+    @overload
     def merge_upstream(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         branch: str,
+    ) -> "Response[MergedUpstream]":
+        ...
+
+    def merge_upstream(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[MergedUpstream]":
         url = f"/repos/{owner}/{repo}/merge-upstream"
 
-        json = ReposOwnerRepoMergeUpstreamPostBody(
-            **{
-                "branch": branch,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoMergeUpstreamPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5189,20 +7142,39 @@ class ReposClient:
             error_models={},
         )
 
+    @overload
+    async def async_merge_upstream(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoMergeUpstreamPostBodyType
+    ) -> "Response[MergedUpstream]":
+        ...
+
+    @overload
     async def async_merge_upstream(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         branch: str,
+    ) -> "Response[MergedUpstream]":
+        ...
+
+    async def async_merge_upstream(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[MergedUpstream]":
         url = f"/repos/{owner}/{repo}/merge-upstream"
 
-        json = ReposOwnerRepoMergeUpstreamPostBody(
-            **{
-                "branch": branch,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoMergeUpstreamPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5212,24 +7184,41 @@ class ReposClient:
             error_models={},
         )
 
+    @overload
+    def merge(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoMergesPostBodyType
+    ) -> "Response[Commit]":
+        ...
+
+    @overload
     def merge(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         base: str,
         head: str,
         commit_message: Union[Unset, str] = UNSET,
     ) -> "Response[Commit]":
+        ...
+
+    def merge(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoMergesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/merges"
 
-        json = ReposOwnerRepoMergesPostBody(
-            **{
-                "base": base,
-                "head": head,
-                "commit_message": commit_message,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoMergesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5242,24 +7231,41 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_merge(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoMergesPostBodyType
+    ) -> "Response[Commit]":
+        ...
+
+    @overload
     async def async_merge(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         base: str,
         head: str,
         commit_message: Union[Unset, str] = UNSET,
     ) -> "Response[Commit]":
+        ...
+
+    async def async_merge(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoMergesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/merges"
 
-        json = ReposOwnerRepoMergesPostBody(
-            **{
-                "base": base,
-                "head": head,
-                "commit_message": commit_message,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoMergesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5305,15 +7311,16 @@ class ReposClient:
         )
 
     def update_information_about_pages_site(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        body: Union[Any, Any, Any, Any, Any],
+        self, owner: str, repo: str, *, data: Union[Any, Any, Any, Any, Any], **kwargs
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any, Any, Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -5326,15 +7333,16 @@ class ReposClient:
         )
 
     async def async_update_information_about_pages_site(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        body: Union[Any, Any, Any, Any, Any],
+        self, owner: str, repo: str, *, data: Union[Any, Any, Any, Any, Any], **kwargs
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[Any, Any, Any, Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -5346,16 +7354,46 @@ class ReposClient:
             },
         )
 
+    @overload
     def create_pages_site(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
+        data: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
+    ) -> "Response[Page]":
+        ...
+
+    @overload
+    def create_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[Unset, ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
+    ) -> "Response[Page]":
+        ...
+
+    def create_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any]
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoPagesPostBody, None, Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5368,16 +7406,46 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_create_pages_site(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
+        data: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
+    ) -> "Response[Page]":
+        ...
+
+    @overload
+    async def async_create_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[Unset, ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
+    ) -> "Response[Page]":
+        ...
+
+    async def async_create_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any]
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoPagesPostBody, None, Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5544,26 +7612,42 @@ class ReposClient:
             response_model=PageBuild,
         )
 
+    @overload
+    def create_pages_deployment(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoPagesDeploymentPostBodyType
+    ) -> "Response[PageDeployment]":
+        ...
+
+    @overload
     def create_pages_deployment(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         artifact_url: str,
         environment: Union[Unset, str] = "github-pages",
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
     ) -> "Response[PageDeployment]":
+        ...
+
+    def create_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PageDeployment]":
         url = f"/repos/{owner}/{repo}/pages/deployment"
 
-        json = ReposOwnerRepoPagesDeploymentPostBody(
-            **{
-                "artifact_url": artifact_url,
-                "environment": environment,
-                "pages_build_version": pages_build_version,
-                "oidc_token": oidc_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPagesDeploymentPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5577,26 +7661,42 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_pages_deployment(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoPagesDeploymentPostBodyType
+    ) -> "Response[PageDeployment]":
+        ...
+
+    @overload
     async def async_create_pages_deployment(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         artifact_url: str,
         environment: Union[Unset, str] = "github-pages",
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
     ) -> "Response[PageDeployment]":
+        ...
+
+    async def async_create_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[PageDeployment]":
         url = f"/repos/{owner}/{repo}/pages/deployment"
 
-        json = ReposOwnerRepoPagesDeploymentPostBody(
-            **{
-                "artifact_url": artifact_url,
-                "environment": environment,
-                "pages_build_version": pages_build_version,
-                "oidc_token": oidc_token,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPagesDeploymentPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5784,11 +7884,19 @@ class ReposClient:
             },
         )
 
+    @overload
+    def create_release(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoReleasesPostBodyType
+    ) -> "Response[Release]":
+        ...
+
+    @overload
     def create_release(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         tag_name: str,
         target_commitish: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
@@ -5798,20 +7906,24 @@ class ReposClient:
         discussion_category_name: Union[Unset, str] = UNSET,
         generate_release_notes: Union[Unset, bool] = False,
     ) -> "Response[Release]":
+        ...
+
+    def create_release(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases"
 
-        json = ReposOwnerRepoReleasesPostBody(
-            **{
-                "tag_name": tag_name,
-                "target_commitish": target_commitish,
-                "name": name,
-                "body": body,
-                "draft": draft,
-                "prerelease": prerelease,
-                "discussion_category_name": discussion_category_name,
-                "generate_release_notes": generate_release_notes,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5824,11 +7936,19 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_release(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoReleasesPostBodyType
+    ) -> "Response[Release]":
+        ...
+
+    @overload
     async def async_create_release(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         tag_name: str,
         target_commitish: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
@@ -5838,20 +7958,24 @@ class ReposClient:
         discussion_category_name: Union[Unset, str] = UNSET,
         generate_release_notes: Union[Unset, bool] = False,
     ) -> "Response[Release]":
+        ...
+
+    async def async_create_release(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases"
 
-        json = ReposOwnerRepoReleasesPostBody(
-            **{
-                "tag_name": tag_name,
-                "target_commitish": target_commitish,
-                "name": name,
-                "body": body,
-                "draft": draft,
-                "prerelease": prerelease,
-                "discussion_category_name": discussion_category_name,
-                "generate_release_notes": generate_release_notes,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5924,25 +8048,48 @@ class ReposClient:
             url,
         )
 
+    @overload
     def update_release_asset(
         self,
         owner: str,
         repo: str,
         asset_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+    ) -> "Response[ReleaseAsset]":
+        ...
+
+    @overload
+    def update_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         label: Union[Unset, str] = UNSET,
         state: Union[Unset, str] = UNSET,
     ) -> "Response[ReleaseAsset]":
+        ...
+
+    def update_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
-        json = ReposOwnerRepoReleasesAssetsAssetIdPatchBody(
-            **{
-                "name": name,
-                "label": label,
-                "state": state,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -5951,25 +8098,48 @@ class ReposClient:
             response_model=ReleaseAsset,
         )
 
+    @overload
     async def async_update_release_asset(
         self,
         owner: str,
         repo: str,
         asset_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+    ) -> "Response[ReleaseAsset]":
+        ...
+
+    @overload
+    async def async_update_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         label: Union[Unset, str] = UNSET,
         state: Union[Unset, str] = UNSET,
     ) -> "Response[ReleaseAsset]":
+        ...
+
+    async def async_update_release_asset(
+        self,
+        owner: str,
+        repo: str,
+        asset_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
-        json = ReposOwnerRepoReleasesAssetsAssetIdPatchBody(
-            **{
-                "name": name,
-                "label": label,
-                "state": state,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -5978,26 +8148,46 @@ class ReposClient:
             response_model=ReleaseAsset,
         )
 
+    @overload
     def generate_release_notes(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
+    ) -> "Response[ReleaseNotesContent]":
+        ...
+
+    @overload
+    def generate_release_notes(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         tag_name: str,
         target_commitish: Union[Unset, str] = UNSET,
         previous_tag_name: Union[Unset, str] = UNSET,
         configuration_file_path: Union[Unset, str] = UNSET,
     ) -> "Response[ReleaseNotesContent]":
+        ...
+
+    def generate_release_notes(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReleaseNotesContent]":
         url = f"/repos/{owner}/{repo}/releases/generate-notes"
 
-        json = ReposOwnerRepoReleasesGenerateNotesPostBody(
-            **{
-                "tag_name": tag_name,
-                "target_commitish": target_commitish,
-                "previous_tag_name": previous_tag_name,
-                "configuration_file_path": configuration_file_path,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesGenerateNotesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -6009,26 +8199,46 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_generate_release_notes(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
+    ) -> "Response[ReleaseNotesContent]":
+        ...
+
+    @overload
+    async def async_generate_release_notes(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         tag_name: str,
         target_commitish: Union[Unset, str] = UNSET,
         previous_tag_name: Union[Unset, str] = UNSET,
         configuration_file_path: Union[Unset, str] = UNSET,
     ) -> "Response[ReleaseNotesContent]":
+        ...
+
+    async def async_generate_release_notes(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReleaseNotesContent]":
         url = f"/repos/{owner}/{repo}/releases/generate-notes"
 
-        json = ReposOwnerRepoReleasesGenerateNotesPostBody(
-            **{
-                "tag_name": tag_name,
-                "target_commitish": target_commitish,
-                "previous_tag_name": previous_tag_name,
-                "configuration_file_path": configuration_file_path,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesGenerateNotesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -6160,12 +8370,25 @@ class ReposClient:
             url,
         )
 
+    @overload
     def update_release(
         self,
         owner: str,
         repo: str,
         release_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+    ) -> "Response[Release]":
+        ...
+
+    @overload
+    def update_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Unset = UNSET,
         tag_name: Union[Unset, str] = UNSET,
         target_commitish: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
@@ -6174,19 +8397,25 @@ class ReposClient:
         prerelease: Union[Unset, bool] = UNSET,
         discussion_category_name: Union[Unset, str] = UNSET,
     ) -> "Response[Release]":
+        ...
+
+    def update_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
-        json = ReposOwnerRepoReleasesReleaseIdPatchBody(
-            **{
-                "tag_name": tag_name,
-                "target_commitish": target_commitish,
-                "name": name,
-                "body": body,
-                "draft": draft,
-                "prerelease": prerelease,
-                "discussion_category_name": discussion_category_name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -6198,12 +8427,25 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update_release(
         self,
         owner: str,
         repo: str,
         release_id: int,
         *,
+        data: Union[Unset, ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+    ) -> "Response[Release]":
+        ...
+
+    @overload
+    async def async_update_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Unset = UNSET,
         tag_name: Union[Unset, str] = UNSET,
         target_commitish: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
@@ -6212,19 +8454,25 @@ class ReposClient:
         prerelease: Union[Unset, bool] = UNSET,
         discussion_category_name: Union[Unset, str] = UNSET,
     ) -> "Response[Release]":
+        ...
+
+    async def async_update_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Union[Unset, ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
-        json = ReposOwnerRepoReleasesReleaseIdPatchBody(
-            **{
-                "tag_name": tag_name,
-                "target_commitish": target_commitish,
-                "name": name,
-                "body": body,
-                "draft": draft,
-                "prerelease": prerelease,
-                "discussion_category_name": discussion_category_name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -6288,7 +8536,8 @@ class ReposClient:
         name: str,
         label: Union[Unset, str] = UNSET,
         *,
-        body: Union[Unset, str] = UNSET,
+        data: str,
+        **kwargs,
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/assets"
 
@@ -6297,7 +8546,14 @@ class ReposClient:
             "label": label,
         }
 
-        content = body
+        if not kwargs:
+            kwargs = UNSET
+
+        content = kwargs if data is UNSET else data
+        content = parse_obj_as(str, content)
+        content = (
+            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+        )
 
         return self._github.request(
             "POST",
@@ -6316,7 +8572,8 @@ class ReposClient:
         name: str,
         label: Union[Unset, str] = UNSET,
         *,
-        body: Union[Unset, str] = UNSET,
+        data: str,
+        **kwargs,
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/assets"
 
@@ -6325,7 +8582,14 @@ class ReposClient:
             "label": label,
         }
 
-        content = body
+        if not kwargs:
+            kwargs = UNSET
+
+        content = kwargs if data is UNSET else data
+        content = parse_obj_as(str, content)
+        content = (
+            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+        )
 
         return await self._github.arequest(
             "POST",
@@ -6472,27 +8736,49 @@ class ReposClient:
             response_model=List[List[int]],
         )
 
+    @overload
     def create_commit_status(
         self,
         owner: str,
         repo: str,
         sha: str,
         *,
+        data: ReposOwnerRepoStatusesShaPostBodyType,
+    ) -> "Response[Status]":
+        ...
+
+    @overload
+    def create_commit_status(
+        self,
+        owner: str,
+        repo: str,
+        sha: str,
+        *,
+        data: Unset = UNSET,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Union[Unset, Union[str, None]] = UNSET,
         description: Union[Unset, Union[str, None]] = UNSET,
         context: Union[Unset, str] = "default",
     ) -> "Response[Status]":
+        ...
+
+    def create_commit_status(
+        self,
+        owner: str,
+        repo: str,
+        sha: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Status]":
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
 
-        json = ReposOwnerRepoStatusesShaPostBody(
-            **{
-                "state": state,
-                "target_url": target_url,
-                "description": description,
-                "context": context,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoStatusesShaPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -6501,27 +8787,49 @@ class ReposClient:
             response_model=Status,
         )
 
+    @overload
     async def async_create_commit_status(
         self,
         owner: str,
         repo: str,
         sha: str,
         *,
+        data: ReposOwnerRepoStatusesShaPostBodyType,
+    ) -> "Response[Status]":
+        ...
+
+    @overload
+    async def async_create_commit_status(
+        self,
+        owner: str,
+        repo: str,
+        sha: str,
+        *,
+        data: Unset = UNSET,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Union[Unset, Union[str, None]] = UNSET,
         description: Union[Unset, Union[str, None]] = UNSET,
         context: Union[Unset, str] = "default",
     ) -> "Response[Status]":
+        ...
+
+    async def async_create_commit_status(
+        self,
+        owner: str,
+        repo: str,
+        sha: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Status]":
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
 
-        json = ReposOwnerRepoStatusesShaPostBody(
-            **{
-                "state": state,
-                "target_url": target_url,
-                "description": description,
-                "context": context,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoStatusesShaPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -6606,20 +8914,39 @@ class ReposClient:
             },
         )
 
+    @overload
+    def create_tag_protection(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoTagsProtectionPostBodyType
+    ) -> "Response[TagProtection]":
+        ...
+
+    @overload
     def create_tag_protection(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         pattern: str,
+    ) -> "Response[TagProtection]":
+        ...
+
+    def create_tag_protection(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TagProtection]":
         url = f"/repos/{owner}/{repo}/tags/protection"
 
-        json = ReposOwnerRepoTagsProtectionPostBody(
-            **{
-                "pattern": pattern,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoTagsProtectionPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -6632,20 +8959,39 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_tag_protection(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoTagsProtectionPostBodyType
+    ) -> "Response[TagProtection]":
+        ...
+
+    @overload
     async def async_create_tag_protection(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         pattern: str,
+    ) -> "Response[TagProtection]":
+        ...
+
+    async def async_create_tag_protection(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TagProtection]":
         url = f"/repos/{owner}/{repo}/tags/protection"
 
-        json = ReposOwnerRepoTagsProtectionPostBody(
-            **{
-                "pattern": pattern,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoTagsProtectionPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -6808,20 +9154,39 @@ class ReposClient:
             },
         )
 
+    @overload
+    def replace_all_topics(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoTopicsPutBodyType
+    ) -> "Response[Topic]":
+        ...
+
+    @overload
     def replace_all_topics(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         names: List[str],
+    ) -> "Response[Topic]":
+        ...
+
+    def replace_all_topics(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoTopicsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
 
-        json = ReposOwnerRepoTopicsPutBody(
-            **{
-                "names": names,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoTopicsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -6834,20 +9199,39 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_replace_all_topics(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoTopicsPutBodyType
+    ) -> "Response[Topic]":
+        ...
+
+    @overload
     async def async_replace_all_topics(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         names: List[str],
+    ) -> "Response[Topic]":
+        ...
+
+    async def async_replace_all_topics(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoTopicsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
 
-        json = ReposOwnerRepoTopicsPutBody(
-            **{
-                "names": names,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoTopicsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -7012,22 +9396,40 @@ class ReposClient:
             },
         )
 
+    @overload
+    def transfer(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoTransferPostBodyType
+    ) -> "Response[MinimalRepository]":
+        ...
+
+    @overload
     def transfer(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         new_owner: str,
         team_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[MinimalRepository]":
+        ...
+
+    def transfer(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoTransferPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[MinimalRepository]":
         url = f"/repos/{owner}/{repo}/transfer"
 
-        json = ReposOwnerRepoTransferPostBody(
-            **{
-                "new_owner": new_owner,
-                "team_ids": team_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoTransferPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -7036,22 +9438,40 @@ class ReposClient:
             response_model=MinimalRepository,
         )
 
+    @overload
+    async def async_transfer(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoTransferPostBodyType
+    ) -> "Response[MinimalRepository]":
+        ...
+
+    @overload
     async def async_transfer(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         new_owner: str,
         team_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[MinimalRepository]":
+        ...
+
+    async def async_transfer(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoTransferPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[MinimalRepository]":
         url = f"/repos/{owner}/{repo}/transfer"
 
-        json = ReposOwnerRepoTransferPostBody(
-            **{
-                "new_owner": new_owner,
-                "team_ids": team_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoTransferPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -7160,28 +9580,47 @@ class ReposClient:
             url,
         )
 
+    @overload
     def create_using_template(
         self,
         template_owner: str,
         template_repo: str,
         *,
+        data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
+    ) -> "Response[Repository]":
+        ...
+
+    @overload
+    def create_using_template(
+        self,
+        template_owner: str,
+        template_repo: str,
+        *,
+        data: Unset = UNSET,
         owner: Union[Unset, str] = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         include_all_branches: Union[Unset, bool] = False,
         private: Union[Unset, bool] = False,
     ) -> "Response[Repository]":
+        ...
+
+    def create_using_template(
+        self,
+        template_owner: str,
+        template_repo: str,
+        *,
+        data: Union[Unset, ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Repository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
 
-        json = ReposTemplateOwnerTemplateRepoGeneratePostBody(
-            **{
-                "owner": owner,
-                "name": name,
-                "description": description,
-                "include_all_branches": include_all_branches,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposTemplateOwnerTemplateRepoGeneratePostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -7190,28 +9629,47 @@ class ReposClient:
             response_model=Repository,
         )
 
+    @overload
     async def async_create_using_template(
         self,
         template_owner: str,
         template_repo: str,
         *,
+        data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
+    ) -> "Response[Repository]":
+        ...
+
+    @overload
+    async def async_create_using_template(
+        self,
+        template_owner: str,
+        template_repo: str,
+        *,
+        data: Unset = UNSET,
         owner: Union[Unset, str] = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         include_all_branches: Union[Unset, bool] = False,
         private: Union[Unset, bool] = False,
     ) -> "Response[Repository]":
+        ...
+
+    async def async_create_using_template(
+        self,
+        template_owner: str,
+        template_repo: str,
+        *,
+        data: Union[Unset, ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Repository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
 
-        json = ReposTemplateOwnerTemplateRepoGeneratePostBody(
-            **{
-                "owner": owner,
-                "name": name,
-                "description": description,
-                "include_all_branches": include_all_branches,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposTemplateOwnerTemplateRepoGeneratePostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -7344,9 +9802,17 @@ class ReposClient:
             },
         )
 
+    @overload
+    def create_for_authenticated_user(
+        self, *, data: UserReposPostBodyType
+    ) -> "Response[Repository]":
+        ...
+
+    @overload
     def create_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
@@ -7366,30 +9832,19 @@ class ReposClient:
         has_downloads: Union[Unset, bool] = True,
         is_template: Union[Unset, bool] = False,
     ) -> "Response[Repository]":
+        ...
+
+    def create_for_authenticated_user(
+        self, *, data: Union[Unset, UserReposPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Repository]":
         url = "/user/repos"
 
-        json = UserReposPostBody(
-            **{
-                "name": name,
-                "description": description,
-                "homepage": homepage,
-                "private": private,
-                "has_issues": has_issues,
-                "has_projects": has_projects,
-                "has_wiki": has_wiki,
-                "team_id": team_id,
-                "auto_init": auto_init,
-                "gitignore_template": gitignore_template,
-                "license_template": license_template,
-                "allow_squash_merge": allow_squash_merge,
-                "allow_merge_commit": allow_merge_commit,
-                "allow_rebase_merge": allow_rebase_merge,
-                "allow_auto_merge": allow_auto_merge,
-                "delete_branch_on_merge": delete_branch_on_merge,
-                "has_downloads": has_downloads,
-                "is_template": is_template,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserReposPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -7405,9 +9860,17 @@ class ReposClient:
             },
         )
 
+    @overload
+    async def async_create_for_authenticated_user(
+        self, *, data: UserReposPostBodyType
+    ) -> "Response[Repository]":
+        ...
+
+    @overload
     async def async_create_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
@@ -7427,30 +9890,19 @@ class ReposClient:
         has_downloads: Union[Unset, bool] = True,
         is_template: Union[Unset, bool] = False,
     ) -> "Response[Repository]":
+        ...
+
+    async def async_create_for_authenticated_user(
+        self, *, data: Union[Unset, UserReposPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Repository]":
         url = "/user/repos"
 
-        json = UserReposPostBody(
-            **{
-                "name": name,
-                "description": description,
-                "homepage": homepage,
-                "private": private,
-                "has_issues": has_issues,
-                "has_projects": has_projects,
-                "has_wiki": has_wiki,
-                "team_id": team_id,
-                "auto_init": auto_init,
-                "gitignore_template": gitignore_template,
-                "license_template": license_template,
-                "allow_squash_merge": allow_squash_merge,
-                "allow_merge_commit": allow_merge_commit,
-                "allow_rebase_merge": allow_rebase_merge,
-                "allow_auto_merge": allow_auto_merge,
-                "delete_branch_on_merge": delete_branch_on_merge,
-                "has_downloads": has_downloads,
-                "is_template": is_template,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserReposPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

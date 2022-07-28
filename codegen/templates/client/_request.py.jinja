@@ -1,5 +1,7 @@
 {% from "client/_response.py.jinja" import build_response_model, build_error_models %}
 
+{% set TYPE_MAPPING = {"json": "json", "form": "data", "file": "files", "raw": "content"} %}
+
 {% macro build_path(endpoint) %}
 {% if endpoint.path_params %}
 url = f"{{ endpoint.path }}"
@@ -32,28 +34,17 @@ cookies = {
 }
 {% endmacro %}
 
-{% macro _get_body_name(request_body) %}
-{% if request_body.is_model %}
-{{ request_body.body_schema.class_name }}(**{
-    {% for prop in request_body.body_schema.properties %}
-    "{{ prop.name }}": {{ prop.prop_name }},
-    {% endfor %}
-}).dict(by_alias=True)
-{% else %}
-body
-{% endif %}
-{% endmacro %}
-
 {% macro build_body(request_body) %}
-{% if request_body.type == "json" %}
-json = {{ _get_body_name(request_body) }}
-{% elif request_body.type == "form" %}
-data = {{ _get_body_name(request_body) }}
-{% elif request_body.type == "file" %}
-files = {{ _get_body_name(request_body) }}
-{% elif request_body.type == "raw" %}
-content = {{ _get_body_name(request_body) }}
-{% endif %}
+{% set name = TYPE_MAPPING[request_body.type] %}
+if not kwargs:
+    kwargs = UNSET
+
+{{ name }} = kwargs if data is UNSET else data
+{{ name }} = parse_obj_as(
+    {{ request_body.body_schema.get_type_string() }},
+    {{ name }}
+)
+{{ name }} = {{ name }}.dict(by_alias=True) if isinstance({{ name }}, BaseModel) else {{ name }}
 {% endmacro %}
 
 {% macro build_request(endpoint) %}
@@ -73,15 +64,8 @@ url,
 params=exclude_unset(params),
 {% endif %}
 {% if endpoint.request_body %}
-{% if endpoint.request_body.type == "raw" %}
-content=exclude_unset(content),
-{% elif endpoint.request_body.type == "form" %}
-data=exclude_unset(data),
-{% elif endpoint.request_body.type == "file" %}
-files=exclude_unset(files),
-{% elif endpoint.request_body.type == "json" %}
-json=exclude_unset(json),
-{% endif %}
+{% set name = TYPE_MAPPING[endpoint.request_body.type] %}
+{{ name }}=exclude_unset({{ name }}),
 {% endif %}
 {% if endpoint.header_params %}
 headers=exclude_unset(headers),

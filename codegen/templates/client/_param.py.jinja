@@ -22,19 +22,39 @@
 {% endfor %}
 {% endmacro %}
 
-{% macro body_params(endpoint) %}
-{% for prop in endpoint.request_body.get_params_defination() %}
-{{ prop }},
+{% macro body_params(model) %}
+{% for prop in model.properties %}
+{{ prop.get_param_defination() }},
 {% endfor %}
 {% endmacro %}
 
-{% macro endpoint_params(endpoint) %}
+{% macro endpoint_raw_params(endpoint) %}
+{{ path_params(endpoint) }}
+{{ query_params(endpoint) }}
+{{ header_params(endpoint) }}
+{{ cookie_params(endpoint) }}
+*,
+{{ endpoint.request_body.get_raw_definition() }}
+{% endmacro %}
+
+{% macro endpoint_model_params(endpoint, model) %}
+{{ path_params(endpoint) }}
+{{ query_params(endpoint) }}
+{{ header_params(endpoint) }}
+{{ cookie_params(endpoint) }}
+*,
+data: Unset = UNSET,
+{{ body_params(model) }}
+{% endmacro %}
+
+{% macro endpoint_params(endpoint, model) %}
 {{ path_params(endpoint) }}
 {{ query_params(endpoint) }}
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
 {%- if endpoint.request_body %}
 *,
-{{ body_params(endpoint) }}
+{{ endpoint.request_body.get_endpoint_definition() }},
+**kwargs
 {%- endif %}
 {% endmacro %}

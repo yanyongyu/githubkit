@@ -8,6 +8,16 @@ class Unset:
     def __bool__(self) -> bool:
         return False
 
+    @classmethod
+    def __get_validators__(cls):
+        yield cls._validate
+
+    @classmethod
+    def _validate(cls, value: Any):
+        if value is not UNSET:
+            raise ValueError(f"{value!r} is not UNSET")
+        return value
+
 
 UNSET = Unset()
 

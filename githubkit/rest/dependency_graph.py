@@ -6,7 +6,9 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union
+from typing import TYPE_CHECKING, List, Union, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -81,11 +83,19 @@ class DependencyGraphClient:
             },
         )
 
+    @overload
+    def create_repository_snapshot(
+        self, owner: str, repo: str, *, data: SnapshotType
+    ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
+        ...
+
+    @overload
     def create_repository_snapshot(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -95,20 +105,24 @@ class DependencyGraphClient:
         manifests: Union[Unset, SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
+        ...
+
+    def create_repository_snapshot(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, SnapshotType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
-        json = Snapshot(
-            **{
-                "version": version,
-                "job": job,
-                "sha": sha,
-                "ref": ref,
-                "detector": detector,
-                "metadata": metadata,
-                "manifests": manifests,
-                "scanned": scanned,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Snapshot, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -117,11 +131,19 @@ class DependencyGraphClient:
             response_model=ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         )
 
+    @overload
+    async def async_create_repository_snapshot(
+        self, owner: str, repo: str, *, data: SnapshotType
+    ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
+        ...
+
+    @overload
     async def async_create_repository_snapshot(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -131,20 +153,24 @@ class DependencyGraphClient:
         manifests: Union[Unset, SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
+        ...
+
+    async def async_create_repository_snapshot(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, SnapshotType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
-        json = Snapshot(
-            **{
-                "version": version,
-                "job": job,
-                "sha": sha,
-                "ref": ref,
-                "detector": detector,
-                "metadata": metadata,
-                "manifests": manifests,
-                "scanned": scanned,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Snapshot, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

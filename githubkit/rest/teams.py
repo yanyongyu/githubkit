@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -238,10 +240,18 @@ class TeamsClient:
             },
         )
 
+    @overload
+    def create(
+        self, org: str, *, data: OrgsOrgTeamsPostBodyType
+    ) -> "Response[TeamFull]":
+        ...
+
+    @overload
     def create(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         maintainers: Union[Unset, List[str]] = UNSET,
@@ -250,19 +260,23 @@ class TeamsClient:
         permission: Union[Unset, Literal["pull", "push"]] = "pull",
         parent_team_id: Union[Unset, int] = UNSET,
     ) -> "Response[TeamFull]":
+        ...
+
+    def create(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
-        json = OrgsOrgTeamsPostBody(
-            **{
-                "name": name,
-                "description": description,
-                "maintainers": maintainers,
-                "repo_names": repo_names,
-                "privacy": privacy,
-                "permission": permission,
-                "parent_team_id": parent_team_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -275,10 +289,18 @@ class TeamsClient:
             },
         )
 
+    @overload
+    async def async_create(
+        self, org: str, *, data: OrgsOrgTeamsPostBodyType
+    ) -> "Response[TeamFull]":
+        ...
+
+    @overload
     async def async_create(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         maintainers: Union[Unset, List[str]] = UNSET,
@@ -287,19 +309,23 @@ class TeamsClient:
         permission: Union[Unset, Literal["pull", "push"]] = "pull",
         parent_team_id: Union[Unset, int] = UNSET,
     ) -> "Response[TeamFull]":
+        ...
+
+    async def async_create(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
-        json = OrgsOrgTeamsPostBody(
-            **{
-                "name": name,
-                "description": description,
-                "maintainers": maintainers,
-                "repo_names": repo_names,
-                "privacy": privacy,
-                "permission": permission,
-                "parent_team_id": parent_team_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -368,28 +394,47 @@ class TeamsClient:
             url,
         )
 
+    @overload
     def update_in_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+    ) -> "Response[TeamFull]":
+        ...
+
+    @overload
+    def update_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         description: Union[Unset, str] = UNSET,
         privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
         permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
         parent_team_id: Union[Unset, Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
+        ...
+
+    def update_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        json = OrgsOrgTeamsTeamSlugPatchBody(
-            **{
-                "name": name,
-                "description": description,
-                "privacy": privacy,
-                "permission": permission,
-                "parent_team_id": parent_team_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -398,28 +443,47 @@ class TeamsClient:
             response_model=TeamFull,
         )
 
+    @overload
     async def async_update_in_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+    ) -> "Response[TeamFull]":
+        ...
+
+    @overload
+    async def async_update_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         description: Union[Unset, str] = UNSET,
         privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
         permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
         parent_team_id: Union[Unset, Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
+        ...
+
+    async def async_update_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        json = OrgsOrgTeamsTeamSlugPatchBody(
-            **{
-                "name": name,
-                "description": description,
-                "privacy": privacy,
-                "permission": permission,
-                "parent_team_id": parent_team_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -478,24 +542,45 @@ class TeamsClient:
             response_model=List[TeamDiscussion],
         )
 
+    @overload
     def create_discussion_in_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
+    def create_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         title: str,
         body: str,
         private: Union[Unset, bool] = False,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    def create_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsPostBody(
-            **{
-                "title": title,
-                "body": body,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -504,24 +589,45 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @overload
     async def async_create_discussion_in_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
+    async def async_create_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         title: str,
         body: str,
         private: Union[Unset, bool] = False,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    async def async_create_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsPostBody(
-            **{
-                "title": title,
-                "body": body,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -584,23 +690,53 @@ class TeamsClient:
             url,
         )
 
+    @overload
     def update_discussion_in_org(
         self,
         org: str,
         team_slug: str,
         discussion_number: int,
         *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        ] = UNSET,
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
+    def update_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    def update_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(
-            **{
-                "title": title,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -609,23 +745,53 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @overload
     async def async_update_discussion_in_org(
         self,
         org: str,
         team_slug: str,
         discussion_number: int,
         *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        ] = UNSET,
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
+    async def async_update_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    async def async_update_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(
-            **{
-                "title": title,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -682,21 +848,50 @@ class TeamsClient:
             response_model=List[TeamDiscussionComment],
         )
 
+    @overload
     def create_discussion_comment_in_org(
         self,
         org: str,
         team_slug: str,
         discussion_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    def create_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    def create_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -705,21 +900,50 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @overload
     async def async_create_discussion_comment_in_org(
         self,
         org: str,
         team_slug: str,
         discussion_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    async def async_create_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    async def async_create_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -786,6 +1010,7 @@ class TeamsClient:
             url,
         )
 
+    @overload
     def update_discussion_comment_in_org(
         self,
         org: str,
@@ -793,17 +1018,47 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    def update_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    def update_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(
-            by_alias=True
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -812,6 +1067,7 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @overload
     async def async_update_discussion_comment_in_org(
         self,
         org: str,
@@ -819,17 +1075,47 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    async def async_update_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    async def async_update_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(
-            by_alias=True
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -888,20 +1174,43 @@ class TeamsClient:
             url,
         )
 
+    @overload
     def link_external_idp_group_to_team_for_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
+    ) -> "Response[ExternalGroup]":
+        ...
+
+    @overload
+    def link_external_idp_group_to_team_for_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         group_id: int,
+    ) -> "Response[ExternalGroup]":
+        ...
+
+    def link_external_idp_group_to_team_for_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ExternalGroup]":
         url = f"/orgs/{org}/teams/{team_slug}/external-groups"
 
-        json = OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(
-            **{
-                "group_id": group_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -910,20 +1219,43 @@ class TeamsClient:
             response_model=ExternalGroup,
         )
 
+    @overload
     async def async_link_external_idp_group_to_team_for_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
+    ) -> "Response[ExternalGroup]":
+        ...
+
+    @overload
+    async def async_link_external_idp_group_to_team_for_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         group_id: int,
+    ) -> "Response[ExternalGroup]":
+        ...
+
+    async def async_link_external_idp_group_to_team_for_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ExternalGroup]":
         url = f"/orgs/{org}/teams/{team_slug}/external-groups"
 
-        json = OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(
-            **{
-                "group_id": group_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1050,21 +1382,46 @@ class TeamsClient:
             error_models={},
         )
 
+    @overload
     def add_or_update_membership_for_user_in_org(
         self,
         org: str,
         team_slug: str,
         username: str,
         *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+    ) -> "Response[TeamMembership]":
+        ...
+
+    @overload
+    def add_or_update_membership_for_user_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         role: Union[Unset, Literal["member", "maintainer"]] = "member",
+    ) -> "Response[TeamMembership]":
+        ...
+
+    def add_or_update_membership_for_user_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        username: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        json = OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(
-            **{
-                "role": role,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1074,21 +1431,46 @@ class TeamsClient:
             error_models={},
         )
 
+    @overload
     async def async_add_or_update_membership_for_user_in_org(
         self,
         org: str,
         team_slug: str,
         username: str,
         *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+    ) -> "Response[TeamMembership]":
+        ...
+
+    @overload
+    async def async_add_or_update_membership_for_user_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        username: str,
+        *,
+        data: Unset = UNSET,
         role: Union[Unset, Literal["member", "maintainer"]] = "member",
+    ) -> "Response[TeamMembership]":
+        ...
+
+    async def async_add_or_update_membership_for_user_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        username: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        json = OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(
-            **{
-                "role": role,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1198,19 +1580,52 @@ class TeamsClient:
             error_models={},
         )
 
+    @overload
     def add_or_update_project_permissions_in_org(
         self,
         org: str,
         team_slug: str,
         project_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    @overload
+    def add_or_update_project_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        project_id: int,
+        *,
+        data: Unset = UNSET,
+        permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+    ) -> "Response":
+        ...
+
+    def add_or_update_project_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        project_id: int,
+        *,
+        data: Union[
+            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1221,19 +1636,52 @@ class TeamsClient:
             },
         )
 
+    @overload
     async def async_add_or_update_project_permissions_in_org(
         self,
         org: str,
         team_slug: str,
         project_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    @overload
+    async def async_add_or_update_project_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        project_id: int,
+        *,
+        data: Unset = UNSET,
+        permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_add_or_update_project_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        project_id: int,
+        *,
+        data: Union[
+            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1344,6 +1792,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @overload
     def add_or_update_repo_permissions_in_org(
         self,
         org: str,
@@ -1351,23 +1800,76 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def add_or_update_repo_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         permission: Union[
             Unset, Literal["pull", "push", "admin", "maintain", "triage"]
         ] = "push",
     ) -> "Response":
+        ...
+
+    def add_or_update_repo_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        json = OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
             url,
             json=exclude_unset(json),
         )
+
+    @overload
+    async def async_add_or_update_repo_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_add_or_update_repo_permissions_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        permission: Union[
+            Unset, Literal["pull", "push", "admin", "maintain", "triage"]
+        ] = "push",
+    ) -> "Response":
+        ...
 
     async def async_add_or_update_repo_permissions_in_org(
         self,
@@ -1376,17 +1878,17 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        permission: Union[
-            Unset, Literal["pull", "push", "admin", "maintain", "triage"]
-        ] = "push",
+        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        json = OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1448,23 +1950,48 @@ class TeamsClient:
             response_model=GroupMapping,
         )
 
+    @overload
     def create_or_update_idp_group_connections_in_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
+    ) -> "Response[GroupMapping]":
+        ...
+
+    @overload
+    def create_or_update_idp_group_connections_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         groups: Union[
             Unset,
             List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[GroupMapping]":
+        ...
+
+    def create_or_update_idp_group_connections_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[GroupMapping]":
         url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
 
-        json = OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(
-            **{
-                "groups": groups,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1473,23 +2000,48 @@ class TeamsClient:
             response_model=GroupMapping,
         )
 
+    @overload
     async def async_create_or_update_idp_group_connections_in_org(
         self,
         org: str,
         team_slug: str,
         *,
+        data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
+    ) -> "Response[GroupMapping]":
+        ...
+
+    @overload
+    async def async_create_or_update_idp_group_connections_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Unset = UNSET,
         groups: Union[
             Unset,
             List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[GroupMapping]":
+        ...
+
+    async def async_create_or_update_idp_group_connections_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[GroupMapping]":
         url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
 
-        json = OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(
-            **{
-                "groups": groups,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1600,27 +2152,41 @@ class TeamsClient:
             },
         )
 
+    @overload
+    def update_legacy(
+        self, team_id: int, *, data: TeamsTeamIdPatchBodyType
+    ) -> "Response[TeamFull]":
+        ...
+
+    @overload
     def update_legacy(
         self,
         team_id: int,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
         permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
         parent_team_id: Union[Unset, Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
+        ...
+
+    def update_legacy(
+        self,
+        team_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
-        json = TeamsTeamIdPatchBody(
-            **{
-                "name": name,
-                "description": description,
-                "privacy": privacy,
-                "permission": permission,
-                "parent_team_id": parent_team_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1634,27 +2200,41 @@ class TeamsClient:
             },
         )
 
+    @overload
+    async def async_update_legacy(
+        self, team_id: int, *, data: TeamsTeamIdPatchBodyType
+    ) -> "Response[TeamFull]":
+        ...
+
+    @overload
     async def async_update_legacy(
         self,
         team_id: int,
         *,
+        data: Unset = UNSET,
         name: str,
         description: Union[Unset, str] = UNSET,
         privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
         permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
         parent_team_id: Union[Unset, Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
+        ...
+
+    async def async_update_legacy(
+        self,
+        team_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
-        json = TeamsTeamIdPatchBody(
-            **{
-                "name": name,
-                "description": description,
-                "privacy": privacy,
-                "permission": permission,
-                "parent_team_id": parent_team_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1712,23 +2292,39 @@ class TeamsClient:
             response_model=List[TeamDiscussion],
         )
 
+    @overload
+    def create_discussion_legacy(
+        self, team_id: int, *, data: TeamsTeamIdDiscussionsPostBodyType
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
     def create_discussion_legacy(
         self,
         team_id: int,
         *,
+        data: Unset = UNSET,
         title: str,
         body: str,
         private: Union[Unset, bool] = False,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    def create_discussion_legacy(
+        self,
+        team_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdDiscussionsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
 
-        json = TeamsTeamIdDiscussionsPostBody(
-            **{
-                "title": title,
-                "body": body,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdDiscussionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1737,23 +2333,39 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @overload
+    async def async_create_discussion_legacy(
+        self, team_id: int, *, data: TeamsTeamIdDiscussionsPostBodyType
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
     async def async_create_discussion_legacy(
         self,
         team_id: int,
         *,
+        data: Unset = UNSET,
         title: str,
         body: str,
         private: Union[Unset, bool] = False,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    async def async_create_discussion_legacy(
+        self,
+        team_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdDiscussionsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
 
-        json = TeamsTeamIdDiscussionsPostBody(
-            **{
-                "title": title,
-                "body": body,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdDiscussionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1812,22 +2424,44 @@ class TeamsClient:
             url,
         )
 
+    @overload
     def update_discussion_legacy(
         self,
         team_id: int,
         discussion_number: int,
         *,
+        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
+    def update_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    def update_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberPatchBody(
-            **{
-                "title": title,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1836,22 +2470,44 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @overload
     async def async_update_discussion_legacy(
         self,
         team_id: int,
         discussion_number: int,
         *,
+        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+    ) -> "Response[TeamDiscussion]":
+        ...
+
+    @overload
+    async def async_update_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         title: Union[Unset, str] = UNSET,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[TeamDiscussion]":
+        ...
+
+    async def async_update_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberPatchBody(
-            **{
-                "title": title,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1906,20 +2562,47 @@ class TeamsClient:
             response_model=List[TeamDiscussionComment],
         )
 
+    @overload
     def create_discussion_comment_legacy(
         self,
         team_id: int,
         discussion_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    def create_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    def create_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1928,20 +2611,47 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @overload
     async def async_create_discussion_comment_legacy(
         self,
         team_id: int,
         discussion_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    async def async_create_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    async def async_create_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2004,21 +2714,51 @@ class TeamsClient:
             url,
         )
 
+    @overload
     def update_discussion_comment_legacy(
         self,
         team_id: int,
         discussion_number: int,
         comment_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    def update_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    def update_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -2027,21 +2767,51 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @overload
     async def async_update_discussion_comment_legacy(
         self,
         team_id: int,
         discussion_number: int,
         comment_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    @overload
+    async def async_update_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[TeamDiscussionComment]":
+        ...
+
+    async def async_update_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -2254,20 +3024,43 @@ class TeamsClient:
             },
         )
 
+    @overload
     def add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
         username: str,
         *,
+        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+    ) -> "Response[TeamMembership]":
+        ...
+
+    @overload
+    def add_or_update_membership_for_user_legacy(
+        self,
+        team_id: int,
+        username: str,
+        *,
+        data: Unset = UNSET,
         role: Union[Unset, Literal["member", "maintainer"]] = "member",
+    ) -> "Response[TeamMembership]":
+        ...
+
+    def add_or_update_membership_for_user_legacy(
+        self,
+        team_id: int,
+        username: str,
+        *,
+        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        json = TeamsTeamIdMembershipsUsernamePutBody(
-            **{
-                "role": role,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdMembershipsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2279,20 +3072,43 @@ class TeamsClient:
             },
         )
 
+    @overload
     async def async_add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
         username: str,
         *,
+        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+    ) -> "Response[TeamMembership]":
+        ...
+
+    @overload
+    async def async_add_or_update_membership_for_user_legacy(
+        self,
+        team_id: int,
+        username: str,
+        *,
+        data: Unset = UNSET,
         role: Union[Unset, Literal["member", "maintainer"]] = "member",
+    ) -> "Response[TeamMembership]":
+        ...
+
+    async def async_add_or_update_membership_for_user_legacy(
+        self,
+        team_id: int,
+        username: str,
+        *,
+        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        json = TeamsTeamIdMembershipsUsernamePutBody(
-            **{
-                "role": role,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdMembershipsUsernamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2404,20 +3220,43 @@ class TeamsClient:
             error_models={},
         )
 
+    @overload
     def add_or_update_project_permissions_legacy(
         self,
         team_id: int,
         project_id: int,
         *,
+        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def add_or_update_project_permissions_legacy(
+        self,
+        team_id: int,
+        project_id: int,
+        *,
+        data: Unset = UNSET,
         permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+    ) -> "Response":
+        ...
+
+    def add_or_update_project_permissions_legacy(
+        self,
+        team_id: int,
+        project_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        json = TeamsTeamIdProjectsProjectIdPutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdProjectsProjectIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2430,20 +3269,43 @@ class TeamsClient:
             },
         )
 
+    @overload
     async def async_add_or_update_project_permissions_legacy(
         self,
         team_id: int,
         project_id: int,
         *,
+        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_add_or_update_project_permissions_legacy(
+        self,
+        team_id: int,
+        project_id: int,
+        *,
+        data: Unset = UNSET,
         permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_add_or_update_project_permissions_legacy(
+        self,
+        team_id: int,
+        project_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        json = TeamsTeamIdProjectsProjectIdPutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdProjectsProjectIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2564,21 +3426,46 @@ class TeamsClient:
             error_models={},
         )
 
+    @overload
     def add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def add_or_update_repo_permissions_legacy(
+        self,
+        team_id: int,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         permission: Union[Unset, Literal["pull", "push", "admin"]] = UNSET,
+    ) -> "Response":
+        ...
+
+    def add_or_update_repo_permissions_legacy(
+        self,
+        team_id: int,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        json = TeamsTeamIdReposOwnerRepoPutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdReposOwnerRepoPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2590,21 +3477,46 @@ class TeamsClient:
             },
         )
 
+    @overload
     async def async_add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_add_or_update_repo_permissions_legacy(
+        self,
+        team_id: int,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         permission: Union[Unset, Literal["pull", "push", "admin"]] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_add_or_update_repo_permissions_legacy(
+        self,
+        team_id: int,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        json = TeamsTeamIdReposOwnerRepoPutBody(
-            **{
-                "permission": permission,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdReposOwnerRepoPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2674,21 +3586,38 @@ class TeamsClient:
             },
         )
 
+    @overload
+    def create_or_update_idp_group_connections_legacy(
+        self, team_id: int, *, data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType
+    ) -> "Response[GroupMapping]":
+        ...
+
+    @overload
     def create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
         *,
+        data: Unset = UNSET,
         groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Union[Unset, str] = UNSET,
     ) -> "Response[GroupMapping]":
+        ...
+
+    def create_or_update_idp_group_connections_legacy(
+        self,
+        team_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GroupMapping]":
         url = f"/teams/{team_id}/team-sync/group-mappings"
 
-        json = TeamsTeamIdTeamSyncGroupMappingsPatchBody(
-            **{
-                "groups": groups,
-                "synced_at": synced_at,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -2701,21 +3630,38 @@ class TeamsClient:
             },
         )
 
+    @overload
+    async def async_create_or_update_idp_group_connections_legacy(
+        self, team_id: int, *, data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType
+    ) -> "Response[GroupMapping]":
+        ...
+
+    @overload
     async def async_create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
         *,
+        data: Unset = UNSET,
         groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Union[Unset, str] = UNSET,
     ) -> "Response[GroupMapping]":
+        ...
+
+    async def async_create_or_update_idp_group_connections_legacy(
+        self,
+        team_id: int,
+        *,
+        data: Union[Unset, TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GroupMapping]":
         url = f"/teams/{team_id}/team-sync/group-mappings"
 
-        json = TeamsTeamIdTeamSyncGroupMappingsPatchBody(
-            **{
-                "groups": groups,
-                "synced_at": synced_at,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

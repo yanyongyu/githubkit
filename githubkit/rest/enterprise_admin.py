@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -106,21 +108,41 @@ class EnterpriseAdminClient:
             response_model=ActionsEnterprisePermissions,
         )
 
+    @overload
     def set_github_actions_permissions_enterprise(
         self,
         enterprise: str,
         *,
+        data: EnterprisesEnterpriseActionsPermissionsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_github_actions_permissions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_github_actions_permissions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, EnterprisesEnterpriseActionsPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions"
 
-        json = EnterprisesEnterpriseActionsPermissionsPutBody(
-            **{
-                "enabled_organizations": enabled_organizations,
-                "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(EnterprisesEnterpriseActionsPermissionsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -128,21 +150,41 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_github_actions_permissions_enterprise(
         self,
         enterprise: str,
         *,
+        data: EnterprisesEnterpriseActionsPermissionsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_github_actions_permissions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_github_actions_permissions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, EnterprisesEnterpriseActionsPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions"
 
-        json = EnterprisesEnterpriseActionsPermissionsPutBody(
-            **{
-                "enabled_organizations": enabled_organizations,
-                "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(EnterprisesEnterpriseActionsPermissionsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -190,19 +232,44 @@ class EnterpriseAdminClient:
             response_model=EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
         )
 
+    @overload
     def set_selected_organizations_enabled_github_actions_enterprise(
         self,
         enterprise: str,
         *,
+        data: EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_selected_organizations_enabled_github_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
         selected_organization_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_selected_organizations_enabled_github_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions/organizations"
 
-        json = EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(
-            **{
-                "selected_organization_ids": selected_organization_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -210,19 +277,44 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_selected_organizations_enabled_github_actions_enterprise(
         self,
         enterprise: str,
         *,
+        data: EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_selected_organizations_enabled_github_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
         selected_organization_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_selected_organizations_enabled_github_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions/organizations"
 
-        json = EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(
-            **{
-                "selected_organization_ids": selected_organization_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -302,23 +394,39 @@ class EnterpriseAdminClient:
             response_model=SelectedActions,
         )
 
+    @overload
+    def set_allowed_actions_enterprise(
+        self, enterprise: str, *, data: SelectedActionsType
+    ) -> "Response":
+        ...
+
+    @overload
     def set_allowed_actions_enterprise(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         github_owned_allowed: Union[Unset, bool] = UNSET,
         verified_allowed: Union[Unset, bool] = UNSET,
         patterns_allowed: Union[Unset, List[str]] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_allowed_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, SelectedActionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions/selected-actions"
 
-        json = SelectedActions(
-            **{
-                "github_owned_allowed": github_owned_allowed,
-                "verified_allowed": verified_allowed,
-                "patterns_allowed": patterns_allowed,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(SelectedActions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -326,23 +434,39 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_allowed_actions_enterprise(
+        self, enterprise: str, *, data: SelectedActionsType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_allowed_actions_enterprise(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         github_owned_allowed: Union[Unset, bool] = UNSET,
         verified_allowed: Union[Unset, bool] = UNSET,
         patterns_allowed: Union[Unset, List[str]] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_allowed_actions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, SelectedActionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions/selected-actions"
 
-        json = SelectedActions(
-            **{
-                "github_owned_allowed": github_owned_allowed,
-                "verified_allowed": verified_allowed,
-                "patterns_allowed": patterns_allowed,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(SelectedActions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -394,10 +518,21 @@ class EnterpriseAdminClient:
             response_model=EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
         )
 
+    @overload
     def create_self_hosted_runner_group_for_enterprise(
         self,
         enterprise: str,
         *,
+        data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
+    ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    @overload
+    def create_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
         name: str,
         visibility: Union[Unset, Literal["selected", "all"]] = UNSET,
         selected_organization_ids: Union[Unset, List[int]] = UNSET,
@@ -406,19 +541,25 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    def create_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnerGroupsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsEnterprise]":
         url = f"/enterprises/{enterprise}/actions/runner-groups"
 
-        json = EnterprisesEnterpriseActionsRunnerGroupsPostBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "selected_organization_ids": selected_organization_ids,
-                "runners": runners,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(EnterprisesEnterpriseActionsRunnerGroupsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -427,10 +568,21 @@ class EnterpriseAdminClient:
             response_model=RunnerGroupsEnterprise,
         )
 
+    @overload
     async def async_create_self_hosted_runner_group_for_enterprise(
         self,
         enterprise: str,
         *,
+        data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
+    ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    @overload
+    async def async_create_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
         name: str,
         visibility: Union[Unset, Literal["selected", "all"]] = UNSET,
         selected_organization_ids: Union[Unset, List[int]] = UNSET,
@@ -439,19 +591,25 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    async def async_create_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnerGroupsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsEnterprise]":
         url = f"/enterprises/{enterprise}/actions/runner-groups"
 
-        json = EnterprisesEnterpriseActionsRunnerGroupsPostBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "selected_organization_ids": selected_organization_ids,
-                "runners": runners,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(EnterprisesEnterpriseActionsRunnerGroupsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -510,28 +668,53 @@ class EnterpriseAdminClient:
             url,
         )
 
+    @overload
     def update_self_hosted_runner_group_for_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
         *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
+        ] = UNSET,
+    ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    @overload
+    def update_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         visibility: Union[Unset, Literal["selected", "all"]] = "all",
         allows_public_repositories: Union[Unset, bool] = False,
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    def update_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsEnterprise]":
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 
-        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -540,28 +723,53 @@ class EnterpriseAdminClient:
             response_model=RunnerGroupsEnterprise,
         )
 
+    @overload
     async def async_update_self_hosted_runner_group_for_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
         *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
+        ] = UNSET,
+    ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    @overload
+    async def async_update_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         visibility: Union[Unset, Literal["selected", "all"]] = "all",
         allows_public_repositories: Union[Unset, bool] = False,
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsEnterprise]":
+        ...
+
+    async def async_update_self_hosted_runner_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsEnterprise]":
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 
-        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -612,22 +820,49 @@ class EnterpriseAdminClient:
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         )
 
+    @overload
     def set_org_access_to_self_hosted_runner_group_in_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_org_access_to_self_hosted_runner_group_in_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         selected_organization_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_org_access_to_self_hosted_runner_group_in_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset,
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
 
-        json = (
-            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
-                **{
-                    "selected_organization_ids": selected_organization_ids,
-                }
-            ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -635,22 +870,49 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_org_access_to_self_hosted_runner_group_in_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_org_access_to_self_hosted_runner_group_in_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         selected_organization_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_org_access_to_self_hosted_runner_group_in_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset,
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
 
-        json = (
-            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
-                **{
-                    "selected_organization_ids": selected_organization_ids,
-                }
-            ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -756,22 +1018,50 @@ class EnterpriseAdminClient:
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         )
 
+    @overload
     def set_self_hosted_runners_in_group_for_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_self_hosted_runners_in_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         runners: List[int],
+    ) -> "Response":
+        ...
+
+    def set_self_hosted_runners_in_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset,
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = (
             f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
         )
 
-        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -779,22 +1069,50 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_self_hosted_runners_in_group_for_enterprise(
         self,
         enterprise: str,
         runner_group_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_self_hosted_runners_in_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         runners: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_self_hosted_runners_in_group_for_enterprise(
+        self,
+        enterprise: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset,
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = (
             f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
         )
 
-        json = EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1048,20 +1366,47 @@ class EnterpriseAdminClient:
             },
         )
 
+    @overload
     def set_custom_labels_for_self_hosted_runner_for_enterprise(
         self,
         enterprise: str,
         runner_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    def set_custom_labels_for_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    def set_custom_labels_for_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
-        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1074,20 +1419,47 @@ class EnterpriseAdminClient:
             },
         )
 
+    @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_enterprise(
         self,
         enterprise: str,
         runner_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    async def async_set_custom_labels_for_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    async def async_set_custom_labels_for_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
-        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1100,20 +1472,47 @@ class EnterpriseAdminClient:
             },
         )
 
+    @overload
     def add_custom_labels_to_self_hosted_runner_for_enterprise(
         self,
         enterprise: str,
         runner_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    def add_custom_labels_to_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    def add_custom_labels_to_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
-        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1126,20 +1525,47 @@ class EnterpriseAdminClient:
             },
         )
 
+    @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
         self,
         enterprise: str,
         runner_id: int,
         *,
+        data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
+        self,
+        enterprise: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
-        json = EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1330,25 +1756,41 @@ class EnterpriseAdminClient:
             response_model=ScimGroupListEnterprise,
         )
 
+    @overload
+    def provision_and_invite_enterprise_group(
+        self, enterprise: str, *, data: ScimV2EnterprisesEnterpriseGroupsPostBodyType
+    ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    @overload
     def provision_and_invite_enterprise_group(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         schemas: List[str],
         display_name: str,
         members: Union[
             Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    def provision_and_invite_enterprise_group(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ScimV2EnterprisesEnterpriseGroupsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
-        json = ScimV2EnterprisesEnterpriseGroupsPostBody(
-            **{
-                "schemas": schemas,
-                "displayName": display_name,
-                "members": members,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseGroupsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1357,25 +1799,41 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseGroup,
         )
 
+    @overload
+    async def async_provision_and_invite_enterprise_group(
+        self, enterprise: str, *, data: ScimV2EnterprisesEnterpriseGroupsPostBodyType
+    ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    @overload
     async def async_provision_and_invite_enterprise_group(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         schemas: List[str],
         display_name: str,
         members: Union[
             Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    async def async_provision_and_invite_enterprise_group(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ScimV2EnterprisesEnterpriseGroupsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
-        json = ScimV2EnterprisesEnterpriseGroupsPostBody(
-            **{
-                "schemas": schemas,
-                "displayName": display_name,
-                "members": members,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseGroupsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1422,11 +1880,23 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseGroup,
         )
 
+    @overload
     def set_information_for_provisioned_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyType,
+    ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    @overload
+    def set_information_for_provisioned_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         display_name: str,
         members: Union[
@@ -1436,15 +1906,26 @@ class EnterpriseAdminClient:
             ],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    def set_information_for_provisioned_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody(
-            **{
-                "schemas": schemas,
-                "displayName": display_name,
-                "members": members,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1453,11 +1934,23 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseGroup,
         )
 
+    @overload
     async def async_set_information_for_provisioned_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyType,
+    ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    @overload
+    async def async_set_information_for_provisioned_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         display_name: str,
         members: Union[
@@ -1467,15 +1960,26 @@ class EnterpriseAdminClient:
             ],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    async def async_set_information_for_provisioned_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody(
-            **{
-                "schemas": schemas,
-                "displayName": display_name,
-                "members": members,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1508,24 +2012,48 @@ class EnterpriseAdminClient:
             url,
         )
 
+    @overload
     def update_attribute_for_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyType,
+    ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    @overload
+    def update_attribute_for_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         operations: List[
             ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    def update_attribute_for_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1534,24 +2062,48 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseGroup,
         )
 
+    @overload
     async def async_update_attribute_for_enterprise_group(
         self,
         enterprise: str,
         scim_group_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyType,
+    ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    @overload
+    async def async_update_attribute_for_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         operations: List[
             ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseGroup]":
+        ...
+
+    async def async_update_attribute_for_enterprise_group(
+        self,
+        enterprise: str,
+        scim_group_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseGroup]":
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
-        json = ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1604,10 +2156,18 @@ class EnterpriseAdminClient:
             response_model=ScimUserListEnterprise,
         )
 
+    @overload
+    def provision_and_invite_enterprise_user(
+        self, enterprise: str, *, data: ScimV2EnterprisesEnterpriseUsersPostBodyType
+    ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    @overload
     def provision_and_invite_enterprise_user(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         schemas: List[str],
         user_name: str,
         name: ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType,
@@ -1616,17 +2176,23 @@ class EnterpriseAdminClient:
             Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    def provision_and_invite_enterprise_user(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ScimV2EnterprisesEnterpriseUsersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users"
 
-        json = ScimV2EnterprisesEnterpriseUsersPostBody(
-            **{
-                "schemas": schemas,
-                "userName": user_name,
-                "name": name,
-                "emails": emails,
-                "groups": groups,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseUsersPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1635,10 +2201,18 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseUser,
         )
 
+    @overload
+    async def async_provision_and_invite_enterprise_user(
+        self, enterprise: str, *, data: ScimV2EnterprisesEnterpriseUsersPostBodyType
+    ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    @overload
     async def async_provision_and_invite_enterprise_user(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         schemas: List[str],
         user_name: str,
         name: ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType,
@@ -1647,17 +2221,23 @@ class EnterpriseAdminClient:
             Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType]
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    async def async_provision_and_invite_enterprise_user(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ScimV2EnterprisesEnterpriseUsersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users"
 
-        json = ScimV2EnterprisesEnterpriseUsersPostBody(
-            **{
-                "schemas": schemas,
-                "userName": user_name,
-                "name": name,
-                "emails": emails,
-                "groups": groups,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseUsersPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1692,11 +2272,23 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseUser,
         )
 
+    @overload
     def set_information_for_provisioned_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyType,
+    ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    @overload
+    def set_information_for_provisioned_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         user_name: str,
         name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType,
@@ -1708,17 +2300,26 @@ class EnterpriseAdminClient:
             List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    def set_information_for_provisioned_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
-        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody(
-            **{
-                "schemas": schemas,
-                "userName": user_name,
-                "name": name,
-                "emails": emails,
-                "groups": groups,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1727,11 +2328,23 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseUser,
         )
 
+    @overload
     async def async_set_information_for_provisioned_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyType,
+    ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    @overload
+    async def async_set_information_for_provisioned_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         user_name: str,
         name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType,
@@ -1743,17 +2356,26 @@ class EnterpriseAdminClient:
             List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType],
         ] = UNSET,
     ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    async def async_set_information_for_provisioned_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
-        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody(
-            **{
-                "schemas": schemas,
-                "userName": user_name,
-                "name": name,
-                "emails": emails,
-                "groups": groups,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1786,24 +2408,48 @@ class EnterpriseAdminClient:
             url,
         )
 
+    @overload
     def update_attribute_for_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyType,
+    ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    @overload
+    def update_attribute_for_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         operations: List[
             ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    def update_attribute_for_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
-        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1812,24 +2458,48 @@ class EnterpriseAdminClient:
             response_model=ScimEnterpriseUser,
         )
 
+    @overload
     async def async_update_attribute_for_enterprise_user(
         self,
         enterprise: str,
         scim_user_id: str,
         *,
+        data: ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyType,
+    ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    @overload
+    async def async_update_attribute_for_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Unset = UNSET,
         schemas: List[str],
         operations: List[
             ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> "Response[ScimEnterpriseUser]":
+        ...
+
+    async def async_update_attribute_for_enterprise_user(
+        self,
+        enterprise: str,
+        scim_user_id: str,
+        *,
+        data: Union[
+            Unset, ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ScimEnterpriseUser]":
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
-        json = ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(
-            **{
-                "schemas": schemas,
-                "Operations": operations,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

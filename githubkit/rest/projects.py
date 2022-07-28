@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -113,21 +115,38 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def create_for_org(
+        self, org: str, *, data: OrgsOrgProjectsPostBodyType
+    ) -> "Response[Project]":
+        ...
+
+    @overload
     def create_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    def create_for_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgProjectsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
-        json = OrgsOrgProjectsPostBody(
-            **{
-                "name": name,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgProjectsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -143,21 +162,38 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    async def async_create_for_org(
+        self, org: str, *, data: OrgsOrgProjectsPostBodyType
+    ) -> "Response[Project]":
+        ...
+
+    @overload
     async def async_create_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    async def async_create_for_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgProjectsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
-        json = OrgsOrgProjectsPostBody(
-            **{
-                "name": name,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgProjectsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -239,21 +275,41 @@ class ProjectsClient:
             },
         )
 
+    @overload
     def update_card(
         self,
         card_id: int,
         *,
+        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+    ) -> "Response[ProjectCard]":
+        ...
+
+    @overload
+    def update_card(
+        self,
+        card_id: int,
+        *,
+        data: Unset = UNSET,
         note: Union[Unset, Union[str, None]] = UNSET,
         archived: Union[Unset, bool] = UNSET,
     ) -> "Response[ProjectCard]":
+        ...
+
+    def update_card(
+        self,
+        card_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
-        json = ProjectsColumnsCardsCardIdPatchBody(
-            **{
-                "note": note,
-                "archived": archived,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsCardsCardIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -268,21 +324,41 @@ class ProjectsClient:
             },
         )
 
+    @overload
     async def async_update_card(
         self,
         card_id: int,
         *,
+        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+    ) -> "Response[ProjectCard]":
+        ...
+
+    @overload
+    async def async_update_card(
+        self,
+        card_id: int,
+        *,
+        data: Unset = UNSET,
         note: Union[Unset, Union[str, None]] = UNSET,
         archived: Union[Unset, bool] = UNSET,
     ) -> "Response[ProjectCard]":
+        ...
+
+    async def async_update_card(
+        self,
+        card_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
-        json = ProjectsColumnsCardsCardIdPatchBody(
-            **{
-                "note": note,
-                "archived": archived,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsCardsCardIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -297,21 +373,38 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def move_card(
+        self, card_id: int, *, data: ProjectsColumnsCardsCardIdMovesPostBodyType
+    ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
+        ...
+
+    @overload
     def move_card(
         self,
         card_id: int,
         *,
+        data: Unset = UNSET,
         position: str,
         column_id: Union[Unset, int] = UNSET,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
+        ...
+
+    def move_card(
+        self,
+        card_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
 
-        json = ProjectsColumnsCardsCardIdMovesPostBody(
-            **{
-                "position": position,
-                "column_id": column_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsCardsCardIdMovesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -326,21 +419,38 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    async def async_move_card(
+        self, card_id: int, *, data: ProjectsColumnsCardsCardIdMovesPostBodyType
+    ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
+        ...
+
+    @overload
     async def async_move_card(
         self,
         card_id: int,
         *,
+        data: Unset = UNSET,
         position: str,
         column_id: Union[Unset, int] = UNSET,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
+        ...
+
+    async def async_move_card(
+        self,
+        card_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
 
-        json = ProjectsColumnsCardsCardIdMovesPostBody(
-            **{
-                "position": position,
-                "column_id": column_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsCardsCardIdMovesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -419,19 +529,37 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def update_column(
+        self, column_id: int, *, data: ProjectsColumnsColumnIdPatchBodyType
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    @overload
     def update_column(
         self,
         column_id: int,
         *,
+        data: Unset = UNSET,
         name: str,
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    def update_column(
+        self,
+        column_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsColumnIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
-        json = ProjectsColumnsColumnIdPatchBody(
-            **{
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsColumnIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -444,19 +572,37 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    async def async_update_column(
+        self, column_id: int, *, data: ProjectsColumnsColumnIdPatchBodyType
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    @overload
     async def async_update_column(
         self,
         column_id: int,
         *,
+        data: Unset = UNSET,
         name: str,
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    async def async_update_column(
+        self,
+        column_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsColumnIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
-        json = ProjectsColumnsColumnIdPatchBody(
-            **{
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsColumnIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -525,18 +671,66 @@ class ProjectsClient:
             },
         )
 
+    @overload
     def create_card(
         self,
         column_id: int,
         *,
-        body: Union[
+        data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
     ) -> "Response[ProjectCard]":
+        ...
+
+    @overload
+    def create_card(
+        self,
+        column_id: int,
+        *,
+        data: Unset = UNSET,
+        note: Union[str, None],
+    ) -> "Response[ProjectCard]":
+        ...
+
+    @overload
+    def create_card(
+        self,
+        column_id: int,
+        *,
+        data: Unset = UNSET,
+        content_id: int,
+        content_type: str,
+    ) -> "Response[ProjectCard]":
+        ...
+
+    def create_card(
+        self,
+        column_id: int,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
+                ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ProjectsColumnsColumnIdCardsPostBodyOneof0,
+                ProjectsColumnsColumnIdCardsPostBodyOneof1,
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -551,18 +745,66 @@ class ProjectsClient:
             },
         )
 
+    @overload
     async def async_create_card(
         self,
         column_id: int,
         *,
-        body: Union[
+        data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
     ) -> "Response[ProjectCard]":
+        ...
+
+    @overload
+    async def async_create_card(
+        self,
+        column_id: int,
+        *,
+        data: Unset = UNSET,
+        note: Union[str, None],
+    ) -> "Response[ProjectCard]":
+        ...
+
+    @overload
+    async def async_create_card(
+        self,
+        column_id: int,
+        *,
+        data: Unset = UNSET,
+        content_id: int,
+        content_type: str,
+    ) -> "Response[ProjectCard]":
+        ...
+
+    async def async_create_card(
+        self,
+        column_id: int,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
+                ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
+            ],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[
+                ProjectsColumnsColumnIdCardsPostBodyOneof0,
+                ProjectsColumnsColumnIdCardsPostBodyOneof1,
+            ],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -577,19 +819,37 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def move_column(
+        self, column_id: int, *, data: ProjectsColumnsColumnIdMovesPostBodyType
+    ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
+        ...
+
+    @overload
     def move_column(
         self,
         column_id: int,
         *,
+        data: Unset = UNSET,
         position: str,
+    ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
+        ...
+
+    def move_column(
+        self,
+        column_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
 
-        json = ProjectsColumnsColumnIdMovesPostBody(
-            **{
-                "position": position,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsColumnIdMovesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -603,19 +863,37 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    async def async_move_column(
+        self, column_id: int, *, data: ProjectsColumnsColumnIdMovesPostBodyType
+    ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
+        ...
+
+    @overload
     async def async_move_column(
         self,
         column_id: int,
         *,
+        data: Unset = UNSET,
         position: str,
+    ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
+        ...
+
+    async def async_move_column(
+        self,
+        column_id: int,
+        *,
+        data: Union[Unset, ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
 
-        json = ProjectsColumnsColumnIdMovesPostBody(
-            **{
-                "position": position,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsColumnsColumnIdMovesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -695,10 +973,21 @@ class ProjectsClient:
             },
         )
 
+    @overload
     def update(
         self,
         project_id: int,
         *,
+        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+    ) -> "Response[Project]":
+        ...
+
+    @overload
+    def update(
+        self,
+        project_id: int,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         body: Union[Unset, Union[str, None]] = UNSET,
         state: Union[Unset, str] = UNSET,
@@ -707,17 +996,23 @@ class ProjectsClient:
         ] = UNSET,
         private: Union[Unset, bool] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    def update(
+        self,
+        project_id: int,
+        *,
+        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
-        json = ProjectsProjectIdPatchBody(
-            **{
-                "name": name,
-                "body": body,
-                "state": state,
-                "organization_permission": organization_permission,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsProjectIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -732,10 +1027,21 @@ class ProjectsClient:
             },
         )
 
+    @overload
     async def async_update(
         self,
         project_id: int,
         *,
+        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+    ) -> "Response[Project]":
+        ...
+
+    @overload
+    async def async_update(
+        self,
+        project_id: int,
+        *,
+        data: Unset = UNSET,
         name: Union[Unset, str] = UNSET,
         body: Union[Unset, Union[str, None]] = UNSET,
         state: Union[Unset, str] = UNSET,
@@ -744,17 +1050,23 @@ class ProjectsClient:
         ] = UNSET,
         private: Union[Unset, bool] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    async def async_update(
+        self,
+        project_id: int,
+        *,
+        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
-        json = ProjectsProjectIdPatchBody(
-            **{
-                "name": name,
-                "body": body,
-                "state": state,
-                "organization_permission": organization_permission,
-                "private": private,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsProjectIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -825,18 +1137,49 @@ class ProjectsClient:
             },
         )
 
+    @overload
     def add_collaborator(
         self,
         project_id: int,
         username: str,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    @overload
+    def add_collaborator(
+        self,
+        project_id: int,
+        username: str,
+        *,
+        data: Unset = UNSET,
+        permission: Union[Unset, Literal["read", "write", "admin"]] = "write",
+    ) -> "Response":
+        ...
+
+    def add_collaborator(
+        self,
+        project_id: int,
+        username: str,
+        *,
+        data: Union[
+            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ProjectsProjectIdCollaboratorsUsernamePutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -850,18 +1193,49 @@ class ProjectsClient:
             },
         )
 
+    @overload
     async def async_add_collaborator(
         self,
         project_id: int,
         username: str,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    @overload
+    async def async_add_collaborator(
+        self,
+        project_id: int,
+        username: str,
+        *,
+        data: Unset = UNSET,
+        permission: Union[Unset, Literal["read", "write", "admin"]] = "write",
+    ) -> "Response":
+        ...
+
+    async def async_add_collaborator(
+        self,
+        project_id: int,
+        username: str,
+        *,
+        data: Union[
+            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ProjectsProjectIdCollaboratorsUsernamePutBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -997,19 +1371,37 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def create_column(
+        self, project_id: int, *, data: ProjectsProjectIdColumnsPostBodyType
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    @overload
     def create_column(
         self,
         project_id: int,
         *,
+        data: Unset = UNSET,
         name: str,
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    def create_column(
+        self,
+        project_id: int,
+        *,
+        data: Union[Unset, ProjectsProjectIdColumnsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
 
-        json = ProjectsProjectIdColumnsPostBody(
-            **{
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsProjectIdColumnsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1023,19 +1415,37 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    async def async_create_column(
+        self, project_id: int, *, data: ProjectsProjectIdColumnsPostBodyType
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    @overload
     async def async_create_column(
         self,
         project_id: int,
         *,
+        data: Unset = UNSET,
         name: str,
+    ) -> "Response[ProjectColumn]":
+        ...
+
+    async def async_create_column(
+        self,
+        project_id: int,
+        *,
+        data: Union[Unset, ProjectsProjectIdColumnsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
 
-        json = ProjectsProjectIdColumnsPostBody(
-            **{
-                "name": name,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ProjectsProjectIdColumnsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1109,22 +1519,40 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def create_for_repo(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoProjectsPostBodyType
+    ) -> "Response[Project]":
+        ...
+
+    @overload
     def create_for_repo(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         name: str,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    def create_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoProjectsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
 
-        json = ReposOwnerRepoProjectsPostBody(
-            **{
-                "name": name,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoProjectsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1140,22 +1568,40 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    async def async_create_for_repo(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoProjectsPostBodyType
+    ) -> "Response[Project]":
+        ...
+
+    @overload
     async def async_create_for_repo(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         name: str,
         body: Union[Unset, str] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    async def async_create_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoProjectsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
 
-        json = ReposOwnerRepoProjectsPostBody(
-            **{
-                "name": name,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoProjectsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1171,20 +1617,33 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def create_for_authenticated_user(
+        self, *, data: UserProjectsPostBodyType
+    ) -> "Response[Project]":
+        ...
+
+    @overload
     def create_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         name: str,
         body: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    def create_for_authenticated_user(
+        self, *, data: Union[Unset, UserProjectsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Project]":
         url = "/user/projects"
 
-        json = UserProjectsPostBody(
-            **{
-                "name": name,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserProjectsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1198,20 +1657,33 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    async def async_create_for_authenticated_user(
+        self, *, data: UserProjectsPostBodyType
+    ) -> "Response[Project]":
+        ...
+
+    @overload
     async def async_create_for_authenticated_user(
         self,
         *,
+        data: Unset = UNSET,
         name: str,
         body: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[Project]":
+        ...
+
+    async def async_create_for_authenticated_user(
+        self, *, data: Union[Unset, UserProjectsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Project]":
         url = "/user/projects"
 
-        json = UserProjectsPostBody(
-            **{
-                "name": name,
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserProjectsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

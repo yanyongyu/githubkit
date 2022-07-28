@@ -6,7 +6,9 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -147,19 +149,37 @@ class ActionsClient:
             response_model=ActionsCacheUsageOrgEnterprise,
         )
 
+    @overload
+    def set_actions_oidc_custom_issuer_policy_for_enterprise(
+        self, enterprise: str, *, data: ActionsOidcCustomIssuerPolicyForEnterpriseType
+    ) -> "Response":
+        ...
+
+    @overload
     def set_actions_oidc_custom_issuer_policy_for_enterprise(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         include_enterprise_slug: Union[Unset, bool] = UNSET,
+    ) -> "Response":
+        ...
+
+    def set_actions_oidc_custom_issuer_policy_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ActionsOidcCustomIssuerPolicyForEnterpriseType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/oidc/customization/issuer"
 
-        json = ActionsOidcCustomIssuerPolicyForEnterprise(
-            **{
-                "include_enterprise_slug": include_enterprise_slug,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsOidcCustomIssuerPolicyForEnterprise, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -167,19 +187,37 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
+        self, enterprise: str, *, data: ActionsOidcCustomIssuerPolicyForEnterpriseType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         include_enterprise_slug: Union[Unset, bool] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ActionsOidcCustomIssuerPolicyForEnterpriseType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/oidc/customization/issuer"
 
-        json = ActionsOidcCustomIssuerPolicyForEnterprise(
-            **{
-                "include_enterprise_slug": include_enterprise_slug,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsOidcCustomIssuerPolicyForEnterprise, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -211,21 +249,38 @@ class ActionsClient:
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
+    @overload
+    def set_github_actions_default_workflow_permissions_enterprise(
+        self, enterprise: str, *, data: ActionsSetDefaultWorkflowPermissionsType
+    ) -> "Response":
+        ...
+
+    @overload
     def set_github_actions_default_workflow_permissions_enterprise(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_github_actions_default_workflow_permissions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions/workflow"
 
-        json = ActionsSetDefaultWorkflowPermissions(
-            **{
-                "default_workflow_permissions": default_workflow_permissions,
-                "can_approve_pull_request_reviews": can_approve_pull_request_reviews,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -233,21 +288,38 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_github_actions_default_workflow_permissions_enterprise(
+        self, enterprise: str, *, data: ActionsSetDefaultWorkflowPermissionsType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_github_actions_default_workflow_permissions_enterprise(
         self,
         enterprise: str,
         *,
+        data: Unset = UNSET,
         default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_github_actions_default_workflow_permissions_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/enterprises/{enterprise}/actions/permissions/workflow"
 
-        json = ActionsSetDefaultWorkflowPermissions(
-            **{
-                "default_workflow_permissions": default_workflow_permissions,
-                "can_approve_pull_request_reviews": can_approve_pull_request_reviews,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -343,21 +415,38 @@ class ActionsClient:
             response_model=ActionsOrganizationPermissions,
         )
 
+    @overload
+    def set_github_actions_permissions_organization(
+        self, org: str, *, data: OrgsOrgActionsPermissionsPutBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     def set_github_actions_permissions_organization(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_github_actions_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/orgs/{org}/actions/permissions"
 
-        json = OrgsOrgActionsPermissionsPutBody(
-            **{
-                "enabled_repositories": enabled_repositories,
-                "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsPermissionsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -365,21 +454,38 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_github_actions_permissions_organization(
+        self, org: str, *, data: OrgsOrgActionsPermissionsPutBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_github_actions_permissions_organization(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_github_actions_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/orgs/{org}/actions/permissions"
 
-        json = OrgsOrgActionsPermissionsPutBody(
-            **{
-                "enabled_repositories": enabled_repositories,
-                "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsPermissionsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -427,19 +533,37 @@ class ActionsClient:
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         )
 
+    @overload
+    def set_selected_repositories_enabled_github_actions_organization(
+        self, org: str, *, data: OrgsOrgActionsPermissionsRepositoriesPutBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     def set_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_selected_repositories_enabled_github_actions_organization(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories"
 
-        json = OrgsOrgActionsPermissionsRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsPermissionsRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -447,19 +571,37 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_selected_repositories_enabled_github_actions_organization(
+        self, org: str, *, data: OrgsOrgActionsPermissionsRepositoriesPutBodyType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_selected_repositories_enabled_github_actions_organization(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories"
 
-        json = OrgsOrgActionsPermissionsRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsPermissionsRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -539,23 +681,35 @@ class ActionsClient:
             response_model=SelectedActions,
         )
 
+    @overload
+    def set_allowed_actions_organization(
+        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+    ) -> "Response":
+        ...
+
+    @overload
     def set_allowed_actions_organization(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         github_owned_allowed: Union[Unset, bool] = UNSET,
         verified_allowed: Union[Unset, bool] = UNSET,
         patterns_allowed: Union[Unset, List[str]] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_allowed_actions_organization(
+        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET, **kwargs
+    ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
-        json = SelectedActions(
-            **{
-                "github_owned_allowed": github_owned_allowed,
-                "verified_allowed": verified_allowed,
-                "patterns_allowed": patterns_allowed,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(SelectedActions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -563,23 +717,35 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_allowed_actions_organization(
+        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_allowed_actions_organization(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         github_owned_allowed: Union[Unset, bool] = UNSET,
         verified_allowed: Union[Unset, bool] = UNSET,
         patterns_allowed: Union[Unset, List[str]] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_allowed_actions_organization(
+        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET, **kwargs
+    ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
-        json = SelectedActions(
-            **{
-                "github_owned_allowed": github_owned_allowed,
-                "verified_allowed": verified_allowed,
-                "patterns_allowed": patterns_allowed,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(SelectedActions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -611,21 +777,41 @@ class ActionsClient:
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
+    @overload
     def set_github_actions_default_workflow_permissions_organization(
         self,
         org: str,
         *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_github_actions_default_workflow_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
         default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_github_actions_default_workflow_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/workflow"
 
-        json = ActionsSetDefaultWorkflowPermissions(
-            **{
-                "default_workflow_permissions": default_workflow_permissions,
-                "can_approve_pull_request_reviews": can_approve_pull_request_reviews,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -634,21 +820,41 @@ class ActionsClient:
             error_models={},
         )
 
+    @overload
     async def async_set_github_actions_default_workflow_permissions_organization(
         self,
         org: str,
         *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_github_actions_default_workflow_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
         default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_github_actions_default_workflow_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/workflow"
 
-        json = ActionsSetDefaultWorkflowPermissions(
-            **{
-                "default_workflow_permissions": default_workflow_permissions,
-                "can_approve_pull_request_reviews": can_approve_pull_request_reviews,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -701,10 +907,18 @@ class ActionsClient:
             response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
         )
 
+    @overload
+    def create_self_hosted_runner_group_for_org(
+        self, org: str, *, data: OrgsOrgActionsRunnerGroupsPostBodyType
+    ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    @overload
     def create_self_hosted_runner_group_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         visibility: Union[Unset, Literal["selected", "all", "private"]] = "all",
         selected_repository_ids: Union[Unset, List[int]] = UNSET,
@@ -713,19 +927,23 @@ class ActionsClient:
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    def create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsOrg]":
         url = f"/orgs/{org}/actions/runner-groups"
 
-        json = OrgsOrgActionsRunnerGroupsPostBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "selected_repository_ids": selected_repository_ids,
-                "runners": runners,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnerGroupsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -734,10 +952,18 @@ class ActionsClient:
             response_model=RunnerGroupsOrg,
         )
 
+    @overload
+    async def async_create_self_hosted_runner_group_for_org(
+        self, org: str, *, data: OrgsOrgActionsRunnerGroupsPostBodyType
+    ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    @overload
     async def async_create_self_hosted_runner_group_for_org(
         self,
         org: str,
         *,
+        data: Unset = UNSET,
         name: str,
         visibility: Union[Unset, Literal["selected", "all", "private"]] = "all",
         selected_repository_ids: Union[Unset, List[int]] = UNSET,
@@ -746,19 +972,23 @@ class ActionsClient:
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    async def async_create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsOrg]":
         url = f"/orgs/{org}/actions/runner-groups"
 
-        json = OrgsOrgActionsRunnerGroupsPostBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "selected_repository_ids": selected_repository_ids,
-                "runners": runners,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnerGroupsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -817,28 +1047,49 @@ class ActionsClient:
             url,
         )
 
+    @overload
     def update_self_hosted_runner_group_for_org(
         self,
         org: str,
         runner_group_id: int,
         *,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+    ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    @overload
+    def update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         name: str,
         visibility: Union[Unset, Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Union[Unset, bool] = False,
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    def update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsOrg]":
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
 
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -847,28 +1098,49 @@ class ActionsClient:
             response_model=RunnerGroupsOrg,
         )
 
+    @overload
     async def async_update_self_hosted_runner_group_for_org(
         self,
         org: str,
         runner_group_id: int,
         *,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+    ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    @overload
+    async def async_update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         name: str,
         visibility: Union[Unset, Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Union[Unset, bool] = False,
         restricted_to_workflows: Union[Unset, bool] = False,
         selected_workflows: Union[Unset, List[str]] = UNSET,
     ) -> "Response[RunnerGroupsOrg]":
+        ...
+
+    async def async_update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RunnerGroupsOrg]":
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
 
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(
-            **{
-                "name": name,
-                "visibility": visibility,
-                "allows_public_repositories": allows_public_repositories,
-                "restricted_to_workflows": restricted_to_workflows,
-                "selected_workflows": selected_workflows,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -919,20 +1191,47 @@ class ActionsClient:
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         )
 
+    @overload
     def set_repo_access_to_self_hosted_runner_group_in_org(
         self,
         org: str,
         runner_group_id: int,
         *,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
 
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -940,20 +1239,47 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_repo_access_to_self_hosted_runner_group_in_org(
         self,
         org: str,
         runner_group_id: int,
         *,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
 
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1055,20 +1381,45 @@ class ActionsClient:
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         )
 
+    @overload
     def set_self_hosted_runners_in_group_for_org(
         self,
         org: str,
         runner_group_id: int,
         *,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         runners: List[int],
+    ) -> "Response":
+        ...
+
+    def set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
 
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1076,20 +1427,45 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_self_hosted_runners_in_group_for_org(
         self,
         org: str,
         runner_group_id: int,
         *,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Unset = UNSET,
         runners: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
 
-        json = OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-            **{
-                "runners": runners,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1343,20 +1719,43 @@ class ActionsClient:
             },
         )
 
+    @overload
     def set_custom_labels_for_self_hosted_runner_for_org(
         self,
         org: str,
         runner_id: int,
         *,
+        data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    def set_custom_labels_for_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    def set_custom_labels_for_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        json = OrgsOrgActionsRunnersRunnerIdLabelsPutBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1369,20 +1768,43 @@ class ActionsClient:
             },
         )
 
+    @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
         self,
         org: str,
         runner_id: int,
         *,
+        data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    async def async_set_custom_labels_for_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    async def async_set_custom_labels_for_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        json = OrgsOrgActionsRunnersRunnerIdLabelsPutBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1395,20 +1817,43 @@ class ActionsClient:
             },
         )
 
+    @overload
     def add_custom_labels_to_self_hosted_runner_for_org(
         self,
         org: str,
         runner_id: int,
         *,
+        data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    def add_custom_labels_to_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    def add_custom_labels_to_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        json = OrgsOrgActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1421,20 +1866,43 @@ class ActionsClient:
             },
         )
 
+    @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
         self,
         org: str,
         runner_id: int,
         *,
+        data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    async def async_add_custom_labels_to_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    async def async_add_custom_labels_to_self_hosted_runner_for_org(
+        self,
+        org: str,
+        runner_id: int,
+        *,
+        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        json = OrgsOrgActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1605,26 +2073,46 @@ class ActionsClient:
             response_model=OrganizationActionsSecret,
         )
 
+    @overload
     def create_or_update_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgActionsSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    def create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
-        json = OrgsOrgActionsSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-                "visibility": visibility,
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1633,26 +2121,46 @@ class ActionsClient:
             response_model=EmptyObject,
         )
 
+    @overload
     async def async_create_or_update_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgActionsSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
-        json = OrgsOrgActionsSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-                "visibility": visibility,
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1727,20 +2235,45 @@ class ActionsClient:
             response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
+    @overload
     def set_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
-        json = OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1748,20 +2281,45 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_selected_repos_for_org_secret(
         self,
         org: str,
         secret_name: str,
         *,
+        data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
-        json = OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2165,19 +2723,52 @@ class ActionsClient:
             url,
         )
 
+    @overload
     def re_run_job_for_workflow_run(
         self,
         owner: str,
         repo: str,
         job_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def re_run_job_for_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        job_id: int,
+        *,
+        data: Unset = UNSET,
+        enable_debug_logging: Union[Unset, bool] = False,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def re_run_job_for_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        job_id: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2189,19 +2780,52 @@ class ActionsClient:
             },
         )
 
+    @overload
     async def async_re_run_job_for_workflow_run(
         self,
         owner: str,
         repo: str,
         job_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_re_run_job_for_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        job_id: int,
+        *,
+        data: Unset = UNSET,
+        enable_debug_logging: Union[Unset, bool] = False,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_re_run_job_for_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        job_id: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2247,20 +2871,39 @@ class ActionsClient:
             },
         )
 
+    @overload
+    def set_custom_oidc_sub_claim_for_repo(
+        self, owner: str, repo: str, *, data: OptOutOidcCustomSubType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
     def set_custom_oidc_sub_claim_for_repo(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         use_default: bool,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def set_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, OptOutOidcCustomSubType] = UNSET,
+        **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
-        json = OptOutOidcCustomSub(
-            **{
-                "use_default": use_default,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OptOutOidcCustomSub, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2274,20 +2917,39 @@ class ActionsClient:
             },
         )
 
+    @overload
+    async def async_set_custom_oidc_sub_claim_for_repo(
+        self, owner: str, repo: str, *, data: OptOutOidcCustomSubType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
     async def async_set_custom_oidc_sub_claim_for_repo(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         use_default: bool,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_set_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, OptOutOidcCustomSubType] = UNSET,
+        **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
-        json = OptOutOidcCustomSub(
-            **{
-                "use_default": use_default,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OptOutOidcCustomSub, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2327,22 +2989,44 @@ class ActionsClient:
             response_model=ActionsRepositoryPermissions,
         )
 
+    @overload
     def set_github_actions_permissions_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoActionsPermissionsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_github_actions_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         enabled: bool,
         allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_github_actions_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
-        json = ReposOwnerRepoActionsPermissionsPutBody(
-            **{
-                "enabled": enabled,
-                "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsPermissionsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2350,22 +3034,44 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_set_github_actions_permissions_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: ReposOwnerRepoActionsPermissionsPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_github_actions_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         enabled: bool,
         allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_github_actions_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
-        json = ReposOwnerRepoActionsPermissionsPutBody(
-            **{
-                "enabled": enabled,
-                "allowed_actions": allowed_actions,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsPermissionsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2399,20 +3105,39 @@ class ActionsClient:
             response_model=ActionsWorkflowAccessToRepository,
         )
 
+    @overload
+    def set_workflow_access_to_repository(
+        self, owner: str, repo: str, *, data: ActionsWorkflowAccessToRepositoryType
+    ) -> "Response":
+        ...
+
+    @overload
     def set_workflow_access_to_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         access_level: Literal["none", "organization", "enterprise"],
+    ) -> "Response":
+        ...
+
+    def set_workflow_access_to_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ActionsWorkflowAccessToRepositoryType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
-        json = ActionsWorkflowAccessToRepository(
-            **{
-                "access_level": access_level,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsWorkflowAccessToRepository, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2420,20 +3145,39 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_workflow_access_to_repository(
+        self, owner: str, repo: str, *, data: ActionsWorkflowAccessToRepositoryType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_workflow_access_to_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         access_level: Literal["none", "organization", "enterprise"],
+    ) -> "Response":
+        ...
+
+    async def async_set_workflow_access_to_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ActionsWorkflowAccessToRepositoryType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
-        json = ActionsWorkflowAccessToRepository(
-            **{
-                "access_level": access_level,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsWorkflowAccessToRepository, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2467,24 +3211,41 @@ class ActionsClient:
             response_model=SelectedActions,
         )
 
+    @overload
+    def set_allowed_actions_repository(
+        self, owner: str, repo: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+    ) -> "Response":
+        ...
+
+    @overload
     def set_allowed_actions_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         github_owned_allowed: Union[Unset, bool] = UNSET,
         verified_allowed: Union[Unset, bool] = UNSET,
         patterns_allowed: Union[Unset, List[str]] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_allowed_actions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, SelectedActionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
-        json = SelectedActions(
-            **{
-                "github_owned_allowed": github_owned_allowed,
-                "verified_allowed": verified_allowed,
-                "patterns_allowed": patterns_allowed,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(SelectedActions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2492,24 +3253,41 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
+    async def async_set_allowed_actions_repository(
+        self, owner: str, repo: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_allowed_actions_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         github_owned_allowed: Union[Unset, bool] = UNSET,
         verified_allowed: Union[Unset, bool] = UNSET,
         patterns_allowed: Union[Unset, List[str]] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_allowed_actions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, SelectedActionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
-        json = SelectedActions(
-            **{
-                "github_owned_allowed": github_owned_allowed,
-                "verified_allowed": verified_allowed,
-                "patterns_allowed": patterns_allowed,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(SelectedActions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2543,22 +3321,40 @@ class ActionsClient:
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
+    @overload
+    def set_github_actions_default_workflow_permissions_repository(
+        self, owner: str, repo: str, *, data: ActionsSetDefaultWorkflowPermissionsType
+    ) -> "Response":
+        ...
+
+    @overload
     def set_github_actions_default_workflow_permissions_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
     ) -> "Response":
+        ...
+
+    def set_github_actions_default_workflow_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
-        json = ActionsSetDefaultWorkflowPermissions(
-            **{
-                "default_workflow_permissions": default_workflow_permissions,
-                "can_approve_pull_request_reviews": can_approve_pull_request_reviews,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2567,22 +3363,40 @@ class ActionsClient:
             error_models={},
         )
 
+    @overload
+    async def async_set_github_actions_default_workflow_permissions_repository(
+        self, owner: str, repo: str, *, data: ActionsSetDefaultWorkflowPermissionsType
+    ) -> "Response":
+        ...
+
+    @overload
     async def async_set_github_actions_default_workflow_permissions_repository(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_set_github_actions_default_workflow_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
-        json = ActionsSetDefaultWorkflowPermissions(
-            **{
-                "default_workflow_permissions": default_workflow_permissions,
-                "can_approve_pull_request_reviews": can_approve_pull_request_reviews,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2799,21 +3613,48 @@ class ActionsClient:
             },
         )
 
+    @overload
     def set_custom_labels_for_self_hosted_runner_for_repo(
         self,
         owner: str,
         repo: str,
         runner_id: int,
         *,
+        data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    def set_custom_labels_for_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    def set_custom_labels_for_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2826,21 +3667,48 @@ class ActionsClient:
             },
         )
 
+    @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
         self,
         owner: str,
         repo: str,
         runner_id: int,
         *,
+        data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    async def async_set_custom_labels_for_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    async def async_set_custom_labels_for_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2853,21 +3721,48 @@ class ActionsClient:
             },
         )
 
+    @overload
     def add_custom_labels_to_self_hosted_runner_for_repo(
         self,
         owner: str,
         repo: str,
         runner_id: int,
         *,
+        data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    def add_custom_labels_to_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    def add_custom_labels_to_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2880,21 +3775,48 @@ class ActionsClient:
             },
         )
 
+    @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
         self,
         owner: str,
         repo: str,
         runner_id: int,
         *,
+        data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    @overload
+    async def async_add_custom_labels_to_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Unset = UNSET,
         labels: List[str],
+    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+        ...
+
+    async def async_add_custom_labels_to_self_hosted_runner_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        runner_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        json = ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(
-            **{
-                "labels": labels,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3549,25 +4471,52 @@ class ActionsClient:
             response_model=List[PendingDeployment],
         )
 
+    @overload
     def review_pending_deployments_for_run(
         self,
         owner: str,
         repo: str,
         run_id: int,
         *,
+        data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
+    ) -> "Response[List[Deployment]]":
+        ...
+
+    @overload
+    def review_pending_deployments_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Unset = UNSET,
         environment_ids: List[int],
         state: Literal["approved", "rejected"],
         comment: str,
     ) -> "Response[List[Deployment]]":
+        ...
+
+    def review_pending_deployments_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[List[Deployment]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
-        json = ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(
-            **{
-                "environment_ids": environment_ids,
-                "state": state,
-                "comment": comment,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3575,6 +4524,31 @@ class ActionsClient:
             json=exclude_unset(json),
             response_model=List[Deployment],
         )
+
+    @overload
+    async def async_review_pending_deployments_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
+    ) -> "Response[List[Deployment]]":
+        ...
+
+    @overload
+    async def async_review_pending_deployments_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Unset = UNSET,
+        environment_ids: List[int],
+        state: Literal["approved", "rejected"],
+        comment: str,
+    ) -> "Response[List[Deployment]]":
+        ...
 
     async def async_review_pending_deployments_for_run(
         self,
@@ -3582,19 +4556,21 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        environment_ids: List[int],
-        state: Literal["approved", "rejected"],
-        comment: str,
+        data: Union[
+            Unset, ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[List[Deployment]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
-        json = ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(
-            **{
-                "environment_ids": environment_ids,
-                "state": state,
-                "comment": comment,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3603,19 +4579,52 @@ class ActionsClient:
             response_model=List[Deployment],
         )
 
+    @overload
     def re_run_workflow(
         self,
         owner: str,
         repo: str,
         run_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+        ...
+
+    @overload
+    def re_run_workflow(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Unset = UNSET,
+        enable_debug_logging: Union[Unset, bool] = False,
+    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+        ...
+
+    def re_run_workflow(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3624,19 +4633,52 @@ class ActionsClient:
             response_model=ReposOwnerRepoActionsRunsRunIdRerunPostResponse201,
         )
 
+    @overload
     async def async_re_run_workflow(
         self,
         owner: str,
         repo: str,
         run_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+        ...
+
+    @overload
+    async def async_re_run_workflow(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Unset = UNSET,
+        enable_debug_logging: Union[Unset, bool] = False,
+    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+        ...
+
+    async def async_re_run_workflow(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3645,20 +4687,54 @@ class ActionsClient:
             response_model=ReposOwnerRepoActionsRunsRunIdRerunPostResponse201,
         )
 
+    @overload
     def re_run_workflow_failed_jobs(
         self,
         owner: str,
         repo: str,
         run_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
         ] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def re_run_workflow_failed_jobs(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Unset = UNSET,
+        enable_debug_logging: Union[Unset, bool] = False,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def re_run_workflow_failed_jobs(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Union[
+            Unset,
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3667,20 +4743,54 @@ class ActionsClient:
             response_model=EmptyObject,
         )
 
+    @overload
     async def async_re_run_workflow_failed_jobs(
         self,
         owner: str,
         repo: str,
         run_id: int,
         *,
-        body: Union[
+        data: Union[
             Unset,
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
         ] = UNSET,
     ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_re_run_workflow_failed_jobs(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Unset = UNSET,
+        enable_debug_logging: Union[Unset, bool] = False,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_re_run_workflow_failed_jobs(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Union[
+            Unset,
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3813,23 +4923,47 @@ class ActionsClient:
             response_model=ActionsSecret,
         )
 
+    @overload
     def create_or_update_repo_secret(
         self,
         owner: str,
         repo: str,
         secret_name: str,
         *,
+        data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
+    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+        ...
+
+    @overload
+    def create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+        ...
+
+    def create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
-        json = ReposOwnerRepoActionsSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3838,23 +4972,47 @@ class ActionsClient:
             response_model=ReposOwnerRepoActionsSecretsSecretNamePutResponse201,
         )
 
+    @overload
     async def async_create_or_update_repo_secret(
         self,
         owner: str,
         repo: str,
         secret_name: str,
         *,
+        data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
+    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+        ...
+
+    @overload
+    async def async_create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+        ...
+
+    async def async_create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
-        json = ReposOwnerRepoActionsSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3985,26 +5143,54 @@ class ActionsClient:
             url,
         )
 
+    @overload
     def create_workflow_dispatch(
         self,
         owner: str,
         repo: str,
         workflow_id: Union[int, str],
         *,
+        data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def create_workflow_dispatch(
+        self,
+        owner: str,
+        repo: str,
+        workflow_id: Union[int, str],
+        *,
+        data: Unset = UNSET,
         ref: str,
         inputs: Union[
             Unset,
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    def create_workflow_dispatch(
+        self,
+        owner: str,
+        repo: str,
+        workflow_id: Union[int, str],
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
-        json = ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(
-            **{
-                "ref": ref,
-                "inputs": inputs,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4012,26 +5198,54 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
+    @overload
     async def async_create_workflow_dispatch(
         self,
         owner: str,
         repo: str,
         workflow_id: Union[int, str],
         *,
+        data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_create_workflow_dispatch(
+        self,
+        owner: str,
+        repo: str,
+        workflow_id: Union[int, str],
+        *,
+        data: Unset = UNSET,
         ref: str,
         inputs: Union[
             Unset,
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
         ] = UNSET,
     ) -> "Response":
+        ...
+
+    async def async_create_workflow_dispatch(
+        self,
+        owner: str,
+        repo: str,
+        workflow_id: Union[int, str],
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
-        json = ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(
-            **{
-                "ref": ref,
-                "inputs": inputs,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4295,25 +5509,53 @@ class ActionsClient:
             response_model=ActionsSecret,
         )
 
+    @overload
     def create_or_update_environment_secret(
         self,
         repository_id: int,
         environment_name: str,
         secret_name: str,
         *,
+        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_or_update_environment_secret(
+        self,
+        repository_id: int,
+        environment_name: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: str,
         key_id: str,
     ) -> "Response[EmptyObject]":
+        ...
+
+    def create_or_update_environment_secret(
+        self,
+        repository_id: int,
+        environment_name: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset,
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
-        json = (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody(
-                **{
-                    "encrypted_value": encrypted_value,
-                    "key_id": key_id,
-                }
-            ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -4322,25 +5564,53 @@ class ActionsClient:
             response_model=EmptyObject,
         )
 
+    @overload
     async def async_create_or_update_environment_secret(
         self,
         repository_id: int,
         environment_name: str,
         secret_name: str,
         *,
+        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_or_update_environment_secret(
+        self,
+        repository_id: int,
+        environment_name: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: str,
         key_id: str,
     ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_or_update_environment_secret(
+        self,
+        repository_id: int,
+        environment_name: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset,
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
-        json = (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody(
-                **{
-                    "encrypted_value": encrypted_value,
-                    "key_id": key_id,
-                }
-            ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",

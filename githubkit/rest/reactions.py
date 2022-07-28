@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -104,6 +106,7 @@ class ReactionsClient:
             response_model=List[Reaction],
         )
 
+    @overload
     def create_for_team_discussion_comment_in_org(
         self,
         org: str,
@@ -111,19 +114,49 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_team_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_team_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(
-            by_alias=True
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -132,6 +165,7 @@ class ReactionsClient:
             response_model=Reaction,
         )
 
+    @overload
     async def async_create_for_team_discussion_comment_in_org(
         self,
         org: str,
@@ -139,19 +173,49 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_team_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_team_discussion_comment_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(
-            by_alias=True
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -248,23 +312,52 @@ class ReactionsClient:
             response_model=List[Reaction],
         )
 
+    @overload
     def create_for_team_discussion_in_org(
         self,
         org: str,
         team_slug: str,
         discussion_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_team_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_team_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -273,23 +366,52 @@ class ReactionsClient:
             response_model=Reaction,
         )
 
+    @overload
     async def async_create_for_team_discussion_in_org(
         self,
         org: str,
         team_slug: str,
         discussion_number: int,
         *,
+        data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_team_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_team_discussion_in_org(
+        self,
+        org: str,
+        team_slug: str,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
-        json = OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -390,23 +512,50 @@ class ReactionsClient:
             },
         )
 
+    @overload
     def create_for_commit_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoCommentsCommentIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
-        json = ReposOwnerRepoCommentsCommentIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCommentsCommentIdReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -418,23 +567,50 @@ class ReactionsClient:
             },
         )
 
+    @overload
     async def async_create_for_commit_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_commit_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoCommentsCommentIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
-        json = ReposOwnerRepoCommentsCommentIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCommentsCommentIdReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -538,23 +714,52 @@ class ReactionsClient:
             },
         )
 
+    @overload
     def create_for_issue_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_issue_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_issue_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
-        json = ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -566,23 +771,52 @@ class ReactionsClient:
             },
         )
 
+    @overload
     async def async_create_for_issue_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_issue_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_issue_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
-        json = ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -688,23 +922,50 @@ class ReactionsClient:
             },
         )
 
+    @overload
     def create_for_issue(
         self,
         owner: str,
         repo: str,
         issue_number: int,
         *,
+        data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
-        json = ReposOwnerRepoIssuesIssueNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoIssuesIssueNumberReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -716,23 +977,50 @@ class ReactionsClient:
             },
         )
 
+    @overload
     async def async_create_for_issue(
         self,
         owner: str,
         repo: str,
         issue_number: int,
         *,
+        data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
-        json = ReposOwnerRepoIssuesIssueNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoIssuesIssueNumberReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -836,23 +1124,50 @@ class ReactionsClient:
             },
         )
 
+    @overload
     def create_for_pull_request_review_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_pull_request_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_pull_request_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
-        json = ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -864,23 +1179,50 @@ class ReactionsClient:
             },
         )
 
+    @overload
     async def async_create_for_pull_request_review_comment(
         self,
         owner: str,
         repo: str,
         comment_id: int,
         *,
+        data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_pull_request_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_pull_request_review_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
-        json = ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -982,21 +1324,48 @@ class ReactionsClient:
             },
         )
 
+    @overload
     def create_for_release(
         self,
         owner: str,
         repo: str,
         release_id: int,
         *,
+        data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
+    ) -> "Response[Reaction]":
+        ...
+
+    def create_for_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
-        json = ReposOwnerRepoReleasesReleaseIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesReleaseIdReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1008,21 +1377,48 @@ class ReactionsClient:
             },
         )
 
+    @overload
     async def async_create_for_release(
         self,
         owner: str,
         repo: str,
         release_id: int,
         *,
+        data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Unset = UNSET,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
+    ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_release(
+        self,
+        owner: str,
+        repo: str,
+        release_id: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
-        json = ReposOwnerRepoReleasesReleaseIdReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoReleasesReleaseIdReactionsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1120,25 +1516,54 @@ class ReactionsClient:
             response_model=List[Reaction],
         )
 
+    @overload
     def create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
         discussion_number: int,
         comment_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_team_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_team_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(
-            by_alias=True
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1147,25 +1572,54 @@ class ReactionsClient:
             response_model=Reaction,
         )
 
+    @overload
     async def async_create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
         discussion_number: int,
         comment_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_team_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_team_discussion_comment_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        comment_number: int,
+        *,
+        data: Union[
+            Unset,
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(
-            by_alias=True
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
+            json,
         )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1230,22 +1684,49 @@ class ReactionsClient:
             response_model=List[Reaction],
         )
 
+    @overload
     def create_for_team_discussion_legacy(
         self,
         team_id: int,
         discussion_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    def create_for_team_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    def create_for_team_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1254,22 +1735,49 @@ class ReactionsClient:
             response_model=Reaction,
         )
 
+    @overload
     async def async_create_for_team_discussion_legacy(
         self,
         team_id: int,
         discussion_number: int,
         *,
+        data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
+    ) -> "Response[Reaction]":
+        ...
+
+    @overload
+    async def async_create_for_team_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Unset = UNSET,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
     ) -> "Response[Reaction]":
+        ...
+
+    async def async_create_for_team_discussion_legacy(
+        self,
+        team_id: int,
+        discussion_number: int,
+        *,
+        data: Union[
+            Unset, TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
-        json = TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(
-            **{
-                "content": content,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

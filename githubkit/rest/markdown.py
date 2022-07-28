@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Union, Literal
+from typing import TYPE_CHECKING, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -21,22 +23,32 @@ class MarkdownClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
+    @overload
+    def render(self, *, data: MarkdownPostBodyType) -> "Response[str]":
+        ...
+
+    @overload
     def render(
         self,
         *,
+        data: Unset = UNSET,
         text: str,
         mode: Union[Unset, Literal["markdown", "gfm"]] = "markdown",
         context: Union[Unset, str] = UNSET,
     ) -> "Response[str]":
+        ...
+
+    def render(
+        self, *, data: Union[Unset, MarkdownPostBodyType] = UNSET, **kwargs
+    ) -> "Response[str]":
         url = "/markdown"
 
-        json = MarkdownPostBody(
-            **{
-                "text": text,
-                "mode": mode,
-                "context": context,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(MarkdownPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -45,22 +57,32 @@ class MarkdownClient:
             response_model=str,
         )
 
+    @overload
+    async def async_render(self, *, data: MarkdownPostBodyType) -> "Response[str]":
+        ...
+
+    @overload
     async def async_render(
         self,
         *,
+        data: Unset = UNSET,
         text: str,
         mode: Union[Unset, Literal["markdown", "gfm"]] = "markdown",
         context: Union[Unset, str] = UNSET,
     ) -> "Response[str]":
+        ...
+
+    async def async_render(
+        self, *, data: Union[Unset, MarkdownPostBodyType] = UNSET, **kwargs
+    ) -> "Response[str]":
         url = "/markdown"
 
-        json = MarkdownPostBody(
-            **{
-                "text": text,
-                "mode": mode,
-                "context": context,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(MarkdownPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -69,14 +91,17 @@ class MarkdownClient:
             response_model=str,
         )
 
-    def render_raw(
-        self,
-        *,
-        body: Union[Unset, str] = UNSET,
-    ) -> "Response[str]":
+    def render_raw(self, *, data: str, **kwargs) -> "Response[str]":
         url = "/markdown/raw"
 
-        content = body
+        if not kwargs:
+            kwargs = UNSET
+
+        content = kwargs if data is UNSET else data
+        content = parse_obj_as(str, content)
+        content = (
+            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+        )
 
         return self._github.request(
             "POST",
@@ -85,14 +110,17 @@ class MarkdownClient:
             response_model=str,
         )
 
-    async def async_render_raw(
-        self,
-        *,
-        body: Union[Unset, str] = UNSET,
-    ) -> "Response[str]":
+    async def async_render_raw(self, *, data: str, **kwargs) -> "Response[str]":
         url = "/markdown/raw"
 
-        content = body
+        if not kwargs:
+            kwargs = UNSET
+
+        content = kwargs if data is UNSET else data
+        content = parse_obj_as(str, content)
+        content = (
+            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+        )
 
         return await self._github.arequest(
             "POST",

@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union
+from typing import TYPE_CHECKING, List, Union, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -201,9 +203,17 @@ class OauthAuthorizationsClient:
             },
         )
 
+    @overload
+    def create_authorization(
+        self, *, data: Union[Unset, AuthorizationsPostBodyType] = UNSET
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
     def create_authorization(
         self,
         *,
+        data: Unset = UNSET,
         scopes: Union[Unset, Union[List[str], None]] = UNSET,
         note: Union[Unset, str] = UNSET,
         note_url: Union[Unset, str] = UNSET,
@@ -211,18 +221,19 @@ class OauthAuthorizationsClient:
         client_secret: Union[Unset, str] = UNSET,
         fingerprint: Union[Unset, str] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    def create_authorization(
+        self, *, data: Union[Unset, AuthorizationsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Authorization]":
         url = "/authorizations"
 
-        json = AuthorizationsPostBody(
-            **{
-                "scopes": scopes,
-                "note": note,
-                "note_url": note_url,
-                "client_id": client_id,
-                "client_secret": client_secret,
-                "fingerprint": fingerprint,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -237,9 +248,17 @@ class OauthAuthorizationsClient:
             },
         )
 
+    @overload
+    async def async_create_authorization(
+        self, *, data: Union[Unset, AuthorizationsPostBodyType] = UNSET
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
     async def async_create_authorization(
         self,
         *,
+        data: Unset = UNSET,
         scopes: Union[Unset, Union[List[str], None]] = UNSET,
         note: Union[Unset, str] = UNSET,
         note_url: Union[Unset, str] = UNSET,
@@ -247,18 +266,19 @@ class OauthAuthorizationsClient:
         client_secret: Union[Unset, str] = UNSET,
         fingerprint: Union[Unset, str] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    async def async_create_authorization(
+        self, *, data: Union[Unset, AuthorizationsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[Authorization]":
         url = "/authorizations"
 
-        json = AuthorizationsPostBody(
-            **{
-                "scopes": scopes,
-                "note": note,
-                "note_url": note_url,
-                "client_id": client_id,
-                "client_secret": client_secret,
-                "fingerprint": fingerprint,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -272,28 +292,42 @@ class OauthAuthorizationsClient:
                 "401": BasicError,
             },
         )
+
+    @overload
+    def get_or_create_authorization_for_app(
+        self, client_id: str, *, data: AuthorizationsClientsClientIdPutBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
+    def get_or_create_authorization_for_app(
+        self,
+        client_id: str,
+        *,
+        data: Unset = UNSET,
+        client_secret: str,
+        scopes: Union[Unset, Union[List[str], None]] = UNSET,
+        note: Union[Unset, str] = UNSET,
+        note_url: Union[Unset, str] = UNSET,
+        fingerprint: Union[Unset, str] = UNSET,
+    ) -> "Response[Authorization]":
+        ...
 
     def get_or_create_authorization_for_app(
         self,
         client_id: str,
         *,
-        client_secret: str,
-        scopes: Union[Unset, Union[List[str], None]] = UNSET,
-        note: Union[Unset, str] = UNSET,
-        note_url: Union[Unset, str] = UNSET,
-        fingerprint: Union[Unset, str] = UNSET,
+        data: Union[Unset, AuthorizationsClientsClientIdPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Authorization]":
         url = f"/authorizations/clients/{client_id}"
 
-        json = AuthorizationsClientsClientIdPutBody(
-            **{
-                "client_secret": client_secret,
-                "scopes": scopes,
-                "note": note,
-                "note_url": note_url,
-                "fingerprint": fingerprint,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsClientsClientIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -307,27 +341,41 @@ class OauthAuthorizationsClient:
             },
         )
 
+    @overload
+    async def async_get_or_create_authorization_for_app(
+        self, client_id: str, *, data: AuthorizationsClientsClientIdPutBodyType
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
     async def async_get_or_create_authorization_for_app(
         self,
         client_id: str,
         *,
+        data: Unset = UNSET,
         client_secret: str,
         scopes: Union[Unset, Union[List[str], None]] = UNSET,
         note: Union[Unset, str] = UNSET,
         note_url: Union[Unset, str] = UNSET,
         fingerprint: Union[Unset, str] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    async def async_get_or_create_authorization_for_app(
+        self,
+        client_id: str,
+        *,
+        data: Union[Unset, AuthorizationsClientsClientIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Authorization]":
         url = f"/authorizations/clients/{client_id}"
 
-        json = AuthorizationsClientsClientIdPutBody(
-            **{
-                "client_secret": client_secret,
-                "scopes": scopes,
-                "note": note,
-                "note_url": note_url,
-                "fingerprint": fingerprint,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsClientsClientIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -340,27 +388,47 @@ class OauthAuthorizationsClient:
                 "401": BasicError,
             },
         )
+
+    @overload
+    def get_or_create_authorization_for_app_and_fingerprint(
+        self,
+        client_id: str,
+        fingerprint: str,
+        *,
+        data: AuthorizationsClientsClientIdFingerprintPutBodyType,
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
+    def get_or_create_authorization_for_app_and_fingerprint(
+        self,
+        client_id: str,
+        fingerprint: str,
+        *,
+        data: Unset = UNSET,
+        client_secret: str,
+        scopes: Union[Unset, Union[List[str], None]] = UNSET,
+        note: Union[Unset, str] = UNSET,
+        note_url: Union[Unset, str] = UNSET,
+    ) -> "Response[Authorization]":
+        ...
 
     def get_or_create_authorization_for_app_and_fingerprint(
         self,
         client_id: str,
         fingerprint: str,
         *,
-        client_secret: str,
-        scopes: Union[Unset, Union[List[str], None]] = UNSET,
-        note: Union[Unset, str] = UNSET,
-        note_url: Union[Unset, str] = UNSET,
+        data: Union[Unset, AuthorizationsClientsClientIdFingerprintPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Authorization]":
         url = f"/authorizations/clients/{client_id}/{fingerprint}"
 
-        json = AuthorizationsClientsClientIdFingerprintPutBody(
-            **{
-                "client_secret": client_secret,
-                "scopes": scopes,
-                "note": note,
-                "note_url": note_url,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsClientsClientIdFingerprintPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -372,26 +440,46 @@ class OauthAuthorizationsClient:
             },
         )
 
+    @overload
     async def async_get_or_create_authorization_for_app_and_fingerprint(
         self,
         client_id: str,
         fingerprint: str,
         *,
+        data: AuthorizationsClientsClientIdFingerprintPutBodyType,
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
+    async def async_get_or_create_authorization_for_app_and_fingerprint(
+        self,
+        client_id: str,
+        fingerprint: str,
+        *,
+        data: Unset = UNSET,
         client_secret: str,
         scopes: Union[Unset, Union[List[str], None]] = UNSET,
         note: Union[Unset, str] = UNSET,
         note_url: Union[Unset, str] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    async def async_get_or_create_authorization_for_app_and_fingerprint(
+        self,
+        client_id: str,
+        fingerprint: str,
+        *,
+        data: Union[Unset, AuthorizationsClientsClientIdFingerprintPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Authorization]":
         url = f"/authorizations/clients/{client_id}/{fingerprint}"
 
-        json = AuthorizationsClientsClientIdFingerprintPutBody(
-            **{
-                "client_secret": client_secret,
-                "scopes": scopes,
-                "note": note,
-                "note_url": note_url,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsClientsClientIdFingerprintPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -465,10 +553,21 @@ class OauthAuthorizationsClient:
             },
         )
 
+    @overload
     def update_authorization(
         self,
         authorization_id: int,
         *,
+        data: Union[Unset, AuthorizationsAuthorizationIdPatchBodyType] = UNSET,
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
+    def update_authorization(
+        self,
+        authorization_id: int,
+        *,
+        data: Unset = UNSET,
         scopes: Union[Unset, Union[List[str], None]] = UNSET,
         add_scopes: Union[Unset, List[str]] = UNSET,
         remove_scopes: Union[Unset, List[str]] = UNSET,
@@ -476,18 +575,23 @@ class OauthAuthorizationsClient:
         note_url: Union[Unset, str] = UNSET,
         fingerprint: Union[Unset, str] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    def update_authorization(
+        self,
+        authorization_id: int,
+        *,
+        data: Union[Unset, AuthorizationsAuthorizationIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Authorization]":
         url = f"/authorizations/{authorization_id}"
 
-        json = AuthorizationsAuthorizationIdPatchBody(
-            **{
-                "scopes": scopes,
-                "add_scopes": add_scopes,
-                "remove_scopes": remove_scopes,
-                "note": note,
-                "note_url": note_url,
-                "fingerprint": fingerprint,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsAuthorizationIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -499,10 +603,21 @@ class OauthAuthorizationsClient:
             },
         )
 
+    @overload
     async def async_update_authorization(
         self,
         authorization_id: int,
         *,
+        data: Union[Unset, AuthorizationsAuthorizationIdPatchBodyType] = UNSET,
+    ) -> "Response[Authorization]":
+        ...
+
+    @overload
+    async def async_update_authorization(
+        self,
+        authorization_id: int,
+        *,
+        data: Unset = UNSET,
         scopes: Union[Unset, Union[List[str], None]] = UNSET,
         add_scopes: Union[Unset, List[str]] = UNSET,
         remove_scopes: Union[Unset, List[str]] = UNSET,
@@ -510,18 +625,23 @@ class OauthAuthorizationsClient:
         note_url: Union[Unset, str] = UNSET,
         fingerprint: Union[Unset, str] = UNSET,
     ) -> "Response[Authorization]":
+        ...
+
+    async def async_update_authorization(
+        self,
+        authorization_id: int,
+        *,
+        data: Union[Unset, AuthorizationsAuthorizationIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Authorization]":
         url = f"/authorizations/{authorization_id}"
 
-        json = AuthorizationsAuthorizationIdPatchBody(
-            **{
-                "scopes": scopes,
-                "add_scopes": add_scopes,
-                "remove_scopes": remove_scopes,
-                "note": note,
-                "note_url": note_url,
-                "fingerprint": fingerprint,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(AuthorizationsAuthorizationIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

@@ -6,7 +6,9 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, List, Union, Literal
+from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -15,6 +17,7 @@ from .types import (
     GistsGistIdPatchBodyType,
     GistsPostBodyPropFilesType,
     GistsGistIdCommentsPostBodyType,
+    GistsGistIdPatchBodyPropFilesType,
     GistsGistIdCommentsCommentIdPatchBodyType,
 )
 from .models import (
@@ -89,22 +92,32 @@ class GistsClient:
             },
         )
 
+    @overload
+    def create(self, *, data: GistsPostBodyType) -> "Response[GistSimple]":
+        ...
+
+    @overload
     def create(
         self,
         *,
+        data: Unset = UNSET,
         description: Union[Unset, str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Union[Unset, Union[bool, Literal["true", "false"]]] = UNSET,
     ) -> "Response[GistSimple]":
+        ...
+
+    def create(
+        self, *, data: Union[Unset, GistsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[GistSimple]":
         url = "/gists"
 
-        json = GistsPostBody(
-            **{
-                "description": description,
-                "files": files,
-                "public": public,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(GistsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -118,22 +131,32 @@ class GistsClient:
             },
         )
 
+    @overload
+    async def async_create(self, *, data: GistsPostBodyType) -> "Response[GistSimple]":
+        ...
+
+    @overload
     async def async_create(
         self,
         *,
+        data: Unset = UNSET,
         description: Union[Unset, str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Union[Unset, Union[bool, Literal["true", "false"]]] = UNSET,
     ) -> "Response[GistSimple]":
+        ...
+
+    async def async_create(
+        self, *, data: Union[Unset, GistsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[GistSimple]":
         url = "/gists"
 
-        json = GistsPostBody(
-            **{
-                "description": description,
-                "files": files,
-                "public": public,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(GistsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -309,15 +332,38 @@ class GistsClient:
             },
         )
 
+    @overload
+    def update(
+        self, gist_id: str, *, data: Union[GistsGistIdPatchBodyType, None, Any, Any]
+    ) -> "Response[GistSimple]":
+        ...
+
+    @overload
     def update(
         self,
         gist_id: str,
         *,
-        body: Union[GistsGistIdPatchBodyType, None, Any, Any],
+        data: Unset = UNSET,
+        description: Union[Unset, str] = UNSET,
+        files: Union[Unset, GistsGistIdPatchBodyPropFilesType] = UNSET,
+    ) -> "Response[GistSimple]":
+        ...
+
+    def update(
+        self,
+        gist_id: str,
+        *,
+        data: Union[Unset, Union[GistsGistIdPatchBodyType, None, Any, Any]] = UNSET,
+        **kwargs,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[GistsGistIdPatchBody, None, Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -330,15 +376,38 @@ class GistsClient:
             },
         )
 
+    @overload
+    async def async_update(
+        self, gist_id: str, *, data: Union[GistsGistIdPatchBodyType, None, Any, Any]
+    ) -> "Response[GistSimple]":
+        ...
+
+    @overload
     async def async_update(
         self,
         gist_id: str,
         *,
-        body: Union[GistsGistIdPatchBodyType, None, Any, Any],
+        data: Unset = UNSET,
+        description: Union[Unset, str] = UNSET,
+        files: Union[Unset, GistsGistIdPatchBodyPropFilesType] = UNSET,
+    ) -> "Response[GistSimple]":
+        ...
+
+    async def async_update(
+        self,
+        gist_id: str,
+        *,
+        data: Union[Unset, Union[GistsGistIdPatchBodyType, None, Any, Any]] = UNSET,
+        **kwargs,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[GistsGistIdPatchBody, None, Any, Any], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -399,19 +468,37 @@ class GistsClient:
             },
         )
 
+    @overload
+    def create_comment(
+        self, gist_id: str, *, data: GistsGistIdCommentsPostBodyType
+    ) -> "Response[GistComment]":
+        ...
+
+    @overload
     def create_comment(
         self,
         gist_id: str,
         *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[GistComment]":
+        ...
+
+    def create_comment(
+        self,
+        gist_id: str,
+        *,
+        data: Union[Unset, GistsGistIdCommentsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
 
-        json = GistsGistIdCommentsPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(GistsGistIdCommentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -424,19 +511,37 @@ class GistsClient:
             },
         )
 
+    @overload
+    async def async_create_comment(
+        self, gist_id: str, *, data: GistsGistIdCommentsPostBodyType
+    ) -> "Response[GistComment]":
+        ...
+
+    @overload
     async def async_create_comment(
         self,
         gist_id: str,
         *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[GistComment]":
+        ...
+
+    async def async_create_comment(
+        self,
+        gist_id: str,
+        *,
+        data: Union[Unset, GistsGistIdCommentsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
 
-        json = GistsGistIdCommentsPostBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(GistsGistIdCommentsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -515,20 +620,43 @@ class GistsClient:
             },
         )
 
+    @overload
     def update_comment(
         self,
         gist_id: str,
         comment_id: int,
         *,
+        data: GistsGistIdCommentsCommentIdPatchBodyType,
+    ) -> "Response[GistComment]":
+        ...
+
+    @overload
+    def update_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[GistComment]":
+        ...
+
+    def update_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+        *,
+        data: Union[Unset, GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        json = GistsGistIdCommentsCommentIdPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(GistsGistIdCommentsCommentIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -540,20 +668,43 @@ class GistsClient:
             },
         )
 
+    @overload
     async def async_update_comment(
         self,
         gist_id: str,
         comment_id: int,
         *,
+        data: GistsGistIdCommentsCommentIdPatchBodyType,
+    ) -> "Response[GistComment]":
+        ...
+
+    @overload
+    async def async_update_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+        *,
+        data: Unset = UNSET,
         body: str,
+    ) -> "Response[GistComment]":
+        ...
+
+    async def async_update_comment(
+        self,
+        gist_id: str,
+        comment_id: int,
+        *,
+        data: Union[Unset, GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        json = GistsGistIdCommentsCommentIdPatchBody(
-            **{
-                "body": body,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(GistsGistIdCommentsCommentIdPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

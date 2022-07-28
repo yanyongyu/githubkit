@@ -17,8 +17,6 @@ if TYPE_CHECKING:
 
 
 class RestNamespace:
-    __slots__ = ("_github",)
-
     def __init__(self, github: "GitHubCore"):
         self._github = github
 

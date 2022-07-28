@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union
+from typing import TYPE_CHECKING, List, Union, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -15,6 +17,7 @@ from .types import (
     ReposOwnerRepoCodespacesPostBodyType,
     UserCodespacesCodespaceNamePatchBodyType,
     UserCodespacesSecretsSecretNamePutBodyType,
+    UserCodespacesPostBodyOneof1PropPullRequestType,
     ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
     ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
@@ -246,16 +249,52 @@ class CodespacesClient:
             },
         )
 
+    @overload
     def create_with_repo_for_authenticated_user(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoCodespacesPostBodyType, None],
+        data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    def create_with_repo_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        ref: Union[Unset, str] = UNSET,
+        location: Union[Unset, str] = UNSET,
+        client_ip: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        multi_repo_permissions_opt_out: Union[Unset, bool] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+        display_name: Union[Unset, str] = UNSET,
+        retention_period_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    def create_with_repo_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoCodespacesPostBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -269,16 +308,52 @@ class CodespacesClient:
             },
         )
 
+    @overload
     async def async_create_with_repo_for_authenticated_user(
         self,
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoCodespacesPostBodyType, None],
+        data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    async def async_create_with_repo_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        ref: Union[Unset, str] = UNSET,
+        location: Union[Unset, str] = UNSET,
+        client_ip: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        multi_repo_permissions_opt_out: Union[Unset, bool] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+        display_name: Union[Unset, str] = UNSET,
+        retention_period_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    async def async_create_with_repo_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
+        **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(Union[ReposOwnerRepoCodespacesPostBody, None], json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -550,23 +625,49 @@ class CodespacesClient:
             response_model=RepoCodespacesSecret,
         )
 
+    @overload
     def create_or_update_repo_secret(
         self,
         owner: str,
         repo: str,
         secret_name: str,
         *,
+        data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
+    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    @overload
+    def create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    def create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        json = ReposOwnerRepoCodespacesSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCodespacesSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -575,23 +676,49 @@ class CodespacesClient:
             response_model=ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201,
         )
 
+    @overload
     async def async_create_or_update_repo_secret(
         self,
         owner: str,
         repo: str,
         secret_name: str,
         *,
+        data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
+    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    @overload
+    async def async_create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    async def async_create_or_update_repo_secret(
+        self,
+        owner: str,
+        repo: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        json = ReposOwnerRepoCodespacesSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoCodespacesSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -626,17 +753,58 @@ class CodespacesClient:
             url,
         )
 
+    @overload
     def create_with_pr_for_authenticated_user(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        body: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
+        data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    def create_with_pr_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        location: Union[Unset, str] = UNSET,
+        client_ip: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        multi_repo_permissions_opt_out: Union[Unset, bool] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+        display_name: Union[Unset, str] = UNSET,
+        retention_period_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    def create_with_pr_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -650,17 +818,58 @@ class CodespacesClient:
             },
         )
 
+    @overload
     async def async_create_with_pr_for_authenticated_user(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        body: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
+        data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    async def async_create_with_pr_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        location: Union[Unset, str] = UNSET,
+        client_ip: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        multi_repo_permissions_opt_out: Union[Unset, bool] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+        display_name: Union[Unset, str] = UNSET,
+        retention_period_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    async def async_create_with_pr_for_authenticated_user(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset, Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -728,14 +937,66 @@ class CodespacesClient:
             },
         )
 
+    @overload
     def create_for_authenticated_user(
         self,
         *,
-        body: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
+        data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    def create_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        repository_id: int,
+        ref: Union[Unset, str] = UNSET,
+        location: Union[Unset, str] = UNSET,
+        client_ip: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        multi_repo_permissions_opt_out: Union[Unset, bool] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+        display_name: Union[Unset, str] = UNSET,
+        retention_period_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    def create_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
+        location: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    def create_for_authenticated_user(
+        self,
+        *,
+        data: Union[
+            Unset,
+            Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -749,14 +1010,66 @@ class CodespacesClient:
             },
         )
 
+    @overload
     async def async_create_for_authenticated_user(
         self,
         *,
-        body: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
+        data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    async def async_create_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        repository_id: int,
+        ref: Union[Unset, str] = UNSET,
+        location: Union[Unset, str] = UNSET,
+        client_ip: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        multi_repo_permissions_opt_out: Union[Unset, bool] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+        display_name: Union[Unset, str] = UNSET,
+        retention_period_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    async def async_create_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
+        location: Union[Unset, str] = UNSET,
+        machine: Union[Unset, str] = UNSET,
+        devcontainer_path: Union[Unset, str] = UNSET,
+        working_directory: Union[Unset, str] = UNSET,
+        idle_timeout_minutes: Union[Unset, int] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    async def async_create_for_authenticated_user(
+        self,
+        *,
+        data: Union[
+            Unset,
+            Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 
-        json = body
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1], json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -854,23 +1167,39 @@ class CodespacesClient:
             response_model=CodespacesSecret,
         )
 
+    @overload
+    def create_or_update_secret_for_authenticated_user(
+        self, secret_name: str, *, data: UserCodespacesSecretsSecretNamePutBodyType
+    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    @overload
     def create_or_update_secret_for_authenticated_user(
         self,
         secret_name: str,
         *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: str,
         selected_repository_ids: Union[Unset, List[str]] = UNSET,
     ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    def create_or_update_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+        *,
+        data: Union[Unset, UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        json = UserCodespacesSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -883,23 +1212,39 @@ class CodespacesClient:
             },
         )
 
+    @overload
+    async def async_create_or_update_secret_for_authenticated_user(
+        self, secret_name: str, *, data: UserCodespacesSecretsSecretNamePutBodyType
+    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    @overload
     async def async_create_or_update_secret_for_authenticated_user(
         self,
         secret_name: str,
         *,
+        data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: str,
         selected_repository_ids: Union[Unset, List[str]] = UNSET,
     ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+        ...
+
+    async def async_create_or_update_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+        *,
+        data: Union[Unset, UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        json = UserCodespacesSecretsSecretNamePutBody(
-            **{
-                "encrypted_value": encrypted_value,
-                "key_id": key_id,
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -970,19 +1315,42 @@ class CodespacesClient:
             },
         )
 
+    @overload
     def set_repositories_for_secret_for_authenticated_user(
         self,
         secret_name: str,
         *,
+        data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_repositories_for_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_repositories_for_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, UserCodespacesSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
-        json = UserCodespacesSecretsSecretNameRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesSecretsSecretNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -996,19 +1364,42 @@ class CodespacesClient:
             },
         )
 
+    @overload
     async def async_set_repositories_for_secret_for_authenticated_user(
         self,
         secret_name: str,
         *,
+        data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_repositories_for_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
         selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_repositories_for_secret_for_authenticated_user(
+        self,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, UserCodespacesSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
-        json = UserCodespacesSecretsSecretNameRepositoriesPutBody(
-            **{
-                "selected_repository_ids": selected_repository_ids,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesSecretsSecretNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1166,23 +1557,42 @@ class CodespacesClient:
             },
         )
 
+    @overload
     def update_for_authenticated_user(
         self,
         codespace_name: str,
         *,
+        data: Union[Unset, UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    def update_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Unset = UNSET,
         machine: Union[Unset, str] = UNSET,
         display_name: Union[Unset, str] = UNSET,
         recent_folders: Union[Unset, List[str]] = UNSET,
     ) -> "Response[Codespace]":
+        ...
+
+    def update_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Union[Unset, UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
-        json = UserCodespacesCodespaceNamePatchBody(
-            **{
-                "machine": machine,
-                "display_name": display_name,
-                "recent_folders": recent_folders,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesCodespaceNamePatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1196,23 +1606,42 @@ class CodespacesClient:
             },
         )
 
+    @overload
     async def async_update_for_authenticated_user(
         self,
         codespace_name: str,
         *,
+        data: Union[Unset, UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+    ) -> "Response[Codespace]":
+        ...
+
+    @overload
+    async def async_update_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Unset = UNSET,
         machine: Union[Unset, str] = UNSET,
         display_name: Union[Unset, str] = UNSET,
         recent_folders: Union[Unset, List[str]] = UNSET,
     ) -> "Response[Codespace]":
+        ...
+
+    async def async_update_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Union[Unset, UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
-        json = UserCodespacesCodespaceNamePatchBody(
-            **{
-                "machine": machine,
-                "display_name": display_name,
-                "recent_folders": recent_folders,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesCodespaceNamePatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

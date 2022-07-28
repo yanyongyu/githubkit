@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -47,22 +49,40 @@ class GitClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
+    @overload
+    def create_blob(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitBlobsPostBodyType
+    ) -> "Response[ShortBlob]":
+        ...
+
+    @overload
     def create_blob(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         content: str,
         encoding: Union[Unset, str] = "utf-8",
     ) -> "Response[ShortBlob]":
+        ...
+
+    def create_blob(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
 
-        json = ReposOwnerRepoGitBlobsPostBody(
-            **{
-                "content": content,
-                "encoding": encoding,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitBlobsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -77,22 +97,40 @@ class GitClient:
             },
         )
 
+    @overload
+    async def async_create_blob(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitBlobsPostBodyType
+    ) -> "Response[ShortBlob]":
+        ...
+
+    @overload
     async def async_create_blob(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         content: str,
         encoding: Union[Unset, str] = "utf-8",
     ) -> "Response[ShortBlob]":
+        ...
+
+    async def async_create_blob(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
 
-        json = ReposOwnerRepoGitBlobsPostBody(
-            **{
-                "content": content,
-                "encoding": encoding,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitBlobsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -145,11 +183,19 @@ class GitClient:
             },
         )
 
+    @overload
+    def create_commit(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitCommitsPostBodyType
+    ) -> "Response[GitCommit]":
+        ...
+
+    @overload
     def create_commit(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         message: str,
         tree: str,
         parents: Union[Unset, List[str]] = UNSET,
@@ -159,18 +205,24 @@ class GitClient:
         ] = UNSET,
         signature: Union[Unset, str] = UNSET,
     ) -> "Response[GitCommit]":
+        ...
+
+    def create_commit(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
 
-        json = ReposOwnerRepoGitCommitsPostBody(
-            **{
-                "message": message,
-                "tree": tree,
-                "parents": parents,
-                "author": author,
-                "committer": committer,
-                "signature": signature,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitCommitsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -183,11 +235,19 @@ class GitClient:
             },
         )
 
+    @overload
+    async def async_create_commit(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitCommitsPostBodyType
+    ) -> "Response[GitCommit]":
+        ...
+
+    @overload
     async def async_create_commit(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         message: str,
         tree: str,
         parents: Union[Unset, List[str]] = UNSET,
@@ -197,18 +257,24 @@ class GitClient:
         ] = UNSET,
         signature: Union[Unset, str] = UNSET,
     ) -> "Response[GitCommit]":
+        ...
+
+    async def async_create_commit(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
 
-        json = ReposOwnerRepoGitCommitsPostBody(
-            **{
-                "message": message,
-                "tree": tree,
-                "parents": parents,
-                "author": author,
-                "committer": committer,
-                "signature": signature,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitCommitsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -333,24 +399,41 @@ class GitClient:
             },
         )
 
+    @overload
+    def create_ref(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitRefsPostBodyType
+    ) -> "Response[GitRef]":
+        ...
+
+    @overload
     def create_ref(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         ref: str,
         sha: str,
         key: Union[Unset, str] = UNSET,
     ) -> "Response[GitRef]":
+        ...
+
+    def create_ref(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitRefsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
 
-        json = ReposOwnerRepoGitRefsPostBody(
-            **{
-                "ref": ref,
-                "sha": sha,
-                "key": key,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitRefsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -362,24 +445,41 @@ class GitClient:
             },
         )
 
+    @overload
+    async def async_create_ref(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitRefsPostBodyType
+    ) -> "Response[GitRef]":
+        ...
+
+    @overload
     async def async_create_ref(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         ref: str,
         sha: str,
         key: Union[Unset, str] = UNSET,
     ) -> "Response[GitRef]":
+        ...
+
+    async def async_create_ref(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitRefsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
 
-        json = ReposOwnerRepoGitRefsPostBody(
-            **{
-                "ref": ref,
-                "sha": sha,
-                "key": key,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitRefsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -423,23 +523,47 @@ class GitClient:
             },
         )
 
+    @overload
     def update_ref(
         self,
         owner: str,
         repo: str,
         ref: str,
         *,
+        data: ReposOwnerRepoGitRefsRefPatchBodyType,
+    ) -> "Response[GitRef]":
+        ...
+
+    @overload
+    def update_ref(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+        *,
+        data: Unset = UNSET,
         sha: str,
         force: Union[Unset, bool] = False,
     ) -> "Response[GitRef]":
+        ...
+
+    def update_ref(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
-        json = ReposOwnerRepoGitRefsRefPatchBody(
-            **{
-                "sha": sha,
-                "force": force,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitRefsRefPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -451,23 +575,47 @@ class GitClient:
             },
         )
 
+    @overload
     async def async_update_ref(
         self,
         owner: str,
         repo: str,
         ref: str,
         *,
+        data: ReposOwnerRepoGitRefsRefPatchBodyType,
+    ) -> "Response[GitRef]":
+        ...
+
+    @overload
+    async def async_update_ref(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+        *,
+        data: Unset = UNSET,
         sha: str,
         force: Union[Unset, bool] = False,
     ) -> "Response[GitRef]":
+        ...
+
+    async def async_update_ref(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
-        json = ReposOwnerRepoGitRefsRefPatchBody(
-            **{
-                "sha": sha,
-                "force": force,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitRefsRefPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -479,28 +627,43 @@ class GitClient:
             },
         )
 
+    @overload
+    def create_tag(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTagsPostBodyType
+    ) -> "Response[GitTag]":
+        ...
+
+    @overload
     def create_tag(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         tag: str,
         message: str,
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
     ) -> "Response[GitTag]":
+        ...
+
+    def create_tag(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitTagsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
-        json = ReposOwnerRepoGitTagsPostBody(
-            **{
-                "tag": tag,
-                "message": message,
-                "object": object_,
-                "type": type,
-                "tagger": tagger,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitTagsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -512,28 +675,43 @@ class GitClient:
             },
         )
 
+    @overload
+    async def async_create_tag(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTagsPostBodyType
+    ) -> "Response[GitTag]":
+        ...
+
+    @overload
     async def async_create_tag(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         tag: str,
         message: str,
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
     ) -> "Response[GitTag]":
+        ...
+
+    async def async_create_tag(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitTagsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
-        json = ReposOwnerRepoGitTagsPostBody(
-            **{
-                "tag": tag,
-                "message": message,
-                "object": object_,
-                "type": type,
-                "tagger": tagger,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitTagsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -579,22 +757,40 @@ class GitClient:
             },
         )
 
+    @overload
+    def create_tree(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTreesPostBodyType
+    ) -> "Response[GitTree]":
+        ...
+
+    @overload
     def create_tree(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Union[Unset, str] = UNSET,
     ) -> "Response[GitTree]":
+        ...
+
+    def create_tree(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitTreesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
 
-        json = ReposOwnerRepoGitTreesPostBody(
-            **{
-                "tree": tree,
-                "base_tree": base_tree,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitTreesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -608,22 +804,40 @@ class GitClient:
             },
         )
 
+    @overload
+    async def async_create_tree(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTreesPostBodyType
+    ) -> "Response[GitTree]":
+        ...
+
+    @overload
     async def async_create_tree(
         self,
         owner: str,
         repo: str,
         *,
+        data: Unset = UNSET,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Union[Unset, str] = UNSET,
     ) -> "Response[GitTree]":
+        ...
+
+    async def async_create_tree(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoGitTreesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
 
-        json = ReposOwnerRepoGitTreesPostBody(
-            **{
-                "tree": tree,
-                "base_tree": base_tree,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoGitTreesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

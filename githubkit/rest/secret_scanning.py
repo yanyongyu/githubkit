@@ -5,7 +5,9 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -286,26 +288,54 @@ class SecretScanningClient:
             },
         )
 
+    @overload
     def update_alert(
         self,
         owner: str,
         repo: str,
         alert_number: int,
         *,
+        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+    ) -> "Response[SecretScanningAlert]":
+        ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Unset = UNSET,
         state: Literal["open", "resolved"],
         resolution: Union[
             Unset,
             Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"],
         ] = UNSET,
     ) -> "Response[SecretScanningAlert]":
+        ...
+
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
-        json = ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(
-            **{
-                "state": state,
-                "resolution": resolution,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -317,26 +347,54 @@ class SecretScanningClient:
             },
         )
 
+    @overload
     async def async_update_alert(
         self,
         owner: str,
         repo: str,
         alert_number: int,
         *,
+        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+    ) -> "Response[SecretScanningAlert]":
+        ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Unset = UNSET,
         state: Literal["open", "resolved"],
         resolution: Union[
             Unset,
             Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"],
         ] = UNSET,
     ) -> "Response[SecretScanningAlert]":
+        ...
+
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
-        json = ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(
-            **{
-                "state": state,
-                "resolution": resolution,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

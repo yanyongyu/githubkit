@@ -6,7 +6,9 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal
+from typing import TYPE_CHECKING, List, Union, Literal, overload
+
+from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
@@ -229,20 +231,33 @@ class ActivityClient:
             },
         )
 
+    @overload
+    def mark_notifications_as_read(
+        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET
+    ) -> "Response[NotificationsPutResponse202]":
+        ...
+
+    @overload
     def mark_notifications_as_read(
         self,
         *,
+        data: Unset = UNSET,
         last_read_at: Union[Unset, datetime] = UNSET,
         read: Union[Unset, bool] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
+        ...
+
+    def mark_notifications_as_read(
+        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET, **kwargs
+    ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
-        json = NotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-                "read": read,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(NotificationsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -255,20 +270,33 @@ class ActivityClient:
             },
         )
 
+    @overload
+    async def async_mark_notifications_as_read(
+        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET
+    ) -> "Response[NotificationsPutResponse202]":
+        ...
+
+    @overload
     async def async_mark_notifications_as_read(
         self,
         *,
+        data: Unset = UNSET,
         last_read_at: Union[Unset, datetime] = UNSET,
         read: Union[Unset, bool] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
+        ...
+
+    async def async_mark_notifications_as_read(
+        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET, **kwargs
+    ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
-        json = NotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-                "read": read,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(NotificationsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -373,19 +401,40 @@ class ActivityClient:
             },
         )
 
+    @overload
     def set_thread_subscription(
         self,
         thread_id: int,
         *,
+        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+    ) -> "Response[ThreadSubscription]":
+        ...
+
+    @overload
+    def set_thread_subscription(
+        self,
+        thread_id: int,
+        *,
+        data: Unset = UNSET,
         ignored: Union[Unset, bool] = False,
+    ) -> "Response[ThreadSubscription]":
+        ...
+
+    def set_thread_subscription(
+        self,
+        thread_id: int,
+        *,
+        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        json = NotificationsThreadsThreadIdSubscriptionPutBody(
-            **{
-                "ignored": ignored,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(NotificationsThreadsThreadIdSubscriptionPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -398,19 +447,40 @@ class ActivityClient:
             },
         )
 
+    @overload
     async def async_set_thread_subscription(
         self,
         thread_id: int,
         *,
+        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+    ) -> "Response[ThreadSubscription]":
+        ...
+
+    @overload
+    async def async_set_thread_subscription(
+        self,
+        thread_id: int,
+        *,
+        data: Unset = UNSET,
         ignored: Union[Unset, bool] = False,
+    ) -> "Response[ThreadSubscription]":
+        ...
+
+    async def async_set_thread_subscription(
+        self,
+        thread_id: int,
+        *,
+        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        json = NotificationsThreadsThreadIdSubscriptionPutBody(
-            **{
-                "ignored": ignored,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(NotificationsThreadsThreadIdSubscriptionPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -593,20 +663,43 @@ class ActivityClient:
             response_model=List[Thread],
         )
 
+    @overload
     def mark_repo_notifications_as_read(
         self,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
+        ...
+
+    @overload
+    def mark_repo_notifications_as_read(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         last_read_at: Union[Unset, datetime] = UNSET,
+    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
+        ...
+
+    def mark_repo_notifications_as_read(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
 
-        json = ReposOwnerRepoNotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoNotificationsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -615,20 +708,43 @@ class ActivityClient:
             response_model=ReposOwnerRepoNotificationsPutResponse202,
         )
 
+    @overload
     async def async_mark_repo_notifications_as_read(
         self,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
+        ...
+
+    @overload
+    async def async_mark_repo_notifications_as_read(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         last_read_at: Union[Unset, datetime] = UNSET,
+    ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
+        ...
+
+    async def async_mark_repo_notifications_as_read(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
 
-        json = ReposOwnerRepoNotificationsPutBody(
-            **{
-                "last_read_at": last_read_at,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoNotificationsPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -759,22 +875,44 @@ class ActivityClient:
             },
         )
 
+    @overload
     def set_repo_subscription(
         self,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+    ) -> "Response[RepositorySubscription]":
+        ...
+
+    @overload
+    def set_repo_subscription(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         subscribed: Union[Unset, bool] = UNSET,
         ignored: Union[Unset, bool] = UNSET,
     ) -> "Response[RepositorySubscription]":
+        ...
+
+    def set_repo_subscription(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        json = ReposOwnerRepoSubscriptionPutBody(
-            **{
-                "subscribed": subscribed,
-                "ignored": ignored,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoSubscriptionPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -783,22 +921,44 @@ class ActivityClient:
             response_model=RepositorySubscription,
         )
 
+    @overload
     async def async_set_repo_subscription(
         self,
         owner: str,
         repo: str,
         *,
+        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+    ) -> "Response[RepositorySubscription]":
+        ...
+
+    @overload
+    async def async_set_repo_subscription(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
         subscribed: Union[Unset, bool] = UNSET,
         ignored: Union[Unset, bool] = UNSET,
     ) -> "Response[RepositorySubscription]":
+        ...
+
+    async def async_set_repo_subscription(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        json = ReposOwnerRepoSubscriptionPutBody(
-            **{
-                "subscribed": subscribed,
-                "ignored": ignored,
-            }
-        ).dict(by_alias=True)
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoSubscriptionPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
