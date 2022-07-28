@@ -1,3 +1,6 @@
+from typing import Union
+
+from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
 
 from ...source import Source
@@ -21,12 +24,17 @@ from .schema import DateTimeSchema as DateTimeSchema
 
 def parse_schema(source: Source, class_name: str) -> SchemaData:
     data = source.data
+    try:
+        data = parse_obj_as(Union[oas.Reference, oas.Schema], data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
+
     if isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        data = source.data
-        class_name = source.pointer.parts[-1]
-    if not isinstance(data, oas.Schema):
-        raise TypeError(f"Expected Schema, got {type(data)} from {source.uri}")
+        try:
+            data = oas.Schema.parse_obj(source.data)
+        except Exception as e:
+            raise TypeError(f"Invalid Schema from {source.uri}") from e
 
     if exist := get_schema(source.uri):
         return exist

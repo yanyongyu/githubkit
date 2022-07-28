@@ -7,7 +7,7 @@ from .endpoints import EndpointData
 from .schemas import SchemaData, ModelSchema
 
 
-class GeneratorData(BaseModel):
+class OpenAPIData(BaseModel):
     """All the data needed to generate a client"""
 
     title: str
@@ -26,3 +26,7 @@ class GeneratorData(BaseModel):
     @property
     def models(self) -> List[ModelSchema]:
         return [schema for schema in self.schemas if isinstance(schema, ModelSchema)]
+
+
+class WebhookData(BaseModel):
+    schemas: List[SchemaData]

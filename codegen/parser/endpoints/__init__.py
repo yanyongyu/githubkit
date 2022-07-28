@@ -14,8 +14,7 @@ METHODS = ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
 
 def parse_endpoint(source: Source, path: str) -> List[EndpointData]:
     data = source.data
-    if not isinstance(data, oas.PathItem):
-        raise TypeError(f"Expected PathItem, got {type(data)} from {source.uri}")
+    data = oas.PathItem.parse_obj(data)
 
     endpoints: List[EndpointData] = []
 
@@ -31,7 +30,7 @@ def parse_endpoint(source: Source, path: str) -> List[EndpointData]:
 
     for method in METHODS:
         operation_source = source / method
-        operation = operation_source.data
+        operation = getattr(data, method)
         if not isinstance(operation, oas.Operation):
             continue
 

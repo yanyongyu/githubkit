@@ -1,4 +1,4 @@
-from typing import Union, cast
+from typing import Union
 
 import openapi_schema_pydantic as oas
 
@@ -9,7 +9,11 @@ from .schema import DateSchema, FileSchema, StringSchema, DateTimeSchema
 def build_string_schema(
     source: Source,
 ) -> Union[StringSchema, DateSchema, DateTimeSchema, FileSchema]:
-    data = cast(oas.Schema, source.data)
+    try:
+        data = oas.Schema.parse_obj(source.data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
+
     if data.schema_format == "date-time":
         return DateTimeSchema(
             title=data.title,

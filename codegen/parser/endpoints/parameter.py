@@ -1,5 +1,6 @@
-from typing import Literal
+from typing import Union, Literal
 
+from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
 
 from ...source import Source
@@ -13,19 +14,24 @@ class Parameter(Property):
 
 def build_param(source: Source, prefix: str) -> Parameter:
     data = source.data
+    try:
+        data = parse_obj_as(Union[oas.Reference, oas.Parameter], data)
+    except Exception as e:
+        raise TypeError(f"Invalid Parameter from {source.uri}") from e
+
     if isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        data = source.data
-
-    if not isinstance(data, oas.Parameter):
-        raise TypeError(f"Expected Parameter, got {type(data)} from {source.uri}")
+        try:
+            data = oas.Parameter.parse_obj(source.data)
+        except Exception as e:
+            raise TypeError(f"Invalid Parameter from {source.uri}") from e
 
     if data.param_schema:
         schema = parse_schema(
-            source / "param_schema", concat_snake_name(prefix, "param", data.name)
+            source / "schema", concat_snake_name(prefix, "param", data.name)
         )
     else:
-        schema = build_any_schema(source / "param_schema")
+        schema = build_any_schema(source / "schema")
 
     return Parameter(
         name=data.name,

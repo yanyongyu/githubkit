@@ -1300,11 +1300,11 @@ class CodeScanningAlertRule(GitHubModel):
     name: Union[Unset, str] = Field(
         description="The name of the rule used to detect the alert.", default=UNSET
     )
-    severity: Union[Unset, Literal["none", "note", "warning", "error", None]] = Field(
-        description="The severity of the alert.", default=UNSET
-    )
+    severity: Union[
+        Unset, Union[None, Literal["none", "note", "warning", "error"]]
+    ] = Field(description="The severity of the alert.", default=UNSET)
     security_severity_level: Union[
-        Unset, Literal["low", "medium", "high", "critical", None]
+        Unset, Union[None, Literal["low", "medium", "high", "critical"]]
     ] = Field(description="The security severity of the alert.", default=UNSET)
     description: Union[Unset, str] = Field(
         description="A short description of the rule used to detect the alert.",
@@ -1382,7 +1382,7 @@ class CodeScanningAlertInstance(GitHubModel):
     )
     html_url: Union[Unset, str] = Field(default=UNSET)
     classifications: Union[
-        Unset, List[Literal["source", "generated", "test", "library", None]]
+        Unset, List[Union[None, Literal["source", "generated", "test", "library"]]]
     ] = Field(
         description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
         default=UNSET,
@@ -1597,8 +1597,8 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=...,
     )
-    dismissed_reason: Literal[
-        None, "false positive", "won't fix", "used in tests"
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=...,
@@ -1645,7 +1645,8 @@ class OrganizationSecretScanningAlert(GitHubModel):
         default=UNSET,
     )
     resolution: Union[
-        Unset, Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"]
+        Unset,
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]],
     ] = Field(
         description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
         default=UNSET,
@@ -2907,7 +2908,7 @@ class CodespaceMachine(GitHubModel):
     cpus: int = Field(
         description="How many cores are available to the codespace.", default=...
     )
-    prebuild_availability: Literal["none", "ready", "in_progress", None] = Field(
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
         description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.',
         default=...,
     )
@@ -5439,15 +5440,17 @@ class CheckRun(GitHubModel):
         description="The phase of the lifecycle that the check is currently in.",
         default=...,
     )
-    conclusion: Literal[
-        "success",
-        "failure",
-        "neutral",
-        "cancelled",
-        "skipped",
-        "timed_out",
-        "action_required",
+    conclusion: Union[
         None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ] = Field(default=...)
     started_at: Union[datetime, None] = Field(default=...)
     completed_at: Union[datetime, None] = Field(default=...)
@@ -5513,16 +5516,20 @@ class CheckSuite(GitHubModel):
     head_sha: str = Field(
         description="The SHA of the head commit that is being checked.", default=...
     )
-    status: Literal["queued", "in_progress", "completed", None] = Field(default=...)
-    conclusion: Literal[
-        "success",
-        "failure",
-        "neutral",
-        "cancelled",
-        "skipped",
-        "timed_out",
-        "action_required",
+    status: Union[None, Literal["queued", "in_progress", "completed"]] = Field(
+        default=...
+    )
+    conclusion: Union[
         None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ] = Field(default=...)
     url: Union[str, None] = Field(default=...)
     before: Union[str, None] = Field(default=...)
@@ -5587,9 +5594,9 @@ class CodeScanningAlertRuleSummary(GitHubModel):
     tags: Union[Unset, Union[List[str], None]] = Field(
         description="A set of tags applicable for the rule.", default=UNSET
     )
-    severity: Union[Unset, Literal["none", "note", "warning", "error", None]] = Field(
-        description="The severity of the alert.", default=UNSET
-    )
+    severity: Union[
+        Unset, Union[None, Literal["none", "note", "warning", "error"]]
+    ] = Field(description="The severity of the alert.", default=UNSET)
     description: Union[Unset, str] = Field(
         description="A short description of the rule used to detect the alert.",
         default=UNSET,
@@ -5630,8 +5637,8 @@ class CodeScanningAlertItems(GitHubModel):
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=...,
     )
-    dismissed_reason: Literal[
-        None, "false positive", "won't fix", "used in tests"
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=...,
@@ -5680,8 +5687,8 @@ class CodeScanningAlert(GitHubModel):
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=...,
     )
-    dismissed_reason: Literal[
-        None, "false positive", "won't fix", "used in tests"
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=...,
@@ -8115,7 +8122,7 @@ class PullRequestReviewComment(GitHubModel):
         description="The first line of the range for a multi-line comment.",
         default=UNSET,
     )
-    start_side: Union[Unset, Literal["LEFT", "RIGHT", None]] = Field(
+    start_side: Union[Unset, Union[None, Literal["LEFT", "RIGHT"]]] = Field(
         description="The side of the first line of the range for a multi-line comment.",
         default="RIGHT",
     )
@@ -8373,14 +8380,14 @@ class Page(GitHubModel):
     url: str = Field(
         description="The API address for accessing this Page resource.", default=...
     )
-    status: Literal["built", "building", "errored", None] = Field(
+    status: Union[None, Literal["built", "building", "errored"]] = Field(
         description="The status of the most recent build of the Page.", default=...
     )
     cname: Union[str, None] = Field(
         description="The Pages site's custom domain", default=...
     )
     protected_domain_state: Union[
-        Unset, Literal["pending", "verified", "unverified", None]
+        Unset, Union[None, Literal["pending", "verified", "unverified"]]
     ] = Field(description="The state if the domain is verified", default=UNSET)
     pending_domain_unverified_at: Union[Unset, Union[datetime, None]] = Field(
         description="The timestamp when a pending domain becomes unverified.",
@@ -8392,7 +8399,7 @@ class Page(GitHubModel):
     html_url: Union[Unset, str] = Field(
         description="The web address the Page can be accessed from.", default=UNSET
     )
-    build_type: Union[Unset, Literal["legacy", "workflow", None]] = Field(
+    build_type: Union[Unset, Union[None, Literal["legacy", "workflow"]]] = Field(
         description="The process in which the Page will be built.", default=UNSET
     )
     source: Union[Unset, PagesSourceHash] = Field(
@@ -9146,7 +9153,7 @@ class ReviewComment(GitHubModel):
         description="The side of the first line of the range for a multi-line comment.",
         default="RIGHT",
     )
-    start_side: Union[Unset, Literal["LEFT", "RIGHT", None]] = Field(
+    start_side: Union[Unset, Union[None, Literal["LEFT", "RIGHT"]]] = Field(
         description="The side of the first line of the range for a multi-line comment.",
         default="RIGHT",
     )
@@ -9291,7 +9298,8 @@ class SecretScanningAlert(GitHubModel):
         default=UNSET,
     )
     resolution: Union[
-        Unset, Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"]
+        Unset,
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]],
     ] = Field(
         description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
         default=UNSET,
@@ -10581,7 +10589,7 @@ class AppManifestsCodeConversionsPostResponse201(GitHubModel):
     )
     client_id: str = Field(default=...)
     client_secret: str = Field(default=...)
-    webhook_secret: Union[str, None] = Field(default=...)
+    webhook_secret: Union[Union[str, None], None] = Field(default=...)
     pem: str = Field(default=...)
 
 
@@ -12953,7 +12961,7 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
         default=...,
     )
     dismissed_reason: Union[
-        Unset, Literal[None, "false positive", "won't fix", "used in tests"]
+        Unset, Union[None, Literal["false positive", "won't fix", "used in tests"]]
     ] = Field(
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=UNSET,
@@ -14646,7 +14654,8 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
         default=...,
     )
     resolution: Union[
-        Unset, Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"]
+        Unset,
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]],
     ] = Field(
         description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
         default=UNSET,

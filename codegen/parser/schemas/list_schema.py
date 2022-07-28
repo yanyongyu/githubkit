@@ -1,6 +1,3 @@
-from typing import Set, Dict, Optional, cast
-
-from pydantic import Field
 import openapi_schema_pydantic as oas
 
 from . import parse_schema
@@ -10,7 +7,11 @@ from ..utils import concat_snake_name
 
 
 def build_list_schema(source: Source, class_name: str) -> ListSchema:
-    data = cast(oas.Schema, source.data)
+    try:
+        data = oas.Schema.parse_obj(source.data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
+
     return ListSchema(
         title=data.title,
         description=data.description,

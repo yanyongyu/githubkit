@@ -1,5 +1,3 @@
-from typing import cast
-
 import openapi_schema_pydantic as oas
 
 from ...source import Source
@@ -7,7 +5,11 @@ from .schema import AnySchema
 
 
 def build_any_schema(source: Source) -> AnySchema:
-    data = cast(oas.Schema, source.data)
+    try:
+        data = oas.Schema.parse_obj(source.data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
+
     return AnySchema(
         title=data.title,
         description=data.description,

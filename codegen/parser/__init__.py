@@ -2,6 +2,7 @@ from contextvars import ContextVar
 from typing import Dict, List, Optional
 
 import httpx
+from openapi_schema_pydantic import OpenAPI
 
 # parser context
 _schemas: ContextVar[Dict[httpx.URL, "SchemaData"]] = ContextVar("schemas")
@@ -32,20 +33,22 @@ from .endpoints import parse_endpoint
 from .utils import sanitize as sanitize
 from .utils import kebab_case as kebab_case
 from .utils import snake_case as snake_case
+from .data import OpenAPIData as OpenAPIData
+from .data import WebhookData as WebhookData
 from .schemas import SchemaData, parse_schema
 from .utils import pascal_case as pascal_case
-from .data import GeneratorData as GeneratorData
 from .endpoints import EndpointData as EndpointData
 from .utils import fix_reserved_words as fix_reserved_words
 
 
-def parse_openapi_spec(source: Source, config: Config) -> GeneratorData:
+def parse_openapi_spec(source: Source, config: Config) -> OpenAPIData:
     source = source.get_root()
+
     _st = _schemas.set({})
     _ct = _config.set(config)
 
     try:
-        openapi = source.root
+        openapi = OpenAPI.parse_obj(source.root)
 
         # cache /components/schemas first
         if openapi.components and openapi.components.schemas:
@@ -59,13 +62,28 @@ def parse_openapi_spec(source: Source, config: Config) -> GeneratorData:
             for path in openapi.paths:
                 endpoints.extend(parse_endpoint(source / "paths" / path, path))
 
-        return GeneratorData(
+        return OpenAPIData(
             title=openapi.info.title,
             description=openapi.info.description,
             version=openapi.info.version,
             endpoints=endpoints,
             schemas=list(get_schemas().values()),
         )
+    finally:
+        _schemas.reset(_st)
+        _config.reset(_ct)
+
+
+def parse_webhook_schema(source: Source, config: Config) -> WebhookData:
+    source = source.get_root()
+
+    _st = _schemas.set({})
+    _ct = _config.set(config)
+
+    try:
+        parse_schema(source, "webhook_schema")
+
+        return WebhookData(schemas=list(get_schemas().values()))
     finally:
         _schemas.reset(_st)
         _config.reset(_ct)

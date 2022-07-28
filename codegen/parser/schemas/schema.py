@@ -290,6 +290,9 @@ class EnumSchema(SchemaData):
     def is_str_enum(self) -> bool:
         return all(isinstance(value, str) for value in self.values)
 
+    def is_bool_enum(self) -> bool:
+        return all(isinstance(value, bool) for value in self.values)
+
     def is_int_enum(self) -> bool:
         return all(isinstance(value, int) for value in self.values)
 

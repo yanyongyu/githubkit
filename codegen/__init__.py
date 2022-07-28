@@ -9,16 +9,26 @@ from .log import logger
 from .config import Config
 from .source import get_source
 from .parser import (
-    GeneratorData,
+    OpenAPIData,
     sanitize,
     kebab_case,
     snake_case,
     pascal_case,
     parse_openapi_spec,
+    parse_webhook_schema,
 )
 
 
-def build_templates(data: GeneratorData, config: Config):
+def load_config() -> Config:
+    pyproject = tomli.loads(Path("./pyproject.toml").read_text())
+    config_dict: Dict[str, Any] = pyproject.get("tool", {}).get("codegen", {})
+    config_dict = {
+        k.replace("--", "").replace("-", "_"): v for k, v in config_dict.items()
+    }
+    return Config.parse_obj(config_dict)
+
+
+def build_rest_api(data: OpenAPIData, config: Config):
     logger.info("Start generating codes...")
     env = Environment(
         loader=PackageLoader("codegen"),
@@ -76,16 +86,12 @@ def build_templates(data: GeneratorData, config: Config):
     logger.info("Successfully generated codes!")
 
 
-def build(spec: Optional[Union[httpx.URL, Path]] = None):
-    pyproject = tomli.loads(Path("./pyproject.toml").read_text())
-    config_dict: Dict[str, Any] = pyproject.get("tool", {}).get("codegen", {})
-    config_dict = {
-        k.replace("--", "").replace("-", "_"): v for k, v in config_dict.items()
-    }
-    config = Config.parse_obj(config_dict)
+def build():
+    config = load_config()
     logger.info(f"Loaded config: {config!r}")
 
-    source = get_source(spec or httpx.URL(config.schema_source))
+    logger.info("Start getting OpenAPI source...")
+    source = get_source(httpx.URL(config.rest_descrition_source))
     logger.info(f"Getting schema from {source.uri} succeeded!")
 
     logger.info("Start parsing OpenAPI spec...")
@@ -95,4 +101,12 @@ def build(spec: Optional[Union[httpx.URL, Path]] = None):
         f"{len(parsed_data.schemas)} schemas, {len(parsed_data.endpoints)} endpoints"
     )
 
-    build_templates(parsed_data, config)
+    build_rest_api(parsed_data, config)
+
+    logger.info("Start getting Webhook source...")
+    source = get_source(httpx.URL(config.webhook_schema_source))
+    logger.info(f"Getting schema from {source.uri} succeeded!")
+
+    logger.info("Start parsing Webhook spec...")
+    parsed_data = parse_webhook_schema(source, config)
+    logger.info(f"Successfully parsed Webhook spec: {len(parsed_data.schemas)} schemas")

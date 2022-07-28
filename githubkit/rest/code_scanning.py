@@ -331,7 +331,7 @@ class CodeScanningClient:
         data: Unset = UNSET,
         state: Literal["open", "dismissed"],
         dismissed_reason: Union[
-            Unset, Literal[None, "false positive", "won't fix", "used in tests"]
+            Unset, Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAlert]":
@@ -390,7 +390,7 @@ class CodeScanningClient:
         data: Unset = UNSET,
         state: Literal["open", "dismissed"],
         dismissed_reason: Union[
-            Unset, Literal[None, "false positive", "won't fix", "used in tests"]
+            Unset, Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAlert]":

@@ -1,4 +1,4 @@
-from typing import Dict, List, Type, TypeVar, Optional, cast
+from typing import Dict, List, Type, Tuple, Union, TypeVar, Optional
 
 import openapi_schema_pydantic as oas
 
@@ -9,13 +9,17 @@ from ..utils import build_prop_name, build_class_name, concat_snake_name
 from .schema import (
     Property,
     IntSchema,
+    BoolSchema,
+    DateSchema,
     EnumSchema,
+    FileSchema,
     NoneSchema,
     SchemaData,
     FloatSchema,
     ModelSchema,
     UnionSchema,
     StringSchema,
+    DateTimeSchema,
 )
 
 ST = TypeVar("ST", bound=SchemaData)
@@ -29,7 +33,9 @@ def _is_nullable(schema: SchemaData) -> bool:
     return any(isinstance(schema, NoneSchema) for schema in schema.schemas)
 
 
-def _is_union_subset(first: SchemaData, second: SchemaData) -> Optional[SchemaData]:
+def _is_union_subset(
+    first: SchemaData, second: SchemaData, prefix: str
+) -> Optional[SchemaData]:
     first_schemas = first.schemas if isinstance(first, UnionSchema) else [first]
     second_schemas = second.schemas if isinstance(second, UnionSchema) else [second]
     one_schemas = (
@@ -39,12 +45,46 @@ def _is_union_subset(first: SchemaData, second: SchemaData) -> Optional[SchemaDa
         second_schemas if len(first_schemas) <= len(second_schemas) else first_schemas
     )
     for schema in one_schemas:
-        if schema not in another_schemas:
+        for target in another_schemas:
+            # same schema
+            if schema == target:
+                break
+            elif isinstance(schema, ModelSchema) and isinstance(target, ModelSchema):
+                properties = {prop.name: prop for prop in schema.properties}
+                class_name = prefix
+
+                def _add_if_no_conflict(prop: Property):
+                    if prop.name in properties:
+                        # try merge
+                        try:
+                            prop = _merge_property(
+                                properties[prop.name],
+                                prop,
+                                concat_snake_name(class_name, "prop", prop.name),
+                            )
+                        except Exception as e:
+                            raise RuntimeError(
+                                f"Error while creating model {class_name}, "
+                                f"duplicated property {prop.name}"
+                            ) from e
+                    properties[prop.name] = prop
+
+                for prop in target.properties:
+                    _add_if_no_conflict(prop)
+
+                return ModelSchema(
+                    class_name=class_name,
+                    properties=list(properties.values()),
+                    allow_extra=schema.allow_extra and target.allow_extra,
+                )
+        else:
             return
     return first if len(first_schemas) <= len(second_schemas) else second
 
 
-def _find_schema(schema: SchemaData, type: Type[ST]) -> Optional[ST]:
+def _find_schema(
+    schema: SchemaData, type: Union[Type[ST], Tuple[Type[ST], ...]]
+) -> Optional[ST]:
     if isinstance(schema, type):
         return schema
     if isinstance(schema, UnionSchema):
@@ -52,6 +92,17 @@ def _find_schema(schema: SchemaData, type: Type[ST]) -> Optional[ST]:
             # FIXME: maybe multiple enum schemas in union (oneOf)
             if isinstance(schema, type):
                 return schema
+
+
+def _is_type_subset(enum: EnumSchema, schema: SchemaData) -> Optional[EnumSchema]:
+    if enum.is_str_enum and _find_schema(schema, StringSchema):
+        return enum
+    elif enum.is_bool_enum and _find_schema(schema, BoolSchema):
+        return enum
+    elif enum.is_int_enum and _find_schema(schema, IntSchema):
+        return enum
+    elif enum.is_float_enum and _find_schema(schema, FloatSchema):
+        return enum
 
 
 def _is_enum_subset(first: SchemaData, second: SchemaData) -> Optional[EnumSchema]:
@@ -67,33 +118,36 @@ def _is_enum_subset(first: SchemaData, second: SchemaData) -> Optional[EnumSchem
         elif second_values.issubset(first_values):
             return second_schema
 
+    # first enum, check type subset
+    if first_schema and (schema := _is_type_subset(first_schema, second)):
+        return schema
+
     # second enum, check type subset
-    if second_schema:
-        if second_schema.is_str_enum and _find_schema(first, StringSchema):
-            return second_schema
-        elif second_schema.is_int_enum and _find_schema(first, IntSchema):
-            return second_schema
-        elif second_schema.is_float_enum and _find_schema(first, FloatSchema):
-            return second_schema
+    if second_schema and (schema := _is_type_subset(second_schema, first)):
+        return schema
 
 
-def _merge_property(first: Property, second: Property) -> Property:
+def _is_string_subset(
+    first: SchemaData, second: SchemaData
+) -> Optional[Union[DateSchema, DateTimeSchema, FileSchema]]:
+    first_schema = _find_schema(first, StringSchema)
+    second_schema = _find_schema(second, (DateSchema, DateTimeSchema, FileSchema))
+    return first_schema and second_schema
+
+
+def _merge_property(first: Property, second: Property, prefix: str) -> Property:
     if first.name != second.name:
         raise ValueError(f"Property with different name: {first.name} != {second.name}")
 
     required = first.required or second.required
-    nullable = _is_nullable(first.schema_data) or _is_nullable(second.schema_data)
+    nullable = _is_nullable(first.schema_data) and _is_nullable(second.schema_data)
 
-    if schema := _is_union_subset(first.schema_data, second.schema_data):
-        return Property(
-            name=second.name,
-            prop_name=second.prop_name,
-            required=required,
-            schema_data=schema,
-        )
-
-    # enum subset
-    if schema := _is_enum_subset(first.schema_data, second.schema_data):
+    if schema := (
+        _is_union_subset(first.schema_data, second.schema_data, prefix)
+        or _is_string_subset(first.schema_data, second.schema_data)
+        or _is_string_subset(second.schema_data, first.schema_data)
+        or _is_enum_subset(first.schema_data, second.schema_data)
+    ):
         if nullable:
             schema = UnionSchema(
                 title=schema.title,
@@ -113,7 +167,10 @@ def _merge_property(first: Property, second: Property) -> Property:
 
 
 def _process_properties(source: Source, class_name: str) -> List[Property]:
-    data = cast(oas.Schema, source.data)
+    try:
+        data = oas.Schema.parse_obj(source.data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
 
     properties: Dict[str, Property] = {}
     required_set = set(data.required or [])
@@ -122,7 +179,11 @@ def _process_properties(source: Source, class_name: str) -> List[Property]:
         if prop.name in properties:
             # try merge
             try:
-                prop = _merge_property(properties[prop.name], prop)
+                prop = _merge_property(
+                    properties[prop.name],
+                    prop,
+                    concat_snake_name(class_name, "merged", prop.name),
+                )
             except Exception as e:
                 raise RuntimeError(
                     f"Error while creating model {class_name} from {source.uri}, "
@@ -167,7 +228,10 @@ def build_model_schema(
     source: Source,
     class_name: str,
 ) -> ModelSchema:
-    data = cast(oas.Schema, source.data)
+    try:
+        data = oas.Schema.parse_obj(source.data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
 
     class_name = build_class_name(class_name)
 

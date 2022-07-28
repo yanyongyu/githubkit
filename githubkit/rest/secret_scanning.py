@@ -310,7 +310,9 @@ class SecretScanningClient:
         state: Literal["open", "resolved"],
         resolution: Union[
             Unset,
-            Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"],
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ],
         ] = UNSET,
     ) -> "Response[SecretScanningAlert]":
         ...
@@ -369,7 +371,9 @@ class SecretScanningClient:
         state: Literal["open", "resolved"],
         resolution: Union[
             Unset,
-            Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"],
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ],
         ] = UNSET,
     ) -> "Response[SecretScanningAlert]":
         ...

@@ -1,7 +1,7 @@
-from typing import Set, List, Literal
+from typing import Set, List, Union, Literal
 
-from pydantic import BaseModel
 import openapi_schema_pydantic as oas
+from pydantic import BaseModel, parse_obj_as
 
 from ...source import Source
 from ..utils import concat_snake_name
@@ -57,12 +57,17 @@ class RequestBodyData(BaseModel):
 
 def build_request_body(source: Source, prefix: str) -> RequestBodyData:
     data = source.data
+    try:
+        data = parse_obj_as(Union[oas.Reference, oas.RequestBody], data)
+    except Exception as e:
+        raise TypeError(f"Invalid RequestBody from {source.uri}") from e
+
     if isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        data = source.data
-
-    if not isinstance(data, oas.RequestBody):
-        raise TypeError(f"Expected RequestBody, got {type(data)} from {source.uri}")
+        try:
+            data = oas.RequestBody.parse_obj(source.data)
+        except Exception as e:
+            raise TypeError(f"Invalid RequestBody from {source.uri}") from e
 
     media_types = list(data.content.keys())
     if json_types := [type for type in media_types if "json" in type]:
@@ -70,7 +75,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
         return RequestBodyData(
             type="json",
             body_schema=parse_schema(
-                source / "content" / json_type / "media_type_schema",
+                source / "content" / json_type / "schema",
                 concat_snake_name(prefix, "body"),
             ),
             required=data.required,
@@ -80,7 +85,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
         return RequestBodyData(
             type="form",
             body_schema=parse_schema(
-                source / "content" / form_type / "media_type_schema",
+                source / "content" / form_type / "schema",
                 concat_snake_name(prefix, "body"),
             ),
             required=data.required,
@@ -90,7 +95,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
         return RequestBodyData(
             type="file",
             body_schema=parse_schema(
-                source / "content" / file_type / "media_type_schema",
+                source / "content" / file_type / "schema",
                 concat_snake_name(prefix, "body"),
             ),
             required=data.required,
@@ -100,7 +105,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
         return RequestBodyData(
             type="raw",
             body_schema=parse_schema(
-                source / "content" / text_type / "media_type_schema",
+                source / "content" / text_type / "schema",
                 concat_snake_name(prefix, "body"),
             ),
             required=data.required,
@@ -110,7 +115,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
         return RequestBodyData(
             type="raw",
             body_schema=parse_schema(
-                source / "content" / binary_type / "media_type_schema",
+                source / "content" / binary_type / "schema",
                 concat_snake_name(prefix, "body"),
             ),
             required=data.required,
@@ -119,7 +124,7 @@ def build_request_body(source: Source, prefix: str) -> RequestBodyData:
         return RequestBodyData(
             type="raw",
             body_schema=parse_schema(
-                source / "content" / "*/*" / "media_type_schema",
+                source / "content" / "*/*" / "schema",
                 concat_snake_name(prefix, "body"),
             ),
             required=data.required,

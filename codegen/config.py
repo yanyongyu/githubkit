@@ -4,7 +4,8 @@ from pydantic import BaseModel
 
 
 class Config(BaseModel):
-    schema_source: str
+    rest_descrition_source: str
+    webhook_schema_source: str
     class_overrides: Dict[str, str] = {}
     field_overrides: Dict[str, str] = {}
 

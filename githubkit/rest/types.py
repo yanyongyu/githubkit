@@ -920,9 +920,9 @@ class CodeScanningAlertRuleType(TypedDict):
 
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
-    severity: NotRequired[Literal["none", "note", "warning", "error", None]]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
     security_severity_level: NotRequired[
-        Literal["low", "medium", "high", "critical", None]
+        Union[None, Literal["low", "medium", "high", "critical"]]
     ]
     description: NotRequired[str]
     full_description: NotRequired[str]
@@ -964,7 +964,7 @@ class CodeScanningAlertInstanceType(TypedDict):
     location: NotRequired[CodeScanningAlertLocationType]
     html_url: NotRequired[str]
     classifications: NotRequired[
-        List[Literal["source", "generated", "test", "library", None]]
+        List[Union[None, Literal["source", "generated", "test", "library"]]]
     ]
 
 
@@ -1041,7 +1041,9 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     fixed_at: NotRequired[Union[datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
     dismissed_at: Union[datetime, None]
-    dismissed_reason: Literal[None, "false positive", "won't fix", "used in tests"]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleType
     tool: CodeScanningAnalysisToolType
@@ -1060,7 +1062,7 @@ class OrganizationSecretScanningAlertType(TypedDict):
     locations_url: NotRequired[str]
     state: NotRequired[Literal["open", "resolved"]]
     resolution: NotRequired[
-        Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"]
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
     resolved_at: NotRequired[Union[datetime, None]]
     resolved_by: NotRequired[Union[None, SimpleUserType]]
@@ -2057,7 +2059,7 @@ class CodespaceMachineType(TypedDict):
     storage_in_bytes: int
     memory_in_bytes: int
     cpus: int
-    prebuild_availability: Literal["none", "ready", "in_progress", None]
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
 class CodespaceType(TypedDict):
@@ -3974,15 +3976,17 @@ class CheckRunType(TypedDict):
     html_url: Union[str, None]
     details_url: Union[str, None]
     status: Literal["queued", "in_progress", "completed"]
-    conclusion: Literal[
-        "success",
-        "failure",
-        "neutral",
-        "cancelled",
-        "skipped",
-        "timed_out",
-        "action_required",
+    conclusion: Union[
         None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
     started_at: Union[datetime, None]
     completed_at: Union[datetime, None]
@@ -4038,16 +4042,18 @@ class CheckSuiteType(TypedDict):
     node_id: str
     head_branch: Union[str, None]
     head_sha: str
-    status: Literal["queued", "in_progress", "completed", None]
-    conclusion: Literal[
-        "success",
-        "failure",
-        "neutral",
-        "cancelled",
-        "skipped",
-        "timed_out",
-        "action_required",
+    status: Union[None, Literal["queued", "in_progress", "completed"]]
+    conclusion: Union[
         None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
     url: Union[str, None]
     before: Union[str, None]
@@ -4095,7 +4101,7 @@ class CodeScanningAlertRuleSummaryType(TypedDict):
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
     tags: NotRequired[Union[List[str], None]]
-    severity: NotRequired[Literal["none", "note", "warning", "error", None]]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
     description: NotRequired[str]
 
 
@@ -4112,7 +4118,9 @@ class CodeScanningAlertItemsType(TypedDict):
     fixed_at: NotRequired[Union[datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
     dismissed_at: Union[datetime, None]
-    dismissed_reason: Literal[None, "false positive", "won't fix", "used in tests"]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleSummaryType
     tool: CodeScanningAnalysisToolType
@@ -4132,7 +4140,9 @@ class CodeScanningAlertType(TypedDict):
     fixed_at: NotRequired[Union[datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
     dismissed_at: Union[datetime, None]
-    dismissed_reason: Literal[None, "false positive", "won't fix", "used in tests"]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
     dismissed_comment: NotRequired[Union[str, None]]
     rule: CodeScanningAlertRuleType
     tool: CodeScanningAnalysisToolType
@@ -6026,7 +6036,7 @@ class PullRequestReviewCommentType(TypedDict):
     links: PullRequestReviewCommentPropLinksType
     start_line: NotRequired[Union[int, None]]
     original_start_line: NotRequired[Union[int, None]]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
     line: NotRequired[int]
     original_line: NotRequired[int]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
@@ -6236,15 +6246,15 @@ class PageType(TypedDict):
     """
 
     url: str
-    status: Literal["built", "building", "errored", None]
+    status: Union[None, Literal["built", "building", "errored"]]
     cname: Union[str, None]
     protected_domain_state: NotRequired[
-        Literal["pending", "verified", "unverified", None]
+        Union[None, Literal["pending", "verified", "unverified"]]
     ]
     pending_domain_unverified_at: NotRequired[Union[datetime, None]]
     custom_404: bool
     html_url: NotRequired[str]
-    build_type: NotRequired[Literal["legacy", "workflow", None]]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
     source: NotRequired[PagesSourceHashType]
     public: bool
     https_certificate: NotRequired[PagesHttpsCertificateType]
@@ -6889,7 +6899,7 @@ class ReviewCommentType(TypedDict):
     body_html: NotRequired[str]
     reactions: NotRequired[ReactionRollupType]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
     line: NotRequired[int]
     original_line: NotRequired[int]
     start_line: NotRequired[Union[int, None]]
@@ -6977,7 +6987,7 @@ class SecretScanningAlertType(TypedDict):
     locations_url: NotRequired[str]
     state: NotRequired[Literal["open", "resolved"]]
     resolution: NotRequired[
-        Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"]
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
     resolved_at: NotRequired[Union[datetime, None]]
     resolved_by: NotRequired[Union[None, SimpleUserType]]
@@ -8061,7 +8071,7 @@ class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
     installations_count: NotRequired[int]
     client_id: str
     client_secret: str
-    webhook_secret: Union[str, None]
+    webhook_secret: Union[Union[str, None], None]
     pem: str
 
 
@@ -9642,7 +9652,7 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
 
     state: Literal["open", "dismissed"]
     dismissed_reason: NotRequired[
-        Literal[None, "false positive", "won't fix", "used in tests"]
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
     ]
     dismissed_comment: NotRequired[Union[str, None]]
 
@@ -10624,7 +10634,7 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
 
     state: Literal["open", "resolved"]
     resolution: NotRequired[
-        Literal[None, "false_positive", "wont_fix", "revoked", "used_in_tests"]
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
 
 

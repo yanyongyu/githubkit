@@ -1,5 +1,6 @@
-from typing import List, Union, cast
+from typing import List, Union
 
+from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
 
 from . import parse_schema
@@ -16,7 +17,7 @@ from .string_schema import build_string_schema
 
 
 def _build_sub_schema(source: Source, class_name: str) -> List[SchemaData]:
-    data = cast(List[Union[oas.Reference, oas.Schema]], source.data)
+    data = parse_obj_as(List[Union[oas.Reference, oas.Schema]], source.data)
 
     schemas: List[SchemaData] = []
     for index in range(len(data)):
@@ -27,7 +28,10 @@ def _build_sub_schema(source: Source, class_name: str) -> List[SchemaData]:
 
 
 def build_union_schema(source: Source, class_name: str) -> UnionSchema:
-    data = cast(oas.Schema, source.data)
+    try:
+        data = oas.Schema.parse_obj(source.data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
 
     schemas: List[SchemaData] = []
 
