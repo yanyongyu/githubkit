@@ -31,6 +31,7 @@ from .types import (
     ReposOwnerRepoMergeUpstreamPostBodyType,
     ReposOwnerRepoContentsPathDeleteBodyType,
     ReposOwnerRepoTagsProtectionPostBodyType,
+    ReposOwnerRepoPagesDeploymentPostBodyType,
     ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ReposOwnerRepoHooksHookIdConfigPatchBodyType,
     ReposOwnerRepoReleasesReleaseIdPatchBodyType,
@@ -110,6 +111,7 @@ from .models import (
     ContentTraffic,
     FullRepository,
     MergedUpstream,
+    PageDeployment,
     PageBuildStatus,
     ProtectedBranch,
     ReferrerTraffic,
@@ -156,6 +158,7 @@ from .models import (
     ReposOwnerRepoMergeUpstreamPostBody,
     ReposOwnerRepoContentsPathDeleteBody,
     ReposOwnerRepoTagsProtectionPostBody,
+    ReposOwnerRepoPagesDeploymentPostBody,
     ReposOwnerRepoCommentsCommentIdPatchBody,
     ReposOwnerRepoEnvironmentsGetResponse200,
     ReposOwnerRepoHooksHookIdConfigPatchBody,
@@ -5306,7 +5309,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Any, Any, Any, Any],
+        body: Union[Any, Any, Any, Any, Any],
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -5327,7 +5330,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[Any, Any, Any, Any],
+        body: Union[Any, Any, Any, Any, Any],
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -5348,7 +5351,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any],
+        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -5370,7 +5373,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any],
+        body: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -5539,6 +5542,72 @@ class ReposClient:
             "GET",
             url,
             response_model=PageBuild,
+        )
+
+    def create_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        artifact_url: str,
+        environment: Union[Unset, str] = "github-pages",
+        pages_build_version: str = "GITHUB_SHA",
+        oidc_token: str,
+    ) -> "Response[PageDeployment]":
+        url = f"/repos/{owner}/{repo}/pages/deployment"
+
+        json = ReposOwnerRepoPagesDeploymentPostBody(
+            **{
+                "artifact_url": artifact_url,
+                "environment": environment,
+                "pages_build_version": pages_build_version,
+                "oidc_token": oidc_token,
+            }
+        ).dict(by_alias=True)
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=PageDeployment,
+            error_models={
+                "400": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_create_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        artifact_url: str,
+        environment: Union[Unset, str] = "github-pages",
+        pages_build_version: str = "GITHUB_SHA",
+        oidc_token: str,
+    ) -> "Response[PageDeployment]":
+        url = f"/repos/{owner}/{repo}/pages/deployment"
+
+        json = ReposOwnerRepoPagesDeploymentPostBody(
+            **{
+                "artifact_url": artifact_url,
+                "environment": environment,
+                "pages_build_version": pages_build_version,
+                "oidc_token": oidc_token,
+            }
+        ).dict(by_alias=True)
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=PageDeployment,
+            error_models={
+                "400": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+            },
         )
 
     def get_pages_health_check(

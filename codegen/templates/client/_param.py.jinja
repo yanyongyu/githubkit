@@ -1,4 +1,3 @@
-
 {% macro path_params(endpoint) %}
 {% for path_param in endpoint.path_params %}
 {{ path_param.get_param_defination() }},

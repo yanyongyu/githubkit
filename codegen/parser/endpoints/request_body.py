@@ -31,12 +31,10 @@ class RequestBodyData(BaseModel):
 
     def get_param_imports(self) -> Set[str]:
         imports = set()
+        imports.update(self.body_schema.get_param_imports())
         if isinstance(self.body_schema, ModelSchema):
-            imports.update(self.body_schema.get_param_imports())
             for prop in self.body_schema.properties:
                 imports.update(prop.get_param_imports())
-        else:
-            imports.update(self.body_schema.get_param_imports())
         return imports
 
     def get_using_imports(self) -> Set[str]:

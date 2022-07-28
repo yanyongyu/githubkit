@@ -1,0 +1,15 @@
+{% macro build_model_docstring(model) %}
+"""{{ model.title or model.class_name | wordwrap(80) }}
+{% if model.description %}
+
+{{ model.description | wordwrap(80) }}
+{% endif %}
+{% if model.examples %}
+
+Examples:
+    {% for example in model.examples %}
+    {{ example | string | wordwrap(82) }}
+    {% endfor %}
+{% endif %}
+"""
+{% endmacro %}

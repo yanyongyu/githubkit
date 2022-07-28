@@ -9,33 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 {% for model in models %}
-{% for import_ in model.get_model_imports() %}
+{% for import_ in model.get_type_imports() %}
 {{ import_ }}
 {% endfor %}
 {% endfor %}
 
-
-class GitHubModel(BaseModel, arbitrary_types_allowed=True):
-    ...
-
 {# model #}
 {% for model in models %}
 
-class {{ model.class_name }}(GitHubModel{{ ", extra=Extra.allow" if model.allow_extra else "" }}):
+class {{ model.class_name }}Type(TypedDict):
     {{ build_model_docstring(model) | indent(4) }}
 
     {% for prop in model.properties %}
-    {{ prop.get_model_defination() }}
+    {{ prop.get_type_defination() }}
     {% endfor %}
 
 {% endfor %}
 
-{% for model in models %}
-{{ model.class_name }}.update_forward_refs()
-{% endfor %}
-
 __all__ = [
   {% for model in models %}
-  "{{ model.class_name }}",
+  "{{ model.class_name }}Type",
   {% endfor %}
 ]

@@ -20,19 +20,23 @@ class SchemaData(BaseModel):
         """Get type string used by client codegen"""
         return self.get_type_string()
 
-    def get_imports(self) -> Set[str]:
-        """Get schema needed imports for creating the schema"""
+    def get_model_imports(self) -> Set[str]:
+        """Get schema needed imports for model codegen"""
         return set()
 
+    def get_type_imports(self) -> Set[str]:
+        """Get schema needed imports for types codegen"""
+        return self.get_model_imports()
+
     def get_param_imports(self) -> Set[str]:
-        """Get schema needed imports for typing params"""
-        return self.get_imports()
+        """Get schema needed imports for client param codegen"""
+        return self.get_model_imports()
 
     def get_using_imports(self) -> Set[str]:
-        """Get schema needed imports for using"""
-        return self.get_imports()
+        """Get schema needed imports for client request codegen"""
+        return self.get_model_imports()
 
-    def get_default_args(self) -> Dict[str, str]:
+    def _get_default_args(self) -> Dict[str, str]:
         """Get pydantic field info args"""
         default = self.default
         args = {}
@@ -59,16 +63,24 @@ class Property(BaseModel):
         return type_string if self.required else f"Union[Unset, {type_string}]"
 
     def get_param_type_string(self) -> str:
+        """Get type string used by client codegen"""
         type_string = self.schema_data.get_param_type_string()
         return type_string if self.required else f"Union[Unset, {type_string}]"
 
-    def get_imports(self) -> Set[str]:
-        """Get schema needed imports for creating the schema"""
-        imports = self.schema_data.get_imports()
+    def get_model_imports(self) -> Set[str]:
+        """Get schema needed imports for model codegen"""
+        imports = self.schema_data.get_model_imports()
         imports.add("from pydantic import Field")
         if not self.required:
             imports.add("from typing import Union")
             imports.add("from githubkit.utils import UNSET, Unset")
+        return imports
+
+    def get_type_imports(self) -> Set[str]:
+        """Get schema needed imports for type codegen"""
+        imports = self.schema_data.get_type_imports()
+        if not self.required:
+            imports.add("from typing_extensions import NotRequired")
         return imports
 
     def get_param_imports(self) -> Set[str]:
@@ -79,8 +91,8 @@ class Property(BaseModel):
             imports.add("from githubkit.utils import UNSET, Unset")
         return imports
 
-    def get_default_string(self) -> str:
-        args = self.schema_data.get_default_args()
+    def _get_default_string(self) -> str:
+        args = self.schema_data._get_default_args()
         if "default" not in args and "default_factory" not in args:
             args["default"] = "..." if self.required else "UNSET"
         if self.prop_name != self.name:
@@ -103,12 +115,12 @@ class Property(BaseModel):
     def get_model_defination(self) -> str:
         """Get defination used by model codegen"""
         type_ = self.get_type_string()
-        default = self.get_default_string()
+        default = self._get_default_string()
         return f"{self.prop_name}: {type_} = {default}"
 
     def get_type_defination(self) -> str:
         """Get defination used by types codegen"""
-        type_ = self.get_param_type_string()
+        type_ = self.schema_data.get_param_type_string()
         return (
             f"{self.prop_name}: {type_ if self.required else f'NotRequired[{type_}]'}"
         )
@@ -117,8 +129,8 @@ class Property(BaseModel):
 class AnySchema(SchemaData):
     _type_string: ClassVar[str] = "Any"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from typing import Any")
         return imports
 
@@ -140,8 +152,8 @@ class IntSchema(SchemaData):
 
     _type_string: ClassVar[str] = "int"
 
-    def get_default_args(self) -> Dict[str, str]:
-        args = super().get_default_args()
+    def _get_default_args(self) -> Dict[str, str]:
+        args = super()._get_default_args()
         if self.multiple_of is not None:
             args["multiple_of"] = repr(self.multiple_of)
         if self.maximum is not None:
@@ -164,8 +176,8 @@ class FloatSchema(SchemaData):
 
     _type_string: ClassVar[str] = "float"
 
-    def get_default_args(self) -> Dict[str, str]:
-        args = super().get_default_args()
+    def _get_default_args(self) -> Dict[str, str]:
+        args = super()._get_default_args()
         if self.multiple_of is not None:
             args["multiple_of"] = str(self.multiple_of)
         if self.maximum is not None:
@@ -186,8 +198,8 @@ class StringSchema(SchemaData):
 
     _type_string: ClassVar[str] = "str"
 
-    def get_default_args(self) -> Dict[str, str]:
-        args = super().get_default_args()
+    def _get_default_args(self) -> Dict[str, str]:
+        args = super()._get_default_args()
         if self.min_length is not None:
             args["min_length"] = str(self.min_length)
         if self.max_length is not None:
@@ -200,8 +212,8 @@ class StringSchema(SchemaData):
 class DateTimeSchema(SchemaData):
     _type_string: ClassVar[str] = "datetime"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from datetime import datetime")
         return imports
 
@@ -209,8 +221,8 @@ class DateTimeSchema(SchemaData):
 class DateSchema(SchemaData):
     _type_string: ClassVar[str] = "date"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from datetime import date")
         return imports
 
@@ -218,8 +230,8 @@ class DateSchema(SchemaData):
 class FileSchema(SchemaData):
     _type_string: ClassVar[str] = "FileTypes"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from githubkit.typing import FileTypes")
         return imports
 
@@ -236,10 +248,15 @@ class ListSchema(SchemaData):
     def get_param_type_string(self) -> str:
         return f"List[{self.item_schema.get_param_type_string()}]"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from typing import List")
-        imports.update(self.item_schema.get_imports())
+        imports.update(self.item_schema.get_model_imports())
+        return imports
+
+    def get_type_imports(self) -> Set[str]:
+        imports = {"from typing import List"}
+        imports.update(self.item_schema.get_type_imports())
         return imports
 
     def get_param_imports(self) -> Set[str]:
@@ -252,8 +269,8 @@ class ListSchema(SchemaData):
         imports.update(self.item_schema.get_using_imports())
         return imports
 
-    def get_default_args(self) -> Dict[str, str]:
-        args = super().get_default_args()
+    def _get_default_args(self) -> Dict[str, str]:
+        args = super()._get_default_args()
         # FIXME: remove list constraints due to forwardref not supported
         # See https://github.com/samuelcolvin/pydantic/issues/3745
         if isinstance(self.item_schema, (ModelSchema, UnionSchema)):
@@ -282,8 +299,8 @@ class EnumSchema(SchemaData):
     def get_type_string(self) -> str:
         return f"Literal[{', '.join(repr(value) for value in self.values)}]"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from typing import Literal")
         return imports
 
@@ -299,13 +316,19 @@ class ModelSchema(SchemaData):
     def get_param_type_string(self) -> str:
         return f"{self.class_name}Type"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from pydantic import BaseModel")
         if self.allow_extra:
             imports.add("from pydantic import Extra")
         for prop in self.properties:
-            imports.update(prop.get_imports())
+            imports.update(prop.get_model_imports())
+        return imports
+
+    def get_type_imports(self) -> Set[str]:
+        imports = {"from typing_extensions import TypedDict"}
+        for prop in self.properties:
+            imports.update(prop.get_type_imports())
         return imports
 
     def get_param_imports(self) -> Set[str]:
@@ -331,11 +354,17 @@ class UnionSchema(SchemaData):
             return self.schemas[0].get_param_type_string()
         return f"Union[{', '.join(schema.get_param_type_string() for schema in self.schemas)}]"
 
-    def get_imports(self) -> Set[str]:
-        imports = super().get_imports()
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
         imports.add("from typing import Union")
         for schema in self.schemas:
-            imports.update(schema.get_imports())
+            imports.update(schema.get_model_imports())
+        return imports
+
+    def get_type_imports(self) -> Set[str]:
+        imports = {"from typing import Union"}
+        for schema in self.schemas:
+            imports.update(schema.get_type_imports())
         return imports
 
     def get_param_imports(self) -> Set[str]:
@@ -350,11 +379,11 @@ class UnionSchema(SchemaData):
             imports.update(schema.get_using_imports())
         return imports
 
-    def get_default_args(self) -> Dict[str, str]:
+    def _get_default_args(self) -> Dict[str, str]:
         args = {}
         for schema in self.schemas:
-            args.update(schema.get_default_args())
-        args.update(super().get_default_args())
+            args.update(schema._get_default_args())
+        args.update(super()._get_default_args())
         if self.discriminator:
             args["discriminator"] = self.discriminator
         return args

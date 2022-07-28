@@ -1,4 +1,4 @@
-{% from "client/response.py.jinja" import build_response_model, build_error_models %}
+{% from "client/_response.py.jinja" import build_response_model, build_error_models %}
 
 {% macro build_path(endpoint) %}
 {% if endpoint.path_params %}
