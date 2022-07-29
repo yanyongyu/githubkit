@@ -8053,6 +8053,35 @@ class KeySimpleType(TypedDict):
     key: str
 
 
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
+
+    Simple Installation
+    """
+
+    id: int
+    node_id: str
+
+
+class MergeGroupChecksRequestedType(TypedDict):
+    """MergeGroupChecksRequested"""
+
+    action: str
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleType]
+    repository: NotRequired[RepositoryType]
+    sender: NotRequired[SimpleUserType]
+    merge_group: MergeGroupChecksRequestedPropMergeGroupType
+
+
+class MergeGroupChecksRequestedPropMergeGroupType(TypedDict):
+    """MergeGroupChecksRequestedPropMergeGroup"""
+
+    head_sha: str
+    head_ref: str
+    base_ref: str
+
+
 class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
     """AppManifestsCodeConversionsPostResponse201"""
 
@@ -11861,6 +11890,9 @@ __all__ = [
     "HovercardType",
     "HovercardPropContextsItemsType",
     "KeySimpleType",
+    "SimpleInstallationType",
+    "MergeGroupChecksRequestedType",
+    "MergeGroupChecksRequestedPropMergeGroupType",
     "AppManifestsCodeConversionsPostResponse201Type",
     "AppManifestsCodeConversionsPostResponse201Allof1Type",
     "AppHookConfigPatchBodyType",

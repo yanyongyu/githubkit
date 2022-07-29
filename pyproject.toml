@@ -51,6 +51,7 @@ models-output = "githubkit/rest/models.py"
 types-output = "githubkit/rest/types.py"
 client-output = "githubkit/rest/"
 namespace-output = "githubkit/rest/__init__.py"
+webhooks-output = "githubkit/webhooks/models.py"
 
 [tool.codegen.field-overrides]
 "+1" = "plus_one"

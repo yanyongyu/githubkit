@@ -23,6 +23,16 @@ from githubkit.utils import GitHubModel
 
 {% endfor %}
 
+{% for name, definition in union_definitions.items() %}
+{{ name }} = {{ definition.get_type_string() }}
+{% endfor %}
+
+WebhookEvent = Union[
+    {% for name in definitions %}
+    {{ name }},
+    {% endfor %}
+]
+
 {% for model in models %}
 {{ model.class_name }}.update_forward_refs()
 {% endfor %}
@@ -31,4 +41,8 @@ __all__ = [
   {% for model in models %}
   "{{ model.class_name }}",
   {% endfor %}
+  {% for name in definitions %}
+  "{{ name }}",
+  {% endfor %}
+  "WebhookEvent",
 ]

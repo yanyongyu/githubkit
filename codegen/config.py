@@ -13,3 +13,4 @@ class Config(BaseModel):
     types_output: str
     client_output: str
     namespace_output: str
+    webhooks_output: str

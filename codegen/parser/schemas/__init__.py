@@ -33,6 +33,7 @@ def parse_schema(source: Source, class_name: str) -> SchemaData:
         source = source.resolve_ref(data.ref)
         try:
             data = oas.Schema.parse_obj(source.data)
+            class_name = source.pointer.parts[-1]
         except Exception as e:
             raise TypeError(f"Invalid Schema from {source.uri}") from e
 

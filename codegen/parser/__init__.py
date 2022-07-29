@@ -35,9 +35,9 @@ from .utils import kebab_case as kebab_case
 from .utils import snake_case as snake_case
 from .data import OpenAPIData as OpenAPIData
 from .data import WebhookData as WebhookData
-from .schemas import SchemaData, parse_schema
 from .utils import pascal_case as pascal_case
 from .endpoints import EndpointData as EndpointData
+from .schemas import SchemaData, UnionSchema, parse_schema
 from .utils import fix_reserved_words as fix_reserved_words
 
 
@@ -81,9 +81,22 @@ def parse_webhook_schema(source: Source, config: Config) -> WebhookData:
     _ct = _config.set(config)
 
     try:
-        parse_schema(source, "webhook_schema")
+        root_schema = parse_schema(source, "webhook_schema")
+        if not isinstance(root_schema, UnionSchema):
+            raise TypeError("Webhook root schema must be a UnionSchema")
 
-        return WebhookData(schemas=list(get_schemas().values()))
+        schemas = get_schemas()
+        definitions = {
+            pascal_case(event["$ref"].split("/")[-1]): schemas[
+                source.resolve_ref(event["$ref"]).uri
+            ]
+            for event in source.data["oneOf"]
+        }
+
+        return WebhookData(
+            schemas=list(schemas.values()),
+            definitions=definitions,
+        )
     finally:
         _schemas.reset(_st)
         _config.reset(_ct)

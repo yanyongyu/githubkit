@@ -9,8 +9,8 @@ DELIMITERS = r"\. _-"
 
 
 def sanitize(value: str) -> str:
-    """Removes every character that isn't 0-9, A-Z, a-z, or a known delimiter"""
-    return re.sub(rf"[^\w{DELIMITERS}]+", "", value)
+    """Replace every character that isn't 0-9, A-Z, a-z, or a known delimiter"""
+    return re.sub(rf"[^\w{DELIMITERS}]+", "_", value)
 
 
 def split_words(value: str) -> List[str]:

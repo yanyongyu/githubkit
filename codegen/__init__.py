@@ -10,12 +10,28 @@ from .config import Config
 from .source import get_source
 from .parser import (
     OpenAPIData,
+    WebhookData,
     sanitize,
     kebab_case,
     snake_case,
     pascal_case,
     parse_openapi_spec,
     parse_webhook_schema,
+)
+
+env = Environment(
+    loader=PackageLoader("codegen"),
+    trim_blocks=True,
+    lstrip_blocks=True,
+    extensions=["jinja2.ext.loopcontrols"],
+)
+env.globals.update(
+    {
+        "sanitize": sanitize,
+        "snake_case": snake_case,
+        "pascal_case": pascal_case,
+        "kebab_case": kebab_case,
+    }
 )
 
 
@@ -29,21 +45,7 @@ def load_config() -> Config:
 
 
 def build_rest_api(data: OpenAPIData, config: Config):
-    logger.info("Start generating codes...")
-    env = Environment(
-        loader=PackageLoader("codegen"),
-        trim_blocks=True,
-        lstrip_blocks=True,
-        extensions=["jinja2.ext.loopcontrols"],
-    )
-    env.globals.update(
-        {
-            "sanitize": sanitize,
-            "snake_case": snake_case,
-            "pascal_case": pascal_case,
-            "kebab_case": kebab_case,
-        }
-    )
+    logger.info("Start generating rest api codes...")
 
     # build models
     logger.info("Building models...")
@@ -83,7 +85,27 @@ def build_rest_api(data: OpenAPIData, config: Config):
     )
     logger.info("Successfully built namespace!")
 
-    logger.info("Successfully generated codes!")
+    logger.info("Successfully generated rest api codes!")
+
+
+def build_webhook(data: WebhookData, config: Config):
+    logger.info("Start generating webhook codes...")
+
+    # build models
+    logger.info("Building webhook models...")
+    models_template = env.get_template("models/webhooks.py.jinja")
+    models_path = Path(config.webhooks_output)
+    models_path.parent.mkdir(parents=True, exist_ok=True)
+    models_path.write_text(
+        models_template.render(
+            models=data.models,
+            definitions=data.definitions,
+            union_definitions=data.union_definitions,
+        )
+    )
+    logger.info("Successfully built webhook models!")
+
+    logger.info("Successfully generated webhook codes!")
 
 
 def build():
@@ -103,10 +125,16 @@ def build():
 
     build_rest_api(parsed_data, config)
 
+    del parsed_data
+
     logger.info("Start getting Webhook source...")
     source = get_source(httpx.URL(config.webhook_schema_source))
     logger.info(f"Getting schema from {source.uri} succeeded!")
 
     logger.info("Start parsing Webhook spec...")
     parsed_data = parse_webhook_schema(source, config)
-    logger.info(f"Successfully parsed Webhook spec: {len(parsed_data.schemas)} schemas")
+    logger.info(
+        f"Successfully parsed Webhook spec: {len(parsed_data.definitions)} schemas"
+    )
+
+    build_webhook(parsed_data, config)

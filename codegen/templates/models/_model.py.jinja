@@ -1,0 +1,11 @@
+{% from "models/_docstring.py.jinja" import build_model_docstring %}
+
+
+{% macro build_model(model, base) %}
+class {{ model.class_name }}({{ base }}{{ ", extra=Extra.allow" if model.allow_extra else "" }}):
+    {{ build_model_docstring(model) | indent(4) }}
+
+    {% for prop in model.properties %}
+    {{ prop.get_model_defination() }}
+    {% endfor %}
+{% endmacro %}

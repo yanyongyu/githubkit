@@ -4,7 +4,7 @@ from typing import Dict, List, Optional
 from pydantic import BaseModel
 
 from .endpoints import EndpointData
-from .schemas import SchemaData, ModelSchema
+from .schemas import SchemaData, ModelSchema, UnionSchema
 
 
 class OpenAPIData(BaseModel):
@@ -30,3 +30,16 @@ class OpenAPIData(BaseModel):
 
 class WebhookData(BaseModel):
     schemas: List[SchemaData]
+    definitions: Dict[str, SchemaData]
+
+    @property
+    def models(self) -> List[ModelSchema]:
+        return [schema for schema in self.schemas if isinstance(schema, ModelSchema)]
+
+    @property
+    def union_definitions(self) -> Dict[str, UnionSchema]:
+        return {
+            name: schema
+            for name, schema in self.definitions.items()
+            if isinstance(schema, UnionSchema)
+        }

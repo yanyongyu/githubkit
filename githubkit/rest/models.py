@@ -12,11 +12,7 @@ from typing import Any, List, Union, Literal
 
 from pydantic import Extra, Field, BaseModel
 
-from githubkit.utils import UNSET, Unset
-
-
-class GitHubModel(BaseModel, allow_population_by_field_name=True):
-    ...
+from githubkit.utils import UNSET, Unset, GitHubModel
 
 
 class Root(GitHubModel):
@@ -2696,8 +2692,10 @@ class OrganizationCustomRepositoryRole(GitHubModel):
     Custom repository roles created by organization administrators
     """
 
-    id: int = Field(default=...)
-    name: str = Field(default=...)
+    id: int = Field(
+        description="The unique identifier of the custom role.", default=...
+    )
+    name: str = Field(description="The name of the custom role.", default=...)
 
 
 class OrganizationFull(GitHubModel):
@@ -10560,6 +10558,45 @@ class KeySimple(GitHubModel):
     key: str = Field(default=...)
 
 
+class SimpleInstallation(GitHubModel):
+    """Simple Installation
+
+    Simple Installation
+    """
+
+    id: int = Field(description="The ID of the installation.", default=...)
+    node_id: str = Field(
+        description="The global node ID of the installation.", default=...
+    )
+
+
+class MergeGroupChecksRequested(GitHubModel):
+    """MergeGroupChecksRequested"""
+
+    action: str = Field(default=...)
+    installation: Union[Unset, SimpleInstallation] = Field(
+        title="Simple Installation", description="Simple Installation", default=UNSET
+    )
+    organization: Union[Unset, OrganizationSimple] = Field(
+        title="Organization Simple", description="Organization Simple", default=UNSET
+    )
+    repository: Union[Unset, Repository] = Field(
+        title="Repository", description="A git repository", default=UNSET
+    )
+    sender: Union[Unset, SimpleUser] = Field(
+        title="Simple User", description="Simple User", default=UNSET
+    )
+    merge_group: MergeGroupChecksRequestedPropMergeGroup = Field(default=...)
+
+
+class MergeGroupChecksRequestedPropMergeGroup(GitHubModel):
+    """MergeGroupChecksRequestedPropMergeGroup"""
+
+    head_sha: str = Field(default=...)
+    head_ref: str = Field(default=...)
+    base_ref: str = Field(default=...)
+
+
 class AppManifestsCodeConversionsPostResponse201(GitHubModel):
     """AppManifestsCodeConversionsPostResponse201"""
 
@@ -16199,6 +16236,9 @@ StarredRepository.update_forward_refs()
 Hovercard.update_forward_refs()
 HovercardPropContextsItems.update_forward_refs()
 KeySimple.update_forward_refs()
+SimpleInstallation.update_forward_refs()
+MergeGroupChecksRequested.update_forward_refs()
+MergeGroupChecksRequestedPropMergeGroup.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201Allof1.update_forward_refs()
 AppHookConfigPatchBody.update_forward_refs()
@@ -17110,6 +17150,9 @@ __all__ = [
     "Hovercard",
     "HovercardPropContextsItems",
     "KeySimple",
+    "SimpleInstallation",
+    "MergeGroupChecksRequested",
+    "MergeGroupChecksRequestedPropMergeGroup",
     "AppManifestsCodeConversionsPostResponse201",
     "AppManifestsCodeConversionsPostResponse201Allof1",
     "AppHookConfigPatchBody",

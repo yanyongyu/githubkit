@@ -1,5 +1,7 @@
 from typing import Any
 
+from pydantic import BaseModel
+
 
 class Unset:
     def __str__(self) -> str:
@@ -30,3 +32,7 @@ def exclude_unset(data: Any) -> Any:
     elif data is UNSET:
         return None
     return data
+
+
+class GitHubModel(BaseModel, allow_population_by_field_name=True):
+    ...
