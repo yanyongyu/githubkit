@@ -14,12 +14,13 @@ from __future__ import annotations
 {% endfor %}
 {% endfor %}
 
-from githubkit.utils import GitHubModel
+class GitHubWebhookModel(BaseModel, allow_population_by_field_name=True):
+    ...
 
 {# model #}
 {% for model in models %}
 
-{{ build_model(model, "GitHubModel") }}
+{{ build_model(model, "GitHubWebhookModel") }}
 
 {% endfor %}
 
@@ -38,11 +39,12 @@ WebhookEvent = Union[
 {% endfor %}
 
 __all__ = [
-  {% for model in models %}
-  "{{ model.class_name }}",
-  {% endfor %}
-  {% for name in definitions %}
-  "{{ name }}",
-  {% endfor %}
-  "WebhookEvent",
+    "GitHubWebhookModel",
+    {% for model in models %}
+    "{{ model.class_name }}",
+    {% endfor %}
+    {% for name in definitions %}
+    "{{ name }}",
+    {% endfor %}
+    "WebhookEvent",
 ]

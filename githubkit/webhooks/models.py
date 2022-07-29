@@ -12,10 +12,14 @@ from typing import Any, List, Union, Literal
 
 from pydantic import Extra, Field, BaseModel
 
-from githubkit.utils import UNSET, Unset, GitHubModel
+from githubkit.utils import UNSET, Unset
 
 
-class BranchProtectionRuleCreated(GitHubModel):
+class GitHubWebhookModel(BaseModel, allow_population_by_field_name=True):
+    ...
+
+
+class BranchProtectionRuleCreated(GitHubWebhookModel):
     """branch protection rule created event
 
     Activity related to a branch protection rule. For more information, see "[About
@@ -42,7 +46,7 @@ class BranchProtectionRuleCreated(GitHubModel):
     )
 
 
-class BranchProtectionRule(GitHubModel):
+class BranchProtectionRule(GitHubWebhookModel):
     """branch protection rule
 
     The branch protection rule. Includes a `name` and all the [branch protection
@@ -98,7 +102,7 @@ class BranchProtectionRule(GitHubModel):
     authorized_actor_names: List[str] = Field(default=...)
 
 
-class Repository(GitHubModel):
+class Repository(GitHubWebhookModel):
     """Repository
 
     A git repository
@@ -335,7 +339,7 @@ class Repository(GitHubModel):
     organization: Union[Unset, str] = Field(default=UNSET)
 
 
-class User(GitHubModel):
+class User(GitHubWebhookModel):
     """User"""
 
     login: str = Field(default=...)
@@ -360,7 +364,7 @@ class User(GitHubModel):
     site_admin: bool = Field(default=...)
 
 
-class License(GitHubModel):
+class License(GitHubWebhookModel):
     """License"""
 
     key: str = Field(default=...)
@@ -370,7 +374,7 @@ class License(GitHubModel):
     node_id: str = Field(default=...)
 
 
-class RepositoryPropPermissions(GitHubModel):
+class RepositoryPropPermissions(GitHubWebhookModel):
     """RepositoryPropPermissions"""
 
     pull: bool = Field(default=...)
@@ -380,7 +384,7 @@ class RepositoryPropPermissions(GitHubModel):
     triage: Union[Unset, bool] = Field(default=UNSET)
 
 
-class InstallationLite(GitHubModel):
+class InstallationLite(GitHubWebhookModel):
     """InstallationLite
 
     Installation
@@ -390,7 +394,7 @@ class InstallationLite(GitHubModel):
     node_id: str = Field(default=...)
 
 
-class Organization(GitHubModel):
+class Organization(GitHubWebhookModel):
     """Organization"""
 
     login: str = Field(default=...)
@@ -408,7 +412,7 @@ class Organization(GitHubModel):
     description: Union[str, None] = Field(default=...)
 
 
-class BranchProtectionRuleDeleted(GitHubModel):
+class BranchProtectionRuleDeleted(GitHubWebhookModel):
     """branch protection rule deleted event
 
     Activity related to a branch protection rule. For more information, see "[About
@@ -435,7 +439,7 @@ class BranchProtectionRuleDeleted(GitHubModel):
     )
 
 
-class BranchProtectionRuleEdited(GitHubModel):
+class BranchProtectionRuleEdited(GitHubWebhookModel):
     """branch protection rule edited event
 
     Activity related to a branch protection rule. For more information, see "[About
@@ -465,7 +469,7 @@ class BranchProtectionRuleEdited(GitHubModel):
     )
 
 
-class BranchProtectionRuleEditedPropChanges(GitHubModel):
+class BranchProtectionRuleEditedPropChanges(GitHubWebhookModel):
     """BranchProtectionRuleEditedPropChanges
 
     If the action was `edited`, the changes to the rule.
@@ -482,25 +486,25 @@ class BranchProtectionRuleEditedPropChanges(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubModel):
+class BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubWebhookModel):
     """BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
 
     from_: bool = Field(default=..., alias="from")
 
 
-class BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubModel):
+class BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubWebhookModel):
     """BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
 
     from_: List[str] = Field(default=..., alias="from")
 
 
-class BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubModel):
+class BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubWebhookModel):
     """BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
 
     from_: List[str] = Field(default=..., alias="from")
 
 
-class CheckRunCompleted(GitHubModel):
+class CheckRunCompleted(GitHubWebhookModel):
     """check_run completed event"""
 
     action: Literal["completed"] = Field(default=...)
@@ -523,7 +527,7 @@ class CheckRunCompleted(GitHubModel):
     )
 
 
-class CheckRunCompletedPropCheckRun(GitHubModel):
+class CheckRunCompletedPropCheckRun(GitHubWebhookModel):
     """CheckRunCompletedPropCheckRun
 
     The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-
@@ -583,7 +587,7 @@ class CheckRunCompletedPropCheckRun(GitHubModel):
     )
 
 
-class CheckRunCompletedPropCheckRunPropOutput(GitHubModel):
+class CheckRunCompletedPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunCompletedPropCheckRunPropOutput"""
 
     title: Union[Unset, Union[str, None]] = Field(default=UNSET)
@@ -593,7 +597,7 @@ class CheckRunCompletedPropCheckRunPropOutput(GitHubModel):
     annotations_url: str = Field(default=...)
 
 
-class CheckRunCompletedPropCheckRunPropCheckSuite(GitHubModel):
+class CheckRunCompletedPropCheckRunPropCheckSuite(GitHubWebhookModel):
     """CheckRunCompletedPropCheckRunPropCheckSuite"""
 
     id: int = Field(
@@ -639,7 +643,7 @@ class CheckRunCompletedPropCheckRunPropCheckSuite(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class CheckRunPullRequest(GitHubModel):
+class CheckRunPullRequest(GitHubWebhookModel):
     """Check Run Pull Request"""
 
     url: str = Field(default=...)
@@ -649,7 +653,7 @@ class CheckRunPullRequest(GitHubModel):
     base: CheckRunPullRequestPropBase = Field(default=...)
 
 
-class CheckRunPullRequestPropHead(GitHubModel):
+class CheckRunPullRequestPropHead(GitHubWebhookModel):
     """CheckRunPullRequestPropHead"""
 
     ref: str = Field(default=...)
@@ -657,7 +661,7 @@ class CheckRunPullRequestPropHead(GitHubModel):
     repo: RepoRef = Field(title="Repo Ref", default=...)
 
 
-class RepoRef(GitHubModel):
+class RepoRef(GitHubWebhookModel):
     """Repo Ref"""
 
     id: int = Field(default=...)
@@ -665,7 +669,7 @@ class RepoRef(GitHubModel):
     name: str = Field(default=...)
 
 
-class CheckRunPullRequestPropBase(GitHubModel):
+class CheckRunPullRequestPropBase(GitHubWebhookModel):
     """CheckRunPullRequestPropBase"""
 
     ref: str = Field(default=...)
@@ -673,7 +677,7 @@ class CheckRunPullRequestPropBase(GitHubModel):
     repo: RepoRef = Field(title="Repo Ref", default=...)
 
 
-class CheckRunDeployment(GitHubModel):
+class CheckRunDeployment(GitHubWebhookModel):
     """Check Run Deployment
 
     A deployment to a repository environment. This will only be populated if the
@@ -694,7 +698,7 @@ class CheckRunDeployment(GitHubModel):
     repository_url: str = Field(default=...)
 
 
-class App(GitHubModel):
+class App(GitHubWebhookModel):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -778,7 +782,7 @@ class App(GitHubModel):
     ] = Field(description="The list of events for the GitHub app", default=UNSET)
 
 
-class AppPropPermissions(GitHubModel):
+class AppPropPermissions(GitHubWebhookModel):
     """AppPropPermissions
 
     The set of permissions for the GitHub app
@@ -832,7 +836,7 @@ class AppPropPermissions(GitHubModel):
     workflows: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
 
 
-class CheckRunCompletedPropRequestedAction(GitHubModel):
+class CheckRunCompletedPropRequestedAction(GitHubWebhookModel):
     """CheckRunCompletedPropRequestedAction
 
     The action requested by the user.
@@ -844,7 +848,7 @@ class CheckRunCompletedPropRequestedAction(GitHubModel):
     )
 
 
-class CheckRunCreated(GitHubModel):
+class CheckRunCreated(GitHubWebhookModel):
     """check_run created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -867,7 +871,7 @@ class CheckRunCreated(GitHubModel):
     )
 
 
-class CheckRunCreatedPropCheckRun(GitHubModel):
+class CheckRunCreatedPropCheckRun(GitHubWebhookModel):
     """CheckRunCreatedPropCheckRun
 
     The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-
@@ -927,7 +931,7 @@ class CheckRunCreatedPropCheckRun(GitHubModel):
     )
 
 
-class CheckRunCreatedPropCheckRunPropOutput(GitHubModel):
+class CheckRunCreatedPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunCreatedPropCheckRunPropOutput"""
 
     title: Union[Unset, Union[str, None]] = Field(default=UNSET)
@@ -937,7 +941,7 @@ class CheckRunCreatedPropCheckRunPropOutput(GitHubModel):
     annotations_url: str = Field(default=...)
 
 
-class CheckRunCreatedPropCheckRunPropCheckSuite(GitHubModel):
+class CheckRunCreatedPropCheckRunPropCheckSuite(GitHubWebhookModel):
     """CheckRunCreatedPropCheckRunPropCheckSuite"""
 
     id: int = Field(
@@ -983,7 +987,7 @@ class CheckRunCreatedPropCheckRunPropCheckSuite(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class CheckRunCreatedPropRequestedAction(GitHubModel):
+class CheckRunCreatedPropRequestedAction(GitHubWebhookModel):
     """CheckRunCreatedPropRequestedAction
 
     The action requested by the user.
@@ -995,7 +999,7 @@ class CheckRunCreatedPropRequestedAction(GitHubModel):
     )
 
 
-class CheckRunRequestedAction(GitHubModel):
+class CheckRunRequestedAction(GitHubWebhookModel):
     """check_run requested_action event"""
 
     action: Literal["requested_action"] = Field(default=...)
@@ -1018,7 +1022,7 @@ class CheckRunRequestedAction(GitHubModel):
     )
 
 
-class CheckRunRequestedActionPropCheckRun(GitHubModel):
+class CheckRunRequestedActionPropCheckRun(GitHubWebhookModel):
     """CheckRunRequestedActionPropCheckRun
 
     The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-
@@ -1078,7 +1082,7 @@ class CheckRunRequestedActionPropCheckRun(GitHubModel):
     )
 
 
-class CheckRunRequestedActionPropCheckRunPropOutput(GitHubModel):
+class CheckRunRequestedActionPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunRequestedActionPropCheckRunPropOutput"""
 
     title: Union[Unset, Union[str, None]] = Field(default=UNSET)
@@ -1088,7 +1092,7 @@ class CheckRunRequestedActionPropCheckRunPropOutput(GitHubModel):
     annotations_url: str = Field(default=...)
 
 
-class CheckRunRequestedActionPropCheckRunPropCheckSuite(GitHubModel):
+class CheckRunRequestedActionPropCheckRunPropCheckSuite(GitHubWebhookModel):
     """CheckRunRequestedActionPropCheckRunPropCheckSuite"""
 
     id: int = Field(
@@ -1136,7 +1140,7 @@ class CheckRunRequestedActionPropCheckRunPropCheckSuite(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class CheckRunRequestedActionPropRequestedAction(GitHubModel):
+class CheckRunRequestedActionPropRequestedAction(GitHubWebhookModel):
     """CheckRunRequestedActionPropRequestedAction
 
     The action requested by the user.
@@ -1148,7 +1152,7 @@ class CheckRunRequestedActionPropRequestedAction(GitHubModel):
     )
 
 
-class CheckRunRerequested(GitHubModel):
+class CheckRunRerequested(GitHubWebhookModel):
     """check_run rerequested event"""
 
     action: Literal["rerequested"] = Field(default=...)
@@ -1171,7 +1175,7 @@ class CheckRunRerequested(GitHubModel):
     )
 
 
-class CheckRunRerequestedPropCheckRun(GitHubModel):
+class CheckRunRerequestedPropCheckRun(GitHubWebhookModel):
     """CheckRunRerequestedPropCheckRun
 
     The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-
@@ -1231,7 +1235,7 @@ class CheckRunRerequestedPropCheckRun(GitHubModel):
     )
 
 
-class CheckRunRerequestedPropCheckRunPropOutput(GitHubModel):
+class CheckRunRerequestedPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunRerequestedPropCheckRunPropOutput"""
 
     title: Union[Unset, Union[str, None]] = Field(default=UNSET)
@@ -1241,7 +1245,7 @@ class CheckRunRerequestedPropCheckRunPropOutput(GitHubModel):
     annotations_url: str = Field(default=...)
 
 
-class CheckRunRerequestedPropCheckRunPropCheckSuite(GitHubModel):
+class CheckRunRerequestedPropCheckRunPropCheckSuite(GitHubWebhookModel):
     """CheckRunRerequestedPropCheckRunPropCheckSuite"""
 
     id: int = Field(
@@ -1284,7 +1288,7 @@ class CheckRunRerequestedPropCheckRunPropCheckSuite(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class CheckRunRerequestedPropRequestedAction(GitHubModel):
+class CheckRunRerequestedPropRequestedAction(GitHubWebhookModel):
     """CheckRunRerequestedPropRequestedAction
 
     The action requested by the user.
@@ -1296,7 +1300,7 @@ class CheckRunRerequestedPropRequestedAction(GitHubModel):
     )
 
 
-class CheckSuiteCompleted(GitHubModel):
+class CheckSuiteCompleted(GitHubWebhookModel):
     """check_suite completed event"""
 
     action: Literal["completed"] = Field(default=...)
@@ -1316,7 +1320,7 @@ class CheckSuiteCompleted(GitHubModel):
     )
 
 
-class CheckSuiteCompletedPropCheckSuite(GitHubModel):
+class CheckSuiteCompletedPropCheckSuite(GitHubWebhookModel):
     """CheckSuiteCompletedPropCheckSuite
 
     The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
@@ -1374,7 +1378,7 @@ class CheckSuiteCompletedPropCheckSuite(GitHubModel):
     head_commit: CommitSimple = Field(title="SimpleCommit", default=...)
 
 
-class CommitSimple(GitHubModel):
+class CommitSimple(GitHubWebhookModel):
     """SimpleCommit"""
 
     id: str = Field(default=...)
@@ -1393,7 +1397,7 @@ class CommitSimple(GitHubModel):
     )
 
 
-class Committer(GitHubModel):
+class Committer(GitHubWebhookModel):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -1407,7 +1411,7 @@ class Committer(GitHubModel):
     username: Union[Unset, str] = Field(default=UNSET)
 
 
-class CheckSuiteRequested(GitHubModel):
+class CheckSuiteRequested(GitHubWebhookModel):
     """check_suite requested event"""
 
     action: Literal["requested"] = Field(default=...)
@@ -1427,7 +1431,7 @@ class CheckSuiteRequested(GitHubModel):
     )
 
 
-class CheckSuiteRequestedPropCheckSuite(GitHubModel):
+class CheckSuiteRequestedPropCheckSuite(GitHubWebhookModel):
     """CheckSuiteRequestedPropCheckSuite
 
     The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
@@ -1485,7 +1489,7 @@ class CheckSuiteRequestedPropCheckSuite(GitHubModel):
     head_commit: CommitSimple = Field(title="SimpleCommit", default=...)
 
 
-class CheckSuiteRerequested(GitHubModel):
+class CheckSuiteRerequested(GitHubWebhookModel):
     """check_suite rerequested event"""
 
     action: Literal["rerequested"] = Field(default=...)
@@ -1505,7 +1509,7 @@ class CheckSuiteRerequested(GitHubModel):
     )
 
 
-class CheckSuiteRerequestedPropCheckSuite(GitHubModel):
+class CheckSuiteRerequestedPropCheckSuite(GitHubWebhookModel):
     """CheckSuiteRerequestedPropCheckSuite
 
     The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
@@ -1561,7 +1565,7 @@ class CheckSuiteRerequestedPropCheckSuite(GitHubModel):
     head_commit: CommitSimple = Field(title="SimpleCommit", default=...)
 
 
-class CodeScanningAlertAppearedInBranch(GitHubModel):
+class CodeScanningAlertAppearedInBranch(GitHubWebhookModel):
     """code_scanning_alert appeared_in_branch event"""
 
     action: Literal["appeared_in_branch"] = Field(default=...)
@@ -1588,7 +1592,7 @@ class CodeScanningAlertAppearedInBranch(GitHubModel):
     )
 
 
-class CodeScanningAlertAppearedInBranchPropAlert(GitHubModel):
+class CodeScanningAlertAppearedInBranchPropAlert(GitHubWebhookModel):
     """CodeScanningAlertAppearedInBranchPropAlert
 
     The code scanning alert involved in the event.
@@ -1625,7 +1629,7 @@ class CodeScanningAlertAppearedInBranchPropAlert(GitHubModel):
     tool: CodeScanningAlertAppearedInBranchPropAlertPropTool = Field(default=...)
 
 
-class AlertInstance(GitHubModel):
+class AlertInstance(GitHubWebhookModel):
     """Alert Instance"""
 
     ref: str = Field(
@@ -1649,13 +1653,13 @@ class AlertInstance(GitHubModel):
     classifications: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class AlertInstancePropMessage(GitHubModel):
+class AlertInstancePropMessage(GitHubWebhookModel):
     """AlertInstancePropMessage"""
 
     text: Union[Unset, str] = Field(default=UNSET)
 
 
-class AlertInstancePropLocation(GitHubModel):
+class AlertInstancePropLocation(GitHubWebhookModel):
     """AlertInstancePropLocation"""
 
     path: Union[Unset, str] = Field(default=UNSET)
@@ -1665,7 +1669,7 @@ class AlertInstancePropLocation(GitHubModel):
     end_column: Union[Unset, int] = Field(default=UNSET)
 
 
-class CodeScanningAlertAppearedInBranchPropAlertPropRule(GitHubModel):
+class CodeScanningAlertAppearedInBranchPropAlertPropRule(GitHubWebhookModel):
     """CodeScanningAlertAppearedInBranchPropAlertPropRule"""
 
     id: str = Field(
@@ -1681,7 +1685,7 @@ class CodeScanningAlertAppearedInBranchPropAlertPropRule(GitHubModel):
     )
 
 
-class CodeScanningAlertAppearedInBranchPropAlertPropTool(GitHubModel):
+class CodeScanningAlertAppearedInBranchPropAlertPropTool(GitHubWebhookModel):
     """CodeScanningAlertAppearedInBranchPropAlertPropTool"""
 
     name: str = Field(
@@ -1693,7 +1697,7 @@ class CodeScanningAlertAppearedInBranchPropAlertPropTool(GitHubModel):
     )
 
 
-class GithubOrg(GitHubModel):
+class GithubOrg(GitHubWebhookModel):
     """GitHub Org"""
 
     login: str = Field(default=...)
@@ -1718,7 +1722,7 @@ class GithubOrg(GitHubModel):
     site_admin: bool = Field(default=...)
 
 
-class CodeScanningAlertClosedByUser(GitHubModel):
+class CodeScanningAlertClosedByUser(GitHubWebhookModel):
     """code_scanning_alert closed_by_user event"""
 
     action: Literal["closed_by_user"] = Field(default=...)
@@ -1745,7 +1749,7 @@ class CodeScanningAlertClosedByUser(GitHubModel):
     )
 
 
-class CodeScanningAlertClosedByUserPropAlert(GitHubModel):
+class CodeScanningAlertClosedByUserPropAlert(GitHubWebhookModel):
     """CodeScanningAlertClosedByUserPropAlert
 
     The code scanning alert involved in the event.
@@ -1784,7 +1788,7 @@ class CodeScanningAlertClosedByUserPropAlert(GitHubModel):
     tool: CodeScanningAlertClosedByUserPropAlertPropTool = Field(default=...)
 
 
-class CodeScanningAlertClosedByUserPropAlertPropInstancesItems(GitHubModel):
+class CodeScanningAlertClosedByUserPropAlertPropInstancesItems(GitHubWebhookModel):
     """CodeScanningAlertClosedByUserPropAlertPropInstancesItems"""
 
     ref: str = Field(
@@ -1806,13 +1810,15 @@ class CodeScanningAlertClosedByUserPropAlertPropInstancesItems(GitHubModel):
     classifications: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class CodeScanningAlertClosedByUserPropAlertPropInstancesItemsAllof1(GitHubModel):
+class CodeScanningAlertClosedByUserPropAlertPropInstancesItemsAllof1(
+    GitHubWebhookModel
+):
     """CodeScanningAlertClosedByUserPropAlertPropInstancesItemsAllof1"""
 
     state: Literal["dismissed"] = Field(default=...)
 
 
-class CodeScanningAlertClosedByUserPropAlertPropRule(GitHubModel):
+class CodeScanningAlertClosedByUserPropAlertPropRule(GitHubWebhookModel):
     """CodeScanningAlertClosedByUserPropAlertPropRule"""
 
     id: str = Field(
@@ -1832,7 +1838,7 @@ class CodeScanningAlertClosedByUserPropAlertPropRule(GitHubModel):
     help_: Union[Unset, None] = Field(default=UNSET, alias="help")
 
 
-class CodeScanningAlertClosedByUserPropAlertPropTool(GitHubModel):
+class CodeScanningAlertClosedByUserPropAlertPropTool(GitHubWebhookModel):
     """CodeScanningAlertClosedByUserPropAlertPropTool"""
 
     name: str = Field(
@@ -1845,7 +1851,7 @@ class CodeScanningAlertClosedByUserPropAlertPropTool(GitHubModel):
     guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class CodeScanningAlertCreated(GitHubModel):
+class CodeScanningAlertCreated(GitHubWebhookModel):
     """code_scanning_alert created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -1872,7 +1878,7 @@ class CodeScanningAlertCreated(GitHubModel):
     )
 
 
-class CodeScanningAlertCreatedPropAlert(GitHubModel):
+class CodeScanningAlertCreatedPropAlert(GitHubWebhookModel):
     """CodeScanningAlertCreatedPropAlert
 
     The code scanning alert involved in the event.
@@ -1909,7 +1915,7 @@ class CodeScanningAlertCreatedPropAlert(GitHubModel):
     tool: CodeScanningAlertCreatedPropAlertPropTool = Field(default=...)
 
 
-class CodeScanningAlertCreatedPropAlertPropInstancesItems(GitHubModel):
+class CodeScanningAlertCreatedPropAlertPropInstancesItems(GitHubWebhookModel):
     """CodeScanningAlertCreatedPropAlertPropInstancesItems"""
 
     ref: str = Field(
@@ -1931,13 +1937,13 @@ class CodeScanningAlertCreatedPropAlertPropInstancesItems(GitHubModel):
     classifications: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class CodeScanningAlertCreatedPropAlertPropInstancesItemsAllof1(GitHubModel):
+class CodeScanningAlertCreatedPropAlertPropInstancesItemsAllof1(GitHubWebhookModel):
     """CodeScanningAlertCreatedPropAlertPropInstancesItemsAllof1"""
 
     state: Literal["open", "dismissed"] = Field(default=...)
 
 
-class CodeScanningAlertCreatedPropAlertPropRule(GitHubModel):
+class CodeScanningAlertCreatedPropAlertPropRule(GitHubWebhookModel):
     """CodeScanningAlertCreatedPropAlertPropRule"""
 
     id: str = Field(
@@ -1957,7 +1963,7 @@ class CodeScanningAlertCreatedPropAlertPropRule(GitHubModel):
     help_: Union[Unset, None] = Field(default=UNSET, alias="help")
 
 
-class CodeScanningAlertCreatedPropAlertPropTool(GitHubModel):
+class CodeScanningAlertCreatedPropAlertPropTool(GitHubWebhookModel):
     """CodeScanningAlertCreatedPropAlertPropTool"""
 
     name: str = Field(
@@ -1970,7 +1976,7 @@ class CodeScanningAlertCreatedPropAlertPropTool(GitHubModel):
     guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class CodeScanningAlertFixed(GitHubModel):
+class CodeScanningAlertFixed(GitHubWebhookModel):
     """code_scanning_alert fixed event"""
 
     action: Literal["fixed"] = Field(default=...)
@@ -1997,7 +2003,7 @@ class CodeScanningAlertFixed(GitHubModel):
     )
 
 
-class CodeScanningAlertFixedPropAlert(GitHubModel):
+class CodeScanningAlertFixedPropAlert(GitHubWebhookModel):
     """CodeScanningAlertFixedPropAlert
 
     The code scanning alert involved in the event.
@@ -2037,7 +2043,7 @@ class CodeScanningAlertFixedPropAlert(GitHubModel):
     instances_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class CodeScanningAlertFixedPropAlertPropInstancesItems(GitHubModel):
+class CodeScanningAlertFixedPropAlertPropInstancesItems(GitHubWebhookModel):
     """CodeScanningAlertFixedPropAlertPropInstancesItems"""
 
     ref: str = Field(
@@ -2059,13 +2065,13 @@ class CodeScanningAlertFixedPropAlertPropInstancesItems(GitHubModel):
     classifications: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class CodeScanningAlertFixedPropAlertPropInstancesItemsAllof1(GitHubModel):
+class CodeScanningAlertFixedPropAlertPropInstancesItemsAllof1(GitHubWebhookModel):
     """CodeScanningAlertFixedPropAlertPropInstancesItemsAllof1"""
 
     state: Literal["fixed"] = Field(default=...)
 
 
-class CodeScanningAlertFixedPropAlertPropRule(GitHubModel):
+class CodeScanningAlertFixedPropAlertPropRule(GitHubWebhookModel):
     """CodeScanningAlertFixedPropAlertPropRule"""
 
     id: str = Field(
@@ -2085,7 +2091,7 @@ class CodeScanningAlertFixedPropAlertPropRule(GitHubModel):
     help_: Union[Unset, None] = Field(default=UNSET, alias="help")
 
 
-class CodeScanningAlertFixedPropAlertPropTool(GitHubModel):
+class CodeScanningAlertFixedPropAlertPropTool(GitHubWebhookModel):
     """CodeScanningAlertFixedPropAlertPropTool"""
 
     name: str = Field(
@@ -2098,7 +2104,7 @@ class CodeScanningAlertFixedPropAlertPropTool(GitHubModel):
     guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class CodeScanningAlertReopened(GitHubModel):
+class CodeScanningAlertReopened(GitHubWebhookModel):
     """code_scanning_alert reopened event"""
 
     action: Literal["reopened"] = Field(default=...)
@@ -2125,7 +2131,7 @@ class CodeScanningAlertReopened(GitHubModel):
     )
 
 
-class CodeScanningAlertReopenedPropAlert(GitHubModel):
+class CodeScanningAlertReopenedPropAlert(GitHubWebhookModel):
     """CodeScanningAlertReopenedPropAlert
 
     The code scanning alert involved in the event.
@@ -2162,7 +2168,7 @@ class CodeScanningAlertReopenedPropAlert(GitHubModel):
     tool: CodeScanningAlertReopenedPropAlertPropTool = Field(default=...)
 
 
-class CodeScanningAlertReopenedPropAlertPropInstancesItems(GitHubModel):
+class CodeScanningAlertReopenedPropAlertPropInstancesItems(GitHubWebhookModel):
     """CodeScanningAlertReopenedPropAlertPropInstancesItems"""
 
     ref: str = Field(
@@ -2184,13 +2190,13 @@ class CodeScanningAlertReopenedPropAlertPropInstancesItems(GitHubModel):
     classifications: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class CodeScanningAlertReopenedPropAlertPropInstancesItemsAllof1(GitHubModel):
+class CodeScanningAlertReopenedPropAlertPropInstancesItemsAllof1(GitHubWebhookModel):
     """CodeScanningAlertReopenedPropAlertPropInstancesItemsAllof1"""
 
     state: Literal["open"] = Field(default=...)
 
 
-class CodeScanningAlertReopenedPropAlertPropRule(GitHubModel):
+class CodeScanningAlertReopenedPropAlertPropRule(GitHubWebhookModel):
     """CodeScanningAlertReopenedPropAlertPropRule"""
 
     id: str = Field(
@@ -2210,7 +2216,7 @@ class CodeScanningAlertReopenedPropAlertPropRule(GitHubModel):
     help_: Union[Unset, None] = Field(default=UNSET, alias="help")
 
 
-class CodeScanningAlertReopenedPropAlertPropTool(GitHubModel):
+class CodeScanningAlertReopenedPropAlertPropTool(GitHubWebhookModel):
     """CodeScanningAlertReopenedPropAlertPropTool"""
 
     name: str = Field(
@@ -2223,7 +2229,7 @@ class CodeScanningAlertReopenedPropAlertPropTool(GitHubModel):
     guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class CodeScanningAlertReopenedByUser(GitHubModel):
+class CodeScanningAlertReopenedByUser(GitHubWebhookModel):
     """code_scanning_alert reopened_by_user event"""
 
     action: Literal["reopened_by_user"] = Field(default=...)
@@ -2250,7 +2256,7 @@ class CodeScanningAlertReopenedByUser(GitHubModel):
     )
 
 
-class CodeScanningAlertReopenedByUserPropAlert(GitHubModel):
+class CodeScanningAlertReopenedByUserPropAlert(GitHubWebhookModel):
     """CodeScanningAlertReopenedByUserPropAlert
 
     The code scanning alert involved in the event.
@@ -2287,7 +2293,7 @@ class CodeScanningAlertReopenedByUserPropAlert(GitHubModel):
     tool: CodeScanningAlertReopenedByUserPropAlertPropTool = Field(default=...)
 
 
-class CodeScanningAlertReopenedByUserPropAlertPropInstancesItems(GitHubModel):
+class CodeScanningAlertReopenedByUserPropAlertPropInstancesItems(GitHubWebhookModel):
     """CodeScanningAlertReopenedByUserPropAlertPropInstancesItems"""
 
     ref: str = Field(
@@ -2309,13 +2315,15 @@ class CodeScanningAlertReopenedByUserPropAlertPropInstancesItems(GitHubModel):
     classifications: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class CodeScanningAlertReopenedByUserPropAlertPropInstancesItemsAllof1(GitHubModel):
+class CodeScanningAlertReopenedByUserPropAlertPropInstancesItemsAllof1(
+    GitHubWebhookModel
+):
     """CodeScanningAlertReopenedByUserPropAlertPropInstancesItemsAllof1"""
 
     state: Literal["open"] = Field(default=...)
 
 
-class CodeScanningAlertReopenedByUserPropAlertPropRule(GitHubModel):
+class CodeScanningAlertReopenedByUserPropAlertPropRule(GitHubWebhookModel):
     """CodeScanningAlertReopenedByUserPropAlertPropRule"""
 
     id: str = Field(
@@ -2331,7 +2339,7 @@ class CodeScanningAlertReopenedByUserPropAlertPropRule(GitHubModel):
     )
 
 
-class CodeScanningAlertReopenedByUserPropAlertPropTool(GitHubModel):
+class CodeScanningAlertReopenedByUserPropAlertPropTool(GitHubWebhookModel):
     """CodeScanningAlertReopenedByUserPropAlertPropTool"""
 
     name: str = Field(
@@ -2343,7 +2351,7 @@ class CodeScanningAlertReopenedByUserPropAlertPropTool(GitHubModel):
     )
 
 
-class CommitCommentCreated(GitHubModel):
+class CommitCommentCreated(GitHubWebhookModel):
     """commit_comment created event
 
     A commit comment is created. The type of activity is specified in the `action`
@@ -2369,7 +2377,7 @@ class CommitCommentCreated(GitHubModel):
     )
 
 
-class CommitCommentCreatedPropComment(GitHubModel):
+class CommitCommentCreatedPropComment(GitHubWebhookModel):
     """CommitCommentCreatedPropComment
 
     The [commit comment](https://docs.github.com/en/rest/reference/repos#get-a-
@@ -2415,7 +2423,7 @@ class CommitCommentCreatedPropComment(GitHubModel):
     body: str = Field(description="The text of the comment.", default=...)
 
 
-class CreateEvent(GitHubModel):
+class CreateEvent(GitHubWebhookModel):
     """create event
 
     A Git branch or tag is created.
@@ -2452,7 +2460,7 @@ class CreateEvent(GitHubModel):
     )
 
 
-class DeleteEvent(GitHubModel):
+class DeleteEvent(GitHubWebhookModel):
     """delete event
 
     A Git branch or tag is deleted.
@@ -2482,7 +2490,7 @@ class DeleteEvent(GitHubModel):
     )
 
 
-class DeployKeyCreated(GitHubModel):
+class DeployKeyCreated(GitHubWebhookModel):
     """deploy_key created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -2502,7 +2510,7 @@ class DeployKeyCreated(GitHubModel):
     )
 
 
-class DeployKeyCreatedPropKey(GitHubModel):
+class DeployKeyCreatedPropKey(GitHubWebhookModel):
     """DeployKeyCreatedPropKey
 
     The [`deploy key`](https://docs.github.com/en/rest/reference/deployments#get-a-
@@ -2518,7 +2526,7 @@ class DeployKeyCreatedPropKey(GitHubModel):
     read_only: bool = Field(default=...)
 
 
-class DeployKeyDeleted(GitHubModel):
+class DeployKeyDeleted(GitHubWebhookModel):
     """deploy_key deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -2538,7 +2546,7 @@ class DeployKeyDeleted(GitHubModel):
     )
 
 
-class DeployKeyDeletedPropKey(GitHubModel):
+class DeployKeyDeletedPropKey(GitHubWebhookModel):
     """DeployKeyDeletedPropKey
 
     The [`deploy key`](https://docs.github.com/en/rest/reference/deployments#get-a-
@@ -2554,7 +2562,7 @@ class DeployKeyDeletedPropKey(GitHubModel):
     read_only: bool = Field(default=...)
 
 
-class DeploymentCreated(GitHubModel):
+class DeploymentCreated(GitHubWebhookModel):
     """deployment created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -2579,7 +2587,7 @@ class DeploymentCreated(GitHubModel):
     )
 
 
-class Deployment(GitHubModel):
+class Deployment(GitHubWebhookModel):
     """Deployment
 
     The [deployment](https://docs.github.com/en/rest/reference/deployments#list-
@@ -2620,11 +2628,11 @@ class Deployment(GitHubModel):
     )
 
 
-class DeploymentPropPayload(GitHubModel, extra=Extra.allow):
+class DeploymentPropPayload(GitHubWebhookModel, extra=Extra.allow):
     """DeploymentPropPayload"""
 
 
-class Workflow(GitHubModel):
+class Workflow(GitHubWebhookModel):
     """Workflow"""
 
     badge_url: str = Field(default=...)
@@ -2639,7 +2647,7 @@ class Workflow(GitHubModel):
     url: str = Field(default=...)
 
 
-class DeploymentWorkflowRun(GitHubModel):
+class DeploymentWorkflowRun(GitHubWebhookModel):
     """Deployment Workflow Run"""
 
     id: int = Field(default=...)
@@ -2680,7 +2688,7 @@ class DeploymentWorkflowRun(GitHubModel):
     referenced_workflows: Union[Unset, List[ReferencedWorkflow]] = Field(default=UNSET)
 
 
-class ReferencedWorkflow(GitHubModel):
+class ReferencedWorkflow(GitHubWebhookModel):
     """Referenced workflow
 
     A workflow referenced/reused by the initial caller workflow
@@ -2691,7 +2699,7 @@ class ReferencedWorkflow(GitHubModel):
     ref: Union[Unset, str] = Field(default=UNSET)
 
 
-class DeploymentStatusCreated(GitHubModel):
+class DeploymentStatusCreated(GitHubWebhookModel):
     """deployment_status created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -2721,7 +2729,7 @@ class DeploymentStatusCreated(GitHubModel):
     )
 
 
-class DeploymentStatusCreatedPropDeploymentStatus(GitHubModel):
+class DeploymentStatusCreatedPropDeploymentStatus(GitHubWebhookModel):
     """DeploymentStatusCreatedPropDeploymentStatus
 
     The [deployment
@@ -2758,7 +2766,7 @@ class DeploymentStatusCreatedPropDeploymentStatus(GitHubModel):
     )
 
 
-class DeploymentStatusCreatedPropCheckRun(GitHubModel):
+class DeploymentStatusCreatedPropCheckRun(GitHubWebhookModel):
     """DeploymentStatusCreatedPropCheckRun"""
 
     id: int = Field(description="The id of the check.", default=...)
@@ -2795,7 +2803,7 @@ class DeploymentStatusCreatedPropCheckRun(GitHubModel):
     completed_at: Union[datetime, None] = Field(default=...)
 
 
-class DiscussionAnswered(GitHubModel):
+class DiscussionAnswered(GitHubWebhookModel):
     """discussion answered event"""
 
     action: Literal["answered"] = Field(default=...)
@@ -2813,7 +2821,7 @@ class DiscussionAnswered(GitHubModel):
     )
 
 
-class DiscussionAnsweredPropDiscussion(GitHubModel):
+class DiscussionAnsweredPropDiscussion(GitHubWebhookModel):
     """DiscussionAnsweredPropDiscussion"""
 
     repository_url: str = Field(default=...)
@@ -2851,7 +2859,7 @@ class DiscussionAnsweredPropDiscussion(GitHubModel):
     reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
 
 
-class Discussion(GitHubModel):
+class Discussion(GitHubWebhookModel):
     """Discussion"""
 
     repository_url: str = Field(default=...)
@@ -2889,7 +2897,7 @@ class Discussion(GitHubModel):
     reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
 
 
-class DiscussionPropCategory(GitHubModel):
+class DiscussionPropCategory(GitHubWebhookModel):
     """DiscussionPropCategory"""
 
     id: int = Field(default=...)
@@ -2903,7 +2911,7 @@ class DiscussionPropCategory(GitHubModel):
     is_answerable: bool = Field(default=...)
 
 
-class Reactions(GitHubModel):
+class Reactions(GitHubWebhookModel):
     """Reactions"""
 
     url: str = Field(default=...)
@@ -2918,7 +2926,7 @@ class Reactions(GitHubModel):
     eyes: int = Field(default=...)
 
 
-class DiscussionAnsweredPropDiscussionAllof1(GitHubModel):
+class DiscussionAnsweredPropDiscussionAllof1(GitHubWebhookModel):
     """DiscussionAnsweredPropDiscussionAllof1"""
 
     category: DiscussionAnsweredPropDiscussionAllof1PropCategory = Field(default=...)
@@ -2927,13 +2935,13 @@ class DiscussionAnsweredPropDiscussionAllof1(GitHubModel):
     answer_chosen_by: User = Field(title="User", default=...)
 
 
-class DiscussionAnsweredPropDiscussionAllof1PropCategory(GitHubModel):
+class DiscussionAnsweredPropDiscussionAllof1PropCategory(GitHubWebhookModel):
     """DiscussionAnsweredPropDiscussionAllof1PropCategory"""
 
     is_answerable: Literal[True] = Field(default=...)
 
 
-class DiscussionAnsweredPropDiscussionMergedCategory(GitHubModel):
+class DiscussionAnsweredPropDiscussionMergedCategory(GitHubWebhookModel):
     """DiscussionAnsweredPropDiscussionMergedCategory"""
 
     id: int = Field(default=...)
@@ -2947,7 +2955,7 @@ class DiscussionAnsweredPropDiscussionMergedCategory(GitHubModel):
     is_answerable: Literal[True] = Field(default=...)
 
 
-class DiscussionAnsweredPropAnswer(GitHubModel):
+class DiscussionAnsweredPropAnswer(GitHubWebhookModel):
     """DiscussionAnsweredPropAnswer"""
 
     id: int = Field(default=...)
@@ -2977,7 +2985,7 @@ class DiscussionAnsweredPropAnswer(GitHubModel):
     body: str = Field(default=...)
 
 
-class DiscussionCategoryChanged(GitHubModel):
+class DiscussionCategoryChanged(GitHubWebhookModel):
     """discussion category changed event"""
 
     changes: DiscussionCategoryChangedPropChanges = Field(default=...)
@@ -2995,13 +3003,13 @@ class DiscussionCategoryChanged(GitHubModel):
     )
 
 
-class DiscussionCategoryChangedPropChanges(GitHubModel):
+class DiscussionCategoryChangedPropChanges(GitHubWebhookModel):
     """DiscussionCategoryChangedPropChanges"""
 
     category: DiscussionCategoryChangedPropChangesPropCategory = Field(default=...)
 
 
-class DiscussionCategoryChangedPropChangesPropCategory(GitHubModel):
+class DiscussionCategoryChangedPropChangesPropCategory(GitHubWebhookModel):
     """DiscussionCategoryChangedPropChangesPropCategory"""
 
     from_: DiscussionCategoryChangedPropChangesPropCategoryPropFrom = Field(
@@ -3009,7 +3017,7 @@ class DiscussionCategoryChangedPropChangesPropCategory(GitHubModel):
     )
 
 
-class DiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubModel):
+class DiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubWebhookModel):
     """DiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
 
     id: int = Field(default=...)
@@ -3023,7 +3031,7 @@ class DiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubModel):
     is_answerable: bool = Field(default=...)
 
 
-class DiscussionCreated(GitHubModel):
+class DiscussionCreated(GitHubWebhookModel):
     """discussion created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -3040,7 +3048,7 @@ class DiscussionCreated(GitHubModel):
     )
 
 
-class DiscussionCreatedPropDiscussion(GitHubModel):
+class DiscussionCreatedPropDiscussion(GitHubWebhookModel):
     """DiscussionCreatedPropDiscussion"""
 
     repository_url: str = Field(default=...)
@@ -3078,7 +3086,7 @@ class DiscussionCreatedPropDiscussion(GitHubModel):
     reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
 
 
-class DiscussionCreatedPropDiscussionAllof1(GitHubModel):
+class DiscussionCreatedPropDiscussionAllof1(GitHubWebhookModel):
     """DiscussionCreatedPropDiscussionAllof1"""
 
     state: Literal["open", "converting"] = Field(default=...)
@@ -3088,7 +3096,7 @@ class DiscussionCreatedPropDiscussionAllof1(GitHubModel):
     answer_chosen_by: None = Field(default=...)
 
 
-class DiscussionDeleted(GitHubModel):
+class DiscussionDeleted(GitHubWebhookModel):
     """discussion deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -3105,7 +3113,7 @@ class DiscussionDeleted(GitHubModel):
     )
 
 
-class DiscussionEdited(GitHubModel):
+class DiscussionEdited(GitHubWebhookModel):
     """discussion edited event"""
 
     changes: Union[Unset, DiscussionEditedPropChanges] = Field(default=UNSET)
@@ -3123,26 +3131,26 @@ class DiscussionEdited(GitHubModel):
     )
 
 
-class DiscussionEditedPropChanges(GitHubModel):
+class DiscussionEditedPropChanges(GitHubWebhookModel):
     """DiscussionEditedPropChanges"""
 
     title: Union[Unset, DiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
     body: Union[Unset, DiscussionEditedPropChangesPropBody] = Field(default=UNSET)
 
 
-class DiscussionEditedPropChangesPropTitle(GitHubModel):
+class DiscussionEditedPropChangesPropTitle(GitHubWebhookModel):
     """DiscussionEditedPropChangesPropTitle"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class DiscussionEditedPropChangesPropBody(GitHubModel):
+class DiscussionEditedPropChangesPropBody(GitHubWebhookModel):
     """DiscussionEditedPropChangesPropBody"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class DiscussionLabeled(GitHubModel):
+class DiscussionLabeled(GitHubWebhookModel):
     """discussion labeled event"""
 
     action: Literal["labeled"] = Field(default=...)
@@ -3160,7 +3168,7 @@ class DiscussionLabeled(GitHubModel):
     )
 
 
-class Label(GitHubModel):
+class Label(GitHubWebhookModel):
     """Label"""
 
     id: int = Field(default=...)
@@ -3175,7 +3183,7 @@ class Label(GitHubModel):
     default: bool = Field(default=...)
 
 
-class DiscussionLocked(GitHubModel):
+class DiscussionLocked(GitHubWebhookModel):
     """discussion locked event"""
 
     action: Literal["locked"] = Field(default=...)
@@ -3192,7 +3200,7 @@ class DiscussionLocked(GitHubModel):
     )
 
 
-class DiscussionLockedPropDiscussion(GitHubModel):
+class DiscussionLockedPropDiscussion(GitHubWebhookModel):
     """DiscussionLockedPropDiscussion"""
 
     repository_url: str = Field(default=...)
@@ -3230,14 +3238,14 @@ class DiscussionLockedPropDiscussion(GitHubModel):
     reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
 
 
-class DiscussionLockedPropDiscussionAllof1(GitHubModel):
+class DiscussionLockedPropDiscussionAllof1(GitHubWebhookModel):
     """DiscussionLockedPropDiscussionAllof1"""
 
     state: Literal["locked"] = Field(default=...)
     locked: Literal[True] = Field(default=...)
 
 
-class DiscussionPinned(GitHubModel):
+class DiscussionPinned(GitHubWebhookModel):
     """discussion pinned event"""
 
     action: Literal["pinned"] = Field(default=...)
@@ -3254,7 +3262,7 @@ class DiscussionPinned(GitHubModel):
     )
 
 
-class DiscussionTransferred(GitHubModel):
+class DiscussionTransferred(GitHubWebhookModel):
     """discussion transferred event"""
 
     changes: DiscussionTransferredPropChanges = Field(default=...)
@@ -3272,7 +3280,7 @@ class DiscussionTransferred(GitHubModel):
     )
 
 
-class DiscussionTransferredPropChanges(GitHubModel):
+class DiscussionTransferredPropChanges(GitHubWebhookModel):
     """DiscussionTransferredPropChanges"""
 
     new_discussion: Discussion = Field(title="Discussion", default=...)
@@ -3281,7 +3289,7 @@ class DiscussionTransferredPropChanges(GitHubModel):
     )
 
 
-class DiscussionUnanswered(GitHubModel):
+class DiscussionUnanswered(GitHubWebhookModel):
     """discussion unanswered event"""
 
     action: Literal["unanswered"] = Field(default=...)
@@ -3299,7 +3307,7 @@ class DiscussionUnanswered(GitHubModel):
     )
 
 
-class DiscussionUnansweredPropDiscussion(GitHubModel):
+class DiscussionUnansweredPropDiscussion(GitHubWebhookModel):
     """DiscussionUnansweredPropDiscussion"""
 
     repository_url: str = Field(default=...)
@@ -3337,7 +3345,7 @@ class DiscussionUnansweredPropDiscussion(GitHubModel):
     reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
 
 
-class DiscussionUnansweredPropDiscussionAllof1(GitHubModel):
+class DiscussionUnansweredPropDiscussionAllof1(GitHubWebhookModel):
     """DiscussionUnansweredPropDiscussionAllof1"""
 
     category: DiscussionUnansweredPropDiscussionAllof1PropCategory = Field(default=...)
@@ -3346,13 +3354,13 @@ class DiscussionUnansweredPropDiscussionAllof1(GitHubModel):
     answer_chosen_by: None = Field(default=...)
 
 
-class DiscussionUnansweredPropDiscussionAllof1PropCategory(GitHubModel):
+class DiscussionUnansweredPropDiscussionAllof1PropCategory(GitHubWebhookModel):
     """DiscussionUnansweredPropDiscussionAllof1PropCategory"""
 
     is_answerable: Literal[True] = Field(default=...)
 
 
-class DiscussionUnansweredPropDiscussionMergedCategory(GitHubModel):
+class DiscussionUnansweredPropDiscussionMergedCategory(GitHubWebhookModel):
     """DiscussionUnansweredPropDiscussionMergedCategory"""
 
     id: int = Field(default=...)
@@ -3366,7 +3374,7 @@ class DiscussionUnansweredPropDiscussionMergedCategory(GitHubModel):
     is_answerable: Literal[True] = Field(default=...)
 
 
-class DiscussionUnansweredPropOldAnswer(GitHubModel):
+class DiscussionUnansweredPropOldAnswer(GitHubWebhookModel):
     """DiscussionUnansweredPropOldAnswer"""
 
     id: int = Field(default=...)
@@ -3396,7 +3404,7 @@ class DiscussionUnansweredPropOldAnswer(GitHubModel):
     body: str = Field(default=...)
 
 
-class DiscussionUnlabeled(GitHubModel):
+class DiscussionUnlabeled(GitHubWebhookModel):
     """discussion unlabeled event"""
 
     action: Literal["unlabeled"] = Field(default=...)
@@ -3414,7 +3422,7 @@ class DiscussionUnlabeled(GitHubModel):
     )
 
 
-class DiscussionUnlocked(GitHubModel):
+class DiscussionUnlocked(GitHubWebhookModel):
     """discussion unlocked event"""
 
     action: Literal["unlocked"] = Field(default=...)
@@ -3431,7 +3439,7 @@ class DiscussionUnlocked(GitHubModel):
     )
 
 
-class DiscussionUnlockedPropDiscussion(GitHubModel):
+class DiscussionUnlockedPropDiscussion(GitHubWebhookModel):
     """DiscussionUnlockedPropDiscussion"""
 
     repository_url: str = Field(default=...)
@@ -3469,14 +3477,14 @@ class DiscussionUnlockedPropDiscussion(GitHubModel):
     reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
 
 
-class DiscussionUnlockedPropDiscussionAllof1(GitHubModel):
+class DiscussionUnlockedPropDiscussionAllof1(GitHubWebhookModel):
     """DiscussionUnlockedPropDiscussionAllof1"""
 
     state: Literal["open"] = Field(default=...)
     locked: Literal[False] = Field(default=...)
 
 
-class DiscussionUnpinned(GitHubModel):
+class DiscussionUnpinned(GitHubWebhookModel):
     """discussion unpinned event"""
 
     action: Literal["unpinned"] = Field(default=...)
@@ -3493,7 +3501,7 @@ class DiscussionUnpinned(GitHubModel):
     )
 
 
-class DiscussionCommentCreated(GitHubModel):
+class DiscussionCommentCreated(GitHubWebhookModel):
     """discussion_comment created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -3511,7 +3519,7 @@ class DiscussionCommentCreated(GitHubModel):
     )
 
 
-class DiscussionCommentCreatedPropComment(GitHubModel):
+class DiscussionCommentCreatedPropComment(GitHubWebhookModel):
     """DiscussionCommentCreatedPropComment"""
 
     id: int = Field(default=...)
@@ -3542,7 +3550,7 @@ class DiscussionCommentCreatedPropComment(GitHubModel):
     reactions: Reactions = Field(title="Reactions", default=...)
 
 
-class DiscussionCommentDeleted(GitHubModel):
+class DiscussionCommentDeleted(GitHubWebhookModel):
     """discussion_comment deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -3560,7 +3568,7 @@ class DiscussionCommentDeleted(GitHubModel):
     )
 
 
-class DiscussionCommentDeletedPropComment(GitHubModel):
+class DiscussionCommentDeletedPropComment(GitHubWebhookModel):
     """DiscussionCommentDeletedPropComment"""
 
     id: int = Field(default=...)
@@ -3591,7 +3599,7 @@ class DiscussionCommentDeletedPropComment(GitHubModel):
     reactions: Reactions = Field(title="Reactions", default=...)
 
 
-class DiscussionCommentEdited(GitHubModel):
+class DiscussionCommentEdited(GitHubWebhookModel):
     """discussion_comment edited event"""
 
     changes: DiscussionCommentEditedPropChanges = Field(default=...)
@@ -3610,19 +3618,19 @@ class DiscussionCommentEdited(GitHubModel):
     )
 
 
-class DiscussionCommentEditedPropChanges(GitHubModel):
+class DiscussionCommentEditedPropChanges(GitHubWebhookModel):
     """DiscussionCommentEditedPropChanges"""
 
     body: DiscussionCommentEditedPropChangesPropBody = Field(default=...)
 
 
-class DiscussionCommentEditedPropChangesPropBody(GitHubModel):
+class DiscussionCommentEditedPropChangesPropBody(GitHubWebhookModel):
     """DiscussionCommentEditedPropChangesPropBody"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class DiscussionCommentEditedPropComment(GitHubModel):
+class DiscussionCommentEditedPropComment(GitHubWebhookModel):
     """DiscussionCommentEditedPropComment"""
 
     id: int = Field(default=...)
@@ -3653,7 +3661,7 @@ class DiscussionCommentEditedPropComment(GitHubModel):
     reactions: Reactions = Field(title="Reactions", default=...)
 
 
-class ForkEvent(GitHubModel):
+class ForkEvent(GitHubWebhookModel):
     """fork event
 
     A user forks a repository.
@@ -3675,7 +3683,7 @@ class ForkEvent(GitHubModel):
     )
 
 
-class ForkEventPropForkee(GitHubModel):
+class ForkEventPropForkee(GitHubWebhookModel):
     """ForkEventPropForkee
 
     The created [`repository`](https://docs.github.com/en/rest/reference/repos#get-
@@ -3913,20 +3921,20 @@ class ForkEventPropForkee(GitHubModel):
     organization: Union[Unset, str] = Field(default=UNSET)
 
 
-class ForkEventPropForkeeAllof1(GitHubModel):
+class ForkEventPropForkeeAllof1(GitHubWebhookModel):
     """ForkEventPropForkeeAllof1"""
 
     fork: Union[Unset, Literal[True]] = Field(default=UNSET)
 
 
-class GithubAppAuthorizationRevoked(GitHubModel):
+class GithubAppAuthorizationRevoked(GitHubWebhookModel):
     """github_app_authorization revoked event"""
 
     action: Literal["revoked"] = Field(default=...)
     sender: User = Field(title="User", default=...)
 
 
-class GollumEvent(GitHubModel):
+class GollumEvent(GitHubWebhookModel):
     """gollum event
 
     A wiki page is created or updated.
@@ -3947,7 +3955,7 @@ class GollumEvent(GitHubModel):
     )
 
 
-class GollumEventPropPagesItems(GitHubModel):
+class GollumEventPropPagesItems(GitHubWebhookModel):
     """GollumEventPropPagesItems"""
 
     page_name: str = Field(description="The name of the page.", default=...)
@@ -3961,7 +3969,7 @@ class GollumEventPropPagesItems(GitHubModel):
     html_url: str = Field(description="Points to the HTML wiki page.", default=...)
 
 
-class InstallationCreated(GitHubModel):
+class InstallationCreated(GitHubWebhookModel):
     """installation created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -3976,7 +3984,7 @@ class InstallationCreated(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class Installation(GitHubModel):
+class Installation(GitHubWebhookModel):
     """Installation
 
     The GitHub App installation.
@@ -4062,7 +4070,7 @@ class Installation(GitHubModel):
     suspended_at: Union[datetime, None] = Field(default=...)
 
 
-class InstallationPropPermissions(GitHubModel):
+class InstallationPropPermissions(GitHubWebhookModel):
     """InstallationPropPermissions"""
 
     actions: Union[Unset, Literal["read", "write"]] = Field(
@@ -4194,7 +4202,7 @@ class InstallationPropPermissions(GitHubModel):
     )
 
 
-class InstallationCreatedPropRepositoriesItems(GitHubModel):
+class InstallationCreatedPropRepositoriesItems(GitHubWebhookModel):
     """InstallationCreatedPropRepositoriesItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4206,7 +4214,7 @@ class InstallationCreatedPropRepositoriesItems(GitHubModel):
     )
 
 
-class InstallationDeleted(GitHubModel):
+class InstallationDeleted(GitHubWebhookModel):
     """installation deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -4221,7 +4229,7 @@ class InstallationDeleted(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class InstallationDeletedPropRepositoriesItems(GitHubModel):
+class InstallationDeletedPropRepositoriesItems(GitHubWebhookModel):
     """InstallationDeletedPropRepositoriesItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4233,7 +4241,7 @@ class InstallationDeletedPropRepositoriesItems(GitHubModel):
     )
 
 
-class InstallationNewPermissionsAccepted(GitHubModel):
+class InstallationNewPermissionsAccepted(GitHubWebhookModel):
     """installation new_permissions_accepted event"""
 
     action: Literal["new_permissions_accepted"] = Field(default=...)
@@ -4250,7 +4258,7 @@ class InstallationNewPermissionsAccepted(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class InstallationNewPermissionsAcceptedPropRepositoriesItems(GitHubModel):
+class InstallationNewPermissionsAcceptedPropRepositoriesItems(GitHubWebhookModel):
     """InstallationNewPermissionsAcceptedPropRepositoriesItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4262,7 +4270,7 @@ class InstallationNewPermissionsAcceptedPropRepositoriesItems(GitHubModel):
     )
 
 
-class InstallationSuspend(GitHubModel):
+class InstallationSuspend(GitHubWebhookModel):
     """installation suspend event"""
 
     action: Literal["suspend"] = Field(default=...)
@@ -4275,7 +4283,7 @@ class InstallationSuspend(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class InstallationSuspendPropInstallation(GitHubModel):
+class InstallationSuspendPropInstallation(GitHubWebhookModel):
     """InstallationSuspendPropInstallation"""
 
     id: int = Field(description="The ID of the installation.", default=...)
@@ -4358,14 +4366,14 @@ class InstallationSuspendPropInstallation(GitHubModel):
     suspended_at: datetime = Field(default=...)
 
 
-class InstallationSuspendPropInstallationAllof1(GitHubModel):
+class InstallationSuspendPropInstallationAllof1(GitHubWebhookModel):
     """InstallationSuspendPropInstallationAllof1"""
 
     suspended_by: User = Field(title="User", default=...)
     suspended_at: datetime = Field(default=...)
 
 
-class InstallationSuspendPropRepositoriesItems(GitHubModel):
+class InstallationSuspendPropRepositoriesItems(GitHubWebhookModel):
     """InstallationSuspendPropRepositoriesItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4377,7 +4385,7 @@ class InstallationSuspendPropRepositoriesItems(GitHubModel):
     )
 
 
-class InstallationUnsuspend(GitHubModel):
+class InstallationUnsuspend(GitHubWebhookModel):
     """installation unsuspend event"""
 
     action: Literal["unsuspend"] = Field(default=...)
@@ -4392,7 +4400,7 @@ class InstallationUnsuspend(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class InstallationUnsuspendPropInstallation(GitHubModel):
+class InstallationUnsuspendPropInstallation(GitHubWebhookModel):
     """InstallationUnsuspendPropInstallation"""
 
     id: int = Field(description="The ID of the installation.", default=...)
@@ -4475,14 +4483,14 @@ class InstallationUnsuspendPropInstallation(GitHubModel):
     suspended_at: Union[None, None] = Field(default=...)
 
 
-class InstallationUnsuspendPropInstallationAllof1(GitHubModel):
+class InstallationUnsuspendPropInstallationAllof1(GitHubWebhookModel):
     """InstallationUnsuspendPropInstallationAllof1"""
 
     suspended_by: None = Field(default=...)
     suspended_at: None = Field(default=...)
 
 
-class InstallationUnsuspendPropRepositoriesItems(GitHubModel):
+class InstallationUnsuspendPropRepositoriesItems(GitHubWebhookModel):
     """InstallationUnsuspendPropRepositoriesItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4494,7 +4502,7 @@ class InstallationUnsuspendPropRepositoriesItems(GitHubModel):
     )
 
 
-class InstallationRepositoriesAdded(GitHubModel):
+class InstallationRepositoriesAdded(GitHubWebhookModel):
     """installation_repositories added event"""
 
     action: Literal["added"] = Field(default=...)
@@ -4521,7 +4529,7 @@ class InstallationRepositoriesAdded(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class InstallationRepositoriesAddedPropRepositoriesAddedItems(GitHubModel):
+class InstallationRepositoriesAddedPropRepositoriesAddedItems(GitHubWebhookModel):
     """InstallationRepositoriesAddedPropRepositoriesAddedItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4533,7 +4541,7 @@ class InstallationRepositoriesAddedPropRepositoriesAddedItems(GitHubModel):
     )
 
 
-class InstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubModel):
+class InstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubWebhookModel):
     """InstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
     id: Union[Unset, int] = Field(
@@ -4549,7 +4557,7 @@ class InstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubModel):
     )
 
 
-class InstallationRepositoriesRemoved(GitHubModel):
+class InstallationRepositoriesRemoved(GitHubWebhookModel):
     """installation_repositories removed event"""
 
     action: Literal["removed"] = Field(default=...)
@@ -4576,7 +4584,7 @@ class InstallationRepositoriesRemoved(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class InstallationRepositoriesRemovedPropRepositoriesAddedItems(GitHubModel):
+class InstallationRepositoriesRemovedPropRepositoriesAddedItems(GitHubWebhookModel):
     """InstallationRepositoriesRemovedPropRepositoriesAddedItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4588,7 +4596,7 @@ class InstallationRepositoriesRemovedPropRepositoriesAddedItems(GitHubModel):
     )
 
 
-class InstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
+class InstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubWebhookModel):
     """InstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -4600,7 +4608,7 @@ class InstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
     )
 
 
-class IssueCommentCreated(GitHubModel):
+class IssueCommentCreated(GitHubWebhookModel):
     """issue_comment created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -4625,7 +4633,7 @@ class IssueCommentCreated(GitHubModel):
     )
 
 
-class IssueCommentCreatedPropIssue(GitHubModel):
+class IssueCommentCreatedPropIssue(GitHubWebhookModel):
     """IssueCommentCreatedPropIssue
 
     The [issue](https://docs.github.com/en/rest/reference/issues) the comment
@@ -4694,7 +4702,7 @@ class IssueCommentCreatedPropIssue(GitHubModel):
     )
 
 
-class Issue(GitHubModel):
+class Issue(GitHubWebhookModel):
     """Issue
 
     The [issue](https://docs.github.com/en/rest/reference/issues) itself.
@@ -4762,7 +4770,7 @@ class Issue(GitHubModel):
     )
 
 
-class Milestone(GitHubModel):
+class Milestone(GitHubWebhookModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -4788,7 +4796,7 @@ class Milestone(GitHubModel):
     closed_at: Union[datetime, None] = Field(default=...)
 
 
-class IssuePropPullRequest(GitHubModel):
+class IssuePropPullRequest(GitHubWebhookModel):
     """IssuePropPullRequest"""
 
     url: Union[Unset, str] = Field(default=UNSET)
@@ -4798,7 +4806,7 @@ class IssuePropPullRequest(GitHubModel):
     merged_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
 
 
-class IssueCommentCreatedPropIssueAllof1(GitHubModel):
+class IssueCommentCreatedPropIssueAllof1(GitHubWebhookModel):
     """IssueCommentCreatedPropIssueAllof1"""
 
     assignee: Union[User, None] = Field(title="User", default=...)
@@ -4809,7 +4817,7 @@ class IssueCommentCreatedPropIssueAllof1(GitHubModel):
     labels: List[Label] = Field(default=...)
 
 
-class IssueComment(GitHubModel):
+class IssueComment(GitHubWebhookModel):
     """issue comment
 
     The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
@@ -4846,7 +4854,7 @@ class IssueComment(GitHubModel):
     )
 
 
-class IssueCommentDeleted(GitHubModel):
+class IssueCommentDeleted(GitHubWebhookModel):
     """issue_comment deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -4871,7 +4879,7 @@ class IssueCommentDeleted(GitHubModel):
     )
 
 
-class IssueCommentDeletedPropIssue(GitHubModel):
+class IssueCommentDeletedPropIssue(GitHubWebhookModel):
     """IssueCommentDeletedPropIssue
 
     The [issue](https://docs.github.com/en/rest/reference/issues) the comment
@@ -4940,7 +4948,7 @@ class IssueCommentDeletedPropIssue(GitHubModel):
     )
 
 
-class IssueCommentDeletedPropIssueAllof1(GitHubModel):
+class IssueCommentDeletedPropIssueAllof1(GitHubWebhookModel):
     """IssueCommentDeletedPropIssueAllof1"""
 
     assignee: Union[User, None] = Field(title="User", default=...)
@@ -4951,7 +4959,7 @@ class IssueCommentDeletedPropIssueAllof1(GitHubModel):
     labels: List[Label] = Field(default=...)
 
 
-class IssueCommentEdited(GitHubModel):
+class IssueCommentEdited(GitHubWebhookModel):
     """issue_comment edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -4979,7 +4987,7 @@ class IssueCommentEdited(GitHubModel):
     )
 
 
-class IssueCommentEditedPropChanges(GitHubModel):
+class IssueCommentEditedPropChanges(GitHubWebhookModel):
     """IssueCommentEditedPropChanges
 
     The changes to the comment.
@@ -4988,7 +4996,7 @@ class IssueCommentEditedPropChanges(GitHubModel):
     body: Union[Unset, IssueCommentEditedPropChangesPropBody] = Field(default=UNSET)
 
 
-class IssueCommentEditedPropChangesPropBody(GitHubModel):
+class IssueCommentEditedPropChangesPropBody(GitHubWebhookModel):
     """IssueCommentEditedPropChangesPropBody"""
 
     from_: str = Field(
@@ -4996,7 +5004,7 @@ class IssueCommentEditedPropChangesPropBody(GitHubModel):
     )
 
 
-class IssueCommentEditedPropIssue(GitHubModel):
+class IssueCommentEditedPropIssue(GitHubWebhookModel):
     """IssueCommentEditedPropIssue
 
     The [issue](https://docs.github.com/en/rest/reference/issues) the comment
@@ -5065,7 +5073,7 @@ class IssueCommentEditedPropIssue(GitHubModel):
     )
 
 
-class IssueCommentEditedPropIssueAllof1(GitHubModel):
+class IssueCommentEditedPropIssueAllof1(GitHubWebhookModel):
     """IssueCommentEditedPropIssueAllof1"""
 
     assignee: Union[User, None] = Field(title="User", default=...)
@@ -5076,7 +5084,7 @@ class IssueCommentEditedPropIssueAllof1(GitHubModel):
     labels: List[Label] = Field(default=...)
 
 
-class IssuesAssigned(GitHubModel):
+class IssuesAssigned(GitHubWebhookModel):
     """issues assigned event
 
     Activity related to an issue. The type of activity is specified in the action
@@ -5108,7 +5116,7 @@ class IssuesAssigned(GitHubModel):
     )
 
 
-class IssuesClosed(GitHubModel):
+class IssuesClosed(GitHubWebhookModel):
     """issues closed event"""
 
     action: Literal["closed"] = Field(
@@ -5130,7 +5138,7 @@ class IssuesClosed(GitHubModel):
     )
 
 
-class IssuesClosedPropIssue(GitHubModel):
+class IssuesClosedPropIssue(GitHubWebhookModel):
     """IssuesClosedPropIssue
 
     The [issue](https://docs.github.com/en/rest/reference/issues) itself.
@@ -5196,14 +5204,14 @@ class IssuesClosedPropIssue(GitHubModel):
     )
 
 
-class IssuesClosedPropIssueAllof1(GitHubModel):
+class IssuesClosedPropIssueAllof1(GitHubWebhookModel):
     """IssuesClosedPropIssueAllof1"""
 
     state: Literal["closed"] = Field(default=...)
     closed_at: str = Field(default=...)
 
 
-class IssuesDeleted(GitHubModel):
+class IssuesDeleted(GitHubWebhookModel):
     """issues deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -5224,7 +5232,7 @@ class IssuesDeleted(GitHubModel):
     )
 
 
-class IssuesDemilestoned(GitHubModel):
+class IssuesDemilestoned(GitHubWebhookModel):
     """issues demilestoned event"""
 
     action: Literal["demilestoned"] = Field(default=...)
@@ -5246,7 +5254,7 @@ class IssuesDemilestoned(GitHubModel):
     )
 
 
-class IssuesDemilestonedPropIssue(GitHubModel):
+class IssuesDemilestonedPropIssue(GitHubWebhookModel):
     """IssuesDemilestonedPropIssue"""
 
     url: str = Field(description="URL for the issue", default=...)
@@ -5307,13 +5315,13 @@ class IssuesDemilestonedPropIssue(GitHubModel):
     )
 
 
-class IssuesDemilestonedPropIssueAllof1(GitHubModel):
+class IssuesDemilestonedPropIssueAllof1(GitHubWebhookModel):
     """IssuesDemilestonedPropIssueAllof1"""
 
     milestone: None = Field(default=...)
 
 
-class IssuesEdited(GitHubModel):
+class IssuesEdited(GitHubWebhookModel):
     """issues edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -5338,7 +5346,7 @@ class IssuesEdited(GitHubModel):
     )
 
 
-class IssuesEditedPropChanges(GitHubModel):
+class IssuesEditedPropChanges(GitHubWebhookModel):
     """IssuesEditedPropChanges
 
     The changes to the issue.
@@ -5348,7 +5356,7 @@ class IssuesEditedPropChanges(GitHubModel):
     title: Union[Unset, IssuesEditedPropChangesPropTitle] = Field(default=UNSET)
 
 
-class IssuesEditedPropChangesPropBody(GitHubModel):
+class IssuesEditedPropChangesPropBody(GitHubWebhookModel):
     """IssuesEditedPropChangesPropBody"""
 
     from_: str = Field(
@@ -5356,7 +5364,7 @@ class IssuesEditedPropChangesPropBody(GitHubModel):
     )
 
 
-class IssuesEditedPropChangesPropTitle(GitHubModel):
+class IssuesEditedPropChangesPropTitle(GitHubWebhookModel):
     """IssuesEditedPropChangesPropTitle"""
 
     from_: str = Field(
@@ -5364,7 +5372,7 @@ class IssuesEditedPropChangesPropTitle(GitHubModel):
     )
 
 
-class IssuesLabeled(GitHubModel):
+class IssuesLabeled(GitHubWebhookModel):
     """issues labeled event"""
 
     action: Literal["labeled"] = Field(default=...)
@@ -5386,7 +5394,7 @@ class IssuesLabeled(GitHubModel):
     )
 
 
-class IssuesLocked(GitHubModel):
+class IssuesLocked(GitHubWebhookModel):
     """issues locked event"""
 
     action: Literal["locked"] = Field(default=...)
@@ -5403,7 +5411,7 @@ class IssuesLocked(GitHubModel):
     )
 
 
-class IssuesLockedPropIssue(GitHubModel):
+class IssuesLockedPropIssue(GitHubWebhookModel):
     """IssuesLockedPropIssue"""
 
     url: str = Field(description="URL for the issue", default=...)
@@ -5468,7 +5476,7 @@ class IssuesLockedPropIssue(GitHubModel):
     )
 
 
-class IssuesLockedPropIssueAllof1(GitHubModel):
+class IssuesLockedPropIssueAllof1(GitHubWebhookModel):
     """IssuesLockedPropIssueAllof1"""
 
     locked: Literal[True] = Field(default=...)
@@ -5477,7 +5485,7 @@ class IssuesLockedPropIssueAllof1(GitHubModel):
     ] = Field(default=...)
 
 
-class IssuesMilestoned(GitHubModel):
+class IssuesMilestoned(GitHubWebhookModel):
     """issues milestoned event"""
 
     action: Literal["milestoned"] = Field(default=...)
@@ -5499,7 +5507,7 @@ class IssuesMilestoned(GitHubModel):
     )
 
 
-class IssuesMilestonedPropIssue(GitHubModel):
+class IssuesMilestonedPropIssue(GitHubWebhookModel):
     """IssuesMilestonedPropIssue"""
 
     url: str = Field(description="URL for the issue", default=...)
@@ -5564,7 +5572,7 @@ class IssuesMilestonedPropIssue(GitHubModel):
     )
 
 
-class IssuesMilestonedPropIssueAllof1(GitHubModel):
+class IssuesMilestonedPropIssueAllof1(GitHubWebhookModel):
     """IssuesMilestonedPropIssueAllof1"""
 
     milestone: Milestone = Field(
@@ -5574,7 +5582,7 @@ class IssuesMilestonedPropIssueAllof1(GitHubModel):
     )
 
 
-class IssuesOpened(GitHubModel):
+class IssuesOpened(GitHubWebhookModel):
     """issues opened event"""
 
     action: Literal["opened"] = Field(default=...)
@@ -5592,7 +5600,7 @@ class IssuesOpened(GitHubModel):
     )
 
 
-class IssuesOpenedPropChanges(GitHubModel):
+class IssuesOpenedPropChanges(GitHubWebhookModel):
     """IssuesOpenedPropChanges"""
 
     old_issue: Issue = Field(
@@ -5605,7 +5613,7 @@ class IssuesOpenedPropChanges(GitHubModel):
     )
 
 
-class IssuesOpenedPropIssue(GitHubModel):
+class IssuesOpenedPropIssue(GitHubWebhookModel):
     """IssuesOpenedPropIssue"""
 
     url: str = Field(description="URL for the issue", default=...)
@@ -5668,14 +5676,14 @@ class IssuesOpenedPropIssue(GitHubModel):
     )
 
 
-class IssuesOpenedPropIssueAllof1(GitHubModel):
+class IssuesOpenedPropIssueAllof1(GitHubWebhookModel):
     """IssuesOpenedPropIssueAllof1"""
 
     state: Literal["open"] = Field(default=...)
     closed_at: None = Field(default=...)
 
 
-class IssuesPinned(GitHubModel):
+class IssuesPinned(GitHubWebhookModel):
     """issues pinned event"""
 
     action: Literal["pinned"] = Field(default=...)
@@ -5696,7 +5704,7 @@ class IssuesPinned(GitHubModel):
     )
 
 
-class IssuesReopened(GitHubModel):
+class IssuesReopened(GitHubWebhookModel):
     """issues reopened event"""
 
     action: Literal["reopened"] = Field(default=...)
@@ -5713,7 +5721,7 @@ class IssuesReopened(GitHubModel):
     )
 
 
-class IssuesReopenedPropIssue(GitHubModel):
+class IssuesReopenedPropIssue(GitHubWebhookModel):
     """IssuesReopenedPropIssue"""
 
     url: str = Field(description="URL for the issue", default=...)
@@ -5776,13 +5784,13 @@ class IssuesReopenedPropIssue(GitHubModel):
     )
 
 
-class IssuesReopenedPropIssueAllof1(GitHubModel):
+class IssuesReopenedPropIssueAllof1(GitHubWebhookModel):
     """IssuesReopenedPropIssueAllof1"""
 
     state: Literal["open"] = Field(default=...)
 
 
-class IssuesTransferred(GitHubModel):
+class IssuesTransferred(GitHubWebhookModel):
     """issues transferred event"""
 
     action: Literal["transferred"] = Field(default=...)
@@ -5804,7 +5812,7 @@ class IssuesTransferred(GitHubModel):
     )
 
 
-class IssuesTransferredPropChanges(GitHubModel):
+class IssuesTransferredPropChanges(GitHubWebhookModel):
     """IssuesTransferredPropChanges"""
 
     new_issue: Issue = Field(
@@ -5817,7 +5825,7 @@ class IssuesTransferredPropChanges(GitHubModel):
     )
 
 
-class IssuesUnassigned(GitHubModel):
+class IssuesUnassigned(GitHubWebhookModel):
     """issues unassigned event"""
 
     action: Literal["unassigned"] = Field(
@@ -5845,7 +5853,7 @@ class IssuesUnassigned(GitHubModel):
     )
 
 
-class IssuesUnlabeled(GitHubModel):
+class IssuesUnlabeled(GitHubWebhookModel):
     """issues unlabeled event"""
 
     action: Literal["unlabeled"] = Field(default=...)
@@ -5867,7 +5875,7 @@ class IssuesUnlabeled(GitHubModel):
     )
 
 
-class IssuesUnlocked(GitHubModel):
+class IssuesUnlocked(GitHubWebhookModel):
     """issues unlocked event"""
 
     action: Literal["unlocked"] = Field(default=...)
@@ -5884,7 +5892,7 @@ class IssuesUnlocked(GitHubModel):
     )
 
 
-class IssuesUnlockedPropIssue(GitHubModel):
+class IssuesUnlockedPropIssue(GitHubWebhookModel):
     """IssuesUnlockedPropIssue"""
 
     url: str = Field(description="URL for the issue", default=...)
@@ -5947,14 +5955,14 @@ class IssuesUnlockedPropIssue(GitHubModel):
     )
 
 
-class IssuesUnlockedPropIssueAllof1(GitHubModel):
+class IssuesUnlockedPropIssueAllof1(GitHubWebhookModel):
     """IssuesUnlockedPropIssueAllof1"""
 
     locked: Literal[False] = Field(default=...)
     active_lock_reason: None = Field(default=...)
 
 
-class IssuesUnpinned(GitHubModel):
+class IssuesUnpinned(GitHubWebhookModel):
     """issues unpinned event"""
 
     action: Literal["unpinned"] = Field(default=...)
@@ -5975,7 +5983,7 @@ class IssuesUnpinned(GitHubModel):
     )
 
 
-class LabelCreated(GitHubModel):
+class LabelCreated(GitHubWebhookModel):
     """label created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -5992,7 +6000,7 @@ class LabelCreated(GitHubModel):
     )
 
 
-class LabelDeleted(GitHubModel):
+class LabelDeleted(GitHubWebhookModel):
     """label deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -6009,7 +6017,7 @@ class LabelDeleted(GitHubModel):
     )
 
 
-class LabelEdited(GitHubModel):
+class LabelEdited(GitHubWebhookModel):
     """label edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -6030,7 +6038,7 @@ class LabelEdited(GitHubModel):
     )
 
 
-class LabelEditedPropChanges(GitHubModel):
+class LabelEditedPropChanges(GitHubWebhookModel):
     """LabelEditedPropChanges
 
     The changes to the label if the action was `edited`.
@@ -6043,7 +6051,7 @@ class LabelEditedPropChanges(GitHubModel):
     )
 
 
-class LabelEditedPropChangesPropColor(GitHubModel):
+class LabelEditedPropChangesPropColor(GitHubWebhookModel):
     """LabelEditedPropChangesPropColor"""
 
     from_: str = Field(
@@ -6053,7 +6061,7 @@ class LabelEditedPropChangesPropColor(GitHubModel):
     )
 
 
-class LabelEditedPropChangesPropName(GitHubModel):
+class LabelEditedPropChangesPropName(GitHubWebhookModel):
     """LabelEditedPropChangesPropName"""
 
     from_: str = Field(
@@ -6063,7 +6071,7 @@ class LabelEditedPropChangesPropName(GitHubModel):
     )
 
 
-class LabelEditedPropChangesPropDescription(GitHubModel):
+class LabelEditedPropChangesPropDescription(GitHubWebhookModel):
     """LabelEditedPropChangesPropDescription"""
 
     from_: str = Field(
@@ -6073,7 +6081,7 @@ class LabelEditedPropChangesPropDescription(GitHubModel):
     )
 
 
-class MarketplacePurchaseCancelled(GitHubModel):
+class MarketplacePurchaseCancelled(GitHubWebhookModel):
     """marketplace_purchase cancelled event"""
 
     action: Literal["cancelled"] = Field(default=...)
@@ -6087,7 +6095,7 @@ class MarketplacePurchaseCancelled(GitHubModel):
     )
 
 
-class MarketplacePurchaseCancelledPropSender(GitHubModel):
+class MarketplacePurchaseCancelledPropSender(GitHubWebhookModel):
     """MarketplacePurchaseCancelledPropSender"""
 
     login: str = Field(default=...)
@@ -6110,7 +6118,7 @@ class MarketplacePurchaseCancelledPropSender(GitHubModel):
     email: str = Field(default=...)
 
 
-class MarketplacePurchaseCancelledPropMarketplacePurchase(GitHubModel):
+class MarketplacePurchaseCancelledPropMarketplacePurchase(GitHubWebhookModel):
     """MarketplacePurchaseCancelledPropMarketplacePurchase"""
 
     account: MarketplacePurchasePropAccount = Field(default=...)
@@ -6122,7 +6130,7 @@ class MarketplacePurchaseCancelledPropMarketplacePurchase(GitHubModel):
     plan: MarketplacePurchasePropPlan = Field(default=...)
 
 
-class MarketplacePurchase(GitHubModel):
+class MarketplacePurchase(GitHubWebhookModel):
     """Marketplace Purchase"""
 
     account: MarketplacePurchasePropAccount = Field(default=...)
@@ -6134,7 +6142,7 @@ class MarketplacePurchase(GitHubModel):
     plan: MarketplacePurchasePropPlan = Field(default=...)
 
 
-class MarketplacePurchasePropAccount(GitHubModel):
+class MarketplacePurchasePropAccount(GitHubWebhookModel):
     """MarketplacePurchasePropAccount"""
 
     type: str = Field(default=...)
@@ -6144,7 +6152,7 @@ class MarketplacePurchasePropAccount(GitHubModel):
     organization_billing_email: str = Field(default=...)
 
 
-class MarketplacePurchasePropPlan(GitHubModel):
+class MarketplacePurchasePropPlan(GitHubWebhookModel):
     """MarketplacePurchasePropPlan"""
 
     id: int = Field(default=...)
@@ -6158,13 +6166,13 @@ class MarketplacePurchasePropPlan(GitHubModel):
     bullets: List[str] = Field(default=...)
 
 
-class MarketplacePurchaseCancelledPropMarketplacePurchaseAllof1(GitHubModel):
+class MarketplacePurchaseCancelledPropMarketplacePurchaseAllof1(GitHubWebhookModel):
     """MarketplacePurchaseCancelledPropMarketplacePurchaseAllof1"""
 
     next_billing_date: datetime = Field(default=...)
 
 
-class MarketplacePurchaseChanged(GitHubModel):
+class MarketplacePurchaseChanged(GitHubWebhookModel):
     """marketplace_purchase changed event"""
 
     action: Literal["changed"] = Field(default=...)
@@ -6178,7 +6186,7 @@ class MarketplacePurchaseChanged(GitHubModel):
     )
 
 
-class MarketplacePurchaseChangedPropSender(GitHubModel):
+class MarketplacePurchaseChangedPropSender(GitHubWebhookModel):
     """MarketplacePurchaseChangedPropSender"""
 
     login: str = Field(default=...)
@@ -6201,7 +6209,7 @@ class MarketplacePurchaseChangedPropSender(GitHubModel):
     email: str = Field(default=...)
 
 
-class MarketplacePurchaseChangedPropMarketplacePurchase(GitHubModel):
+class MarketplacePurchaseChangedPropMarketplacePurchase(GitHubWebhookModel):
     """MarketplacePurchaseChangedPropMarketplacePurchase"""
 
     account: MarketplacePurchasePropAccount = Field(default=...)
@@ -6213,13 +6221,13 @@ class MarketplacePurchaseChangedPropMarketplacePurchase(GitHubModel):
     plan: MarketplacePurchasePropPlan = Field(default=...)
 
 
-class MarketplacePurchaseChangedPropMarketplacePurchaseAllof1(GitHubModel):
+class MarketplacePurchaseChangedPropMarketplacePurchaseAllof1(GitHubWebhookModel):
     """MarketplacePurchaseChangedPropMarketplacePurchaseAllof1"""
 
     next_billing_date: datetime = Field(default=...)
 
 
-class MarketplacePurchasePendingChange(GitHubModel):
+class MarketplacePurchasePendingChange(GitHubWebhookModel):
     """marketplace_purchase pending_change event"""
 
     action: Literal["pending_change"] = Field(default=...)
@@ -6233,7 +6241,7 @@ class MarketplacePurchasePendingChange(GitHubModel):
     )
 
 
-class MarketplacePurchasePendingChangePropSender(GitHubModel):
+class MarketplacePurchasePendingChangePropSender(GitHubWebhookModel):
     """MarketplacePurchasePendingChangePropSender"""
 
     login: str = Field(default=...)
@@ -6256,7 +6264,7 @@ class MarketplacePurchasePendingChangePropSender(GitHubModel):
     email: str = Field(default=...)
 
 
-class MarketplacePurchasePendingChangePropMarketplacePurchase(GitHubModel):
+class MarketplacePurchasePendingChangePropMarketplacePurchase(GitHubWebhookModel):
     """MarketplacePurchasePendingChangePropMarketplacePurchase"""
 
     account: MarketplacePurchasePropAccount = Field(default=...)
@@ -6268,13 +6276,13 @@ class MarketplacePurchasePendingChangePropMarketplacePurchase(GitHubModel):
     plan: MarketplacePurchasePropPlan = Field(default=...)
 
 
-class MarketplacePurchasePendingChangePropMarketplacePurchaseAllof1(GitHubModel):
+class MarketplacePurchasePendingChangePropMarketplacePurchaseAllof1(GitHubWebhookModel):
     """MarketplacePurchasePendingChangePropMarketplacePurchaseAllof1"""
 
     next_billing_date: datetime = Field(default=...)
 
 
-class MarketplacePurchasePendingChangeCancelled(GitHubModel):
+class MarketplacePurchasePendingChangeCancelled(GitHubWebhookModel):
     """marketplace_purchase pending_change_cancelled event"""
 
     action: Literal["pending_change_cancelled"] = Field(default=...)
@@ -6288,7 +6296,7 @@ class MarketplacePurchasePendingChangeCancelled(GitHubModel):
     )
 
 
-class MarketplacePurchasePendingChangeCancelledPropSender(GitHubModel):
+class MarketplacePurchasePendingChangeCancelledPropSender(GitHubWebhookModel):
     """MarketplacePurchasePendingChangeCancelledPropSender"""
 
     login: str = Field(default=...)
@@ -6311,7 +6319,9 @@ class MarketplacePurchasePendingChangeCancelledPropSender(GitHubModel):
     email: str = Field(default=...)
 
 
-class MarketplacePurchasePendingChangeCancelledPropMarketplacePurchase(GitHubModel):
+class MarketplacePurchasePendingChangeCancelledPropMarketplacePurchase(
+    GitHubWebhookModel
+):
     """MarketplacePurchasePendingChangeCancelledPropMarketplacePurchase"""
 
     account: MarketplacePurchasePropAccount = Field(default=...)
@@ -6324,14 +6334,14 @@ class MarketplacePurchasePendingChangeCancelledPropMarketplacePurchase(GitHubMod
 
 
 class MarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """MarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1"""
 
     next_billing_date: datetime = Field(default=...)
 
 
-class MarketplacePurchasePurchased(GitHubModel):
+class MarketplacePurchasePurchased(GitHubWebhookModel):
     """marketplace_purchase purchased event"""
 
     action: Literal["purchased"] = Field(default=...)
@@ -6345,7 +6355,7 @@ class MarketplacePurchasePurchased(GitHubModel):
     )
 
 
-class MarketplacePurchasePurchasedPropSender(GitHubModel):
+class MarketplacePurchasePurchasedPropSender(GitHubWebhookModel):
     """MarketplacePurchasePurchasedPropSender"""
 
     login: str = Field(default=...)
@@ -6368,7 +6378,7 @@ class MarketplacePurchasePurchasedPropSender(GitHubModel):
     email: str = Field(default=...)
 
 
-class MarketplacePurchasePurchasedPropMarketplacePurchase(GitHubModel):
+class MarketplacePurchasePurchasedPropMarketplacePurchase(GitHubWebhookModel):
     """MarketplacePurchasePurchasedPropMarketplacePurchase"""
 
     account: MarketplacePurchasePropAccount = Field(default=...)
@@ -6380,13 +6390,13 @@ class MarketplacePurchasePurchasedPropMarketplacePurchase(GitHubModel):
     plan: MarketplacePurchasePropPlan = Field(default=...)
 
 
-class MarketplacePurchasePurchasedPropMarketplacePurchaseAllof1(GitHubModel):
+class MarketplacePurchasePurchasedPropMarketplacePurchaseAllof1(GitHubWebhookModel):
     """MarketplacePurchasePurchasedPropMarketplacePurchaseAllof1"""
 
     next_billing_date: datetime = Field(default=...)
 
 
-class MemberAdded(GitHubModel):
+class MemberAdded(GitHubWebhookModel):
     """member added event
 
     Activity related to repository collaborators. The type of activity is specified
@@ -6408,7 +6418,7 @@ class MemberAdded(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class MemberAddedPropChanges(GitHubModel):
+class MemberAddedPropChanges(GitHubWebhookModel):
     """MemberAddedPropChanges"""
 
     permission: Union[Unset, MemberAddedPropChangesPropPermission] = Field(
@@ -6416,13 +6426,13 @@ class MemberAddedPropChanges(GitHubModel):
     )
 
 
-class MemberAddedPropChangesPropPermission(GitHubModel):
+class MemberAddedPropChangesPropPermission(GitHubWebhookModel):
     """MemberAddedPropChangesPropPermission"""
 
     to: Literal["write", "admin"] = Field(default=...)
 
 
-class MemberEdited(GitHubModel):
+class MemberEdited(GitHubWebhookModel):
     """member edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -6442,7 +6452,7 @@ class MemberEdited(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class MemberEditedPropChanges(GitHubModel):
+class MemberEditedPropChanges(GitHubWebhookModel):
     """MemberEditedPropChanges
 
     The changes to the collaborator permissions
@@ -6451,7 +6461,7 @@ class MemberEditedPropChanges(GitHubModel):
     old_permission: MemberEditedPropChangesPropOldPermission = Field(default=...)
 
 
-class MemberEditedPropChangesPropOldPermission(GitHubModel):
+class MemberEditedPropChangesPropOldPermission(GitHubWebhookModel):
     """MemberEditedPropChangesPropOldPermission"""
 
     from_: str = Field(
@@ -6461,7 +6471,7 @@ class MemberEditedPropChangesPropOldPermission(GitHubModel):
     )
 
 
-class MemberRemoved(GitHubModel):
+class MemberRemoved(GitHubWebhookModel):
     """member removed event"""
 
     action: Literal["removed"] = Field(default=...)
@@ -6478,7 +6488,7 @@ class MemberRemoved(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class MembershipAdded(GitHubModel):
+class MembershipAdded(GitHubWebhookModel):
     """membership added event"""
 
     action: Literal["added"] = Field(default=...)
@@ -6499,7 +6509,7 @@ class MembershipAdded(GitHubModel):
     )
 
 
-class Team(GitHubModel):
+class Team(GitHubWebhookModel):
     """Team
 
     Groups of organization members that gives permissions on specified repositories.
@@ -6524,7 +6534,7 @@ class Team(GitHubModel):
     parent: Union[Unset, Union[TeamPropParent, None]] = Field(default=UNSET)
 
 
-class TeamPropParent(GitHubModel):
+class TeamPropParent(GitHubWebhookModel):
     """TeamPropParent"""
 
     name: str = Field(description="Name of the team", default=...)
@@ -6545,7 +6555,7 @@ class TeamPropParent(GitHubModel):
     )
 
 
-class MembershipRemoved(GitHubModel):
+class MembershipRemoved(GitHubWebhookModel):
     """membership removed event"""
 
     action: Literal["removed"] = Field(default=...)
@@ -6566,7 +6576,7 @@ class MembershipRemoved(GitHubModel):
     )
 
 
-class MembershipRemovedPropTeamOneof1(GitHubModel):
+class MembershipRemovedPropTeamOneof1(GitHubWebhookModel):
     """MembershipRemovedPropTeamOneof1"""
 
     id: int = Field(default=...)
@@ -6574,7 +6584,7 @@ class MembershipRemovedPropTeamOneof1(GitHubModel):
     deleted: Union[Unset, bool] = Field(default=UNSET)
 
 
-class MetaDeleted(GitHubModel):
+class MetaDeleted(GitHubWebhookModel):
     """meta deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -6589,7 +6599,7 @@ class MetaDeleted(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class MetaDeletedPropHook(GitHubModel):
+class MetaDeletedPropHook(GitHubWebhookModel):
     """MetaDeletedPropHook
 
     The modified webhook. This will contain different keys based on the type of
@@ -6664,7 +6674,7 @@ class MetaDeletedPropHook(GitHubModel):
     created_at: datetime = Field(default=...)
 
 
-class MetaDeletedPropHookPropConfig(GitHubModel):
+class MetaDeletedPropHookPropConfig(GitHubWebhookModel):
     """MetaDeletedPropHookPropConfig
 
     Configuration object of the webhook
@@ -6687,7 +6697,7 @@ class MetaDeletedPropHookPropConfig(GitHubModel):
     )
 
 
-class MilestoneClosed(GitHubModel):
+class MilestoneClosed(GitHubWebhookModel):
     """milestone closed event"""
 
     action: Literal["closed"] = Field(default=...)
@@ -6704,7 +6714,7 @@ class MilestoneClosed(GitHubModel):
     )
 
 
-class MilestoneClosedPropMilestone(GitHubModel):
+class MilestoneClosedPropMilestone(GitHubWebhookModel):
     """MilestoneClosedPropMilestone"""
 
     url: str = Field(default=...)
@@ -6725,14 +6735,14 @@ class MilestoneClosedPropMilestone(GitHubModel):
     closed_at: datetime = Field(default=...)
 
 
-class MilestoneClosedPropMilestoneAllof1(GitHubModel):
+class MilestoneClosedPropMilestoneAllof1(GitHubWebhookModel):
     """MilestoneClosedPropMilestoneAllof1"""
 
     state: Literal["closed"] = Field(default=...)
     closed_at: str = Field(default=...)
 
 
-class MilestoneCreated(GitHubModel):
+class MilestoneCreated(GitHubWebhookModel):
     """milestone created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -6749,7 +6759,7 @@ class MilestoneCreated(GitHubModel):
     )
 
 
-class MilestoneCreatedPropMilestone(GitHubModel):
+class MilestoneCreatedPropMilestone(GitHubWebhookModel):
     """MilestoneCreatedPropMilestone"""
 
     url: str = Field(default=...)
@@ -6770,14 +6780,14 @@ class MilestoneCreatedPropMilestone(GitHubModel):
     closed_at: Union[None, None] = Field(default=...)
 
 
-class MilestoneCreatedPropMilestoneAllof1(GitHubModel):
+class MilestoneCreatedPropMilestoneAllof1(GitHubWebhookModel):
     """MilestoneCreatedPropMilestoneAllof1"""
 
     state: Literal["open"] = Field(default=...)
     closed_at: None = Field(default=...)
 
 
-class MilestoneDeleted(GitHubModel):
+class MilestoneDeleted(GitHubWebhookModel):
     """milestone deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -6798,7 +6808,7 @@ class MilestoneDeleted(GitHubModel):
     )
 
 
-class MilestoneEdited(GitHubModel):
+class MilestoneEdited(GitHubWebhookModel):
     """milestone edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -6823,7 +6833,7 @@ class MilestoneEdited(GitHubModel):
     )
 
 
-class MilestoneEditedPropChanges(GitHubModel):
+class MilestoneEditedPropChanges(GitHubWebhookModel):
     """MilestoneEditedPropChanges
 
     The changes to the milestone if the action was `edited`.
@@ -6836,7 +6846,7 @@ class MilestoneEditedPropChanges(GitHubModel):
     title: Union[Unset, MilestoneEditedPropChangesPropTitle] = Field(default=UNSET)
 
 
-class MilestoneEditedPropChangesPropDescription(GitHubModel):
+class MilestoneEditedPropChangesPropDescription(GitHubWebhookModel):
     """MilestoneEditedPropChangesPropDescription"""
 
     from_: str = Field(
@@ -6846,7 +6856,7 @@ class MilestoneEditedPropChangesPropDescription(GitHubModel):
     )
 
 
-class MilestoneEditedPropChangesPropDueOn(GitHubModel):
+class MilestoneEditedPropChangesPropDueOn(GitHubWebhookModel):
     """MilestoneEditedPropChangesPropDueOn"""
 
     from_: str = Field(
@@ -6856,7 +6866,7 @@ class MilestoneEditedPropChangesPropDueOn(GitHubModel):
     )
 
 
-class MilestoneEditedPropChangesPropTitle(GitHubModel):
+class MilestoneEditedPropChangesPropTitle(GitHubWebhookModel):
     """MilestoneEditedPropChangesPropTitle"""
 
     from_: str = Field(
@@ -6866,7 +6876,7 @@ class MilestoneEditedPropChangesPropTitle(GitHubModel):
     )
 
 
-class MilestoneOpened(GitHubModel):
+class MilestoneOpened(GitHubWebhookModel):
     """milestone opened event"""
 
     action: Literal["opened"] = Field(default=...)
@@ -6883,7 +6893,7 @@ class MilestoneOpened(GitHubModel):
     )
 
 
-class MilestoneOpenedPropMilestone(GitHubModel):
+class MilestoneOpenedPropMilestone(GitHubWebhookModel):
     """MilestoneOpenedPropMilestone"""
 
     url: str = Field(default=...)
@@ -6904,14 +6914,14 @@ class MilestoneOpenedPropMilestone(GitHubModel):
     closed_at: Union[None, None] = Field(default=...)
 
 
-class MilestoneOpenedPropMilestoneAllof1(GitHubModel):
+class MilestoneOpenedPropMilestoneAllof1(GitHubWebhookModel):
     """MilestoneOpenedPropMilestoneAllof1"""
 
     state: Literal["open"] = Field(default=...)
     closed_at: None = Field(default=...)
 
 
-class OrgBlockBlocked(GitHubModel):
+class OrgBlockBlocked(GitHubWebhookModel):
     """org_block blocked event"""
 
     action: Literal["blocked"] = Field(default=...)
@@ -6923,7 +6933,7 @@ class OrgBlockBlocked(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class OrgBlockUnblocked(GitHubModel):
+class OrgBlockUnblocked(GitHubWebhookModel):
     """org_block unblocked event"""
 
     action: Literal["unblocked"] = Field(default=...)
@@ -6935,7 +6945,7 @@ class OrgBlockUnblocked(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class OrganizationDeleted(GitHubModel):
+class OrganizationDeleted(GitHubWebhookModel):
     """organization deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -6951,7 +6961,7 @@ class OrganizationDeleted(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class Membership(GitHubModel):
+class Membership(GitHubWebhookModel):
     """Membership
 
     The membership between the user and the organization. Not present when the
@@ -6967,7 +6977,7 @@ class Membership(GitHubModel):
     user: User = Field(title="User", default=...)
 
 
-class OrganizationMemberAdded(GitHubModel):
+class OrganizationMemberAdded(GitHubWebhookModel):
     """organization member_added event"""
 
     action: Literal["member_added"] = Field(default=...)
@@ -6983,7 +6993,7 @@ class OrganizationMemberAdded(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class OrganizationMemberInvited(GitHubModel):
+class OrganizationMemberInvited(GitHubWebhookModel):
     """organization member_invited event"""
 
     action: Literal["member_invited"] = Field(default=...)
@@ -6999,7 +7009,7 @@ class OrganizationMemberInvited(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class OrganizationMemberInvitedPropInvitation(GitHubModel):
+class OrganizationMemberInvitedPropInvitation(GitHubWebhookModel):
     """OrganizationMemberInvitedPropInvitation
 
     The invitation for the user or email if the action is `member_invited`.
@@ -7018,7 +7028,7 @@ class OrganizationMemberInvitedPropInvitation(GitHubModel):
     invitation_teams_url: str = Field(default=...)
 
 
-class OrganizationMemberRemoved(GitHubModel):
+class OrganizationMemberRemoved(GitHubWebhookModel):
     """organization member_removed event"""
 
     action: Literal["member_removed"] = Field(default=...)
@@ -7034,7 +7044,7 @@ class OrganizationMemberRemoved(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class OrganizationRenamed(GitHubModel):
+class OrganizationRenamed(GitHubWebhookModel):
     """organization renamed event"""
 
     action: Literal["renamed"] = Field(default=...)
@@ -7050,7 +7060,7 @@ class OrganizationRenamed(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class PackagePublished(GitHubModel):
+class PackagePublished(GitHubWebhookModel):
     """package published event"""
 
     action: Literal["published"] = Field(default=...)
@@ -7066,7 +7076,7 @@ class PackagePublished(GitHubModel):
     )
 
 
-class PackagePublishedPropPackage(GitHubModel):
+class PackagePublishedPropPackage(GitHubWebhookModel):
     """PackagePublishedPropPackage
 
     Information about the package.
@@ -7093,7 +7103,7 @@ class PackagePublishedPropPackage(GitHubModel):
     registry: PackagePublishedPropPackagePropRegistry = Field(default=...)
 
 
-class PackagePublishedPropPackagePropPackageVersion(GitHubModel):
+class PackagePublishedPropPackagePropPackageVersion(GitHubWebhookModel):
     """PackagePublishedPropPackagePropPackageVersion
 
     A version of a software package
@@ -7130,7 +7140,7 @@ class PackagePublishedPropPackagePropPackageVersion(GitHubModel):
     installation_command: str = Field(default=...)
 
 
-class PackagePublishedPropPackagePropPackageVersionPropRelease(GitHubModel):
+class PackagePublishedPropPackagePropPackageVersionPropRelease(GitHubWebhookModel):
     """PackagePublishedPropPackagePropPackageVersionPropRelease"""
 
     url: str = Field(default=...)
@@ -7146,7 +7156,9 @@ class PackagePublishedPropPackagePropPackageVersionPropRelease(GitHubModel):
     published_at: datetime = Field(default=...)
 
 
-class PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems(GitHubModel):
+class PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems(
+    GitHubWebhookModel
+):
     """PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems"""
 
     download_url: str = Field(default=...)
@@ -7162,7 +7174,7 @@ class PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems(GitHubM
     updated_at: datetime = Field(default=...)
 
 
-class PackagePublishedPropPackagePropRegistry(GitHubModel):
+class PackagePublishedPropPackagePropRegistry(GitHubWebhookModel):
     """PackagePublishedPropPackagePropRegistry"""
 
     about_url: str = Field(default=...)
@@ -7172,7 +7184,7 @@ class PackagePublishedPropPackagePropRegistry(GitHubModel):
     vendor: str = Field(default=...)
 
 
-class PackageUpdated(GitHubModel):
+class PackageUpdated(GitHubWebhookModel):
     """package updated event"""
 
     action: Literal["updated"] = Field(default=...)
@@ -7188,7 +7200,7 @@ class PackageUpdated(GitHubModel):
     )
 
 
-class PackageUpdatedPropPackage(GitHubModel):
+class PackageUpdatedPropPackage(GitHubWebhookModel):
     """PackageUpdatedPropPackage
 
     Information about the package.
@@ -7212,7 +7224,7 @@ class PackageUpdatedPropPackage(GitHubModel):
     registry: PackageUpdatedPropPackagePropRegistry = Field(default=...)
 
 
-class PackageUpdatedPropPackagePropPackageVersion(GitHubModel):
+class PackageUpdatedPropPackagePropPackageVersion(GitHubWebhookModel):
     """PackageUpdatedPropPackagePropPackageVersion
 
     A version of a software package
@@ -7247,7 +7259,7 @@ class PackageUpdatedPropPackagePropPackageVersion(GitHubModel):
     installation_command: str = Field(default=...)
 
 
-class PackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubModel):
+class PackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubWebhookModel):
     """PackageUpdatedPropPackagePropPackageVersionPropRelease"""
 
     url: str = Field(default=...)
@@ -7263,7 +7275,9 @@ class PackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubModel):
     published_at: datetime = Field(default=...)
 
 
-class PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(GitHubModel):
+class PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(
+    GitHubWebhookModel
+):
     """PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
 
     download_url: str = Field(default=...)
@@ -7279,7 +7293,7 @@ class PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(GitHubMod
     updated_at: datetime = Field(default=...)
 
 
-class PackageUpdatedPropPackagePropRegistry(GitHubModel):
+class PackageUpdatedPropPackagePropRegistry(GitHubWebhookModel):
     """PackageUpdatedPropPackagePropRegistry"""
 
     about_url: str = Field(default=...)
@@ -7289,7 +7303,7 @@ class PackageUpdatedPropPackagePropRegistry(GitHubModel):
     vendor: str = Field(default=...)
 
 
-class PageBuildEvent(GitHubModel):
+class PageBuildEvent(GitHubWebhookModel):
     """page_build event
 
     Page Build
@@ -7312,7 +7326,7 @@ class PageBuildEvent(GitHubModel):
     )
 
 
-class PageBuildEventPropBuild(GitHubModel):
+class PageBuildEventPropBuild(GitHubWebhookModel):
     """PageBuildEventPropBuild
 
     The [List GitHub Pages
@@ -7330,13 +7344,13 @@ class PageBuildEventPropBuild(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class PageBuildEventPropBuildPropError(GitHubModel):
+class PageBuildEventPropBuildPropError(GitHubWebhookModel):
     """PageBuildEventPropBuildPropError"""
 
     message: Union[str, None] = Field(default=...)
 
 
-class PingEvent(GitHubModel):
+class PingEvent(GitHubWebhookModel):
     """ping event"""
 
     zen: str = Field(default=...)
@@ -7356,7 +7370,7 @@ class PingEvent(GitHubModel):
     )
 
 
-class PingEventPropHook(GitHubModel):
+class PingEventPropHook(GitHubWebhookModel):
     """PingEventPropHook
 
     The [webhook configuration](https://docs.github.com/en/rest/reference/repos#get-
@@ -7442,7 +7456,7 @@ class PingEventPropHook(GitHubModel):
     )
 
 
-class PingEventPropHookPropConfig(GitHubModel):
+class PingEventPropHookPropConfig(GitHubWebhookModel):
     """PingEventPropHookPropConfig
 
     Configuration object of the webhook
@@ -7465,7 +7479,7 @@ class PingEventPropHookPropConfig(GitHubModel):
     )
 
 
-class PingEventPropHookPropLastResponse(GitHubModel):
+class PingEventPropHookPropLastResponse(GitHubWebhookModel):
     """PingEventPropHookPropLastResponse"""
 
     code: None = Field(default=...)
@@ -7473,7 +7487,7 @@ class PingEventPropHookPropLastResponse(GitHubModel):
     message: None = Field(default=...)
 
 
-class ProjectClosed(GitHubModel):
+class ProjectClosed(GitHubWebhookModel):
     """project closed event"""
 
     action: Literal["closed"] = Field(default=...)
@@ -7490,7 +7504,7 @@ class ProjectClosed(GitHubModel):
     )
 
 
-class Project(GitHubModel):
+class Project(GitHubWebhookModel):
     """Project"""
 
     owner_url: str = Field(default=...)
@@ -7510,7 +7524,7 @@ class Project(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class ProjectCreated(GitHubModel):
+class ProjectCreated(GitHubWebhookModel):
     """project created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -7527,7 +7541,7 @@ class ProjectCreated(GitHubModel):
     )
 
 
-class ProjectDeleted(GitHubModel):
+class ProjectDeleted(GitHubWebhookModel):
     """project deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -7544,7 +7558,7 @@ class ProjectDeleted(GitHubModel):
     )
 
 
-class ProjectEdited(GitHubModel):
+class ProjectEdited(GitHubWebhookModel):
     """project edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -7565,7 +7579,7 @@ class ProjectEdited(GitHubModel):
     )
 
 
-class ProjectEditedPropChanges(GitHubModel):
+class ProjectEditedPropChanges(GitHubWebhookModel):
     """ProjectEditedPropChanges
 
     The changes to the project if the action was `edited`.
@@ -7575,7 +7589,7 @@ class ProjectEditedPropChanges(GitHubModel):
     body: Union[Unset, ProjectEditedPropChangesPropBody] = Field(default=UNSET)
 
 
-class ProjectEditedPropChangesPropName(GitHubModel):
+class ProjectEditedPropChangesPropName(GitHubWebhookModel):
     """ProjectEditedPropChangesPropName"""
 
     from_: str = Field(
@@ -7585,7 +7599,7 @@ class ProjectEditedPropChangesPropName(GitHubModel):
     )
 
 
-class ProjectEditedPropChangesPropBody(GitHubModel):
+class ProjectEditedPropChangesPropBody(GitHubWebhookModel):
     """ProjectEditedPropChangesPropBody"""
 
     from_: str = Field(
@@ -7595,7 +7609,7 @@ class ProjectEditedPropChangesPropBody(GitHubModel):
     )
 
 
-class ProjectReopened(GitHubModel):
+class ProjectReopened(GitHubWebhookModel):
     """project reopened event"""
 
     action: Literal["reopened"] = Field(default=...)
@@ -7612,7 +7626,7 @@ class ProjectReopened(GitHubModel):
     )
 
 
-class ProjectCardConverted(GitHubModel):
+class ProjectCardConverted(GitHubWebhookModel):
     """project_card converted event"""
 
     action: Literal["converted"] = Field(default=...)
@@ -7630,19 +7644,19 @@ class ProjectCardConverted(GitHubModel):
     )
 
 
-class ProjectCardConvertedPropChanges(GitHubModel):
+class ProjectCardConvertedPropChanges(GitHubWebhookModel):
     """ProjectCardConvertedPropChanges"""
 
     note: ProjectCardConvertedPropChangesPropNote = Field(default=...)
 
 
-class ProjectCardConvertedPropChangesPropNote(GitHubModel):
+class ProjectCardConvertedPropChangesPropNote(GitHubWebhookModel):
     """ProjectCardConvertedPropChangesPropNote"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class ProjectCard(GitHubModel):
+class ProjectCard(GitHubWebhookModel):
     """Project Card"""
 
     url: str = Field(default=...)
@@ -7662,7 +7676,7 @@ class ProjectCard(GitHubModel):
     after_id: Union[Unset, Union[str, float, None]] = Field(default=UNSET)
 
 
-class ProjectCardCreated(GitHubModel):
+class ProjectCardCreated(GitHubWebhookModel):
     """project_card created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -7679,7 +7693,7 @@ class ProjectCardCreated(GitHubModel):
     )
 
 
-class ProjectCardDeleted(GitHubModel):
+class ProjectCardDeleted(GitHubWebhookModel):
     """project_card deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -7696,7 +7710,7 @@ class ProjectCardDeleted(GitHubModel):
     )
 
 
-class ProjectCardEdited(GitHubModel):
+class ProjectCardEdited(GitHubWebhookModel):
     """project_card edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -7714,19 +7728,19 @@ class ProjectCardEdited(GitHubModel):
     )
 
 
-class ProjectCardEditedPropChanges(GitHubModel):
+class ProjectCardEditedPropChanges(GitHubWebhookModel):
     """ProjectCardEditedPropChanges"""
 
     note: ProjectCardEditedPropChangesPropNote = Field(default=...)
 
 
-class ProjectCardEditedPropChangesPropNote(GitHubModel):
+class ProjectCardEditedPropChangesPropNote(GitHubWebhookModel):
     """ProjectCardEditedPropChangesPropNote"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class ProjectCardMoved(GitHubModel):
+class ProjectCardMoved(GitHubWebhookModel):
     """project_card moved event"""
 
     action: Literal["moved"] = Field(default=...)
@@ -7744,19 +7758,19 @@ class ProjectCardMoved(GitHubModel):
     )
 
 
-class ProjectCardMovedPropChanges(GitHubModel):
+class ProjectCardMovedPropChanges(GitHubWebhookModel):
     """ProjectCardMovedPropChanges"""
 
     column_id: ProjectCardMovedPropChangesPropColumnId = Field(default=...)
 
 
-class ProjectCardMovedPropChangesPropColumnId(GitHubModel):
+class ProjectCardMovedPropChangesPropColumnId(GitHubWebhookModel):
     """ProjectCardMovedPropChangesPropColumnId"""
 
     from_: int = Field(default=..., alias="from")
 
 
-class ProjectCardMovedPropProjectCard(GitHubModel):
+class ProjectCardMovedPropProjectCard(GitHubWebhookModel):
     """ProjectCardMovedPropProjectCard"""
 
     url: str = Field(default=...)
@@ -7776,13 +7790,13 @@ class ProjectCardMovedPropProjectCard(GitHubModel):
     after_id: Union[Union[float, None], None] = Field(default=...)
 
 
-class ProjectCardMovedPropProjectCardAllof1(GitHubModel):
+class ProjectCardMovedPropProjectCardAllof1(GitHubWebhookModel):
     """ProjectCardMovedPropProjectCardAllof1"""
 
     after_id: Union[float, None] = Field(default=...)
 
 
-class ProjectColumnCreated(GitHubModel):
+class ProjectColumnCreated(GitHubWebhookModel):
     """project_column created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -7799,7 +7813,7 @@ class ProjectColumnCreated(GitHubModel):
     )
 
 
-class ProjectColumn(GitHubModel):
+class ProjectColumn(GitHubWebhookModel):
     """Project Column"""
 
     url: str = Field(default=...)
@@ -7814,7 +7828,7 @@ class ProjectColumn(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class ProjectColumnDeleted(GitHubModel):
+class ProjectColumnDeleted(GitHubWebhookModel):
     """project_column deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -7831,7 +7845,7 @@ class ProjectColumnDeleted(GitHubModel):
     )
 
 
-class ProjectColumnEdited(GitHubModel):
+class ProjectColumnEdited(GitHubWebhookModel):
     """project_column edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -7849,19 +7863,19 @@ class ProjectColumnEdited(GitHubModel):
     )
 
 
-class ProjectColumnEditedPropChanges(GitHubModel):
+class ProjectColumnEditedPropChanges(GitHubWebhookModel):
     """ProjectColumnEditedPropChanges"""
 
     name: Union[Unset, ProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
 
 
-class ProjectColumnEditedPropChangesPropName(GitHubModel):
+class ProjectColumnEditedPropChangesPropName(GitHubWebhookModel):
     """ProjectColumnEditedPropChangesPropName"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class ProjectColumnMoved(GitHubModel):
+class ProjectColumnMoved(GitHubWebhookModel):
     """project_column moved event"""
 
     action: Literal["moved"] = Field(default=...)
@@ -7878,7 +7892,7 @@ class ProjectColumnMoved(GitHubModel):
     )
 
 
-class ProjectsV2ItemArchived(GitHubModel):
+class ProjectsV2ItemArchived(GitHubWebhookModel):
     """projects_v2_item archived event"""
 
     changes: ProjectsV2ItemArchivedPropChanges = Field(default=...)
@@ -7893,20 +7907,20 @@ class ProjectsV2ItemArchived(GitHubModel):
     )
 
 
-class ProjectsV2ItemArchivedPropChanges(GitHubModel):
+class ProjectsV2ItemArchivedPropChanges(GitHubWebhookModel):
     """ProjectsV2ItemArchivedPropChanges"""
 
     archived_at: ProjectsV2ItemArchivedPropChangesPropArchivedAt = Field(default=...)
 
 
-class ProjectsV2ItemArchivedPropChangesPropArchivedAt(GitHubModel):
+class ProjectsV2ItemArchivedPropChangesPropArchivedAt(GitHubWebhookModel):
     """ProjectsV2ItemArchivedPropChangesPropArchivedAt"""
 
     from_: None = Field(default=..., alias="from")
     to: datetime = Field(default=...)
 
 
-class ProjectsV2ItemArchivedPropProjectsV2Item(GitHubModel):
+class ProjectsV2ItemArchivedPropProjectsV2Item(GitHubWebhookModel):
     """ProjectsV2ItemArchivedPropProjectsV2Item"""
 
     id: float = Field(default=...)
@@ -7920,7 +7934,7 @@ class ProjectsV2ItemArchivedPropProjectsV2Item(GitHubModel):
     archived_at: datetime = Field(default=...)
 
 
-class ProjectsV2Item(GitHubModel):
+class ProjectsV2Item(GitHubWebhookModel):
     """Projects v2 Item
 
     The project item itself. To find more information about the project item, you
@@ -7942,13 +7956,13 @@ class ProjectsV2Item(GitHubModel):
     archived_at: Union[datetime, None] = Field(default=...)
 
 
-class ProjectsV2ItemArchivedPropProjectsV2ItemAllof1(GitHubModel):
+class ProjectsV2ItemArchivedPropProjectsV2ItemAllof1(GitHubWebhookModel):
     """ProjectsV2ItemArchivedPropProjectsV2ItemAllof1"""
 
     archived_at: datetime = Field(default=...)
 
 
-class ProjectsV2ItemConverted(GitHubModel):
+class ProjectsV2ItemConverted(GitHubWebhookModel):
     """projects_v2_item converted event"""
 
     changes: ProjectsV2ItemConvertedPropChanges = Field(default=...)
@@ -7963,20 +7977,20 @@ class ProjectsV2ItemConverted(GitHubModel):
     )
 
 
-class ProjectsV2ItemConvertedPropChanges(GitHubModel):
+class ProjectsV2ItemConvertedPropChanges(GitHubWebhookModel):
     """ProjectsV2ItemConvertedPropChanges"""
 
     content_type: ProjectsV2ItemConvertedPropChangesPropContentType = Field(default=...)
 
 
-class ProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
+class ProjectsV2ItemConvertedPropChangesPropContentType(GitHubWebhookModel):
     """ProjectsV2ItemConvertedPropChangesPropContentType"""
 
     from_: Literal["DraftIssue"] = Field(default=..., alias="from")
     to: Literal["Issue"] = Field(default=...)
 
 
-class ProjectsV2ItemConvertedPropProjectsV2Item(GitHubModel):
+class ProjectsV2ItemConvertedPropProjectsV2Item(GitHubWebhookModel):
     """ProjectsV2ItemConvertedPropProjectsV2Item"""
 
     id: float = Field(default=...)
@@ -7990,13 +8004,13 @@ class ProjectsV2ItemConvertedPropProjectsV2Item(GitHubModel):
     archived_at: Union[datetime, None] = Field(default=...)
 
 
-class ProjectsV2ItemConvertedPropProjectsV2ItemAllof1(GitHubModel):
+class ProjectsV2ItemConvertedPropProjectsV2ItemAllof1(GitHubWebhookModel):
     """ProjectsV2ItemConvertedPropProjectsV2ItemAllof1"""
 
     content_type: Literal["Issue"] = Field(default=...)
 
 
-class ProjectsV2ItemCreated(GitHubModel):
+class ProjectsV2ItemCreated(GitHubWebhookModel):
     """projects_v2_item created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -8010,7 +8024,7 @@ class ProjectsV2ItemCreated(GitHubModel):
     )
 
 
-class ProjectsV2ItemCreatedPropProjectsV2Item(GitHubModel):
+class ProjectsV2ItemCreatedPropProjectsV2Item(GitHubWebhookModel):
     """ProjectsV2ItemCreatedPropProjectsV2Item"""
 
     id: float = Field(default=...)
@@ -8024,13 +8038,13 @@ class ProjectsV2ItemCreatedPropProjectsV2Item(GitHubModel):
     archived_at: Union[None, None] = Field(default=...)
 
 
-class ProjectsV2ItemCreatedPropProjectsV2ItemAllof1(GitHubModel):
+class ProjectsV2ItemCreatedPropProjectsV2ItemAllof1(GitHubWebhookModel):
     """ProjectsV2ItemCreatedPropProjectsV2ItemAllof1"""
 
     archived_at: None = Field(default=...)
 
 
-class ProjectsV2ItemDeleted(GitHubModel):
+class ProjectsV2ItemDeleted(GitHubWebhookModel):
     """projects_v2_item deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -8048,7 +8062,7 @@ class ProjectsV2ItemDeleted(GitHubModel):
     )
 
 
-class ProjectsV2ItemEdited(GitHubModel):
+class ProjectsV2ItemEdited(GitHubWebhookModel):
     """projects_v2_item edited event"""
 
     changes: ProjectsV2ItemEditedPropChanges = Field(default=...)
@@ -8067,13 +8081,13 @@ class ProjectsV2ItemEdited(GitHubModel):
     )
 
 
-class ProjectsV2ItemEditedPropChanges(GitHubModel):
+class ProjectsV2ItemEditedPropChanges(GitHubWebhookModel):
     """ProjectsV2ItemEditedPropChanges"""
 
     field_value: ProjectsV2ItemEditedPropChangesPropFieldValue = Field(default=...)
 
 
-class ProjectsV2ItemEditedPropChangesPropFieldValue(GitHubModel):
+class ProjectsV2ItemEditedPropChangesPropFieldValue(GitHubWebhookModel):
     """ProjectsV2ItemEditedPropChangesPropFieldValue"""
 
     field_type: Literal["single_select", "date", "number", "text", "iteration"] = Field(
@@ -8082,7 +8096,7 @@ class ProjectsV2ItemEditedPropChangesPropFieldValue(GitHubModel):
     field_node_id: str = Field(default=...)
 
 
-class ProjectsV2ItemReordered(GitHubModel):
+class ProjectsV2ItemReordered(GitHubWebhookModel):
     """projects_v2_item reordered event"""
 
     changes: ProjectsV2ItemReorderedPropChanges = Field(default=...)
@@ -8101,7 +8115,7 @@ class ProjectsV2ItemReordered(GitHubModel):
     )
 
 
-class ProjectsV2ItemReorderedPropChanges(GitHubModel):
+class ProjectsV2ItemReorderedPropChanges(GitHubWebhookModel):
     """ProjectsV2ItemReorderedPropChanges"""
 
     previous_projects_v2_item_node_id: ProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId = Field(
@@ -8109,14 +8123,16 @@ class ProjectsV2ItemReorderedPropChanges(GitHubModel):
     )
 
 
-class ProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(GitHubModel):
+class ProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
+    GitHubWebhookModel
+):
     """ProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
 
     from_: str = Field(default=..., alias="from")
     to: Union[str, None] = Field(default=...)
 
 
-class ProjectsV2ItemRestored(GitHubModel):
+class ProjectsV2ItemRestored(GitHubWebhookModel):
     """projects_v2_item restored event"""
 
     changes: ProjectsV2ItemRestoredPropChanges = Field(default=...)
@@ -8131,20 +8147,20 @@ class ProjectsV2ItemRestored(GitHubModel):
     )
 
 
-class ProjectsV2ItemRestoredPropChanges(GitHubModel):
+class ProjectsV2ItemRestoredPropChanges(GitHubWebhookModel):
     """ProjectsV2ItemRestoredPropChanges"""
 
     archived_at: ProjectsV2ItemRestoredPropChangesPropArchivedAt = Field(default=...)
 
 
-class ProjectsV2ItemRestoredPropChangesPropArchivedAt(GitHubModel):
+class ProjectsV2ItemRestoredPropChangesPropArchivedAt(GitHubWebhookModel):
     """ProjectsV2ItemRestoredPropChangesPropArchivedAt"""
 
     from_: datetime = Field(default=..., alias="from")
     to: None = Field(default=...)
 
 
-class ProjectsV2ItemRestoredPropProjectsV2Item(GitHubModel):
+class ProjectsV2ItemRestoredPropProjectsV2Item(GitHubWebhookModel):
     """ProjectsV2ItemRestoredPropProjectsV2Item"""
 
     id: float = Field(default=...)
@@ -8158,13 +8174,13 @@ class ProjectsV2ItemRestoredPropProjectsV2Item(GitHubModel):
     archived_at: Union[None, None] = Field(default=...)
 
 
-class ProjectsV2ItemRestoredPropProjectsV2ItemAllof1(GitHubModel):
+class ProjectsV2ItemRestoredPropProjectsV2ItemAllof1(GitHubWebhookModel):
     """ProjectsV2ItemRestoredPropProjectsV2ItemAllof1"""
 
     archived_at: None = Field(default=...)
 
 
-class PublicEvent(GitHubModel):
+class PublicEvent(GitHubWebhookModel):
     """public event
 
     When a private repository is made public.
@@ -8180,7 +8196,7 @@ class PublicEvent(GitHubModel):
     )
 
 
-class PublicEventPropRepository(GitHubModel):
+class PublicEventPropRepository(GitHubWebhookModel):
     """PublicEventPropRepository"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -8412,13 +8428,13 @@ class PublicEventPropRepository(GitHubModel):
     organization: Union[Unset, str] = Field(default=UNSET)
 
 
-class PublicEventPropRepositoryAllof1(GitHubModel):
+class PublicEventPropRepositoryAllof1(GitHubWebhookModel):
     """PublicEventPropRepositoryAllof1"""
 
     private: Literal[False] = Field(default=...)
 
 
-class PullRequestAssigned(GitHubModel):
+class PullRequestAssigned(GitHubWebhookModel):
     """pull_request assigned event"""
 
     action: Literal["assigned"] = Field(default=...)
@@ -8437,7 +8453,7 @@ class PullRequestAssigned(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequest(GitHubModel):
+class PullRequest(GitHubWebhookModel):
     """Pull Request"""
 
     url: str = Field(default=...)
@@ -8524,7 +8540,7 @@ class PullRequest(GitHubModel):
     changed_files: int = Field(default=...)
 
 
-class PullRequestPropHead(GitHubModel):
+class PullRequestPropHead(GitHubWebhookModel):
     """PullRequestPropHead"""
 
     label: str = Field(default=...)
@@ -8536,7 +8552,7 @@ class PullRequestPropHead(GitHubModel):
     )
 
 
-class PullRequestPropBase(GitHubModel):
+class PullRequestPropBase(GitHubWebhookModel):
     """PullRequestPropBase"""
 
     label: str = Field(default=...)
@@ -8548,7 +8564,7 @@ class PullRequestPropBase(GitHubModel):
     )
 
 
-class PullRequestPropLinks(GitHubModel):
+class PullRequestPropLinks(GitHubWebhookModel):
     """PullRequestPropLinks"""
 
     self_: Link = Field(title="Link", default=..., alias="self")
@@ -8561,13 +8577,13 @@ class PullRequestPropLinks(GitHubModel):
     statuses: Link = Field(title="Link", default=...)
 
 
-class Link(GitHubModel):
+class Link(GitHubWebhookModel):
     """Link"""
 
     href: str = Field(default=...)
 
 
-class AutoMerge(GitHubModel):
+class AutoMerge(GitHubWebhookModel):
     """PullRequestAutoMerge
 
     The status of auto merging a pull request.
@@ -8585,7 +8601,7 @@ class AutoMerge(GitHubModel):
     )
 
 
-class PullRequestAutoMergeDisabled(GitHubModel):
+class PullRequestAutoMergeDisabled(GitHubWebhookModel):
     """pull_request auto_merge_disabled event"""
 
     action: Literal["auto_merge_disabled"] = Field(default=...)
@@ -8604,7 +8620,7 @@ class PullRequestAutoMergeDisabled(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestAutoMergeEnabled(GitHubModel):
+class PullRequestAutoMergeEnabled(GitHubWebhookModel):
     """pull_request auto_merge_enabled event"""
 
     action: Literal["auto_merge_enabled"] = Field(default=...)
@@ -8623,7 +8639,7 @@ class PullRequestAutoMergeEnabled(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestClosed(GitHubModel):
+class PullRequestClosed(GitHubWebhookModel):
     """pull_request closed event"""
 
     action: Literal["closed"] = Field(default=...)
@@ -8641,7 +8657,7 @@ class PullRequestClosed(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestClosedPropPullRequest(GitHubModel):
+class PullRequestClosedPropPullRequest(GitHubWebhookModel):
     """PullRequestClosedPropPullRequest"""
 
     url: str = Field(default=...)
@@ -8728,7 +8744,7 @@ class PullRequestClosedPropPullRequest(GitHubModel):
     changed_files: int = Field(default=...)
 
 
-class PullRequestClosedPropPullRequestAllof1(GitHubModel):
+class PullRequestClosedPropPullRequestAllof1(GitHubWebhookModel):
     """PullRequestClosedPropPullRequestAllof1"""
 
     state: Literal["closed"] = Field(
@@ -8739,7 +8755,7 @@ class PullRequestClosedPropPullRequestAllof1(GitHubModel):
     merged: bool = Field(default=...)
 
 
-class PullRequestConvertedToDraft(GitHubModel):
+class PullRequestConvertedToDraft(GitHubWebhookModel):
     """pull_request converted_to_draft event"""
 
     action: Literal["converted_to_draft"] = Field(default=...)
@@ -8757,7 +8773,7 @@ class PullRequestConvertedToDraft(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestConvertedToDraftPropPullRequest(GitHubModel):
+class PullRequestConvertedToDraftPropPullRequest(GitHubWebhookModel):
     """PullRequestConvertedToDraftPropPullRequest"""
 
     url: str = Field(default=...)
@@ -8844,7 +8860,7 @@ class PullRequestConvertedToDraftPropPullRequest(GitHubModel):
     changed_files: int = Field(default=...)
 
 
-class PullRequestConvertedToDraftPropPullRequestAllof1(GitHubModel):
+class PullRequestConvertedToDraftPropPullRequestAllof1(GitHubWebhookModel):
     """PullRequestConvertedToDraftPropPullRequestAllof1"""
 
     closed_at: None = Field(default=...)
@@ -8856,7 +8872,7 @@ class PullRequestConvertedToDraftPropPullRequestAllof1(GitHubModel):
     merged_by: None = Field(default=...)
 
 
-class PullRequestEdited(GitHubModel):
+class PullRequestEdited(GitHubWebhookModel):
     """pull_request edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -8878,7 +8894,7 @@ class PullRequestEdited(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestEditedPropChanges(GitHubModel):
+class PullRequestEditedPropChanges(GitHubWebhookModel):
     """PullRequestEditedPropChanges
 
     The changes to the comment if the action was `edited`.
@@ -8889,7 +8905,7 @@ class PullRequestEditedPropChanges(GitHubModel):
     base: Union[Unset, PullRequestEditedPropChangesPropBase] = Field(default=UNSET)
 
 
-class PullRequestEditedPropChangesPropBody(GitHubModel):
+class PullRequestEditedPropChangesPropBody(GitHubWebhookModel):
     """PullRequestEditedPropChangesPropBody"""
 
     from_: str = Field(
@@ -8899,7 +8915,7 @@ class PullRequestEditedPropChangesPropBody(GitHubModel):
     )
 
 
-class PullRequestEditedPropChangesPropTitle(GitHubModel):
+class PullRequestEditedPropChangesPropTitle(GitHubWebhookModel):
     """PullRequestEditedPropChangesPropTitle"""
 
     from_: str = Field(
@@ -8909,26 +8925,26 @@ class PullRequestEditedPropChangesPropTitle(GitHubModel):
     )
 
 
-class PullRequestEditedPropChangesPropBase(GitHubModel):
+class PullRequestEditedPropChangesPropBase(GitHubWebhookModel):
     """PullRequestEditedPropChangesPropBase"""
 
     ref: PullRequestEditedPropChangesPropBasePropRef = Field(default=...)
     sha: PullRequestEditedPropChangesPropBasePropSha = Field(default=...)
 
 
-class PullRequestEditedPropChangesPropBasePropRef(GitHubModel):
+class PullRequestEditedPropChangesPropBasePropRef(GitHubWebhookModel):
     """PullRequestEditedPropChangesPropBasePropRef"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class PullRequestEditedPropChangesPropBasePropSha(GitHubModel):
+class PullRequestEditedPropChangesPropBasePropSha(GitHubWebhookModel):
     """PullRequestEditedPropChangesPropBasePropSha"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class PullRequestLabeled(GitHubModel):
+class PullRequestLabeled(GitHubWebhookModel):
     """pull_request labeled event"""
 
     action: Literal["labeled"] = Field(default=...)
@@ -8947,7 +8963,7 @@ class PullRequestLabeled(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestLocked(GitHubModel):
+class PullRequestLocked(GitHubWebhookModel):
     """pull_request locked event"""
 
     action: Literal["locked"] = Field(default=...)
@@ -8965,7 +8981,7 @@ class PullRequestLocked(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestOpened(GitHubModel):
+class PullRequestOpened(GitHubWebhookModel):
     """pull_request opened event"""
 
     action: Literal["opened"] = Field(default=...)
@@ -8983,7 +8999,7 @@ class PullRequestOpened(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestOpenedPropPullRequest(GitHubModel):
+class PullRequestOpenedPropPullRequest(GitHubWebhookModel):
     """PullRequestOpenedPropPullRequest"""
 
     url: str = Field(default=...)
@@ -9065,7 +9081,7 @@ class PullRequestOpenedPropPullRequest(GitHubModel):
     changed_files: int = Field(default=...)
 
 
-class PullRequestOpenedPropPullRequestAllof1(GitHubModel):
+class PullRequestOpenedPropPullRequestAllof1(GitHubWebhookModel):
     """PullRequestOpenedPropPullRequestAllof1"""
 
     state: Literal["open"] = Field(default=...)
@@ -9075,7 +9091,7 @@ class PullRequestOpenedPropPullRequestAllof1(GitHubModel):
     merged_by: None = Field(default=...)
 
 
-class PullRequestReadyForReview(GitHubModel):
+class PullRequestReadyForReview(GitHubWebhookModel):
     """pull_request ready_for_review event"""
 
     action: Literal["ready_for_review"] = Field(default=...)
@@ -9093,7 +9109,7 @@ class PullRequestReadyForReview(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReadyForReviewPropPullRequest(GitHubModel):
+class PullRequestReadyForReviewPropPullRequest(GitHubWebhookModel):
     """PullRequestReadyForReviewPropPullRequest"""
 
     url: str = Field(default=...)
@@ -9177,7 +9193,7 @@ class PullRequestReadyForReviewPropPullRequest(GitHubModel):
     changed_files: int = Field(default=...)
 
 
-class PullRequestReadyForReviewPropPullRequestAllof1(GitHubModel):
+class PullRequestReadyForReviewPropPullRequestAllof1(GitHubWebhookModel):
     """PullRequestReadyForReviewPropPullRequestAllof1"""
 
     state: Literal["open"] = Field(default=...)
@@ -9190,7 +9206,7 @@ class PullRequestReadyForReviewPropPullRequestAllof1(GitHubModel):
     merged_by: None = Field(default=...)
 
 
-class PullRequestReopened(GitHubModel):
+class PullRequestReopened(GitHubWebhookModel):
     """pull_request reopened event"""
 
     action: Literal["reopened"] = Field(default=...)
@@ -9208,7 +9224,7 @@ class PullRequestReopened(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReopenedPropPullRequest(GitHubModel):
+class PullRequestReopenedPropPullRequest(GitHubWebhookModel):
     """PullRequestReopenedPropPullRequest"""
 
     url: str = Field(default=...)
@@ -9292,7 +9308,7 @@ class PullRequestReopenedPropPullRequest(GitHubModel):
     changed_files: int = Field(default=...)
 
 
-class PullRequestReopenedPropPullRequestAllof1(GitHubModel):
+class PullRequestReopenedPropPullRequestAllof1(GitHubWebhookModel):
     """PullRequestReopenedPropPullRequestAllof1"""
 
     state: Literal["open"] = Field(default=...)
@@ -9302,7 +9318,7 @@ class PullRequestReopenedPropPullRequestAllof1(GitHubModel):
     merged_by: None = Field(default=...)
 
 
-class PullRequestReviewRequestRemovedOneof0(GitHubModel):
+class PullRequestReviewRequestRemovedOneof0(GitHubWebhookModel):
     """PullRequestReviewRequestRemovedOneof0"""
 
     action: Literal["review_request_removed"] = Field(default=...)
@@ -9321,7 +9337,7 @@ class PullRequestReviewRequestRemovedOneof0(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewRequestRemovedOneof1(GitHubModel):
+class PullRequestReviewRequestRemovedOneof1(GitHubWebhookModel):
     """PullRequestReviewRequestRemovedOneof1"""
 
     action: Literal["review_request_removed"] = Field(default=...)
@@ -9344,7 +9360,7 @@ class PullRequestReviewRequestRemovedOneof1(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewRequestedOneof0(GitHubModel):
+class PullRequestReviewRequestedOneof0(GitHubWebhookModel):
     """PullRequestReviewRequestedOneof0"""
 
     action: Literal["review_requested"] = Field(default=...)
@@ -9363,7 +9379,7 @@ class PullRequestReviewRequestedOneof0(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewRequestedOneof1(GitHubModel):
+class PullRequestReviewRequestedOneof1(GitHubWebhookModel):
     """PullRequestReviewRequestedOneof1"""
 
     action: Literal["review_requested"] = Field(default=...)
@@ -9386,7 +9402,7 @@ class PullRequestReviewRequestedOneof1(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestSynchronize(GitHubModel):
+class PullRequestSynchronize(GitHubWebhookModel):
     """pull_request synchronize event"""
 
     action: Literal["synchronize"] = Field(default=...)
@@ -9406,7 +9422,7 @@ class PullRequestSynchronize(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestUnassigned(GitHubModel):
+class PullRequestUnassigned(GitHubWebhookModel):
     """pull_request unassigned event"""
 
     action: Literal["unassigned"] = Field(default=...)
@@ -9425,7 +9441,7 @@ class PullRequestUnassigned(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestUnlabeled(GitHubModel):
+class PullRequestUnlabeled(GitHubWebhookModel):
     """pull_request unlabeled event"""
 
     action: Literal["unlabeled"] = Field(default=...)
@@ -9444,7 +9460,7 @@ class PullRequestUnlabeled(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestUnlocked(GitHubModel):
+class PullRequestUnlocked(GitHubWebhookModel):
     """pull_request unlocked event"""
 
     action: Literal["unlocked"] = Field(default=...)
@@ -9462,7 +9478,7 @@ class PullRequestUnlocked(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewDismissed(GitHubModel):
+class PullRequestReviewDismissed(GitHubWebhookModel):
     """pull_request_review dismissed event"""
 
     action: Literal["dismissed"] = Field(default=...)
@@ -9482,7 +9498,7 @@ class PullRequestReviewDismissed(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewDismissedPropReview(GitHubModel):
+class PullRequestReviewDismissedPropReview(GitHubWebhookModel):
     """PullRequestReviewDismissedPropReview
 
     The review that was affected.
@@ -9516,14 +9532,14 @@ class PullRequestReviewDismissedPropReview(GitHubModel):
     )
 
 
-class PullRequestReviewDismissedPropReviewPropLinks(GitHubModel):
+class PullRequestReviewDismissedPropReviewPropLinks(GitHubWebhookModel):
     """PullRequestReviewDismissedPropReviewPropLinks"""
 
     html: Link = Field(title="Link", default=...)
     pull_request: Link = Field(title="Link", default=...)
 
 
-class SimplePullRequest(GitHubModel):
+class SimplePullRequest(GitHubWebhookModel):
     """Simple Pull Request"""
 
     url: str = Field(default=...)
@@ -9587,7 +9603,7 @@ class SimplePullRequest(GitHubModel):
     ] = Field(default=...)
 
 
-class SimplePullRequestPropHead(GitHubModel):
+class SimplePullRequestPropHead(GitHubWebhookModel):
     """SimplePullRequestPropHead"""
 
     label: str = Field(default=...)
@@ -9599,7 +9615,7 @@ class SimplePullRequestPropHead(GitHubModel):
     )
 
 
-class SimplePullRequestPropBase(GitHubModel):
+class SimplePullRequestPropBase(GitHubWebhookModel):
     """SimplePullRequestPropBase"""
 
     label: str = Field(default=...)
@@ -9611,7 +9627,7 @@ class SimplePullRequestPropBase(GitHubModel):
     )
 
 
-class SimplePullRequestPropLinks(GitHubModel):
+class SimplePullRequestPropLinks(GitHubWebhookModel):
     """SimplePullRequestPropLinks"""
 
     self_: Link = Field(title="Link", default=..., alias="self")
@@ -9624,7 +9640,7 @@ class SimplePullRequestPropLinks(GitHubModel):
     statuses: Link = Field(title="Link", default=...)
 
 
-class PullRequestReviewEdited(GitHubModel):
+class PullRequestReviewEdited(GitHubWebhookModel):
     """pull_request_review edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -9645,7 +9661,7 @@ class PullRequestReviewEdited(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewEditedPropChanges(GitHubModel):
+class PullRequestReviewEditedPropChanges(GitHubWebhookModel):
     """PullRequestReviewEditedPropChanges"""
 
     body: Union[Unset, PullRequestReviewEditedPropChangesPropBody] = Field(
@@ -9653,7 +9669,7 @@ class PullRequestReviewEditedPropChanges(GitHubModel):
     )
 
 
-class PullRequestReviewEditedPropChangesPropBody(GitHubModel):
+class PullRequestReviewEditedPropChangesPropBody(GitHubWebhookModel):
     """PullRequestReviewEditedPropChangesPropBody"""
 
     from_: str = Field(
@@ -9663,7 +9679,7 @@ class PullRequestReviewEditedPropChangesPropBody(GitHubModel):
     )
 
 
-class PullRequestReviewEditedPropReview(GitHubModel):
+class PullRequestReviewEditedPropReview(GitHubWebhookModel):
     """PullRequestReviewEditedPropReview
 
     The review that was affected.
@@ -9697,14 +9713,14 @@ class PullRequestReviewEditedPropReview(GitHubModel):
     )
 
 
-class PullRequestReviewEditedPropReviewPropLinks(GitHubModel):
+class PullRequestReviewEditedPropReviewPropLinks(GitHubWebhookModel):
     """PullRequestReviewEditedPropReviewPropLinks"""
 
     html: Link = Field(title="Link", default=...)
     pull_request: Link = Field(title="Link", default=...)
 
 
-class PullRequestReviewSubmitted(GitHubModel):
+class PullRequestReviewSubmitted(GitHubWebhookModel):
     """pull_request_review submitted event"""
 
     action: Literal["submitted"] = Field(default=...)
@@ -9724,7 +9740,7 @@ class PullRequestReviewSubmitted(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewSubmittedPropReview(GitHubModel):
+class PullRequestReviewSubmittedPropReview(GitHubWebhookModel):
     """PullRequestReviewSubmittedPropReview
 
     The review that was affected.
@@ -9758,14 +9774,14 @@ class PullRequestReviewSubmittedPropReview(GitHubModel):
     )
 
 
-class PullRequestReviewSubmittedPropReviewPropLinks(GitHubModel):
+class PullRequestReviewSubmittedPropReviewPropLinks(GitHubWebhookModel):
     """PullRequestReviewSubmittedPropReviewPropLinks"""
 
     html: Link = Field(title="Link", default=...)
     pull_request: Link = Field(title="Link", default=...)
 
 
-class PullRequestReviewCommentCreated(GitHubModel):
+class PullRequestReviewCommentCreated(GitHubWebhookModel):
     """pull_request_review_comment created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -9787,7 +9803,7 @@ class PullRequestReviewCommentCreated(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewComment(GitHubModel):
+class PullRequestReviewComment(GitHubWebhookModel):
     """Pull Request Review Comment
 
     The [comment](https://docs.github.com/en/rest/reference/pulls#comments) itself.
@@ -9880,7 +9896,7 @@ class PullRequestReviewComment(GitHubModel):
     )
 
 
-class PullRequestReviewCommentPropLinks(GitHubModel):
+class PullRequestReviewCommentPropLinks(GitHubWebhookModel):
     """PullRequestReviewCommentPropLinks"""
 
     self_: Link = Field(title="Link", default=..., alias="self")
@@ -9888,7 +9904,7 @@ class PullRequestReviewCommentPropLinks(GitHubModel):
     pull_request: Link = Field(title="Link", default=...)
 
 
-class PullRequestReviewCommentCreatedPropPullRequest(GitHubModel):
+class PullRequestReviewCommentCreatedPropPullRequest(GitHubWebhookModel):
     """PullRequestReviewCommentCreatedPropPullRequest"""
 
     url: str = Field(default=...)
@@ -9954,7 +9970,7 @@ class PullRequestReviewCommentCreatedPropPullRequest(GitHubModel):
     ] = Field(default=...)
 
 
-class PullRequestReviewCommentCreatedPropPullRequestPropHead(GitHubModel):
+class PullRequestReviewCommentCreatedPropPullRequestPropHead(GitHubWebhookModel):
     """PullRequestReviewCommentCreatedPropPullRequestPropHead"""
 
     label: str = Field(default=...)
@@ -9966,7 +9982,7 @@ class PullRequestReviewCommentCreatedPropPullRequestPropHead(GitHubModel):
     )
 
 
-class PullRequestReviewCommentCreatedPropPullRequestPropBase(GitHubModel):
+class PullRequestReviewCommentCreatedPropPullRequestPropBase(GitHubWebhookModel):
     """PullRequestReviewCommentCreatedPropPullRequestPropBase"""
 
     label: str = Field(default=...)
@@ -9978,7 +9994,7 @@ class PullRequestReviewCommentCreatedPropPullRequestPropBase(GitHubModel):
     )
 
 
-class PullRequestReviewCommentCreatedPropPullRequestPropLinks(GitHubModel):
+class PullRequestReviewCommentCreatedPropPullRequestPropLinks(GitHubWebhookModel):
     """PullRequestReviewCommentCreatedPropPullRequestPropLinks"""
 
     self_: Link = Field(title="Link", default=..., alias="self")
@@ -9991,7 +10007,7 @@ class PullRequestReviewCommentCreatedPropPullRequestPropLinks(GitHubModel):
     statuses: Link = Field(title="Link", default=...)
 
 
-class PullRequestReviewCommentDeleted(GitHubModel):
+class PullRequestReviewCommentDeleted(GitHubWebhookModel):
     """pull_request_review_comment deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -10013,7 +10029,7 @@ class PullRequestReviewCommentDeleted(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewCommentDeletedPropPullRequest(GitHubModel):
+class PullRequestReviewCommentDeletedPropPullRequest(GitHubWebhookModel):
     """PullRequestReviewCommentDeletedPropPullRequest"""
 
     url: str = Field(default=...)
@@ -10079,7 +10095,7 @@ class PullRequestReviewCommentDeletedPropPullRequest(GitHubModel):
     ] = Field(default=...)
 
 
-class PullRequestReviewCommentDeletedPropPullRequestPropHead(GitHubModel):
+class PullRequestReviewCommentDeletedPropPullRequestPropHead(GitHubWebhookModel):
     """PullRequestReviewCommentDeletedPropPullRequestPropHead"""
 
     label: str = Field(default=...)
@@ -10091,7 +10107,7 @@ class PullRequestReviewCommentDeletedPropPullRequestPropHead(GitHubModel):
     )
 
 
-class PullRequestReviewCommentDeletedPropPullRequestPropBase(GitHubModel):
+class PullRequestReviewCommentDeletedPropPullRequestPropBase(GitHubWebhookModel):
     """PullRequestReviewCommentDeletedPropPullRequestPropBase"""
 
     label: str = Field(default=...)
@@ -10103,7 +10119,7 @@ class PullRequestReviewCommentDeletedPropPullRequestPropBase(GitHubModel):
     )
 
 
-class PullRequestReviewCommentDeletedPropPullRequestPropLinks(GitHubModel):
+class PullRequestReviewCommentDeletedPropPullRequestPropLinks(GitHubWebhookModel):
     """PullRequestReviewCommentDeletedPropPullRequestPropLinks"""
 
     self_: Link = Field(title="Link", default=..., alias="self")
@@ -10116,7 +10132,7 @@ class PullRequestReviewCommentDeletedPropPullRequestPropLinks(GitHubModel):
     statuses: Link = Field(title="Link", default=...)
 
 
-class PullRequestReviewCommentEdited(GitHubModel):
+class PullRequestReviewCommentEdited(GitHubWebhookModel):
     """pull_request_review_comment edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -10141,7 +10157,7 @@ class PullRequestReviewCommentEdited(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewCommentEditedPropChanges(GitHubModel):
+class PullRequestReviewCommentEditedPropChanges(GitHubWebhookModel):
     """PullRequestReviewCommentEditedPropChanges
 
     The changes to the comment.
@@ -10152,7 +10168,7 @@ class PullRequestReviewCommentEditedPropChanges(GitHubModel):
     )
 
 
-class PullRequestReviewCommentEditedPropChangesPropBody(GitHubModel):
+class PullRequestReviewCommentEditedPropChangesPropBody(GitHubWebhookModel):
     """PullRequestReviewCommentEditedPropChangesPropBody"""
 
     from_: str = Field(
@@ -10160,7 +10176,7 @@ class PullRequestReviewCommentEditedPropChangesPropBody(GitHubModel):
     )
 
 
-class PullRequestReviewCommentEditedPropPullRequest(GitHubModel):
+class PullRequestReviewCommentEditedPropPullRequest(GitHubWebhookModel):
     """PullRequestReviewCommentEditedPropPullRequest"""
 
     url: str = Field(default=...)
@@ -10226,7 +10242,7 @@ class PullRequestReviewCommentEditedPropPullRequest(GitHubModel):
     ] = Field(default=...)
 
 
-class PullRequestReviewCommentEditedPropPullRequestPropHead(GitHubModel):
+class PullRequestReviewCommentEditedPropPullRequestPropHead(GitHubWebhookModel):
     """PullRequestReviewCommentEditedPropPullRequestPropHead"""
 
     label: str = Field(default=...)
@@ -10238,7 +10254,7 @@ class PullRequestReviewCommentEditedPropPullRequestPropHead(GitHubModel):
     )
 
 
-class PullRequestReviewCommentEditedPropPullRequestPropBase(GitHubModel):
+class PullRequestReviewCommentEditedPropPullRequestPropBase(GitHubWebhookModel):
     """PullRequestReviewCommentEditedPropPullRequestPropBase"""
 
     label: str = Field(default=...)
@@ -10250,7 +10266,7 @@ class PullRequestReviewCommentEditedPropPullRequestPropBase(GitHubModel):
     )
 
 
-class PullRequestReviewCommentEditedPropPullRequestPropLinks(GitHubModel):
+class PullRequestReviewCommentEditedPropPullRequestPropLinks(GitHubWebhookModel):
     """PullRequestReviewCommentEditedPropPullRequestPropLinks"""
 
     self_: Link = Field(title="Link", default=..., alias="self")
@@ -10263,7 +10279,7 @@ class PullRequestReviewCommentEditedPropPullRequestPropLinks(GitHubModel):
     statuses: Link = Field(title="Link", default=...)
 
 
-class PullRequestReviewThreadResolved(GitHubModel):
+class PullRequestReviewThreadResolved(GitHubWebhookModel):
     """pull_request_review_thread resolved event"""
 
     action: Literal["resolved"] = Field(default=...)
@@ -10281,14 +10297,14 @@ class PullRequestReviewThreadResolved(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewThreadResolvedPropThread(GitHubModel):
+class PullRequestReviewThreadResolvedPropThread(GitHubWebhookModel):
     """PullRequestReviewThreadResolvedPropThread"""
 
     node_id: str = Field(default=...)
     comments: List[PullRequestReviewComment] = Field(default=...)
 
 
-class PullRequestReviewThreadUnresolved(GitHubModel):
+class PullRequestReviewThreadUnresolved(GitHubWebhookModel):
     """pull_request_review_thread unresolved event"""
 
     action: Literal["unresolved"] = Field(default=...)
@@ -10306,14 +10322,14 @@ class PullRequestReviewThreadUnresolved(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequestReviewThreadUnresolvedPropThread(GitHubModel):
+class PullRequestReviewThreadUnresolvedPropThread(GitHubWebhookModel):
     """PullRequestReviewThreadUnresolvedPropThread"""
 
     node_id: str = Field(default=...)
     comments: List[PullRequestReviewComment] = Field(default=...)
 
 
-class PushEvent(GitHubModel):
+class PushEvent(GitHubWebhookModel):
     """push event"""
 
     ref: str = Field(
@@ -10368,7 +10384,7 @@ class PushEvent(GitHubModel):
     )
 
 
-class Commit(GitHubModel):
+class Commit(GitHubWebhookModel):
     """Commit"""
 
     id: str = Field(default=...)
@@ -10405,7 +10421,7 @@ class Commit(GitHubModel):
     )
 
 
-class ReleaseCreated(GitHubModel):
+class ReleaseCreated(GitHubWebhookModel):
     """release created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -10426,7 +10442,7 @@ class ReleaseCreated(GitHubModel):
     )
 
 
-class Release(GitHubModel):
+class Release(GitHubWebhookModel):
     """Release
 
     The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release)
@@ -10464,7 +10480,7 @@ class Release(GitHubModel):
     discussion_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReleaseAsset(GitHubModel):
+class ReleaseAsset(GitHubWebhookModel):
     """Release Asset
 
     Data related to a release.
@@ -10487,7 +10503,7 @@ class ReleaseAsset(GitHubModel):
     uploader: Union[Unset, User] = Field(title="User", default=UNSET)
 
 
-class ReleaseDeleted(GitHubModel):
+class ReleaseDeleted(GitHubWebhookModel):
     """release deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -10508,7 +10524,7 @@ class ReleaseDeleted(GitHubModel):
     )
 
 
-class ReleaseEdited(GitHubModel):
+class ReleaseEdited(GitHubWebhookModel):
     """release edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -10530,14 +10546,14 @@ class ReleaseEdited(GitHubModel):
     )
 
 
-class ReleaseEditedPropChanges(GitHubModel):
+class ReleaseEditedPropChanges(GitHubWebhookModel):
     """ReleaseEditedPropChanges"""
 
     body: Union[Unset, ReleaseEditedPropChangesPropBody] = Field(default=UNSET)
     name: Union[Unset, ReleaseEditedPropChangesPropName] = Field(default=UNSET)
 
 
-class ReleaseEditedPropChangesPropBody(GitHubModel):
+class ReleaseEditedPropChangesPropBody(GitHubWebhookModel):
     """ReleaseEditedPropChangesPropBody"""
 
     from_: str = Field(
@@ -10547,7 +10563,7 @@ class ReleaseEditedPropChangesPropBody(GitHubModel):
     )
 
 
-class ReleaseEditedPropChangesPropName(GitHubModel):
+class ReleaseEditedPropChangesPropName(GitHubWebhookModel):
     """ReleaseEditedPropChangesPropName"""
 
     from_: str = Field(
@@ -10557,7 +10573,7 @@ class ReleaseEditedPropChangesPropName(GitHubModel):
     )
 
 
-class ReleasePrereleased(GitHubModel):
+class ReleasePrereleased(GitHubWebhookModel):
     """release prereleased event"""
 
     action: Literal["prereleased"] = Field(default=...)
@@ -10574,7 +10590,7 @@ class ReleasePrereleased(GitHubModel):
     )
 
 
-class ReleasePrereleasedPropRelease(GitHubModel):
+class ReleasePrereleasedPropRelease(GitHubWebhookModel):
     """ReleasePrereleasedPropRelease"""
 
     url: str = Field(default=...)
@@ -10608,7 +10624,7 @@ class ReleasePrereleasedPropRelease(GitHubModel):
     discussion_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReleasePrereleasedPropReleaseAllof1(GitHubModel):
+class ReleasePrereleasedPropReleaseAllof1(GitHubWebhookModel):
     """ReleasePrereleasedPropReleaseAllof1"""
 
     prerelease: Literal[True] = Field(
@@ -10617,7 +10633,7 @@ class ReleasePrereleasedPropReleaseAllof1(GitHubModel):
     )
 
 
-class ReleasePublished(GitHubModel):
+class ReleasePublished(GitHubWebhookModel):
     """release published event"""
 
     action: Literal["published"] = Field(default=...)
@@ -10634,7 +10650,7 @@ class ReleasePublished(GitHubModel):
     )
 
 
-class ReleasePublishedPropRelease(GitHubModel):
+class ReleasePublishedPropRelease(GitHubWebhookModel):
     """ReleasePublishedPropRelease"""
 
     url: str = Field(default=...)
@@ -10668,13 +10684,13 @@ class ReleasePublishedPropRelease(GitHubModel):
     discussion_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReleasePublishedPropReleaseAllof1(GitHubModel):
+class ReleasePublishedPropReleaseAllof1(GitHubWebhookModel):
     """ReleasePublishedPropReleaseAllof1"""
 
     published_at: datetime = Field(default=...)
 
 
-class ReleaseReleased(GitHubModel):
+class ReleaseReleased(GitHubWebhookModel):
     """release released event"""
 
     action: Literal["released"] = Field(default=...)
@@ -10695,7 +10711,7 @@ class ReleaseReleased(GitHubModel):
     )
 
 
-class ReleaseUnpublished(GitHubModel):
+class ReleaseUnpublished(GitHubWebhookModel):
     """release unpublished event"""
 
     action: Literal["unpublished"] = Field(default=...)
@@ -10712,7 +10728,7 @@ class ReleaseUnpublished(GitHubModel):
     )
 
 
-class ReleaseUnpublishedPropRelease(GitHubModel):
+class ReleaseUnpublishedPropRelease(GitHubWebhookModel):
     """ReleaseUnpublishedPropRelease"""
 
     url: str = Field(default=...)
@@ -10746,13 +10762,13 @@ class ReleaseUnpublishedPropRelease(GitHubModel):
     discussion_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReleaseUnpublishedPropReleaseAllof1(GitHubModel):
+class ReleaseUnpublishedPropReleaseAllof1(GitHubWebhookModel):
     """ReleaseUnpublishedPropReleaseAllof1"""
 
     published_at: None = Field(default=...)
 
 
-class RepositoryArchived(GitHubModel):
+class RepositoryArchived(GitHubWebhookModel):
     """repository archived event"""
 
     action: Literal["archived"] = Field(default=...)
@@ -10766,7 +10782,7 @@ class RepositoryArchived(GitHubModel):
     )
 
 
-class RepositoryArchivedPropRepository(GitHubModel):
+class RepositoryArchivedPropRepository(GitHubWebhookModel):
     """RepositoryArchivedPropRepository"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -11000,7 +11016,7 @@ class RepositoryArchivedPropRepository(GitHubModel):
     organization: Union[Unset, str] = Field(default=UNSET)
 
 
-class RepositoryArchivedPropRepositoryAllof1(GitHubModel):
+class RepositoryArchivedPropRepositoryAllof1(GitHubWebhookModel):
     """RepositoryArchivedPropRepositoryAllof1"""
 
     archived: Literal[True] = Field(
@@ -11008,7 +11024,7 @@ class RepositoryArchivedPropRepositoryAllof1(GitHubModel):
     )
 
 
-class RepositoryCreated(GitHubModel):
+class RepositoryCreated(GitHubWebhookModel):
     """repository created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -11024,7 +11040,7 @@ class RepositoryCreated(GitHubModel):
     )
 
 
-class RepositoryDeleted(GitHubModel):
+class RepositoryDeleted(GitHubWebhookModel):
     """repository deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -11040,7 +11056,7 @@ class RepositoryDeleted(GitHubModel):
     )
 
 
-class RepositoryEdited(GitHubModel):
+class RepositoryEdited(GitHubWebhookModel):
     """repository edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -11057,7 +11073,7 @@ class RepositoryEdited(GitHubModel):
     )
 
 
-class RepositoryEditedPropChanges(GitHubModel):
+class RepositoryEditedPropChanges(GitHubWebhookModel):
     """RepositoryEditedPropChanges"""
 
     description: Union[Unset, RepositoryEditedPropChangesPropDescription] = Field(
@@ -11071,25 +11087,25 @@ class RepositoryEditedPropChanges(GitHubModel):
     )
 
 
-class RepositoryEditedPropChangesPropDescription(GitHubModel):
+class RepositoryEditedPropChangesPropDescription(GitHubWebhookModel):
     """RepositoryEditedPropChangesPropDescription"""
 
     from_: Union[str, None] = Field(default=..., alias="from")
 
 
-class RepositoryEditedPropChangesPropDefaultBranch(GitHubModel):
+class RepositoryEditedPropChangesPropDefaultBranch(GitHubWebhookModel):
     """RepositoryEditedPropChangesPropDefaultBranch"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class RepositoryEditedPropChangesPropHomepage(GitHubModel):
+class RepositoryEditedPropChangesPropHomepage(GitHubWebhookModel):
     """RepositoryEditedPropChangesPropHomepage"""
 
     from_: Union[str, None] = Field(default=..., alias="from")
 
 
-class RepositoryPrivatized(GitHubModel):
+class RepositoryPrivatized(GitHubWebhookModel):
     """repository privatized event"""
 
     action: Literal["privatized"] = Field(default=...)
@@ -11103,7 +11119,7 @@ class RepositoryPrivatized(GitHubModel):
     )
 
 
-class RepositoryPrivatizedPropRepository(GitHubModel):
+class RepositoryPrivatizedPropRepository(GitHubWebhookModel):
     """RepositoryPrivatizedPropRepository"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -11337,7 +11353,7 @@ class RepositoryPrivatizedPropRepository(GitHubModel):
     organization: Union[Unset, str] = Field(default=UNSET)
 
 
-class RepositoryPrivatizedPropRepositoryAllof1(GitHubModel):
+class RepositoryPrivatizedPropRepositoryAllof1(GitHubWebhookModel):
     """RepositoryPrivatizedPropRepositoryAllof1"""
 
     private: Literal[True] = Field(
@@ -11345,7 +11361,7 @@ class RepositoryPrivatizedPropRepositoryAllof1(GitHubModel):
     )
 
 
-class RepositoryPublicized(GitHubModel):
+class RepositoryPublicized(GitHubWebhookModel):
     """repository publicized event"""
 
     action: Literal["publicized"] = Field(default=...)
@@ -11359,7 +11375,7 @@ class RepositoryPublicized(GitHubModel):
     )
 
 
-class RepositoryPublicizedPropRepository(GitHubModel):
+class RepositoryPublicizedPropRepository(GitHubWebhookModel):
     """RepositoryPublicizedPropRepository"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -11593,7 +11609,7 @@ class RepositoryPublicizedPropRepository(GitHubModel):
     organization: Union[Unset, str] = Field(default=UNSET)
 
 
-class RepositoryPublicizedPropRepositoryAllof1(GitHubModel):
+class RepositoryPublicizedPropRepositoryAllof1(GitHubWebhookModel):
     """RepositoryPublicizedPropRepositoryAllof1"""
 
     private: Literal[False] = Field(
@@ -11601,7 +11617,7 @@ class RepositoryPublicizedPropRepositoryAllof1(GitHubModel):
     )
 
 
-class RepositoryRenamed(GitHubModel):
+class RepositoryRenamed(GitHubWebhookModel):
     """repository renamed event"""
 
     action: Literal["renamed"] = Field(default=...)
@@ -11618,25 +11634,25 @@ class RepositoryRenamed(GitHubModel):
     )
 
 
-class RepositoryRenamedPropChanges(GitHubModel):
+class RepositoryRenamedPropChanges(GitHubWebhookModel):
     """RepositoryRenamedPropChanges"""
 
     repository: RepositoryRenamedPropChangesPropRepository = Field(default=...)
 
 
-class RepositoryRenamedPropChangesPropRepository(GitHubModel):
+class RepositoryRenamedPropChangesPropRepository(GitHubWebhookModel):
     """RepositoryRenamedPropChangesPropRepository"""
 
     name: RepositoryRenamedPropChangesPropRepositoryPropName = Field(default=...)
 
 
-class RepositoryRenamedPropChangesPropRepositoryPropName(GitHubModel):
+class RepositoryRenamedPropChangesPropRepositoryPropName(GitHubWebhookModel):
     """RepositoryRenamedPropChangesPropRepositoryPropName"""
 
     from_: str = Field(default=..., alias="from")
 
 
-class RepositoryTransferred(GitHubModel):
+class RepositoryTransferred(GitHubWebhookModel):
     """repository transferred event"""
 
     action: Literal["transferred"] = Field(default=...)
@@ -11653,13 +11669,13 @@ class RepositoryTransferred(GitHubModel):
     )
 
 
-class RepositoryTransferredPropChanges(GitHubModel):
+class RepositoryTransferredPropChanges(GitHubWebhookModel):
     """RepositoryTransferredPropChanges"""
 
     owner: RepositoryTransferredPropChangesPropOwner = Field(default=...)
 
 
-class RepositoryTransferredPropChangesPropOwner(GitHubModel):
+class RepositoryTransferredPropChangesPropOwner(GitHubWebhookModel):
     """RepositoryTransferredPropChangesPropOwner"""
 
     from_: RepositoryTransferredPropChangesPropOwnerPropFrom = Field(
@@ -11667,13 +11683,13 @@ class RepositoryTransferredPropChangesPropOwner(GitHubModel):
     )
 
 
-class RepositoryTransferredPropChangesPropOwnerPropFrom(GitHubModel):
+class RepositoryTransferredPropChangesPropOwnerPropFrom(GitHubWebhookModel):
     """RepositoryTransferredPropChangesPropOwnerPropFrom"""
 
     user: Union[Unset, User] = Field(title="User", default=UNSET)
 
 
-class RepositoryUnarchived(GitHubModel):
+class RepositoryUnarchived(GitHubWebhookModel):
     """repository unarchived event"""
 
     action: Literal["unarchived"] = Field(default=...)
@@ -11687,7 +11703,7 @@ class RepositoryUnarchived(GitHubModel):
     )
 
 
-class RepositoryUnarchivedPropRepository(GitHubModel):
+class RepositoryUnarchivedPropRepository(GitHubWebhookModel):
     """RepositoryUnarchivedPropRepository"""
 
     id: int = Field(description="Unique identifier of the repository", default=...)
@@ -11921,7 +11937,7 @@ class RepositoryUnarchivedPropRepository(GitHubModel):
     organization: Union[Unset, str] = Field(default=UNSET)
 
 
-class RepositoryUnarchivedPropRepositoryAllof1(GitHubModel):
+class RepositoryUnarchivedPropRepositoryAllof1(GitHubWebhookModel):
     """RepositoryUnarchivedPropRepositoryAllof1"""
 
     archived: Literal[False] = Field(
@@ -11929,7 +11945,7 @@ class RepositoryUnarchivedPropRepositoryAllof1(GitHubModel):
     )
 
 
-class RepositoryDispatchEvent(GitHubModel):
+class RepositoryDispatchEvent(GitHubWebhookModel):
     """repository_dispatch event"""
 
     action: str = Field(default=...)
@@ -11947,11 +11963,11 @@ class RepositoryDispatchEvent(GitHubModel):
     )
 
 
-class RepositoryDispatchEventPropClientPayload(GitHubModel, extra=Extra.allow):
+class RepositoryDispatchEventPropClientPayload(GitHubWebhookModel, extra=Extra.allow):
     """RepositoryDispatchEventPropClientPayload"""
 
 
-class RepositoryImportEvent(GitHubModel):
+class RepositoryImportEvent(GitHubWebhookModel):
     """repository_import event"""
 
     status: Literal["success", "cancelled", "failure"] = Field(default=...)
@@ -11967,7 +11983,7 @@ class RepositoryImportEvent(GitHubModel):
     )
 
 
-class RepositoryVulnerabilityAlertCreate(GitHubModel):
+class RepositoryVulnerabilityAlertCreate(GitHubWebhookModel):
     """repository_vulnerability_alert create event"""
 
     action: Literal["create"] = Field(default=...)
@@ -11981,7 +11997,7 @@ class RepositoryVulnerabilityAlertCreate(GitHubModel):
     )
 
 
-class RepositoryVulnerabilityAlertCreatePropAlert(GitHubModel):
+class RepositoryVulnerabilityAlertCreatePropAlert(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertCreatePropAlert"""
 
     id: int = Field(default=...)
@@ -12003,7 +12019,7 @@ class RepositoryVulnerabilityAlertCreatePropAlert(GitHubModel):
     created_at: datetime = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertAlert(GitHubModel):
+class RepositoryVulnerabilityAlertAlert(GitHubWebhookModel):
     """Repository Vulnerability Alert Alert
 
     The security alert of the vulnerable dependency.
@@ -12028,13 +12044,13 @@ class RepositoryVulnerabilityAlertAlert(GitHubModel):
     created_at: datetime = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertCreatePropAlertAllof1(GitHubModel):
+class RepositoryVulnerabilityAlertCreatePropAlertAllof1(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertCreatePropAlertAllof1"""
 
     state: Literal["open"] = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertDismiss(GitHubModel):
+class RepositoryVulnerabilityAlertDismiss(GitHubWebhookModel):
     """repository_vulnerability_alert dismiss event"""
 
     action: Literal["dismiss"] = Field(default=...)
@@ -12048,7 +12064,7 @@ class RepositoryVulnerabilityAlertDismiss(GitHubModel):
     )
 
 
-class RepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
+class RepositoryVulnerabilityAlertDismissPropAlert(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertDismissPropAlert"""
 
     id: int = Field(default=...)
@@ -12070,7 +12086,7 @@ class RepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
     created_at: datetime = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertDismissPropAlertAllof1(GitHubModel):
+class RepositoryVulnerabilityAlertDismissPropAlertAllof1(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertDismissPropAlertAllof1"""
 
     dismisser: User = Field(title="User", default=...)
@@ -12079,7 +12095,7 @@ class RepositoryVulnerabilityAlertDismissPropAlertAllof1(GitHubModel):
     state: Literal["dismissed"] = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertReopen(GitHubModel):
+class RepositoryVulnerabilityAlertReopen(GitHubWebhookModel):
     """repository_vulnerability_alert reopen event"""
 
     action: Literal["reopen"] = Field(default=...)
@@ -12093,7 +12109,7 @@ class RepositoryVulnerabilityAlertReopen(GitHubModel):
     )
 
 
-class RepositoryVulnerabilityAlertReopenPropAlert(GitHubModel):
+class RepositoryVulnerabilityAlertReopenPropAlert(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertReopenPropAlert"""
 
     id: int = Field(default=...)
@@ -12115,13 +12131,13 @@ class RepositoryVulnerabilityAlertReopenPropAlert(GitHubModel):
     created_at: datetime = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertReopenPropAlertAllof1(GitHubModel):
+class RepositoryVulnerabilityAlertReopenPropAlertAllof1(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertReopenPropAlertAllof1"""
 
     state: Literal["open"] = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertResolve(GitHubModel):
+class RepositoryVulnerabilityAlertResolve(GitHubWebhookModel):
     """repository_vulnerability_alert resolve event"""
 
     action: Literal["resolve"] = Field(default=...)
@@ -12135,7 +12151,7 @@ class RepositoryVulnerabilityAlertResolve(GitHubModel):
     )
 
 
-class RepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
+class RepositoryVulnerabilityAlertResolvePropAlert(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertResolvePropAlert"""
 
     id: int = Field(default=...)
@@ -12157,7 +12173,7 @@ class RepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
     created_at: datetime = Field(default=...)
 
 
-class RepositoryVulnerabilityAlertResolvePropAlertAllof1(GitHubModel):
+class RepositoryVulnerabilityAlertResolvePropAlertAllof1(GitHubWebhookModel):
     """RepositoryVulnerabilityAlertResolvePropAlertAllof1"""
 
     state: Literal["fixed"] = Field(default=...)
@@ -12165,7 +12181,7 @@ class RepositoryVulnerabilityAlertResolvePropAlertAllof1(GitHubModel):
     fix_reason: str = Field(default=...)
 
 
-class SecretScanningAlertCreated(GitHubModel):
+class SecretScanningAlertCreated(GitHubWebhookModel):
     """secret_scanning_alert created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -12183,7 +12199,7 @@ class SecretScanningAlertCreated(GitHubModel):
     )
 
 
-class SecretScanningAlertCreatedPropAlert(GitHubModel):
+class SecretScanningAlertCreatedPropAlert(GitHubWebhookModel):
     """SecretScanningAlertCreatedPropAlert
 
     The secret scanning alert involved in the event.
@@ -12196,7 +12212,7 @@ class SecretScanningAlertCreatedPropAlert(GitHubModel):
     resolved_at: None = Field(default=...)
 
 
-class SecretScanningAlertReopened(GitHubModel):
+class SecretScanningAlertReopened(GitHubWebhookModel):
     """secret_scanning_alert reopened event"""
 
     action: Literal["reopened"] = Field(default=...)
@@ -12215,7 +12231,7 @@ class SecretScanningAlertReopened(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SecretScanningAlertReopenedPropAlert(GitHubModel):
+class SecretScanningAlertReopenedPropAlert(GitHubWebhookModel):
     """SecretScanningAlertReopenedPropAlert
 
     The secret scanning alert involved in the event.
@@ -12228,7 +12244,7 @@ class SecretScanningAlertReopenedPropAlert(GitHubModel):
     resolved_at: None = Field(default=...)
 
 
-class SecretScanningAlertResolved(GitHubModel):
+class SecretScanningAlertResolved(GitHubWebhookModel):
     """secret_scanning_alert resolved event"""
 
     action: Literal["resolved"] = Field(default=...)
@@ -12247,7 +12263,7 @@ class SecretScanningAlertResolved(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SecretScanningAlertResolvedPropAlert(GitHubModel):
+class SecretScanningAlertResolvedPropAlert(GitHubWebhookModel):
     """SecretScanningAlertResolvedPropAlert
 
     The secret scanning alert involved in the event.
@@ -12262,7 +12278,7 @@ class SecretScanningAlertResolvedPropAlert(GitHubModel):
     resolved_at: datetime = Field(default=...)
 
 
-class SecurityAdvisoryPerformed(GitHubModel):
+class SecurityAdvisoryPerformed(GitHubWebhookModel):
     """security_advisory performed event"""
 
     action: Literal["performed"] = Field(default=...)
@@ -12272,7 +12288,7 @@ class SecurityAdvisoryPerformed(GitHubModel):
     )
 
 
-class SecurityAdvisoryPerformedPropSecurityAdvisory(GitHubModel):
+class SecurityAdvisoryPerformedPropSecurityAdvisory(GitHubWebhookModel):
     """SecurityAdvisoryPerformedPropSecurityAdvisory
 
     The details of the security advisory, including summary, description, and
@@ -12301,35 +12317,39 @@ class SecurityAdvisoryPerformedPropSecurityAdvisory(GitHubModel):
     ] = Field(default=...)
 
 
-class SecurityAdvisoryPerformedPropSecurityAdvisoryPropCvss(GitHubModel):
+class SecurityAdvisoryPerformedPropSecurityAdvisoryPropCvss(GitHubWebhookModel):
     """SecurityAdvisoryPerformedPropSecurityAdvisoryPropCvss"""
 
     vector_string: Union[str, None] = Field(default=...)
     score: float = Field(default=...)
 
 
-class SecurityAdvisoryPerformedPropSecurityAdvisoryPropCwesItems(GitHubModel):
+class SecurityAdvisoryPerformedPropSecurityAdvisoryPropCwesItems(GitHubWebhookModel):
     """SecurityAdvisoryPerformedPropSecurityAdvisoryPropCwesItems"""
 
     cwe_id: str = Field(default=...)
     name: str = Field(default=...)
 
 
-class SecurityAdvisoryPerformedPropSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+class SecurityAdvisoryPerformedPropSecurityAdvisoryPropIdentifiersItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryPerformedPropSecurityAdvisoryPropIdentifiersItems"""
 
     value: str = Field(default=...)
     type: str = Field(default=...)
 
 
-class SecurityAdvisoryPerformedPropSecurityAdvisoryPropReferencesItems(GitHubModel):
+class SecurityAdvisoryPerformedPropSecurityAdvisoryPropReferencesItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryPerformedPropSecurityAdvisoryPropReferencesItems"""
 
     url: str = Field(default=...)
 
 
 class SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItems(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
@@ -12345,7 +12365,7 @@ class SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItems(
 
 
 class SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
 
@@ -12354,7 +12374,7 @@ class SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItemsPropP
 
 
 class SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPa
     tchedVersion
@@ -12363,7 +12383,7 @@ class SecurityAdvisoryPerformedPropSecurityAdvisoryPropVulnerabilitiesItemsPropF
     identifier: str = Field(default=...)
 
 
-class SecurityAdvisoryPublished(GitHubModel):
+class SecurityAdvisoryPublished(GitHubWebhookModel):
     """security_advisory published event"""
 
     action: Literal["published"] = Field(default=...)
@@ -12373,7 +12393,7 @@ class SecurityAdvisoryPublished(GitHubModel):
     )
 
 
-class SecurityAdvisoryPublishedPropSecurityAdvisory(GitHubModel):
+class SecurityAdvisoryPublishedPropSecurityAdvisory(GitHubWebhookModel):
     """SecurityAdvisoryPublishedPropSecurityAdvisory
 
     The details of the security advisory, including summary, description, and
@@ -12402,35 +12422,39 @@ class SecurityAdvisoryPublishedPropSecurityAdvisory(GitHubModel):
     ] = Field(default=...)
 
 
-class SecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss(GitHubModel):
+class SecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss(GitHubWebhookModel):
     """SecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss"""
 
     vector_string: Union[str, None] = Field(default=...)
     score: float = Field(default=...)
 
 
-class SecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems(GitHubModel):
+class SecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems(GitHubWebhookModel):
     """SecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems"""
 
     cwe_id: str = Field(default=...)
     name: str = Field(default=...)
 
 
-class SecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+class SecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems"""
 
     value: str = Field(default=...)
     type: str = Field(default=...)
 
 
-class SecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems(GitHubModel):
+class SecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems"""
 
     url: str = Field(default=...)
 
 
 class SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
@@ -12446,7 +12470,7 @@ class SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems(
 
 
 class SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
 
@@ -12455,7 +12479,7 @@ class SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropP
 
 
 class SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPa
     tchedVersion
@@ -12464,7 +12488,7 @@ class SecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropF
     identifier: str = Field(default=...)
 
 
-class SecurityAdvisoryUpdated(GitHubModel):
+class SecurityAdvisoryUpdated(GitHubWebhookModel):
     """security_advisory updated event"""
 
     action: Literal["updated"] = Field(default=...)
@@ -12474,7 +12498,7 @@ class SecurityAdvisoryUpdated(GitHubModel):
     )
 
 
-class SecurityAdvisoryUpdatedPropSecurityAdvisory(GitHubModel):
+class SecurityAdvisoryUpdatedPropSecurityAdvisory(GitHubWebhookModel):
     """SecurityAdvisoryUpdatedPropSecurityAdvisory
 
     The details of the security advisory, including summary, description, and
@@ -12503,34 +12527,40 @@ class SecurityAdvisoryUpdatedPropSecurityAdvisory(GitHubModel):
     ] = Field(default=...)
 
 
-class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss(GitHubModel):
+class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss(GitHubWebhookModel):
     """SecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss"""
 
     vector_string: Union[str, None] = Field(default=...)
     score: float = Field(default=...)
 
 
-class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems(GitHubModel):
+class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems(GitHubWebhookModel):
     """SecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems"""
 
     cwe_id: str = Field(default=...)
     name: str = Field(default=...)
 
 
-class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems"""
 
     value: str = Field(default=...)
     type: str = Field(default=...)
 
 
-class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems(GitHubModel):
+class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems"""
 
     url: str = Field(default=...)
 
 
-class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
+class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
     package: SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field(
@@ -12545,7 +12575,7 @@ class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems(GitHub
 
 
 class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
 
@@ -12554,7 +12584,7 @@ class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPac
 
 
 class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatc
     hedVersion
@@ -12563,7 +12593,7 @@ class SecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFir
     identifier: str = Field(default=...)
 
 
-class SecurityAdvisoryWithdrawn(GitHubModel):
+class SecurityAdvisoryWithdrawn(GitHubWebhookModel):
     """security_advisory withdrawn event"""
 
     action: Literal["withdrawn"] = Field(default=...)
@@ -12573,7 +12603,7 @@ class SecurityAdvisoryWithdrawn(GitHubModel):
     )
 
 
-class SecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubModel):
+class SecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubWebhookModel):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisory
 
     The details of the security advisory, including summary, description, and
@@ -12602,35 +12632,39 @@ class SecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubModel):
     ] = Field(default=...)
 
 
-class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss(GitHubModel):
+class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss(GitHubWebhookModel):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
 
     vector_string: Union[str, None] = Field(default=...)
     score: float = Field(default=...)
 
 
-class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems(GitHubModel):
+class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems(GitHubWebhookModel):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
 
     cwe_id: str = Field(default=...)
     name: str = Field(default=...)
 
 
-class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
 
     value: str = Field(default=...)
     type: str = Field(default=...)
 
 
-class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems(GitHubModel):
+class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems(
+    GitHubWebhookModel
+):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
 
     url: str = Field(default=...)
 
 
 class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
@@ -12646,7 +12680,7 @@ class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems(
 
 
 class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
 
@@ -12655,7 +12689,7 @@ class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropP
 
 
 class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
+    GitHubWebhookModel
 ):
     """SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPa
     tchedVersion
@@ -12664,7 +12698,7 @@ class SecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropF
     identifier: str = Field(default=...)
 
 
-class SponsorshipCancelled(GitHubModel):
+class SponsorshipCancelled(GitHubWebhookModel):
     """sponsorship cancelled event"""
 
     action: Literal["cancelled"] = Field(default=...)
@@ -12672,7 +12706,7 @@ class SponsorshipCancelled(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SponsorshipCancelledPropSponsorship(GitHubModel):
+class SponsorshipCancelledPropSponsorship(GitHubWebhookModel):
     """SponsorshipCancelledPropSponsorship"""
 
     node_id: str = Field(default=...)
@@ -12687,7 +12721,7 @@ class SponsorshipCancelledPropSponsorship(GitHubModel):
     )
 
 
-class SponsorshipTier(GitHubModel):
+class SponsorshipTier(GitHubWebhookModel):
     """Sponsorship Tier
 
     The `tier_changed` and `pending_tier_change` will include the original tier
@@ -12705,7 +12739,7 @@ class SponsorshipTier(GitHubModel):
     is_custom_ammount: bool = Field(default=...)
 
 
-class SponsorshipCreated(GitHubModel):
+class SponsorshipCreated(GitHubWebhookModel):
     """sponsorship created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -12713,7 +12747,7 @@ class SponsorshipCreated(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SponsorshipCreatedPropSponsorship(GitHubModel):
+class SponsorshipCreatedPropSponsorship(GitHubWebhookModel):
     """SponsorshipCreatedPropSponsorship"""
 
     node_id: str = Field(default=...)
@@ -12728,7 +12762,7 @@ class SponsorshipCreatedPropSponsorship(GitHubModel):
     )
 
 
-class SponsorshipEdited(GitHubModel):
+class SponsorshipEdited(GitHubWebhookModel):
     """sponsorship edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -12737,7 +12771,7 @@ class SponsorshipEdited(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SponsorshipEditedPropSponsorship(GitHubModel):
+class SponsorshipEditedPropSponsorship(GitHubWebhookModel):
     """SponsorshipEditedPropSponsorship"""
 
     node_id: str = Field(default=...)
@@ -12752,7 +12786,7 @@ class SponsorshipEditedPropSponsorship(GitHubModel):
     )
 
 
-class SponsorshipEditedPropChanges(GitHubModel):
+class SponsorshipEditedPropChanges(GitHubWebhookModel):
     """SponsorshipEditedPropChanges"""
 
     privacy_level: Union[Unset, SponsorshipEditedPropChangesPropPrivacyLevel] = Field(
@@ -12760,7 +12794,7 @@ class SponsorshipEditedPropChanges(GitHubModel):
     )
 
 
-class SponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
+class SponsorshipEditedPropChangesPropPrivacyLevel(GitHubWebhookModel):
     """SponsorshipEditedPropChangesPropPrivacyLevel"""
 
     from_: str = Field(
@@ -12770,7 +12804,7 @@ class SponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
     )
 
 
-class SponsorshipPendingCancellation(GitHubModel):
+class SponsorshipPendingCancellation(GitHubWebhookModel):
     """sponsorship pending_cancellation event"""
 
     action: Literal["pending_cancellation"] = Field(default=...)
@@ -12782,7 +12816,7 @@ class SponsorshipPendingCancellation(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SponsorshipPendingCancellationPropSponsorship(GitHubModel):
+class SponsorshipPendingCancellationPropSponsorship(GitHubWebhookModel):
     """SponsorshipPendingCancellationPropSponsorship"""
 
     node_id: str = Field(default=...)
@@ -12797,7 +12831,7 @@ class SponsorshipPendingCancellationPropSponsorship(GitHubModel):
     )
 
 
-class SponsorshipPendingTierChange(GitHubModel):
+class SponsorshipPendingTierChange(GitHubWebhookModel):
     """sponsorship pending_tier_change event"""
 
     action: Literal["pending_tier_change"] = Field(default=...)
@@ -12810,7 +12844,7 @@ class SponsorshipPendingTierChange(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SponsorshipPendingTierChangePropSponsorship(GitHubModel):
+class SponsorshipPendingTierChangePropSponsorship(GitHubWebhookModel):
     """SponsorshipPendingTierChangePropSponsorship"""
 
     node_id: str = Field(default=...)
@@ -12825,13 +12859,13 @@ class SponsorshipPendingTierChangePropSponsorship(GitHubModel):
     )
 
 
-class SponsorshipPendingTierChangePropChanges(GitHubModel):
+class SponsorshipPendingTierChangePropChanges(GitHubWebhookModel):
     """SponsorshipPendingTierChangePropChanges"""
 
     tier: SponsorshipPendingTierChangePropChangesPropTier = Field(default=...)
 
 
-class SponsorshipPendingTierChangePropChangesPropTier(GitHubModel):
+class SponsorshipPendingTierChangePropChangesPropTier(GitHubWebhookModel):
     """SponsorshipPendingTierChangePropChangesPropTier"""
 
     from_: SponsorshipTier = Field(
@@ -12842,7 +12876,7 @@ class SponsorshipPendingTierChangePropChangesPropTier(GitHubModel):
     )
 
 
-class SponsorshipTierChanged(GitHubModel):
+class SponsorshipTierChanged(GitHubWebhookModel):
     """sponsorship tier_changed event"""
 
     action: Literal["tier_changed"] = Field(default=...)
@@ -12851,7 +12885,7 @@ class SponsorshipTierChanged(GitHubModel):
     sender: User = Field(title="User", default=...)
 
 
-class SponsorshipTierChangedPropSponsorship(GitHubModel):
+class SponsorshipTierChangedPropSponsorship(GitHubWebhookModel):
     """SponsorshipTierChangedPropSponsorship"""
 
     node_id: str = Field(default=...)
@@ -12866,13 +12900,13 @@ class SponsorshipTierChangedPropSponsorship(GitHubModel):
     )
 
 
-class SponsorshipTierChangedPropChanges(GitHubModel):
+class SponsorshipTierChangedPropChanges(GitHubWebhookModel):
     """SponsorshipTierChangedPropChanges"""
 
     tier: SponsorshipTierChangedPropChangesPropTier = Field(default=...)
 
 
-class SponsorshipTierChangedPropChangesPropTier(GitHubModel):
+class SponsorshipTierChangedPropChangesPropTier(GitHubWebhookModel):
     """SponsorshipTierChangedPropChangesPropTier"""
 
     from_: SponsorshipTier = Field(
@@ -12883,7 +12917,7 @@ class SponsorshipTierChangedPropChangesPropTier(GitHubModel):
     )
 
 
-class StarCreated(GitHubModel):
+class StarCreated(GitHubWebhookModel):
     """star created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -12903,7 +12937,7 @@ class StarCreated(GitHubModel):
     )
 
 
-class StarDeleted(GitHubModel):
+class StarDeleted(GitHubWebhookModel):
     """star deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -12923,7 +12957,7 @@ class StarDeleted(GitHubModel):
     )
 
 
-class StatusEvent(GitHubModel):
+class StatusEvent(GitHubWebhookModel):
     """status event"""
 
     id: int = Field(description="The unique identifier of the status.", default=...)
@@ -12961,7 +12995,7 @@ class StatusEvent(GitHubModel):
     )
 
 
-class StatusEventPropCommit(GitHubModel):
+class StatusEventPropCommit(GitHubWebhookModel):
     """StatusEventPropCommit"""
 
     sha: str = Field(default=...)
@@ -12975,7 +13009,7 @@ class StatusEventPropCommit(GitHubModel):
     parents: List[StatusEventPropCommitPropParentsItems] = Field(default=...)
 
 
-class StatusEventPropCommitPropCommit(GitHubModel):
+class StatusEventPropCommitPropCommit(GitHubWebhookModel):
     """StatusEventPropCommitPropCommit"""
 
     author: StatusEventPropCommitPropCommitPropAuthor = Field(default=...)
@@ -12987,7 +13021,7 @@ class StatusEventPropCommitPropCommit(GitHubModel):
     verification: StatusEventPropCommitPropCommitPropVerification = Field(default=...)
 
 
-class StatusEventPropCommitPropCommitPropAuthor(GitHubModel):
+class StatusEventPropCommitPropCommitPropAuthor(GitHubWebhookModel):
     """StatusEventPropCommitPropCommitPropAuthor"""
 
     name: str = Field(description="The git author's name.", default=...)
@@ -12998,13 +13032,13 @@ class StatusEventPropCommitPropCommitPropAuthor(GitHubModel):
     username: Union[Unset, str] = Field(default=UNSET)
 
 
-class StatusEventPropCommitPropCommitPropAuthorAllof1(GitHubModel):
+class StatusEventPropCommitPropCommitPropAuthorAllof1(GitHubWebhookModel):
     """StatusEventPropCommitPropCommitPropAuthorAllof1"""
 
     date: str = Field(default=...)
 
 
-class StatusEventPropCommitPropCommitPropCommitter(GitHubModel):
+class StatusEventPropCommitPropCommitPropCommitter(GitHubWebhookModel):
     """StatusEventPropCommitPropCommitPropCommitter"""
 
     name: str = Field(description="The git author's name.", default=...)
@@ -13015,20 +13049,20 @@ class StatusEventPropCommitPropCommitPropCommitter(GitHubModel):
     username: Union[Unset, str] = Field(default=UNSET)
 
 
-class StatusEventPropCommitPropCommitPropCommitterAllof1(GitHubModel):
+class StatusEventPropCommitPropCommitPropCommitterAllof1(GitHubWebhookModel):
     """StatusEventPropCommitPropCommitPropCommitterAllof1"""
 
     date: str = Field(default=...)
 
 
-class StatusEventPropCommitPropCommitPropTree(GitHubModel):
+class StatusEventPropCommitPropCommitPropTree(GitHubWebhookModel):
     """StatusEventPropCommitPropCommitPropTree"""
 
     sha: str = Field(default=...)
     url: str = Field(default=...)
 
 
-class StatusEventPropCommitPropCommitPropVerification(GitHubModel):
+class StatusEventPropCommitPropCommitPropVerification(GitHubWebhookModel):
     """StatusEventPropCommitPropCommitPropVerification"""
 
     verified: bool = Field(default=...)
@@ -13051,7 +13085,7 @@ class StatusEventPropCommitPropCommitPropVerification(GitHubModel):
     payload: Union[str, None] = Field(default=...)
 
 
-class StatusEventPropCommitPropParentsItems(GitHubModel):
+class StatusEventPropCommitPropParentsItems(GitHubWebhookModel):
     """StatusEventPropCommitPropParentsItems"""
 
     sha: str = Field(default=...)
@@ -13059,7 +13093,7 @@ class StatusEventPropCommitPropParentsItems(GitHubModel):
     html_url: str = Field(default=...)
 
 
-class StatusEventPropBranchesItems(GitHubModel):
+class StatusEventPropBranchesItems(GitHubWebhookModel):
     """StatusEventPropBranchesItems"""
 
     name: str = Field(default=...)
@@ -13067,14 +13101,14 @@ class StatusEventPropBranchesItems(GitHubModel):
     protected: bool = Field(default=...)
 
 
-class StatusEventPropBranchesItemsPropCommit(GitHubModel):
+class StatusEventPropBranchesItemsPropCommit(GitHubWebhookModel):
     """StatusEventPropBranchesItemsPropCommit"""
 
     sha: str = Field(default=...)
     url: str = Field(default=...)
 
 
-class TeamAddedToRepository(GitHubModel):
+class TeamAddedToRepository(GitHubWebhookModel):
     """team added_to_repository event"""
 
     action: Literal["added_to_repository"] = Field(default=...)
@@ -13093,7 +13127,7 @@ class TeamAddedToRepository(GitHubModel):
     )
 
 
-class TeamCreated(GitHubModel):
+class TeamCreated(GitHubWebhookModel):
     """team created event"""
 
     action: Literal["created"] = Field(default=...)
@@ -13112,7 +13146,7 @@ class TeamCreated(GitHubModel):
     )
 
 
-class TeamDeleted(GitHubModel):
+class TeamDeleted(GitHubWebhookModel):
     """team deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
@@ -13131,7 +13165,7 @@ class TeamDeleted(GitHubModel):
     )
 
 
-class TeamEdited(GitHubModel):
+class TeamEdited(GitHubWebhookModel):
     """team edited event"""
 
     action: Literal["edited"] = Field(default=...)
@@ -13153,7 +13187,7 @@ class TeamEdited(GitHubModel):
     )
 
 
-class TeamEditedPropChanges(GitHubModel):
+class TeamEditedPropChanges(GitHubWebhookModel):
     """TeamEditedPropChanges
 
     The changes to the team if the action was `edited`.
@@ -13167,7 +13201,7 @@ class TeamEditedPropChanges(GitHubModel):
     repository: Union[Unset, TeamEditedPropChangesPropRepository] = Field(default=UNSET)
 
 
-class TeamEditedPropChangesPropDescription(GitHubModel):
+class TeamEditedPropChangesPropDescription(GitHubWebhookModel):
     """TeamEditedPropChangesPropDescription"""
 
     from_: str = Field(
@@ -13177,7 +13211,7 @@ class TeamEditedPropChangesPropDescription(GitHubModel):
     )
 
 
-class TeamEditedPropChangesPropName(GitHubModel):
+class TeamEditedPropChangesPropName(GitHubWebhookModel):
     """TeamEditedPropChangesPropName"""
 
     from_: str = Field(
@@ -13187,7 +13221,7 @@ class TeamEditedPropChangesPropName(GitHubModel):
     )
 
 
-class TeamEditedPropChangesPropPrivacy(GitHubModel):
+class TeamEditedPropChangesPropPrivacy(GitHubWebhookModel):
     """TeamEditedPropChangesPropPrivacy"""
 
     from_: str = Field(
@@ -13197,13 +13231,13 @@ class TeamEditedPropChangesPropPrivacy(GitHubModel):
     )
 
 
-class TeamEditedPropChangesPropRepository(GitHubModel):
+class TeamEditedPropChangesPropRepository(GitHubWebhookModel):
     """TeamEditedPropChangesPropRepository"""
 
     permissions: TeamEditedPropChangesPropRepositoryPropPermissions = Field(default=...)
 
 
-class TeamEditedPropChangesPropRepositoryPropPermissions(GitHubModel):
+class TeamEditedPropChangesPropRepositoryPropPermissions(GitHubWebhookModel):
     """TeamEditedPropChangesPropRepositoryPropPermissions"""
 
     from_: TeamEditedPropChangesPropRepositoryPropPermissionsPropFrom = Field(
@@ -13211,7 +13245,7 @@ class TeamEditedPropChangesPropRepositoryPropPermissions(GitHubModel):
     )
 
 
-class TeamEditedPropChangesPropRepositoryPropPermissionsPropFrom(GitHubModel):
+class TeamEditedPropChangesPropRepositoryPropPermissionsPropFrom(GitHubWebhookModel):
     """TeamEditedPropChangesPropRepositoryPropPermissionsPropFrom"""
 
     admin: Union[Unset, bool] = Field(
@@ -13228,7 +13262,7 @@ class TeamEditedPropChangesPropRepositoryPropPermissionsPropFrom(GitHubModel):
     )
 
 
-class TeamRemovedFromRepository(GitHubModel):
+class TeamRemovedFromRepository(GitHubWebhookModel):
     """team removed_from_repository event"""
 
     action: Literal["removed_from_repository"] = Field(default=...)
@@ -13247,7 +13281,7 @@ class TeamRemovedFromRepository(GitHubModel):
     )
 
 
-class TeamAddEvent(GitHubModel):
+class TeamAddEvent(GitHubWebhookModel):
     """team_add event"""
 
     team: Team = Field(
@@ -13265,7 +13299,7 @@ class TeamAddEvent(GitHubModel):
     organization: Organization = Field(title="Organization", default=...)
 
 
-class WatchStarted(GitHubModel):
+class WatchStarted(GitHubWebhookModel):
     """watch started event"""
 
     action: Literal["started"] = Field(default=...)
@@ -13281,7 +13315,7 @@ class WatchStarted(GitHubModel):
     )
 
 
-class WorkflowDispatchEvent(GitHubModel):
+class WorkflowDispatchEvent(GitHubWebhookModel):
     """workflow_dispatch event"""
 
     inputs: Union[WorkflowDispatchEventPropInputsOneof0, None] = Field(
@@ -13307,11 +13341,11 @@ class WorkflowDispatchEvent(GitHubModel):
     )
 
 
-class WorkflowDispatchEventPropInputsOneof0(GitHubModel, extra=Extra.allow):
+class WorkflowDispatchEventPropInputsOneof0(GitHubWebhookModel, extra=Extra.allow):
     """WorkflowDispatchEventPropInputsOneof0"""
 
 
-class WorkflowJobCompleted(GitHubModel):
+class WorkflowJobCompleted(GitHubWebhookModel):
     """workflow_job completed event"""
 
     action: Literal["completed"] = Field(default=...)
@@ -13328,7 +13362,7 @@ class WorkflowJobCompleted(GitHubModel):
     workflow_job: WorkflowJobCompletedPropWorkflowJob = Field(default=...)
 
 
-class WorkflowJobCompletedPropWorkflowJob(GitHubModel):
+class WorkflowJobCompletedPropWorkflowJob(GitHubWebhookModel):
     """WorkflowJobCompletedPropWorkflowJob"""
 
     id: int = Field(default=...)
@@ -13375,7 +13409,7 @@ class WorkflowJobCompletedPropWorkflowJob(GitHubModel):
     completed_at: Union[datetime, None] = Field(default=...)
 
 
-class WorkflowJob(GitHubModel):
+class WorkflowJob(GitHubWebhookModel):
     """Workflow Job
 
     The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
@@ -13426,7 +13460,7 @@ class WorkflowJob(GitHubModel):
     completed_at: Union[datetime, None] = Field(default=...)
 
 
-class WorkflowStepInProgress(GitHubModel):
+class WorkflowStepInProgress(GitHubWebhookModel):
     """Workflow Step (In Progress)"""
 
     name: str = Field(default=...)
@@ -13437,7 +13471,7 @@ class WorkflowStepInProgress(GitHubModel):
     completed_at: None = Field(default=...)
 
 
-class WorkflowStepCompleted(GitHubModel):
+class WorkflowStepCompleted(GitHubWebhookModel):
     """Workflow Step (Completed)"""
 
     name: str = Field(default=...)
@@ -13448,7 +13482,7 @@ class WorkflowStepCompleted(GitHubModel):
     completed_at: datetime = Field(default=...)
 
 
-class WorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
+class WorkflowJobCompletedPropWorkflowJobAllof1(GitHubWebhookModel):
     """WorkflowJobCompletedPropWorkflowJobAllof1"""
 
     conclusion: Literal["success", "failure", "cancelled", "skipped"] = Field(
@@ -13456,7 +13490,7 @@ class WorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
     )
 
 
-class WorkflowJobInProgress(GitHubModel):
+class WorkflowJobInProgress(GitHubWebhookModel):
     """workflow_job in_progress event"""
 
     action: Literal["in_progress"] = Field(default=...)
@@ -13473,7 +13507,7 @@ class WorkflowJobInProgress(GitHubModel):
     workflow_job: WorkflowJobInProgressPropWorkflowJob = Field(default=...)
 
 
-class WorkflowJobInProgressPropWorkflowJob(GitHubModel):
+class WorkflowJobInProgressPropWorkflowJob(GitHubWebhookModel):
     """WorkflowJobInProgressPropWorkflowJob"""
 
     id: int = Field(default=...)
@@ -13517,13 +13551,13 @@ class WorkflowJobInProgressPropWorkflowJob(GitHubModel):
     completed_at: Union[datetime, None] = Field(default=...)
 
 
-class WorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
+class WorkflowJobInProgressPropWorkflowJobAllof1(GitHubWebhookModel):
     """WorkflowJobInProgressPropWorkflowJobAllof1"""
 
     status: Literal["in_progress"] = Field(default=...)
 
 
-class WorkflowJobQueued(GitHubModel):
+class WorkflowJobQueued(GitHubWebhookModel):
     """workflow_job queued event"""
 
     action: Literal["queued"] = Field(default=...)
@@ -13540,7 +13574,7 @@ class WorkflowJobQueued(GitHubModel):
     workflow_job: WorkflowJobQueuedPropWorkflowJob = Field(default=...)
 
 
-class WorkflowJobQueuedPropWorkflowJob(GitHubModel):
+class WorkflowJobQueuedPropWorkflowJob(GitHubWebhookModel):
     """WorkflowJobQueuedPropWorkflowJob"""
 
     id: int = Field(default=...)
@@ -13584,13 +13618,13 @@ class WorkflowJobQueuedPropWorkflowJob(GitHubModel):
     completed_at: Union[datetime, None] = Field(default=...)
 
 
-class WorkflowJobQueuedPropWorkflowJobAllof1(GitHubModel):
+class WorkflowJobQueuedPropWorkflowJobAllof1(GitHubWebhookModel):
     """WorkflowJobQueuedPropWorkflowJobAllof1"""
 
     status: Literal["queued"] = Field(default=...)
 
 
-class WorkflowRunCompleted(GitHubModel):
+class WorkflowRunCompleted(GitHubWebhookModel):
     """workflow_run completed event"""
 
     action: Literal["completed"] = Field(default=...)
@@ -13608,7 +13642,7 @@ class WorkflowRunCompleted(GitHubModel):
     )
 
 
-class WorkflowRunCompletedPropWorkflowRun(GitHubModel):
+class WorkflowRunCompletedPropWorkflowRun(GitHubWebhookModel):
     """WorkflowRunCompletedPropWorkflowRun"""
 
     artifacts_url: str = Field(
@@ -13690,7 +13724,7 @@ class WorkflowRunCompletedPropWorkflowRun(GitHubModel):
     triggering_actor: User = Field(title="User", default=...)
 
 
-class WorkflowRun(GitHubModel):
+class WorkflowRun(GitHubWebhookModel):
     """Workflow Run"""
 
     artifacts_url: str = Field(
@@ -13775,7 +13809,7 @@ class WorkflowRun(GitHubModel):
     triggering_actor: User = Field(title="User", default=...)
 
 
-class RepositoryLite(GitHubModel):
+class RepositoryLite(GitHubWebhookModel):
     """Repository Lite"""
 
     archive_url: str = Field(
@@ -13940,7 +13974,7 @@ class RepositoryLite(GitHubModel):
     )
 
 
-class WorkflowRunPropPullRequestsItems(GitHubModel):
+class WorkflowRunPropPullRequestsItems(GitHubWebhookModel):
     """WorkflowRunPropPullRequestsItems"""
 
     url: str = Field(default=...)
@@ -13950,7 +13984,7 @@ class WorkflowRunPropPullRequestsItems(GitHubModel):
     base: WorkflowRunPropPullRequestsItemsPropBase = Field(default=...)
 
 
-class WorkflowRunPropPullRequestsItemsPropHead(GitHubModel):
+class WorkflowRunPropPullRequestsItemsPropHead(GitHubWebhookModel):
     """WorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str = Field(default=...)
@@ -13958,7 +13992,7 @@ class WorkflowRunPropPullRequestsItemsPropHead(GitHubModel):
     repo: RepoRef = Field(title="Repo Ref", default=...)
 
 
-class WorkflowRunPropPullRequestsItemsPropBase(GitHubModel):
+class WorkflowRunPropPullRequestsItemsPropBase(GitHubWebhookModel):
     """WorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str = Field(default=...)
@@ -13966,7 +14000,7 @@ class WorkflowRunPropPullRequestsItemsPropBase(GitHubModel):
     repo: RepoRef = Field(title="Repo Ref", default=...)
 
 
-class WorkflowRunCompletedPropWorkflowRunAllof1(GitHubModel):
+class WorkflowRunCompletedPropWorkflowRunAllof1(GitHubWebhookModel):
     """WorkflowRunCompletedPropWorkflowRunAllof1"""
 
     conclusion: Literal[
@@ -13981,7 +14015,7 @@ class WorkflowRunCompletedPropWorkflowRunAllof1(GitHubModel):
     ] = Field(default=...)
 
 
-class WorkflowRunRequested(GitHubModel):
+class WorkflowRunRequested(GitHubWebhookModel):
     """workflow_run requested event"""
 
     action: Literal["requested"] = Field(default=...)
@@ -14892,6 +14926,7 @@ WorkflowRunCompletedPropWorkflowRunAllof1.update_forward_refs()
 WorkflowRunRequested.update_forward_refs()
 
 __all__ = [
+    "GitHubWebhookModel",
     "BranchProtectionRuleCreated",
     "BranchProtectionRule",
     "Repository",

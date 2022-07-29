@@ -12,10 +12,14 @@ from typing import Any, List, Union, Literal
 
 from pydantic import Extra, Field, BaseModel
 
-from githubkit.utils import UNSET, Unset, GitHubModel
+from githubkit.utils import UNSET, Unset
 
 
-class Root(GitHubModel):
+class GitHubRestModel(BaseModel, allow_population_by_field_name=True):
+    ...
+
+
+class Root(GitHubRestModel):
     """Root"""
 
     current_user_url: str = Field(default=...)
@@ -53,7 +57,7 @@ class Root(GitHubModel):
     user_search_url: str = Field(default=...)
 
 
-class SimpleUser(GitHubModel):
+class SimpleUser(GitHubRestModel):
     """Simple User
 
     Simple User
@@ -82,7 +86,7 @@ class SimpleUser(GitHubModel):
     starred_at: Union[Unset, str] = Field(default=UNSET)
 
 
-class Integration(GitHubModel):
+class Integration(GitHubRestModel):
     """GitHub app
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -121,7 +125,7 @@ class Integration(GitHubModel):
     pem: Union[Unset, str] = Field(default=UNSET)
 
 
-class IntegrationPropPermissions(GitHubModel, extra=Extra.allow):
+class IntegrationPropPermissions(GitHubRestModel, extra=Extra.allow):
     """IntegrationPropPermissions
 
     The set of permissions for the GitHub app
@@ -137,7 +141,7 @@ class IntegrationPropPermissions(GitHubModel, extra=Extra.allow):
     deployments: Union[Unset, str] = Field(default=UNSET)
 
 
-class BasicError(GitHubModel):
+class BasicError(GitHubRestModel):
     """Basic Error
 
     Basic Error
@@ -149,7 +153,7 @@ class BasicError(GitHubModel):
     status: Union[Unset, str] = Field(default=UNSET)
 
 
-class ValidationErrorSimple(GitHubModel):
+class ValidationErrorSimple(GitHubRestModel):
     """Validation Error Simple
 
     Validation Error Simple
@@ -160,7 +164,7 @@ class ValidationErrorSimple(GitHubModel):
     errors: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class WebhookConfig(GitHubModel):
+class WebhookConfig(GitHubRestModel):
     """Webhook Configuration
 
     Configuration object of the webhook
@@ -183,7 +187,7 @@ class WebhookConfig(GitHubModel):
     )
 
 
-class HookDeliveryItem(GitHubModel):
+class HookDeliveryItem(GitHubRestModel):
     """Simple webhook delivery
 
     Delivery made by a webhook, without request and response information.
@@ -226,7 +230,7 @@ class HookDeliveryItem(GitHubModel):
     )
 
 
-class ScimError(GitHubModel):
+class ScimError(GitHubRestModel):
     """Scim Error
 
     Scim Error
@@ -240,7 +244,7 @@ class ScimError(GitHubModel):
     schemas: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class ValidationError(GitHubModel):
+class ValidationError(GitHubRestModel):
     """Validation Error
 
     Validation Error
@@ -251,7 +255,7 @@ class ValidationError(GitHubModel):
     errors: Union[Unset, List[ValidationErrorPropErrorsItems]] = Field(default=UNSET)
 
 
-class ValidationErrorPropErrorsItems(GitHubModel):
+class ValidationErrorPropErrorsItems(GitHubRestModel):
     """ValidationErrorPropErrorsItems"""
 
     resource: Union[Unset, str] = Field(default=UNSET)
@@ -264,7 +268,7 @@ class ValidationErrorPropErrorsItems(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class HookDelivery(GitHubModel):
+class HookDelivery(GitHubRestModel):
     """Webhook delivery
 
     Delivery made by a webhook.
@@ -309,7 +313,7 @@ class HookDelivery(GitHubModel):
     response: HookDeliveryPropResponse = Field(default=...)
 
 
-class HookDeliveryPropRequest(GitHubModel):
+class HookDeliveryPropRequest(GitHubRestModel):
     """HookDeliveryPropRequest"""
 
     headers: Union[HookDeliveryPropRequestPropHeaders, None] = Field(
@@ -320,21 +324,21 @@ class HookDeliveryPropRequest(GitHubModel):
     )
 
 
-class HookDeliveryPropRequestPropHeaders(GitHubModel, extra=Extra.allow):
+class HookDeliveryPropRequestPropHeaders(GitHubRestModel, extra=Extra.allow):
     """HookDeliveryPropRequestPropHeaders
 
     The request headers sent with the webhook delivery.
     """
 
 
-class HookDeliveryPropRequestPropPayload(GitHubModel, extra=Extra.allow):
+class HookDeliveryPropRequestPropPayload(GitHubRestModel, extra=Extra.allow):
     """HookDeliveryPropRequestPropPayload
 
     The webhook payload.
     """
 
 
-class HookDeliveryPropResponse(GitHubModel):
+class HookDeliveryPropResponse(GitHubRestModel):
     """HookDeliveryPropResponse"""
 
     headers: Union[HookDeliveryPropResponsePropHeaders, None] = Field(
@@ -346,14 +350,14 @@ class HookDeliveryPropResponse(GitHubModel):
     )
 
 
-class HookDeliveryPropResponsePropHeaders(GitHubModel, extra=Extra.allow):
+class HookDeliveryPropResponsePropHeaders(GitHubRestModel, extra=Extra.allow):
     """HookDeliveryPropResponsePropHeaders
 
     The response headers received when the delivery was made.
     """
 
 
-class Enterprise(GitHubModel):
+class Enterprise(GitHubRestModel):
     """Enterprise
 
     An enterprise account
@@ -377,7 +381,7 @@ class Enterprise(GitHubModel):
     avatar_url: str = Field(default=...)
 
 
-class AppPermissions(GitHubModel):
+class AppPermissions(GitHubRestModel):
     """App Permissions
 
     The permissions granted to the user-to-server access token.
@@ -509,7 +513,7 @@ class AppPermissions(GitHubModel):
     )
 
 
-class Installation(GitHubModel):
+class Installation(GitHubRestModel):
     """Installation
 
     Installation
@@ -551,11 +555,11 @@ class Installation(GitHubModel):
     contact_email: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class InstallationPropAccount(GitHubModel):
+class InstallationPropAccount(GitHubRestModel):
     """InstallationPropAccount"""
 
 
-class LicenseSimple(GitHubModel):
+class LicenseSimple(GitHubRestModel):
     """License Simple
 
     License Simple
@@ -569,7 +573,7 @@ class LicenseSimple(GitHubModel):
     html_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class Repository(GitHubModel):
+class Repository(GitHubRestModel):
     """Repository
 
     A git repository
@@ -718,7 +722,7 @@ class Repository(GitHubModel):
     starred_at: Union[Unset, str] = Field(default=UNSET)
 
 
-class RepositoryPropPermissions(GitHubModel):
+class RepositoryPropPermissions(GitHubRestModel):
     """RepositoryPropPermissions"""
 
     admin: bool = Field(default=...)
@@ -728,7 +732,7 @@ class RepositoryPropPermissions(GitHubModel):
     maintain: Union[Unset, bool] = Field(default=UNSET)
 
 
-class RepositoryPropTemplateRepository(GitHubModel):
+class RepositoryPropTemplateRepository(GitHubRestModel):
     """RepositoryPropTemplateRepository"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -820,7 +824,7 @@ class RepositoryPropTemplateRepository(GitHubModel):
     network_count: Union[Unset, int] = Field(default=UNSET)
 
 
-class RepositoryPropTemplateRepositoryPropOwner(GitHubModel):
+class RepositoryPropTemplateRepositoryPropOwner(GitHubRestModel):
     """RepositoryPropTemplateRepositoryPropOwner"""
 
     login: Union[Unset, str] = Field(default=UNSET)
@@ -843,7 +847,7 @@ class RepositoryPropTemplateRepositoryPropOwner(GitHubModel):
     site_admin: Union[Unset, bool] = Field(default=UNSET)
 
 
-class RepositoryPropTemplateRepositoryPropPermissions(GitHubModel):
+class RepositoryPropTemplateRepositoryPropPermissions(GitHubRestModel):
     """RepositoryPropTemplateRepositoryPropPermissions"""
 
     admin: Union[Unset, bool] = Field(default=UNSET)
@@ -853,7 +857,7 @@ class RepositoryPropTemplateRepositoryPropPermissions(GitHubModel):
     pull: Union[Unset, bool] = Field(default=UNSET)
 
 
-class InstallationToken(GitHubModel):
+class InstallationToken(GitHubRestModel):
     """Installation Token
 
     Authentication token for a GitHub App installed on a user or org.
@@ -875,7 +879,7 @@ class InstallationToken(GitHubModel):
     single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class ApplicationGrant(GitHubModel):
+class ApplicationGrant(GitHubRestModel):
     """Application Grant
 
     The authorization associated with an OAuth Access.
@@ -892,7 +896,7 @@ class ApplicationGrant(GitHubModel):
     )
 
 
-class ApplicationGrantPropApp(GitHubModel):
+class ApplicationGrantPropApp(GitHubRestModel):
     """ApplicationGrantPropApp"""
 
     client_id: str = Field(default=...)
@@ -900,7 +904,7 @@ class ApplicationGrantPropApp(GitHubModel):
     url: str = Field(default=...)
 
 
-class ScopedInstallation(GitHubModel):
+class ScopedInstallation(GitHubRestModel):
     """Scoped Installation"""
 
     permissions: AppPermissions = Field(
@@ -921,7 +925,7 @@ class ScopedInstallation(GitHubModel):
     )
 
 
-class Authorization(GitHubModel):
+class Authorization(GitHubRestModel):
     """Authorization
 
     The authorization for an OAuth app, GitHub App, or a Personal Access Token.
@@ -950,7 +954,7 @@ class Authorization(GitHubModel):
     expires_at: Union[datetime, None] = Field(default=...)
 
 
-class AuthorizationPropApp(GitHubModel):
+class AuthorizationPropApp(GitHubRestModel):
     """AuthorizationPropApp"""
 
     client_id: str = Field(default=...)
@@ -958,7 +962,7 @@ class AuthorizationPropApp(GitHubModel):
     url: str = Field(default=...)
 
 
-class CodeOfConduct(GitHubModel):
+class CodeOfConduct(GitHubRestModel):
     """Code Of Conduct
 
     Code Of Conduct
@@ -971,7 +975,7 @@ class CodeOfConduct(GitHubModel):
     html_url: Union[str, None] = Field(default=...)
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
+class ActionsCacheUsageOrgEnterprise(GitHubRestModel):
     """ActionsCacheUsageOrgEnterprise"""
 
     total_active_caches_count: int = Field(
@@ -984,7 +988,7 @@ class ActionsCacheUsageOrgEnterprise(GitHubModel):
     )
 
 
-class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubModel):
+class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubRestModel):
     """ActionsOidcCustomIssuerPolicyForEnterprise"""
 
     include_enterprise_slug: Union[Unset, bool] = Field(
@@ -993,7 +997,7 @@ class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubModel):
     )
 
 
-class ActionsEnterprisePermissions(GitHubModel):
+class ActionsEnterprisePermissions(GitHubRestModel):
     """ActionsEnterprisePermissions"""
 
     enabled_organizations: Literal["all", "none", "selected"] = Field(
@@ -1014,7 +1018,7 @@ class ActionsEnterprisePermissions(GitHubModel):
     )
 
 
-class OrganizationSimple(GitHubModel):
+class OrganizationSimple(GitHubRestModel):
     """Organization Simple
 
     Organization Simple
@@ -1034,7 +1038,7 @@ class OrganizationSimple(GitHubModel):
     description: Union[str, None] = Field(default=...)
 
 
-class SelectedActions(GitHubModel):
+class SelectedActions(GitHubRestModel):
     """SelectedActions"""
 
     github_owned_allowed: Union[Unset, bool] = Field(
@@ -1051,7 +1055,7 @@ class SelectedActions(GitHubModel):
     )
 
 
-class ActionsGetDefaultWorkflowPermissions(GitHubModel):
+class ActionsGetDefaultWorkflowPermissions(GitHubRestModel):
     """ActionsGetDefaultWorkflowPermissions"""
 
     default_workflow_permissions: Literal["read", "write"] = Field(
@@ -1064,7 +1068,7 @@ class ActionsGetDefaultWorkflowPermissions(GitHubModel):
     )
 
 
-class ActionsSetDefaultWorkflowPermissions(GitHubModel):
+class ActionsSetDefaultWorkflowPermissions(GitHubRestModel):
     """ActionsSetDefaultWorkflowPermissions"""
 
     default_workflow_permissions: Union[Unset, Literal["read", "write"]] = Field(
@@ -1077,7 +1081,7 @@ class ActionsSetDefaultWorkflowPermissions(GitHubModel):
     )
 
 
-class RunnerGroupsEnterprise(GitHubModel):
+class RunnerGroupsEnterprise(GitHubRestModel):
     """RunnerGroupsEnterprise"""
 
     id: float = Field(default=...)
@@ -1101,7 +1105,7 @@ class RunnerGroupsEnterprise(GitHubModel):
     )
 
 
-class RunnerLabel(GitHubModel):
+class RunnerLabel(GitHubRestModel):
     """Self hosted runner label
 
     A label for a self hosted runner
@@ -1117,7 +1121,7 @@ class RunnerLabel(GitHubModel):
     )
 
 
-class Runner(GitHubModel):
+class Runner(GitHubRestModel):
     """Self hosted runners
 
     A self hosted runner
@@ -1131,7 +1135,7 @@ class Runner(GitHubModel):
     labels: List[RunnerLabel] = Field(default=...)
 
 
-class RunnerApplication(GitHubModel):
+class RunnerApplication(GitHubRestModel):
     """Runner Application
 
     Runner Application
@@ -1148,7 +1152,7 @@ class RunnerApplication(GitHubModel):
     sha256_checksum: Union[Unset, str] = Field(default=UNSET)
 
 
-class AuthenticationToken(GitHubModel):
+class AuthenticationToken(GitHubRestModel):
     """Authentication Token
 
     Authentication Token
@@ -1167,7 +1171,7 @@ class AuthenticationToken(GitHubModel):
     )
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
+class AuthenticationTokenPropPermissions(GitHubRestModel):
     """AuthenticationTokenPropPermissions
 
     Examples:
@@ -1175,7 +1179,7 @@ class AuthenticationTokenPropPermissions(GitHubModel):
     """
 
 
-class AuditLogEvent(GitHubModel):
+class AuditLogEvent(GitHubRestModel):
     """AuditLogEvent"""
 
     timestamp: Union[Unset, int] = Field(
@@ -1260,33 +1264,33 @@ class AuditLogEvent(GitHubModel):
     )
 
 
-class AuditLogEventPropActorLocation(GitHubModel):
+class AuditLogEventPropActorLocation(GitHubRestModel):
     """AuditLogEventPropActorLocation"""
 
     country_name: Union[Unset, str] = Field(default=UNSET)
 
 
-class AuditLogEventPropData(GitHubModel, extra=Extra.allow):
+class AuditLogEventPropData(GitHubRestModel, extra=Extra.allow):
     """AuditLogEventPropData"""
 
 
-class AuditLogEventPropConfigItems(GitHubModel):
+class AuditLogEventPropConfigItems(GitHubRestModel):
     """AuditLogEventPropConfigItems"""
 
 
-class AuditLogEventPropConfigWasItems(GitHubModel):
+class AuditLogEventPropConfigWasItems(GitHubRestModel):
     """AuditLogEventPropConfigWasItems"""
 
 
-class AuditLogEventPropEventsItems(GitHubModel):
+class AuditLogEventPropEventsItems(GitHubRestModel):
     """AuditLogEventPropEventsItems"""
 
 
-class AuditLogEventPropEventsWereItems(GitHubModel):
+class AuditLogEventPropEventsWereItems(GitHubRestModel):
     """AuditLogEventPropEventsWereItems"""
 
 
-class CodeScanningAlertRule(GitHubModel):
+class CodeScanningAlertRule(GitHubRestModel):
     """CodeScanningAlertRule"""
 
     id: Union[Unset, Union[str, None]] = Field(
@@ -1319,7 +1323,7 @@ class CodeScanningAlertRule(GitHubModel):
     )
 
 
-class CodeScanningAnalysisTool(GitHubModel):
+class CodeScanningAnalysisTool(GitHubRestModel):
     """CodeScanningAnalysisTool"""
 
     name: Union[Unset, str] = Field(
@@ -1336,7 +1340,7 @@ class CodeScanningAnalysisTool(GitHubModel):
     )
 
 
-class CodeScanningAlertLocation(GitHubModel):
+class CodeScanningAlertLocation(GitHubRestModel):
     """CodeScanningAlertLocation
 
     Describe a region within a file for the alert.
@@ -1349,7 +1353,7 @@ class CodeScanningAlertLocation(GitHubModel):
     end_column: Union[Unset, int] = Field(default=UNSET)
 
 
-class CodeScanningAlertInstance(GitHubModel):
+class CodeScanningAlertInstance(GitHubRestModel):
     """CodeScanningAlertInstance"""
 
     ref: Union[Unset, str] = Field(
@@ -1385,13 +1389,13 @@ class CodeScanningAlertInstance(GitHubModel):
     )
 
 
-class CodeScanningAlertInstancePropMessage(GitHubModel):
+class CodeScanningAlertInstancePropMessage(GitHubRestModel):
     """CodeScanningAlertInstancePropMessage"""
 
     text: Union[Unset, str] = Field(default=UNSET)
 
 
-class SimpleRepository(GitHubModel):
+class SimpleRepository(GitHubRestModel):
     """Simple Repository
 
     Simple Repository
@@ -1559,7 +1563,7 @@ class SimpleRepository(GitHubModel):
     )
 
 
-class CodeScanningOrganizationAlertItems(GitHubModel):
+class CodeScanningOrganizationAlertItems(GitHubRestModel):
     """CodeScanningOrganizationAlertItems"""
 
     number: int = Field(description="The security alert number.", default=...)
@@ -1612,7 +1616,7 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     )
 
 
-class OrganizationSecretScanningAlert(GitHubModel):
+class OrganizationSecretScanningAlert(GitHubRestModel):
     """OrganizationSecretScanningAlert"""
 
     number: Union[Unset, int] = Field(
@@ -1680,7 +1684,7 @@ class OrganizationSecretScanningAlert(GitHubModel):
     )
 
 
-class ActionsBillingUsage(GitHubModel):
+class ActionsBillingUsage(GitHubRestModel):
     """ActionsBillingUsage"""
 
     total_minutes_used: int = Field(
@@ -1698,7 +1702,7 @@ class ActionsBillingUsage(GitHubModel):
     )
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
+class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubRestModel):
     """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
     ubuntu: Union[Unset, int] = Field(
@@ -1761,14 +1765,14 @@ class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
     )
 
 
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
+class AdvancedSecurityActiveCommittersUser(GitHubRestModel):
     """AdvancedSecurityActiveCommittersUser"""
 
     user_login: str = Field(default=...)
     last_pushed_date: str = Field(default=...)
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+class AdvancedSecurityActiveCommittersRepository(GitHubRestModel):
     """AdvancedSecurityActiveCommittersRepository"""
 
     name: str = Field(default=...)
@@ -1778,7 +1782,7 @@ class AdvancedSecurityActiveCommittersRepository(GitHubModel):
     ] = Field(default=...)
 
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
+class AdvancedSecurityActiveCommitters(GitHubRestModel):
     """AdvancedSecurityActiveCommitters"""
 
     total_advanced_security_committers: Union[Unset, int] = Field(default=UNSET)
@@ -1786,7 +1790,7 @@ class AdvancedSecurityActiveCommitters(GitHubModel):
     repositories: List[AdvancedSecurityActiveCommittersRepository] = Field(default=...)
 
 
-class PackagesBillingUsage(GitHubModel):
+class PackagesBillingUsage(GitHubRestModel):
     """PackagesBillingUsage"""
 
     total_gigabytes_bandwidth_used: int = Field(
@@ -1801,7 +1805,7 @@ class PackagesBillingUsage(GitHubModel):
     )
 
 
-class CombinedBillingUsage(GitHubModel):
+class CombinedBillingUsage(GitHubRestModel):
     """CombinedBillingUsage"""
 
     days_left_in_billing_cycle: int = Field(
@@ -1816,7 +1820,7 @@ class CombinedBillingUsage(GitHubModel):
     )
 
 
-class Actor(GitHubModel):
+class Actor(GitHubRestModel):
     """Actor
 
     Actor
@@ -1830,7 +1834,7 @@ class Actor(GitHubModel):
     avatar_url: str = Field(default=...)
 
 
-class Milestone(GitHubModel):
+class Milestone(GitHubRestModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -1858,7 +1862,7 @@ class Milestone(GitHubModel):
     due_on: Union[datetime, None] = Field(default=...)
 
 
-class ReactionRollup(GitHubModel):
+class ReactionRollup(GitHubRestModel):
     """Reaction Rollup"""
 
     url: str = Field(default=...)
@@ -1873,7 +1877,7 @@ class ReactionRollup(GitHubModel):
     rocket: int = Field(default=...)
 
 
-class Issue(GitHubModel):
+class Issue(GitHubRestModel):
     """Issue
 
     Issues are a great way to keep track of tasks, enhancements, and bugs for your
@@ -1959,7 +1963,7 @@ class Issue(GitHubModel):
     )
 
 
-class IssuePropLabelsItemsOneof1(GitHubModel):
+class IssuePropLabelsItemsOneof1(GitHubRestModel):
     """IssuePropLabelsItemsOneof1"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -1971,7 +1975,7 @@ class IssuePropLabelsItemsOneof1(GitHubModel):
     default: Union[Unset, bool] = Field(default=UNSET)
 
 
-class IssuePropPullRequest(GitHubModel):
+class IssuePropPullRequest(GitHubRestModel):
     """IssuePropPullRequest"""
 
     merged_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
@@ -1981,7 +1985,7 @@ class IssuePropPullRequest(GitHubModel):
     url: Union[str, None] = Field(default=...)
 
 
-class IssueComment(GitHubModel):
+class IssueComment(GitHubRestModel):
     """Issue Comment
 
     Comments provide a way for people to collaborate on an issue.
@@ -2026,7 +2030,7 @@ class IssueComment(GitHubModel):
     )
 
 
-class Event(GitHubModel):
+class Event(GitHubRestModel):
     """Event
 
     Event
@@ -2042,7 +2046,7 @@ class Event(GitHubModel):
     created_at: Union[datetime, None] = Field(default=...)
 
 
-class EventPropRepo(GitHubModel):
+class EventPropRepo(GitHubRestModel):
     """EventPropRepo"""
 
     id: int = Field(default=...)
@@ -2050,7 +2054,7 @@ class EventPropRepo(GitHubModel):
     url: str = Field(default=...)
 
 
-class EventPropPayload(GitHubModel):
+class EventPropPayload(GitHubRestModel):
     """EventPropPayload"""
 
     action: Union[Unset, str] = Field(default=UNSET)
@@ -2067,7 +2071,7 @@ class EventPropPayload(GitHubModel):
     pages: Union[Unset, List[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
 
 
-class EventPropPayloadPropPagesItems(GitHubModel):
+class EventPropPayloadPropPagesItems(GitHubRestModel):
     """EventPropPayloadPropPagesItems"""
 
     page_name: Union[Unset, str] = Field(default=UNSET)
@@ -2078,7 +2082,7 @@ class EventPropPayloadPropPagesItems(GitHubModel):
     html_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class LinkWithType(GitHubModel):
+class LinkWithType(GitHubRestModel):
     """Link With Type
 
     Hypermedia Link with Type
@@ -2088,7 +2092,7 @@ class LinkWithType(GitHubModel):
     type: str = Field(default=...)
 
 
-class Feed(GitHubModel):
+class Feed(GitHubRestModel):
     """Feed
 
     Feed
@@ -2105,7 +2109,7 @@ class Feed(GitHubModel):
     links: FeedPropLinks = Field(default=..., alias="_links")
 
 
-class FeedPropLinks(GitHubModel):
+class FeedPropLinks(GitHubRestModel):
     """FeedPropLinks"""
 
     timeline: LinkWithType = Field(
@@ -2132,7 +2136,7 @@ class FeedPropLinks(GitHubModel):
     current_user_organizations: Union[Unset, List[LinkWithType]] = Field(default=UNSET)
 
 
-class BaseGist(GitHubModel):
+class BaseGist(GitHubRestModel):
     """Base Gist
 
     Base Gist
@@ -2164,11 +2168,11 @@ class BaseGist(GitHubModel):
     history: Union[Unset, List[Any]] = Field(default=UNSET)
 
 
-class BaseGistPropFiles(GitHubModel, extra=Extra.allow):
+class BaseGistPropFiles(GitHubRestModel, extra=Extra.allow):
     """BaseGistPropFiles"""
 
 
-class PublicUser(GitHubModel):
+class PublicUser(GitHubRestModel):
     """Public User
 
     Public User
@@ -2215,7 +2219,7 @@ class PublicUser(GitHubModel):
     collaborators: Union[Unset, int] = Field(default=UNSET)
 
 
-class PublicUserPropPlan(GitHubModel):
+class PublicUserPropPlan(GitHubRestModel):
     """PublicUserPropPlan"""
 
     collaborators: int = Field(default=...)
@@ -2224,7 +2228,7 @@ class PublicUserPropPlan(GitHubModel):
     private_repos: int = Field(default=...)
 
 
-class GistHistory(GitHubModel):
+class GistHistory(GitHubRestModel):
     """Gist History
 
     Gist History
@@ -2239,7 +2243,7 @@ class GistHistory(GitHubModel):
     url: Union[Unset, str] = Field(default=UNSET)
 
 
-class GistHistoryPropChangeStatus(GitHubModel):
+class GistHistoryPropChangeStatus(GitHubRestModel):
     """GistHistoryPropChangeStatus"""
 
     total: Union[Unset, int] = Field(default=UNSET)
@@ -2247,7 +2251,7 @@ class GistHistoryPropChangeStatus(GitHubModel):
     deletions: Union[Unset, int] = Field(default=UNSET)
 
 
-class GistSimple(GitHubModel):
+class GistSimple(GitHubRestModel):
     """Gist Simple
 
     Gist Simple
@@ -2282,7 +2286,7 @@ class GistSimple(GitHubModel):
     truncated: Union[Unset, bool] = Field(default=UNSET)
 
 
-class GistSimplePropForksItems(GitHubModel):
+class GistSimplePropForksItems(GitHubRestModel):
     """GistSimplePropForksItems"""
 
     id: Union[Unset, str] = Field(default=UNSET)
@@ -2294,7 +2298,7 @@ class GistSimplePropForksItems(GitHubModel):
     updated_at: Union[Unset, datetime] = Field(default=UNSET)
 
 
-class GistSimplePropForkOf(GitHubModel):
+class GistSimplePropForkOf(GitHubRestModel):
     """Gist
 
     Gist
@@ -2326,15 +2330,15 @@ class GistSimplePropForkOf(GitHubModel):
     history: Union[Unset, List[Any]] = Field(default=UNSET)
 
 
-class GistSimplePropForkOfPropFiles(GitHubModel, extra=Extra.allow):
+class GistSimplePropForkOfPropFiles(GitHubRestModel, extra=Extra.allow):
     """GistSimplePropForkOfPropFiles"""
 
 
-class GistSimplePropFiles(GitHubModel, extra=Extra.allow):
+class GistSimplePropFiles(GitHubRestModel, extra=Extra.allow):
     """GistSimplePropFiles"""
 
 
-class GistComment(GitHubModel):
+class GistComment(GitHubRestModel):
     """Gist Comment
 
     A comment made to a gist.
@@ -2365,7 +2369,7 @@ class GistComment(GitHubModel):
     )
 
 
-class GistCommit(GitHubModel):
+class GistCommit(GitHubRestModel):
     """Gist Commit
 
     Gist Commit
@@ -2380,7 +2384,7 @@ class GistCommit(GitHubModel):
     committed_at: datetime = Field(default=...)
 
 
-class GistCommitPropChangeStatus(GitHubModel):
+class GistCommitPropChangeStatus(GitHubRestModel):
     """GistCommitPropChangeStatus"""
 
     total: Union[Unset, int] = Field(default=UNSET)
@@ -2388,7 +2392,7 @@ class GistCommitPropChangeStatus(GitHubModel):
     deletions: Union[Unset, int] = Field(default=UNSET)
 
 
-class GitignoreTemplate(GitHubModel):
+class GitignoreTemplate(GitHubRestModel):
     """Gitignore Template
 
     Gitignore Template
@@ -2398,7 +2402,7 @@ class GitignoreTemplate(GitHubModel):
     source: str = Field(default=...)
 
 
-class License(GitHubModel):
+class License(GitHubRestModel):
     """License
 
     License
@@ -2419,7 +2423,7 @@ class License(GitHubModel):
     featured: bool = Field(default=...)
 
 
-class MarketplaceListingPlan(GitHubModel):
+class MarketplaceListingPlan(GitHubRestModel):
     """Marketplace Listing Plan
 
     Marketplace Listing Plan
@@ -2440,7 +2444,7 @@ class MarketplaceListingPlan(GitHubModel):
     bullets: List[str] = Field(default=...)
 
 
-class MarketplacePurchase(GitHubModel):
+class MarketplacePurchase(GitHubRestModel):
     """Marketplace Purchase
 
     Marketplace Purchase
@@ -2460,7 +2464,7 @@ class MarketplacePurchase(GitHubModel):
     )
 
 
-class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
+class MarketplacePurchasePropMarketplacePendingChange(GitHubRestModel):
     """MarketplacePurchasePropMarketplacePendingChange"""
 
     is_installed: Union[Unset, bool] = Field(default=UNSET)
@@ -2474,7 +2478,7 @@ class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
     )
 
 
-class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
+class MarketplacePurchasePropMarketplacePurchase(GitHubRestModel):
     """MarketplacePurchasePropMarketplacePurchase"""
 
     billing_cycle: Union[Unset, str] = Field(default=UNSET)
@@ -2491,7 +2495,7 @@ class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
     )
 
 
-class ApiOverview(GitHubModel):
+class ApiOverview(GitHubRestModel):
     """Api Overview
 
     Api Overview
@@ -2513,7 +2517,7 @@ class ApiOverview(GitHubModel):
     dependabot: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class ApiOverviewPropSshKeyFingerprints(GitHubModel):
+class ApiOverviewPropSshKeyFingerprints(GitHubRestModel):
     """ApiOverviewPropSshKeyFingerprints"""
 
     sha256_rsa: Union[Unset, str] = Field(default=UNSET, alias="SHA256_RSA")
@@ -2522,7 +2526,7 @@ class ApiOverviewPropSshKeyFingerprints(GitHubModel):
     sha256_ed25519: Union[Unset, str] = Field(default=UNSET, alias="SHA256_ED25519")
 
 
-class MinimalRepository(GitHubModel):
+class MinimalRepository(GitHubRestModel):
     """Minimal Repository
 
     Minimal Repository
@@ -2623,7 +2627,7 @@ class MinimalRepository(GitHubModel):
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
 
 
-class MinimalRepositoryPropPermissions(GitHubModel):
+class MinimalRepositoryPropPermissions(GitHubRestModel):
     """MinimalRepositoryPropPermissions"""
 
     admin: Union[Unset, bool] = Field(default=UNSET)
@@ -2633,7 +2637,7 @@ class MinimalRepositoryPropPermissions(GitHubModel):
     pull: Union[Unset, bool] = Field(default=UNSET)
 
 
-class MinimalRepositoryPropLicense(GitHubModel):
+class MinimalRepositoryPropLicense(GitHubRestModel):
     """MinimalRepositoryPropLicense"""
 
     key: Union[Unset, str] = Field(default=UNSET)
@@ -2643,7 +2647,7 @@ class MinimalRepositoryPropLicense(GitHubModel):
     node_id: Union[Unset, str] = Field(default=UNSET)
 
 
-class Thread(GitHubModel):
+class Thread(GitHubRestModel):
     """Thread
 
     Thread
@@ -2662,7 +2666,7 @@ class Thread(GitHubModel):
     subscription_url: str = Field(default=...)
 
 
-class ThreadPropSubject(GitHubModel):
+class ThreadPropSubject(GitHubRestModel):
     """ThreadPropSubject"""
 
     title: str = Field(default=...)
@@ -2671,7 +2675,7 @@ class ThreadPropSubject(GitHubModel):
     type: str = Field(default=...)
 
 
-class ThreadSubscription(GitHubModel):
+class ThreadSubscription(GitHubRestModel):
     """Thread Subscription
 
     Thread Subscription
@@ -2686,7 +2690,7 @@ class ThreadSubscription(GitHubModel):
     repository_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class OrganizationCustomRepositoryRole(GitHubModel):
+class OrganizationCustomRepositoryRole(GitHubRestModel):
     """Organization Custom Repository Role
 
     Custom repository roles created by organization administrators
@@ -2698,7 +2702,7 @@ class OrganizationCustomRepositoryRole(GitHubModel):
     name: str = Field(description="The name of the custom role.", default=...)
 
 
-class OrganizationFull(GitHubModel):
+class OrganizationFull(GitHubRestModel):
     """Organization Full
 
     Organization Full
@@ -2759,7 +2763,7 @@ class OrganizationFull(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class OrganizationFullPropPlan(GitHubModel):
+class OrganizationFullPropPlan(GitHubRestModel):
     """OrganizationFullPropPlan"""
 
     name: str = Field(default=...)
@@ -2769,7 +2773,7 @@ class OrganizationFullPropPlan(GitHubModel):
     seats: Union[Unset, int] = Field(default=UNSET)
 
 
-class ActionsCacheUsageByRepository(GitHubModel):
+class ActionsCacheUsageByRepository(GitHubRestModel):
     """Actions Cache Usage by repository
 
     GitHub Actions Cache Usage by repository.
@@ -2788,7 +2792,7 @@ class ActionsCacheUsageByRepository(GitHubModel):
     )
 
 
-class OidcCustomSub(GitHubModel):
+class OidcCustomSub(GitHubRestModel):
     """Actions OIDC Subject customization
 
     Actions OIDC Subject customization
@@ -2797,14 +2801,14 @@ class OidcCustomSub(GitHubModel):
     include_claim_keys: List[str] = Field(default=...)
 
 
-class EmptyObject(GitHubModel):
+class EmptyObject(GitHubRestModel):
     """Empty Object
 
     An object without any properties.
     """
 
 
-class ActionsOrganizationPermissions(GitHubModel):
+class ActionsOrganizationPermissions(GitHubRestModel):
     """ActionsOrganizationPermissions"""
 
     enabled_repositories: Literal["all", "none", "selected"] = Field(
@@ -2825,7 +2829,7 @@ class ActionsOrganizationPermissions(GitHubModel):
     )
 
 
-class RunnerGroupsOrg(GitHubModel):
+class RunnerGroupsOrg(GitHubRestModel):
     """RunnerGroupsOrg"""
 
     id: float = Field(default=...)
@@ -2854,7 +2858,7 @@ class RunnerGroupsOrg(GitHubModel):
     )
 
 
-class OrganizationActionsSecret(GitHubModel):
+class OrganizationActionsSecret(GitHubRestModel):
     """Actions Secret for an Organization
 
     Secrets for GitHub Actions for an organization.
@@ -2869,7 +2873,7 @@ class OrganizationActionsSecret(GitHubModel):
     selected_repositories_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ActionsPublicKey(GitHubModel):
+class ActionsPublicKey(GitHubRestModel):
     """ActionsPublicKey
 
     The public key used for setting Actions Secrets.
@@ -2883,7 +2887,7 @@ class ActionsPublicKey(GitHubModel):
     created_at: Union[Unset, str] = Field(default=UNSET)
 
 
-class CodespaceMachine(GitHubModel):
+class CodespaceMachine(GitHubRestModel):
     """Codespace machine
 
     A description of the machine powering a codespace.
@@ -2912,7 +2916,7 @@ class CodespaceMachine(GitHubModel):
     )
 
 
-class Codespace(GitHubModel):
+class Codespace(GitHubRestModel):
     """Codespace
 
     A codespace.
@@ -3015,7 +3019,7 @@ class Codespace(GitHubModel):
     )
 
 
-class CodespacePropGitStatus(GitHubModel):
+class CodespacePropGitStatus(GitHubRestModel):
     """CodespacePropGitStatus
 
     Details about the codespace's git repository.
@@ -3042,7 +3046,7 @@ class CodespacePropGitStatus(GitHubModel):
     )
 
 
-class CodespacePropRuntimeConstraints(GitHubModel):
+class CodespacePropRuntimeConstraints(GitHubRestModel):
     """CodespacePropRuntimeConstraints"""
 
     allowed_port_privacy_settings: Union[Unset, Union[List[str], None]] = Field(
@@ -3051,7 +3055,7 @@ class CodespacePropRuntimeConstraints(GitHubModel):
     )
 
 
-class CredentialAuthorization(GitHubModel):
+class CredentialAuthorization(GitHubRestModel):
     """Credential Authorization
 
     Credential Authorization
@@ -3099,7 +3103,7 @@ class CredentialAuthorization(GitHubModel):
     )
 
 
-class OrganizationDependabotSecret(GitHubModel):
+class OrganizationDependabotSecret(GitHubRestModel):
     """Dependabot Secret for an Organization
 
     Secrets for GitHub Dependabot for an organization.
@@ -3114,7 +3118,7 @@ class OrganizationDependabotSecret(GitHubModel):
     selected_repositories_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class DependabotPublicKey(GitHubModel):
+class DependabotPublicKey(GitHubRestModel):
     """DependabotPublicKey
 
     The public key used for setting Dependabot Secrets.
@@ -3124,7 +3128,7 @@ class DependabotPublicKey(GitHubModel):
     key: str = Field(description="The Base64 encoded public key.", default=...)
 
 
-class ExternalGroup(GitHubModel):
+class ExternalGroup(GitHubRestModel):
     """ExternalGroup
 
     Information about an external group's usage and its members
@@ -3143,14 +3147,14 @@ class ExternalGroup(GitHubModel):
     )
 
 
-class ExternalGroupPropTeamsItems(GitHubModel):
+class ExternalGroupPropTeamsItems(GitHubRestModel):
     """ExternalGroupPropTeamsItems"""
 
     team_id: int = Field(description="The id for a team", default=...)
     team_name: str = Field(description="The name of the team", default=...)
 
 
-class ExternalGroupPropMembersItems(GitHubModel):
+class ExternalGroupPropMembersItems(GitHubRestModel):
     """ExternalGroupPropMembersItems"""
 
     member_id: int = Field(
@@ -3163,7 +3167,7 @@ class ExternalGroupPropMembersItems(GitHubModel):
     member_email: str = Field(description="An email attached to a user", default=...)
 
 
-class ExternalGroups(GitHubModel):
+class ExternalGroups(GitHubRestModel):
     """ExternalGroups
 
     A list of external groups available to be connected to a team
@@ -3175,7 +3179,7 @@ class ExternalGroups(GitHubModel):
     )
 
 
-class ExternalGroupsPropGroupsItems(GitHubModel):
+class ExternalGroupsPropGroupsItems(GitHubRestModel):
     """ExternalGroupsPropGroupsItems"""
 
     group_id: int = Field(description="The internal ID of the group", default=...)
@@ -3185,7 +3189,7 @@ class ExternalGroupsPropGroupsItems(GitHubModel):
     )
 
 
-class OrganizationInvitation(GitHubModel):
+class OrganizationInvitation(GitHubRestModel):
     """Organization Invitation
 
     Organization Invitation
@@ -3206,7 +3210,7 @@ class OrganizationInvitation(GitHubModel):
     invitation_teams_url: str = Field(default=...)
 
 
-class OrgHook(GitHubModel):
+class OrgHook(GitHubRestModel):
     """Org Hook
 
     Org Hook
@@ -3225,7 +3229,7 @@ class OrgHook(GitHubModel):
     type: str = Field(default=...)
 
 
-class OrgHookPropConfig(GitHubModel):
+class OrgHookPropConfig(GitHubRestModel):
     """OrgHookPropConfig"""
 
     url: Union[Unset, str] = Field(default=UNSET)
@@ -3234,7 +3238,7 @@ class OrgHookPropConfig(GitHubModel):
     secret: Union[Unset, str] = Field(default=UNSET)
 
 
-class InteractionLimitResponse(GitHubModel):
+class InteractionLimitResponse(GitHubRestModel):
     """Interaction Limits
 
     Interaction limit settings.
@@ -3248,7 +3252,7 @@ class InteractionLimitResponse(GitHubModel):
     expires_at: datetime = Field(default=...)
 
 
-class InteractionLimit(GitHubModel):
+class InteractionLimit(GitHubRestModel):
     """Interaction Restrictions
 
     Limit interactions to a specific type of user for a specified duration
@@ -3266,7 +3270,7 @@ class InteractionLimit(GitHubModel):
     )
 
 
-class TeamSimple(GitHubModel):
+class TeamSimple(GitHubRestModel):
     """Team Simple
 
     Groups of organization members that gives permissions on specified repositories.
@@ -3296,7 +3300,7 @@ class TeamSimple(GitHubModel):
     )
 
 
-class Team(GitHubModel):
+class Team(GitHubRestModel):
     """Team
 
     Groups of organization members that gives permissions on specified repositories.
@@ -3321,7 +3325,7 @@ class Team(GitHubModel):
     )
 
 
-class TeamPropPermissions(GitHubModel):
+class TeamPropPermissions(GitHubRestModel):
     """TeamPropPermissions"""
 
     pull: bool = Field(default=...)
@@ -3331,7 +3335,7 @@ class TeamPropPermissions(GitHubModel):
     admin: bool = Field(default=...)
 
 
-class OrgMembership(GitHubModel):
+class OrgMembership(GitHubRestModel):
     """Org Membership
 
     Org Membership
@@ -3355,13 +3359,13 @@ class OrgMembership(GitHubModel):
     permissions: Union[Unset, OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class OrgMembershipPropPermissions(GitHubModel):
+class OrgMembershipPropPermissions(GitHubRestModel):
     """OrgMembershipPropPermissions"""
 
     can_create_repository: bool = Field(default=...)
 
 
-class Migration(GitHubModel):
+class Migration(GitHubRestModel):
     """Migration
 
     A migration.
@@ -3389,7 +3393,7 @@ class Migration(GitHubModel):
     exclude: Union[Unset, List[Any]] = Field(default=UNSET)
 
 
-class Package(GitHubModel):
+class Package(GitHubRestModel):
     """Package
 
     A software package
@@ -3416,7 +3420,7 @@ class Package(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class PackageVersion(GitHubModel):
+class PackageVersion(GitHubRestModel):
     """Package Version
 
     A version of a software package
@@ -3439,7 +3443,7 @@ class PackageVersion(GitHubModel):
     )
 
 
-class PackageVersionPropMetadata(GitHubModel):
+class PackageVersionPropMetadata(GitHubRestModel):
     """Package Version Metadata"""
 
     package_type: Literal[
@@ -3453,19 +3457,19 @@ class PackageVersionPropMetadata(GitHubModel):
     )
 
 
-class PackageVersionPropMetadataPropContainer(GitHubModel):
+class PackageVersionPropMetadataPropContainer(GitHubRestModel):
     """Container Metadata"""
 
     tags: List[str] = Field(default=...)
 
 
-class PackageVersionPropMetadataPropDocker(GitHubModel):
+class PackageVersionPropMetadataPropDocker(GitHubRestModel):
     """Docker Metadata"""
 
     tag: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class Project(GitHubModel):
+class Project(GitHubRestModel):
     """Project
 
     Projects are a way to organize columns and cards of work.
@@ -3500,7 +3504,7 @@ class Project(GitHubModel):
     )
 
 
-class GroupMapping(GitHubModel):
+class GroupMapping(GitHubRestModel):
     """GroupMapping
 
     External Groups to be mapped to a team for membership
@@ -3511,7 +3515,7 @@ class GroupMapping(GitHubModel):
     )
 
 
-class GroupMappingPropGroupsItems(GitHubModel):
+class GroupMappingPropGroupsItems(GitHubRestModel):
     """GroupMappingPropGroupsItems"""
 
     group_id: str = Field(description="The ID of the group", default=...)
@@ -3527,7 +3531,7 @@ class GroupMappingPropGroupsItems(GitHubModel):
     )
 
 
-class TeamFull(GitHubModel):
+class TeamFull(GitHubRestModel):
     """Full Team
 
     Groups of organization members that gives permissions on specified repositories.
@@ -3567,7 +3571,7 @@ class TeamFull(GitHubModel):
     )
 
 
-class TeamDiscussion(GitHubModel):
+class TeamDiscussion(GitHubRestModel):
     """Team Discussion
 
     A team discussion is a persistent record of a free-form conversation within a
@@ -3609,7 +3613,7 @@ class TeamDiscussion(GitHubModel):
     )
 
 
-class TeamDiscussionComment(GitHubModel):
+class TeamDiscussionComment(GitHubRestModel):
     """Team Discussion Comment
 
     A reply to a discussion within a team.
@@ -3640,7 +3644,7 @@ class TeamDiscussionComment(GitHubModel):
     )
 
 
-class Reaction(GitHubModel):
+class Reaction(GitHubRestModel):
     """Reaction
 
     Reactions to conversations provide a way to help people express their feelings
@@ -3658,7 +3662,7 @@ class Reaction(GitHubModel):
     created_at: datetime = Field(default=...)
 
 
-class TeamMembership(GitHubModel):
+class TeamMembership(GitHubRestModel):
     """Team Membership
 
     Team Membership
@@ -3673,7 +3677,7 @@ class TeamMembership(GitHubModel):
     )
 
 
-class TeamProject(GitHubModel):
+class TeamProject(GitHubRestModel):
     """Team Project
 
     A team's access to a project.
@@ -3705,7 +3709,7 @@ class TeamProject(GitHubModel):
     permissions: TeamProjectPropPermissions = Field(default=...)
 
 
-class TeamProjectPropPermissions(GitHubModel):
+class TeamProjectPropPermissions(GitHubRestModel):
     """TeamProjectPropPermissions"""
 
     read: bool = Field(default=...)
@@ -3713,7 +3717,7 @@ class TeamProjectPropPermissions(GitHubModel):
     admin: bool = Field(default=...)
 
 
-class TeamRepository(GitHubModel):
+class TeamRepository(GitHubRestModel):
     """Team Repository
 
     A team's access to a repository.
@@ -3851,7 +3855,7 @@ class TeamRepository(GitHubModel):
     master_branch: Union[Unset, str] = Field(default=UNSET)
 
 
-class TeamRepositoryPropPermissions(GitHubModel):
+class TeamRepositoryPropPermissions(GitHubRestModel):
     """TeamRepositoryPropPermissions"""
 
     admin: bool = Field(default=...)
@@ -3861,7 +3865,7 @@ class TeamRepositoryPropPermissions(GitHubModel):
     maintain: Union[Unset, bool] = Field(default=UNSET)
 
 
-class ProjectCard(GitHubModel):
+class ProjectCard(GitHubRestModel):
     """Project Card
 
     Project cards represent a scope of work.
@@ -3886,7 +3890,7 @@ class ProjectCard(GitHubModel):
     project_url: str = Field(default=...)
 
 
-class ProjectColumn(GitHubModel):
+class ProjectColumn(GitHubRestModel):
     """Project Column
 
     Project columns contain cards of work.
@@ -3904,7 +3908,7 @@ class ProjectColumn(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class ProjectCollaboratorPermission(GitHubModel):
+class ProjectCollaboratorPermission(GitHubRestModel):
     """Project Collaborator Permission
 
     Project Collaborator Permission
@@ -3916,7 +3920,7 @@ class ProjectCollaboratorPermission(GitHubModel):
     )
 
 
-class RateLimit(GitHubModel):
+class RateLimit(GitHubRestModel):
     """Rate Limit"""
 
     limit: int = Field(default=...)
@@ -3925,7 +3929,7 @@ class RateLimit(GitHubModel):
     used: int = Field(default=...)
 
 
-class RateLimitOverview(GitHubModel):
+class RateLimitOverview(GitHubRestModel):
     """Rate Limit Overview
 
     Rate Limit Overview
@@ -3935,7 +3939,7 @@ class RateLimitOverview(GitHubModel):
     rate: RateLimit = Field(title="Rate Limit", default=...)
 
 
-class RateLimitOverviewPropResources(GitHubModel):
+class RateLimitOverviewPropResources(GitHubRestModel):
     """RateLimitOverviewPropResources"""
 
     core: RateLimit = Field(title="Rate Limit", default=...)
@@ -3957,7 +3961,7 @@ class RateLimitOverviewPropResources(GitHubModel):
     )
 
 
-class CodeOfConductSimple(GitHubModel):
+class CodeOfConductSimple(GitHubRestModel):
     """Code Of Conduct Simple
 
     Code of Conduct Simple
@@ -3969,7 +3973,7 @@ class CodeOfConductSimple(GitHubModel):
     html_url: Union[str, None] = Field(default=...)
 
 
-class SecurityAndAnalysis(GitHubModel):
+class SecurityAndAnalysis(GitHubRestModel):
     """SecurityAndAnalysis"""
 
     advanced_security: Union[Unset, SecurityAndAnalysisPropAdvancedSecurity] = Field(
@@ -3983,25 +3987,25 @@ class SecurityAndAnalysis(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
+class SecurityAndAnalysisPropAdvancedSecurity(GitHubRestModel):
     """SecurityAndAnalysisPropAdvancedSecurity"""
 
     status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
 
 
-class SecurityAndAnalysisPropSecretScanning(GitHubModel):
+class SecurityAndAnalysisPropSecretScanning(GitHubRestModel):
     """SecurityAndAnalysisPropSecretScanning"""
 
     status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
 
 
-class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
+class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubRestModel):
     """SecurityAndAnalysisPropSecretScanningPushProtection"""
 
     status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
 
 
-class FullRepository(GitHubModel):
+class FullRepository(GitHubRestModel):
     """Full Repository
 
     Full Repository
@@ -4131,7 +4135,7 @@ class FullRepository(GitHubModel):
     security_and_analysis: Union[Unset, SecurityAndAnalysis] = Field(default=UNSET)
 
 
-class FullRepositoryPropPermissions(GitHubModel):
+class FullRepositoryPropPermissions(GitHubRestModel):
     """FullRepositoryPropPermissions"""
 
     admin: bool = Field(default=...)
@@ -4141,7 +4145,7 @@ class FullRepositoryPropPermissions(GitHubModel):
     pull: bool = Field(default=...)
 
 
-class Artifact(GitHubModel):
+class Artifact(GitHubRestModel):
     """Artifact
 
     An artifact
@@ -4166,7 +4170,7 @@ class Artifact(GitHubModel):
     )
 
 
-class ArtifactPropWorkflowRun(GitHubModel):
+class ArtifactPropWorkflowRun(GitHubRestModel):
     """ArtifactPropWorkflowRun"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -4176,7 +4180,7 @@ class ArtifactPropWorkflowRun(GitHubModel):
     head_sha: Union[Unset, str] = Field(default=UNSET)
 
 
-class ActionsCacheList(GitHubModel):
+class ActionsCacheList(GitHubRestModel):
     """Repository actions caches
 
     Repository actions caches
@@ -4188,7 +4192,7 @@ class ActionsCacheList(GitHubModel):
     )
 
 
-class ActionsCacheListPropActionsCachesItems(GitHubModel):
+class ActionsCacheListPropActionsCachesItems(GitHubRestModel):
     """ActionsCacheListPropActionsCachesItems"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -4200,7 +4204,7 @@ class ActionsCacheListPropActionsCachesItems(GitHubModel):
     size_in_bytes: Union[Unset, int] = Field(default=UNSET)
 
 
-class Job(GitHubModel):
+class Job(GitHubRestModel):
     """Job
 
     Information of a job execution in a workflow run
@@ -4261,7 +4265,7 @@ class Job(GitHubModel):
     )
 
 
-class JobPropStepsItems(GitHubModel):
+class JobPropStepsItems(GitHubRestModel):
     """JobPropStepsItems"""
 
     status: Literal["queued", "in_progress", "completed"] = Field(
@@ -4281,7 +4285,7 @@ class JobPropStepsItems(GitHubModel):
     )
 
 
-class OptOutOidcCustomSub(GitHubModel):
+class OptOutOidcCustomSub(GitHubRestModel):
     """The json payload enables/disables the use of sub claim customization
 
     OIDC Customer Subject
@@ -4290,7 +4294,7 @@ class OptOutOidcCustomSub(GitHubModel):
     use_default: bool = Field(default=...)
 
 
-class ActionsRepositoryPermissions(GitHubModel):
+class ActionsRepositoryPermissions(GitHubRestModel):
     """ActionsRepositoryPermissions"""
 
     enabled: bool = Field(
@@ -4306,7 +4310,7 @@ class ActionsRepositoryPermissions(GitHubModel):
     )
 
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
+class ActionsWorkflowAccessToRepository(GitHubRestModel):
     """ActionsWorkflowAccessToRepository"""
 
     access_level: Literal["none", "organization", "enterprise"] = Field(
@@ -4315,7 +4319,7 @@ class ActionsWorkflowAccessToRepository(GitHubModel):
     )
 
 
-class ReferencedWorkflow(GitHubModel):
+class ReferencedWorkflow(GitHubRestModel):
     """Referenced workflow
 
     A workflow referenced/reused by the initial caller workflow
@@ -4326,7 +4330,7 @@ class ReferencedWorkflow(GitHubModel):
     ref: Union[Unset, str] = Field(default=UNSET)
 
 
-class PullRequestMinimal(GitHubModel):
+class PullRequestMinimal(GitHubRestModel):
     """Pull Request Minimal"""
 
     id: int = Field(default=...)
@@ -4336,7 +4340,7 @@ class PullRequestMinimal(GitHubModel):
     base: PullRequestMinimalPropBase = Field(default=...)
 
 
-class PullRequestMinimalPropHead(GitHubModel):
+class PullRequestMinimalPropHead(GitHubRestModel):
     """PullRequestMinimalPropHead"""
 
     ref: str = Field(default=...)
@@ -4344,7 +4348,7 @@ class PullRequestMinimalPropHead(GitHubModel):
     repo: PullRequestMinimalPropHeadPropRepo = Field(default=...)
 
 
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+class PullRequestMinimalPropHeadPropRepo(GitHubRestModel):
     """PullRequestMinimalPropHeadPropRepo"""
 
     id: int = Field(default=...)
@@ -4352,7 +4356,7 @@ class PullRequestMinimalPropHeadPropRepo(GitHubModel):
     name: str = Field(default=...)
 
 
-class PullRequestMinimalPropBase(GitHubModel):
+class PullRequestMinimalPropBase(GitHubRestModel):
     """PullRequestMinimalPropBase"""
 
     ref: str = Field(default=...)
@@ -4360,7 +4364,7 @@ class PullRequestMinimalPropBase(GitHubModel):
     repo: PullRequestMinimalPropBasePropRepo = Field(default=...)
 
 
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
+class PullRequestMinimalPropBasePropRepo(GitHubRestModel):
     """PullRequestMinimalPropBasePropRepo"""
 
     id: int = Field(default=...)
@@ -4368,7 +4372,7 @@ class PullRequestMinimalPropBasePropRepo(GitHubModel):
     name: str = Field(default=...)
 
 
-class SimpleCommit(GitHubModel):
+class SimpleCommit(GitHubRestModel):
     """Simple Commit
 
     Simple Commit
@@ -4382,21 +4386,21 @@ class SimpleCommit(GitHubModel):
     committer: Union[SimpleCommitPropCommitter, None] = Field(default=...)
 
 
-class SimpleCommitPropAuthor(GitHubModel):
+class SimpleCommitPropAuthor(GitHubRestModel):
     """SimpleCommitPropAuthor"""
 
     name: str = Field(default=...)
     email: str = Field(default=...)
 
 
-class SimpleCommitPropCommitter(GitHubModel):
+class SimpleCommitPropCommitter(GitHubRestModel):
     """SimpleCommitPropCommitter"""
 
     name: str = Field(default=...)
     email: str = Field(default=...)
 
 
-class WorkflowRun(GitHubModel):
+class WorkflowRun(GitHubRestModel):
     """Workflow Run
 
     An invocation of a workflow
@@ -4483,7 +4487,7 @@ class WorkflowRun(GitHubModel):
     head_repository_id: Union[Unset, int] = Field(default=UNSET)
 
 
-class EnvironmentApprovals(GitHubModel):
+class EnvironmentApprovals(GitHubRestModel):
     """Environment Approval
 
     An entry in the reviews log for environment deployments
@@ -4505,7 +4509,7 @@ class EnvironmentApprovals(GitHubModel):
     )
 
 
-class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
+class EnvironmentApprovalsPropEnvironmentsItems(GitHubRestModel):
     """EnvironmentApprovalsPropEnvironmentsItems"""
 
     id: Union[Unset, int] = Field(
@@ -4527,7 +4531,7 @@ class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
     )
 
 
-class PendingDeployment(GitHubModel):
+class PendingDeployment(GitHubRestModel):
     """Pending Deployment
 
     Details of a deployment that is waiting for protection rules to pass
@@ -4550,7 +4554,7 @@ class PendingDeployment(GitHubModel):
     )
 
 
-class PendingDeploymentPropEnvironment(GitHubModel):
+class PendingDeploymentPropEnvironment(GitHubRestModel):
     """PendingDeploymentPropEnvironment"""
 
     id: Union[Unset, int] = Field(
@@ -4564,7 +4568,7 @@ class PendingDeploymentPropEnvironment(GitHubModel):
     html_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class PendingDeploymentPropReviewersItems(GitHubModel):
+class PendingDeploymentPropReviewersItems(GitHubRestModel):
     """PendingDeploymentPropReviewersItems"""
 
     type: Union[Unset, Literal["User", "Team"]] = Field(
@@ -4577,7 +4581,7 @@ class PendingDeploymentPropReviewersItems(GitHubModel):
     )
 
 
-class Deployment(GitHubModel):
+class Deployment(GitHubRestModel):
     """Deployment
 
     A request for a specific ref(branch,sha,tag) to be deployed
@@ -4619,11 +4623,11 @@ class Deployment(GitHubModel):
     )
 
 
-class DeploymentPropPayloadOneof0(GitHubModel, extra=Extra.allow):
+class DeploymentPropPayloadOneof0(GitHubRestModel, extra=Extra.allow):
     """DeploymentPropPayloadOneof0"""
 
 
-class WorkflowRunUsage(GitHubModel):
+class WorkflowRunUsage(GitHubRestModel):
     """Workflow Run Usage
 
     Workflow Run Usage
@@ -4633,7 +4637,7 @@ class WorkflowRunUsage(GitHubModel):
     run_duration_ms: Union[Unset, int] = Field(default=UNSET)
 
 
-class WorkflowRunUsagePropBillable(GitHubModel):
+class WorkflowRunUsagePropBillable(GitHubRestModel):
     """WorkflowRunUsagePropBillable"""
 
     ubuntu: Union[Unset, WorkflowRunUsagePropBillablePropUbuntu] = Field(
@@ -4647,7 +4651,7 @@ class WorkflowRunUsagePropBillable(GitHubModel):
     )
 
 
-class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
+class WorkflowRunUsagePropBillablePropUbuntu(GitHubRestModel):
     """WorkflowRunUsagePropBillablePropUbuntu"""
 
     total_ms: int = Field(default=...)
@@ -4657,14 +4661,14 @@ class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubRestModel):
     """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
 
     job_id: int = Field(default=...)
     duration_ms: int = Field(default=...)
 
 
-class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
+class WorkflowRunUsagePropBillablePropMacos(GitHubRestModel):
     """WorkflowRunUsagePropBillablePropMacos"""
 
     total_ms: int = Field(default=...)
@@ -4674,14 +4678,14 @@ class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubRestModel):
     """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
 
     job_id: int = Field(default=...)
     duration_ms: int = Field(default=...)
 
 
-class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
+class WorkflowRunUsagePropBillablePropWindows(GitHubRestModel):
     """WorkflowRunUsagePropBillablePropWindows"""
 
     total_ms: int = Field(default=...)
@@ -4691,14 +4695,14 @@ class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubRestModel):
     """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
 
     job_id: int = Field(default=...)
     duration_ms: int = Field(default=...)
 
 
-class ActionsSecret(GitHubModel):
+class ActionsSecret(GitHubRestModel):
     """Actions Secret
 
     Set secrets for GitHub Actions.
@@ -4709,7 +4713,7 @@ class ActionsSecret(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class Workflow(GitHubModel):
+class Workflow(GitHubRestModel):
     """Workflow
 
     A GitHub Actions workflow
@@ -4730,7 +4734,7 @@ class Workflow(GitHubModel):
     deleted_at: Union[Unset, datetime] = Field(default=UNSET)
 
 
-class WorkflowUsage(GitHubModel):
+class WorkflowUsage(GitHubRestModel):
     """Workflow Usage
 
     Workflow Usage
@@ -4739,7 +4743,7 @@ class WorkflowUsage(GitHubModel):
     billable: WorkflowUsagePropBillable = Field(default=...)
 
 
-class WorkflowUsagePropBillable(GitHubModel):
+class WorkflowUsagePropBillable(GitHubRestModel):
     """WorkflowUsagePropBillable"""
 
     ubuntu: Union[Unset, WorkflowUsagePropBillablePropUbuntu] = Field(
@@ -4753,25 +4757,25 @@ class WorkflowUsagePropBillable(GitHubModel):
     )
 
 
-class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
+class WorkflowUsagePropBillablePropUbuntu(GitHubRestModel):
     """WorkflowUsagePropBillablePropUbuntu"""
 
     total_ms: Union[Unset, int] = Field(default=UNSET)
 
 
-class WorkflowUsagePropBillablePropMacos(GitHubModel):
+class WorkflowUsagePropBillablePropMacos(GitHubRestModel):
     """WorkflowUsagePropBillablePropMacos"""
 
     total_ms: Union[Unset, int] = Field(default=UNSET)
 
 
-class WorkflowUsagePropBillablePropWindows(GitHubModel):
+class WorkflowUsagePropBillablePropWindows(GitHubRestModel):
     """WorkflowUsagePropBillablePropWindows"""
 
     total_ms: Union[Unset, int] = Field(default=UNSET)
 
 
-class Autolink(GitHubModel):
+class Autolink(GitHubRestModel):
     """Autolink reference
 
     An autolink reference.
@@ -4791,7 +4795,7 @@ class Autolink(GitHubModel):
     )
 
 
-class ProtectedBranchRequiredStatusCheck(GitHubModel):
+class ProtectedBranchRequiredStatusCheck(GitHubRestModel):
     """Protected Branch Required Status Check
 
     Protected Branch Required Status Check
@@ -4805,14 +4809,14 @@ class ProtectedBranchRequiredStatusCheck(GitHubModel):
     strict: Union[Unset, bool] = Field(default=UNSET)
 
 
-class ProtectedBranchRequiredStatusCheckPropChecksItems(GitHubModel):
+class ProtectedBranchRequiredStatusCheckPropChecksItems(GitHubRestModel):
     """ProtectedBranchRequiredStatusCheckPropChecksItems"""
 
     context: str = Field(default=...)
     app_id: Union[int, None] = Field(default=...)
 
 
-class ProtectedBranchAdminEnforced(GitHubModel):
+class ProtectedBranchAdminEnforced(GitHubRestModel):
     """Protected Branch Admin Enforced
 
     Protected Branch Admin Enforced
@@ -4822,7 +4826,7 @@ class ProtectedBranchAdminEnforced(GitHubModel):
     enabled: bool = Field(default=...)
 
 
-class ProtectedBranchPullRequestReview(GitHubModel):
+class ProtectedBranchPullRequestReview(GitHubRestModel):
     """Protected Branch Pull Request Review
 
     Protected Branch Pull Request Review
@@ -4845,7 +4849,7 @@ class ProtectedBranchPullRequestReview(GitHubModel):
     )
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubRestModel):
     """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
     users: Union[Unset, List[SimpleUser]] = Field(
@@ -4862,7 +4866,7 @@ class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
     teams_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubRestModel):
     """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
 
     Allow specific users, teams, or apps to bypass pull request requirements.
@@ -4882,7 +4886,7 @@ class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubMode
     )
 
 
-class BranchRestrictionPolicy(GitHubModel):
+class BranchRestrictionPolicy(GitHubRestModel):
     """Branch Restriction Policy
 
     Branch Restriction Policy
@@ -4897,7 +4901,7 @@ class BranchRestrictionPolicy(GitHubModel):
     apps: List[BranchRestrictionPolicyPropAppsItems] = Field(default=...)
 
 
-class BranchRestrictionPolicyPropUsersItems(GitHubModel):
+class BranchRestrictionPolicyPropUsersItems(GitHubRestModel):
     """BranchRestrictionPolicyPropUsersItems"""
 
     login: Union[Unset, str] = Field(default=UNSET)
@@ -4920,7 +4924,7 @@ class BranchRestrictionPolicyPropUsersItems(GitHubModel):
     site_admin: Union[Unset, bool] = Field(default=UNSET)
 
 
-class BranchRestrictionPolicyPropTeamsItems(GitHubModel):
+class BranchRestrictionPolicyPropTeamsItems(GitHubRestModel):
     """BranchRestrictionPolicyPropTeamsItems"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -4937,7 +4941,7 @@ class BranchRestrictionPolicyPropTeamsItems(GitHubModel):
     parent: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class BranchRestrictionPolicyPropAppsItems(GitHubModel):
+class BranchRestrictionPolicyPropAppsItems(GitHubRestModel):
     """BranchRestrictionPolicyPropAppsItems"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -4958,7 +4962,7 @@ class BranchRestrictionPolicyPropAppsItems(GitHubModel):
     events: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubModel):
+class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubRestModel):
     """BranchRestrictionPolicyPropAppsItemsPropOwner"""
 
     login: Union[Unset, str] = Field(default=UNSET)
@@ -4986,7 +4990,7 @@ class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubModel):
     site_admin: Union[Unset, bool] = Field(default=UNSET)
 
 
-class BranchRestrictionPolicyPropAppsItemsPropPermissions(GitHubModel):
+class BranchRestrictionPolicyPropAppsItemsPropPermissions(GitHubRestModel):
     """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
 
     metadata: Union[Unset, str] = Field(default=UNSET)
@@ -4995,7 +4999,7 @@ class BranchRestrictionPolicyPropAppsItemsPropPermissions(GitHubModel):
     single_file: Union[Unset, str] = Field(default=UNSET)
 
 
-class BranchProtection(GitHubModel):
+class BranchProtection(GitHubRestModel):
     """Branch Protection
 
     Branch Protection
@@ -5047,44 +5051,44 @@ class BranchProtection(GitHubModel):
     )
 
 
-class BranchProtectionPropRequiredLinearHistory(GitHubModel):
+class BranchProtectionPropRequiredLinearHistory(GitHubRestModel):
     """BranchProtectionPropRequiredLinearHistory"""
 
     enabled: Union[Unset, bool] = Field(default=UNSET)
 
 
-class BranchProtectionPropAllowForcePushes(GitHubModel):
+class BranchProtectionPropAllowForcePushes(GitHubRestModel):
     """BranchProtectionPropAllowForcePushes"""
 
     enabled: Union[Unset, bool] = Field(default=UNSET)
 
 
-class BranchProtectionPropAllowDeletions(GitHubModel):
+class BranchProtectionPropAllowDeletions(GitHubRestModel):
     """BranchProtectionPropAllowDeletions"""
 
     enabled: Union[Unset, bool] = Field(default=UNSET)
 
 
-class BranchProtectionPropBlockCreations(GitHubModel):
+class BranchProtectionPropBlockCreations(GitHubRestModel):
     """BranchProtectionPropBlockCreations"""
 
     enabled: Union[Unset, bool] = Field(default=UNSET)
 
 
-class BranchProtectionPropRequiredConversationResolution(GitHubModel):
+class BranchProtectionPropRequiredConversationResolution(GitHubRestModel):
     """BranchProtectionPropRequiredConversationResolution"""
 
     enabled: Union[Unset, bool] = Field(default=UNSET)
 
 
-class BranchProtectionPropRequiredSignatures(GitHubModel):
+class BranchProtectionPropRequiredSignatures(GitHubRestModel):
     """BranchProtectionPropRequiredSignatures"""
 
     url: str = Field(default=...)
     enabled: bool = Field(default=...)
 
 
-class ShortBranch(GitHubModel):
+class ShortBranch(GitHubRestModel):
     """Short Branch
 
     Short Branch
@@ -5099,14 +5103,14 @@ class ShortBranch(GitHubModel):
     protection_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ShortBranchPropCommit(GitHubModel):
+class ShortBranchPropCommit(GitHubRestModel):
     """ShortBranchPropCommit"""
 
     sha: str = Field(default=...)
     url: str = Field(default=...)
 
 
-class GitUser(GitHubModel):
+class GitUser(GitHubRestModel):
     """Git User
 
     Metaproperties for Git author/committer information.
@@ -5117,7 +5121,7 @@ class GitUser(GitHubModel):
     date: Union[Unset, str] = Field(default=UNSET)
 
 
-class Verification(GitHubModel):
+class Verification(GitHubRestModel):
     """Verification"""
 
     verified: bool = Field(default=...)
@@ -5126,7 +5130,7 @@ class Verification(GitHubModel):
     signature: Union[str, None] = Field(default=...)
 
 
-class DiffEntry(GitHubModel):
+class DiffEntry(GitHubRestModel):
     """Diff Entry
 
     Diff Entry
@@ -5147,7 +5151,7 @@ class DiffEntry(GitHubModel):
     previous_filename: Union[Unset, str] = Field(default=UNSET)
 
 
-class Commit(GitHubModel):
+class Commit(GitHubRestModel):
     """Commit
 
     Commit
@@ -5170,7 +5174,7 @@ class Commit(GitHubModel):
     files: Union[Unset, List[DiffEntry]] = Field(default=UNSET)
 
 
-class CommitPropCommit(GitHubModel):
+class CommitPropCommit(GitHubRestModel):
     """CommitPropCommit"""
 
     url: str = Field(default=...)
@@ -5192,14 +5196,14 @@ class CommitPropCommit(GitHubModel):
     )
 
 
-class CommitPropCommitPropTree(GitHubModel):
+class CommitPropCommitPropTree(GitHubRestModel):
     """CommitPropCommitPropTree"""
 
     sha: str = Field(default=...)
     url: str = Field(default=...)
 
 
-class CommitPropParentsItems(GitHubModel):
+class CommitPropParentsItems(GitHubRestModel):
     """CommitPropParentsItems"""
 
     sha: str = Field(default=...)
@@ -5207,7 +5211,7 @@ class CommitPropParentsItems(GitHubModel):
     html_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class CommitPropStats(GitHubModel):
+class CommitPropStats(GitHubRestModel):
     """CommitPropStats"""
 
     additions: Union[Unset, int] = Field(default=UNSET)
@@ -5215,7 +5219,7 @@ class CommitPropStats(GitHubModel):
     total: Union[Unset, int] = Field(default=UNSET)
 
 
-class BranchWithProtection(GitHubModel):
+class BranchWithProtection(GitHubRestModel):
     """Branch With Protection
 
     Branch With Protection
@@ -5233,14 +5237,14 @@ class BranchWithProtection(GitHubModel):
     required_approving_review_count: Union[Unset, int] = Field(default=UNSET)
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
+class BranchWithProtectionPropLinks(GitHubRestModel):
     """BranchWithProtectionPropLinks"""
 
     html: str = Field(default=...)
     self_: str = Field(default=..., alias="self")
 
 
-class StatusCheckPolicy(GitHubModel):
+class StatusCheckPolicy(GitHubRestModel):
     """Status Check Policy
 
     Status Check Policy
@@ -5253,14 +5257,14 @@ class StatusCheckPolicy(GitHubModel):
     contexts_url: str = Field(default=...)
 
 
-class StatusCheckPolicyPropChecksItems(GitHubModel):
+class StatusCheckPolicyPropChecksItems(GitHubRestModel):
     """StatusCheckPolicyPropChecksItems"""
 
     context: str = Field(default=...)
     app_id: Union[int, None] = Field(default=...)
 
 
-class ProtectedBranch(GitHubModel):
+class ProtectedBranch(GitHubRestModel):
     """Protected Branch
 
     Branch protections protect branches
@@ -5301,7 +5305,7 @@ class ProtectedBranch(GitHubModel):
     )
 
 
-class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
+class ProtectedBranchPropRequiredPullRequestReviews(GitHubRestModel):
     """ProtectedBranchPropRequiredPullRequestReviews"""
 
     url: str = Field(default=...)
@@ -5318,7 +5322,7 @@ class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
 
 
 class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
+    GitHubRestModel
 ):
     """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
@@ -5331,7 +5335,7 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
 
 
 class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
+    GitHubRestModel
 ):
     """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
@@ -5340,51 +5344,51 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowanc
     apps: Union[Unset, List[Integration]] = Field(default=UNSET)
 
 
-class ProtectedBranchPropRequiredSignatures(GitHubModel):
+class ProtectedBranchPropRequiredSignatures(GitHubRestModel):
     """ProtectedBranchPropRequiredSignatures"""
 
     url: str = Field(default=...)
     enabled: bool = Field(default=...)
 
 
-class ProtectedBranchPropEnforceAdmins(GitHubModel):
+class ProtectedBranchPropEnforceAdmins(GitHubRestModel):
     """ProtectedBranchPropEnforceAdmins"""
 
     url: str = Field(default=...)
     enabled: bool = Field(default=...)
 
 
-class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
+class ProtectedBranchPropRequiredLinearHistory(GitHubRestModel):
     """ProtectedBranchPropRequiredLinearHistory"""
 
     enabled: bool = Field(default=...)
 
 
-class ProtectedBranchPropAllowForcePushes(GitHubModel):
+class ProtectedBranchPropAllowForcePushes(GitHubRestModel):
     """ProtectedBranchPropAllowForcePushes"""
 
     enabled: bool = Field(default=...)
 
 
-class ProtectedBranchPropAllowDeletions(GitHubModel):
+class ProtectedBranchPropAllowDeletions(GitHubRestModel):
     """ProtectedBranchPropAllowDeletions"""
 
     enabled: bool = Field(default=...)
 
 
-class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
+class ProtectedBranchPropRequiredConversationResolution(GitHubRestModel):
     """ProtectedBranchPropRequiredConversationResolution"""
 
     enabled: Union[Unset, bool] = Field(default=UNSET)
 
 
-class ProtectedBranchPropBlockCreations(GitHubModel):
+class ProtectedBranchPropBlockCreations(GitHubRestModel):
     """ProtectedBranchPropBlockCreations"""
 
     enabled: bool = Field(default=...)
 
 
-class DeploymentSimple(GitHubModel):
+class DeploymentSimple(GitHubRestModel):
     """Deployment
 
     A deployment created as the result of an Actions check run from a workflow that
@@ -5419,7 +5423,7 @@ class DeploymentSimple(GitHubModel):
     )
 
 
-class CheckRun(GitHubModel):
+class CheckRun(GitHubRestModel):
     """CheckRun
 
     A check performed on the code of a given code change
@@ -5468,7 +5472,7 @@ class CheckRun(GitHubModel):
     )
 
 
-class CheckRunPropOutput(GitHubModel):
+class CheckRunPropOutput(GitHubRestModel):
     """CheckRunPropOutput"""
 
     title: Union[str, None] = Field(default=...)
@@ -5478,13 +5482,13 @@ class CheckRunPropOutput(GitHubModel):
     annotations_url: str = Field(default=...)
 
 
-class CheckRunPropCheckSuite(GitHubModel):
+class CheckRunPropCheckSuite(GitHubRestModel):
     """CheckRunPropCheckSuite"""
 
     id: int = Field(default=...)
 
 
-class CheckAnnotation(GitHubModel):
+class CheckAnnotation(GitHubRestModel):
     """Check Annotation
 
     Check Annotation
@@ -5502,7 +5506,7 @@ class CheckAnnotation(GitHubModel):
     blob_href: str = Field(default=...)
 
 
-class CheckSuite(GitHubModel):
+class CheckSuite(GitHubRestModel):
     """CheckSuite
 
     A suite of checks performed on the code of a given code change
@@ -5552,7 +5556,7 @@ class CheckSuite(GitHubModel):
     runs_rerequestable: Union[Unset, bool] = Field(default=UNSET)
 
 
-class CheckSuitePreference(GitHubModel):
+class CheckSuitePreference(GitHubRestModel):
     """Check Suite Preference
 
     Check suite configuration preferences for a repository.
@@ -5564,7 +5568,7 @@ class CheckSuitePreference(GitHubModel):
     )
 
 
-class CheckSuitePreferencePropPreferences(GitHubModel):
+class CheckSuitePreferencePropPreferences(GitHubRestModel):
     """CheckSuitePreferencePropPreferences"""
 
     auto_trigger_checks: Union[
@@ -5572,14 +5576,14 @@ class CheckSuitePreferencePropPreferences(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubRestModel):
     """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
 
     app_id: int = Field(default=...)
     setting: bool = Field(default=...)
 
 
-class CodeScanningAlertRuleSummary(GitHubModel):
+class CodeScanningAlertRuleSummary(GitHubRestModel):
     """CodeScanningAlertRuleSummary"""
 
     id: Union[Unset, Union[str, None]] = Field(
@@ -5601,7 +5605,7 @@ class CodeScanningAlertRuleSummary(GitHubModel):
     )
 
 
-class CodeScanningAlertItems(GitHubModel):
+class CodeScanningAlertItems(GitHubRestModel):
     """CodeScanningAlertItems"""
 
     number: int = Field(description="The security alert number.", default=...)
@@ -5651,7 +5655,7 @@ class CodeScanningAlertItems(GitHubModel):
     most_recent_instance: CodeScanningAlertInstance = Field(default=...)
 
 
-class CodeScanningAlert(GitHubModel):
+class CodeScanningAlert(GitHubRestModel):
     """CodeScanningAlert"""
 
     number: int = Field(description="The security alert number.", default=...)
@@ -5701,7 +5705,7 @@ class CodeScanningAlert(GitHubModel):
     most_recent_instance: CodeScanningAlertInstance = Field(default=...)
 
 
-class CodeScanningAnalysis(GitHubModel):
+class CodeScanningAnalysis(GitHubRestModel):
     """CodeScanningAnalysis"""
 
     ref: str = Field(
@@ -5750,7 +5754,7 @@ class CodeScanningAnalysis(GitHubModel):
     )
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
+class CodeScanningAnalysisDeletion(GitHubRestModel):
     """Analysis deletion
 
     Successful deletion of a code scanning analysis
@@ -5766,7 +5770,7 @@ class CodeScanningAnalysisDeletion(GitHubModel):
     )
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
+class CodeScanningSarifsReceipt(GitHubRestModel):
     """CodeScanningSarifsReceipt"""
 
     id: Union[Unset, str] = Field(
@@ -5778,7 +5782,7 @@ class CodeScanningSarifsReceipt(GitHubModel):
     )
 
 
-class CodeScanningSarifsStatus(GitHubModel):
+class CodeScanningSarifsStatus(GitHubRestModel):
     """CodeScanningSarifsStatus"""
 
     processing_status: Union[Unset, Literal["pending", "complete", "failed"]] = Field(
@@ -5795,7 +5799,7 @@ class CodeScanningSarifsStatus(GitHubModel):
     )
 
 
-class CodeownersErrors(GitHubModel):
+class CodeownersErrors(GitHubRestModel):
     """CODEOWNERS errors
 
     A list of errors found in a repo's CODEOWNERS file
@@ -5804,7 +5808,7 @@ class CodeownersErrors(GitHubModel):
     errors: List[CodeownersErrorsPropErrorsItems] = Field(default=...)
 
 
-class CodeownersErrorsPropErrorsItems(GitHubModel):
+class CodeownersErrorsPropErrorsItems(GitHubRestModel):
     """CodeownersErrorsPropErrorsItems"""
 
     line: int = Field(
@@ -5830,7 +5834,7 @@ class CodeownersErrorsPropErrorsItems(GitHubModel):
     )
 
 
-class RepoCodespacesSecret(GitHubModel):
+class RepoCodespacesSecret(GitHubRestModel):
     """Codespaces Secret
 
     Set repository secrets for GitHub Codespaces.
@@ -5841,7 +5845,7 @@ class RepoCodespacesSecret(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class CodespacesPublicKey(GitHubModel):
+class CodespacesPublicKey(GitHubRestModel):
     """CodespacesPublicKey
 
     The public key used for setting Codespaces secrets.
@@ -5855,7 +5859,7 @@ class CodespacesPublicKey(GitHubModel):
     created_at: Union[Unset, str] = Field(default=UNSET)
 
 
-class Collaborator(GitHubModel):
+class Collaborator(GitHubRestModel):
     """Collaborator
 
     Collaborator
@@ -5885,7 +5889,7 @@ class Collaborator(GitHubModel):
     role_name: str = Field(default=...)
 
 
-class CollaboratorPropPermissions(GitHubModel):
+class CollaboratorPropPermissions(GitHubRestModel):
     """CollaboratorPropPermissions"""
 
     pull: bool = Field(default=...)
@@ -5895,7 +5899,7 @@ class CollaboratorPropPermissions(GitHubModel):
     admin: bool = Field(default=...)
 
 
-class RepositoryInvitation(GitHubModel):
+class RepositoryInvitation(GitHubRestModel):
     """Repository Invitation
 
     Repository invitations let you manage who you collaborate with.
@@ -5925,7 +5929,7 @@ class RepositoryInvitation(GitHubModel):
     node_id: str = Field(default=...)
 
 
-class RepositoryCollaboratorPermission(GitHubModel):
+class RepositoryCollaboratorPermission(GitHubRestModel):
     """Repository Collaborator Permission
 
     Repository Collaborator Permission
@@ -5938,7 +5942,7 @@ class RepositoryCollaboratorPermission(GitHubModel):
     )
 
 
-class CommitComment(GitHubModel):
+class CommitComment(GitHubRestModel):
     """Commit Comment
 
     Commit Comment
@@ -5977,7 +5981,7 @@ class CommitComment(GitHubModel):
     )
 
 
-class BranchShort(GitHubModel):
+class BranchShort(GitHubRestModel):
     """Branch Short
 
     Branch Short
@@ -5988,14 +5992,14 @@ class BranchShort(GitHubModel):
     protected: bool = Field(default=...)
 
 
-class BranchShortPropCommit(GitHubModel):
+class BranchShortPropCommit(GitHubRestModel):
     """BranchShortPropCommit"""
 
     sha: str = Field(default=...)
     url: str = Field(default=...)
 
 
-class Link(GitHubModel):
+class Link(GitHubRestModel):
     """Link
 
     Hypermedia Link
@@ -6004,7 +6008,7 @@ class Link(GitHubModel):
     href: str = Field(default=...)
 
 
-class AutoMerge(GitHubModel):
+class AutoMerge(GitHubRestModel):
     """Auto merge
 
     The status of auto merging a pull request.
@@ -6024,7 +6028,7 @@ class AutoMerge(GitHubModel):
     )
 
 
-class PullRequestSimple(GitHubModel):
+class PullRequestSimple(GitHubRestModel):
     """Pull Request Simple
 
     Pull Request Simple
@@ -6098,7 +6102,7 @@ class PullRequestSimple(GitHubModel):
     )
 
 
-class PullRequestSimplePropLabelsItems(GitHubModel):
+class PullRequestSimplePropLabelsItems(GitHubRestModel):
     """PullRequestSimplePropLabelsItems"""
 
     id: int = Field(default=...)
@@ -6110,7 +6114,7 @@ class PullRequestSimplePropLabelsItems(GitHubModel):
     default: bool = Field(default=...)
 
 
-class PullRequestSimplePropHead(GitHubModel):
+class PullRequestSimplePropHead(GitHubRestModel):
     """PullRequestSimplePropHead"""
 
     label: str = Field(default=...)
@@ -6124,7 +6128,7 @@ class PullRequestSimplePropHead(GitHubModel):
     )
 
 
-class PullRequestSimplePropBase(GitHubModel):
+class PullRequestSimplePropBase(GitHubRestModel):
     """PullRequestSimplePropBase"""
 
     label: str = Field(default=...)
@@ -6138,7 +6142,7 @@ class PullRequestSimplePropBase(GitHubModel):
     )
 
 
-class PullRequestSimplePropLinks(GitHubModel):
+class PullRequestSimplePropLinks(GitHubRestModel):
     """PullRequestSimplePropLinks"""
 
     comments: Link = Field(title="Link", description="Hypermedia Link", default=...)
@@ -6157,7 +6161,7 @@ class PullRequestSimplePropLinks(GitHubModel):
     )
 
 
-class SimpleCommitStatus(GitHubModel):
+class SimpleCommitStatus(GitHubRestModel):
     """Simple Commit Status"""
 
     description: Union[str, None] = Field(default=...)
@@ -6173,7 +6177,7 @@ class SimpleCommitStatus(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class CombinedCommitStatus(GitHubModel):
+class CombinedCommitStatus(GitHubRestModel):
     """Combined Commit Status
 
     Combined Commit Status
@@ -6190,7 +6194,7 @@ class CombinedCommitStatus(GitHubModel):
     url: str = Field(default=...)
 
 
-class Status(GitHubModel):
+class Status(GitHubRestModel):
     """Status
 
     The status of a commit.
@@ -6211,14 +6215,14 @@ class Status(GitHubModel):
     )
 
 
-class CommunityHealthFile(GitHubModel):
+class CommunityHealthFile(GitHubRestModel):
     """Community Health File"""
 
     url: str = Field(default=...)
     html_url: str = Field(default=...)
 
 
-class CommunityProfile(GitHubModel):
+class CommunityProfile(GitHubRestModel):
     """Community Profile
 
     Community Profile
@@ -6232,7 +6236,7 @@ class CommunityProfile(GitHubModel):
     content_reports_enabled: Union[Unset, bool] = Field(default=UNSET)
 
 
-class CommunityProfilePropFiles(GitHubModel):
+class CommunityProfilePropFiles(GitHubRestModel):
     """CommunityProfilePropFiles"""
 
     code_of_conduct: Union[None, CodeOfConductSimple] = Field(
@@ -6263,7 +6267,7 @@ class CommunityProfilePropFiles(GitHubModel):
     )
 
 
-class CommitComparison(GitHubModel):
+class CommitComparison(GitHubRestModel):
     """Commit Comparison
 
     Commit Comparison
@@ -6284,7 +6288,7 @@ class CommitComparison(GitHubModel):
     files: Union[Unset, List[DiffEntry]] = Field(default=UNSET)
 
 
-class ContentTree(GitHubModel):
+class ContentTree(GitHubRestModel):
     """Content Tree
 
     Content Tree
@@ -6303,7 +6307,7 @@ class ContentTree(GitHubModel):
     links: ContentTreePropLinks = Field(default=..., alias="_links")
 
 
-class ContentTreePropEntriesItems(GitHubModel):
+class ContentTreePropEntriesItems(GitHubRestModel):
     """ContentTreePropEntriesItems"""
 
     type: str = Field(default=...)
@@ -6319,7 +6323,7 @@ class ContentTreePropEntriesItems(GitHubModel):
     links: ContentTreePropEntriesItemsPropLinks = Field(default=..., alias="_links")
 
 
-class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+class ContentTreePropEntriesItemsPropLinks(GitHubRestModel):
     """ContentTreePropEntriesItemsPropLinks"""
 
     git: Union[str, None] = Field(default=...)
@@ -6327,7 +6331,7 @@ class ContentTreePropEntriesItemsPropLinks(GitHubModel):
     self_: str = Field(default=..., alias="self")
 
 
-class ContentTreePropLinks(GitHubModel):
+class ContentTreePropLinks(GitHubRestModel):
     """ContentTreePropLinks"""
 
     git: Union[str, None] = Field(default=...)
@@ -6335,7 +6339,7 @@ class ContentTreePropLinks(GitHubModel):
     self_: str = Field(default=..., alias="self")
 
 
-class ContentDirectoryItems(GitHubModel):
+class ContentDirectoryItems(GitHubRestModel):
     """ContentDirectoryItems"""
 
     type: str = Field(default=...)
@@ -6351,7 +6355,7 @@ class ContentDirectoryItems(GitHubModel):
     links: ContentDirectoryItemsPropLinks = Field(default=..., alias="_links")
 
 
-class ContentDirectoryItemsPropLinks(GitHubModel):
+class ContentDirectoryItemsPropLinks(GitHubRestModel):
     """ContentDirectoryItemsPropLinks"""
 
     git: Union[str, None] = Field(default=...)
@@ -6359,7 +6363,7 @@ class ContentDirectoryItemsPropLinks(GitHubModel):
     self_: str = Field(default=..., alias="self")
 
 
-class ContentFile(GitHubModel):
+class ContentFile(GitHubRestModel):
     """Content File
 
     Content File
@@ -6381,7 +6385,7 @@ class ContentFile(GitHubModel):
     submodule_git_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ContentFilePropLinks(GitHubModel):
+class ContentFilePropLinks(GitHubRestModel):
     """ContentFilePropLinks"""
 
     git: Union[str, None] = Field(default=...)
@@ -6389,7 +6393,7 @@ class ContentFilePropLinks(GitHubModel):
     self_: str = Field(default=..., alias="self")
 
 
-class ContentSymlink(GitHubModel):
+class ContentSymlink(GitHubRestModel):
     """Symlink Content
 
     An object describing a symlink
@@ -6408,7 +6412,7 @@ class ContentSymlink(GitHubModel):
     links: ContentSymlinkPropLinks = Field(default=..., alias="_links")
 
 
-class ContentSymlinkPropLinks(GitHubModel):
+class ContentSymlinkPropLinks(GitHubRestModel):
     """ContentSymlinkPropLinks"""
 
     git: Union[str, None] = Field(default=...)
@@ -6416,7 +6420,7 @@ class ContentSymlinkPropLinks(GitHubModel):
     self_: str = Field(default=..., alias="self")
 
 
-class ContentSubmodule(GitHubModel):
+class ContentSubmodule(GitHubRestModel):
     """Symlink Content
 
     An object describing a symlink
@@ -6435,7 +6439,7 @@ class ContentSubmodule(GitHubModel):
     links: ContentSubmodulePropLinks = Field(default=..., alias="_links")
 
 
-class ContentSubmodulePropLinks(GitHubModel):
+class ContentSubmodulePropLinks(GitHubRestModel):
     """ContentSubmodulePropLinks"""
 
     git: Union[str, None] = Field(default=...)
@@ -6443,7 +6447,7 @@ class ContentSubmodulePropLinks(GitHubModel):
     self_: str = Field(default=..., alias="self")
 
 
-class FileCommit(GitHubModel):
+class FileCommit(GitHubRestModel):
     """File Commit
 
     File Commit
@@ -6453,7 +6457,7 @@ class FileCommit(GitHubModel):
     commit: FileCommitPropCommit = Field(default=...)
 
 
-class FileCommitPropContent(GitHubModel):
+class FileCommitPropContent(GitHubRestModel):
     """FileCommitPropContent"""
 
     name: Union[Unset, str] = Field(default=UNSET)
@@ -6470,7 +6474,7 @@ class FileCommitPropContent(GitHubModel):
     )
 
 
-class FileCommitPropContentPropLinks(GitHubModel):
+class FileCommitPropContentPropLinks(GitHubRestModel):
     """FileCommitPropContentPropLinks"""
 
     self_: Union[Unset, str] = Field(default=UNSET, alias="self")
@@ -6478,7 +6482,7 @@ class FileCommitPropContentPropLinks(GitHubModel):
     html: Union[Unset, str] = Field(default=UNSET)
 
 
-class FileCommitPropCommit(GitHubModel):
+class FileCommitPropCommit(GitHubRestModel):
     """FileCommitPropCommit"""
 
     sha: Union[Unset, str] = Field(default=UNSET)
@@ -6497,7 +6501,7 @@ class FileCommitPropCommit(GitHubModel):
     )
 
 
-class FileCommitPropCommitPropAuthor(GitHubModel):
+class FileCommitPropCommitPropAuthor(GitHubRestModel):
     """FileCommitPropCommitPropAuthor"""
 
     date: Union[Unset, str] = Field(default=UNSET)
@@ -6505,7 +6509,7 @@ class FileCommitPropCommitPropAuthor(GitHubModel):
     email: Union[Unset, str] = Field(default=UNSET)
 
 
-class FileCommitPropCommitPropCommitter(GitHubModel):
+class FileCommitPropCommitPropCommitter(GitHubRestModel):
     """FileCommitPropCommitPropCommitter"""
 
     date: Union[Unset, str] = Field(default=UNSET)
@@ -6513,14 +6517,14 @@ class FileCommitPropCommitPropCommitter(GitHubModel):
     email: Union[Unset, str] = Field(default=UNSET)
 
 
-class FileCommitPropCommitPropTree(GitHubModel):
+class FileCommitPropCommitPropTree(GitHubRestModel):
     """FileCommitPropCommitPropTree"""
 
     url: Union[Unset, str] = Field(default=UNSET)
     sha: Union[Unset, str] = Field(default=UNSET)
 
 
-class FileCommitPropCommitPropParentsItems(GitHubModel):
+class FileCommitPropCommitPropParentsItems(GitHubRestModel):
     """FileCommitPropCommitPropParentsItems"""
 
     url: Union[Unset, str] = Field(default=UNSET)
@@ -6528,7 +6532,7 @@ class FileCommitPropCommitPropParentsItems(GitHubModel):
     sha: Union[Unset, str] = Field(default=UNSET)
 
 
-class FileCommitPropCommitPropVerification(GitHubModel):
+class FileCommitPropCommitPropVerification(GitHubRestModel):
     """FileCommitPropCommitPropVerification"""
 
     verified: Union[Unset, bool] = Field(default=UNSET)
@@ -6537,7 +6541,7 @@ class FileCommitPropCommitPropVerification(GitHubModel):
     payload: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class Contributor(GitHubModel):
+class Contributor(GitHubRestModel):
     """Contributor
 
     Contributor
@@ -6566,7 +6570,7 @@ class Contributor(GitHubModel):
     name: Union[Unset, str] = Field(default=UNSET)
 
 
-class DependabotSecret(GitHubModel):
+class DependabotSecret(GitHubRestModel):
     """Dependabot Secret
 
     Set secrets for Dependabot.
@@ -6577,7 +6581,7 @@ class DependabotSecret(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class DependencyGraphDiffItems(GitHubModel):
+class DependencyGraphDiffItems(GitHubRestModel):
     """DependencyGraphDiffItems"""
 
     change_type: Literal["added", "removed"] = Field(default=...)
@@ -6593,7 +6597,7 @@ class DependencyGraphDiffItems(GitHubModel):
     )
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
+class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubRestModel):
     """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
     severity: str = Field(default=...)
@@ -6602,7 +6606,7 @@ class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
     advisory_url: str = Field(default=...)
 
 
-class Metadata(GitHubModel, extra=Extra.allow):
+class Metadata(GitHubRestModel, extra=Extra.allow):
     """metadata
 
     User-defined metadata to store domain-specific information limited to 8 keys
@@ -6610,7 +6614,7 @@ class Metadata(GitHubModel, extra=Extra.allow):
     """
 
 
-class Dependency(GitHubModel):
+class Dependency(GitHubRestModel):
     """Dependency
 
     A single package dependency.
@@ -6640,7 +6644,7 @@ class Dependency(GitHubModel):
     )
 
 
-class Manifest(GitHubModel):
+class Manifest(GitHubRestModel):
     """manifest
 
     A collection of related dependencies declared in a file or representing a
@@ -6657,7 +6661,7 @@ class Manifest(GitHubModel):
     resolved: Union[Unset, Any] = Field(default=UNSET)
 
 
-class ManifestPropFile(GitHubModel):
+class ManifestPropFile(GitHubRestModel):
     """ManifestPropFile"""
 
     source_location: Union[Unset, str] = Field(
@@ -6666,7 +6670,7 @@ class ManifestPropFile(GitHubModel):
     )
 
 
-class Snapshot(GitHubModel):
+class Snapshot(GitHubRestModel):
     """snapshot
 
     Create a new snapshot of a repository's dependencies.
@@ -6702,7 +6706,7 @@ class Snapshot(GitHubModel):
     )
 
 
-class SnapshotPropJob(GitHubModel):
+class SnapshotPropJob(GitHubRestModel):
     """SnapshotPropJob"""
 
     id: str = Field(description="The external ID of the job.", default=...)
@@ -6715,7 +6719,7 @@ class SnapshotPropJob(GitHubModel):
     )
 
 
-class SnapshotPropDetector(GitHubModel):
+class SnapshotPropDetector(GitHubRestModel):
     """SnapshotPropDetector
 
     A description of the detector used.
@@ -6726,14 +6730,14 @@ class SnapshotPropDetector(GitHubModel):
     url: str = Field(description="The url of the detector used.", default=...)
 
 
-class SnapshotPropManifests(GitHubModel, extra=Extra.allow):
+class SnapshotPropManifests(GitHubRestModel, extra=Extra.allow):
     """SnapshotPropManifests
 
     A collection of package manifests
     """
 
 
-class DeploymentStatus(GitHubModel):
+class DeploymentStatus(GitHubRestModel):
     """Deployment Status
 
     The status of a deployment.
@@ -6775,7 +6779,7 @@ class DeploymentStatus(GitHubModel):
     )
 
 
-class DeploymentBranchPolicy(GitHubModel):
+class DeploymentBranchPolicy(GitHubRestModel):
     """DeploymentBranchPolicy
 
     The type of deployment branch policy for this environment. To allow all branches
@@ -6792,7 +6796,7 @@ class DeploymentBranchPolicy(GitHubModel):
     )
 
 
-class Environment(GitHubModel):
+class Environment(GitHubRestModel):
     """Environment
 
     Details of a deployment environment
@@ -6827,7 +6831,7 @@ class Environment(GitHubModel):
     )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
+class EnvironmentPropProtectionRulesItemsAnyof0(GitHubRestModel):
     """EnvironmentPropProtectionRulesItemsAnyof0"""
 
     id: int = Field(default=...)
@@ -6839,7 +6843,7 @@ class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
     )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubRestModel):
     """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int = Field(default=...)
@@ -6853,7 +6857,7 @@ class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
     )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubRestModel):
     """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
     type: Union[Unset, Literal["User", "Team"]] = Field(
@@ -6866,7 +6870,7 @@ class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
     )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
+class EnvironmentPropProtectionRulesItemsAnyof2(GitHubRestModel):
     """EnvironmentPropProtectionRulesItemsAnyof2"""
 
     id: int = Field(default=...)
@@ -6874,7 +6878,7 @@ class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
     type: str = Field(default=...)
 
 
-class ShortBlob(GitHubModel):
+class ShortBlob(GitHubRestModel):
     """Short Blob
 
     Short Blob
@@ -6884,7 +6888,7 @@ class ShortBlob(GitHubModel):
     sha: str = Field(default=...)
 
 
-class Blob(GitHubModel):
+class Blob(GitHubRestModel):
     """Blob
 
     Blob
@@ -6899,7 +6903,7 @@ class Blob(GitHubModel):
     highlighted_content: Union[Unset, str] = Field(default=UNSET)
 
 
-class GitCommit(GitHubModel):
+class GitCommit(GitHubRestModel):
     """Git Commit
 
     Low-level Git commit operations within a repository
@@ -6923,7 +6927,7 @@ class GitCommit(GitHubModel):
     html_url: str = Field(default=...)
 
 
-class GitCommitPropAuthor(GitHubModel):
+class GitCommitPropAuthor(GitHubRestModel):
     """GitCommitPropAuthor
 
     Identifying information for the git-user
@@ -6934,7 +6938,7 @@ class GitCommitPropAuthor(GitHubModel):
     name: str = Field(description="Name of the git user", default=...)
 
 
-class GitCommitPropCommitter(GitHubModel):
+class GitCommitPropCommitter(GitHubRestModel):
     """GitCommitPropCommitter
 
     Identifying information for the git-user
@@ -6945,14 +6949,14 @@ class GitCommitPropCommitter(GitHubModel):
     name: str = Field(description="Name of the git user", default=...)
 
 
-class GitCommitPropTree(GitHubModel):
+class GitCommitPropTree(GitHubRestModel):
     """GitCommitPropTree"""
 
     sha: str = Field(description="SHA for the commit", default=...)
     url: str = Field(default=...)
 
 
-class GitCommitPropParentsItems(GitHubModel):
+class GitCommitPropParentsItems(GitHubRestModel):
     """GitCommitPropParentsItems"""
 
     sha: str = Field(description="SHA for the commit", default=...)
@@ -6960,7 +6964,7 @@ class GitCommitPropParentsItems(GitHubModel):
     html_url: str = Field(default=...)
 
 
-class GitCommitPropVerification(GitHubModel):
+class GitCommitPropVerification(GitHubRestModel):
     """GitCommitPropVerification"""
 
     verified: bool = Field(default=...)
@@ -6969,7 +6973,7 @@ class GitCommitPropVerification(GitHubModel):
     payload: Union[str, None] = Field(default=...)
 
 
-class GitRef(GitHubModel):
+class GitRef(GitHubRestModel):
     """Git Reference
 
     Git references within a repository
@@ -6981,7 +6985,7 @@ class GitRef(GitHubModel):
     object_: GitRefPropObject = Field(default=..., alias="object")
 
 
-class GitRefPropObject(GitHubModel):
+class GitRefPropObject(GitHubRestModel):
     """GitRefPropObject"""
 
     type: str = Field(default=...)
@@ -6991,7 +6995,7 @@ class GitRefPropObject(GitHubModel):
     url: str = Field(default=...)
 
 
-class GitTag(GitHubModel):
+class GitTag(GitHubRestModel):
     """Git Tag
 
     Metadata for a Git tag
@@ -7011,7 +7015,7 @@ class GitTag(GitHubModel):
     )
 
 
-class GitTagPropTagger(GitHubModel):
+class GitTagPropTagger(GitHubRestModel):
     """GitTagPropTagger"""
 
     date: str = Field(default=...)
@@ -7019,7 +7023,7 @@ class GitTagPropTagger(GitHubModel):
     name: str = Field(default=...)
 
 
-class GitTagPropObject(GitHubModel):
+class GitTagPropObject(GitHubRestModel):
     """GitTagPropObject"""
 
     sha: str = Field(default=...)
@@ -7027,7 +7031,7 @@ class GitTagPropObject(GitHubModel):
     url: str = Field(default=...)
 
 
-class GitTree(GitHubModel):
+class GitTree(GitHubRestModel):
     """Git Tree
 
     The hierarchy between files in a Git repository.
@@ -7041,7 +7045,7 @@ class GitTree(GitHubModel):
     )
 
 
-class GitTreePropTreeItems(GitHubModel):
+class GitTreePropTreeItems(GitHubRestModel):
     """GitTreePropTreeItems"""
 
     path: Union[Unset, str] = Field(default=UNSET)
@@ -7052,7 +7056,7 @@ class GitTreePropTreeItems(GitHubModel):
     url: Union[Unset, str] = Field(default=UNSET)
 
 
-class HookResponse(GitHubModel):
+class HookResponse(GitHubRestModel):
     """Hook Response"""
 
     code: Union[int, None] = Field(default=...)
@@ -7060,7 +7064,7 @@ class HookResponse(GitHubModel):
     message: Union[str, None] = Field(default=...)
 
 
-class Hook(GitHubModel):
+class Hook(GitHubRestModel):
     """Webhook
 
     Webhooks for repositories.
@@ -7089,7 +7093,7 @@ class Hook(GitHubModel):
     last_response: HookResponse = Field(title="Hook Response", default=...)
 
 
-class HookPropConfig(GitHubModel):
+class HookPropConfig(GitHubRestModel):
     """HookPropConfig"""
 
     email: Union[Unset, str] = Field(default=UNSET)
@@ -7115,7 +7119,7 @@ class HookPropConfig(GitHubModel):
     token: Union[Unset, str] = Field(default=UNSET)
 
 
-class Import(GitHubModel):
+class Import(GitHubRestModel):
     """Import
 
     A repository import from an external source.
@@ -7167,7 +7171,7 @@ class Import(GitHubModel):
     svn_root: Union[Unset, str] = Field(default=UNSET)
 
 
-class ImportPropProjectChoicesItems(GitHubModel):
+class ImportPropProjectChoicesItems(GitHubRestModel):
     """ImportPropProjectChoicesItems"""
 
     vcs: Union[Unset, str] = Field(default=UNSET)
@@ -7175,7 +7179,7 @@ class ImportPropProjectChoicesItems(GitHubModel):
     human_name: Union[Unset, str] = Field(default=UNSET)
 
 
-class PorterAuthor(GitHubModel):
+class PorterAuthor(GitHubRestModel):
     """Porter Author
 
     Porter Author
@@ -7190,7 +7194,7 @@ class PorterAuthor(GitHubModel):
     import_url: str = Field(default=...)
 
 
-class PorterLargeFile(GitHubModel):
+class PorterLargeFile(GitHubRestModel):
     """Porter Large File
 
     Porter Large File
@@ -7202,7 +7206,7 @@ class PorterLargeFile(GitHubModel):
     size: int = Field(default=...)
 
 
-class IssueEventLabel(GitHubModel):
+class IssueEventLabel(GitHubRestModel):
     """Issue Event Label
 
     Issue Event Label
@@ -7212,7 +7216,7 @@ class IssueEventLabel(GitHubModel):
     color: Union[str, None] = Field(default=...)
 
 
-class IssueEventDismissedReview(GitHubModel):
+class IssueEventDismissedReview(GitHubRestModel):
     """Issue Event Dismissed Review"""
 
     state: str = Field(default=...)
@@ -7221,7 +7225,7 @@ class IssueEventDismissedReview(GitHubModel):
     dismissal_commit_id: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class IssueEventMilestone(GitHubModel):
+class IssueEventMilestone(GitHubRestModel):
     """Issue Event Milestone
 
     Issue Event Milestone
@@ -7230,7 +7234,7 @@ class IssueEventMilestone(GitHubModel):
     title: str = Field(default=...)
 
 
-class IssueEventProjectCard(GitHubModel):
+class IssueEventProjectCard(GitHubRestModel):
     """Issue Event Project Card
 
     Issue Event Project Card
@@ -7244,7 +7248,7 @@ class IssueEventProjectCard(GitHubModel):
     previous_column_name: Union[Unset, str] = Field(default=UNSET)
 
 
-class IssueEventRename(GitHubModel):
+class IssueEventRename(GitHubRestModel):
     """Issue Event Rename
 
     Issue Event Rename
@@ -7254,7 +7258,7 @@ class IssueEventRename(GitHubModel):
     to: str = Field(default=...)
 
 
-class IssueEvent(GitHubModel):
+class IssueEvent(GitHubRestModel):
     """Issue Event
 
     Issue Event
@@ -7336,7 +7340,7 @@ class IssueEvent(GitHubModel):
     )
 
 
-class LabeledIssueEvent(GitHubModel):
+class LabeledIssueEvent(GitHubRestModel):
     """Labeled Issue Event
 
     Labeled Issue Event
@@ -7360,14 +7364,14 @@ class LabeledIssueEvent(GitHubModel):
     label: LabeledIssueEventPropLabel = Field(default=...)
 
 
-class LabeledIssueEventPropLabel(GitHubModel):
+class LabeledIssueEventPropLabel(GitHubRestModel):
     """LabeledIssueEventPropLabel"""
 
     name: str = Field(default=...)
     color: str = Field(default=...)
 
 
-class UnlabeledIssueEvent(GitHubModel):
+class UnlabeledIssueEvent(GitHubRestModel):
     """Unlabeled Issue Event
 
     Unlabeled Issue Event
@@ -7391,14 +7395,14 @@ class UnlabeledIssueEvent(GitHubModel):
     label: UnlabeledIssueEventPropLabel = Field(default=...)
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
+class UnlabeledIssueEventPropLabel(GitHubRestModel):
     """UnlabeledIssueEventPropLabel"""
 
     name: str = Field(default=...)
     color: str = Field(default=...)
 
 
-class AssignedIssueEvent(GitHubModel):
+class AssignedIssueEvent(GitHubRestModel):
     """Assigned Issue Event
 
     Assigned Issue Event
@@ -7427,7 +7431,7 @@ class AssignedIssueEvent(GitHubModel):
     )
 
 
-class UnassignedIssueEvent(GitHubModel):
+class UnassignedIssueEvent(GitHubRestModel):
     """Unassigned Issue Event
 
     Unassigned Issue Event
@@ -7456,7 +7460,7 @@ class UnassignedIssueEvent(GitHubModel):
     )
 
 
-class MilestonedIssueEvent(GitHubModel):
+class MilestonedIssueEvent(GitHubRestModel):
     """Milestoned Issue Event
 
     Milestoned Issue Event
@@ -7480,13 +7484,13 @@ class MilestonedIssueEvent(GitHubModel):
     milestone: MilestonedIssueEventPropMilestone = Field(default=...)
 
 
-class MilestonedIssueEventPropMilestone(GitHubModel):
+class MilestonedIssueEventPropMilestone(GitHubRestModel):
     """MilestonedIssueEventPropMilestone"""
 
     title: str = Field(default=...)
 
 
-class DemilestonedIssueEvent(GitHubModel):
+class DemilestonedIssueEvent(GitHubRestModel):
     """Demilestoned Issue Event
 
     Demilestoned Issue Event
@@ -7510,13 +7514,13 @@ class DemilestonedIssueEvent(GitHubModel):
     milestone: DemilestonedIssueEventPropMilestone = Field(default=...)
 
 
-class DemilestonedIssueEventPropMilestone(GitHubModel):
+class DemilestonedIssueEventPropMilestone(GitHubRestModel):
     """DemilestonedIssueEventPropMilestone"""
 
     title: str = Field(default=...)
 
 
-class RenamedIssueEvent(GitHubModel):
+class RenamedIssueEvent(GitHubRestModel):
     """Renamed Issue Event
 
     Renamed Issue Event
@@ -7540,14 +7544,14 @@ class RenamedIssueEvent(GitHubModel):
     rename: RenamedIssueEventPropRename = Field(default=...)
 
 
-class RenamedIssueEventPropRename(GitHubModel):
+class RenamedIssueEventPropRename(GitHubRestModel):
     """RenamedIssueEventPropRename"""
 
     from_: str = Field(default=..., alias="from")
     to: str = Field(default=...)
 
 
-class ReviewRequestedIssueEvent(GitHubModel):
+class ReviewRequestedIssueEvent(GitHubRestModel):
     """Review Requested Issue Event
 
     Review Requested Issue Event
@@ -7581,7 +7585,7 @@ class ReviewRequestedIssueEvent(GitHubModel):
     )
 
 
-class ReviewRequestRemovedIssueEvent(GitHubModel):
+class ReviewRequestRemovedIssueEvent(GitHubRestModel):
     """Review Request Removed Issue Event
 
     Review Request Removed Issue Event
@@ -7615,7 +7619,7 @@ class ReviewRequestRemovedIssueEvent(GitHubModel):
     )
 
 
-class ReviewDismissedIssueEvent(GitHubModel):
+class ReviewDismissedIssueEvent(GitHubRestModel):
     """Review Dismissed Issue Event
 
     Review Dismissed Issue Event
@@ -7639,7 +7643,7 @@ class ReviewDismissedIssueEvent(GitHubModel):
     dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field(default=...)
 
 
-class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
+class ReviewDismissedIssueEventPropDismissedReview(GitHubRestModel):
     """ReviewDismissedIssueEventPropDismissedReview"""
 
     state: str = Field(default=...)
@@ -7648,7 +7652,7 @@ class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
     dismissal_commit_id: Union[Unset, str] = Field(default=UNSET)
 
 
-class LockedIssueEvent(GitHubModel):
+class LockedIssueEvent(GitHubRestModel):
     """Locked Issue Event
 
     Locked Issue Event
@@ -7672,7 +7676,7 @@ class LockedIssueEvent(GitHubModel):
     lock_reason: Union[str, None] = Field(default=...)
 
 
-class AddedToProjectIssueEvent(GitHubModel):
+class AddedToProjectIssueEvent(GitHubRestModel):
     """Added to Project Issue Event
 
     Added to Project Issue Event
@@ -7698,7 +7702,7 @@ class AddedToProjectIssueEvent(GitHubModel):
     )
 
 
-class AddedToProjectIssueEventPropProjectCard(GitHubModel):
+class AddedToProjectIssueEventPropProjectCard(GitHubRestModel):
     """AddedToProjectIssueEventPropProjectCard"""
 
     id: int = Field(default=...)
@@ -7709,7 +7713,7 @@ class AddedToProjectIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Union[Unset, str] = Field(default=UNSET)
 
 
-class MovedColumnInProjectIssueEvent(GitHubModel):
+class MovedColumnInProjectIssueEvent(GitHubRestModel):
     """Moved Column in Project Issue Event
 
     Moved Column in Project Issue Event
@@ -7735,7 +7739,7 @@ class MovedColumnInProjectIssueEvent(GitHubModel):
     )
 
 
-class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
+class MovedColumnInProjectIssueEventPropProjectCard(GitHubRestModel):
     """MovedColumnInProjectIssueEventPropProjectCard"""
 
     id: int = Field(default=...)
@@ -7746,7 +7750,7 @@ class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Union[Unset, str] = Field(default=UNSET)
 
 
-class RemovedFromProjectIssueEvent(GitHubModel):
+class RemovedFromProjectIssueEvent(GitHubRestModel):
     """Removed from Project Issue Event
 
     Removed from Project Issue Event
@@ -7772,7 +7776,7 @@ class RemovedFromProjectIssueEvent(GitHubModel):
     )
 
 
-class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
+class RemovedFromProjectIssueEventPropProjectCard(GitHubRestModel):
     """RemovedFromProjectIssueEventPropProjectCard"""
 
     id: int = Field(default=...)
@@ -7783,7 +7787,7 @@ class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Union[Unset, str] = Field(default=UNSET)
 
 
-class ConvertedNoteToIssueIssueEvent(GitHubModel):
+class ConvertedNoteToIssueIssueEvent(GitHubRestModel):
     """Converted Note to Issue Issue Event
 
     Converted Note to Issue Issue Event
@@ -7809,7 +7813,7 @@ class ConvertedNoteToIssueIssueEvent(GitHubModel):
     )
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
+class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubRestModel):
     """ConvertedNoteToIssueIssueEventPropProjectCard"""
 
     id: int = Field(default=...)
@@ -7820,7 +7824,7 @@ class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Union[Unset, str] = Field(default=UNSET)
 
 
-class Label(GitHubModel):
+class Label(GitHubRestModel):
     """Label
 
     Color-coded labels help you categorize and filter your issues (just like labels
@@ -7839,7 +7843,7 @@ class Label(GitHubModel):
     default: bool = Field(default=...)
 
 
-class TimelineCommentEvent(GitHubModel):
+class TimelineCommentEvent(GitHubRestModel):
     """Timeline Comment Event
 
     Timeline Comment Event
@@ -7888,7 +7892,7 @@ class TimelineCommentEvent(GitHubModel):
     )
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
+class TimelineCrossReferencedEvent(GitHubRestModel):
     """Timeline Cross Referenced Event
 
     Timeline Cross Referenced Event
@@ -7903,7 +7907,7 @@ class TimelineCrossReferencedEvent(GitHubModel):
     source: TimelineCrossReferencedEventPropSource = Field(default=...)
 
 
-class TimelineCrossReferencedEventPropSource(GitHubModel):
+class TimelineCrossReferencedEventPropSource(GitHubRestModel):
     """TimelineCrossReferencedEventPropSource"""
 
     type: Union[Unset, str] = Field(default=UNSET)
@@ -7914,7 +7918,7 @@ class TimelineCrossReferencedEventPropSource(GitHubModel):
     )
 
 
-class TimelineCommittedEvent(GitHubModel):
+class TimelineCommittedEvent(GitHubRestModel):
     """Timeline Committed Event
 
     Timeline Committed Event
@@ -7939,7 +7943,7 @@ class TimelineCommittedEvent(GitHubModel):
     html_url: str = Field(default=...)
 
 
-class TimelineCommittedEventPropAuthor(GitHubModel):
+class TimelineCommittedEventPropAuthor(GitHubRestModel):
     """TimelineCommittedEventPropAuthor
 
     Identifying information for the git-user
@@ -7950,7 +7954,7 @@ class TimelineCommittedEventPropAuthor(GitHubModel):
     name: str = Field(description="Name of the git user", default=...)
 
 
-class TimelineCommittedEventPropCommitter(GitHubModel):
+class TimelineCommittedEventPropCommitter(GitHubRestModel):
     """TimelineCommittedEventPropCommitter
 
     Identifying information for the git-user
@@ -7961,14 +7965,14 @@ class TimelineCommittedEventPropCommitter(GitHubModel):
     name: str = Field(description="Name of the git user", default=...)
 
 
-class TimelineCommittedEventPropTree(GitHubModel):
+class TimelineCommittedEventPropTree(GitHubRestModel):
     """TimelineCommittedEventPropTree"""
 
     sha: str = Field(description="SHA for the commit", default=...)
     url: str = Field(default=...)
 
 
-class TimelineCommittedEventPropParentsItems(GitHubModel):
+class TimelineCommittedEventPropParentsItems(GitHubRestModel):
     """TimelineCommittedEventPropParentsItems"""
 
     sha: str = Field(description="SHA for the commit", default=...)
@@ -7976,7 +7980,7 @@ class TimelineCommittedEventPropParentsItems(GitHubModel):
     html_url: str = Field(default=...)
 
 
-class TimelineCommittedEventPropVerification(GitHubModel):
+class TimelineCommittedEventPropVerification(GitHubRestModel):
     """TimelineCommittedEventPropVerification"""
 
     verified: bool = Field(default=...)
@@ -7985,7 +7989,7 @@ class TimelineCommittedEventPropVerification(GitHubModel):
     payload: Union[str, None] = Field(default=...)
 
 
-class TimelineReviewedEvent(GitHubModel):
+class TimelineReviewedEvent(GitHubRestModel):
     """Timeline Reviewed Event
 
     Timeline Reviewed Event
@@ -8022,26 +8026,26 @@ class TimelineReviewedEvent(GitHubModel):
     )
 
 
-class TimelineReviewedEventPropLinks(GitHubModel):
+class TimelineReviewedEventPropLinks(GitHubRestModel):
     """TimelineReviewedEventPropLinks"""
 
     html: TimelineReviewedEventPropLinksPropHtml = Field(default=...)
     pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field(default=...)
 
 
-class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
+class TimelineReviewedEventPropLinksPropHtml(GitHubRestModel):
     """TimelineReviewedEventPropLinksPropHtml"""
 
     href: str = Field(default=...)
 
 
-class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
+class TimelineReviewedEventPropLinksPropPullRequest(GitHubRestModel):
     """TimelineReviewedEventPropLinksPropPullRequest"""
 
     href: str = Field(default=...)
 
 
-class PullRequestReviewComment(GitHubModel):
+class PullRequestReviewComment(GitHubRestModel):
     """Pull Request Review Comment
 
     Pull Request Review Comments are comments on a portion of the Pull Request's
@@ -8143,7 +8147,7 @@ class PullRequestReviewComment(GitHubModel):
     body_text: Union[Unset, str] = Field(default=UNSET)
 
 
-class PullRequestReviewCommentPropLinks(GitHubModel):
+class PullRequestReviewCommentPropLinks(GitHubRestModel):
     """PullRequestReviewCommentPropLinks"""
 
     self_: PullRequestReviewCommentPropLinksPropSelf = Field(default=..., alias="self")
@@ -8151,25 +8155,25 @@ class PullRequestReviewCommentPropLinks(GitHubModel):
     pull_request: PullRequestReviewCommentPropLinksPropPullRequest = Field(default=...)
 
 
-class PullRequestReviewCommentPropLinksPropSelf(GitHubModel):
+class PullRequestReviewCommentPropLinksPropSelf(GitHubRestModel):
     """PullRequestReviewCommentPropLinksPropSelf"""
 
     href: str = Field(default=...)
 
 
-class PullRequestReviewCommentPropLinksPropHtml(GitHubModel):
+class PullRequestReviewCommentPropLinksPropHtml(GitHubRestModel):
     """PullRequestReviewCommentPropLinksPropHtml"""
 
     href: str = Field(default=...)
 
 
-class PullRequestReviewCommentPropLinksPropPullRequest(GitHubModel):
+class PullRequestReviewCommentPropLinksPropPullRequest(GitHubRestModel):
     """PullRequestReviewCommentPropLinksPropPullRequest"""
 
     href: str = Field(default=...)
 
 
-class TimelineLineCommentedEvent(GitHubModel):
+class TimelineLineCommentedEvent(GitHubRestModel):
     """Timeline Line Commented Event
 
     Timeline Line Commented Event
@@ -8180,7 +8184,7 @@ class TimelineLineCommentedEvent(GitHubModel):
     comments: Union[Unset, List[PullRequestReviewComment]] = Field(default=UNSET)
 
 
-class TimelineCommitCommentedEvent(GitHubModel):
+class TimelineCommitCommentedEvent(GitHubRestModel):
     """Timeline Commit Commented Event
 
     Timeline Commit Commented Event
@@ -8192,7 +8196,7 @@ class TimelineCommitCommentedEvent(GitHubModel):
     comments: Union[Unset, List[CommitComment]] = Field(default=UNSET)
 
 
-class TimelineAssignedIssueEvent(GitHubModel):
+class TimelineAssignedIssueEvent(GitHubRestModel):
     """Timeline Assigned Issue Event
 
     Timeline Assigned Issue Event
@@ -8218,7 +8222,7 @@ class TimelineAssignedIssueEvent(GitHubModel):
     )
 
 
-class TimelineUnassignedIssueEvent(GitHubModel):
+class TimelineUnassignedIssueEvent(GitHubRestModel):
     """Timeline Unassigned Issue Event
 
     Timeline Unassigned Issue Event
@@ -8244,7 +8248,7 @@ class TimelineUnassignedIssueEvent(GitHubModel):
     )
 
 
-class StateChangeIssueEvent(GitHubModel):
+class StateChangeIssueEvent(GitHubRestModel):
     """State Change Issue Event
 
     State Change Issue Event
@@ -8268,7 +8272,7 @@ class StateChangeIssueEvent(GitHubModel):
     state_reason: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class DeployKey(GitHubModel):
+class DeployKey(GitHubRestModel):
     """Deploy Key
 
     An SSH key granting access to a single repository.
@@ -8283,14 +8287,14 @@ class DeployKey(GitHubModel):
     read_only: bool = Field(default=...)
 
 
-class Language(GitHubModel, extra=Extra.allow):
+class Language(GitHubRestModel, extra=Extra.allow):
     """Language
 
     Language
     """
 
 
-class LicenseContent(GitHubModel):
+class LicenseContent(GitHubRestModel):
     """License Content
 
     License Content
@@ -8316,7 +8320,7 @@ class LicenseContent(GitHubModel):
     )
 
 
-class LicenseContentPropLinks(GitHubModel):
+class LicenseContentPropLinks(GitHubRestModel):
     """LicenseContentPropLinks"""
 
     git: Union[str, None] = Field(default=...)
@@ -8324,7 +8328,7 @@ class LicenseContentPropLinks(GitHubModel):
     self_: str = Field(default=..., alias="self")
 
 
-class MergedUpstream(GitHubModel):
+class MergedUpstream(GitHubRestModel):
     """Merged upstream
 
     Results of a successful merge upstream request
@@ -8337,14 +8341,14 @@ class MergedUpstream(GitHubModel):
     base_branch: Union[Unset, str] = Field(default=UNSET)
 
 
-class PagesSourceHash(GitHubModel):
+class PagesSourceHash(GitHubRestModel):
     """Pages Source Hash"""
 
     branch: str = Field(default=...)
     path: str = Field(default=...)
 
 
-class PagesHttpsCertificate(GitHubModel):
+class PagesHttpsCertificate(GitHubRestModel):
     """Pages Https Certificate"""
 
     state: Literal[
@@ -8369,7 +8373,7 @@ class PagesHttpsCertificate(GitHubModel):
     expires_at: Union[Unset, date] = Field(default=UNSET)
 
 
-class Page(GitHubModel):
+class Page(GitHubRestModel):
     """GitHub Pages
 
     The configuration for GitHub Pages for a repository.
@@ -8415,7 +8419,7 @@ class Page(GitHubModel):
     )
 
 
-class PageBuild(GitHubModel):
+class PageBuild(GitHubRestModel):
     """Page Build
 
     Page Build
@@ -8433,13 +8437,13 @@ class PageBuild(GitHubModel):
     updated_at: datetime = Field(default=...)
 
 
-class PageBuildPropError(GitHubModel):
+class PageBuildPropError(GitHubRestModel):
     """PageBuildPropError"""
 
     message: Union[str, None] = Field(default=...)
 
 
-class PageBuildStatus(GitHubModel):
+class PageBuildStatus(GitHubRestModel):
     """Page Build Status
 
     Page Build Status
@@ -8449,7 +8453,7 @@ class PageBuildStatus(GitHubModel):
     status: str = Field(default=...)
 
 
-class PageDeployment(GitHubModel):
+class PageDeployment(GitHubRestModel):
     """GitHub Pages
 
     The GitHub Pages deployment status.
@@ -8466,7 +8470,7 @@ class PageDeployment(GitHubModel):
     )
 
 
-class PagesHealthCheck(GitHubModel):
+class PagesHealthCheck(GitHubRestModel):
     """Pages Health Check Status
 
     Pages Health Check Status
@@ -8478,7 +8482,7 @@ class PagesHealthCheck(GitHubModel):
     )
 
 
-class PagesHealthCheckPropDomain(GitHubModel):
+class PagesHealthCheckPropDomain(GitHubRestModel):
     """PagesHealthCheckPropDomain"""
 
     host: Union[Unset, str] = Field(default=UNSET)
@@ -8519,7 +8523,7 @@ class PagesHealthCheckPropDomain(GitHubModel):
     caa_error: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class PagesHealthCheckPropAltDomain(GitHubModel):
+class PagesHealthCheckPropAltDomain(GitHubRestModel):
     """PagesHealthCheckPropAltDomain"""
 
     host: Union[Unset, str] = Field(default=UNSET)
@@ -8560,7 +8564,7 @@ class PagesHealthCheckPropAltDomain(GitHubModel):
     caa_error: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class PullRequest(GitHubModel):
+class PullRequest(GitHubRestModel):
     """Pull Request
 
     Pull requests let you tell others about changes you've pushed to a repository on
@@ -8660,7 +8664,7 @@ class PullRequest(GitHubModel):
     changed_files: int = Field(default=...)
 
 
-class PullRequestPropLabelsItems(GitHubModel):
+class PullRequestPropLabelsItems(GitHubRestModel):
     """PullRequestPropLabelsItems"""
 
     id: int = Field(default=...)
@@ -8672,7 +8676,7 @@ class PullRequestPropLabelsItems(GitHubModel):
     default: bool = Field(default=...)
 
 
-class PullRequestPropHead(GitHubModel):
+class PullRequestPropHead(GitHubRestModel):
     """PullRequestPropHead"""
 
     label: str = Field(default=...)
@@ -8682,7 +8686,7 @@ class PullRequestPropHead(GitHubModel):
     user: PullRequestPropHeadPropUser = Field(default=...)
 
 
-class PullRequestPropHeadPropRepo(GitHubModel):
+class PullRequestPropHeadPropRepo(GitHubRestModel):
     """PullRequestPropHeadPropRepo"""
 
     archive_url: str = Field(default=...)
@@ -8777,7 +8781,7 @@ class PullRequestPropHeadPropRepo(GitHubModel):
     is_template: Union[Unset, bool] = Field(default=UNSET)
 
 
-class PullRequestPropHeadPropRepoPropOwner(GitHubModel):
+class PullRequestPropHeadPropRepoPropOwner(GitHubRestModel):
     """PullRequestPropHeadPropRepoPropOwner"""
 
     avatar_url: str = Field(default=...)
@@ -8800,7 +8804,7 @@ class PullRequestPropHeadPropRepoPropOwner(GitHubModel):
     url: str = Field(default=...)
 
 
-class PullRequestPropHeadPropRepoPropPermissions(GitHubModel):
+class PullRequestPropHeadPropRepoPropPermissions(GitHubRestModel):
     """PullRequestPropHeadPropRepoPropPermissions"""
 
     admin: bool = Field(default=...)
@@ -8810,7 +8814,7 @@ class PullRequestPropHeadPropRepoPropPermissions(GitHubModel):
     pull: bool = Field(default=...)
 
 
-class PullRequestPropHeadPropRepoPropLicense(GitHubModel):
+class PullRequestPropHeadPropRepoPropLicense(GitHubRestModel):
     """PullRequestPropHeadPropRepoPropLicense"""
 
     key: str = Field(default=...)
@@ -8820,7 +8824,7 @@ class PullRequestPropHeadPropRepoPropLicense(GitHubModel):
     node_id: str = Field(default=...)
 
 
-class PullRequestPropHeadPropUser(GitHubModel):
+class PullRequestPropHeadPropUser(GitHubRestModel):
     """PullRequestPropHeadPropUser"""
 
     avatar_url: str = Field(default=...)
@@ -8843,7 +8847,7 @@ class PullRequestPropHeadPropUser(GitHubModel):
     url: str = Field(default=...)
 
 
-class PullRequestPropBase(GitHubModel):
+class PullRequestPropBase(GitHubRestModel):
     """PullRequestPropBase"""
 
     label: str = Field(default=...)
@@ -8853,7 +8857,7 @@ class PullRequestPropBase(GitHubModel):
     user: PullRequestPropBasePropUser = Field(default=...)
 
 
-class PullRequestPropBasePropRepo(GitHubModel):
+class PullRequestPropBasePropRepo(GitHubRestModel):
     """PullRequestPropBasePropRepo"""
 
     archive_url: str = Field(default=...)
@@ -8951,7 +8955,7 @@ class PullRequestPropBasePropRepo(GitHubModel):
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
 
 
-class PullRequestPropBasePropRepoPropOwner(GitHubModel):
+class PullRequestPropBasePropRepoPropOwner(GitHubRestModel):
     """PullRequestPropBasePropRepoPropOwner"""
 
     avatar_url: str = Field(default=...)
@@ -8974,7 +8978,7 @@ class PullRequestPropBasePropRepoPropOwner(GitHubModel):
     url: str = Field(default=...)
 
 
-class PullRequestPropBasePropRepoPropPermissions(GitHubModel):
+class PullRequestPropBasePropRepoPropPermissions(GitHubRestModel):
     """PullRequestPropBasePropRepoPropPermissions"""
 
     admin: bool = Field(default=...)
@@ -8984,7 +8988,7 @@ class PullRequestPropBasePropRepoPropPermissions(GitHubModel):
     pull: bool = Field(default=...)
 
 
-class PullRequestPropBasePropUser(GitHubModel):
+class PullRequestPropBasePropUser(GitHubRestModel):
     """PullRequestPropBasePropUser"""
 
     avatar_url: str = Field(default=...)
@@ -9007,7 +9011,7 @@ class PullRequestPropBasePropUser(GitHubModel):
     url: str = Field(default=...)
 
 
-class PullRequestPropLinks(GitHubModel):
+class PullRequestPropLinks(GitHubRestModel):
     """PullRequestPropLinks"""
 
     comments: Link = Field(title="Link", description="Hypermedia Link", default=...)
@@ -9026,7 +9030,7 @@ class PullRequestPropLinks(GitHubModel):
     )
 
 
-class PullRequestMergeResult(GitHubModel):
+class PullRequestMergeResult(GitHubRestModel):
     """Pull Request Merge Result
 
     Pull Request Merge Result
@@ -9037,7 +9041,7 @@ class PullRequestMergeResult(GitHubModel):
     message: str = Field(default=...)
 
 
-class PullRequestReviewRequest(GitHubModel):
+class PullRequestReviewRequest(GitHubRestModel):
     """Pull Request Review Request
 
     Pull Request Review Request
@@ -9047,7 +9051,7 @@ class PullRequestReviewRequest(GitHubModel):
     teams: List[Team] = Field(default=...)
 
 
-class PullRequestReview(GitHubModel):
+class PullRequestReview(GitHubRestModel):
     """Pull Request Review
 
     Pull Request Reviews are reviews on pull requests.
@@ -9083,26 +9087,26 @@ class PullRequestReview(GitHubModel):
     )
 
 
-class PullRequestReviewPropLinks(GitHubModel):
+class PullRequestReviewPropLinks(GitHubRestModel):
     """PullRequestReviewPropLinks"""
 
     html: PullRequestReviewPropLinksPropHtml = Field(default=...)
     pull_request: PullRequestReviewPropLinksPropPullRequest = Field(default=...)
 
 
-class PullRequestReviewPropLinksPropHtml(GitHubModel):
+class PullRequestReviewPropLinksPropHtml(GitHubRestModel):
     """PullRequestReviewPropLinksPropHtml"""
 
     href: str = Field(default=...)
 
 
-class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
+class PullRequestReviewPropLinksPropPullRequest(GitHubRestModel):
     """PullRequestReviewPropLinksPropPullRequest"""
 
     href: str = Field(default=...)
 
 
-class ReviewComment(GitHubModel):
+class ReviewComment(GitHubRestModel):
     """Legacy Review Comment
 
     Legacy Review Comment
@@ -9173,7 +9177,7 @@ class ReviewComment(GitHubModel):
     )
 
 
-class ReviewCommentPropLinks(GitHubModel):
+class ReviewCommentPropLinks(GitHubRestModel):
     """ReviewCommentPropLinks"""
 
     self_: Link = Field(
@@ -9183,7 +9187,7 @@ class ReviewCommentPropLinks(GitHubModel):
     pull_request: Link = Field(title="Link", description="Hypermedia Link", default=...)
 
 
-class ReleaseAsset(GitHubModel):
+class ReleaseAsset(GitHubRestModel):
     """Release Asset
 
     Data related to a release.
@@ -9208,7 +9212,7 @@ class ReleaseAsset(GitHubModel):
     )
 
 
-class Release(GitHubModel):
+class Release(GitHubRestModel):
     """Release
 
     A release.
@@ -9254,7 +9258,7 @@ class Release(GitHubModel):
     )
 
 
-class ReleaseNotesContent(GitHubModel):
+class ReleaseNotesContent(GitHubRestModel):
     """Generated Release Notes Content
 
     Generated name and body describing a release
@@ -9267,7 +9271,7 @@ class ReleaseNotesContent(GitHubModel):
     )
 
 
-class SecretScanningAlert(GitHubModel):
+class SecretScanningAlert(GitHubRestModel):
     """SecretScanningAlert"""
 
     number: Union[Unset, int] = Field(
@@ -9332,7 +9336,7 @@ class SecretScanningAlert(GitHubModel):
     )
 
 
-class SecretScanningLocationCommit(GitHubModel):
+class SecretScanningLocationCommit(GitHubRestModel):
     """SecretScanningLocationCommit
 
     Represents a 'commit' secret scanning location type. This location type shows
@@ -9368,7 +9372,7 @@ class SecretScanningLocationCommit(GitHubModel):
     )
 
 
-class SecretScanningLocation(GitHubModel):
+class SecretScanningLocation(GitHubRestModel):
     """SecretScanningLocation"""
 
     type: Literal["commit"] = Field(
@@ -9381,7 +9385,7 @@ class SecretScanningLocation(GitHubModel):
     )
 
 
-class Stargazer(GitHubModel):
+class Stargazer(GitHubRestModel):
     """Stargazer
 
     Stargazer
@@ -9393,7 +9397,7 @@ class Stargazer(GitHubModel):
     )
 
 
-class CommitActivity(GitHubModel):
+class CommitActivity(GitHubRestModel):
     """Commit Activity
 
     Commit Activity
@@ -9404,7 +9408,7 @@ class CommitActivity(GitHubModel):
     week: int = Field(default=...)
 
 
-class ContributorActivity(GitHubModel):
+class ContributorActivity(GitHubRestModel):
     """Contributor Activity
 
     Contributor Activity
@@ -9417,7 +9421,7 @@ class ContributorActivity(GitHubModel):
     weeks: List[ContributorActivityPropWeeksItems] = Field(default=...)
 
 
-class ContributorActivityPropWeeksItems(GitHubModel):
+class ContributorActivityPropWeeksItems(GitHubRestModel):
     """ContributorActivityPropWeeksItems"""
 
     w: Union[Unset, int] = Field(default=UNSET)
@@ -9426,14 +9430,14 @@ class ContributorActivityPropWeeksItems(GitHubModel):
     c: Union[Unset, int] = Field(default=UNSET)
 
 
-class ParticipationStats(GitHubModel):
+class ParticipationStats(GitHubRestModel):
     """Participation Stats"""
 
     all_: List[int] = Field(default=..., alias="all")
     owner: List[int] = Field(default=...)
 
 
-class RepositorySubscription(GitHubModel):
+class RepositorySubscription(GitHubRestModel):
     """Repository Invitation
 
     Repository invitations let you manage who you collaborate with.
@@ -9453,7 +9457,7 @@ class RepositorySubscription(GitHubModel):
     repository_url: str = Field(default=...)
 
 
-class Tag(GitHubModel):
+class Tag(GitHubRestModel):
     """Tag
 
     Tag
@@ -9466,14 +9470,14 @@ class Tag(GitHubModel):
     node_id: str = Field(default=...)
 
 
-class TagPropCommit(GitHubModel):
+class TagPropCommit(GitHubRestModel):
     """TagPropCommit"""
 
     sha: str = Field(default=...)
     url: str = Field(default=...)
 
 
-class TagProtection(GitHubModel):
+class TagProtection(GitHubRestModel):
     """Tag protection
 
     Tag protection
@@ -9486,7 +9490,7 @@ class TagProtection(GitHubModel):
     pattern: str = Field(default=...)
 
 
-class Topic(GitHubModel):
+class Topic(GitHubRestModel):
     """Topic
 
     A topic aggregates entities that are related to a subject.
@@ -9495,7 +9499,7 @@ class Topic(GitHubModel):
     names: List[str] = Field(default=...)
 
 
-class Traffic(GitHubModel):
+class Traffic(GitHubRestModel):
     """Traffic"""
 
     timestamp: datetime = Field(default=...)
@@ -9503,7 +9507,7 @@ class Traffic(GitHubModel):
     count: int = Field(default=...)
 
 
-class CloneTraffic(GitHubModel):
+class CloneTraffic(GitHubRestModel):
     """Clone Traffic
 
     Clone Traffic
@@ -9514,7 +9518,7 @@ class CloneTraffic(GitHubModel):
     clones: List[Traffic] = Field(default=...)
 
 
-class ContentTraffic(GitHubModel):
+class ContentTraffic(GitHubRestModel):
     """Content Traffic
 
     Content Traffic
@@ -9526,7 +9530,7 @@ class ContentTraffic(GitHubModel):
     uniques: int = Field(default=...)
 
 
-class ReferrerTraffic(GitHubModel):
+class ReferrerTraffic(GitHubRestModel):
     """Referrer Traffic
 
     Referrer Traffic
@@ -9537,7 +9541,7 @@ class ReferrerTraffic(GitHubModel):
     uniques: int = Field(default=...)
 
 
-class ViewTraffic(GitHubModel):
+class ViewTraffic(GitHubRestModel):
     """View Traffic
 
     View Traffic
@@ -9548,7 +9552,7 @@ class ViewTraffic(GitHubModel):
     views: List[Traffic] = Field(default=...)
 
 
-class ScimGroupListEnterprise(GitHubModel):
+class ScimGroupListEnterprise(GitHubRestModel):
     """ScimGroupListEnterprise"""
 
     schemas: List[str] = Field(default=...)
@@ -9560,7 +9564,7 @@ class ScimGroupListEnterprise(GitHubModel):
     )
 
 
-class ScimGroupListEnterprisePropResourcesItems(GitHubModel):
+class ScimGroupListEnterprisePropResourcesItems(GitHubRestModel):
     """ScimGroupListEnterprisePropResourcesItems"""
 
     schemas: List[str] = Field(default=...)
@@ -9577,7 +9581,7 @@ class ScimGroupListEnterprisePropResourcesItems(GitHubModel):
     )
 
 
-class ScimGroupListEnterprisePropResourcesItemsPropMembersItems(GitHubModel):
+class ScimGroupListEnterprisePropResourcesItemsPropMembersItems(GitHubRestModel):
     """ScimGroupListEnterprisePropResourcesItemsPropMembersItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
@@ -9585,7 +9589,7 @@ class ScimGroupListEnterprisePropResourcesItemsPropMembersItems(GitHubModel):
     display: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimGroupListEnterprisePropResourcesItemsPropMeta(GitHubModel):
+class ScimGroupListEnterprisePropResourcesItemsPropMeta(GitHubRestModel):
     """ScimGroupListEnterprisePropResourcesItemsPropMeta"""
 
     resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
@@ -9594,7 +9598,7 @@ class ScimGroupListEnterprisePropResourcesItemsPropMeta(GitHubModel):
     location: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimEnterpriseGroup(GitHubModel):
+class ScimEnterpriseGroup(GitHubRestModel):
     """ScimEnterpriseGroup"""
 
     schemas: List[str] = Field(default=...)
@@ -9609,7 +9613,7 @@ class ScimEnterpriseGroup(GitHubModel):
     meta: Union[Unset, ScimEnterpriseGroupPropMeta] = Field(default=UNSET)
 
 
-class ScimEnterpriseGroupPropMembersItems(GitHubModel):
+class ScimEnterpriseGroupPropMembersItems(GitHubRestModel):
     """ScimEnterpriseGroupPropMembersItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
@@ -9617,7 +9621,7 @@ class ScimEnterpriseGroupPropMembersItems(GitHubModel):
     display: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimEnterpriseGroupPropMeta(GitHubModel):
+class ScimEnterpriseGroupPropMeta(GitHubRestModel):
     """ScimEnterpriseGroupPropMeta"""
 
     resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
@@ -9626,7 +9630,7 @@ class ScimEnterpriseGroupPropMeta(GitHubModel):
     location: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimUserListEnterprise(GitHubModel):
+class ScimUserListEnterprise(GitHubRestModel):
     """ScimUserListEnterprise"""
 
     schemas: List[str] = Field(default=...)
@@ -9638,7 +9642,7 @@ class ScimUserListEnterprise(GitHubModel):
     )
 
 
-class ScimUserListEnterprisePropResourcesItems(GitHubModel):
+class ScimUserListEnterprisePropResourcesItems(GitHubRestModel):
     """ScimUserListEnterprisePropResourcesItems"""
 
     schemas: List[str] = Field(default=...)
@@ -9660,14 +9664,14 @@ class ScimUserListEnterprisePropResourcesItems(GitHubModel):
     )
 
 
-class ScimUserListEnterprisePropResourcesItemsPropName(GitHubModel):
+class ScimUserListEnterprisePropResourcesItemsPropName(GitHubRestModel):
     """ScimUserListEnterprisePropResourcesItemsPropName"""
 
     given_name: Union[Unset, str] = Field(default=UNSET, alias="givenName")
     family_name: Union[Unset, str] = Field(default=UNSET, alias="familyName")
 
 
-class ScimUserListEnterprisePropResourcesItemsPropEmailsItems(GitHubModel):
+class ScimUserListEnterprisePropResourcesItemsPropEmailsItems(GitHubRestModel):
     """ScimUserListEnterprisePropResourcesItemsPropEmailsItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
@@ -9675,13 +9679,13 @@ class ScimUserListEnterprisePropResourcesItemsPropEmailsItems(GitHubModel):
     type: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimUserListEnterprisePropResourcesItemsPropGroupsItems(GitHubModel):
+class ScimUserListEnterprisePropResourcesItemsPropGroupsItems(GitHubRestModel):
     """ScimUserListEnterprisePropResourcesItemsPropGroupsItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimUserListEnterprisePropResourcesItemsPropMeta(GitHubModel):
+class ScimUserListEnterprisePropResourcesItemsPropMeta(GitHubRestModel):
     """ScimUserListEnterprisePropResourcesItemsPropMeta"""
 
     resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
@@ -9690,7 +9694,7 @@ class ScimUserListEnterprisePropResourcesItemsPropMeta(GitHubModel):
     location: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimEnterpriseUser(GitHubModel):
+class ScimEnterpriseUser(GitHubRestModel):
     """ScimEnterpriseUser"""
 
     schemas: List[str] = Field(default=...)
@@ -9704,14 +9708,14 @@ class ScimEnterpriseUser(GitHubModel):
     meta: Union[Unset, ScimEnterpriseUserPropMeta] = Field(default=UNSET)
 
 
-class ScimEnterpriseUserPropName(GitHubModel):
+class ScimEnterpriseUserPropName(GitHubRestModel):
     """ScimEnterpriseUserPropName"""
 
     given_name: Union[Unset, str] = Field(default=UNSET, alias="givenName")
     family_name: Union[Unset, str] = Field(default=UNSET, alias="familyName")
 
 
-class ScimEnterpriseUserPropEmailsItems(GitHubModel):
+class ScimEnterpriseUserPropEmailsItems(GitHubRestModel):
     """ScimEnterpriseUserPropEmailsItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
@@ -9719,13 +9723,13 @@ class ScimEnterpriseUserPropEmailsItems(GitHubModel):
     primary: Union[Unset, bool] = Field(default=UNSET)
 
 
-class ScimEnterpriseUserPropGroupsItems(GitHubModel):
+class ScimEnterpriseUserPropGroupsItems(GitHubRestModel):
     """ScimEnterpriseUserPropGroupsItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimEnterpriseUserPropMeta(GitHubModel):
+class ScimEnterpriseUserPropMeta(GitHubRestModel):
     """ScimEnterpriseUserPropMeta"""
 
     resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
@@ -9734,7 +9738,7 @@ class ScimEnterpriseUserPropMeta(GitHubModel):
     location: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimUser(GitHubModel):
+class ScimUser(GitHubRestModel):
     """SCIM /Users
 
     SCIM /Users provisioning endpoints
@@ -9776,7 +9780,7 @@ class ScimUser(GitHubModel):
     )
 
 
-class ScimUserPropName(GitHubModel):
+class ScimUserPropName(GitHubRestModel):
     """ScimUserPropName
 
     Examples:
@@ -9788,14 +9792,14 @@ class ScimUserPropName(GitHubModel):
     formatted: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class ScimUserPropEmailsItems(GitHubModel):
+class ScimUserPropEmailsItems(GitHubRestModel):
     """ScimUserPropEmailsItems"""
 
     value: str = Field(default=...)
     primary: Union[Unset, bool] = Field(default=UNSET)
 
 
-class ScimUserPropMeta(GitHubModel):
+class ScimUserPropMeta(GitHubRestModel):
     """ScimUserPropMeta"""
 
     resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
@@ -9804,7 +9808,7 @@ class ScimUserPropMeta(GitHubModel):
     location: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimUserPropOperationsItems(GitHubModel):
+class ScimUserPropOperationsItems(GitHubRestModel):
     """ScimUserPropOperationsItems"""
 
     op: Literal["add", "remove", "replace"] = Field(default=...)
@@ -9814,11 +9818,11 @@ class ScimUserPropOperationsItems(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ScimUserPropOperationsItemsPropValueOneof1(GitHubModel):
+class ScimUserPropOperationsItemsPropValueOneof1(GitHubRestModel):
     """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
-class ScimUserList(GitHubModel):
+class ScimUserList(GitHubRestModel):
     """SCIM User List
 
     SCIM User List
@@ -9833,7 +9837,7 @@ class ScimUserList(GitHubModel):
     resources: List[ScimUser] = Field(default=..., alias="Resources")
 
 
-class SearchResultTextMatchesItems(GitHubModel):
+class SearchResultTextMatchesItems(GitHubRestModel):
     """SearchResultTextMatchesItems"""
 
     object_url: Union[Unset, str] = Field(default=UNSET)
@@ -9845,14 +9849,14 @@ class SearchResultTextMatchesItems(GitHubModel):
     )
 
 
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
+class SearchResultTextMatchesItemsPropMatchesItems(GitHubRestModel):
     """SearchResultTextMatchesItemsPropMatchesItems"""
 
     text: Union[Unset, str] = Field(default=UNSET)
     indices: Union[Unset, List[int]] = Field(default=UNSET)
 
 
-class CodeSearchResultItem(GitHubModel):
+class CodeSearchResultItem(GitHubRestModel):
     """Code Search Result Item
 
     Code Search Result Item
@@ -9877,7 +9881,7 @@ class CodeSearchResultItem(GitHubModel):
     )
 
 
-class CommitSearchResultItem(GitHubModel):
+class CommitSearchResultItem(GitHubRestModel):
     """Commit Search Result Item
 
     Commit Search Result Item
@@ -9907,7 +9911,7 @@ class CommitSearchResultItem(GitHubModel):
     )
 
 
-class CommitSearchResultItemPropCommit(GitHubModel):
+class CommitSearchResultItemPropCommit(GitHubRestModel):
     """CommitSearchResultItemPropCommit"""
 
     author: CommitSearchResultItemPropCommitPropAuthor = Field(default=...)
@@ -9925,7 +9929,7 @@ class CommitSearchResultItemPropCommit(GitHubModel):
     )
 
 
-class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
+class CommitSearchResultItemPropCommitPropAuthor(GitHubRestModel):
     """CommitSearchResultItemPropCommitPropAuthor"""
 
     name: str = Field(default=...)
@@ -9933,14 +9937,14 @@ class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
     date: datetime = Field(default=...)
 
 
-class CommitSearchResultItemPropCommitPropTree(GitHubModel):
+class CommitSearchResultItemPropCommitPropTree(GitHubRestModel):
     """CommitSearchResultItemPropCommitPropTree"""
 
     sha: str = Field(default=...)
     url: str = Field(default=...)
 
 
-class CommitSearchResultItemPropParentsItems(GitHubModel):
+class CommitSearchResultItemPropParentsItems(GitHubRestModel):
     """CommitSearchResultItemPropParentsItems"""
 
     url: Union[Unset, str] = Field(default=UNSET)
@@ -9948,7 +9952,7 @@ class CommitSearchResultItemPropParentsItems(GitHubModel):
     sha: Union[Unset, str] = Field(default=UNSET)
 
 
-class IssueSearchResultItem(GitHubModel):
+class IssueSearchResultItem(GitHubRestModel):
     """Issue Search Result Item
 
     Issue Search Result Item
@@ -10024,7 +10028,7 @@ class IssueSearchResultItem(GitHubModel):
     )
 
 
-class IssueSearchResultItemPropLabelsItems(GitHubModel):
+class IssueSearchResultItemPropLabelsItems(GitHubRestModel):
     """IssueSearchResultItemPropLabelsItems"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -10036,7 +10040,7 @@ class IssueSearchResultItemPropLabelsItems(GitHubModel):
     description: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class IssueSearchResultItemPropPullRequest(GitHubModel):
+class IssueSearchResultItemPropPullRequest(GitHubRestModel):
     """IssueSearchResultItemPropPullRequest"""
 
     merged_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
@@ -10046,7 +10050,7 @@ class IssueSearchResultItemPropPullRequest(GitHubModel):
     url: Union[str, None] = Field(default=...)
 
 
-class LabelSearchResultItem(GitHubModel):
+class LabelSearchResultItem(GitHubRestModel):
     """Label Search Result Item
 
     Label Search Result Item
@@ -10065,7 +10069,7 @@ class LabelSearchResultItem(GitHubModel):
     )
 
 
-class RepoSearchResultItem(GitHubModel):
+class RepoSearchResultItem(GitHubRestModel):
     """Repo Search Result Item
 
     Repo Search Result Item
@@ -10176,7 +10180,7 @@ class RepoSearchResultItem(GitHubModel):
     is_template: Union[Unset, bool] = Field(default=UNSET)
 
 
-class RepoSearchResultItemPropPermissions(GitHubModel):
+class RepoSearchResultItemPropPermissions(GitHubRestModel):
     """RepoSearchResultItemPropPermissions"""
 
     admin: bool = Field(default=...)
@@ -10186,7 +10190,7 @@ class RepoSearchResultItemPropPermissions(GitHubModel):
     pull: bool = Field(default=...)
 
 
-class TopicSearchResultItem(GitHubModel):
+class TopicSearchResultItem(GitHubRestModel):
     """Topic Search Result Item
 
     Topic Search Result Item
@@ -10216,7 +10220,7 @@ class TopicSearchResultItem(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class TopicSearchResultItemPropRelatedItems(GitHubModel):
+class TopicSearchResultItemPropRelatedItems(GitHubRestModel):
     """TopicSearchResultItemPropRelatedItems"""
 
     topic_relation: Union[
@@ -10224,7 +10228,7 @@ class TopicSearchResultItemPropRelatedItems(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
+class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubRestModel):
     """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -10233,7 +10237,7 @@ class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
     relation_type: Union[Unset, str] = Field(default=UNSET)
 
 
-class TopicSearchResultItemPropAliasesItems(GitHubModel):
+class TopicSearchResultItemPropAliasesItems(GitHubRestModel):
     """TopicSearchResultItemPropAliasesItems"""
 
     topic_relation: Union[
@@ -10241,7 +10245,7 @@ class TopicSearchResultItemPropAliasesItems(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
+class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubRestModel):
     """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -10250,7 +10254,7 @@ class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
     relation_type: Union[Unset, str] = Field(default=UNSET)
 
 
-class UserSearchResultItem(GitHubModel):
+class UserSearchResultItem(GitHubRestModel):
     """User Search Result Item
 
     User Search Result Item
@@ -10294,7 +10298,7 @@ class UserSearchResultItem(GitHubModel):
     suspended_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
 
 
-class PrivateUser(GitHubModel):
+class PrivateUser(GitHubRestModel):
     """Private User
 
     Private User
@@ -10344,7 +10348,7 @@ class PrivateUser(GitHubModel):
     ldap_dn: Union[Unset, str] = Field(default=UNSET)
 
 
-class PrivateUserPropPlan(GitHubModel):
+class PrivateUserPropPlan(GitHubRestModel):
     """PrivateUserPropPlan"""
 
     collaborators: int = Field(default=...)
@@ -10353,7 +10357,7 @@ class PrivateUserPropPlan(GitHubModel):
     private_repos: int = Field(default=...)
 
 
-class CodespacesSecret(GitHubModel):
+class CodespacesSecret(GitHubRestModel):
     """Codespaces Secret
 
     Secrets for a GitHub Codespace.
@@ -10372,7 +10376,7 @@ class CodespacesSecret(GitHubModel):
     )
 
 
-class CodespacesUserPublicKey(GitHubModel):
+class CodespacesUserPublicKey(GitHubRestModel):
     """CodespacesUserPublicKey
 
     The public key used for setting user Codespaces' Secrets.
@@ -10382,7 +10386,7 @@ class CodespacesUserPublicKey(GitHubModel):
     key: str = Field(description="The Base64 encoded public key.", default=...)
 
 
-class CodespaceExportDetails(GitHubModel):
+class CodespaceExportDetails(GitHubRestModel):
     """Fetches information about an export of a codespace.
 
     An export of a codespace. Also, latest export details for a codespace can be
@@ -10412,7 +10416,7 @@ class CodespaceExportDetails(GitHubModel):
     )
 
 
-class Email(GitHubModel):
+class Email(GitHubRestModel):
     """Email
 
     Email
@@ -10424,7 +10428,7 @@ class Email(GitHubModel):
     visibility: Union[str, None] = Field(default=...)
 
 
-class GpgKey(GitHubModel):
+class GpgKey(GitHubRestModel):
     """GPG Key
 
     A unique encryption key
@@ -10447,14 +10451,14 @@ class GpgKey(GitHubModel):
     raw_key: Union[str, None] = Field(default=...)
 
 
-class GpgKeyPropEmailsItems(GitHubModel):
+class GpgKeyPropEmailsItems(GitHubRestModel):
     """GpgKeyPropEmailsItems"""
 
     email: Union[Unset, str] = Field(default=UNSET)
     verified: Union[Unset, bool] = Field(default=UNSET)
 
 
-class GpgKeyPropSubkeysItems(GitHubModel):
+class GpgKeyPropSubkeysItems(GitHubRestModel):
     """GpgKeyPropSubkeysItems"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -10473,7 +10477,7 @@ class GpgKeyPropSubkeysItems(GitHubModel):
     revoked: Union[Unset, bool] = Field(default=UNSET)
 
 
-class Key(GitHubModel):
+class Key(GitHubRestModel):
     """Key
 
     Key
@@ -10488,7 +10492,7 @@ class Key(GitHubModel):
     read_only: bool = Field(default=...)
 
 
-class MarketplaceAccount(GitHubModel):
+class MarketplaceAccount(GitHubRestModel):
     """Marketplace Account"""
 
     url: str = Field(default=...)
@@ -10500,7 +10504,7 @@ class MarketplaceAccount(GitHubModel):
     organization_billing_email: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class UserMarketplacePurchase(GitHubModel):
+class UserMarketplacePurchase(GitHubRestModel):
     """User Marketplace Purchase
 
     User Marketplace Purchase
@@ -10520,7 +10524,7 @@ class UserMarketplacePurchase(GitHubModel):
     )
 
 
-class StarredRepository(GitHubModel):
+class StarredRepository(GitHubRestModel):
     """Starred Repository
 
     Starred Repository
@@ -10532,7 +10536,7 @@ class StarredRepository(GitHubModel):
     )
 
 
-class Hovercard(GitHubModel):
+class Hovercard(GitHubRestModel):
     """Hovercard
 
     Hovercard
@@ -10541,14 +10545,14 @@ class Hovercard(GitHubModel):
     contexts: List[HovercardPropContextsItems] = Field(default=...)
 
 
-class HovercardPropContextsItems(GitHubModel):
+class HovercardPropContextsItems(GitHubRestModel):
     """HovercardPropContextsItems"""
 
     message: str = Field(default=...)
     octicon: str = Field(default=...)
 
 
-class KeySimple(GitHubModel):
+class KeySimple(GitHubRestModel):
     """Key Simple
 
     Key Simple
@@ -10558,7 +10562,7 @@ class KeySimple(GitHubModel):
     key: str = Field(default=...)
 
 
-class SimpleInstallation(GitHubModel):
+class SimpleInstallation(GitHubRestModel):
     """Simple Installation
 
     Simple Installation
@@ -10570,7 +10574,7 @@ class SimpleInstallation(GitHubModel):
     )
 
 
-class MergeGroupChecksRequested(GitHubModel):
+class MergeGroupChecksRequested(GitHubRestModel):
     """MergeGroupChecksRequested"""
 
     action: str = Field(default=...)
@@ -10589,7 +10593,7 @@ class MergeGroupChecksRequested(GitHubModel):
     merge_group: MergeGroupChecksRequestedPropMergeGroup = Field(default=...)
 
 
-class MergeGroupChecksRequestedPropMergeGroup(GitHubModel):
+class MergeGroupChecksRequestedPropMergeGroup(GitHubRestModel):
     """MergeGroupChecksRequestedPropMergeGroup"""
 
     head_sha: str = Field(default=...)
@@ -10597,7 +10601,7 @@ class MergeGroupChecksRequestedPropMergeGroup(GitHubModel):
     base_ref: str = Field(default=...)
 
 
-class AppManifestsCodeConversionsPostResponse201(GitHubModel):
+class AppManifestsCodeConversionsPostResponse201(GitHubRestModel):
     """AppManifestsCodeConversionsPostResponse201"""
 
     id: int = Field(description="Unique identifier of the GitHub app", default=...)
@@ -10630,7 +10634,9 @@ class AppManifestsCodeConversionsPostResponse201(GitHubModel):
     pem: str = Field(default=...)
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1(GitHubModel, extra=Extra.allow):
+class AppManifestsCodeConversionsPostResponse201Allof1(
+    GitHubRestModel, extra=Extra.allow
+):
     """AppManifestsCodeConversionsPostResponse201Allof1"""
 
     client_id: str = Field(default=...)
@@ -10639,7 +10645,7 @@ class AppManifestsCodeConversionsPostResponse201Allof1(GitHubModel, extra=Extra.
     pem: str = Field(default=...)
 
 
-class AppHookConfigPatchBody(GitHubModel):
+class AppHookConfigPatchBody(GitHubRestModel):
     """AppHookConfigPatchBody"""
 
     url: Union[Unset, str] = Field(
@@ -10659,11 +10665,11 @@ class AppHookConfigPatchBody(GitHubModel):
     )
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubRestModel):
     """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubRestModel):
     """AppInstallationsInstallationIdAccessTokensPostBody"""
 
     repositories: Union[Unset, List[str]] = Field(
@@ -10681,7 +10687,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
     )
 
 
-class ApplicationsClientIdGrantDeleteBody(GitHubModel):
+class ApplicationsClientIdGrantDeleteBody(GitHubRestModel):
     """ApplicationsClientIdGrantDeleteBody"""
 
     access_token: str = Field(
@@ -10690,7 +10696,7 @@ class ApplicationsClientIdGrantDeleteBody(GitHubModel):
     )
 
 
-class ApplicationsClientIdTokenPostBody(GitHubModel):
+class ApplicationsClientIdTokenPostBody(GitHubRestModel):
     """ApplicationsClientIdTokenPostBody"""
 
     access_token: str = Field(
@@ -10698,7 +10704,7 @@ class ApplicationsClientIdTokenPostBody(GitHubModel):
     )
 
 
-class ApplicationsClientIdTokenDeleteBody(GitHubModel):
+class ApplicationsClientIdTokenDeleteBody(GitHubRestModel):
     """ApplicationsClientIdTokenDeleteBody"""
 
     access_token: str = Field(
@@ -10707,7 +10713,7 @@ class ApplicationsClientIdTokenDeleteBody(GitHubModel):
     )
 
 
-class ApplicationsClientIdTokenPatchBody(GitHubModel):
+class ApplicationsClientIdTokenPatchBody(GitHubRestModel):
     """ApplicationsClientIdTokenPatchBody"""
 
     access_token: str = Field(
@@ -10715,7 +10721,7 @@ class ApplicationsClientIdTokenPatchBody(GitHubModel):
     )
 
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+class ApplicationsClientIdTokenScopedPostBody(GitHubRestModel):
     """ApplicationsClientIdTokenScopedPostBody"""
 
     access_token: str = Field(
@@ -10745,7 +10751,7 @@ class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
     )
 
 
-class AuthorizationsPostBody(GitHubModel):
+class AuthorizationsPostBody(GitHubRestModel):
     """AuthorizationsPostBody"""
 
     scopes: Union[Unset, Union[List[str], None]] = Field(
@@ -10774,7 +10780,7 @@ class AuthorizationsPostBody(GitHubModel):
     )
 
 
-class AuthorizationsClientsClientIdPutBody(GitHubModel):
+class AuthorizationsClientsClientIdPutBody(GitHubRestModel):
     """AuthorizationsClientsClientIdPutBody"""
 
     client_secret: str = Field(
@@ -10798,7 +10804,7 @@ class AuthorizationsClientsClientIdPutBody(GitHubModel):
     )
 
 
-class AuthorizationsClientsClientIdFingerprintPutBody(GitHubModel):
+class AuthorizationsClientsClientIdFingerprintPutBody(GitHubRestModel):
     """AuthorizationsClientsClientIdFingerprintPutBody"""
 
     client_secret: str = Field(
@@ -10818,7 +10824,7 @@ class AuthorizationsClientsClientIdFingerprintPutBody(GitHubModel):
     )
 
 
-class AuthorizationsAuthorizationIdPatchBody(GitHubModel):
+class AuthorizationsAuthorizationIdPatchBody(GitHubRestModel):
     """AuthorizationsAuthorizationIdPatchBody"""
 
     scopes: Union[Unset, Union[List[str], None]] = Field(
@@ -10843,11 +10849,11 @@ class AuthorizationsAuthorizationIdPatchBody(GitHubModel):
     )
 
 
-class EmojisGetResponse200(GitHubModel, extra=Extra.allow):
+class EmojisGetResponse200(GitHubRestModel, extra=Extra.allow):
     """EmojisGetResponse200"""
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
+class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubRestModel):
     """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
     enabled_organizations: Literal["all", "none", "selected"] = Field(
@@ -10860,14 +10866,16 @@ class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
     )
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(
+    GitHubRestModel
+):
     """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
 
     total_count: float = Field(default=...)
     organizations: List[OrganizationSimple] = Field(default=...)
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubRestModel):
     """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
 
     selected_organization_ids: List[int] = Field(
@@ -10876,14 +10884,14 @@ class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
     )
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubRestModel):
     """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
     total_count: float = Field(default=...)
     runner_groups: List[RunnerGroupsEnterprise] = Field(default=...)
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
+class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubRestModel):
     """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
     name: str = Field(description="Name of the runner group.", default=...)
@@ -10912,7 +10920,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
     )
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubRestModel):
     """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
     name: Union[Unset, str] = Field(
@@ -10937,7 +10945,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel
 
 
 class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200(
-    GitHubModel
+    GitHubRestModel
 ):
     """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
@@ -10946,7 +10954,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetRespo
 
 
 class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
-    GitHubModel
+    GitHubRestModel
 ):
     """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
@@ -10957,7 +10965,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
 
 
 class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(
-    GitHubModel
+    GitHubRestModel
 ):
     """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
@@ -10965,7 +10973,9 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200
     runners: List[Runner] = Field(default=...)
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
+    GitHubRestModel
+):
     """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
     runners: List[int] = Field(
@@ -10973,21 +10983,21 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHub
     )
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubRestModel):
     """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
     total_count: Union[Unset, float] = Field(default=UNSET)
     runners: Union[Unset, List[Runner]] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubRestModel):
     """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
     total_count: int = Field(default=...)
     labels: List[RunnerLabel] = Field(default=...)
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
     """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
     labels: List[str] = Field(
@@ -10998,7 +11008,7 @@ class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
     )
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
     """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
     labels: List[str] = Field(
@@ -11009,14 +11019,16 @@ class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
     )
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200(
+    GitHubRestModel
+):
     """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
     total_count: int = Field(default=...)
     labels: List[RunnerLabel] = Field(default=...)
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubRestModel):
     """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
 
     code: Union[Unset, str] = Field(default=UNSET)
@@ -11024,7 +11036,7 @@ class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class GistsPostBody(GitHubModel):
+class GistsPostBody(GitHubRestModel):
     """GistsPostBody"""
 
     description: Union[Unset, str] = Field(
@@ -11038,7 +11050,7 @@ class GistsPostBody(GitHubModel):
     )
 
 
-class GistsPostBodyPropFiles(GitHubModel, extra=Extra.allow):
+class GistsPostBodyPropFiles(GitHubRestModel, extra=Extra.allow):
     """GistsPostBodyPropFiles
 
     Names and content for the files that make up the gist
@@ -11048,7 +11060,7 @@ class GistsPostBodyPropFiles(GitHubModel, extra=Extra.allow):
     """
 
 
-class GistsGistIdGetResponse403(GitHubModel):
+class GistsGistIdGetResponse403(GitHubRestModel):
     """GistsGistIdGetResponse403"""
 
     block: Union[Unset, GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
@@ -11056,7 +11068,7 @@ class GistsGistIdGetResponse403(GitHubModel):
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class GistsGistIdGetResponse403PropBlock(GitHubModel):
+class GistsGistIdGetResponse403PropBlock(GitHubRestModel):
     """GistsGistIdGetResponse403PropBlock"""
 
     reason: Union[Unset, str] = Field(default=UNSET)
@@ -11064,7 +11076,7 @@ class GistsGistIdGetResponse403PropBlock(GitHubModel):
     html_url: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class GistsGistIdPatchBody(GitHubModel):
+class GistsGistIdPatchBody(GitHubRestModel):
     """GistsGistIdPatchBody"""
 
     description: Union[Unset, str] = Field(
@@ -11075,7 +11087,7 @@ class GistsGistIdPatchBody(GitHubModel):
     )
 
 
-class GistsGistIdPatchBodyPropFiles(GitHubModel, extra=Extra.allow):
+class GistsGistIdPatchBodyPropFiles(GitHubRestModel, extra=Extra.allow):
     """GistsGistIdPatchBodyPropFiles
 
     Names of files to be updated
@@ -11085,23 +11097,23 @@ class GistsGistIdPatchBodyPropFiles(GitHubModel, extra=Extra.allow):
     """
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
+class GistsGistIdCommentsPostBody(GitHubRestModel):
     """GistsGistIdCommentsPostBody"""
 
     body: str = Field(description="The comment text.", max_length=65535, default=...)
 
 
-class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
+class GistsGistIdCommentsCommentIdPatchBody(GitHubRestModel):
     """GistsGistIdCommentsCommentIdPatchBody"""
 
     body: str = Field(description="The comment text.", max_length=65535, default=...)
 
 
-class GistsGistIdStarGetResponse404(GitHubModel):
+class GistsGistIdStarGetResponse404(GitHubRestModel):
     """GistsGistIdStarGetResponse404"""
 
 
-class InstallationRepositoriesGetResponse200(GitHubModel):
+class InstallationRepositoriesGetResponse200(GitHubRestModel):
     """InstallationRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -11109,7 +11121,7 @@ class InstallationRepositoriesGetResponse200(GitHubModel):
     repository_selection: Union[Unset, str] = Field(default=UNSET)
 
 
-class MarkdownPostBody(GitHubModel):
+class MarkdownPostBody(GitHubRestModel):
     """MarkdownPostBody"""
 
     text: str = Field(description="The Markdown text to render in HTML.", default=...)
@@ -11123,7 +11135,7 @@ class MarkdownPostBody(GitHubModel):
     )
 
 
-class NotificationsPutBody(GitHubModel):
+class NotificationsPutBody(GitHubRestModel):
     """NotificationsPutBody"""
 
     last_read_at: Union[Unset, datetime] = Field(
@@ -11135,13 +11147,13 @@ class NotificationsPutBody(GitHubModel):
     )
 
 
-class NotificationsPutResponse202(GitHubModel):
+class NotificationsPutResponse202(GitHubRestModel):
     """NotificationsPutResponse202"""
 
     message: Union[Unset, str] = Field(default=UNSET)
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubRestModel):
     """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
     ignored: Union[Unset, bool] = Field(
@@ -11149,7 +11161,7 @@ class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
     )
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubRestModel):
     """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
     total_count: Union[Unset, int] = Field(
@@ -11160,7 +11172,7 @@ class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
     )
 
 
-class OrgsOrgPatchBody(GitHubModel):
+class OrgsOrgPatchBody(GitHubRestModel):
     """OrgsOrgPatchBody"""
 
     billing_email: Union[Unset, str] = Field(
@@ -11236,14 +11248,14 @@ class OrgsOrgPatchBody(GitHubModel):
     blog: Union[Unset, str] = Field(default=UNSET)
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubRestModel):
     """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int = Field(default=...)
     repository_cache_usages: List[ActionsCacheUsageByRepository] = Field(default=...)
 
 
-class OrgsOrgActionsPermissionsPutBody(GitHubModel):
+class OrgsOrgActionsPermissionsPutBody(GitHubRestModel):
     """OrgsOrgActionsPermissionsPutBody"""
 
     enabled_repositories: Literal["all", "none", "selected"] = Field(
@@ -11256,14 +11268,14 @@ class OrgsOrgActionsPermissionsPutBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200(GitHubModel):
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200(GitHubRestModel):
     """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
 
     total_count: float = Field(default=...)
     repositories: List[Repository] = Field(default=...)
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
+class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubRestModel):
     """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
@@ -11271,14 +11283,14 @@ class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
+class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubRestModel):
     """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
     total_count: float = Field(default=...)
     runner_groups: List[RunnerGroupsOrg] = Field(default=...)
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
+class OrgsOrgActionsRunnerGroupsPostBody(GitHubRestModel):
     """OrgsOrgActionsRunnerGroupsPostBody"""
 
     name: str = Field(description="Name of the runner group.", default=...)
@@ -11307,7 +11319,7 @@ class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubRestModel):
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
     name: str = Field(description="Name of the runner group.", default=...)
@@ -11329,14 +11341,16 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200(GitHubModel):
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200(
+    GitHubRestModel
+):
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
 
     total_count: float = Field(default=...)
     repositories: List[MinimalRepository] = Field(default=...)
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubModel):
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubRestModel):
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
@@ -11345,14 +11359,14 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(GitHubModel):
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(GitHubRestModel):
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
     total_count: float = Field(default=...)
     runners: List[Runner] = Field(default=...)
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubRestModel):
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
     runners: List[int] = Field(
@@ -11360,14 +11374,14 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
+class OrgsOrgActionsRunnersGetResponse200(GitHubRestModel):
     """OrgsOrgActionsRunnersGetResponse200"""
 
     total_count: int = Field(default=...)
     runners: List[Runner] = Field(default=...)
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
     """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
     labels: List[str] = Field(
@@ -11378,7 +11392,7 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
     """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
 
     labels: List[str] = Field(
@@ -11389,14 +11403,14 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+class OrgsOrgActionsSecretsGetResponse200(GitHubRestModel):
     """OrgsOrgActionsSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
     secrets: List[OrganizationActionsSecret] = Field(default=...)
 
 
-class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
+class OrgsOrgActionsSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgActionsSecretsSecretNamePutBody"""
 
     encrypted_value: Union[Unset, str] = Field(
@@ -11417,14 +11431,14 @@ class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
     )
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubRestModel):
     """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
     repositories: List[MinimalRepository] = Field(default=...)
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
@@ -11433,21 +11447,21 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
     )
 
 
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
+class OrgsOrgCodespacesGetResponse200(GitHubRestModel):
     """OrgsOrgCodespacesGetResponse200"""
 
     total_count: int = Field(default=...)
     codespaces: List[Codespace] = Field(default=...)
 
 
-class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
+class OrgsOrgDependabotSecretsGetResponse200(GitHubRestModel):
     """OrgsOrgDependabotSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
     secrets: List[OrganizationDependabotSecret] = Field(default=...)
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubModel):
+class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
     encrypted_value: Union[Unset, str] = Field(
@@ -11468,14 +11482,14 @@ class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubModel):
     )
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubRestModel):
     """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
     repositories: List[MinimalRepository] = Field(default=...)
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
@@ -11484,7 +11498,7 @@ class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
     )
 
 
-class OrgsOrgHooksPostBody(GitHubModel):
+class OrgsOrgHooksPostBody(GitHubRestModel):
     """OrgsOrgHooksPostBody"""
 
     name: str = Field(description='Must be passed as "web".', default=...)
@@ -11502,7 +11516,7 @@ class OrgsOrgHooksPostBody(GitHubModel):
     )
 
 
-class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
+class OrgsOrgHooksPostBodyPropConfig(GitHubRestModel):
     """OrgsOrgHooksPostBodyPropConfig
 
     Key/value pairs to provide settings for this webhook. [These are defined
@@ -11528,7 +11542,7 @@ class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
     password: Union[Unset, str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksHookIdPatchBody(GitHubModel):
+class OrgsOrgHooksHookIdPatchBody(GitHubRestModel):
     """OrgsOrgHooksHookIdPatchBody"""
 
     config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
@@ -11546,7 +11560,7 @@ class OrgsOrgHooksHookIdPatchBody(GitHubModel):
     name: Union[Unset, str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
+class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubRestModel):
     """OrgsOrgHooksHookIdPatchBodyPropConfig
 
     Key/value pairs to provide settings for this webhook. [These are defined
@@ -11570,7 +11584,7 @@ class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
     )
 
 
-class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
+class OrgsOrgHooksHookIdConfigPatchBody(GitHubRestModel):
     """OrgsOrgHooksHookIdConfigPatchBody"""
 
     url: Union[Unset, str] = Field(
@@ -11590,18 +11604,18 @@ class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
     )
 
 
-class OrgsOrgInstallationsGetResponse200(GitHubModel):
+class OrgsOrgInstallationsGetResponse200(GitHubRestModel):
     """OrgsOrgInstallationsGetResponse200"""
 
     total_count: int = Field(default=...)
     installations: List[Installation] = Field(default=...)
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
+class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubRestModel):
     """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class OrgsOrgInvitationsPostBody(GitHubModel):
+class OrgsOrgInvitationsPostBody(GitHubRestModel):
     """OrgsOrgInvitationsPostBody"""
 
     invitee_id: Union[Unset, int] = Field(
@@ -11622,7 +11636,7 @@ class OrgsOrgInvitationsPostBody(GitHubModel):
     )
 
 
-class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
+class OrgsOrgMembershipsUsernamePutBody(GitHubRestModel):
     """OrgsOrgMembershipsUsernamePutBody"""
 
     role: Union[Unset, Literal["admin", "member"]] = Field(
@@ -11631,7 +11645,7 @@ class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
     )
 
 
-class OrgsOrgMigrationsPostBody(GitHubModel):
+class OrgsOrgMigrationsPostBody(GitHubRestModel):
     """OrgsOrgMigrationsPostBody"""
 
     repositories: List[str] = Field(
@@ -11672,7 +11686,7 @@ class OrgsOrgMigrationsPostBody(GitHubModel):
     )
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubRestModel):
     """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
     async_: Union[Unset, bool] = Field(
@@ -11682,18 +11696,18 @@ class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
     )
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubRestModel):
     """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubRestModel):
     """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class OrgsOrgProjectsPostBody(GitHubModel):
+class OrgsOrgProjectsPostBody(GitHubRestModel):
     """OrgsOrgProjectsPostBody"""
 
     name: str = Field(description="The name of the project.", default=...)
@@ -11702,7 +11716,7 @@ class OrgsOrgProjectsPostBody(GitHubModel):
     )
 
 
-class OrgsOrgReposPostBody(GitHubModel):
+class OrgsOrgReposPostBody(GitHubRestModel):
     """OrgsOrgReposPostBody"""
 
     name: str = Field(description="The name of the repository.", default=...)
@@ -11777,7 +11791,7 @@ class OrgsOrgReposPostBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsPostBody(GitHubModel):
+class OrgsOrgTeamsPostBody(GitHubRestModel):
     """OrgsOrgTeamsPostBody"""
 
     name: str = Field(description="The name of the team.", default=...)
@@ -11805,7 +11819,7 @@ class OrgsOrgTeamsPostBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugPatchBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugPatchBody"""
 
     name: Union[Unset, str] = Field(description="The name of the team.", default=UNSET)
@@ -11825,7 +11839,7 @@ class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
     title: str = Field(description="The discussion post's title.", default=...)
@@ -11836,7 +11850,7 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
     title: Union[Unset, str] = Field(
@@ -11847,14 +11861,14 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
 
     body: str = Field(description="The discussion comment's body text.", default=...)
 
 
 class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
-    GitHubModel
+    GitHubRestModel
 ):
     """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
 
@@ -11862,7 +11876,7 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchB
 
 
 class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
-    GitHubModel
+    GitHubRestModel
 ):
     """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
     tBody
@@ -11876,7 +11890,7 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReacti
     )
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
 
     content: Literal[
@@ -11887,13 +11901,13 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubMod
     )
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
     group_id: int = Field(description="External Group Id", default=...)
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
     role: Union[Unset, Literal["member", "maintainer"]] = Field(
@@ -11901,7 +11915,7 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
     permission: Union[Unset, Literal["read", "write", "admin"]] = Field(
@@ -11910,14 +11924,14 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubModel):
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
     permission: Union[
@@ -11928,7 +11942,7 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubModel):
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
     groups: Union[
@@ -11939,7 +11953,9 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(
+    GitHubRestModel
+):
     """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
     group_id: str = Field(description="ID of the IdP group.", default=...)
@@ -11949,7 +11965,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubMo
     )
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubRestModel):
     """ProjectsColumnsCardsCardIdDeleteResponse403"""
 
     message: Union[Unset, str] = Field(default=UNSET)
@@ -11957,7 +11973,7 @@ class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
     errors: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
+class ProjectsColumnsCardsCardIdPatchBody(GitHubRestModel):
     """ProjectsColumnsCardsCardIdPatchBody"""
 
     note: Union[Unset, Union[str, None]] = Field(
@@ -11968,7 +11984,7 @@ class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
     )
 
 
-class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
+class ProjectsColumnsCardsCardIdMovesPostBody(GitHubRestModel):
     """ProjectsColumnsCardsCardIdMovesPostBody"""
 
     position: str = Field(
@@ -11982,11 +11998,11 @@ class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
     )
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubModel):
+class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubRestModel):
     """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
+class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubRestModel):
     """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
     message: Union[Unset, str] = Field(default=UNSET)
@@ -11996,7 +12012,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubRestModel):
     """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
 
     code: Union[Unset, str] = Field(default=UNSET)
@@ -12005,7 +12021,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel)
     field: Union[Unset, str] = Field(default=UNSET)
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
+class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubRestModel):
     """ProjectsColumnsCardsCardIdMovesPostResponse503"""
 
     code: Union[Unset, str] = Field(default=UNSET)
@@ -12016,26 +12032,26 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubModel):
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubRestModel):
     """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
 
     code: Union[Unset, str] = Field(default=UNSET)
     message: Union[Unset, str] = Field(default=UNSET)
 
 
-class ProjectsColumnsColumnIdPatchBody(GitHubModel):
+class ProjectsColumnsColumnIdPatchBody(GitHubRestModel):
     """ProjectsColumnsColumnIdPatchBody"""
 
     name: str = Field(description="Name of the project column", default=...)
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof0(GitHubModel):
+class ProjectsColumnsColumnIdCardsPostBodyOneof0(GitHubRestModel):
     """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
 
     note: Union[str, None] = Field(description="The project card's note", default=...)
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
+class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubRestModel):
     """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
 
     content_id: int = Field(
@@ -12047,7 +12063,7 @@ class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
     )
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
+class ProjectsColumnsColumnIdCardsPostResponse503(GitHubRestModel):
     """ProjectsColumnsColumnIdCardsPostResponse503"""
 
     code: Union[Unset, str] = Field(default=UNSET)
@@ -12058,14 +12074,14 @@ class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubRestModel):
     """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
     code: Union[Unset, str] = Field(default=UNSET)
     message: Union[Unset, str] = Field(default=UNSET)
 
 
-class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
+class ProjectsColumnsColumnIdMovesPostBody(GitHubRestModel):
     """ProjectsColumnsColumnIdMovesPostBody"""
 
     position: str = Field(
@@ -12075,11 +12091,11 @@ class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
     )
 
 
-class ProjectsColumnsColumnIdMovesPostResponse201(GitHubModel):
+class ProjectsColumnsColumnIdMovesPostResponse201(GitHubRestModel):
     """ProjectsColumnsColumnIdMovesPostResponse201"""
 
 
-class ProjectsProjectIdDeleteResponse403(GitHubModel):
+class ProjectsProjectIdDeleteResponse403(GitHubRestModel):
     """ProjectsProjectIdDeleteResponse403"""
 
     message: Union[Unset, str] = Field(default=UNSET)
@@ -12087,7 +12103,7 @@ class ProjectsProjectIdDeleteResponse403(GitHubModel):
     errors: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class ProjectsProjectIdPatchBody(GitHubModel):
+class ProjectsProjectIdPatchBody(GitHubRestModel):
     """ProjectsProjectIdPatchBody"""
 
     name: Union[Unset, str] = Field(description="Name of the project", default=UNSET)
@@ -12109,7 +12125,7 @@ class ProjectsProjectIdPatchBody(GitHubModel):
     )
 
 
-class ProjectsProjectIdPatchResponse403(GitHubModel):
+class ProjectsProjectIdPatchResponse403(GitHubRestModel):
     """ProjectsProjectIdPatchResponse403"""
 
     message: Union[Unset, str] = Field(default=UNSET)
@@ -12117,7 +12133,7 @@ class ProjectsProjectIdPatchResponse403(GitHubModel):
     errors: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBody(GitHubModel):
+class ProjectsProjectIdCollaboratorsUsernamePutBody(GitHubRestModel):
     """ProjectsProjectIdCollaboratorsUsernamePutBody"""
 
     permission: Union[Unset, Literal["read", "write", "admin"]] = Field(
@@ -12125,20 +12141,20 @@ class ProjectsProjectIdCollaboratorsUsernamePutBody(GitHubModel):
     )
 
 
-class ProjectsProjectIdColumnsPostBody(GitHubModel):
+class ProjectsProjectIdColumnsPostBody(GitHubRestModel):
     """ProjectsProjectIdColumnsPostBody"""
 
     name: str = Field(description="Name of the project column", default=...)
 
 
-class ReposOwnerRepoDeleteResponse403(GitHubModel):
+class ReposOwnerRepoDeleteResponse403(GitHubRestModel):
     """ReposOwnerRepoDeleteResponse403"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPatchBody(GitHubModel):
+class ReposOwnerRepoPatchBody(GitHubRestModel):
     """ReposOwnerRepoPatchBody"""
 
     name: Union[Unset, str] = Field(
@@ -12221,7 +12237,7 @@ class ReposOwnerRepoPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubModel):
+class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubRestModel):
     """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
 
     Specify which security and analysis features to enable or disable. For example,
@@ -12253,7 +12269,9 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubModel):
     )
 
 
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
+class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity(
+    GitHubRestModel
+):
     """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
 
     Use the `status` property to enable or disable GitHub Advanced Security for this
@@ -12267,7 +12285,7 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity(GitHubM
     )
 
 
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning(GitHubModel):
+class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning(GitHubRestModel):
     """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
 
     Use the `status` property to enable or disable secret scanning for this
@@ -12281,7 +12299,7 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning(GitHubMod
 
 
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection
 
@@ -12296,14 +12314,14 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtec
     )
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
     total_count: int = Field(default=...)
     artifacts: List[Artifact] = Field(default=...)
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
+class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubRestModel):
     """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
     enable_debug_logging: Union[Unset, bool] = Field(
@@ -12311,7 +12329,7 @@ class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
+class ReposOwnerRepoActionsPermissionsPutBody(GitHubRestModel):
     """ReposOwnerRepoActionsPermissionsPutBody"""
 
     enabled: bool = Field(
@@ -12323,14 +12341,14 @@ class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsRunnersGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsRunnersGetResponse200"""
 
     total_count: int = Field(default=...)
     runners: List[Runner] = Field(default=...)
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
     """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
     labels: List[str] = Field(
@@ -12341,7 +12359,7 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
     """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
     labels: List[str] = Field(
@@ -12352,14 +12370,14 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsRunsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsRunsGetResponse200"""
 
     total_count: int = Field(default=...)
     workflow_runs: List[WorkflowRun] = Field(default=...)
 
 
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -12367,7 +12385,7 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubModel):
 
 
 class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
@@ -12375,18 +12393,18 @@ class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
     jobs: List[Job] = Field(default=...)
 
 
-class ReposOwnerRepoActionsRunsRunIdCancelPostResponse202(GitHubModel):
+class ReposOwnerRepoActionsRunsRunIdCancelPostResponse202(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdCancelPostResponse202"""
 
 
-class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
     total_count: int = Field(default=...)
     jobs: List[Job] = Field(default=...)
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
     environment_ids: List[int] = Field(
@@ -12401,7 +12419,7 @@ class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
+class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
     enable_debug_logging: Union[Unset, bool] = Field(
@@ -12409,11 +12427,11 @@ class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostResponse201(GitHubModel):
+class ReposOwnerRepoActionsRunsRunIdRerunPostResponse201(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdRerunPostResponse201"""
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubModel):
+class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
 
     enable_debug_logging: Union[Unset, bool] = Field(
@@ -12421,14 +12439,14 @@ class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsSecretsGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsSecretsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
     secrets: List[ActionsSecret] = Field(default=...)
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
+class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
 
     encrypted_value: Union[Unset, str] = Field(
@@ -12441,18 +12459,18 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutResponse201(GitHubModel):
+class ReposOwnerRepoActionsSecretsSecretNamePutResponse201(GitHubRestModel):
     """ReposOwnerRepoActionsSecretsSecretNamePutResponse201"""
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
     total_count: int = Field(default=...)
     workflows: List[Workflow] = Field(default=...)
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubRestModel):
     """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
     ref: str = Field(
@@ -12468,7 +12486,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
 
 
 class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    GitHubModel, extra=Extra.allow
+    GitHubRestModel, extra=Extra.allow
 ):
     """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
 
@@ -12478,14 +12496,14 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
     """
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubModel):
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
     total_count: int = Field(default=...)
     workflow_runs: List[WorkflowRun] = Field(default=...)
 
 
-class ReposOwnerRepoAutolinksPostBody(GitHubModel):
+class ReposOwnerRepoAutolinksPostBody(GitHubRestModel):
     """ReposOwnerRepoAutolinksPostBody"""
 
     key_prefix: str = Field(
@@ -12498,7 +12516,7 @@ class ReposOwnerRepoAutolinksPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubModel):
+class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubRestModel):
     """ReposOwnerRepoBranchesBranchProtectionPutBody"""
 
     required_status_checks: Union[
@@ -12547,7 +12565,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubModel):
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks
 
@@ -12573,7 +12591,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
     tems
@@ -12587,7 +12605,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropC
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
 
@@ -12624,7 +12642,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropD
     ismissalRestrictions
@@ -12647,7 +12665,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropB
     ypassPullRequestAllowances
@@ -12669,7 +12687,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     )
 
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions(GitHubModel):
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions(GitHubRestModel):
     """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions
 
     Restrict who can push to the protected branch. User, app, and team
@@ -12689,7 +12707,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions(GitHubModel)
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
@@ -12722,7 +12740,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
     missalRestrictions
@@ -12745,7 +12763,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyP
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
     assPullRequestAllowances
@@ -12767,7 +12785,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyP
     )
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHubModel):
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(
+    GitHubRestModel
+):
     """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
     strict: Union[Unset, bool] = Field(
@@ -12789,7 +12809,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHub
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
     ms
@@ -12803,7 +12823,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChe
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
 
@@ -12815,7 +12835,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyO
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
 
@@ -12827,7 +12847,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBody
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
     f0
@@ -12839,7 +12859,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBo
     contexts: List[str] = Field(description="contexts parameter", default=...)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(GitHubModel):
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(
+    GitHubRestModel
+):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0
 
     Examples:
@@ -12849,7 +12871,9 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(GitHub
     apps: List[str] = Field(description="apps parameter", default=...)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(GitHubModel):
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(
+    GitHubRestModel
+):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
 
     Examples:
@@ -12860,7 +12884,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(GitHu
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0
 
@@ -12871,7 +12895,9 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0(
     apps: List[str] = Field(description="apps parameter", default=...)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(GitHubModel):
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(
+    GitHubRestModel
+):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
@@ -12882,7 +12908,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(GitHu
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
 
@@ -12894,7 +12920,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
@@ -12905,7 +12931,9 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0(
     teams: List[str] = Field(description="teams parameter", default=...)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0(GitHubModel):
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0(
+    GitHubRestModel
+):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0
 
     Examples:
@@ -12916,7 +12944,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0(GitHu
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0
 
@@ -12928,7 +12956,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0(
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0
 
@@ -12939,23 +12967,23 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0(
     users: List[str] = Field(description="users parameter", default=...)
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubModel):
+class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubRestModel):
     """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
     new_name: str = Field(description="The new name of the branch.", default=...)
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201(GitHubModel):
+class ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201(GitHubRestModel):
     """ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201"""
 
 
-class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
+class ReposOwnerRepoCheckSuitesPostBody(GitHubRestModel):
     """ReposOwnerRepoCheckSuitesPostBody"""
 
     head_sha: str = Field(description="The sha of the head commit.", default=...)
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
+class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubRestModel):
     """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
     auto_trigger_checks: Union[
@@ -12968,7 +12996,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
 
 
 class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
@@ -12979,18 +13007,18 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
     )
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubModel):
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
     total_count: int = Field(default=...)
     check_runs: List[CheckRun] = Field(default=...)
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201(GitHubModel):
+class ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201(GitHubRestModel):
     """ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201"""
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubRestModel):
     """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
     state: Literal["open", "dismissed"] = Field(
@@ -13010,7 +13038,7 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
+class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubRestModel):
     """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
     commit_sha: str = Field(
@@ -13042,14 +13070,14 @@ class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoCodespacesGetResponse200(GitHubModel):
+class ReposOwnerRepoCodespacesGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCodespacesGetResponse200"""
 
     total_count: int = Field(default=...)
     codespaces: List[Codespace] = Field(default=...)
 
 
-class ReposOwnerRepoCodespacesPostBody(GitHubModel):
+class ReposOwnerRepoCodespacesPostBody(GitHubRestModel):
     """ReposOwnerRepoCodespacesPostBody"""
 
     ref: Union[Unset, str] = Field(
@@ -13091,7 +13119,7 @@ class ReposOwnerRepoCodespacesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -13101,7 +13129,7 @@ class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
 
 
 class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
-    GitHubModel
+    GitHubRestModel
 ):
     """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
@@ -13109,14 +13137,14 @@ class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
     name: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubModel):
+class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
     total_count: int = Field(default=...)
     machines: List[CodespaceMachine] = Field(default=...)
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
+class ReposOwnerRepoCodespacesNewGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCodespacesNewGetResponse200"""
 
     billable_owner: Union[Unset, SimpleUser] = Field(
@@ -13127,21 +13155,21 @@ class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubRestModel):
     """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
     location: str = Field(default=...)
     devcontainer_path: Union[str, None] = Field(default=...)
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
+class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
     secrets: List[RepoCodespacesSecret] = Field(default=...)
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
     encrypted_value: Union[Unset, str] = Field(
@@ -13154,11 +13182,11 @@ class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201(GitHubModel):
+class ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201(GitHubRestModel):
     """ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201"""
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubRestModel):
     """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
     permission: Union[
@@ -13169,13 +13197,13 @@ class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
+class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
     body: str = Field(description="The contents of the comment", default=...)
 
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
+class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubRestModel):
     """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
     content: Literal[
@@ -13186,7 +13214,7 @@ class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubRestModel):
     """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
     body: str = Field(description="The contents of the comment.", default=...)
@@ -13202,21 +13230,21 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
     total_count: int = Field(default=...)
     check_runs: List[CheckRun] = Field(default=...)
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubRestModel):
     """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
     total_count: int = Field(default=...)
     check_suites: List[CheckSuite] = Field(default=...)
 
 
-class ReposOwnerRepoContentsPathPutBody(GitHubModel):
+class ReposOwnerRepoContentsPathPutBody(GitHubRestModel):
     """ReposOwnerRepoContentsPathPutBody"""
 
     message: str = Field(description="The commit message.", default=...)
@@ -13241,7 +13269,7 @@ class ReposOwnerRepoContentsPathPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
+class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubRestModel):
     """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
     The person that committed the file. Default: the authenticated user.
@@ -13258,7 +13286,7 @@ class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
     date: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
+class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubRestModel):
     """ReposOwnerRepoContentsPathPutBodyPropAuthor
 
     The author of the file. Default: The `committer` or the authenticated user if
@@ -13276,7 +13304,7 @@ class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
     date: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
+class ReposOwnerRepoContentsPathDeleteBody(GitHubRestModel):
     """ReposOwnerRepoContentsPathDeleteBody"""
 
     message: str = Field(description="The commit message.", default=...)
@@ -13295,7 +13323,7 @@ class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubRestModel):
     """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
     object containing information about the committer.
@@ -13310,7 +13338,7 @@ class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
     )
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubRestModel):
     """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
 
     object containing information about the author.
@@ -13325,14 +13353,14 @@ class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
     )
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
     secrets: List[DependabotSecret] = Field(default=...)
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
+class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
     encrypted_value: Union[Unset, str] = Field(
@@ -13345,7 +13373,7 @@ class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubRestModel):
     """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
     id: int = Field(description="ID of the created snapshot.", default=...)
@@ -13362,7 +13390,7 @@ class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
     )
 
 
-class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
+class ReposOwnerRepoDeploymentsPostBody(GitHubRestModel):
     """ReposOwnerRepoDeploymentsPostBody"""
 
     ref: str = Field(
@@ -13404,18 +13432,18 @@ class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
 
 
 class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(
-    GitHubModel, extra=Extra.allow
+    GitHubRestModel, extra=Extra.allow
 ):
     """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
 
 
-class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
+class ReposOwnerRepoDeploymentsPostResponse202(GitHubRestModel):
     """ReposOwnerRepoDeploymentsPostResponse202"""
 
     message: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubRestModel):
     """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
     state: Literal[
@@ -13450,7 +13478,7 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoDispatchesPostBody(GitHubModel):
+class ReposOwnerRepoDispatchesPostBody(GitHubRestModel):
     """ReposOwnerRepoDispatchesPostBody"""
 
     event_type: str = Field(
@@ -13467,7 +13495,9 @@ class ReposOwnerRepoDispatchesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoDispatchesPostBodyPropClientPayload(GitHubModel, extra=Extra.allow):
+class ReposOwnerRepoDispatchesPostBodyPropClientPayload(
+    GitHubRestModel, extra=Extra.allow
+):
     """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
     JSON payload with extra information about the webhook event that your action or
@@ -13475,7 +13505,7 @@ class ReposOwnerRepoDispatchesPostBodyPropClientPayload(GitHubModel, extra=Extra
     """
 
 
-class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
+class ReposOwnerRepoEnvironmentsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoEnvironmentsGetResponse200"""
 
     total_count: Union[Unset, int] = Field(
@@ -13484,7 +13514,7 @@ class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
     environments: Union[Unset, List[Environment]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubRestModel):
     """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
     wait_timer: Union[Unset, int] = Field(
@@ -13507,7 +13537,9 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(
+    GitHubRestModel
+):
     """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
 
     type: Union[Unset, Literal["User", "Team"]] = Field(
@@ -13519,7 +13551,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubM
     )
 
 
-class ReposOwnerRepoForksPostBody(GitHubModel):
+class ReposOwnerRepoForksPostBody(GitHubRestModel):
     """ReposOwnerRepoForksPostBody"""
 
     organization: Union[Unset, str] = Field(
@@ -13532,7 +13564,7 @@ class ReposOwnerRepoForksPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+class ReposOwnerRepoGitBlobsPostBody(GitHubRestModel):
     """ReposOwnerRepoGitBlobsPostBody"""
 
     content: str = Field(description="The new blob's content.", default=...)
@@ -13542,7 +13574,7 @@ class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
+class ReposOwnerRepoGitCommitsPostBody(GitHubRestModel):
     """ReposOwnerRepoGitCommitsPostBody"""
 
     message: str = Field(description="The commit message", default=...)
@@ -13567,7 +13599,7 @@ class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
+class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubRestModel):
     """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
     Information about the author of the commit. By default, the `author` will be the
@@ -13587,7 +13619,7 @@ class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
+class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubRestModel):
     """ReposOwnerRepoGitCommitsPostBodyPropCommitter
 
     Information about the person who is making the commit. By default, `committer`
@@ -13608,7 +13640,7 @@ class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+class ReposOwnerRepoGitRefsPostBody(GitHubRestModel):
     """ReposOwnerRepoGitRefsPostBody"""
 
     ref: str = Field(
@@ -13619,7 +13651,7 @@ class ReposOwnerRepoGitRefsPostBody(GitHubModel):
     key: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubRestModel):
     """ReposOwnerRepoGitRefsRefPatchBody"""
 
     sha: str = Field(description="The SHA1 value to set this reference to", default=...)
@@ -13629,7 +13661,7 @@ class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+class ReposOwnerRepoGitTagsPostBody(GitHubRestModel):
     """ReposOwnerRepoGitTagsPostBody"""
 
     tag: str = Field(
@@ -13652,7 +13684,7 @@ class ReposOwnerRepoGitTagsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubRestModel):
     """ReposOwnerRepoGitTagsPostBodyPropTagger
 
     An object with information about the individual creating the tag.
@@ -13666,7 +13698,7 @@ class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitTreesPostBody(GitHubModel):
+class ReposOwnerRepoGitTreesPostBody(GitHubRestModel):
     """ReposOwnerRepoGitTreesPostBody"""
 
     tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
@@ -13679,7 +13711,7 @@ class ReposOwnerRepoGitTreesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
+class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubRestModel):
     """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
 
     path: Union[Unset, str] = Field(
@@ -13704,7 +13736,7 @@ class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
     )
 
 
-class ReposOwnerRepoHooksPostBody(GitHubModel):
+class ReposOwnerRepoHooksPostBody(GitHubRestModel):
     """ReposOwnerRepoHooksPostBody"""
 
     name: Union[Unset, str] = Field(
@@ -13725,7 +13757,7 @@ class ReposOwnerRepoHooksPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
+class ReposOwnerRepoHooksPostBodyPropConfig(GitHubRestModel):
     """ReposOwnerRepoHooksPostBodyPropConfig
 
     Key/value pairs to provide settings for this webhook. [These are defined
@@ -13751,7 +13783,7 @@ class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
     digest: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoHooksHookIdPatchBody"""
 
     config: Union[Unset, ReposOwnerRepoHooksHookIdPatchBodyPropConfig] = Field(
@@ -13776,7 +13808,7 @@ class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyPropConfig(GitHubModel):
+class ReposOwnerRepoHooksHookIdPatchBodyPropConfig(GitHubRestModel):
     """ReposOwnerRepoHooksHookIdPatchBodyPropConfig
 
     Key/value pairs to provide settings for this webhook. [These are defined
@@ -13802,7 +13834,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyPropConfig(GitHubModel):
     room: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubModel):
+class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubRestModel):
     """ReposOwnerRepoHooksHookIdConfigPatchBody
 
     Examples:
@@ -13827,7 +13859,7 @@ class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoImportPutBody(GitHubModel):
+class ReposOwnerRepoImportPutBody(GitHubRestModel):
     """ReposOwnerRepoImportPutBody"""
 
     vcs_url: str = Field(
@@ -13851,7 +13883,7 @@ class ReposOwnerRepoImportPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
+class ReposOwnerRepoImportPatchBody(GitHubRestModel):
     """ReposOwnerRepoImportPatchBody"""
 
     vcs_username: Union[Unset, str] = Field(
@@ -13872,7 +13904,7 @@ class ReposOwnerRepoImportPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
 
     email: Union[Unset, str] = Field(
@@ -13883,7 +13915,7 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
+class ReposOwnerRepoImportLfsPatchBody(GitHubRestModel):
     """ReposOwnerRepoImportLfsPatchBody"""
 
     use_lfs: Literal["opt_in", "opt_out"] = Field(
@@ -13892,11 +13924,11 @@ class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubModel):
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubRestModel):
     """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
+class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
     permissions: Union[
@@ -13907,7 +13939,7 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesPostBody(GitHubModel):
+class ReposOwnerRepoIssuesPostBody(GitHubRestModel):
     """ReposOwnerRepoIssuesPostBody"""
 
     title: Union[str, int] = Field(description="The title of the issue.", default=...)
@@ -13934,7 +13966,7 @@ class ReposOwnerRepoIssuesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubRestModel):
     """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -13943,13 +13975,13 @@ class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
     color: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
     body: str = Field(description="The contents of the comment.", default=...)
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubModel):
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubRestModel):
     """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
     content: Literal[
@@ -13960,7 +13992,7 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
     title: Union[Unset, Union[None, str, int, str, int]] = Field(
@@ -13993,7 +14025,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
     id: Union[Unset, int] = Field(default=UNSET)
@@ -14002,7 +14034,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel)
     color: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
     assignees: Union[Unset, List[str]] = Field(
@@ -14011,7 +14043,7 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
     assignees: Union[Unset, List[str]] = Field(
@@ -14020,13 +14052,13 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBody(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBody(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
     body: str = Field(description="The contents of the comment.", default=...)
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
     labels: Union[Unset, List[str]] = Field(
@@ -14036,7 +14068,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
     labels: Union[
@@ -14044,19 +14076,21 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(
+    GitHubRestModel
+):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
     name: str = Field(default=...)
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
 
     name: str = Field(default=...)
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
     labels: Union[Unset, List[str]] = Field(
@@ -14066,7 +14100,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
 
     labels: Union[
@@ -14074,19 +14108,21 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(
+    GitHubRestModel
+):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
 
     name: str = Field(default=...)
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
 
     name: str = Field(default=...)
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
     lock_reason: Union[
@@ -14097,7 +14133,7 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
     content: Literal[
@@ -14108,7 +14144,7 @@ class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoKeysPostBody(GitHubModel):
+class ReposOwnerRepoKeysPostBody(GitHubRestModel):
     """ReposOwnerRepoKeysPostBody"""
 
     title: Union[Unset, str] = Field(description="A name for the key.", default=UNSET)
@@ -14119,7 +14155,7 @@ class ReposOwnerRepoKeysPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoLabelsPostBody(GitHubModel):
+class ReposOwnerRepoLabelsPostBody(GitHubRestModel):
     """ReposOwnerRepoLabelsPostBody"""
 
     name: str = Field(
@@ -14136,7 +14172,7 @@ class ReposOwnerRepoLabelsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
+class ReposOwnerRepoLabelsNamePatchBody(GitHubRestModel):
     """ReposOwnerRepoLabelsNamePatchBody"""
 
     new_name: Union[Unset, str] = Field(
@@ -14153,7 +14189,7 @@ class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoMergeUpstreamPostBody(GitHubModel):
+class ReposOwnerRepoMergeUpstreamPostBody(GitHubRestModel):
     """ReposOwnerRepoMergeUpstreamPostBody"""
 
     branch: str = Field(
@@ -14162,7 +14198,7 @@ class ReposOwnerRepoMergeUpstreamPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoMergesPostBody(GitHubModel):
+class ReposOwnerRepoMergesPostBody(GitHubRestModel):
     """ReposOwnerRepoMergesPostBody"""
 
     base: str = Field(
@@ -14179,7 +14215,7 @@ class ReposOwnerRepoMergesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoMilestonesPostBody(GitHubModel):
+class ReposOwnerRepoMilestonesPostBody(GitHubRestModel):
     """ReposOwnerRepoMilestonesPostBody"""
 
     title: str = Field(description="The title of the milestone.", default=...)
@@ -14196,7 +14232,7 @@ class ReposOwnerRepoMilestonesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubRestModel):
     """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
     title: Union[Unset, str] = Field(
@@ -14215,7 +14251,7 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoNotificationsPutBody(GitHubModel):
+class ReposOwnerRepoNotificationsPutBody(GitHubRestModel):
     """ReposOwnerRepoNotificationsPutBody"""
 
     last_read_at: Union[Unset, datetime] = Field(
@@ -14224,14 +14260,14 @@ class ReposOwnerRepoNotificationsPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoNotificationsPutResponse202(GitHubModel):
+class ReposOwnerRepoNotificationsPutResponse202(GitHubRestModel):
     """ReposOwnerRepoNotificationsPutResponse202"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPagesPostBody(GitHubModel):
+class ReposOwnerRepoPagesPostBody(GitHubRestModel):
     """ReposOwnerRepoPagesPostBody
 
     The source branch and directory used to publish your Pages site.
@@ -14247,7 +14283,7 @@ class ReposOwnerRepoPagesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubRestModel):
     """ReposOwnerRepoPagesPostBodyPropSource
 
     The source branch and directory used to publish your Pages site.
@@ -14263,7 +14299,7 @@ class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
     )
 
 
-class ReposOwnerRepoPagesDeploymentPostBody(GitHubModel):
+class ReposOwnerRepoPagesDeploymentPostBody(GitHubRestModel):
     """ReposOwnerRepoPagesDeploymentPostBody
 
     The object used to create GitHub Pages deployment
@@ -14287,7 +14323,7 @@ class ReposOwnerRepoPagesDeploymentPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoProjectsPostBody(GitHubModel):
+class ReposOwnerRepoProjectsPostBody(GitHubRestModel):
     """ReposOwnerRepoProjectsPostBody"""
 
     name: str = Field(description="The name of the project.", default=...)
@@ -14296,7 +14332,7 @@ class ReposOwnerRepoProjectsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPostBody(GitHubModel):
+class ReposOwnerRepoPullsPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPostBody"""
 
     title: Union[Unset, str] = Field(
@@ -14324,7 +14360,7 @@ class ReposOwnerRepoPullsPostBody(GitHubModel):
     issue: Union[Unset, int] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubModel):
+class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
 
     body: str = Field(
@@ -14332,7 +14368,7 @@ class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubModel):
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
     content: Literal[
@@ -14343,7 +14379,7 @@ class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberPatchBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberPatchBody"""
 
     title: Union[Unset, str] = Field(
@@ -14366,7 +14402,7 @@ class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
     location: Union[Unset, str] = Field(
@@ -14404,7 +14440,7 @@ class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
     body: str = Field(description="The text of the review comment.", default=...)
@@ -14442,13 +14478,13 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
     body: str = Field(description="The text of the review comment.", default=...)
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
     commit_title: Union[Unset, str] = Field(
@@ -14467,21 +14503,21 @@ class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
+class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubModel):
+class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
     reviewers: List[str] = Field(
@@ -14492,7 +14528,7 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
     commit_id: Union[Unset, str] = Field(
@@ -14515,7 +14551,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
     path: str = Field(
@@ -14533,7 +14569,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel)
     start_side: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
     body: str = Field(
@@ -14541,7 +14577,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
     message: str = Field(
@@ -14550,7 +14586,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel)
     event: Union[Unset, Literal["DISMISS"]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
     body: Union[Unset, str] = Field(
@@ -14562,7 +14598,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
     expected_head_sha: Union[Unset, str] = Field(
@@ -14571,14 +14607,14 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoReleasesPostBody(GitHubModel):
+class ReposOwnerRepoReleasesPostBody(GitHubRestModel):
     """ReposOwnerRepoReleasesPostBody"""
 
     tag_name: str = Field(description="The name of the tag.", default=...)
@@ -14610,7 +14646,7 @@ class ReposOwnerRepoReleasesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
     name: Union[Unset, str] = Field(
@@ -14623,7 +14659,7 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
     state: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
+class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubRestModel):
     """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
     tag_name: str = Field(
@@ -14644,7 +14680,7 @@ class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
+class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
     tag_name: Union[Unset, str] = Field(
@@ -14674,7 +14710,7 @@ class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubRestModel):
     """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
     content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
@@ -14683,7 +14719,7 @@ class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubRestModel):
     """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
     state: Literal["open", "resolved"] = Field(
@@ -14699,7 +14735,7 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
+class ReposOwnerRepoStatusesShaPostBody(GitHubRestModel):
     """ReposOwnerRepoStatusesShaPostBody"""
 
     state: Literal["error", "failure", "pending", "success"] = Field(
@@ -14718,7 +14754,7 @@ class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+class ReposOwnerRepoSubscriptionPutBody(GitHubRestModel):
     """ReposOwnerRepoSubscriptionPutBody"""
 
     subscribed: Union[Unset, bool] = Field(
@@ -14731,7 +14767,7 @@ class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
+class ReposOwnerRepoTagsProtectionPostBody(GitHubRestModel):
     """ReposOwnerRepoTagsProtectionPostBody"""
 
     pattern: str = Field(
@@ -14740,7 +14776,7 @@ class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoTopicsPutBody(GitHubModel):
+class ReposOwnerRepoTopicsPutBody(GitHubRestModel):
     """ReposOwnerRepoTopicsPutBody"""
 
     names: List[str] = Field(
@@ -14749,7 +14785,7 @@ class ReposOwnerRepoTopicsPutBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
+class ReposOwnerRepoTransferPostBody(GitHubRestModel):
     """ReposOwnerRepoTransferPostBody"""
 
     new_owner: str = Field(
@@ -14762,7 +14798,7 @@ class ReposOwnerRepoTransferPostBody(GitHubModel):
     )
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
+class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubRestModel):
     """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
     owner: Union[Unset, str] = Field(
@@ -14784,7 +14820,7 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
 
 
 class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200(
-    GitHubModel
+    GitHubRestModel
 ):
     """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
@@ -14793,7 +14829,7 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200(
 
 
 class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody(
-    GitHubModel
+    GitHubRestModel
 ):
     """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
@@ -14807,7 +14843,7 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
     )
 
 
-class ScimV2EnterprisesEnterpriseGroupsPostBody(GitHubModel):
+class ScimV2EnterprisesEnterpriseGroupsPostBody(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseGroupsPostBody"""
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
@@ -14821,13 +14857,13 @@ class ScimV2EnterprisesEnterpriseGroupsPostBody(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems(GitHubModel):
+class ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems"""
 
     value: str = Field(description="The SCIM user ID for a user.", default=...)
 
 
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody(GitHubModel):
+class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody"""
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
@@ -14841,13 +14877,15 @@ class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody(GitHubModel):
     ] = Field(default=UNSET)
 
 
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems(GitHubModel):
+class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems(
+    GitHubRestModel
+):
     """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems"""
 
     value: str = Field(description="The SCIM user ID for a user.", default=...)
 
 
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(GitHubModel):
+class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody"""
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
@@ -14861,7 +14899,7 @@ class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(GitHubModel):
 
 
 class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems(
-    GitHubModel
+    GitHubRestModel
 ):
     """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems"""
 
@@ -14874,7 +14912,7 @@ class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems(
     )
 
 
-class ScimV2EnterprisesEnterpriseUsersPostBody(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersPostBody(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersPostBody"""
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
@@ -14892,7 +14930,7 @@ class ScimV2EnterprisesEnterpriseUsersPostBody(GitHubModel):
     )
 
 
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropName(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersPostBodyPropName(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersPostBodyPropName"""
 
     given_name: str = Field(
@@ -14903,7 +14941,7 @@ class ScimV2EnterprisesEnterpriseUsersPostBodyPropName(GitHubModel):
     )
 
 
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems"""
 
     value: str = Field(description="The email address.", default=...)
@@ -14913,13 +14951,13 @@ class ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems(GitHubModel):
     )
 
 
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody"""
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
@@ -14937,7 +14975,7 @@ class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody(GitHubModel):
     )
 
 
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName"""
 
     given_name: str = Field(
@@ -14948,7 +14986,7 @@ class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName(GitHubModel):
     )
 
 
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems"""
 
     value: str = Field(description="The email address.", default=...)
@@ -14958,13 +14996,13 @@ class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems(GitHubMod
     )
 
 
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems"""
 
     value: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(GitHubModel):
+class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(GitHubRestModel):
     """ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody"""
 
     schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
@@ -14978,12 +15016,12 @@ class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(GitHubModel):
 
 
 class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems(
-    GitHubModel
+    GitHubRestModel
 ):
     """ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems"""
 
 
-class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
+class ScimV2OrganizationsOrgUsersPostBody(GitHubRestModel):
     """ScimV2OrganizationsOrgUsersPostBody"""
 
     user_name: str = Field(
@@ -15006,7 +15044,7 @@ class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
     active: Union[Unset, bool] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
+class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubRestModel):
     """ScimV2OrganizationsOrgUsersPostBodyPropName
 
     Examples:
@@ -15018,7 +15056,7 @@ class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
     formatted: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubRestModel):
     """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
 
     value: str = Field(default=...)
@@ -15026,7 +15064,7 @@ class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
     type: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
+class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubRestModel):
     """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
     schemas: Union[Unset, List[str]] = Field(default=UNSET)
@@ -15049,7 +15087,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubRestModel):
     """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
 
     Examples:
@@ -15061,7 +15099,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
     formatted: Union[Unset, str] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubRestModel):
     """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
 
     type: Union[Unset, str] = Field(default=UNSET)
@@ -15069,7 +15107,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
     primary: Union[Unset, bool] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubRestModel):
     """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
     schemas: Union[Unset, List[str]] = Field(default=UNSET)
@@ -15080,7 +15118,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubModel):
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(
+    GitHubRestModel
+):
     """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
 
     op: Literal["add", "remove", "replace"] = Field(default=...)
@@ -15098,7 +15138,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubMo
 
 
 class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
-    GitHubModel
+    GitHubRestModel
 ):
     """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
 
@@ -15114,7 +15154,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValue
 
 
 class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
-    GitHubModel
+    GitHubRestModel
 ):
     """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
     Items
@@ -15124,7 +15164,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValue
     primary: Union[Unset, bool] = Field(default=UNSET)
 
 
-class SearchCodeGetResponse200(GitHubModel):
+class SearchCodeGetResponse200(GitHubRestModel):
     """SearchCodeGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15132,7 +15172,7 @@ class SearchCodeGetResponse200(GitHubModel):
     items: List[CodeSearchResultItem] = Field(default=...)
 
 
-class SearchCommitsGetResponse200(GitHubModel):
+class SearchCommitsGetResponse200(GitHubRestModel):
     """SearchCommitsGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15140,7 +15180,7 @@ class SearchCommitsGetResponse200(GitHubModel):
     items: List[CommitSearchResultItem] = Field(default=...)
 
 
-class SearchIssuesGetResponse200(GitHubModel):
+class SearchIssuesGetResponse200(GitHubRestModel):
     """SearchIssuesGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15148,7 +15188,7 @@ class SearchIssuesGetResponse200(GitHubModel):
     items: List[IssueSearchResultItem] = Field(default=...)
 
 
-class SearchLabelsGetResponse200(GitHubModel):
+class SearchLabelsGetResponse200(GitHubRestModel):
     """SearchLabelsGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15156,7 +15196,7 @@ class SearchLabelsGetResponse200(GitHubModel):
     items: List[LabelSearchResultItem] = Field(default=...)
 
 
-class SearchRepositoriesGetResponse200(GitHubModel):
+class SearchRepositoriesGetResponse200(GitHubRestModel):
     """SearchRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15164,7 +15204,7 @@ class SearchRepositoriesGetResponse200(GitHubModel):
     items: List[RepoSearchResultItem] = Field(default=...)
 
 
-class SearchTopicsGetResponse200(GitHubModel):
+class SearchTopicsGetResponse200(GitHubRestModel):
     """SearchTopicsGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15172,7 +15212,7 @@ class SearchTopicsGetResponse200(GitHubModel):
     items: List[TopicSearchResultItem] = Field(default=...)
 
 
-class SearchUsersGetResponse200(GitHubModel):
+class SearchUsersGetResponse200(GitHubRestModel):
     """SearchUsersGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15180,7 +15220,7 @@ class SearchUsersGetResponse200(GitHubModel):
     items: List[UserSearchResultItem] = Field(default=...)
 
 
-class TeamsTeamIdPatchBody(GitHubModel):
+class TeamsTeamIdPatchBody(GitHubRestModel):
     """TeamsTeamIdPatchBody"""
 
     name: str = Field(description="The name of the team.", default=...)
@@ -15200,7 +15240,7 @@ class TeamsTeamIdPatchBody(GitHubModel):
     )
 
 
-class TeamsTeamIdDiscussionsPostBody(GitHubModel):
+class TeamsTeamIdDiscussionsPostBody(GitHubRestModel):
     """TeamsTeamIdDiscussionsPostBody"""
 
     title: str = Field(description="The discussion post's title.", default=...)
@@ -15211,7 +15251,7 @@ class TeamsTeamIdDiscussionsPostBody(GitHubModel):
     )
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubRestModel):
     """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
 
     title: Union[Unset, str] = Field(
@@ -15222,20 +15262,22 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
     )
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(GitHubRestModel):
     """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
 
     body: str = Field(description="The discussion comment's body text.", default=...)
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(GitHubModel):
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
+    GitHubRestModel
+):
     """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
 
     body: str = Field(description="The discussion comment's body text.", default=...)
 
 
 class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
-    GitHubModel
+    GitHubRestModel
 ):
     """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody"""
 
@@ -15247,7 +15289,7 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBo
     )
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
+class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubRestModel):
     """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
 
     content: Literal[
@@ -15258,7 +15300,7 @@ class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
     )
 
 
-class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubRestModel):
     """TeamsTeamIdMembershipsUsernamePutBody"""
 
     role: Union[Unset, Literal["member", "maintainer"]] = Field(
@@ -15266,7 +15308,7 @@ class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
     )
 
 
-class TeamsTeamIdProjectsProjectIdPutBody(GitHubModel):
+class TeamsTeamIdProjectsProjectIdPutBody(GitHubRestModel):
     """TeamsTeamIdProjectsProjectIdPutBody"""
 
     permission: Union[Unset, Literal["read", "write", "admin"]] = Field(
@@ -15275,14 +15317,14 @@ class TeamsTeamIdProjectsProjectIdPutBody(GitHubModel):
     )
 
 
-class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
+class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubRestModel):
     """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
+class TeamsTeamIdReposOwnerRepoPutBody(GitHubRestModel):
     """TeamsTeamIdReposOwnerRepoPutBody"""
 
     permission: Union[Unset, Literal["pull", "push", "admin"]] = Field(
@@ -15291,7 +15333,7 @@ class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
     )
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
+class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubRestModel):
     """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
     groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
@@ -15301,7 +15343,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
     synced_at: Union[Unset, str] = Field(default=UNSET)
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubRestModel):
     """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
     group_id: str = Field(description="ID of the IdP group.", default=...)
@@ -15314,7 +15356,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
     description: Union[Unset, str] = Field(default=UNSET)
 
 
-class UserPatchBody(GitHubModel):
+class UserPatchBody(GitHubRestModel):
     """UserPatchBody"""
 
     name: Union[Unset, str] = Field(
@@ -15343,14 +15385,14 @@ class UserPatchBody(GitHubModel):
     )
 
 
-class UserCodespacesGetResponse200(GitHubModel):
+class UserCodespacesGetResponse200(GitHubRestModel):
     """UserCodespacesGetResponse200"""
 
     total_count: int = Field(default=...)
     codespaces: List[Codespace] = Field(default=...)
 
 
-class UserCodespacesPostBodyOneof0(GitHubModel):
+class UserCodespacesPostBodyOneof0(GitHubRestModel):
     """UserCodespacesPostBodyOneof0"""
 
     repository_id: int = Field(
@@ -15395,7 +15437,7 @@ class UserCodespacesPostBodyOneof0(GitHubModel):
     )
 
 
-class UserCodespacesPostBodyOneof1(GitHubModel):
+class UserCodespacesPostBodyOneof1(GitHubRestModel):
     """UserCodespacesPostBodyOneof1"""
 
     pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
@@ -15421,7 +15463,7 @@ class UserCodespacesPostBodyOneof1(GitHubModel):
     )
 
 
-class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
+class UserCodespacesPostBodyOneof1PropPullRequest(GitHubRestModel):
     """UserCodespacesPostBodyOneof1PropPullRequest
 
     Pull request number for this codespace
@@ -15433,14 +15475,14 @@ class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
     )
 
 
-class UserCodespacesSecretsGetResponse200(GitHubModel):
+class UserCodespacesSecretsGetResponse200(GitHubRestModel):
     """UserCodespacesSecretsGetResponse200"""
 
     total_count: int = Field(default=...)
     secrets: List[CodespacesSecret] = Field(default=...)
 
 
-class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
+class UserCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """UserCodespacesSecretsSecretNamePutBody"""
 
     encrypted_value: Union[Unset, str] = Field(
@@ -15457,18 +15499,18 @@ class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
     )
 
 
-class UserCodespacesSecretsSecretNamePutResponse201(GitHubModel):
+class UserCodespacesSecretsSecretNamePutResponse201(GitHubRestModel):
     """UserCodespacesSecretsSecretNamePutResponse201"""
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubRestModel):
     """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
     repositories: List[MinimalRepository] = Field(default=...)
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
@@ -15477,7 +15519,7 @@ class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
     )
 
 
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
+class UserCodespacesCodespaceNamePatchBody(GitHubRestModel):
     """UserCodespacesCodespaceNamePatchBody"""
 
     machine: Union[Unset, str] = Field(
@@ -15492,14 +15534,14 @@ class UserCodespacesCodespaceNamePatchBody(GitHubModel):
     )
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
+class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubRestModel):
     """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
     total_count: int = Field(default=...)
     machines: List[CodespaceMachine] = Field(default=...)
 
 
-class UserEmailVisibilityPatchBody(GitHubModel):
+class UserEmailVisibilityPatchBody(GitHubRestModel):
     """UserEmailVisibilityPatchBody"""
 
     visibility: Literal["public", "private"] = Field(
@@ -15507,7 +15549,7 @@ class UserEmailVisibilityPatchBody(GitHubModel):
     )
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
+class UserEmailsPostBodyOneof0(GitHubRestModel):
     """UserEmailsPostBodyOneof0
 
     Examples:
@@ -15520,7 +15562,7 @@ class UserEmailsPostBodyOneof0(GitHubModel):
     )
 
 
-class UserEmailsDeleteBodyOneof0(GitHubModel):
+class UserEmailsDeleteBodyOneof0(GitHubRestModel):
     """UserEmailsDeleteBodyOneof0
 
     Deletes one or more email addresses from your GitHub account. Must contain at
@@ -15538,7 +15580,7 @@ class UserEmailsDeleteBodyOneof0(GitHubModel):
     )
 
 
-class UserGpgKeysPostBody(GitHubModel):
+class UserGpgKeysPostBody(GitHubRestModel):
     """UserGpgKeysPostBody"""
 
     name: Union[Unset, str] = Field(
@@ -15549,14 +15591,14 @@ class UserGpgKeysPostBody(GitHubModel):
     )
 
 
-class UserInstallationsGetResponse200(GitHubModel):
+class UserInstallationsGetResponse200(GitHubRestModel):
     """UserInstallationsGetResponse200"""
 
     total_count: int = Field(default=...)
     installations: List[Installation] = Field(default=...)
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubRestModel):
     """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
     total_count: int = Field(default=...)
@@ -15564,11 +15606,11 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
     repositories: List[Repository] = Field(default=...)
 
 
-class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
+class UserInteractionLimitsGetResponse200Anyof1(GitHubRestModel):
     """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-class UserKeysPostBody(GitHubModel):
+class UserKeysPostBody(GitHubRestModel):
     """UserKeysPostBody"""
 
     title: Union[Unset, str] = Field(
@@ -15581,7 +15623,7 @@ class UserKeysPostBody(GitHubModel):
     )
 
 
-class UserMembershipsOrgsOrgPatchBody(GitHubModel):
+class UserMembershipsOrgsOrgPatchBody(GitHubRestModel):
     """UserMembershipsOrgsOrgPatchBody"""
 
     state: Literal["active"] = Field(
@@ -15590,7 +15632,7 @@ class UserMembershipsOrgsOrgPatchBody(GitHubModel):
     )
 
 
-class UserMigrationsPostBody(GitHubModel):
+class UserMigrationsPostBody(GitHubRestModel):
     """UserMigrationsPostBody"""
 
     lock_repositories: Union[Unset, bool] = Field(
@@ -15626,7 +15668,7 @@ class UserMigrationsPostBody(GitHubModel):
     repositories: List[str] = Field(default=...)
 
 
-class UserProjectsPostBody(GitHubModel):
+class UserProjectsPostBody(GitHubRestModel):
     """UserProjectsPostBody"""
 
     name: str = Field(description="Name of the project", default=...)
@@ -15635,7 +15677,7 @@ class UserProjectsPostBody(GitHubModel):
     )
 
 
-class UserReposPostBody(GitHubModel):
+class UserReposPostBody(GitHubRestModel):
     """UserReposPostBody"""
 
     name: str = Field(description="The name of the repository.", default=...)
@@ -16613,6 +16655,7 @@ UserProjectsPostBody.update_forward_refs()
 UserReposPostBody.update_forward_refs()
 
 __all__ = [
+    "GitHubRestModel",
     "Root",
     "SimpleUser",
     "Integration",
