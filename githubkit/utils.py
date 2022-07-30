@@ -1,12 +1,20 @@
-from typing import Any
+from typing import Any, Dict
 
 
 class Unset:
     def __str__(self) -> str:
         return "<UNSET>"
 
+    __repr__ = __str__
+
     def __bool__(self) -> bool:
         return False
+
+    def __copy__(self):
+        return UNSET
+
+    def __deepcopy__(self, memo: Dict[int, Any]):
+        return UNSET
 
     @classmethod
     def __get_validators__(cls):

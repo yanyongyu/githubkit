@@ -1700,26 +1700,44 @@ class CodeScanningAlertAppearedInBranchPropAlertPropTool(GitHubWebhookModel):
 class GithubOrg(GitHubWebhookModel):
     """GitHub Org"""
 
-    login: str = Field(default=...)
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    name: Union[Unset, str] = Field(default=UNSET)
+    login: Literal["github"] = Field(default=...)
+    id: Literal[9919] = Field(default=...)
+    node_id: Literal["MDEyOk9yZ2FuaXphdGlvbjk5MTk="] = Field(default=...)
+    name: Union[Unset, Literal["GitHub"]] = Field(default=UNSET)
     email: Union[Unset, None] = Field(default=UNSET)
-    avatar_url: str = Field(default=...)
-    gravatar_id: str = Field(default=...)
-    url: str = Field(default=...)
-    html_url: str = Field(default=...)
-    followers_url: str = Field(default=...)
-    following_url: str = Field(default=...)
-    gists_url: str = Field(default=...)
-    starred_url: str = Field(default=...)
-    subscriptions_url: str = Field(default=...)
-    organizations_url: str = Field(default=...)
-    repos_url: str = Field(default=...)
-    events_url: str = Field(default=...)
-    received_events_url: str = Field(default=...)
-    type: str = Field(default=...)
-    site_admin: bool = Field(default=...)
+    avatar_url: Literal["https://avatars.githubusercontent.com/u/9919?v=4"] = Field(
+        default=...
+    )
+    gravatar_id: Literal[""] = Field(default=...)
+    url: Literal["https://api.github.com/users/github"] = Field(default=...)
+    html_url: Literal["https://github.com/github"] = Field(default=...)
+    followers_url: Literal["https://api.github.com/users/github/followers"] = Field(
+        default=...
+    )
+    following_url: Literal[
+        "https://api.github.com/users/github/following{/other_user}"
+    ] = Field(default=...)
+    gists_url: Literal["https://api.github.com/users/github/gists{/gist_id}"] = Field(
+        default=...
+    )
+    starred_url: Literal[
+        "https://api.github.com/users/github/starred{/owner}{/repo}"
+    ] = Field(default=...)
+    subscriptions_url: Literal[
+        "https://api.github.com/users/github/subscriptions"
+    ] = Field(default=...)
+    organizations_url: Literal["https://api.github.com/users/github/orgs"] = Field(
+        default=...
+    )
+    repos_url: Literal["https://api.github.com/users/github/repos"] = Field(default=...)
+    events_url: Literal["https://api.github.com/users/github/events{/privacy}"] = Field(
+        default=...
+    )
+    received_events_url: Literal[
+        "https://api.github.com/users/github/received_events"
+    ] = Field(default=...)
+    type: Literal["Organization"] = Field(default=...)
+    site_admin: Literal[False] = Field(default=...)
 
 
 class CodeScanningAlertClosedByUser(GitHubWebhookModel):
@@ -6665,7 +6683,7 @@ class MetaDeletedPropHook(GitHubWebhookModel):
                 "workflow_run",
             ]
         ],
-        List[str],
+        List[Literal["*"]],
     ] = Field(max_items=1, min_items=1, title="Webhook Events", default=...)
     config: MetaDeletedPropHookPropConfig = Field(
         description="Configuration object of the webhook", default=...
@@ -7440,7 +7458,7 @@ class PingEventPropHook(GitHubWebhookModel):
                 "workflow_run",
             ]
         ],
-        List[str],
+        List[Literal["*"]],
     ] = Field(max_items=1, min_items=1, title="Webhook Events", default=...)
     config: PingEventPropHookPropConfig = Field(
         description="Configuration object of the webhook", default=...

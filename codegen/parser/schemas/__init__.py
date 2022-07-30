@@ -46,7 +46,7 @@ def parse_schema(source: Source, class_name: str) -> SchemaData:
         else data.type
     )
 
-    if data.enum:
+    if data.enum or data.const is not None:
         schema = build_enum_schema(source)
     elif isinstance(data.type, list) or data.anyOf or data.oneOf:
         schema = build_union_schema(source, class_name)
