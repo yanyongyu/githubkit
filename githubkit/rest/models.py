@@ -11508,7 +11508,7 @@ class OrgsOrgHooksPostBody(GitHubRestModel):
     )
     events: Union[Unset, List[str]] = Field(
         description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
-        default_factory=lambda: ["push"],
+        default=["push"],
     )
     active: Union[Unset, bool] = Field(
         description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
@@ -11551,7 +11551,7 @@ class OrgsOrgHooksHookIdPatchBody(GitHubRestModel):
     )
     events: Union[Unset, List[str]] = Field(
         description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
-        default_factory=lambda: ["push"],
+        default=["push"],
     )
     active: Union[Unset, bool] = Field(
         description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
@@ -13749,7 +13749,7 @@ class ReposOwnerRepoHooksPostBody(GitHubRestModel):
     )
     events: Union[Unset, List[str]] = Field(
         description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
-        default_factory=lambda: ["push"],
+        default=["push"],
     )
     active: Union[Unset, bool] = Field(
         description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
@@ -13792,7 +13792,7 @@ class ReposOwnerRepoHooksHookIdPatchBody(GitHubRestModel):
     )
     events: Union[Unset, List[str]] = Field(
         description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
-        default_factory=lambda: ["push"],
+        default=["push"],
     )
     add_events: Union[Unset, List[str]] = Field(
         description="Determines a list of events to be added to the list of events that the Hook triggers for.",

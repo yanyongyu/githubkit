@@ -38,16 +38,13 @@ class SchemaData(BaseModel):
 
     def _get_default_args(self) -> Dict[str, str]:
         """Get pydantic field info args"""
-        default = self.default
         args = {}
         if self.title:
             args["title"] = repr(self.title)
         if self.description:
             args["description"] = repr(self.description)
-        if isinstance(default, (int, bool, float, str)):
-            args["default"] = repr(default)
-        elif isinstance(default, (list, dict)):
-            args["default_factory"] = f"lambda: {default!r}"
+        if self.default is not None:
+            args["default"] = repr(self.default)
         return args
 
 

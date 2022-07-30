@@ -28,6 +28,7 @@ from .models import (
     OrgHook,
     BasicError,
     SimpleUser,
+    TeamSimple,
     HookDelivery,
     AuditLogEvent,
     OrgMembership,
@@ -1961,6 +1962,80 @@ class OrgsClient:
         username: str,
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    def list_security_manager_teams(
+        self,
+        org: str,
+    ) -> "Response[List[TeamSimple]]":
+        url = f"/orgs/{org}/security-managers"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=List[TeamSimple],
+        )
+
+    async def async_list_security_manager_teams(
+        self,
+        org: str,
+    ) -> "Response[List[TeamSimple]]":
+        url = f"/orgs/{org}/security-managers"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=List[TeamSimple],
+        )
+
+    def add_security_manager_team(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/security-managers/teams/{team_slug}"
+
+        return self._github.request(
+            "PUT",
+            url,
+            error_models={},
+        )
+
+    async def async_add_security_manager_team(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/security-managers/teams/{team_slug}"
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            error_models={},
+        )
+
+    def remove_security_manager_team(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/security-managers/teams/{team_slug}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_remove_security_manager_team(
+        self,
+        org: str,
+        team_slug: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
         return await self._github.arequest(
             "DELETE",
