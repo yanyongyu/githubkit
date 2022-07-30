@@ -8,6 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing_extensions import Annotated
 from typing import Any, List, Union, Literal
 
 from pydantic import Extra, Field, BaseModel
@@ -14051,206 +14052,314 @@ class WorkflowRunRequested(GitHubWebhookModel):
     )
 
 
-BranchProtectionRuleEvent = Union[
-    BranchProtectionRuleCreated, BranchProtectionRuleDeleted, BranchProtectionRuleEdited
+BranchProtectionRuleEvent = Annotated[
+    Union[
+        BranchProtectionRuleCreated,
+        BranchProtectionRuleDeleted,
+        BranchProtectionRuleEdited,
+    ],
+    Field(discriminator="action"),
 ]
-CheckRunEvent = Union[
-    CheckRunCompleted, CheckRunCreated, CheckRunRequestedAction, CheckRunRerequested
+CheckRunEvent = Annotated[
+    Union[
+        CheckRunCompleted, CheckRunCreated, CheckRunRequestedAction, CheckRunRerequested
+    ],
+    Field(discriminator="action"),
 ]
-CheckSuiteEvent = Union[CheckSuiteCompleted, CheckSuiteRequested, CheckSuiteRerequested]
-CodeScanningAlertEvent = Union[
-    CodeScanningAlertAppearedInBranch,
-    CodeScanningAlertClosedByUser,
-    CodeScanningAlertCreated,
-    CodeScanningAlertFixed,
-    CodeScanningAlertReopened,
-    CodeScanningAlertReopenedByUser,
+CheckSuiteEvent = Annotated[
+    Union[CheckSuiteCompleted, CheckSuiteRequested, CheckSuiteRerequested],
+    Field(discriminator="action"),
 ]
-CommitCommentEvent = CommitCommentCreated
-DeployKeyEvent = Union[DeployKeyCreated, DeployKeyDeleted]
-DeploymentEvent = DeploymentCreated
-DeploymentStatusEvent = DeploymentStatusCreated
-DiscussionEvent = Union[
-    DiscussionAnswered,
-    DiscussionCategoryChanged,
-    DiscussionCreated,
-    DiscussionDeleted,
-    DiscussionEdited,
-    DiscussionLabeled,
-    DiscussionLocked,
-    DiscussionPinned,
-    DiscussionTransferred,
-    DiscussionUnanswered,
-    DiscussionUnlabeled,
-    DiscussionUnlocked,
-    DiscussionUnpinned,
+CodeScanningAlertEvent = Annotated[
+    Union[
+        CodeScanningAlertAppearedInBranch,
+        CodeScanningAlertClosedByUser,
+        CodeScanningAlertCreated,
+        CodeScanningAlertFixed,
+        CodeScanningAlertReopened,
+        CodeScanningAlertReopenedByUser,
+    ],
+    Field(discriminator="action"),
 ]
-DiscussionCommentEvent = Union[
-    DiscussionCommentCreated, DiscussionCommentDeleted, DiscussionCommentEdited
+CommitCommentEvent = Annotated[CommitCommentCreated, Field(discriminator="action")]
+DeployKeyEvent = Annotated[
+    Union[DeployKeyCreated, DeployKeyDeleted], Field(discriminator="action")
 ]
-GithubAppAuthorizationEvent = GithubAppAuthorizationRevoked
-InstallationEvent = Union[
-    InstallationCreated,
-    InstallationDeleted,
-    InstallationNewPermissionsAccepted,
-    InstallationSuspend,
-    InstallationUnsuspend,
+DeploymentEvent = Annotated[DeploymentCreated, Field(discriminator="action")]
+DeploymentStatusEvent = Annotated[
+    DeploymentStatusCreated, Field(discriminator="action")
 ]
-InstallationRepositoriesEvent = Union[
-    InstallationRepositoriesAdded, InstallationRepositoriesRemoved
+DiscussionEvent = Annotated[
+    Union[
+        DiscussionAnswered,
+        DiscussionCategoryChanged,
+        DiscussionCreated,
+        DiscussionDeleted,
+        DiscussionEdited,
+        DiscussionLabeled,
+        DiscussionLocked,
+        DiscussionPinned,
+        DiscussionTransferred,
+        DiscussionUnanswered,
+        DiscussionUnlabeled,
+        DiscussionUnlocked,
+        DiscussionUnpinned,
+    ],
+    Field(discriminator="action"),
 ]
-IssueCommentEvent = Union[IssueCommentCreated, IssueCommentDeleted, IssueCommentEdited]
-IssuesEvent = Union[
-    IssuesAssigned,
-    IssuesClosed,
-    IssuesDeleted,
-    IssuesDemilestoned,
-    IssuesEdited,
-    IssuesLabeled,
-    IssuesLocked,
-    IssuesMilestoned,
-    IssuesOpened,
-    IssuesPinned,
-    IssuesReopened,
-    IssuesTransferred,
-    IssuesUnassigned,
-    IssuesUnlabeled,
-    IssuesUnlocked,
-    IssuesUnpinned,
+DiscussionCommentEvent = Annotated[
+    Union[DiscussionCommentCreated, DiscussionCommentDeleted, DiscussionCommentEdited],
+    Field(discriminator="action"),
 ]
-LabelEvent = Union[LabelCreated, LabelDeleted, LabelEdited]
-MarketplacePurchaseEvent = Union[
-    MarketplacePurchaseCancelled,
-    MarketplacePurchaseChanged,
-    MarketplacePurchasePendingChange,
-    MarketplacePurchasePendingChangeCancelled,
-    MarketplacePurchasePurchased,
+GithubAppAuthorizationEvent = Annotated[
+    GithubAppAuthorizationRevoked, Field(discriminator="action")
 ]
-MemberEvent = Union[MemberAdded, MemberEdited, MemberRemoved]
-MembershipEvent = Union[MembershipAdded, MembershipRemoved]
-MetaEvent = MetaDeleted
-MilestoneEvent = Union[
-    MilestoneClosed,
-    MilestoneCreated,
-    MilestoneDeleted,
-    MilestoneEdited,
-    MilestoneOpened,
+InstallationEvent = Annotated[
+    Union[
+        InstallationCreated,
+        InstallationDeleted,
+        InstallationNewPermissionsAccepted,
+        InstallationSuspend,
+        InstallationUnsuspend,
+    ],
+    Field(discriminator="action"),
 ]
-OrgBlockEvent = Union[OrgBlockBlocked, OrgBlockUnblocked]
-OrganizationEvent = Union[
-    OrganizationDeleted,
-    OrganizationMemberAdded,
-    OrganizationMemberInvited,
-    OrganizationMemberRemoved,
-    OrganizationRenamed,
+InstallationRepositoriesEvent = Annotated[
+    Union[InstallationRepositoriesAdded, InstallationRepositoriesRemoved],
+    Field(discriminator="action"),
 ]
-PackageEvent = Union[PackagePublished, PackageUpdated]
-ProjectEvent = Union[
-    ProjectClosed, ProjectCreated, ProjectDeleted, ProjectEdited, ProjectReopened
+IssueCommentEvent = Annotated[
+    Union[IssueCommentCreated, IssueCommentDeleted, IssueCommentEdited],
+    Field(discriminator="action"),
 ]
-ProjectCardEvent = Union[
-    ProjectCardConverted,
-    ProjectCardCreated,
-    ProjectCardDeleted,
-    ProjectCardEdited,
-    ProjectCardMoved,
+IssuesEvent = Annotated[
+    Union[
+        IssuesAssigned,
+        IssuesClosed,
+        IssuesDeleted,
+        IssuesDemilestoned,
+        IssuesEdited,
+        IssuesLabeled,
+        IssuesLocked,
+        IssuesMilestoned,
+        IssuesOpened,
+        IssuesPinned,
+        IssuesReopened,
+        IssuesTransferred,
+        IssuesUnassigned,
+        IssuesUnlabeled,
+        IssuesUnlocked,
+        IssuesUnpinned,
+    ],
+    Field(discriminator="action"),
 ]
-ProjectColumnEvent = Union[
-    ProjectColumnCreated, ProjectColumnDeleted, ProjectColumnEdited, ProjectColumnMoved
+LabelEvent = Annotated[
+    Union[LabelCreated, LabelDeleted, LabelEdited], Field(discriminator="action")
 ]
-ProjectsV2ItemEvent = Union[
-    ProjectsV2ItemArchived,
-    ProjectsV2ItemConverted,
-    ProjectsV2ItemCreated,
-    ProjectsV2ItemDeleted,
-    ProjectsV2ItemEdited,
-    ProjectsV2ItemReordered,
-    ProjectsV2ItemRestored,
+MarketplacePurchaseEvent = Annotated[
+    Union[
+        MarketplacePurchaseCancelled,
+        MarketplacePurchaseChanged,
+        MarketplacePurchasePendingChange,
+        MarketplacePurchasePendingChangeCancelled,
+        MarketplacePurchasePurchased,
+    ],
+    Field(discriminator="action"),
 ]
-PullRequestEvent = Union[
-    PullRequestAssigned,
-    PullRequestAutoMergeDisabled,
-    PullRequestAutoMergeEnabled,
-    PullRequestClosed,
-    PullRequestConvertedToDraft,
-    PullRequestEdited,
-    PullRequestLabeled,
-    PullRequestLocked,
-    PullRequestOpened,
-    PullRequestReadyForReview,
-    PullRequestReopened,
-    Union[PullRequestReviewRequestRemovedOneof0, PullRequestReviewRequestRemovedOneof1],
-    Union[PullRequestReviewRequestedOneof0, PullRequestReviewRequestedOneof1],
-    PullRequestSynchronize,
-    PullRequestUnassigned,
-    PullRequestUnlabeled,
-    PullRequestUnlocked,
+MemberEvent = Annotated[
+    Union[MemberAdded, MemberEdited, MemberRemoved], Field(discriminator="action")
 ]
-PullRequestReviewEvent = Union[
-    PullRequestReviewDismissed, PullRequestReviewEdited, PullRequestReviewSubmitted
+MembershipEvent = Annotated[
+    Union[MembershipAdded, MembershipRemoved], Field(discriminator="action")
 ]
-PullRequestReviewCommentEvent = Union[
-    PullRequestReviewCommentCreated,
-    PullRequestReviewCommentDeleted,
-    PullRequestReviewCommentEdited,
+MetaEvent = Annotated[MetaDeleted, Field(discriminator="action")]
+MilestoneEvent = Annotated[
+    Union[
+        MilestoneClosed,
+        MilestoneCreated,
+        MilestoneDeleted,
+        MilestoneEdited,
+        MilestoneOpened,
+    ],
+    Field(discriminator="action"),
 ]
-PullRequestReviewThreadEvent = Union[
-    PullRequestReviewThreadResolved, PullRequestReviewThreadUnresolved
+OrgBlockEvent = Annotated[
+    Union[OrgBlockBlocked, OrgBlockUnblocked], Field(discriminator="action")
 ]
-ReleaseEvent = Union[
-    ReleaseCreated,
-    ReleaseDeleted,
-    ReleaseEdited,
-    ReleasePrereleased,
-    ReleasePublished,
-    ReleaseReleased,
-    ReleaseUnpublished,
+OrganizationEvent = Annotated[
+    Union[
+        OrganizationDeleted,
+        OrganizationMemberAdded,
+        OrganizationMemberInvited,
+        OrganizationMemberRemoved,
+        OrganizationRenamed,
+    ],
+    Field(discriminator="action"),
 ]
-RepositoryEvent = Union[
-    RepositoryArchived,
-    RepositoryCreated,
-    RepositoryDeleted,
-    RepositoryEdited,
-    RepositoryPrivatized,
-    RepositoryPublicized,
-    RepositoryRenamed,
-    RepositoryTransferred,
-    RepositoryUnarchived,
+PackageEvent = Annotated[
+    Union[PackagePublished, PackageUpdated], Field(discriminator="action")
 ]
-RepositoryVulnerabilityAlertEvent = Union[
-    RepositoryVulnerabilityAlertCreate,
-    RepositoryVulnerabilityAlertDismiss,
-    RepositoryVulnerabilityAlertReopen,
-    RepositoryVulnerabilityAlertResolve,
+ProjectEvent = Annotated[
+    Union[
+        ProjectClosed, ProjectCreated, ProjectDeleted, ProjectEdited, ProjectReopened
+    ],
+    Field(discriminator="action"),
 ]
-SecretScanningAlertEvent = Union[
-    SecretScanningAlertCreated, SecretScanningAlertReopened, SecretScanningAlertResolved
+ProjectCardEvent = Annotated[
+    Union[
+        ProjectCardConverted,
+        ProjectCardCreated,
+        ProjectCardDeleted,
+        ProjectCardEdited,
+        ProjectCardMoved,
+    ],
+    Field(discriminator="action"),
 ]
-SecurityAdvisoryEvent = Union[
-    SecurityAdvisoryPerformed,
-    SecurityAdvisoryPublished,
-    SecurityAdvisoryUpdated,
-    SecurityAdvisoryWithdrawn,
+ProjectColumnEvent = Annotated[
+    Union[
+        ProjectColumnCreated,
+        ProjectColumnDeleted,
+        ProjectColumnEdited,
+        ProjectColumnMoved,
+    ],
+    Field(discriminator="action"),
 ]
-SponsorshipEvent = Union[
-    SponsorshipCancelled,
-    SponsorshipCreated,
-    SponsorshipEdited,
-    SponsorshipPendingCancellation,
-    SponsorshipPendingTierChange,
-    SponsorshipTierChanged,
+ProjectsV2ItemEvent = Annotated[
+    Union[
+        ProjectsV2ItemArchived,
+        ProjectsV2ItemConverted,
+        ProjectsV2ItemCreated,
+        ProjectsV2ItemDeleted,
+        ProjectsV2ItemEdited,
+        ProjectsV2ItemReordered,
+        ProjectsV2ItemRestored,
+    ],
+    Field(discriminator="action"),
 ]
-StarEvent = Union[StarCreated, StarDeleted]
-TeamEvent = Union[
-    TeamAddedToRepository,
-    TeamCreated,
-    TeamDeleted,
-    TeamEdited,
-    TeamRemovedFromRepository,
+PullRequestEvent = Annotated[
+    Union[
+        PullRequestAssigned,
+        PullRequestAutoMergeDisabled,
+        PullRequestAutoMergeEnabled,
+        PullRequestClosed,
+        PullRequestConvertedToDraft,
+        PullRequestEdited,
+        PullRequestLabeled,
+        PullRequestLocked,
+        PullRequestOpened,
+        PullRequestReadyForReview,
+        PullRequestReopened,
+        Union[
+            PullRequestReviewRequestRemovedOneof0, PullRequestReviewRequestRemovedOneof1
+        ],
+        Union[PullRequestReviewRequestedOneof0, PullRequestReviewRequestedOneof1],
+        PullRequestSynchronize,
+        PullRequestUnassigned,
+        PullRequestUnlabeled,
+        PullRequestUnlocked,
+    ],
+    Field(discriminator="action"),
 ]
-WatchEvent = WatchStarted
-WorkflowJobEvent = Union[WorkflowJobCompleted, WorkflowJobInProgress, WorkflowJobQueued]
-WorkflowRunEvent = Union[WorkflowRunCompleted, WorkflowRunRequested]
+PullRequestReviewEvent = Annotated[
+    Union[
+        PullRequestReviewDismissed, PullRequestReviewEdited, PullRequestReviewSubmitted
+    ],
+    Field(discriminator="action"),
+]
+PullRequestReviewCommentEvent = Annotated[
+    Union[
+        PullRequestReviewCommentCreated,
+        PullRequestReviewCommentDeleted,
+        PullRequestReviewCommentEdited,
+    ],
+    Field(discriminator="action"),
+]
+PullRequestReviewThreadEvent = Annotated[
+    Union[PullRequestReviewThreadResolved, PullRequestReviewThreadUnresolved],
+    Field(discriminator="action"),
+]
+ReleaseEvent = Annotated[
+    Union[
+        ReleaseCreated,
+        ReleaseDeleted,
+        ReleaseEdited,
+        ReleasePrereleased,
+        ReleasePublished,
+        ReleaseReleased,
+        ReleaseUnpublished,
+    ],
+    Field(discriminator="action"),
+]
+RepositoryEvent = Annotated[
+    Union[
+        RepositoryArchived,
+        RepositoryCreated,
+        RepositoryDeleted,
+        RepositoryEdited,
+        RepositoryPrivatized,
+        RepositoryPublicized,
+        RepositoryRenamed,
+        RepositoryTransferred,
+        RepositoryUnarchived,
+    ],
+    Field(discriminator="action"),
+]
+RepositoryVulnerabilityAlertEvent = Annotated[
+    Union[
+        RepositoryVulnerabilityAlertCreate,
+        RepositoryVulnerabilityAlertDismiss,
+        RepositoryVulnerabilityAlertReopen,
+        RepositoryVulnerabilityAlertResolve,
+    ],
+    Field(discriminator="action"),
+]
+SecretScanningAlertEvent = Annotated[
+    Union[
+        SecretScanningAlertCreated,
+        SecretScanningAlertReopened,
+        SecretScanningAlertResolved,
+    ],
+    Field(discriminator="action"),
+]
+SecurityAdvisoryEvent = Annotated[
+    Union[
+        SecurityAdvisoryPerformed,
+        SecurityAdvisoryPublished,
+        SecurityAdvisoryUpdated,
+        SecurityAdvisoryWithdrawn,
+    ],
+    Field(discriminator="action"),
+]
+SponsorshipEvent = Annotated[
+    Union[
+        SponsorshipCancelled,
+        SponsorshipCreated,
+        SponsorshipEdited,
+        SponsorshipPendingCancellation,
+        SponsorshipPendingTierChange,
+        SponsorshipTierChanged,
+    ],
+    Field(discriminator="action"),
+]
+StarEvent = Annotated[Union[StarCreated, StarDeleted], Field(discriminator="action")]
+TeamEvent = Annotated[
+    Union[
+        TeamAddedToRepository,
+        TeamCreated,
+        TeamDeleted,
+        TeamEdited,
+        TeamRemovedFromRepository,
+    ],
+    Field(discriminator="action"),
+]
+WatchEvent = Annotated[WatchStarted, Field(discriminator="action")]
+WorkflowJobEvent = Annotated[
+    Union[WorkflowJobCompleted, WorkflowJobInProgress, WorkflowJobQueued],
+    Field(discriminator="action"),
+]
+WorkflowRunEvent = Annotated[
+    Union[WorkflowRunCompleted, WorkflowRunRequested], Field(discriminator="action")
+]
 
 WebhookEvent = Union[
     BranchProtectionRuleEvent,
@@ -14310,6 +14419,65 @@ WebhookEvent = Union[
     WorkflowJobEvent,
     WorkflowRunEvent,
 ]
+
+webhook_events = {
+    "branch_protection_rule_event": BranchProtectionRuleEvent,
+    "check_run_event": CheckRunEvent,
+    "check_suite_event": CheckSuiteEvent,
+    "code_scanning_alert_event": CodeScanningAlertEvent,
+    "commit_comment_event": CommitCommentEvent,
+    "create": CreateEvent,
+    "delete": DeleteEvent,
+    "deploy_key_event": DeployKeyEvent,
+    "deployment_event": DeploymentEvent,
+    "deployment_status_event": DeploymentStatusEvent,
+    "discussion_event": DiscussionEvent,
+    "discussion_comment_event": DiscussionCommentEvent,
+    "fork": ForkEvent,
+    "github_app_authorization_event": GithubAppAuthorizationEvent,
+    "gollum": GollumEvent,
+    "installation_event": InstallationEvent,
+    "installation_repositories_event": InstallationRepositoriesEvent,
+    "issue_comment_event": IssueCommentEvent,
+    "issues_event": IssuesEvent,
+    "label_event": LabelEvent,
+    "marketplace_purchase_event": MarketplacePurchaseEvent,
+    "member_event": MemberEvent,
+    "membership_event": MembershipEvent,
+    "meta_event": MetaEvent,
+    "milestone_event": MilestoneEvent,
+    "org_block_event": OrgBlockEvent,
+    "organization_event": OrganizationEvent,
+    "package_event": PackageEvent,
+    "page_build": PageBuildEvent,
+    "ping": PingEvent,
+    "project_event": ProjectEvent,
+    "project_card_event": ProjectCardEvent,
+    "project_column_event": ProjectColumnEvent,
+    "projects_v2_item_event": ProjectsV2ItemEvent,
+    "public": PublicEvent,
+    "pull_request_event": PullRequestEvent,
+    "pull_request_review_event": PullRequestReviewEvent,
+    "pull_request_review_comment_event": PullRequestReviewCommentEvent,
+    "pull_request_review_thread_event": PullRequestReviewThreadEvent,
+    "push": PushEvent,
+    "release_event": ReleaseEvent,
+    "repository_event": RepositoryEvent,
+    "repository_dispatch": RepositoryDispatchEvent,
+    "repository_import": RepositoryImportEvent,
+    "repository_vulnerability_alert_event": RepositoryVulnerabilityAlertEvent,
+    "secret_scanning_alert_event": SecretScanningAlertEvent,
+    "security_advisory_event": SecurityAdvisoryEvent,
+    "sponsorship_event": SponsorshipEvent,
+    "star_event": StarEvent,
+    "status": StatusEvent,
+    "team_event": TeamEvent,
+    "team_add": TeamAddEvent,
+    "watch_event": WatchEvent,
+    "workflow_dispatch": WorkflowDispatchEvent,
+    "workflow_job_event": WorkflowJobEvent,
+    "workflow_run_event": WorkflowRunEvent,
+}
 
 BranchProtectionRuleCreated.update_forward_refs()
 BranchProtectionRule.update_forward_refs()
@@ -15633,4 +15801,5 @@ __all__ = [
     "WorkflowJobEvent",
     "WorkflowRunEvent",
     "WebhookEvent",
+    "webhook_events",
 ]

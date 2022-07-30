@@ -14,6 +14,8 @@ from __future__ import annotations
 {% endfor %}
 {% endfor %}
 
+from typing_extensions import Annotated
+
 class GitHubWebhookModel(BaseModel, allow_population_by_field_name=True):
     ...
 
@@ -25,14 +27,20 @@ class GitHubWebhookModel(BaseModel, allow_population_by_field_name=True):
 {% endfor %}
 
 {% for name, definition in union_definitions.items() %}
-{{ name }} = {{ definition.get_type_string() }}
+{{ pascal_case(name) }} = Annotated[{{ definition.get_type_string() }}, Field(discriminator="action")]
 {% endfor %}
 
 WebhookEvent = Union[
     {% for name in definitions %}
-    {{ name }},
+    {{ pascal_case(name) }},
     {% endfor %}
 ]
+
+webhook_events = {
+    {% for name in definitions %}
+    "{{ name.split('$')[0] }}": {{ pascal_case(name) }},
+    {% endfor %}
+}
 
 {% for model in models %}
 {{ model.class_name }}.update_forward_refs()
@@ -44,7 +52,8 @@ __all__ = [
     "{{ model.class_name }}",
     {% endfor %}
     {% for name in definitions %}
-    "{{ name }}",
+    "{{ pascal_case(name) }}",
     {% endfor %}
     "WebhookEvent",
+    "webhook_events",
 ]

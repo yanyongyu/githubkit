@@ -10,6 +10,8 @@ class GitHubException(Exception):
 
 
 class RequestFailed(GitHubException):
+    """Simple API request failed with error status code"""
+
     def __init__(self, response: "Response"):
         self.response = response
 
@@ -21,8 +23,20 @@ class RequestFailed(GitHubException):
 
 
 class GraphQLFailed(GitHubException):
+    """GraphQL request with errors in response"""
+
     def __init__(self, response: "GraphQLResponse"):
         self.response = response
 
     def __repr__(self) -> str:
         return f"<GraphQLFailed: {self.response.errors!r}>"
+
+
+class WebhookTypeNotFound(GitHubException):
+    """Webhook event type not found"""
+
+    def __init__(self, name: str):
+        self.name = name
+
+    def __repr__(self) -> str:
+        return f"<WebhookTypeNotFound: {self.name}>"

@@ -87,9 +87,7 @@ def parse_webhook_schema(source: Source, config: Config) -> WebhookData:
 
         schemas = get_schemas()
         definitions = {
-            pascal_case(event["$ref"].split("/")[-1]): schemas[
-                source.resolve_ref(event["$ref"]).uri
-            ]
+            event["$ref"].split("/")[-1]: schemas[source.resolve_ref(event["$ref"]).uri]
             for event in source.data["oneOf"]
         }
 
