@@ -1,6 +1,16 @@
 from functools import cached_property
 from typing_extensions import ParamSpec
-from typing import Any, Dict, List, Union, TypeVar, Callable, Optional, Awaitable
+from typing import (
+    Any,
+    Dict,
+    List,
+    Union,
+    TypeVar,
+    Callable,
+    Optional,
+    Awaitable,
+    overload,
+)
 
 from .core import GitHubCore
 from .rest import RestNamespace
@@ -11,8 +21,9 @@ from .auth import BasicAuthStrategy as BasicAuthStrategy
 from .auth import TokenAuthStrategy as TokenAuthStrategy
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
-RT = TypeVar("RT")
 CP = ParamSpec("CP")
+CT = TypeVar("CT")
+RT = TypeVar("RT")
 
 
 class GitHub(GitHubCore):
@@ -40,6 +51,7 @@ class GitHub(GitHubCore):
             )
         )
 
+    @overload
     @staticmethod
     def paginate(
         request: Union[
@@ -48,7 +60,37 @@ class GitHub(GitHubCore):
         ],
         page: int = 1,
         per_page: int = 100,
+        map_func: None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> Paginator[RT]:
-        return Paginator(request, page, per_page, *args, **kwargs)
+        ...
+
+    @overload
+    @staticmethod
+    def paginate(
+        request: Union[
+            Callable[CP, Response[List[CT]]],
+            Callable[CP, Awaitable[Response[List[CT]]]],
+        ],
+        page: int = 1,
+        per_page: int = 100,
+        map_func: Callable[[Response[List[CT]]], List[RT]] = ...,  # type: ignore
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> Paginator[RT]:
+        ...
+
+    @staticmethod
+    def paginate(
+        request: Union[
+            Callable[CP, Response[List[CT]]],
+            Callable[CP, Awaitable[Response[List[CT]]]],
+        ],
+        page: int = 1,
+        per_page: int = 100,
+        map_func: Optional[Callable[[Response[List[CT]]], List[RT]]] = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> Paginator[RT]:
+        return Paginator(request, page, per_page, map_func, *args, **kwargs)

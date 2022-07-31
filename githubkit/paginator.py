@@ -1,28 +1,72 @@
 import inspect
 from typing_extensions import Self, ParamSpec
-from typing import List, Union, Generic, TypeVar, Callable, Awaitable
+from typing import (
+    List,
+    Union,
+    Generic,
+    TypeVar,
+    Callable,
+    Optional,
+    Awaitable,
+    cast,
+    overload,
+)
 
 from .response import Response
 
-RT = TypeVar("RT")
 CP = ParamSpec("CP")
+CT = TypeVar("CT")
+RT = TypeVar("RT")
 
 
 class Paginator(Generic[RT]):
+    @overload
     def __init__(
-        self,
+        self: "Paginator[RT]",
         request: Union[
             Callable[CP, Response[List[RT]]],
             Callable[CP, Awaitable[Response[List[RT]]]],
         ],
         page: int = 1,
         per_page: int = 100,
+        map_func: None = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ):
+        ...
+
+    @overload
+    def __init__(
+        self: "Paginator[RT]",
+        request: Union[
+            Callable[CP, Response[List[CT]]],
+            Callable[CP, Awaitable[Response[List[CT]]]],
+        ],
+        page: int = 1,
+        per_page: int = 100,
+        map_func: Callable[[Response[List[CT]]], List[RT]] = ...,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ):
+        ...
+
+    def __init__(
+        self,
+        request: Union[
+            Callable[CP, Response[List[CT]]],
+            Callable[CP, Awaitable[Response[List[CT]]]],
+        ],
+        page: int = 1,
+        per_page: int = 100,
+        map_func: Optional[Callable[[Response[List[CT]]], List[RT]]] = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ):
         self.request = request
         self.args = args
         self.kwargs = kwargs
+
+        self.map_func = map_func
 
         self._current_page: int = page
         self._per_page: int = per_page
@@ -67,25 +111,33 @@ class Paginator(Generic[RT]):
         return self
 
     def _get_next_page(self) -> List[RT]:
-        response: Response[List[RT]] = self.request(
+        response = self.request(
             *self.args,
             **self.kwargs,
             page=self._current_page,  # type: ignore
             per_page=self._per_page,  # type: ignore
         )
-        self._cached_data = response.parsed_data
+        self._cached_data = (
+            cast(Response[List[RT]], response).parsed_data
+            if self.map_func is None
+            else self.map_func(response)
+        )
         self._index = 0
         self._current_page += 1
         return self._cached_data
 
     async def _aget_next_page(self) -> List[RT]:
-        response: Response[List[RT]] = await self.request(
+        response = await self.request(
             *self.args,
             **self.kwargs,
             page=self._current_page,  # type: ignore
             per_page=self._per_page,  # type: ignore
         )
-        self._cached_data = response.parsed_data
+        self._cached_data = (
+            cast(Response[List[RT]], response).parsed_data
+            if self.map_func is None
+            else self.map_func(response)
+        )
         self._index = 0
         self._current_page += 1
         return self._cached_data
