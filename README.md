@@ -65,7 +65,7 @@ from githubkit import GitHub, BasicAuthStrategy
 github = GitHub(BasicAuthStrategy("<client_id_here>", "<client_secret_here>"))
 ```
 
-### Call Rest API
+### Calling Rest API
 
 > APIs are fully typed. Typing in the following examples is just for reference only.
 
@@ -133,7 +133,7 @@ async for issue in github.paginate(
     print(issue.number)
 ```
 
-### Call GraphQL API
+### Calling GraphQL API
 
 Simple sync call:
 
@@ -145,4 +145,49 @@ Simple async call:
 
 ```python
 data: Dict[str, Any] = github.async_graphql(query, variables={"foo": "bar"})
+```
+
+### Webhook Verification
+
+Simple webhook payload verification:
+
+```python
+from githubkit.webhooks import verify
+
+valid: bool = verify(secret, request.body, request.headers["X-Hub-Signature-256"])
+```
+
+Sign the webhook payload manually:
+
+```python
+from githubkit.webhooks import sign
+
+signature: str = sign(secret, payload, method="sha256")
+```
+
+### Webhook Parsing
+
+Parse the payload with event name:
+
+```python
+from githubkit.webhooks import parse, WebhookEvent
+
+event: WebhookEvent = parse(request.headers["X-GitHub-Event"], request.body)
+```
+
+Parse the payload without event name (may cost longer time):
+
+```python
+from githubkit.webhooks import parse_without_name, WebhookEvent
+
+event: WebhookEvent = parse_without_name(request.body)
+```
+
+Parse dict like payload:
+
+```python
+from githubkit.webhooks import parse_obj, parse_obj_without_name, WebhookEvent
+
+event: WebhookEvent = parse_obj(request.headers["X-GitHub-Event"], request.json())
+event: WebhookEvent = parse_obj_without_name(request.json())
 ```
