@@ -1,6 +1,6 @@
 import hmac
 import json
-from typing import Any, Dict, Union, Literal
+from typing import Any, Dict, Union, AnyStr, Literal
 
 from .models import GitHubWebhookModel
 
@@ -29,28 +29,34 @@ def normalize_payload(payload: Union[GitHubWebhookModel, Dict[str, Any]]) -> str
 
 def sign(
     secret: str,
-    payload: Union[GitHubWebhookModel, Dict[str, Any], str],
+    payload: Union[GitHubWebhookModel, Dict[str, Any], AnyStr],
     method: Literal["sha256", "sha1"] = "sha256",
 ) -> str:
     """Sign the webhook payload.
 
     Args:
         secret (str): webhook secret.
-        payload (Union[GitHubWebhookModel, Dict[str, Any], str]): webhook payload.
+        payload (Union[GitHubWebhookModel, Dict[str, Any], AnyStr]): webhook payload.
         method (str): sha256 or sha1. Defaults to sha256.
 
     Returns:
         str: signed payload string.
     """
-    payload = payload if isinstance(payload, str) else normalize_payload(payload)
+    norm_payload = (
+        payload if isinstance(payload, (str, bytes)) else normalize_payload(payload)
+    )
     hmac_hex = hmac.new(
-        secret.encode("utf-8"), payload.encode("utf-8"), method
+        secret.encode("utf-8"),
+        norm_payload.encode("utf-8") if isinstance(norm_payload, str) else norm_payload,
+        method,
     ).hexdigest()
     return f"{method}={hmac_hex}"
 
 
 def verify(
-    secret: str, payload: Union[GitHubWebhookModel, Dict[str, Any], str], signature: str
+    secret: str,
+    payload: Union[GitHubWebhookModel, Dict[str, Any], AnyStr],
+    signature: str,
 ) -> bool:
     """Verify the webhook payload.
 
@@ -61,7 +67,7 @@ def verify(
 
     Args:
         secret (str): webhook secret.
-        payload (Union[GitHubWebhookModel, Dict[str, Any], str]): webhook payload.
+        payload (Union[GitHubWebhookModel, Dict[str, Any], AnyStr]): webhook payload.
         signature (str): webhook signature.
 
     Returns:
