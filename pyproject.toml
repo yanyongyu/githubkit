@@ -16,6 +16,8 @@ python = "^3.8"
 pydantic = "^1.9.1"
 httpx = ">=0.23.0, <1.0.0"
 typing-extensions = "^4.3.0"
+PyJWT = { version = "^2.4.0", optional = true }
+cryptography = { version = "^37.0.4", optional = true }
 
 [tool.poetry.dev-dependencies]
 tomli = "^2.0.1"
@@ -26,6 +28,10 @@ nonemoji = "^0.1.2"
 jsonpointer = "^2.3"
 pre-commit = "^2.16.0"
 openapi-schema-pydantic = "^1.2.4"
+
+[tool.poetry.extras]
+app = ["PyJWT", "cryptography"]
+jwt = ["PyJWT", "cryptography"]
 
 [tool.black]
 line-length = 88
