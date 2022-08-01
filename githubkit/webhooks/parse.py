@@ -1,4 +1,4 @@
-from typing import Any, Dict, AnyStr
+from typing import Any, Dict, Union
 
 from pydantic import parse_obj_as, parse_raw_as
 
@@ -7,11 +7,11 @@ from githubkit.exception import WebhookTypeNotFound
 from .models import WebhookEvent, webhook_events
 
 
-def parse_without_name(payload: AnyStr) -> WebhookEvent:
+def parse_without_name(payload: Union[str, bytes]) -> WebhookEvent:
     return parse_raw_as(WebhookEvent, payload)
 
 
-def parse(name: str, payload: AnyStr) -> WebhookEvent:
+def parse(name: str, payload: Union[str, bytes]) -> WebhookEvent:
     if name not in webhook_events:
         raise WebhookTypeNotFound(name)
     return parse_raw_as(webhook_events[name], payload)
