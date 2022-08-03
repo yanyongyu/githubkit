@@ -4,7 +4,7 @@ from pydantic import parse_obj_as, parse_raw_as
 
 from githubkit.exception import WebhookTypeNotFound
 
-from .models import WebhookEvent, webhook_events
+from .types import WebhookEvent, webhook_types
 
 
 def parse_without_name(payload: Union[str, bytes]) -> WebhookEvent:
@@ -12,9 +12,9 @@ def parse_without_name(payload: Union[str, bytes]) -> WebhookEvent:
 
 
 def parse(name: str, payload: Union[str, bytes]) -> WebhookEvent:
-    if name not in webhook_events:
+    if name not in webhook_types:
         raise WebhookTypeNotFound(name)
-    return parse_raw_as(webhook_events[name], payload)
+    return parse_raw_as(webhook_types[name], payload)
 
 
 def parse_obj_without_name(payload: Dict[str, Any]) -> WebhookEvent:
@@ -22,6 +22,6 @@ def parse_obj_without_name(payload: Dict[str, Any]) -> WebhookEvent:
 
 
 def parse_obj(name: str, payload: Dict[str, Any]) -> WebhookEvent:
-    if name not in webhook_events:
+    if name not in webhook_types:
         raise WebhookTypeNotFound(name)
-    return parse_obj_as(webhook_events[name], payload)
+    return parse_obj_as(webhook_types[name], payload)

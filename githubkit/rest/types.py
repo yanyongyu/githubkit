@@ -625,29 +625,6 @@ class InstallationTokenType(TypedDict):
     single_file_paths: NotRequired[List[str]]
 
 
-class ApplicationGrantType(TypedDict):
-    """Application Grant
-
-    The authorization associated with an OAuth Access.
-    """
-
-    id: int
-    url: str
-    app: ApplicationGrantPropAppType
-    created_at: datetime
-    updated_at: datetime
-    scopes: List[str]
-    user: NotRequired[Union[None, SimpleUserType]]
-
-
-class ApplicationGrantPropAppType(TypedDict):
-    """ApplicationGrantPropApp"""
-
-    client_id: str
-    name: str
-    url: str
-
-
 class ScopedInstallationType(TypedDict):
     """Scoped Installation"""
 
@@ -702,6 +679,131 @@ class CodeOfConductType(TypedDict):
     url: str
     body: NotRequired[str]
     html_url: Union[str, None]
+
+
+class ServerStatisticsItemsType(TypedDict):
+    """ServerStatisticsItems"""
+
+    server_id: NotRequired[str]
+    collection_date: NotRequired[str]
+    schema_version: NotRequired[str]
+    ghes_version: NotRequired[str]
+    host_name: NotRequired[str]
+    github_connect: NotRequired[ServerStatisticsItemsPropGithubConnectType]
+    ghe_stats: NotRequired[ServerStatisticsItemsPropGheStatsType]
+    dormant_users: NotRequired[ServerStatisticsItemsPropDormantUsersType]
+
+
+class ServerStatisticsItemsPropGithubConnectType(TypedDict):
+    """ServerStatisticsItemsPropGithubConnect"""
+
+    features_enabled: NotRequired[List[str]]
+
+
+class ServerStatisticsItemsPropGheStatsType(TypedDict):
+    """ServerStatisticsItemsPropGheStats"""
+
+    comments: NotRequired[ServerStatisticsItemsPropGheStatsPropCommentsType]
+    gists: NotRequired[ServerStatisticsItemsPropGheStatsPropGistsType]
+    hooks: NotRequired[ServerStatisticsItemsPropGheStatsPropHooksType]
+    issues: NotRequired[ServerStatisticsItemsPropGheStatsPropIssuesType]
+    milestones: NotRequired[ServerStatisticsItemsPropGheStatsPropMilestonesType]
+    orgs: NotRequired[ServerStatisticsItemsPropGheStatsPropOrgsType]
+    pages: NotRequired[ServerStatisticsItemsPropGheStatsPropPagesType]
+    pulls: NotRequired[ServerStatisticsItemsPropGheStatsPropPullsType]
+    repos: NotRequired[ServerStatisticsItemsPropGheStatsPropReposType]
+    users: NotRequired[ServerStatisticsItemsPropGheStatsPropUsersType]
+
+
+class ServerStatisticsItemsPropGheStatsPropCommentsType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropComments"""
+
+    total_commit_comments: NotRequired[int]
+    total_gist_comments: NotRequired[int]
+    total_issue_comments: NotRequired[int]
+    total_pull_request_comments: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropGistsType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropGists"""
+
+    total_gists: NotRequired[int]
+    private_gists: NotRequired[int]
+    public_gists: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropHooksType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropHooks"""
+
+    total_hooks: NotRequired[int]
+    active_hooks: NotRequired[int]
+    inactive_hooks: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropIssuesType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropIssues"""
+
+    total_issues: NotRequired[int]
+    open_issues: NotRequired[int]
+    closed_issues: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropMilestonesType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropMilestones"""
+
+    total_milestones: NotRequired[int]
+    open_milestones: NotRequired[int]
+    closed_milestones: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropOrgsType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropOrgs"""
+
+    total_orgs: NotRequired[int]
+    disabled_orgs: NotRequired[int]
+    total_teams: NotRequired[int]
+    total_team_members: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropPagesType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropPages"""
+
+    total_pages: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropPullsType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropPulls"""
+
+    total_pulls: NotRequired[int]
+    merged_pulls: NotRequired[int]
+    mergeable_pulls: NotRequired[int]
+    unmergeable_pulls: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropReposType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropRepos"""
+
+    total_repos: NotRequired[int]
+    root_repos: NotRequired[int]
+    fork_repos: NotRequired[int]
+    org_repos: NotRequired[int]
+    total_pushes: NotRequired[int]
+    total_wikis: NotRequired[int]
+
+
+class ServerStatisticsItemsPropGheStatsPropUsersType(TypedDict):
+    """ServerStatisticsItemsPropGheStatsPropUsers"""
+
+    total_users: NotRequired[int]
+    admin_users: NotRequired[int]
+    suspended_users: NotRequired[int]
+
+
+class ServerStatisticsItemsPropDormantUsersType(TypedDict):
+    """ServerStatisticsItemsPropDormantUsers"""
+
+    total_dormant_users: NotRequired[int]
+    dormancy_threshold: NotRequired[str]
 
 
 class ActionsCacheUsageOrgEnterpriseType(TypedDict):
@@ -8169,47 +8271,6 @@ class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
     permissions: NotRequired[AppPermissionsType]
 
 
-class AuthorizationsPostBodyType(TypedDict):
-    """AuthorizationsPostBody"""
-
-    scopes: NotRequired[Union[List[str], None]]
-    note: NotRequired[str]
-    note_url: NotRequired[str]
-    client_id: NotRequired[str]
-    client_secret: NotRequired[str]
-    fingerprint: NotRequired[str]
-
-
-class AuthorizationsClientsClientIdPutBodyType(TypedDict):
-    """AuthorizationsClientsClientIdPutBody"""
-
-    client_secret: str
-    scopes: NotRequired[Union[List[str], None]]
-    note: NotRequired[str]
-    note_url: NotRequired[str]
-    fingerprint: NotRequired[str]
-
-
-class AuthorizationsClientsClientIdFingerprintPutBodyType(TypedDict):
-    """AuthorizationsClientsClientIdFingerprintPutBody"""
-
-    client_secret: str
-    scopes: NotRequired[Union[List[str], None]]
-    note: NotRequired[str]
-    note_url: NotRequired[str]
-
-
-class AuthorizationsAuthorizationIdPatchBodyType(TypedDict):
-    """AuthorizationsAuthorizationIdPatchBody"""
-
-    scopes: NotRequired[Union[List[str], None]]
-    add_scopes: NotRequired[List[str]]
-    remove_scopes: NotRequired[List[str]]
-    note: NotRequired[str]
-    note_url: NotRequired[str]
-    fingerprint: NotRequired[str]
-
-
 class EmojisGetResponse200Type(TypedDict):
     """EmojisGetResponse200"""
 
@@ -9088,12 +9149,21 @@ class ReposOwnerRepoPatchBodyType(TypedDict):
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType(TypedDict):
     """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
 
-    Specify which security and analysis features to enable or disable. For example,
-    to enable GitHub Advanced Security, use this data in the body of the PATCH
-    request: `{"security_and_analysis": {"advanced_security": {"status":
-    "enabled"}}}`. If you have admin permissions for a private repository covered by
-    an Advanced Security license, you can check which security and analysis features
-    are currently enabled by using a `GET /repos/{owner}/{repo}` request.
+    Specify which security and analysis features to enable or disable for the
+    repository.
+
+    To use this parameter, you must have admin permissions for the repository or be
+    an owner or security manager for the organization that owns the repository. For
+    more information, see "[Managing security managers in your
+    organization](https://docs.github.com/organizations/managing-peoples-access-to-
+    your-organization-with-roles/managing-security-managers-in-your-organization)."
+
+    For example, to enable GitHub Advanced Security, use this data in the body of
+    the `PATCH` request:
+    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
+
+    You can check which security and analysis features are currently enabled by
+    using a `GET /repos/{owner}/{repo}` request.
     """
 
     advanced_security: NotRequired[
@@ -11381,12 +11451,24 @@ __all__ = [
     "RepositoryPropTemplateRepositoryPropOwnerType",
     "RepositoryPropTemplateRepositoryPropPermissionsType",
     "InstallationTokenType",
-    "ApplicationGrantType",
-    "ApplicationGrantPropAppType",
     "ScopedInstallationType",
     "AuthorizationType",
     "AuthorizationPropAppType",
     "CodeOfConductType",
+    "ServerStatisticsItemsType",
+    "ServerStatisticsItemsPropGithubConnectType",
+    "ServerStatisticsItemsPropGheStatsType",
+    "ServerStatisticsItemsPropGheStatsPropCommentsType",
+    "ServerStatisticsItemsPropGheStatsPropGistsType",
+    "ServerStatisticsItemsPropGheStatsPropHooksType",
+    "ServerStatisticsItemsPropGheStatsPropIssuesType",
+    "ServerStatisticsItemsPropGheStatsPropMilestonesType",
+    "ServerStatisticsItemsPropGheStatsPropOrgsType",
+    "ServerStatisticsItemsPropGheStatsPropPagesType",
+    "ServerStatisticsItemsPropGheStatsPropPullsType",
+    "ServerStatisticsItemsPropGheStatsPropReposType",
+    "ServerStatisticsItemsPropGheStatsPropUsersType",
+    "ServerStatisticsItemsPropDormantUsersType",
     "ActionsCacheUsageOrgEnterpriseType",
     "ActionsOidcCustomIssuerPolicyForEnterpriseType",
     "ActionsEnterprisePermissionsType",
@@ -11903,10 +11985,6 @@ __all__ = [
     "ApplicationsClientIdTokenDeleteBodyType",
     "ApplicationsClientIdTokenPatchBodyType",
     "ApplicationsClientIdTokenScopedPostBodyType",
-    "AuthorizationsPostBodyType",
-    "AuthorizationsClientsClientIdPutBodyType",
-    "AuthorizationsClientsClientIdFingerprintPutBodyType",
-    "AuthorizationsAuthorizationIdPatchBodyType",
     "EmojisGetResponse200Type",
     "EnterprisesEnterpriseActionsPermissionsPutBodyType",
     "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",

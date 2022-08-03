@@ -879,31 +879,6 @@ class InstallationToken(GitHubRestModel):
     single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
 
 
-class ApplicationGrant(GitHubRestModel):
-    """Application Grant
-
-    The authorization associated with an OAuth Access.
-    """
-
-    id: int = Field(default=...)
-    url: str = Field(default=...)
-    app: ApplicationGrantPropApp = Field(default=...)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    scopes: List[str] = Field(default=...)
-    user: Union[Unset, Union[None, SimpleUser]] = Field(
-        title="Simple User", description="Simple User", default=UNSET
-    )
-
-
-class ApplicationGrantPropApp(GitHubRestModel):
-    """ApplicationGrantPropApp"""
-
-    client_id: str = Field(default=...)
-    name: str = Field(default=...)
-    url: str = Field(default=...)
-
-
 class ScopedInstallation(GitHubRestModel):
     """Scoped Installation"""
 
@@ -973,6 +948,153 @@ class CodeOfConduct(GitHubRestModel):
     url: str = Field(default=...)
     body: Union[Unset, str] = Field(default=UNSET)
     html_url: Union[str, None] = Field(default=...)
+
+
+class ServerStatisticsItems(GitHubRestModel):
+    """ServerStatisticsItems"""
+
+    server_id: Union[Unset, str] = Field(default=UNSET)
+    collection_date: Union[Unset, str] = Field(default=UNSET)
+    schema_version: Union[Unset, str] = Field(default=UNSET)
+    ghes_version: Union[Unset, str] = Field(default=UNSET)
+    host_name: Union[Unset, str] = Field(default=UNSET)
+    github_connect: Union[Unset, ServerStatisticsItemsPropGithubConnect] = Field(
+        default=UNSET
+    )
+    ghe_stats: Union[Unset, ServerStatisticsItemsPropGheStats] = Field(default=UNSET)
+    dormant_users: Union[Unset, ServerStatisticsItemsPropDormantUsers] = Field(
+        default=UNSET
+    )
+
+
+class ServerStatisticsItemsPropGithubConnect(GitHubRestModel):
+    """ServerStatisticsItemsPropGithubConnect"""
+
+    features_enabled: Union[Unset, List[str]] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStats(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStats"""
+
+    comments: Union[Unset, ServerStatisticsItemsPropGheStatsPropComments] = Field(
+        default=UNSET
+    )
+    gists: Union[Unset, ServerStatisticsItemsPropGheStatsPropGists] = Field(
+        default=UNSET
+    )
+    hooks: Union[Unset, ServerStatisticsItemsPropGheStatsPropHooks] = Field(
+        default=UNSET
+    )
+    issues: Union[Unset, ServerStatisticsItemsPropGheStatsPropIssues] = Field(
+        default=UNSET
+    )
+    milestones: Union[Unset, ServerStatisticsItemsPropGheStatsPropMilestones] = Field(
+        default=UNSET
+    )
+    orgs: Union[Unset, ServerStatisticsItemsPropGheStatsPropOrgs] = Field(default=UNSET)
+    pages: Union[Unset, ServerStatisticsItemsPropGheStatsPropPages] = Field(
+        default=UNSET
+    )
+    pulls: Union[Unset, ServerStatisticsItemsPropGheStatsPropPulls] = Field(
+        default=UNSET
+    )
+    repos: Union[Unset, ServerStatisticsItemsPropGheStatsPropRepos] = Field(
+        default=UNSET
+    )
+    users: Union[Unset, ServerStatisticsItemsPropGheStatsPropUsers] = Field(
+        default=UNSET
+    )
+
+
+class ServerStatisticsItemsPropGheStatsPropComments(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropComments"""
+
+    total_commit_comments: Union[Unset, int] = Field(default=UNSET)
+    total_gist_comments: Union[Unset, int] = Field(default=UNSET)
+    total_issue_comments: Union[Unset, int] = Field(default=UNSET)
+    total_pull_request_comments: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropGists(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropGists"""
+
+    total_gists: Union[Unset, int] = Field(default=UNSET)
+    private_gists: Union[Unset, int] = Field(default=UNSET)
+    public_gists: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropHooks(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropHooks"""
+
+    total_hooks: Union[Unset, int] = Field(default=UNSET)
+    active_hooks: Union[Unset, int] = Field(default=UNSET)
+    inactive_hooks: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropIssues(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropIssues"""
+
+    total_issues: Union[Unset, int] = Field(default=UNSET)
+    open_issues: Union[Unset, int] = Field(default=UNSET)
+    closed_issues: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropMilestones(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropMilestones"""
+
+    total_milestones: Union[Unset, int] = Field(default=UNSET)
+    open_milestones: Union[Unset, int] = Field(default=UNSET)
+    closed_milestones: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropOrgs(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropOrgs"""
+
+    total_orgs: Union[Unset, int] = Field(default=UNSET)
+    disabled_orgs: Union[Unset, int] = Field(default=UNSET)
+    total_teams: Union[Unset, int] = Field(default=UNSET)
+    total_team_members: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropPages(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropPages"""
+
+    total_pages: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropPulls(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropPulls"""
+
+    total_pulls: Union[Unset, int] = Field(default=UNSET)
+    merged_pulls: Union[Unset, int] = Field(default=UNSET)
+    mergeable_pulls: Union[Unset, int] = Field(default=UNSET)
+    unmergeable_pulls: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropRepos(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropRepos"""
+
+    total_repos: Union[Unset, int] = Field(default=UNSET)
+    root_repos: Union[Unset, int] = Field(default=UNSET)
+    fork_repos: Union[Unset, int] = Field(default=UNSET)
+    org_repos: Union[Unset, int] = Field(default=UNSET)
+    total_pushes: Union[Unset, int] = Field(default=UNSET)
+    total_wikis: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropGheStatsPropUsers(GitHubRestModel):
+    """ServerStatisticsItemsPropGheStatsPropUsers"""
+
+    total_users: Union[Unset, int] = Field(default=UNSET)
+    admin_users: Union[Unset, int] = Field(default=UNSET)
+    suspended_users: Union[Unset, int] = Field(default=UNSET)
+
+
+class ServerStatisticsItemsPropDormantUsers(GitHubRestModel):
+    """ServerStatisticsItemsPropDormantUsers"""
+
+    total_dormant_users: Union[Unset, int] = Field(default=UNSET)
+    dormancy_threshold: Union[Unset, str] = Field(default=UNSET)
 
 
 class ActionsCacheUsageOrgEnterprise(GitHubRestModel):
@@ -10364,14 +10486,20 @@ class CodespacesSecret(GitHubRestModel):
     """
 
     name: str = Field(description="The name of the secret", default=...)
-    created_at: datetime = Field(description="Secret created at", default=...)
-    updated_at: datetime = Field(description="Secret last updated at", default=...)
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
     visibility: Literal["all", "private", "selected"] = Field(
         description="The type of repositories in the organization that the secret is visible to",
         default=...,
     )
     selected_repositories_url: str = Field(
-        description="API URL at which the list of repositories this secret is vicible can be retrieved",
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
         default=...,
     )
 
@@ -10747,104 +10875,6 @@ class ApplicationsClientIdTokenScopedPostBody(GitHubRestModel):
     permissions: Union[Unset, AppPermissions] = Field(
         title="App Permissions",
         description="The permissions granted to the user-to-server access token.",
-        default=UNSET,
-    )
-
-
-class AuthorizationsPostBody(GitHubRestModel):
-    """AuthorizationsPostBody"""
-
-    scopes: Union[Unset, Union[List[str], None]] = Field(
-        description="A list of scopes that this authorization is in.", default=UNSET
-    )
-    note: Union[Unset, str] = Field(
-        description="A note to remind you what the OAuth token is for.", default=UNSET
-    )
-    note_url: Union[Unset, str] = Field(
-        description="A URL to remind you what app the OAuth token is for.",
-        default=UNSET,
-    )
-    client_id: Union[Unset, str] = Field(
-        description="The OAuth app client key for which to create the token.",
-        max_length=20,
-        default=UNSET,
-    )
-    client_secret: Union[Unset, str] = Field(
-        description="The OAuth app client secret for which to create the token.",
-        max_length=40,
-        default=UNSET,
-    )
-    fingerprint: Union[Unset, str] = Field(
-        description="A unique string to distinguish an authorization from others created for the same client ID and user.",
-        default=UNSET,
-    )
-
-
-class AuthorizationsClientsClientIdPutBody(GitHubRestModel):
-    """AuthorizationsClientsClientIdPutBody"""
-
-    client_secret: str = Field(
-        description="The OAuth app client secret for which to create the token.",
-        max_length=40,
-        default=...,
-    )
-    scopes: Union[Unset, Union[List[str], None]] = Field(
-        description="A list of scopes that this authorization is in.", default=UNSET
-    )
-    note: Union[Unset, str] = Field(
-        description="A note to remind you what the OAuth token is for.", default=UNSET
-    )
-    note_url: Union[Unset, str] = Field(
-        description="A URL to remind you what app the OAuth token is for.",
-        default=UNSET,
-    )
-    fingerprint: Union[Unset, str] = Field(
-        description="A unique string to distinguish an authorization from others created for the same client ID and user.",
-        default=UNSET,
-    )
-
-
-class AuthorizationsClientsClientIdFingerprintPutBody(GitHubRestModel):
-    """AuthorizationsClientsClientIdFingerprintPutBody"""
-
-    client_secret: str = Field(
-        description="The OAuth app client secret for which to create the token.",
-        max_length=40,
-        default=...,
-    )
-    scopes: Union[Unset, Union[List[str], None]] = Field(
-        description="A list of scopes that this authorization is in.", default=UNSET
-    )
-    note: Union[Unset, str] = Field(
-        description="A note to remind you what the OAuth token is for.", default=UNSET
-    )
-    note_url: Union[Unset, str] = Field(
-        description="A URL to remind you what app the OAuth token is for.",
-        default=UNSET,
-    )
-
-
-class AuthorizationsAuthorizationIdPatchBody(GitHubRestModel):
-    """AuthorizationsAuthorizationIdPatchBody"""
-
-    scopes: Union[Unset, Union[List[str], None]] = Field(
-        description="A list of scopes that this authorization is in.", default=UNSET
-    )
-    add_scopes: Union[Unset, List[str]] = Field(
-        description="A list of scopes to add to this authorization.", default=UNSET
-    )
-    remove_scopes: Union[Unset, List[str]] = Field(
-        description="A list of scopes to remove from this authorization.", default=UNSET
-    )
-    note: Union[Unset, str] = Field(
-        description="A note to remind you what the OAuth token is for.", default=UNSET
-    )
-    note_url: Union[Unset, str] = Field(
-        description="A URL to remind you what app the OAuth token is for.",
-        default=UNSET,
-    )
-    fingerprint: Union[Unset, str] = Field(
-        description="A unique string to distinguish an authorization from others created for the same client ID and user.",
         default=UNSET,
     )
 
@@ -12177,7 +12207,7 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
     security_and_analysis: Union[
         Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysis, None]
     ] = Field(
-        description='Specify which security and analysis features to enable or disable. For example, to enable GitHub Advanced Security, use this data in the body of the PATCH request: `{"security_and_analysis": {"advanced_security": {"status": "enabled"}}}`. If you have admin permissions for a private repository covered by an Advanced Security license, you can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.',
+        description='Specify which security and analysis features to enable or disable for the repository.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nFor example, to enable GitHub Advanced Security, use this data in the body of the `PATCH` request:\n`{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.\n\nYou can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.',
         default=UNSET,
     )
     has_issues: Union[Unset, bool] = Field(
@@ -12240,12 +12270,21 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubRestModel):
     """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
 
-    Specify which security and analysis features to enable or disable. For example,
-    to enable GitHub Advanced Security, use this data in the body of the PATCH
-    request: `{"security_and_analysis": {"advanced_security": {"status":
-    "enabled"}}}`. If you have admin permissions for a private repository covered by
-    an Advanced Security license, you can check which security and analysis features
-    are currently enabled by using a `GET /repos/{owner}/{repo}` request.
+    Specify which security and analysis features to enable or disable for the
+    repository.
+
+    To use this parameter, you must have admin permissions for the repository or be
+    an owner or security manager for the organization that owns the repository. For
+    more information, see "[Managing security managers in your
+    organization](https://docs.github.com/organizations/managing-peoples-access-to-
+    your-organization-with-roles/managing-security-managers-in-your-organization)."
+
+    For example, to enable GitHub Advanced Security, use this data in the body of
+    the `PATCH` request:
+    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
+
+    You can check which security and analysis features are currently enabled by
+    using a `GET /repos/{owner}/{repo}` request.
     """
 
     advanced_security: Union[
@@ -15769,12 +15808,24 @@ RepositoryPropTemplateRepository.update_forward_refs()
 RepositoryPropTemplateRepositoryPropOwner.update_forward_refs()
 RepositoryPropTemplateRepositoryPropPermissions.update_forward_refs()
 InstallationToken.update_forward_refs()
-ApplicationGrant.update_forward_refs()
-ApplicationGrantPropApp.update_forward_refs()
 ScopedInstallation.update_forward_refs()
 Authorization.update_forward_refs()
 AuthorizationPropApp.update_forward_refs()
 CodeOfConduct.update_forward_refs()
+ServerStatisticsItems.update_forward_refs()
+ServerStatisticsItemsPropGithubConnect.update_forward_refs()
+ServerStatisticsItemsPropGheStats.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropComments.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropGists.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropHooks.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropIssues.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropMilestones.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropOrgs.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropPages.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropPulls.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropRepos.update_forward_refs()
+ServerStatisticsItemsPropGheStatsPropUsers.update_forward_refs()
+ServerStatisticsItemsPropDormantUsers.update_forward_refs()
 ActionsCacheUsageOrgEnterprise.update_forward_refs()
 ActionsOidcCustomIssuerPolicyForEnterprise.update_forward_refs()
 ActionsEnterprisePermissions.update_forward_refs()
@@ -16291,10 +16342,6 @@ ApplicationsClientIdTokenPostBody.update_forward_refs()
 ApplicationsClientIdTokenDeleteBody.update_forward_refs()
 ApplicationsClientIdTokenPatchBody.update_forward_refs()
 ApplicationsClientIdTokenScopedPostBody.update_forward_refs()
-AuthorizationsPostBody.update_forward_refs()
-AuthorizationsClientsClientIdPutBody.update_forward_refs()
-AuthorizationsClientsClientIdFingerprintPutBody.update_forward_refs()
-AuthorizationsAuthorizationIdPatchBody.update_forward_refs()
 EmojisGetResponse200.update_forward_refs()
 EnterprisesEnterpriseActionsPermissionsPutBody.update_forward_refs()
 EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200.update_forward_refs()
@@ -16684,12 +16731,24 @@ __all__ = [
     "RepositoryPropTemplateRepositoryPropOwner",
     "RepositoryPropTemplateRepositoryPropPermissions",
     "InstallationToken",
-    "ApplicationGrant",
-    "ApplicationGrantPropApp",
     "ScopedInstallation",
     "Authorization",
     "AuthorizationPropApp",
     "CodeOfConduct",
+    "ServerStatisticsItems",
+    "ServerStatisticsItemsPropGithubConnect",
+    "ServerStatisticsItemsPropGheStats",
+    "ServerStatisticsItemsPropGheStatsPropComments",
+    "ServerStatisticsItemsPropGheStatsPropGists",
+    "ServerStatisticsItemsPropGheStatsPropHooks",
+    "ServerStatisticsItemsPropGheStatsPropIssues",
+    "ServerStatisticsItemsPropGheStatsPropMilestones",
+    "ServerStatisticsItemsPropGheStatsPropOrgs",
+    "ServerStatisticsItemsPropGheStatsPropPages",
+    "ServerStatisticsItemsPropGheStatsPropPulls",
+    "ServerStatisticsItemsPropGheStatsPropRepos",
+    "ServerStatisticsItemsPropGheStatsPropUsers",
+    "ServerStatisticsItemsPropDormantUsers",
     "ActionsCacheUsageOrgEnterprise",
     "ActionsOidcCustomIssuerPolicyForEnterprise",
     "ActionsEnterprisePermissions",
@@ -17206,10 +17265,6 @@ __all__ = [
     "ApplicationsClientIdTokenDeleteBody",
     "ApplicationsClientIdTokenPatchBody",
     "ApplicationsClientIdTokenScopedPostBody",
-    "AuthorizationsPostBody",
-    "AuthorizationsClientsClientIdPutBody",
-    "AuthorizationsClientsClientIdFingerprintPutBody",
-    "AuthorizationsAuthorizationIdPatchBody",
     "EmojisGetResponse200",
     "EnterprisesEnterpriseActionsPermissionsPutBody",
     "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",

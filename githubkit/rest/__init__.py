@@ -43,7 +43,6 @@ from .codes_of_conduct import CodesOfConductClient
 from .dependency_graph import DependencyGraphClient
 from .enterprise_admin import EnterpriseAdminClient
 from .server_statistics import ServerStatisticsClient
-from .oauth_authorizations import OauthAuthorizationsClient
 
 if TYPE_CHECKING:
     from githubkit.core import GitHubCore
@@ -60,10 +59,6 @@ class RestNamespace:
     @cached_property
     def apps(self) -> AppsClient:
         return AppsClient(self._github)
-
-    @cached_property
-    def oauth_authorizations(self) -> OauthAuthorizationsClient:
-        return OauthAuthorizationsClient(self._github)
 
     @cached_property
     def codes_of_conduct(self) -> CodesOfConductClient:

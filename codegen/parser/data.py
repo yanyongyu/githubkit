@@ -1,13 +1,16 @@
+from dataclasses import dataclass
 from collections import defaultdict
-from typing import Dict, List, Optional
+from functools import cached_property
+from typing import Dict, List, Union, Optional
 
 from pydantic import BaseModel
 
 from .endpoints import EndpointData
-from .schemas import SchemaData, ModelSchema, UnionSchema
+from .schemas import SchemaData, ModelSchema
 
 
-class OpenAPIData(BaseModel):
+@dataclass
+class OpenAPIData:
     """All the data needed to generate a client"""
 
     title: str
@@ -16,30 +19,39 @@ class OpenAPIData(BaseModel):
     endpoints: List[EndpointData]
     schemas: List[SchemaData]
 
-    @property
+    @cached_property
     def endpoints_by_tag(self) -> Dict[str, List[EndpointData]]:
         data: Dict[str, List[EndpointData]] = defaultdict(list)
         for endpoint in self.endpoints:
             data[endpoint.category].append(endpoint)
         return data
 
-    @property
+    @cached_property
     def models(self) -> List[ModelSchema]:
         return [schema for schema in self.schemas if isinstance(schema, ModelSchema)]
 
 
-class WebhookData(BaseModel):
+@dataclass
+class WebhookData:
     schemas: List[SchemaData]
-    definitions: Dict[str, SchemaData]
+    definitions: Dict[str, Union[SchemaData, Dict[str, SchemaData]]]
 
-    @property
+    @cached_property
     def models(self) -> List[ModelSchema]:
         return [schema for schema in self.schemas if isinstance(schema, ModelSchema)]
 
-    @property
-    def union_definitions(self) -> Dict[str, UnionSchema]:
+    @cached_property
+    def model_definitions(self) -> Dict[str, SchemaData]:
         return {
             name: schema
             for name, schema in self.definitions.items()
-            if isinstance(schema, UnionSchema)
+            if isinstance(schema, SchemaData)
+        }
+
+    @cached_property
+    def union_definitions(self) -> Dict[str, Dict[str, SchemaData]]:
+        return {
+            name: schema
+            for name, schema in self.definitions.items()
+            if isinstance(schema, dict)
         }

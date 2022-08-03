@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 from typing import Any, Dict, Union, Optional
 
@@ -47,27 +48,27 @@ def load_config() -> Config:
 def build_rest_api(data: OpenAPIData, config: Config):
     logger.info("Start generating rest api codes...")
 
+    client_path = Path(config.client_output)
+    shutil.rmtree(client_path)
+    client_path.mkdir(parents=True, exist_ok=True)
+
     # build models
     logger.info("Building models...")
     models_template = env.get_template("models/models.py.jinja")
-    models_path = Path(config.models_output)
-    models_path.parent.mkdir(parents=True, exist_ok=True)
+    models_path = client_path / "models.py"
     models_path.write_text(models_template.render(models=data.models))
     logger.info("Successfully built models!")
 
     # build types
     logger.info("Building types...")
     types_template = env.get_template("models/types.py.jinja")
-    types_path = Path(config.types_output)
-    types_path.parent.mkdir(parents=True, exist_ok=True)
+    types_path = client_path / "types.py"
     types_path.write_text(types_template.render(models=data.models))
     logger.info("Successfully built types!")
 
     # build endpoints
     logger.info("Building endpoints...")
     client_template = env.get_template("client/client.py.jinja")
-    client_path = Path(config.client_output)
-    client_path.mkdir(parents=True, exist_ok=True)
     for tag, endpoints in data.endpoints_by_tag.items():
         logger.info(f"Building endpoints for tag {tag}...")
         tag_path = client_path / f"{tag}.py"
@@ -78,8 +79,7 @@ def build_rest_api(data: OpenAPIData, config: Config):
     # build namespace
     logger.info("Building namespace...")
     namespace_template = env.get_template("namespace/namespace.py.jinja")
-    namespace_path = Path(config.namespace_output)
-    namespace_path.parent.mkdir(parents=True, exist_ok=True)
+    namespace_path = client_path / "__init__.py"
     namespace_path.write_text(
         namespace_template.render(tags=data.endpoints_by_tag.keys())
     )
@@ -96,10 +96,18 @@ def build_webhook(data: WebhookData, config: Config):
     models_template = env.get_template("models/webhooks.py.jinja")
     models_path = Path(config.webhooks_output)
     models_path.parent.mkdir(parents=True, exist_ok=True)
-    models_path.write_text(
-        models_template.render(
-            models=data.models,
+    models_path.write_text(models_template.render(models=data.models))
+    logger.info("Successfully built webhook models!")
+
+    # build types
+    logger.info("Building webhook types...")
+    types_template = env.get_template("models/webhook_types.py.jinja")
+    types_path = Path(config.webhook_types_output)
+    types_path.parent.mkdir(parents=True, exist_ok=True)
+    types_path.write_text(
+        types_template.render(
             definitions=data.definitions,
+            model_definitions=data.model_definitions,
             union_definitions=data.union_definitions,
         )
     )

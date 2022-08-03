@@ -9,8 +9,6 @@ class Config(BaseModel):
     class_overrides: Dict[str, str] = {}
     field_overrides: Dict[str, str] = {}
 
-    models_output: str
-    types_output: str
     client_output: str
-    namespace_output: str
     webhooks_output: str
+    webhook_types_output: str

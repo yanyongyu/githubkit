@@ -1,5 +1,5 @@
 from contextvars import ContextVar
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 
 import httpx
 from openapi_schema_pydantic import OpenAPI
@@ -86,10 +86,20 @@ def parse_webhook_schema(source: Source, config: Config) -> WebhookData:
             raise TypeError("Webhook root schema must be a UnionSchema")
 
         schemas = get_schemas()
-        definitions = {
-            event["$ref"].split("/")[-1]: schemas[source.resolve_ref(event["$ref"]).uri]
-            for event in source.data["oneOf"]
-        }
+        definitions: Dict[str, Union[SchemaData, Dict[str, SchemaData]]] = {}
+        for event in source.data["oneOf"]:
+            event_name = event["$ref"].split("/")[-1]
+            event_source = source.resolve_ref(event["$ref"])
+            schema = schemas[event_source.uri]
+            if isinstance(schema, UnionSchema):
+                definitions[event_name] = {
+                    action["$ref"].split("/")[-1]: schemas[
+                        event_source.resolve_ref(action["$ref"]).uri
+                    ]
+                    for action in event_source.data["oneOf"]
+                }
+            else:
+                definitions[event_name] = schema
 
         return WebhookData(
             schemas=list(schemas.values()),

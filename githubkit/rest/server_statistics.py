@@ -5,11 +5,13 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Any, Union, overload
+from typing import TYPE_CHECKING, List, Union, overload
 
 from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
+
+from .models import ServerStatisticsItems
 
 if TYPE_CHECKING:
     from githubkit.core import GitHubCore
@@ -25,7 +27,7 @@ class ServerStatisticsClient:
         enterprise_or_org: str,
         date_start: Union[Unset, str] = UNSET,
         date_end: Union[Unset, str] = UNSET,
-    ) -> "Response[Any]":
+    ) -> "Response[List[ServerStatisticsItems]]":
         url = f"/enterprise-installation/{enterprise_or_org}/server-statistics"
 
         params = {
@@ -37,7 +39,7 @@ class ServerStatisticsClient:
             "GET",
             url,
             params=exclude_unset(params),
-            response_model=Any,
+            response_model=List[ServerStatisticsItems],
         )
 
     async def async_get_server_statistics(
@@ -45,7 +47,7 @@ class ServerStatisticsClient:
         enterprise_or_org: str,
         date_start: Union[Unset, str] = UNSET,
         date_end: Union[Unset, str] = UNSET,
-    ) -> "Response[Any]":
+    ) -> "Response[List[ServerStatisticsItems]]":
         url = f"/enterprise-installation/{enterprise_or_org}/server-statistics"
 
         params = {
@@ -57,5 +59,5 @@ class ServerStatisticsClient:
             "GET",
             url,
             params=exclude_unset(params),
-            response_model=Any,
+            response_model=List[ServerStatisticsItems],
         )
