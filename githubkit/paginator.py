@@ -18,15 +18,17 @@ CP = ParamSpec("CP")
 CT = TypeVar("CT")
 RT = TypeVar("RT")
 
+R = Union[
+    Callable[CP, Response[List[RT]]],
+    Callable[CP, Awaitable[Response[List[RT]]]],
+]
+
 
 class Paginator(Generic[RT]):
     @overload
     def __init__(
         self: "Paginator[RT]",
-        request: Union[
-            Callable[CP, Response[List[RT]]],
-            Callable[CP, Awaitable[Response[List[RT]]]],
-        ],
+        request: R[CP, RT],
         page: int = 1,
         per_page: int = 100,
         map_func: None = None,
@@ -38,10 +40,7 @@ class Paginator(Generic[RT]):
     @overload
     def __init__(
         self: "Paginator[RT]",
-        request: Union[
-            Callable[CP, Response[List[CT]]],
-            Callable[CP, Awaitable[Response[List[CT]]]],
-        ],
+        request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
         map_func: Callable[[Response[List[CT]]], List[RT]] = ...,
@@ -52,10 +51,7 @@ class Paginator(Generic[RT]):
 
     def __init__(
         self,
-        request: Union[
-            Callable[CP, Response[List[CT]]],
-            Callable[CP, Awaitable[Response[List[CT]]]],
-        ],
+        request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
         map_func: Optional[Callable[[Response[List[CT]]], List[RT]]] = None,

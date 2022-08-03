@@ -15,6 +15,7 @@ from typing import (
 
 import httpx
 
+from .config import get_config
 from .response import Response
 from .exception import RequestFailed
 from .auth import BaseAuthStrategy, NoneAuthStrategy, TokenAuthStrategy
@@ -36,9 +37,9 @@ class GitHubCore:
         auth: Optional[Union[BaseAuthStrategy, str]] = None,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
-        user_agent: Optional[str] = None,
         accept_format: Optional[str] = None,
         previews: Optional[List[str]] = None,
+        user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
@@ -47,31 +48,8 @@ class GitHubCore:
             TokenAuthStrategy(auth) if isinstance(auth, str) else auth
         )
 
-        base_url = base_url or httpx.URL("https://api.github.com")
-        self.base_url: httpx.URL = (
-            base_url if isinstance(base_url, httpx.URL) else httpx.URL(base_url)
-        )
-
-        if accept_format:
-            accept_format = (
-                accept_format if accept_format.startswith(".") else f".{accept_format}"
-            )
-        accept_format = accept_format or "+json"
-
-        if previews:
-            accepts = [
-                f"application/vnd.github.{preview}-preview{accept_format}"
-                for preview in previews
-            ]
-        else:
-            accepts = [f"application/vnd.github{accept_format}"]
-        self.accept: str = ",".join(accepts)
-
-        self.user_agent: str = user_agent or "GitHubKit/Python"
-        self.follow_redirects: bool = follow_redirects
-
-        self.timeout: httpx.Timeout = (
-            timeout if isinstance(timeout, httpx.Timeout) else httpx.Timeout(timeout)
+        self.config = get_config(
+            base_url, accept_format, previews, user_agent, follow_redirects, timeout
         )
 
         self.__sync_client: Optional[httpx.Client] = None
@@ -110,13 +88,13 @@ class GitHubCore:
     def _get_client_defaults(self):
         return {
             "auth": self.auth.get_auth_flow(self),
-            "base_url": self.base_url,
+            "base_url": self.config.base_url,
             "headers": {
-                "User-Agent": self.user_agent,
-                "Accept": self.accept,
+                "User-Agent": self.config.user_agent,
+                "Accept": self.config.accept,
             },
-            "timeout": self.timeout,
-            "follow_redirects": self.follow_redirects,
+            "timeout": self.config.timeout,
+            "follow_redirects": self.config.follow_redirects,
         }
 
     def _create_sync_client(self) -> httpx.Client:

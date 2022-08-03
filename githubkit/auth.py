@@ -20,11 +20,15 @@ class BaseAuthStrategy(abc.ABC):
 
 
 class NoneAuthStrategy(BaseAuthStrategy):
+    """Unauthenticated githubkit"""
+
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return httpx.Auth()
 
 
 class BasicAuthStrategy(BaseAuthStrategy):
+    """Authenticating as OAuth APP or User with PAT"""
+
     def __init__(self, username: str, token: str):
         self.username = username
         self.token = token
@@ -45,6 +49,8 @@ class _TokenAuth(httpx.Auth):
 
 
 class TokenAuthStrategy(BaseAuthStrategy):
+    """Authenticating as user with oauth token"""
+
     def __init__(self, token: str):
         self.token = token
 
@@ -74,6 +80,8 @@ class _AppAuth(httpx.Auth):
 
 
 class AppAuthStrategy(BaseAuthStrategy):
+    """Authenticating as GitHub APP"""
+
     def __init__(self, app_id: str, private_key: str):
         if jwt is None:
             raise RuntimeError(
