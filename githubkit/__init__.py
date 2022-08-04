@@ -18,8 +18,8 @@ from .response import Response as Response
 from .paginator import Paginator as Paginator
 from .auth import AppAuthStrategy as AppAuthStrategy
 from .auth import NoneAuthStrategy as NoneAuthStrategy
-from .auth import BasicAuthStrategy as BasicAuthStrategy
 from .auth import TokenAuthStrategy as TokenAuthStrategy
+from .auth import OAuthAppAuthStrategy as OAuthAppAuthStrategy
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
 CP = ParamSpec("CP")
@@ -94,4 +94,4 @@ class GitHub(GitHubCore):
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> Paginator[RT]:
-        return Paginator(request, page, per_page, map_func, *args, **kwargs)
+        return Paginator(request, page, per_page, map_func, *args, **kwargs)  # type: ignore

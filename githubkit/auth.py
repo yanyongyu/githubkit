@@ -1,6 +1,6 @@
 import abc
-from typing import TYPE_CHECKING, Generator
 from datetime import datetime, timezone, timedelta
+from typing import TYPE_CHECKING, Optional, Generator
 
 import httpx
 
@@ -12,7 +12,35 @@ except ImportError:
 if TYPE_CHECKING:
     from .core import GitHubCore
 
+# auth types
+# BasicAuth = httpx.BasicAuth
+class _TokenAuth(httpx.Auth):
+    """Token Authentication"""
 
+    def __init__(self, token: str):
+        self.token = token
+
+    def auth_flow(
+        self, request: httpx.Request
+    ) -> Generator[httpx.Request, httpx.Response, None]:
+        request.headers["Authorization"] = f"token {self.token}"
+        yield request
+
+
+class _JWTAuth(httpx.Auth):
+    """JWT Authentication"""
+
+    def __init__(self, jwt: str):
+        self.jwt = jwt
+
+    def auth_flow(
+        self, request: httpx.Request
+    ) -> Generator[httpx.Request, httpx.Response, None]:
+        request.headers["Authorization"] = f"Bearer {self.jwt}"
+        yield request
+
+
+# auth strategies
 class BaseAuthStrategy(abc.ABC):
     @abc.abstractmethod
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
@@ -26,30 +54,14 @@ class NoneAuthStrategy(BaseAuthStrategy):
         return httpx.Auth()
 
 
-class BasicAuthStrategy(BaseAuthStrategy):
-    """Authenticating as OAuth APP or User with PAT"""
-
-    def __init__(self, username: str, token: str):
-        self.username = username
-        self.token = token
-
-    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
-        return httpx.BasicAuth(self.username, self.token)
-
-
-class _TokenAuth(httpx.Auth):
-    def __init__(self, token: str):
-        self.token = token
-
-    def auth_flow(
-        self, request: httpx.Request
-    ) -> Generator[httpx.Request, httpx.Response, None]:
-        request.headers["Authorization"] = f"token {self.token}"
-        yield request
-
-
 class TokenAuthStrategy(BaseAuthStrategy):
-    """Authenticating as user with oauth token"""
+    """Authenticating with token.
+
+    - person access token (PAT): ghp_xxxxxxxxxx
+    - oauth token: gho_xxxxxxxxxx
+    - github app installation token: ghs_xxxxxxxxxx
+    - github app user-to-server token: ghu_xxxxxxxxxx
+    """
 
     def __init__(self, token: str):
         self.token = token
@@ -58,25 +70,15 @@ class TokenAuthStrategy(BaseAuthStrategy):
         return _TokenAuth(self.token)
 
 
-class _AppAuth(httpx.Auth):
-    def __init__(self, app_id: str, private_key: str):
-        self.app_id = app_id
-        self.private_key = private_key
+class OAuthAppAuthStrategy(BaseAuthStrategy):
+    """Authenticating as OAuth APP"""
 
-    def auth_flow(
-        self, request: httpx.Request
-    ) -> Generator[httpx.Request, httpx.Response, None]:
-        # See https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps#authenticating-as-a-github-app
-        assert jwt
-        time = datetime.now(timezone.utc) - timedelta(minutes=1)
-        expire_time = time + timedelta(minutes=10)
-        token = jwt.encode(
-            {"iss": self.app_id, "iat": time, "exp": expire_time},
-            self.private_key,
-            algorithm="RS256",
-        )
-        request.headers["Authorization"] = f"Bearer {token}"
-        yield request
+    def __init__(self, client_id: str, client_secret: str):
+        self.client_id = client_id
+        self.client_secret = client_secret
+
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
+        return httpx.BasicAuth(self.client_id, self.client_secret)
 
 
 class AppAuthStrategy(BaseAuthStrategy):
@@ -91,5 +93,28 @@ class AppAuthStrategy(BaseAuthStrategy):
         self.app_id = app_id
         self.private_key = private_key
 
+        self._expire_time: datetime
+        self._jwt: Optional[str] = None
+
+    def _create_jwt(self) -> str:
+        """Create a JWT authenticating as GitHub APP.
+
+        See https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps#authenticating-as-a-github-app
+        """
+        assert jwt
+        time = datetime.now(timezone.utc) - timedelta(minutes=1)
+        expire_time = time + timedelta(minutes=10)
+
+        # ensure expire before request
+        self._expire_time = expire_time - timedelta(minutes=1)
+        self._jwt = jwt.encode(
+            {"iss": self.app_id, "iat": time, "exp": expire_time},
+            self.private_key,
+            algorithm="RS256",
+        )
+        return self._jwt
+
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
-        return _AppAuth(self.app_id, self.private_key)
+        if not (token := self._jwt) or datetime.now(timezone.utc) > self._expire_time:
+            token = self._create_jwt()
+        return _JWTAuth(token)
