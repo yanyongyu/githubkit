@@ -643,7 +643,7 @@ WebhookEvent = Union[
 ]
 
 
-webhook_events = {
+webhook_action_types = {
     "create": CreateEvent,
     "delete": DeleteEvent,
     "fork": ForkEvent,
@@ -933,7 +933,7 @@ webhook_events = {
     },
 }
 
-webhook_types = {
+webhook_event_types = {
     "branch_protection_rule": BranchProtectionRuleEvent,
     "check_run": CheckRunEvent,
     "check_suite": CheckSuiteEvent,
@@ -1050,6 +1050,6 @@ __all__ = [
     "WorkflowJobEvent",
     "WorkflowRunEvent",
     "WebhookEvent",
-    "webhook_events",
-    "webhook_types",
+    "webhook_action_types",
+    "webhook_event_types",
 ]

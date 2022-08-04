@@ -52,7 +52,7 @@ WebhookEvent = Union[
 {%- endif %}
 {% endmacro %}
 
-webhook_events = {
+webhook_action_types = {
     {% for name, schema in model_definitions.items() %}
     "{{ event_name(name) }}": {{ schema.get_type_string() }},
     {% endfor %}
@@ -65,7 +65,7 @@ webhook_events = {
     {% endfor %}
 }
 
-webhook_types = {
+webhook_event_types = {
     {% for name in definitions %}
     "{{ event_name(name) }}": {{ pascal_case(name) }},
     {% endfor %}
@@ -76,6 +76,6 @@ __all__ = [
     "{{ pascal_case(name) }}",
     {% endfor %}
     "WebhookEvent",
-    "webhook_events",
-    "webhook_types",
+    "webhook_action_types",
+    "webhook_event_types",
 ]
