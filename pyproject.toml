@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "GitHubKit"
-version = "0.4.2"
+version = "0.5.0"
 description = "GitHub SDK for Python"
 authors = ["yanyongyu <yyy@yyydl.top>"]
 license = "MIT"
@@ -32,6 +32,7 @@ openapi-schema-pydantic = "^1.2.4"
 [tool.poetry.extras]
 app = ["PyJWT", "cryptography"]
 jwt = ["PyJWT", "cryptography"]
+all = ["PyJWT", "cryptography"]
 
 [tool.black]
 line-length = 88

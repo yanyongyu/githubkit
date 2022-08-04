@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+          architecture: "x64"
+
+      - uses: Gr1N/setup-poetry@v7
+
+      - id: poetry-cache
+        run: echo "::set-output name=dir::$(poetry config virtualenvs.path)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.poetry-cache.outputs.dir }}
+          key: ${{ runner.os }}-poetry-${{ steps.python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - run: poetry install -E all
+
+      - run: |
+          echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Build and Publish Package
+        run: |
+          poetry build
+          poetry publish -u ${{secrets.PYPI_USERNAME}} -p ${{secrets.PYPI_PASSWORD}}
+          gh release upload --clobber ${{ env.TAG_NAME }} dist/*.tar.gz dist/*.whl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
