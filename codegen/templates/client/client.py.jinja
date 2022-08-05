@@ -21,11 +21,11 @@ from pydantic import BaseModel, parse_obj_as
 from githubkit.utils import exclude_unset
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
     from githubkit.response import Response
 
 class {{ pascal_case(tag) }}Client:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     {% for endpoint in endpoints %}

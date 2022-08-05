@@ -13,11 +13,11 @@ from .{{ tag }} import {{ pascal_case(tag) }}Client
 {% endfor %}
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
 
 
 class RestNamespace:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     {% for tag in tags %}

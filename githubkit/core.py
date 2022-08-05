@@ -1,4 +1,6 @@
 from types import TracebackType
+from functools import cached_property
+from typing_extensions import ParamSpec
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
@@ -6,19 +8,26 @@ from typing import (
     List,
     Type,
     Union,
+    Generic,
     TypeVar,
+    Callable,
     Optional,
+    Awaitable,
     Generator,
     AsyncGenerator,
     cast,
+    overload,
 )
 
 import httpx
 
 from .config import get_config
 from .response import Response
+from .rest import RestNamespace
+from .paginator import Paginator
 from .exception import RequestFailed
 from .auth import BaseAuthStrategy, NoneAuthStrategy, TokenAuthStrategy
+from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 from .typing import (
     URLTypes,
     CookieTypes,
@@ -29,12 +38,68 @@ from .typing import (
 )
 
 T = TypeVar("T")
+A = TypeVar("A", bound="BaseAuthStrategy")
+A_o = TypeVar("A_o", bound="BaseAuthStrategy")
+
+CP = ParamSpec("CP")
+CT = TypeVar("CT")
+RT = TypeVar("RT")
+
+R = Union[
+    Callable[CP, Response[List[RT]]],
+    Callable[CP, Awaitable[Response[List[RT]]]],
+]
 
 
-class GitHubCore:
+class GitHub(Generic[A]):
+    # none auth
+    @overload
+    def __init__(
+        self: "GitHub[NoneAuthStrategy]",
+        auth: None = None,
+        *,
+        base_url: Optional[Union[str, httpx.URL]] = None,
+        accept_format: Optional[str] = None,
+        previews: Optional[List[str]] = None,
+        user_agent: Optional[str] = None,
+        follow_redirects: bool = True,
+        timeout: Optional[Union[float, httpx.Timeout]] = None,
+    ):
+        ...
+
+    # token auth
+    @overload
+    def __init__(
+        self: "GitHub[TokenAuthStrategy]",
+        auth: str,
+        *,
+        base_url: Optional[Union[str, httpx.URL]] = None,
+        accept_format: Optional[str] = None,
+        previews: Optional[List[str]] = None,
+        user_agent: Optional[str] = None,
+        follow_redirects: bool = True,
+        timeout: Optional[Union[float, httpx.Timeout]] = None,
+    ):
+        ...
+
+    # other auth strategies
+    @overload
+    def __init__(
+        self: "GitHub[A]",
+        auth: A,
+        *,
+        base_url: Optional[Union[str, httpx.URL]] = None,
+        accept_format: Optional[str] = None,
+        previews: Optional[List[str]] = None,
+        user_agent: Optional[str] = None,
+        follow_redirects: bool = True,
+        timeout: Optional[Union[float, httpx.Timeout]] = None,
+    ):
+        ...
+
     def __init__(
         self,
-        auth: Optional[Union[BaseAuthStrategy, str]] = None,
+        auth: Optional[Union[A, str]] = None,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
@@ -44,9 +109,7 @@ class GitHubCore:
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
         auth = auth or NoneAuthStrategy()
-        self.auth: BaseAuthStrategy = (
-            TokenAuthStrategy(auth) if isinstance(auth, str) else auth
-        )
+        self.auth: A = TokenAuthStrategy(auth) if isinstance(auth, str) else auth
 
         self.config = get_config(
             base_url, accept_format, previews, user_agent, follow_redirects, timeout
@@ -55,6 +118,7 @@ class GitHubCore:
         self.__sync_client: Optional[httpx.Client] = None
         self.__async_client: Optional[httpx.AsyncClient] = None
 
+    # sync context
     def __enter__(self):
         if self.__sync_client is not None:
             raise RuntimeError("Cannot enter sync context twice")
@@ -70,6 +134,7 @@ class GitHubCore:
         cast(httpx.Client, self.__sync_client).close()
         self.__sync_client = None
 
+    # async context
     async def __aenter__(self):
         if self.__async_client is not None:
             raise RuntimeError("Cannot enter async context twice")
@@ -85,6 +150,7 @@ class GitHubCore:
         await cast(httpx.AsyncClient, self.__async_client).aclose()
         self.__async_client = None
 
+    # default args for creating client
     def _get_client_defaults(self):
         return {
             "auth": self.auth.get_auth_flow(self),
@@ -97,9 +163,11 @@ class GitHubCore:
             "follow_redirects": self.config.follow_redirects,
         }
 
+    # create sync client
     def _create_sync_client(self) -> httpx.Client:
         return httpx.Client(**self._get_client_defaults())
 
+    # get or create sync client
     @contextmanager
     def get_sync_client(self) -> Generator[httpx.Client, None, None]:
         if self.__sync_client:
@@ -111,9 +179,11 @@ class GitHubCore:
             finally:
                 client.close()
 
+    # create async client
     def _create_async_client(self) -> httpx.AsyncClient:
         return httpx.AsyncClient(**self._get_client_defaults())
 
+    # get or create async client
     @asynccontextmanager
     async def get_async_client(self) -> AsyncGenerator[httpx.AsyncClient, None]:
         if self.__async_client:
@@ -125,6 +195,7 @@ class GitHubCore:
             finally:
                 await client.aclose()
 
+    # sync request
     def _request(
         self,
         method: str,
@@ -151,6 +222,7 @@ class GitHubCore:
                 cookies=cookies,
             )
 
+    # async request
     async def _arequest(
         self,
         method: str,
@@ -177,6 +249,7 @@ class GitHubCore:
                 cookies=cookies,
             )
 
+    # check and parse response
     def _check(
         self,
         response: httpx.Response,
@@ -196,6 +269,7 @@ class GitHubCore:
             raise RequestFailed(rep)
         return Response(response, response_model)
 
+    # sync request and check
     def request(
         self,
         method: str,
@@ -224,6 +298,7 @@ class GitHubCore:
         )
         return self._check(raw_resp, response_model, error_models)
 
+    # async request and check
     async def arequest(
         self,
         method: str,
@@ -251,3 +326,71 @@ class GitHubCore:
             cookies=cookies,
         )
         return self._check(raw_resp, response_model, error_models)
+
+    # copy github instance with other auth
+    def with_auth(self, auth: A_o) -> "GitHub[A_o]":
+        return GitHub(auth=auth, **self.config.dict())
+
+    # high level methods
+
+    # rest api
+    @cached_property
+    def rest(self) -> RestNamespace:
+        return RestNamespace(self)
+
+    # graphql
+    def graphql(
+        self, query: str, variables: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        json = build_graphql_request(query, variables)
+
+        return parse_graphql_response(
+            self.request("POST", "/graphql", json=json, response_model=GraphQLResponse)
+        )
+
+    async def async_graphql(
+        self, query: str, variables: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        json = build_graphql_request(query, variables)
+
+        return parse_graphql_response(
+            await self.arequest(
+                "POST", "/graphql", json=json, response_model=GraphQLResponse
+            )
+        )
+
+    # rest pagination
+    @overload
+    @staticmethod
+    def paginate(
+        request: R[CP, RT],
+        page: int = 1,
+        per_page: int = 100,
+        map_func: None = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> Paginator[RT]:
+        ...
+
+    @overload
+    @staticmethod
+    def paginate(
+        request: R[CP, CT],
+        page: int = 1,
+        per_page: int = 100,
+        map_func: Callable[[Response[List[CT]]], List[RT]] = ...,  # type: ignore
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> Paginator[RT]:
+        ...
+
+    @staticmethod
+    def paginate(
+        request: R[CP, CT],
+        page: int = 1,
+        per_page: int = 100,
+        map_func: Optional[Callable[[Response[List[CT]]], List[RT]]] = None,
+        *args: CP.args,
+        **kwargs: CP.kwargs,
+    ) -> Paginator[RT]:
+        return Paginator(request, page, per_page, map_func, *args, **kwargs)  # type: ignore

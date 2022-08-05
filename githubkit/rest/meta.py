@@ -14,12 +14,12 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 from .models import Root, ApiOverview
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
     from githubkit.response import Response
 
 
 class MetaClient:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     def root(

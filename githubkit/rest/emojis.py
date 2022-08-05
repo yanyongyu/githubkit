@@ -14,12 +14,12 @@ from githubkit.utils import exclude_unset
 from .models import EmojisGetResponse200
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
     from githubkit.response import Response
 
 
 class EmojisClient:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     def get(

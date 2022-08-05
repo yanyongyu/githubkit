@@ -41,12 +41,12 @@ from .types import (
 )
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
     from githubkit.response import Response
 
 
 class GitClient:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     @overload

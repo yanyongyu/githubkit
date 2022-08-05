@@ -117,12 +117,12 @@ from .models import (
 )
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
     from githubkit.response import Response
 
 
 class ActionsClient:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     def get_actions_cache_usage_for_enterprise(

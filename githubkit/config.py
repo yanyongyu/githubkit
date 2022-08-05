@@ -1,5 +1,5 @@
-from dataclasses import dataclass
-from typing import List, Union, Optional
+from dataclasses import asdict, dataclass
+from typing import Any, Dict, List, Union, Optional
 
 import httpx
 
@@ -11,6 +11,9 @@ class Config:
     user_agent: str
     follow_redirects: bool
     timeout: httpx.Timeout
+
+    def dict(self) -> Dict[str, Any]:
+        return asdict(self)
 
 
 def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:

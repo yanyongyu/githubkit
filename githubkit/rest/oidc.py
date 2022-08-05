@@ -15,12 +15,12 @@ from .types import OidcCustomSubType
 from .models import BasicError, EmptyObject, OidcCustomSub
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
     from githubkit.response import Response
 
 
 class OidcClient:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     def get_oidc_custom_sub_template_for_org(

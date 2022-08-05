@@ -14,12 +14,12 @@ from githubkit.utils import exclude_unset
 from .models import BasicError, CodeOfConduct
 
 if TYPE_CHECKING:
-    from githubkit.core import GitHubCore
+    from githubkit import GitHub
     from githubkit.response import Response
 
 
 class CodesOfConductClient:
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: "GitHub"):
         self._github = github
 
     def get_all_codes_of_conduct(
