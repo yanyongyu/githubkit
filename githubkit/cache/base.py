@@ -1,0 +1,21 @@
+import abc
+from typing import Optional
+from datetime import datetime
+
+
+class BaseCache(abc.ABC):
+    @abc.abstractmethod
+    def get(self, key: str) -> Optional[str]:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    async def aget(self, key: str) -> Optional[str]:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def set(self, key: str, value: str, expire_at: datetime) -> None:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    async def aset(self, key: str, value: str, expire_at: datetime) -> None:
+        raise NotImplementedError

@@ -1,3 +1,4 @@
+import inspect
 from typing import Any, Dict
 
 
@@ -38,3 +39,7 @@ def exclude_unset(data: Any) -> Any:
     elif data is UNSET:
         return None
     return data
+
+
+def is_async(obj: Any) -> bool:
+    return inspect.isroutine(obj) and inspect.iscoroutinefunction(obj)

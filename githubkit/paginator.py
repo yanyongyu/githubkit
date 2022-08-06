@@ -12,6 +12,7 @@ from typing import (
     overload,
 )
 
+from .utils import is_async
 from .response import Response
 
 CP = ParamSpec("CP")
@@ -70,12 +71,6 @@ class Paginator(Generic[RT]):
         self._index: int = 0
         self._cached_data: List[RT] = []
 
-    @property
-    def _is_async(self):
-        return inspect.isroutine(self.request) and inspect.iscoroutinefunction(
-            self.request
-        )
-
     def __next__(self) -> RT:
         if self._index >= len(self._cached_data):
             contents = self._get_next_page()
@@ -87,7 +82,7 @@ class Paginator(Generic[RT]):
         return current
 
     def __iter__(self: Self) -> Self:
-        if self._is_async:
+        if is_async(self.request):
             raise TypeError(f"Request method {self.request} is not an sync function")
         return self
 
@@ -102,7 +97,7 @@ class Paginator(Generic[RT]):
         return current
 
     def __aiter__(self: Self) -> Self:
-        if not self._is_async:
+        if not is_async(self.request):
             raise TypeError(f"Request method {self.request} is not an async function")
         return self
 

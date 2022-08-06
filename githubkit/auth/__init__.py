@@ -1,9 +1,25 @@
+"""Authentication Strategies
+
+See also: https://github.com/octokit/authentication-strategies.js
+"""
+
 import abc
 from datetime import datetime, timezone, timedelta
-from typing import TYPE_CHECKING, Dict, List, Optional, Generator, AsyncGenerator, cast
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    List,
+    Union,
+    Optional,
+    Generator,
+    AsyncGenerator,
+    cast,
+)
 
 import httpx
 
+from githubkit.utils import UNSET, Unset
 from githubkit.oauth import (
     refresh_token,
     async_refresh_token,
@@ -17,7 +33,8 @@ except ImportError:
     jwt = None
 
 if TYPE_CHECKING:
-    from .core import GitHub
+    from githubkit import GitHub
+    from githubkit.rest.types import AppPermissionsType
 
 
 # auth hooks
@@ -32,44 +49,6 @@ class _TokenAuth(httpx.Auth):
         self, request: httpx.Request
     ) -> Generator[httpx.Request, httpx.Response, None]:
         request.headers["Authorization"] = f"token {self.token}"
-        yield request
-
-
-class _AppAuth(httpx.Auth):
-    """JWT Authentication"""
-
-    def __init__(self, app_id: str, private_key: str):
-        assert jwt
-        self.app_id = app_id
-        self.private_key = private_key
-
-        self._expire_time: datetime
-        self._jwt: Optional[str] = None
-
-    def _create_jwt(self) -> str:
-        """Create a JWT authenticating as GitHub APP.
-
-        See https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps#authenticating-as-a-github-app
-        """
-        assert jwt
-        time = datetime.now(timezone.utc) - timedelta(minutes=1)
-        expire_time = time + timedelta(minutes=10)
-
-        # ensure expire before request
-        self._expire_time = expire_time - timedelta(minutes=1)
-        self._jwt = jwt.encode(
-            {"iss": self.app_id, "iat": time, "exp": expire_time},
-            self.private_key,
-            algorithm="RS256",
-        )
-        return self._jwt
-
-    def auth_flow(
-        self, request: httpx.Request
-    ) -> Generator[httpx.Request, httpx.Response, None]:
-        if not (token := self._jwt) or datetime.now(timezone.utc) > self._expire_time:
-            token = self._create_jwt()
-        request.headers["Authorization"] = f"Bearer {token}"
         yield request
 
 
@@ -95,7 +74,7 @@ class _OAuthWebAuth(httpx.Auth):
         self._expire_time: Optional[datetime] = None
         self._refresh_token: Optional[str] = None
 
-    def _parse_response_data(self, data: Dict[str, str]) -> str:
+    def _parse_response_data(self, data: Dict[str, Any]) -> str:
         self._token = data["access_token"]
         if "refresh_token" in data:
             self._refresh_token = data["refresh_token"]
@@ -152,6 +131,94 @@ class _OAuthWebAuth(httpx.Auth):
                 )
             )
         request.headers["Authorization"] = f"token {token}"
+        yield request
+
+
+# class _OAuthDeviceAuth(httpx.Auth):
+#     """OAuth Device Authentication"""
+
+#     def __init__(
+#         self,
+#         github: "GitHub",
+#         client_id: str,
+#         on_verifications: Callable[[Dict[str, Any]], Any],
+#         scopes: Optional[List[str]] = None,
+#     ):
+#         self.github = github
+#         self.client_id = client_id
+#         self.on_verifications = on_verifications
+#         self.scopes = scopes
+
+
+class _AppInstallationAuth(httpx.Auth):
+    """GitHub APP Installation Authentication"""
+
+    def __init__(
+        self,
+        github: "GitHub",
+        app_id: str,
+        private_key: str,
+        installation_id: int,
+        repositories: List[str],
+        repository_ids: List[int],
+        permissions: Union[Unset, "AppPermissionsType"] = UNSET,
+    ):
+        self.github = github
+        self.app_id = app_id
+        self.private_key = private_key
+        self.installation_id = installation_id
+        self.repositories = repositories
+        self.repository_ids = repository_ids
+        self.permissions = permissions
+
+    def sync_auth_flow(
+        self, request: httpx.Request
+    ) -> Generator[httpx.Request, httpx.Response, None]:
+        resp = self.github.rest.apps.create_installation_access_token(
+            self.installation_id,
+            repositories=self.repositories,
+            repository_ids=self.repository_ids,
+            permissions=self.permissions,
+        )
+
+        yield request
+
+
+class _AppAuth(httpx.Auth):
+    """GitHub APP JWT Authentication"""
+
+    def __init__(self, app_id: str, private_key: str):
+        assert jwt
+        self.app_id = app_id
+        self.private_key = private_key
+
+        self._expire_time: datetime
+        self._jwt: Optional[str] = None
+
+    def _create_jwt(self) -> str:
+        """Create a JWT authenticating as GitHub APP.
+
+        See https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps#authenticating-as-a-github-app
+        """
+        assert jwt
+        time = datetime.now(timezone.utc) - timedelta(minutes=1)
+        expire_time = time + timedelta(minutes=10)
+
+        # ensure expire before request
+        self._expire_time = expire_time - timedelta(minutes=1)
+        self._jwt = jwt.encode(
+            {"iss": self.app_id, "iat": time, "exp": expire_time},
+            self.private_key,
+            algorithm="RS256",
+        )
+        return self._jwt
+
+    def auth_flow(
+        self, request: httpx.Request
+    ) -> Generator[httpx.Request, httpx.Response, None]:
+        if not (token := self._jwt) or datetime.now(timezone.utc) > self._expire_time:
+            token = self._create_jwt()
+        request.headers["Authorization"] = f"Bearer {token}"
         yield request
 
 
@@ -220,8 +287,30 @@ class OAuthAppAuthStrategy(BaseAuthStrategy):
         self.client_secret = client_secret
         self.flow = httpx.BasicAuth(self.client_id, self.client_secret)
 
+    def as_user(
+        self, code: str, redirect_uri: Optional[str] = None
+    ) -> OAuthWebAuthStrategy:
+        """Authenticating as user with oauth web flow code."""
+        return OAuthWebAuthStrategy(
+            self.client_id, self.client_secret, code, redirect_uri
+        )
+
     def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
         return self.flow
+
+
+class InstallationAuthStrategy(BaseAuthStrategy):
+    """Authenticating as GitHub APP Installation"""
+
+    def __init__(self, app_id: str, private_key: str, installation_id: int):
+        self.app_id = app_id
+        self.private_key = private_key
+        self.installation_id = installation_id
+
+        self.flow: Optional[_AppAuth] = None
+
+    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+        ...
 
 
 class AppAuthStrategy(BaseAuthStrategy):
@@ -233,6 +322,9 @@ class AppAuthStrategy(BaseAuthStrategy):
                 "JWT support for GitHub APP should be installed "
                 "with `pip install githubkit[auth-app]`"
             )
+
+        self.app_id = app_id
+        self.private_key = private_key
         self.flow = _AppAuth(app_id, private_key)
 
     def get_auth_flow(self, github: "GitHub") -> httpx.Auth:

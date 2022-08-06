@@ -445,13 +445,14 @@ python-versions = "*"
 
 [extras]
 all = ["PyJWT", "cryptography"]
+auth = ["PyJWT", "cryptography"]
 auth-app = ["PyJWT", "cryptography"]
 jwt = ["PyJWT", "cryptography"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "6fd01ec749dae84307e31d365372197e8df427d067a72d7bdf504ce191d103f4"
+content-hash = "e8cc7a022edb226388710f7856b1084d732980d0ad696cc19688cddf69f406b5"
 
 [metadata.files]
 anyio = [
