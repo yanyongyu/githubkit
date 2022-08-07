@@ -1,0 +1,253 @@
+from dataclasses import dataclass
+from datetime import datetime, timezone, timedelta
+from typing import TYPE_CHECKING, Any, Dict, List, Callable, Optional, Generator, cast
+
+import httpx
+
+from .base import BaseAuthStrategy
+from ._url import require_bypass, require_basic_auth
+
+if TYPE_CHECKING:
+    from githubkit import GitHub
+
+
+def create_device_code(
+    github: "GitHub", client_id: str, scopes: Optional[List[str]] = None
+) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+    """Create a device code for OAuth."""
+    base_url = github.config.base_url
+    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/device/code")
+    body = {"client_id": client_id}
+    if scopes:
+        body["scopes"] = " ".join(scopes)
+    response = yield httpx.Request(
+        "POST",
+        url,
+        json=body,
+        headers={
+            "User-Agent": github.config.user_agent,
+            "Accept": "application/json",
+        },
+    )
+    response = github._check(response)
+    return response.json()
+
+
+def exchange_web_flow_code(
+    github: "GitHub",
+    client_id: str,
+    client_secret: str,
+    code: str,
+    redirect_uri: Optional[str] = None,
+) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+    """Exchange web flow code for token."""
+    base_url = github.config.base_url
+    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/oauth/access_token")
+    body = {
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "code": code,
+    }
+    if redirect_uri:
+        body["redirect_uri"] = redirect_uri
+    response = yield httpx.Request(
+        "POST",
+        url,
+        json=body,
+        headers={
+            "User-Agent": github.config.user_agent,
+            "Accept": "application/json",
+        },
+    )
+    response = github._check(response)
+    return response.json()
+
+
+def exchange_device_code(
+    github: "GitHub", client_id: str, device_code: str
+) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+    """Exchange device code for token."""
+    base_url = github.config.base_url
+    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/oauth/access_token")
+    response = yield httpx.Request(
+        "POST",
+        url,
+        json={
+            "client_id": client_id,
+            "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
+            "device_code": device_code,
+        },
+        headers={
+            "User-Agent": github.config.user_agent,
+            "Accept": "application/json",
+        },
+    )
+    response = github._check(response)
+    return response.json()
+
+
+def refresh_token(
+    github: "GitHub", client_id: str, client_secret: str, refresh_token: str
+) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+    """Refresh token."""
+    base_url = github.config.base_url
+    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/oauth/access_token")
+    response = yield httpx.Request(
+        "POST",
+        url,
+        json={
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "grant_type": "refresh_token",
+            "refresh_token": refresh_token,
+        },
+        headers={"Accept": "application/json"},
+    )
+    response = github._check(response)
+    return response.json()
+
+
+@dataclass(slots=True)
+class OAuthWebAuth(httpx.Auth):
+    """OAuth Web Flow Hook Authentication"""
+
+    github: "GitHub"
+    client_id: str
+    client_secret: str
+    code: str
+    redirect_uri: Optional[str] = None
+
+    _token: Optional[str] = None
+    _expire_time: Optional[datetime] = None
+    _refresh_token: Optional[str] = None
+
+    @property
+    def token(self) -> str:
+        if not self._token:
+            raise RuntimeError("Token not exchanged yet.")
+        return self._token
+
+    @property
+    def expire_time(self) -> Optional[datetime]:
+        return self._expire_time
+
+    def _exchange_code(self) -> httpx.Request:
+        base_url = self.github.config.base_url
+        url = base_url.copy_with(
+            raw_path=f"{base_url.raw_path}login/oauth/access_token"
+        )
+
+        body = {
+            "client_id": self.client_id,
+            "client_secret": self.client_secret,
+            "code": self.code,
+        }
+        if self.redirect_uri:
+            body["redirect_uri"] = self.redirect_uri
+        return httpx.Request(
+            "POST",
+            url,
+            json=body,
+            headers={
+                "User-Agent": self.github.config.user_agent,
+                "Accept": "application/json",
+            },
+        )
+
+    def _parse_response_data(self, data: Dict[str, Any]) -> str:
+        self._token = data["access_token"]
+        if "refresh_token" in data:
+            self._refresh_token = data["refresh_token"]
+            self._expire_time = datetime.now(timezone.utc) + timedelta(
+                minutes=-1, seconds=int(data["expires_in"])
+            )
+        return self._token
+
+    def auth_flow(
+        self, request: httpx.Request
+    ) -> Generator[httpx.Request, httpx.Response, None]:
+        if require_bypass(request.url):
+            yield request
+            return
+        if require_basic_auth(request.url):
+            yield from httpx.BasicAuth(self.client_id, self.client_secret).auth_flow(
+                request
+            )
+            return
+        if not (token := self._token):
+            data = yield from exchange_web_flow_code(
+                self.github,
+                self.client_id,
+                self.client_secret,
+                self.code,
+                self.redirect_uri,
+            )
+            token = self._parse_response_data(data)
+        elif self._expire_time and datetime.now(timezone.utc) > self._expire_time:
+            data = yield from refresh_token(
+                self.github,
+                self.client_id,
+                self.client_secret,
+                cast(str, self._refresh_token),
+            )
+            token = self._parse_response_data(data)
+        request.headers["Authorization"] = f"token {token}"
+        yield request
+
+
+# TODO: Add OAuth Device Flow Authentication Support
+@dataclass(slots=True)
+class OAuthDeviceAuth(httpx.Auth):
+    """OAuth Device Flow Hook Authentication"""
+
+    github: "GitHub"
+    client_id: str
+    on_verification: Callable
+
+
+@dataclass(slots=True)
+class OAuthAppAuthStrategy(BaseAuthStrategy):
+    """OAuth App Authentication"""
+
+    client_id: str
+    client_secret: str
+
+    def as_web_user(
+        self, code: str, redirect_uri: Optional[str] = None
+    ) -> "OAuthWebAuthStrategy":
+        return OAuthWebAuthStrategy(
+            self.client_id, self.client_secret, code, redirect_uri
+        )
+
+    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+        return httpx.BasicAuth(self.client_id, self.client_secret)
+
+
+@dataclass(slots=True)
+class OAuthWebAuthStrategy(BaseAuthStrategy):
+    """OAuth Web Flow Authentication"""
+
+    client_id: str
+    client_secret: str
+    code: str
+    redirect_uri: Optional[str] = None
+
+    def as_oauth_app(self) -> OAuthAppAuthStrategy:
+        return OAuthAppAuthStrategy(self.client_id, self.client_secret)
+
+    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+        return OAuthWebAuth(
+            github, self.client_id, self.client_secret, self.code, self.redirect_uri
+        )
+
+
+# TODO
+@dataclass(slots=True)
+class OAuthDeviceAuthStrategy(BaseAuthStrategy):
+    """OAuth Device Flow Authentication"""
+
+    client_id: str
+    on_verification: Callable
+
+    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+        return OAuthDeviceAuth(github, self.client_id, self.on_verification)

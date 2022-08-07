@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Dict, Optional
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 from .base import BaseCache
 
@@ -8,7 +8,7 @@ from .base import BaseCache
 @dataclass(frozen=True)
 class _Item:
     value: str
-    expire_at: datetime
+    expire_at: Optional[datetime] = None
 
 
 class MemCache(BaseCache):
@@ -20,7 +20,7 @@ class MemCache(BaseCache):
     def expire(self):
         now = datetime.now(timezone.utc)
         for key, item in list(self._cache.items()):
-            if item.expire_at < now:
+            if item.expire_at is not None and item.expire_at < now:
                 self._cache.pop(key, None)
 
     def get(self, key: str) -> Optional[str]:
@@ -30,9 +30,9 @@ class MemCache(BaseCache):
     async def aget(self, key: str) -> Optional[str]:
         return self.get(key)
 
-    def set(self, key: str, value: str, expire_at: datetime) -> None:
+    def set(self, key: str, value: str, ex: timedelta) -> None:
         self.expire()
-        self._cache[key] = _Item(value, expire_at.astimezone(timezone.utc))
+        self._cache[key] = _Item(value, datetime.now(timezone.utc) + ex)
 
-    async def aset(self, key: str, value: str, expire_at: datetime) -> None:
-        return self.set(key, value, expire_at)
+    async def aset(self, key: str, value: str, ex: timedelta) -> None:
+        return self.set(key, value, ex)

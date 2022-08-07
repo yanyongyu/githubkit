@@ -9,6 +9,10 @@ class GitHubException(Exception):
     ...
 
 
+class AuthCredentialError(GitHubException):
+    """Auth Credential Error"""
+
+
 class RequestFailed(GitHubException):
     """Simple API request failed with error status code"""
 

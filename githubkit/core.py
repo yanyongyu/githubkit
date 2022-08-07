@@ -26,7 +26,7 @@ from .response import Response
 from .rest import RestNamespace
 from .paginator import Paginator
 from .exception import RequestFailed
-from .auth import BaseAuthStrategy, NoneAuthStrategy, TokenAuthStrategy
+from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 from .typing import (
     URLTypes,
@@ -55,7 +55,7 @@ class GitHub(Generic[A]):
     # none auth
     @overload
     def __init__(
-        self: "GitHub[NoneAuthStrategy]",
+        self: "GitHub[UnauthAuthStrategy]",
         auth: None = None,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
@@ -108,7 +108,7 @@ class GitHub(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
-        auth = auth or NoneAuthStrategy()
+        auth = auth or UnauthAuthStrategy()
         self.auth: A = TokenAuthStrategy(auth) if isinstance(auth, str) else auth
 
         self.config = get_config(

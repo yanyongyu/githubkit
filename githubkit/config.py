@@ -17,7 +17,7 @@ class Config:
 
 
 def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:
-    base_url = base_url or httpx.URL("https://api.github.com")
+    base_url = base_url or httpx.URL("https://api.github.com/")
     return base_url if isinstance(base_url, httpx.URL) else httpx.URL(base_url)
 
 
