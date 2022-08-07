@@ -520,7 +520,7 @@ class Installation(GitHubRestModel):
     """
 
     id: int = Field(description="The ID of the installation.", default=...)
-    account: Union[None, InstallationPropAccount, SimpleUser, Enterprise] = Field(
+    account: Union[None, SimpleUser, Enterprise] = Field(
         title="Enterprise", description="An enterprise account", default=...
     )
     repository_selection: Literal["all", "selected"] = Field(

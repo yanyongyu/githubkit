@@ -15,6 +15,7 @@ from githubkit.rest import (
 )
 
 from .base import BaseAuthStrategy
+from .oauth import OAuthAppAuthStrategy
 from ._url import require_bypass, require_app_auth, require_basic_auth
 
 try:
@@ -84,7 +85,8 @@ class AppAuth(httpx.Auth):
 
         base_url = self.github.config.base_url
         url = base_url.copy_with(
-            raw_path=f"{base_url.raw_path}app/installations/{self.installation_id}/access_tokens"
+            raw_path=base_url.raw_path
+            + f"app/installations/{self.installation_id}/access_tokens".encode("ascii")
         )
         body = AppInstallationsInstallationIdAccessTokensPostBody.parse_obj(
             {
@@ -165,11 +167,12 @@ class AppAuth(httpx.Auth):
             token_request = self._build_installation_auth_request()
             token_request.headers["Authorization"] = f"Bearer {self.get_jwt()}"
             response = yield token_request
+            response.read()
             response = self._parse_installation_auth_response(response)
             token = response.parsed_data.token
             expire = datetime.strptime(
                 response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
-            ) - datetime.now(timezone.utc)
+            ).replace(tzinfo=timezone.utc) - datetime.now(timezone.utc)
             self.cache.set(key, token, expire)
         request.headers["Authorization"] = f"token {token}"
         yield request
@@ -201,6 +204,7 @@ class AppAuth(httpx.Auth):
             token_request = self._build_installation_auth_request()
             token_request.headers["Authorization"] = f"Bearer {await self.aget_jwt()}"
             response = yield token_request
+            await response.aread()
             response = self._parse_installation_auth_response(response)
             token = response.parsed_data.token
             expire = datetime.strptime(
@@ -223,7 +227,7 @@ class AppAuthStrategy(BaseAuthStrategy):
 
     def as_installation(
         self,
-        installation_id: Union[Unset, int] = UNSET,
+        installation_id: int,
         repositories: Union[Unset, List[str]] = UNSET,
         repository_ids: Union[Unset, List[int]] = UNSET,
         permissions: Union[Unset, "AppPermissionsType"] = UNSET,
@@ -231,14 +235,21 @@ class AppAuthStrategy(BaseAuthStrategy):
         return AppInstallationAuthStrategy(
             self.app_id,
             self.private_key,
+            installation_id,
             self.client_id,
             self.client_secret,
-            installation_id,
             repositories,
             repository_ids,
             permissions,
             self.cache,
         )
+
+    def as_oauth_app(self) -> OAuthAppAuthStrategy:
+        if not self.client_id or not self.client_secret:
+            raise AuthCredentialError(
+                "GitHub APP's client_id and client_secret must be provided"
+            )
+        return OAuthAppAuthStrategy(self.client_id, self.client_secret)
 
     def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
         return AppAuth(
@@ -257,9 +268,9 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
 
     app_id: str
     private_key: str
+    installation_id: int
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
-    installation_id: Union[Unset, int] = UNSET
     repositories: Union[Unset, List[str]] = UNSET
     repository_ids: Union[Unset, List[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET

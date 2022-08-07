@@ -1,11 +1,21 @@
-from dataclasses import dataclass
+from dataclasses import field, dataclass
 from datetime import datetime, timezone, timedelta
-from typing import TYPE_CHECKING, Any, Dict, List, Callable, Optional, Generator, cast
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    List,
+    Callable,
+    ClassVar,
+    Optional,
+    Generator,
+    cast,
+)
 
 import httpx
 
 from .base import BaseAuthStrategy
-from ._url import require_bypass, require_basic_auth
+from ._url import require_bypass, get_oauth_base_url, require_basic_auth
 
 if TYPE_CHECKING:
     from githubkit import GitHub
@@ -15,8 +25,8 @@ def create_device_code(
     github: "GitHub", client_id: str, scopes: Optional[List[str]] = None
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Create a device code for OAuth."""
-    base_url = github.config.base_url
-    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/device/code")
+    base_url = get_oauth_base_url(github.config.base_url)
+    url = base_url.copy_with(raw_path=base_url.raw_path + b"login/device/code")
     body = {"client_id": client_id}
     if scopes:
         body["scopes"] = " ".join(scopes)
@@ -41,8 +51,8 @@ def exchange_web_flow_code(
     redirect_uri: Optional[str] = None,
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Exchange web flow code for token."""
-    base_url = github.config.base_url
-    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/oauth/access_token")
+    base_url = get_oauth_base_url(github.config.base_url)
+    url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
     body = {
         "client_id": client_id,
         "client_secret": client_secret,
@@ -67,8 +77,8 @@ def exchange_device_code(
     github: "GitHub", client_id: str, device_code: str
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Exchange device code for token."""
-    base_url = github.config.base_url
-    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/oauth/access_token")
+    base_url = get_oauth_base_url(github.config.base_url)
+    url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
     response = yield httpx.Request(
         "POST",
         url,
@@ -90,8 +100,8 @@ def refresh_token(
     github: "GitHub", client_id: str, client_secret: str, refresh_token: str
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Refresh token."""
-    base_url = github.config.base_url
-    url = base_url.copy_with(raw_path=f"{base_url.raw_path}login/oauth/access_token")
+    base_url = get_oauth_base_url(github.config.base_url)
+    url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
     response = yield httpx.Request(
         "POST",
         url,
@@ -117,9 +127,15 @@ class OAuthWebAuth(httpx.Auth):
     code: str
     redirect_uri: Optional[str] = None
 
-    _token: Optional[str] = None
-    _expire_time: Optional[datetime] = None
-    _refresh_token: Optional[str] = None
+    _token: Optional[str] = field(default=None, init=False, repr=False, compare=False)
+    _expire_time: Optional[datetime] = field(
+        default=None, init=False, repr=False, compare=False
+    )
+    _refresh_token: Optional[str] = field(
+        default=None, init=False, repr=False, compare=False
+    )
+
+    requires_response_body: ClassVar[bool] = True
 
     @property
     def token(self) -> str:
@@ -203,6 +219,8 @@ class OAuthDeviceAuth(httpx.Auth):
     github: "GitHub"
     client_id: str
     on_verification: Callable
+
+    requires_response_body: ClassVar[bool] = True
 
 
 @dataclass(slots=True)

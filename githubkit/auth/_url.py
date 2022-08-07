@@ -28,6 +28,7 @@ APP_ROUTES = {
 BYPASS_REGEX = re.compile(r"/login/(oauth/access_token|device/code)$")
 APP_AUTH_REGEX = re.compile(rf"(?:{'|'.join(APP_ROUTES)})[^/]*$", re.I)
 BASIC_AUTH_REGEX = re.compile(r"/applications/[^/]+/(token|grant)s?")
+OAUTH_BASE_REGEX = re.compile(r"^https://(api\.)?github\.com/?$")
 
 
 def require_bypass(url: httpx.URL) -> bool:
@@ -41,3 +42,10 @@ def require_app_auth(url: httpx.URL) -> bool:
 
 def require_basic_auth(url: httpx.URL) -> bool:
     return bool(BASIC_AUTH_REGEX.search(url.path))
+
+
+def get_oauth_base_url(base_url: httpx.URL) -> httpx.URL:
+    if OAUTH_BASE_REGEX.match(str(base_url)):
+        return httpx.URL("https://github.com/")
+    else:
+        return base_url.copy_with(raw_path=b"/")

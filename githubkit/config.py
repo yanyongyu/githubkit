@@ -1,3 +1,4 @@
+from typing_extensions import Self
 from dataclasses import asdict, dataclass
 from typing import Any, Dict, List, Union, Optional
 
@@ -14,6 +15,9 @@ class Config:
 
     def dict(self) -> Dict[str, Any]:
         return asdict(self)
+
+    def copy(self) -> Self:
+        return self.__class__(**self.dict())
 
 
 def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:

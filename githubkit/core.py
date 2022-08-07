@@ -21,11 +21,11 @@ from typing import (
 
 import httpx
 
-from .config import get_config
 from .response import Response
 from .rest import RestNamespace
 from .paginator import Paginator
 from .exception import RequestFailed
+from .config import Config, get_config
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 from .typing import (
@@ -52,7 +52,37 @@ R = Union[
 
 
 class GitHub(Generic[A]):
-    # none auth
+    # none auth with config
+    @overload
+    def __init__(
+        self: "GitHub[UnauthAuthStrategy]",
+        auth: None = None,
+        *,
+        config: Config,
+    ):
+        ...
+
+    # token auth with config
+    @overload
+    def __init__(
+        self: "GitHub[TokenAuthStrategy]",
+        auth: str,
+        *,
+        config: Config,
+    ):
+        ...
+
+    # other auth strategies with config
+    @overload
+    def __init__(
+        self: "GitHub[A]",
+        auth: A,
+        *,
+        config: Config,
+    ):
+        ...
+
+    # none auth without config
     @overload
     def __init__(
         self: "GitHub[UnauthAuthStrategy]",
@@ -67,7 +97,7 @@ class GitHub(Generic[A]):
     ):
         ...
 
-    # token auth
+    # token auth without config
     @overload
     def __init__(
         self: "GitHub[TokenAuthStrategy]",
@@ -82,7 +112,7 @@ class GitHub(Generic[A]):
     ):
         ...
 
-    # other auth strategies
+    # other auth strategies without config
     @overload
     def __init__(
         self: "GitHub[A]",
@@ -101,6 +131,7 @@ class GitHub(Generic[A]):
         self,
         auth: Optional[Union[A, str]] = None,
         *,
+        config: Optional[Config] = None,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
         previews: Optional[List[str]] = None,
@@ -111,7 +142,7 @@ class GitHub(Generic[A]):
         auth = auth or UnauthAuthStrategy()
         self.auth: A = TokenAuthStrategy(auth) if isinstance(auth, str) else auth
 
-        self.config = get_config(
+        self.config = config or get_config(
             base_url, accept_format, previews, user_agent, follow_redirects, timeout
         )
 
@@ -329,7 +360,7 @@ class GitHub(Generic[A]):
 
     # copy github instance with other auth
     def with_auth(self, auth: A_o) -> "GitHub[A_o]":
-        return GitHub(auth=auth, **self.config.dict())
+        return GitHub(auth=auth, config=self.config.copy())
 
     # high level methods
 

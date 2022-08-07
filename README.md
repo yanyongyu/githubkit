@@ -45,9 +45,19 @@ pdm add githubkit
 
 ## Usage
 
-### Initialization
+### Authentication
 
-Initialize a github client using PAT (Token):
+Initialize a github client with no authentication:
+
+```python
+from githubkit import GitHub
+
+github = GitHub()
+# or, use UnauthAuthStrategy
+github = GitHub(UnauthAuthStrategy())
+```
+
+or using PAT (Token):
 
 ```python
 from githubkit import GitHub, TokenAuthStrategy
@@ -57,12 +67,56 @@ github = GitHub("<your_token_here>")
 github = GitHub(TokenAuthStrategy("<your_token_here>"))
 ```
 
-or using basic authentication:
+or using GitHub APP authentication:
 
 ```python
-from githubkit import GitHub, BasicAuthStrategy
+from githubkit import GitHub, AppAuthStrategy
 
-github = GitHub(BasicAuthStrategy("<client_id_here>", "<client_secret_here>"))
+github = GitHub(
+    AppAuthStrategy(
+        "<app_id>", "<private_key>", "<optional_client_id>", "<optional_client_secret>"
+    )
+)
+```
+
+or using GitHub APP Installation authentication:
+
+```python
+from githubkit import GitHub, AppInstallationAuthStrategy
+
+github = GitHub(
+    AppInstallationAuthStrategy(
+        "<app_id>", "<private_key>", installation_id, "<optional_client_id>", "<optional_client_secret>",
+    )
+)
+```
+
+or using OAuth APP authentication:
+
+```python
+from githubkit import GitHub, OAuthAppAuthStrategy
+
+github = GitHub(OAuthAppAuthStrategy("<client_id_here>", "<client_secret_here>"))
+```
+
+or using GitHub APP / OAuth APP web flow authentication:
+
+```python
+from githubkit import GitHub, OAuthWebAuthStrategy
+
+github = GitHub(
+    OAuthWebAuthStrategy(
+        "<client_id_here>", "<client_secret_here>", "<web_flow_exchange_code_here>"
+    )
+)
+```
+
+or using GitHub Action authentication:
+
+```python
+from githubkit import GitHub, ActionAuthStrategy
+
+github = GitHub(ActionAuthStrategy())
 ```
 
 ### Calling Rest API
@@ -190,4 +244,28 @@ from githubkit.webhooks import parse_obj, parse_obj_without_name, WebhookEvent
 
 event: WebhookEvent = parse_obj(request.headers["X-GitHub-Event"], request.json())
 event: WebhookEvent = parse_obj_without_name(request.json())
+```
+
+### Switch between AuthStrategy
+
+You can change the auth strategy and get a new client simplely using `with_auth`.
+
+Change from `AppAuthStrategy` to `AppInstallationAuthStrategy`:
+
+```python
+from githubkit import GitHub, AppAuthStrategy
+
+github = GitHub(AppAuthStrategy("<app_id>", "<private_key>"))
+installation_github = github.with_auth(
+    github.auth.as_installation(installation_id)
+)
+```
+
+Change from `OAuthAppAuthStrategy` to `OAuthWebAuthStrategy`:
+
+```python
+from githubkit import GitHub, OAuthAppAuthStrategy
+
+github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+user_github = github.with_auth(github.auth.as_web_user("<code>"))
 ```
