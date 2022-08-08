@@ -233,7 +233,6 @@ class OAuthWebAuth(httpx.Auth):
         yield request
 
 
-# TODO: Add OAuth Device Flow Authentication Support
 @dataclass(slots=True)
 class OAuthDeviceAuth(httpx.Auth):
     """OAuth Device Flow Hook Authentication"""
@@ -261,6 +260,33 @@ class OAuthDeviceAuth(httpx.Auth):
         self._token = data["access_token"]
         return self._token
 
+    def call_handler(self, data: Dict[str, Any]) -> None:
+        if is_async(self.on_verification):
+            handler = cast(
+                Callable[[Dict[str, Any]], Coroutine[None, None, None]],
+                self.on_verification,
+            )
+            if getattr(threadlocals, "current_async_module", None):
+                # in anyio thread worker
+                run_async(handler, data)
+            else:
+                # create and start a new event loop
+                anyio.run(handler, data)
+        else:
+            handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
+            handler(data)
+
+    async def acall_handler(self, data: Dict[str, Any]) -> None:
+        if is_async(self.on_verification):
+            handler = cast(
+                Callable[[Dict[str, Any]], Coroutine[None, None, None]],
+                self.on_verification,
+            )
+            await handler(data)
+        else:
+            handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
+            await run_sync(handler, data)
+
     def sync_auth_flow(
         self, request: httpx.Request
     ) -> Generator[httpx.Request, httpx.Response, None]:
@@ -269,46 +295,33 @@ class OAuthDeviceAuth(httpx.Auth):
             return
         if not (token := self._token):
             flow = create_device_code(self.github, self.client_id, self.scopes)
-            request = next(flow)
+            create_request = next(flow)
             while True:
-                response = yield request
+                response = yield create_request
                 response.read()
                 try:
-                    request = flow.send(response)
+                    create_request = flow.send(response)
                 except StopIteration as e:
                     data = e.value
                     break
 
             device_code = data["device_code"]
             expire_time = datetime.now(timezone.utc) + timedelta(
-                seconds=int(data["expire_in"])
+                seconds=int(data["expires_in"])
             )
             interval = int(data["interval"])
-            if is_async(self.on_verification):
-                handler = cast(
-                    Callable[[Dict[str, Any]], Coroutine[None, None, None]],
-                    self.on_verification,
-                )
-                if getattr(threadlocals, "current_async_module", None):
-                    # in anyio thread worker
-                    run_async(handler, data)
-                else:
-                    # create and start a new event loop
-                    anyio.run(handler, data)
-            else:
-                handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
-                handler(data)
+            self.call_handler(data)
 
             while True:
                 if datetime.now(timezone.utc) > expire_time:
                     raise AuthExpiredError("Device code expired.")
                 flow = exchange_device_code(self.github, self.client_id, device_code)
-                request = next(flow)
+                auth_request = next(flow)
                 while True:
-                    response = yield request
+                    response = yield auth_request
                     response.read()
                     try:
-                        request = flow.send(response)
+                        auth_request = flow.send(response)
                     except StopIteration as e:
                         data = e.value
                         break
@@ -328,41 +341,33 @@ class OAuthDeviceAuth(httpx.Auth):
             return
         if not (token := self._token):
             flow = create_device_code(self.github, self.client_id, self.scopes)
-            request = next(flow)
+            create_request = next(flow)
             while True:
-                response = yield request
+                response = yield create_request
                 await response.aread()
                 try:
-                    request = flow.send(response)
+                    create_request = flow.send(response)
                 except StopIteration as e:
                     data = e.value
                     break
 
             device_code = data["device_code"]
             expire_time = datetime.now(timezone.utc) + timedelta(
-                seconds=int(data["expire_in"])
+                seconds=int(data["expires_in"])
             )
             interval = int(data["interval"])
-            if is_async(self.on_verification):
-                handler = cast(
-                    Callable[[Dict[str, Any]], Coroutine[None, None, None]],
-                    self.on_verification,
-                )
-                await handler(data)
-            else:
-                handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
-                await run_sync(handler, data)
+            await self.acall_handler(data)
 
             while True:
                 if datetime.now(timezone.utc) > expire_time:
                     raise AuthExpiredError("Device code expired.")
                 flow = exchange_device_code(self.github, self.client_id, device_code)
-                request = next(flow)
+                auth_request = next(flow)
                 while True:
-                    response = yield request
+                    response = yield auth_request
                     await response.aread()
                     try:
-                        request = flow.send(response)
+                        auth_request = flow.send(response)
                     except StopIteration as e:
                         data = e.value
                         break
@@ -411,7 +416,6 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
         )
 
 
-# TODO
 @dataclass(slots=True)
 class OAuthDeviceAuthStrategy(BaseAuthStrategy):
     """OAuth Device Flow Authentication"""
