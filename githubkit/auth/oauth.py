@@ -1,3 +1,4 @@
+from time import sleep
 from dataclasses import field, dataclass
 from datetime import datetime, timezone, timedelta
 from typing import (
@@ -5,14 +6,24 @@ from typing import (
     Any,
     Dict,
     List,
+    Union,
     Callable,
     ClassVar,
     Optional,
+    Coroutine,
     Generator,
+    AsyncGenerator,
     cast,
 )
 
+import anyio
 import httpx
+from anyio.to_thread import run_sync
+from anyio.from_thread import threadlocals
+from anyio.from_thread import run as run_async
+
+from githubkit.utils import is_async
+from githubkit.exception import AuthExpiredError
 
 from .base import BaseAuthStrategy
 from ._url import require_bypass, get_oauth_base_url, require_basic_auth
@@ -134,6 +145,9 @@ class OAuthWebAuth(httpx.Auth):
     _refresh_token: Optional[str] = field(
         default=None, init=False, repr=False, compare=False
     )
+    _refresh_token_expire_time: Optional[datetime] = field(
+        default=None, init=False, repr=False, compare=False
+    )
 
     requires_response_body: ClassVar[bool] = True
 
@@ -173,9 +187,12 @@ class OAuthWebAuth(httpx.Auth):
     def _parse_response_data(self, data: Dict[str, Any]) -> str:
         self._token = data["access_token"]
         if "refresh_token" in data:
-            self._refresh_token = data["refresh_token"]
             self._expire_time = datetime.now(timezone.utc) + timedelta(
                 minutes=-1, seconds=int(data["expires_in"])
+            )
+            self._refresh_token = data["refresh_token"]
+            self._refresh_token_expire_time = datetime.now(timezone.utc) + timedelta(
+                minutes=-1, seconds=int(data["refresh_token_expires_in"])
             )
         return self._token
 
@@ -199,6 +216,11 @@ class OAuthWebAuth(httpx.Auth):
                 self.redirect_uri,
             )
             token = self._parse_response_data(data)
+        elif (
+            self._refresh_token_expire_time
+            and datetime.now(timezone.utc) > self._refresh_token_expire_time
+        ):
+            raise AuthExpiredError("Refresh token expired.")
         elif self._expire_time and datetime.now(timezone.utc) > self._expire_time:
             data = yield from refresh_token(
                 self.github,
@@ -218,9 +240,139 @@ class OAuthDeviceAuth(httpx.Auth):
 
     github: "GitHub"
     client_id: str
-    on_verification: Callable
+    on_verification: Union[
+        Callable[[Dict[str, Any]], None],
+        Callable[[Dict[str, Any]], Coroutine[Any, Any, None]],
+    ]
+    scopes: Optional[List[str]] = None
 
-    requires_response_body: ClassVar[bool] = True
+    _token: Optional[str] = field(default=None, init=False, repr=False, compare=False)
+    _expire_time: Optional[datetime] = field(
+        default=None, init=False, repr=False, compare=False
+    )
+    _refresh_token: Optional[str] = field(
+        default=None, init=False, repr=False, compare=False
+    )
+    _refresh_token_expires_time: Optional[datetime] = field(
+        default=None, init=False, repr=False, compare=False
+    )
+
+    def _parse_response_data(self, data: Dict[str, Any]) -> str:
+        self._token = data["access_token"]
+        return self._token
+
+    def sync_auth_flow(
+        self, request: httpx.Request
+    ) -> Generator[httpx.Request, httpx.Response, None]:
+        if require_bypass(request.url):
+            yield request
+            return
+        if not (token := self._token):
+            flow = create_device_code(self.github, self.client_id, self.scopes)
+            request = next(flow)
+            while True:
+                response = yield request
+                response.read()
+                try:
+                    request = flow.send(response)
+                except StopIteration as e:
+                    data = e.value
+                    break
+
+            device_code = data["device_code"]
+            expire_time = datetime.now(timezone.utc) + timedelta(
+                seconds=int(data["expire_in"])
+            )
+            interval = int(data["interval"])
+            if is_async(self.on_verification):
+                handler = cast(
+                    Callable[[Dict[str, Any]], Coroutine[None, None, None]],
+                    self.on_verification,
+                )
+                if getattr(threadlocals, "current_async_module", None):
+                    # in anyio thread worker
+                    run_async(handler, data)
+                else:
+                    # create and start a new event loop
+                    anyio.run(handler, data)
+            else:
+                handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
+                handler(data)
+
+            while True:
+                if datetime.now(timezone.utc) > expire_time:
+                    raise AuthExpiredError("Device code expired.")
+                flow = exchange_device_code(self.github, self.client_id, device_code)
+                request = next(flow)
+                while True:
+                    response = yield request
+                    response.read()
+                    try:
+                        request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+                if "error" in data:
+                    sleep(interval)
+                    continue
+                token = self._parse_response_data(data)
+                break
+        request.headers["Authorization"] = f"token {token}"
+        yield request
+
+    async def async_auth_flow(
+        self, request: httpx.Request
+    ) -> AsyncGenerator[httpx.Request, httpx.Response]:
+        if require_bypass(request.url):
+            yield request
+            return
+        if not (token := self._token):
+            flow = create_device_code(self.github, self.client_id, self.scopes)
+            request = next(flow)
+            while True:
+                response = yield request
+                await response.aread()
+                try:
+                    request = flow.send(response)
+                except StopIteration as e:
+                    data = e.value
+                    break
+
+            device_code = data["device_code"]
+            expire_time = datetime.now(timezone.utc) + timedelta(
+                seconds=int(data["expire_in"])
+            )
+            interval = int(data["interval"])
+            if is_async(self.on_verification):
+                handler = cast(
+                    Callable[[Dict[str, Any]], Coroutine[None, None, None]],
+                    self.on_verification,
+                )
+                await handler(data)
+            else:
+                handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
+                await run_sync(handler, data)
+
+            while True:
+                if datetime.now(timezone.utc) > expire_time:
+                    raise AuthExpiredError("Device code expired.")
+                flow = exchange_device_code(self.github, self.client_id, device_code)
+                request = next(flow)
+                while True:
+                    response = yield request
+                    await response.aread()
+                    try:
+                        request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+                if "error" in data:
+                    await anyio.sleep(interval)
+                    continue
+                token = self._parse_response_data(data)
+                break
+        request.headers["Authorization"] = f"token {token}"
+        yield request
 
 
 @dataclass(slots=True)

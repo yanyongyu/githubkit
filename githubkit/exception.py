@@ -13,6 +13,10 @@ class AuthCredentialError(GitHubException):
     """Auth Credential Error"""
 
 
+class AuthExpiredError(GitHubException):
+    """Auth Expired Error"""
+
+
 class RequestFailed(GitHubException):
     """Simple API request failed with error status code"""
 

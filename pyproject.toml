@@ -16,6 +16,7 @@ python = "^3.8"
 pydantic = "^1.9.1"
 httpx = ">=0.23.0, <1.0.0"
 typing-extensions = "^4.3.0"
+anyio = { version = "^3.6.1", optional = true }
 PyJWT = { version = "^2.4.0", optional = true }
 cryptography = { version = "^37.0.4", optional = true }
 
@@ -32,8 +33,9 @@ openapi-schema-pydantic = "^1.2.4"
 [tool.poetry.extras]
 jwt = ["PyJWT", "cryptography"]
 auth-app = ["PyJWT", "cryptography"]
-auth = ["PyJWT", "cryptography"]
-all = ["PyJWT", "cryptography"]
+auth-oauth-device = ["anyio"]
+auth = ["PyJWT", "cryptography", "anyio"]
+all = ["PyJWT", "cryptography", "anyio"]
 
 [tool.black]
 line-length = 88
