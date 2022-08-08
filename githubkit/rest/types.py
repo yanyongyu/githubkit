@@ -210,9 +210,7 @@ class ValidationErrorPropErrorsItemsType(TypedDict):
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[
-        Union[Union[str, None], Union[int, None], Union[List[str], None]]
-    ]
+    value: NotRequired[Union[str, None, int, None, List[str], None]]
 
 
 class HookDeliveryType(TypedDict):
@@ -339,7 +337,7 @@ class InstallationType(TypedDict):
     """
 
     id: int
-    account: Union[None, InstallationPropAccountType, SimpleUserType, EnterpriseType]
+    account: Union[SimpleUserType, EnterpriseType, None]
     repository_selection: Literal["all", "selected"]
     access_tokens_url: str
     repositories_url: str
@@ -358,10 +356,6 @@ class InstallationType(TypedDict):
     suspended_by: Union[None, SimpleUserType]
     suspended_at: Union[datetime, None]
     contact_email: NotRequired[Union[str, None]]
-
-
-class InstallationPropAccountType(TypedDict):
-    """InstallationPropAccount"""
 
 
 class LicenseSimpleType(TypedDict):
@@ -488,6 +482,39 @@ class RepositoryPropPermissionsType(TypedDict):
     maintain: NotRequired[bool]
 
 
+class RepositoryPropTemplateRepositoryPropOwnerType(TypedDict):
+    """RepositoryPropTemplateRepositoryPropOwner"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+
+
+class RepositoryPropTemplateRepositoryPropPermissionsType(TypedDict):
+    """RepositoryPropTemplateRepositoryPropPermissions"""
+
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
+
+
 class RepositoryPropTemplateRepositoryType(TypedDict):
     """RepositoryPropTemplateRepository"""
 
@@ -574,39 +601,6 @@ class RepositoryPropTemplateRepositoryType(TypedDict):
     allow_merge_commit: NotRequired[bool]
     subscribers_count: NotRequired[int]
     network_count: NotRequired[int]
-
-
-class RepositoryPropTemplateRepositoryPropOwnerType(TypedDict):
-    """RepositoryPropTemplateRepositoryPropOwner"""
-
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-
-
-class RepositoryPropTemplateRepositoryPropPermissionsType(TypedDict):
-    """RepositoryPropTemplateRepositoryPropPermissions"""
-
-    admin: NotRequired[bool]
-    maintain: NotRequired[bool]
-    push: NotRequired[bool]
-    triage: NotRequired[bool]
-    pull: NotRequired[bool]
 
 
 class InstallationTokenType(TypedDict):
@@ -1636,6 +1630,10 @@ class GistSimplePropForksItemsType(TypedDict):
     updated_at: NotRequired[datetime]
 
 
+class GistSimplePropForkOfPropFilesType(TypedDict):
+    """GistSimplePropForkOfPropFiles"""
+
+
 class GistSimplePropForkOfType(TypedDict):
     """Gist
 
@@ -1662,10 +1660,6 @@ class GistSimplePropForkOfType(TypedDict):
     truncated: NotRequired[bool]
     forks: NotRequired[List[Any]]
     history: NotRequired[List[Any]]
-
-
-class GistSimplePropForkOfPropFilesType(TypedDict):
-    """GistSimplePropForkOfPropFiles"""
 
 
 class GistSimplePropFilesType(TypedDict):
@@ -2926,16 +2920,6 @@ class CodeOfConductSimpleType(TypedDict):
     html_url: Union[str, None]
 
 
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
-
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-
-
 class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
     """SecurityAndAnalysisPropAdvancedSecurity"""
 
@@ -2952,6 +2936,16 @@ class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
     """SecurityAndAnalysisPropSecretScanningPushProtection"""
 
     status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisType(TypedDict):
+    """SecurityAndAnalysis"""
+
+    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionType
+    ]
 
 
 class FullRepositoryType(TypedDict):
@@ -3055,7 +3049,7 @@ class FullRepositoryType(TypedDict):
     watchers: int
     anonymous_access_enabled: NotRequired[bool]
     code_of_conduct: NotRequired[CodeOfConductSimpleType]
-    security_and_analysis: NotRequired[SecurityAndAnalysisType]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
 
 
 class FullRepositoryPropPermissionsType(TypedDict):
@@ -4530,7 +4524,7 @@ class PullRequestSimpleType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    auto_merge: AutoMergeType
+    auto_merge: Union[AutoMergeType, None]
     draft: NotRequired[bool]
 
 
@@ -4852,6 +4846,14 @@ class FileCommitType(TypedDict):
     commit: FileCommitPropCommitType
 
 
+class FileCommitPropContentPropLinksType(TypedDict):
+    """FileCommitPropContentPropLinks"""
+
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
+
+
 class FileCommitPropContentType(TypedDict):
     """FileCommitPropContent"""
 
@@ -4865,14 +4867,6 @@ class FileCommitPropContentType(TypedDict):
     download_url: NotRequired[str]
     type: NotRequired[str]
     links: NotRequired[FileCommitPropContentPropLinksType]
-
-
-class FileCommitPropContentPropLinksType(TypedDict):
-    """FileCommitPropContentPropLinks"""
-
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
 
 
 class FileCommitPropCommitType(TypedDict):
@@ -5133,7 +5127,7 @@ class EnvironmentType(TypedDict):
             ]
         ]
     ]
-    deployment_branch_policy: NotRequired[DeploymentBranchPolicyType]
+    deployment_branch_policy: NotRequired[Union[DeploymentBranchPolicyType, None]]
 
 
 class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
@@ -6534,7 +6528,7 @@ class PullRequestType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    auto_merge: AutoMergeType
+    auto_merge: Union[AutoMergeType, None]
     draft: NotRequired[bool]
     merged: bool
     mergeable: Union[bool, None]
@@ -6570,6 +6564,49 @@ class PullRequestPropHeadType(TypedDict):
     repo: Union[PullRequestPropHeadPropRepoType, None]
     sha: str
     user: PullRequestPropHeadPropUserType
+
+
+class PullRequestPropHeadPropRepoPropOwnerType(TypedDict):
+    """PullRequestPropHeadPropRepoPropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: Union[str, None]
+    html_url: str
+    id: int
+    node_id: str
+    login: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+
+
+class PullRequestPropHeadPropRepoPropPermissionsType(TypedDict):
+    """PullRequestPropHeadPropRepoPropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
+
+
+class PullRequestPropHeadPropRepoPropLicenseType(TypedDict):
+    """PullRequestPropHeadPropRepoPropLicense"""
+
+    key: str
+    name: str
+    url: Union[str, None]
+    spdx_id: Union[str, None]
+    node_id: str
 
 
 class PullRequestPropHeadPropRepoType(TypedDict):
@@ -6658,49 +6695,6 @@ class PullRequestPropHeadPropRepoType(TypedDict):
     updated_at: datetime
     allow_forking: NotRequired[bool]
     is_template: NotRequired[bool]
-
-
-class PullRequestPropHeadPropRepoPropOwnerType(TypedDict):
-    """PullRequestPropHeadPropRepoPropOwner"""
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: Union[str, None]
-    html_url: str
-    id: int
-    node_id: str
-    login: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-
-
-class PullRequestPropHeadPropRepoPropPermissionsType(TypedDict):
-    """PullRequestPropHeadPropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    push: bool
-    triage: NotRequired[bool]
-    pull: bool
-
-
-class PullRequestPropHeadPropRepoPropLicenseType(TypedDict):
-    """PullRequestPropHeadPropRepoPropLicense"""
-
-    key: str
-    name: str
-    url: Union[str, None]
-    spdx_id: Union[str, None]
-    node_id: str
 
 
 class PullRequestPropHeadPropUserType(TypedDict):
@@ -8433,13 +8427,6 @@ class GistsGistIdGetResponse403PropBlockType(TypedDict):
     html_url: NotRequired[Union[str, None]]
 
 
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
-
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
-
-
 class GistsGistIdPatchBodyPropFilesType(TypedDict):
     """GistsGistIdPatchBodyPropFiles
 
@@ -8448,6 +8435,20 @@ class GistsGistIdPatchBodyPropFilesType(TypedDict):
     Examples:
         {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
+
+
+class GistsGistIdPatchBodyAnyof0Type(TypedDict):
+    """GistsGistIdPatchBodyAnyof0"""
+
+    description: str
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
+
+
+class GistsGistIdPatchBodyAnyof1Type(TypedDict):
+    """GistsGistIdPatchBodyAnyof1"""
+
+    description: NotRequired[str]
+    files: GistsGistIdPatchBodyPropFilesType
 
 
 class GistsGistIdCommentsPostBodyType(TypedDict):
@@ -9146,37 +9147,6 @@ class ReposOwnerRepoPatchBodyType(TypedDict):
     allow_forking: NotRequired[bool]
 
 
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType(TypedDict):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
-
-    Specify which security and analysis features to enable or disable for the
-    repository.
-
-    To use this parameter, you must have admin permissions for the repository or be
-    an owner or security manager for the organization that owns the repository. For
-    more information, see "[Managing security managers in your
-    organization](https://docs.github.com/organizations/managing-peoples-access-to-
-    your-organization-with-roles/managing-security-managers-in-your-organization)."
-
-    For example, to enable GitHub Advanced Security, use this data in the body of
-    the `PATCH` request:
-    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
-
-    You can check which security and analysis features are currently enabled by
-    using a `GET /repos/{owner}/{repo}` request.
-    """
-
-    advanced_security: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType
-    ]
-    secret_scanning: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType
-    ]
-    secret_scanning_push_protection: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-
-
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
     """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
 
@@ -9212,6 +9182,37 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtec
     """
 
     status: NotRequired[str]
+
+
+class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType(TypedDict):
+    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
+
+    Specify which security and analysis features to enable or disable for the
+    repository.
+
+    To use this parameter, you must have admin permissions for the repository or be
+    an owner or security manager for the organization that owns the repository. For
+    more information, see "[Managing security managers in your
+    organization](https://docs.github.com/organizations/managing-peoples-access-to-
+    your-organization-with-roles/managing-security-managers-in-your-organization)."
+
+    For example, to enable GitHub Advanced Security, use this data in the body of
+    the `PATCH` request:
+    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
+
+    You can check which security and analysis features are currently enabled by
+    using a `GET /repos/{owner}/{repo}` request.
+    """
+
+    advanced_security: NotRequired[
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType
+    ]
+    secret_scanning: NotRequired[
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType
+    ]
+    secret_scanning_push_protection: NotRequired[
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType
+    ]
 
 
 class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
@@ -9391,6 +9392,17 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyType(TypedDict):
     required_conversation_resolution: NotRequired[bool]
 
 
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
+    tems
+    """
+
+    context: str
+    app_id: NotRequired[int]
+
+
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType(
     TypedDict
 ):
@@ -9405,37 +9417,6 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType(
         List[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType
         ]
-    ]
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
-    tems
-    """
-
-    context: str
-    app_id: NotRequired[int]
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
-
-    Require at least one approving review on a pull request, before merging. Set to
-    `null` to disable.
-    """
-
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType
-    ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
     ]
 
 
@@ -9468,6 +9449,26 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     users: NotRequired[List[str]]
     teams: NotRequired[List[str]]
     apps: NotRequired[List[str]]
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
+
+    Require at least one approving review on a pull request, before merging. Set to
+    `null` to disable.
+    """
+
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType
+    ]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
+    ]
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType(TypedDict):
@@ -9704,6 +9705,216 @@ class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
     """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
     new_name: str
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run. See the [`output`
+    object](https://docs.github.com/rest/reference/checks#output-object)
+    description.
+    """
+
+    title: str
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
+    ]
+    images: NotRequired[
+        List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
+    ]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
+
+
+class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: Literal["completed"]
+    started_at: NotRequired[datetime]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+
+
+class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
+
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: NotRequired[Literal["queued", "in_progress"]]
+    started_at: NotRequired[datetime]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
+
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run. See the [`output`
+    object](https://docs.github.com/rest/reference/checks#output-object-1)
+    description.
+    """
+
+    title: NotRequired[str]
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        List[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType
+        ]
+    ]
+    images: NotRequired[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
+    ]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[datetime]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+    ]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
+
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[datetime]
+    status: NotRequired[Literal["queued", "in_progress"]]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+    ]
 
 
 class ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201Type(TypedDict):
@@ -10038,6 +10249,13 @@ class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
     environments: NotRequired[List[EnvironmentType]]
 
 
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
+
+
 class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
     """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
@@ -10050,14 +10268,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
             None,
         ]
     ]
-    deployment_branch_policy: NotRequired[DeploymentBranchPolicyType]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    deployment_branch_policy: NotRequired[Union[DeploymentBranchPolicyType, None]]
 
 
 class ReposOwnerRepoForksPostBodyType(TypedDict):
@@ -10164,15 +10375,6 @@ class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
     content: NotRequired[str]
 
 
-class ReposOwnerRepoHooksPostBodyType(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
-
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
-    events: NotRequired[List[str]]
-    active: NotRequired[bool]
-
-
 class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
     """ReposOwnerRepoHooksPostBodyPropConfig
 
@@ -10186,6 +10388,15 @@ class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
     insecure_ssl: NotRequired[Union[str, float]]
     token: NotRequired[str]
     digest: NotRequired[str]
+
+
+class ReposOwnerRepoHooksPostBodyType(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
+
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
+    events: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
 class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
@@ -10275,7 +10486,7 @@ class ReposOwnerRepoIssuesPostBodyType(TypedDict):
     title: Union[str, int]
     body: NotRequired[str]
     assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[None, str, int, str, int]]
+    milestone: NotRequired[Union[str, int, None]]
     labels: NotRequired[
         List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
     ]
@@ -10308,11 +10519,11 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
 class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
     """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    title: NotRequired[Union[None, str, int, str, int]]
+    title: NotRequired[Union[str, int, None]]
     body: NotRequired[Union[str, None]]
     assignee: NotRequired[Union[str, None]]
     state: NotRequired[Literal["open", "closed"]]
-    milestone: NotRequired[Union[None, str, int, str, int]]
+    milestone: NotRequired[Union[str, int, None]]
     labels: NotRequired[
         List[
             Union[
@@ -10485,14 +10696,87 @@ class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
     url: NotRequired[str]
 
 
-class ReposOwnerRepoPagesPostBodyType(TypedDict):
-    """ReposOwnerRepoPagesPostBody
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    The source branch and directory used to publish your Pages site.
+    Update the source for the repository. Must include the branch name and path.
     """
 
+    branch: str
+    path: Literal["/", "/docs"]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    public: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    public: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    public: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    public: bool
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: bool
+    public: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
 
 
 class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
@@ -10503,6 +10787,20 @@ class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
 
     branch: str
     path: NotRequired[Literal["/", "/docs"]]
+
+
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
+
+
+class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
 
 
 class ReposOwnerRepoPagesDeploymentPostBodyType(TypedDict):
@@ -10615,6 +10913,20 @@ class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
 
     message: NotRequired[str]
     documentation_url: NotRequired[str]
+
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+
+    reviewers: List[str]
+    team_reviewers: NotRequired[List[str]]
+
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+
+    reviewers: NotRequired[List[str]]
+    team_reviewers: List[str]
 
 
 class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
@@ -11443,13 +11755,12 @@ __all__ = [
     "EnterpriseType",
     "AppPermissionsType",
     "InstallationType",
-    "InstallationPropAccountType",
     "LicenseSimpleType",
     "RepositoryType",
     "RepositoryPropPermissionsType",
-    "RepositoryPropTemplateRepositoryType",
     "RepositoryPropTemplateRepositoryPropOwnerType",
     "RepositoryPropTemplateRepositoryPropPermissionsType",
+    "RepositoryPropTemplateRepositoryType",
     "InstallationTokenType",
     "ScopedInstallationType",
     "AuthorizationType",
@@ -11526,8 +11837,8 @@ __all__ = [
     "GistHistoryPropChangeStatusType",
     "GistSimpleType",
     "GistSimplePropForksItemsType",
-    "GistSimplePropForkOfType",
     "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfType",
     "GistSimplePropFilesType",
     "GistCommentType",
     "GistCommitType",
@@ -11603,10 +11914,10 @@ __all__ = [
     "RateLimitOverviewType",
     "RateLimitOverviewPropResourcesType",
     "CodeOfConductSimpleType",
-    "SecurityAndAnalysisType",
     "SecurityAndAnalysisPropAdvancedSecurityType",
     "SecurityAndAnalysisPropSecretScanningType",
     "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "SecurityAndAnalysisType",
     "FullRepositoryType",
     "FullRepositoryPropPermissionsType",
     "ArtifactType",
@@ -11749,8 +12060,8 @@ __all__ = [
     "ContentSubmoduleType",
     "ContentSubmodulePropLinksType",
     "FileCommitType",
-    "FileCommitPropContentType",
     "FileCommitPropContentPropLinksType",
+    "FileCommitPropContentType",
     "FileCommitPropCommitType",
     "FileCommitPropCommitPropAuthorType",
     "FileCommitPropCommitPropCommitterType",
@@ -11871,10 +12182,10 @@ __all__ = [
     "PullRequestType",
     "PullRequestPropLabelsItemsType",
     "PullRequestPropHeadType",
-    "PullRequestPropHeadPropRepoType",
     "PullRequestPropHeadPropRepoPropOwnerType",
     "PullRequestPropHeadPropRepoPropPermissionsType",
     "PullRequestPropHeadPropRepoPropLicenseType",
+    "PullRequestPropHeadPropRepoType",
     "PullRequestPropHeadPropUserType",
     "PullRequestPropBaseType",
     "PullRequestPropBasePropRepoType",
@@ -12006,8 +12317,9 @@ __all__ = [
     "GistsPostBodyPropFilesType",
     "GistsGistIdGetResponse403Type",
     "GistsGistIdGetResponse403PropBlockType",
-    "GistsGistIdPatchBodyType",
     "GistsGistIdPatchBodyPropFilesType",
+    "GistsGistIdPatchBodyAnyof0Type",
+    "GistsGistIdPatchBodyAnyof1Type",
     "GistsGistIdCommentsPostBodyType",
     "GistsGistIdCommentsCommentIdPatchBodyType",
     "GistsGistIdStarGetResponse404Type",
@@ -12093,10 +12405,10 @@ __all__ = [
     "ProjectsProjectIdColumnsPostBodyType",
     "ReposOwnerRepoDeleteResponse403Type",
     "ReposOwnerRepoPatchBodyType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
     "ReposOwnerRepoActionsArtifactsGetResponse200Type",
     "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
     "ReposOwnerRepoActionsPermissionsPutBodyType",
@@ -12121,11 +12433,11 @@ __all__ = [
     "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
     "ReposOwnerRepoAutolinksPostBodyType",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType",
     "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
     "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
@@ -12145,6 +12457,18 @@ __all__ = [
     "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type",
     "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type",
     "ReposOwnerRepoBranchesBranchRenamePostBodyType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyOneof0Type",
+    "ReposOwnerRepoCheckRunsPostBodyOneof1Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",
     "ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201Type",
     "ReposOwnerRepoCheckSuitesPostBodyType",
     "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
@@ -12185,8 +12509,8 @@ __all__ = [
     "ReposOwnerRepoDispatchesPostBodyType",
     "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
     "ReposOwnerRepoEnvironmentsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
     "ReposOwnerRepoForksPostBodyType",
     "ReposOwnerRepoGitBlobsPostBodyType",
     "ReposOwnerRepoGitCommitsPostBodyType",
@@ -12198,8 +12522,8 @@ __all__ = [
     "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
     "ReposOwnerRepoGitTreesPostBodyType",
     "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
-    "ReposOwnerRepoHooksPostBodyType",
     "ReposOwnerRepoHooksPostBodyPropConfigType",
+    "ReposOwnerRepoHooksPostBodyType",
     "ReposOwnerRepoHooksHookIdPatchBodyType",
     "ReposOwnerRepoHooksHookIdPatchBodyPropConfigType",
     "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
@@ -12237,8 +12561,15 @@ __all__ = [
     "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",
     "ReposOwnerRepoNotificationsPutBodyType",
     "ReposOwnerRepoNotificationsPutResponse202Type",
-    "ReposOwnerRepoPagesPostBodyType",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyAnyof0Type",
+    "ReposOwnerRepoPagesPutBodyAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof3Type",
+    "ReposOwnerRepoPagesPutBodyAnyof4Type",
     "ReposOwnerRepoPagesPostBodyPropSourceType",
+    "ReposOwnerRepoPagesPostBodyAnyof0Type",
+    "ReposOwnerRepoPagesPostBodyAnyof1Type",
     "ReposOwnerRepoPagesDeploymentPostBodyType",
     "ReposOwnerRepoProjectsPostBodyType",
     "ReposOwnerRepoPullsPostBodyType",
@@ -12251,6 +12582,8 @@ __all__ = [
     "ReposOwnerRepoPullsPullNumberMergePutBodyType",
     "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
     "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
     "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",
     "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
     "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",

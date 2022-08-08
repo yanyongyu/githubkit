@@ -6,80 +6,12 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
-from .types import (
-    UserReposPostBodyType,
-    OrgsOrgReposPostBodyType,
-    DeploymentBranchPolicyType,
-    ReposOwnerRepoPatchBodyType,
-    ReposOwnerRepoKeysPostBodyType,
-    ReposOwnerRepoForksPostBodyType,
-    ReposOwnerRepoHooksPostBodyType,
-    ReposOwnerRepoPagesPostBodyType,
-    ReposOwnerRepoTopicsPutBodyType,
-    ReposOwnerRepoMergesPostBodyType,
-    ReposOwnerRepoReleasesPostBodyType,
-    ReposOwnerRepoTransferPostBodyType,
-    ReposOwnerRepoAutolinksPostBodyType,
-    ReposOwnerRepoDispatchesPostBodyType,
-    ReposOwnerRepoContentsPathPutBodyType,
-    ReposOwnerRepoDeploymentsPostBodyType,
-    ReposOwnerRepoStatusesShaPostBodyType,
-    ReposOwnerRepoHooksHookIdPatchBodyType,
-    ReposOwnerRepoMergeUpstreamPostBodyType,
-    ReposOwnerRepoContentsPathDeleteBodyType,
-    ReposOwnerRepoTagsProtectionPostBodyType,
-    ReposOwnerRepoHooksPostBodyPropConfigType,
-    ReposOwnerRepoPagesDeploymentPostBodyType,
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ReposOwnerRepoHooksHookIdConfigPatchBodyType,
-    ReposOwnerRepoReleasesReleaseIdPatchBodyType,
-    ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ReposOwnerRepoCollaboratorsUsernamePutBodyType,
-    ReposOwnerRepoContentsPathPutBodyPropAuthorType,
-    ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ReposOwnerRepoHooksHookIdPatchBodyPropConfigType,
-    ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
-    ReposOwnerRepoContentsPathPutBodyPropCommitterType,
-    ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
-    ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
-    ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
-    ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
-    ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
-    ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
-    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
-)
 from .models import (
     Tag,
     Hook,
@@ -146,7 +78,6 @@ from .models import (
     ReposOwnerRepoKeysPostBody,
     ReposOwnerRepoForksPostBody,
     ReposOwnerRepoHooksPostBody,
-    ReposOwnerRepoPagesPostBody,
     ReposOwnerRepoTopicsPutBody,
     ProtectedBranchAdminEnforced,
     ReposOwnerRepoMergesPostBody,
@@ -157,8 +88,15 @@ from .models import (
     ProtectedBranchPullRequestReview,
     RepositoryCollaboratorPermission,
     ReposOwnerRepoDispatchesPostBody,
+    ReposOwnerRepoPagesPutBodyAnyof0,
+    ReposOwnerRepoPagesPutBodyAnyof1,
+    ReposOwnerRepoPagesPutBodyAnyof2,
+    ReposOwnerRepoPagesPutBodyAnyof3,
+    ReposOwnerRepoPagesPutBodyAnyof4,
     ReposOwnerRepoContentsPathPutBody,
     ReposOwnerRepoDeploymentsPostBody,
+    ReposOwnerRepoPagesPostBodyAnyof0,
+    ReposOwnerRepoPagesPostBodyAnyof1,
     ReposOwnerRepoStatusesShaPostBody,
     ReposOwnerRepoHooksHookIdPatchBody,
     ReposOwnerRepoMergeUpstreamPostBody,
@@ -195,6 +133,81 @@ from .models import (
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+)
+from .types import (
+    UserReposPostBodyType,
+    OrgsOrgReposPostBodyType,
+    DeploymentBranchPolicyType,
+    ReposOwnerRepoPatchBodyType,
+    ReposOwnerRepoKeysPostBodyType,
+    ReposOwnerRepoForksPostBodyType,
+    ReposOwnerRepoHooksPostBodyType,
+    ReposOwnerRepoTopicsPutBodyType,
+    ReposOwnerRepoMergesPostBodyType,
+    ReposOwnerRepoReleasesPostBodyType,
+    ReposOwnerRepoTransferPostBodyType,
+    ReposOwnerRepoAutolinksPostBodyType,
+    ReposOwnerRepoDispatchesPostBodyType,
+    ReposOwnerRepoPagesPutBodyAnyof0Type,
+    ReposOwnerRepoPagesPutBodyAnyof1Type,
+    ReposOwnerRepoPagesPutBodyAnyof2Type,
+    ReposOwnerRepoPagesPutBodyAnyof3Type,
+    ReposOwnerRepoPagesPutBodyAnyof4Type,
+    ReposOwnerRepoContentsPathPutBodyType,
+    ReposOwnerRepoDeploymentsPostBodyType,
+    ReposOwnerRepoPagesPostBodyAnyof0Type,
+    ReposOwnerRepoPagesPostBodyAnyof1Type,
+    ReposOwnerRepoStatusesShaPostBodyType,
+    ReposOwnerRepoHooksHookIdPatchBodyType,
+    ReposOwnerRepoMergeUpstreamPostBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyType,
+    ReposOwnerRepoTagsProtectionPostBodyType,
+    ReposOwnerRepoHooksPostBodyPropConfigType,
+    ReposOwnerRepoPagesDeploymentPostBodyType,
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoCommentsCommentIdPatchBodyType,
+    ReposOwnerRepoHooksHookIdConfigPatchBodyType,
+    ReposOwnerRepoReleasesReleaseIdPatchBodyType,
+    ReposOwnerRepoBranchesBranchRenamePostBodyType,
+    ReposOwnerRepoCollaboratorsUsernamePutBodyType,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoContentsPathPutBodyPropAuthorType,
+    ReposOwnerRepoReleasesGenerateNotesPostBodyType,
+    ReposOwnerRepoHooksHookIdPatchBodyPropConfigType,
+    ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyType,
+    ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
+    ReposOwnerRepoContentsPathPutBodyPropCommitterType,
+    ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
+    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
+    ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
+    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
+    ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
+    ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
+    ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
+    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
 )
 
 if TYPE_CHECKING:
@@ -5717,7 +5730,9 @@ class ReposClient:
                 None,
             ],
         ] = UNSET,
-        deployment_branch_policy: Union[Unset, DeploymentBranchPolicyType] = UNSET,
+        deployment_branch_policy: Union[
+            Unset, Union[DeploymentBranchPolicyType, None]
+        ] = UNSET,
     ) -> "Response[Environment]":
         ...
 
@@ -5784,7 +5799,9 @@ class ReposClient:
                 None,
             ],
         ] = UNSET,
-        deployment_branch_policy: Union[Unset, DeploymentBranchPolicyType] = UNSET,
+        deployment_branch_policy: Union[
+            Unset, Union[DeploymentBranchPolicyType, None]
+        ] = UNSET,
     ) -> "Response[Environment]":
         ...
 
@@ -7310,8 +7327,140 @@ class ReposClient:
             },
         )
 
+    @overload
     def update_information_about_pages_site(
-        self, owner: str, repo: str, *, data: Union[Any, Any, Any, Any, Any], **kwargs
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            ReposOwnerRepoPagesPutBodyAnyof0Type,
+            ReposOwnerRepoPagesPutBodyAnyof1Type,
+            ReposOwnerRepoPagesPutBodyAnyof2Type,
+            ReposOwnerRepoPagesPutBodyAnyof3Type,
+            ReposOwnerRepoPagesPutBodyAnyof4Type,
+        ],
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Literal["legacy", "workflow"],
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ],
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[str, None],
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: bool,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: bool,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    def update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoPagesPutBodyAnyof0Type,
+                ReposOwnerRepoPagesPutBodyAnyof1Type,
+                ReposOwnerRepoPagesPutBodyAnyof2Type,
+                ReposOwnerRepoPagesPutBodyAnyof3Type,
+                ReposOwnerRepoPagesPutBodyAnyof4Type,
+            ],
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -7319,7 +7468,16 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any, Any, Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoPagesPutBodyAnyof0,
+                ReposOwnerRepoPagesPutBodyAnyof1,
+                ReposOwnerRepoPagesPutBodyAnyof2,
+                ReposOwnerRepoPagesPutBodyAnyof3,
+                ReposOwnerRepoPagesPutBodyAnyof4,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -7332,8 +7490,140 @@ class ReposClient:
             },
         )
 
+    @overload
     async def async_update_information_about_pages_site(
-        self, owner: str, repo: str, *, data: Union[Any, Any, Any, Any, Any], **kwargs
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            ReposOwnerRepoPagesPutBodyAnyof0Type,
+            ReposOwnerRepoPagesPutBodyAnyof1Type,
+            ReposOwnerRepoPagesPutBodyAnyof2Type,
+            ReposOwnerRepoPagesPutBodyAnyof3Type,
+            ReposOwnerRepoPagesPutBodyAnyof4Type,
+        ],
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Literal["legacy", "workflow"],
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ],
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[str, None],
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: Union[Unset, bool] = UNSET,
+        public: bool,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        cname: Union[Unset, Union[str, None]] = UNSET,
+        https_enforced: bool,
+        public: Union[Unset, bool] = UNSET,
+        build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: Union[
+            Unset,
+            Union[
+                Literal["gh-pages", "master", "master /docs"],
+                ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_update_information_about_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoPagesPutBodyAnyof0Type,
+                ReposOwnerRepoPagesPutBodyAnyof1Type,
+                ReposOwnerRepoPagesPutBodyAnyof2Type,
+                ReposOwnerRepoPagesPutBodyAnyof3Type,
+                ReposOwnerRepoPagesPutBodyAnyof4Type,
+            ],
+        ] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
@@ -7341,7 +7631,16 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any, Any, Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoPagesPutBodyAnyof0,
+                ReposOwnerRepoPagesPutBodyAnyof1,
+                ReposOwnerRepoPagesPutBodyAnyof2,
+                ReposOwnerRepoPagesPutBodyAnyof3,
+                ReposOwnerRepoPagesPutBodyAnyof4,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -7360,7 +7659,12 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
+        data: Union[
+            ReposOwnerRepoPagesPostBodyAnyof0Type,
+            None,
+            ReposOwnerRepoPagesPostBodyAnyof1Type,
+            None,
+        ],
     ) -> "Response[Page]":
         ...
 
@@ -7372,6 +7676,18 @@ class ReposClient:
         *,
         data: Unset = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: ReposOwnerRepoPagesPostBodyPropSourceType,
+    ) -> "Response[Page]":
+        ...
+
+    @overload
+    def create_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        build_type: Literal["legacy", "workflow"],
         source: Union[Unset, ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> "Response[Page]":
         ...
@@ -7382,7 +7698,13 @@ class ReposClient:
         repo: str,
         *,
         data: Union[
-            Unset, Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any]
+            Unset,
+            Union[
+                ReposOwnerRepoPagesPostBodyAnyof0Type,
+                None,
+                ReposOwnerRepoPagesPostBodyAnyof1Type,
+                None,
+            ],
         ] = UNSET,
         **kwargs,
     ) -> "Response[Page]":
@@ -7392,7 +7714,15 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoPagesPostBody, None, Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoPagesPostBodyAnyof0,
+                None,
+                ReposOwnerRepoPagesPostBodyAnyof1,
+                None,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -7412,7 +7742,12 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any],
+        data: Union[
+            ReposOwnerRepoPagesPostBodyAnyof0Type,
+            None,
+            ReposOwnerRepoPagesPostBodyAnyof1Type,
+            None,
+        ],
     ) -> "Response[Page]":
         ...
 
@@ -7424,6 +7759,18 @@ class ReposClient:
         *,
         data: Unset = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
+        source: ReposOwnerRepoPagesPostBodyPropSourceType,
+    ) -> "Response[Page]":
+        ...
+
+    @overload
+    async def async_create_pages_site(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        build_type: Literal["legacy", "workflow"],
         source: Union[Unset, ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> "Response[Page]":
         ...
@@ -7434,7 +7781,13 @@ class ReposClient:
         repo: str,
         *,
         data: Union[
-            Unset, Union[ReposOwnerRepoPagesPostBodyType, None, Any, Any]
+            Unset,
+            Union[
+                ReposOwnerRepoPagesPostBodyAnyof0Type,
+                None,
+                ReposOwnerRepoPagesPostBodyAnyof1Type,
+                None,
+            ],
         ] = UNSET,
         **kwargs,
     ) -> "Response[Page]":
@@ -7444,7 +7797,15 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoPagesPostBody, None, Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoPagesPostBodyAnyof0,
+                None,
+                ReposOwnerRepoPagesPostBodyAnyof1,
+                None,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

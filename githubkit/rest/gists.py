@@ -6,7 +6,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -14,8 +14,9 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
     GistsPostBodyType,
-    GistsGistIdPatchBodyType,
     GistsPostBodyPropFilesType,
+    GistsGistIdPatchBodyAnyof0Type,
+    GistsGistIdPatchBodyAnyof1Type,
     GistsGistIdCommentsPostBodyType,
     GistsGistIdPatchBodyPropFilesType,
     GistsGistIdCommentsCommentIdPatchBodyType,
@@ -28,8 +29,9 @@ from .models import (
     GistComment,
     GistsPostBody,
     ValidationError,
-    GistsGistIdPatchBody,
     GistsGistIdGetResponse403,
+    GistsGistIdPatchBodyAnyof0,
+    GistsGistIdPatchBodyAnyof1,
     GistsGistIdCommentsPostBody,
     GistsGistIdStarGetResponse404,
     GistsGistIdCommentsCommentIdPatchBody,
@@ -334,7 +336,23 @@ class GistsClient:
 
     @overload
     def update(
-        self, gist_id: str, *, data: Union[GistsGistIdPatchBodyType, None, Any, Any]
+        self,
+        gist_id: str,
+        *,
+        data: Union[
+            GistsGistIdPatchBodyAnyof0Type, None, GistsGistIdPatchBodyAnyof1Type, None
+        ],
+    ) -> "Response[GistSimple]":
+        ...
+
+    @overload
+    def update(
+        self,
+        gist_id: str,
+        *,
+        data: Unset = UNSET,
+        description: str,
+        files: Union[Unset, GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
@@ -345,7 +363,7 @@ class GistsClient:
         *,
         data: Unset = UNSET,
         description: Union[Unset, str] = UNSET,
-        files: Union[Unset, GistsGistIdPatchBodyPropFilesType] = UNSET,
+        files: GistsGistIdPatchBodyPropFilesType,
     ) -> "Response[GistSimple]":
         ...
 
@@ -353,7 +371,15 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: Union[Unset, Union[GistsGistIdPatchBodyType, None, Any, Any]] = UNSET,
+        data: Union[
+            Unset,
+            Union[
+                GistsGistIdPatchBodyAnyof0Type,
+                None,
+                GistsGistIdPatchBodyAnyof1Type,
+                None,
+            ],
+        ] = UNSET,
         **kwargs,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
@@ -362,7 +388,10 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[GistsGistIdPatchBody, None, Any, Any], json)
+        json = parse_obj_as(
+            Union[GistsGistIdPatchBodyAnyof0, None, GistsGistIdPatchBodyAnyof1, None],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -378,7 +407,23 @@ class GistsClient:
 
     @overload
     async def async_update(
-        self, gist_id: str, *, data: Union[GistsGistIdPatchBodyType, None, Any, Any]
+        self,
+        gist_id: str,
+        *,
+        data: Union[
+            GistsGistIdPatchBodyAnyof0Type, None, GistsGistIdPatchBodyAnyof1Type, None
+        ],
+    ) -> "Response[GistSimple]":
+        ...
+
+    @overload
+    async def async_update(
+        self,
+        gist_id: str,
+        *,
+        data: Unset = UNSET,
+        description: str,
+        files: Union[Unset, GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
@@ -389,7 +434,7 @@ class GistsClient:
         *,
         data: Unset = UNSET,
         description: Union[Unset, str] = UNSET,
-        files: Union[Unset, GistsGistIdPatchBodyPropFilesType] = UNSET,
+        files: GistsGistIdPatchBodyPropFilesType,
     ) -> "Response[GistSimple]":
         ...
 
@@ -397,7 +442,15 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: Union[Unset, Union[GistsGistIdPatchBodyType, None, Any, Any]] = UNSET,
+        data: Union[
+            Unset,
+            Union[
+                GistsGistIdPatchBodyAnyof0Type,
+                None,
+                GistsGistIdPatchBodyAnyof1Type,
+                None,
+            ],
+        ] = UNSET,
         **kwargs,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
@@ -406,7 +459,10 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[GistsGistIdPatchBody, None, Any, Any], json)
+        json = parse_obj_as(
+            Union[GistsGistIdPatchBodyAnyof0, None, GistsGistIdPatchBodyAnyof1, None],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

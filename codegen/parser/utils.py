@@ -1,9 +1,13 @@
 import re
 import builtins
-from typing import List
 from keyword import iskeyword
+from typing import List, Union
+
+from pydantic import parse_obj_as
+import openapi_schema_pydantic as oas
 
 from . import get_config
+from ..source import Source
 
 DELIMITERS = r"\. _-"
 
@@ -76,3 +80,11 @@ def build_prop_name(name: str) -> str:
     config = get_config()
     name = config.field_overrides.get(name, name)
     return fix_reserved_words(snake_case(name))
+
+
+def schema_from_source(source: Source) -> oas.Schema:
+    data = source.data
+    try:
+        return parse_obj_as(oas.Schema, data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e

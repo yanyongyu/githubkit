@@ -343,7 +343,9 @@ class UnionSchema(SchemaData):
     discriminator: Optional[str] = None
 
     def get_type_string(self) -> str:
-        if len(self.schemas) == 1:
+        if len(self.schemas) == 0:
+            return "Any"
+        elif len(self.schemas) == 1:
             return self.schemas[0].get_type_string()
         return (
             f"Union[{', '.join(schema.get_type_string() for schema in self.schemas)}]"

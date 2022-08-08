@@ -447,7 +447,7 @@ class IssuesClient:
         title: Union[str, int],
         body: Union[Unset, str] = UNSET,
         assignee: Union[Unset, Union[str, None]] = UNSET,
-        milestone: Union[Unset, Union[None, str, int, str, int]] = UNSET,
+        milestone: Union[Unset, Union[str, int, None]] = UNSET,
         labels: Union[
             Unset,
             List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]],
@@ -503,7 +503,7 @@ class IssuesClient:
         title: Union[str, int],
         body: Union[Unset, str] = UNSET,
         assignee: Union[Unset, Union[str, None]] = UNSET,
-        milestone: Union[Unset, Union[None, str, int, str, int]] = UNSET,
+        milestone: Union[Unset, Union[str, int, None]] = UNSET,
         labels: Union[
             Unset,
             List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]],
@@ -908,11 +908,11 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Unset = UNSET,
-        title: Union[Unset, Union[None, str, int, str, int]] = UNSET,
+        title: Union[Unset, Union[str, int, None]] = UNSET,
         body: Union[Unset, Union[str, None]] = UNSET,
         assignee: Union[Unset, Union[str, None]] = UNSET,
         state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        milestone: Union[Unset, Union[None, str, int, str, int]] = UNSET,
+        milestone: Union[Unset, Union[str, int, None]] = UNSET,
         labels: Union[
             Unset,
             List[
@@ -977,11 +977,11 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Unset = UNSET,
-        title: Union[Unset, Union[None, str, int, str, int]] = UNSET,
+        title: Union[Unset, Union[str, int, None]] = UNSET,
         body: Union[Unset, Union[str, None]] = UNSET,
         assignee: Union[Unset, Union[str, None]] = UNSET,
         state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        milestone: Union[Unset, Union[None, str, int, str, int]] = UNSET,
+        milestone: Union[Unset, Union[str, int, None]] = UNSET,
         labels: Union[
             Unset,
             List[

@@ -263,9 +263,9 @@ class ValidationErrorPropErrorsItems(GitHubRestModel):
     message: Union[Unset, str] = Field(default=UNSET)
     code: str = Field(default=...)
     index: Union[Unset, int] = Field(default=UNSET)
-    value: Union[
-        Unset, Union[Union[str, None], Union[int, None], Union[List[str], None]]
-    ] = Field(default=UNSET)
+    value: Union[Unset, Union[str, None, int, None, List[str], None]] = Field(
+        default=UNSET
+    )
 
 
 class HookDelivery(GitHubRestModel):
@@ -520,7 +520,7 @@ class Installation(GitHubRestModel):
     """
 
     id: int = Field(description="The ID of the installation.", default=...)
-    account: Union[None, SimpleUser, Enterprise] = Field(
+    account: Union[SimpleUser, Enterprise, None] = Field(
         title="Enterprise", description="An enterprise account", default=...
     )
     repository_selection: Literal["all", "selected"] = Field(
@@ -553,10 +553,6 @@ class Installation(GitHubRestModel):
     )
     suspended_at: Union[datetime, None] = Field(default=...)
     contact_email: Union[Unset, Union[str, None]] = Field(default=UNSET)
-
-
-class InstallationPropAccount(GitHubRestModel):
-    """InstallationPropAccount"""
 
 
 class LicenseSimple(GitHubRestModel):
@@ -732,6 +728,39 @@ class RepositoryPropPermissions(GitHubRestModel):
     maintain: Union[Unset, bool] = Field(default=UNSET)
 
 
+class RepositoryPropTemplateRepositoryPropOwner(GitHubRestModel):
+    """RepositoryPropTemplateRepositoryPropOwner"""
+
+    login: Union[Unset, str] = Field(default=UNSET)
+    id: Union[Unset, int] = Field(default=UNSET)
+    node_id: Union[Unset, str] = Field(default=UNSET)
+    avatar_url: Union[Unset, str] = Field(default=UNSET)
+    gravatar_id: Union[Unset, str] = Field(default=UNSET)
+    url: Union[Unset, str] = Field(default=UNSET)
+    html_url: Union[Unset, str] = Field(default=UNSET)
+    followers_url: Union[Unset, str] = Field(default=UNSET)
+    following_url: Union[Unset, str] = Field(default=UNSET)
+    gists_url: Union[Unset, str] = Field(default=UNSET)
+    starred_url: Union[Unset, str] = Field(default=UNSET)
+    subscriptions_url: Union[Unset, str] = Field(default=UNSET)
+    organizations_url: Union[Unset, str] = Field(default=UNSET)
+    repos_url: Union[Unset, str] = Field(default=UNSET)
+    events_url: Union[Unset, str] = Field(default=UNSET)
+    received_events_url: Union[Unset, str] = Field(default=UNSET)
+    type: Union[Unset, str] = Field(default=UNSET)
+    site_admin: Union[Unset, bool] = Field(default=UNSET)
+
+
+class RepositoryPropTemplateRepositoryPropPermissions(GitHubRestModel):
+    """RepositoryPropTemplateRepositoryPropPermissions"""
+
+    admin: Union[Unset, bool] = Field(default=UNSET)
+    maintain: Union[Unset, bool] = Field(default=UNSET)
+    push: Union[Unset, bool] = Field(default=UNSET)
+    triage: Union[Unset, bool] = Field(default=UNSET)
+    pull: Union[Unset, bool] = Field(default=UNSET)
+
+
 class RepositoryPropTemplateRepository(GitHubRestModel):
     """RepositoryPropTemplateRepository"""
 
@@ -822,39 +851,6 @@ class RepositoryPropTemplateRepository(GitHubRestModel):
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     subscribers_count: Union[Unset, int] = Field(default=UNSET)
     network_count: Union[Unset, int] = Field(default=UNSET)
-
-
-class RepositoryPropTemplateRepositoryPropOwner(GitHubRestModel):
-    """RepositoryPropTemplateRepositoryPropOwner"""
-
-    login: Union[Unset, str] = Field(default=UNSET)
-    id: Union[Unset, int] = Field(default=UNSET)
-    node_id: Union[Unset, str] = Field(default=UNSET)
-    avatar_url: Union[Unset, str] = Field(default=UNSET)
-    gravatar_id: Union[Unset, str] = Field(default=UNSET)
-    url: Union[Unset, str] = Field(default=UNSET)
-    html_url: Union[Unset, str] = Field(default=UNSET)
-    followers_url: Union[Unset, str] = Field(default=UNSET)
-    following_url: Union[Unset, str] = Field(default=UNSET)
-    gists_url: Union[Unset, str] = Field(default=UNSET)
-    starred_url: Union[Unset, str] = Field(default=UNSET)
-    subscriptions_url: Union[Unset, str] = Field(default=UNSET)
-    organizations_url: Union[Unset, str] = Field(default=UNSET)
-    repos_url: Union[Unset, str] = Field(default=UNSET)
-    events_url: Union[Unset, str] = Field(default=UNSET)
-    received_events_url: Union[Unset, str] = Field(default=UNSET)
-    type: Union[Unset, str] = Field(default=UNSET)
-    site_admin: Union[Unset, bool] = Field(default=UNSET)
-
-
-class RepositoryPropTemplateRepositoryPropPermissions(GitHubRestModel):
-    """RepositoryPropTemplateRepositoryPropPermissions"""
-
-    admin: Union[Unset, bool] = Field(default=UNSET)
-    maintain: Union[Unset, bool] = Field(default=UNSET)
-    push: Union[Unset, bool] = Field(default=UNSET)
-    triage: Union[Unset, bool] = Field(default=UNSET)
-    pull: Union[Unset, bool] = Field(default=UNSET)
 
 
 class InstallationToken(GitHubRestModel):
@@ -2420,6 +2416,10 @@ class GistSimplePropForksItems(GitHubRestModel):
     updated_at: Union[Unset, datetime] = Field(default=UNSET)
 
 
+class GistSimplePropForkOfPropFiles(GitHubRestModel, extra=Extra.allow):
+    """GistSimplePropForkOfPropFiles"""
+
+
 class GistSimplePropForkOf(GitHubRestModel):
     """Gist
 
@@ -2450,10 +2450,6 @@ class GistSimplePropForkOf(GitHubRestModel):
     truncated: Union[Unset, bool] = Field(default=UNSET)
     forks: Union[Unset, List[Any]] = Field(default=UNSET)
     history: Union[Unset, List[Any]] = Field(default=UNSET)
-
-
-class GistSimplePropForkOfPropFiles(GitHubRestModel, extra=Extra.allow):
-    """GistSimplePropForkOfPropFiles"""
 
 
 class GistSimplePropFiles(GitHubRestModel, extra=Extra.allow):
@@ -4095,20 +4091,6 @@ class CodeOfConductSimple(GitHubRestModel):
     html_url: Union[str, None] = Field(default=...)
 
 
-class SecurityAndAnalysis(GitHubRestModel):
-    """SecurityAndAnalysis"""
-
-    advanced_security: Union[Unset, SecurityAndAnalysisPropAdvancedSecurity] = Field(
-        default=UNSET
-    )
-    secret_scanning: Union[Unset, SecurityAndAnalysisPropSecretScanning] = Field(
-        default=UNSET
-    )
-    secret_scanning_push_protection: Union[
-        Unset, SecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(default=UNSET)
-
-
 class SecurityAndAnalysisPropAdvancedSecurity(GitHubRestModel):
     """SecurityAndAnalysisPropAdvancedSecurity"""
 
@@ -4125,6 +4107,20 @@ class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubRestModel):
     """SecurityAndAnalysisPropSecretScanningPushProtection"""
 
     status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysis(GitHubRestModel):
+    """SecurityAndAnalysis"""
+
+    advanced_security: Union[Unset, SecurityAndAnalysisPropAdvancedSecurity] = Field(
+        default=UNSET
+    )
+    secret_scanning: Union[Unset, SecurityAndAnalysisPropSecretScanning] = Field(
+        default=UNSET
+    )
+    secret_scanning_push_protection: Union[
+        Unset, SecurityAndAnalysisPropSecretScanningPushProtection
+    ] = Field(default=UNSET)
 
 
 class FullRepository(GitHubRestModel):
@@ -4254,7 +4250,9 @@ class FullRepository(GitHubRestModel):
         description="Code of Conduct Simple",
         default=UNSET,
     )
-    security_and_analysis: Union[Unset, SecurityAndAnalysis] = Field(default=UNSET)
+    security_and_analysis: Union[Unset, Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
+    )
 
 
 class FullRepositoryPropPermissions(GitHubRestModel):
@@ -4966,9 +4964,7 @@ class ProtectedBranchPullRequestReview(GitHubRestModel):
     )
     dismiss_stale_reviews: bool = Field(default=...)
     require_code_owner_reviews: bool = Field(default=...)
-    required_approving_review_count: Union[Unset, int] = Field(
-        le=6.0, ge=0.0, default=UNSET
-    )
+    required_approving_review_count: Union[Unset, int] = Field(le=6.0, default=UNSET)
 
 
 class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubRestModel):
@@ -6213,7 +6209,7 @@ class PullRequestSimple(GitHubRestModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    auto_merge: AutoMerge = Field(
+    auto_merge: Union[AutoMerge, None] = Field(
         title="Auto merge",
         description="The status of auto merging a pull request.",
         default=...,
@@ -6579,6 +6575,14 @@ class FileCommit(GitHubRestModel):
     commit: FileCommitPropCommit = Field(default=...)
 
 
+class FileCommitPropContentPropLinks(GitHubRestModel):
+    """FileCommitPropContentPropLinks"""
+
+    self_: Union[Unset, str] = Field(default=UNSET, alias="self")
+    git: Union[Unset, str] = Field(default=UNSET)
+    html: Union[Unset, str] = Field(default=UNSET)
+
+
 class FileCommitPropContent(GitHubRestModel):
     """FileCommitPropContent"""
 
@@ -6594,14 +6598,6 @@ class FileCommitPropContent(GitHubRestModel):
     links: Union[Unset, FileCommitPropContentPropLinks] = Field(
         default=UNSET, alias="_links"
     )
-
-
-class FileCommitPropContentPropLinks(GitHubRestModel):
-    """FileCommitPropContentPropLinks"""
-
-    self_: Union[Unset, str] = Field(default=UNSET, alias="self")
-    git: Union[Unset, str] = Field(default=UNSET)
-    html: Union[Unset, str] = Field(default=UNSET)
 
 
 class FileCommitPropCommit(GitHubRestModel):
@@ -6947,7 +6943,7 @@ class Environment(GitHubRestModel):
             ]
         ],
     ] = Field(default=UNSET)
-    deployment_branch_policy: Union[Unset, DeploymentBranchPolicy] = Field(
+    deployment_branch_policy: Union[Unset, Union[DeploymentBranchPolicy, None]] = Field(
         description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
         default=UNSET,
     )
@@ -8758,7 +8754,7 @@ class PullRequest(GitHubRestModel):
         description="How the author is associated with the repository.",
         default=...,
     )
-    auto_merge: AutoMerge = Field(
+    auto_merge: Union[AutoMerge, None] = Field(
         title="Auto merge",
         description="The status of auto merging a pull request.",
         default=...,
@@ -8806,6 +8802,49 @@ class PullRequestPropHead(GitHubRestModel):
     repo: Union[PullRequestPropHeadPropRepo, None] = Field(default=...)
     sha: str = Field(default=...)
     user: PullRequestPropHeadPropUser = Field(default=...)
+
+
+class PullRequestPropHeadPropRepoPropOwner(GitHubRestModel):
+    """PullRequestPropHeadPropRepoPropOwner"""
+
+    avatar_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    followers_url: str = Field(default=...)
+    following_url: str = Field(default=...)
+    gists_url: str = Field(default=...)
+    gravatar_id: Union[str, None] = Field(default=...)
+    html_url: str = Field(default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    login: str = Field(default=...)
+    organizations_url: str = Field(default=...)
+    received_events_url: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    site_admin: bool = Field(default=...)
+    starred_url: str = Field(default=...)
+    subscriptions_url: str = Field(default=...)
+    type: str = Field(default=...)
+    url: str = Field(default=...)
+
+
+class PullRequestPropHeadPropRepoPropPermissions(GitHubRestModel):
+    """PullRequestPropHeadPropRepoPropPermissions"""
+
+    admin: bool = Field(default=...)
+    maintain: Union[Unset, bool] = Field(default=UNSET)
+    push: bool = Field(default=...)
+    triage: Union[Unset, bool] = Field(default=UNSET)
+    pull: bool = Field(default=...)
+
+
+class PullRequestPropHeadPropRepoPropLicense(GitHubRestModel):
+    """PullRequestPropHeadPropRepoPropLicense"""
+
+    key: str = Field(default=...)
+    name: str = Field(default=...)
+    url: Union[str, None] = Field(default=...)
+    spdx_id: Union[str, None] = Field(default=...)
+    node_id: str = Field(default=...)
 
 
 class PullRequestPropHeadPropRepo(GitHubRestModel):
@@ -8901,49 +8940,6 @@ class PullRequestPropHeadPropRepo(GitHubRestModel):
     updated_at: datetime = Field(default=...)
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
     is_template: Union[Unset, bool] = Field(default=UNSET)
-
-
-class PullRequestPropHeadPropRepoPropOwner(GitHubRestModel):
-    """PullRequestPropHeadPropRepoPropOwner"""
-
-    avatar_url: str = Field(default=...)
-    events_url: str = Field(default=...)
-    followers_url: str = Field(default=...)
-    following_url: str = Field(default=...)
-    gists_url: str = Field(default=...)
-    gravatar_id: Union[str, None] = Field(default=...)
-    html_url: str = Field(default=...)
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    login: str = Field(default=...)
-    organizations_url: str = Field(default=...)
-    received_events_url: str = Field(default=...)
-    repos_url: str = Field(default=...)
-    site_admin: bool = Field(default=...)
-    starred_url: str = Field(default=...)
-    subscriptions_url: str = Field(default=...)
-    type: str = Field(default=...)
-    url: str = Field(default=...)
-
-
-class PullRequestPropHeadPropRepoPropPermissions(GitHubRestModel):
-    """PullRequestPropHeadPropRepoPropPermissions"""
-
-    admin: bool = Field(default=...)
-    maintain: Union[Unset, bool] = Field(default=UNSET)
-    push: bool = Field(default=...)
-    triage: Union[Unset, bool] = Field(default=UNSET)
-    pull: bool = Field(default=...)
-
-
-class PullRequestPropHeadPropRepoPropLicense(GitHubRestModel):
-    """PullRequestPropHeadPropRepoPropLicense"""
-
-    key: str = Field(default=...)
-    name: str = Field(default=...)
-    url: Union[str, None] = Field(default=...)
-    spdx_id: Union[str, None] = Field(default=...)
-    node_id: str = Field(default=...)
 
 
 class PullRequestPropHeadPropUser(GitHubRestModel):
@@ -11033,7 +11029,6 @@ class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
         max_items=100,
-        min_items=0,
         default=...,
     )
 
@@ -11106,17 +11101,6 @@ class GistsGistIdGetResponse403PropBlock(GitHubRestModel):
     html_url: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
-class GistsGistIdPatchBody(GitHubRestModel):
-    """GistsGistIdPatchBody"""
-
-    description: Union[Unset, str] = Field(
-        description="Description of the gist", default=UNSET
-    )
-    files: Union[Unset, GistsGistIdPatchBodyPropFiles] = Field(
-        description="Names of files to be updated", default=UNSET
-    )
-
-
 class GistsGistIdPatchBodyPropFiles(GitHubRestModel, extra=Extra.allow):
     """GistsGistIdPatchBodyPropFiles
 
@@ -11125,6 +11109,26 @@ class GistsGistIdPatchBodyPropFiles(GitHubRestModel, extra=Extra.allow):
     Examples:
         {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
+
+
+class GistsGistIdPatchBodyAnyof0(GitHubRestModel):
+    """GistsGistIdPatchBodyAnyof0"""
+
+    description: str = Field(description="Description of the gist", default=...)
+    files: Union[Unset, GistsGistIdPatchBodyPropFiles] = Field(
+        description="Names of files to be updated", default=UNSET
+    )
+
+
+class GistsGistIdPatchBodyAnyof1(GitHubRestModel):
+    """GistsGistIdPatchBodyAnyof1"""
+
+    description: Union[Unset, str] = Field(
+        description="Description of the gist", default=UNSET
+    )
+    files: GistsGistIdPatchBodyPropFiles = Field(
+        description="Names of files to be updated", default=...
+    )
 
 
 class GistsGistIdCommentsPostBody(GitHubRestModel):
@@ -11417,7 +11421,6 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
         max_items=100,
-        min_items=0,
         default=...,
     )
 
@@ -12267,47 +12270,6 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
     )
 
 
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubRestModel):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
-
-    Specify which security and analysis features to enable or disable for the
-    repository.
-
-    To use this parameter, you must have admin permissions for the repository or be
-    an owner or security manager for the organization that owns the repository. For
-    more information, see "[Managing security managers in your
-    organization](https://docs.github.com/organizations/managing-peoples-access-to-
-    your-organization-with-roles/managing-security-managers-in-your-organization)."
-
-    For example, to enable GitHub Advanced Security, use this data in the body of
-    the `PATCH` request:
-    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
-
-    You can check which security and analysis features are currently enabled by
-    using a `GET /repos/{owner}/{repo}` request.
-    """
-
-    advanced_security: Union[
-        Unset, ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
-    ] = Field(
-        description='Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."',
-        default=UNSET,
-    )
-    secret_scanning: Union[
-        Unset, ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
-    ] = Field(
-        description='Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."',
-        default=UNSET,
-    )
-    secret_scanning_push_protection: Union[
-        Unset,
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
-    ] = Field(
-        description='Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
-        default=UNSET,
-    )
-
-
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity(
     GitHubRestModel
 ):
@@ -12353,6 +12315,47 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtec
     )
 
 
+class ReposOwnerRepoPatchBodyPropSecurityAndAnalysis(GitHubRestModel):
+    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
+
+    Specify which security and analysis features to enable or disable for the
+    repository.
+
+    To use this parameter, you must have admin permissions for the repository or be
+    an owner or security manager for the organization that owns the repository. For
+    more information, see "[Managing security managers in your
+    organization](https://docs.github.com/organizations/managing-peoples-access-to-
+    your-organization-with-roles/managing-security-managers-in-your-organization)."
+
+    For example, to enable GitHub Advanced Security, use this data in the body of
+    the `PATCH` request:
+    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
+
+    You can check which security and analysis features are currently enabled by
+    using a `GET /repos/{owner}/{repo}` request.
+    """
+
+    advanced_security: Union[
+        Unset, ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
+    ] = Field(
+        description='Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."',
+        default=UNSET,
+    )
+    secret_scanning: Union[
+        Unset, ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
+    ] = Field(
+        description='Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."',
+        default=UNSET,
+    )
+    secret_scanning_push_protection: Union[
+        Unset,
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
+    ] = Field(
+        description='Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
+        default=UNSET,
+    )
+
+
 class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
@@ -12393,7 +12396,6 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
         max_items=100,
-        min_items=0,
         default=...,
     )
 
@@ -12603,6 +12605,20 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubRestModel):
     )
 
 
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems(
+    GitHubRestModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
+    tems
+    """
+
+    context: str = Field(description="The name of the required check", default=...)
+    app_id: Union[Unset, int] = Field(
+        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
+        default=UNSET,
+    )
+
+
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
     GitHubRestModel
 ):
@@ -12625,57 +12641,6 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
         ],
     ] = Field(
         description="The list of status checks to require in order to merge into this branch.",
-        default=UNSET,
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems(
-    GitHubRestModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
-    tems
-    """
-
-    context: str = Field(description="The name of the required check", default=...)
-    app_id: Union[Unset, int] = Field(
-        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
-        default=UNSET,
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews(
-    GitHubRestModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
-
-    Require at least one approving review on a pull request, before merging. Set to
-    `null` to disable.
-    """
-
-    dismissal_restrictions: Union[
-        Unset,
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
-    ] = Field(
-        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
-        default=UNSET,
-    )
-    dismiss_stale_reviews: Union[Unset, bool] = Field(
-        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
-        default=UNSET,
-    )
-    require_code_owner_reviews: Union[Unset, bool] = Field(
-        description="Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) review them.",
-        default=UNSET,
-    )
-    required_approving_review_count: Union[Unset, int] = Field(
-        description="Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
-        default=UNSET,
-    )
-    bypass_pull_request_allowances: Union[
-        Unset,
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    ] = Field(
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
         default=UNSET,
     )
 
@@ -12722,6 +12687,43 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     )
     apps: Union[Unset, List[str]] = Field(
         description="The list of app `slug`s allowed to bypass pull request requirements.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews(
+    GitHubRestModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
+
+    Require at least one approving review on a pull request, before merging. Set to
+    `null` to disable.
+    """
+
+    dismissal_restrictions: Union[
+        Unset,
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
+    ] = Field(
+        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
+        default=UNSET,
+    )
+    dismiss_stale_reviews: Union[Unset, bool] = Field(
+        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
+        default=UNSET,
+    )
+    require_code_owner_reviews: Union[Unset, bool] = Field(
+        description="Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) review them.",
+        default=UNSET,
+    )
+    required_approving_review_count: Union[Unset, int] = Field(
+        description="Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
+        default=UNSET,
+    )
+    bypass_pull_request_allowances: Union[
+        Unset,
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
+    ] = Field(
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
         default=UNSET,
     )
 
@@ -13010,6 +13012,411 @@ class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubRestModel):
     """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
     new_name: str = Field(description="The new name of the branch.", default=...)
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubRestModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run. See the [`output`
+    object](https://docs.github.com/rest/reference/checks#output-object)
+    description.
+    """
+
+    title: str = Field(description="The title of the check run.", default=...)
+    summary: str = Field(
+        description="The summary of the check run. This parameter supports Markdown.",
+        max_length=65535,
+        default=...,
+    )
+    text: Union[Unset, str] = Field(
+        description="The details of the check run. This parameter supports Markdown.",
+        max_length=65535,
+        default=UNSET,
+    )
+    annotations: Union[
+        Unset, List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
+    ] = Field(
+        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)". See the [`annotations` object](https://docs.github.com/rest/reference/checks#annotations-object) description for details about how to use this parameter.',
+        default=UNSET,
+    )
+    images: Union[
+        Unset, List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems]
+    ] = Field(
+        description="Adds images to the output displayed in the GitHub pull request UI. See the [`images` object](https://docs.github.com/rest/reference/checks#images-object) description for details.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems(GitHubRestModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str = Field(
+        description="The path of the file to add an annotation to. For example, `assets/css/main.css`.",
+        default=...,
+    )
+    start_line: int = Field(
+        description="The start line of the annotation.", default=...
+    )
+    end_line: int = Field(description="The end line of the annotation.", default=...)
+    start_column: Union[Unset, int] = Field(
+        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+        default=UNSET,
+    )
+    end_column: Union[Unset, int] = Field(
+        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+        default=UNSET,
+    )
+    annotation_level: Literal["notice", "warning", "failure"] = Field(
+        description="The level of the annotation.", default=...
+    )
+    message: str = Field(
+        description="A short description of the feedback for these lines of code. The maximum size is 64 KB.",
+        default=...,
+    )
+    title: Union[Unset, str] = Field(
+        description="The title that represents the annotation. The maximum size is 255 characters.",
+        default=UNSET,
+    )
+    raw_details: Union[Unset, str] = Field(
+        description="Details about this annotation. The maximum size is 64 KB.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubRestModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str = Field(description="The alternative text for the image.", default=...)
+    image_url: str = Field(description="The full URL of the image.", default=...)
+    caption: Union[Unset, str] = Field(
+        description="A short image description.", default=UNSET
+    )
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubRestModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str = Field(
+        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
+        max_length=20,
+        default=...,
+    )
+    description: str = Field(
+        description="A short explanation of what this action would do. The maximum size is 40 characters.",
+        max_length=40,
+        default=...,
+    )
+    identifier: str = Field(
+        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
+        max_length=20,
+        default=...,
+    )
+
+
+class ReposOwnerRepoCheckRunsPostBodyOneof0(GitHubRestModel, extra=Extra.allow):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+
+    name: str = Field(
+        description='The name of the check. For example, "code-coverage".', default=...
+    )
+    head_sha: str = Field(description="The SHA of the commit.", default=...)
+    details_url: Union[Unset, str] = Field(
+        description="The URL of the integrator's site that has the full details of the check. If the integrator does not provide this, then the homepage of the GitHub app is used.",
+        default=UNSET,
+    )
+    external_id: Union[Unset, str] = Field(
+        description="A reference for the run on the integrator's system.", default=UNSET
+    )
+    status: Literal["completed"] = Field(default=...)
+    started_at: Union[Unset, datetime] = Field(
+        description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ] = Field(
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
+        default=...,
+    )
+    completed_at: Union[Unset, datetime] = Field(
+        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutput] = Field(
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object) description.",
+        default=UNSET,
+    )
+    actions: Union[
+        Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]
+    ] = Field(
+        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoCheckRunsPostBodyOneof1(GitHubRestModel, extra=Extra.allow):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
+
+    name: str = Field(
+        description='The name of the check. For example, "code-coverage".', default=...
+    )
+    head_sha: str = Field(description="The SHA of the commit.", default=...)
+    details_url: Union[Unset, str] = Field(
+        description="The URL of the integrator's site that has the full details of the check. If the integrator does not provide this, then the homepage of the GitHub app is used.",
+        default=UNSET,
+    )
+    external_id: Union[Unset, str] = Field(
+        description="A reference for the run on the integrator's system.", default=UNSET
+    )
+    status: Union[Unset, Literal["queued", "in_progress"]] = Field(default=UNSET)
+    started_at: Union[Unset, datetime] = Field(
+        description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    conclusion: Union[
+        Unset,
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ],
+    ] = Field(
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
+        default=UNSET,
+    )
+    completed_at: Union[Unset, datetime] = Field(
+        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutput] = Field(
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object) description.",
+        default=UNSET,
+    )
+    actions: Union[
+        Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]
+    ] = Field(
+        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubRestModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
+
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run. See the [`output`
+    object](https://docs.github.com/rest/reference/checks#output-object-1)
+    description.
+    """
+
+    title: Union[Unset, str] = Field(description="**Required**.", default=UNSET)
+    summary: str = Field(
+        description="Can contain Markdown.", max_length=65535, default=...
+    )
+    text: Union[Unset, str] = Field(
+        description="Can contain Markdown.", max_length=65535, default=UNSET
+    )
+    annotations: Union[
+        Unset,
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems],
+    ] = Field(
+        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/articles/about-status-checks#checks)\". See the [`annotations` object](https://docs.github.com/rest/reference/checks#annotations-object-1) description for details.",
+        default=UNSET,
+    )
+    images: Union[
+        Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems]
+    ] = Field(
+        description="Adds images to the output displayed in the GitHub pull request UI. See the [`images` object](https://docs.github.com/rest/reference/checks#annotations-object-1) description for details.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems(
+    GitHubRestModel
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
+
+    path: str = Field(
+        description="The path of the file to add an annotation to. For example, `assets/css/main.css`.",
+        default=...,
+    )
+    start_line: int = Field(
+        description="The start line of the annotation.", default=...
+    )
+    end_line: int = Field(description="The end line of the annotation.", default=...)
+    start_column: Union[Unset, int] = Field(
+        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+        default=UNSET,
+    )
+    end_column: Union[Unset, int] = Field(
+        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+        default=UNSET,
+    )
+    annotation_level: Literal["notice", "warning", "failure"] = Field(
+        description="The level of the annotation.", default=...
+    )
+    message: str = Field(
+        description="A short description of the feedback for these lines of code. The maximum size is 64 KB.",
+        default=...,
+    )
+    title: Union[Unset, str] = Field(
+        description="The title that represents the annotation. The maximum size is 255 characters.",
+        default=UNSET,
+    )
+    raw_details: Union[Unset, str] = Field(
+        description="Details about this annotation. The maximum size is 64 KB.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems(
+    GitHubRestModel
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
+
+    alt: str = Field(description="The alternative text for the image.", default=...)
+    image_url: str = Field(description="The full URL of the image.", default=...)
+    caption: Union[Unset, str] = Field(
+        description="A short image description.", default=UNSET
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems(GitHubRestModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+
+    label: str = Field(
+        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
+        max_length=20,
+        default=...,
+    )
+    description: str = Field(
+        description="A short explanation of what this action would do. The maximum size is 40 characters.",
+        max_length=40,
+        default=...,
+    )
+    identifier: str = Field(
+        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
+        max_length=20,
+        default=...,
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(
+    GitHubRestModel, extra=Extra.allow
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+
+    name: Union[Unset, str] = Field(
+        description='The name of the check. For example, "code-coverage".',
+        default=UNSET,
+    )
+    details_url: Union[Unset, str] = Field(
+        description="The URL of the integrator's site that has the full details of the check.",
+        default=UNSET,
+    )
+    external_id: Union[Unset, str] = Field(
+        description="A reference for the run on the integrator's system.", default=UNSET
+    )
+    started_at: Union[Unset, datetime] = Field(
+        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    status: Union[Unset, Literal["completed"]] = Field(default=UNSET)
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ] = Field(
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
+        default=...,
+    )
+    completed_at: Union[Unset, datetime] = Field(
+        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    output: Union[Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object-1) description.",
+        default=UNSET,
+    )
+    actions: Union[
+        Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
+    ] = Field(
+        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(
+    GitHubRestModel, extra=Extra.allow
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
+
+    name: Union[Unset, str] = Field(
+        description='The name of the check. For example, "code-coverage".',
+        default=UNSET,
+    )
+    details_url: Union[Unset, str] = Field(
+        description="The URL of the integrator's site that has the full details of the check.",
+        default=UNSET,
+    )
+    external_id: Union[Unset, str] = Field(
+        description="A reference for the run on the integrator's system.", default=UNSET
+    )
+    started_at: Union[Unset, datetime] = Field(
+        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    status: Union[Unset, Literal["queued", "in_progress"]] = Field(default=UNSET)
+    conclusion: Union[
+        Unset,
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ],
+    ] = Field(
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
+        default=UNSET,
+    )
+    completed_at: Union[Unset, datetime] = Field(
+        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    output: Union[Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object-1) description.",
+        default=UNSET,
+    )
+    actions: Union[
+        Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
+    ] = Field(
+        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        default=UNSET,
+    )
 
 
 class ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201(GitHubRestModel):
@@ -13553,6 +13960,20 @@ class ReposOwnerRepoEnvironmentsGetResponse200(GitHubRestModel):
     environments: Union[Unset, List[Environment]] = Field(default=UNSET)
 
 
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(
+    GitHubRestModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: Union[Unset, Literal["User", "Team"]] = Field(
+        description="The type of reviewer.", default=UNSET
+    )
+    id: Union[Unset, int] = Field(
+        description="The id of the user or team who can review the deployment",
+        default=UNSET,
+    )
+
+
 class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubRestModel):
     """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
@@ -13570,22 +13991,8 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubRestModel):
         description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
         default=UNSET,
     )
-    deployment_branch_policy: Union[Unset, DeploymentBranchPolicy] = Field(
+    deployment_branch_policy: Union[Unset, Union[DeploymentBranchPolicy, None]] = Field(
         description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        default=UNSET,
-    )
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(
-    GitHubRestModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: Union[Unset, Literal["User", "Team"]] = Field(
-        description="The type of reviewer.", default=UNSET
-    )
-    id: Union[Unset, int] = Field(
-        description="The id of the user or team who can review the deployment",
         default=UNSET,
     )
 
@@ -13775,27 +14182,6 @@ class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubRestModel):
     )
 
 
-class ReposOwnerRepoHooksPostBody(GitHubRestModel):
-    """ReposOwnerRepoHooksPostBody"""
-
-    name: Union[Unset, str] = Field(
-        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
-        default=UNSET,
-    )
-    config: Union[Unset, ReposOwnerRepoHooksPostBodyPropConfig] = Field(
-        description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/repos#create-hook-config-params).",
-        default=UNSET,
-    )
-    events: Union[Unset, List[str]] = Field(
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
-        default=["push"],
-    )
-    active: Union[Unset, bool] = Field(
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
-        default=True,
-    )
-
-
 class ReposOwnerRepoHooksPostBodyPropConfig(GitHubRestModel):
     """ReposOwnerRepoHooksPostBodyPropConfig
 
@@ -13820,6 +14206,27 @@ class ReposOwnerRepoHooksPostBodyPropConfig(GitHubRestModel):
     )
     token: Union[Unset, str] = Field(default=UNSET)
     digest: Union[Unset, str] = Field(default=UNSET)
+
+
+class ReposOwnerRepoHooksPostBody(GitHubRestModel):
+    """ReposOwnerRepoHooksPostBody"""
+
+    name: Union[Unset, str] = Field(
+        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
+        default=UNSET,
+    )
+    config: Union[Unset, ReposOwnerRepoHooksPostBodyPropConfig] = Field(
+        description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/repos#create-hook-config-params).",
+        default=UNSET,
+    )
+    events: Union[Unset, List[str]] = Field(
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
+        default=["push"],
+    )
+    active: Union[Unset, bool] = Field(
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        default=True,
+    )
 
 
 class ReposOwnerRepoHooksHookIdPatchBody(GitHubRestModel):
@@ -13989,7 +14396,7 @@ class ReposOwnerRepoIssuesPostBody(GitHubRestModel):
         description="Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is deprecated.**_",
         default=UNSET,
     )
-    milestone: Union[Unset, Union[None, str, int, str, int]] = Field(
+    milestone: Union[Unset, Union[str, int, None]] = Field(
         description="The `number` of the milestone to associate this issue with. _NOTE: Only users with push access can set the milestone for new issues. The milestone is silently dropped otherwise._",
         default=UNSET,
     )
@@ -14034,7 +14441,7 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubRestModel):
 class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    title: Union[Unset, Union[None, str, int, str, int]] = Field(
+    title: Union[Unset, Union[str, int, None]] = Field(
         description="The title of the issue.", default=UNSET
     )
     body: Union[Unset, Union[str, None]] = Field(
@@ -14047,7 +14454,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubRestModel):
     state: Union[Unset, Literal["open", "closed"]] = Field(
         description="State of the issue. Either `open` or `closed`.", default=UNSET
     )
-    milestone: Union[Unset, Union[None, str, int, str, int]] = Field(
+    milestone: Union[Unset, Union[str, int, None]] = Field(
         description="The `number` of the milestone to associate this issue with or `null` to remove current. _NOTE: Only users with push access can set the milestone for issues. The milestone is silently dropped otherwise._",
         default=UNSET,
     )
@@ -14306,18 +14713,170 @@ class ReposOwnerRepoNotificationsPutResponse202(GitHubRestModel):
     url: Union[Unset, str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoPagesPostBody(GitHubRestModel):
-    """ReposOwnerRepoPagesPostBody
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubRestModel):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    The source branch and directory used to publish your Pages site.
+    Update the source for the repository. Must include the branch name and path.
     """
 
-    build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files.",
+        default=...,
+    )
+    path: Literal["/", "/docs"] = Field(
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`.",
+        default=...,
+    )
+
+
+class ReposOwnerRepoPagesPutBodyAnyof0(GitHubRestModel):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
+
+    cname: Union[Unset, Union[str, None]] = Field(
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/articles/using-a-custom-domain-with-github-pages/)."',
         default=UNSET,
     )
-    source: Union[Unset, ReposOwnerRepoPagesPostBodyPropSource] = Field(
-        description="The source branch and directory used to publish your Pages site.",
+    https_enforced: Union[Unset, bool] = Field(
+        description="Specify whether HTTPS should be enforced for the repository.",
+        default=UNSET,
+    )
+    public: Union[Unset, bool] = Field(
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
+        default=UNSET,
+    )
+    build_type: Literal["legacy", "workflow"] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        default=...,
+    )
+    source: Union[
+        Unset,
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ],
+    ] = Field(
+        description="Update the source for the repository. Must include the branch name and path.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoPagesPutBodyAnyof1(GitHubRestModel):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
+
+    cname: Union[Unset, Union[str, None]] = Field(
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/articles/using-a-custom-domain-with-github-pages/)."',
+        default=UNSET,
+    )
+    https_enforced: Union[Unset, bool] = Field(
+        description="Specify whether HTTPS should be enforced for the repository.",
+        default=UNSET,
+    )
+    public: Union[Unset, bool] = Field(
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
+        default=UNSET,
+    )
+    build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        default=UNSET,
+    )
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+    ] = Field(
+        description="Update the source for the repository. Must include the branch name and path.",
+        default=...,
+    )
+
+
+class ReposOwnerRepoPagesPutBodyAnyof2(GitHubRestModel):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None] = Field(
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/articles/using-a-custom-domain-with-github-pages/)."',
+        default=...,
+    )
+    https_enforced: Union[Unset, bool] = Field(
+        description="Specify whether HTTPS should be enforced for the repository.",
+        default=UNSET,
+    )
+    public: Union[Unset, bool] = Field(
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
+        default=UNSET,
+    )
+    build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        default=UNSET,
+    )
+    source: Union[
+        Unset,
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ],
+    ] = Field(
+        description="Update the source for the repository. Must include the branch name and path.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoPagesPutBodyAnyof3(GitHubRestModel):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
+
+    cname: Union[Unset, Union[str, None]] = Field(
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/articles/using-a-custom-domain-with-github-pages/)."',
+        default=UNSET,
+    )
+    https_enforced: Union[Unset, bool] = Field(
+        description="Specify whether HTTPS should be enforced for the repository.",
+        default=UNSET,
+    )
+    public: bool = Field(
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
+        default=...,
+    )
+    build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        default=UNSET,
+    )
+    source: Union[
+        Unset,
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ],
+    ] = Field(
+        description="Update the source for the repository. Must include the branch name and path.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoPagesPutBodyAnyof4(GitHubRestModel):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
+
+    cname: Union[Unset, Union[str, None]] = Field(
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/articles/using-a-custom-domain-with-github-pages/)."',
+        default=UNSET,
+    )
+    https_enforced: bool = Field(
+        description="Specify whether HTTPS should be enforced for the repository.",
+        default=...,
+    )
+    public: Union[Unset, bool] = Field(
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
+        default=UNSET,
+    )
+    build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        default=UNSET,
+    )
+    source: Union[
+        Unset,
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ],
+    ] = Field(
+        description="Update the source for the repository. Must include the branch name and path.",
         default=UNSET,
     )
 
@@ -14335,6 +14894,32 @@ class ReposOwnerRepoPagesPostBodyPropSource(GitHubRestModel):
     path: Union[Unset, Literal["/", "/docs"]] = Field(
         description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
         default="/",
+    )
+
+
+class ReposOwnerRepoPagesPostBodyAnyof0(GitHubRestModel):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+        default=UNSET,
+    )
+    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
+        description="The source branch and directory used to publish your Pages site.",
+        default=...,
+    )
+
+
+class ReposOwnerRepoPagesPostBodyAnyof1(GitHubRestModel):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"] = Field(
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+        default=...,
+    )
+    source: Union[Unset, ReposOwnerRepoPagesPostBodyPropSource] = Field(
+        description="The source branch and directory used to publish your Pages site.",
+        default=UNSET,
     )
 
 
@@ -14554,6 +15139,28 @@ class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubRestModel):
 
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
+
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubRestModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+
+    reviewers: List[str] = Field(
+        description="An array of user `login`s that will be requested.", default=...
+    )
+    team_reviewers: Union[Unset, List[str]] = Field(
+        description="An array of team `slug`s that will be requested.", default=UNSET
+    )
+
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubRestModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+
+    reviewers: Union[Unset, List[str]] = Field(
+        description="An array of user `login`s that will be requested.", default=UNSET
+    )
+    team_reviewers: List[str] = Field(
+        description="An array of team `slug`s that will be requested.", default=...
+    )
 
 
 class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubRestModel):
@@ -15800,13 +16407,12 @@ HookDeliveryPropResponsePropHeaders.update_forward_refs()
 Enterprise.update_forward_refs()
 AppPermissions.update_forward_refs()
 Installation.update_forward_refs()
-InstallationPropAccount.update_forward_refs()
 LicenseSimple.update_forward_refs()
 Repository.update_forward_refs()
 RepositoryPropPermissions.update_forward_refs()
-RepositoryPropTemplateRepository.update_forward_refs()
 RepositoryPropTemplateRepositoryPropOwner.update_forward_refs()
 RepositoryPropTemplateRepositoryPropPermissions.update_forward_refs()
+RepositoryPropTemplateRepository.update_forward_refs()
 InstallationToken.update_forward_refs()
 ScopedInstallation.update_forward_refs()
 Authorization.update_forward_refs()
@@ -15883,8 +16489,8 @@ GistHistory.update_forward_refs()
 GistHistoryPropChangeStatus.update_forward_refs()
 GistSimple.update_forward_refs()
 GistSimplePropForksItems.update_forward_refs()
-GistSimplePropForkOf.update_forward_refs()
 GistSimplePropForkOfPropFiles.update_forward_refs()
+GistSimplePropForkOf.update_forward_refs()
 GistSimplePropFiles.update_forward_refs()
 GistComment.update_forward_refs()
 GistCommit.update_forward_refs()
@@ -15960,10 +16566,10 @@ RateLimit.update_forward_refs()
 RateLimitOverview.update_forward_refs()
 RateLimitOverviewPropResources.update_forward_refs()
 CodeOfConductSimple.update_forward_refs()
-SecurityAndAnalysis.update_forward_refs()
 SecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
 SecurityAndAnalysisPropSecretScanning.update_forward_refs()
 SecurityAndAnalysisPropSecretScanningPushProtection.update_forward_refs()
+SecurityAndAnalysis.update_forward_refs()
 FullRepository.update_forward_refs()
 FullRepositoryPropPermissions.update_forward_refs()
 Artifact.update_forward_refs()
@@ -16106,8 +16712,8 @@ ContentSymlinkPropLinks.update_forward_refs()
 ContentSubmodule.update_forward_refs()
 ContentSubmodulePropLinks.update_forward_refs()
 FileCommit.update_forward_refs()
-FileCommitPropContent.update_forward_refs()
 FileCommitPropContentPropLinks.update_forward_refs()
+FileCommitPropContent.update_forward_refs()
 FileCommitPropCommit.update_forward_refs()
 FileCommitPropCommitPropAuthor.update_forward_refs()
 FileCommitPropCommitPropCommitter.update_forward_refs()
@@ -16228,10 +16834,10 @@ PagesHealthCheckPropAltDomain.update_forward_refs()
 PullRequest.update_forward_refs()
 PullRequestPropLabelsItems.update_forward_refs()
 PullRequestPropHead.update_forward_refs()
-PullRequestPropHeadPropRepo.update_forward_refs()
 PullRequestPropHeadPropRepoPropOwner.update_forward_refs()
 PullRequestPropHeadPropRepoPropPermissions.update_forward_refs()
 PullRequestPropHeadPropRepoPropLicense.update_forward_refs()
+PullRequestPropHeadPropRepo.update_forward_refs()
 PullRequestPropHeadPropUser.update_forward_refs()
 PullRequestPropBase.update_forward_refs()
 PullRequestPropBasePropRepo.update_forward_refs()
@@ -16363,8 +16969,9 @@ GistsPostBody.update_forward_refs()
 GistsPostBodyPropFiles.update_forward_refs()
 GistsGistIdGetResponse403.update_forward_refs()
 GistsGistIdGetResponse403PropBlock.update_forward_refs()
-GistsGistIdPatchBody.update_forward_refs()
 GistsGistIdPatchBodyPropFiles.update_forward_refs()
+GistsGistIdPatchBodyAnyof0.update_forward_refs()
+GistsGistIdPatchBodyAnyof1.update_forward_refs()
 GistsGistIdCommentsPostBody.update_forward_refs()
 GistsGistIdCommentsCommentIdPatchBody.update_forward_refs()
 GistsGistIdStarGetResponse404.update_forward_refs()
@@ -16450,10 +17057,10 @@ ProjectsProjectIdCollaboratorsUsernamePutBody.update_forward_refs()
 ProjectsProjectIdColumnsPostBody.update_forward_refs()
 ReposOwnerRepoDeleteResponse403.update_forward_refs()
 ReposOwnerRepoPatchBody.update_forward_refs()
-ReposOwnerRepoPatchBodyPropSecurityAndAnalysis.update_forward_refs()
 ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
 ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning.update_forward_refs()
 ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection.update_forward_refs()
+ReposOwnerRepoPatchBodyPropSecurityAndAnalysis.update_forward_refs()
 ReposOwnerRepoActionsArtifactsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsJobsJobIdRerunPostBody.update_forward_refs()
 ReposOwnerRepoActionsPermissionsPutBody.update_forward_refs()
@@ -16478,11 +17085,11 @@ ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs.update_forw
 ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200.update_forward_refs()
 ReposOwnerRepoAutolinksPostBody.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionPutBody.update_forward_refs()
-ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems.update_forward_refs()
-ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews.update_forward_refs()
+ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances.update_forward_refs()
+ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions.update_forward_refs()
@@ -16502,6 +17109,18 @@ ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0.update_forw
 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0.update_forward_refs()
 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0.update_forward_refs()
 ReposOwnerRepoBranchesBranchRenamePostBody.update_forward_refs()
+ReposOwnerRepoCheckRunsPostBodyPropOutput.update_forward_refs()
+ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems.update_forward_refs()
+ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems.update_forward_refs()
+ReposOwnerRepoCheckRunsPostBodyPropActionsItems.update_forward_refs()
+ReposOwnerRepoCheckRunsPostBodyOneof0.update_forward_refs()
+ReposOwnerRepoCheckRunsPostBodyOneof1.update_forward_refs()
+ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput.update_forward_refs()
+ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems.update_forward_refs()
+ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems.update_forward_refs()
+ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems.update_forward_refs()
+ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0.update_forward_refs()
+ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1.update_forward_refs()
 ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201.update_forward_refs()
 ReposOwnerRepoCheckSuitesPostBody.update_forward_refs()
 ReposOwnerRepoCheckSuitesPreferencesPatchBody.update_forward_refs()
@@ -16542,8 +17161,8 @@ ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody.update_forward_refs()
 ReposOwnerRepoDispatchesPostBody.update_forward_refs()
 ReposOwnerRepoDispatchesPostBodyPropClientPayload.update_forward_refs()
 ReposOwnerRepoEnvironmentsGetResponse200.update_forward_refs()
-ReposOwnerRepoEnvironmentsEnvironmentNamePutBody.update_forward_refs()
 ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems.update_forward_refs()
+ReposOwnerRepoEnvironmentsEnvironmentNamePutBody.update_forward_refs()
 ReposOwnerRepoForksPostBody.update_forward_refs()
 ReposOwnerRepoGitBlobsPostBody.update_forward_refs()
 ReposOwnerRepoGitCommitsPostBody.update_forward_refs()
@@ -16555,8 +17174,8 @@ ReposOwnerRepoGitTagsPostBody.update_forward_refs()
 ReposOwnerRepoGitTagsPostBodyPropTagger.update_forward_refs()
 ReposOwnerRepoGitTreesPostBody.update_forward_refs()
 ReposOwnerRepoGitTreesPostBodyPropTreeItems.update_forward_refs()
-ReposOwnerRepoHooksPostBody.update_forward_refs()
 ReposOwnerRepoHooksPostBodyPropConfig.update_forward_refs()
+ReposOwnerRepoHooksPostBody.update_forward_refs()
 ReposOwnerRepoHooksHookIdPatchBody.update_forward_refs()
 ReposOwnerRepoHooksHookIdPatchBodyPropConfig.update_forward_refs()
 ReposOwnerRepoHooksHookIdConfigPatchBody.update_forward_refs()
@@ -16594,8 +17213,15 @@ ReposOwnerRepoMilestonesPostBody.update_forward_refs()
 ReposOwnerRepoMilestonesMilestoneNumberPatchBody.update_forward_refs()
 ReposOwnerRepoNotificationsPutBody.update_forward_refs()
 ReposOwnerRepoNotificationsPutResponse202.update_forward_refs()
-ReposOwnerRepoPagesPostBody.update_forward_refs()
+ReposOwnerRepoPagesPutBodyPropSourceAnyof1.update_forward_refs()
+ReposOwnerRepoPagesPutBodyAnyof0.update_forward_refs()
+ReposOwnerRepoPagesPutBodyAnyof1.update_forward_refs()
+ReposOwnerRepoPagesPutBodyAnyof2.update_forward_refs()
+ReposOwnerRepoPagesPutBodyAnyof3.update_forward_refs()
+ReposOwnerRepoPagesPutBodyAnyof4.update_forward_refs()
 ReposOwnerRepoPagesPostBodyPropSource.update_forward_refs()
+ReposOwnerRepoPagesPostBodyAnyof0.update_forward_refs()
+ReposOwnerRepoPagesPostBodyAnyof1.update_forward_refs()
 ReposOwnerRepoPagesDeploymentPostBody.update_forward_refs()
 ReposOwnerRepoProjectsPostBody.update_forward_refs()
 ReposOwnerRepoPullsPostBody.update_forward_refs()
@@ -16608,6 +17234,8 @@ ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody.update_forward_ref
 ReposOwnerRepoPullsPullNumberMergePutBody.update_forward_refs()
 ReposOwnerRepoPullsPullNumberMergePutResponse405.update_forward_refs()
 ReposOwnerRepoPullsPullNumberMergePutResponse409.update_forward_refs()
+ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0.update_forward_refs()
+ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1.update_forward_refs()
 ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody.update_forward_refs()
 ReposOwnerRepoPullsPullNumberReviewsPostBody.update_forward_refs()
 ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems.update_forward_refs()
@@ -16723,13 +17351,12 @@ __all__ = [
     "Enterprise",
     "AppPermissions",
     "Installation",
-    "InstallationPropAccount",
     "LicenseSimple",
     "Repository",
     "RepositoryPropPermissions",
-    "RepositoryPropTemplateRepository",
     "RepositoryPropTemplateRepositoryPropOwner",
     "RepositoryPropTemplateRepositoryPropPermissions",
+    "RepositoryPropTemplateRepository",
     "InstallationToken",
     "ScopedInstallation",
     "Authorization",
@@ -16806,8 +17433,8 @@ __all__ = [
     "GistHistoryPropChangeStatus",
     "GistSimple",
     "GistSimplePropForksItems",
-    "GistSimplePropForkOf",
     "GistSimplePropForkOfPropFiles",
+    "GistSimplePropForkOf",
     "GistSimplePropFiles",
     "GistComment",
     "GistCommit",
@@ -16883,10 +17510,10 @@ __all__ = [
     "RateLimitOverview",
     "RateLimitOverviewPropResources",
     "CodeOfConductSimple",
-    "SecurityAndAnalysis",
     "SecurityAndAnalysisPropAdvancedSecurity",
     "SecurityAndAnalysisPropSecretScanning",
     "SecurityAndAnalysisPropSecretScanningPushProtection",
+    "SecurityAndAnalysis",
     "FullRepository",
     "FullRepositoryPropPermissions",
     "Artifact",
@@ -17029,8 +17656,8 @@ __all__ = [
     "ContentSubmodule",
     "ContentSubmodulePropLinks",
     "FileCommit",
-    "FileCommitPropContent",
     "FileCommitPropContentPropLinks",
+    "FileCommitPropContent",
     "FileCommitPropCommit",
     "FileCommitPropCommitPropAuthor",
     "FileCommitPropCommitPropCommitter",
@@ -17151,10 +17778,10 @@ __all__ = [
     "PullRequest",
     "PullRequestPropLabelsItems",
     "PullRequestPropHead",
-    "PullRequestPropHeadPropRepo",
     "PullRequestPropHeadPropRepoPropOwner",
     "PullRequestPropHeadPropRepoPropPermissions",
     "PullRequestPropHeadPropRepoPropLicense",
+    "PullRequestPropHeadPropRepo",
     "PullRequestPropHeadPropUser",
     "PullRequestPropBase",
     "PullRequestPropBasePropRepo",
@@ -17286,8 +17913,9 @@ __all__ = [
     "GistsPostBodyPropFiles",
     "GistsGistIdGetResponse403",
     "GistsGistIdGetResponse403PropBlock",
-    "GistsGistIdPatchBody",
     "GistsGistIdPatchBodyPropFiles",
+    "GistsGistIdPatchBodyAnyof0",
+    "GistsGistIdPatchBodyAnyof1",
     "GistsGistIdCommentsPostBody",
     "GistsGistIdCommentsCommentIdPatchBody",
     "GistsGistIdStarGetResponse404",
@@ -17373,10 +18001,10 @@ __all__ = [
     "ProjectsProjectIdColumnsPostBody",
     "ReposOwnerRepoDeleteResponse403",
     "ReposOwnerRepoPatchBody",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
+    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
     "ReposOwnerRepoActionsArtifactsGetResponse200",
     "ReposOwnerRepoActionsJobsJobIdRerunPostBody",
     "ReposOwnerRepoActionsPermissionsPutBody",
@@ -17401,11 +18029,11 @@ __all__ = [
     "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",
     "ReposOwnerRepoAutolinksPostBody",
     "ReposOwnerRepoBranchesBranchProtectionPutBody",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews",
     "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions",
     "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
     "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
@@ -17425,6 +18053,18 @@ __all__ = [
     "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0",
     "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0",
     "ReposOwnerRepoBranchesBranchRenamePostBody",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutput",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
+    "ReposOwnerRepoCheckRunsPostBodyOneof0",
+    "ReposOwnerRepoCheckRunsPostBodyOneof1",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",
     "ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201",
     "ReposOwnerRepoCheckSuitesPostBody",
     "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
@@ -17465,8 +18105,8 @@ __all__ = [
     "ReposOwnerRepoDispatchesPostBody",
     "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
     "ReposOwnerRepoEnvironmentsGetResponse200",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
     "ReposOwnerRepoForksPostBody",
     "ReposOwnerRepoGitBlobsPostBody",
     "ReposOwnerRepoGitCommitsPostBody",
@@ -17478,8 +18118,8 @@ __all__ = [
     "ReposOwnerRepoGitTagsPostBodyPropTagger",
     "ReposOwnerRepoGitTreesPostBody",
     "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
-    "ReposOwnerRepoHooksPostBody",
     "ReposOwnerRepoHooksPostBodyPropConfig",
+    "ReposOwnerRepoHooksPostBody",
     "ReposOwnerRepoHooksHookIdPatchBody",
     "ReposOwnerRepoHooksHookIdPatchBodyPropConfig",
     "ReposOwnerRepoHooksHookIdConfigPatchBody",
@@ -17517,8 +18157,15 @@ __all__ = [
     "ReposOwnerRepoMilestonesMilestoneNumberPatchBody",
     "ReposOwnerRepoNotificationsPutBody",
     "ReposOwnerRepoNotificationsPutResponse202",
-    "ReposOwnerRepoPagesPostBody",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1",
+    "ReposOwnerRepoPagesPutBodyAnyof0",
+    "ReposOwnerRepoPagesPutBodyAnyof1",
+    "ReposOwnerRepoPagesPutBodyAnyof2",
+    "ReposOwnerRepoPagesPutBodyAnyof3",
+    "ReposOwnerRepoPagesPutBodyAnyof4",
     "ReposOwnerRepoPagesPostBodyPropSource",
+    "ReposOwnerRepoPagesPostBodyAnyof0",
+    "ReposOwnerRepoPagesPostBodyAnyof1",
     "ReposOwnerRepoPagesDeploymentPostBody",
     "ReposOwnerRepoProjectsPostBody",
     "ReposOwnerRepoPullsPostBody",
@@ -17531,6 +18178,8 @@ __all__ = [
     "ReposOwnerRepoPullsPullNumberMergePutBody",
     "ReposOwnerRepoPullsPullNumberMergePutResponse405",
     "ReposOwnerRepoPullsPullNumberMergePutResponse409",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",
     "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",
     "ReposOwnerRepoPullsPullNumberReviewsPostBody",
     "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",

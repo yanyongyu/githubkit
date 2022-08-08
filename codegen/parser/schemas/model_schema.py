@@ -5,7 +5,12 @@ import openapi_schema_pydantic as oas
 from .. import add_schema
 from . import parse_schema
 from ...source import Source
-from ..utils import build_prop_name, build_class_name, concat_snake_name
+from ..utils import (
+    build_prop_name,
+    build_class_name,
+    concat_snake_name,
+    schema_from_source,
+)
 from .schema import (
     Property,
     IntSchema,
@@ -170,14 +175,16 @@ def _merge_property(
     raise RuntimeError(f"Cannot merge property {first!r} {second!r}")
 
 
-def _process_properties(source: Source, class_name: str) -> List[Property]:
-    try:
-        data = oas.Schema.parse_obj(source.data)
-    except Exception as e:
-        raise TypeError(f"Invalid Schema from {source.uri}") from e
+def _process_properties(
+    source: Source, class_name: str, base_source: Optional[Source] = None
+) -> List[Property]:
+    data = schema_from_source(source)
+    base_schema = schema_from_source(base_source) if base_source else None
 
     properties: Dict[str, Property] = {}
     required_set = set(data.required or [])
+    if base_schema and base_schema.required:
+        required_set.update(base_schema.required)
 
     def _add_if_no_conflict(prop: Property):
         if prop.name in properties:
@@ -211,20 +218,35 @@ def _process_properties(source: Source, class_name: str) -> List[Property]:
             )
         for prop in model.properties:
             _add_if_no_conflict(prop)
-
-    for name in data.properties or {}:
-        prop_source = source / "properties" / name
-        prop_schema = parse_schema(
-            prop_source, concat_snake_name(class_name, "prop", name)
-        )
-        _add_if_no_conflict(
-            Property(
-                name=name,
-                prop_name=build_prop_name(name),
-                required=name in required_set,
-                schema_data=prop_schema,
+    if base_source and base_schema and base_schema.properties:
+        for name in base_schema.properties:
+            prop_source = base_source / "properties" / name
+            prop_schema = parse_schema(
+                prop_source, concat_snake_name(class_name, "prop", name)
             )
-        )
+            _add_if_no_conflict(
+                Property(
+                    name=name,
+                    prop_name=build_prop_name(name),
+                    required=name in required_set,
+                    schema_data=prop_schema,
+                )
+            )
+
+    if data.properties:
+        for name in data.properties:
+            prop_source = source / "properties" / name
+            prop_schema = parse_schema(
+                prop_source, concat_snake_name(class_name, "prop", name)
+            )
+            _add_if_no_conflict(
+                Property(
+                    name=name,
+                    prop_name=build_prop_name(name),
+                    required=name in required_set,
+                    schema_data=prop_schema,
+                )
+            )
 
     return list(properties.values())
 
@@ -232,11 +254,10 @@ def _process_properties(source: Source, class_name: str) -> List[Property]:
 def build_model_schema(
     source: Source,
     class_name: str,
+    base_source: Optional[Source] = None,
+    prestore_schema: bool = True,
 ) -> ModelSchema:
-    try:
-        data = oas.Schema.parse_obj(source.data)
-    except Exception as e:
-        raise TypeError(f"Invalid Schema from {source.uri}") from e
+    data = schema_from_source(source)
 
     class_name = build_class_name(class_name)
 
@@ -248,9 +269,10 @@ def build_model_schema(
         default=data.default,
         examples=data.examples or (data.example and [data.example]),
     )
-    add_schema(source.uri, schema)
+    if prestore_schema:
+        add_schema(source.uri, schema)
 
-    schema.properties = _process_properties(source, class_name)
+    schema.properties = _process_properties(source, class_name, base_source)
 
     additional_properties = data.additionalProperties
     if isinstance(additional_properties, oas.Reference):

@@ -326,20 +326,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
     ) -> "Response[List[GitRef]]":
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
 
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
             response_model=List[GitRef],
         )
 
@@ -348,20 +340,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
     ) -> "Response[List[GitRef]]":
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
 
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
             response_model=List[GitRef],
         )
 

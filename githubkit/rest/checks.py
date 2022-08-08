@@ -5,7 +5,8 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+from datetime import datetime
+from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -13,7 +14,15 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
     ReposOwnerRepoCheckSuitesPostBodyType,
+    ReposOwnerRepoCheckRunsPostBodyOneof0Type,
+    ReposOwnerRepoCheckRunsPostBodyOneof1Type,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
     ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
     ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
 )
 from .models import (
@@ -23,8 +32,12 @@ from .models import (
     CheckAnnotation,
     CheckSuitePreference,
     ReposOwnerRepoCheckSuitesPostBody,
+    ReposOwnerRepoCheckRunsPostBodyOneof0,
+    ReposOwnerRepoCheckRunsPostBodyOneof1,
     ReposOwnerRepoCheckSuitesPreferencesPatchBody,
     ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
     ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
     ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201,
     ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
@@ -40,8 +53,97 @@ class ChecksClient:
     def __init__(self, github: "GitHub"):
         self._github = github
 
+    @overload
     def create(
-        self, owner: str, repo: str, *, data: Union[Any, Any], **kwargs
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            ReposOwnerRepoCheckRunsPostBodyOneof0Type,
+            ReposOwnerRepoCheckRunsPostBodyOneof1Type,
+        ],
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    def create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        head_sha: str,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        status: Literal["completed"],
+        started_at: Union[Unset, datetime] = UNSET,
+        conclusion: Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ],
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    def create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        head_sha: str,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
+        started_at: Union[Unset, datetime] = UNSET,
+        conclusion: Union[
+            Unset,
+            Literal[
+                "action_required",
+                "cancelled",
+                "failure",
+                "neutral",
+                "success",
+                "skipped",
+                "stale",
+                "timed_out",
+            ],
+        ] = UNSET,
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    def create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoCheckRunsPostBodyOneof0Type,
+                ReposOwnerRepoCheckRunsPostBodyOneof1Type,
+            ],
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
@@ -49,7 +151,13 @@ class ChecksClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoCheckRunsPostBodyOneof0,
+                ReposOwnerRepoCheckRunsPostBodyOneof1,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -59,8 +167,97 @@ class ChecksClient:
             response_model=CheckRun,
         )
 
+    @overload
     async def async_create(
-        self, owner: str, repo: str, *, data: Union[Any, Any], **kwargs
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            ReposOwnerRepoCheckRunsPostBodyOneof0Type,
+            ReposOwnerRepoCheckRunsPostBodyOneof1Type,
+        ],
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    async def async_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        head_sha: str,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        status: Literal["completed"],
+        started_at: Union[Unset, datetime] = UNSET,
+        conclusion: Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ],
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    async def async_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        head_sha: str,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
+        started_at: Union[Unset, datetime] = UNSET,
+        conclusion: Union[
+            Unset,
+            Literal[
+                "action_required",
+                "cancelled",
+                "failure",
+                "neutral",
+                "success",
+                "skipped",
+                "stale",
+                "timed_out",
+            ],
+        ] = UNSET,
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    async def async_create(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoCheckRunsPostBodyOneof0Type,
+                ReposOwnerRepoCheckRunsPostBodyOneof1Type,
+            ],
+        ] = UNSET,
+        **kwargs,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
@@ -68,7 +265,13 @@ class ChecksClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoCheckRunsPostBodyOneof0,
+                ReposOwnerRepoCheckRunsPostBodyOneof1,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -106,13 +309,102 @@ class ChecksClient:
             response_model=CheckRun,
         )
 
+    @overload
     def update(
         self,
         owner: str,
         repo: str,
         check_run_id: int,
         *,
-        data: Union[Any, Any],
+        data: Union[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
+        ],
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    def update(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        started_at: Union[Unset, datetime] = UNSET,
+        status: Union[Unset, Literal["completed"]] = UNSET,
+        conclusion: Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ],
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[
+            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        ] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    def update(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        started_at: Union[Unset, datetime] = UNSET,
+        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
+        conclusion: Union[
+            Unset,
+            Literal[
+                "action_required",
+                "cancelled",
+                "failure",
+                "neutral",
+                "success",
+                "skipped",
+                "stale",
+                "timed_out",
+            ],
+        ] = UNSET,
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[
+            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        ] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    def update(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
+            ],
+        ] = UNSET,
         **kwargs,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
@@ -121,7 +413,13 @@ class ChecksClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -131,13 +429,102 @@ class ChecksClient:
             response_model=CheckRun,
         )
 
+    @overload
     async def async_update(
         self,
         owner: str,
         repo: str,
         check_run_id: int,
         *,
-        data: Union[Any, Any],
+        data: Union[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
+        ],
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    async def async_update(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        started_at: Union[Unset, datetime] = UNSET,
+        status: Union[Unset, Literal["completed"]] = UNSET,
+        conclusion: Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ],
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[
+            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        ] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    @overload
+    async def async_update(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        details_url: Union[Unset, str] = UNSET,
+        external_id: Union[Unset, str] = UNSET,
+        started_at: Union[Unset, datetime] = UNSET,
+        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
+        conclusion: Union[
+            Unset,
+            Literal[
+                "action_required",
+                "cancelled",
+                "failure",
+                "neutral",
+                "success",
+                "skipped",
+                "stale",
+                "timed_out",
+            ],
+        ] = UNSET,
+        completed_at: Union[Unset, datetime] = UNSET,
+        output: Union[
+            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        ] = UNSET,
+        actions: Union[
+            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        ] = UNSET,
+    ) -> "Response[CheckRun]":
+        ...
+
+    async def async_update(
+        self,
+        owner: str,
+        repo: str,
+        check_run_id: int,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
+            ],
+        ] = UNSET,
         **kwargs,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
@@ -146,7 +533,13 @@ class ChecksClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
+                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

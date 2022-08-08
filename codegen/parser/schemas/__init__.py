@@ -1,9 +1,10 @@
-from typing import Union
+from typing import Union, Optional
 
 from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
 
 from ...source import Source
+from ..utils import schema_from_source
 from .schema import Property as Property
 from .schema import AnySchema as AnySchema
 from .schema import IntSchema as IntSchema
@@ -22,7 +23,9 @@ from .. import add_schema, get_schema, get_schemas
 from .schema import DateTimeSchema as DateTimeSchema
 
 
-def parse_schema(source: Source, class_name: str) -> SchemaData:
+def parse_schema(
+    source: Source, class_name: str, base_source: Optional[Source] = None
+) -> SchemaData:
     data = source.data
     try:
         data = parse_obj_as(Union[oas.Reference, oas.Schema], data)
@@ -31,39 +34,38 @@ def parse_schema(source: Source, class_name: str) -> SchemaData:
 
     if isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        try:
-            data = oas.Schema.parse_obj(source.data)
-            class_name = source.pointer.parts[-1]
-        except Exception as e:
-            raise TypeError(f"Invalid Schema from {source.uri}") from e
+        data = schema_from_source(source)
+        class_name = source.pointer.parts[-1]
+        base_source = None
 
     if exist := get_schema(source.uri):
         return exist
 
+    base_schema = schema_from_source(base_source) if base_source else None
+
+    types = data.type or (base_schema and base_schema.type)
     schema_type = (
-        (data.type[0] if len(data.type) == 1 else data.type)
-        if isinstance(data.type, list)
-        else data.type
+        (types[0] if len(types) == 1 else types) if isinstance(types, list) else types
     )
 
     if data.enum or data.const is not None:
-        schema = build_enum_schema(source)
-    elif isinstance(data.type, list) or data.anyOf or data.oneOf:
-        schema = build_union_schema(source, class_name)
+        schema = build_enum_schema(source, base_source)
+    elif isinstance(types, list) or data.anyOf or data.oneOf:
+        schema = build_union_schema(source, class_name, base_source)
     elif schema_type == "null":
         schema = build_none_schema(source)
     elif schema_type == "string":
-        schema = build_string_schema(source)
+        schema = build_string_schema(source, base_source)
     elif schema_type == "number":
-        schema = build_float_schema(source)
+        schema = build_float_schema(source, base_source)
     elif schema_type == "integer":
-        schema = build_int_schema(source)
+        schema = build_int_schema(source, base_source)
     elif schema_type == "boolean":
         schema = build_bool_schema(source)
     elif schema_type == "array":
-        schema = build_list_schema(source, class_name)
+        schema = build_list_schema(source, class_name, base_source)
     elif schema_type == "object" or data.allOf:
-        schema = build_model_schema(source, class_name)
+        schema = build_model_schema(source, class_name, base_source)
     else:
         schema = build_any_schema(source)
 

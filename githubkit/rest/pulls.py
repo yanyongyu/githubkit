@@ -6,7 +6,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
+from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -24,6 +24,8 @@ from .types import (
     ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
+    ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
+    ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
     ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
 )
@@ -54,6 +56,8 @@ from .models import (
     ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
     ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody,
+    ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
+    ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
 )
 
@@ -1192,13 +1196,62 @@ class PullsClient:
             response_model=PullRequestReviewRequest,
         )
 
+    @overload
     def request_reviewers(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        data: Union[Any, Any],
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    @overload
+    def request_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        reviewers: List[str],
+        team_reviewers: Union[Unset, List[str]] = UNSET,
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    @overload
+    def request_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        reviewers: Union[Unset, List[str]] = UNSET,
+        team_reviewers: List[str],
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    def request_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
+            ],
+        ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
@@ -1207,7 +1260,13 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1220,13 +1279,62 @@ class PullsClient:
             },
         )
 
+    @overload
     async def async_request_reviewers(
         self,
         owner: str,
         repo: str,
         pull_number: int,
         *,
-        data: Union[Any, Any],
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
+            ],
+        ] = UNSET,
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    @overload
+    async def async_request_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        reviewers: List[str],
+        team_reviewers: Union[Unset, List[str]] = UNSET,
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    @overload
+    async def async_request_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Unset = UNSET,
+        reviewers: Union[Unset, List[str]] = UNSET,
+        team_reviewers: List[str],
+    ) -> "Response[PullRequestSimple]":
+        ...
+
+    async def async_request_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: Union[
+            Unset,
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
+            ],
+        ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
@@ -1235,7 +1343,13 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[Any, Any], json)
+        json = parse_obj_as(
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
+            ],
+            json,
+        )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
