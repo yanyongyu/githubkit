@@ -684,11 +684,11 @@ class PullsClient:
         *,
         data: Unset = UNSET,
         body: str,
-        commit_id: Union[Unset, str] = UNSET,
-        path: Union[Unset, str] = UNSET,
+        commit_id: str,
+        path: str,
         position: Union[Unset, int] = UNSET,
         side: Union[Unset, Literal["LEFT", "RIGHT"]] = UNSET,
-        line: Union[Unset, int] = UNSET,
+        line: int,
         start_line: Union[Unset, int] = UNSET,
         start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Union[Unset, int] = UNSET,
@@ -744,11 +744,11 @@ class PullsClient:
         *,
         data: Unset = UNSET,
         body: str,
-        commit_id: Union[Unset, str] = UNSET,
-        path: Union[Unset, str] = UNSET,
+        commit_id: str,
+        path: str,
         position: Union[Unset, int] = UNSET,
         side: Union[Unset, Literal["LEFT", "RIGHT"]] = UNSET,
-        line: Union[Unset, int] = UNSET,
+        line: int,
         start_line: Union[Unset, int] = UNSET,
         start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Union[Unset, int] = UNSET,
@@ -1157,20 +1157,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
     ) -> "Response[PullRequestReviewRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
 
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
             response_model=PullRequestReviewRequest,
         )
 
@@ -1179,20 +1171,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
     ) -> "Response[PullRequestReviewRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
 
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
             response_model=PullRequestReviewRequest,
         )
 

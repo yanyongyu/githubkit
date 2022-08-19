@@ -12,6 +12,82 @@ from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .types import (
+    UserReposPostBodyType,
+    OrgsOrgReposPostBodyType,
+    ReposOwnerRepoPatchBodyType,
+    ReposOwnerRepoKeysPostBodyType,
+    ReposOwnerRepoForksPostBodyType,
+    ReposOwnerRepoHooksPostBodyType,
+    ReposOwnerRepoTopicsPutBodyType,
+    ReposOwnerRepoMergesPostBodyType,
+    DeploymentBranchPolicySettingsType,
+    ReposOwnerRepoReleasesPostBodyType,
+    ReposOwnerRepoTransferPostBodyType,
+    ReposOwnerRepoAutolinksPostBodyType,
+    ReposOwnerRepoDispatchesPostBodyType,
+    ReposOwnerRepoPagesPutBodyAnyof0Type,
+    ReposOwnerRepoPagesPutBodyAnyof1Type,
+    ReposOwnerRepoPagesPutBodyAnyof2Type,
+    ReposOwnerRepoPagesPutBodyAnyof3Type,
+    ReposOwnerRepoPagesPutBodyAnyof4Type,
+    DeploymentBranchPolicyNamePatternType,
+    ReposOwnerRepoContentsPathPutBodyType,
+    ReposOwnerRepoDeploymentsPostBodyType,
+    ReposOwnerRepoPagesPostBodyAnyof0Type,
+    ReposOwnerRepoPagesPostBodyAnyof1Type,
+    ReposOwnerRepoStatusesShaPostBodyType,
+    ReposOwnerRepoHooksHookIdPatchBodyType,
+    ReposOwnerRepoMergeUpstreamPostBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyType,
+    ReposOwnerRepoTagsProtectionPostBodyType,
+    ReposOwnerRepoHooksPostBodyPropConfigType,
+    ReposOwnerRepoPagesDeploymentPostBodyType,
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoCommentsCommentIdPatchBodyType,
+    ReposOwnerRepoHooksHookIdConfigPatchBodyType,
+    ReposOwnerRepoReleasesReleaseIdPatchBodyType,
+    ReposOwnerRepoBranchesBranchRenamePostBodyType,
+    ReposOwnerRepoCollaboratorsUsernamePutBodyType,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoContentsPathPutBodyPropAuthorType,
+    ReposOwnerRepoReleasesGenerateNotesPostBodyType,
+    ReposOwnerRepoHooksHookIdPatchBodyPropConfigType,
+    ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyType,
+    ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
+    ReposOwnerRepoContentsPathPutBodyPropCommitterType,
+    ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
+    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
+    ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
+    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
+    ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
+    ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
+    ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
+    ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
+    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
+)
 from .models import (
     Tag,
     Hook,
@@ -73,6 +149,7 @@ from .models import (
     OrgsOrgReposPostBody,
     RepositoryInvitation,
     ValidationErrorSimple,
+    DeploymentBranchPolicy,
     BranchRestrictionPolicy,
     ReposOwnerRepoPatchBody,
     ReposOwnerRepoKeysPostBody,
@@ -93,6 +170,7 @@ from .models import (
     ReposOwnerRepoPagesPutBodyAnyof2,
     ReposOwnerRepoPagesPutBodyAnyof3,
     ReposOwnerRepoPagesPutBodyAnyof4,
+    DeploymentBranchPolicyNamePattern,
     ReposOwnerRepoContentsPathPutBody,
     ReposOwnerRepoDeploymentsPostBody,
     ReposOwnerRepoPagesPostBodyAnyof0,
@@ -131,83 +209,9 @@ from .models import (
     ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-)
-from .types import (
-    UserReposPostBodyType,
-    OrgsOrgReposPostBodyType,
-    DeploymentBranchPolicyType,
-    ReposOwnerRepoPatchBodyType,
-    ReposOwnerRepoKeysPostBodyType,
-    ReposOwnerRepoForksPostBodyType,
-    ReposOwnerRepoHooksPostBodyType,
-    ReposOwnerRepoTopicsPutBodyType,
-    ReposOwnerRepoMergesPostBodyType,
-    ReposOwnerRepoReleasesPostBodyType,
-    ReposOwnerRepoTransferPostBodyType,
-    ReposOwnerRepoAutolinksPostBodyType,
-    ReposOwnerRepoDispatchesPostBodyType,
-    ReposOwnerRepoPagesPutBodyAnyof0Type,
-    ReposOwnerRepoPagesPutBodyAnyof1Type,
-    ReposOwnerRepoPagesPutBodyAnyof2Type,
-    ReposOwnerRepoPagesPutBodyAnyof3Type,
-    ReposOwnerRepoPagesPutBodyAnyof4Type,
-    ReposOwnerRepoContentsPathPutBodyType,
-    ReposOwnerRepoDeploymentsPostBodyType,
-    ReposOwnerRepoPagesPostBodyAnyof0Type,
-    ReposOwnerRepoPagesPostBodyAnyof1Type,
-    ReposOwnerRepoStatusesShaPostBodyType,
-    ReposOwnerRepoHooksHookIdPatchBodyType,
-    ReposOwnerRepoMergeUpstreamPostBodyType,
-    ReposOwnerRepoContentsPathDeleteBodyType,
-    ReposOwnerRepoTagsProtectionPostBodyType,
-    ReposOwnerRepoHooksPostBodyPropConfigType,
-    ReposOwnerRepoPagesDeploymentPostBodyType,
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ReposOwnerRepoHooksHookIdConfigPatchBodyType,
-    ReposOwnerRepoReleasesReleaseIdPatchBodyType,
-    ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ReposOwnerRepoCollaboratorsUsernamePutBodyType,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoContentsPathPutBodyPropAuthorType,
-    ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ReposOwnerRepoHooksHookIdPatchBodyPropConfigType,
-    ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
-    ReposOwnerRepoContentsPathPutBodyPropCommitterType,
-    ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
-    ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
-    ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
-    ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
-    ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
-    ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
-    ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
-    ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
 )
 
 if TYPE_CHECKING:
@@ -316,6 +320,16 @@ class ReposClient:
         allow_auto_merge: Union[Unset, bool] = False,
         delete_branch_on_merge: Union[Unset, bool] = False,
         use_squash_pr_title_as_default: Union[Unset, bool] = False,
+        squash_merge_commit_title: Union[
+            Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+        ] = UNSET,
+        squash_merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+        ] = UNSET,
+        merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]
+        ] = UNSET,
     ) -> "Response[Repository]":
         ...
 
@@ -377,6 +391,16 @@ class ReposClient:
         allow_auto_merge: Union[Unset, bool] = False,
         delete_branch_on_merge: Union[Unset, bool] = False,
         use_squash_pr_title_as_default: Union[Unset, bool] = False,
+        squash_merge_commit_title: Union[
+            Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+        ] = UNSET,
+        squash_merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+        ] = UNSET,
+        merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]
+        ] = UNSET,
     ) -> "Response[Repository]":
         ...
 
@@ -510,6 +534,16 @@ class ReposClient:
         delete_branch_on_merge: Union[Unset, bool] = False,
         allow_update_branch: Union[Unset, bool] = False,
         use_squash_pr_title_as_default: Union[Unset, bool] = False,
+        squash_merge_commit_title: Union[
+            Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+        ] = UNSET,
+        squash_merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+        ] = UNSET,
+        merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]
+        ] = UNSET,
         archived: Union[Unset, bool] = False,
         allow_forking: Union[Unset, bool] = False,
     ) -> "Response[FullRepository]":
@@ -581,6 +615,16 @@ class ReposClient:
         delete_branch_on_merge: Union[Unset, bool] = False,
         allow_update_branch: Union[Unset, bool] = False,
         use_squash_pr_title_as_default: Union[Unset, bool] = False,
+        squash_merge_commit_title: Union[
+            Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+        ] = UNSET,
+        squash_merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+        ] = UNSET,
+        merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]
+        ] = UNSET,
         archived: Union[Unset, bool] = False,
         allow_forking: Union[Unset, bool] = False,
     ) -> "Response[FullRepository]":
@@ -3846,9 +3890,7 @@ class ReposClient:
         username: str,
         *,
         data: Unset = UNSET,
-        permission: Union[
-            Unset, Literal["pull", "push", "admin", "maintain", "triage"]
-        ] = "push",
+        permission: Union[Unset, str] = "push",
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -3900,9 +3942,7 @@ class ReposClient:
         username: str,
         *,
         data: Unset = UNSET,
-        permission: Union[
-            Unset, Literal["pull", "push", "admin", "maintain", "triage"]
-        ] = "push",
+        permission: Union[Unset, str] = "push",
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -5731,7 +5771,7 @@ class ReposClient:
             ],
         ] = UNSET,
         deployment_branch_policy: Union[
-            Unset, Union[DeploymentBranchPolicyType, None]
+            Unset, Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
         ...
@@ -5800,7 +5840,7 @@ class ReposClient:
             ],
         ] = UNSET,
         deployment_branch_policy: Union[
-            Unset, Union[DeploymentBranchPolicyType, None]
+            Unset, Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
         ...
@@ -5857,6 +5897,308 @@ class ReposClient:
         environment_name: str,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    def list_deployment_branch_policies(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
+        )
+
+    async def async_list_deployment_branch_policies(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
+        )
+
+    @overload
+    def create_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: DeploymentBranchPolicyNamePatternType,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    @overload
+    def create_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    def create_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Union[Unset, DeploymentBranchPolicyNamePatternType] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentBranchPolicy]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=DeploymentBranchPolicy,
+            error_models={},
+        )
+
+    @overload
+    async def async_create_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: DeploymentBranchPolicyNamePatternType,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    @overload
+    async def async_create_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    async def async_create_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        *,
+        data: Union[Unset, DeploymentBranchPolicyNamePatternType] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentBranchPolicy]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=DeploymentBranchPolicy,
+            error_models={},
+        )
+
+    def get_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+    ) -> "Response[DeploymentBranchPolicy]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=DeploymentBranchPolicy,
+        )
+
+    async def async_get_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+    ) -> "Response[DeploymentBranchPolicy]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=DeploymentBranchPolicy,
+        )
+
+    @overload
+    def update_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+        *,
+        data: DeploymentBranchPolicyNamePatternType,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    @overload
+    def update_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+        *,
+        data: Unset = UNSET,
+        name: str,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    def update_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+        *,
+        data: Union[Unset, DeploymentBranchPolicyNamePatternType] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentBranchPolicy]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=DeploymentBranchPolicy,
+        )
+
+    @overload
+    async def async_update_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+        *,
+        data: DeploymentBranchPolicyNamePatternType,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    @overload
+    async def async_update_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+        *,
+        data: Unset = UNSET,
+        name: str,
+    ) -> "Response[DeploymentBranchPolicy]":
+        ...
+
+    async def async_update_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+        *,
+        data: Union[Unset, DeploymentBranchPolicyNamePatternType] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentBranchPolicy]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=DeploymentBranchPolicy,
+        )
+
+    def delete_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_deployment_branch_policy(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        branch_policy_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
         return await self._github.arequest(
             "DELETE",
@@ -10190,6 +10532,16 @@ class ReposClient:
         allow_rebase_merge: Union[Unset, bool] = True,
         allow_auto_merge: Union[Unset, bool] = False,
         delete_branch_on_merge: Union[Unset, bool] = False,
+        squash_merge_commit_title: Union[
+            Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+        ] = UNSET,
+        squash_merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+        ] = UNSET,
+        merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]
+        ] = UNSET,
         has_downloads: Union[Unset, bool] = True,
         is_template: Union[Unset, bool] = False,
     ) -> "Response[Repository]":
@@ -10248,6 +10600,16 @@ class ReposClient:
         allow_rebase_merge: Union[Unset, bool] = True,
         allow_auto_merge: Union[Unset, bool] = False,
         delete_branch_on_merge: Union[Unset, bool] = False,
+        squash_merge_commit_title: Union[
+            Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+        ] = UNSET,
+        squash_merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+        ] = UNSET,
+        merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Union[
+            Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]
+        ] = UNSET,
         has_downloads: Union[Unset, bool] = True,
         is_template: Union[Unset, bool] = False,
     ) -> "Response[Repository]":

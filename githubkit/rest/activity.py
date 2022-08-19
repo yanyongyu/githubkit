@@ -173,8 +173,8 @@ class ActivityClient:
         participating: Union[Unset, bool] = False,
         since: Union[Unset, datetime] = UNSET,
         before: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 50,
     ) -> "Response[List[Thread]]":
         url = "/notifications"
 
@@ -183,8 +183,8 @@ class ActivityClient:
             "participating": participating,
             "since": since,
             "before": before,
-            "per_page": per_page,
             "page": page,
+            "per_page": per_page,
         }
 
         return self._github.request(
@@ -205,8 +205,8 @@ class ActivityClient:
         participating: Union[Unset, bool] = False,
         since: Union[Unset, datetime] = UNSET,
         before: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 50,
     ) -> "Response[List[Thread]]":
         url = "/notifications"
 
@@ -215,8 +215,8 @@ class ActivityClient:
             "participating": participating,
             "since": since,
             "before": before,
-            "per_page": per_page,
             "page": page,
+            "per_page": per_page,
         }
 
         return await self._github.arequest(

@@ -64,42 +64,62 @@ class BranchProtectionRule(GitHubWebhookModel):
     updated_at: datetime = Field(default=...)
     pull_request_reviews_enforcement_level: Literal[
         "off", "non_admins", "everyone"
-    ] = Field(default=...)
-    required_approving_review_count: int = Field(default=...)
-    dismiss_stale_reviews_on_push: bool = Field(default=...)
-    require_code_owner_review: bool = Field(default=...)
-    authorized_dismissal_actors_only: bool = Field(default=...)
-    ignore_approvals_from_contributors: bool = Field(default=...)
-    required_status_checks: List[str] = Field(default=...)
+    ] = Field(title="Branch protection rule enforcement level", default=...)
+    required_approving_review_count: int = Field(
+        title="Branch protection rule number", default=...
+    )
+    dismiss_stale_reviews_on_push: bool = Field(
+        title="Branch protection rule boolean", default=...
+    )
+    require_code_owner_review: bool = Field(
+        title="Branch protection rule boolean", default=...
+    )
+    authorized_dismissal_actors_only: bool = Field(
+        title="Branch protection rule boolean", default=...
+    )
+    ignore_approvals_from_contributors: bool = Field(
+        title="Branch protection rule boolean", default=...
+    )
+    required_status_checks: List[str] = Field(
+        title="Branch Protection Rule Array", default=...
+    )
     required_status_checks_enforcement_level: Literal[
         "off", "non_admins", "everyone"
-    ] = Field(default=...)
-    strict_required_status_checks_policy: bool = Field(default=...)
+    ] = Field(title="Branch protection rule enforcement level", default=...)
+    strict_required_status_checks_policy: bool = Field(
+        title="Branch protection rule boolean", default=...
+    )
     signature_requirement_enforcement_level: Literal[
         "off", "non_admins", "everyone"
-    ] = Field(default=...)
+    ] = Field(title="Branch protection rule enforcement level", default=...)
     linear_history_requirement_enforcement_level: Literal[
         "off", "non_admins", "everyone"
-    ] = Field(default=...)
-    admin_enforced: bool = Field(default=...)
-    create_protected: Union[Unset, bool] = Field(default=UNSET)
+    ] = Field(title="Branch protection rule enforcement level", default=...)
+    admin_enforced: bool = Field(title="Branch protection rule boolean", default=...)
+    create_protected: Union[Unset, bool] = Field(
+        title="Branch protection rule boolean", default=UNSET
+    )
     allow_force_pushes_enforcement_level: Literal[
         "off", "non_admins", "everyone"
-    ] = Field(default=...)
+    ] = Field(title="Branch protection rule enforcement level", default=...)
     allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
-        default=...
+        title="Branch protection rule enforcement level", default=...
     )
     merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
-        default=...
+        title="Branch protection rule enforcement level", default=...
     )
     required_deployments_enforcement_level: Literal[
         "off", "non_admins", "everyone"
-    ] = Field(default=...)
+    ] = Field(title="Branch protection rule enforcement level", default=...)
     required_conversation_resolution_level: Literal[
         "off", "non_admins", "everyone"
-    ] = Field(default=...)
-    authorized_actors_only: bool = Field(default=...)
-    authorized_actor_names: List[str] = Field(default=...)
+    ] = Field(title="Branch protection rule enforcement level", default=...)
+    authorized_actors_only: bool = Field(
+        title="Branch protection rule boolean", default=...
+    )
+    authorized_actor_names: List[str] = Field(
+        title="Branch Protection Rule Array", default=...
+    )
 
 
 class Repository(GitHubWebhookModel):
@@ -454,8 +474,9 @@ class BranchProtectionRuleEdited(GitHubWebhookModel):
         description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
         default=...,
     )
-    changes: BranchProtectionRuleEditedPropChanges = Field(
-        description="If the action was `edited`, the changes to the rule.", default=...
+    changes: Union[Unset, BranchProtectionRuleEditedPropChanges] = Field(
+        description="If the action was `edited`, the changes to the rule.",
+        default=UNSET,
     )
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
@@ -475,33 +496,212 @@ class BranchProtectionRuleEditedPropChanges(GitHubWebhookModel):
     If the action was `edited`, the changes to the rule.
     """
 
+    admin_enforced: Union[
+        Unset, BranchProtectionRuleEditedPropChangesPropAdminEnforced
+    ] = Field(default=UNSET)
+    allow_deletions_enforcement_level: Union[
+        Unset, BranchProtectionRuleEditedPropChangesPropAllowDeletionsEnforcementLevel
+    ] = Field(default=UNSET)
+    allow_force_pushes_enforcement_level: Union[
+        Unset, BranchProtectionRuleEditedPropChangesPropAllowForcePushesEnforcementLevel
+    ] = Field(default=UNSET)
     authorized_actors_only: Union[
         Unset, BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
     ] = Field(default=UNSET)
     authorized_actor_names: Union[
         Unset, BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
     ] = Field(default=UNSET)
+    authorized_dismissal_actors_only: Union[
+        Unset, BranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
+    ] = Field(default=UNSET)
+    dismiss_stale_reviews_on_push: Union[
+        Unset, BranchProtectionRuleEditedPropChangesPropDismissStaleReviewsOnPush
+    ] = Field(default=UNSET)
+    pull_request_reviews_enforcement_level: Union[
+        Unset,
+        BranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel,
+    ] = Field(default=UNSET)
+    require_code_owner_review: Union[
+        Unset, BranchProtectionRuleEditedPropChangesPropRequireCodeOwnerReview
+    ] = Field(default=UNSET)
+    required_approving_review_count: Union[
+        Unset, BranchProtectionRuleEditedPropChangesPropRequiredApprovingReviewCount
+    ] = Field(default=UNSET)
+    required_conversation_resolution_level: Union[
+        Unset,
+        BranchProtectionRuleEditedPropChangesPropRequiredConversationResolutionLevel,
+    ] = Field(default=UNSET)
+    required_deployments_enforcement_level: Union[
+        Unset,
+        BranchProtectionRuleEditedPropChangesPropRequiredDeploymentsEnforcementLevel,
+    ] = Field(default=UNSET)
     required_status_checks: Union[
         Unset, BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
     ] = Field(default=UNSET)
+    required_status_checks_enforcement_level: Union[
+        Unset,
+        BranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel,
+    ] = Field(default=UNSET)
+    signature_requirement_enforcement_level: Union[
+        Unset,
+        BranchProtectionRuleEditedPropChangesPropSignatureRequirementEnforcementLevel,
+    ] = Field(default=UNSET)
+    linear_history_requirement_enforcement_level: Union[
+        Unset,
+        BranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel,
+    ] = Field(default=UNSET)
+
+
+class BranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubWebhookModel):
+    """BranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+
+    from_: bool = Field(
+        title="Branch protection rule boolean", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropAllowDeletionsEnforcementLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropAllowDeletionsEnforcementLevel"""
+
+    from_: Union[Literal["off", "non_admins", "everyone"], None] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropAllowForcePushesEnforcementLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropAllowForcePushesEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
 
 
 class BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubWebhookModel):
     """BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
 
-    from_: bool = Field(default=..., alias="from")
+    from_: bool = Field(
+        title="Branch protection rule boolean", default=..., alias="from"
+    )
 
 
 class BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubWebhookModel):
     """BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
 
-    from_: List[str] = Field(default=..., alias="from")
+    from_: List[str] = Field(
+        title="Branch Protection Rule Array", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
+
+    from_: Union[bool, None] = Field(
+        title="Branch protection rule boolean", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropDismissStaleReviewsOnPush(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropDismissStaleReviewsOnPush"""
+
+    from_: bool = Field(
+        title="Branch protection rule boolean", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropRequireCodeOwnerReview(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropRequireCodeOwnerReview"""
+
+    from_: bool = Field(
+        title="Branch protection rule boolean", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropRequiredApprovingReviewCount(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropRequiredApprovingReviewCount"""
+
+    from_: int = Field(title="Branch protection rule number", default=..., alias="from")
+
+
+class BranchProtectionRuleEditedPropChangesPropRequiredConversationResolutionLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropRequiredConversationResolutionLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropRequiredDeploymentsEnforcementLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropRequiredDeploymentsEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
 
 
 class BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubWebhookModel):
     """BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
 
-    from_: List[str] = Field(default=..., alias="from")
+    from_: List[str] = Field(
+        title="Branch Protection Rule Array", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropSignatureRequirementEnforcementLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropSignatureRequirementEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
+
+
+class BranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel(
+    GitHubWebhookModel
+):
+    """BranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLeve
+    l
+    """
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(
+        title="Branch protection rule enforcement level", default=..., alias="from"
+    )
 
 
 class CheckRunCompleted(GitHubWebhookModel):
@@ -790,6 +990,7 @@ class AppPropPermissions(GitHubWebhookModel):
 
     actions: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     administration: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
+    blocking: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     checks: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     content_references: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     contents: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
@@ -4099,6 +4300,7 @@ class InstallationPropPermissions(GitHubWebhookModel):
         description="The level of permission granted to the access token for repository creation, deletion, settings, teams, and collaborators creation.",
         default=UNSET,
     )
+    blocking: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     checks: Union[Unset, Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for checks on code.",
         default=UNSET,
@@ -6602,6 +6804,39 @@ class MembershipRemovedPropTeamOneof1(GitHubWebhookModel):
     deleted: Union[Unset, bool] = Field(default=UNSET)
 
 
+class MergeGroupChecksRequested(GitHubWebhookModel):
+    """merge group checks requested event"""
+
+    action: Literal["checks_requested"] = Field(default=...)
+    merge_group: MergeGroupChecksRequestedPropMergeGroup = Field(
+        description="The merge group.", default=...
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    sender: User = Field(title="User", default=...)
+    installation: Union[Unset, InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+    organization: Union[Unset, Organization] = Field(
+        title="Organization", default=UNSET
+    )
+
+
+class MergeGroupChecksRequestedPropMergeGroup(GitHubWebhookModel):
+    """MergeGroupChecksRequestedPropMergeGroup
+
+    The merge group.
+    """
+
+    head_sha: str = Field(description="The SHA of the merge group.", default=...)
+    head_ref: str = Field(description="The full ref of the merge group.", default=...)
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into.",
+        default=...,
+    )
+
+
 class MetaDeleted(GitHubWebhookModel):
     """meta deleted event"""
 
@@ -7958,8 +8193,8 @@ class ProjectsV2Item(GitHubWebhookModel):
     The project item itself. To find more information about the project item, you
     can use `node_id` (the node ID of the project item) and `project_node_id` (the
     node ID of the project) to query information in the GraphQL API. For more
-    information, see "[Using the API to manage projects
-    (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-
+    information, see "[Using the API to manage
+    projects](https://docs.github.com/en/issues/trying-out-the-new-projects-
     experience/using-the-api-to-manage-projects)."
     """
 
@@ -8068,7 +8303,7 @@ class ProjectsV2ItemDeleted(GitHubWebhookModel):
     action: Literal["deleted"] = Field(default=...)
     projects_v2_item: ProjectsV2Item = Field(
         title="Projects v2 Item",
-        description='The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."',
+        description='The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."',
         default=...,
     )
     sender: User = Field(title="User", default=...)
@@ -8087,7 +8322,7 @@ class ProjectsV2ItemEdited(GitHubWebhookModel):
     action: Literal["edited"] = Field(default=...)
     projects_v2_item: ProjectsV2Item = Field(
         title="Projects v2 Item",
-        description='The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."',
+        description='The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."',
         default=...,
     )
     sender: User = Field(title="User", default=...)
@@ -8121,7 +8356,7 @@ class ProjectsV2ItemReordered(GitHubWebhookModel):
     action: Literal["reordered"] = Field(default=...)
     projects_v2_item: ProjectsV2Item = Field(
         title="Projects v2 Item",
-        description='The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."',
+        description='The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."',
         default=...,
     )
     sender: User = Field(title="User", default=...)
@@ -9709,7 +9944,7 @@ class PullRequestReviewEditedPropReview(GitHubWebhookModel):
     body: Union[str, None] = Field(description="The text of the review.", default=...)
     commit_id: str = Field(description="A commit SHA for the review.", default=...)
     submitted_at: datetime = Field(default=...)
-    state: str = Field(default=...)
+    state: Literal["commented", "changes_requested", "approved"] = Field(default=...)
     html_url: str = Field(default=...)
     pull_request_url: str = Field(default=...)
     author_association: Literal[
@@ -9770,7 +10005,7 @@ class PullRequestReviewSubmittedPropReview(GitHubWebhookModel):
     body: Union[str, None] = Field(description="The text of the review.", default=...)
     commit_id: str = Field(description="A commit SHA for the review.", default=...)
     submitted_at: datetime = Field(default=...)
-    state: str = Field(default=...)
+    state: Literal["commented", "changes_requested", "approved"] = Field(default=...)
     html_url: str = Field(default=...)
     pull_request_url: str = Field(default=...)
     author_association: Literal[
@@ -10429,13 +10664,16 @@ class Commit(GitHubWebhookModel):
         default=...,
     )
     added: List[str] = Field(
-        description="An array of files added in the commit.", default=...
+        description="An array of files added in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were added.",
+        default=...,
     )
     modified: List[str] = Field(
-        description="An array of files modified by the commit.", default=...
+        description="An array of files modified by the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were modified.",
+        default=...,
     )
     removed: List[str] = Field(
-        description="An array of files removed in the commit.", default=...
+        description="An array of files removed in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were removed.",
+        default=...,
     )
 
 
@@ -14062,9 +14300,22 @@ Organization.update_forward_refs()
 BranchProtectionRuleDeleted.update_forward_refs()
 BranchProtectionRuleEdited.update_forward_refs()
 BranchProtectionRuleEditedPropChanges.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropAdminEnforced.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropAllowDeletionsEnforcementLevel.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropAllowForcePushesEnforcementLevel.update_forward_refs()
 BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly.update_forward_refs()
 BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropDismissStaleReviewsOnPush.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropRequireCodeOwnerReview.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropRequiredApprovingReviewCount.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropRequiredConversationResolutionLevel.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropRequiredDeploymentsEnforcementLevel.update_forward_refs()
 BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropSignatureRequirementEnforcementLevel.update_forward_refs()
+BranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel.update_forward_refs()
 CheckRunCompleted.update_forward_refs()
 CheckRunCompletedPropCheckRun.update_forward_refs()
 CheckRunCompletedPropCheckRunPropOutput.update_forward_refs()
@@ -14323,6 +14574,8 @@ Team.update_forward_refs()
 TeamPropParent.update_forward_refs()
 MembershipRemoved.update_forward_refs()
 MembershipRemovedPropTeamOneof1.update_forward_refs()
+MergeGroupChecksRequested.update_forward_refs()
+MergeGroupChecksRequestedPropMergeGroup.update_forward_refs()
 MetaDeleted.update_forward_refs()
 MetaDeletedPropHook.update_forward_refs()
 MetaDeletedPropHookPropConfig.update_forward_refs()
@@ -14696,9 +14949,22 @@ __all__ = [
     "BranchProtectionRuleDeleted",
     "BranchProtectionRuleEdited",
     "BranchProtectionRuleEditedPropChanges",
+    "BranchProtectionRuleEditedPropChangesPropAdminEnforced",
+    "BranchProtectionRuleEditedPropChangesPropAllowDeletionsEnforcementLevel",
+    "BranchProtectionRuleEditedPropChangesPropAllowForcePushesEnforcementLevel",
     "BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
     "BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
+    "BranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
+    "BranchProtectionRuleEditedPropChangesPropDismissStaleReviewsOnPush",
+    "BranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel",
+    "BranchProtectionRuleEditedPropChangesPropRequireCodeOwnerReview",
+    "BranchProtectionRuleEditedPropChangesPropRequiredApprovingReviewCount",
+    "BranchProtectionRuleEditedPropChangesPropRequiredConversationResolutionLevel",
+    "BranchProtectionRuleEditedPropChangesPropRequiredDeploymentsEnforcementLevel",
     "BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
+    "BranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
+    "BranchProtectionRuleEditedPropChangesPropSignatureRequirementEnforcementLevel",
+    "BranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
     "CheckRunCompleted",
     "CheckRunCompletedPropCheckRun",
     "CheckRunCompletedPropCheckRunPropOutput",
@@ -14957,6 +15223,8 @@ __all__ = [
     "TeamPropParent",
     "MembershipRemoved",
     "MembershipRemovedPropTeamOneof1",
+    "MergeGroupChecksRequested",
+    "MergeGroupChecksRequestedPropMergeGroup",
     "MetaDeleted",
     "MetaDeletedPropHook",
     "MetaDeletedPropHookPropConfig",

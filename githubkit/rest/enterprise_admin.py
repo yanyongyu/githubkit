@@ -5,7 +5,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Any, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -1706,6 +1706,70 @@ class EnterpriseAdminClient:
             url,
             params=exclude_unset(params),
             response_model=List[AuditLogEvent],
+        )
+
+    def get_consumed_licenses(
+        self,
+        enterprise: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[Any]":
+        url = f"/enterprises/{enterprise}/consumed-licenses"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=Any,
+        )
+
+    async def async_get_consumed_licenses(
+        self,
+        enterprise: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[Any]":
+        url = f"/enterprises/{enterprise}/consumed-licenses"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=Any,
+        )
+
+    def get_license_sync_status(
+        self,
+        enterprise: str,
+    ) -> "Response[Any]":
+        url = f"/enterprises/{enterprise}/license-sync-status"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=Any,
+        )
+
+    async def async_get_license_sync_status(
+        self,
+        enterprise: str,
+    ) -> "Response[Any]":
+        url = f"/enterprises/{enterprise}/license-sync-status"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=Any,
         )
 
     def list_provisioned_groups_enterprise(

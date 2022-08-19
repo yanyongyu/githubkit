@@ -1813,9 +1813,7 @@ class TeamsClient:
         repo: str,
         *,
         data: Unset = UNSET,
-        permission: Union[
-            Unset, Literal["pull", "push", "admin", "maintain", "triage"]
-        ] = "push",
+        permission: Union[Unset, str] = "push",
     ) -> "Response":
         ...
 
@@ -1865,9 +1863,7 @@ class TeamsClient:
         repo: str,
         *,
         data: Unset = UNSET,
-        permission: Union[
-            Unset, Literal["pull", "push", "admin", "maintain", "triage"]
-        ] = "push",
+        permission: Union[Unset, str] = "push",
     ) -> "Response":
         ...
 

@@ -407,6 +407,10 @@ class AppPermissions(GitHubRestModel):
         description="The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges.",
         default=UNSET,
     )
+    organization_custom_roles: Union[Unset, Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token for custom roles management.",
+        default=UNSET,
+    )
     deployments: Union[Unset, Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token for deployments and deployment statuses.",
         default=UNSET,
@@ -704,6 +708,26 @@ class Repository(GitHubRestModel):
         description="Whether a squash merge commit can use the pull request title as default.",
         default=False,
     )
+    squash_merge_commit_title: Union[
+        Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Union[
+        Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Union[Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
     allow_merge_commit: Union[Unset, bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
@@ -848,6 +872,26 @@ class RepositoryPropTemplateRepository(GitHubRestModel):
     delete_branch_on_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
     use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
+    squash_merge_commit_title: Union[
+        Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Union[
+        Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Union[Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     subscribers_count: Union[Unset, int] = Field(default=UNSET)
     network_count: Union[Unset, int] = Field(default=UNSET)
@@ -3135,6 +3179,14 @@ class Codespace(GitHubRestModel):
         description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
         default=UNSET,
     )
+    retention_period_minutes: Union[Unset, Union[int, None]] = Field(
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        default=UNSET,
+    )
+    retention_expires_at: Union[Unset, Union[datetime, None]] = Field(
+        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
+        default=UNSET,
+    )
 
 
 class CodespacePropGitStatus(GitHubRestModel):
@@ -4220,6 +4272,26 @@ class FullRepository(GitHubRestModel):
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
     use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
+    squash_merge_commit_title: Union[
+        Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Union[
+        Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n  - `PR_TITLE` - default to the pull request's title.\n  - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Union[Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
     subscribers_count: int = Field(default=...)
     network_count: int = Field(default=...)
@@ -6460,7 +6532,7 @@ class ContentTreePropLinks(GitHubRestModel):
 class ContentDirectoryItems(GitHubRestModel):
     """ContentDirectoryItems"""
 
-    type: str = Field(default=...)
+    type: Literal["dir", "file", "submodule", "symlink"] = Field(default=...)
     size: int = Field(default=...)
     name: str = Field(default=...)
     path: str = Field(default=...)
@@ -6487,7 +6559,7 @@ class ContentFile(GitHubRestModel):
     Content File
     """
 
-    type: str = Field(default=...)
+    type: Literal["file"] = Field(default=...)
     encoding: str = Field(default=...)
     size: int = Field(default=...)
     name: str = Field(default=...)
@@ -6517,7 +6589,7 @@ class ContentSymlink(GitHubRestModel):
     An object describing a symlink
     """
 
-    type: str = Field(default=...)
+    type: Literal["symlink"] = Field(default=...)
     target: str = Field(default=...)
     size: int = Field(default=...)
     name: str = Field(default=...)
@@ -6539,12 +6611,12 @@ class ContentSymlinkPropLinks(GitHubRestModel):
 
 
 class ContentSubmodule(GitHubRestModel):
-    """Symlink Content
+    """Submodule Content
 
-    An object describing a symlink
+    An object describing a submodule
     """
 
-    type: str = Field(default=...)
+    type: Literal["submodule"] = Field(default=...)
     submodule_git_url: str = Field(default=...)
     size: int = Field(default=...)
     name: str = Field(default=...)
@@ -6733,10 +6805,7 @@ class Metadata(GitHubRestModel, extra=Extra.allow):
 
 
 class Dependency(GitHubRestModel):
-    """Dependency
-
-    A single package dependency.
-    """
+    """Dependency"""
 
     package_url: Union[Unset, str] = Field(
         description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
@@ -6763,11 +6832,7 @@ class Dependency(GitHubRestModel):
 
 
 class Manifest(GitHubRestModel):
-    """manifest
-
-    A collection of related dependencies declared in a file or representing a
-    logical group of dependencies.
-    """
+    """Manifest"""
 
     name: str = Field(description="The name of the manifest.", default=...)
     file: Union[Unset, ManifestPropFile] = Field(default=UNSET)
@@ -6776,7 +6841,9 @@ class Manifest(GitHubRestModel):
         description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
         default=UNSET,
     )
-    resolved: Union[Unset, Any] = Field(default=UNSET)
+    resolved: Union[Unset, ManifestPropResolved] = Field(
+        description="A collection of resolved package dependencies.", default=UNSET
+    )
 
 
 class ManifestPropFile(GitHubRestModel):
@@ -6786,6 +6853,13 @@ class ManifestPropFile(GitHubRestModel):
         description="The path of the manifest file relative to the root of the Git repository.",
         default=UNSET,
     )
+
+
+class ManifestPropResolved(GitHubRestModel, extra=Extra.allow):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
+    """
 
 
 class Snapshot(GitHubRestModel):
@@ -6817,7 +6891,8 @@ class Snapshot(GitHubRestModel):
         default=UNSET,
     )
     manifests: Union[Unset, SnapshotPropManifests] = Field(
-        description="A collection of package manifests", default=UNSET
+        description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
+        default=UNSET,
     )
     scanned: datetime = Field(
         description="The time at which the snapshot was scanned.", default=...
@@ -6851,7 +6926,8 @@ class SnapshotPropDetector(GitHubRestModel):
 class SnapshotPropManifests(GitHubRestModel, extra=Extra.allow):
     """SnapshotPropManifests
 
-    A collection of package manifests
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
     """
 
 
@@ -6897,8 +6973,8 @@ class DeploymentStatus(GitHubRestModel):
     )
 
 
-class DeploymentBranchPolicy(GitHubRestModel):
-    """DeploymentBranchPolicy
+class DeploymentBranchPolicySettings(GitHubRestModel):
+    """DeploymentBranchPolicySettings
 
     The type of deployment branch policy for this environment. To allow all branches
     to deploy, set to `null`.
@@ -6943,7 +7019,9 @@ class Environment(GitHubRestModel):
             ]
         ],
     ] = Field(default=UNSET)
-    deployment_branch_policy: Union[Unset, Union[DeploymentBranchPolicy, None]] = Field(
+    deployment_branch_policy: Union[
+        Unset, Union[DeploymentBranchPolicySettings, None]
+    ] = Field(
         description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
         default=UNSET,
     )
@@ -6994,6 +7072,31 @@ class EnvironmentPropProtectionRulesItemsAnyof2(GitHubRestModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     type: str = Field(default=...)
+
+
+class DeploymentBranchPolicy(GitHubRestModel):
+    """Deployment branch policy
+
+    Details of a deployment branch policy.
+    """
+
+    id: Union[Unset, int] = Field(
+        description="The unique identifier of the branch policy.", default=UNSET
+    )
+    node_id: Union[Unset, str] = Field(default=UNSET)
+    name: Union[Unset, str] = Field(
+        description="The name pattern that branches must match in order to deploy to the environment.",
+        default=UNSET,
+    )
+
+
+class DeploymentBranchPolicyNamePattern(GitHubRestModel):
+    """Deployment branch policy name pattern"""
+
+    name: str = Field(
+        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch).",
+        default=...,
+    )
 
 
 class ShortBlob(GitHubRestModel):
@@ -8403,6 +8506,8 @@ class DeployKey(GitHubRestModel):
     verified: bool = Field(default=...)
     created_at: str = Field(default=...)
     read_only: bool = Field(default=...)
+    added_by: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    last_used: Union[Unset, Union[str, None]] = Field(default=UNSET)
 
 
 class Language(GitHubRestModel, extra=Extra.allow):
@@ -10698,13 +10803,14 @@ class SimpleInstallation(GitHubRestModel):
     )
 
 
-class MergeGroupChecksRequested(GitHubRestModel):
-    """MergeGroupChecksRequested"""
+class WebhookMergeGroupChecksRequested(GitHubRestModel):
+    """WebhookMergeGroupChecksRequested"""
 
     action: str = Field(default=...)
     installation: Union[Unset, SimpleInstallation] = Field(
         title="Simple Installation", description="Simple Installation", default=UNSET
     )
+    merge_group: WebhookMergeGroupChecksRequestedPropMergeGroup = Field(default=...)
     organization: Union[Unset, OrganizationSimple] = Field(
         title="Organization Simple", description="Organization Simple", default=UNSET
     )
@@ -10714,15 +10820,14 @@ class MergeGroupChecksRequested(GitHubRestModel):
     sender: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    merge_group: MergeGroupChecksRequestedPropMergeGroup = Field(default=...)
 
 
-class MergeGroupChecksRequestedPropMergeGroup(GitHubRestModel):
-    """MergeGroupChecksRequestedPropMergeGroup"""
+class WebhookMergeGroupChecksRequestedPropMergeGroup(GitHubRestModel):
+    """WebhookMergeGroupChecksRequestedPropMergeGroup"""
 
-    head_sha: str = Field(default=...)
-    head_ref: str = Field(default=...)
     base_ref: str = Field(default=...)
+    head_ref: str = Field(default=...)
+    head_sha: str = Field(default=...)
 
 
 class AppManifestsCodeConversionsPostResponse201(GitHubRestModel):
@@ -11822,6 +11927,26 @@ class OrgsOrgReposPostBody(GitHubRestModel):
         description="Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message.",
         default=False,
     )
+    squash_merge_commit_title: Union[
+        Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Union[
+        Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Union[Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
 
 
 class OrgsOrgTeamsPostBody(GitHubRestModel):
@@ -11967,10 +12092,8 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubRestModel):
 class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    permission: Union[
-        Unset, Literal["pull", "push", "admin", "maintain", "triage"]
-    ] = Field(
-        description="The permission to grant the team on this repository. In addition to the enumerated values, you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    permission: Union[Unset, str] = Field(
+        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
         default="push",
     )
 
@@ -12260,6 +12383,26 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
         description="Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message.",
         default=False,
     )
+    squash_merge_commit_title: Union[
+        Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Union[
+        Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Union[Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
     archived: Union[Unset, bool] = Field(
         description="`true` to archive this repository. **Note**: You cannot unarchive repositories through the API.",
         default=False,
@@ -12434,10 +12577,6 @@ class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
     jobs: List[Job] = Field(default=...)
 
 
-class ReposOwnerRepoActionsRunsRunIdCancelPostResponse202(GitHubRestModel):
-    """ReposOwnerRepoActionsRunsRunIdCancelPostResponse202"""
-
-
 class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
@@ -12468,10 +12607,6 @@ class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubRestModel):
     )
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostResponse201(GitHubRestModel):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostResponse201"""
-
-
 class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubRestModel):
     """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
 
@@ -12498,10 +12633,6 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubRestModel):
     key_id: Union[Unset, str] = Field(
         description="ID of the key you used to encrypt the secret.", default=UNSET
     )
-
-
-class ReposOwnerRepoActionsSecretsSecretNamePutResponse201(GitHubRestModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutResponse201"""
 
 
 class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubRestModel):
@@ -13635,10 +13766,8 @@ class ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201(GitHubRestModel):
 class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubRestModel):
     """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    permission: Union[
-        Unset, Literal["pull", "push", "admin", "maintain", "triage"]
-    ] = Field(
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** In addition to the enumerated values, you can also specify a custom repository role name, if the owning organization has defined any.",
+    permission: Union[Unset, str] = Field(
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
         default="push",
     )
 
@@ -13991,10 +14120,24 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubRestModel):
         description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
         default=UNSET,
     )
-    deployment_branch_policy: Union[Unset, Union[DeploymentBranchPolicy, None]] = Field(
+    deployment_branch_policy: Union[
+        Unset, Union[DeploymentBranchPolicySettings, None]
+    ] = Field(
         description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
         default=UNSET,
     )
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
+    GitHubRestModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+
+    total_count: int = Field(
+        description="The number of deployment branch policies for the environment.",
+        default=...,
+    )
+    branch_policies: List[DeploymentBranchPolicy] = Field(default=...)
 
 
 class ReposOwnerRepoForksPostBody(GitHubRestModel):
@@ -14960,7 +15103,8 @@ class ReposOwnerRepoPullsPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPostBody"""
 
     title: Union[Unset, str] = Field(
-        description="The title of the new pull request.", default=UNSET
+        description="The title of the new pull request. Required unless `issue` is specified.",
+        default=UNSET,
     )
     head: str = Field(
         description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`.",
@@ -14981,7 +15125,10 @@ class ReposOwnerRepoPullsPostBody(GitHubRestModel):
         description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/en/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
         default=UNSET,
     )
-    issue: Union[Unset, int] = Field(default=UNSET)
+    issue: Union[Unset, int] = Field(
+        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
+        default=UNSET,
+    )
 
 
 class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubRestModel):
@@ -15068,13 +15215,13 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
     body: str = Field(description="The text of the review comment.", default=...)
-    commit_id: Union[Unset, str] = Field(
+    commit_id: str = Field(
         description="The SHA of the commit needing a comment. Not using the latest commit SHA may render your comment outdated if a subsequent commit modifies the line you specify as the `position`.",
-        default=UNSET,
+        default=...,
     )
-    path: Union[Unset, str] = Field(
+    path: str = Field(
         description="The relative path to the file that necessitates a comment.",
-        default=UNSET,
+        default=...,
     )
     position: Union[Unset, int] = Field(
         description="**This parameter is deprecated. Use `line` instead**. The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. For help finding the position value, read the note above.",
@@ -15084,9 +15231,9 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubRestModel):
         description='In a split diff view, the side of the diff that the pull request\'s changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/en/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.',
         default=UNSET,
     )
-    line: Union[Unset, int] = Field(
+    line: int = Field(
         description="The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
-        default=UNSET,
+        default=...,
     )
     start_line: Union[Unset, int] = Field(
         description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_line` is the first line in the pull request diff that your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation.',
@@ -15186,7 +15333,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubRestModel):
         default=UNSET,
     )
     event: Union[Unset, Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/reference/pulls#submit-a-review-for-a-pull-request) when you are ready.",
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls#submit-a-review-for-a-pull-request) when you are ready.",
         default=UNSET,
     )
     comments: Union[
@@ -16378,6 +16525,26 @@ class UserReposPostBody(GitHubRestModel):
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
+    squash_merge_commit_title: Union[
+        Unset, Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Union[
+        Unset, Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Union[Unset, Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Union[Unset, Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
     has_downloads: Union[Unset, bool] = Field(
         description="Whether downloads are enabled.", default=True
     )
@@ -16728,17 +16895,20 @@ Metadata.update_forward_refs()
 Dependency.update_forward_refs()
 Manifest.update_forward_refs()
 ManifestPropFile.update_forward_refs()
+ManifestPropResolved.update_forward_refs()
 Snapshot.update_forward_refs()
 SnapshotPropJob.update_forward_refs()
 SnapshotPropDetector.update_forward_refs()
 SnapshotPropManifests.update_forward_refs()
 DeploymentStatus.update_forward_refs()
-DeploymentBranchPolicy.update_forward_refs()
+DeploymentBranchPolicySettings.update_forward_refs()
 Environment.update_forward_refs()
 EnvironmentPropProtectionRulesItemsAnyof0.update_forward_refs()
 EnvironmentPropProtectionRulesItemsAnyof1.update_forward_refs()
 EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems.update_forward_refs()
 EnvironmentPropProtectionRulesItemsAnyof2.update_forward_refs()
+DeploymentBranchPolicy.update_forward_refs()
+DeploymentBranchPolicyNamePattern.update_forward_refs()
 ShortBlob.update_forward_refs()
 Blob.update_forward_refs()
 GitCommit.update_forward_refs()
@@ -16936,8 +17106,8 @@ Hovercard.update_forward_refs()
 HovercardPropContextsItems.update_forward_refs()
 KeySimple.update_forward_refs()
 SimpleInstallation.update_forward_refs()
-MergeGroupChecksRequested.update_forward_refs()
-MergeGroupChecksRequestedPropMergeGroup.update_forward_refs()
+WebhookMergeGroupChecksRequested.update_forward_refs()
+WebhookMergeGroupChecksRequestedPropMergeGroup.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201Allof1.update_forward_refs()
 AppHookConfigPatchBody.update_forward_refs()
@@ -17070,15 +17240,12 @@ ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody.update_forward_refs()
 ReposOwnerRepoActionsRunsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200.update_forward_refs()
-ReposOwnerRepoActionsRunsRunIdCancelPostResponse202.update_forward_refs()
 ReposOwnerRepoActionsRunsRunIdJobsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody.update_forward_refs()
 ReposOwnerRepoActionsRunsRunIdRerunPostBody.update_forward_refs()
-ReposOwnerRepoActionsRunsRunIdRerunPostResponse201.update_forward_refs()
 ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody.update_forward_refs()
 ReposOwnerRepoActionsSecretsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsSecretsSecretNamePutBody.update_forward_refs()
-ReposOwnerRepoActionsSecretsSecretNamePutResponse201.update_forward_refs()
 ReposOwnerRepoActionsWorkflowsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody.update_forward_refs()
 ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs.update_forward_refs()
@@ -17163,6 +17330,7 @@ ReposOwnerRepoDispatchesPostBodyPropClientPayload.update_forward_refs()
 ReposOwnerRepoEnvironmentsGetResponse200.update_forward_refs()
 ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems.update_forward_refs()
 ReposOwnerRepoEnvironmentsEnvironmentNamePutBody.update_forward_refs()
+ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200.update_forward_refs()
 ReposOwnerRepoForksPostBody.update_forward_refs()
 ReposOwnerRepoGitBlobsPostBody.update_forward_refs()
 ReposOwnerRepoGitCommitsPostBody.update_forward_refs()
@@ -17672,17 +17840,20 @@ __all__ = [
     "Dependency",
     "Manifest",
     "ManifestPropFile",
+    "ManifestPropResolved",
     "Snapshot",
     "SnapshotPropJob",
     "SnapshotPropDetector",
     "SnapshotPropManifests",
     "DeploymentStatus",
-    "DeploymentBranchPolicy",
+    "DeploymentBranchPolicySettings",
     "Environment",
     "EnvironmentPropProtectionRulesItemsAnyof0",
     "EnvironmentPropProtectionRulesItemsAnyof1",
     "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",
     "EnvironmentPropProtectionRulesItemsAnyof2",
+    "DeploymentBranchPolicy",
+    "DeploymentBranchPolicyNamePattern",
     "ShortBlob",
     "Blob",
     "GitCommit",
@@ -17880,8 +18051,8 @@ __all__ = [
     "HovercardPropContextsItems",
     "KeySimple",
     "SimpleInstallation",
-    "MergeGroupChecksRequested",
-    "MergeGroupChecksRequestedPropMergeGroup",
+    "WebhookMergeGroupChecksRequested",
+    "WebhookMergeGroupChecksRequestedPropMergeGroup",
     "AppManifestsCodeConversionsPostResponse201",
     "AppManifestsCodeConversionsPostResponse201Allof1",
     "AppHookConfigPatchBody",
@@ -18014,15 +18185,12 @@ __all__ = [
     "ReposOwnerRepoActionsRunsGetResponse200",
     "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",
     "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",
-    "ReposOwnerRepoActionsRunsRunIdCancelPostResponse202",
     "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",
     "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",
     "ReposOwnerRepoActionsRunsRunIdRerunPostBody",
-    "ReposOwnerRepoActionsRunsRunIdRerunPostResponse201",
     "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",
     "ReposOwnerRepoActionsSecretsGetResponse200",
     "ReposOwnerRepoActionsSecretsSecretNamePutBody",
-    "ReposOwnerRepoActionsSecretsSecretNamePutResponse201",
     "ReposOwnerRepoActionsWorkflowsGetResponse200",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
@@ -18107,6 +18275,7 @@ __all__ = [
     "ReposOwnerRepoEnvironmentsGetResponse200",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
     "ReposOwnerRepoForksPostBody",
     "ReposOwnerRepoGitBlobsPostBody",
     "ReposOwnerRepoGitCommitsPostBody",

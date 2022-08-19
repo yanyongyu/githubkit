@@ -95,10 +95,7 @@ from .models import (
     OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
     OrgsOrgActionsSecretsSecretNameRepositoriesPutBody,
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody,
-    ReposOwnerRepoActionsRunsRunIdRerunPostResponse201,
     OrgsOrgActionsPermissionsRepositoriesGetResponse200,
-    ReposOwnerRepoActionsRunsRunIdCancelPostResponse202,
-    ReposOwnerRepoActionsSecretsSecretNamePutResponse201,
     OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
     ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
     ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
@@ -4306,13 +4303,13 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdCancelPostResponse202]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"
 
         return self._github.request(
             "POST",
             url,
-            response_model=ReposOwnerRepoActionsRunsRunIdCancelPostResponse202,
+            response_model=EmptyObject,
             error_models={
                 "409": BasicError,
             },
@@ -4323,13 +4320,13 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdCancelPostResponse202]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"
 
         return await self._github.arequest(
             "POST",
             url,
-            response_model=ReposOwnerRepoActionsRunsRunIdCancelPostResponse202,
+            response_model=EmptyObject,
             error_models={
                 "409": BasicError,
             },
@@ -4589,7 +4586,7 @@ class ActionsClient:
         data: Union[
             Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -4601,7 +4598,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         enable_debug_logging: Union[Unset, bool] = False,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     def re_run_workflow(
@@ -4614,7 +4611,7 @@ class ActionsClient:
             Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
         if not kwargs:
@@ -4630,7 +4627,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
-            response_model=ReposOwnerRepoActionsRunsRunIdRerunPostResponse201,
+            response_model=EmptyObject,
         )
 
     @overload
@@ -4643,7 +4640,7 @@ class ActionsClient:
         data: Union[
             Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -4655,7 +4652,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         enable_debug_logging: Union[Unset, bool] = False,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     async def async_re_run_workflow(
@@ -4668,7 +4665,7 @@ class ActionsClient:
             Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> "Response[ReposOwnerRepoActionsRunsRunIdRerunPostResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
         if not kwargs:
@@ -4684,7 +4681,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
-            response_model=ReposOwnerRepoActionsRunsRunIdRerunPostResponse201,
+            response_model=EmptyObject,
         )
 
     @overload
@@ -4931,7 +4928,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -4944,7 +4941,7 @@ class ActionsClient:
         data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
-    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     def create_or_update_repo_secret(
@@ -4955,7 +4952,7 @@ class ActionsClient:
         *,
         data: Union[Unset, ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
         if not kwargs:
@@ -4969,7 +4966,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=ReposOwnerRepoActionsSecretsSecretNamePutResponse201,
+            response_model=EmptyObject,
         )
 
     @overload
@@ -4980,7 +4977,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -4993,7 +4990,7 @@ class ActionsClient:
         data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
-    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     async def async_create_or_update_repo_secret(
@@ -5004,7 +5001,7 @@ class ActionsClient:
         *,
         data: Union[Unset, ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[ReposOwnerRepoActionsSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
         if not kwargs:
@@ -5018,7 +5015,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=ReposOwnerRepoActionsSecretsSecretNamePutResponse201,
+            response_model=EmptyObject,
         )
 
     def delete_repo_secret(

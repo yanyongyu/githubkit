@@ -164,6 +164,7 @@ from .models import (
     DiscussionCommentDeleted,
     CodeScanningAlertReopened,
     DiscussionCategoryChanged,
+    MergeGroupChecksRequested,
     OrganizationMemberInvited,
     OrganizationMemberRemoved,
     PullRequestReadyForReview,
@@ -363,6 +364,7 @@ MembershipEvent = Annotated[
     ],
     Field(discriminator="action"),
 ]
+MergeGroupEvent = MergeGroupChecksRequested
 MetaEvent = MetaDeleted
 MilestoneEvent = Annotated[
     Union[
@@ -607,6 +609,7 @@ WebhookEvent = Union[
     MarketplacePurchaseEvent,
     MemberEvent,
     MembershipEvent,
+    MergeGroupEvent,
     MetaEvent,
     MilestoneEvent,
     OrgBlockEvent,
@@ -771,6 +774,9 @@ webhook_action_types = {
     "membership": {
         "added": MembershipAdded,
         "removed": MembershipRemoved,
+    },
+    "merge_group": {
+        "checks_requested": MergeGroupChecksRequested,
     },
     "meta": {
         "deleted": MetaDeleted,
@@ -957,6 +963,7 @@ webhook_event_types = {
     "marketplace_purchase": MarketplacePurchaseEvent,
     "member": MemberEvent,
     "membership": MembershipEvent,
+    "merge_group": MergeGroupEvent,
     "meta": MetaEvent,
     "milestone": MilestoneEvent,
     "org_block": OrgBlockEvent,
@@ -1016,6 +1023,7 @@ __all__ = [
     "MarketplacePurchaseEvent",
     "MemberEvent",
     "MembershipEvent",
+    "MergeGroupEvent",
     "MetaEvent",
     "MilestoneEvent",
     "OrgBlockEvent",

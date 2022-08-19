@@ -302,6 +302,7 @@ class CodespacesClient:
             json=exclude_unset(json),
             response_model=Codespace,
             error_models={
+                "400": BasicError,
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
@@ -361,6 +362,7 @@ class CodespacesClient:
             json=exclude_unset(json),
             response_model=Codespace,
             error_models={
+                "400": BasicError,
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,

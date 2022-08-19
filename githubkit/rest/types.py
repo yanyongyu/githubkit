@@ -302,6 +302,7 @@ class AppPermissionsType(TypedDict):
     administration: NotRequired[Literal["read", "write"]]
     checks: NotRequired[Literal["read", "write"]]
     contents: NotRequired[Literal["read", "write"]]
+    organization_custom_roles: NotRequired[Literal["read", "write"]]
     deployments: NotRequired[Literal["read", "write"]]
     environments: NotRequired[Literal["read", "write"]]
     issues: NotRequired[Literal["read", "write"]]
@@ -462,6 +463,12 @@ class RepositoryType(TypedDict):
     delete_branch_on_merge: NotRequired[bool]
     allow_update_branch: NotRequired[bool]
     use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     allow_merge_commit: NotRequired[bool]
     allow_forking: NotRequired[bool]
     subscribers_count: NotRequired[int]
@@ -598,6 +605,12 @@ class RepositoryPropTemplateRepositoryType(TypedDict):
     delete_branch_on_merge: NotRequired[bool]
     allow_update_branch: NotRequired[bool]
     use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     allow_merge_commit: NotRequired[bool]
     subscribers_count: NotRequired[int]
     network_count: NotRequired[int]
@@ -2210,6 +2223,8 @@ class CodespaceType(TypedDict):
     pending_operation: NotRequired[Union[bool, None]]
     pending_operation_disabled_reason: NotRequired[Union[str, None]]
     idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[datetime, None]]
 
 
 class CodespacePropGitStatusType(TypedDict):
@@ -3036,6 +3051,12 @@ class FullRepositoryType(TypedDict):
     allow_merge_commit: NotRequired[bool]
     allow_update_branch: NotRequired[bool]
     use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     allow_forking: NotRequired[bool]
     subscribers_count: int
     network_count: int
@@ -4731,7 +4752,7 @@ class ContentTreePropLinksType(TypedDict):
 class ContentDirectoryItemsType(TypedDict):
     """ContentDirectoryItems"""
 
-    type: str
+    type: Literal["dir", "file", "submodule", "symlink"]
     size: int
     name: str
     path: str
@@ -4758,7 +4779,7 @@ class ContentFileType(TypedDict):
     Content File
     """
 
-    type: str
+    type: Literal["file"]
     encoding: str
     size: int
     name: str
@@ -4788,7 +4809,7 @@ class ContentSymlinkType(TypedDict):
     An object describing a symlink
     """
 
-    type: str
+    type: Literal["symlink"]
     target: str
     size: int
     name: str
@@ -4810,12 +4831,12 @@ class ContentSymlinkPropLinksType(TypedDict):
 
 
 class ContentSubmoduleType(TypedDict):
-    """Symlink Content
+    """Submodule Content
 
-    An object describing a symlink
+    An object describing a submodule
     """
 
-    type: str
+    type: Literal["submodule"]
     submodule_git_url: str
     size: int
     name: str
@@ -4996,10 +5017,7 @@ class MetadataType(TypedDict):
 
 
 class DependencyType(TypedDict):
-    """Dependency
-
-    A single package dependency.
-    """
+    """Dependency"""
 
     package_url: NotRequired[str]
     metadata: NotRequired[MetadataType]
@@ -5009,22 +5027,25 @@ class DependencyType(TypedDict):
 
 
 class ManifestType(TypedDict):
-    """manifest
-
-    A collection of related dependencies declared in a file or representing a
-    logical group of dependencies.
-    """
+    """Manifest"""
 
     name: str
     file: NotRequired[ManifestPropFileType]
     metadata: NotRequired[MetadataType]
-    resolved: NotRequired[Any]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
 class ManifestPropFileType(TypedDict):
     """ManifestPropFile"""
 
     source_location: NotRequired[str]
+
+
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
+    """
 
 
 class SnapshotType(TypedDict):
@@ -5065,7 +5086,8 @@ class SnapshotPropDetectorType(TypedDict):
 class SnapshotPropManifestsType(TypedDict):
     """SnapshotPropManifests
 
-    A collection of package manifests
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
     """
 
 
@@ -5094,8 +5116,8 @@ class DeploymentStatusType(TypedDict):
     performed_via_github_app: NotRequired[Union[None, IntegrationType]]
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """DeploymentBranchPolicy
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
     The type of deployment branch policy for this environment. To allow all branches
     to deploy, set to `null`.
@@ -5127,7 +5149,9 @@ class EnvironmentType(TypedDict):
             ]
         ]
     ]
-    deployment_branch_policy: NotRequired[Union[DeploymentBranchPolicyType, None]]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
 class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
@@ -5163,6 +5187,23 @@ class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
     id: int
     node_id: str
     type: str
+
+
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+
+
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
+
+    name: str
 
 
 class ShortBlobType(TypedDict):
@@ -6257,6 +6298,8 @@ class DeployKeyType(TypedDict):
     verified: bool
     created_at: str
     read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
 
 
 class LanguageType(TypedDict):
@@ -8159,23 +8202,23 @@ class SimpleInstallationType(TypedDict):
     node_id: str
 
 
-class MergeGroupChecksRequestedType(TypedDict):
-    """MergeGroupChecksRequested"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
     action: str
     installation: NotRequired[SimpleInstallationType]
+    merge_group: WebhookMergeGroupChecksRequestedPropMergeGroupType
     organization: NotRequired[OrganizationSimpleType]
     repository: NotRequired[RepositoryType]
     sender: NotRequired[SimpleUserType]
-    merge_group: MergeGroupChecksRequestedPropMergeGroupType
 
 
-class MergeGroupChecksRequestedPropMergeGroupType(TypedDict):
-    """MergeGroupChecksRequestedPropMergeGroup"""
+class WebhookMergeGroupChecksRequestedPropMergeGroupType(TypedDict):
+    """WebhookMergeGroupChecksRequestedPropMergeGroup"""
 
-    head_sha: str
-    head_ref: str
     base_ref: str
+    head_ref: str
+    head_sha: str
 
 
 class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
@@ -8845,6 +8888,12 @@ class OrgsOrgReposPostBodyType(TypedDict):
     allow_auto_merge: NotRequired[bool]
     delete_branch_on_merge: NotRequired[bool]
     use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
 
 
 class OrgsOrgTeamsPostBodyType(TypedDict):
@@ -8946,7 +8995,7 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type(TypedDict):
 class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
     """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin", "maintain", "triage"]]
+    permission: NotRequired[str]
 
 
 class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
@@ -9143,6 +9192,12 @@ class ReposOwnerRepoPatchBodyType(TypedDict):
     delete_branch_on_merge: NotRequired[bool]
     allow_update_branch: NotRequired[bool]
     use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     archived: NotRequired[bool]
     allow_forking: NotRequired[bool]
 
@@ -9277,10 +9332,6 @@ class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
     jobs: List[JobType]
 
 
-class ReposOwnerRepoActionsRunsRunIdCancelPostResponse202Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdCancelPostResponse202"""
-
-
 class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
     """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
@@ -9302,10 +9353,6 @@ class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
     enable_debug_logging: NotRequired[bool]
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostResponse201Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostResponse201"""
-
-
 class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType(TypedDict):
     """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
 
@@ -9324,10 +9371,6 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
 
     encrypted_value: NotRequired[str]
     key_id: NotRequired[str]
-
-
-class ReposOwnerRepoActionsSecretsSecretNamePutResponse201Type(TypedDict):
-    """ReposOwnerRepoActionsSecretsSecretNamePutResponse201"""
 
 
 class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
@@ -10060,7 +10103,7 @@ class ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201Type(TypedDict):
 class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
     """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin", "maintain", "triage"]]
+    permission: NotRequired[str]
 
 
 class ReposOwnerRepoCommentsCommentIdPatchBodyType(TypedDict):
@@ -10268,7 +10311,18 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
             None,
         ]
     ]
-    deployment_branch_policy: NotRequired[Union[DeploymentBranchPolicyType, None]]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+
+    total_count: int
+    branch_policies: List[DeploymentBranchPolicyType]
 
 
 class ReposOwnerRepoForksPostBodyType(TypedDict):
@@ -10876,11 +10930,11 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
     """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
     body: str
-    commit_id: NotRequired[str]
-    path: NotRequired[str]
+    commit_id: str
+    path: str
     position: NotRequired[int]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
+    line: int
     start_line: NotRequired[int]
     start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
     in_reply_to: NotRequired[int]
@@ -11730,6 +11784,12 @@ class UserReposPostBodyType(TypedDict):
     allow_rebase_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
     delete_branch_on_merge: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     has_downloads: NotRequired[bool]
     is_template: NotRequired[bool]
 
@@ -12076,17 +12136,20 @@ __all__ = [
     "DependencyType",
     "ManifestType",
     "ManifestPropFileType",
+    "ManifestPropResolvedType",
     "SnapshotType",
     "SnapshotPropJobType",
     "SnapshotPropDetectorType",
     "SnapshotPropManifestsType",
     "DeploymentStatusType",
-    "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicySettingsType",
     "EnvironmentType",
     "EnvironmentPropProtectionRulesItemsAnyof0Type",
     "EnvironmentPropProtectionRulesItemsAnyof1Type",
     "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
     "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicyNamePatternType",
     "ShortBlobType",
     "BlobType",
     "GitCommitType",
@@ -12284,8 +12347,8 @@ __all__ = [
     "HovercardPropContextsItemsType",
     "KeySimpleType",
     "SimpleInstallationType",
-    "MergeGroupChecksRequestedType",
-    "MergeGroupChecksRequestedPropMergeGroupType",
+    "WebhookMergeGroupChecksRequestedType",
+    "WebhookMergeGroupChecksRequestedPropMergeGroupType",
     "AppManifestsCodeConversionsPostResponse201Type",
     "AppManifestsCodeConversionsPostResponse201Allof1Type",
     "AppHookConfigPatchBodyType",
@@ -12418,15 +12481,12 @@ __all__ = [
     "ReposOwnerRepoActionsRunsGetResponse200Type",
     "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",
     "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsRunIdCancelPostResponse202Type",
     "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",
     "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
     "ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdRerunPostResponse201Type",
     "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",
     "ReposOwnerRepoActionsSecretsGetResponse200Type",
     "ReposOwnerRepoActionsSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoActionsSecretsSecretNamePutResponse201Type",
     "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
@@ -12511,6 +12571,7 @@ __all__ = [
     "ReposOwnerRepoEnvironmentsGetResponse200Type",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
     "ReposOwnerRepoForksPostBodyType",
     "ReposOwnerRepoGitBlobsPostBodyType",
     "ReposOwnerRepoGitCommitsPostBodyType",
