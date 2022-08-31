@@ -17,6 +17,7 @@ from .types import (
     UserGpgKeysPostBodyType,
     UserEmailsPostBodyOneof0Type,
     UserEmailsDeleteBodyOneof0Type,
+    UserSshSigningKeysPostBodyType,
     UserEmailVisibilityPatchBodyType,
 )
 from .models import (
@@ -29,12 +30,14 @@ from .models import (
     PublicUser,
     SimpleUser,
     PrivateUser,
+    SshSigningKey,
     UserPatchBody,
     ValidationError,
     UserKeysPostBody,
     UserGpgKeysPostBody,
     UserEmailsPostBodyOneof0,
     UserEmailsDeleteBodyOneof0,
+    UserSshSigningKeysPostBody,
     UserEmailVisibilityPatchBody,
 )
 
@@ -1245,6 +1248,202 @@ class UsersClient:
             },
         )
 
+    def list_ssh_signing_keys_for_authenticated_user(
+        self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SshSigningKey]]":
+        url = "/user/ssh_signing_keys"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SshSigningKey],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_list_ssh_signing_keys_for_authenticated_user(
+        self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SshSigningKey]]":
+        url = "/user/ssh_signing_keys"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SshSigningKey],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    def create_ssh_signing_key_for_authenticated_user(
+        self, *, data: UserSshSigningKeysPostBodyType
+    ) -> "Response[SshSigningKey]":
+        ...
+
+    @overload
+    def create_ssh_signing_key_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        title: Union[Unset, str] = UNSET,
+        key: str,
+    ) -> "Response[SshSigningKey]":
+        ...
+
+    def create_ssh_signing_key_for_authenticated_user(
+        self, *, data: Union[Unset, UserSshSigningKeysPostBodyType] = UNSET, **kwargs
+    ) -> "Response[SshSigningKey]":
+        url = "/user/ssh_signing_keys"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserSshSigningKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=SshSigningKey,
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_ssh_signing_key_for_authenticated_user(
+        self, *, data: UserSshSigningKeysPostBodyType
+    ) -> "Response[SshSigningKey]":
+        ...
+
+    @overload
+    async def async_create_ssh_signing_key_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        title: Union[Unset, str] = UNSET,
+        key: str,
+    ) -> "Response[SshSigningKey]":
+        ...
+
+    async def async_create_ssh_signing_key_for_authenticated_user(
+        self, *, data: Union[Unset, UserSshSigningKeysPostBodyType] = UNSET, **kwargs
+    ) -> "Response[SshSigningKey]":
+        url = "/user/ssh_signing_keys"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserSshSigningKeysPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=SshSigningKey,
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def get_ssh_signing_key_for_authenticated_user(
+        self,
+        ssh_signing_key_id: int,
+    ) -> "Response[SshSigningKey]":
+        url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=SshSigningKey,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_get_ssh_signing_key_for_authenticated_user(
+        self,
+        ssh_signing_key_id: int,
+    ) -> "Response[SshSigningKey]":
+        url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=SshSigningKey,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def delete_ssh_signing_key_for_authenticated_user(
+        self,
+        ssh_signing_key_id: int,
+    ) -> "Response":
+        url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_delete_ssh_signing_key_for_authenticated_user(
+        self,
+        ssh_signing_key_id: int,
+    ) -> "Response":
+        url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def list(
         self,
         since: Union[Unset, int] = UNSET,
@@ -1549,4 +1748,44 @@ class UsersClient:
             url,
             params=exclude_unset(params),
             response_model=List[KeySimple],
+        )
+
+    def list_ssh_signing_keys_for_user(
+        self,
+        username: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SshSigningKey]]":
+        url = f"/users/{username}/ssh_signing_keys"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SshSigningKey],
+        )
+
+    async def async_list_ssh_signing_keys_for_user(
+        self,
+        username: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SshSigningKey]]":
+        url = f"/users/{username}/ssh_signing_keys"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SshSigningKey],
         )

@@ -496,6 +496,8 @@ class CodeScanningClient:
         per_page: Union[Unset, int] = 30,
         ref: Union[Unset, str] = UNSET,
         sarif_id: Union[Unset, str] = UNSET,
+        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        sort: Union[Unset, Literal["created"]] = "created",
     ) -> "Response[List[CodeScanningAnalysis]]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -506,6 +508,8 @@ class CodeScanningClient:
             "per_page": per_page,
             "ref": ref,
             "sarif_id": sarif_id,
+            "direction": direction,
+            "sort": sort,
         }
 
         return self._github.request(
@@ -530,6 +534,8 @@ class CodeScanningClient:
         per_page: Union[Unset, int] = 30,
         ref: Union[Unset, str] = UNSET,
         sarif_id: Union[Unset, str] = UNSET,
+        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        sort: Union[Unset, Literal["created"]] = "created",
     ) -> "Response[List[CodeScanningAnalysis]]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -540,6 +546,8 @@ class CodeScanningClient:
             "per_page": per_page,
             "ref": ref,
             "sarif_id": sarif_id,
+            "direction": direction,
+            "sort": sort,
         }
 
         return await self._github.arequest(

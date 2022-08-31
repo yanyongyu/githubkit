@@ -191,6 +191,7 @@ class OrgsClient:
         members_can_create_public_pages: Union[Unset, bool] = True,
         members_can_create_private_pages: Union[Unset, bool] = True,
         members_can_fork_private_repositories: Union[Unset, bool] = False,
+        web_commit_signoff_required: Union[Unset, bool] = False,
         blog: Union[Unset, str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
@@ -253,6 +254,7 @@ class OrgsClient:
         members_can_create_public_pages: Union[Unset, bool] = True,
         members_can_create_private_pages: Union[Unset, bool] = True,
         members_can_fork_private_repositories: Union[Unset, bool] = False,
+        web_commit_signoff_required: Union[Unset, bool] = False,
         blog: Union[Unset, str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...

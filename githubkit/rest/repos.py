@@ -546,6 +546,7 @@ class ReposClient:
         ] = UNSET,
         archived: Union[Unset, bool] = False,
         allow_forking: Union[Unset, bool] = False,
+        web_commit_signoff_required: Union[Unset, bool] = False,
     ) -> "Response[FullRepository]":
         ...
 
@@ -627,6 +628,7 @@ class ReposClient:
         ] = UNSET,
         archived: Union[Unset, bool] = False,
         allow_forking: Union[Unset, bool] = False,
+        web_commit_signoff_required: Union[Unset, bool] = False,
     ) -> "Response[FullRepository]":
         ...
 
@@ -6280,6 +6282,7 @@ class ReposClient:
         data: Unset = UNSET,
         organization: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
+        default_branch_only: Union[Unset, bool] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 
@@ -6332,6 +6335,7 @@ class ReposClient:
         data: Unset = UNSET,
         organization: Union[Unset, str] = UNSET,
         name: Union[Unset, str] = UNSET,
+        default_branch_only: Union[Unset, bool] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 

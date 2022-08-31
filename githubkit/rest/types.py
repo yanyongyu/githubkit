@@ -302,7 +302,6 @@ class AppPermissionsType(TypedDict):
     administration: NotRequired[Literal["read", "write"]]
     checks: NotRequired[Literal["read", "write"]]
     contents: NotRequired[Literal["read", "write"]]
-    organization_custom_roles: NotRequired[Literal["read", "write"]]
     deployments: NotRequired[Literal["read", "write"]]
     environments: NotRequired[Literal["read", "write"]]
     issues: NotRequired[Literal["read", "write"]]
@@ -321,6 +320,7 @@ class AppPermissionsType(TypedDict):
     workflows: NotRequired[Literal["write"]]
     members: NotRequired[Literal["read", "write"]]
     organization_administration: NotRequired[Literal["read", "write"]]
+    organization_custom_roles: NotRequired[Literal["read", "write"]]
     organization_hooks: NotRequired[Literal["read", "write"]]
     organization_plan: NotRequired[Literal["read"]]
     organization_projects: NotRequired[Literal["read", "write", "admin"]]
@@ -471,6 +471,7 @@ class RepositoryType(TypedDict):
     merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     allow_merge_commit: NotRequired[bool]
     allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
     subscribers_count: NotRequired[int]
     network_count: NotRequired[int]
     open_issues: int
@@ -1938,6 +1939,7 @@ class MinimalRepositoryType(TypedDict):
     open_issues: NotRequired[int]
     watchers: NotRequired[int]
     allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
 class MinimalRepositoryPropPermissionsType(TypedDict):
@@ -2063,6 +2065,7 @@ class OrganizationFullType(TypedDict):
     members_can_create_public_pages: NotRequired[bool]
     members_can_create_private_pages: NotRequired[bool]
     members_can_fork_private_repositories: NotRequired[Union[bool, None]]
+    web_commit_signoff_required: NotRequired[bool]
     updated_at: datetime
 
 
@@ -2225,6 +2228,7 @@ class CodespaceType(TypedDict):
     idle_timeout_notice: NotRequired[Union[str, None]]
     retention_period_minutes: NotRequired[Union[int, None]]
     retention_expires_at: NotRequired[Union[datetime, None]]
+    last_known_stop_notice: NotRequired[Union[str, None]]
 
 
 class CodespacePropGitStatusType(TypedDict):
@@ -2603,6 +2607,72 @@ class GroupMappingPropGroupsItemsType(TypedDict):
     synced_at: NotRequired[Union[str, None]]
 
 
+class TeamOrganizationType(TypedDict):
+    """Team Organization
+
+    Team Organization
+    """
+
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    name: NotRequired[str]
+    company: NotRequired[str]
+    blog: NotRequired[str]
+    location: NotRequired[str]
+    email: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    is_verified: NotRequired[bool]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    html_url: str
+    created_at: datetime
+    type: str
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    private_gists: NotRequired[Union[int, None]]
+    disk_usage: NotRequired[Union[int, None]]
+    collaborators: NotRequired[Union[int, None]]
+    billing_email: NotRequired[Union[str, None]]
+    plan: NotRequired[TeamOrganizationPropPlanType]
+    default_repository_permission: NotRequired[Union[str, None]]
+    members_can_create_repositories: NotRequired[Union[bool, None]]
+    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
+    members_allowed_repository_creation_type: NotRequired[str]
+    members_can_create_public_repositories: NotRequired[bool]
+    members_can_create_private_repositories: NotRequired[bool]
+    members_can_create_internal_repositories: NotRequired[bool]
+    members_can_create_pages: NotRequired[bool]
+    members_can_create_public_pages: NotRequired[bool]
+    members_can_create_private_pages: NotRequired[bool]
+    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
+    web_commit_signoff_required: NotRequired[bool]
+    updated_at: datetime
+
+
+class TeamOrganizationPropPlanType(TypedDict):
+    """TeamOrganizationPropPlan"""
+
+    name: str
+    space: int
+    private_repos: int
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
+
+
 class TeamFullType(TypedDict):
     """Full Team
 
@@ -2625,7 +2695,7 @@ class TeamFullType(TypedDict):
     repos_count: int
     created_at: datetime
     updated_at: datetime
-    organization: OrganizationFullType
+    organization: TeamOrganizationType
     ldap_dn: NotRequired[str]
 
 
@@ -2826,6 +2896,7 @@ class TeamRepositoryType(TypedDict):
     delete_branch_on_merge: NotRequired[bool]
     allow_merge_commit: NotRequired[bool]
     allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
     subscribers_count: NotRequired[int]
     network_count: NotRequired[int]
     open_issues: int
@@ -3058,6 +3129,7 @@ class FullRepositoryType(TypedDict):
     merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
     merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
     subscribers_count: int
     network_count: int
     license_: Union[None, LicenseSimpleType]
@@ -6738,6 +6810,7 @@ class PullRequestPropHeadPropRepoType(TypedDict):
     updated_at: datetime
     allow_forking: NotRequired[bool]
     is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
 class PullRequestPropHeadPropUserType(TypedDict):
@@ -6859,6 +6932,7 @@ class PullRequestPropBasePropRepoType(TypedDict):
     created_at: datetime
     updated_at: datetime
     allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
 class PullRequestPropBasePropRepoPropOwnerType(TypedDict):
@@ -7842,6 +7916,7 @@ class RepoSearchResultItemType(TypedDict):
     delete_branch_on_merge: NotRequired[bool]
     allow_forking: NotRequired[bool]
     is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
 class RepoSearchResultItemPropPermissionsType(TypedDict):
@@ -8154,6 +8229,18 @@ class UserMarketplacePurchaseType(TypedDict):
     updated_at: Union[datetime, None]
     account: MarketplaceAccountType
     plan: MarketplaceListingPlanType
+
+
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
+
+    A public SSH key used to sign Git commits
+    """
+
+    key: str
+    id: int
+    title: str
+    created_at: datetime
 
 
 class StarredRepositoryType(TypedDict):
@@ -8578,6 +8665,7 @@ class OrgsOrgPatchBodyType(TypedDict):
     members_can_create_public_pages: NotRequired[bool]
     members_can_create_private_pages: NotRequired[bool]
     members_can_fork_private_repositories: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
     blog: NotRequired[str]
 
 
@@ -9200,6 +9288,7 @@ class ReposOwnerRepoPatchBodyType(TypedDict):
     merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
     archived: NotRequired[bool]
     allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
@@ -9678,7 +9767,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
-        {'teams': ['my-team']}
+        {'teams': ['justice-league']}
     """
 
     teams: List[str]
@@ -10330,6 +10419,7 @@ class ReposOwnerRepoForksPostBodyType(TypedDict):
 
     organization: NotRequired[str]
     name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
 
 
 class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
@@ -10577,6 +10667,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
     body: NotRequired[Union[str, None]]
     assignee: NotRequired[Union[str, None]]
     state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
     milestone: NotRequired[Union[str, int, None]]
     labels: NotRequired[
         List[
@@ -11794,6 +11885,13 @@ class UserReposPostBodyType(TypedDict):
     is_template: NotRequired[bool]
 
 
+class UserSshSigningKeysPostBodyType(TypedDict):
+    """UserSshSigningKeysPostBody"""
+
+    title: NotRequired[str]
+    key: str
+
+
 __all__ = [
     "RootType",
     "SimpleUserType",
@@ -11958,6 +12056,8 @@ __all__ = [
     "ProjectType",
     "GroupMappingType",
     "GroupMappingPropGroupsItemsType",
+    "TeamOrganizationType",
+    "TeamOrganizationPropPlanType",
     "TeamFullType",
     "TeamDiscussionType",
     "TeamDiscussionCommentType",
@@ -12342,6 +12442,7 @@ __all__ = [
     "KeyType",
     "MarketplaceAccountType",
     "UserMarketplacePurchaseType",
+    "SshSigningKeyType",
     "StarredRepositoryType",
     "HovercardType",
     "HovercardPropContextsItemsType",
@@ -12737,4 +12838,5 @@ __all__ = [
     "UserMigrationsPostBodyType",
     "UserProjectsPostBodyType",
     "UserReposPostBodyType",
+    "UserSshSigningKeysPostBodyType",
 ]

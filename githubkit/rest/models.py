@@ -407,10 +407,6 @@ class AppPermissions(GitHubRestModel):
         description="The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges.",
         default=UNSET,
     )
-    organization_custom_roles: Union[Unset, Literal["read", "write"]] = Field(
-        description="The level of permission to grant the access token for custom roles management.",
-        default=UNSET,
-    )
     deployments: Union[Unset, Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token for deployments and deployment statuses.",
         default=UNSET,
@@ -481,6 +477,10 @@ class AppPermissions(GitHubRestModel):
     )
     organization_administration: Union[Unset, Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token to manage access to an organization.",
+        default=UNSET,
+    )
+    organization_custom_roles: Union[Unset, Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token for custom roles management. This property is in beta and is subject to change.",
         default=UNSET,
     )
     organization_hooks: Union[Unset, Literal["read", "write"]] = Field(
@@ -733,6 +733,10 @@ class Repository(GitHubRestModel):
     )
     allow_forking: Union[Unset, bool] = Field(
         description="Whether to allow forking this repo", default=UNSET
+    )
+    web_commit_signoff_required: Union[Unset, bool] = Field(
+        description="Whether to require contributors to sign off on web-based commits",
+        default=False,
     )
     subscribers_count: Union[Unset, int] = Field(default=UNSET)
     network_count: Union[Unset, int] = Field(default=UNSET)
@@ -2787,6 +2791,7 @@ class MinimalRepository(GitHubRestModel):
     open_issues: Union[Unset, int] = Field(default=UNSET)
     watchers: Union[Unset, int] = Field(default=UNSET)
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
+    web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
 
 
 class MinimalRepositoryPropPermissions(GitHubRestModel):
@@ -2922,6 +2927,7 @@ class OrganizationFull(GitHubRestModel):
     members_can_fork_private_repositories: Union[Unset, Union[bool, None]] = Field(
         default=UNSET
     )
+    web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
     updated_at: datetime = Field(default=...)
 
 
@@ -3185,6 +3191,10 @@ class Codespace(GitHubRestModel):
     )
     retention_expires_at: Union[Unset, Union[datetime, None]] = Field(
         description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
+        default=UNSET,
+    )
+    last_known_stop_notice: Union[Unset, Union[str, None]] = Field(
+        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
         default=UNSET,
     )
 
@@ -3701,6 +3711,78 @@ class GroupMappingPropGroupsItems(GitHubRestModel):
     )
 
 
+class TeamOrganization(GitHubRestModel):
+    """Team Organization
+
+    Team Organization
+    """
+
+    login: str = Field(default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    url: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    hooks_url: str = Field(default=...)
+    issues_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    public_members_url: str = Field(default=...)
+    avatar_url: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    name: Union[Unset, str] = Field(default=UNSET)
+    company: Union[Unset, str] = Field(default=UNSET)
+    blog: Union[Unset, str] = Field(default=UNSET)
+    location: Union[Unset, str] = Field(default=UNSET)
+    email: Union[Unset, str] = Field(default=UNSET)
+    twitter_username: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    is_verified: Union[Unset, bool] = Field(default=UNSET)
+    has_organization_projects: bool = Field(default=...)
+    has_repository_projects: bool = Field(default=...)
+    public_repos: int = Field(default=...)
+    public_gists: int = Field(default=...)
+    followers: int = Field(default=...)
+    following: int = Field(default=...)
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    type: str = Field(default=...)
+    total_private_repos: Union[Unset, int] = Field(default=UNSET)
+    owned_private_repos: Union[Unset, int] = Field(default=UNSET)
+    private_gists: Union[Unset, Union[int, None]] = Field(default=UNSET)
+    disk_usage: Union[Unset, Union[int, None]] = Field(default=UNSET)
+    collaborators: Union[Unset, Union[int, None]] = Field(default=UNSET)
+    billing_email: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    plan: Union[Unset, TeamOrganizationPropPlan] = Field(default=UNSET)
+    default_repository_permission: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    members_can_create_repositories: Union[Unset, Union[bool, None]] = Field(
+        default=UNSET
+    )
+    two_factor_requirement_enabled: Union[Unset, Union[bool, None]] = Field(
+        default=UNSET
+    )
+    members_allowed_repository_creation_type: Union[Unset, str] = Field(default=UNSET)
+    members_can_create_public_repositories: Union[Unset, bool] = Field(default=UNSET)
+    members_can_create_private_repositories: Union[Unset, bool] = Field(default=UNSET)
+    members_can_create_internal_repositories: Union[Unset, bool] = Field(default=UNSET)
+    members_can_create_pages: Union[Unset, bool] = Field(default=UNSET)
+    members_can_create_public_pages: Union[Unset, bool] = Field(default=UNSET)
+    members_can_create_private_pages: Union[Unset, bool] = Field(default=UNSET)
+    members_can_fork_private_repositories: Union[Unset, Union[bool, None]] = Field(
+        default=UNSET
+    )
+    web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
+    updated_at: datetime = Field(default=...)
+
+
+class TeamOrganizationPropPlan(GitHubRestModel):
+    """TeamOrganizationPropPlan"""
+
+    name: str = Field(default=...)
+    space: int = Field(default=...)
+    private_repos: int = Field(default=...)
+    filled_seats: Union[Unset, int] = Field(default=UNSET)
+    seats: Union[Unset, int] = Field(default=UNSET)
+
+
 class TeamFull(GitHubRestModel):
     """Full Team
 
@@ -3732,8 +3814,8 @@ class TeamFull(GitHubRestModel):
     repos_count: int = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    organization: OrganizationFull = Field(
-        title="Organization Full", description="Organization Full", default=...
+    organization: TeamOrganization = Field(
+        title="Team Organization", description="Team Organization", default=...
     )
     ldap_dn: Union[Unset, str] = Field(
         description="Distinguished Name (DN) that team maps to within LDAP environment",
@@ -4018,6 +4100,10 @@ class TeamRepository(GitHubRestModel):
     allow_forking: Union[Unset, bool] = Field(
         description="Whether to allow forking this repo", default=False
     )
+    web_commit_signoff_required: Union[Unset, bool] = Field(
+        description="Whether to require contributors to sign off on web-based commits",
+        default=False,
+    )
     subscribers_count: Union[Unset, int] = Field(default=UNSET)
     network_count: Union[Unset, int] = Field(default=UNSET)
     open_issues: int = Field(default=...)
@@ -4293,6 +4379,7 @@ class FullRepository(GitHubRestModel):
         default=UNSET,
     )
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
+    web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
     subscribers_count: int = Field(default=...)
     network_count: int = Field(default=...)
     license_: Union[None, LicenseSimple] = Field(
@@ -9045,6 +9132,7 @@ class PullRequestPropHeadPropRepo(GitHubRestModel):
     updated_at: datetime = Field(default=...)
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
     is_template: Union[Unset, bool] = Field(default=UNSET)
+    web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
 
 
 class PullRequestPropHeadPropUser(GitHubRestModel):
@@ -9176,6 +9264,7 @@ class PullRequestPropBasePropRepo(GitHubRestModel):
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
+    web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
 
 
 class PullRequestPropBasePropRepoPropOwner(GitHubRestModel):
@@ -10401,6 +10490,7 @@ class RepoSearchResultItem(GitHubRestModel):
     delete_branch_on_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
     is_template: Union[Unset, bool] = Field(default=UNSET)
+    web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
 
 
 class RepoSearchResultItemPropPermissions(GitHubRestModel):
@@ -10751,6 +10841,18 @@ class UserMarketplacePurchase(GitHubRestModel):
         description="Marketplace Listing Plan",
         default=...,
     )
+
+
+class SshSigningKey(GitHubRestModel):
+    """SSH Signing Key
+
+    A public SSH key used to sign Git commits
+    """
+
+    key: str = Field(default=...)
+    id: int = Field(default=...)
+    title: str = Field(default=...)
+    created_at: datetime = Field(default=...)
 
 
 class StarredRepository(GitHubRestModel):
@@ -11382,6 +11484,10 @@ class OrgsOrgPatchBody(GitHubRestModel):
     )
     members_can_fork_private_repositories: Union[Unset, bool] = Field(
         description="Whether organization members can fork private organization repositories.",
+        default=False,
+    )
+    web_commit_signoff_required: Union[Unset, bool] = Field(
+        description="Whether contributors to organization repositories are required to sign off on commits they make through GitHub's web interface.",
         default=False,
     )
     blog: Union[Unset, str] = Field(default=UNSET)
@@ -12411,6 +12517,10 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
         description="Either `true` to allow private forks, or `false` to prevent private forks.",
         default=False,
     )
+    web_commit_signoff_required: Union[Unset, bool] = Field(
+        description="Either `true` to require contributors to sign off on web-based commits, or `false` to not require contributors to sign off on web-based commits.",
+        default=False,
+    )
 
 
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity(
@@ -13003,7 +13113,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyO
         {'contexts': ['contexts']}
     """
 
-    contexts: List[str] = Field(description="contexts parameter", default=...)
+    contexts: List[str] = Field(
+        description="The name of the status checks", default=...
+    )
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0(
@@ -13015,7 +13127,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBody
         {'contexts': ['contexts']}
     """
 
-    contexts: List[str] = Field(description="contexts parameter", default=...)
+    contexts: List[str] = Field(
+        description="The name of the status checks", default=...
+    )
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0(
@@ -13028,7 +13142,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBo
         {'contexts': ['contexts']}
     """
 
-    contexts: List[str] = Field(description="contexts parameter", default=...)
+    contexts: List[str] = Field(
+        description="The name of the status checks", default=...
+    )
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(
@@ -13073,10 +13189,10 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(
     """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
-        {'teams': ['my-team']}
+        {'teams': ['justice-league']}
     """
 
-    teams: List[str] = Field(description="teams parameter", default=...)
+    teams: List[str] = Field(description="The slug values for teams", default=...)
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
@@ -13088,7 +13204,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
         {'teams': ['my-team']}
     """
 
-    teams: List[str] = Field(description="teams parameter", default=...)
+    teams: List[str] = Field(description="The slug values for teams", default=...)
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0(
@@ -13100,7 +13216,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0(
         {'teams': ['my-team']}
     """
 
-    teams: List[str] = Field(description="teams parameter", default=...)
+    teams: List[str] = Field(description="The slug values for teams", default=...)
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0(
@@ -13112,7 +13228,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0(
         {'users': ['mona']}
     """
 
-    users: List[str] = Field(description="users parameter", default=...)
+    users: List[str] = Field(description="The username for users", default=...)
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0(
@@ -13124,7 +13240,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0(
         {'users': ['mona']}
     """
 
-    users: List[str] = Field(description="users parameter", default=...)
+    users: List[str] = Field(description="The username for users", default=...)
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0(
@@ -13136,7 +13252,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0(
         {'users': ['mona']}
     """
 
-    users: List[str] = Field(description="users parameter", default=...)
+    users: List[str] = Field(description="The username for users", default=...)
 
 
 class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubRestModel):
@@ -14151,6 +14267,10 @@ class ReposOwnerRepoForksPostBody(GitHubRestModel):
         description="When forking from an existing repository, a new name for the fork.",
         default=UNSET,
     )
+    default_branch_only: Union[Unset, bool] = Field(
+        description="When forking from an existing repository, fork with only the default branch.",
+        default=UNSET,
+    )
 
 
 class ReposOwnerRepoGitBlobsPostBody(GitHubRestModel):
@@ -14596,6 +14716,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubRestModel):
     )
     state: Union[Unset, Literal["open", "closed"]] = Field(
         description="State of the issue. Either `open` or `closed`.", default=UNSET
+    )
+    state_reason: Union[Unset, Union[str, None]] = Field(
+        description="The reason for the current state", default=UNSET
     )
     milestone: Union[Unset, Union[str, int, None]] = Field(
         description="The `number` of the milestone to associate this issue with or `null` to remove current. _NOTE: Only users with push access can set the milestone for issues. The milestone is silently dropped otherwise._",
@@ -16554,6 +16677,19 @@ class UserReposPostBody(GitHubRestModel):
     )
 
 
+class UserSshSigningKeysPostBody(GitHubRestModel):
+    """UserSshSigningKeysPostBody"""
+
+    title: Union[Unset, str] = Field(
+        description="A descriptive name for the new key.", default=UNSET
+    )
+    key: str = Field(
+        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
+        regex="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        default=...,
+    )
+
+
 Root.update_forward_refs()
 SimpleUser.update_forward_refs()
 Integration.update_forward_refs()
@@ -16717,6 +16853,8 @@ PackageVersionPropMetadataPropDocker.update_forward_refs()
 Project.update_forward_refs()
 GroupMapping.update_forward_refs()
 GroupMappingPropGroupsItems.update_forward_refs()
+TeamOrganization.update_forward_refs()
+TeamOrganizationPropPlan.update_forward_refs()
 TeamFull.update_forward_refs()
 TeamDiscussion.update_forward_refs()
 TeamDiscussionComment.update_forward_refs()
@@ -17101,6 +17239,7 @@ GpgKeyPropSubkeysItems.update_forward_refs()
 Key.update_forward_refs()
 MarketplaceAccount.update_forward_refs()
 UserMarketplacePurchase.update_forward_refs()
+SshSigningKey.update_forward_refs()
 StarredRepository.update_forward_refs()
 Hovercard.update_forward_refs()
 HovercardPropContextsItems.update_forward_refs()
@@ -17496,6 +17635,7 @@ UserMembershipsOrgsOrgPatchBody.update_forward_refs()
 UserMigrationsPostBody.update_forward_refs()
 UserProjectsPostBody.update_forward_refs()
 UserReposPostBody.update_forward_refs()
+UserSshSigningKeysPostBody.update_forward_refs()
 
 __all__ = [
     "GitHubRestModel",
@@ -17662,6 +17802,8 @@ __all__ = [
     "Project",
     "GroupMapping",
     "GroupMappingPropGroupsItems",
+    "TeamOrganization",
+    "TeamOrganizationPropPlan",
     "TeamFull",
     "TeamDiscussion",
     "TeamDiscussionComment",
@@ -18046,6 +18188,7 @@ __all__ = [
     "Key",
     "MarketplaceAccount",
     "UserMarketplacePurchase",
+    "SshSigningKey",
     "StarredRepository",
     "Hovercard",
     "HovercardPropContextsItems",
@@ -18441,4 +18584,5 @@ __all__ = [
     "UserMigrationsPostBody",
     "UserProjectsPostBody",
     "UserReposPostBody",
+    "UserSshSigningKeysPostBody",
 ]
