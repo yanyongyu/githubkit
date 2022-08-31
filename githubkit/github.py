@@ -33,8 +33,6 @@ R = Union[
 
 
 class GitHub(GitHubCore[A]):
-    # high level methods
-
     # copy github instance with other auth
     def with_auth(self, auth: A_o) -> "GitHub[A_o]":
         return GitHub(auth=auth, config=self.config.copy())

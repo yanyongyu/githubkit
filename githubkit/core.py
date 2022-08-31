@@ -22,8 +22,8 @@ from typing import (
 import httpx
 
 from .response import Response
-from .exception import RequestFailed
 from .config import Config, get_config
+from .exception import RequestError, RequestFailed, RequestTimeout
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .typing import (
     URLTypes,
@@ -228,17 +228,22 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
     ) -> httpx.Response:
         with self.get_sync_client() as client:
-            return client.request(
-                method,
-                url,
-                params=params,
-                content=content,
-                data=data,
-                files=files,
-                json=json,
-                headers=headers,
-                cookies=cookies,
-            )
+            try:
+                return client.request(
+                    method,
+                    url,
+                    params=params,
+                    content=content,
+                    data=data,
+                    files=files,
+                    json=json,
+                    headers=headers,
+                    cookies=cookies,
+                )
+            except httpx.TimeoutException as e:
+                raise RequestTimeout(e.request) from e
+            except Exception as e:
+                raise RequestError(repr(e)) from e
 
     # async request
     async def _arequest(
@@ -255,17 +260,22 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
     ) -> httpx.Response:
         async with self.get_async_client() as client:
-            return await client.request(
-                method,
-                url,
-                params=params,
-                content=content,
-                data=data,
-                files=files,
-                json=json,
-                headers=headers,
-                cookies=cookies,
-            )
+            try:
+                return await client.request(
+                    method,
+                    url,
+                    params=params,
+                    content=content,
+                    data=data,
+                    files=files,
+                    json=json,
+                    headers=headers,
+                    cookies=cookies,
+                )
+            except httpx.TimeoutException as e:
+                raise RequestTimeout(e.request) from e
+            except Exception as e:
+                raise RequestError(repr(e)) from e
 
     # check and parse response
     def _check(
