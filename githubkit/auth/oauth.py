@@ -16,17 +16,24 @@ from typing import (
     cast,
 )
 
-import anyio
 import httpx
-from anyio.to_thread import run_sync
-from anyio.from_thread import threadlocals
-from anyio.from_thread import run as run_async
 
 from githubkit.utils import is_async
 from githubkit.exception import AuthExpiredError
 
 from .base import BaseAuthStrategy
 from ._url import require_bypass, get_oauth_base_url, require_basic_auth
+
+try:
+    import anyio
+    from anyio.to_thread import run_sync
+    from anyio.from_thread import threadlocals
+    from anyio.from_thread import run as run_async
+except ImportError:
+    anyio = None
+    run_sync = None
+    run_async = None
+    threadlocals = None
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -262,6 +269,11 @@ class OAuthDeviceAuth(httpx.Auth):
 
     def call_handler(self, data: Dict[str, Any]) -> None:
         if is_async(self.on_verification):
+            if anyio is None or threadlocals is None or run_async is None:
+                raise RuntimeError(
+                    "AnyIO support for OAuth Device Callback should be installed "
+                    "with `pip install githubkit[auth-oauth-device]`"
+                )
             handler = cast(
                 Callable[[Dict[str, Any]], Coroutine[None, None, None]],
                 self.on_verification,
@@ -284,6 +296,11 @@ class OAuthDeviceAuth(httpx.Auth):
             )
             await handler(data)
         else:
+            if run_sync is None:
+                raise RuntimeError(
+                    "AnyIO support for OAuth Device Callback should be installed "
+                    "with `pip install githubkit[auth-oauth-device]`"
+                )
             handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
             await run_sync(handler, data)
 

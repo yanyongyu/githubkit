@@ -43,6 +43,26 @@ poetry add githubkit
 pdm add githubkit
 ```
 
+if you want to auth as github app, extra dependencies are required:
+
+```bash
+pip install githubkit[auth-app]
+# or, use poetry
+poetry add githubkit[auth-app]
+# or, use pdm
+pdm add githubkit[auth-app]
+```
+
+if you want to mix sync and async calls in oauth device callback, extra dependencies are required:
+
+```bash
+pip install githubkit[auth-oauth-device]
+# or, use poetry
+poetry add githubkit[auth-oauth-device]
+# or, use pdm
+pdm add githubkit[auth-oauth-device]
+```
+
 ## Usage
 
 ### Authentication
