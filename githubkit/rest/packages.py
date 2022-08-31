@@ -14,12 +14,12 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 from .models import Package, BasicError, PackageVersion
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
     from githubkit.response import Response
 
 
 class PackagesClient:
-    def __init__(self, github: "GitHub"):
+    def __init__(self, github: "GitHubCore"):
         self._github = github
 
     def list_packages_for_organization(

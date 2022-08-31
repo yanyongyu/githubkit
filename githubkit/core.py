@@ -22,12 +22,9 @@ from typing import (
 import httpx
 
 from .response import Response
-from .rest import RestNamespace
-from .paginator import Paginator
 from .exception import RequestFailed
 from .config import Config, get_config
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
-from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 from .typing import (
     URLTypes,
     CookieTypes,
@@ -39,23 +36,13 @@ from .typing import (
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")
-A_o = TypeVar("A_o", bound="BaseAuthStrategy")
-
-CP = ParamSpec("CP")
-CT = TypeVar("CT")
-RT = TypeVar("RT")
-
-R = Union[
-    Callable[CP, Response[List[RT]]],
-    Callable[CP, Awaitable[Response[List[RT]]]],
-]
 
 
-class GitHub(Generic[A]):
+class GitHubCore(Generic[A]):
     # none auth with config
     @overload
     def __init__(
-        self: "GitHub[UnauthAuthStrategy]",
+        self: "GitHubCore[UnauthAuthStrategy]",
         auth: None = None,
         *,
         config: Config,
@@ -65,7 +52,7 @@ class GitHub(Generic[A]):
     # token auth with config
     @overload
     def __init__(
-        self: "GitHub[TokenAuthStrategy]",
+        self: "GitHubCore[TokenAuthStrategy]",
         auth: str,
         *,
         config: Config,
@@ -75,7 +62,7 @@ class GitHub(Generic[A]):
     # other auth strategies with config
     @overload
     def __init__(
-        self: "GitHub[A]",
+        self: "GitHubCore[A]",
         auth: A,
         *,
         config: Config,
@@ -85,7 +72,7 @@ class GitHub(Generic[A]):
     # none auth without config
     @overload
     def __init__(
-        self: "GitHub[UnauthAuthStrategy]",
+        self: "GitHubCore[UnauthAuthStrategy]",
         auth: None = None,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
@@ -100,7 +87,7 @@ class GitHub(Generic[A]):
     # token auth without config
     @overload
     def __init__(
-        self: "GitHub[TokenAuthStrategy]",
+        self: "GitHubCore[TokenAuthStrategy]",
         auth: str,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
@@ -115,7 +102,7 @@ class GitHub(Generic[A]):
     # other auth strategies without config
     @overload
     def __init__(
-        self: "GitHub[A]",
+        self: "GitHubCore[A]",
         auth: A,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
@@ -357,71 +344,3 @@ class GitHub(Generic[A]):
             cookies=cookies,
         )
         return self._check(raw_resp, response_model, error_models)
-
-    # copy github instance with other auth
-    def with_auth(self, auth: A_o) -> "GitHub[A_o]":
-        return GitHub(auth=auth, config=self.config.copy())
-
-    # high level methods
-
-    # rest api
-    @cached_property
-    def rest(self) -> RestNamespace:
-        return RestNamespace(self)
-
-    # graphql
-    def graphql(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
-        json = build_graphql_request(query, variables)
-
-        return parse_graphql_response(
-            self.request("POST", "/graphql", json=json, response_model=GraphQLResponse)
-        )
-
-    async def async_graphql(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
-        json = build_graphql_request(query, variables)
-
-        return parse_graphql_response(
-            await self.arequest(
-                "POST", "/graphql", json=json, response_model=GraphQLResponse
-            )
-        )
-
-    # rest pagination
-    @overload
-    @staticmethod
-    def paginate(
-        request: R[CP, RT],
-        page: int = 1,
-        per_page: int = 100,
-        map_func: None = None,
-        *args: CP.args,
-        **kwargs: CP.kwargs,
-    ) -> Paginator[RT]:
-        ...
-
-    @overload
-    @staticmethod
-    def paginate(
-        request: R[CP, CT],
-        page: int = 1,
-        per_page: int = 100,
-        map_func: Callable[[Response[List[CT]]], List[RT]] = ...,  # type: ignore
-        *args: CP.args,
-        **kwargs: CP.kwargs,
-    ) -> Paginator[RT]:
-        ...
-
-    @staticmethod
-    def paginate(
-        request: R[CP, CT],
-        page: int = 1,
-        per_page: int = 100,
-        map_func: Optional[Callable[[Response[List[CT]]], List[RT]]] = None,
-        *args: CP.args,
-        **kwargs: CP.kwargs,
-    ) -> Paginator[RT]:
-        return Paginator(request, page, per_page, map_func, *args, **kwargs)  # type: ignore

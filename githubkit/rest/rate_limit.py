@@ -14,12 +14,12 @@ from githubkit.utils import exclude_unset
 from .models import BasicError, RateLimitOverview
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
     from githubkit.response import Response
 
 
 class RateLimitClient:
-    def __init__(self, github: "GitHub"):
+    def __init__(self, github: "GitHubCore"):
         self._github = github
 
     def get(

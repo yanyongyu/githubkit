@@ -45,11 +45,11 @@ from .enterprise_admin import EnterpriseAdminClient
 from .server_statistics import ServerStatisticsClient
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
 
 
 class RestNamespace:
-    def __init__(self, github: "GitHub"):
+    def __init__(self, github: "GitHubCore"):
         self._github = github
 
     @cached_property

@@ -2929,6 +2929,34 @@ class OrganizationFull(GitHubRestModel):
     )
     web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
     updated_at: datetime = Field(default=...)
+    advanced_security_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description="Whether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        default=UNSET,
+    )
+    dependabot_alerts_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description="Whether GitHub Advanced Security is automatically enabled for new repositories and repositories transferred to\nthis organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        default=UNSET,
+    )
+    dependabot_security_updates_enabled_for_new_repositories: Union[
+        Unset, bool
+    ] = Field(
+        description="Whether dependabot security updates are automatically enabled for new repositories and repositories transferred\nto this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        default=UNSET,
+    )
+    dependency_graph_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description="Whether dependency graph is automatically enabled for new repositories and repositories transferred to this\norganization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        default=UNSET,
+    )
+    secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\norganization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        default=UNSET,
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Union[
+        Unset, bool
+    ] = Field(
+        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        default=UNSET,
+    )
 
 
 class OrganizationFullPropPlan(GitHubRestModel):
@@ -11491,6 +11519,34 @@ class OrgsOrgPatchBody(GitHubRestModel):
         default=False,
     )
     blog: Union[Unset, str] = Field(default=UNSET)
+    advanced_security_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
+        default=UNSET,
+    )
+    dependabot_alerts_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description='Whether Dependabot alerts is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
+        default=UNSET,
+    )
+    dependabot_security_updates_enabled_for_new_repositories: Union[
+        Unset, bool
+    ] = Field(
+        description='Whether Dependabot security updates is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
+        default=UNSET,
+    )
+    dependency_graph_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description='Whether dependency graph is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
+        default=UNSET,
+    )
+    secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description='Whether secret scanning is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
+        default=UNSET,
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Union[
+        Unset, bool
+    ] = Field(
+        description='Whether secret scanning push protection is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
+        default=UNSET,
+    )
 
 
 class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubRestModel):

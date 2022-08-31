@@ -1,5 +1,6 @@
-from .core import GitHub as GitHub
 from .config import Config as Config
+from .github import GitHub as GitHub
+from .core import GitHubCore as GitHubCore
 from .response import Response as Response
 from .paginator import Paginator as Paginator
 from .auth import AppAuthStrategy as AppAuthStrategy

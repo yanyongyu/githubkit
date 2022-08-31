@@ -24,7 +24,7 @@ except ImportError:
     jwt = None
 
 if TYPE_CHECKING:
-    from githubkit import GitHub, Response
+    from githubkit import Response, GitHubCore
     from githubkit.rest.types import AppPermissionsType
 
 
@@ -32,7 +32,7 @@ if TYPE_CHECKING:
 class AppAuth(httpx.Auth):
     """GitHub App or Installation Authentication Hook"""
 
-    github: "GitHub"
+    github: "GitHubCore"
     app_id: str
     private_key: str
     client_id: Optional[str] = None
@@ -251,7 +251,7 @@ class AppAuthStrategy(BaseAuthStrategy):
             )
         return OAuthAppAuthStrategy(self.client_id, self.client_secret)
 
-    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return AppAuth(
             github,
             self.app_id,
@@ -285,7 +285,7 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
             self.cache,
         )
 
-    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return AppAuth(
             github,
             self.app_id,

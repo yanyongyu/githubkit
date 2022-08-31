@@ -15,12 +15,12 @@ from .models import MarkdownPostBody
 from .types import MarkdownPostBodyType
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
     from githubkit.response import Response
 
 
 class MarkdownClient:
-    def __init__(self, github: "GitHub"):
+    def __init__(self, github: "GitHubCore"):
         self._github = github
 
     @overload

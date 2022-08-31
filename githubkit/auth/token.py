@@ -6,7 +6,7 @@ import httpx
 from .base import BaseAuthStrategy
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
 
 
 @dataclass(slots=True)
@@ -31,5 +31,5 @@ class TokenAuthStrategy(BaseAuthStrategy):
 
     token: str
 
-    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return TokenAuth(self.token)

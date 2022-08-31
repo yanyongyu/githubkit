@@ -29,11 +29,11 @@ from .base import BaseAuthStrategy
 from ._url import require_bypass, get_oauth_base_url, require_basic_auth
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
 
 
 def create_device_code(
-    github: "GitHub", client_id: str, scopes: Optional[List[str]] = None
+    github: "GitHubCore", client_id: str, scopes: Optional[List[str]] = None
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Create a device code for OAuth."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -55,7 +55,7 @@ def create_device_code(
 
 
 def exchange_web_flow_code(
-    github: "GitHub",
+    github: "GitHubCore",
     client_id: str,
     client_secret: str,
     code: str,
@@ -85,7 +85,7 @@ def exchange_web_flow_code(
 
 
 def exchange_device_code(
-    github: "GitHub", client_id: str, device_code: str
+    github: "GitHubCore", client_id: str, device_code: str
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Exchange device code for token."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -108,7 +108,7 @@ def exchange_device_code(
 
 
 def refresh_token(
-    github: "GitHub", client_id: str, client_secret: str, refresh_token: str
+    github: "GitHubCore", client_id: str, client_secret: str, refresh_token: str
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Refresh token."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -132,7 +132,7 @@ def refresh_token(
 class OAuthWebAuth(httpx.Auth):
     """OAuth Web Flow Hook Authentication"""
 
-    github: "GitHub"
+    github: "GitHubCore"
     client_id: str
     client_secret: str
     code: str
@@ -237,7 +237,7 @@ class OAuthWebAuth(httpx.Auth):
 class OAuthDeviceAuth(httpx.Auth):
     """OAuth Device Flow Hook Authentication"""
 
-    github: "GitHub"
+    github: "GitHubCore"
     client_id: str
     on_verification: Union[
         Callable[[Dict[str, Any]], None],
@@ -394,7 +394,7 @@ class OAuthAppAuthStrategy(BaseAuthStrategy):
             self.client_id, self.client_secret, code, redirect_uri
         )
 
-    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return httpx.BasicAuth(self.client_id, self.client_secret)
 
 
@@ -410,7 +410,7 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
     def as_oauth_app(self) -> OAuthAppAuthStrategy:
         return OAuthAppAuthStrategy(self.client_id, self.client_secret)
 
-    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return OAuthWebAuth(
             github, self.client_id, self.client_secret, self.code, self.redirect_uri
         )
@@ -423,5 +423,5 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
     client_id: str
     on_verification: Callable
 
-    def get_auth_flow(self, github: "GitHub") -> httpx.Auth:
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return OAuthDeviceAuth(github, self.client_id, self.on_verification)

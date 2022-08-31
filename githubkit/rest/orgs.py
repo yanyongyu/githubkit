@@ -56,12 +56,12 @@ from .models import (
 )
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
     from githubkit.response import Response
 
 
 class OrgsClient:
-    def __init__(self, github: "GitHub"):
+    def __init__(self, github: "GitHubCore"):
         self._github = github
 
     def list(
@@ -193,6 +193,16 @@ class OrgsClient:
         members_can_fork_private_repositories: Union[Unset, bool] = False,
         web_commit_signoff_required: Union[Unset, bool] = False,
         blog: Union[Unset, str] = UNSET,
+        advanced_security_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        dependabot_alerts_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        dependabot_security_updates_enabled_for_new_repositories: Union[
+            Unset, bool
+        ] = UNSET,
+        dependency_graph_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: Union[
+            Unset, bool
+        ] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -256,6 +266,16 @@ class OrgsClient:
         members_can_fork_private_repositories: Union[Unset, bool] = False,
         web_commit_signoff_required: Union[Unset, bool] = False,
         blog: Union[Unset, str] = UNSET,
+        advanced_security_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        dependabot_alerts_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        dependabot_security_updates_enabled_for_new_repositories: Union[
+            Unset, bool
+        ] = UNSET,
+        dependency_graph_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: Union[
+            Unset, bool
+        ] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -2042,6 +2062,48 @@ class OrgsClient:
         return await self._github.arequest(
             "DELETE",
             url,
+        )
+
+    def enable_or_disable_security_product_on_all_org_repos(
+        self,
+        org: str,
+        security_product: Literal[
+            "dependency_graph",
+            "dependabot_alerts",
+            "dependabot_security_updates",
+            "advanced_security",
+            "secret_scanning",
+            "secret_scanning_push_protection",
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+    ) -> "Response":
+        url = f"/orgs/{org}/{security_product}/{enablement}"
+
+        return self._github.request(
+            "POST",
+            url,
+            error_models={},
+        )
+
+    async def async_enable_or_disable_security_product_on_all_org_repos(
+        self,
+        org: str,
+        security_product: Literal[
+            "dependency_graph",
+            "dependabot_alerts",
+            "dependabot_security_updates",
+            "advanced_security",
+            "secret_scanning",
+            "secret_scanning_push_protection",
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+    ) -> "Response":
+        url = f"/orgs/{org}/{security_product}/{enablement}"
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            error_models={},
         )
 
     def list_memberships_for_authenticated_user(

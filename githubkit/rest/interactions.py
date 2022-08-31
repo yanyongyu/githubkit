@@ -22,12 +22,12 @@ from .models import (
 )
 
 if TYPE_CHECKING:
-    from githubkit import GitHub
+    from githubkit import GitHubCore
     from githubkit.response import Response
 
 
 class InteractionsClient:
-    def __init__(self, github: "GitHub"):
+    def __init__(self, github: "GitHubCore"):
         self._github = github
 
     def get_restrictions_for_org(

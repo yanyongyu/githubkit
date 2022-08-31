@@ -2067,6 +2067,12 @@ class OrganizationFullType(TypedDict):
     members_can_fork_private_repositories: NotRequired[Union[bool, None]]
     web_commit_signoff_required: NotRequired[bool]
     updated_at: datetime
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
+    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
 
 
 class OrganizationFullPropPlanType(TypedDict):
@@ -8667,6 +8673,12 @@ class OrgsOrgPatchBodyType(TypedDict):
     members_can_fork_private_repositories: NotRequired[bool]
     web_commit_signoff_required: NotRequired[bool]
     blog: NotRequired[str]
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
+    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
 
 
 class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
