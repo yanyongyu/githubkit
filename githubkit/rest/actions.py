@@ -3928,6 +3928,7 @@ class ActionsClient:
         created: Union[Unset, datetime] = UNSET,
         exclude_pull_requests: Union[Unset, bool] = False,
         check_suite_id: Union[Unset, int] = UNSET,
+        head_sha: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs"
 
@@ -3941,6 +3942,7 @@ class ActionsClient:
             "created": created,
             "exclude_pull_requests": exclude_pull_requests,
             "check_suite_id": check_suite_id,
+            "head_sha": head_sha,
         }
 
         return self._github.request(
@@ -3980,6 +3982,7 @@ class ActionsClient:
         created: Union[Unset, datetime] = UNSET,
         exclude_pull_requests: Union[Unset, bool] = False,
         check_suite_id: Union[Unset, int] = UNSET,
+        head_sha: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs"
 
@@ -3993,6 +3996,7 @@ class ActionsClient:
             "created": created,
             "exclude_pull_requests": exclude_pull_requests,
             "check_suite_id": check_suite_id,
+            "head_sha": head_sha,
         }
 
         return await self._github.arequest(
@@ -5307,6 +5311,7 @@ class ActionsClient:
         created: Union[Unset, datetime] = UNSET,
         exclude_pull_requests: Union[Unset, bool] = False,
         check_suite_id: Union[Unset, int] = UNSET,
+        head_sha: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
 
@@ -5320,6 +5325,7 @@ class ActionsClient:
             "created": created,
             "exclude_pull_requests": exclude_pull_requests,
             "check_suite_id": check_suite_id,
+            "head_sha": head_sha,
         }
 
         return self._github.request(
@@ -5360,6 +5366,7 @@ class ActionsClient:
         created: Union[Unset, datetime] = UNSET,
         exclude_pull_requests: Union[Unset, bool] = False,
         check_suite_id: Union[Unset, int] = UNSET,
+        head_sha: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
 
@@ -5373,6 +5380,7 @@ class ActionsClient:
             "created": created,
             "exclude_pull_requests": exclude_pull_requests,
             "check_suite_id": check_suite_id,
+            "head_sha": head_sha,
         }
 
         return await self._github.arequest(

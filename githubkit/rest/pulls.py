@@ -52,6 +52,7 @@ from .models import (
     ReposOwnerRepoPullsPullNumberMergePutResponse409,
     ReposOwnerRepoPullsPullNumberUpdateBranchPutBody,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
+    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
     ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
     ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
     ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
@@ -473,8 +474,9 @@ class PullsClient:
             url,
             response_model=PullRequest,
             error_models={
-                "500": BasicError,
                 "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -491,8 +493,9 @@ class PullsClient:
             url,
             response_model=PullRequest,
             error_models={
-                "500": BasicError,
                 "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -967,6 +970,7 @@ class PullsClient:
             error_models={
                 "422": ValidationError,
                 "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -993,6 +997,7 @@ class PullsClient:
             error_models={
                 "422": ValidationError,
                 "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

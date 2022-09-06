@@ -1,14 +1,12 @@
 import inspect
-from typing import Any, Dict
+from typing import Any, Dict, Literal
 
 
 class Unset:
-    def __str__(self) -> str:
+    def __repr__(self) -> str:
         return "<UNSET>"
 
-    __repr__ = __str__
-
-    def __bool__(self) -> bool:
+    def __bool__(self) -> Literal[False]:
         return False
 
     def __copy__(self):

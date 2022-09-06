@@ -714,6 +714,7 @@ class ReposClient:
         data: Unset = UNSET,
         key_prefix: str,
         url_template: str,
+        is_alphanumeric: Union[Unset, bool] = "true",
     ) -> "Response[Autolink]":
         ...
 
@@ -759,6 +760,7 @@ class ReposClient:
         data: Unset = UNSET,
         key_prefix: str,
         url_template: str,
+        is_alphanumeric: Union[Unset, bool] = "true",
     ) -> "Response[Autolink]":
         ...
 
@@ -4577,6 +4579,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -4604,6 +4607,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -4748,8 +4752,9 @@ class ReposClient:
             params=exclude_unset(params),
             response_model=CommitComparison,
             error_models={
-                "500": BasicError,
                 "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -4774,8 +4779,9 @@ class ReposClient:
             params=exclude_unset(params),
             response_model=CommitComparison,
             error_models={
-                "500": BasicError,
                 "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

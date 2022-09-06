@@ -912,7 +912,9 @@ class IssuesClient:
         body: Union[Unset, Union[str, None]] = UNSET,
         assignee: Union[Unset, Union[str, None]] = UNSET,
         state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        state_reason: Union[Unset, Union[str, None]] = UNSET,
+        state_reason: Union[
+            Unset, Union[None, Literal["completed", "not_planned", "reopened"]]
+        ] = UNSET,
         milestone: Union[Unset, Union[str, int, None]] = UNSET,
         labels: Union[
             Unset,
@@ -982,7 +984,9 @@ class IssuesClient:
         body: Union[Unset, Union[str, None]] = UNSET,
         assignee: Union[Unset, Union[str, None]] = UNSET,
         state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        state_reason: Union[Unset, Union[str, None]] = UNSET,
+        state_reason: Union[
+            Unset, Union[None, Literal["completed", "not_planned", "reopened"]]
+        ] = UNSET,
         milestone: Union[Unset, Union[str, int, None]] = UNSET,
         labels: Union[
             Unset,

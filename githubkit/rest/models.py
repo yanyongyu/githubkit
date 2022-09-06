@@ -744,6 +744,10 @@ class Repository(GitHubRestModel):
     watchers: int = Field(default=...)
     master_branch: Union[Unset, str] = Field(default=UNSET)
     starred_at: Union[Unset, str] = Field(default=UNSET)
+    anonymous_access_enabled: Union[Unset, bool] = Field(
+        description="Whether anonymous git access is enabled for this repository",
+        default=UNSET,
+    )
 
 
 class RepositoryPropPermissions(GitHubRestModel):
@@ -1487,6 +1491,10 @@ class CodeScanningAlertRule(GitHubRestModel):
         default=UNSET,
         alias="help",
     )
+    help_uri: Union[Unset, Union[str, None]] = Field(
+        description="A link to the documentation for the rule used to detect the alert.",
+        default=UNSET,
+    )
 
 
 class CodeScanningAnalysisTool(GitHubRestModel):
@@ -2065,9 +2073,9 @@ class Issue(GitHubRestModel):
     state: str = Field(
         description="State of the issue; either 'open' or 'closed'", default=...
     )
-    state_reason: Union[Unset, Union[str, None]] = Field(
-        description="The reason for the current state", default=UNSET
-    )
+    state_reason: Union[
+        Unset, Union[None, Literal["completed", "reopened", "not_planned"]]
+    ] = Field(description="The reason for the current state", default=UNSET)
     title: str = Field(description="Title of the issue", default=...)
     body: Union[Unset, Union[str, None]] = Field(
         description="Contents of the issue", default=UNSET
@@ -5096,9 +5104,9 @@ class Autolink(GitHubRestModel):
         description="A template for the target URL that is generated if a key was found.",
         default=...,
     )
-    is_alphanumeric: Union[Unset, bool] = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference is a legacy autolink that only matches numeric characters.",
-        default=UNSET,
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters.",
+        default=...,
     )
 
 
@@ -12845,12 +12853,16 @@ class ReposOwnerRepoAutolinksPostBody(GitHubRestModel):
     """ReposOwnerRepoAutolinksPostBody"""
 
     key_prefix: str = Field(
-        description="The prefix appended by alphanumeric characters will generate a link any time it is found in an issue, pull request, or commit.",
+        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit.",
         default=...,
     )
     url_template: str = Field(
-        description="The URL must contain `<num>` for the reference number. `<num>` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`.",
+        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`.",
         default=...,
+    )
+    is_alphanumeric: Union[Unset, bool] = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
+        default="true",
     )
 
 
@@ -14773,9 +14785,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubRestModel):
     state: Union[Unset, Literal["open", "closed"]] = Field(
         description="State of the issue. Either `open` or `closed`.", default=UNSET
     )
-    state_reason: Union[Unset, Union[str, None]] = Field(
-        description="The reason for the current state", default=UNSET
-    )
+    state_reason: Union[
+        Unset, Union[None, Literal["completed", "not_planned", "reopened"]]
+    ] = Field(description="The reason for the current state", default=UNSET)
     milestone: Union[Unset, Union[str, int, None]] = Field(
         description="The `number` of the milestone to associate this issue with or `null` to remove current. _NOTE: Only users with push access can set the milestone for issues. The milestone is silently dropped otherwise._",
         default=UNSET,

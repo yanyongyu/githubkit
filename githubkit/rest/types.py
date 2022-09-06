@@ -478,6 +478,7 @@ class RepositoryType(TypedDict):
     watchers: int
     master_branch: NotRequired[str]
     starred_at: NotRequired[str]
+    anonymous_access_enabled: NotRequired[bool]
 
 
 class RepositoryPropPermissionsType(TypedDict):
@@ -1038,6 +1039,7 @@ class CodeScanningAlertRuleType(TypedDict):
     full_description: NotRequired[str]
     tags: NotRequired[Union[List[str], None]]
     help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 class CodeScanningAnalysisToolType(TypedDict):
@@ -1324,7 +1326,9 @@ class IssueType(TypedDict):
     html_url: str
     number: int
     state: str
-    state_reason: NotRequired[Union[str, None]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned"]]
+    ]
     title: str
     body: NotRequired[Union[str, None]]
     user: Union[None, SimpleUserType]
@@ -3627,7 +3631,7 @@ class AutolinkType(TypedDict):
     id: int
     key_prefix: str
     url_template: str
-    is_alphanumeric: NotRequired[bool]
+    is_alphanumeric: bool
 
 
 class ProtectedBranchRequiredStatusCheckType(TypedDict):
@@ -9513,6 +9517,7 @@ class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
 
     key_prefix: str
     url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyType(TypedDict):
@@ -10679,7 +10684,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
     body: NotRequired[Union[str, None]]
     assignee: NotRequired[Union[str, None]]
     state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "not_planned", "reopened"]]
+    ]
     milestone: NotRequired[Union[str, int, None]]
     labels: NotRequired[
         List[
