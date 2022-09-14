@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "GitHubKit"
-version = "0.6.1"
+version = "0.6.2"
 description = "GitHub SDK for Python"
 authors = ["yanyongyu <yyy@yyydl.top>"]
 license = "MIT"
@@ -20,7 +20,7 @@ anyio = { version = "^3.6.1", optional = true }
 PyJWT = { version = "^2.4.0", optional = true }
 cryptography = { version = "^37.0.4", optional = true }
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 tomli = "^2.0.1"
 isort = "^5.10.1"
 black = "^22.3.0"
