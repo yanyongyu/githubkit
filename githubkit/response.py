@@ -11,8 +11,8 @@ class Response(Generic[RT]):
         self._response = response
         self._data_model = data_model
 
-    def __str__(self) -> str:
-        return f"<Response {self.status_code}, data_model={self._data_model}>"
+    def __repr__(self) -> str:
+        return f"Response({self.status_code}, data_model={self._data_model})"
 
     @property
     def raw_request(self) -> httpx.Request:

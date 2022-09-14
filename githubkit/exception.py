@@ -29,6 +29,12 @@ class RequestTimeout(GitHubException):
     def __init__(self, request: httpx.Request):
         self.request = request
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__name__}(method={self.request.method}, "
+            f"url={self.request.url})"
+        )
+
 
 class RequestFailed(GitHubException):
     """Simple API request failed with error status code"""
@@ -39,8 +45,8 @@ class RequestFailed(GitHubException):
 
     def __repr__(self) -> str:
         return (
-            f"<RequestFailed: {self.response.raw_request.method} "
-            f"{self.response.raw_request.url}, status_code: {self.response.status_code}>"
+            f"{self.__class__.__name__}(method={self.request.method}, "
+            f"url={self.request.url}, status_code={self.response.status_code})"
         )
 
 
@@ -51,7 +57,7 @@ class GraphQLFailed(GitHubException):
         self.response = response
 
     def __repr__(self) -> str:
-        return f"<GraphQLFailed: {self.response.errors!r}>"
+        return f"{self.__class__.__name__}({self.response.errors!r})"
 
 
 class WebhookTypeNotFound(GitHubException):
@@ -61,4 +67,4 @@ class WebhookTypeNotFound(GitHubException):
         self.name = name
 
     def __repr__(self) -> str:
-        return f"<WebhookTypeNotFound: {self.name}>"
+        return f"{self.__class__.__name__}(name={self.name})"

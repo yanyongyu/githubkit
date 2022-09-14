@@ -441,6 +441,11 @@ class TeamsClient:
             url,
             json=exclude_unset(json),
             response_model=TeamFull,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "403": BasicError,
+            },
         )
 
     @overload
@@ -490,6 +495,11 @@ class TeamsClient:
             url,
             json=exclude_unset(json),
             response_model=TeamFull,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "403": BasicError,
+            },
         )
 
     def list_discussions_in_org(

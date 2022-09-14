@@ -3800,6 +3800,9 @@ class ReposClient:
         owner: str,
         repo: str,
         affiliation: Union[Unset, Literal["outside", "direct", "all"]] = "all",
+        permission: Union[
+            Unset, Literal["pull", "triage", "push", "maintain", "admin"]
+        ] = UNSET,
         per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
     ) -> "Response[List[Collaborator]]":
@@ -3807,6 +3810,7 @@ class ReposClient:
 
         params = {
             "affiliation": affiliation,
+            "permission": permission,
             "per_page": per_page,
             "page": page,
         }
@@ -3826,6 +3830,9 @@ class ReposClient:
         owner: str,
         repo: str,
         affiliation: Union[Unset, Literal["outside", "direct", "all"]] = "all",
+        permission: Union[
+            Unset, Literal["pull", "triage", "push", "maintain", "admin"]
+        ] = UNSET,
         per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
     ) -> "Response[List[Collaborator]]":
@@ -3833,6 +3840,7 @@ class ReposClient:
 
         params = {
             "affiliation": affiliation,
+            "permission": permission,
             "per_page": per_page,
             "page": page,
         }

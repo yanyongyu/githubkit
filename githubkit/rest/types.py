@@ -2015,6 +2015,12 @@ class OrganizationCustomRepositoryRoleType(TypedDict):
 
     id: int
     name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
+    permissions: NotRequired[List[str]]
+    organization: NotRequired[SimpleUserType]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
 class OrganizationFullType(TypedDict):
@@ -2366,6 +2372,16 @@ class OrganizationInvitationType(TypedDict):
     team_count: int
     node_id: str
     invitation_teams_url: str
+
+
+class OrganizationFineGrainedPermissionType(TypedDict):
+    """Organization Fine-Grained Permission
+
+    Fine-grained permissions available for the organization
+    """
+
+    name: str
+    description: str
 
 
 class OrgHookType(TypedDict):
@@ -8822,6 +8838,24 @@ class OrgsOrgCodespacesGetResponse200Type(TypedDict):
     codespaces: List[CodespaceType]
 
 
+class OrgsOrgCustomRolesPostBodyType(TypedDict):
+    """OrgsOrgCustomRolesPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: List[str]
+
+
+class OrgsOrgCustomRolesRoleIdPatchBodyType(TypedDict):
+    """OrgsOrgCustomRolesRoleIdPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
+    permissions: NotRequired[List[str]]
+
+
 class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
     """OrgsOrgDependabotSecretsGetResponse200"""
 
@@ -12057,6 +12091,7 @@ __all__ = [
     "ExternalGroupsType",
     "ExternalGroupsPropGroupsItemsType",
     "OrganizationInvitationType",
+    "OrganizationFineGrainedPermissionType",
     "OrgHookType",
     "OrgHookPropConfigType",
     "InteractionLimitResponseType",
@@ -12532,6 +12567,8 @@ __all__ = [
     "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
     "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",
     "OrgsOrgCodespacesGetResponse200Type",
+    "OrgsOrgCustomRolesPostBodyType",
+    "OrgsOrgCustomRolesRoleIdPatchBodyType",
     "OrgsOrgDependabotSecretsGetResponse200Type",
     "OrgsOrgDependabotSecretsSecretNamePutBodyType",
     "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",

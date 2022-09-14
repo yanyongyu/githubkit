@@ -705,7 +705,7 @@ class Repository(GitHubRestModel):
         default=False,
     )
     use_squash_pr_title_as_default: Union[Unset, bool] = Field(
-        description="Whether a squash merge commit can use the pull request title as default.",
+        description="Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.",
         default=False,
     )
     squash_merge_commit_title: Union[
@@ -2875,6 +2875,23 @@ class OrganizationCustomRepositoryRole(GitHubRestModel):
         description="The unique identifier of the custom role.", default=...
     )
     name: str = Field(description="The name of the custom role.", default=...)
+    description: Union[Unset, Union[str, None]] = Field(
+        description="A short description about who this role is for or what permissions it grants.",
+        default=UNSET,
+    )
+    base_role: Union[Unset, Literal["read", "triage", "write", "maintain"]] = Field(
+        description="The system role from which this role inherits permissions.",
+        default=UNSET,
+    )
+    permissions: Union[Unset, List[str]] = Field(
+        description="A list of additional permissions included in this role.",
+        default=UNSET,
+    )
+    organization: Union[Unset, SimpleUser] = Field(
+        title="Simple User", description="Simple User", default=UNSET
+    )
+    created_at: Union[Unset, datetime] = Field(default=UNSET)
+    updated_at: Union[Unset, datetime] = Field(default=UNSET)
 
 
 class OrganizationFull(GitHubRestModel):
@@ -3424,6 +3441,16 @@ class OrganizationInvitation(GitHubRestModel):
     team_count: int = Field(default=...)
     node_id: str = Field(default=...)
     invitation_teams_url: str = Field(default=...)
+
+
+class OrganizationFineGrainedPermission(GitHubRestModel):
+    """Organization Fine-Grained Permission
+
+    Fine-grained permissions available for the organization
+    """
+
+    name: str = Field(default=...)
+    description: str = Field(default=...)
 
 
 class OrgHook(GitHubRestModel):
@@ -11762,6 +11789,44 @@ class OrgsOrgCodespacesGetResponse200(GitHubRestModel):
     codespaces: List[Codespace] = Field(default=...)
 
 
+class OrgsOrgCustomRolesPostBody(GitHubRestModel):
+    """OrgsOrgCustomRolesPostBody"""
+
+    name: str = Field(description="The name of the custom role.", default=...)
+    description: Union[Unset, str] = Field(
+        description="A short description about the intended usage of this role or what permissions it grants.",
+        default=UNSET,
+    )
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions.",
+        default=...,
+    )
+    permissions: List[str] = Field(
+        description="A list of additional permissions included in this role.",
+        default=...,
+    )
+
+
+class OrgsOrgCustomRolesRoleIdPatchBody(GitHubRestModel):
+    """OrgsOrgCustomRolesRoleIdPatchBody"""
+
+    name: Union[Unset, str] = Field(
+        description="The name of the custom role.", default=UNSET
+    )
+    description: Union[Unset, str] = Field(
+        description="A short description about who this role is for or what permissions it grants.",
+        default=UNSET,
+    )
+    base_role: Union[Unset, Literal["read", "triage", "write", "maintain"]] = Field(
+        description="The system role from which this role inherits permissions.",
+        default=UNSET,
+    )
+    permissions: Union[Unset, List[str]] = Field(
+        description="A list of additional permissions included in this role. If specified, these permissions will replace any currently set on the role.",
+        default=UNSET,
+    )
+
+
 class OrgsOrgDependabotSecretsGetResponse200(GitHubRestModel):
     """OrgsOrgDependabotSecretsGetResponse200"""
 
@@ -12094,7 +12159,7 @@ class OrgsOrgReposPostBody(GitHubRestModel):
         default=False,
     )
     use_squash_pr_title_as_default: Union[Unset, bool] = Field(
-        description="Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message.",
+        description="Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message. **This property has been deprecated. Please use `squash_merge_commit_title` instead.",
         default=False,
     )
     squash_merge_commit_title: Union[
@@ -12550,7 +12615,7 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
         default=False,
     )
     use_squash_pr_title_as_default: Union[Unset, bool] = Field(
-        description="Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message.",
+        description="Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message. **This property has been deprecated. Please use `squash_merge_commit_title` instead.",
         default=False,
     )
     squash_merge_commit_title: Union[
@@ -14067,9 +14132,7 @@ class ReposOwnerRepoContentsPathDeleteBody(GitHubRestModel):
     """ReposOwnerRepoContentsPathDeleteBody"""
 
     message: str = Field(description="The commit message.", default=...)
-    sha: str = Field(
-        description="The blob SHA of the file being replaced.", default=...
-    )
+    sha: str = Field(description="The blob SHA of the file being deleted.", default=...)
     branch: Union[Unset, str] = Field(
         description="The branch name. Default: the repository’s default branch (usually `master`)",
         default=UNSET,
@@ -16753,7 +16816,7 @@ class UserSshSigningKeysPostBody(GitHubRestModel):
     )
     key: str = Field(
         description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
-        regex="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        regex="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
         default=...,
     )
 
@@ -16903,6 +16966,7 @@ ExternalGroupPropMembersItems.update_forward_refs()
 ExternalGroups.update_forward_refs()
 ExternalGroupsPropGroupsItems.update_forward_refs()
 OrganizationInvitation.update_forward_refs()
+OrganizationFineGrainedPermission.update_forward_refs()
 OrgHook.update_forward_refs()
 OrgHookPropConfig.update_forward_refs()
 InteractionLimitResponse.update_forward_refs()
@@ -17378,6 +17442,8 @@ OrgsOrgActionsSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgActionsSecretsSecretNameRepositoriesPutBody.update_forward_refs()
 OrgsOrgCodespacesGetResponse200.update_forward_refs()
+OrgsOrgCustomRolesPostBody.update_forward_refs()
+OrgsOrgCustomRolesRoleIdPatchBody.update_forward_refs()
 OrgsOrgDependabotSecretsGetResponse200.update_forward_refs()
 OrgsOrgDependabotSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
@@ -17852,6 +17918,7 @@ __all__ = [
     "ExternalGroups",
     "ExternalGroupsPropGroupsItems",
     "OrganizationInvitation",
+    "OrganizationFineGrainedPermission",
     "OrgHook",
     "OrgHookPropConfig",
     "InteractionLimitResponse",
@@ -18327,6 +18394,8 @@ __all__ = [
     "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",
     "OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",
     "OrgsOrgCodespacesGetResponse200",
+    "OrgsOrgCustomRolesPostBody",
+    "OrgsOrgCustomRolesRoleIdPatchBody",
     "OrgsOrgDependabotSecretsGetResponse200",
     "OrgsOrgDependabotSecretsSecretNamePutBody",
     "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",
