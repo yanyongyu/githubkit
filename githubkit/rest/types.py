@@ -3247,7 +3247,18 @@ class JobType(TypedDict):
     url: str
     html_url: Union[str, None]
     status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
     started_at: datetime
     completed_at: Union[datetime, None]
     name: str
@@ -3416,6 +3427,7 @@ class WorkflowRunType(TypedDict):
     repository: MinimalRepositoryType
     head_repository: MinimalRepositoryType
     head_repository_id: NotRequired[int]
+    display_title: str
 
 
 class EnvironmentApprovalsType(TypedDict):
@@ -4392,6 +4404,23 @@ class CodeScanningAnalysisDeletionType(TypedDict):
 
     next_analysis_url: Union[str, None]
     confirm_delete_url: Union[str, None]
+
+
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
+
+    A CodeQL database.
+    """
+
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: datetime
+    updated_at: datetime
+    url: str
 
 
 class CodeScanningSarifsReceiptType(TypedDict):
@@ -12234,6 +12263,7 @@ __all__ = [
     "CodeScanningAlertType",
     "CodeScanningAnalysisType",
     "CodeScanningAnalysisDeletionType",
+    "CodeScanningCodeqlDatabaseType",
     "CodeScanningSarifsReceiptType",
     "CodeScanningSarifsStatusType",
     "CodeownersErrorsType",

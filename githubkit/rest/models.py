@@ -1815,7 +1815,7 @@ class OrganizationSecretScanningAlert(GitHubRestModel):
         default=UNSET,
     )
     state: Union[Unset, Literal["open", "resolved"]] = Field(
-        description="Sets the state of the secret scanning alert. Can be either `open` or `resolved`. You must provide `resolution` when you set the state to `resolved`.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
         default=UNSET,
     )
     resolution: Union[
@@ -4571,9 +4571,18 @@ class Job(GitHubRestModel):
         description="The phase of the lifecycle that the job is currently in.",
         default=...,
     )
-    conclusion: Union[str, None] = Field(
-        description="The outcome of the job.", default=...
-    )
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field(description="The outcome of the job.", default=...)
     started_at: datetime = Field(
         description="The time that the job started, in ISO 8601 format.", default=...
     )
@@ -4827,6 +4836,10 @@ class WorkflowRun(GitHubRestModel):
         title="Minimal Repository", description="Minimal Repository", default=...
     )
     head_repository_id: Union[Unset, int] = Field(default=UNSET)
+    display_title: str = Field(
+        description="The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow.",
+        default=...,
+    )
 
 
 class EnvironmentApprovals(GitHubRestModel):
@@ -6106,6 +6119,40 @@ class CodeScanningAnalysisDeletion(GitHubRestModel):
     )
     confirm_delete_url: Union[str, None] = Field(
         description="Next deletable analysis in chain, with last analysis deletion confirmation",
+        default=...,
+    )
+
+
+class CodeScanningCodeqlDatabase(GitHubRestModel):
+    """CodeQL Database
+
+    A CodeQL database.
+    """
+
+    id: int = Field(description="The ID of the CodeQL database.", default=...)
+    name: str = Field(description="The name of the CodeQL database.", default=...)
+    language: str = Field(
+        description="The language of the CodeQL database.", default=...
+    )
+    uploader: SimpleUser = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+    content_type: str = Field(
+        description="The MIME type of the CodeQL database file.", default=...
+    )
+    size: int = Field(
+        description="The size of the CodeQL database file in bytes.", default=...
+    )
+    created_at: datetime = Field(
+        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    url: str = Field(
+        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property.",
         default=...,
     )
 
@@ -9671,7 +9718,7 @@ class SecretScanningAlert(GitHubRestModel):
         default=UNSET,
     )
     state: Union[Unset, Literal["open", "resolved"]] = Field(
-        description="Sets the state of the secret scanning alert. Can be either `open` or `resolved`. You must provide `resolution` when you set the state to `resolved`.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
         default=UNSET,
     )
     resolution: Union[
@@ -11430,8 +11477,7 @@ class MarkdownPostBody(GitHubRestModel):
 
     text: str = Field(description="The Markdown text to render in HTML.", default=...)
     mode: Union[Unset, Literal["markdown", "gfm"]] = Field(
-        description="The rendering mode. Can be either `markdown` or `gfm`.",
-        default="markdown",
+        description="The rendering mode.", default="markdown"
     )
     context: Union[Unset, str] = Field(
         description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
@@ -15770,7 +15816,7 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubRestModel):
     """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
     state: Literal["open", "resolved"] = Field(
-        description="Sets the state of the secret scanning alert. Can be either `open` or `resolved`. You must provide `resolution` when you set the state to `resolved`.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
         default=...,
     )
     resolution: Union[
@@ -17109,6 +17155,7 @@ CodeScanningAlertItems.update_forward_refs()
 CodeScanningAlert.update_forward_refs()
 CodeScanningAnalysis.update_forward_refs()
 CodeScanningAnalysisDeletion.update_forward_refs()
+CodeScanningCodeqlDatabase.update_forward_refs()
 CodeScanningSarifsReceipt.update_forward_refs()
 CodeScanningSarifsStatus.update_forward_refs()
 CodeownersErrors.update_forward_refs()
@@ -18061,6 +18108,7 @@ __all__ = [
     "CodeScanningAlert",
     "CodeScanningAnalysis",
     "CodeScanningAnalysisDeletion",
+    "CodeScanningCodeqlDatabase",
     "CodeScanningSarifsReceipt",
     "CodeScanningSarifsStatus",
     "CodeownersErrors",

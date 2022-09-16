@@ -209,7 +209,7 @@ class AppAuth(httpx.Auth):
             token = response.parsed_data.token
             expire = datetime.strptime(
                 response.parsed_data.expires_at, "%Y-%m-%dT%H:%M:%SZ"
-            ) - datetime.now(timezone.utc)
+            ).replace(tzinfo=timezone.utc) - datetime.now(timezone.utc)
             await self.cache.aset(key, token, expire)
         request.headers["Authorization"] = f"token {token}"
         yield request
