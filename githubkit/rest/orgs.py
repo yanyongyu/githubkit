@@ -32,7 +32,6 @@ from .models import (
     SimpleUser,
     TeamSimple,
     HookDelivery,
-    AuditLogEvent,
     OrgMembership,
     WebhookConfig,
     ValidationError,
@@ -43,7 +42,6 @@ from .models import (
     OrgsOrgHooksPostBody,
     ValidationErrorSimple,
     OrganizationInvitation,
-    CredentialAuthorization,
     OrgsOrgCustomRolesPostBody,
     OrgsOrgInvitationsPostBody,
     OrgsOrgHooksHookIdPatchBody,
@@ -308,62 +306,6 @@ class OrgsClient:
             },
         )
 
-    def get_audit_log(
-        self,
-        org: str,
-        phrase: Union[Unset, str] = UNSET,
-        include: Union[Unset, Literal["web", "git", "all"]] = UNSET,
-        after: Union[Unset, str] = UNSET,
-        before: Union[Unset, str] = UNSET,
-        order: Union[Unset, Literal["desc", "asc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[List[AuditLogEvent]]":
-        url = f"/orgs/{org}/audit-log"
-
-        params = {
-            "phrase": phrase,
-            "include": include,
-            "after": after,
-            "before": before,
-            "order": order,
-            "per_page": per_page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[AuditLogEvent],
-        )
-
-    async def async_get_audit_log(
-        self,
-        org: str,
-        phrase: Union[Unset, str] = UNSET,
-        include: Union[Unset, Literal["web", "git", "all"]] = UNSET,
-        after: Union[Unset, str] = UNSET,
-        before: Union[Unset, str] = UNSET,
-        order: Union[Unset, Literal["desc", "asc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[List[AuditLogEvent]]":
-        url = f"/orgs/{org}/audit-log"
-
-        params = {
-            "phrase": phrase,
-            "include": include,
-            "after": after,
-            "before": before,
-            "order": order,
-            "per_page": per_page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[AuditLogEvent],
-        )
-
     def list_blocked_users(
         self,
         org: str,
@@ -470,80 +412,6 @@ class OrgsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def list_saml_sso_authorizations(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = UNSET,
-        login: Union[Unset, str] = UNSET,
-    ) -> "Response[List[CredentialAuthorization]]":
-        url = f"/orgs/{org}/credential-authorizations"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "login": login,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[CredentialAuthorization],
-        )
-
-    async def async_list_saml_sso_authorizations(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = UNSET,
-        login: Union[Unset, str] = UNSET,
-    ) -> "Response[List[CredentialAuthorization]]":
-        url = f"/orgs/{org}/credential-authorizations"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "login": login,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[CredentialAuthorization],
-        )
-
-    def remove_saml_sso_authorization(
-        self,
-        org: str,
-        credential_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/credential-authorizations/{credential_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_remove_saml_sso_authorization(
-        self,
-        org: str,
-        credential_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/credential-authorizations/{credential_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            error_models={
-                "404": BasicError,
-            },
         )
 
     @overload

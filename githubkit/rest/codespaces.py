@@ -5,7 +5,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, overload
+from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -20,13 +20,17 @@ from .types import (
     UserCodespacesPostBodyOneof1PropPullRequestType,
     ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
     ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
+    OrganizationsOrgCodespacesSecretsSecretNamePutBodyType,
     UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
+    OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
 )
 from .models import (
     Codespace,
     BasicError,
+    EmptyObject,
     ValidationError,
     CodespacesSecret,
+    CodespacesOrgSecret,
     CodespacesPublicKey,
     RepoCodespacesSecret,
     CodespaceExportDetails,
@@ -44,14 +48,18 @@ from .models import (
     ReposOwnerRepoCodespacesSecretsGetResponse200,
     UserCodespacesSecretsSecretNamePutResponse201,
     ReposOwnerRepoCodespacesMachinesGetResponse200,
+    OrganizationsOrgCodespacesSecretsGetResponse200,
     ReposOwnerRepoPullsPullNumberCodespacesPostBody,
     ReposOwnerRepoCodespacesSecretsSecretNamePutBody,
     UserCodespacesCodespaceNameMachinesGetResponse200,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+    OrganizationsOrgCodespacesSecretsSecretNamePutBody,
     UserCodespacesSecretsSecretNameRepositoriesPutBody,
     ReposOwnerRepoCodespacesDevcontainersGetResponse200,
     ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201,
     UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
+    OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody,
+    OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
 )
 
 if TYPE_CHECKING:
@@ -62,6 +70,452 @@ if TYPE_CHECKING:
 class CodespacesClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
+
+    def list_org_secrets(
+        self,
+        org: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[OrganizationsOrgCodespacesSecretsGetResponse200]":
+        url = f"/organizations/{org}/codespaces/secrets"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrganizationsOrgCodespacesSecretsGetResponse200,
+        )
+
+    async def async_list_org_secrets(
+        self,
+        org: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[OrganizationsOrgCodespacesSecretsGetResponse200]":
+        url = f"/organizations/{org}/codespaces/secrets"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrganizationsOrgCodespacesSecretsGetResponse200,
+        )
+
+    def get_org_public_key(
+        self,
+        org: str,
+    ) -> "Response[CodespacesPublicKey]":
+        url = f"/organizations/{org}/codespaces/secrets/public-key"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CodespacesPublicKey,
+        )
+
+    async def async_get_org_public_key(
+        self,
+        org: str,
+    ) -> "Response[CodespacesPublicKey]":
+        url = f"/organizations/{org}/codespaces/secrets/public-key"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CodespacesPublicKey,
+        )
+
+    def get_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response[CodespacesOrgSecret]":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CodespacesOrgSecret,
+        )
+
+    async def async_get_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response[CodespacesOrgSecret]":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CodespacesOrgSecret,
+        )
+
+    @overload
+    def create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: OrganizationsOrgCodespacesSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
+        encrypted_value: Union[Unset, str] = UNSET,
+        key_id: Union[Unset, str] = UNSET,
+        visibility: Literal["all", "private", "selected"],
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrganizationsOrgCodespacesSecretsSecretNamePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrganizationsOrgCodespacesSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: OrganizationsOrgCodespacesSecretsSecretNamePutBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
+        encrypted_value: Union[Unset, str] = UNSET,
+        key_id: Union[Unset, str] = UNSET,
+        visibility: Literal["all", "private", "selected"],
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_or_update_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrganizationsOrgCodespacesSecretsSecretNamePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrganizationsOrgCodespacesSecretsSecretNamePutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def delete_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def list_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
+        selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Unset = UNSET,
+        selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_selected_repos_for_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        *,
+        data: Union[
+            Unset, OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def add_selected_repo_to_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
+
+        return self._github.request(
+            "PUT",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_add_selected_repo_to_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def remove_selected_repo_from_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_remove_selected_repo_from_org_secret(
+        self,
+        org: str,
+        secret_name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/organizations/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
 
     def list_in_organization(
         self,

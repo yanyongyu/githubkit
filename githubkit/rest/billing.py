@@ -28,30 +28,6 @@ class BillingClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
-    def get_github_actions_billing_ghe(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsBillingUsage]":
-        url = f"/enterprises/{enterprise}/settings/billing/actions"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsBillingUsage,
-        )
-
-    async def async_get_github_actions_billing_ghe(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsBillingUsage]":
-        url = f"/enterprises/{enterprise}/settings/billing/actions"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsBillingUsage,
-        )
-
     def get_github_advanced_security_billing_ghe(
         self,
         enterprise: str,
@@ -96,54 +72,6 @@ class BillingClient:
             error_models={
                 "403": BasicError,
             },
-        )
-
-    def get_github_packages_billing_ghe(
-        self,
-        enterprise: str,
-    ) -> "Response[PackagesBillingUsage]":
-        url = f"/enterprises/{enterprise}/settings/billing/packages"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=PackagesBillingUsage,
-        )
-
-    async def async_get_github_packages_billing_ghe(
-        self,
-        enterprise: str,
-    ) -> "Response[PackagesBillingUsage]":
-        url = f"/enterprises/{enterprise}/settings/billing/packages"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=PackagesBillingUsage,
-        )
-
-    def get_shared_storage_billing_ghe(
-        self,
-        enterprise: str,
-    ) -> "Response[CombinedBillingUsage]":
-        url = f"/enterprises/{enterprise}/settings/billing/shared-storage"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=CombinedBillingUsage,
-        )
-
-    async def async_get_shared_storage_billing_ghe(
-        self,
-        enterprise: str,
-    ) -> "Response[CombinedBillingUsage]":
-        url = f"/enterprises/{enterprise}/settings/billing/shared-storage"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=CombinedBillingUsage,
         )
 
     def get_github_actions_billing_org(

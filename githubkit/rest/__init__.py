@@ -11,9 +11,7 @@ from .models import *
 from .git import GitClient
 from .apps import AppsClient
 from .meta import MetaClient
-from .oidc import OidcClient
 from .orgs import OrgsClient
-from .scim import ScimClient
 from .gists import GistsClient
 from .pulls import PullsClient
 from .repos import ReposClient
@@ -121,20 +119,12 @@ class RestNamespace:
         return OrgsClient(self._github)
 
     @cached_property
-    def oidc(self) -> OidcClient:
-        return OidcClient(self._github)
-
-    @cached_property
     def codespaces(self) -> CodespacesClient:
         return CodespacesClient(self._github)
 
     @cached_property
     def dependabot(self) -> DependabotClient:
         return DependabotClient(self._github)
-
-    @cached_property
-    def teams(self) -> TeamsClient:
-        return TeamsClient(self._github)
 
     @cached_property
     def interactions(self) -> InteractionsClient:
@@ -155,6 +145,10 @@ class RestNamespace:
     @cached_property
     def repos(self) -> ReposClient:
         return ReposClient(self._github)
+
+    @cached_property
+    def teams(self) -> TeamsClient:
+        return TeamsClient(self._github)
 
     @cached_property
     def reactions(self) -> ReactionsClient:
@@ -179,10 +173,6 @@ class RestNamespace:
     @cached_property
     def pulls(self) -> PullsClient:
         return PullsClient(self._github)
-
-    @cached_property
-    def scim(self) -> ScimClient:
-        return ScimClient(self._github)
 
     @cached_property
     def search(self) -> SearchClient:

@@ -14,14 +14,12 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
     SelectedActionsType,
-    OptOutOidcCustomSubType,
     OrgsOrgActionsPermissionsPutBodyType,
     ActionsWorkflowAccessToRepositoryType,
     OrgsOrgActionsRunnerGroupsPostBodyType,
     ActionsSetDefaultWorkflowPermissionsType,
     OrgsOrgActionsSecretsSecretNamePutBodyType,
     ReposOwnerRepoActionsPermissionsPutBodyType,
-    ActionsOidcCustomIssuerPolicyForEnterpriseType,
     OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ReposOwnerRepoActionsJobsJobIdRerunPostBodyType,
@@ -59,7 +57,6 @@ from .models import (
     PendingDeployment,
     RunnerApplication,
     AuthenticationToken,
-    OptOutOidcCustomSub,
     EnvironmentApprovals,
     ValidationErrorSimple,
     OrganizationActionsSecret,
@@ -78,7 +75,6 @@ from .models import (
     ReposOwnerRepoActionsPermissionsPutBody,
     ReposOwnerRepoActionsRunsGetResponse200,
     OrgsOrgActionsRunnerGroupsGetResponse200,
-    ActionsOidcCustomIssuerPolicyForEnterprise,
     OrgsOrgActionsRunnersRunnerIdLabelsPutBody,
     ReposOwnerRepoActionsRunnersGetResponse200,
     ReposOwnerRepoActionsSecretsGetResponse200,
@@ -144,82 +140,6 @@ class ActionsClient:
             "GET",
             url,
             response_model=ActionsCacheUsageOrgEnterprise,
-        )
-
-    @overload
-    def set_actions_oidc_custom_issuer_policy_for_enterprise(
-        self, enterprise: str, *, data: ActionsOidcCustomIssuerPolicyForEnterpriseType
-    ) -> "Response":
-        ...
-
-    @overload
-    def set_actions_oidc_custom_issuer_policy_for_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Unset = UNSET,
-        include_enterprise_slug: Union[Unset, bool] = UNSET,
-    ) -> "Response":
-        ...
-
-    def set_actions_oidc_custom_issuer_policy_for_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Union[Unset, ActionsOidcCustomIssuerPolicyForEnterpriseType] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/oidc/customization/issuer"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsOidcCustomIssuerPolicyForEnterprise, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    @overload
-    async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
-        self, enterprise: str, *, data: ActionsOidcCustomIssuerPolicyForEnterpriseType
-    ) -> "Response":
-        ...
-
-    @overload
-    async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Unset = UNSET,
-        include_enterprise_slug: Union[Unset, bool] = UNSET,
-    ) -> "Response":
-        ...
-
-    async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Union[Unset, ActionsOidcCustomIssuerPolicyForEnterpriseType] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/oidc/customization/issuer"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsOidcCustomIssuerPolicyForEnterprise, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
         )
 
     def get_github_actions_default_workflow_permissions_enterprise(
@@ -1282,32 +1202,6 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-        )
-
-    def add_repo_access_to_self_hosted_runner_group_in_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        repository_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
-
-        return self._github.request(
-            "PUT",
-            url,
-        )
-
-    async def async_add_repo_access_to_self_hosted_runner_group_in_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        repository_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
-
-        return await self._github.arequest(
-            "PUT",
-            url,
         )
 
     def remove_repo_access_to_self_hosted_runner_group_in_org(
@@ -2831,132 +2725,6 @@ class ActionsClient:
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
-            },
-        )
-
-    def get_custom_oidc_sub_claim_for_repo(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[OptOutOidcCustomSub]":
-        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=OptOutOidcCustomSub,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_custom_oidc_sub_claim_for_repo(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[OptOutOidcCustomSub]":
-        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=OptOutOidcCustomSub,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    def set_custom_oidc_sub_claim_for_repo(
-        self, owner: str, repo: str, *, data: OptOutOidcCustomSubType
-    ) -> "Response[EmptyObject]":
-        ...
-
-    @overload
-    def set_custom_oidc_sub_claim_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        data: Unset = UNSET,
-        use_default: bool,
-    ) -> "Response[EmptyObject]":
-        ...
-
-    def set_custom_oidc_sub_claim_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        data: Union[Unset, OptOutOidcCustomSubType] = UNSET,
-        **kwargs,
-    ) -> "Response[EmptyObject]":
-        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OptOutOidcCustomSub, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            response_model=EmptyObject,
-            error_models={
-                "404": BasicError,
-                "400": BasicError,
-                "422": ValidationErrorSimple,
-            },
-        )
-
-    @overload
-    async def async_set_custom_oidc_sub_claim_for_repo(
-        self, owner: str, repo: str, *, data: OptOutOidcCustomSubType
-    ) -> "Response[EmptyObject]":
-        ...
-
-    @overload
-    async def async_set_custom_oidc_sub_claim_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        data: Unset = UNSET,
-        use_default: bool,
-    ) -> "Response[EmptyObject]":
-        ...
-
-    async def async_set_custom_oidc_sub_claim_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        data: Union[Unset, OptOutOidcCustomSubType] = UNSET,
-        **kwargs,
-    ) -> "Response[EmptyObject]":
-        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OptOutOidcCustomSub, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            response_model=EmptyObject,
-            error_models={
-                "404": BasicError,
-                "400": BasicError,
-                "422": ValidationErrorSimple,
             },
         )
 

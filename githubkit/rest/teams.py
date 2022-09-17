@@ -21,17 +21,12 @@ from .types import (
     TeamsTeamIdMembershipsUsernamePutBodyType,
     OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
     OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
-    TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
-    OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
     OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
     OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType,
     TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
-    OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
     TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
     OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType,
-    TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
     OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-    OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType,
     TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
 )
@@ -41,9 +36,6 @@ from .models import (
     BasicError,
     SimpleUser,
     TeamProject,
-    GroupMapping,
-    ExternalGroup,
-    ExternalGroups,
     TeamDiscussion,
     TeamMembership,
     TeamRepository,
@@ -60,13 +52,10 @@ from .models import (
     TeamsTeamIdMembershipsUsernamePutBody,
     OrgsOrgTeamsTeamSlugDiscussionsPostBody,
     OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody,
-    TeamsTeamIdTeamSyncGroupMappingsPatchBody,
     TeamsTeamIdProjectsProjectIdPutResponse403,
-    OrgsOrgTeamsTeamSlugExternalGroupsPatchBody,
     OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody,
     OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
     TeamsTeamIdDiscussionsDiscussionNumberPatchBody,
-    OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody,
     OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
     TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody,
     OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
@@ -83,116 +72,6 @@ if TYPE_CHECKING:
 class TeamsClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
-
-    def external_idp_group_info_for_org(
-        self,
-        org: str,
-        group_id: int,
-    ) -> "Response[ExternalGroup]":
-        url = f"/orgs/{org}/external-group/{group_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ExternalGroup,
-        )
-
-    async def async_external_idp_group_info_for_org(
-        self,
-        org: str,
-        group_id: int,
-    ) -> "Response[ExternalGroup]":
-        url = f"/orgs/{org}/external-group/{group_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ExternalGroup,
-        )
-
-    def list_external_idp_groups_for_org(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = UNSET,
-        display_name: Union[Unset, str] = UNSET,
-    ) -> "Response[ExternalGroups]":
-        url = f"/orgs/{org}/external-groups"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "display_name": display_name,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=ExternalGroups,
-        )
-
-    async def async_list_external_idp_groups_for_org(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = UNSET,
-        display_name: Union[Unset, str] = UNSET,
-    ) -> "Response[ExternalGroups]":
-        url = f"/orgs/{org}/external-groups"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "display_name": display_name,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=ExternalGroups,
-        )
-
-    def list_idp_groups_for_org(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, str] = UNSET,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/team-sync/groups"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=GroupMapping,
-        )
-
-    async def async_list_idp_groups_for_org(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, str] = UNSET,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/team-sync/groups"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=GroupMapping,
-        )
 
     def list(
         self,
@@ -1134,146 +1013,6 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
-    def list_linked_external_idp_groups_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[ExternalGroups]":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ExternalGroups,
-        )
-
-    async def async_list_linked_external_idp_groups_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[ExternalGroups]":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ExternalGroups,
-        )
-
-    def unlink_external_idp_group_from_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_unlink_external_idp_group_from_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    @overload
-    def link_external_idp_group_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
-    ) -> "Response[ExternalGroup]":
-        ...
-
-    @overload
-    def link_external_idp_group_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Unset = UNSET,
-        group_id: int,
-    ) -> "Response[ExternalGroup]":
-        ...
-
-    def link_external_idp_group_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[ExternalGroup]":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=ExternalGroup,
-        )
-
-    @overload
-    async def async_link_external_idp_group_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
-    ) -> "Response[ExternalGroup]":
-        ...
-
-    @overload
-    async def async_link_external_idp_group_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Unset = UNSET,
-        group_id: int,
-    ) -> "Response[ExternalGroup]":
-        ...
-
-    async def async_link_external_idp_group_to_team_for_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[ExternalGroup]":
-        url = f"/orgs/{org}/teams/{team_slug}/external-groups"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=ExternalGroup,
-        )
-
     def list_pending_invitations_in_org(
         self,
         org: str,
@@ -1928,132 +1667,6 @@ class TeamsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def list_idp_groups_in_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=GroupMapping,
-        )
-
-    async def async_list_idp_groups_in_org(
-        self,
-        org: str,
-        team_slug: str,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=GroupMapping,
-        )
-
-    @overload
-    def create_or_update_idp_group_connections_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-    ) -> "Response[GroupMapping]":
-        ...
-
-    @overload
-    def create_or_update_idp_group_connections_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Unset = UNSET,
-        groups: Union[
-            Unset,
-            List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
-        ] = UNSET,
-    ) -> "Response[GroupMapping]":
-        ...
-
-    def create_or_update_idp_group_connections_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=GroupMapping,
-        )
-
-    @overload
-    async def async_create_or_update_idp_group_connections_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-    ) -> "Response[GroupMapping]":
-        ...
-
-    @overload
-    async def async_create_or_update_idp_group_connections_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Unset = UNSET,
-        groups: Union[
-            Unset,
-            List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
-        ] = UNSET,
-    ) -> "Response[GroupMapping]":
-        ...
-
-    async def async_create_or_update_idp_group_connections_in_org(
-        self,
-        org: str,
-        team_slug: str,
-        *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response[GroupMapping]":
-        url = f"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=GroupMapping,
         )
 
     def list_child_in_org(
@@ -3558,126 +3171,6 @@ class TeamsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-        )
-
-    def list_idp_groups_for_legacy(
-        self,
-        team_id: int,
-    ) -> "Response[GroupMapping]":
-        url = f"/teams/{team_id}/team-sync/group-mappings"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=GroupMapping,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_list_idp_groups_for_legacy(
-        self,
-        team_id: int,
-    ) -> "Response[GroupMapping]":
-        url = f"/teams/{team_id}/team-sync/group-mappings"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=GroupMapping,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    def create_or_update_idp_group_connections_legacy(
-        self, team_id: int, *, data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType
-    ) -> "Response[GroupMapping]":
-        ...
-
-    @overload
-    def create_or_update_idp_group_connections_legacy(
-        self,
-        team_id: int,
-        *,
-        data: Unset = UNSET,
-        groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
-        synced_at: Union[Unset, str] = UNSET,
-    ) -> "Response[GroupMapping]":
-        ...
-
-    def create_or_update_idp_group_connections_legacy(
-        self,
-        team_id: int,
-        *,
-        data: Union[Unset, TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[GroupMapping]":
-        url = f"/teams/{team_id}/team-sync/group-mappings"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=GroupMapping,
-            error_models={
-                "422": ValidationError,
-                "403": BasicError,
-            },
-        )
-
-    @overload
-    async def async_create_or_update_idp_group_connections_legacy(
-        self, team_id: int, *, data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType
-    ) -> "Response[GroupMapping]":
-        ...
-
-    @overload
-    async def async_create_or_update_idp_group_connections_legacy(
-        self,
-        team_id: int,
-        *,
-        data: Unset = UNSET,
-        groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
-        synced_at: Union[Unset, str] = UNSET,
-    ) -> "Response[GroupMapping]":
-        ...
-
-    async def async_create_or_update_idp_group_connections_legacy(
-        self,
-        team_id: int,
-        *,
-        data: Union[Unset, TeamsTeamIdTeamSyncGroupMappingsPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[GroupMapping]":
-        url = f"/teams/{team_id}/team-sync/group-mappings"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=GroupMapping,
-            error_models={
-                "422": ValidationError,
-                "403": BasicError,
-            },
         )
 
     def list_child_legacy(

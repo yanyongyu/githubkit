@@ -40,4 +40,9 @@ def exclude_unset(data: Any) -> Any:
 
 
 def is_async(obj: Any) -> bool:
-    return inspect.isroutine(obj) and inspect.iscoroutinefunction(obj)
+    if inspect.isroutine(obj):
+        return inspect.iscoroutinefunction(obj)
+    if inspect.isclass(obj):
+        return False
+    func_ = getattr(obj, "__call__", None)
+    return inspect.iscoroutinefunction(func_)

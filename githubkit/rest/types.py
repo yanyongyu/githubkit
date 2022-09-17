@@ -822,12 +822,6 @@ class ActionsCacheUsageOrgEnterpriseType(TypedDict):
     total_active_caches_size_in_bytes: int
 
 
-class ActionsOidcCustomIssuerPolicyForEnterpriseType(TypedDict):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
-
-    include_enterprise_slug: NotRequired[bool]
-
-
 class ActionsEnterprisePermissionsType(TypedDict):
     """ActionsEnterprisePermissions"""
 
@@ -953,77 +947,6 @@ class AuthenticationTokenPropPermissionsType(TypedDict):
     Examples:
         {'issues': 'read', 'deployments': 'write'}
     """
-
-
-class AuditLogEventType(TypedDict):
-    """AuditLogEvent"""
-
-    timestamp: NotRequired[int]
-    action: NotRequired[str]
-    active: NotRequired[bool]
-    active_was: NotRequired[bool]
-    actor: NotRequired[str]
-    actor_id: NotRequired[int]
-    actor_location: NotRequired[AuditLogEventPropActorLocationType]
-    data: NotRequired[AuditLogEventPropDataType]
-    org_id: NotRequired[int]
-    blocked_user: NotRequired[str]
-    business: NotRequired[str]
-    config: NotRequired[List[AuditLogEventPropConfigItemsType]]
-    config_was: NotRequired[List[AuditLogEventPropConfigWasItemsType]]
-    content_type: NotRequired[str]
-    created_at: NotRequired[int]
-    deploy_key_fingerprint: NotRequired[str]
-    document_id: NotRequired[str]
-    emoji: NotRequired[str]
-    events: NotRequired[List[AuditLogEventPropEventsItemsType]]
-    events_were: NotRequired[List[AuditLogEventPropEventsWereItemsType]]
-    explanation: NotRequired[str]
-    fingerprint: NotRequired[str]
-    hook_id: NotRequired[int]
-    limited_availability: NotRequired[bool]
-    message: NotRequired[str]
-    name: NotRequired[str]
-    old_user: NotRequired[str]
-    openssh_public_key: NotRequired[str]
-    org: NotRequired[str]
-    previous_visibility: NotRequired[str]
-    read_only: NotRequired[bool]
-    repo: NotRequired[str]
-    repository: NotRequired[str]
-    repository_public: NotRequired[bool]
-    target_login: NotRequired[str]
-    team: NotRequired[str]
-    transport_protocol: NotRequired[int]
-    transport_protocol_name: NotRequired[str]
-    user: NotRequired[str]
-    visibility: NotRequired[str]
-
-
-class AuditLogEventPropActorLocationType(TypedDict):
-    """AuditLogEventPropActorLocation"""
-
-    country_name: NotRequired[str]
-
-
-class AuditLogEventPropDataType(TypedDict):
-    """AuditLogEventPropData"""
-
-
-class AuditLogEventPropConfigItemsType(TypedDict):
-    """AuditLogEventPropConfigItems"""
-
-
-class AuditLogEventPropConfigWasItemsType(TypedDict):
-    """AuditLogEventPropConfigWasItems"""
-
-
-class AuditLogEventPropEventsItemsType(TypedDict):
-    """AuditLogEventPropEventsItems"""
-
-
-class AuditLogEventPropEventsWereItemsType(TypedDict):
-    """AuditLogEventPropEventsWereItems"""
 
 
 class CodeScanningAlertRuleType(TypedDict):
@@ -1187,34 +1110,6 @@ class OrganizationSecretScanningAlertType(TypedDict):
     push_protection_bypassed_at: NotRequired[Union[datetime, None]]
 
 
-class ActionsBillingUsageType(TypedDict):
-    """ActionsBillingUsage"""
-
-    total_minutes_used: int
-    total_paid_minutes_used: int
-    included_minutes: int
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
-
-
-class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
-
-    ubuntu: NotRequired[int]
-    macos: NotRequired[int]
-    windows: NotRequired[int]
-    ubuntu_4_core: NotRequired[int]
-    ubuntu_8_core: NotRequired[int]
-    ubuntu_16_core: NotRequired[int]
-    ubuntu_32_core: NotRequired[int]
-    ubuntu_64_core: NotRequired[int]
-    windows_4_core: NotRequired[int]
-    windows_8_core: NotRequired[int]
-    windows_16_core: NotRequired[int]
-    windows_32_core: NotRequired[int]
-    windows_64_core: NotRequired[int]
-    total: NotRequired[int]
-
-
 class AdvancedSecurityActiveCommittersUserType(TypedDict):
     """AdvancedSecurityActiveCommittersUser"""
 
@@ -1238,22 +1133,6 @@ class AdvancedSecurityActiveCommittersType(TypedDict):
     total_advanced_security_committers: NotRequired[int]
     total_count: NotRequired[int]
     repositories: List[AdvancedSecurityActiveCommittersRepositoryType]
-
-
-class PackagesBillingUsageType(TypedDict):
-    """PackagesBillingUsage"""
-
-    total_gigabytes_bandwidth_used: int
-    total_paid_gigabytes_bandwidth_used: int
-    included_gigabytes_bandwidth: int
-
-
-class CombinedBillingUsageType(TypedDict):
-    """CombinedBillingUsage"""
-
-    days_left_in_billing_cycle: int
-    estimated_paid_storage_for_month: int
-    estimated_storage_for_month: int
 
 
 class ActorType(TypedDict):
@@ -2023,6 +1902,40 @@ class OrganizationCustomRepositoryRoleType(TypedDict):
     updated_at: NotRequired[datetime]
 
 
+class CodespacesOrgSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
+
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
+
+
+class EmptyObjectType(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
 class OrganizationFullType(TypedDict):
     """Organization Full
 
@@ -2104,22 +2017,6 @@ class ActionsCacheUsageByRepositoryType(TypedDict):
     full_name: str
     active_caches_size_in_bytes: int
     active_caches_count: int
-
-
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
-
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: List[str]
-
-
-class EmptyObjectType(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
 
 
 class ActionsOrganizationPermissionsType(TypedDict):
@@ -2266,26 +2163,6 @@ class CodespacePropRuntimeConstraintsType(TypedDict):
     allowed_port_privacy_settings: NotRequired[Union[List[str], None]]
 
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
-
-    Credential Authorization
-    """
-
-    login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: datetime
-    scopes: NotRequired[List[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[datetime, None]]
-
-
 class OrganizationDependabotSecretType(TypedDict):
     """Dependabot Secret for an Organization
 
@@ -2307,52 +2184,6 @@ class DependabotPublicKeyType(TypedDict):
 
     key_id: str
     key: str
-
-
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
-
-    Information about an external group's usage and its members
-    """
-
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: List[ExternalGroupPropTeamsItemsType]
-    members: List[ExternalGroupPropMembersItemsType]
-
-
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
-
-
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
-
-    A list of external groups available to be connected to a team
-    """
-
-    groups: NotRequired[List[ExternalGroupsPropGroupsItemsType]]
-
-
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
 
 
 class OrganizationInvitationType(TypedDict):
@@ -2614,23 +2445,48 @@ class ProjectType(TypedDict):
     private: NotRequired[bool]
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class ActionsBillingUsageType(TypedDict):
+    """ActionsBillingUsage"""
 
-    External Groups to be mapped to a team for membership
-    """
+    total_minutes_used: int
+    total_paid_minutes_used: int
+    included_minutes: int
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
 
-    groups: NotRequired[List[GroupMappingPropGroupsItemsType]]
+
+class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+
+    ubuntu: NotRequired[int]
+    macos: NotRequired[int]
+    windows: NotRequired[int]
+    ubuntu_4_core: NotRequired[int]
+    ubuntu_8_core: NotRequired[int]
+    ubuntu_16_core: NotRequired[int]
+    ubuntu_32_core: NotRequired[int]
+    ubuntu_64_core: NotRequired[int]
+    windows_4_core: NotRequired[int]
+    windows_8_core: NotRequired[int]
+    windows_16_core: NotRequired[int]
+    windows_32_core: NotRequired[int]
+    windows_64_core: NotRequired[int]
+    total: NotRequired[int]
 
 
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
+class PackagesBillingUsageType(TypedDict):
+    """PackagesBillingUsage"""
 
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
+
+
+class CombinedBillingUsageType(TypedDict):
+    """CombinedBillingUsage"""
+
+    days_left_in_billing_cycle: int
+    estimated_paid_storage_for_month: int
+    estimated_storage_for_month: int
 
 
 class TeamOrganizationType(TypedDict):
@@ -3280,15 +3136,6 @@ class JobPropStepsItemsType(TypedDict):
     number: int
     started_at: NotRequired[Union[datetime, None]]
     completed_at: NotRequired[Union[datetime, None]]
-
-
-class OptOutOidcCustomSubType(TypedDict):
-    """The json payload enables/disables the use of sub claim customization
-
-    OIDC Customer Subject
-    """
-
-    use_default: bool
 
 
 class ActionsRepositoryPermissionsType(TypedDict):
@@ -4406,23 +4253,6 @@ class CodeScanningAnalysisDeletionType(TypedDict):
     confirm_delete_url: Union[str, None]
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
-
-    A CodeQL database.
-    """
-
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: datetime
-    updated_at: datetime
-    url: str
-
-
 class CodeScanningSarifsReceiptType(TypedDict):
     """CodeScanningSarifsReceipt"""
 
@@ -4468,20 +4298,6 @@ class RepoCodespacesSecretType(TypedDict):
     name: str
     created_at: datetime
     updated_at: datetime
-
-
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
-
-    The public key used for setting Codespaces secrets.
-    """
-
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
 
 
 class CollaboratorType(TypedDict):
@@ -7449,251 +7265,6 @@ class ViewTrafficType(TypedDict):
     views: List[TrafficType]
 
 
-class ScimGroupListEnterpriseType(TypedDict):
-    """ScimGroupListEnterprise"""
-
-    schemas: List[str]
-    total_results: float
-    items_per_page: float
-    start_index: float
-    resources: List[ScimGroupListEnterprisePropResourcesItemsType]
-
-
-class ScimGroupListEnterprisePropResourcesItemsType(TypedDict):
-    """ScimGroupListEnterprisePropResourcesItems"""
-
-    schemas: List[str]
-    id: str
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[str]
-    members: NotRequired[
-        List[ScimGroupListEnterprisePropResourcesItemsPropMembersItemsType]
-    ]
-    meta: NotRequired[ScimGroupListEnterprisePropResourcesItemsPropMetaType]
-
-
-class ScimGroupListEnterprisePropResourcesItemsPropMembersItemsType(TypedDict):
-    """ScimGroupListEnterprisePropResourcesItemsPropMembersItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimGroupListEnterprisePropResourcesItemsPropMetaType(TypedDict):
-    """ScimGroupListEnterprisePropResourcesItemsPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
-
-
-class ScimEnterpriseGroupType(TypedDict):
-    """ScimEnterpriseGroup"""
-
-    schemas: List[str]
-    id: str
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[str]
-    members: NotRequired[List[ScimEnterpriseGroupPropMembersItemsType]]
-    meta: NotRequired[ScimEnterpriseGroupPropMetaType]
-
-
-class ScimEnterpriseGroupPropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupPropMembersItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimEnterpriseGroupPropMetaType(TypedDict):
-    """ScimEnterpriseGroupPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
-
-
-class ScimUserListEnterpriseType(TypedDict):
-    """ScimUserListEnterprise"""
-
-    schemas: List[str]
-    total_results: float
-    items_per_page: float
-    start_index: float
-    resources: List[ScimUserListEnterprisePropResourcesItemsType]
-
-
-class ScimUserListEnterprisePropResourcesItemsType(TypedDict):
-    """ScimUserListEnterprisePropResourcesItems"""
-
-    schemas: List[str]
-    id: str
-    external_id: NotRequired[str]
-    user_name: NotRequired[str]
-    name: NotRequired[ScimUserListEnterprisePropResourcesItemsPropNameType]
-    emails: NotRequired[
-        List[ScimUserListEnterprisePropResourcesItemsPropEmailsItemsType]
-    ]
-    groups: NotRequired[
-        List[ScimUserListEnterprisePropResourcesItemsPropGroupsItemsType]
-    ]
-    active: NotRequired[bool]
-    meta: NotRequired[ScimUserListEnterprisePropResourcesItemsPropMetaType]
-
-
-class ScimUserListEnterprisePropResourcesItemsPropNameType(TypedDict):
-    """ScimUserListEnterprisePropResourcesItemsPropName"""
-
-    given_name: NotRequired[str]
-    family_name: NotRequired[str]
-
-
-class ScimUserListEnterprisePropResourcesItemsPropEmailsItemsType(TypedDict):
-    """ScimUserListEnterprisePropResourcesItemsPropEmailsItems"""
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimUserListEnterprisePropResourcesItemsPropGroupsItemsType(TypedDict):
-    """ScimUserListEnterprisePropResourcesItemsPropGroupsItems"""
-
-    value: NotRequired[str]
-
-
-class ScimUserListEnterprisePropResourcesItemsPropMetaType(TypedDict):
-    """ScimUserListEnterprisePropResourcesItemsPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
-
-
-class ScimEnterpriseUserType(TypedDict):
-    """ScimEnterpriseUser"""
-
-    schemas: List[str]
-    id: str
-    external_id: NotRequired[str]
-    user_name: NotRequired[str]
-    name: NotRequired[ScimEnterpriseUserPropNameType]
-    emails: NotRequired[List[ScimEnterpriseUserPropEmailsItemsType]]
-    groups: NotRequired[List[ScimEnterpriseUserPropGroupsItemsType]]
-    active: NotRequired[bool]
-    meta: NotRequired[ScimEnterpriseUserPropMetaType]
-
-
-class ScimEnterpriseUserPropNameType(TypedDict):
-    """ScimEnterpriseUserPropName"""
-
-    given_name: NotRequired[str]
-    family_name: NotRequired[str]
-
-
-class ScimEnterpriseUserPropEmailsItemsType(TypedDict):
-    """ScimEnterpriseUserPropEmailsItems"""
-
-    value: NotRequired[str]
-    type: NotRequired[str]
-    primary: NotRequired[bool]
-
-
-class ScimEnterpriseUserPropGroupsItemsType(TypedDict):
-    """ScimEnterpriseUserPropGroupsItems"""
-
-    value: NotRequired[str]
-
-
-class ScimEnterpriseUserPropMetaType(TypedDict):
-    """ScimEnterpriseUserPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
-
-
-class ScimUserType(TypedDict):
-    """SCIM /Users
-
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: List[str]
-    id: str
-    external_id: Union[str, None]
-    user_name: Union[str, None]
-    display_name: NotRequired[Union[str, None]]
-    name: ScimUserPropNameType
-    emails: List[ScimUserPropEmailsItemsType]
-    active: bool
-    meta: ScimUserPropMetaType
-    organization_id: NotRequired[int]
-    operations: NotRequired[List[ScimUserPropOperationsItemsType]]
-    groups: NotRequired[List[Any]]
-
-
-class ScimUserPropNameType(TypedDict):
-    """ScimUserPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: Union[str, None]
-    family_name: Union[str, None]
-    formatted: NotRequired[Union[str, None]]
-
-
-class ScimUserPropEmailsItemsType(TypedDict):
-    """ScimUserPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-
-
-class ScimUserPropMetaType(TypedDict):
-    """ScimUserPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[datetime]
-    last_modified: NotRequired[datetime]
-    location: NotRequired[str]
-
-
-class ScimUserPropOperationsItemsType(TypedDict):
-    """ScimUserPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, List[Any]]
-    ]
-
-
-class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
-
-
-class ScimUserListType(TypedDict):
-    """SCIM User List
-
-    SCIM User List
-    """
-
-    schemas: List[str]
-    total_results: int
-    items_per_page: int
-    start_index: int
-    resources: List[ScimUserType]
-
-
 class SearchResultTextMatchesItemsType(TypedDict):
     """SearchResultTextMatchesItems"""
 
@@ -8694,6 +8265,37 @@ class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
     custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
 
 
+class OrganizationsOrgCodespacesSecretsGetResponse200Type(TypedDict):
+    """OrganizationsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: List[CodespacesOrgSecretType]
+
+
+class OrganizationsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """OrganizationsOrgCodespacesSecretsSecretNamePutBody"""
+
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[List[int]]
+
+
+class OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(
+    TypedDict
+):
+    """OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: List[MinimalRepositoryType]
+
+
+class OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: List[int]
+
+
 class OrgsOrgPatchBodyType(TypedDict):
     """OrgsOrgPatchBody"""
 
@@ -9134,12 +8736,6 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType(Typed
     ]
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
-
-    group_id: int
-
-
 class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
     """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
@@ -9163,22 +8759,6 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
     """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
     permission: NotRequired[str]
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
-
-    groups: NotRequired[
-        List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    ]
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
 
 
 class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
@@ -11339,254 +10919,6 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
     key_id: str
 
 
-class ScimV2EnterprisesEnterpriseGroupsPostBodyType(TypedDict):
-    """ScimV2EnterprisesEnterpriseGroupsPostBody"""
-
-    schemas: List[str]
-    display_name: str
-    members: NotRequired[
-        List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType]
-    ]
-
-
-class ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType(TypedDict):
-    """ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems"""
-
-    value: str
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyType(TypedDict):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody"""
-
-    schemas: List[str]
-    display_name: str
-    members: NotRequired[
-        List[ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItemsType]
-    ]
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItemsType(
-    TypedDict
-):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems"""
-
-    value: str
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyType(TypedDict):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody"""
-
-    schemas: List[str]
-    operations: List[
-        ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType
-    ]
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType(
-    TypedDict
-):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems"""
-
-    op: Literal["add", "Add", "remove", "Remove", "replace", "Replace"]
-    path: NotRequired[str]
-    value: NotRequired[Any]
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBodyType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersPostBody"""
-
-    schemas: List[str]
-    user_name: str
-    name: ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType
-    emails: List[ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItemsType]
-    groups: NotRequired[
-        List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType]
-    ]
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersPostBodyPropName"""
-
-    given_name: str
-    family_name: str
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItemsType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems"""
-
-    value: NotRequired[str]
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody"""
-
-    schemas: List[str]
-    user_name: str
-    name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType
-    emails: List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItemsType]
-    groups: NotRequired[
-        List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType]
-    ]
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName"""
-
-    given_name: str
-    family_name: str
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems"""
-
-    value: NotRequired[str]
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyType(TypedDict):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody"""
-
-    schemas: List[str]
-    operations: List[
-        ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType
-    ]
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType(
-    TypedDict
-):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems"""
-
-
-class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBody"""
-
-    user_name: str
-    display_name: NotRequired[str]
-    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
-    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
-    schemas: NotRequired[List[str]]
-    external_id: NotRequired[str]
-    groups: NotRequired[List[str]]
-    active: NotRequired[bool]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
-
-    schemas: NotRequired[List[str]]
-    display_name: NotRequired[str]
-    external_id: NotRequired[str]
-    groups: NotRequired[List[str]]
-    active: NotRequired[bool]
-    user_name: str
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
-    emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: NotRequired[str]
-    value: str
-    primary: NotRequired[bool]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
-
-    schemas: NotRequired[List[str]]
-    operations: List[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
-    ]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
-            List[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
-            ],
-            str,
-        ]
-    ]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: NotRequired[Union[bool, None]]
-    user_name: NotRequired[Union[str, None]]
-    external_id: NotRequired[Union[str, None]]
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-
-
 class SearchCodeGetResponse200Type(TypedDict):
     """SearchCodeGetResponse200"""
 
@@ -11723,24 +11055,6 @@ class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
     """TeamsTeamIdReposOwnerRepoPutBody"""
 
     permission: NotRequired[Literal["pull", "push", "admin"]]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
-
-    groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    synced_at: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
 
 
 class UserPatchBodyType(TypedDict):
@@ -12021,7 +11335,6 @@ __all__ = [
     "ServerStatisticsItemsPropGheStatsPropUsersType",
     "ServerStatisticsItemsPropDormantUsersType",
     "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsOidcCustomIssuerPolicyForEnterpriseType",
     "ActionsEnterprisePermissionsType",
     "OrganizationSimpleType",
     "SelectedActionsType",
@@ -12033,13 +11346,6 @@ __all__ = [
     "RunnerApplicationType",
     "AuthenticationTokenType",
     "AuthenticationTokenPropPermissionsType",
-    "AuditLogEventType",
-    "AuditLogEventPropActorLocationType",
-    "AuditLogEventPropDataType",
-    "AuditLogEventPropConfigItemsType",
-    "AuditLogEventPropConfigWasItemsType",
-    "AuditLogEventPropEventsItemsType",
-    "AuditLogEventPropEventsWereItemsType",
     "CodeScanningAlertRuleType",
     "CodeScanningAnalysisToolType",
     "CodeScanningAlertLocationType",
@@ -12048,13 +11354,9 @@ __all__ = [
     "SimpleRepositoryType",
     "CodeScanningOrganizationAlertItemsType",
     "OrganizationSecretScanningAlertType",
-    "ActionsBillingUsageType",
-    "ActionsBillingUsagePropMinutesUsedBreakdownType",
     "AdvancedSecurityActiveCommittersUserType",
     "AdvancedSecurityActiveCommittersRepositoryType",
     "AdvancedSecurityActiveCommittersType",
-    "PackagesBillingUsageType",
-    "CombinedBillingUsageType",
     "ActorType",
     "MilestoneType",
     "ReactionRollupType",
@@ -12098,11 +11400,12 @@ __all__ = [
     "ThreadPropSubjectType",
     "ThreadSubscriptionType",
     "OrganizationCustomRepositoryRoleType",
+    "CodespacesOrgSecretType",
+    "CodespacesPublicKeyType",
+    "EmptyObjectType",
     "OrganizationFullType",
     "OrganizationFullPropPlanType",
     "ActionsCacheUsageByRepositoryType",
-    "OidcCustomSubType",
-    "EmptyObjectType",
     "ActionsOrganizationPermissionsType",
     "RunnerGroupsOrgType",
     "OrganizationActionsSecretType",
@@ -12111,14 +11414,8 @@ __all__ = [
     "CodespaceType",
     "CodespacePropGitStatusType",
     "CodespacePropRuntimeConstraintsType",
-    "CredentialAuthorizationType",
     "OrganizationDependabotSecretType",
     "DependabotPublicKeyType",
-    "ExternalGroupType",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupsType",
-    "ExternalGroupsPropGroupsItemsType",
     "OrganizationInvitationType",
     "OrganizationFineGrainedPermissionType",
     "OrgHookType",
@@ -12137,8 +11434,10 @@ __all__ = [
     "PackageVersionPropMetadataPropContainerType",
     "PackageVersionPropMetadataPropDockerType",
     "ProjectType",
-    "GroupMappingType",
-    "GroupMappingPropGroupsItemsType",
+    "ActionsBillingUsageType",
+    "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "PackagesBillingUsageType",
+    "CombinedBillingUsageType",
     "TeamOrganizationType",
     "TeamOrganizationPropPlanType",
     "TeamFullType",
@@ -12169,7 +11468,6 @@ __all__ = [
     "ActionsCacheListPropActionsCachesItemsType",
     "JobType",
     "JobPropStepsItemsType",
-    "OptOutOidcCustomSubType",
     "ActionsRepositoryPermissionsType",
     "ActionsWorkflowAccessToRepositoryType",
     "ReferencedWorkflowType",
@@ -12263,13 +11561,11 @@ __all__ = [
     "CodeScanningAlertType",
     "CodeScanningAnalysisType",
     "CodeScanningAnalysisDeletionType",
-    "CodeScanningCodeqlDatabaseType",
     "CodeScanningSarifsReceiptType",
     "CodeScanningSarifsStatusType",
     "CodeownersErrorsType",
     "CodeownersErrorsPropErrorsItemsType",
     "RepoCodespacesSecretType",
-    "CodespacesPublicKeyType",
     "CollaboratorType",
     "CollaboratorPropPermissionsType",
     "RepositoryInvitationType",
@@ -12469,31 +11765,6 @@ __all__ = [
     "ContentTrafficType",
     "ReferrerTrafficType",
     "ViewTrafficType",
-    "ScimGroupListEnterpriseType",
-    "ScimGroupListEnterprisePropResourcesItemsType",
-    "ScimGroupListEnterprisePropResourcesItemsPropMembersItemsType",
-    "ScimGroupListEnterprisePropResourcesItemsPropMetaType",
-    "ScimEnterpriseGroupType",
-    "ScimEnterpriseGroupPropMembersItemsType",
-    "ScimEnterpriseGroupPropMetaType",
-    "ScimUserListEnterpriseType",
-    "ScimUserListEnterprisePropResourcesItemsType",
-    "ScimUserListEnterprisePropResourcesItemsPropNameType",
-    "ScimUserListEnterprisePropResourcesItemsPropEmailsItemsType",
-    "ScimUserListEnterprisePropResourcesItemsPropGroupsItemsType",
-    "ScimUserListEnterprisePropResourcesItemsPropMetaType",
-    "ScimEnterpriseUserType",
-    "ScimEnterpriseUserPropNameType",
-    "ScimEnterpriseUserPropEmailsItemsType",
-    "ScimEnterpriseUserPropGroupsItemsType",
-    "ScimEnterpriseUserPropMetaType",
-    "ScimUserType",
-    "ScimUserPropNameType",
-    "ScimUserPropEmailsItemsType",
-    "ScimUserPropMetaType",
-    "ScimUserPropOperationsItemsType",
-    "ScimUserPropOperationsItemsPropValueOneof1Type",
-    "ScimUserListType",
     "SearchResultTextMatchesItemsType",
     "SearchResultTextMatchesItemsPropMatchesItemsType",
     "CodeSearchResultItemType",
@@ -12577,6 +11848,10 @@ __all__ = [
     "NotificationsPutResponse202Type",
     "NotificationsThreadsThreadIdSubscriptionPutBodyType",
     "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
+    "OrganizationsOrgCodespacesSecretsGetResponse200Type",
+    "OrganizationsOrgCodespacesSecretsSecretNamePutBodyType",
+    "OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
     "OrgsOrgPatchBodyType",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
     "OrgsOrgActionsPermissionsPutBodyType",
@@ -12626,13 +11901,10 @@ __all__ = [
     "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",
     "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
     "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType",
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",
     "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",
     "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
     "ProjectsColumnsCardsCardIdDeleteResponse403Type",
     "ProjectsColumnsCardsCardIdPatchBodyType",
     "ProjectsColumnsCardsCardIdMovesPostBodyType",
@@ -12854,32 +12126,6 @@ __all__ = [
     "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
-    "ScimV2EnterprisesEnterpriseGroupsPostBodyType",
-    "ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItemsType",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyType",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItemsType",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyType",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItemsType",
-    "ScimV2EnterprisesEnterpriseUsersPostBodyType",
-    "ScimV2EnterprisesEnterpriseUsersPostBodyPropNameType",
-    "ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItemsType",
-    "ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItemsType",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyType",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropNameType",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItemsType",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItemsType",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyType",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItemsType",
-    "ScimV2OrganizationsOrgUsersPostBodyType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
     "SearchCodeGetResponse200Type",
     "SearchCommitsGetResponse200Type",
     "SearchIssuesGetResponse200Type",
@@ -12898,8 +12144,6 @@ __all__ = [
     "TeamsTeamIdProjectsProjectIdPutBodyType",
     "TeamsTeamIdProjectsProjectIdPutResponse403Type",
     "TeamsTeamIdReposOwnerRepoPutBodyType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
     "UserPatchBodyType",
     "UserCodespacesGetResponse200Type",
     "UserCodespacesPostBodyOneof0Type",

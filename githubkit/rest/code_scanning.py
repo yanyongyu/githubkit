@@ -24,7 +24,6 @@ from .models import (
     CodeScanningSarifsStatus,
     CodeScanningAlertInstance,
     CodeScanningSarifsReceipt,
-    CodeScanningCodeqlDatabase,
     CodeScanningAnalysisDeletion,
     CodeScanningOrganizationAlertItems,
     ReposOwnerRepoCodeScanningSarifsPostBody,
@@ -647,80 +646,6 @@ class CodeScanningClient:
             response_model=CodeScanningAnalysisDeletion,
             error_models={
                 "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def list_codeql_databases(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[List[CodeScanningCodeqlDatabase]]":
-        url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=List[CodeScanningCodeqlDatabase],
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_list_codeql_databases(
-        self,
-        owner: str,
-        repo: str,
-    ) -> "Response[List[CodeScanningCodeqlDatabase]]":
-        url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=List[CodeScanningCodeqlDatabase],
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_codeql_database(
-        self,
-        owner: str,
-        repo: str,
-        language: str,
-    ) -> "Response[CodeScanningCodeqlDatabase]":
-        url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=CodeScanningCodeqlDatabase,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_codeql_database(
-        self,
-        owner: str,
-        repo: str,
-        language: str,
-    ) -> "Response[CodeScanningCodeqlDatabase]":
-        url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=CodeScanningCodeqlDatabase,
-            error_models={
                 "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,

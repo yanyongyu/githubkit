@@ -650,7 +650,10 @@ class Repository(GitHubRestModel):
     forks_count: int = Field(default=...)
     stargazers_count: int = Field(default=...)
     watchers_count: int = Field(default=...)
-    size: int = Field(default=...)
+    size: int = Field(
+        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        default=...,
+    )
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
@@ -1158,15 +1161,6 @@ class ActionsCacheUsageOrgEnterprise(GitHubRestModel):
     )
 
 
-class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubRestModel):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
-
-    include_enterprise_slug: Union[Unset, bool] = Field(
-        description="Whether the enterprise customer requested a custom issuer URL.",
-        default=UNSET,
-    )
-
-
 class ActionsEnterprisePermissions(GitHubRestModel):
     """ActionsEnterprisePermissions"""
 
@@ -1347,117 +1341,6 @@ class AuthenticationTokenPropPermissions(GitHubRestModel):
     Examples:
         {'issues': 'read', 'deployments': 'write'}
     """
-
-
-class AuditLogEvent(GitHubRestModel):
-    """AuditLogEvent"""
-
-    timestamp: Union[Unset, int] = Field(
-        description="The time the audit log event occurred, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).",
-        default=UNSET,
-        alias="@timestamp",
-    )
-    action: Union[Unset, str] = Field(
-        description="The name of the action that was performed, for example `user.login` or `repo.create`.",
-        default=UNSET,
-    )
-    active: Union[Unset, bool] = Field(default=UNSET)
-    active_was: Union[Unset, bool] = Field(default=UNSET)
-    actor: Union[Unset, str] = Field(
-        description="The actor who performed the action.", default=UNSET
-    )
-    actor_id: Union[Unset, int] = Field(
-        description="The id of the actor who performed the action.", default=UNSET
-    )
-    actor_location: Union[Unset, AuditLogEventPropActorLocation] = Field(default=UNSET)
-    data: Union[Unset, AuditLogEventPropData] = Field(default=UNSET)
-    org_id: Union[Unset, int] = Field(default=UNSET)
-    blocked_user: Union[Unset, str] = Field(
-        description="The username of the account being blocked.", default=UNSET
-    )
-    business: Union[Unset, str] = Field(default=UNSET)
-    config: Union[Unset, List[AuditLogEventPropConfigItems]] = Field(default=UNSET)
-    config_was: Union[Unset, List[AuditLogEventPropConfigWasItems]] = Field(
-        default=UNSET
-    )
-    content_type: Union[Unset, str] = Field(default=UNSET)
-    created_at: Union[Unset, int] = Field(
-        description="The time the audit log event was recorded, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).",
-        default=UNSET,
-    )
-    deploy_key_fingerprint: Union[Unset, str] = Field(default=UNSET)
-    document_id: Union[Unset, str] = Field(
-        description="A unique identifier for an audit event.",
-        default=UNSET,
-        alias="_document_id",
-    )
-    emoji: Union[Unset, str] = Field(default=UNSET)
-    events: Union[Unset, List[AuditLogEventPropEventsItems]] = Field(default=UNSET)
-    events_were: Union[Unset, List[AuditLogEventPropEventsWereItems]] = Field(
-        default=UNSET
-    )
-    explanation: Union[Unset, str] = Field(default=UNSET)
-    fingerprint: Union[Unset, str] = Field(default=UNSET)
-    hook_id: Union[Unset, int] = Field(default=UNSET)
-    limited_availability: Union[Unset, bool] = Field(default=UNSET)
-    message: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(default=UNSET)
-    old_user: Union[Unset, str] = Field(default=UNSET)
-    openssh_public_key: Union[Unset, str] = Field(default=UNSET)
-    org: Union[Unset, str] = Field(default=UNSET)
-    previous_visibility: Union[Unset, str] = Field(default=UNSET)
-    read_only: Union[Unset, bool] = Field(default=UNSET)
-    repo: Union[Unset, str] = Field(
-        description="The name of the repository.", default=UNSET
-    )
-    repository: Union[Unset, str] = Field(
-        description="The name of the repository.", default=UNSET
-    )
-    repository_public: Union[Unset, bool] = Field(default=UNSET)
-    target_login: Union[Unset, str] = Field(default=UNSET)
-    team: Union[Unset, str] = Field(default=UNSET)
-    transport_protocol: Union[Unset, int] = Field(
-        description="The type of protocol (for example, HTTP or SSH) used to transfer Git data.",
-        default=UNSET,
-    )
-    transport_protocol_name: Union[Unset, str] = Field(
-        description="A human readable name for the protocol (for example, HTTP or SSH) used to transfer Git data.",
-        default=UNSET,
-    )
-    user: Union[Unset, str] = Field(
-        description="The user that was affected by the action performed (if available).",
-        default=UNSET,
-    )
-    visibility: Union[Unset, str] = Field(
-        description="The repository visibility, for example `public` or `private`.",
-        default=UNSET,
-    )
-
-
-class AuditLogEventPropActorLocation(GitHubRestModel):
-    """AuditLogEventPropActorLocation"""
-
-    country_name: Union[Unset, str] = Field(default=UNSET)
-
-
-class AuditLogEventPropData(GitHubRestModel, extra=Extra.allow):
-    """AuditLogEventPropData"""
-
-
-class AuditLogEventPropConfigItems(GitHubRestModel):
-    """AuditLogEventPropConfigItems"""
-
-
-class AuditLogEventPropConfigWasItems(GitHubRestModel):
-    """AuditLogEventPropConfigWasItems"""
-
-
-class AuditLogEventPropEventsItems(GitHubRestModel):
-    """AuditLogEventPropEventsItems"""
-
-
-class AuditLogEventPropEventsWereItems(GitHubRestModel):
-    """AuditLogEventPropEventsWereItems"""
 
 
 class CodeScanningAlertRule(GitHubRestModel):
@@ -1858,87 +1741,6 @@ class OrganizationSecretScanningAlert(GitHubRestModel):
     )
 
 
-class ActionsBillingUsage(GitHubRestModel):
-    """ActionsBillingUsage"""
-
-    total_minutes_used: int = Field(
-        description="The sum of the free and paid GitHub Actions minutes used.",
-        default=...,
-    )
-    total_paid_minutes_used: int = Field(
-        description="The total paid GitHub Actions minutes used.", default=...
-    )
-    included_minutes: int = Field(
-        description="The amount of free GitHub Actions minutes available.", default=...
-    )
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field(
-        default=...
-    )
-
-
-class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubRestModel):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
-
-    ubuntu: Union[Unset, int] = Field(
-        description="Total minutes used on Ubuntu runner machines.",
-        default=UNSET,
-        alias="UBUNTU",
-    )
-    macos: Union[Unset, int] = Field(
-        description="Total minutes used on macOS runner machines.",
-        default=UNSET,
-        alias="MACOS",
-    )
-    windows: Union[Unset, int] = Field(
-        description="Total minutes used on Windows runner machines.",
-        default=UNSET,
-        alias="WINDOWS",
-    )
-    ubuntu_4_core: Union[Unset, int] = Field(
-        description="Total minutes used on Ubuntu 4 core runner machines.",
-        default=UNSET,
-    )
-    ubuntu_8_core: Union[Unset, int] = Field(
-        description="Total minutes used on Ubuntu 8 core runner machines.",
-        default=UNSET,
-    )
-    ubuntu_16_core: Union[Unset, int] = Field(
-        description="Total minutes used on Ubuntu 16 core runner machines.",
-        default=UNSET,
-    )
-    ubuntu_32_core: Union[Unset, int] = Field(
-        description="Total minutes used on Ubuntu 32 core runner machines.",
-        default=UNSET,
-    )
-    ubuntu_64_core: Union[Unset, int] = Field(
-        description="Total minutes used on Ubuntu 64 core runner machines.",
-        default=UNSET,
-    )
-    windows_4_core: Union[Unset, int] = Field(
-        description="Total minutes used on Windows 4 core runner machines.",
-        default=UNSET,
-    )
-    windows_8_core: Union[Unset, int] = Field(
-        description="Total minutes used on Windows 8 core runner machines.",
-        default=UNSET,
-    )
-    windows_16_core: Union[Unset, int] = Field(
-        description="Total minutes used on Windows 16 core runner machines.",
-        default=UNSET,
-    )
-    windows_32_core: Union[Unset, int] = Field(
-        description="Total minutes used on Windows 32 core runner machines.",
-        default=UNSET,
-    )
-    windows_64_core: Union[Unset, int] = Field(
-        description="Total minutes used on Windows 64 core runner machines.",
-        default=UNSET,
-    )
-    total: Union[Unset, int] = Field(
-        description="Total minutes used on all runner machines.", default=UNSET
-    )
-
-
 class AdvancedSecurityActiveCommittersUser(GitHubRestModel):
     """AdvancedSecurityActiveCommittersUser"""
 
@@ -1962,36 +1764,6 @@ class AdvancedSecurityActiveCommitters(GitHubRestModel):
     total_advanced_security_committers: Union[Unset, int] = Field(default=UNSET)
     total_count: Union[Unset, int] = Field(default=UNSET)
     repositories: List[AdvancedSecurityActiveCommittersRepository] = Field(default=...)
-
-
-class PackagesBillingUsage(GitHubRestModel):
-    """PackagesBillingUsage"""
-
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages.",
-        default=...,
-    )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages.", default=...
-    )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages.", default=...
-    )
-
-
-class CombinedBillingUsage(GitHubRestModel):
-    """CombinedBillingUsage"""
-
-    days_left_in_billing_cycle: int = Field(
-        description="Numbers of days left in billing cycle.", default=...
-    )
-    estimated_paid_storage_for_month: int = Field(
-        description="Estimated storage space (GB) used in billing cycle.", default=...
-    )
-    estimated_storage_for_month: int = Field(
-        description="Estimated sum of free and paid storage space (GB) used in billing cycle.",
-        default=...,
-    )
 
 
 class Actor(GitHubRestModel):
@@ -2764,7 +2536,10 @@ class MinimalRepository(GitHubRestModel):
     forks_count: Union[Unset, int] = Field(default=UNSET)
     stargazers_count: Union[Unset, int] = Field(default=UNSET)
     watchers_count: Union[Unset, int] = Field(default=UNSET)
-    size: Union[Unset, int] = Field(default=UNSET)
+    size: Union[Unset, int] = Field(
+        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        default=UNSET,
+    )
     default_branch: Union[Unset, str] = Field(default=UNSET)
     open_issues_count: Union[Unset, int] = Field(default=UNSET)
     is_template: Union[Unset, bool] = Field(default=UNSET)
@@ -2894,6 +2669,52 @@ class OrganizationCustomRepositoryRole(GitHubRestModel):
     updated_at: Union[Unset, datetime] = Field(default=UNSET)
 
 
+class CodespacesOrgSecret(GitHubRestModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret", default=...)
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to",
+        default=...,
+    )
+    selected_repositories_url: Union[Unset, str] = Field(
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+        default=UNSET,
+    )
+
+
+class CodespacesPublicKey(GitHubRestModel):
+    """CodespacesPublicKey
+
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str = Field(description="The identifier for the key.", default=...)
+    key: str = Field(description="The Base64 encoded public key.", default=...)
+    id: Union[Unset, int] = Field(default=UNSET)
+    url: Union[Unset, str] = Field(default=UNSET)
+    title: Union[Unset, str] = Field(default=UNSET)
+    created_at: Union[Unset, str] = Field(default=UNSET)
+
+
+class EmptyObject(GitHubRestModel):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
 class OrganizationFull(GitHubRestModel):
     """Organization Full
 
@@ -3011,22 +2832,6 @@ class ActionsCacheUsageByRepository(GitHubRestModel):
     active_caches_count: int = Field(
         description="The number of active caches in the repository.", default=...
     )
-
-
-class OidcCustomSub(GitHubRestModel):
-    """Actions OIDC Subject customization
-
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: List[str] = Field(default=...)
-
-
-class EmptyObject(GitHubRestModel):
-    """Empty Object
-
-    An object without any properties.
-    """
 
 
 class ActionsOrganizationPermissions(GitHubRestModel):
@@ -3288,54 +3093,6 @@ class CodespacePropRuntimeConstraints(GitHubRestModel):
     )
 
 
-class CredentialAuthorization(GitHubRestModel):
-    """Credential Authorization
-
-    Credential Authorization
-    """
-
-    login: str = Field(
-        description="User login that owns the underlying credential.", default=...
-    )
-    credential_id: int = Field(
-        description="Unique identifier for the credential.", default=...
-    )
-    credential_type: str = Field(
-        description="Human-readable description of the credential type.", default=...
-    )
-    token_last_eight: Union[Unset, str] = Field(
-        description="Last eight characters of the credential. Only included in responses with credential_type of personal access token.",
-        default=UNSET,
-    )
-    credential_authorized_at: datetime = Field(
-        description="Date when the credential was authorized for use.", default=...
-    )
-    scopes: Union[Unset, List[str]] = Field(
-        description="List of oauth scopes the token has been granted.", default=UNSET
-    )
-    fingerprint: Union[Unset, str] = Field(
-        description="Unique string to distinguish the credential. Only included in responses with credential_type of SSH Key.",
-        default=UNSET,
-    )
-    credential_accessed_at: Union[datetime, None] = Field(
-        description="Date when the credential was last accessed. May be null if it was never accessed",
-        default=...,
-    )
-    authorized_credential_id: Union[int, None] = Field(default=...)
-    authorized_credential_title: Union[Unset, Union[str, None]] = Field(
-        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
-        default=UNSET,
-    )
-    authorized_credential_note: Union[Unset, Union[str, None]] = Field(
-        description="The note given to the token. This will only be present when the credential is a token.",
-        default=UNSET,
-    )
-    authorized_credential_expires_at: Union[Unset, Union[datetime, None]] = Field(
-        description="The expiry for the token. This will only be present when the credential is a token.",
-        default=UNSET,
-    )
-
-
 class OrganizationDependabotSecret(GitHubRestModel):
     """Dependabot Secret for an Organization
 
@@ -3359,67 +3116,6 @@ class DependabotPublicKey(GitHubRestModel):
 
     key_id: str = Field(description="The identifier for the key.", default=...)
     key: str = Field(description="The Base64 encoded public key.", default=...)
-
-
-class ExternalGroup(GitHubRestModel):
-    """ExternalGroup
-
-    Information about an external group's usage and its members
-    """
-
-    group_id: int = Field(description="The internal ID of the group", default=...)
-    group_name: str = Field(description="The display name for the group", default=...)
-    updated_at: Union[Unset, str] = Field(
-        description="The date when the group was last updated_at", default=UNSET
-    )
-    teams: List[ExternalGroupPropTeamsItems] = Field(
-        description="An array of teams linked to this group", default=...
-    )
-    members: List[ExternalGroupPropMembersItems] = Field(
-        description="An array of external members linked to this group", default=...
-    )
-
-
-class ExternalGroupPropTeamsItems(GitHubRestModel):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int = Field(description="The id for a team", default=...)
-    team_name: str = Field(description="The name of the team", default=...)
-
-
-class ExternalGroupPropMembersItems(GitHubRestModel):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int = Field(
-        description="The internal user ID of the identity", default=...
-    )
-    member_login: str = Field(description="The handle/login for the user", default=...)
-    member_name: str = Field(
-        description="The user display name/profile name", default=...
-    )
-    member_email: str = Field(description="An email attached to a user", default=...)
-
-
-class ExternalGroups(GitHubRestModel):
-    """ExternalGroups
-
-    A list of external groups available to be connected to a team
-    """
-
-    groups: Union[Unset, List[ExternalGroupsPropGroupsItems]] = Field(
-        description="An array of external groups available to be mapped to a team",
-        default=UNSET,
-    )
-
-
-class ExternalGroupsPropGroupsItems(GitHubRestModel):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int = Field(description="The internal ID of the group", default=...)
-    group_name: str = Field(description="The display name of the group", default=...)
-    updated_at: str = Field(
-        description="The time of the last update for this group", default=...
-    )
 
 
 class OrganizationInvitation(GitHubRestModel):
@@ -3747,30 +3443,114 @@ class Project(GitHubRestModel):
     )
 
 
-class GroupMapping(GitHubRestModel):
-    """GroupMapping
+class ActionsBillingUsage(GitHubRestModel):
+    """ActionsBillingUsage"""
 
-    External Groups to be mapped to a team for membership
-    """
-
-    groups: Union[Unset, List[GroupMappingPropGroupsItems]] = Field(
-        description="Array of groups to be mapped to this team", default=UNSET
+    total_minutes_used: int = Field(
+        description="The sum of the free and paid GitHub Actions minutes used.",
+        default=...,
+    )
+    total_paid_minutes_used: int = Field(
+        description="The total paid GitHub Actions minutes used.", default=...
+    )
+    included_minutes: int = Field(
+        description="The amount of free GitHub Actions minutes available.", default=...
+    )
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field(
+        default=...
     )
 
 
-class GroupMappingPropGroupsItems(GitHubRestModel):
-    """GroupMappingPropGroupsItems"""
+class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubRestModel):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
-    group_id: str = Field(description="The ID of the group", default=...)
-    group_name: str = Field(description="The name of the group", default=...)
-    group_description: str = Field(
-        description="a description of the group", default=...
+    ubuntu: Union[Unset, int] = Field(
+        description="Total minutes used on Ubuntu runner machines.",
+        default=UNSET,
+        alias="UBUNTU",
     )
-    status: Union[Unset, str] = Field(
-        description="synchronization status for this group mapping", default=UNSET
+    macos: Union[Unset, int] = Field(
+        description="Total minutes used on macOS runner machines.",
+        default=UNSET,
+        alias="MACOS",
     )
-    synced_at: Union[Unset, Union[str, None]] = Field(
-        description="the time of the last sync for this group-mapping", default=UNSET
+    windows: Union[Unset, int] = Field(
+        description="Total minutes used on Windows runner machines.",
+        default=UNSET,
+        alias="WINDOWS",
+    )
+    ubuntu_4_core: Union[Unset, int] = Field(
+        description="Total minutes used on Ubuntu 4 core runner machines.",
+        default=UNSET,
+    )
+    ubuntu_8_core: Union[Unset, int] = Field(
+        description="Total minutes used on Ubuntu 8 core runner machines.",
+        default=UNSET,
+    )
+    ubuntu_16_core: Union[Unset, int] = Field(
+        description="Total minutes used on Ubuntu 16 core runner machines.",
+        default=UNSET,
+    )
+    ubuntu_32_core: Union[Unset, int] = Field(
+        description="Total minutes used on Ubuntu 32 core runner machines.",
+        default=UNSET,
+    )
+    ubuntu_64_core: Union[Unset, int] = Field(
+        description="Total minutes used on Ubuntu 64 core runner machines.",
+        default=UNSET,
+    )
+    windows_4_core: Union[Unset, int] = Field(
+        description="Total minutes used on Windows 4 core runner machines.",
+        default=UNSET,
+    )
+    windows_8_core: Union[Unset, int] = Field(
+        description="Total minutes used on Windows 8 core runner machines.",
+        default=UNSET,
+    )
+    windows_16_core: Union[Unset, int] = Field(
+        description="Total minutes used on Windows 16 core runner machines.",
+        default=UNSET,
+    )
+    windows_32_core: Union[Unset, int] = Field(
+        description="Total minutes used on Windows 32 core runner machines.",
+        default=UNSET,
+    )
+    windows_64_core: Union[Unset, int] = Field(
+        description="Total minutes used on Windows 64 core runner machines.",
+        default=UNSET,
+    )
+    total: Union[Unset, int] = Field(
+        description="Total minutes used on all runner machines.", default=UNSET
+    )
+
+
+class PackagesBillingUsage(GitHubRestModel):
+    """PackagesBillingUsage"""
+
+    total_gigabytes_bandwidth_used: int = Field(
+        description="Sum of the free and paid storage space (GB) for GitHuub Packages.",
+        default=...,
+    )
+    total_paid_gigabytes_bandwidth_used: int = Field(
+        description="Total paid storage space (GB) for GitHuub Packages.", default=...
+    )
+    included_gigabytes_bandwidth: int = Field(
+        description="Free storage space (GB) for GitHub Packages.", default=...
+    )
+
+
+class CombinedBillingUsage(GitHubRestModel):
+    """CombinedBillingUsage"""
+
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle.", default=...
+    )
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle.", default=...
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle.",
+        default=...,
     )
 
 
@@ -4388,7 +4168,10 @@ class FullRepository(GitHubRestModel):
     forks_count: int = Field(default=...)
     stargazers_count: int = Field(default=...)
     watchers_count: int = Field(default=...)
-    size: int = Field(default=...)
+    size: int = Field(
+        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        default=...,
+    )
     default_branch: str = Field(default=...)
     open_issues_count: int = Field(default=...)
     is_template: Union[Unset, bool] = Field(default=UNSET)
@@ -4634,15 +4417,6 @@ class JobPropStepsItems(GitHubRestModel):
     completed_at: Union[Unset, Union[datetime, None]] = Field(
         description="The time that the job finished, in ISO 8601 format.", default=UNSET
     )
-
-
-class OptOutOidcCustomSub(GitHubRestModel):
-    """The json payload enables/disables the use of sub claim customization
-
-    OIDC Customer Subject
-    """
-
-    use_default: bool = Field(default=...)
 
 
 class ActionsRepositoryPermissions(GitHubRestModel):
@@ -6123,40 +5897,6 @@ class CodeScanningAnalysisDeletion(GitHubRestModel):
     )
 
 
-class CodeScanningCodeqlDatabase(GitHubRestModel):
-    """CodeQL Database
-
-    A CodeQL database.
-    """
-
-    id: int = Field(description="The ID of the CodeQL database.", default=...)
-    name: str = Field(description="The name of the CodeQL database.", default=...)
-    language: str = Field(
-        description="The language of the CodeQL database.", default=...
-    )
-    uploader: SimpleUser = Field(
-        title="Simple User", description="Simple User", default=...
-    )
-    content_type: str = Field(
-        description="The MIME type of the CodeQL database file.", default=...
-    )
-    size: int = Field(
-        description="The size of the CodeQL database file in bytes.", default=...
-    )
-    created_at: datetime = Field(
-        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-        default=...,
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-        default=...,
-    )
-    url: str = Field(
-        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property.",
-        default=...,
-    )
-
-
 class CodeScanningSarifsReceipt(GitHubRestModel):
     """CodeScanningSarifsReceipt"""
 
@@ -6230,20 +5970,6 @@ class RepoCodespacesSecret(GitHubRestModel):
     name: str = Field(description="The name of the secret.", default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-
-
-class CodespacesPublicKey(GitHubRestModel):
-    """CodespacesPublicKey
-
-    The public key used for setting Codespaces secrets.
-    """
-
-    key_id: str = Field(description="The identifier for the key.", default=...)
-    key: str = Field(description="The Base64 encoded public key.", default=...)
-    id: Union[Unset, int] = Field(default=UNSET)
-    url: Union[Unset, str] = Field(default=UNSET)
-    title: Union[Unset, str] = Field(default=UNSET)
-    created_at: Union[Unset, str] = Field(default=UNSET)
 
 
 class Collaborator(GitHubRestModel):
@@ -9974,291 +9700,6 @@ class ViewTraffic(GitHubRestModel):
     views: List[Traffic] = Field(default=...)
 
 
-class ScimGroupListEnterprise(GitHubRestModel):
-    """ScimGroupListEnterprise"""
-
-    schemas: List[str] = Field(default=...)
-    total_results: float = Field(default=..., alias="totalResults")
-    items_per_page: float = Field(default=..., alias="itemsPerPage")
-    start_index: float = Field(default=..., alias="startIndex")
-    resources: List[ScimGroupListEnterprisePropResourcesItems] = Field(
-        default=..., alias="Resources"
-    )
-
-
-class ScimGroupListEnterprisePropResourcesItems(GitHubRestModel):
-    """ScimGroupListEnterprisePropResourcesItems"""
-
-    schemas: List[str] = Field(default=...)
-    id: str = Field(default=...)
-    external_id: Union[Unset, Union[str, None]] = Field(
-        default=UNSET, alias="externalId"
-    )
-    display_name: Union[Unset, str] = Field(default=UNSET, alias="displayName")
-    members: Union[
-        Unset, List[ScimGroupListEnterprisePropResourcesItemsPropMembersItems]
-    ] = Field(default=UNSET)
-    meta: Union[Unset, ScimGroupListEnterprisePropResourcesItemsPropMeta] = Field(
-        default=UNSET
-    )
-
-
-class ScimGroupListEnterprisePropResourcesItemsPropMembersItems(GitHubRestModel):
-    """ScimGroupListEnterprisePropResourcesItemsPropMembersItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-    ref: Union[Unset, str] = Field(default=UNSET, alias="$ref")
-    display: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimGroupListEnterprisePropResourcesItemsPropMeta(GitHubRestModel):
-    """ScimGroupListEnterprisePropResourcesItemsPropMeta"""
-
-    resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
-    created: Union[Unset, str] = Field(default=UNSET)
-    last_modified: Union[Unset, str] = Field(default=UNSET, alias="lastModified")
-    location: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimEnterpriseGroup(GitHubRestModel):
-    """ScimEnterpriseGroup"""
-
-    schemas: List[str] = Field(default=...)
-    id: str = Field(default=...)
-    external_id: Union[Unset, Union[str, None]] = Field(
-        default=UNSET, alias="externalId"
-    )
-    display_name: Union[Unset, str] = Field(default=UNSET, alias="displayName")
-    members: Union[Unset, List[ScimEnterpriseGroupPropMembersItems]] = Field(
-        default=UNSET
-    )
-    meta: Union[Unset, ScimEnterpriseGroupPropMeta] = Field(default=UNSET)
-
-
-class ScimEnterpriseGroupPropMembersItems(GitHubRestModel):
-    """ScimEnterpriseGroupPropMembersItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-    ref: Union[Unset, str] = Field(default=UNSET, alias="$ref")
-    display: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimEnterpriseGroupPropMeta(GitHubRestModel):
-    """ScimEnterpriseGroupPropMeta"""
-
-    resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
-    created: Union[Unset, str] = Field(default=UNSET)
-    last_modified: Union[Unset, str] = Field(default=UNSET, alias="lastModified")
-    location: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimUserListEnterprise(GitHubRestModel):
-    """ScimUserListEnterprise"""
-
-    schemas: List[str] = Field(default=...)
-    total_results: float = Field(default=..., alias="totalResults")
-    items_per_page: float = Field(default=..., alias="itemsPerPage")
-    start_index: float = Field(default=..., alias="startIndex")
-    resources: List[ScimUserListEnterprisePropResourcesItems] = Field(
-        default=..., alias="Resources"
-    )
-
-
-class ScimUserListEnterprisePropResourcesItems(GitHubRestModel):
-    """ScimUserListEnterprisePropResourcesItems"""
-
-    schemas: List[str] = Field(default=...)
-    id: str = Field(default=...)
-    external_id: Union[Unset, str] = Field(default=UNSET, alias="externalId")
-    user_name: Union[Unset, str] = Field(default=UNSET, alias="userName")
-    name: Union[Unset, ScimUserListEnterprisePropResourcesItemsPropName] = Field(
-        default=UNSET
-    )
-    emails: Union[
-        Unset, List[ScimUserListEnterprisePropResourcesItemsPropEmailsItems]
-    ] = Field(default=UNSET)
-    groups: Union[
-        Unset, List[ScimUserListEnterprisePropResourcesItemsPropGroupsItems]
-    ] = Field(default=UNSET)
-    active: Union[Unset, bool] = Field(default=UNSET)
-    meta: Union[Unset, ScimUserListEnterprisePropResourcesItemsPropMeta] = Field(
-        default=UNSET
-    )
-
-
-class ScimUserListEnterprisePropResourcesItemsPropName(GitHubRestModel):
-    """ScimUserListEnterprisePropResourcesItemsPropName"""
-
-    given_name: Union[Unset, str] = Field(default=UNSET, alias="givenName")
-    family_name: Union[Unset, str] = Field(default=UNSET, alias="familyName")
-
-
-class ScimUserListEnterprisePropResourcesItemsPropEmailsItems(GitHubRestModel):
-    """ScimUserListEnterprisePropResourcesItemsPropEmailsItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-    primary: Union[Unset, bool] = Field(default=UNSET)
-    type: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimUserListEnterprisePropResourcesItemsPropGroupsItems(GitHubRestModel):
-    """ScimUserListEnterprisePropResourcesItemsPropGroupsItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimUserListEnterprisePropResourcesItemsPropMeta(GitHubRestModel):
-    """ScimUserListEnterprisePropResourcesItemsPropMeta"""
-
-    resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
-    created: Union[Unset, str] = Field(default=UNSET)
-    last_modified: Union[Unset, str] = Field(default=UNSET, alias="lastModified")
-    location: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimEnterpriseUser(GitHubRestModel):
-    """ScimEnterpriseUser"""
-
-    schemas: List[str] = Field(default=...)
-    id: str = Field(default=...)
-    external_id: Union[Unset, str] = Field(default=UNSET, alias="externalId")
-    user_name: Union[Unset, str] = Field(default=UNSET, alias="userName")
-    name: Union[Unset, ScimEnterpriseUserPropName] = Field(default=UNSET)
-    emails: Union[Unset, List[ScimEnterpriseUserPropEmailsItems]] = Field(default=UNSET)
-    groups: Union[Unset, List[ScimEnterpriseUserPropGroupsItems]] = Field(default=UNSET)
-    active: Union[Unset, bool] = Field(default=UNSET)
-    meta: Union[Unset, ScimEnterpriseUserPropMeta] = Field(default=UNSET)
-
-
-class ScimEnterpriseUserPropName(GitHubRestModel):
-    """ScimEnterpriseUserPropName"""
-
-    given_name: Union[Unset, str] = Field(default=UNSET, alias="givenName")
-    family_name: Union[Unset, str] = Field(default=UNSET, alias="familyName")
-
-
-class ScimEnterpriseUserPropEmailsItems(GitHubRestModel):
-    """ScimEnterpriseUserPropEmailsItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-    type: Union[Unset, str] = Field(default=UNSET)
-    primary: Union[Unset, bool] = Field(default=UNSET)
-
-
-class ScimEnterpriseUserPropGroupsItems(GitHubRestModel):
-    """ScimEnterpriseUserPropGroupsItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimEnterpriseUserPropMeta(GitHubRestModel):
-    """ScimEnterpriseUserPropMeta"""
-
-    resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
-    created: Union[Unset, str] = Field(default=UNSET)
-    last_modified: Union[Unset, str] = Field(default=UNSET, alias="lastModified")
-    location: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimUser(GitHubRestModel):
-    """SCIM /Users
-
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: List[str] = Field(
-        description="SCIM schema used.", min_items=1, default=...
-    )
-    id: str = Field(
-        description="Unique identifier of an external identity", default=...
-    )
-    external_id: Union[str, None] = Field(
-        description="The ID of the User.", default=..., alias="externalId"
-    )
-    user_name: Union[str, None] = Field(
-        description="Configured by the admin. Could be an email, login, or username",
-        default=...,
-        alias="userName",
-    )
-    display_name: Union[Unset, Union[str, None]] = Field(
-        description="The name of the user, suitable for display to end-users",
-        default=UNSET,
-        alias="displayName",
-    )
-    name: ScimUserPropName = Field(default=...)
-    emails: List[ScimUserPropEmailsItems] = Field(
-        description="user emails", default=...
-    )
-    active: bool = Field(description="The active status of the User.", default=...)
-    meta: ScimUserPropMeta = Field(default=...)
-    organization_id: Union[Unset, int] = Field(
-        description="The ID of the organization.", default=UNSET
-    )
-    operations: Union[Unset, List[ScimUserPropOperationsItems]] = Field(
-        description="Set of operations to be performed", default=UNSET
-    )
-    groups: Union[Unset, List[Any]] = Field(
-        description="associated groups", default=UNSET
-    )
-
-
-class ScimUserPropName(GitHubRestModel):
-    """ScimUserPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: Union[str, None] = Field(default=..., alias="givenName")
-    family_name: Union[str, None] = Field(default=..., alias="familyName")
-    formatted: Union[Unset, Union[str, None]] = Field(default=UNSET)
-
-
-class ScimUserPropEmailsItems(GitHubRestModel):
-    """ScimUserPropEmailsItems"""
-
-    value: str = Field(default=...)
-    primary: Union[Unset, bool] = Field(default=UNSET)
-
-
-class ScimUserPropMeta(GitHubRestModel):
-    """ScimUserPropMeta"""
-
-    resource_type: Union[Unset, str] = Field(default=UNSET, alias="resourceType")
-    created: Union[Unset, datetime] = Field(default=UNSET)
-    last_modified: Union[Unset, datetime] = Field(default=UNSET, alias="lastModified")
-    location: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimUserPropOperationsItems(GitHubRestModel):
-    """ScimUserPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"] = Field(default=...)
-    path: Union[Unset, str] = Field(default=UNSET)
-    value: Union[
-        Unset, Union[str, ScimUserPropOperationsItemsPropValueOneof1, List[Any]]
-    ] = Field(default=UNSET)
-
-
-class ScimUserPropOperationsItemsPropValueOneof1(GitHubRestModel):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
-
-
-class ScimUserList(GitHubRestModel):
-    """SCIM User List
-
-    SCIM User List
-    """
-
-    schemas: List[str] = Field(
-        description="SCIM schema used.", min_items=1, default=...
-    )
-    total_results: int = Field(default=..., alias="totalResults")
-    items_per_page: int = Field(default=..., alias="itemsPerPage")
-    start_index: int = Field(default=..., alias="startIndex")
-    resources: List[ScimUser] = Field(default=..., alias="Resources")
-
-
 class SearchResultTextMatchesItems(GitHubRestModel):
     """SearchResultTextMatchesItems"""
 
@@ -11522,6 +10963,52 @@ class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubRestModel):
     )
 
 
+class OrganizationsOrgCodespacesSecretsGetResponse200(GitHubRestModel):
+    """OrganizationsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int = Field(default=...)
+    secrets: List[CodespacesOrgSecret] = Field(default=...)
+
+
+class OrganizationsOrgCodespacesSecretsSecretNamePutBody(GitHubRestModel):
+    """OrganizationsOrgCodespacesSecretsSecretNamePutBody"""
+
+    encrypted_value: Union[Unset, str] = Field(
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/reference/codespaces#get-an-organization-public-key) endpoint.",
+        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        default=UNSET,
+    )
+    key_id: Union[Unset, str] = Field(
+        description="The ID of the key you used to encrypt the secret.", default=UNSET
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.",
+        default=...,
+    )
+    selected_repository_ids: Union[Unset, List[int]] = Field(
+        description="An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/reference/codespaces#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/codespaces#remove-selected-repository-from-an-organization-secret) endpoints.",
+        default=UNSET,
+    )
+
+
+class OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200(
+    GitHubRestModel
+):
+    """OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int = Field(default=...)
+    repositories: List[MinimalRepository] = Field(default=...)
+
+
+class OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
+    """OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: List[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/codespaces#remove-selected-repository-from-an-organization-secret) endpoints.",
+        default=...,
+    )
+
+
 class OrgsOrgPatchBody(GitHubRestModel):
     """OrgsOrgPatchBody"""
 
@@ -12340,12 +11827,6 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubRes
     )
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubRestModel):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
-
-    group_id: int = Field(description="External Group Id", default=...)
-
-
 class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
@@ -12376,29 +11857,6 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubRestModel):
     permission: Union[Unset, str] = Field(
         description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
         default="push",
-    )
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubRestModel):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
-
-    groups: Union[
-        Unset, List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems]
-    ] = Field(
-        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
-        default=UNSET,
-    )
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(
-    GitHubRestModel
-):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str = Field(description="ID of the IdP group.", default=...)
-    group_name: str = Field(description="Name of the IdP group.", default=...)
-    group_description: str = Field(
-        description="Description of the IdP group.", default=...
     )
 
 
@@ -15936,327 +15394,6 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
     )
 
 
-class ScimV2EnterprisesEnterpriseGroupsPostBody(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseGroupsPostBody"""
-
-    schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
-    display_name: str = Field(
-        description="The name of the SCIM group. This must match the GitHub organization that the group maps to.",
-        default=...,
-        alias="displayName",
-    )
-    members: Union[
-        Unset, List[ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems]
-    ] = Field(default=UNSET)
-
-
-class ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems"""
-
-    value: str = Field(description="The SCIM user ID for a user.", default=...)
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody"""
-
-    schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
-    display_name: str = Field(
-        description="The name of the SCIM group. This must match the GitHub organization that the group maps to.",
-        default=...,
-        alias="displayName",
-    )
-    members: Union[
-        Unset, List[ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems]
-    ] = Field(default=UNSET)
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems(
-    GitHubRestModel
-):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems"""
-
-    value: str = Field(description="The SCIM user ID for a user.", default=...)
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody"""
-
-    schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
-    operations: List[
-        ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems
-    ] = Field(
-        description="Array of [SCIM operations](https://tools.ietf.org/html/rfc7644#section-3.5.2).",
-        default=...,
-        alias="Operations",
-    )
-
-
-class ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems(
-    GitHubRestModel
-):
-    """ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems"""
-
-    op: Literal["add", "Add", "remove", "Remove", "replace", "Replace"] = Field(
-        default=...
-    )
-    path: Union[Unset, str] = Field(default=UNSET)
-    value: Union[Unset, Any] = Field(
-        description="Can be any value - string, number, array or object.", default=UNSET
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBody(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersPostBody"""
-
-    schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
-    user_name: str = Field(
-        description="The username for the user.", default=..., alias="userName"
-    )
-    name: ScimV2EnterprisesEnterpriseUsersPostBodyPropName = Field(default=...)
-    emails: List[ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems] = Field(
-        description="List of user emails.", default=...
-    )
-    groups: Union[
-        Unset, List[ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems]
-    ] = Field(
-        description="List of SCIM group IDs the user is a member of.", default=UNSET
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropName(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersPostBodyPropName"""
-
-    given_name: str = Field(
-        description="The first name of the user.", default=..., alias="givenName"
-    )
-    family_name: str = Field(
-        description="The last name of the user.", default=..., alias="familyName"
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems"""
-
-    value: str = Field(description="The email address.", default=...)
-    type: str = Field(description="The type of email address.", default=...)
-    primary: bool = Field(
-        description="Whether this email address is the primary address.", default=...
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody"""
-
-    schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
-    user_name: str = Field(
-        description="The username for the user.", default=..., alias="userName"
-    )
-    name: ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName = Field(default=...)
-    emails: List[
-        ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems
-    ] = Field(description="List of user emails.", default=...)
-    groups: Union[
-        Unset, List[ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems]
-    ] = Field(
-        description="List of SCIM group IDs the user is a member of.", default=UNSET
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName"""
-
-    given_name: str = Field(
-        description="The first name of the user.", default=..., alias="givenName"
-    )
-    family_name: str = Field(
-        description="The last name of the user.", default=..., alias="familyName"
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems"""
-
-    value: str = Field(description="The email address.", default=...)
-    type: str = Field(description="The type of email address.", default=...)
-    primary: bool = Field(
-        description="Whether this email address is the primary address.", default=...
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems"""
-
-    value: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody(GitHubRestModel):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody"""
-
-    schemas: List[str] = Field(description="The SCIM schema URIs.", default=...)
-    operations: List[
-        ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems
-    ] = Field(
-        description="Array of [SCIM operations](https://tools.ietf.org/html/rfc7644#section-3.5.2).",
-        default=...,
-        alias="Operations",
-    )
-
-
-class ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems(
-    GitHubRestModel
-):
-    """ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems"""
-
-
-class ScimV2OrganizationsOrgUsersPostBody(GitHubRestModel):
-    """ScimV2OrganizationsOrgUsersPostBody"""
-
-    user_name: str = Field(
-        description="Configured by the admin. Could be an email, login, or username",
-        default=...,
-        alias="userName",
-    )
-    display_name: Union[Unset, str] = Field(
-        description="The name of the user, suitable for display to end-users",
-        default=UNSET,
-        alias="displayName",
-    )
-    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field(default=...)
-    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        description="user emails", default=...
-    )
-    schemas: Union[Unset, List[str]] = Field(default=UNSET)
-    external_id: Union[Unset, str] = Field(default=UNSET, alias="externalId")
-    groups: Union[Unset, List[str]] = Field(default=UNSET)
-    active: Union[Unset, bool] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubRestModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(default=..., alias="givenName")
-    family_name: str = Field(default=..., alias="familyName")
-    formatted: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubRestModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str = Field(default=...)
-    primary: Union[Unset, bool] = Field(default=UNSET)
-    type: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubRestModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
-
-    schemas: Union[Unset, List[str]] = Field(default=UNSET)
-    display_name: Union[Unset, str] = Field(
-        description="The name of the user, suitable for display to end-users",
-        default=UNSET,
-        alias="displayName",
-    )
-    external_id: Union[Unset, str] = Field(default=UNSET, alias="externalId")
-    groups: Union[Unset, List[str]] = Field(default=UNSET)
-    active: Union[Unset, bool] = Field(default=UNSET)
-    user_name: str = Field(
-        description="Configured by the admin. Could be an email, login, or username",
-        default=...,
-        alias="userName",
-    )
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field(default=...)
-    emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
-        description="user emails", default=...
-    )
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubRestModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(default=..., alias="givenName")
-    family_name: str = Field(default=..., alias="familyName")
-    formatted: Union[Unset, str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubRestModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: Union[Unset, str] = Field(default=UNSET)
-    value: str = Field(default=...)
-    primary: Union[Unset, bool] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubRestModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
-
-    schemas: Union[Unset, List[str]] = Field(default=UNSET)
-    operations: List[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
-    ] = Field(
-        description="Set of operations to be performed", default=..., alias="Operations"
-    )
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(
-    GitHubRestModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"] = Field(default=...)
-    path: Union[Unset, str] = Field(default=UNSET)
-    value: Union[
-        Unset,
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
-            List[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-            ],
-            str,
-        ],
-    ] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
-    GitHubRestModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: Union[Unset, Union[bool, None]] = Field(default=UNSET)
-    user_name: Union[Unset, Union[str, None]] = Field(default=UNSET, alias="userName")
-    external_id: Union[Unset, Union[str, None]] = Field(
-        default=UNSET, alias="externalId"
-    )
-    given_name: Union[Unset, Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Union[Unset, Union[str, None]] = Field(
-        default=UNSET, alias="familyName"
-    )
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
-    GitHubRestModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: Union[Unset, str] = Field(default=UNSET)
-    primary: Union[Unset, bool] = Field(default=UNSET)
-
-
 class SearchCodeGetResponse200(GitHubRestModel):
     """SearchCodeGetResponse200"""
 
@@ -16424,29 +15561,6 @@ class TeamsTeamIdReposOwnerRepoPutBody(GitHubRestModel):
         description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
         default=UNSET,
     )
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubRestModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
-
-    groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
-        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
-        default=...,
-    )
-    synced_at: Union[Unset, str] = Field(default=UNSET)
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubRestModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str = Field(description="ID of the IdP group.", default=...)
-    group_name: str = Field(description="Name of the IdP group.", default=...)
-    group_description: str = Field(
-        description="Description of the IdP group.", default=...
-    )
-    id: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(default=UNSET)
-    description: Union[Unset, str] = Field(default=UNSET)
 
 
 class UserPatchBody(GitHubRestModel):
@@ -16913,7 +16027,6 @@ ServerStatisticsItemsPropGheStatsPropRepos.update_forward_refs()
 ServerStatisticsItemsPropGheStatsPropUsers.update_forward_refs()
 ServerStatisticsItemsPropDormantUsers.update_forward_refs()
 ActionsCacheUsageOrgEnterprise.update_forward_refs()
-ActionsOidcCustomIssuerPolicyForEnterprise.update_forward_refs()
 ActionsEnterprisePermissions.update_forward_refs()
 OrganizationSimple.update_forward_refs()
 SelectedActions.update_forward_refs()
@@ -16925,13 +16038,6 @@ Runner.update_forward_refs()
 RunnerApplication.update_forward_refs()
 AuthenticationToken.update_forward_refs()
 AuthenticationTokenPropPermissions.update_forward_refs()
-AuditLogEvent.update_forward_refs()
-AuditLogEventPropActorLocation.update_forward_refs()
-AuditLogEventPropData.update_forward_refs()
-AuditLogEventPropConfigItems.update_forward_refs()
-AuditLogEventPropConfigWasItems.update_forward_refs()
-AuditLogEventPropEventsItems.update_forward_refs()
-AuditLogEventPropEventsWereItems.update_forward_refs()
 CodeScanningAlertRule.update_forward_refs()
 CodeScanningAnalysisTool.update_forward_refs()
 CodeScanningAlertLocation.update_forward_refs()
@@ -16940,13 +16046,9 @@ CodeScanningAlertInstancePropMessage.update_forward_refs()
 SimpleRepository.update_forward_refs()
 CodeScanningOrganizationAlertItems.update_forward_refs()
 OrganizationSecretScanningAlert.update_forward_refs()
-ActionsBillingUsage.update_forward_refs()
-ActionsBillingUsagePropMinutesUsedBreakdown.update_forward_refs()
 AdvancedSecurityActiveCommittersUser.update_forward_refs()
 AdvancedSecurityActiveCommittersRepository.update_forward_refs()
 AdvancedSecurityActiveCommitters.update_forward_refs()
-PackagesBillingUsage.update_forward_refs()
-CombinedBillingUsage.update_forward_refs()
 Actor.update_forward_refs()
 Milestone.update_forward_refs()
 ReactionRollup.update_forward_refs()
@@ -16990,11 +16092,12 @@ Thread.update_forward_refs()
 ThreadPropSubject.update_forward_refs()
 ThreadSubscription.update_forward_refs()
 OrganizationCustomRepositoryRole.update_forward_refs()
+CodespacesOrgSecret.update_forward_refs()
+CodespacesPublicKey.update_forward_refs()
+EmptyObject.update_forward_refs()
 OrganizationFull.update_forward_refs()
 OrganizationFullPropPlan.update_forward_refs()
 ActionsCacheUsageByRepository.update_forward_refs()
-OidcCustomSub.update_forward_refs()
-EmptyObject.update_forward_refs()
 ActionsOrganizationPermissions.update_forward_refs()
 RunnerGroupsOrg.update_forward_refs()
 OrganizationActionsSecret.update_forward_refs()
@@ -17003,14 +16106,8 @@ CodespaceMachine.update_forward_refs()
 Codespace.update_forward_refs()
 CodespacePropGitStatus.update_forward_refs()
 CodespacePropRuntimeConstraints.update_forward_refs()
-CredentialAuthorization.update_forward_refs()
 OrganizationDependabotSecret.update_forward_refs()
 DependabotPublicKey.update_forward_refs()
-ExternalGroup.update_forward_refs()
-ExternalGroupPropTeamsItems.update_forward_refs()
-ExternalGroupPropMembersItems.update_forward_refs()
-ExternalGroups.update_forward_refs()
-ExternalGroupsPropGroupsItems.update_forward_refs()
 OrganizationInvitation.update_forward_refs()
 OrganizationFineGrainedPermission.update_forward_refs()
 OrgHook.update_forward_refs()
@@ -17029,8 +16126,10 @@ PackageVersionPropMetadata.update_forward_refs()
 PackageVersionPropMetadataPropContainer.update_forward_refs()
 PackageVersionPropMetadataPropDocker.update_forward_refs()
 Project.update_forward_refs()
-GroupMapping.update_forward_refs()
-GroupMappingPropGroupsItems.update_forward_refs()
+ActionsBillingUsage.update_forward_refs()
+ActionsBillingUsagePropMinutesUsedBreakdown.update_forward_refs()
+PackagesBillingUsage.update_forward_refs()
+CombinedBillingUsage.update_forward_refs()
 TeamOrganization.update_forward_refs()
 TeamOrganizationPropPlan.update_forward_refs()
 TeamFull.update_forward_refs()
@@ -17061,7 +16160,6 @@ ActionsCacheList.update_forward_refs()
 ActionsCacheListPropActionsCachesItems.update_forward_refs()
 Job.update_forward_refs()
 JobPropStepsItems.update_forward_refs()
-OptOutOidcCustomSub.update_forward_refs()
 ActionsRepositoryPermissions.update_forward_refs()
 ActionsWorkflowAccessToRepository.update_forward_refs()
 ReferencedWorkflow.update_forward_refs()
@@ -17155,13 +16253,11 @@ CodeScanningAlertItems.update_forward_refs()
 CodeScanningAlert.update_forward_refs()
 CodeScanningAnalysis.update_forward_refs()
 CodeScanningAnalysisDeletion.update_forward_refs()
-CodeScanningCodeqlDatabase.update_forward_refs()
 CodeScanningSarifsReceipt.update_forward_refs()
 CodeScanningSarifsStatus.update_forward_refs()
 CodeownersErrors.update_forward_refs()
 CodeownersErrorsPropErrorsItems.update_forward_refs()
 RepoCodespacesSecret.update_forward_refs()
-CodespacesPublicKey.update_forward_refs()
 Collaborator.update_forward_refs()
 CollaboratorPropPermissions.update_forward_refs()
 RepositoryInvitation.update_forward_refs()
@@ -17361,31 +16457,6 @@ CloneTraffic.update_forward_refs()
 ContentTraffic.update_forward_refs()
 ReferrerTraffic.update_forward_refs()
 ViewTraffic.update_forward_refs()
-ScimGroupListEnterprise.update_forward_refs()
-ScimGroupListEnterprisePropResourcesItems.update_forward_refs()
-ScimGroupListEnterprisePropResourcesItemsPropMembersItems.update_forward_refs()
-ScimGroupListEnterprisePropResourcesItemsPropMeta.update_forward_refs()
-ScimEnterpriseGroup.update_forward_refs()
-ScimEnterpriseGroupPropMembersItems.update_forward_refs()
-ScimEnterpriseGroupPropMeta.update_forward_refs()
-ScimUserListEnterprise.update_forward_refs()
-ScimUserListEnterprisePropResourcesItems.update_forward_refs()
-ScimUserListEnterprisePropResourcesItemsPropName.update_forward_refs()
-ScimUserListEnterprisePropResourcesItemsPropEmailsItems.update_forward_refs()
-ScimUserListEnterprisePropResourcesItemsPropGroupsItems.update_forward_refs()
-ScimUserListEnterprisePropResourcesItemsPropMeta.update_forward_refs()
-ScimEnterpriseUser.update_forward_refs()
-ScimEnterpriseUserPropName.update_forward_refs()
-ScimEnterpriseUserPropEmailsItems.update_forward_refs()
-ScimEnterpriseUserPropGroupsItems.update_forward_refs()
-ScimEnterpriseUserPropMeta.update_forward_refs()
-ScimUser.update_forward_refs()
-ScimUserPropName.update_forward_refs()
-ScimUserPropEmailsItems.update_forward_refs()
-ScimUserPropMeta.update_forward_refs()
-ScimUserPropOperationsItems.update_forward_refs()
-ScimUserPropOperationsItemsPropValueOneof1.update_forward_refs()
-ScimUserList.update_forward_refs()
 SearchResultTextMatchesItems.update_forward_refs()
 SearchResultTextMatchesItemsPropMatchesItems.update_forward_refs()
 CodeSearchResultItem.update_forward_refs()
@@ -17469,6 +16540,10 @@ NotificationsPutBody.update_forward_refs()
 NotificationsPutResponse202.update_forward_refs()
 NotificationsThreadsThreadIdSubscriptionPutBody.update_forward_refs()
 OrganizationsOrganizationIdCustomRolesGetResponse200.update_forward_refs()
+OrganizationsOrgCodespacesSecretsGetResponse200.update_forward_refs()
+OrganizationsOrgCodespacesSecretsSecretNamePutBody.update_forward_refs()
+OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
+OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody.update_forward_refs()
 OrgsOrgPatchBody.update_forward_refs()
 OrgsOrgActionsCacheUsageByRepositoryGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsPutBody.update_forward_refs()
@@ -17518,13 +16593,10 @@ OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody.update_forward_r
 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody.update_forward_refs()
-OrgsOrgTeamsTeamSlugExternalGroupsPatchBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403.update_forward_refs()
 OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody.update_forward_refs()
-OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody.update_forward_refs()
-OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems.update_forward_refs()
 ProjectsColumnsCardsCardIdDeleteResponse403.update_forward_refs()
 ProjectsColumnsCardsCardIdPatchBody.update_forward_refs()
 ProjectsColumnsCardsCardIdMovesPostBody.update_forward_refs()
@@ -17746,32 +16818,6 @@ ReposOwnerRepoTransferPostBody.update_forward_refs()
 ReposTemplateOwnerTemplateRepoGeneratePostBody.update_forward_refs()
 RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200.update_forward_refs()
 RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody.update_forward_refs()
-ScimV2EnterprisesEnterpriseGroupsPostBody.update_forward_refs()
-ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems.update_forward_refs()
-ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody.update_forward_refs()
-ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems.update_forward_refs()
-ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody.update_forward_refs()
-ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersPostBody.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersPostBodyPropName.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody.update_forward_refs()
-ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems.update_forward_refs()
-ScimV2OrganizationsOrgUsersPostBody.update_forward_refs()
-ScimV2OrganizationsOrgUsersPostBodyPropName.update_forward_refs()
-ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems.update_forward_refs()
-ScimV2OrganizationsOrgUsersScimUserIdPutBody.update_forward_refs()
-ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName.update_forward_refs()
-ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems.update_forward_refs()
-ScimV2OrganizationsOrgUsersScimUserIdPatchBody.update_forward_refs()
-ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems.update_forward_refs()
-ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0.update_forward_refs()
-ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items.update_forward_refs()
 SearchCodeGetResponse200.update_forward_refs()
 SearchCommitsGetResponse200.update_forward_refs()
 SearchIssuesGetResponse200.update_forward_refs()
@@ -17790,8 +16836,6 @@ TeamsTeamIdMembershipsUsernamePutBody.update_forward_refs()
 TeamsTeamIdProjectsProjectIdPutBody.update_forward_refs()
 TeamsTeamIdProjectsProjectIdPutResponse403.update_forward_refs()
 TeamsTeamIdReposOwnerRepoPutBody.update_forward_refs()
-TeamsTeamIdTeamSyncGroupMappingsPatchBody.update_forward_refs()
-TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems.update_forward_refs()
 UserPatchBody.update_forward_refs()
 UserCodespacesGetResponse200.update_forward_refs()
 UserCodespacesPostBodyOneof0.update_forward_refs()
@@ -17866,7 +16910,6 @@ __all__ = [
     "ServerStatisticsItemsPropGheStatsPropUsers",
     "ServerStatisticsItemsPropDormantUsers",
     "ActionsCacheUsageOrgEnterprise",
-    "ActionsOidcCustomIssuerPolicyForEnterprise",
     "ActionsEnterprisePermissions",
     "OrganizationSimple",
     "SelectedActions",
@@ -17878,13 +16921,6 @@ __all__ = [
     "RunnerApplication",
     "AuthenticationToken",
     "AuthenticationTokenPropPermissions",
-    "AuditLogEvent",
-    "AuditLogEventPropActorLocation",
-    "AuditLogEventPropData",
-    "AuditLogEventPropConfigItems",
-    "AuditLogEventPropConfigWasItems",
-    "AuditLogEventPropEventsItems",
-    "AuditLogEventPropEventsWereItems",
     "CodeScanningAlertRule",
     "CodeScanningAnalysisTool",
     "CodeScanningAlertLocation",
@@ -17893,13 +16929,9 @@ __all__ = [
     "SimpleRepository",
     "CodeScanningOrganizationAlertItems",
     "OrganizationSecretScanningAlert",
-    "ActionsBillingUsage",
-    "ActionsBillingUsagePropMinutesUsedBreakdown",
     "AdvancedSecurityActiveCommittersUser",
     "AdvancedSecurityActiveCommittersRepository",
     "AdvancedSecurityActiveCommitters",
-    "PackagesBillingUsage",
-    "CombinedBillingUsage",
     "Actor",
     "Milestone",
     "ReactionRollup",
@@ -17943,11 +16975,12 @@ __all__ = [
     "ThreadPropSubject",
     "ThreadSubscription",
     "OrganizationCustomRepositoryRole",
+    "CodespacesOrgSecret",
+    "CodespacesPublicKey",
+    "EmptyObject",
     "OrganizationFull",
     "OrganizationFullPropPlan",
     "ActionsCacheUsageByRepository",
-    "OidcCustomSub",
-    "EmptyObject",
     "ActionsOrganizationPermissions",
     "RunnerGroupsOrg",
     "OrganizationActionsSecret",
@@ -17956,14 +16989,8 @@ __all__ = [
     "Codespace",
     "CodespacePropGitStatus",
     "CodespacePropRuntimeConstraints",
-    "CredentialAuthorization",
     "OrganizationDependabotSecret",
     "DependabotPublicKey",
-    "ExternalGroup",
-    "ExternalGroupPropTeamsItems",
-    "ExternalGroupPropMembersItems",
-    "ExternalGroups",
-    "ExternalGroupsPropGroupsItems",
     "OrganizationInvitation",
     "OrganizationFineGrainedPermission",
     "OrgHook",
@@ -17982,8 +17009,10 @@ __all__ = [
     "PackageVersionPropMetadataPropContainer",
     "PackageVersionPropMetadataPropDocker",
     "Project",
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
+    "ActionsBillingUsage",
+    "ActionsBillingUsagePropMinutesUsedBreakdown",
+    "PackagesBillingUsage",
+    "CombinedBillingUsage",
     "TeamOrganization",
     "TeamOrganizationPropPlan",
     "TeamFull",
@@ -18014,7 +17043,6 @@ __all__ = [
     "ActionsCacheListPropActionsCachesItems",
     "Job",
     "JobPropStepsItems",
-    "OptOutOidcCustomSub",
     "ActionsRepositoryPermissions",
     "ActionsWorkflowAccessToRepository",
     "ReferencedWorkflow",
@@ -18108,13 +17136,11 @@ __all__ = [
     "CodeScanningAlert",
     "CodeScanningAnalysis",
     "CodeScanningAnalysisDeletion",
-    "CodeScanningCodeqlDatabase",
     "CodeScanningSarifsReceipt",
     "CodeScanningSarifsStatus",
     "CodeownersErrors",
     "CodeownersErrorsPropErrorsItems",
     "RepoCodespacesSecret",
-    "CodespacesPublicKey",
     "Collaborator",
     "CollaboratorPropPermissions",
     "RepositoryInvitation",
@@ -18314,31 +17340,6 @@ __all__ = [
     "ContentTraffic",
     "ReferrerTraffic",
     "ViewTraffic",
-    "ScimGroupListEnterprise",
-    "ScimGroupListEnterprisePropResourcesItems",
-    "ScimGroupListEnterprisePropResourcesItemsPropMembersItems",
-    "ScimGroupListEnterprisePropResourcesItemsPropMeta",
-    "ScimEnterpriseGroup",
-    "ScimEnterpriseGroupPropMembersItems",
-    "ScimEnterpriseGroupPropMeta",
-    "ScimUserListEnterprise",
-    "ScimUserListEnterprisePropResourcesItems",
-    "ScimUserListEnterprisePropResourcesItemsPropName",
-    "ScimUserListEnterprisePropResourcesItemsPropEmailsItems",
-    "ScimUserListEnterprisePropResourcesItemsPropGroupsItems",
-    "ScimUserListEnterprisePropResourcesItemsPropMeta",
-    "ScimEnterpriseUser",
-    "ScimEnterpriseUserPropName",
-    "ScimEnterpriseUserPropEmailsItems",
-    "ScimEnterpriseUserPropGroupsItems",
-    "ScimEnterpriseUserPropMeta",
-    "ScimUser",
-    "ScimUserPropName",
-    "ScimUserPropEmailsItems",
-    "ScimUserPropMeta",
-    "ScimUserPropOperationsItems",
-    "ScimUserPropOperationsItemsPropValueOneof1",
-    "ScimUserList",
     "SearchResultTextMatchesItems",
     "SearchResultTextMatchesItemsPropMatchesItems",
     "CodeSearchResultItem",
@@ -18422,6 +17423,10 @@ __all__ = [
     "NotificationsPutResponse202",
     "NotificationsThreadsThreadIdSubscriptionPutBody",
     "OrganizationsOrganizationIdCustomRolesGetResponse200",
+    "OrganizationsOrgCodespacesSecretsGetResponse200",
+    "OrganizationsOrgCodespacesSecretsSecretNamePutBody",
+    "OrganizationsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
+    "OrganizationsOrgCodespacesSecretsSecretNameRepositoriesPutBody",
     "OrgsOrgPatchBody",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
     "OrgsOrgActionsPermissionsPutBody",
@@ -18471,13 +17476,10 @@ __all__ = [
     "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
     "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
     "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",
-    "OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",
     "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",
     "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems",
     "ProjectsColumnsCardsCardIdDeleteResponse403",
     "ProjectsColumnsCardsCardIdPatchBody",
     "ProjectsColumnsCardsCardIdMovesPostBody",
@@ -18699,32 +17701,6 @@ __all__ = [
     "ReposTemplateOwnerTemplateRepoGeneratePostBody",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
-    "ScimV2EnterprisesEnterpriseGroupsPostBody",
-    "ScimV2EnterprisesEnterpriseGroupsPostBodyPropMembersItems",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBody",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPutBodyPropMembersItems",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBody",
-    "ScimV2EnterprisesEnterpriseGroupsScimGroupIdPatchBodyPropOperationsItems",
-    "ScimV2EnterprisesEnterpriseUsersPostBody",
-    "ScimV2EnterprisesEnterpriseUsersPostBodyPropName",
-    "ScimV2EnterprisesEnterpriseUsersPostBodyPropEmailsItems",
-    "ScimV2EnterprisesEnterpriseUsersPostBodyPropGroupsItems",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBody",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropName",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropEmailsItems",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPutBodyPropGroupsItems",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBody",
-    "ScimV2EnterprisesEnterpriseUsersScimUserIdPatchBodyPropOperationsItems",
-    "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
     "SearchCodeGetResponse200",
     "SearchCommitsGetResponse200",
     "SearchIssuesGetResponse200",
@@ -18743,8 +17719,6 @@ __all__ = [
     "TeamsTeamIdProjectsProjectIdPutBody",
     "TeamsTeamIdProjectsProjectIdPutResponse403",
     "TeamsTeamIdReposOwnerRepoPutBody",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
     "UserPatchBody",
     "UserCodespacesGetResponse200",
     "UserCodespacesPostBodyOneof0",
