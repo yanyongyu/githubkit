@@ -4254,6 +4254,23 @@ class CodeScanningAnalysisDeletionType(TypedDict):
     confirm_delete_url: Union[str, None]
 
 
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
+
+    A CodeQL database.
+    """
+
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: datetime
+    updated_at: datetime
+    url: str
+
+
 class CodeScanningSarifsReceiptType(TypedDict):
     """CodeScanningSarifsReceipt"""
 
@@ -5545,7 +5562,7 @@ class LabeledIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5570,7 +5587,7 @@ class UnlabeledIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5633,7 +5650,7 @@ class MilestonedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5657,7 +5674,7 @@ class DemilestonedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5681,7 +5698,7 @@ class RenamedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5706,7 +5723,7 @@ class ReviewRequestedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["review_requested"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5726,7 +5743,7 @@ class ReviewRequestRemovedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["review_request_removed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5746,7 +5763,7 @@ class ReviewDismissedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5773,7 +5790,7 @@ class LockedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["locked"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5791,7 +5808,7 @@ class AddedToProjectIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["added_to_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5820,7 +5837,7 @@ class MovedColumnInProjectIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5849,7 +5866,7 @@ class RemovedFromProjectIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["removed_from_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5878,7 +5895,7 @@ class ConvertedNoteToIssueIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["converted_note_to_issue"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -5919,7 +5936,7 @@ class TimelineCommentEventType(TypedDict):
     Timeline Comment Event
     """
 
-    event: str
+    event: Literal["commented"]
     actor: SimpleUserType
     id: int
     node_id: str
@@ -5952,7 +5969,7 @@ class TimelineCrossReferencedEventType(TypedDict):
     Timeline Cross Referenced Event
     """
 
-    event: str
+    event: Literal["cross-referenced"]
     actor: NotRequired[SimpleUserType]
     created_at: datetime
     updated_at: datetime
@@ -5972,7 +5989,7 @@ class TimelineCommittedEventType(TypedDict):
     Timeline Committed Event
     """
 
-    event: NotRequired[str]
+    event: NotRequired[Literal["committed"]]
     sha: str
     node_id: str
     url: str
@@ -6037,7 +6054,7 @@ class TimelineReviewedEventType(TypedDict):
     Timeline Reviewed Event
     """
 
-    event: str
+    event: Literal["reviewed"]
     id: int
     node_id: str
     user: SimpleUserType
@@ -6159,7 +6176,7 @@ class TimelineLineCommentedEventType(TypedDict):
     Timeline Line Commented Event
     """
 
-    event: NotRequired[str]
+    event: NotRequired[Literal["line_commented"]]
     node_id: NotRequired[str]
     comments: NotRequired[List[PullRequestReviewCommentType]]
 
@@ -6170,7 +6187,7 @@ class TimelineCommitCommentedEventType(TypedDict):
     Timeline Commit Commented Event
     """
 
-    event: NotRequired[str]
+    event: NotRequired[Literal["commit_commented"]]
     node_id: NotRequired[str]
     commit_id: NotRequired[str]
     comments: NotRequired[List[CommitCommentType]]
@@ -6186,7 +6203,7 @@ class TimelineAssignedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["assigned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -6204,7 +6221,7 @@ class TimelineUnassignedIssueEventType(TypedDict):
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["unassigned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -11565,6 +11582,7 @@ __all__ = [
     "CodeScanningAlertType",
     "CodeScanningAnalysisType",
     "CodeScanningAnalysisDeletionType",
+    "CodeScanningCodeqlDatabaseType",
     "CodeScanningSarifsReceiptType",
     "CodeScanningSarifsStatusType",
     "CodeownersErrorsType",

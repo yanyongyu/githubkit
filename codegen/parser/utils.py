@@ -1,7 +1,8 @@
 import re
 import builtins
+from copy import deepcopy
 from keyword import iskeyword
-from typing import List, Union
+from typing import Any, Dict, List, Union, Optional
 
 from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
@@ -70,7 +71,7 @@ def concat_snake_name(*names: str) -> str:
     return "_".join(snake_case(name) for name in names)
 
 
-def build_boolean(value: bool | str) -> bool:
+def build_boolean(value: Union[bool, str]) -> bool:
     if isinstance(value, bool):
         return value
     return value.lower() not in {"false", "f", "no", "n", "0"}
@@ -88,9 +89,28 @@ def build_prop_name(name: str) -> str:
     return fix_reserved_words(snake_case(name))
 
 
+def get_schema_override(source: Source) -> Optional[Dict[str, Any]]:
+    config = get_config()
+    return config.schema_overrides.get(source.pointer.path, None)
+
+
+def merge_dict(old: dict, new: dict) -> dict:
+    result = deepcopy(old)
+    for key, value in new.items():
+        result[key] = (
+            merge_dict(result[key], value)
+            if isinstance(value, dict) and isinstance(result[key], dict)
+            else value
+        )
+    return result
+
+
 def schema_from_source(source: Source) -> oas.Schema:
     data = source.data
     try:
+        assert isinstance(data, dict)
+        if overrides := get_schema_override(source):
+            data = merge_dict(data, overrides)
         return parse_obj_as(oas.Schema, data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e

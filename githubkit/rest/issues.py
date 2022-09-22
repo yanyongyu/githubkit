@@ -1512,6 +1512,7 @@ class IssuesClient:
             params=exclude_unset(params),
             response_model=List[Label],
             error_models={
+                "404": BasicError,
                 "410": BasicError,
             },
         )
@@ -1537,6 +1538,7 @@ class IssuesClient:
             params=exclude_unset(params),
             response_model=List[Label],
             error_models={
+                "404": BasicError,
                 "410": BasicError,
             },
         )
@@ -1630,6 +1632,7 @@ class IssuesClient:
             json=exclude_unset(json),
             response_model=List[Label],
             error_models={
+                "404": BasicError,
                 "410": BasicError,
                 "422": ValidationError,
             },
@@ -1724,6 +1727,7 @@ class IssuesClient:
             json=exclude_unset(json),
             response_model=List[Label],
             error_models={
+                "404": BasicError,
                 "410": BasicError,
                 "422": ValidationError,
             },
@@ -1820,6 +1824,7 @@ class IssuesClient:
             json=exclude_unset(json),
             response_model=List[Label],
             error_models={
+                "404": BasicError,
                 "410": BasicError,
                 "422": ValidationError,
             },
@@ -1916,6 +1921,7 @@ class IssuesClient:
             json=exclude_unset(json),
             response_model=List[Label],
             error_models={
+                "404": BasicError,
                 "410": BasicError,
                 "422": ValidationError,
             },
@@ -1933,6 +1939,7 @@ class IssuesClient:
             "DELETE",
             url,
             error_models={
+                "404": BasicError,
                 "410": BasicError,
             },
         )
@@ -1949,6 +1956,7 @@ class IssuesClient:
             "DELETE",
             url,
             error_models={
+                "404": BasicError,
                 "410": BasicError,
             },
         )

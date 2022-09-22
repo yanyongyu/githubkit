@@ -5903,6 +5903,40 @@ class CodeScanningAnalysisDeletion(GitHubRestModel):
     )
 
 
+class CodeScanningCodeqlDatabase(GitHubRestModel):
+    """CodeQL Database
+
+    A CodeQL database.
+    """
+
+    id: int = Field(description="The ID of the CodeQL database.", default=...)
+    name: str = Field(description="The name of the CodeQL database.", default=...)
+    language: str = Field(
+        description="The language of the CodeQL database.", default=...
+    )
+    uploader: SimpleUser = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+    content_type: str = Field(
+        description="The MIME type of the CodeQL database file.", default=...
+    )
+    size: int = Field(
+        description="The size of the CodeQL database file in bytes.", default=...
+    )
+    created_at: datetime = Field(
+        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    url: str = Field(
+        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property.",
+        default=...,
+    )
+
+
 class CodeScanningSarifsReceipt(GitHubRestModel):
     """CodeScanningSarifsReceipt"""
 
@@ -7506,7 +7540,7 @@ class LabeledIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["labeled"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7537,7 +7571,7 @@ class UnlabeledIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["unlabeled"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7626,7 +7660,7 @@ class MilestonedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["milestoned"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7656,7 +7690,7 @@ class DemilestonedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["demilestoned"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7686,7 +7720,7 @@ class RenamedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["renamed"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7717,7 +7751,7 @@ class ReviewRequestedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["review_requested"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7751,7 +7785,7 @@ class ReviewRequestRemovedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["review_request_removed"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7785,7 +7819,7 @@ class ReviewDismissedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["review_dismissed"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7818,7 +7852,7 @@ class LockedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["locked"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7842,7 +7876,7 @@ class AddedToProjectIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["added_to_project"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7879,7 +7913,7 @@ class MovedColumnInProjectIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["moved_columns_in_project"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7916,7 +7950,7 @@ class RemovedFromProjectIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["removed_from_project"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -7953,7 +7987,7 @@ class ConvertedNoteToIssueIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["converted_note_to_issue"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -8003,7 +8037,7 @@ class TimelineCommentEvent(GitHubRestModel):
     Timeline Comment Event
     """
 
-    event: str = Field(default=...)
+    event: Literal["commented"] = Field(default=...)
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
@@ -8052,7 +8086,7 @@ class TimelineCrossReferencedEvent(GitHubRestModel):
     Timeline Cross Referenced Event
     """
 
-    event: str = Field(default=...)
+    event: Literal["cross-referenced"] = Field(default=...)
     actor: Union[Unset, SimpleUser] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
@@ -8078,7 +8112,7 @@ class TimelineCommittedEvent(GitHubRestModel):
     Timeline Committed Event
     """
 
-    event: Union[Unset, str] = Field(default=UNSET)
+    event: Union[Unset, Literal["committed"]] = Field(default=UNSET)
     sha: str = Field(description="SHA for the commit", default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
@@ -8149,7 +8183,7 @@ class TimelineReviewedEvent(GitHubRestModel):
     Timeline Reviewed Event
     """
 
-    event: str = Field(default=...)
+    event: Literal["reviewed"] = Field(default=...)
     id: int = Field(description="Unique identifier of the review", default=...)
     node_id: str = Field(default=...)
     user: SimpleUser = Field(
@@ -8333,7 +8367,7 @@ class TimelineLineCommentedEvent(GitHubRestModel):
     Timeline Line Commented Event
     """
 
-    event: Union[Unset, str] = Field(default=UNSET)
+    event: Union[Unset, Literal["line_commented"]] = Field(default=UNSET)
     node_id: Union[Unset, str] = Field(default=UNSET)
     comments: Union[Unset, List[PullRequestReviewComment]] = Field(default=UNSET)
 
@@ -8344,7 +8378,7 @@ class TimelineCommitCommentedEvent(GitHubRestModel):
     Timeline Commit Commented Event
     """
 
-    event: Union[Unset, str] = Field(default=UNSET)
+    event: Union[Unset, Literal["commit_commented"]] = Field(default=UNSET)
     node_id: Union[Unset, str] = Field(default=UNSET)
     commit_id: Union[Unset, str] = Field(default=UNSET)
     comments: Union[Unset, List[CommitComment]] = Field(default=UNSET)
@@ -8362,7 +8396,7 @@ class TimelineAssignedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["assigned"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -8388,7 +8422,7 @@ class TimelineUnassignedIssueEvent(GitHubRestModel):
     actor: SimpleUser = Field(
         title="Simple User", description="Simple User", default=...
     )
-    event: str = Field(default=...)
+    event: Literal["unassigned"] = Field(default=...)
     commit_id: Union[str, None] = Field(default=...)
     commit_url: Union[str, None] = Field(default=...)
     created_at: str = Field(default=...)
@@ -16271,6 +16305,7 @@ CodeScanningAlertItems.update_forward_refs()
 CodeScanningAlert.update_forward_refs()
 CodeScanningAnalysis.update_forward_refs()
 CodeScanningAnalysisDeletion.update_forward_refs()
+CodeScanningCodeqlDatabase.update_forward_refs()
 CodeScanningSarifsReceipt.update_forward_refs()
 CodeScanningSarifsStatus.update_forward_refs()
 CodeownersErrors.update_forward_refs()
@@ -17154,6 +17189,7 @@ __all__ = [
     "CodeScanningAlert",
     "CodeScanningAnalysis",
     "CodeScanningAnalysisDeletion",
+    "CodeScanningCodeqlDatabase",
     "CodeScanningSarifsReceipt",
     "CodeScanningSarifsStatus",
     "CodeownersErrors",

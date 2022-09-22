@@ -66,6 +66,30 @@ webhook-types-output = "githubkit/webhooks/types.py"
 "+1" = "plus_one"
 "-1" = "minus_one"
 
+[tool.codegen.schema-overrides]
+"/components/schemas/labeled-issue-event/properties/event" = { const = "labeled" }
+"/components/schemas/unlabeled-issue-event/properties/event" = { const = "unlabeled" }
+"/components/schemas/milestoned-issue-event/properties/event" = { const = "milestoned" }
+"/components/schemas/demilestoned-issue-event/properties/event" = { const = "demilestoned" }
+"/components/schemas/renamed-issue-event/properties/event" = { const = "renamed" }
+"/components/schemas/review-requested-issue-event/properties/event" = { const = "review_requested" }
+"/components/schemas/review-request-removed-issue-event/properties/event" = { const = "review_request_removed" }
+"/components/schemas/review-dismissed-issue-event/properties/event" = { const = "review_dismissed" }
+"/components/schemas/locked-issue-event/properties/event" = { const = "locked" }
+"/components/schemas/added-to-project-issue-event/properties/event" = { const = "added_to_project" }
+"/components/schemas/moved-column-in-project-issue-event/properties/event" = { const = "moved_columns_in_project" }
+"/components/schemas/removed-from-project-issue-event/properties/event" = { const = "removed_from_project" }
+"/components/schemas/converted-note-to-issue-issue-event/properties/event" = { const = "converted_note_to_issue" }
+"/components/schemas/timeline-comment-event/properties/event" = { const = "commented" }
+"/components/schemas/timeline-cross-referenced-event/properties/event" = { const = "cross-referenced" }
+"/components/schemas/timeline-committed-event/properties/event" = { const = "committed" }
+"/components/schemas/timeline-reviewed-event/properties/event" = { const = "reviewed" }
+"/components/schemas/timeline-line-commented-event/properties/event" = { const = "line_commented" }
+"/components/schemas/timeline-commit-commented-event/properties/event" = { const = "commit_commented" }
+"/components/schemas/timeline-assigned-issue-event/properties/event" = { const = "assigned" }
+"/components/schemas/timeline-unassigned-issue-event/properties/event" = { const = "unassigned" }
+
+
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
