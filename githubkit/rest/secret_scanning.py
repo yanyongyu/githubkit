@@ -314,6 +314,7 @@ class SecretScanningClient:
                 None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
             ],
         ] = UNSET,
+        resolution_comment: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[SecretScanningAlert]":
         ...
 
@@ -375,6 +376,7 @@ class SecretScanningClient:
                 None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
             ],
         ] = UNSET,
+        resolution_comment: Union[Unset, Union[str, None]] = UNSET,
     ) -> "Response[SecretScanningAlert]":
         ...
 

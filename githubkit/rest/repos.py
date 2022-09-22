@@ -714,7 +714,7 @@ class ReposClient:
         data: Unset = UNSET,
         key_prefix: str,
         url_template: str,
-        is_alphanumeric: Union[Unset, bool] = "true",
+        is_alphanumeric: Union[Unset, bool] = True,
     ) -> "Response[Autolink]":
         ...
 
@@ -760,7 +760,7 @@ class ReposClient:
         data: Unset = UNSET,
         key_prefix: str,
         url_template: str,
-        is_alphanumeric: Union[Unset, bool] = "true",
+        is_alphanumeric: Union[Unset, bool] = True,
     ) -> "Response[Autolink]":
         ...
 
@@ -7847,6 +7847,7 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "400": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -8010,6 +8011,7 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "400": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -8192,6 +8194,7 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -8208,6 +8211,7 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 

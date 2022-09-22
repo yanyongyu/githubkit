@@ -15,7 +15,9 @@ from pydantic import Extra, Field, BaseModel
 from githubkit.utils import UNSET, Unset
 
 
-class GitHubRestModel(BaseModel, allow_population_by_field_name=True):
+class GitHubRestModel(
+    BaseModel, extra=Extra.allow, allow_population_by_field_name=True
+):
     ...
 
 
@@ -1737,6 +1739,10 @@ class OrganizationSecretScanningAlert(GitHubRestModel):
     )
     push_protection_bypassed_at: Union[Unset, Union[datetime, None]] = Field(
         description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    resolution_comment: Union[Unset, Union[str, None]] = Field(
+        description="The comment that was optionally added when this alert was closed",
         default=UNSET,
     )
 
@@ -6708,6 +6714,10 @@ class DependencyGraphDiffItems(GitHubRestModel):
     vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field(
         default=...
     )
+    scope: Literal["unknown", "runtime", "development"] = Field(
+        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment.",
+        default=...,
+    )
 
 
 class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubRestModel):
@@ -9480,6 +9490,10 @@ class SecretScanningAlert(GitHubRestModel):
     )
     push_protection_bypassed_at: Union[Unset, Union[datetime, None]] = Field(
         description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    resolution_comment: Union[Unset, Union[str, None]] = Field(
+        description="The comment that was optionally added when this alert was closed",
         default=UNSET,
     )
 
@@ -12431,7 +12445,7 @@ class ReposOwnerRepoAutolinksPostBody(GitHubRestModel):
     )
     is_alphanumeric: Union[Unset, bool] = Field(
         description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
-        default="true",
+        default=True,
     )
 
 
@@ -15282,6 +15296,10 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubRestModel):
         Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]],
     ] = Field(
         description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+        default=UNSET,
+    )
+    resolution_comment: Union[Unset, Union[str, None]] = Field(
+        description="Sets an optional comment when closing an alert. Must be null when changing `state` to `open`.",
         default=UNSET,
     )
 

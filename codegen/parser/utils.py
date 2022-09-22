@@ -70,6 +70,12 @@ def concat_snake_name(*names: str) -> str:
     return "_".join(snake_case(name) for name in names)
 
 
+def build_boolean(value: bool | str) -> bool:
+    if isinstance(value, bool):
+        return value
+    return value.lower() not in {"false", "f", "no", "n", "0"}
+
+
 def build_class_name(name: str) -> str:
     config = get_config()
     class_name = fix_reserved_words(pascal_case(name))

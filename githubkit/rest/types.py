@@ -1108,6 +1108,7 @@ class OrganizationSecretScanningAlertType(TypedDict):
     push_protection_bypassed: NotRequired[Union[bool, None]]
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
     push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
 class AdvancedSecurityActiveCommittersUserType(TypedDict):
@@ -4940,6 +4941,7 @@ class DependencyGraphDiffItemsType(TypedDict):
     license_: Union[str, None]
     source_repository_url: Union[str, None]
     vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
 class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
@@ -7081,6 +7083,7 @@ class SecretScanningAlertType(TypedDict):
     push_protection_bypassed: NotRequired[Union[bool, None]]
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
     push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
 class SecretScanningLocationCommitType(TypedDict):
@@ -10854,6 +10857,7 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
     resolution: NotRequired[
         Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
 class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
