@@ -108,7 +108,6 @@ from .models import (
     SimpleUser,
     BranchShort,
     ContentFile,
-    ContentTree,
     Contributor,
     Environment,
     Integration,
@@ -122,6 +121,7 @@ from .models import (
     TagProtection,
     WebhookConfig,
     CommitActivity,
+    ContentSymlink,
     ContentTraffic,
     FullRepository,
     MergedUpstream,
@@ -134,6 +134,7 @@ from .models import (
     CodeownersErrors,
     CommitComparison,
     CommunityProfile,
+    ContentSubmodule,
     DeploymentStatus,
     HookDeliveryItem,
     PagesHealthCheck,
@@ -148,6 +149,7 @@ from .models import (
     CombinedCommitStatus,
     OrgsOrgReposPostBody,
     RepositoryInvitation,
+    ContentDirectoryItems,
     ValidationErrorSimple,
     DeploymentBranchPolicy,
     BranchRestrictionPolicy,
@@ -4799,7 +4801,7 @@ class ReposClient:
         repo: str,
         path: str,
         ref: Union[Unset, str] = UNSET,
-    ) -> "Response[ContentTree]":
+    ) -> "Response[Union[List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule]]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
         params = {
@@ -4810,7 +4812,12 @@ class ReposClient:
             "GET",
             url,
             params=exclude_unset(params),
-            response_model=ContentTree,
+            response_model=Union[
+                List[ContentDirectoryItems],
+                ContentFile,
+                ContentSymlink,
+                ContentSubmodule,
+            ],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -4823,7 +4830,7 @@ class ReposClient:
         repo: str,
         path: str,
         ref: Union[Unset, str] = UNSET,
-    ) -> "Response[ContentTree]":
+    ) -> "Response[Union[List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule]]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
         params = {
@@ -4834,7 +4841,12 @@ class ReposClient:
             "GET",
             url,
             params=exclude_unset(params),
-            response_model=ContentTree,
+            response_model=Union[
+                List[ContentDirectoryItems],
+                ContentFile,
+                ContentSymlink,
+                ContentSubmodule,
+            ],
             error_models={
                 "404": BasicError,
                 "403": BasicError,

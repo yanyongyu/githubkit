@@ -14,6 +14,7 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 from .types import (
     UserCodespacesPostBodyOneof0Type,
     UserCodespacesPostBodyOneof1Type,
+    OrgsOrgCodespacesBillingPutBodyType,
     ReposOwnerRepoCodespacesPostBodyType,
     UserCodespacesCodespaceNamePatchBodyType,
     UserCodespacesSecretsSecretNamePutBodyType,
@@ -38,6 +39,7 @@ from .models import (
     UserCodespacesGetResponse200,
     UserCodespacesPostBodyOneof0,
     UserCodespacesPostBodyOneof1,
+    OrgsOrgCodespacesBillingPutBody,
     OrgsOrgCodespacesGetResponse200,
     ReposOwnerRepoCodespacesPostBody,
     UserCodespacesSecretsGetResponse200,
@@ -566,6 +568,104 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_codespaces_billing(
+        self, org: str, *, data: OrgsOrgCodespacesBillingPutBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_codespaces_billing(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        visibility: Literal[
+            "disabled",
+            "selected_members",
+            "all_members",
+            "all_members_and_outside_collaborators",
+        ],
+        selected_usernames: Union[Unset, List[str]] = UNSET,
+    ) -> "Response":
+        ...
+
+    def set_codespaces_billing(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgCodespacesBillingPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/codespaces/billing"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgCodespacesBillingPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_codespaces_billing(
+        self, org: str, *, data: OrgsOrgCodespacesBillingPutBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_codespaces_billing(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        visibility: Literal[
+            "disabled",
+            "selected_members",
+            "all_members",
+            "all_members_and_outside_collaborators",
+        ],
+        selected_usernames: Union[Unset, List[str]] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_set_codespaces_billing(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgCodespacesBillingPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/codespaces/billing"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgCodespacesBillingPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
             },
         )
 

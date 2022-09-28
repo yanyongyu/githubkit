@@ -4935,6 +4935,137 @@ class ContributorType(TypedDict):
     name: NotRequired[str]
 
 
+class DependabotAlertPackageType(TypedDict):
+    """DependabotAlertPackage
+
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str
+    name: str
+
+
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    ]
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+class DependabotAlertSecurityAdvisoryType(TypedDict):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
+    severity: Literal["low", "medium", "high", "critical"]
+    cvss: DependabotAlertSecurityAdvisoryPropCvssType
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
+    published_at: datetime
+    updated_at: datetime
+    withdrawn_at: Union[datetime, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
+
+
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
+
+    A Dependabot alert.
+    """
+
+    number: int
+    state: Literal["dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+
+
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
+
+    Details for the vulnerable dependency.
+    """
+
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+
+
 class DependabotSecretType(TypedDict):
     """Dependabot Secret
 
@@ -8206,7 +8337,11 @@ class GistsGistIdGetResponse403PropBlockType(TypedDict):
 class GistsGistIdPatchBodyPropFilesType(TypedDict):
     """GistsGistIdPatchBodyPropFiles
 
-    Names of files to be updated
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
 
     Examples:
         {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
@@ -8487,6 +8622,18 @@ class OrgsOrgCodespacesGetResponse200Type(TypedDict):
 
     total_count: int
     codespaces: List[CodespaceType]
+
+
+class OrgsOrgCodespacesBillingPutBodyType(TypedDict):
+    """OrgsOrgCodespacesBillingPutBody"""
+
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ]
+    selected_usernames: NotRequired[List[str]]
 
 
 class OrgsOrgCustomRolesPostBodyType(TypedDict):
@@ -9976,6 +10123,18 @@ class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
     email: NotRequired[str]
 
 
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+
+
 class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
     """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
@@ -10050,7 +10209,7 @@ class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
     """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
     JSON payload with extra information about the webhook event that your action or
-    workflow may use.
+    workflow may use. The maximum number of top-level properties is 10.
     """
 
 
@@ -11631,6 +11790,16 @@ __all__ = [
     "FileCommitPropCommitPropParentsItemsType",
     "FileCommitPropCommitPropVerificationType",
     "ContributorType",
+    "DependabotAlertPackageType",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityAdvisoryPropCvssType",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "DependabotAlertType",
+    "DependabotAlertPropDependencyType",
     "DependabotSecretType",
     "DependencyGraphDiffItemsType",
     "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
@@ -11894,6 +12063,7 @@ __all__ = [
     "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
     "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",
     "OrgsOrgCodespacesGetResponse200Type",
+    "OrgsOrgCodespacesBillingPutBodyType",
     "OrgsOrgCustomRolesPostBodyType",
     "OrgsOrgCustomRolesRoleIdPatchBodyType",
     "OrgsOrgDependabotSecretsGetResponse200Type",
@@ -12040,6 +12210,7 @@ __all__ = [
     "ReposOwnerRepoContentsPathDeleteBodyType",
     "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
     "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",
     "ReposOwnerRepoDependabotSecretsGetResponse200Type",
     "ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",
     "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",

@@ -33,7 +33,9 @@ def build_response(source: Source, prefix: str) -> ResponseData:
 
     response_schema = None
     if data.content:
-        media_type = next(iter(data.content.keys()))
+        media_type = next(
+            (type for type in data.content.keys() if "json" in type), None
+        ) or next(iter(data.content.keys()))
         response_schema = parse_schema(
             source / "content" / media_type / "schema", prefix
         )

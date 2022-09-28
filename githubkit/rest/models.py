@@ -6723,6 +6723,233 @@ class Contributor(GitHubRestModel):
     name: Union[Unset, str] = Field(default=UNSET)
 
 
+class DependabotAlertPackage(GitHubRestModel):
+    """DependabotAlertPackage
+
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str = Field(
+        description="The package's language or package management ecosystem.",
+        default=...,
+    )
+    name: str = Field(
+        description="The unique package name within its ecosystem.", default=...
+    )
+
+
+class DependabotAlertSecurityVulnerability(GitHubRestModel):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackage = Field(
+        description="Details for the vulnerable package.", default=...
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the vulnerability.", default=...
+    )
+    vulnerable_version_range: str = Field(
+        description="Conditions that identify vulnerable versions of this vulnerability's package.",
+        default=...,
+    )
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
+    ] = Field(
+        description="Details pertaining to the package version that patches this vulnerability.",
+        default=...,
+    )
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubRestModel):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str = Field(
+        description="The package version that patches this vulnerability.", default=...
+    )
+
+
+class DependabotAlertSecurityAdvisory(GitHubRestModel):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub Security Advisory ID assigned to the advisory.",
+        default=...,
+    )
+    cve_id: Union[str, None] = Field(
+        description="The unique CVE ID assigned to the advisory.", default=...
+    )
+    summary: str = Field(
+        description="A short, plain text summary of the advisory.",
+        max_length=1024,
+        default=...,
+    )
+    description: str = Field(
+        description="A long-form Markdown-supported description of the advisory.",
+        default=...,
+    )
+    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
+        description="Vulnerable version range information for the advisory.",
+        default=...,
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the advisory.", default=...
+    )
+    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
+        description="Details for the advisory pertaining to the Common Vulnerability Scoring System.",
+        default=...,
+    )
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+        description="Details for the advisory pertaining to Common Weakness Enumeration.",
+        default=...,
+    )
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+        description="Values that identify this advisory among security information sources.",
+        default=...,
+    )
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+        description="Links to additional advisory information.", default=...
+    )
+    published_at: datetime = Field(
+        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    withdrawn_at: Union[datetime, None] = Field(
+        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCvss(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float = Field(
+        description="The overall CVSS score of the advisory.", le=10.0, default=...
+    )
+    vector_string: Union[str, None] = Field(
+        description="The full CVSS vector string for the advisory.", default=...
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str = Field(description="The unique CWE ID.", default=...)
+    name: str = Field(description="The short, plain text name of the CWE.", default=...)
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"] = Field(
+        description="The type of advisory identifier.", default=...
+    )
+    value: str = Field(description="The value of the advisory identifer.", default=...)
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str = Field(description="The URL of the reference.", default=...)
+
+
+class DependabotAlert(GitHubRestModel):
+    """DependabotAlert
+
+    A Dependabot alert.
+    """
+
+    number: int = Field(description="The security alert number.", default=...)
+    state: Literal["dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert.", default=...
+    )
+    dependency: DependabotAlertPropDependency = Field(
+        description="Details for the vulnerable dependency.", default=...
+    )
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory.", default=...
+    )
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory.",
+        default=...,
+    )
+    url: str = Field(description="The REST API URL of the alert resource.", default=...)
+    html_url: str = Field(
+        description="The GitHub URL of the alert resource.", default=...
+    )
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    dismissed_by: Union[None, SimpleUser] = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(description="The reason that the alert was dismissed.", default=...)
+    dismissed_comment: Union[str, None] = Field(
+        description="An optional comment associated with the alert's dismissal.",
+        max_length=280,
+        default=...,
+    )
+    fixed_at: Union[datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+
+
+class DependabotAlertPropDependency(GitHubRestModel):
+    """DependabotAlertPropDependency
+
+    Details for the vulnerable dependency.
+    """
+
+    package: Union[Unset, DependabotAlertPackage] = Field(
+        description="Details for the vulnerable package.", default=UNSET
+    )
+    manifest_path: Union[Unset, str] = Field(
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        default=UNSET,
+    )
+    scope: Union[Unset, Union[None, Literal["development", "runtime"]]] = Field(
+        description="The execution scope of the vulnerable dependency.", default=UNSET
+    )
+
+
 class DependabotSecret(GitHubRestModel):
     """Dependabot Secret
 
@@ -10910,7 +11137,11 @@ class GistsGistIdGetResponse403PropBlock(GitHubRestModel):
 class GistsGistIdPatchBodyPropFiles(GitHubRestModel, extra=Extra.allow):
     """GistsGistIdPatchBodyPropFiles
 
-    Names of files to be updated
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
 
     Examples:
         {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
@@ -10920,9 +11151,10 @@ class GistsGistIdPatchBodyPropFiles(GitHubRestModel, extra=Extra.allow):
 class GistsGistIdPatchBodyAnyof0(GitHubRestModel):
     """GistsGistIdPatchBodyAnyof0"""
 
-    description: str = Field(description="Description of the gist", default=...)
+    description: str = Field(description="The description of the gist.", default=...)
     files: Union[Unset, GistsGistIdPatchBodyPropFiles] = Field(
-        description="Names of files to be updated", default=UNSET
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`.",
+        default=UNSET,
     )
 
 
@@ -10930,10 +11162,11 @@ class GistsGistIdPatchBodyAnyof1(GitHubRestModel):
     """GistsGistIdPatchBodyAnyof1"""
 
     description: Union[Unset, str] = Field(
-        description="Description of the gist", default=UNSET
+        description="The description of the gist.", default=UNSET
     )
     files: GistsGistIdPatchBodyPropFiles = Field(
-        description="Names of files to be updated", default=...
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`.",
+        default=...,
     )
 
 
@@ -11368,6 +11601,24 @@ class OrgsOrgCodespacesGetResponse200(GitHubRestModel):
 
     total_count: int = Field(default=...)
     codespaces: List[Codespace] = Field(default=...)
+
+
+class OrgsOrgCodespacesBillingPutBody(GitHubRestModel):
+    """OrgsOrgCodespacesBillingPutBody"""
+
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ] = Field(
+        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.",
+        default=...,
+    )
+    selected_usernames: Union[Unset, List[str]] = Field(
+        description="The usernames of the organization members who should be granted access to codespaces in the organization. Required when `visibility` is `selected_members`.",
+        default=UNSET,
+    )
 
 
 class OrgsOrgCustomRolesPostBody(GitHubRestModel):
@@ -12958,12 +13209,12 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubRestModel):
 
     title: str = Field(description="The title of the check run.", default=...)
     summary: str = Field(
-        description="The summary of the check run. This parameter supports Markdown.",
+        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
         max_length=65535,
         default=...,
     )
     text: Union[Unset, str] = Field(
-        description="The details of the check run. This parameter supports Markdown.",
+        description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
         max_length=65535,
         default=UNSET,
     )
@@ -13727,6 +13978,29 @@ class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubRestModel):
     )
 
 
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubRestModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+
+    state: Literal["dismissed", "open"] = Field(
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
+        default=...,
+    )
+    dismissed_reason: Union[
+        Unset,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+        default=UNSET,
+    )
+    dismissed_comment: Union[Unset, str] = Field(
+        description="An optional comment associated with dismissing the alert.",
+        max_length=280,
+        default=UNSET,
+    )
+
+
 class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubRestModel):
     """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
@@ -13864,7 +14138,7 @@ class ReposOwnerRepoDispatchesPostBody(GitHubRestModel):
     client_payload: Union[
         Unset, ReposOwnerRepoDispatchesPostBodyPropClientPayload
     ] = Field(
-        description="JSON payload with extra information about the webhook event that your action or workflow may use.",
+        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10.",
         default=UNSET,
     )
 
@@ -13875,7 +14149,7 @@ class ReposOwnerRepoDispatchesPostBodyPropClientPayload(
     """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
     JSON payload with extra information about the webhook event that your action or
-    workflow may use.
+    workflow may use. The maximum number of top-level properties is 10.
     """
 
 
@@ -16354,6 +16628,16 @@ FileCommitPropCommitPropTree.update_forward_refs()
 FileCommitPropCommitPropParentsItems.update_forward_refs()
 FileCommitPropCommitPropVerification.update_forward_refs()
 Contributor.update_forward_refs()
+DependabotAlertPackage.update_forward_refs()
+DependabotAlertSecurityVulnerability.update_forward_refs()
+DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion.update_forward_refs()
+DependabotAlertSecurityAdvisory.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropCvss.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropCwesItems.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropIdentifiersItems.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropReferencesItems.update_forward_refs()
+DependabotAlert.update_forward_refs()
+DependabotAlertPropDependency.update_forward_refs()
 DependabotSecret.update_forward_refs()
 DependencyGraphDiffItems.update_forward_refs()
 DependencyGraphDiffItemsPropVulnerabilitiesItems.update_forward_refs()
@@ -16617,6 +16901,7 @@ OrgsOrgActionsSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgActionsSecretsSecretNameRepositoriesPutBody.update_forward_refs()
 OrgsOrgCodespacesGetResponse200.update_forward_refs()
+OrgsOrgCodespacesBillingPutBody.update_forward_refs()
 OrgsOrgCustomRolesPostBody.update_forward_refs()
 OrgsOrgCustomRolesRoleIdPatchBody.update_forward_refs()
 OrgsOrgDependabotSecretsGetResponse200.update_forward_refs()
@@ -16763,6 +17048,7 @@ ReposOwnerRepoContentsPathPutBodyPropAuthor.update_forward_refs()
 ReposOwnerRepoContentsPathDeleteBody.update_forward_refs()
 ReposOwnerRepoContentsPathDeleteBodyPropCommitter.update_forward_refs()
 ReposOwnerRepoContentsPathDeleteBodyPropAuthor.update_forward_refs()
+ReposOwnerRepoDependabotAlertsAlertNumberPatchBody.update_forward_refs()
 ReposOwnerRepoDependabotSecretsGetResponse200.update_forward_refs()
 ReposOwnerRepoDependabotSecretsSecretNamePutBody.update_forward_refs()
 ReposOwnerRepoDependencyGraphSnapshotsPostResponse201.update_forward_refs()
@@ -17238,6 +17524,16 @@ __all__ = [
     "FileCommitPropCommitPropParentsItems",
     "FileCommitPropCommitPropVerification",
     "Contributor",
+    "DependabotAlertPackage",
+    "DependabotAlertSecurityVulnerability",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
+    "DependabotAlertSecurityAdvisory",
+    "DependabotAlertSecurityAdvisoryPropCvss",
+    "DependabotAlertSecurityAdvisoryPropCwesItems",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
+    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+    "DependabotAlert",
+    "DependabotAlertPropDependency",
     "DependabotSecret",
     "DependencyGraphDiffItems",
     "DependencyGraphDiffItemsPropVulnerabilitiesItems",
@@ -17501,6 +17797,7 @@ __all__ = [
     "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",
     "OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",
     "OrgsOrgCodespacesGetResponse200",
+    "OrgsOrgCodespacesBillingPutBody",
     "OrgsOrgCustomRolesPostBody",
     "OrgsOrgCustomRolesRoleIdPatchBody",
     "OrgsOrgDependabotSecretsGetResponse200",
@@ -17647,6 +17944,7 @@ __all__ = [
     "ReposOwnerRepoContentsPathDeleteBody",
     "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
     "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",
     "ReposOwnerRepoDependabotSecretsGetResponse200",
     "ReposOwnerRepoDependabotSecretsSecretNamePutBody",
     "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",

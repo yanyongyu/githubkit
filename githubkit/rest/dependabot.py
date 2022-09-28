@@ -14,17 +14,22 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 from .types import (
     OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
 )
 from .models import (
+    BasicError,
     EmptyObject,
+    DependabotAlert,
     DependabotSecret,
     DependabotPublicKey,
+    ValidationErrorSimple,
     OrganizationDependabotSecret,
     OrgsOrgDependabotSecretsGetResponse200,
     OrgsOrgDependabotSecretsSecretNamePutBody,
     ReposOwnerRepoDependabotSecretsGetResponse200,
     ReposOwnerRepoDependabotSecretsSecretNamePutBody,
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
     OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody,
     OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
 )
@@ -444,6 +449,262 @@ class DependabotClient:
             "DELETE",
             url,
             error_models={},
+        )
+
+    def list_alerts_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        state: Union[Unset, str] = UNSET,
+        severity: Union[Unset, str] = UNSET,
+        ecosystem: Union[Unset, str] = UNSET,
+        package: Union[Unset, str] = UNSET,
+        manifest: Union[Unset, str] = UNSET,
+        scope: Union[Unset, Literal["development", "runtime"]] = UNSET,
+        sort: Union[Unset, Literal["created", "updated"]] = "created",
+        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[List[DependabotAlert]]":
+        url = f"/repos/{owner}/{repo}/dependabot/alerts"
+
+        params = {
+            "state": state,
+            "severity": severity,
+            "ecosystem": ecosystem,
+            "package": package,
+            "manifest": manifest,
+            "scope": scope,
+            "sort": sort,
+            "direction": direction,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[DependabotAlert],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_list_alerts_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        state: Union[Unset, str] = UNSET,
+        severity: Union[Unset, str] = UNSET,
+        ecosystem: Union[Unset, str] = UNSET,
+        package: Union[Unset, str] = UNSET,
+        manifest: Union[Unset, str] = UNSET,
+        scope: Union[Unset, Literal["development", "runtime"]] = UNSET,
+        sort: Union[Unset, Literal["created", "updated"]] = "created",
+        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[List[DependabotAlert]]":
+        url = f"/repos/{owner}/{repo}/dependabot/alerts"
+
+        params = {
+            "state": state,
+            "severity": severity,
+            "ecosystem": ecosystem,
+            "package": package,
+            "manifest": manifest,
+            "scope": scope,
+            "sort": sort,
+            "direction": direction,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[DependabotAlert],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+    ) -> "Response[DependabotAlert]":
+        url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=DependabotAlert,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+    ) -> "Response[DependabotAlert]":
+        url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=DependabotAlert,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
+    ) -> "Response[DependabotAlert]":
+        ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Unset = UNSET,
+        state: Literal["dismissed", "open"],
+        dismissed_reason: Union[
+            Unset,
+            Literal[
+                "fix_started",
+                "inaccurate",
+                "no_bandwidth",
+                "not_used",
+                "tolerable_risk",
+            ],
+        ] = UNSET,
+        dismissed_comment: Union[Unset, str] = UNSET,
+    ) -> "Response[DependabotAlert]":
+        ...
+
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[DependabotAlert]":
+        url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            response_model=DependabotAlert,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
+    ) -> "Response[DependabotAlert]":
+        ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Unset = UNSET,
+        state: Literal["dismissed", "open"],
+        dismissed_reason: Union[
+            Unset,
+            Literal[
+                "fix_started",
+                "inaccurate",
+                "no_bandwidth",
+                "not_used",
+                "tolerable_risk",
+            ],
+        ] = UNSET,
+        dismissed_comment: Union[Unset, str] = UNSET,
+    ) -> "Response[DependabotAlert]":
+        ...
+
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: Union[
+            Unset, ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[DependabotAlert]":
+        url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            response_model=DependabotAlert,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationErrorSimple,
+            },
         )
 
     def list_repo_secrets(
