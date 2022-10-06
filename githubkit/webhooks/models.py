@@ -9125,6 +9125,28 @@ class PullRequestConvertedToDraftPropPullRequestAllof1(GitHubWebhookModel):
     merged_by: None = Field(default=...)
 
 
+class PullRequestDequeued(GitHubWebhookModel):
+    """pull_request dequeued event"""
+
+    action: Literal["dequeued"] = Field(default=...)
+    number: int = Field(description="The pull request number.", default=...)
+    reason: str = Field(
+        description="The reason the pull request was removed from a merge queue.",
+        default=...,
+    )
+    pull_request: PullRequest = Field(title="Pull Request", default=...)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    installation: Union[Unset, InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+    organization: Union[Unset, Organization] = Field(
+        title="Organization", default=UNSET
+    )
+    sender: User = Field(title="User", default=...)
+
+
 class PullRequestEdited(GitHubWebhookModel):
     """pull_request edited event"""
 
@@ -9342,6 +9364,24 @@ class PullRequestOpenedPropPullRequestAllof1(GitHubWebhookModel):
     merged_at: None = Field(default=...)
     active_lock_reason: None = Field(default=...)
     merged_by: None = Field(default=...)
+
+
+class PullRequestQueued(GitHubWebhookModel):
+    """pull_request queued event"""
+
+    action: Literal["queued"] = Field(default=...)
+    number: int = Field(description="The pull request number.", default=...)
+    pull_request: PullRequest = Field(title="Pull Request", default=...)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    installation: Union[Unset, InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+    organization: Union[Unset, Organization] = Field(
+        title="Organization", default=UNSET
+    )
+    sender: User = Field(title="User", default=...)
 
 
 class PullRequestReadyForReview(GitHubWebhookModel):
@@ -14696,6 +14736,7 @@ PullRequestClosedPropPullRequestAllof1.update_forward_refs()
 PullRequestConvertedToDraft.update_forward_refs()
 PullRequestConvertedToDraftPropPullRequest.update_forward_refs()
 PullRequestConvertedToDraftPropPullRequestAllof1.update_forward_refs()
+PullRequestDequeued.update_forward_refs()
 PullRequestEdited.update_forward_refs()
 PullRequestEditedPropChanges.update_forward_refs()
 PullRequestEditedPropChangesPropBody.update_forward_refs()
@@ -14708,6 +14749,7 @@ PullRequestLocked.update_forward_refs()
 PullRequestOpened.update_forward_refs()
 PullRequestOpenedPropPullRequest.update_forward_refs()
 PullRequestOpenedPropPullRequestAllof1.update_forward_refs()
+PullRequestQueued.update_forward_refs()
 PullRequestReadyForReview.update_forward_refs()
 PullRequestReadyForReviewPropPullRequest.update_forward_refs()
 PullRequestReadyForReviewPropPullRequestAllof1.update_forward_refs()
@@ -15345,6 +15387,7 @@ __all__ = [
     "PullRequestConvertedToDraft",
     "PullRequestConvertedToDraftPropPullRequest",
     "PullRequestConvertedToDraftPropPullRequestAllof1",
+    "PullRequestDequeued",
     "PullRequestEdited",
     "PullRequestEditedPropChanges",
     "PullRequestEditedPropChangesPropBody",
@@ -15357,6 +15400,7 @@ __all__ = [
     "PullRequestOpened",
     "PullRequestOpenedPropPullRequest",
     "PullRequestOpenedPropPullRequestAllof1",
+    "PullRequestQueued",
     "PullRequestReadyForReview",
     "PullRequestReadyForReviewPropPullRequest",
     "PullRequestReadyForReviewPropPullRequestAllof1",
