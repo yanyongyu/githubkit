@@ -1225,8 +1225,8 @@ class IssueType(TypedDict):
     updated_at: datetime
     draft: NotRequired[bool]
     closed_by: NotRequired[Union[None, SimpleUserType]]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
     timeline_url: NotRequired[str]
     repository: NotRequired[RepositoryType]
     performed_via_github_app: NotRequired[Union[None, IntegrationType]]

@@ -89,6 +89,10 @@ webhook-types-output = "githubkit/webhooks/types.py"
 "/components/schemas/timeline-assigned-issue-event/properties/event" = { const = "assigned" }
 "/components/schemas/timeline-unassigned-issue-event/properties/event" = { const = "unassigned" }
 
+# https://github.com/github/rest-api-description/issues/1639
+"/components/schemas/issue/properties/body_text" = { type = ["string", "null"] }
+"/components/schemas/issue/properties/body_html" = { type = ["string", "null"] }
+
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]

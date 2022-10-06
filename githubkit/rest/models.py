@@ -1885,8 +1885,8 @@ class Issue(GitHubRestModel):
     closed_by: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
-    body_html: Union[Unset, str] = Field(default=UNSET)
-    body_text: Union[Unset, str] = Field(default=UNSET)
+    body_html: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    body_text: Union[Unset, Union[str, None]] = Field(default=UNSET)
     timeline_url: Union[Unset, str] = Field(default=UNSET)
     repository: Union[Unset, Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
