@@ -750,6 +750,7 @@ class CodeScanningClient:
         checkout_uri: Union[Unset, str] = UNSET,
         started_at: Union[Unset, datetime] = UNSET,
         tool_name: Union[Unset, str] = UNSET,
+        validate: Union[Unset, bool] = UNSET,
     ) -> "Response[CodeScanningSarifsReceipt]":
         ...
 
@@ -805,6 +806,7 @@ class CodeScanningClient:
         checkout_uri: Union[Unset, str] = UNSET,
         started_at: Union[Unset, datetime] = UNSET,
         tool_name: Union[Unset, str] = UNSET,
+        validate: Union[Unset, bool] = UNSET,
     ) -> "Response[CodeScanningSarifsReceipt]":
         ...
 

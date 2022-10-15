@@ -437,6 +437,10 @@ class AppPermissions(GitHubRestModel):
         description="The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges.",
         default=UNSET,
     )
+    repository_announcement_banners: Union[Unset, Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to view and manage announcement banners for a repository.",
+        default=UNSET,
+    )
     repository_hooks: Union[Unset, Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token to manage the post-receive hooks for a repository.",
         default=UNSET,
@@ -483,6 +487,10 @@ class AppPermissions(GitHubRestModel):
     )
     organization_custom_roles: Union[Unset, Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token for custom roles management. This property is in beta and is subject to change.",
+        default=UNSET,
+    )
+    organization_announcement_banners: Union[Unset, Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to view and manage announcement banners for an organization.",
         default=UNSET,
     )
     organization_hooks: Union[Unset, Literal["read", "write"]] = Field(
@@ -9729,6 +9737,9 @@ class SecretScanningAlert(GitHubRestModel):
     resolved_by: Union[Unset, Union[None, SimpleUser]] = Field(
         title="Simple User", description="Simple User", default=UNSET
     )
+    resolution_comment: Union[Unset, Union[str, None]] = Field(
+        description="An optional comment to resolve an alert.", default=UNSET
+    )
     secret_type: Union[Unset, str] = Field(
         description="The type of secret that secret scanning detected.", default=UNSET
     )
@@ -9748,10 +9759,6 @@ class SecretScanningAlert(GitHubRestModel):
     )
     push_protection_bypassed_at: Union[Unset, Union[datetime, None]] = Field(
         description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=UNSET,
-    )
-    resolution_comment: Union[Unset, Union[str, None]] = Field(
-        description="The comment that was optionally added when this alert was closed",
         default=UNSET,
     )
 
@@ -10845,7 +10852,9 @@ class WebhookMergeGroupChecksRequested(GitHubRestModel):
     installation: Union[Unset, SimpleInstallation] = Field(
         title="Simple Installation", description="Simple Installation", default=UNSET
     )
-    merge_group: WebhookMergeGroupChecksRequestedPropMergeGroup = Field(default=...)
+    merge_group: WebhookMergeGroupChecksRequestedPropMergeGroup = Field(
+        title="MergeGroup", default=...
+    )
     organization: Union[Unset, OrganizationSimple] = Field(
         title="Organization Simple", description="Organization Simple", default=UNSET
     )
@@ -10858,11 +10867,69 @@ class WebhookMergeGroupChecksRequested(GitHubRestModel):
 
 
 class WebhookMergeGroupChecksRequestedPropMergeGroup(GitHubRestModel):
-    """WebhookMergeGroupChecksRequestedPropMergeGroup"""
+    """MergeGroup"""
 
-    base_ref: str = Field(default=...)
-    head_ref: str = Field(default=...)
-    head_sha: str = Field(default=...)
+    head_sha: str = Field(description="The SHA of the merge group.", default=...)
+    head_ref: str = Field(description="The full ref of the merge group.", default=...)
+    base_sha: str = Field(
+        description="The SHA of the merge group's parent commit.", default=...
+    )
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into.",
+        default=...,
+    )
+    head_commit: WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommit = Field(
+        title="SimpleCommit", default=...
+    )
+
+
+class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommit(GitHubRestModel):
+    """SimpleCommit"""
+
+    author: WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor = (
+        Field(
+            title="Committer",
+            description="Metaproperties for Git author/committer information.",
+            default=...,
+        )
+    )
+    committer: WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+        default=...,
+    )
+    id: str = Field(default=...)
+    message: str = Field(default=...)
+    timestamp: str = Field(default=...)
+    tree_id: str = Field(default=...)
+
+
+class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor(
+    GitHubRestModel
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Union[Unset, datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field(default=...)
+    name: str = Field(description="The git author's name.", default=...)
+    username: Union[Unset, str] = Field(default=UNSET)
+
+
+class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter(
+    GitHubRestModel
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Union[Unset, datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field(default=...)
+    name: str = Field(description="The git author's name.", default=...)
+    username: Union[Unset, str] = Field(default=UNSET)
 
 
 class AppManifestsCodeConversionsPostResponse201(GitHubRestModel):
@@ -11817,7 +11884,7 @@ class OrgsOrgHooksPostBody(GitHubRestModel):
         default=...,
     )
     events: Union[Unset, List[str]] = Field(
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
+        description='Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
         default=["push"],
     )
     active: Union[Unset, bool] = Field(
@@ -13314,9 +13381,7 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubRestModel):
 
     Check runs can accept a variety of data in the `output` object, including a
     `title` and `summary` and can optionally provide descriptive details about the
-    run. See the [`output`
-    object](https://docs.github.com/rest/reference/checks#output-object)
-    description.
+    run.
     """
 
     title: str = Field(description="The title of the check run.", default=...)
@@ -13333,13 +13398,13 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubRestModel):
     annotations: Union[
         Unset, List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
     ] = Field(
-        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)". See the [`annotations` object](https://docs.github.com/rest/reference/checks#annotations-object) description for details about how to use this parameter.',
+        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)".',
         default=UNSET,
     )
     images: Union[
         Unset, List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems]
     ] = Field(
-        description="Adds images to the output displayed in the GitHub pull request UI. See the [`images` object](https://docs.github.com/rest/reference/checks#images-object) description for details.",
+        description="Adds images to the output displayed in the GitHub pull request UI.",
         default=UNSET,
     )
 
@@ -13447,13 +13512,13 @@ class ReposOwnerRepoCheckRunsPostBodyOneof0(GitHubRestModel, extra=Extra.allow):
         default=UNSET,
     )
     output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutput] = Field(
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object) description.",
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
         default=UNSET,
     )
     actions: Union[
         Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]
     ] = Field(
-        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
         default=UNSET,
     )
 
@@ -13498,13 +13563,13 @@ class ReposOwnerRepoCheckRunsPostBodyOneof1(GitHubRestModel, extra=Extra.allow):
         default=UNSET,
     )
     output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutput] = Field(
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object) description.",
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
         default=UNSET,
     )
     actions: Union[
         Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]
     ] = Field(
-        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
         default=UNSET,
     )
 
@@ -13514,9 +13579,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubRestModel):
 
     Check runs can accept a variety of data in the `output` object, including a
     `title` and `summary` and can optionally provide descriptive details about the
-    run. See the [`output`
-    object](https://docs.github.com/rest/reference/checks#output-object-1)
-    description.
+    run.
     """
 
     title: Union[Unset, str] = Field(description="**Required**.", default=UNSET)
@@ -13530,13 +13593,13 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubRestModel):
         Unset,
         List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems],
     ] = Field(
-        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/articles/about-status-checks#checks)\". See the [`annotations` object](https://docs.github.com/rest/reference/checks#annotations-object-1) description for details.",
+        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/articles/about-status-checks#checks)\".",
         default=UNSET,
     )
     images: Union[
         Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems]
     ] = Field(
-        description="Adds images to the output displayed in the GitHub pull request UI. See the [`images` object](https://docs.github.com/rest/reference/checks#annotations-object-1) description for details.",
+        description="Adds images to the output displayed in the GitHub pull request UI.",
         default=UNSET,
     )
 
@@ -13650,7 +13713,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(
         default=UNSET,
     )
     output: Union[Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object-1) description.",
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
         default=UNSET,
     )
     actions: Union[
@@ -13703,7 +13766,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(
         default=UNSET,
     )
     output: Union[Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. See the [`output` object](https://docs.github.com/rest/reference/checks#output-object-1) description.",
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
         default=UNSET,
     )
     actions: Union[
@@ -13731,7 +13794,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubRestModel):
         Unset,
         List[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems],
     ] = Field(
-        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. See the [`auto_trigger_checks` object](https://docs.github.com/rest/reference/checks#auto_trigger_checks-object) description for details.",
+        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
         default=UNSET,
     )
 
@@ -13807,6 +13870,10 @@ class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubRestModel):
     )
     tool_name: Union[Unset, str] = Field(
         description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
+        default=UNSET,
+    )
+    validate: Union[Unset, bool] = Field(
+        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
         default=UNSET,
     )
 
@@ -15461,8 +15528,7 @@ class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubRestModel):
         default=UNSET,
     )
     merge_method: Union[Unset, Literal["merge", "squash", "rebase"]] = Field(
-        description="Merge method to use. Possible values are `merge`, `squash` or `rebase`. Default is `merge`.",
-        default=UNSET,
+        description="The merge method to use.", default=UNSET
     )
 
 
@@ -16951,6 +17017,9 @@ WebhookDependabotAlertReintroduced.update_forward_refs()
 WebhookDependabotAlertReopened.update_forward_refs()
 WebhookMergeGroupChecksRequested.update_forward_refs()
 WebhookMergeGroupChecksRequestedPropMergeGroup.update_forward_refs()
+WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommit.update_forward_refs()
+WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor.update_forward_refs()
+WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201Allof1.update_forward_refs()
 AppHookConfigPatchBody.update_forward_refs()
@@ -17853,6 +17922,9 @@ __all__ = [
     "WebhookDependabotAlertReopened",
     "WebhookMergeGroupChecksRequested",
     "WebhookMergeGroupChecksRequestedPropMergeGroup",
+    "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommit",
+    "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor",
+    "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter",
     "AppManifestsCodeConversionsPostResponse201",
     "AppManifestsCodeConversionsPostResponse201Allof1",
     "AppHookConfigPatchBody",

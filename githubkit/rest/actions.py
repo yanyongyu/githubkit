@@ -2280,12 +2280,14 @@ class ActionsClient:
         repo: str,
         per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
+        name: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsArtifactsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/artifacts"
 
         params = {
             "per_page": per_page,
             "page": page,
+            "name": name,
         }
 
         return self._github.request(
@@ -2301,12 +2303,14 @@ class ActionsClient:
         repo: str,
         per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
+        name: Union[Unset, str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsArtifactsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/artifacts"
 
         params = {
             "per_page": per_page,
             "page": page,
+            "name": name,
         }
 
         return await self._github.arequest(

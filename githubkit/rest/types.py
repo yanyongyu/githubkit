@@ -309,6 +309,7 @@ class AppPermissionsType(TypedDict):
     packages: NotRequired[Literal["read", "write"]]
     pages: NotRequired[Literal["read", "write"]]
     pull_requests: NotRequired[Literal["read", "write"]]
+    repository_announcement_banners: NotRequired[Literal["read", "write"]]
     repository_hooks: NotRequired[Literal["read", "write"]]
     repository_projects: NotRequired[Literal["read", "write", "admin"]]
     secret_scanning_alerts: NotRequired[Literal["read", "write"]]
@@ -321,6 +322,7 @@ class AppPermissionsType(TypedDict):
     members: NotRequired[Literal["read", "write"]]
     organization_administration: NotRequired[Literal["read", "write"]]
     organization_custom_roles: NotRequired[Literal["read", "write"]]
+    organization_announcement_banners: NotRequired[Literal["read", "write"]]
     organization_hooks: NotRequired[Literal["read", "write"]]
     organization_plan: NotRequired[Literal["read"]]
     organization_projects: NotRequired[Literal["read", "write", "admin"]]
@@ -7224,13 +7226,13 @@ class SecretScanningAlertType(TypedDict):
     ]
     resolved_at: NotRequired[Union[datetime, None]]
     resolved_by: NotRequired[Union[None, SimpleUserType]]
+    resolution_comment: NotRequired[Union[str, None]]
     secret_type: NotRequired[str]
     secret_type_display_name: NotRequired[str]
     secret: NotRequired[str]
     push_protection_bypassed: NotRequired[Union[bool, None]]
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
     push_protection_bypassed_at: NotRequired[Union[datetime, None]]
-    resolution_comment: NotRequired[Union[str, None]]
 
 
 class SecretScanningLocationCommitType(TypedDict):
@@ -8137,11 +8139,52 @@ class WebhookMergeGroupChecksRequestedType(TypedDict):
 
 
 class WebhookMergeGroupChecksRequestedPropMergeGroupType(TypedDict):
-    """WebhookMergeGroupChecksRequestedPropMergeGroup"""
+    """MergeGroup"""
 
-    base_ref: str
-    head_ref: str
     head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitType
+
+
+class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitType(TypedDict):
+    """SimpleCommit"""
+
+    author: WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthorType
+    committer: WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitterType
+    id: str
+    message: str
+    timestamp: str
+    tree_id: str
+
+
+class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthorType(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitterType(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
 
 
 class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
@@ -9735,9 +9778,7 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
 
     Check runs can accept a variety of data in the `output` object, including a
     `title` and `summary` and can optionally provide descriptive details about the
-    run. See the [`output`
-    object](https://docs.github.com/rest/reference/checks#output-object)
-    description.
+    run.
     """
 
     title: str
@@ -9836,9 +9877,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
 
     Check runs can accept a variety of data in the `output` object, including a
     `title` and `summary` and can optionally provide descriptive details about the
-    run. See the [`output`
-    object](https://docs.github.com/rest/reference/checks#output-object-1)
-    description.
+    run.
     """
 
     title: NotRequired[str]
@@ -9999,6 +10038,7 @@ class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
     checkout_uri: NotRequired[str]
     started_at: NotRequired[datetime]
     tool_name: NotRequired[str]
+    validate: NotRequired[bool]
 
 
 class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
@@ -12065,6 +12105,9 @@ __all__ = [
     "WebhookDependabotAlertReopenedType",
     "WebhookMergeGroupChecksRequestedType",
     "WebhookMergeGroupChecksRequestedPropMergeGroupType",
+    "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitType",
+    "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthorType",
+    "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitterType",
     "AppManifestsCodeConversionsPostResponse201Type",
     "AppManifestsCodeConversionsPostResponse201Allof1Type",
     "AppHookConfigPatchBodyType",

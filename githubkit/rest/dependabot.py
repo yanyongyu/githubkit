@@ -465,6 +465,10 @@ class DependabotClient:
         direction: Union[Unset, Literal["asc", "desc"]] = "desc",
         page: Union[Unset, int] = 1,
         per_page: Union[Unset, int] = 30,
+        before: Union[Unset, str] = UNSET,
+        after: Union[Unset, str] = UNSET,
+        first: Union[Unset, int] = 30,
+        last: Union[Unset, int] = UNSET,
     ) -> "Response[List[DependabotAlert]]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
@@ -479,6 +483,10 @@ class DependabotClient:
             "direction": direction,
             "page": page,
             "per_page": per_page,
+            "before": before,
+            "after": after,
+            "first": first,
+            "last": last,
         }
 
         return self._github.request(
@@ -487,6 +495,7 @@ class DependabotClient:
             params=exclude_unset(params),
             response_model=List[DependabotAlert],
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -507,6 +516,10 @@ class DependabotClient:
         direction: Union[Unset, Literal["asc", "desc"]] = "desc",
         page: Union[Unset, int] = 1,
         per_page: Union[Unset, int] = 30,
+        before: Union[Unset, str] = UNSET,
+        after: Union[Unset, str] = UNSET,
+        first: Union[Unset, int] = 30,
+        last: Union[Unset, int] = UNSET,
     ) -> "Response[List[DependabotAlert]]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
@@ -521,6 +534,10 @@ class DependabotClient:
             "direction": direction,
             "page": page,
             "per_page": per_page,
+            "before": before,
+            "after": after,
+            "first": first,
+            "last": last,
         }
 
         return await self._github.arequest(
@@ -529,6 +546,7 @@ class DependabotClient:
             params=exclude_unset(params),
             response_model=List[DependabotAlert],
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationErrorSimple,

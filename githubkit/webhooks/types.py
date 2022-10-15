@@ -123,6 +123,7 @@ from .models import (
     PullRequestReopened,
     PullRequestUnlocked,
     CommitCommentCreated,
+    DependabotAlertFixed,
     DiscussionUnanswered,
     ProjectCardConverted,
     ProjectColumnCreated,
@@ -147,12 +148,15 @@ from .models import (
     TeamAddedToRepository,
     WorkflowDispatchEvent,
     WorkflowJobInProgress,
+    WorkflowRunInProgress,
     CodeScanningAlertFixed,
+    DependabotAlertCreated,
     ProjectsV2ItemArchived,
     ProjectsV2ItemRestored,
     PullRequestSynchronize,
     SponsorshipTierChanged,
     CheckRunRequestedAction,
+    DependabotAlertReopened,
     DeploymentStatusCreated,
     DiscussionCommentEdited,
     OrganizationMemberAdded,
@@ -162,6 +166,7 @@ from .models import (
     RepositoryDispatchEvent,
     SecurityAdvisoryUpdated,
     CodeScanningAlertCreated,
+    DependabotAlertDismissed,
     DiscussionCommentCreated,
     DiscussionCommentDeleted,
     CodeScanningAlertReopened,
@@ -181,6 +186,7 @@ from .models import (
     SecretScanningAlertCreated,
     BranchProtectionRuleCreated,
     BranchProtectionRuleDeleted,
+    DependabotAlertReintroduced,
     PullRequestAutoMergeEnabled,
     PullRequestConvertedToDraft,
     SecretScanningAlertReopened,
@@ -251,6 +257,16 @@ CodeScanningAlertEvent = Annotated[
     Field(discriminator="action"),
 ]
 CommitCommentEvent = CommitCommentCreated
+DependabotAlertEvent = Annotated[
+    Union[
+        DependabotAlertCreated,
+        DependabotAlertDismissed,
+        DependabotAlertFixed,
+        DependabotAlertReintroduced,
+        DependabotAlertReopened,
+    ],
+    Field(discriminator="action"),
+]
 DeployKeyEvent = Annotated[
     Union[
         DeployKeyCreated,
@@ -584,6 +600,7 @@ WorkflowJobEvent = Annotated[
 WorkflowRunEvent = Annotated[
     Union[
         WorkflowRunCompleted,
+        WorkflowRunInProgress,
         WorkflowRunRequested,
     ],
     Field(discriminator="action"),
@@ -597,6 +614,7 @@ WebhookEvent = Union[
     CommitCommentEvent,
     CreateEvent,
     DeleteEvent,
+    DependabotAlertEvent,
     DeployKeyEvent,
     DeploymentEvent,
     DeploymentStatusEvent,
@@ -690,6 +708,13 @@ webhook_action_types = {
     },
     "commit_comment": {
         "created": CommitCommentCreated,
+    },
+    "dependabot_alert": {
+        "created": DependabotAlertCreated,
+        "dismissed": DependabotAlertDismissed,
+        "fixed": DependabotAlertFixed,
+        "reintroduced": DependabotAlertReintroduced,
+        "reopened": DependabotAlertReopened,
     },
     "deploy_key": {
         "created": DeployKeyCreated,
@@ -941,6 +966,7 @@ webhook_action_types = {
     },
     "workflow_run": {
         "completed": WorkflowRunCompleted,
+        "in_progress": WorkflowRunInProgress,
         "requested": WorkflowRunRequested,
     },
 }
@@ -953,6 +979,7 @@ webhook_event_types = {
     "commit_comment": CommitCommentEvent,
     "create": CreateEvent,
     "delete": DeleteEvent,
+    "dependabot_alert": DependabotAlertEvent,
     "deploy_key": DeployKeyEvent,
     "deployment": DeploymentEvent,
     "deployment_status": DeploymentStatusEvent,
@@ -1013,6 +1040,7 @@ __all__ = [
     "CommitCommentEvent",
     "CreateEvent",
     "DeleteEvent",
+    "DependabotAlertEvent",
     "DeployKeyEvent",
     "DeploymentEvent",
     "DeploymentStatusEvent",

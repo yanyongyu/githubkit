@@ -309,24 +309,40 @@ class OrgsClient:
     def list_blocked_users(
         self,
         org: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             response_model=List[SimpleUser],
         )
 
     async def async_list_blocked_users(
         self,
         org: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             response_model=List[SimpleUser],
         )
 
@@ -502,6 +518,38 @@ class OrgsClient:
             response_model=OrganizationCustomRepositoryRole,
             error_models={
                 "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    def get_custom_role(
+        self,
+        org: str,
+        role_id: int,
+    ) -> "Response[OrganizationCustomRepositoryRole]":
+        url = f"/orgs/{org}/custom_roles/{role_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrganizationCustomRepositoryRole,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_custom_role(
+        self,
+        org: str,
+        role_id: int,
+    ) -> "Response[OrganizationCustomRepositoryRole]":
+        url = f"/orgs/{org}/custom_roles/{role_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OrganizationCustomRepositoryRole,
+            error_models={
                 "404": BasicError,
             },
         )

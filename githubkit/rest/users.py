@@ -176,12 +176,20 @@ class UsersClient:
 
     def list_blocked_by_authenticated_user(
         self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/blocks"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -192,12 +200,20 @@ class UsersClient:
 
     async def async_list_blocked_by_authenticated_user(
         self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/blocks"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
