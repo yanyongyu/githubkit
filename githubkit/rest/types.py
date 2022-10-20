@@ -2165,6 +2165,138 @@ class CodespacesPublicKeyType(TypedDict):
     created_at: NotRequired[str]
 
 
+class DependabotAlertPackageType(TypedDict):
+    """DependabotAlertPackage
+
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str
+    name: str
+
+
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    ]
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+class DependabotAlertSecurityAdvisoryType(TypedDict):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
+    severity: Literal["low", "medium", "high", "critical"]
+    cvss: DependabotAlertSecurityAdvisoryPropCvssType
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
+    published_at: datetime
+    updated_at: datetime
+    withdrawn_at: Union[datetime, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
+
+
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
+    """
+
+    number: int
+    state: Literal["dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    repository: SimpleRepositoryType
+
+
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
+
+    Details for the vulnerable dependency.
+    """
+
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+
+
 class OrganizationDependabotSecretType(TypedDict):
     """Dependabot Secret for an Organization
 
@@ -4936,99 +5068,6 @@ class ContributorType(TypedDict):
     name: NotRequired[str]
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
-
-    Details for the vulnerable package.
-    """
-
-    ecosystem: str
-    name: str
-
-
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
-    """
-
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
-    ]
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
-
-
-class DependabotAlertSecurityAdvisoryType(TypedDict):
-    """DependabotAlertSecurityAdvisory
-
-    Details for the GitHub Security Advisory.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
-    severity: Literal["low", "medium", "high", "critical"]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssType
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: datetime
-    updated_at: datetime
-    withdrawn_at: Union[datetime, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
-
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
-    """
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
-    name: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str
-
-
 class DependabotAlertType(TypedDict):
     """DependabotAlert
 
@@ -6197,8 +6236,8 @@ class TimelineReviewedEventType(TypedDict):
     links: TimelineReviewedEventPropLinksType
     submitted_at: NotRequired[datetime]
     commit_id: str
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -7194,8 +7233,8 @@ class ReleaseType(TypedDict):
     published_at: Union[datetime, None]
     author: SimpleUserType
     assets: List[ReleaseAssetType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
     mentions_count: NotRequired[int]
     discussion_url: NotRequired[str]
     reactions: NotRequired[ReactionRollupType]
@@ -8067,6 +8106,250 @@ class SimpleInstallationType(TypedDict):
     node_id: str
 
 
+class WebhookBranchProtectionRuleCreatedType(TypedDict):
+    """branch protection rule created event"""
+
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleType]
+    repository: RepositoryType
+    rule: WebhookBranchProtectionRuleCreatedPropRuleType
+    sender: SimpleUserType
+
+
+class WebhookBranchProtectionRuleCreatedPropRuleType(TypedDict):
+    """branch protection rule
+
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/en/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: List[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
+    created_at: datetime
+    dismiss_stale_reviews_on_push: bool
+    id: int
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: List[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
+    updated_at: datetime
+
+
+class WebhookBranchProtectionRuleDeletedType(TypedDict):
+    """branch protection rule deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleType]
+    repository: RepositoryType
+    rule: WebhookBranchProtectionRuleDeletedPropRuleType
+    sender: SimpleUserType
+
+
+class WebhookBranchProtectionRuleDeletedPropRuleType(TypedDict):
+    """branch protection rule
+
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/en/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: List[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
+    created_at: datetime
+    dismiss_stale_reviews_on_push: bool
+    id: int
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: List[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
+    updated_at: datetime
+
+
+class WebhookBranchProtectionRuleEditedType(TypedDict):
+    """branch protection rule edited event"""
+
+    action: Literal["edited"]
+    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesType]
+    enterprise: NotRequired[EnterpriseType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleType]
+    repository: RepositoryType
+    rule: WebhookBranchProtectionRuleEditedPropRuleType
+    sender: SimpleUserType
+
+
+class WebhookBranchProtectionRuleEditedPropChangesType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChanges
+
+    If the action was `edited`, the changes to the rule.
+    """
+
+    admin_enforced: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType
+    ]
+    authorized_actor_names: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType
+    ]
+    authorized_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType
+    ]
+    authorized_dismissal_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType
+    ]
+    linear_history_requirement_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType
+    ]
+    required_status_checks: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType
+    ]
+    required_status_checks_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType
+    ]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+
+    from_: List[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: List[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropRuleType(TypedDict):
+    """branch protection rule
+
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/en/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: List[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
+    created_at: datetime
+    dismiss_stale_reviews_on_push: bool
+    id: int
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: List[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
+    updated_at: datetime
+
+
 class WebhookDependabotAlertCreatedType(TypedDict):
     """Dependabot alert created event"""
 
@@ -8127,6 +8410,31 @@ class WebhookDependabotAlertReopenedType(TypedDict):
     sender: SimpleUserType
 
 
+class WebhookGollumType(TypedDict):
+    """gollum event
+
+    A wiki page is created or updated.
+    """
+
+    enterprise: NotRequired[EnterpriseType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleType]
+    pages: List[WebhookGollumPropPagesItemsType]
+    repository: RepositoryType
+    sender: SimpleUserType
+
+
+class WebhookGollumPropPagesItemsType(TypedDict):
+    """WebhookGollumPropPagesItems"""
+
+    action: Literal["created", "edited"]
+    html_url: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
+
+
 class WebhookMergeGroupChecksRequestedType(TypedDict):
     """WebhookMergeGroupChecksRequested"""
 
@@ -8185,6 +8493,154 @@ class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitterT
     email: Union[str, None]
     name: str
     username: NotRequired[str]
+
+
+class WebhookMetaDeletedType(TypedDict):
+    """meta deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseType]
+    hook: WebhookMetaDeletedPropHookType
+    hook_id: int
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleType]
+    repository: NotRequired[Union[None, RepositoryType]]
+    sender: NotRequired[SimpleUserType]
+
+
+class WebhookMetaDeletedPropHookType(TypedDict):
+    """WebhookMetaDeletedPropHook
+
+    The modified webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigType
+    created_at: str
+    events: List[
+        Literal[
+            "*",
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "code_scanning_alert",
+            "commit_comment",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "deploy_key",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "member",
+            "membership",
+            "meta",
+            "milestone",
+            "organization",
+            "org_block",
+            "package",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_review_thread",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_import",
+            "repository_vulnerability_alert",
+            "secret_scanning_alert",
+            "secret_scanning_alert_location",
+            "security_and_analysis",
+            "star",
+            "status",
+            "team",
+            "team_add",
+            "watch",
+            "workflow_job",
+            "workflow_run",
+            "repository_dispatch",
+            "projects_v2_item",
+        ]
+    ]
+    id: int
+    name: str
+    type: str
+    updated_at: str
+
+
+class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
+
+
+class WebhookPingType(TypedDict):
+    """WebhookPing
+
+    The webhooks ping payload
+    """
+
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleType]
+    repository: NotRequired[RepositoryType]
+    sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
+
+
+class WebhookPingPropHookType(TypedDict):
+    """Webhook
+
+    The webhook that is being pinged
+    """
+
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigType
+    created_at: datetime
+    deliveries_url: NotRequired[str]
+    events: List[str]
+    id: int
+    last_response: NotRequired[HookResponseType]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: datetime
+    url: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigType(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookPingFormEncodedType(TypedDict):
+    """WebhookPingFormEncoded
+
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
 
 
 class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
@@ -9979,10 +10435,6 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
     ]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201"""
-
-
 class ReposOwnerRepoCheckSuitesPostBodyType(TypedDict):
     """ReposOwnerRepoCheckSuitesPostBody"""
 
@@ -10013,10 +10465,6 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict
 
     total_count: int
     check_runs: List[CheckRunType]
-
-
-class ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201Type(TypedDict):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201"""
 
 
 class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
@@ -10114,10 +10562,6 @@ class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
 
     encrypted_value: NotRequired[str]
     key_id: NotRequired[str]
-
-
-class ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201"""
 
 
 class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
@@ -10512,12 +10956,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyPropConfigType(TypedDict):
 
 
 class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody
-
-    Examples:
-        {'content_type': 'json', 'insecure_ssl': '0', 'secret': '********', 'url':
-    'https://example.com/webhook'}
-    """
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
     url: NotRequired[str]
     content_type: NotRequired[str]
@@ -11413,10 +11852,6 @@ class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
     selected_repository_ids: NotRequired[List[str]]
 
 
-class UserCodespacesSecretsSecretNamePutResponse201Type(TypedDict):
-    """UserCodespacesSecretsSecretNamePutResponse201"""
-
-
 class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
     """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
@@ -11698,6 +12133,16 @@ __all__ = [
     "CodespacePropRuntimeConstraintsType",
     "CodespacesOrgSecretType",
     "CodespacesPublicKeyType",
+    "DependabotAlertPackageType",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityAdvisoryPropCvssType",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "DependabotAlertWithRepositoryType",
+    "DependabotAlertWithRepositoryPropDependencyType",
     "OrganizationDependabotSecretType",
     "DependabotPublicKeyType",
     "OrganizationInvitationType",
@@ -11894,14 +12339,6 @@ __all__ = [
     "FileCommitPropCommitPropParentsItemsType",
     "FileCommitPropCommitPropVerificationType",
     "ContributorType",
-    "DependabotAlertPackageType",
-    "DependabotAlertSecurityVulnerabilityType",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
-    "DependabotAlertSecurityAdvisoryType",
-    "DependabotAlertSecurityAdvisoryPropCvssType",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
     "DependabotAlertType",
     "DependabotAlertPropDependencyType",
     "DependabotSecretType",
@@ -12098,16 +12535,39 @@ __all__ = [
     "HovercardPropContextsItemsType",
     "KeySimpleType",
     "SimpleInstallationType",
+    "WebhookBranchProtectionRuleCreatedType",
+    "WebhookBranchProtectionRuleCreatedPropRuleType",
+    "WebhookBranchProtectionRuleDeletedType",
+    "WebhookBranchProtectionRuleDeletedPropRuleType",
+    "WebhookBranchProtectionRuleEditedType",
+    "WebhookBranchProtectionRuleEditedPropChangesType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropRuleType",
     "WebhookDependabotAlertCreatedType",
     "WebhookDependabotAlertDismissedType",
     "WebhookDependabotAlertFixedType",
     "WebhookDependabotAlertReintroducedType",
     "WebhookDependabotAlertReopenedType",
+    "WebhookGollumType",
+    "WebhookGollumPropPagesItemsType",
     "WebhookMergeGroupChecksRequestedType",
     "WebhookMergeGroupChecksRequestedPropMergeGroupType",
     "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitType",
     "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthorType",
     "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitterType",
+    "WebhookMetaDeletedType",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookPingType",
+    "WebhookPingPropHookType",
+    "WebhookPingPropHookPropConfigType",
+    "WebhookPingFormEncodedType",
     "AppManifestsCodeConversionsPostResponse201Type",
     "AppManifestsCodeConversionsPostResponse201Allof1Type",
     "AppHookConfigPatchBodyType",
@@ -12293,12 +12753,10 @@ __all__ = [
     "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
     "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",
     "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",
-    "ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201Type",
     "ReposOwnerRepoCheckSuitesPostBodyType",
     "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
     "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
     "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201Type",
     "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",
     "ReposOwnerRepoCodeScanningSarifsPostBodyType",
     "ReposOwnerRepoCodespacesGetResponse200Type",
@@ -12310,7 +12768,6 @@ __all__ = [
     "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
     "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
     "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201Type",
     "ReposOwnerRepoCollaboratorsUsernamePutBodyType",
     "ReposOwnerRepoCommentsCommentIdPatchBodyType",
     "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
@@ -12457,7 +12914,6 @@ __all__ = [
     "UserCodespacesPostBodyOneof1PropPullRequestType",
     "UserCodespacesSecretsGetResponse200Type",
     "UserCodespacesSecretsSecretNamePutBodyType",
-    "UserCodespacesSecretsSecretNamePutResponse201Type",
     "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
     "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
     "UserCodespacesCodespaceNamePatchBodyType",

@@ -3104,6 +3104,236 @@ class CodespacesPublicKey(GitHubRestModel):
     created_at: Union[Unset, str] = Field(default=UNSET)
 
 
+class DependabotAlertPackage(GitHubRestModel):
+    """DependabotAlertPackage
+
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str = Field(
+        description="The package's language or package management ecosystem.",
+        default=...,
+    )
+    name: str = Field(
+        description="The unique package name within its ecosystem.", default=...
+    )
+
+
+class DependabotAlertSecurityVulnerability(GitHubRestModel):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackage = Field(
+        description="Details for the vulnerable package.", default=...
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the vulnerability.", default=...
+    )
+    vulnerable_version_range: str = Field(
+        description="Conditions that identify vulnerable versions of this vulnerability's package.",
+        default=...,
+    )
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
+    ] = Field(
+        description="Details pertaining to the package version that patches this vulnerability.",
+        default=...,
+    )
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubRestModel):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str = Field(
+        description="The package version that patches this vulnerability.", default=...
+    )
+
+
+class DependabotAlertSecurityAdvisory(GitHubRestModel):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub Security Advisory ID assigned to the advisory.",
+        default=...,
+    )
+    cve_id: Union[str, None] = Field(
+        description="The unique CVE ID assigned to the advisory.", default=...
+    )
+    summary: str = Field(
+        description="A short, plain text summary of the advisory.",
+        max_length=1024,
+        default=...,
+    )
+    description: str = Field(
+        description="A long-form Markdown-supported description of the advisory.",
+        default=...,
+    )
+    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
+        description="Vulnerable version range information for the advisory.",
+        default=...,
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the advisory.", default=...
+    )
+    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
+        description="Details for the advisory pertaining to the Common Vulnerability Scoring System.",
+        default=...,
+    )
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+        description="Details for the advisory pertaining to Common Weakness Enumeration.",
+        default=...,
+    )
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+        description="Values that identify this advisory among security information sources.",
+        default=...,
+    )
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+        description="Links to additional advisory information.", default=...
+    )
+    published_at: datetime = Field(
+        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    withdrawn_at: Union[datetime, None] = Field(
+        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCvss(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float = Field(
+        description="The overall CVSS score of the advisory.", le=10.0, default=...
+    )
+    vector_string: Union[str, None] = Field(
+        description="The full CVSS vector string for the advisory.", default=...
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str = Field(description="The unique CWE ID.", default=...)
+    name: str = Field(description="The short, plain text name of the CWE.", default=...)
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"] = Field(
+        description="The type of advisory identifier.", default=...
+    )
+    value: str = Field(description="The value of the advisory identifer.", default=...)
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str = Field(description="The URL of the reference.", default=...)
+
+
+class DependabotAlertWithRepository(GitHubRestModel):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
+    """
+
+    number: int = Field(description="The security alert number.", default=...)
+    state: Literal["dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert.", default=...
+    )
+    dependency: DependabotAlertWithRepositoryPropDependency = Field(
+        description="Details for the vulnerable dependency.", default=...
+    )
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory.", default=...
+    )
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory.",
+        default=...,
+    )
+    url: str = Field(description="The REST API URL of the alert resource.", default=...)
+    html_url: str = Field(
+        description="The GitHub URL of the alert resource.", default=...
+    )
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    dismissed_by: Union[None, SimpleUser] = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(description="The reason that the alert was dismissed.", default=...)
+    dismissed_comment: Union[str, None] = Field(
+        description="An optional comment associated with the alert's dismissal.",
+        max_length=280,
+        default=...,
+    )
+    fixed_at: Union[datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="Simple Repository", default=...
+    )
+
+
+class DependabotAlertWithRepositoryPropDependency(GitHubRestModel):
+    """DependabotAlertWithRepositoryPropDependency
+
+    Details for the vulnerable dependency.
+    """
+
+    package: Union[Unset, DependabotAlertPackage] = Field(
+        description="Details for the vulnerable package.", default=UNSET
+    )
+    manifest_path: Union[Unset, str] = Field(
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        default=UNSET,
+    )
+    scope: Union[Unset, Union[None, Literal["development", "runtime"]]] = Field(
+        description="The execution scope of the vulnerable dependency.", default=UNSET
+    )
+
+
 class OrganizationDependabotSecret(GitHubRestModel):
     """Dependabot Secret for an Organization
 
@@ -6728,159 +6958,6 @@ class Contributor(GitHubRestModel):
     name: Union[Unset, str] = Field(default=UNSET)
 
 
-class DependabotAlertPackage(GitHubRestModel):
-    """DependabotAlertPackage
-
-    Details for the vulnerable package.
-    """
-
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem.",
-        default=...,
-    )
-    name: str = Field(
-        description="The unique package name within its ecosystem.", default=...
-    )
-
-
-class DependabotAlertSecurityVulnerability(GitHubRestModel):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
-    """
-
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package.", default=...
-    )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability.", default=...
-    )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package.",
-        default=...,
-    )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
-    ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability.",
-        default=...,
-    )
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubRestModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str = Field(
-        description="The package version that patches this vulnerability.", default=...
-    )
-
-
-class DependabotAlertSecurityAdvisory(GitHubRestModel):
-    """DependabotAlertSecurityAdvisory
-
-    Details for the GitHub Security Advisory.
-    """
-
-    ghsa_id: str = Field(
-        description="The unique GitHub Security Advisory ID assigned to the advisory.",
-        default=...,
-    )
-    cve_id: Union[str, None] = Field(
-        description="The unique CVE ID assigned to the advisory.", default=...
-    )
-    summary: str = Field(
-        description="A short, plain text summary of the advisory.",
-        max_length=1024,
-        default=...,
-    )
-    description: str = Field(
-        description="A long-form Markdown-supported description of the advisory.",
-        default=...,
-    )
-    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
-        description="Vulnerable version range information for the advisory.",
-        default=...,
-    )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the advisory.", default=...
-    )
-    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
-        description="Details for the advisory pertaining to the Common Vulnerability Scoring System.",
-        default=...,
-    )
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
-        description="Details for the advisory pertaining to Common Weakness Enumeration.",
-        default=...,
-    )
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
-        description="Values that identify this advisory among security information sources.",
-        default=...,
-    )
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
-        description="Links to additional advisory information.", default=...
-    )
-    published_at: datetime = Field(
-        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-    updated_at: datetime = Field(
-        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-    withdrawn_at: Union[datetime, None] = Field(
-        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-
-
-class DependabotAlertSecurityAdvisoryPropCvss(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropCvss
-
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
-    """
-
-    score: float = Field(
-        description="The overall CVSS score of the advisory.", le=10.0, default=...
-    )
-    vector_string: Union[str, None] = Field(
-        description="The full CVSS vector string for the advisory.", default=...
-    )
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str = Field(description="The unique CWE ID.", default=...)
-    name: str = Field(description="The short, plain text name of the CWE.", default=...)
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"] = Field(
-        description="The type of advisory identifier.", default=...
-    )
-    value: str = Field(description="The value of the advisory identifer.", default=...)
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str = Field(description="The URL of the reference.", default=...)
-
-
 class DependabotAlert(GitHubRestModel):
     """DependabotAlert
 
@@ -8428,8 +8505,8 @@ class TimelineReviewedEvent(GitHubRestModel):
     links: TimelineReviewedEventPropLinks = Field(default=..., alias="_links")
     submitted_at: Union[Unset, datetime] = Field(default=UNSET)
     commit_id: str = Field(description="A commit SHA for the review.", default=...)
-    body_html: Union[Unset, str] = Field(default=UNSET)
-    body_text: Union[Unset, str] = Field(default=UNSET)
+    body_html: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    body_text: Union[Unset, Union[str, None]] = Field(default=UNSET)
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -9671,8 +9748,8 @@ class Release(GitHubRestModel):
         title="Simple User", description="Simple User", default=...
     )
     assets: List[ReleaseAsset] = Field(default=...)
-    body_html: Union[Unset, str] = Field(default=UNSET)
-    body_text: Union[Unset, str] = Field(default=UNSET)
+    body_html: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    body_text: Union[Unset, Union[str, None]] = Field(default=UNSET)
     mentions_count: Union[Unset, int] = Field(default=UNSET)
     discussion_url: Union[Unset, str] = Field(
         description="The URL of the release discussion.", default=UNSET
@@ -10735,6 +10812,346 @@ class SimpleInstallation(GitHubRestModel):
     )
 
 
+class WebhookBranchProtectionRuleCreated(GitHubRestModel):
+    """branch protection rule created event"""
+
+    action: Literal["created"] = Field(default=...)
+    enterprise: Union[Unset, Enterprise] = Field(
+        title="Enterprise", description="An enterprise account", default=UNSET
+    )
+    installation: Union[Unset, SimpleInstallation] = Field(
+        title="Simple Installation", description="Simple Installation", default=UNSET
+    )
+    organization: Union[Unset, OrganizationSimple] = Field(
+        title="Organization Simple", description="Organization Simple", default=UNSET
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    rule: WebhookBranchProtectionRuleCreatedPropRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+        default=...,
+    )
+    sender: SimpleUser = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+
+
+class WebhookBranchProtectionRuleCreatedPropRule(GitHubRestModel):
+    """branch protection rule
+
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/en/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool = Field(default=...)
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        default=...
+    )
+    allow_force_pushes_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    authorized_actor_names: List[str] = Field(default=...)
+    authorized_actors_only: bool = Field(default=...)
+    authorized_dismissal_actors_only: bool = Field(default=...)
+    create_protected: Union[Unset, bool] = Field(default=UNSET)
+    created_at: datetime = Field(default=...)
+    dismiss_stale_reviews_on_push: bool = Field(default=...)
+    id: int = Field(default=...)
+    ignore_approvals_from_contributors: bool = Field(default=...)
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        default=...
+    )
+    name: str = Field(default=...)
+    pull_request_reviews_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    repository_id: int = Field(default=...)
+    require_code_owner_review: bool = Field(default=...)
+    required_approving_review_count: int = Field(default=...)
+    required_conversation_resolution_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    required_deployments_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    required_status_checks: List[str] = Field(default=...)
+    required_status_checks_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    signature_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    strict_required_status_checks_policy: bool = Field(default=...)
+    updated_at: datetime = Field(default=...)
+
+
+class WebhookBranchProtectionRuleDeleted(GitHubRestModel):
+    """branch protection rule deleted event"""
+
+    action: Literal["deleted"] = Field(default=...)
+    enterprise: Union[Unset, Enterprise] = Field(
+        title="Enterprise", description="An enterprise account", default=UNSET
+    )
+    installation: Union[Unset, SimpleInstallation] = Field(
+        title="Simple Installation", description="Simple Installation", default=UNSET
+    )
+    organization: Union[Unset, OrganizationSimple] = Field(
+        title="Organization Simple", description="Organization Simple", default=UNSET
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    rule: WebhookBranchProtectionRuleDeletedPropRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+        default=...,
+    )
+    sender: SimpleUser = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+
+
+class WebhookBranchProtectionRuleDeletedPropRule(GitHubRestModel):
+    """branch protection rule
+
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/en/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool = Field(default=...)
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        default=...
+    )
+    allow_force_pushes_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    authorized_actor_names: List[str] = Field(default=...)
+    authorized_actors_only: bool = Field(default=...)
+    authorized_dismissal_actors_only: bool = Field(default=...)
+    create_protected: Union[Unset, bool] = Field(default=UNSET)
+    created_at: datetime = Field(default=...)
+    dismiss_stale_reviews_on_push: bool = Field(default=...)
+    id: int = Field(default=...)
+    ignore_approvals_from_contributors: bool = Field(default=...)
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        default=...
+    )
+    name: str = Field(default=...)
+    pull_request_reviews_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    repository_id: int = Field(default=...)
+    require_code_owner_review: bool = Field(default=...)
+    required_approving_review_count: int = Field(default=...)
+    required_conversation_resolution_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    required_deployments_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    required_status_checks: List[str] = Field(default=...)
+    required_status_checks_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    signature_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    strict_required_status_checks_policy: bool = Field(default=...)
+    updated_at: datetime = Field(default=...)
+
+
+class WebhookBranchProtectionRuleEdited(GitHubRestModel):
+    """branch protection rule edited event"""
+
+    action: Literal["edited"] = Field(default=...)
+    changes: Union[Unset, WebhookBranchProtectionRuleEditedPropChanges] = Field(
+        description="If the action was `edited`, the changes to the rule.",
+        default=UNSET,
+    )
+    enterprise: Union[Unset, Enterprise] = Field(
+        title="Enterprise", description="An enterprise account", default=UNSET
+    )
+    installation: Union[Unset, SimpleInstallation] = Field(
+        title="Simple Installation", description="Simple Installation", default=UNSET
+    )
+    organization: Union[Unset, OrganizationSimple] = Field(
+        title="Organization Simple", description="Organization Simple", default=UNSET
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    rule: WebhookBranchProtectionRuleEditedPropRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+        default=...,
+    )
+    sender: SimpleUser = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+
+
+class WebhookBranchProtectionRuleEditedPropChanges(GitHubRestModel):
+    """WebhookBranchProtectionRuleEditedPropChanges
+
+    If the action was `edited`, the changes to the rule.
+    """
+
+    admin_enforced: Union[
+        Unset, WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced
+    ] = Field(default=UNSET)
+    authorized_actor_names: Union[
+        Unset, WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
+    ] = Field(default=UNSET)
+    authorized_actors_only: Union[
+        Unset, WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
+    ] = Field(default=UNSET)
+    authorized_dismissal_actors_only: Union[
+        Unset,
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly,
+    ] = Field(default=UNSET)
+    linear_history_requirement_enforcement_level: Union[
+        Unset,
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel,
+    ] = Field(default=UNSET)
+    required_status_checks: Union[
+        Unset, WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
+    ] = Field(default=UNSET)
+    required_status_checks_enforcement_level: Union[
+        Unset,
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel,
+    ] = Field(default=UNSET)
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubRestModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+
+    from_: Union[bool, None] = Field(default=..., alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(
+    GitHubRestModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+
+    from_: List[str] = Field(default=..., alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(
+    GitHubRestModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
+
+    from_: Union[bool, None] = Field(default=..., alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly(
+    GitHubRestModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
+
+    from_: Union[bool, None] = Field(default=..., alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel(
+    GitHubRestModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(default=..., alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(
+    GitHubRestModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: List[str] = Field(default=..., alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(
+    GitHubRestModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(default=..., alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropRule(GitHubRestModel):
+    """branch protection rule
+
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/en/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool = Field(default=...)
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        default=...
+    )
+    allow_force_pushes_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    authorized_actor_names: List[str] = Field(default=...)
+    authorized_actors_only: bool = Field(default=...)
+    authorized_dismissal_actors_only: bool = Field(default=...)
+    create_protected: Union[Unset, bool] = Field(default=UNSET)
+    created_at: datetime = Field(default=...)
+    dismiss_stale_reviews_on_push: bool = Field(default=...)
+    id: int = Field(default=...)
+    ignore_approvals_from_contributors: bool = Field(default=...)
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        default=...
+    )
+    name: str = Field(default=...)
+    pull_request_reviews_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    repository_id: int = Field(default=...)
+    require_code_owner_review: bool = Field(default=...)
+    required_approving_review_count: int = Field(default=...)
+    required_conversation_resolution_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    required_deployments_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    required_status_checks: List[str] = Field(default=...)
+    required_status_checks_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    signature_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field(default=...)
+    strict_required_status_checks_policy: bool = Field(default=...)
+    updated_at: datetime = Field(default=...)
+
+
 class WebhookDependabotAlertCreated(GitHubRestModel):
     """Dependabot alert created event"""
 
@@ -10845,6 +11262,46 @@ class WebhookDependabotAlertReopened(GitHubRestModel):
     )
 
 
+class WebhookGollum(GitHubRestModel):
+    """gollum event
+
+    A wiki page is created or updated.
+    """
+
+    enterprise: Union[Unset, Enterprise] = Field(
+        title="Enterprise", description="An enterprise account", default=UNSET
+    )
+    installation: Union[Unset, SimpleInstallation] = Field(
+        title="Simple Installation", description="Simple Installation", default=UNSET
+    )
+    organization: Union[Unset, OrganizationSimple] = Field(
+        title="Organization Simple", description="Organization Simple", default=UNSET
+    )
+    pages: List[WebhookGollumPropPagesItems] = Field(
+        description="The pages that were updated.", default=...
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    sender: SimpleUser = Field(
+        title="Simple User", description="Simple User", default=...
+    )
+
+
+class WebhookGollumPropPagesItems(GitHubRestModel):
+    """WebhookGollumPropPagesItems"""
+
+    action: Literal["created", "edited"] = Field(
+        description="The action that was performed on the page. Can be `created` or `edited`.",
+        default=...,
+    )
+    html_url: str = Field(description="Points to the HTML wiki page.", default=...)
+    page_name: str = Field(description="The name of the page.", default=...)
+    sha: str = Field(description="The latest commit SHA of the page.", default=...)
+    summary: Union[str, None] = Field(default=...)
+    title: str = Field(description="The current page title.", default=...)
+
+
 class WebhookMergeGroupChecksRequested(GitHubRestModel):
     """WebhookMergeGroupChecksRequested"""
 
@@ -10930,6 +11387,206 @@ class WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter(
     email: Union[str, None] = Field(default=...)
     name: str = Field(description="The git author's name.", default=...)
     username: Union[Unset, str] = Field(default=UNSET)
+
+
+class WebhookMetaDeleted(GitHubRestModel):
+    """meta deleted event"""
+
+    action: Literal["deleted"] = Field(default=...)
+    enterprise: Union[Unset, Enterprise] = Field(
+        title="Enterprise", description="An enterprise account", default=UNSET
+    )
+    hook: WebhookMetaDeletedPropHook = Field(
+        description="The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.",
+        default=...,
+    )
+    hook_id: int = Field(description="The id of the modified webhook.", default=...)
+    installation: Union[Unset, SimpleInstallation] = Field(
+        title="Simple Installation", description="Simple Installation", default=UNSET
+    )
+    organization: Union[Unset, OrganizationSimple] = Field(
+        title="Organization Simple", description="Organization Simple", default=UNSET
+    )
+    repository: Union[Unset, Union[None, Repository]] = Field(
+        title="Repository", description="A git repository", default=UNSET
+    )
+    sender: Union[Unset, SimpleUser] = Field(
+        title="Simple User", description="Simple User", default=UNSET
+    )
+
+
+class WebhookMetaDeletedPropHook(GitHubRestModel):
+    """WebhookMetaDeletedPropHook
+
+    The modified webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool = Field(default=...)
+    config: WebhookMetaDeletedPropHookPropConfig = Field(default=...)
+    created_at: str = Field(default=...)
+    events: List[
+        Literal[
+            "*",
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "code_scanning_alert",
+            "commit_comment",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "deploy_key",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "member",
+            "membership",
+            "meta",
+            "milestone",
+            "organization",
+            "org_block",
+            "package",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_review_thread",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_import",
+            "repository_vulnerability_alert",
+            "secret_scanning_alert",
+            "secret_scanning_alert_location",
+            "security_and_analysis",
+            "star",
+            "status",
+            "team",
+            "team_add",
+            "watch",
+            "workflow_job",
+            "workflow_run",
+            "repository_dispatch",
+            "projects_v2_item",
+        ]
+    ] = Field(default=...)
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    type: str = Field(default=...)
+    updated_at: str = Field(default=...)
+
+
+class WebhookMetaDeletedPropHookPropConfig(GitHubRestModel):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"] = Field(default=...)
+    insecure_ssl: str = Field(default=...)
+    secret: Union[Unset, str] = Field(default=UNSET)
+    url: str = Field(default=...)
+
+
+class WebhookPing(GitHubRestModel):
+    """WebhookPing
+
+    The webhooks ping payload
+    """
+
+    hook: Union[Unset, WebhookPingPropHook] = Field(
+        title="Webhook", description="The webhook that is being pinged", default=UNSET
+    )
+    hook_id: Union[Unset, int] = Field(
+        description="The ID of the webhook that triggered the ping.", default=UNSET
+    )
+    organization: Union[Unset, OrganizationSimple] = Field(
+        title="Organization Simple", description="Organization Simple", default=UNSET
+    )
+    repository: Union[Unset, Repository] = Field(
+        title="Repository", description="A git repository", default=UNSET
+    )
+    sender: Union[Unset, SimpleUser] = Field(
+        title="Simple User", description="Simple User", default=UNSET
+    )
+    zen: Union[Unset, str] = Field(
+        description="Random string of GitHub zen.", default=UNSET
+    )
+
+
+class WebhookPingPropHook(GitHubRestModel):
+    """Webhook
+
+    The webhook that is being pinged
+    """
+
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered for the events it subscribes to.",
+        default=...,
+    )
+    app_id: Union[Unset, int] = Field(
+        description="Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.",
+        default=UNSET,
+    )
+    config: WebhookPingPropHookPropConfig = Field(default=...)
+    created_at: datetime = Field(default=...)
+    deliveries_url: Union[Unset, str] = Field(default=UNSET)
+    events: List[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push'].",
+        default=...,
+    )
+    id: int = Field(description="Unique identifier of the webhook.", default=...)
+    last_response: Union[Unset, HookResponse] = Field(
+        title="Hook Response", default=UNSET
+    )
+    name: Literal["web"] = Field(
+        description="The type of webhook. The only valid value is 'web'.", default=...
+    )
+    ping_url: Union[Unset, str] = Field(default=UNSET)
+    test_url: Union[Unset, str] = Field(default=UNSET)
+    type: str = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    url: Union[Unset, str] = Field(default=UNSET)
+
+
+class WebhookPingPropHookPropConfig(GitHubRestModel):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: Union[Unset, str] = Field(
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        default=UNSET,
+    )
+    insecure_ssl: Union[Unset, Union[str, float]] = Field(
+        description="Determines whether the SSL certificate of the host for `url` will be verified when delivering payloads. Supported values include `0` (verification is performed) and `1` (verification is not performed). The default is `0`. **We strongly recommend not setting this to `1` as you are subject to man-in-the-middle and other attacks.**",
+        default=UNSET,
+    )
+    secret: Union[Unset, str] = Field(
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+        default=UNSET,
+    )
+    url: Union[Unset, str] = Field(
+        description="The URL to which the payloads will be delivered.", default=UNSET
+    )
+
+
+class WebhookPingFormEncoded(GitHubRestModel):
+    """WebhookPingFormEncoded
+
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str = Field(
+        description="A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object.",
+        default=...,
+    )
 
 
 class AppManifestsCodeConversionsPostResponse201(GitHubRestModel):
@@ -13777,10 +14434,6 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(
     )
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201(GitHubRestModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201"""
-
-
 class ReposOwnerRepoCheckSuitesPostBody(GitHubRestModel):
     """ReposOwnerRepoCheckSuitesPostBody"""
 
@@ -13816,10 +14469,6 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubRestMod
 
     total_count: int = Field(default=...)
     check_runs: List[CheckRun] = Field(default=...)
-
-
-class ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201(GitHubRestModel):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201"""
 
 
 class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubRestModel):
@@ -13988,10 +14637,6 @@ class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     key_id: Union[Unset, str] = Field(
         description="ID of the key you used to encrypt the secret.", default=UNSET
     )
-
-
-class ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201(GitHubRestModel):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201"""
 
 
 class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubRestModel):
@@ -14680,12 +15325,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyPropConfig(GitHubRestModel):
 
 
 class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubRestModel):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody
-
-    Examples:
-        {'content_type': 'json', 'insecure_ssl': '0', 'secret': '********', 'url':
-    'https://example.com/webhook'}
-    """
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
     url: Union[Unset, str] = Field(
         description="The URL to which the payloads will be delivered.", default=UNSET
@@ -16210,10 +16850,6 @@ class UserCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     )
 
 
-class UserCodespacesSecretsSecretNamePutResponse201(GitHubRestModel):
-    """UserCodespacesSecretsSecretNamePutResponse201"""
-
-
 class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubRestModel):
     """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
@@ -16610,6 +17246,16 @@ CodespacePropGitStatus.update_forward_refs()
 CodespacePropRuntimeConstraints.update_forward_refs()
 CodespacesOrgSecret.update_forward_refs()
 CodespacesPublicKey.update_forward_refs()
+DependabotAlertPackage.update_forward_refs()
+DependabotAlertSecurityVulnerability.update_forward_refs()
+DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion.update_forward_refs()
+DependabotAlertSecurityAdvisory.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropCvss.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropCwesItems.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropIdentifiersItems.update_forward_refs()
+DependabotAlertSecurityAdvisoryPropReferencesItems.update_forward_refs()
+DependabotAlertWithRepository.update_forward_refs()
+DependabotAlertWithRepositoryPropDependency.update_forward_refs()
 OrganizationDependabotSecret.update_forward_refs()
 DependabotPublicKey.update_forward_refs()
 OrganizationInvitation.update_forward_refs()
@@ -16806,14 +17452,6 @@ FileCommitPropCommitPropTree.update_forward_refs()
 FileCommitPropCommitPropParentsItems.update_forward_refs()
 FileCommitPropCommitPropVerification.update_forward_refs()
 Contributor.update_forward_refs()
-DependabotAlertPackage.update_forward_refs()
-DependabotAlertSecurityVulnerability.update_forward_refs()
-DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion.update_forward_refs()
-DependabotAlertSecurityAdvisory.update_forward_refs()
-DependabotAlertSecurityAdvisoryPropCvss.update_forward_refs()
-DependabotAlertSecurityAdvisoryPropCwesItems.update_forward_refs()
-DependabotAlertSecurityAdvisoryPropIdentifiersItems.update_forward_refs()
-DependabotAlertSecurityAdvisoryPropReferencesItems.update_forward_refs()
 DependabotAlert.update_forward_refs()
 DependabotAlertPropDependency.update_forward_refs()
 DependabotSecret.update_forward_refs()
@@ -17010,16 +17648,39 @@ Hovercard.update_forward_refs()
 HovercardPropContextsItems.update_forward_refs()
 KeySimple.update_forward_refs()
 SimpleInstallation.update_forward_refs()
+WebhookBranchProtectionRuleCreated.update_forward_refs()
+WebhookBranchProtectionRuleCreatedPropRule.update_forward_refs()
+WebhookBranchProtectionRuleDeleted.update_forward_refs()
+WebhookBranchProtectionRuleDeletedPropRule.update_forward_refs()
+WebhookBranchProtectionRuleEdited.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChanges.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel.update_forward_refs()
+WebhookBranchProtectionRuleEditedPropRule.update_forward_refs()
 WebhookDependabotAlertCreated.update_forward_refs()
 WebhookDependabotAlertDismissed.update_forward_refs()
 WebhookDependabotAlertFixed.update_forward_refs()
 WebhookDependabotAlertReintroduced.update_forward_refs()
 WebhookDependabotAlertReopened.update_forward_refs()
+WebhookGollum.update_forward_refs()
+WebhookGollumPropPagesItems.update_forward_refs()
 WebhookMergeGroupChecksRequested.update_forward_refs()
 WebhookMergeGroupChecksRequestedPropMergeGroup.update_forward_refs()
 WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommit.update_forward_refs()
 WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor.update_forward_refs()
 WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter.update_forward_refs()
+WebhookMetaDeleted.update_forward_refs()
+WebhookMetaDeletedPropHook.update_forward_refs()
+WebhookMetaDeletedPropHookPropConfig.update_forward_refs()
+WebhookPing.update_forward_refs()
+WebhookPingPropHook.update_forward_refs()
+WebhookPingPropHookPropConfig.update_forward_refs()
+WebhookPingFormEncoded.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201Allof1.update_forward_refs()
 AppHookConfigPatchBody.update_forward_refs()
@@ -17205,12 +17866,10 @@ ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems.update_forwa
 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems.update_forward_refs()
 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0.update_forward_refs()
 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1.update_forward_refs()
-ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201.update_forward_refs()
 ReposOwnerRepoCheckSuitesPostBody.update_forward_refs()
 ReposOwnerRepoCheckSuitesPreferencesPatchBody.update_forward_refs()
 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems.update_forward_refs()
 ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200.update_forward_refs()
-ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201.update_forward_refs()
 ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody.update_forward_refs()
 ReposOwnerRepoCodeScanningSarifsPostBody.update_forward_refs()
 ReposOwnerRepoCodespacesGetResponse200.update_forward_refs()
@@ -17222,7 +17881,6 @@ ReposOwnerRepoCodespacesNewGetResponse200.update_forward_refs()
 ReposOwnerRepoCodespacesNewGetResponse200PropDefaults.update_forward_refs()
 ReposOwnerRepoCodespacesSecretsGetResponse200.update_forward_refs()
 ReposOwnerRepoCodespacesSecretsSecretNamePutBody.update_forward_refs()
-ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201.update_forward_refs()
 ReposOwnerRepoCollaboratorsUsernamePutBody.update_forward_refs()
 ReposOwnerRepoCommentsCommentIdPatchBody.update_forward_refs()
 ReposOwnerRepoCommentsCommentIdReactionsPostBody.update_forward_refs()
@@ -17369,7 +18027,6 @@ UserCodespacesPostBodyOneof1.update_forward_refs()
 UserCodespacesPostBodyOneof1PropPullRequest.update_forward_refs()
 UserCodespacesSecretsGetResponse200.update_forward_refs()
 UserCodespacesSecretsSecretNamePutBody.update_forward_refs()
-UserCodespacesSecretsSecretNamePutResponse201.update_forward_refs()
 UserCodespacesSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 UserCodespacesSecretsSecretNameRepositoriesPutBody.update_forward_refs()
 UserCodespacesCodespaceNamePatchBody.update_forward_refs()
@@ -17515,6 +18172,16 @@ __all__ = [
     "CodespacePropRuntimeConstraints",
     "CodespacesOrgSecret",
     "CodespacesPublicKey",
+    "DependabotAlertPackage",
+    "DependabotAlertSecurityVulnerability",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
+    "DependabotAlertSecurityAdvisory",
+    "DependabotAlertSecurityAdvisoryPropCvss",
+    "DependabotAlertSecurityAdvisoryPropCwesItems",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
+    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+    "DependabotAlertWithRepository",
+    "DependabotAlertWithRepositoryPropDependency",
     "OrganizationDependabotSecret",
     "DependabotPublicKey",
     "OrganizationInvitation",
@@ -17711,14 +18378,6 @@ __all__ = [
     "FileCommitPropCommitPropParentsItems",
     "FileCommitPropCommitPropVerification",
     "Contributor",
-    "DependabotAlertPackage",
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
-    "DependabotAlertSecurityAdvisory",
-    "DependabotAlertSecurityAdvisoryPropCvss",
-    "DependabotAlertSecurityAdvisoryPropCwesItems",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
-    "DependabotAlertSecurityAdvisoryPropReferencesItems",
     "DependabotAlert",
     "DependabotAlertPropDependency",
     "DependabotSecret",
@@ -17915,16 +18574,39 @@ __all__ = [
     "HovercardPropContextsItems",
     "KeySimple",
     "SimpleInstallation",
+    "WebhookBranchProtectionRuleCreated",
+    "WebhookBranchProtectionRuleCreatedPropRule",
+    "WebhookBranchProtectionRuleDeleted",
+    "WebhookBranchProtectionRuleDeletedPropRule",
+    "WebhookBranchProtectionRuleEdited",
+    "WebhookBranchProtectionRuleEditedPropChanges",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
+    "WebhookBranchProtectionRuleEditedPropRule",
     "WebhookDependabotAlertCreated",
     "WebhookDependabotAlertDismissed",
     "WebhookDependabotAlertFixed",
     "WebhookDependabotAlertReintroduced",
     "WebhookDependabotAlertReopened",
+    "WebhookGollum",
+    "WebhookGollumPropPagesItems",
     "WebhookMergeGroupChecksRequested",
     "WebhookMergeGroupChecksRequestedPropMergeGroup",
     "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommit",
     "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor",
     "WebhookMergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter",
+    "WebhookMetaDeleted",
+    "WebhookMetaDeletedPropHook",
+    "WebhookMetaDeletedPropHookPropConfig",
+    "WebhookPing",
+    "WebhookPingPropHook",
+    "WebhookPingPropHookPropConfig",
+    "WebhookPingFormEncoded",
     "AppManifestsCodeConversionsPostResponse201",
     "AppManifestsCodeConversionsPostResponse201Allof1",
     "AppHookConfigPatchBody",
@@ -18110,12 +18792,10 @@ __all__ = [
     "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
     "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",
     "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",
-    "ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201",
     "ReposOwnerRepoCheckSuitesPostBody",
     "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
     "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
     "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201",
     "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",
     "ReposOwnerRepoCodeScanningSarifsPostBody",
     "ReposOwnerRepoCodespacesGetResponse200",
@@ -18127,7 +18807,6 @@ __all__ = [
     "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
     "ReposOwnerRepoCodespacesSecretsGetResponse200",
     "ReposOwnerRepoCodespacesSecretsSecretNamePutBody",
-    "ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201",
     "ReposOwnerRepoCollaboratorsUsernamePutBody",
     "ReposOwnerRepoCommentsCommentIdPatchBody",
     "ReposOwnerRepoCommentsCommentIdReactionsPostBody",
@@ -18274,7 +18953,6 @@ __all__ = [
     "UserCodespacesPostBodyOneof1PropPullRequest",
     "UserCodespacesSecretsGetResponse200",
     "UserCodespacesSecretsSecretNamePutBody",
-    "UserCodespacesSecretsSecretNamePutResponse201",
     "UserCodespacesSecretsSecretNameRepositoriesGetResponse200",
     "UserCodespacesSecretsSecretNameRepositoriesPutBody",
     "UserCodespacesCodespaceNamePatchBody",

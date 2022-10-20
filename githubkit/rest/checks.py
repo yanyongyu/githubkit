@@ -12,6 +12,23 @@ from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
+from .models import (
+    CheckRun,
+    BasicError,
+    CheckSuite,
+    EmptyObject,
+    CheckAnnotation,
+    CheckSuitePreference,
+    ReposOwnerRepoCheckSuitesPostBody,
+    ReposOwnerRepoCheckRunsPostBodyOneof0,
+    ReposOwnerRepoCheckRunsPostBodyOneof1,
+    ReposOwnerRepoCheckSuitesPreferencesPatchBody,
+    ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
+    ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
+    ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
+)
 from .types import (
     ReposOwnerRepoCheckSuitesPostBodyType,
     ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -24,24 +41,6 @@ from .types import (
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
     ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
-)
-from .models import (
-    CheckRun,
-    BasicError,
-    CheckSuite,
-    CheckAnnotation,
-    CheckSuitePreference,
-    ReposOwnerRepoCheckSuitesPostBody,
-    ReposOwnerRepoCheckRunsPostBodyOneof0,
-    ReposOwnerRepoCheckRunsPostBodyOneof1,
-    ReposOwnerRepoCheckSuitesPreferencesPatchBody,
-    ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
-    ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
-    ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201,
-    ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
-    ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201,
 )
 
 if TYPE_CHECKING:
@@ -598,13 +597,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
-    ) -> "Response[ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
 
         return self._github.request(
             "POST",
             url,
-            response_model=ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201,
+            response_model=EmptyObject,
             error_models={
                 "403": BasicError,
                 "422": BasicError,
@@ -617,13 +616,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
-    ) -> "Response[ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
 
         return await self._github.arequest(
             "POST",
             url,
-            response_model=ReposOwnerRepoCheckRunsCheckRunIdRerequestPostResponse201,
+            response_model=EmptyObject,
             error_models={
                 "403": BasicError,
                 "422": BasicError,
@@ -902,13 +901,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
-    ) -> "Response[ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
 
         return self._github.request(
             "POST",
             url,
-            response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201,
+            response_model=EmptyObject,
         )
 
     async def async_rerequest_suite(
@@ -916,13 +915,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
-    ) -> "Response[ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
 
         return await self._github.arequest(
             "POST",
             url,
-            response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdRerequestPostResponse201,
+            response_model=EmptyObject,
         )
 
     def list_for_ref(

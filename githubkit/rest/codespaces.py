@@ -50,7 +50,6 @@ from .models import (
     OrgsOrgCodespacesSecretsSecretNamePutBody,
     ReposOwnerRepoCodespacesNewGetResponse200,
     ReposOwnerRepoCodespacesSecretsGetResponse200,
-    UserCodespacesSecretsSecretNamePutResponse201,
     OrgsOrgMembersUsernameCodespacesGetResponse200,
     ReposOwnerRepoCodespacesMachinesGetResponse200,
     ReposOwnerRepoPullsPullNumberCodespacesPostBody,
@@ -59,8 +58,8 @@ from .models import (
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     UserCodespacesSecretsSecretNameRepositoriesPutBody,
     ReposOwnerRepoCodespacesDevcontainersGetResponse200,
+    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
     OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody,
-    ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201,
     UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
     OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
 )
@@ -915,6 +914,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -975,6 +975,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -1244,7 +1245,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -1257,7 +1258,7 @@ class CodespacesClient:
         data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
-    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     def create_or_update_repo_secret(
@@ -1270,7 +1271,7 @@ class CodespacesClient:
             Unset, ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
         if not kwargs:
@@ -1284,7 +1285,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201,
+            response_model=EmptyObject,
         )
 
     @overload
@@ -1295,7 +1296,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -1308,7 +1309,7 @@ class CodespacesClient:
         data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: Union[Unset, str] = UNSET,
-    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     async def async_create_or_update_repo_secret(
@@ -1321,7 +1322,7 @@ class CodespacesClient:
             Unset, ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> "Response[ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
         if not kwargs:
@@ -1335,7 +1336,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=ReposOwnerRepoCodespacesSecretsSecretNamePutResponse201,
+            response_model=EmptyObject,
         )
 
     def delete_repo_secret(
@@ -1426,6 +1427,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -1491,6 +1493,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -1618,6 +1621,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -1691,6 +1695,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 
@@ -1781,7 +1786,7 @@ class CodespacesClient:
     @overload
     def create_or_update_secret_for_authenticated_user(
         self, secret_name: str, *, data: UserCodespacesSecretsSecretNamePutBodyType
-    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -1793,7 +1798,7 @@ class CodespacesClient:
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: str,
         selected_repository_ids: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     def create_or_update_secret_for_authenticated_user(
@@ -1802,7 +1807,7 @@ class CodespacesClient:
         *,
         data: Union[Unset, UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
         if not kwargs:
@@ -1816,7 +1821,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=UserCodespacesSecretsSecretNamePutResponse201,
+            response_model=EmptyObject,
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -1826,7 +1831,7 @@ class CodespacesClient:
     @overload
     async def async_create_or_update_secret_for_authenticated_user(
         self, secret_name: str, *, data: UserCodespacesSecretsSecretNamePutBodyType
-    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     @overload
@@ -1838,7 +1843,7 @@ class CodespacesClient:
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: str,
         selected_repository_ids: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         ...
 
     async def async_create_or_update_secret_for_authenticated_user(
@@ -1847,7 +1852,7 @@ class CodespacesClient:
         *,
         data: Union[Unset, UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[UserCodespacesSecretsSecretNamePutResponse201]":
+    ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
         if not kwargs:
@@ -1861,7 +1866,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=UserCodespacesSecretsSecretNamePutResponse201,
+            response_model=EmptyObject,
             error_models={
                 "422": ValidationError,
                 "404": BasicError,

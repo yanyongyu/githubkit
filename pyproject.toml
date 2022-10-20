@@ -92,6 +92,10 @@ webhook-types-output = "githubkit/webhooks/types.py"
 # https://github.com/github/rest-api-description/issues/1639
 "/components/schemas/issue/properties/body_text" = { type = ["string", "null"] }
 "/components/schemas/issue/properties/body_html" = { type = ["string", "null"] }
+"/components/schemas/timeline-reviewed-event/properties/body_text" = { type = ["string", "null"] }
+"/components/schemas/timeline-reviewed-event/properties/body_html" = { type = ["string", "null"] }
+"/components/schemas/release/properties/body_text" = { type = ["string", "null"] }
+"/components/schemas/release/properties/body_html" = { type = ["string", "null"] }
 
 
 [build-system]

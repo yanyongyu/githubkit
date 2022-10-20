@@ -74,7 +74,6 @@ class CodeScanningClient:
             params=exclude_unset(params),
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
-                "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
@@ -113,7 +112,6 @@ class CodeScanningClient:
             params=exclude_unset(params),
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
-                "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
@@ -152,7 +150,6 @@ class CodeScanningClient:
             params=exclude_unset(params),
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
-                "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
@@ -191,7 +188,6 @@ class CodeScanningClient:
             params=exclude_unset(params),
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
-                "403": BasicError,
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
