@@ -26,7 +26,9 @@ def split_words(value: str) -> List[str]:
     return re.findall(rf"[^{DELIMITERS}]+", value)
 
 
-RESERVED_WORDS = (set(dir(builtins)) | {"self", "true", "false", "datetime"}) - {
+RESERVED_WORDS = (
+    set(dir(builtins)) | {"self", "true", "false", "datetime", "validate"}
+) - {
     "type",
     "id",
 }

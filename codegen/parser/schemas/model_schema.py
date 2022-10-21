@@ -18,6 +18,7 @@ from .schema import (
     DateSchema,
     EnumSchema,
     FileSchema,
+    ListSchema,
     NoneSchema,
     SchemaData,
     FloatSchema,
@@ -109,11 +110,13 @@ def _is_string_subset(
 def _is_model_merge(
     source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
 ) -> Optional[ModelSchema]:
-    if isinstance(first, ModelSchema) and isinstance(second, ModelSchema):
-        properties = {prop.name: prop for prop in first.properties}
+    if (first_model := _find_schema(first, ModelSchema)) and (
+        second_model := _find_schema(second, ModelSchema)
+    ):
+        properties = {prop.name: prop for prop in first_model.properties}
         class_name = build_class_name(prefix)
 
-        for prop in second.properties:
+        for prop in second_model.properties:
             if prop.name in properties:
                 # try merge
                 try:
@@ -133,10 +136,40 @@ def _is_model_merge(
         schema = ModelSchema(
             class_name=class_name,
             properties=list(properties.values()),
-            allow_extra=first.allow_extra and second.allow_extra,
+            allow_extra=first_model.allow_extra and second_model.allow_extra,
         )
         add_schema((source / "allof" / "merged" / name).uri, schema)
         return schema
+
+
+def _is_list_merge(
+    source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
+) -> Optional[ListSchema]:
+    if isinstance(first, ListSchema) and isinstance(second, ListSchema):
+        return ListSchema(
+            title=first.title,
+            description=first.description,
+            default=first.default,
+            examples=first.examples,
+            item_schema=_merge_schema(
+                source, name, prefix, first.item_schema, second.item_schema
+            ),
+        )
+
+
+def _merge_schema(
+    source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
+):
+    if schema := (
+        _is_union_subset(first, second)
+        or _is_string_subset(first, second)
+        or _is_string_subset(second, first)
+        or _is_enum_subset(first, second)
+        or _is_model_merge(source, name, prefix, first, second)
+        or _is_list_merge(source, name, prefix, first, second)
+    ):
+        return schema
+    raise RuntimeError(f"Cannot merge schema {first!r} {second!r}")
 
 
 def _merge_property(
@@ -148,31 +181,23 @@ def _merge_property(
     required = first.required or second.required
     nullable = _is_nullable(first.schema_data) and _is_nullable(second.schema_data)
 
-    if schema := (
-        _is_union_subset(first.schema_data, second.schema_data)
-        or _is_string_subset(first.schema_data, second.schema_data)
-        or _is_string_subset(second.schema_data, first.schema_data)
-        or _is_enum_subset(first.schema_data, second.schema_data)
-        or _is_model_merge(
-            source, first.name, prefix, first.schema_data, second.schema_data
+    schema = _merge_schema(
+        source, first.name, prefix, first.schema_data, second.schema_data
+    )
+    if nullable:
+        schema = UnionSchema(
+            title=schema.title,
+            description=schema.description,
+            default=schema.default,
+            examples=schema.examples,
+            schemas=[schema, NoneSchema()],
         )
-    ):
-        if nullable:
-            schema = UnionSchema(
-                title=schema.title,
-                description=schema.description,
-                default=schema.default,
-                examples=schema.examples,
-                schemas=[schema, NoneSchema()],
-            )
-        return Property(
-            name=second.name,
-            prop_name=second.prop_name,
-            required=required,
-            schema_data=schema,
-        )
-
-    raise RuntimeError(f"Cannot merge property {first!r} {second!r}")
+    return Property(
+        name=second.name,
+        prop_name=second.prop_name,
+        required=required,
+        schema_data=schema,
+    )
 
 
 def _process_properties(
@@ -247,7 +272,6 @@ def _process_properties(
                     schema_data=prop_schema,
                 )
             )
-
     return list(properties.values())
 
 
