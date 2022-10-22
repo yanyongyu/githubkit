@@ -169,8 +169,7 @@ Call API with context (reusing client):
 from githubkit import Response
 from githubkit.rest import FullRepository
 
-# with GitHub("<your_token_here>") as github:
-with github:
+with GitHub("<your_token_here>") as github:
     resp: Response[FullRepository] = github.rest.repos.get(owner="owner", repo="repo")
     repo: FullRepository = resp.parsed_data
 ```
@@ -179,8 +178,7 @@ with github:
 from githubkit import Response
 from githubkit.rest import FullRepository
 
-# async with GitHub("<your_token_here>") as github:
-async with github:
+async with GitHub("<your_token_here>") as github:
     resp: Response[FullRepository] = await github.rest.repos.async_get(owner="owner", repo="repo")
     repo: FullRepository = resp.parsed_data
 ```
