@@ -1,4 +1,5 @@
 from types import TracebackType
+from contextvars import ContextVar
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
@@ -129,14 +130,18 @@ class GitHubCore(Generic[A]):
             base_url, accept_format, previews, user_agent, follow_redirects, timeout
         )
 
-        self.__sync_client: Optional[httpx.Client] = None
-        self.__async_client: Optional[httpx.AsyncClient] = None
+        self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
+            "sync_client", default=None
+        )
+        self.__async_client: ContextVar[Optional[httpx.AsyncClient]] = ContextVar(
+            "async_client", default=None
+        )
 
     # sync context
     def __enter__(self):
-        if self.__sync_client is not None:
+        if self.__sync_client.get() is not None:
             raise RuntimeError("Cannot enter sync context twice")
-        self.__sync_client = self._create_sync_client()
+        self.__sync_client.set(self._create_sync_client())
         return self
 
     def __exit__(
@@ -145,14 +150,14 @@ class GitHubCore(Generic[A]):
         exc_value: Optional[BaseException] = None,
         traceback: Optional[TracebackType] = None,
     ):
-        cast(httpx.Client, self.__sync_client).close()
-        self.__sync_client = None
+        cast(httpx.Client, self.__sync_client.get()).close()
+        self.__sync_client.set(None)
 
     # async context
     async def __aenter__(self):
-        if self.__async_client is not None:
+        if self.__async_client.get() is not None:
             raise RuntimeError("Cannot enter async context twice")
-        self.__async_client = self._create_async_client()
+        self.__async_client.set(self._create_async_client())
         return self
 
     async def __aexit__(
@@ -161,8 +166,8 @@ class GitHubCore(Generic[A]):
         exc_value: Optional[BaseException] = None,
         traceback: Optional[TracebackType] = None,
     ):
-        await cast(httpx.AsyncClient, self.__async_client).aclose()
-        self.__async_client = None
+        await cast(httpx.AsyncClient, self.__async_client.get()).aclose()
+        self.__async_client.set(None)
 
     # default args for creating client
     def _get_client_defaults(self):
@@ -184,8 +189,8 @@ class GitHubCore(Generic[A]):
     # get or create sync client
     @contextmanager
     def get_sync_client(self) -> Generator[httpx.Client, None, None]:
-        if self.__sync_client:
-            yield self.__sync_client
+        if client := self.__sync_client.get():
+            yield client
         else:
             client = self._create_sync_client()
             try:
@@ -200,8 +205,8 @@ class GitHubCore(Generic[A]):
     # get or create async client
     @asynccontextmanager
     async def get_async_client(self) -> AsyncGenerator[httpx.AsyncClient, None]:
-        if self.__async_client:
-            yield self.__async_client
+        if client := self.__async_client.get():
+            yield client
         else:
             client = self._create_async_client()
             try:
