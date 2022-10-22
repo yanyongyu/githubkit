@@ -1,6 +1,4 @@
 from types import TracebackType
-from functools import cached_property
-from typing_extensions import ParamSpec
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
@@ -10,9 +8,7 @@ from typing import (
     Union,
     Generic,
     TypeVar,
-    Callable,
     Optional,
-    Awaitable,
     Generator,
     AsyncGenerator,
     cast,
@@ -127,7 +123,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
         auth = auth or UnauthAuthStrategy()
-        self.auth: A = TokenAuthStrategy(auth) if isinstance(auth, str) else auth
+        self.auth: A = TokenAuthStrategy(auth) if isinstance(auth, str) else auth  # type: ignore
 
         self.config = config or get_config(
             base_url, accept_format, previews, user_agent, follow_redirects, timeout

@@ -356,6 +356,11 @@ class OAuthDeviceAuth(httpx.Auth):
         if require_bypass(request.url):
             yield request
             return
+        if anyio is None:
+            raise RuntimeError(
+                "AnyIO support for OAuth Device Flow should be installed "
+                "with `pip install githubkit[auth-oauth-device]`"
+            )
         if not (token := self._token):
             flow = create_device_code(self.github, self.client_id, self.scopes)
             create_request = next(flow)
