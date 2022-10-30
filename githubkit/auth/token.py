@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from githubkit import GitHubCore
 
 
-@dataclass(slots=True)
+@dataclass
 class TokenAuth(httpx.Auth):
     """Personal Access Token Authentication Hook"""
 
@@ -25,7 +25,7 @@ class TokenAuth(httpx.Auth):
         yield request
 
 
-@dataclass(slots=True)
+@dataclass
 class TokenAuthStrategy(BaseAuthStrategy):
     """Personal Access Token Authentication"""
 

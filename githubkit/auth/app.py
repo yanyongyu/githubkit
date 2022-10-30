@@ -28,7 +28,7 @@ if TYPE_CHECKING:
     from githubkit.rest.types import AppPermissionsType
 
 
-@dataclass(slots=True)
+@dataclass
 class AppAuth(httpx.Auth):
     """GitHub App or Installation Authentication Hook"""
 
@@ -215,7 +215,7 @@ class AppAuth(httpx.Auth):
         yield request
 
 
-@dataclass(slots=True)
+@dataclass
 class AppAuthStrategy(BaseAuthStrategy):
     """GitHub App Authentication"""
 
@@ -262,7 +262,7 @@ class AppAuthStrategy(BaseAuthStrategy):
         )
 
 
-@dataclass(slots=True)
+@dataclass
 class AppInstallationAuthStrategy(BaseAuthStrategy):
     """GitHub App Installation Authentication"""
 

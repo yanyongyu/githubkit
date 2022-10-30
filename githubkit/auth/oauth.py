@@ -135,7 +135,7 @@ def refresh_token(
     return response.json()
 
 
-@dataclass(slots=True)
+@dataclass
 class OAuthWebAuth(httpx.Auth):
     """OAuth Web Flow Hook Authentication"""
 
@@ -240,7 +240,7 @@ class OAuthWebAuth(httpx.Auth):
         yield request
 
 
-@dataclass(slots=True)
+@dataclass
 class OAuthDeviceAuth(httpx.Auth):
     """OAuth Device Flow Hook Authentication"""
 
@@ -402,7 +402,7 @@ class OAuthDeviceAuth(httpx.Auth):
         yield request
 
 
-@dataclass(slots=True)
+@dataclass
 class OAuthAppAuthStrategy(BaseAuthStrategy):
     """OAuth App Authentication"""
 
@@ -420,7 +420,7 @@ class OAuthAppAuthStrategy(BaseAuthStrategy):
         return httpx.BasicAuth(self.client_id, self.client_secret)
 
 
-@dataclass(slots=True)
+@dataclass
 class OAuthWebAuthStrategy(BaseAuthStrategy):
     """OAuth Web Flow Authentication"""
 
@@ -438,7 +438,7 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
         )
 
 
-@dataclass(slots=True)
+@dataclass
 class OAuthDeviceAuthStrategy(BaseAuthStrategy):
     """OAuth Device Flow Authentication"""
 
