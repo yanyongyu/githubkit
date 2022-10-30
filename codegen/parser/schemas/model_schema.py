@@ -121,7 +121,7 @@ def _is_model_merge(
                 # try merge
                 try:
                     prop = _merge_property(
-                        source,
+                        source / "allof" / "merged" / name,
                         properties[prop.name],
                         prop,
                         concat_snake_name(class_name, "prop", prop.name),
@@ -169,7 +169,7 @@ def _merge_schema(
         or _is_list_merge(source, name, prefix, first, second)
     ):
         return schema
-    raise RuntimeError(f"Cannot merge schema {first!r} {second!r}")
+    raise RuntimeError(f"Cannot merge schema for {name}: {first!r}; {second!r}")
 
 
 def _merge_property(

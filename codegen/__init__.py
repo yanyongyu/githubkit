@@ -1,6 +1,6 @@
 import shutil
 from pathlib import Path
-from typing import Any, Dict, Union, Optional
+from typing import Any, Dict
 
 import httpx
 import tomli
@@ -116,6 +116,15 @@ def build_webhook(data: WebhookData, config: Config):
     logger.info("Successfully generated webhook codes!")
 
 
+def _patch_openapi_spec(spec: Dict[str, Any]):
+    spec.pop("webhooks", None)
+    for name in list(spec["components"]["schemas"].keys()):
+        if name.startswith("webhook-config"):
+            continue
+        elif name.startswith("webhook"):
+            del spec["components"]["schemas"][name]
+
+
 def build():
     config = load_config()
     logger.info(f"Loaded config: {config!r}")
@@ -125,6 +134,7 @@ def build():
     logger.info(f"Getting schema from {source.uri} succeeded!")
 
     logger.info("Start parsing OpenAPI spec...")
+    _patch_openapi_spec(source.root)
     parsed_data = parse_openapi_spec(source, config)
     logger.info(
         "Successfully parsed OpenAPI spec: "

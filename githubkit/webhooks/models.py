@@ -7346,6 +7346,48 @@ class MergeGroupChecksRequestedPropMergeGroup(GitHubWebhookModel):
         description="The full ref of the branch the merge group will be merged into.",
         default=...,
     )
+    base_sha: str = Field(
+        description="The SHA of the merge group's parent commit.", default=...
+    )
+    head_commit: MergeGroupChecksRequestedPropMergeGroupPropHeadCommit = Field(
+        description="An expanded representation of the `head_sha` commit.", default=...
+    )
+
+
+class MergeGroupChecksRequestedPropMergeGroupPropHeadCommit(GitHubWebhookModel):
+    """MergeGroupChecksRequestedPropMergeGroupPropHeadCommit
+
+    An expanded representation of the `head_sha` commit.
+    """
+
+    id: str = Field(default=...)
+    tree_id: str = Field(default=...)
+    message: str = Field(default=...)
+    timestamp: datetime = Field(default=...)
+    author: MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor = Field(
+        default=...
+    )
+    committer: MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter = (
+        Field(default=...)
+    )
+
+
+class MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor(
+    GitHubWebhookModel
+):
+    """MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor"""
+
+    name: str = Field(default=...)
+    email: str = Field(default=...)
+
+
+class MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter(
+    GitHubWebhookModel
+):
+    """MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter"""
+
+    name: str = Field(default=...)
+    email: str = Field(default=...)
 
 
 class MetaDeleted(GitHubWebhookModel):
@@ -15145,6 +15187,9 @@ MembershipRemoved.update_forward_refs()
 MembershipRemovedPropTeamOneof1.update_forward_refs()
 MergeGroupChecksRequested.update_forward_refs()
 MergeGroupChecksRequestedPropMergeGroup.update_forward_refs()
+MergeGroupChecksRequestedPropMergeGroupPropHeadCommit.update_forward_refs()
+MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor.update_forward_refs()
+MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter.update_forward_refs()
 MetaDeleted.update_forward_refs()
 MetaDeletedPropHook.update_forward_refs()
 MetaDeletedPropHookPropConfig.update_forward_refs()
@@ -15818,6 +15863,9 @@ __all__ = [
     "MembershipRemovedPropTeamOneof1",
     "MergeGroupChecksRequested",
     "MergeGroupChecksRequestedPropMergeGroup",
+    "MergeGroupChecksRequestedPropMergeGroupPropHeadCommit",
+    "MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropAuthor",
+    "MergeGroupChecksRequestedPropMergeGroupPropHeadCommitPropCommitter",
     "MetaDeleted",
     "MetaDeletedPropHook",
     "MetaDeletedPropHookPropConfig",

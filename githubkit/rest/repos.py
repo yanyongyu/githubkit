@@ -311,6 +311,7 @@ class ReposClient:
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
         has_wiki: Union[Unset, bool] = True,
+        has_downloads: Union[Unset, bool] = True,
         is_template: Union[Unset, bool] = False,
         team_id: Union[Unset, int] = UNSET,
         auto_init: Union[Unset, bool] = False,
@@ -382,6 +383,7 @@ class ReposClient:
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
         has_wiki: Union[Unset, bool] = True,
+        has_downloads: Union[Unset, bool] = True,
         is_template: Union[Unset, bool] = False,
         team_id: Union[Unset, int] = UNSET,
         auto_init: Union[Unset, bool] = False,
@@ -1063,6 +1065,8 @@ class ReposClient:
         allow_deletions: Union[Unset, bool] = UNSET,
         block_creations: Union[Unset, bool] = UNSET,
         required_conversation_resolution: Union[Unset, bool] = UNSET,
+        lock_branch: Union[Unset, bool] = False,
+        allow_fork_syncing: Union[Unset, bool] = False,
     ) -> "Response[ProtectedBranch]":
         ...
 
@@ -1132,6 +1136,8 @@ class ReposClient:
         allow_deletions: Union[Unset, bool] = UNSET,
         block_creations: Union[Unset, bool] = UNSET,
         required_conversation_resolution: Union[Unset, bool] = UNSET,
+        lock_branch: Union[Unset, bool] = False,
+        allow_fork_syncing: Union[Unset, bool] = False,
     ) -> "Response[ProtectedBranch]":
         ...
 
@@ -1374,6 +1380,7 @@ class ReposClient:
         dismiss_stale_reviews: Union[Unset, bool] = UNSET,
         require_code_owner_reviews: Union[Unset, bool] = UNSET,
         required_approving_review_count: Union[Unset, int] = UNSET,
+        require_last_push_approval: Union[Unset, bool] = False,
         bypass_pull_request_allowances: Union[
             Unset,
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
@@ -1444,6 +1451,7 @@ class ReposClient:
         dismiss_stale_reviews: Union[Unset, bool] = UNSET,
         require_code_owner_reviews: Union[Unset, bool] = UNSET,
         required_approving_review_count: Union[Unset, int] = UNSET,
+        require_last_push_approval: Union[Unset, bool] = False,
         bypass_pull_request_allowances: Union[
             Unset,
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,

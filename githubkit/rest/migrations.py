@@ -387,6 +387,7 @@ class MigrationsClient:
             response_model=Import,
             error_models={
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -403,6 +404,7 @@ class MigrationsClient:
             response_model=Import,
             error_models={
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -452,6 +454,7 @@ class MigrationsClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -501,6 +504,7 @@ class MigrationsClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -514,6 +518,9 @@ class MigrationsClient:
         return self._github.request(
             "DELETE",
             url,
+            error_models={
+                "503": BasicError,
+            },
         )
 
     async def async_cancel_import(
@@ -526,6 +533,9 @@ class MigrationsClient:
         return await self._github.arequest(
             "DELETE",
             url,
+            error_models={
+                "503": BasicError,
+            },
         )
 
     @overload
@@ -574,6 +584,9 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             response_model=Import,
+            error_models={
+                "503": BasicError,
+            },
         )
 
     @overload
@@ -622,6 +635,9 @@ class MigrationsClient:
             url,
             json=exclude_unset(json),
             response_model=Import,
+            error_models={
+                "503": BasicError,
+            },
         )
 
     def get_commit_authors(
@@ -643,6 +659,7 @@ class MigrationsClient:
             response_model=List[PorterAuthor],
             error_models={
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -665,6 +682,7 @@ class MigrationsClient:
             response_model=List[PorterAuthor],
             error_models={
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -718,6 +736,7 @@ class MigrationsClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -771,6 +790,7 @@ class MigrationsClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "503": BasicError,
             },
         )
 
@@ -785,6 +805,9 @@ class MigrationsClient:
             "GET",
             url,
             response_model=List[PorterLargeFile],
+            error_models={
+                "503": BasicError,
+            },
         )
 
     async def async_get_large_files(
@@ -798,6 +821,9 @@ class MigrationsClient:
             "GET",
             url,
             response_model=List[PorterLargeFile],
+            error_models={
+                "503": BasicError,
+            },
         )
 
     @overload
@@ -841,6 +867,7 @@ class MigrationsClient:
             response_model=Import,
             error_models={
                 "422": ValidationError,
+                "503": BasicError,
             },
         )
 
@@ -885,6 +912,7 @@ class MigrationsClient:
             response_model=Import,
             error_models={
                 "422": ValidationError,
+                "503": BasicError,
             },
         )
 

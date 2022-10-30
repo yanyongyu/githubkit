@@ -89,6 +89,9 @@ webhook-types-output = "githubkit/webhooks/types.py"
 "/components/schemas/timeline-assigned-issue-event/properties/event" = { const = "assigned" }
 "/components/schemas/timeline-unassigned-issue-event/properties/event" = { const = "unassigned" }
 
+# webhook fork forkee topic array type
+"/components/schemas/webhook-fork/properties/forkee/allOf/0/properties/topics/items" = { type = ["string", "null"] }
+
 # https://github.com/github/rest-api-description/issues/1639
 "/components/schemas/issue/properties/body_text" = { type = ["string", "null"] }
 "/components/schemas/issue/properties/body_html" = { type = ["string", "null"] }
