@@ -11,31 +11,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - id: python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
-          architecture: "x64"
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python
 
-      - uses: Gr1N/setup-poetry@v7
+      - name: Get Version
+        id: version
+        run: |
+          echo "VERSION=$(poetry version -s)" >> $GITHUB_OUTPUT
+          echo "TAG_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
-      - id: poetry-cache
-        run: echo "::set-output name=dir::$(poetry config virtualenvs.path)"
-
-      - uses: actions/cache@v2
-        with:
-          path: ${{ steps.poetry-cache.outputs.dir }}
-          key: ${{ runner.os }}-poetry-${{ steps.python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
-      - run: poetry install -E all
-
-      - run: |
-          echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+      - name: Check Version
+        if: steps.version.outputs.VERSION != steps.version.outputs.TAG_VERSION
+        run: exit 1
 
       - name: Build and Publish Package
         run: |
           poetry build
-          poetry publish -u ${{secrets.PYPI_USERNAME}} -p ${{secrets.PYPI_PASSWORD}}
-          gh release upload --clobber ${{ env.TAG_NAME }} dist/*.tar.gz dist/*.whl
+          poetry publish -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
+          gh release upload --clobber ${{ steps.version.outputs.TAG_NAME }} dist/*.tar.gz dist/*.whl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
