@@ -53,7 +53,7 @@ class RootType(TypedDict):
 class SimpleUserType(TypedDict):
     """Simple User
 
-    Simple User
+    A GitHub user.
     """
 
     name: NotRequired[Union[str, None]]
@@ -273,7 +273,7 @@ class HookDeliveryPropResponsePropHeadersType(TypedDict):
 class EnterpriseType(TypedDict):
     """Enterprise
 
-    An enterprise account
+    An enterprise on GitHub.
     """
 
     description: NotRequired[Union[str, None]]
@@ -378,7 +378,7 @@ class LicenseSimpleType(TypedDict):
 class RepositoryType(TypedDict):
     """Repository
 
-    A git repository
+    A repository on GitHub.
     """
 
     id: int
@@ -836,7 +836,7 @@ class ActionsEnterprisePermissionsType(TypedDict):
 class OrganizationSimpleType(TypedDict):
     """Organization Simple
 
-    Organization Simple
+    A GitHub organization.
     """
 
     login: str
@@ -1014,7 +1014,7 @@ class CodeScanningAlertInstancePropMessageType(TypedDict):
 class SimpleRepositoryType(TypedDict):
     """Simple Repository
 
-    Simple Repository
+    A GitHub repository.
     """
 
     id: int
@@ -1086,6 +1086,138 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     tool: CodeScanningAnalysisToolType
     most_recent_instance: CodeScanningAlertInstanceType
     repository: SimpleRepositoryType
+
+
+class DependabotAlertPackageType(TypedDict):
+    """DependabotAlertPackage
+
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str
+    name: str
+
+
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    ]
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+class DependabotAlertSecurityAdvisoryType(TypedDict):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
+    severity: Literal["low", "medium", "high", "critical"]
+    cvss: DependabotAlertSecurityAdvisoryPropCvssType
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
+    published_at: datetime
+    updated_at: datetime
+    withdrawn_at: Union[datetime, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
+
+
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
+    """
+
+    number: int
+    state: Literal["dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    repository: SimpleRepositoryType
+
+
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
+
+    Details for the vulnerable dependency.
+    """
+
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
 
 
 class OrganizationSecretScanningAlertType(TypedDict):
@@ -1964,6 +2096,8 @@ class OrganizationFullType(TypedDict):
     dependency_graph_enabled_for_new_repositories: NotRequired[bool]
     secret_scanning_enabled_for_new_repositories: NotRequired[bool]
     secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link_enabled: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
 
 
 class OrganizationFullPropPlanType(TypedDict):
@@ -2102,7 +2236,7 @@ class CodespaceType(TypedDict):
     ]
     url: str
     git_status: CodespacePropGitStatusType
-    location: str
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
     idle_timeout_minutes: Union[int, None]
     web_url: str
     machines_url: str
@@ -2163,138 +2297,6 @@ class CodespacesPublicKeyType(TypedDict):
     url: NotRequired[str]
     title: NotRequired[str]
     created_at: NotRequired[str]
-
-
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
-
-    Details for the vulnerable package.
-    """
-
-    ecosystem: str
-    name: str
-
-
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
-    """
-
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
-    ]
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
-
-
-class DependabotAlertSecurityAdvisoryType(TypedDict):
-    """DependabotAlertSecurityAdvisory
-
-    Details for the GitHub Security Advisory.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
-    severity: Literal["low", "medium", "high", "critical"]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssType
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: datetime
-    updated_at: datetime
-    withdrawn_at: Union[datetime, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
-
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
-    """
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
-    name: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str
-
-
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
-
-    A Dependabot alert.
-    """
-
-    number: int
-    state: Literal["dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    dismissed_at: Union[datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[datetime, None]
-    repository: SimpleRepositoryType
-
-
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
-
-    Details for the vulnerable dependency.
-    """
-
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
 
 
 class OrganizationDependabotSecretType(TypedDict):
@@ -3342,7 +3344,7 @@ class PullRequestMinimalPropBasePropRepoType(TypedDict):
 class SimpleCommitType(TypedDict):
     """Simple Commit
 
-    Simple Commit
+    A commit.
     """
 
     id: str
@@ -8145,7 +8147,8 @@ class KeySimpleType(TypedDict):
 class SimpleInstallationType(TypedDict):
     """Simple Installation
 
-    Simple Installation
+    The GitHub App installation. This property is included when the event is
+    configured for and sent to a GitHub App.
     """
 
     id: int
@@ -8627,6 +8630,8 @@ class OrgsOrgPatchBodyType(TypedDict):
     dependency_graph_enabled_for_new_repositories: NotRequired[bool]
     secret_scanning_enabled_for_new_repositories: NotRequired[bool]
     secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link_enabled: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[str]
 
 
 class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
@@ -11152,6 +11157,7 @@ class ReposOwnerRepoReleasesPostBodyType(TypedDict):
     prerelease: NotRequired[bool]
     discussion_category_name: NotRequired[str]
     generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
 class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
@@ -11180,6 +11186,7 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
     body: NotRequired[str]
     draft: NotRequired[bool]
     prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
     discussion_category_name: NotRequired[str]
 
 
@@ -11692,6 +11699,16 @@ __all__ = [
     "CodeScanningAlertInstancePropMessageType",
     "SimpleRepositoryType",
     "CodeScanningOrganizationAlertItemsType",
+    "DependabotAlertPackageType",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityAdvisoryPropCvssType",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "DependabotAlertWithRepositoryType",
+    "DependabotAlertWithRepositoryPropDependencyType",
     "OrganizationSecretScanningAlertType",
     "AdvancedSecurityActiveCommittersUserType",
     "AdvancedSecurityActiveCommittersRepositoryType",
@@ -11753,16 +11770,6 @@ __all__ = [
     "CodespacePropRuntimeConstraintsType",
     "CodespacesOrgSecretType",
     "CodespacesPublicKeyType",
-    "DependabotAlertPackageType",
-    "DependabotAlertSecurityVulnerabilityType",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
-    "DependabotAlertSecurityAdvisoryType",
-    "DependabotAlertSecurityAdvisoryPropCvssType",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
-    "DependabotAlertWithRepositoryType",
-    "DependabotAlertWithRepositoryPropDependencyType",
     "OrganizationDependabotSecretType",
     "DependabotPublicKeyType",
     "OrganizationInvitationType",

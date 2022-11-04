@@ -207,6 +207,8 @@ class OrgsClient:
         secret_scanning_push_protection_enabled_for_new_repositories: Union[
             Unset, bool
         ] = UNSET,
+        secret_scanning_push_protection_custom_link_enabled: Union[Unset, bool] = UNSET,
+        secret_scanning_push_protection_custom_link: Union[Unset, str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -280,6 +282,8 @@ class OrgsClient:
         secret_scanning_push_protection_enabled_for_new_repositories: Union[
             Unset, bool
         ] = UNSET,
+        secret_scanning_push_protection_custom_link_enabled: Union[Unset, bool] = UNSET,
+        secret_scanning_push_protection_custom_link: Union[Unset, str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 

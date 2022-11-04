@@ -8650,6 +8650,7 @@ class ReposClient:
         prerelease: Union[Unset, bool] = False,
         discussion_category_name: Union[Unset, str] = UNSET,
         generate_release_notes: Union[Unset, bool] = False,
+        make_latest: Union[Unset, Literal["true", "false", "legacy"]] = True,
     ) -> "Response[Release]":
         ...
 
@@ -8702,6 +8703,7 @@ class ReposClient:
         prerelease: Union[Unset, bool] = False,
         discussion_category_name: Union[Unset, str] = UNSET,
         generate_release_notes: Union[Unset, bool] = False,
+        make_latest: Union[Unset, Literal["true", "false", "legacy"]] = True,
     ) -> "Response[Release]":
         ...
 
@@ -9140,6 +9142,7 @@ class ReposClient:
         body: Union[Unset, str] = UNSET,
         draft: Union[Unset, bool] = UNSET,
         prerelease: Union[Unset, bool] = UNSET,
+        make_latest: Union[Unset, Literal["true", "false", "legacy"]] = True,
         discussion_category_name: Union[Unset, str] = UNSET,
     ) -> "Response[Release]":
         ...
@@ -9197,6 +9200,7 @@ class ReposClient:
         body: Union[Unset, str] = UNSET,
         draft: Union[Unset, bool] = UNSET,
         prerelease: Union[Unset, bool] = UNSET,
+        make_latest: Union[Unset, Literal["true", "false", "legacy"]] = True,
         discussion_category_name: Union[Unset, str] = UNSET,
     ) -> "Response[Release]":
         ...

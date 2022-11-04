@@ -83,6 +83,10 @@ class RestNamespace:
         return CodeScanningClient(self._github)
 
     @cached_property
+    def dependabot(self) -> DependabotClient:
+        return DependabotClient(self._github)
+
+    @cached_property
     def secret_scanning(self) -> SecretScanningClient:
         return SecretScanningClient(self._github)
 
@@ -121,10 +125,6 @@ class RestNamespace:
     @cached_property
     def codespaces(self) -> CodespacesClient:
         return CodespacesClient(self._github)
-
-    @cached_property
-    def dependabot(self) -> DependabotClient:
-        return DependabotClient(self._github)
 
     @cached_property
     def interactions(self) -> InteractionsClient:

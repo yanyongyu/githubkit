@@ -44,6 +44,92 @@ class DependabotClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
+    def list_alerts_for_enterprise(
+        self,
+        enterprise: str,
+        state: Union[Unset, str] = UNSET,
+        severity: Union[Unset, str] = UNSET,
+        ecosystem: Union[Unset, str] = UNSET,
+        package: Union[Unset, str] = UNSET,
+        scope: Union[Unset, Literal["development", "runtime"]] = UNSET,
+        sort: Union[Unset, Literal["created", "updated"]] = "created",
+        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        before: Union[Unset, str] = UNSET,
+        after: Union[Unset, str] = UNSET,
+        first: Union[Unset, int] = 30,
+        last: Union[Unset, int] = UNSET,
+    ) -> "Response[List[DependabotAlertWithRepository]]":
+        url = f"/enterprises/{enterprise}/dependabot/alerts"
+
+        params = {
+            "state": state,
+            "severity": severity,
+            "ecosystem": ecosystem,
+            "package": package,
+            "scope": scope,
+            "sort": sort,
+            "direction": direction,
+            "before": before,
+            "after": after,
+            "first": first,
+            "last": last,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[DependabotAlertWithRepository],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_list_alerts_for_enterprise(
+        self,
+        enterprise: str,
+        state: Union[Unset, str] = UNSET,
+        severity: Union[Unset, str] = UNSET,
+        ecosystem: Union[Unset, str] = UNSET,
+        package: Union[Unset, str] = UNSET,
+        scope: Union[Unset, Literal["development", "runtime"]] = UNSET,
+        sort: Union[Unset, Literal["created", "updated"]] = "created",
+        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        before: Union[Unset, str] = UNSET,
+        after: Union[Unset, str] = UNSET,
+        first: Union[Unset, int] = 30,
+        last: Union[Unset, int] = UNSET,
+    ) -> "Response[List[DependabotAlertWithRepository]]":
+        url = f"/enterprises/{enterprise}/dependabot/alerts"
+
+        params = {
+            "state": state,
+            "severity": severity,
+            "ecosystem": ecosystem,
+            "package": package,
+            "scope": scope,
+            "sort": sort,
+            "direction": direction,
+            "before": before,
+            "after": after,
+            "first": first,
+            "last": last,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[DependabotAlertWithRepository],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
     def list_alerts_for_org(
         self,
         org: str,
