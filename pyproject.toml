@@ -67,6 +67,7 @@ webhook-types-output = "githubkit/webhooks/types.py"
 "-1" = "minus_one"
 
 [tool.codegen.schema-overrides]
+# enhancement: issue timeline discriminator
 "/components/schemas/labeled-issue-event/properties/event" = { const = "labeled" }
 "/components/schemas/unlabeled-issue-event/properties/event" = { const = "unlabeled" }
 "/components/schemas/milestoned-issue-event/properties/event" = { const = "milestoned" }
@@ -99,6 +100,12 @@ webhook-types-output = "githubkit/webhooks/types.py"
 "/components/schemas/timeline-reviewed-event/properties/body_html" = { type = ["string", "null"] }
 "/components/schemas/release/properties/body_text" = { type = ["string", "null"] }
 "/components/schemas/release/properties/body_html" = { type = ["string", "null"] }
+
+# https://github.com/github/rest-api-description/issues/
+"/components/schemas/pull-request-simple/properties/head/properties/repo" = { anyOf = [
+    { type = "null" },
+    { "$ref" = "#/components/schemas/repository" }
+], "$ref" = {} }
 
 
 [build-system]

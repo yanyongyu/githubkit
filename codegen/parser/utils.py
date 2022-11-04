@@ -96,15 +96,14 @@ def get_schema_override(source: Source) -> Optional[Dict[str, Any]]:
     return config.schema_overrides.get(source.pointer.path, None)
 
 
-def merge_dict(old: dict, new: dict) -> dict:
-    result = deepcopy(old)
+def merge_dict(old: dict, new: dict):
+    # make change inplace to make json point correct
     for key, value in new.items():
-        result[key] = (
-            merge_dict(result[key], value)
-            if isinstance(value, dict) and isinstance(result[key], dict)
+        old[key] = (
+            merge_dict(old[key], value)
+            if isinstance(value, dict) and isinstance(old[key], dict)
             else value
         )
-    return result
 
 
 def schema_from_source(source: Source) -> oas.Schema:
@@ -112,7 +111,7 @@ def schema_from_source(source: Source) -> oas.Schema:
     try:
         assert isinstance(data, dict)
         if overrides := get_schema_override(source):
-            data = merge_dict(data, overrides)
+            merge_dict(data, overrides)
         return parse_obj_as(oas.Schema, data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e

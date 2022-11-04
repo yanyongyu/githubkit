@@ -6579,7 +6579,7 @@ class PullRequestSimplePropHead(GitHubRestModel):
 
     label: str = Field(default=...)
     ref: str = Field(default=...)
-    repo: Repository = Field(
+    repo: Union[None, Repository] = Field(
         title="Repository", description="A repository on GitHub.", default=...
     )
     sha: str = Field(default=...)

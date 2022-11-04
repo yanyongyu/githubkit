@@ -4708,7 +4708,7 @@ class PullRequestSimplePropHeadType(TypedDict):
 
     label: str
     ref: str
-    repo: RepositoryType
+    repo: Union[None, RepositoryType]
     sha: str
     user: Union[None, SimpleUserType]
 
