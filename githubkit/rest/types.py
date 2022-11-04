@@ -4698,7 +4698,7 @@ class PullRequestSimplePropLabelsItemsType(TypedDict):
     node_id: str
     url: str
     name: str
-    description: str
+    description: Union[str, None]
     color: str
     default: bool
 

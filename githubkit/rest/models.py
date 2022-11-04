@@ -6569,7 +6569,7 @@ class PullRequestSimplePropLabelsItems(GitHubRestModel):
     node_id: str = Field(default=...)
     url: str = Field(default=...)
     name: str = Field(default=...)
-    description: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
     color: str = Field(default=...)
     default: bool = Field(default=...)
 

@@ -29,7 +29,7 @@ def parse_schema(
     data = source.data
     try:
         if overrides := get_schema_override(source):
-            data = merge_dict(data, overrides)
+            merge_dict(data, overrides)
         data = parse_obj_as(Union[oas.Reference, oas.Schema], data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
