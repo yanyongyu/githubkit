@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "GitHubKit"
-version = "0.9.0"
+version = "0.9.1"
 description = "GitHub SDK for Python"
 authors = ["yanyongyu <yyy@yyydl.top>"]
 license = "MIT"
@@ -101,7 +101,7 @@ webhook-types-output = "githubkit/webhooks/types.py"
 "/components/schemas/release/properties/body_text" = { type = ["string", "null"] }
 "/components/schemas/release/properties/body_html" = { type = ["string", "null"] }
 
-# https://github.com/github/rest-api-description/issues/
+# https://github.com/github/rest-api-description/issues/1811
 "/components/schemas/pull-request-simple/properties/head/properties/repo" = { anyOf = [
     { type = "null" },
     { "$ref" = "#/components/schemas/repository" }
