@@ -1,6 +1,7 @@
 from functools import cached_property
 from typing_extensions import ParamSpec
 from typing import (
+    TYPE_CHECKING,
     Any,
     Dict,
     List,
@@ -19,6 +20,13 @@ from .paginator import Paginator
 from .auth import BaseAuthStrategy
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
+if TYPE_CHECKING:
+    import httpx
+
+    from .config import Config
+    from .auth import TokenAuthStrategy, UnauthAuthStrategy
+
+
 A = TypeVar("A", bound=BaseAuthStrategy)
 A_o = TypeVar("A_o", bound=BaseAuthStrategy)
 
@@ -33,6 +41,85 @@ R = Union[
 
 
 class GitHub(GitHubCore[A]):
+    if TYPE_CHECKING:
+        # none auth with config
+        @overload
+        def __init__(
+            self: "GitHub[UnauthAuthStrategy]",
+            auth: None = None,
+            *,
+            config: Config,
+        ):
+            ...
+
+        # token auth with config
+        @overload
+        def __init__(
+            self: "GitHub[TokenAuthStrategy]",
+            auth: str,
+            *,
+            config: Config,
+        ):
+            ...
+
+        # other auth strategies with config
+        @overload
+        def __init__(
+            self: "GitHub[A]",
+            auth: A,
+            *,
+            config: Config,
+        ):
+            ...
+
+        # none auth without config
+        @overload
+        def __init__(
+            self: "GitHub[UnauthAuthStrategy]",
+            auth: None = None,
+            *,
+            base_url: Optional[Union[str, httpx.URL]] = None,
+            accept_format: Optional[str] = None,
+            previews: Optional[List[str]] = None,
+            user_agent: Optional[str] = None,
+            follow_redirects: bool = True,
+            timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ):
+            ...
+
+        # token auth without config
+        @overload
+        def __init__(
+            self: "GitHub[TokenAuthStrategy]",
+            auth: str,
+            *,
+            base_url: Optional[Union[str, httpx.URL]] = None,
+            accept_format: Optional[str] = None,
+            previews: Optional[List[str]] = None,
+            user_agent: Optional[str] = None,
+            follow_redirects: bool = True,
+            timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ):
+            ...
+
+        # other auth strategies without config
+        @overload
+        def __init__(
+            self: "GitHub[A]",
+            auth: A,
+            *,
+            base_url: Optional[Union[str, httpx.URL]] = None,
+            accept_format: Optional[str] = None,
+            previews: Optional[List[str]] = None,
+            user_agent: Optional[str] = None,
+            follow_redirects: bool = True,
+            timeout: Optional[Union[float, httpx.Timeout]] = None,
+        ):
+            ...
+
+        def __init__(self, *args, **kwargs):
+            ...
+
     # copy github instance with other auth
     def with_auth(self, auth: A_o) -> "GitHub[A_o]":
         return GitHub(auth=auth, config=self.config.copy())
