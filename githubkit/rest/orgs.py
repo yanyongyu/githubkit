@@ -1180,12 +1180,14 @@ class OrgsClient:
         hook_id: int,
         per_page: Union[Unset, int] = 30,
         cursor: Union[Unset, str] = UNSET,
+        redelivery: Union[Unset, bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "redelivery": redelivery,
         }
 
         return self._github.request(
@@ -1205,12 +1207,14 @@ class OrgsClient:
         hook_id: int,
         per_page: Union[Unset, int] = 30,
         cursor: Union[Unset, str] = UNSET,
+        redelivery: Union[Unset, bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "redelivery": redelivery,
         }
 
         return await self._github.arequest(

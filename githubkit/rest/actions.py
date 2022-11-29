@@ -14,6 +14,7 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
     SelectedActionsType,
+    OidcCustomSubRepoType,
     OrgsOrgActionsPermissionsPutBodyType,
     ActionsWorkflowAccessToRepositoryType,
     OrgsOrgActionsRunnerGroupsPostBodyType,
@@ -54,6 +55,7 @@ from .models import (
     ActionsCacheList,
     ActionsPublicKey,
     WorkflowRunUsage,
+    OidcCustomSubRepo,
     PendingDeployment,
     RunnerApplication,
     AuthenticationToken,
@@ -2729,6 +2731,134 @@ class ActionsClient:
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
+            },
+        )
+
+    def get_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[OidcCustomSubRepo]":
+        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OidcCustomSubRepo,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[OidcCustomSubRepo]":
+        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OidcCustomSubRepo,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_custom_oidc_sub_claim_for_repo(
+        self, owner: str, repo: str, *, data: OidcCustomSubRepoType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def set_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        use_default: bool,
+        include_claim_keys: Union[Unset, List[str]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def set_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, OidcCustomSubRepoType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OidcCustomSubRepo, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+            error_models={
+                "404": BasicError,
+                "400": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_custom_oidc_sub_claim_for_repo(
+        self, owner: str, repo: str, *, data: OidcCustomSubRepoType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_set_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        use_default: bool,
+        include_claim_keys: Union[Unset, List[str]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_set_custom_oidc_sub_claim_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, OidcCustomSubRepoType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OidcCustomSubRepo, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+            error_models={
+                "404": BasicError,
+                "400": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 

@@ -6872,12 +6872,14 @@ class ReposClient:
         hook_id: int,
         per_page: Union[Unset, int] = 30,
         cursor: Union[Unset, str] = UNSET,
+        redelivery: Union[Unset, bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"
 
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "redelivery": redelivery,
         }
 
         return self._github.request(
@@ -6898,12 +6900,14 @@ class ReposClient:
         hook_id: int,
         per_page: Union[Unset, int] = 30,
         cursor: Union[Unset, str] = UNSET,
+        redelivery: Union[Unset, bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"
 
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "redelivery": redelivery,
         }
 
         return await self._github.arequest(
@@ -10159,6 +10163,7 @@ class ReposClient:
         *,
         data: Unset = UNSET,
         new_owner: str,
+        new_name: Union[Unset, str] = UNSET,
         team_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[MinimalRepository]":
         ...
@@ -10201,6 +10206,7 @@ class ReposClient:
         *,
         data: Unset = UNSET,
         new_owner: str,
+        new_name: Union[Unset, str] = UNSET,
         team_ids: Union[Unset, List[int]] = UNSET,
     ) -> "Response[MinimalRepository]":
         ...
@@ -10569,6 +10575,7 @@ class ReposClient:
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
         has_wiki: Union[Unset, bool] = True,
+        has_discussions: Union[Unset, bool] = False,
         team_id: Union[Unset, int] = UNSET,
         auto_init: Union[Unset, bool] = False,
         gitignore_template: Union[Unset, str] = UNSET,
@@ -10637,6 +10644,7 @@ class ReposClient:
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
         has_wiki: Union[Unset, bool] = True,
+        has_discussions: Union[Unset, bool] = False,
         team_id: Union[Unset, int] = UNSET,
         auto_init: Union[Unset, bool] = False,
         gitignore_template: Union[Unset, str] = UNSET,

@@ -213,12 +213,14 @@ class AppsClient:
         self,
         per_page: Union[Unset, int] = 30,
         cursor: Union[Unset, str] = UNSET,
+        redelivery: Union[Unset, bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = "/app/hook/deliveries"
 
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "redelivery": redelivery,
         }
 
         return self._github.request(
@@ -236,12 +238,14 @@ class AppsClient:
         self,
         per_page: Union[Unset, int] = 30,
         cursor: Union[Unset, str] = UNSET,
+        redelivery: Union[Unset, bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = "/app/hook/deliveries"
 
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "redelivery": redelivery,
         }
 
         return await self._github.arequest(

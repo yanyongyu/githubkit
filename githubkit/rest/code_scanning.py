@@ -129,6 +129,10 @@ class CodeScanningClient:
         direction: Union[Unset, Literal["asc", "desc"]] = "desc",
         state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Union[Unset, Literal["created", "updated"]] = "created",
+        severity: Union[
+            Unset,
+            Literal["critical", "high", "medium", "low", "warning", "note", "error"],
+        ] = UNSET,
     ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
         url = f"/orgs/{org}/code-scanning/alerts"
 
@@ -142,6 +146,7 @@ class CodeScanningClient:
             "direction": direction,
             "state": state,
             "sort": sort,
+            "severity": severity,
         }
 
         return self._github.request(
@@ -167,6 +172,10 @@ class CodeScanningClient:
         direction: Union[Unset, Literal["asc", "desc"]] = "desc",
         state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Union[Unset, Literal["created", "updated"]] = "created",
+        severity: Union[
+            Unset,
+            Literal["critical", "high", "medium", "low", "warning", "note", "error"],
+        ] = UNSET,
     ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
         url = f"/orgs/{org}/code-scanning/alerts"
 
@@ -180,6 +189,7 @@ class CodeScanningClient:
             "direction": direction,
             "state": state,
             "sort": sort,
+            "severity": severity,
         }
 
         return await self._github.arequest(
@@ -205,6 +215,10 @@ class CodeScanningClient:
         direction: Union[Unset, Literal["asc", "desc"]] = "desc",
         sort: Union[Unset, Literal["created", "updated"]] = "created",
         state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
+        severity: Union[
+            Unset,
+            Literal["critical", "high", "medium", "low", "warning", "note", "error"],
+        ] = UNSET,
     ) -> "Response[List[CodeScanningAlertItems]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts"
 
@@ -217,6 +231,7 @@ class CodeScanningClient:
             "direction": direction,
             "sort": sort,
             "state": state,
+            "severity": severity,
         }
 
         return self._github.request(
@@ -243,6 +258,10 @@ class CodeScanningClient:
         direction: Union[Unset, Literal["asc", "desc"]] = "desc",
         sort: Union[Unset, Literal["created", "updated"]] = "created",
         state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
+        severity: Union[
+            Unset,
+            Literal["critical", "high", "medium", "low", "warning", "note", "error"],
+        ] = UNSET,
     ) -> "Response[List[CodeScanningAlertItems]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts"
 
@@ -255,6 +274,7 @@ class CodeScanningClient:
             "direction": direction,
             "sort": sort,
             "state": state,
+            "severity": severity,
         }
 
         return await self._github.arequest(

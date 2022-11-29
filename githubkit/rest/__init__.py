@@ -11,6 +11,7 @@ from .models import *
 from .git import GitClient
 from .apps import AppsClient
 from .meta import MetaClient
+from .oidc import OidcClient
 from .orgs import OrgsClient
 from .gists import GistsClient
 from .pulls import PullsClient
@@ -121,6 +122,10 @@ class RestNamespace:
     @cached_property
     def orgs(self) -> OrgsClient:
         return OrgsClient(self._github)
+
+    @cached_property
+    def oidc(self) -> OidcClient:
+        return OidcClient(self._github)
 
     @cached_property
     def codespaces(self) -> CodespacesClient:

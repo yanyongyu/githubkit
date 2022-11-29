@@ -451,6 +451,7 @@ class RepositoryType(TypedDict):
     has_wiki: bool
     has_pages: bool
     has_downloads: bool
+    has_discussions: NotRequired[bool]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
@@ -1498,6 +1499,8 @@ class FeedType(TypedDict):
     current_user_organization_url: NotRequired[str]
     current_user_organization_urls: NotRequired[List[str]]
     security_advisories_url: NotRequired[str]
+    repository_discussions_url: NotRequired[str]
+    repository_discussions_category_url: NotRequired[str]
     links: FeedPropLinksType
 
 
@@ -1512,6 +1515,8 @@ class FeedPropLinksType(TypedDict):
     current_user_actor: NotRequired[LinkWithTypeType]
     current_user_organization: NotRequired[LinkWithTypeType]
     current_user_organizations: NotRequired[List[LinkWithTypeType]]
+    repository_discussions: NotRequired[LinkWithTypeType]
+    repository_discussions_category: NotRequired[LinkWithTypeType]
 
 
 class BaseGistType(TypedDict):
@@ -1938,6 +1943,7 @@ class MinimalRepositoryType(TypedDict):
     has_wiki: NotRequired[bool]
     has_pages: NotRequired[bool]
     has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
     archived: NotRequired[bool]
     disabled: NotRequired[bool]
     visibility: NotRequired[str]
@@ -2121,6 +2127,22 @@ class ActionsCacheUsageByRepositoryType(TypedDict):
     active_caches_count: int
 
 
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
+
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: List[str]
+
+
+class EmptyObjectType(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
 class ActionsOrganizationPermissionsType(TypedDict):
     """ActionsOrganizationPermissions"""
 
@@ -2172,13 +2194,6 @@ class ActionsPublicKeyType(TypedDict):
     url: NotRequired[str]
     title: NotRequired[str]
     created_at: NotRequired[str]
-
-
-class EmptyObjectType(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
 
 
 class CodespaceMachineType(TypedDict):
@@ -3124,6 +3139,7 @@ class FullRepositoryType(TypedDict):
     has_wiki: bool
     has_pages: bool
     has_downloads: bool
+    has_discussions: bool
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
@@ -3272,6 +3288,16 @@ class JobPropStepsItemsType(TypedDict):
     number: int
     started_at: NotRequired[Union[datetime, None]]
     completed_at: NotRequired[Union[datetime, None]]
+
+
+class OidcCustomSubRepoType(TypedDict):
+    """Actions OIDC subject customization for a repository
+
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[List[str]]
 
 
 class ActionsRepositoryPermissionsType(TypedDict):
@@ -4309,6 +4335,8 @@ class CheckSuiteType(TypedDict):
             "skipped",
             "timed_out",
             "action_required",
+            "startup_failure",
+            "stale",
         ],
     ]
     url: Union[str, None]
@@ -6892,6 +6920,7 @@ class PullRequestPropHeadPropRepoType(TypedDict):
     has_projects: bool
     has_wiki: bool
     has_pages: bool
+    has_discussions: bool
     homepage: Union[str, None]
     language: Union[str, None]
     master_branch: NotRequired[str]
@@ -7015,6 +7044,7 @@ class PullRequestPropBasePropRepoType(TypedDict):
     has_projects: bool
     has_wiki: bool
     has_pages: bool
+    has_discussions: bool
     homepage: Union[str, None]
     language: Union[str, None]
     master_branch: NotRequired[str]
@@ -7149,7 +7179,7 @@ class PullRequestReviewType(TypedDict):
     pull_request_url: str
     links: PullRequestReviewPropLinksType
     submitted_at: NotRequired[datetime]
-    commit_id: str
+    commit_id: Union[str, None]
     body_html: NotRequired[str]
     body_text: NotRequired[str]
     author_association: Literal[
@@ -7303,7 +7333,7 @@ class SecretScanningAlertType(TypedDict):
 
     number: NotRequired[int]
     created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[None, datetime]]
     url: NotRequired[str]
     html_url: NotRequired[str]
     locations_url: NotRequired[str]
@@ -7340,11 +7370,35 @@ class SecretScanningLocationCommitType(TypedDict):
     commit_url: str
 
 
+class SecretScanningLocationIssueType(TypedDict):
+    """SecretScanningLocationIssue
+
+    Represents an 'issue' secret scanning location type. This location type shows
+    that a secret was detected in the title or description of an issue.
+    """
+
+    issue_url: str
+
+
+class SecretScanningLocationIssueCommentType(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+
+
 class SecretScanningLocationType(TypedDict):
     """SecretScanningLocation"""
 
-    type: Literal["commit"]
-    details: SecretScanningLocationCommitType
+    type: Literal["commit", "issue", "issue_comment"]
+    details: Union[
+        SecretScanningLocationCommitType,
+        SecretScanningLocationIssueType,
+        SecretScanningLocationIssueCommentType,
+    ]
 
 
 class StargazerType(TypedDict):
@@ -7767,6 +7821,7 @@ class RepoSearchResultItemType(TypedDict):
     has_pages: bool
     has_wiki: bool
     has_downloads: bool
+    has_discussions: NotRequired[bool]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
@@ -11238,6 +11293,7 @@ class ReposOwnerRepoTransferPostBodyType(TypedDict):
     """ReposOwnerRepoTransferPostBody"""
 
     new_owner: str
+    new_name: NotRequired[str]
     team_ids: NotRequired[List[int]]
 
 
@@ -11608,6 +11664,7 @@ class UserReposPostBodyType(TypedDict):
     has_issues: NotRequired[bool]
     has_projects: NotRequired[bool]
     has_wiki: NotRequired[bool]
+    has_discussions: NotRequired[bool]
     team_id: NotRequired[int]
     auto_init: NotRequired[bool]
     gitignore_template: NotRequired[str]
@@ -11759,11 +11816,12 @@ __all__ = [
     "OrganizationFullType",
     "OrganizationFullPropPlanType",
     "ActionsCacheUsageByRepositoryType",
+    "OidcCustomSubType",
+    "EmptyObjectType",
     "ActionsOrganizationPermissionsType",
     "RunnerGroupsOrgType",
     "OrganizationActionsSecretType",
     "ActionsPublicKeyType",
-    "EmptyObjectType",
     "CodespaceMachineType",
     "CodespaceType",
     "CodespacePropGitStatusType",
@@ -11824,6 +11882,7 @@ __all__ = [
     "ActionsCacheListPropActionsCachesItemsType",
     "JobType",
     "JobPropStepsItemsType",
+    "OidcCustomSubRepoType",
     "ActionsRepositoryPermissionsType",
     "ActionsWorkflowAccessToRepositoryType",
     "ReferencedWorkflowType",
@@ -12112,6 +12171,8 @@ __all__ = [
     "ReleaseNotesContentType",
     "SecretScanningAlertType",
     "SecretScanningLocationCommitType",
+    "SecretScanningLocationIssueType",
+    "SecretScanningLocationIssueCommentType",
     "SecretScanningLocationType",
     "StargazerType",
     "CommitActivityType",

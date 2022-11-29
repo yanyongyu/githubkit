@@ -5,13 +5,14 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Union, overload
+from datetime import date
+from typing import TYPE_CHECKING, List, Union, overload
 
 from pydantic import BaseModel, parse_obj_as
 
 from githubkit.utils import UNSET, Unset, exclude_unset
 
-from .models import Root, ApiOverview
+from .models import Root, BasicError, ApiOverview
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -98,6 +99,34 @@ class MetaClient:
             url,
             params=exclude_unset(params),
             response_model=str,
+        )
+
+    def get_all_versions(
+        self,
+    ) -> "Response[List[date]]":
+        url = "/versions"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=List[date],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_all_versions(
+        self,
+    ) -> "Response[List[date]]":
+        url = "/versions"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=List[date],
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def get_zen(

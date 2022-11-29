@@ -682,6 +682,9 @@ class Repository(GitHubRestModel):
     has_downloads: bool = Field(
         description="Whether downloads are enabled.", default=True
     )
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=False
+    )
     archived: bool = Field(
         description="Whether the repository is archived.", default=False
     )
@@ -2296,6 +2299,13 @@ class Feed(GitHubRestModel):
     current_user_organization_url: Union[Unset, str] = Field(default=UNSET)
     current_user_organization_urls: Union[Unset, List[str]] = Field(default=UNSET)
     security_advisories_url: Union[Unset, str] = Field(default=UNSET)
+    repository_discussions_url: Union[Unset, str] = Field(
+        description="A feed of discussions for a given repository.", default=UNSET
+    )
+    repository_discussions_category_url: Union[Unset, str] = Field(
+        description="A feed of discussions for a given repository and category.",
+        default=UNSET,
+    )
     links: FeedPropLinks = Field(default=..., alias="_links")
 
 
@@ -2324,6 +2334,12 @@ class FeedPropLinks(GitHubRestModel):
         title="Link With Type", description="Hypermedia Link with Type", default=UNSET
     )
     current_user_organizations: Union[Unset, List[LinkWithType]] = Field(default=UNSET)
+    repository_discussions: Union[Unset, LinkWithType] = Field(
+        title="Link With Type", description="Hypermedia Link with Type", default=UNSET
+    )
+    repository_discussions_category: Union[Unset, LinkWithType] = Field(
+        title="Link With Type", description="Hypermedia Link with Type", default=UNSET
+    )
 
 
 class BaseGist(GitHubRestModel):
@@ -2793,6 +2809,7 @@ class MinimalRepository(GitHubRestModel):
     has_wiki: Union[Unset, bool] = Field(default=UNSET)
     has_pages: Union[Unset, bool] = Field(default=UNSET)
     has_downloads: Union[Unset, bool] = Field(default=UNSET)
+    has_discussions: Union[Unset, bool] = Field(default=UNSET)
     archived: Union[Unset, bool] = Field(default=UNSET)
     disabled: Union[Unset, bool] = Field(default=UNSET)
     visibility: Union[Unset, str] = Field(default=UNSET)
@@ -3037,6 +3054,25 @@ class ActionsCacheUsageByRepository(GitHubRestModel):
     )
 
 
+class OidcCustomSub(GitHubRestModel):
+    """Actions OIDC Subject customization
+
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: List[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        default=...,
+    )
+
+
+class EmptyObject(GitHubRestModel):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
 class ActionsOrganizationPermissions(GitHubRestModel):
     """ActionsOrganizationPermissions"""
 
@@ -3114,13 +3150,6 @@ class ActionsPublicKey(GitHubRestModel):
     url: Union[Unset, str] = Field(default=UNSET)
     title: Union[Unset, str] = Field(default=UNSET)
     created_at: Union[Unset, str] = Field(default=UNSET)
-
-
-class EmptyObject(GitHubRestModel):
-    """Empty Object
-
-    An object without any properties.
-    """
 
 
 class CodespaceMachine(GitHubRestModel):
@@ -4430,6 +4459,7 @@ class FullRepository(GitHubRestModel):
     has_wiki: bool = Field(default=...)
     has_pages: bool = Field(default=...)
     has_downloads: bool = Field(default=...)
+    has_discussions: bool = Field(default=...)
     archived: bool = Field(default=...)
     disabled: bool = Field(
         description="Returns whether or not this repository disabled.", default=...
@@ -4665,6 +4695,22 @@ class JobPropStepsItems(GitHubRestModel):
     )
     completed_at: Union[Unset, Union[datetime, None]] = Field(
         description="The time that the job finished, in ISO 8601 format.", default=UNSET
+    )
+
+
+class OidcCustomSubRepo(GitHubRestModel):
+    """Actions OIDC subject customization for a repository
+
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored.",
+        default=...,
+    )
+    include_claim_keys: Union[Unset, List[str]] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        default=UNSET,
     )
 
 
@@ -5224,7 +5270,7 @@ class ProtectedBranchPullRequestReview(GitHubRestModel):
     require_code_owner_reviews: bool = Field(default=...)
     required_approving_review_count: Union[Unset, int] = Field(le=6.0, default=UNSET)
     require_last_push_approval: Union[Unset, bool] = Field(
-        description="Whether someone other than the person who last pushed to the branch must approve this pull request.",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
         default=False,
     )
 
@@ -5729,7 +5775,7 @@ class ProtectedBranchPropRequiredPullRequestReviews(GitHubRestModel):
     require_code_owner_reviews: Union[Unset, bool] = Field(default=UNSET)
     required_approving_review_count: Union[Unset, int] = Field(default=UNSET)
     require_last_push_approval: Union[Unset, bool] = Field(
-        description="Whether someone other than the person who last pushed to the branch must approve this pull request.",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
         default=False,
     )
     dismissal_restrictions: Union[
@@ -5971,6 +6017,8 @@ class CheckSuite(GitHubRestModel):
             "skipped",
             "timed_out",
             "action_required",
+            "startup_failure",
+            "stale",
         ],
     ] = Field(default=...)
     url: Union[str, None] = Field(default=...)
@@ -7221,8 +7269,9 @@ class Snapshot(GitHubRestModel):
     )
     job: SnapshotPropJob = Field(default=...)
     sha: str = Field(
-        description="The commit SHA associated with this dependency snapshot.",
+        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters.",
         min_length=40,
+        max_length=40,
         default=...,
     )
     ref: str = Field(
@@ -9359,6 +9408,7 @@ class PullRequestPropHeadPropRepo(GitHubRestModel):
     has_projects: bool = Field(default=...)
     has_wiki: bool = Field(default=...)
     has_pages: bool = Field(default=...)
+    has_discussions: bool = Field(default=...)
     homepage: Union[str, None] = Field(default=...)
     language: Union[str, None] = Field(default=...)
     master_branch: Union[Unset, str] = Field(default=UNSET)
@@ -9489,6 +9539,7 @@ class PullRequestPropBasePropRepo(GitHubRestModel):
     has_projects: bool = Field(default=...)
     has_wiki: bool = Field(default=...)
     has_pages: bool = Field(default=...)
+    has_discussions: bool = Field(default=...)
     homepage: Union[str, None] = Field(default=...)
     language: Union[str, None] = Field(default=...)
     master_branch: Union[Unset, str] = Field(default=UNSET)
@@ -9641,7 +9692,10 @@ class PullRequestReview(GitHubRestModel):
     pull_request_url: str = Field(default=...)
     links: PullRequestReviewPropLinks = Field(default=..., alias="_links")
     submitted_at: Union[Unset, datetime] = Field(default=UNSET)
-    commit_id: str = Field(description="A commit SHA for the review.", default=...)
+    commit_id: Union[str, None] = Field(
+        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`.",
+        default=...,
+    )
     body_html: Union[Unset, str] = Field(default=UNSET)
     body_text: Union[Unset, str] = Field(default=UNSET)
     author_association: Literal[
@@ -9854,7 +9908,7 @@ class SecretScanningAlert(GitHubRestModel):
         description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
     )
-    updated_at: Union[Unset, datetime] = Field(
+    updated_at: Union[Unset, Union[None, datetime]] = Field(
         description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
     )
@@ -9948,15 +10002,45 @@ class SecretScanningLocationCommit(GitHubRestModel):
     )
 
 
+class SecretScanningLocationIssue(GitHubRestModel):
+    """SecretScanningLocationIssue
+
+    Represents an 'issue' secret scanning location type. This location type shows
+    that a secret was detected in the title or description of an issue.
+    """
+
+    issue_url: str = Field(
+        description="The API URL to get the issue where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationIssueComment(GitHubRestModel):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str = Field(
+        description="The API URL to get the issue comment where the secret was detected.",
+        default=...,
+    )
+
+
 class SecretScanningLocation(GitHubRestModel):
     """SecretScanningLocation"""
 
-    type: Literal["commit"] = Field(
+    type: Literal["commit", "issue", "issue_comment"] = Field(
         description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
         default=...,
     )
-    details: SecretScanningLocationCommit = Field(
-        description="Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.",
+    details: Union[
+        SecretScanningLocationCommit,
+        SecretScanningLocationIssue,
+        SecretScanningLocationIssueComment,
+    ] = Field(
+        description="Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.",
         default=...,
     )
 
@@ -10441,6 +10525,7 @@ class RepoSearchResultItem(GitHubRestModel):
     has_pages: bool = Field(default=...)
     has_wiki: bool = Field(default=...)
     has_downloads: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(default=UNSET)
     archived: bool = Field(default=...)
     disabled: bool = Field(
         description="Returns whether or not this repository disabled.", default=...
@@ -13185,7 +13270,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
         default=UNSET,
     )
     require_last_push_approval: Union[Unset, bool] = Field(
-        description="Whether someone other than the person who last pushed to the branch must approve this pull request. Default: `false`.",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`.",
         default=False,
     )
     bypass_pull_request_allowances: Union[
@@ -13241,7 +13326,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
         default=UNSET,
     )
     require_last_push_approval: Union[Unset, bool] = Field(
-        description="Whether someone other than the person who last pushed to the branch must approve this pull request. Default: `false`",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
         default=False,
     )
     bypass_pull_request_allowances: Union[
@@ -13388,7 +13473,10 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(
         {'apps': ['my-app']}
     """
 
-    apps: List[str] = Field(description="apps parameter", default=...)
+    apps: List[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items.",
+        default=...,
+    )
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(
@@ -13400,7 +13488,10 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(
         {'apps': ['my-app']}
     """
 
-    apps: List[str] = Field(description="apps parameter", default=...)
+    apps: List[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items.",
+        default=...,
+    )
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0(
@@ -13412,7 +13503,10 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0(
         {'apps': ['my-app']}
     """
 
-    apps: List[str] = Field(description="apps parameter", default=...)
+    apps: List[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items.",
+        default=...,
+    )
 
 
 class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(
@@ -15958,6 +16052,9 @@ class ReposOwnerRepoTransferPostBody(GitHubRestModel):
         description="The username or organization name the repository will be transferred to.",
         default=...,
     )
+    new_name: Union[Unset, str] = Field(
+        description="The new name to be given to the repository.", default=UNSET
+    )
     team_ids: Union[Unset, List[int]] = Field(
         description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
         default=UNSET,
@@ -16517,6 +16614,9 @@ class UserReposPostBody(GitHubRestModel):
     has_wiki: Union[Unset, bool] = Field(
         description="Whether the wiki is enabled.", default=True
     )
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=False
+    )
     team_id: Union[Unset, int] = Field(
         description="The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.",
         default=UNSET,
@@ -16716,11 +16816,12 @@ OrganizationCustomRepositoryRole.update_forward_refs()
 OrganizationFull.update_forward_refs()
 OrganizationFullPropPlan.update_forward_refs()
 ActionsCacheUsageByRepository.update_forward_refs()
+OidcCustomSub.update_forward_refs()
+EmptyObject.update_forward_refs()
 ActionsOrganizationPermissions.update_forward_refs()
 RunnerGroupsOrg.update_forward_refs()
 OrganizationActionsSecret.update_forward_refs()
 ActionsPublicKey.update_forward_refs()
-EmptyObject.update_forward_refs()
 CodespaceMachine.update_forward_refs()
 Codespace.update_forward_refs()
 CodespacePropGitStatus.update_forward_refs()
@@ -16781,6 +16882,7 @@ ActionsCacheList.update_forward_refs()
 ActionsCacheListPropActionsCachesItems.update_forward_refs()
 Job.update_forward_refs()
 JobPropStepsItems.update_forward_refs()
+OidcCustomSubRepo.update_forward_refs()
 ActionsRepositoryPermissions.update_forward_refs()
 ActionsWorkflowAccessToRepository.update_forward_refs()
 ReferencedWorkflow.update_forward_refs()
@@ -17069,6 +17171,8 @@ Release.update_forward_refs()
 ReleaseNotesContent.update_forward_refs()
 SecretScanningAlert.update_forward_refs()
 SecretScanningLocationCommit.update_forward_refs()
+SecretScanningLocationIssue.update_forward_refs()
+SecretScanningLocationIssueComment.update_forward_refs()
 SecretScanningLocation.update_forward_refs()
 Stargazer.update_forward_refs()
 CommitActivity.update_forward_refs()
@@ -17617,11 +17721,12 @@ __all__ = [
     "OrganizationFull",
     "OrganizationFullPropPlan",
     "ActionsCacheUsageByRepository",
+    "OidcCustomSub",
+    "EmptyObject",
     "ActionsOrganizationPermissions",
     "RunnerGroupsOrg",
     "OrganizationActionsSecret",
     "ActionsPublicKey",
-    "EmptyObject",
     "CodespaceMachine",
     "Codespace",
     "CodespacePropGitStatus",
@@ -17682,6 +17787,7 @@ __all__ = [
     "ActionsCacheListPropActionsCachesItems",
     "Job",
     "JobPropStepsItems",
+    "OidcCustomSubRepo",
     "ActionsRepositoryPermissions",
     "ActionsWorkflowAccessToRepository",
     "ReferencedWorkflow",
@@ -17970,6 +18076,8 @@ __all__ = [
     "ReleaseNotesContent",
     "SecretScanningAlert",
     "SecretScanningLocationCommit",
+    "SecretScanningLocationIssue",
+    "SecretScanningLocationIssueComment",
     "SecretScanningLocation",
     "Stargazer",
     "CommitActivity",
