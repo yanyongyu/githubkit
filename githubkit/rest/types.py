@@ -1794,7 +1794,7 @@ class MarketplaceListingPlanType(TypedDict):
     description: str
     monthly_price_in_cents: int
     yearly_price_in_cents: int
-    price_model: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
     has_free_trial: bool
     unit_name: Union[str, None]
     state: str
@@ -7370,14 +7370,24 @@ class SecretScanningLocationCommitType(TypedDict):
     commit_url: str
 
 
-class SecretScanningLocationIssueType(TypedDict):
-    """SecretScanningLocationIssue
+class SecretScanningLocationIssueTitleType(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    Represents an 'issue' secret scanning location type. This location type shows
-    that a secret was detected in the title or description of an issue.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    issue_url: str
+    issue_title_url: str
+
+
+class SecretScanningLocationIssueBodyType(TypedDict):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str
 
 
 class SecretScanningLocationIssueCommentType(TypedDict):
@@ -7393,10 +7403,11 @@ class SecretScanningLocationIssueCommentType(TypedDict):
 class SecretScanningLocationType(TypedDict):
     """SecretScanningLocation"""
 
-    type: Literal["commit", "issue", "issue_comment"]
+    type: Literal["commit", "issue_title", "issue_body", "issue_comment"]
     details: Union[
         SecretScanningLocationCommitType,
-        SecretScanningLocationIssueType,
+        SecretScanningLocationIssueTitleType,
+        SecretScanningLocationIssueBodyType,
         SecretScanningLocationIssueCommentType,
     ]
 
@@ -12171,7 +12182,8 @@ __all__ = [
     "ReleaseNotesContentType",
     "SecretScanningAlertType",
     "SecretScanningLocationCommitType",
-    "SecretScanningLocationIssueType",
+    "SecretScanningLocationIssueTitleType",
+    "SecretScanningLocationIssueBodyType",
     "SecretScanningLocationIssueCommentType",
     "SecretScanningLocationType",
     "StargazerType",

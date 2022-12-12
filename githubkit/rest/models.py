@@ -2643,7 +2643,7 @@ class MarketplaceListingPlan(GitHubRestModel):
     description: str = Field(default=...)
     monthly_price_in_cents: int = Field(default=...)
     yearly_price_in_cents: int = Field(default=...)
-    price_model: str = Field(default=...)
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field(default=...)
     has_free_trial: bool = Field(default=...)
     unit_name: Union[str, None] = Field(default=...)
     state: str = Field(default=...)
@@ -10002,14 +10002,27 @@ class SecretScanningLocationCommit(GitHubRestModel):
     )
 
 
-class SecretScanningLocationIssue(GitHubRestModel):
-    """SecretScanningLocationIssue
+class SecretScanningLocationIssueTitle(GitHubRestModel):
+    """SecretScanningLocationIssueTitle
 
-    Represents an 'issue' secret scanning location type. This location type shows
-    that a secret was detected in the title or description of an issue.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    issue_url: str = Field(
+    issue_title_url: str = Field(
+        description="The API URL to get the issue where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationIssueBody(GitHubRestModel):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str = Field(
         description="The API URL to get the issue where the secret was detected.",
         default=...,
     )
@@ -10031,13 +10044,14 @@ class SecretScanningLocationIssueComment(GitHubRestModel):
 class SecretScanningLocation(GitHubRestModel):
     """SecretScanningLocation"""
 
-    type: Literal["commit", "issue", "issue_comment"] = Field(
+    type: Literal["commit", "issue_title", "issue_body", "issue_comment"] = Field(
         description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
         default=...,
     )
     details: Union[
         SecretScanningLocationCommit,
-        SecretScanningLocationIssue,
+        SecretScanningLocationIssueTitle,
+        SecretScanningLocationIssueBody,
         SecretScanningLocationIssueComment,
     ] = Field(
         description="Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.",
@@ -17171,7 +17185,8 @@ Release.update_forward_refs()
 ReleaseNotesContent.update_forward_refs()
 SecretScanningAlert.update_forward_refs()
 SecretScanningLocationCommit.update_forward_refs()
-SecretScanningLocationIssue.update_forward_refs()
+SecretScanningLocationIssueTitle.update_forward_refs()
+SecretScanningLocationIssueBody.update_forward_refs()
 SecretScanningLocationIssueComment.update_forward_refs()
 SecretScanningLocation.update_forward_refs()
 Stargazer.update_forward_refs()
@@ -18076,7 +18091,8 @@ __all__ = [
     "ReleaseNotesContent",
     "SecretScanningAlert",
     "SecretScanningLocationCommit",
-    "SecretScanningLocationIssue",
+    "SecretScanningLocationIssueTitle",
+    "SecretScanningLocationIssueBody",
     "SecretScanningLocationIssueComment",
     "SecretScanningLocation",
     "Stargazer",

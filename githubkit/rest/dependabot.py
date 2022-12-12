@@ -58,6 +58,7 @@ class DependabotClient:
         after: Union[Unset, str] = UNSET,
         first: Union[Unset, int] = 30,
         last: Union[Unset, int] = UNSET,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
@@ -73,6 +74,7 @@ class DependabotClient:
             "after": after,
             "first": first,
             "last": last,
+            "per_page": per_page,
         }
 
         return self._github.request(
@@ -101,6 +103,7 @@ class DependabotClient:
         after: Union[Unset, str] = UNSET,
         first: Union[Unset, int] = 30,
         last: Union[Unset, int] = UNSET,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
@@ -116,6 +119,7 @@ class DependabotClient:
             "after": after,
             "first": first,
             "last": last,
+            "per_page": per_page,
         }
 
         return await self._github.arequest(
@@ -144,6 +148,7 @@ class DependabotClient:
         after: Union[Unset, str] = UNSET,
         first: Union[Unset, int] = 30,
         last: Union[Unset, int] = UNSET,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/orgs/{org}/dependabot/alerts"
 
@@ -159,6 +164,7 @@ class DependabotClient:
             "after": after,
             "first": first,
             "last": last,
+            "per_page": per_page,
         }
 
         return self._github.request(
@@ -188,6 +194,7 @@ class DependabotClient:
         after: Union[Unset, str] = UNSET,
         first: Union[Unset, int] = 30,
         last: Union[Unset, int] = UNSET,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/orgs/{org}/dependabot/alerts"
 
@@ -203,6 +210,7 @@ class DependabotClient:
             "after": after,
             "first": first,
             "last": last,
+            "per_page": per_page,
         }
 
         return await self._github.arequest(

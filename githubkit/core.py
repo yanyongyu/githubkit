@@ -123,7 +123,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
     ):
-        auth = auth or UnauthAuthStrategy()
+        auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = TokenAuthStrategy(auth) if isinstance(auth, str) else auth  # type: ignore
 
         self.config = config or get_config(
