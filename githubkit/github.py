@@ -35,8 +35,8 @@ CT = TypeVar("CT")
 RT = TypeVar("RT")
 
 R = Union[
-    Callable[CP, Response[List[RT]]],
-    Callable[CP, Awaitable[Response[List[RT]]]],
+    Callable[CP, Response[RT]],
+    Callable[CP, Awaitable[Response[RT]]],
 ]
 
 
@@ -154,7 +154,7 @@ class GitHub(GitHubCore[A]):
     @overload
     @staticmethod
     def paginate(
-        request: R[CP, RT],
+        request: R[CP, List[RT]],
         page: int = 1,
         per_page: int = 100,
         map_func: None = None,
@@ -169,7 +169,7 @@ class GitHub(GitHubCore[A]):
         request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
-        map_func: Callable[[Response[List[CT]]], List[RT]] = ...,  # type: ignore
+        map_func: Callable[[Response[CT]], List[RT]] = ...,  # type: ignore
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> Paginator[RT]:
@@ -180,7 +180,7 @@ class GitHub(GitHubCore[A]):
         request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
-        map_func: Optional[Callable[[Response[List[CT]]], List[RT]]] = None,
+        map_func: Optional[Callable[[Response[CT]], List[RT]]] = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> Paginator[RT]:

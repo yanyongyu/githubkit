@@ -185,6 +185,10 @@ async with GitHub("<your_token_here>") as github:
 
 ### Pagination
 
+Pagination type checking is also supported:
+
+> Typing is tested with Pylance (Pyright).
+
 ```python
 from githubkit.rest import Issue
 
@@ -203,6 +207,18 @@ async for issue in github.paginate(
 ):
     issue: Issue
     print(issue.number)
+```
+
+complex pagination with custom map function (some api returns data in a nested field):
+
+```python
+async for accessible_repo in github.paginate(
+    github.rest.apps.async_list_installation_repos_for_authenticated_user,
+    map_func=lambda r: r.parsed_data.repositories,
+    installation_id=1,
+):
+    accessible_repo: Repository
+    print(accessible_repo.full_name)
 ```
 
 ### Calling GraphQL API
