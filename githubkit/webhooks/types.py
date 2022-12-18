@@ -154,6 +154,7 @@ from .models import (
     ProjectsV2ItemArchived,
     ProjectsV2ItemRestored,
     PullRequestSynchronize,
+    RegistryPackageUpdated,
     SponsorshipTierChanged,
     CheckRunRequestedAction,
     DependabotAlertReopened,
@@ -169,6 +170,7 @@ from .models import (
     DependabotAlertDismissed,
     DiscussionCommentCreated,
     DiscussionCommentDeleted,
+    RegistryPackagePublished,
     CodeScanningAlertReopened,
     DiscussionCategoryChanged,
     MergeGroupChecksRequested,
@@ -508,6 +510,13 @@ PullRequestReviewThreadEvent = Annotated[
     ],
     Field(discriminator="action"),
 ]
+RegistryPackageEvent = Annotated[
+    Union[
+        RegistryPackagePublished,
+        RegistryPackageUpdated,
+    ],
+    Field(discriminator="action"),
+]
 ReleaseEvent = Annotated[
     Union[
         ReleaseCreated,
@@ -649,6 +658,7 @@ WebhookEvent = Union[
     PullRequestReviewCommentEvent,
     PullRequestReviewThreadEvent,
     PushEvent,
+    RegistryPackageEvent,
     ReleaseEvent,
     RepositoryEvent,
     RepositoryDispatchEvent,
@@ -900,6 +910,10 @@ webhook_action_types = {
         "resolved": PullRequestReviewThreadResolved,
         "unresolved": PullRequestReviewThreadUnresolved,
     },
+    "registry_package": {
+        "published": RegistryPackagePublished,
+        "updated": RegistryPackageUpdated,
+    },
     "release": {
         "created": ReleaseCreated,
         "deleted": ReleaseDeleted,
@@ -1014,6 +1028,7 @@ webhook_event_types = {
     "pull_request_review_comment": PullRequestReviewCommentEvent,
     "pull_request_review_thread": PullRequestReviewThreadEvent,
     "push": PushEvent,
+    "registry_package": RegistryPackageEvent,
     "release": ReleaseEvent,
     "repository": RepositoryEvent,
     "repository_dispatch": RepositoryDispatchEvent,
@@ -1075,6 +1090,7 @@ __all__ = [
     "PullRequestReviewCommentEvent",
     "PullRequestReviewThreadEvent",
     "PushEvent",
+    "RegistryPackageEvent",
     "ReleaseEvent",
     "RepositoryEvent",
     "RepositoryDispatchEvent",

@@ -3017,7 +3017,7 @@ class ActionsClient:
         repo: str,
         *,
         data: Unset = UNSET,
-        access_level: Literal["none", "organization", "enterprise"],
+        access_level: Literal["none", "user", "organization", "enterprise"],
     ) -> "Response":
         ...
 
@@ -3057,7 +3057,7 @@ class ActionsClient:
         repo: str,
         *,
         data: Unset = UNSET,
-        access_level: Literal["none", "organization", "enterprise"],
+        access_level: Literal["none", "user", "organization", "enterprise"],
     ) -> "Response":
         ...
 

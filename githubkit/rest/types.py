@@ -1089,6 +1089,15 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     repository: SimpleRepositoryType
 
 
+class EnterpriseSecurityAnalysisSettingsType(TypedDict):
+    """Enterprise Security Analysis Settings"""
+
+    advanced_security_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+
+
 class DependabotAlertPackageType(TypedDict):
     """DependabotAlertPackage
 
@@ -1871,6 +1880,34 @@ class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
     sha256_ed25519: NotRequired[str]
 
 
+class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisType(TypedDict):
+    """SecurityAndAnalysis"""
+
+    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionType
+    ]
+
+
 class MinimalRepositoryType(TypedDict):
     """Minimal Repository
 
@@ -1963,6 +2000,7 @@ class MinimalRepositoryType(TypedDict):
     watchers: NotRequired[int]
     allow_forking: NotRequired[bool]
     web_commit_signoff_required: NotRequired[bool]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
 
 
 class MinimalRepositoryPropPermissionsType(TypedDict):
@@ -3039,34 +3077,6 @@ class CodeOfConductSimpleType(TypedDict):
     html_url: Union[str, None]
 
 
-class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
-
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-
-
 class FullRepositoryType(TypedDict):
     """Full Repository
 
@@ -3277,6 +3287,8 @@ class JobType(TypedDict):
     runner_name: Union[str, None]
     runner_group_id: Union[int, None]
     runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
 
 
 class JobPropStepsItemsType(TypedDict):
@@ -3311,7 +3323,7 @@ class ActionsRepositoryPermissionsType(TypedDict):
 class ActionsWorkflowAccessToRepositoryType(TypedDict):
     """ActionsWorkflowAccessToRepository"""
 
-    access_level: Literal["none", "organization", "enterprise"]
+    access_level: Literal["none", "user", "organization", "enterprise"]
 
 
 class ReferencedWorkflowType(TypedDict):
@@ -8542,6 +8554,15 @@ class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
     documentation_url: NotRequired[str]
 
 
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+
+
 class GistsPostBodyType(TypedDict):
     """GistsPostBody"""
 
@@ -11767,6 +11788,7 @@ __all__ = [
     "CodeScanningAlertInstancePropMessageType",
     "SimpleRepositoryType",
     "CodeScanningOrganizationAlertItemsType",
+    "EnterpriseSecurityAnalysisSettingsType",
     "DependabotAlertPackageType",
     "DependabotAlertSecurityVulnerabilityType",
     "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
@@ -11817,6 +11839,10 @@ __all__ = [
     "MarketplacePurchasePropMarketplacePurchaseType",
     "ApiOverviewType",
     "ApiOverviewPropSshKeyFingerprintsType",
+    "SecurityAndAnalysisPropAdvancedSecurityType",
+    "SecurityAndAnalysisPropSecretScanningType",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "SecurityAndAnalysisType",
     "MinimalRepositoryType",
     "MinimalRepositoryPropPermissionsType",
     "MinimalRepositoryPropLicenseType",
@@ -11881,10 +11907,6 @@ __all__ = [
     "RateLimitOverviewType",
     "RateLimitOverviewPropResourcesType",
     "CodeOfConductSimpleType",
-    "SecurityAndAnalysisPropAdvancedSecurityType",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisType",
     "FullRepositoryType",
     "FullRepositoryPropPermissionsType",
     "ArtifactType",
@@ -12270,6 +12292,7 @@ __all__ = [
     "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",
     "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",
     "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",
     "GistsPostBodyType",
     "GistsPostBodyPropFilesType",
     "GistsGistIdGetResponse403Type",

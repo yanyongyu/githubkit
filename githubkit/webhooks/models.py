@@ -7894,7 +7894,7 @@ class PackagePublishedPropPackage(GitHubWebhookModel):
     description: Union[str, None] = Field(default=...)
     ecosystem: str = Field(default=...)
     package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
+        "npm", "maven", "rubygems", "docker", "nuget", "CONTAINER"
     ] = Field(
         description="The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.",
         default=...,
@@ -7903,17 +7903,14 @@ class PackagePublishedPropPackage(GitHubWebhookModel):
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     owner: User = Field(title="User", default=...)
-    package_version: PackagePublishedPropPackagePropPackageVersion = Field(
-        description="A version of a software package", default=...
-    )
+    package_version: Union[
+        PackagePublishedPropPackagePropPackageVersionOneof0, None
+    ] = Field(description="A version of a software package", default=...)
     registry: PackagePublishedPropPackagePropRegistry = Field(default=...)
 
 
-class PackagePublishedPropPackagePropPackageVersion(GitHubWebhookModel):
-    """PackagePublishedPropPackagePropPackageVersion
-
-    A version of a software package
-    """
+class PackagePublishedPropPackagePropPackageVersionOneof0(GitHubWebhookModel):
+    """PackagePublishedPropPackagePropPackageVersionOneof0"""
 
     id: int = Field(
         description="Unique identifier of the package version.", default=...
@@ -7922,32 +7919,99 @@ class PackagePublishedPropPackagePropPackageVersion(GitHubWebhookModel):
     summary: str = Field(default=...)
     name: str = Field(description="The name of the package version.", default=...)
     description: str = Field(default=...)
-    body: str = Field(default=...)
-    body_html: str = Field(default=...)
-    release: PackagePublishedPropPackagePropPackageVersionPropRelease = Field(
-        default=...
-    )
-    manifest: str = Field(default=...)
+    body: Union[
+        Unset,
+        Union[str, PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1],
+    ] = Field(default=UNSET)
+    body_html: Union[Unset, str] = Field(default=UNSET)
+    release: Union[
+        Unset, PackagePublishedPropPackagePropPackageVersionOneof0PropRelease
+    ] = Field(default=UNSET)
+    manifest: Union[Unset, str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    tag_name: str = Field(default=...)
-    target_commitish: str = Field(default=...)
-    target_oid: str = Field(default=...)
-    draft: bool = Field(default=...)
-    prerelease: bool = Field(default=...)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
+    tag_name: Union[Unset, str] = Field(default=UNSET)
+    target_commitish: Union[Unset, str] = Field(default=UNSET)
+    target_oid: Union[Unset, str] = Field(default=UNSET)
+    draft: Union[Unset, bool] = Field(default=UNSET)
+    prerelease: Union[Unset, bool] = Field(default=UNSET)
+    created_at: Union[Unset, datetime] = Field(default=UNSET)
+    updated_at: Union[Unset, datetime] = Field(default=UNSET)
     metadata: List[Any] = Field(description="Package Version Metadata", default=...)
-    docker_metadata: List[Any] = Field(default=...)
+    container_metadata: Union[
+        Unset,
+        Union[
+            PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+        title="Package NPM Metadata", default=UNSET
+    )
+    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+        default=UNSET
+    )
+    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
     package_files: List[
-        PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems
+        PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems
     ] = Field(default=...)
-    author: User = Field(title="User", default=...)
-    source_url: str = Field(default=...)
+    package_url: Union[Unset, str] = Field(default=UNSET)
+    author: Union[Unset, User] = Field(title="User", default=UNSET)
+    source_url: Union[Unset, str] = Field(default=UNSET)
     installation_command: str = Field(default=...)
 
 
-class PackagePublishedPropPackagePropPackageVersionPropRelease(GitHubWebhookModel):
-    """PackagePublishedPropPackagePropPackageVersionPropRelease"""
+class PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1"""
+
+    repository: PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository = Field(
+        default=...
+    )
+    info: PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo = (
+        Field(default=...)
+    )
+    attributes: PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes = Field(
+        default=...
+    )
+    formatted: bool = Field(default=..., alias="_formatted")
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository"""
+
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo"""
+
+    type: str = Field(default=...)
+    oid: str = Field(default=...)
+    mode: int = Field(default=...)
+    name: str = Field(default=...)
+    path: str = Field(default=...)
+    size: Union[int, None] = Field(default=...)
+    collection: bool = Field(default=...)
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes"""
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropRelease(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropRelease"""
 
     url: str = Field(default=...)
     html_url: str = Field(default=...)
@@ -7962,10 +8026,211 @@ class PackagePublishedPropPackagePropPackageVersionPropRelease(GitHubWebhookMode
     published_at: datetime = Field(default=...)
 
 
-class PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems(
+class PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0(
     GitHubWebhookModel
 ):
-    """PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems"""
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0"""
+
+    labels: Union[
+        Unset,
+        Union[
+            PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    manifest: Union[
+        Unset,
+        Union[
+            PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    tag: Union[
+        Unset,
+        PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag,
+    ] = Field(default=UNSET)
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0Pr
+    opLabels
+    """
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0Pr
+    opManifest
+    """
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0Pr
+    opTag
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    name: Union[Unset, str] = Field(default=UNSET)
+
+
+class PackageNpmMetadata(GitHubWebhookModel):
+    """Package NPM Metadata"""
+
+    name: Union[Unset, str] = Field(default=UNSET)
+    version: Union[Unset, str] = Field(default=UNSET)
+    npm_user: Union[Unset, str] = Field(default=UNSET)
+    author: Union[Unset, Union[PackageNpmMetadataPropAuthorOneof0, None]] = Field(
+        default=UNSET
+    )
+    bugs: Union[Unset, Union[PackageNpmMetadataPropBugsOneof0, None]] = Field(
+        default=UNSET
+    )
+    dependencies: Union[Unset, PackageNpmMetadataPropDependencies] = Field(
+        default=UNSET
+    )
+    dev_dependencies: Union[Unset, PackageNpmMetadataPropDevDependencies] = Field(
+        default=UNSET
+    )
+    peer_dependencies: Union[Unset, PackageNpmMetadataPropPeerDependencies] = Field(
+        default=UNSET
+    )
+    optional_dependencies: Union[
+        Unset, PackageNpmMetadataPropOptionalDependencies
+    ] = Field(default=UNSET)
+    description: Union[Unset, str] = Field(default=UNSET)
+    dist: Union[Unset, Union[PackageNpmMetadataPropDistOneof0, None]] = Field(
+        default=UNSET
+    )
+    git_head: Union[Unset, str] = Field(default=UNSET)
+    homepage: Union[Unset, str] = Field(default=UNSET)
+    license_: Union[Unset, str] = Field(default=UNSET, alias="license")
+    main: Union[Unset, str] = Field(default=UNSET)
+    repository: Union[
+        Unset, Union[PackageNpmMetadataPropRepositoryOneof0, None]
+    ] = Field(default=UNSET)
+    scripts: Union[Unset, PackageNpmMetadataPropScripts] = Field(default=UNSET)
+    id: Union[Unset, str] = Field(default=UNSET)
+    node_version: Union[Unset, str] = Field(default=UNSET)
+    npm_version: Union[Unset, str] = Field(default=UNSET)
+    has_shrinkwrap: Union[Unset, bool] = Field(default=UNSET)
+    maintainers: Union[Unset, List[PackageNpmMetadataPropMaintainersItems]] = Field(
+        default=UNSET
+    )
+    contributors: Union[Unset, List[PackageNpmMetadataPropContributorsItems]] = Field(
+        default=UNSET
+    )
+    engines: Union[Unset, PackageNpmMetadataPropEngines] = Field(default=UNSET)
+    keywords: Union[Unset, List[str]] = Field(default=UNSET)
+    files: Union[Unset, List[str]] = Field(default=UNSET)
+    bin_: Union[Unset, PackageNpmMetadataPropBin] = Field(default=UNSET, alias="bin")
+    man: Union[Unset, PackageNpmMetadataPropMan] = Field(default=UNSET)
+    directories: Union[
+        Unset, Union[PackageNpmMetadataPropDirectoriesOneof0, None]
+    ] = Field(default=UNSET)
+    os: Union[Unset, List[str]] = Field(default=UNSET)
+    cpu: Union[Unset, List[str]] = Field(default=UNSET)
+    readme: Union[Unset, str] = Field(default=UNSET)
+    installation_command: Union[Unset, str] = Field(default=UNSET)
+    release_id: Union[Unset, int] = Field(default=UNSET)
+    commit_oid: Union[Unset, str] = Field(default=UNSET)
+    published_via_actions: Union[Unset, bool] = Field(default=UNSET)
+    deleted_by_id: Union[Unset, int] = Field(default=UNSET)
+
+
+class PackageNpmMetadataPropAuthorOneof0(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropAuthorOneof0"""
+
+
+class PackageNpmMetadataPropBugsOneof0(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropBugsOneof0"""
+
+
+class PackageNpmMetadataPropDependencies(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropDependencies"""
+
+
+class PackageNpmMetadataPropDevDependencies(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropDevDependencies"""
+
+
+class PackageNpmMetadataPropPeerDependencies(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropPeerDependencies"""
+
+
+class PackageNpmMetadataPropOptionalDependencies(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropOptionalDependencies"""
+
+
+class PackageNpmMetadataPropDistOneof0(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropDistOneof0"""
+
+
+class PackageNpmMetadataPropRepositoryOneof0(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropRepositoryOneof0"""
+
+
+class PackageNpmMetadataPropScripts(GitHubWebhookModel):
+    """PackageNpmMetadataPropScripts"""
+
+
+class PackageNpmMetadataPropMaintainersItems(GitHubWebhookModel):
+    """PackageNpmMetadataPropMaintainersItems"""
+
+
+class PackageNpmMetadataPropContributorsItems(GitHubWebhookModel):
+    """PackageNpmMetadataPropContributorsItems"""
+
+
+class PackageNpmMetadataPropEngines(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropEngines"""
+
+
+class PackageNpmMetadataPropBin(GitHubWebhookModel):
+    """PackageNpmMetadataPropBin"""
+
+
+class PackageNpmMetadataPropMan(GitHubWebhookModel):
+    """PackageNpmMetadataPropMan"""
+
+
+class PackageNpmMetadataPropDirectoriesOneof0(GitHubWebhookModel, extra=Extra.allow):
+    """PackageNpmMetadataPropDirectoriesOneof0"""
+
+
+class PackageNugetMetadata(GitHubWebhookModel):
+    """Package Nuget Metadata"""
+
+    id: Union[Unset, Union[str, PackageNugetMetadataPropIdOneof1, int]] = Field(
+        default=UNSET
+    )
+    name: Union[Unset, str] = Field(default=UNSET)
+    value: Union[
+        Unset, Union[bool, str, int, PackageNugetMetadataPropValueOneof3]
+    ] = Field(default=UNSET)
+
+
+class PackageNugetMetadataPropIdOneof1(GitHubWebhookModel):
+    """PackageNugetMetadataPropIdOneof1"""
+
+
+class PackageNugetMetadataPropValueOneof3(GitHubWebhookModel):
+    """PackageNugetMetadataPropValueOneof3"""
+
+    url: Union[Unset, str] = Field(default=UNSET)
+    branch: Union[Unset, str] = Field(default=UNSET)
+    commit: Union[Unset, str] = Field(default=UNSET)
+    type: Union[Unset, str] = Field(default=UNSET)
+
+
+class PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems(
+    GitHubWebhookModel
+):
+    """PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems"""
 
     download_url: str = Field(default=...)
     id: int = Field(default=...)
@@ -8018,23 +8283,20 @@ class PackageUpdatedPropPackage(GitHubWebhookModel):
     description: Union[str, None] = Field(default=...)
     ecosystem: str = Field(default=...)
     package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
+        "npm", "maven", "rubygems", "docker", "nuget", "CONTAINER"
     ] = Field(default=...)
     html_url: str = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     owner: User = Field(title="User", default=...)
-    package_version: PackageUpdatedPropPackagePropPackageVersion = Field(
-        description="A version of a software package", default=...
-    )
+    package_version: Union[
+        PackageUpdatedPropPackagePropPackageVersionOneof0, None
+    ] = Field(description="A version of a software package", default=...)
     registry: PackageUpdatedPropPackagePropRegistry = Field(default=...)
 
 
-class PackageUpdatedPropPackagePropPackageVersion(GitHubWebhookModel):
-    """PackageUpdatedPropPackagePropPackageVersion
-
-    A version of a software package
-    """
+class PackageUpdatedPropPackagePropPackageVersionOneof0(GitHubWebhookModel):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0"""
 
     id: int = Field(
         description="Unique identifier of the package version.", default=...
@@ -8043,30 +8305,97 @@ class PackageUpdatedPropPackagePropPackageVersion(GitHubWebhookModel):
     summary: str = Field(default=...)
     name: str = Field(description="The name of the package version.", default=...)
     description: str = Field(default=...)
-    body: str = Field(default=...)
-    body_html: str = Field(default=...)
-    release: PackageUpdatedPropPackagePropPackageVersionPropRelease = Field(default=...)
-    manifest: str = Field(default=...)
+    body: Union[
+        Unset,
+        Union[str, PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1],
+    ] = Field(default=UNSET)
+    body_html: Union[Unset, str] = Field(default=UNSET)
+    release: Union[
+        Unset, PackageUpdatedPropPackagePropPackageVersionOneof0PropRelease
+    ] = Field(default=UNSET)
+    manifest: Union[Unset, str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    tag_name: str = Field(default=...)
-    target_commitish: str = Field(default=...)
-    target_oid: str = Field(default=...)
-    draft: bool = Field(default=...)
-    prerelease: bool = Field(default=...)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
+    tag_name: Union[Unset, str] = Field(default=UNSET)
+    target_commitish: Union[Unset, str] = Field(default=UNSET)
+    target_oid: Union[Unset, str] = Field(default=UNSET)
+    draft: Union[Unset, bool] = Field(default=UNSET)
+    prerelease: Union[Unset, bool] = Field(default=UNSET)
+    created_at: Union[Unset, datetime] = Field(default=UNSET)
+    updated_at: Union[Unset, datetime] = Field(default=UNSET)
     metadata: List[Any] = Field(description="Package Version Metadata", default=...)
-    docker_metadata: List[Any] = Field(default=...)
+    container_metadata: Union[
+        Unset,
+        Union[
+            PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+        title="Package NPM Metadata", default=UNSET
+    )
+    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+        default=UNSET
+    )
+    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
     package_files: List[
-        PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems
+        PackageUpdatedPropPackagePropPackageVersionOneof0PropPackageFilesItems
     ] = Field(default=...)
-    author: User = Field(title="User", default=...)
-    source_url: str = Field(default=...)
+    package_url: Union[Unset, str] = Field(default=UNSET)
+    author: Union[Unset, User] = Field(title="User", default=UNSET)
+    source_url: Union[Unset, str] = Field(default=UNSET)
     installation_command: str = Field(default=...)
 
 
-class PackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubWebhookModel):
-    """PackageUpdatedPropPackagePropPackageVersionPropRelease"""
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1"""
+
+    repository: PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository = Field(
+        default=...
+    )
+    info: PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo = (
+        Field(default=...)
+    )
+    attributes: PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes = Field(
+        default=...
+    )
+    formatted: bool = Field(default=..., alias="_formatted")
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository"""
+
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo"""
+
+    type: str = Field(default=...)
+    oid: str = Field(default=...)
+    mode: int = Field(default=...)
+    name: str = Field(default=...)
+    path: str = Field(default=...)
+    size: Union[int, None] = Field(default=...)
+    collection: bool = Field(default=...)
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes"""
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropRelease(GitHubWebhookModel):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropRelease"""
 
     url: str = Field(default=...)
     html_url: str = Field(default=...)
@@ -8081,10 +8410,62 @@ class PackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubWebhookModel)
     published_at: datetime = Field(default=...)
 
 
-class PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0(
     GitHubWebhookModel
 ):
-    """PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0"""
+
+    labels: Union[
+        Unset,
+        Union[
+            PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    manifest: Union[
+        Unset,
+        Union[
+            PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    tag: Union[
+        Unset,
+        PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag,
+    ] = Field(default=UNSET)
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0Prop
+    Labels
+    """
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0Prop
+    Manifest
+    """
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0Prop
+    Tag
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    name: Union[Unset, str] = Field(default=UNSET)
+
+
+class PackageUpdatedPropPackagePropPackageVersionOneof0PropPackageFilesItems(
+    GitHubWebhookModel
+):
+    """PackageUpdatedPropPackagePropPackageVersionOneof0PropPackageFilesItems"""
 
     download_url: str = Field(default=...)
     id: int = Field(default=...)
@@ -11227,6 +11608,688 @@ class Commit(GitHubWebhookModel):
         description="An array of files removed in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were removed.",
         default=...,
     )
+
+
+class RegistryPackagePublished(GitHubWebhookModel):
+    """registry_package published event"""
+
+    action: Literal["published"] = Field(default=...)
+    registry_package: RegistryPackagePublishedPropRegistryPackage = Field(
+        description="Information about the package.", default=...
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    sender: User = Field(title="User", default=...)
+    organization: Union[Unset, Organization] = Field(
+        title="Organization", default=UNSET
+    )
+
+
+class RegistryPackagePublishedPropRegistryPackage(GitHubWebhookModel):
+    """RegistryPackagePublishedPropRegistryPackage
+
+    Information about the package.
+    """
+
+    id: int = Field(description="Unique identifier of the package.", default=...)
+    name: str = Field(description="The name of the package.", default=...)
+    namespace: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    ecosystem: str = Field(default=...)
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "CONTAINER"
+    ] = Field(
+        description="The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.",
+        default=...,
+    )
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: Union[datetime, None] = Field(default=...)
+    owner: User = Field(title="User", default=...)
+    package_version: Union[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0, None
+    ] = Field(description="A version of a software package", default=...)
+    registry: RegistryPackagePublishedPropRegistryPackagePropRegistry = Field(
+        default=...
+    )
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0"""
+
+    id: int = Field(
+        description="Unique identifier of the package version.", default=...
+    )
+    version: str = Field(default=...)
+    summary: str = Field(default=...)
+    name: str = Field(description="The name of the package version.", default=...)
+    description: str = Field(default=...)
+    body: Union[
+        Unset,
+        Union[
+            str,
+            RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1,
+        ],
+    ] = Field(default=UNSET)
+    body_html: Union[Unset, str] = Field(default=UNSET)
+    release: Union[
+        Unset,
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropRelease,
+    ] = Field(default=UNSET)
+    manifest: Union[Unset, str] = Field(default=UNSET)
+    html_url: str = Field(default=...)
+    tag_name: Union[Unset, str] = Field(default=UNSET)
+    target_commitish: Union[Unset, str] = Field(default=UNSET)
+    target_oid: Union[Unset, str] = Field(default=UNSET)
+    draft: Union[Unset, bool] = Field(default=UNSET)
+    prerelease: Union[Unset, bool] = Field(default=UNSET)
+    created_at: Union[Unset, datetime] = Field(default=UNSET)
+    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    metadata: List[Any] = Field(description="Package Version Metadata", default=...)
+    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    container_metadata: Union[
+        Unset,
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata,
+    ] = Field(default=UNSET)
+    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+        title="Package NPM Metadata", default=UNSET
+    )
+    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+        default=UNSET
+    )
+    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    package_files: List[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems
+    ] = Field(default=...)
+    package_url: Union[Unset, str] = Field(default=UNSET)
+    author: Union[
+        Unset,
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropAuthor,
+    ] = Field(default=UNSET)
+    source_url: Union[Unset, str] = Field(default=UNSET)
+    installation_command: str = Field(default=...)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof
+    1
+    """
+
+    repository: RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository = Field(
+        default=...
+    )
+    info: RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo = Field(
+        default=...
+    )
+    attributes: Union[
+        Unset,
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes,
+    ] = Field(default=UNSET)
+    formatted: Union[Unset, bool] = Field(default=UNSET, alias="_formatted")
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof
+    1PropRepository
+    """
+
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof
+    1PropInfo
+    """
+
+    type: str = Field(default=...)
+    oid: str = Field(default=...)
+    mode: int = Field(default=...)
+    name: str = Field(default=...)
+    path: str = Field(default=...)
+    size: Union[int, None] = Field(default=...)
+    collection: Union[bool, None] = Field(default=...)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof
+    1PropAttributes
+    """
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropRelease(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropRelease"""
+
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    id: int = Field(default=...)
+    tag_name: str = Field(default=...)
+    target_commitish: str = Field(default=...)
+    name: str = Field(default=...)
+    draft: bool = Field(default=...)
+    author: User = Field(title="User", default=...)
+    prerelease: bool = Field(default=...)
+    created_at: datetime = Field(default=...)
+    published_at: datetime = Field(default=...)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainer
+    Metadata
+    """
+
+    labels: Union[
+        Unset,
+        Union[
+            RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    manifest: Union[
+        Unset,
+        Union[
+            RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    tag: Union[
+        Unset,
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag,
+    ] = Field(default=UNSET)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainer
+    MetadataPropLabelsOneof0
+    """
+
+    description: Union[Unset, str] = Field(default=UNSET)
+    source: Union[Unset, str] = Field(default=UNSET)
+    revision: Union[Unset, str] = Field(default=UNSET)
+    image_url: Union[Unset, str] = Field(default=UNSET)
+    licenses: Union[Unset, str] = Field(default=UNSET)
+    all_labels: Union[
+        Unset,
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels,
+    ] = Field(default=UNSET)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels(
+    GitHubWebhookModel, extra=Extra.allow
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainer
+    MetadataPropLabelsOneof0PropAllLabels
+    """
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainer
+    MetadataPropManifestOneof0
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    media_type: Union[Unset, str] = Field(default=UNSET)
+    uri: Union[Unset, str] = Field(default=UNSET)
+    size: Union[Unset, int] = Field(default=UNSET)
+    config: Union[
+        Unset,
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig,
+    ] = Field(default=UNSET)
+    layers: Union[
+        Unset,
+        List[
+            RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems
+        ],
+    ] = Field(default=UNSET)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainer
+    MetadataPropManifestOneof0PropConfig
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    media_type: Union[Unset, str] = Field(default=UNSET)
+    size: Union[Unset, int] = Field(default=UNSET)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainer
+    MetadataPropManifestOneof0PropLayersItems
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    media_type: Union[Unset, str] = Field(default=UNSET)
+    size: Union[Unset, int] = Field(default=UNSET)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainer
+    MetadataPropTag
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    name: Union[Unset, str] = Field(default=UNSET)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropPackageFi
+    lesItems
+    """
+
+    download_url: str = Field(default=...)
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    sha256: str = Field(default=...)
+    sha1: str = Field(default=...)
+    md5: str = Field(default=...)
+    content_type: str = Field(default=...)
+    state: str = Field(default=...)
+    size: int = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropAuthor(
+    GitHubWebhookModel
+):
+    """RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropAuthor"""
+
+    avatar_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    followers_url: str = Field(default=...)
+    following_url: str = Field(default=...)
+    gists_url: str = Field(default=...)
+    gravatar_id: str = Field(default=...)
+    html_url: str = Field(default=...)
+    id: int = Field(default=...)
+    login: str = Field(default=...)
+    node_id: str = Field(default=...)
+    organizations_url: str = Field(default=...)
+    received_events_url: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    site_admin: bool = Field(default=...)
+    starred_url: str = Field(default=...)
+    subscriptions_url: str = Field(default=...)
+    type: str = Field(default=...)
+    url: str = Field(default=...)
+
+
+class RegistryPackagePublishedPropRegistryPackagePropRegistry(GitHubWebhookModel):
+    """RegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: str = Field(default=...)
+    name: str = Field(default=...)
+    type: str = Field(default=...)
+    url: str = Field(default=...)
+    vendor: str = Field(default=...)
+
+
+class RegistryPackageUpdated(GitHubWebhookModel):
+    """registry_package updated event"""
+
+    action: Literal["updated"] = Field(default=...)
+    registry_package: RegistryPackageUpdatedPropRegistryPackage = Field(
+        description="Information about the package.", default=...
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    sender: User = Field(title="User", default=...)
+    organization: Union[Unset, Organization] = Field(
+        title="Organization", default=UNSET
+    )
+
+
+class RegistryPackageUpdatedPropRegistryPackage(GitHubWebhookModel):
+    """RegistryPackageUpdatedPropRegistryPackage
+
+    Information about the package.
+    """
+
+    id: int = Field(description="Unique identifier of the package.", default=...)
+    name: str = Field(description="The name of the package.", default=...)
+    namespace: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    ecosystem: str = Field(default=...)
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "CONTAINER"
+    ] = Field(
+        description="The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.",
+        default=...,
+    )
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: Union[datetime, None] = Field(default=...)
+    owner: User = Field(title="User", default=...)
+    package_version: Union[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0, None
+    ] = Field(description="A version of a software package", default=...)
+    registry: RegistryPackageUpdatedPropRegistryPackagePropRegistry = Field(default=...)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0"""
+
+    id: int = Field(
+        description="Unique identifier of the package version.", default=...
+    )
+    version: str = Field(default=...)
+    summary: str = Field(default=...)
+    name: str = Field(description="The name of the package version.", default=...)
+    description: str = Field(default=...)
+    body: Union[
+        Unset,
+        Union[
+            str,
+            RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1,
+        ],
+    ] = Field(default=UNSET)
+    body_html: Union[Unset, str] = Field(default=UNSET)
+    release: Union[
+        Unset,
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropRelease,
+    ] = Field(default=UNSET)
+    manifest: Union[Unset, str] = Field(default=UNSET)
+    html_url: str = Field(default=...)
+    tag_name: Union[Unset, str] = Field(default=UNSET)
+    target_commitish: Union[Unset, str] = Field(default=UNSET)
+    target_oid: Union[Unset, str] = Field(default=UNSET)
+    draft: Union[Unset, bool] = Field(default=UNSET)
+    prerelease: Union[Unset, bool] = Field(default=UNSET)
+    created_at: Union[Unset, datetime] = Field(default=UNSET)
+    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    metadata: List[Any] = Field(description="Package Version Metadata", default=...)
+    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    container_metadata: Union[
+        Unset,
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata,
+    ] = Field(default=UNSET)
+    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+        title="Package NPM Metadata", default=UNSET
+    )
+    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+        default=UNSET
+    )
+    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    package_files: List[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems
+    ] = Field(default=...)
+    package_url: Union[Unset, str] = Field(default=UNSET)
+    author: Union[
+        Unset,
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropAuthor,
+    ] = Field(default=UNSET)
+    source_url: Union[Unset, str] = Field(default=UNSET)
+    installation_command: str = Field(default=...)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1"""
+
+    repository: RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository = Field(
+        default=...
+    )
+    info: RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo = Field(
+        default=...
+    )
+    attributes: Union[
+        Unset,
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes,
+    ] = Field(default=UNSET)
+    formatted: Union[Unset, bool] = Field(default=UNSET, alias="_formatted")
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1P
+    ropRepository
+    """
+
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1P
+    ropInfo
+    """
+
+    type: str = Field(default=...)
+    oid: str = Field(default=...)
+    mode: int = Field(default=...)
+    name: str = Field(default=...)
+    path: str = Field(default=...)
+    size: Union[int, None] = Field(default=...)
+    collection: Union[bool, None] = Field(default=...)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1P
+    ropAttributes
+    """
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropRelease(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropRelease"""
+
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    id: int = Field(default=...)
+    tag_name: str = Field(default=...)
+    target_commitish: str = Field(default=...)
+    name: str = Field(default=...)
+    draft: bool = Field(default=...)
+    author: User = Field(title="User", default=...)
+    prerelease: bool = Field(default=...)
+    created_at: datetime = Field(default=...)
+    published_at: datetime = Field(default=...)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMe
+    tadata
+    """
+
+    labels: Union[
+        Unset,
+        Union[
+            RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    manifest: Union[
+        Unset,
+        Union[
+            RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0,
+            None,
+        ],
+    ] = Field(default=UNSET)
+    tag: Union[
+        Unset,
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag,
+    ] = Field(default=UNSET)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMe
+    tadataPropLabelsOneof0
+    """
+
+    description: Union[Unset, str] = Field(default=UNSET)
+    source: Union[Unset, str] = Field(default=UNSET)
+    revision: Union[Unset, str] = Field(default=UNSET)
+    image_url: Union[Unset, str] = Field(default=UNSET)
+    licenses: Union[Unset, str] = Field(default=UNSET)
+    all_labels: Union[
+        Unset,
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels,
+    ] = Field(default=UNSET)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels(
+    GitHubWebhookModel, extra=Extra.allow
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMe
+    tadataPropLabelsOneof0PropAllLabels
+    """
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMe
+    tadataPropManifestOneof0
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    media_type: Union[Unset, str] = Field(default=UNSET)
+    uri: Union[Unset, str] = Field(default=UNSET)
+    size: Union[Unset, int] = Field(default=UNSET)
+    config: Union[
+        Unset,
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig,
+    ] = Field(default=UNSET)
+    layers: Union[
+        Unset,
+        List[
+            RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems
+        ],
+    ] = Field(default=UNSET)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMe
+    tadataPropManifestOneof0PropConfig
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    media_type: Union[Unset, str] = Field(default=UNSET)
+    size: Union[Unset, int] = Field(default=UNSET)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMe
+    tadataPropManifestOneof0PropLayersItems
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    media_type: Union[Unset, str] = Field(default=UNSET)
+    size: Union[Unset, int] = Field(default=UNSET)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMe
+    tadataPropTag
+    """
+
+    digest: Union[Unset, str] = Field(default=UNSET)
+    name: Union[Unset, str] = Field(default=UNSET)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropPackageFile
+    sItems
+    """
+
+    download_url: str = Field(default=...)
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    sha256: str = Field(default=...)
+    sha1: str = Field(default=...)
+    md5: str = Field(default=...)
+    content_type: str = Field(default=...)
+    state: str = Field(default=...)
+    size: int = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropAuthor(
+    GitHubWebhookModel
+):
+    """RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropAuthor"""
+
+    avatar_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    followers_url: str = Field(default=...)
+    following_url: str = Field(default=...)
+    gists_url: str = Field(default=...)
+    gravatar_id: str = Field(default=...)
+    html_url: str = Field(default=...)
+    id: int = Field(default=...)
+    login: str = Field(default=...)
+    node_id: str = Field(default=...)
+    organizations_url: str = Field(default=...)
+    received_events_url: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    site_admin: bool = Field(default=...)
+    starred_url: str = Field(default=...)
+    subscriptions_url: str = Field(default=...)
+    type: str = Field(default=...)
+    url: str = Field(default=...)
+
+
+class RegistryPackageUpdatedPropRegistryPackagePropRegistry(GitHubWebhookModel):
+    """RegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+
+    about_url: str = Field(default=...)
+    name: str = Field(default=...)
+    type: str = Field(default=...)
+    url: str = Field(default=...)
+    vendor: str = Field(default=...)
 
 
 class ReleaseCreated(GitHubWebhookModel):
@@ -15219,15 +16282,50 @@ OrganizationMemberRemoved.update_forward_refs()
 OrganizationRenamed.update_forward_refs()
 PackagePublished.update_forward_refs()
 PackagePublishedPropPackage.update_forward_refs()
-PackagePublishedPropPackagePropPackageVersion.update_forward_refs()
-PackagePublishedPropPackagePropPackageVersionPropRelease.update_forward_refs()
-PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropRelease.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag.update_forward_refs()
+PackageNpmMetadata.update_forward_refs()
+PackageNpmMetadataPropAuthorOneof0.update_forward_refs()
+PackageNpmMetadataPropBugsOneof0.update_forward_refs()
+PackageNpmMetadataPropDependencies.update_forward_refs()
+PackageNpmMetadataPropDevDependencies.update_forward_refs()
+PackageNpmMetadataPropPeerDependencies.update_forward_refs()
+PackageNpmMetadataPropOptionalDependencies.update_forward_refs()
+PackageNpmMetadataPropDistOneof0.update_forward_refs()
+PackageNpmMetadataPropRepositoryOneof0.update_forward_refs()
+PackageNpmMetadataPropScripts.update_forward_refs()
+PackageNpmMetadataPropMaintainersItems.update_forward_refs()
+PackageNpmMetadataPropContributorsItems.update_forward_refs()
+PackageNpmMetadataPropEngines.update_forward_refs()
+PackageNpmMetadataPropBin.update_forward_refs()
+PackageNpmMetadataPropMan.update_forward_refs()
+PackageNpmMetadataPropDirectoriesOneof0.update_forward_refs()
+PackageNugetMetadata.update_forward_refs()
+PackageNugetMetadataPropIdOneof1.update_forward_refs()
+PackageNugetMetadataPropValueOneof3.update_forward_refs()
+PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems.update_forward_refs()
 PackagePublishedPropPackagePropRegistry.update_forward_refs()
 PackageUpdated.update_forward_refs()
 PackageUpdatedPropPackage.update_forward_refs()
-PackageUpdatedPropPackagePropPackageVersion.update_forward_refs()
-PackageUpdatedPropPackagePropPackageVersionPropRelease.update_forward_refs()
-PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropRelease.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag.update_forward_refs()
+PackageUpdatedPropPackagePropPackageVersionOneof0PropPackageFilesItems.update_forward_refs()
 PackageUpdatedPropPackagePropRegistry.update_forward_refs()
 PageBuildEvent.update_forward_refs()
 PageBuildEventPropBuild.update_forward_refs()
@@ -15376,6 +16474,42 @@ PullRequestReviewThreadUnresolved.update_forward_refs()
 PullRequestReviewThreadUnresolvedPropThread.update_forward_refs()
 PushEvent.update_forward_refs()
 Commit.update_forward_refs()
+RegistryPackagePublished.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackage.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropRelease.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropAuthor.update_forward_refs()
+RegistryPackagePublishedPropRegistryPackagePropRegistry.update_forward_refs()
+RegistryPackageUpdated.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackage.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropRelease.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropAuthor.update_forward_refs()
+RegistryPackageUpdatedPropRegistryPackagePropRegistry.update_forward_refs()
 ReleaseCreated.update_forward_refs()
 Release.update_forward_refs()
 ReleaseAsset.update_forward_refs()
@@ -15895,15 +17029,50 @@ __all__ = [
     "OrganizationRenamed",
     "PackagePublished",
     "PackagePublishedPropPackage",
-    "PackagePublishedPropPackagePropPackageVersion",
-    "PackagePublishedPropPackagePropPackageVersionPropRelease",
-    "PackagePublishedPropPackagePropPackageVersionPropPackageFilesItems",
+    "PackagePublishedPropPackagePropPackageVersionOneof0",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropRelease",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag",
+    "PackageNpmMetadata",
+    "PackageNpmMetadataPropAuthorOneof0",
+    "PackageNpmMetadataPropBugsOneof0",
+    "PackageNpmMetadataPropDependencies",
+    "PackageNpmMetadataPropDevDependencies",
+    "PackageNpmMetadataPropPeerDependencies",
+    "PackageNpmMetadataPropOptionalDependencies",
+    "PackageNpmMetadataPropDistOneof0",
+    "PackageNpmMetadataPropRepositoryOneof0",
+    "PackageNpmMetadataPropScripts",
+    "PackageNpmMetadataPropMaintainersItems",
+    "PackageNpmMetadataPropContributorsItems",
+    "PackageNpmMetadataPropEngines",
+    "PackageNpmMetadataPropBin",
+    "PackageNpmMetadataPropMan",
+    "PackageNpmMetadataPropDirectoriesOneof0",
+    "PackageNugetMetadata",
+    "PackageNugetMetadataPropIdOneof1",
+    "PackageNugetMetadataPropValueOneof3",
+    "PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems",
     "PackagePublishedPropPackagePropRegistry",
     "PackageUpdated",
     "PackageUpdatedPropPackage",
-    "PackageUpdatedPropPackagePropPackageVersion",
-    "PackageUpdatedPropPackagePropPackageVersionPropRelease",
-    "PackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropRepository",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropInfo",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropRelease",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag",
+    "PackageUpdatedPropPackagePropPackageVersionOneof0PropPackageFilesItems",
     "PackageUpdatedPropPackagePropRegistry",
     "PageBuildEvent",
     "PageBuildEventPropBuild",
@@ -16052,6 +17221,42 @@ __all__ = [
     "PullRequestReviewThreadUnresolvedPropThread",
     "PushEvent",
     "Commit",
+    "RegistryPackagePublished",
+    "RegistryPackagePublishedPropRegistryPackage",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropRelease",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems",
+    "RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropAuthor",
+    "RegistryPackagePublishedPropRegistryPackagePropRegistry",
+    "RegistryPackageUpdated",
+    "RegistryPackageUpdatedPropRegistryPackage",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropRelease",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems",
+    "RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropAuthor",
+    "RegistryPackageUpdatedPropRegistryPackagePropRegistry",
     "ReleaseCreated",
     "Release",
     "ReleaseAsset",

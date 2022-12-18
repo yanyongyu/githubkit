@@ -15,6 +15,7 @@ from .types import (
     SelectedActionsType,
     EnterprisesEnterpriseActionsPermissionsPutBodyType,
     EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
+    EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
     EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
@@ -31,9 +32,11 @@ from .models import (
     ValidationErrorSimple,
     RunnerGroupsEnterprise,
     ActionsEnterprisePermissions,
+    EnterpriseSecurityAnalysisSettings,
     EnterprisesEnterpriseActionsPermissionsPutBody,
     EnterprisesEnterpriseActionsRunnerGroupsPostBody,
     EnterprisesEnterpriseActionsRunnersGetResponse200,
+    EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody,
     EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody,
     EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody,
@@ -1618,5 +1621,181 @@ class EnterpriseAdminClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[EnterpriseSecurityAnalysisSettings]":
+        url = f"/enterprises/{enterprise}/code_security_and_analysis"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=EnterpriseSecurityAnalysisSettings,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+    ) -> "Response[EnterpriseSecurityAnalysisSettings]":
+        url = f"/enterprises/{enterprise}/code_security_and_analysis"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=EnterpriseSecurityAnalysisSettings,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def patch_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def patch_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
+        advanced_security_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: Union[
+            Unset, bool
+        ] = UNSET,
+        secret_scanning_push_protection_custom_link: Union[
+            Unset, Union[str, None]
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    def patch_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/code_security_and_analysis"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_patch_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_patch_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Unset = UNSET,
+        advanced_security_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: Union[
+            Unset, bool
+        ] = UNSET,
+        secret_scanning_push_protection_custom_link: Union[
+            Unset, Union[str, None]
+        ] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_patch_security_analysis_settings_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: Union[
+            Unset, EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/code_security_and_analysis"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def post_security_product_enablement_for_enterprise(
+        self,
+        enterprise: str,
+        security_product: Literal[
+            "advanced_security", "secret_scanning", "secret_scanning_push_protection"
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/{security_product}/{enablement}"
+
+        return self._github.request(
+            "POST",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_post_security_product_enablement_for_enterprise(
+        self,
+        enterprise: str,
+        security_product: Literal[
+            "advanced_security", "secret_scanning", "secret_scanning_push_protection"
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+    ) -> "Response":
+        url = f"/enterprises/{enterprise}/{security_product}/{enablement}"
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            error_models={
+                "404": BasicError,
             },
         )

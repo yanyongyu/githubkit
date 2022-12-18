@@ -486,7 +486,7 @@ class AppPermissions(GitHubRestModel):
         default=UNSET,
     )
     organization_custom_roles: Union[Unset, Literal["read", "write"]] = Field(
-        description="The level of permission to grant the access token for custom roles management. This property is in beta and is subject to change.",
+        description="The level of permission to grant the access token for organization custom roles management. This property is in beta and is subject to change.",
         default=UNSET,
     )
     organization_announcement_banners: Union[Unset, Literal["read", "write"]] = Field(
@@ -1686,6 +1686,27 @@ class CodeScanningOrganizationAlertItems(GitHubRestModel):
     )
 
 
+class EnterpriseSecurityAnalysisSettings(GitHubRestModel):
+    """Enterprise Security Analysis Settings"""
+
+    advanced_security_enabled_for_new_repositories: bool = Field(
+        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise.",
+        default=...,
+    )
+    secret_scanning_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise.",
+        default=...,
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise.",
+        default=...,
+    )
+    secret_scanning_push_protection_custom_link: Union[Unset, Union[str, None]] = Field(
+        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
+        default=UNSET,
+    )
+
+
 class DependabotAlertPackage(GitHubRestModel):
     """DependabotAlertPackage
 
@@ -2732,6 +2753,38 @@ class ApiOverviewPropSshKeyFingerprints(GitHubRestModel):
     sha256_ed25519: Union[Unset, str] = Field(default=UNSET, alias="SHA256_ED25519")
 
 
+class SecurityAndAnalysisPropAdvancedSecurity(GitHubRestModel):
+    """SecurityAndAnalysisPropAdvancedSecurity"""
+
+    status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanning(GitHubRestModel):
+    """SecurityAndAnalysisPropSecretScanning"""
+
+    status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubRestModel):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysis(GitHubRestModel):
+    """SecurityAndAnalysis"""
+
+    advanced_security: Union[Unset, SecurityAndAnalysisPropAdvancedSecurity] = Field(
+        default=UNSET
+    )
+    secret_scanning: Union[Unset, SecurityAndAnalysisPropSecretScanning] = Field(
+        default=UNSET
+    )
+    secret_scanning_push_protection: Union[
+        Unset, SecurityAndAnalysisPropSecretScanningPushProtection
+    ] = Field(default=UNSET)
+
+
 class MinimalRepository(GitHubRestModel):
     """Minimal Repository
 
@@ -2833,6 +2886,9 @@ class MinimalRepository(GitHubRestModel):
     watchers: Union[Unset, int] = Field(default=UNSET)
     allow_forking: Union[Unset, bool] = Field(default=UNSET)
     web_commit_signoff_required: Union[Unset, bool] = Field(default=UNSET)
+    security_and_analysis: Union[Unset, Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
+    )
 
 
 class MinimalRepositoryPropPermissions(GitHubRestModel):
@@ -4350,38 +4406,6 @@ class CodeOfConductSimple(GitHubRestModel):
     html_url: Union[str, None] = Field(default=...)
 
 
-class SecurityAndAnalysisPropAdvancedSecurity(GitHubRestModel):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
-
-    status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanning(GitHubRestModel):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubRestModel):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: Union[Unset, Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysis(GitHubRestModel):
-    """SecurityAndAnalysis"""
-
-    advanced_security: Union[Unset, SecurityAndAnalysisPropAdvancedSecurity] = Field(
-        default=UNSET
-    )
-    secret_scanning: Union[Unset, SecurityAndAnalysisPropSecretScanning] = Field(
-        default=UNSET
-    )
-    secret_scanning_push_protection: Union[
-        Unset, SecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(default=UNSET)
-
-
 class FullRepository(GitHubRestModel):
     """Full Repository
 
@@ -4676,6 +4700,12 @@ class Job(GitHubRestModel):
         description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)",
         default=...,
     )
+    workflow_name: Union[str, None] = Field(
+        description="The name of the workflow.", default=...
+    )
+    head_branch: Union[str, None] = Field(
+        description="The name of the current branch.", default=...
+    )
 
 
 class JobPropStepsItems(GitHubRestModel):
@@ -4733,8 +4763,8 @@ class ActionsRepositoryPermissions(GitHubRestModel):
 class ActionsWorkflowAccessToRepository(GitHubRestModel):
     """ActionsWorkflowAccessToRepository"""
 
-    access_level: Literal["none", "organization", "enterprise"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository. `none` means access is only possible from workflows in this repository.",
+    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
+        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repos only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise.",
         default=...,
     )
 
@@ -11457,6 +11487,29 @@ class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubRestModel):
     documentation_url: Union[Unset, str] = Field(default=UNSET)
 
 
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubRestModel):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+
+    advanced_security_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/get-started/learning-about-github/about-github-advanced-security)."',
+        default=UNSET,
+    )
+    secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = Field(
+        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)."',
+        default=UNSET,
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Union[
+        Unset, bool
+    ] = Field(
+        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
+        default=UNSET,
+    )
+    secret_scanning_push_protection_custom_link: Union[Unset, Union[str, None]] = Field(
+        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
+        default=UNSET,
+    )
+
+
 class GistsPostBody(GitHubRestModel):
     """GistsPostBody"""
 
@@ -12821,7 +12874,7 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
         default=UNSET,
     )
     archived: Union[Unset, bool] = Field(
-        description="`true` to archive this repository. **Note**: You cannot unarchive repositories through the API.",
+        description="Whether to archive this repository. `false` will unarchive a previously archived repository.",
         default=False,
     )
     allow_forking: Union[Unset, bool] = Field(
@@ -16770,6 +16823,7 @@ CodeScanningAlertInstance.update_forward_refs()
 CodeScanningAlertInstancePropMessage.update_forward_refs()
 SimpleRepository.update_forward_refs()
 CodeScanningOrganizationAlertItems.update_forward_refs()
+EnterpriseSecurityAnalysisSettings.update_forward_refs()
 DependabotAlertPackage.update_forward_refs()
 DependabotAlertSecurityVulnerability.update_forward_refs()
 DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion.update_forward_refs()
@@ -16820,6 +16874,10 @@ MarketplacePurchasePropMarketplacePendingChange.update_forward_refs()
 MarketplacePurchasePropMarketplacePurchase.update_forward_refs()
 ApiOverview.update_forward_refs()
 ApiOverviewPropSshKeyFingerprints.update_forward_refs()
+SecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
+SecurityAndAnalysisPropSecretScanning.update_forward_refs()
+SecurityAndAnalysisPropSecretScanningPushProtection.update_forward_refs()
+SecurityAndAnalysis.update_forward_refs()
 MinimalRepository.update_forward_refs()
 MinimalRepositoryPropPermissions.update_forward_refs()
 MinimalRepositoryPropLicense.update_forward_refs()
@@ -16884,10 +16942,6 @@ RateLimit.update_forward_refs()
 RateLimitOverview.update_forward_refs()
 RateLimitOverviewPropResources.update_forward_refs()
 CodeOfConductSimple.update_forward_refs()
-SecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
-SecurityAndAnalysisPropSecretScanning.update_forward_refs()
-SecurityAndAnalysisPropSecretScanningPushProtection.update_forward_refs()
-SecurityAndAnalysis.update_forward_refs()
 FullRepository.update_forward_refs()
 FullRepositoryPropPermissions.update_forward_refs()
 Artifact.update_forward_refs()
@@ -17273,6 +17327,7 @@ EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody.update_forward_refs()
 EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody.update_forward_refs()
 EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200.update_forward_refs()
 EnterprisesEnterpriseCodeScanningAlertsGetResponse503.update_forward_refs()
+EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody.update_forward_refs()
 GistsPostBody.update_forward_refs()
 GistsPostBodyPropFiles.update_forward_refs()
 GistsGistIdGetResponse403.update_forward_refs()
@@ -17676,6 +17731,7 @@ __all__ = [
     "CodeScanningAlertInstancePropMessage",
     "SimpleRepository",
     "CodeScanningOrganizationAlertItems",
+    "EnterpriseSecurityAnalysisSettings",
     "DependabotAlertPackage",
     "DependabotAlertSecurityVulnerability",
     "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
@@ -17726,6 +17782,10 @@ __all__ = [
     "MarketplacePurchasePropMarketplacePurchase",
     "ApiOverview",
     "ApiOverviewPropSshKeyFingerprints",
+    "SecurityAndAnalysisPropAdvancedSecurity",
+    "SecurityAndAnalysisPropSecretScanning",
+    "SecurityAndAnalysisPropSecretScanningPushProtection",
+    "SecurityAndAnalysis",
     "MinimalRepository",
     "MinimalRepositoryPropPermissions",
     "MinimalRepositoryPropLicense",
@@ -17790,10 +17850,6 @@ __all__ = [
     "RateLimitOverview",
     "RateLimitOverviewPropResources",
     "CodeOfConductSimple",
-    "SecurityAndAnalysisPropAdvancedSecurity",
-    "SecurityAndAnalysisPropSecretScanning",
-    "SecurityAndAnalysisPropSecretScanningPushProtection",
-    "SecurityAndAnalysis",
     "FullRepository",
     "FullRepositoryPropPermissions",
     "Artifact",
@@ -18179,6 +18235,7 @@ __all__ = [
     "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",
     "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200",
     "EnterprisesEnterpriseCodeScanningAlertsGetResponse503",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",
     "GistsPostBody",
     "GistsPostBodyPropFiles",
     "GistsGistIdGetResponse403",
