@@ -18,7 +18,7 @@ httpx = ">=0.23.0, <1.0.0"
 typing-extensions = "^4.3.0"
 anyio = { version = "^3.6.1", optional = true }
 PyJWT = { version = "^2.4.0", optional = true }
-cryptography = { version = "^37.0.4", optional = true }
+cryptography = { version = "^38.0.3", optional = true }
 
 [tool.poetry.group.dev.dependencies]
 tomli = "^2.0.1"
