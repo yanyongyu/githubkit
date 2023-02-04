@@ -17,8 +17,8 @@ from .models import (
     SecretScanningAlert,
     SecretScanningLocation,
     OrganizationSecretScanningAlert,
-    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
     ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+    EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
 )
 
 if TYPE_CHECKING:
@@ -62,7 +62,7 @@ class SecretScanningClient:
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -98,7 +98,7 @@ class SecretScanningClient:
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -136,7 +136,7 @@ class SecretScanningClient:
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -174,7 +174,7 @@ class SecretScanningClient:
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -212,7 +212,7 @@ class SecretScanningClient:
             params=exclude_unset(params),
             response_model=List[SecretScanningAlert],
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -250,7 +250,7 @@ class SecretScanningClient:
             params=exclude_unset(params),
             response_model=List[SecretScanningAlert],
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -267,7 +267,7 @@ class SecretScanningClient:
             url,
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -284,7 +284,7 @@ class SecretScanningClient:
             url,
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -346,7 +346,7 @@ class SecretScanningClient:
             json=exclude_unset(json),
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -408,7 +408,7 @@ class SecretScanningClient:
             json=exclude_unset(json),
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -433,7 +433,7 @@ class SecretScanningClient:
             params=exclude_unset(params),
             response_model=List[SecretScanningLocation],
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -458,6 +458,6 @@ class SecretScanningClient:
             params=exclude_unset(params),
             response_model=List[SecretScanningLocation],
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )

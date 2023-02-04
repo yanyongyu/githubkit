@@ -5,19 +5,13 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Union, overload
+from typing import TYPE_CHECKING, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import exclude_unset
 
-from .models import (
-    BasicError,
-    ActionsBillingUsage,
-    CombinedBillingUsage,
-    PackagesBillingUsage,
-    AdvancedSecurityActiveCommitters,
-)
+from .models import ActionsBillingUsage, CombinedBillingUsage, PackagesBillingUsage
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -27,52 +21,6 @@ if TYPE_CHECKING:
 class BillingClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
-
-    def get_github_advanced_security_billing_ghe(
-        self,
-        enterprise: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[AdvancedSecurityActiveCommitters]":
-        url = f"/enterprises/{enterprise}/settings/billing/advanced-security"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
-        )
-
-    async def async_get_github_advanced_security_billing_ghe(
-        self,
-        enterprise: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[AdvancedSecurityActiveCommitters]":
-        url = f"/enterprises/{enterprise}/settings/billing/advanced-security"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
-        )
 
     def get_github_actions_billing_org(
         self,
@@ -96,52 +44,6 @@ class BillingClient:
             "GET",
             url,
             response_model=ActionsBillingUsage,
-        )
-
-    def get_github_advanced_security_billing_org(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[AdvancedSecurityActiveCommitters]":
-        url = f"/orgs/{org}/settings/billing/advanced-security"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
-        )
-
-    async def async_get_github_advanced_security_billing_org(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[AdvancedSecurityActiveCommitters]":
-        url = f"/orgs/{org}/settings/billing/advanced-security"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
         )
 
     def get_github_packages_billing_org(

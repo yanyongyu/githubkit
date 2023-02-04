@@ -486,7 +486,7 @@ class AppPermissions(GitHubRestModel):
         default=UNSET,
     )
     organization_custom_roles: Union[Unset, Literal["read", "write"]] = Field(
-        description="The level of permission to grant the access token for organization custom roles management. This property is in beta and is subject to change.",
+        description="The level of permission to grant the access token for custom repository roles management. This property is in beta and is subject to change.",
         default=UNSET,
     )
     organization_announcement_banners: Union[Unset, Literal["read", "write"]] = Field(
@@ -1014,455 +1014,157 @@ class CodeOfConduct(GitHubRestModel):
     html_url: Union[str, None] = Field(default=...)
 
 
-class ServerStatisticsItems(GitHubRestModel):
-    """ServerStatisticsItems"""
+class DependabotAlertPackage(GitHubRestModel):
+    """DependabotAlertPackage
 
-    server_id: Union[Unset, str] = Field(default=UNSET)
-    collection_date: Union[Unset, str] = Field(default=UNSET)
-    schema_version: Union[Unset, str] = Field(default=UNSET)
-    ghes_version: Union[Unset, str] = Field(default=UNSET)
-    host_name: Union[Unset, str] = Field(default=UNSET)
-    github_connect: Union[Unset, ServerStatisticsItemsPropGithubConnect] = Field(
-        default=UNSET
-    )
-    ghe_stats: Union[Unset, ServerStatisticsItemsPropGheStats] = Field(default=UNSET)
-    dormant_users: Union[Unset, ServerStatisticsItemsPropDormantUsers] = Field(
-        default=UNSET
-    )
+    Details for the vulnerable package.
+    """
 
-
-class ServerStatisticsItemsPropGithubConnect(GitHubRestModel):
-    """ServerStatisticsItemsPropGithubConnect"""
-
-    features_enabled: Union[Unset, List[str]] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStats(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStats"""
-
-    comments: Union[Unset, ServerStatisticsItemsPropGheStatsPropComments] = Field(
-        default=UNSET
-    )
-    gists: Union[Unset, ServerStatisticsItemsPropGheStatsPropGists] = Field(
-        default=UNSET
-    )
-    hooks: Union[Unset, ServerStatisticsItemsPropGheStatsPropHooks] = Field(
-        default=UNSET
-    )
-    issues: Union[Unset, ServerStatisticsItemsPropGheStatsPropIssues] = Field(
-        default=UNSET
-    )
-    milestones: Union[Unset, ServerStatisticsItemsPropGheStatsPropMilestones] = Field(
-        default=UNSET
-    )
-    orgs: Union[Unset, ServerStatisticsItemsPropGheStatsPropOrgs] = Field(default=UNSET)
-    pages: Union[Unset, ServerStatisticsItemsPropGheStatsPropPages] = Field(
-        default=UNSET
-    )
-    pulls: Union[Unset, ServerStatisticsItemsPropGheStatsPropPulls] = Field(
-        default=UNSET
-    )
-    repos: Union[Unset, ServerStatisticsItemsPropGheStatsPropRepos] = Field(
-        default=UNSET
-    )
-    users: Union[Unset, ServerStatisticsItemsPropGheStatsPropUsers] = Field(
-        default=UNSET
-    )
-
-
-class ServerStatisticsItemsPropGheStatsPropComments(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropComments"""
-
-    total_commit_comments: Union[Unset, int] = Field(default=UNSET)
-    total_gist_comments: Union[Unset, int] = Field(default=UNSET)
-    total_issue_comments: Union[Unset, int] = Field(default=UNSET)
-    total_pull_request_comments: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropGists(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropGists"""
-
-    total_gists: Union[Unset, int] = Field(default=UNSET)
-    private_gists: Union[Unset, int] = Field(default=UNSET)
-    public_gists: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropHooks(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropHooks"""
-
-    total_hooks: Union[Unset, int] = Field(default=UNSET)
-    active_hooks: Union[Unset, int] = Field(default=UNSET)
-    inactive_hooks: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropIssues(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropIssues"""
-
-    total_issues: Union[Unset, int] = Field(default=UNSET)
-    open_issues: Union[Unset, int] = Field(default=UNSET)
-    closed_issues: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropMilestones(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropMilestones"""
-
-    total_milestones: Union[Unset, int] = Field(default=UNSET)
-    open_milestones: Union[Unset, int] = Field(default=UNSET)
-    closed_milestones: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropOrgs(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropOrgs"""
-
-    total_orgs: Union[Unset, int] = Field(default=UNSET)
-    disabled_orgs: Union[Unset, int] = Field(default=UNSET)
-    total_teams: Union[Unset, int] = Field(default=UNSET)
-    total_team_members: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropPages(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropPages"""
-
-    total_pages: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropPulls(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropPulls"""
-
-    total_pulls: Union[Unset, int] = Field(default=UNSET)
-    merged_pulls: Union[Unset, int] = Field(default=UNSET)
-    mergeable_pulls: Union[Unset, int] = Field(default=UNSET)
-    unmergeable_pulls: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropRepos(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropRepos"""
-
-    total_repos: Union[Unset, int] = Field(default=UNSET)
-    root_repos: Union[Unset, int] = Field(default=UNSET)
-    fork_repos: Union[Unset, int] = Field(default=UNSET)
-    org_repos: Union[Unset, int] = Field(default=UNSET)
-    total_pushes: Union[Unset, int] = Field(default=UNSET)
-    total_wikis: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropUsers(GitHubRestModel):
-    """ServerStatisticsItemsPropGheStatsPropUsers"""
-
-    total_users: Union[Unset, int] = Field(default=UNSET)
-    admin_users: Union[Unset, int] = Field(default=UNSET)
-    suspended_users: Union[Unset, int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropDormantUsers(GitHubRestModel):
-    """ServerStatisticsItemsPropDormantUsers"""
-
-    total_dormant_users: Union[Unset, int] = Field(default=UNSET)
-    dormancy_threshold: Union[Unset, str] = Field(default=UNSET)
-
-
-class ActionsCacheUsageOrgEnterprise(GitHubRestModel):
-    """ActionsCacheUsageOrgEnterprise"""
-
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization.",
+    ecosystem: str = Field(
+        description="The package's language or package management ecosystem.",
         default=...,
     )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization.",
+    name: str = Field(
+        description="The unique package name within its ecosystem.", default=...
+    )
+
+
+class DependabotAlertSecurityVulnerability(GitHubRestModel):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
+    """
+
+    package: DependabotAlertPackage = Field(
+        description="Details for the vulnerable package.", default=...
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the vulnerability.", default=...
+    )
+    vulnerable_version_range: str = Field(
+        description="Conditions that identify vulnerable versions of this vulnerability's package.",
         default=...,
     )
-
-
-class ActionsEnterprisePermissions(GitHubRestModel):
-    """ActionsEnterprisePermissions"""
-
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions.",
-        default=...,
-    )
-    selected_organizations_url: Union[Unset, str] = Field(
-        description="The API URL to use to get or set the selected organizations that are allowed to run GitHub Actions, when `enabled_organizations` is set to `selected`.",
-        default=UNSET,
-    )
-    allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = Field(
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-        default=UNSET,
-    )
-    selected_actions_url: Union[Unset, str] = Field(
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-        default=UNSET,
-    )
-
-
-class OrganizationSimple(GitHubRestModel):
-    """Organization Simple
-
-    A GitHub organization.
-    """
-
-    login: str = Field(default=...)
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    url: str = Field(default=...)
-    repos_url: str = Field(default=...)
-    events_url: str = Field(default=...)
-    hooks_url: str = Field(default=...)
-    issues_url: str = Field(default=...)
-    members_url: str = Field(default=...)
-    public_members_url: str = Field(default=...)
-    avatar_url: str = Field(default=...)
-    description: Union[str, None] = Field(default=...)
-
-
-class SelectedActions(GitHubRestModel):
-    """SelectedActions"""
-
-    github_owned_allowed: Union[Unset, bool] = Field(
-        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
-        default=UNSET,
-    )
-    verified_allowed: Union[Unset, bool] = Field(
-        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
-        default=UNSET,
-    )
-    patterns_allowed: Union[Unset, List[str]] = Field(
-        description='Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`."',
-        default=UNSET,
-    )
-
-
-class ActionsGetDefaultWorkflowPermissions(GitHubRestModel):
-    """ActionsGetDefaultWorkflowPermissions"""
-
-    default_workflow_permissions: Literal["read", "write"] = Field(
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
-        default=...,
-    )
-    can_approve_pull_request_reviews: bool = Field(
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
-        default=...,
-    )
-
-
-class ActionsSetDefaultWorkflowPermissions(GitHubRestModel):
-    """ActionsSetDefaultWorkflowPermissions"""
-
-    default_workflow_permissions: Union[Unset, Literal["read", "write"]] = Field(
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
-        default=UNSET,
-    )
-    can_approve_pull_request_reviews: Union[Unset, bool] = Field(
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
-        default=UNSET,
-    )
-
-
-class RunnerGroupsEnterprise(GitHubRestModel):
-    """RunnerGroupsEnterprise"""
-
-    id: float = Field(default=...)
-    name: str = Field(default=...)
-    visibility: str = Field(default=...)
-    default: bool = Field(default=...)
-    selected_organizations_url: Union[Unset, str] = Field(default=UNSET)
-    runners_url: str = Field(default=...)
-    allows_public_repositories: bool = Field(default=...)
-    workflow_restrictions_read_only: Union[Unset, bool] = Field(
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
-        default=False,
-    )
-    restricted_to_workflows: Union[Unset, bool] = Field(
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-        default=False,
-    )
-    selected_workflows: Union[Unset, List[str]] = Field(
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-        default=UNSET,
-    )
-
-
-class RunnerLabel(GitHubRestModel):
-    """Self hosted runner label
-
-    A label for a self hosted runner
-    """
-
-    id: Union[Unset, int] = Field(
-        description="Unique identifier of the label.", default=UNSET
-    )
-    name: str = Field(description="Name of the label.", default=...)
-    type: Union[Unset, Literal["read-only", "custom"]] = Field(
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
-        default=UNSET,
-    )
-
-
-class Runner(GitHubRestModel):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int = Field(description="The id of the runner.", default=...)
-    name: str = Field(description="The name of the runner.", default=...)
-    os: str = Field(description="The Operating System of the runner.", default=...)
-    status: str = Field(description="The status of the runner.", default=...)
-    busy: bool = Field(default=...)
-    labels: List[RunnerLabel] = Field(default=...)
-
-
-class RunnerApplication(GitHubRestModel):
-    """Runner Application
-
-    Runner Application
-    """
-
-    os: str = Field(default=...)
-    architecture: str = Field(default=...)
-    download_url: str = Field(default=...)
-    filename: str = Field(default=...)
-    temp_download_token: Union[Unset, str] = Field(
-        description="A short lived bearer token used to download the runner, if needed.",
-        default=UNSET,
-    )
-    sha256_checksum: Union[Unset, str] = Field(default=UNSET)
-
-
-class AuthenticationToken(GitHubRestModel):
-    """Authentication Token
-
-    Authentication Token
-    """
-
-    token: str = Field(description="The token used for authentication", default=...)
-    expires_at: datetime = Field(description="The time this token expires", default=...)
-    permissions: Union[Unset, AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Union[Unset, List[Repository]] = Field(
-        description="The repositories this token has access to", default=UNSET
-    )
-    single_file: Union[Unset, Union[str, None]] = Field(default=UNSET)
-    repository_selection: Union[Unset, Literal["all", "selected"]] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved",
-        default=UNSET,
-    )
-
-
-class AuthenticationTokenPropPermissions(GitHubRestModel):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-class CodeScanningAlertRule(GitHubRestModel):
-    """CodeScanningAlertRule"""
-
-    id: Union[Unset, Union[str, None]] = Field(
-        description="A unique identifier for the rule used to detect the alert.",
-        default=UNSET,
-    )
-    name: Union[Unset, str] = Field(
-        description="The name of the rule used to detect the alert.", default=UNSET
-    )
-    severity: Union[
-        Unset, Union[None, Literal["none", "note", "warning", "error"]]
-    ] = Field(description="The severity of the alert.", default=UNSET)
-    security_severity_level: Union[
-        Unset, Union[None, Literal["low", "medium", "high", "critical"]]
-    ] = Field(description="The security severity of the alert.", default=UNSET)
-    description: Union[Unset, str] = Field(
-        description="A short description of the rule used to detect the alert.",
-        default=UNSET,
-    )
-    full_description: Union[Unset, str] = Field(
-        description="description of the rule used to detect the alert.", default=UNSET
-    )
-    tags: Union[Unset, Union[List[str], None]] = Field(
-        description="A set of tags applicable for the rule.", default=UNSET
-    )
-    help_: Union[Unset, Union[str, None]] = Field(
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
-        default=UNSET,
-        alias="help",
-    )
-    help_uri: Union[Unset, Union[str, None]] = Field(
-        description="A link to the documentation for the rule used to detect the alert.",
-        default=UNSET,
-    )
-
-
-class CodeScanningAnalysisTool(GitHubRestModel):
-    """CodeScanningAnalysisTool"""
-
-    name: Union[Unset, str] = Field(
-        description="The name of the tool used to generate the code scanning analysis.",
-        default=UNSET,
-    )
-    version: Union[Unset, Union[str, None]] = Field(
-        description="The version of the tool used to generate the code scanning analysis.",
-        default=UNSET,
-    )
-    guid: Union[Unset, Union[str, None]] = Field(
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
-        default=UNSET,
-    )
-
-
-class CodeScanningAlertLocation(GitHubRestModel):
-    """CodeScanningAlertLocation
-
-    Describe a region within a file for the alert.
-    """
-
-    path: Union[Unset, str] = Field(default=UNSET)
-    start_line: Union[Unset, int] = Field(default=UNSET)
-    end_line: Union[Unset, int] = Field(default=UNSET)
-    start_column: Union[Unset, int] = Field(default=UNSET)
-    end_column: Union[Unset, int] = Field(default=UNSET)
-
-
-class CodeScanningAlertInstance(GitHubRestModel):
-    """CodeScanningAlertInstance"""
-
-    ref: Union[Unset, str] = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
-        default=UNSET,
-    )
-    analysis_key: Union[Unset, str] = Field(
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
-        default=UNSET,
-    )
-    environment: Union[Unset, str] = Field(
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
-        default=UNSET,
-    )
-    category: Union[Unset, str] = Field(
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-        default=UNSET,
-    )
-    state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = Field(
-        description="State of a code scanning alert.", default=UNSET
-    )
-    commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Union[Unset, CodeScanningAlertLocation] = Field(
-        description="Describe a region within a file for the alert.", default=UNSET
-    )
-    html_url: Union[Unset, str] = Field(default=UNSET)
-    classifications: Union[
-        Unset, List[Union[None, Literal["source", "generated", "test", "library"]]]
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
     ] = Field(
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
-        default=UNSET,
+        description="Details pertaining to the package version that patches this vulnerability.",
+        default=...,
     )
 
 
-class CodeScanningAlertInstancePropMessage(GitHubRestModel):
-    """CodeScanningAlertInstancePropMessage"""
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubRestModel):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
 
-    text: Union[Unset, str] = Field(default=UNSET)
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str = Field(
+        description="The package version that patches this vulnerability.", default=...
+    )
+
+
+class DependabotAlertSecurityAdvisory(GitHubRestModel):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub Security Advisory ID assigned to the advisory.",
+        default=...,
+    )
+    cve_id: Union[str, None] = Field(
+        description="The unique CVE ID assigned to the advisory.", default=...
+    )
+    summary: str = Field(
+        description="A short, plain text summary of the advisory.",
+        max_length=1024,
+        default=...,
+    )
+    description: str = Field(
+        description="A long-form Markdown-supported description of the advisory.",
+        default=...,
+    )
+    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
+        description="Vulnerable version range information for the advisory.",
+        default=...,
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the advisory.", default=...
+    )
+    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
+        description="Details for the advisory pertaining to the Common Vulnerability Scoring System.",
+        default=...,
+    )
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+        description="Details for the advisory pertaining to Common Weakness Enumeration.",
+        default=...,
+    )
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+        description="Values that identify this advisory among security information sources.",
+        default=...,
+    )
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+        description="Links to additional advisory information.", default=...
+    )
+    published_at: datetime = Field(
+        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    withdrawn_at: Union[datetime, None] = Field(
+        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCvss(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float = Field(
+        description="The overall CVSS score of the advisory.", le=10.0, default=...
+    )
+    vector_string: Union[str, None] = Field(
+        description="The full CVSS vector string for the advisory.", default=...
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str = Field(description="The unique CWE ID.", default=...)
+    name: str = Field(description="The short, plain text name of the CWE.", default=...)
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"] = Field(
+        description="The type of advisory identifier.", default=...
+    )
+    value: str = Field(description="The value of the advisory identifer.", default=...)
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubRestModel):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str = Field(description="The URL of the reference.", default=...)
 
 
 class SimpleRepository(GitHubRestModel):
@@ -1633,233 +1335,6 @@ class SimpleRepository(GitHubRestModel):
     )
 
 
-class CodeScanningOrganizationAlertItems(GitHubRestModel):
-    """CodeScanningOrganizationAlertItems"""
-
-    number: int = Field(description="The security alert number.", default=...)
-    created_at: datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-    updated_at: Union[Unset, datetime] = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=UNSET,
-    )
-    url: str = Field(description="The REST API URL of the alert resource.", default=...)
-    html_url: str = Field(
-        description="The GitHub URL of the alert resource.", default=...
-    )
-    instances_url: str = Field(
-        description="The REST API URL for fetching the list of instances for an alert.",
-        default=...,
-    )
-    state: Literal["open", "closed", "dismissed", "fixed"] = Field(
-        description="State of a code scanning alert.", default=...
-    )
-    fixed_at: Union[Unset, Union[datetime, None]] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=UNSET,
-    )
-    dismissed_by: Union[None, SimpleUser] = Field(
-        title="Simple User", description="A GitHub user.", default=...
-    )
-    dismissed_at: Union[datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ] = Field(
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
-        default=...,
-    )
-    dismissed_comment: Union[Unset, Union[str, None]] = Field(
-        description="The dismissal comment associated with the dismissal of the alert.",
-        max_length=280,
-        default=UNSET,
-    )
-    rule: CodeScanningAlertRule = Field(default=...)
-    tool: CodeScanningAnalysisTool = Field(default=...)
-    most_recent_instance: CodeScanningAlertInstance = Field(default=...)
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository.", default=...
-    )
-
-
-class EnterpriseSecurityAnalysisSettings(GitHubRestModel):
-    """Enterprise Security Analysis Settings"""
-
-    advanced_security_enabled_for_new_repositories: bool = Field(
-        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise.",
-        default=...,
-    )
-    secret_scanning_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise.",
-        default=...,
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise.",
-        default=...,
-    )
-    secret_scanning_push_protection_custom_link: Union[Unset, Union[str, None]] = Field(
-        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
-        default=UNSET,
-    )
-
-
-class DependabotAlertPackage(GitHubRestModel):
-    """DependabotAlertPackage
-
-    Details for the vulnerable package.
-    """
-
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem.",
-        default=...,
-    )
-    name: str = Field(
-        description="The unique package name within its ecosystem.", default=...
-    )
-
-
-class DependabotAlertSecurityVulnerability(GitHubRestModel):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
-    """
-
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package.", default=...
-    )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability.", default=...
-    )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package.",
-        default=...,
-    )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
-    ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability.",
-        default=...,
-    )
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubRestModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str = Field(
-        description="The package version that patches this vulnerability.", default=...
-    )
-
-
-class DependabotAlertSecurityAdvisory(GitHubRestModel):
-    """DependabotAlertSecurityAdvisory
-
-    Details for the GitHub Security Advisory.
-    """
-
-    ghsa_id: str = Field(
-        description="The unique GitHub Security Advisory ID assigned to the advisory.",
-        default=...,
-    )
-    cve_id: Union[str, None] = Field(
-        description="The unique CVE ID assigned to the advisory.", default=...
-    )
-    summary: str = Field(
-        description="A short, plain text summary of the advisory.",
-        max_length=1024,
-        default=...,
-    )
-    description: str = Field(
-        description="A long-form Markdown-supported description of the advisory.",
-        default=...,
-    )
-    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
-        description="Vulnerable version range information for the advisory.",
-        default=...,
-    )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the advisory.", default=...
-    )
-    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
-        description="Details for the advisory pertaining to the Common Vulnerability Scoring System.",
-        default=...,
-    )
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
-        description="Details for the advisory pertaining to Common Weakness Enumeration.",
-        default=...,
-    )
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
-        description="Values that identify this advisory among security information sources.",
-        default=...,
-    )
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
-        description="Links to additional advisory information.", default=...
-    )
-    published_at: datetime = Field(
-        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-    updated_at: datetime = Field(
-        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-    withdrawn_at: Union[datetime, None] = Field(
-        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-        default=...,
-    )
-
-
-class DependabotAlertSecurityAdvisoryPropCvss(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropCvss
-
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
-    """
-
-    score: float = Field(
-        description="The overall CVSS score of the advisory.", le=10.0, default=...
-    )
-    vector_string: Union[str, None] = Field(
-        description="The full CVSS vector string for the advisory.", default=...
-    )
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str = Field(description="The unique CWE ID.", default=...)
-    name: str = Field(description="The short, plain text name of the CWE.", default=...)
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"] = Field(
-        description="The type of advisory identifier.", default=...
-    )
-    value: str = Field(description="The value of the advisory identifer.", default=...)
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubRestModel):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str = Field(description="The URL of the reference.", default=...)
-
-
 class DependabotAlertWithRepository(GitHubRestModel):
     """DependabotAlertWithRepository
 
@@ -2007,31 +1482,6 @@ class OrganizationSecretScanningAlert(GitHubRestModel):
         description="The comment that was optionally added when this alert was closed",
         default=UNSET,
     )
-
-
-class AdvancedSecurityActiveCommittersUser(GitHubRestModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field(default=...)
-    last_pushed_date: str = Field(default=...)
-
-
-class AdvancedSecurityActiveCommittersRepository(GitHubRestModel):
-    """AdvancedSecurityActiveCommittersRepository"""
-
-    name: str = Field(default=...)
-    advanced_security_committers: int = Field(default=...)
-    advanced_security_committers_breakdown: List[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field(default=...)
-
-
-class AdvancedSecurityActiveCommitters(GitHubRestModel):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: Union[Unset, int] = Field(default=UNSET)
-    total_count: Union[Unset, int] = Field(default=UNSET)
-    repositories: List[AdvancedSecurityActiveCommittersRepository] = Field(default=...)
 
 
 class Actor(GitHubRestModel):
@@ -2954,33 +2404,24 @@ class ThreadSubscription(GitHubRestModel):
     repository_url: Union[Unset, str] = Field(default=UNSET)
 
 
-class OrganizationCustomRepositoryRole(GitHubRestModel):
-    """Organization Custom Repository Role
+class OrganizationSimple(GitHubRestModel):
+    """Organization Simple
 
-    Custom repository roles created by organization administrators
+    A GitHub organization.
     """
 
-    id: int = Field(
-        description="The unique identifier of the custom role.", default=...
-    )
-    name: str = Field(description="The name of the custom role.", default=...)
-    description: Union[Unset, Union[str, None]] = Field(
-        description="A short description about who this role is for or what permissions it grants.",
-        default=UNSET,
-    )
-    base_role: Union[Unset, Literal["read", "triage", "write", "maintain"]] = Field(
-        description="The system role from which this role inherits permissions.",
-        default=UNSET,
-    )
-    permissions: Union[Unset, List[str]] = Field(
-        description="A list of additional permissions included in this role.",
-        default=UNSET,
-    )
-    organization: Union[Unset, SimpleUser] = Field(
-        title="Simple User", description="A GitHub user.", default=UNSET
-    )
-    created_at: Union[Unset, datetime] = Field(default=UNSET)
-    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    login: str = Field(default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    url: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    hooks_url: str = Field(default=...)
+    issues_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    public_members_url: str = Field(default=...)
+    avatar_url: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
 
 
 class OrganizationFull(GitHubRestModel):
@@ -3091,6 +2532,19 @@ class OrganizationFullPropPlan(GitHubRestModel):
     seats: Union[Unset, int] = Field(default=UNSET)
 
 
+class ActionsCacheUsageOrgEnterprise(GitHubRestModel):
+    """ActionsCacheUsageOrgEnterprise"""
+
+    total_active_caches_count: int = Field(
+        description="The count of active caches across all repositories of an enterprise or an organization.",
+        default=...,
+    )
+    total_active_caches_size_in_bytes: int = Field(
+        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization.",
+        default=...,
+    )
+
+
 class ActionsCacheUsageByRepository(GitHubRestModel):
     """Actions Cache Usage by repository
 
@@ -3150,33 +2604,146 @@ class ActionsOrganizationPermissions(GitHubRestModel):
     )
 
 
-class RunnerGroupsOrg(GitHubRestModel):
-    """RunnerGroupsOrg"""
+class SelectedActions(GitHubRestModel):
+    """SelectedActions"""
 
-    id: float = Field(default=...)
-    name: str = Field(default=...)
-    visibility: str = Field(default=...)
-    default: bool = Field(default=...)
-    selected_repositories_url: Union[Unset, str] = Field(
-        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
+    github_owned_allowed: Union[Unset, bool] = Field(
+        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
         default=UNSET,
     )
-    runners_url: str = Field(default=...)
-    inherited: bool = Field(default=...)
-    inherited_allows_public_repositories: Union[Unset, bool] = Field(default=UNSET)
-    allows_public_repositories: bool = Field(default=...)
-    workflow_restrictions_read_only: Union[Unset, bool] = Field(
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
-        default=False,
-    )
-    restricted_to_workflows: Union[Unset, bool] = Field(
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-        default=False,
-    )
-    selected_workflows: Union[Unset, List[str]] = Field(
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    verified_allowed: Union[Unset, bool] = Field(
+        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
         default=UNSET,
     )
+    patterns_allowed: Union[Unset, List[str]] = Field(
+        description="Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.\n\n**Note**: The `patterns_allowed` setting only applies to public repositories.",
+        default=UNSET,
+    )
+
+
+class ActionsGetDefaultWorkflowPermissions(GitHubRestModel):
+    """ActionsGetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: Literal["read", "write"] = Field(
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
+        default=...,
+    )
+    can_approve_pull_request_reviews: bool = Field(
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
+        default=...,
+    )
+
+
+class ActionsSetDefaultWorkflowPermissions(GitHubRestModel):
+    """ActionsSetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: Union[Unset, Literal["read", "write"]] = Field(
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
+        default=UNSET,
+    )
+    can_approve_pull_request_reviews: Union[Unset, bool] = Field(
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
+        default=UNSET,
+    )
+
+
+class RequiredWorkflow(GitHubRestModel):
+    """RequiredWorkflow"""
+
+    id: float = Field(
+        description="Unique identifier for a required workflow", default=...
+    )
+    name: str = Field(description="Name present in the workflow file", default=...)
+    path: str = Field(description="Path of the workflow file", default=...)
+    scope: Literal["all", "selected"] = Field(
+        description="Scope of the required workflow", default=...
+    )
+    ref: str = Field(
+        description="Ref at which the workflow file will be selected", default=...
+    )
+    state: Literal["active", "deleted"] = Field(
+        description="State of the required workflow", default=...
+    )
+    selected_repositories_url: Union[Unset, str] = Field(default=UNSET)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository", default=...
+    )
+
+
+class RunnerLabel(GitHubRestModel):
+    """Self hosted runner label
+
+    A label for a self hosted runner
+    """
+
+    id: Union[Unset, int] = Field(
+        description="Unique identifier of the label.", default=UNSET
+    )
+    name: str = Field(description="Name of the label.", default=...)
+    type: Union[Unset, Literal["read-only", "custom"]] = Field(
+        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+        default=UNSET,
+    )
+
+
+class Runner(GitHubRestModel):
+    """Self hosted runners
+
+    A self hosted runner
+    """
+
+    id: int = Field(description="The id of the runner.", default=...)
+    name: str = Field(description="The name of the runner.", default=...)
+    os: str = Field(description="The Operating System of the runner.", default=...)
+    status: str = Field(description="The status of the runner.", default=...)
+    busy: bool = Field(default=...)
+    labels: List[RunnerLabel] = Field(default=...)
+
+
+class RunnerApplication(GitHubRestModel):
+    """Runner Application
+
+    Runner Application
+    """
+
+    os: str = Field(default=...)
+    architecture: str = Field(default=...)
+    download_url: str = Field(default=...)
+    filename: str = Field(default=...)
+    temp_download_token: Union[Unset, str] = Field(
+        description="A short lived bearer token used to download the runner, if needed.",
+        default=UNSET,
+    )
+    sha256_checksum: Union[Unset, str] = Field(default=UNSET)
+
+
+class AuthenticationToken(GitHubRestModel):
+    """Authentication Token
+
+    Authentication Token
+    """
+
+    token: str = Field(description="The token used for authentication", default=...)
+    expires_at: datetime = Field(description="The time this token expires", default=...)
+    permissions: Union[Unset, AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Union[Unset, List[Repository]] = Field(
+        description="The repositories this token has access to", default=UNSET
+    )
+    single_file: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    repository_selection: Union[Unset, Literal["all", "selected"]] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved",
+        default=UNSET,
+    )
+
+
+class AuthenticationTokenPropPermissions(GitHubRestModel):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
 class OrganizationActionsSecret(GitHubRestModel):
@@ -3206,6 +2773,190 @@ class ActionsPublicKey(GitHubRestModel):
     url: Union[Unset, str] = Field(default=UNSET)
     title: Union[Unset, str] = Field(default=UNSET)
     created_at: Union[Unset, str] = Field(default=UNSET)
+
+
+class OrganizationActionsVariable(GitHubRestModel):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the variable.", default=...)
+    value: str = Field(description="The value of the variable.", default=...)
+    created_at: datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable", default=...
+    )
+    selected_repositories_url: Union[Unset, str] = Field(default=UNSET)
+
+
+class CodeScanningAlertRule(GitHubRestModel):
+    """CodeScanningAlertRule"""
+
+    id: Union[Unset, Union[str, None]] = Field(
+        description="A unique identifier for the rule used to detect the alert.",
+        default=UNSET,
+    )
+    name: Union[Unset, str] = Field(
+        description="The name of the rule used to detect the alert.", default=UNSET
+    )
+    severity: Union[
+        Unset, Union[None, Literal["none", "note", "warning", "error"]]
+    ] = Field(description="The severity of the alert.", default=UNSET)
+    security_severity_level: Union[
+        Unset, Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(description="The security severity of the alert.", default=UNSET)
+    description: Union[Unset, str] = Field(
+        description="A short description of the rule used to detect the alert.",
+        default=UNSET,
+    )
+    full_description: Union[Unset, str] = Field(
+        description="description of the rule used to detect the alert.", default=UNSET
+    )
+    tags: Union[Unset, Union[List[str], None]] = Field(
+        description="A set of tags applicable for the rule.", default=UNSET
+    )
+    help_: Union[Unset, Union[str, None]] = Field(
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+        default=UNSET,
+        alias="help",
+    )
+    help_uri: Union[Unset, Union[str, None]] = Field(
+        description="A link to the documentation for the rule used to detect the alert.",
+        default=UNSET,
+    )
+
+
+class CodeScanningAnalysisTool(GitHubRestModel):
+    """CodeScanningAnalysisTool"""
+
+    name: Union[Unset, str] = Field(
+        description="The name of the tool used to generate the code scanning analysis.",
+        default=UNSET,
+    )
+    version: Union[Unset, Union[str, None]] = Field(
+        description="The version of the tool used to generate the code scanning analysis.",
+        default=UNSET,
+    )
+    guid: Union[Unset, Union[str, None]] = Field(
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
+        default=UNSET,
+    )
+
+
+class CodeScanningAlertLocation(GitHubRestModel):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
+    """
+
+    path: Union[Unset, str] = Field(default=UNSET)
+    start_line: Union[Unset, int] = Field(default=UNSET)
+    end_line: Union[Unset, int] = Field(default=UNSET)
+    start_column: Union[Unset, int] = Field(default=UNSET)
+    end_column: Union[Unset, int] = Field(default=UNSET)
+
+
+class CodeScanningAlertInstance(GitHubRestModel):
+    """CodeScanningAlertInstance"""
+
+    ref: Union[Unset, str] = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
+        default=UNSET,
+    )
+    analysis_key: Union[Unset, str] = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+        default=UNSET,
+    )
+    environment: Union[Unset, str] = Field(
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+        default=UNSET,
+    )
+    category: Union[Unset, str] = Field(
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+        default=UNSET,
+    )
+    state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert.", default=UNSET
+    )
+    commit_sha: Union[Unset, str] = Field(default=UNSET)
+    message: Union[Unset, CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
+    location: Union[Unset, CodeScanningAlertLocation] = Field(
+        description="Describe a region within a file for the alert.", default=UNSET
+    )
+    html_url: Union[Unset, str] = Field(default=UNSET)
+    classifications: Union[
+        Unset, List[Union[None, Literal["source", "generated", "test", "library"]]]
+    ] = Field(
+        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+        default=UNSET,
+    )
+
+
+class CodeScanningAlertInstancePropMessage(GitHubRestModel):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: Union[Unset, str] = Field(default=UNSET)
+
+
+class CodeScanningOrganizationAlertItems(GitHubRestModel):
+    """CodeScanningOrganizationAlertItems"""
+
+    number: int = Field(description="The security alert number.", default=...)
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: Union[Unset, datetime] = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    url: str = Field(description="The REST API URL of the alert resource.", default=...)
+    html_url: str = Field(
+        description="The GitHub URL of the alert resource.", default=...
+    )
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert.",
+        default=...,
+    )
+    state: Literal["open", "closed", "dismissed", "fixed"] = Field(
+        description="State of a code scanning alert.", default=...
+    )
+    fixed_at: Union[Unset, Union[datetime, None]] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    dismissed_by: Union[None, SimpleUser] = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
+        default=...,
+    )
+    dismissed_comment: Union[Unset, Union[str, None]] = Field(
+        description="The dismissal comment associated with the dismissal of the alert.",
+        max_length=280,
+        default=UNSET,
+    )
+    rule: CodeScanningAlertRule = Field(default=...)
+    tool: CodeScanningAnalysisTool = Field(default=...)
+    most_recent_instance: CodeScanningAlertInstance = Field(default=...)
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository.", default=...
+    )
 
 
 class CodespaceMachine(GitHubRestModel):
@@ -3318,6 +3069,10 @@ class Codespace(GitHubRestModel):
     )
     start_url: str = Field(description="API URL to start this codespace.", default=...)
     stop_url: str = Field(description="API URL to stop this codespace.", default=...)
+    publish_url: Union[Unset, Union[str, None]] = Field(
+        description="API URL to publish this codespace to a new repository.",
+        default=UNSET,
+    )
     pulls_url: Union[str, None] = Field(
         description="API URL for the Pull Request associated with this codespace, if any.",
         default=...,
@@ -3471,16 +3226,7 @@ class OrganizationInvitation(GitHubRestModel):
     team_count: int = Field(default=...)
     node_id: str = Field(default=...)
     invitation_teams_url: str = Field(default=...)
-
-
-class OrganizationFineGrainedPermission(GitHubRestModel):
-    """Organization Fine-Grained Permission
-
-    Fine-grained permissions available for the organization
-    """
-
-    name: str = Field(default=...)
-    description: str = Field(default=...)
+    invitation_source: Union[Unset, str] = Field(default=UNSET)
 
 
 class OrgHook(GitHubRestModel):
@@ -3657,7 +3403,10 @@ class Migration(GitHubRestModel):
     exclude_releases: bool = Field(default=...)
     exclude_owner_projects: bool = Field(default=...)
     org_metadata_only: bool = Field(default=...)
-    repositories: List[Repository] = Field(default=...)
+    repositories: List[Repository] = Field(
+        description="The repositories included in the migration. Only returned for export migrations.",
+        default=...,
+    )
     url: str = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
@@ -3851,6 +3600,10 @@ class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubRestModel):
     )
     windows_64_core: Union[Unset, int] = Field(
         description="Total minutes used on Windows 64 core runner machines.",
+        default=UNSET,
+    )
+    macos_12_core: Union[Unset, int] = Field(
+        description="Total minutes used on macOS 12 core runner machines.",
         default=UNSET,
     )
     total: Union[Unset, int] = Field(
@@ -4394,6 +4147,68 @@ class RateLimitOverviewPropResources(GitHubRestModel):
     )
 
 
+class RepoRequiredWorkflow(GitHubRestModel):
+    """Required workflow
+
+    A GitHub Actions required workflow
+    """
+
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    name: str = Field(default=...)
+    path: str = Field(default=...)
+    state: Literal["active", "deleted"] = Field(default=...)
+    source_repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository", default=...
+    )
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    badge_url: str = Field(default=...)
+
+
+class WorkflowUsage(GitHubRestModel):
+    """Workflow Usage
+
+    Workflow Usage
+    """
+
+    billable: WorkflowUsagePropBillable = Field(default=...)
+
+
+class WorkflowUsagePropBillable(GitHubRestModel):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: Union[Unset, WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
+    )
+    macos: Union[Unset, WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Union[Unset, WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
+    )
+
+
+class WorkflowUsagePropBillablePropUbuntu(GitHubRestModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: Union[Unset, int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropMacos(GitHubRestModel):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: Union[Unset, int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropWindows(GitHubRestModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Union[Unset, int] = Field(default=UNSET)
+
+
 class CodeOfConductSimple(GitHubRestModel):
     """Code Of Conduct Simple
 
@@ -4763,8 +4578,8 @@ class ActionsRepositoryPermissions(GitHubRestModel):
 class ActionsWorkflowAccessToRepository(GitHubRestModel):
     """ActionsWorkflowAccessToRepository"""
 
-    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repos only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise.",
+    access_level: Literal["none", "user", "organization"] = Field(
+        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repos only. `organization` level access allows sharing across the organization.",
         default=...,
     )
 
@@ -5167,6 +4982,21 @@ class ActionsSecret(GitHubRestModel):
     updated_at: datetime = Field(default=...)
 
 
+class ActionsVariable(GitHubRestModel):
+    """Actions Variable"""
+
+    name: str = Field(description="The name of the variable.", default=...)
+    value: str = Field(description="The value of the variable.", default=...)
+    created_at: datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+
+
 class Workflow(GitHubRestModel):
     """Workflow
 
@@ -5186,47 +5016,6 @@ class Workflow(GitHubRestModel):
     html_url: str = Field(default=...)
     badge_url: str = Field(default=...)
     deleted_at: Union[Unset, datetime] = Field(default=UNSET)
-
-
-class WorkflowUsage(GitHubRestModel):
-    """Workflow Usage
-
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillable = Field(default=...)
-
-
-class WorkflowUsagePropBillable(GitHubRestModel):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: Union[Unset, WorkflowUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
-    )
-    macos: Union[Unset, WorkflowUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Union[Unset, WorkflowUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
-    )
-
-
-class WorkflowUsagePropBillablePropUbuntu(GitHubRestModel):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: Union[Unset, int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropMacos(GitHubRestModel):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: Union[Unset, int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropWindows(GitHubRestModel):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: Union[Unset, int] = Field(default=UNSET)
 
 
 class Autolink(GitHubRestModel):
@@ -10843,6 +10632,157 @@ class CodespaceExportDetails(GitHubRestModel):
     )
 
 
+class CodespaceWithFullRepository(GitHubRestModel):
+    """Codespace
+
+    A codespace.
+    """
+
+    id: int = Field(default=...)
+    name: str = Field(
+        description="Automatically generated name of this codespace.", default=...
+    )
+    display_name: Union[Unset, Union[str, None]] = Field(
+        description="Display name for this codespace.", default=UNSET
+    )
+    environment_id: Union[str, None] = Field(
+        description="UUID identifying this codespace's environment.", default=...
+    )
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    billable_owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    repository: FullRepository = Field(
+        title="Full Repository", description="Full Repository", default=...
+    )
+    machine: Union[None, CodespaceMachine] = Field(
+        title="Codespace machine",
+        description="A description of the machine powering a codespace.",
+        default=...,
+    )
+    devcontainer_path: Union[Unset, Union[str, None]] = Field(
+        description="Path to devcontainer.json from repo root used to create Codespace.",
+        default=UNSET,
+    )
+    prebuild: Union[bool, None] = Field(
+        description="Whether the codespace was created from a prebuild.", default=...
+    )
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    last_used_at: datetime = Field(
+        description="Last known time this codespace was started.", default=...
+    )
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ] = Field(description="State of this codespace.", default=...)
+    url: str = Field(description="API URL for this codespace.", default=...)
+    git_status: CodespaceWithFullRepositoryPropGitStatus = Field(
+        description="Details about the codespace's git repository.", default=...
+    )
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
+        description="The Azure region where this codespace is located.", default=...
+    )
+    idle_timeout_minutes: Union[int, None] = Field(
+        description="The number of minutes of inactivity after which this codespace will be automatically stopped.",
+        default=...,
+    )
+    web_url: str = Field(
+        description="URL to access this codespace on the web.", default=...
+    )
+    machines_url: str = Field(
+        description="API URL to access available alternate machine types for this codespace.",
+        default=...,
+    )
+    start_url: str = Field(description="API URL to start this codespace.", default=...)
+    stop_url: str = Field(description="API URL to stop this codespace.", default=...)
+    publish_url: Union[Unset, Union[str, None]] = Field(
+        description="API URL to publish this codespace to a new repository.",
+        default=UNSET,
+    )
+    pulls_url: Union[str, None] = Field(
+        description="API URL for the Pull Request associated with this codespace, if any.",
+        default=...,
+    )
+    recent_folders: List[str] = Field(default=...)
+    runtime_constraints: Union[
+        Unset, CodespaceWithFullRepositoryPropRuntimeConstraints
+    ] = Field(default=UNSET)
+    pending_operation: Union[Unset, Union[bool, None]] = Field(
+        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
+        default=UNSET,
+    )
+    pending_operation_disabled_reason: Union[Unset, Union[str, None]] = Field(
+        description="Text to show user when codespace is disabled by a pending operation",
+        default=UNSET,
+    )
+    idle_timeout_notice: Union[Unset, Union[str, None]] = Field(
+        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
+        default=UNSET,
+    )
+    retention_period_minutes: Union[Unset, Union[int, None]] = Field(
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        default=UNSET,
+    )
+    retention_expires_at: Union[Unset, Union[datetime, None]] = Field(
+        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
+        default=UNSET,
+    )
+
+
+class CodespaceWithFullRepositoryPropGitStatus(GitHubRestModel):
+    """CodespaceWithFullRepositoryPropGitStatus
+
+    Details about the codespace's git repository.
+    """
+
+    ahead: Union[Unset, int] = Field(
+        description="The number of commits the local repository is ahead of the remote.",
+        default=UNSET,
+    )
+    behind: Union[Unset, int] = Field(
+        description="The number of commits the local repository is behind the remote.",
+        default=UNSET,
+    )
+    has_unpushed_changes: Union[Unset, bool] = Field(
+        description="Whether the local repository has unpushed changes.", default=UNSET
+    )
+    has_uncommitted_changes: Union[Unset, bool] = Field(
+        description="Whether the local repository has uncommitted changes.",
+        default=UNSET,
+    )
+    ref: Union[Unset, str] = Field(
+        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
+        default=UNSET,
+    )
+
+
+class CodespaceWithFullRepositoryPropRuntimeConstraints(GitHubRestModel):
+    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: Union[Unset, Union[List[str], None]] = Field(
+        description="The privacy settings a user can select from when forwarding a port.",
+        default=UNSET,
+    )
+
+
 class Email(GitHubRestModel):
     """Email
 
@@ -11128,6 +11068,34 @@ class CheckRunWithSimpleCheckSuitePropOutput(GitHubRestModel):
     title: Union[str, None] = Field(default=...)
 
 
+class ProjectsV2(GitHubRestModel):
+    """Projects v2 Project
+
+    A projects v2 project
+    """
+
+    id: float = Field(default=...)
+    node_id: str = Field(default=...)
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    creator: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    title: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    public: bool = Field(default=...)
+    closed_at: Union[datetime, None] = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    number: int = Field(default=...)
+    short_description: Union[str, None] = Field(default=...)
+    deleted_at: Union[datetime, None] = Field(default=...)
+    deleted_by: Union[None, SimpleUser] = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+
+
 class ProjectsV2Item(GitHubRestModel):
     """Projects v2 Item
 
@@ -11275,7 +11243,7 @@ class ApplicationsClientIdTokenScopedPostBody(GitHubRestModel):
     """ApplicationsClientIdTokenScopedPostBody"""
 
     access_token: str = Field(
-        description="The OAuth access token used to authenticate to the GitHub API.",
+        description="The access token used to authenticate to the GitHub API.",
         default=...,
     )
     target: Union[Unset, str] = Field(
@@ -11305,209 +11273,12 @@ class EmojisGetResponse200(GitHubRestModel, extra=Extra.allow):
     """EmojisGetResponse200"""
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubRestModel):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
-
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions.",
-        default=...,
-    )
-    allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = Field(
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-        default=UNSET,
-    )
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(
-    GitHubRestModel
-):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
-
-    total_count: float = Field(default=...)
-    organizations: List[OrganizationSimple] = Field(default=...)
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubRestModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
-
-    selected_organization_ids: List[int] = Field(
-        description="List of organization IDs to enable for GitHub Actions.",
-        default=...,
-    )
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubRestModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
-
-    total_count: float = Field(default=...)
-    runner_groups: List[RunnerGroupsEnterprise] = Field(default=...)
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubRestModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
-
-    name: str = Field(description="Name of the runner group.", default=...)
-    visibility: Union[Unset, Literal["selected", "all"]] = Field(
-        description="Visibility of a runner group. You can select all organizations or select individual organization.",
-        default=UNSET,
-    )
-    selected_organization_ids: Union[Unset, List[int]] = Field(
-        description="List of organization IDs that can access the runner group.",
-        default=UNSET,
-    )
-    runners: Union[Unset, List[int]] = Field(
-        description="List of runner IDs to add to the runner group.", default=UNSET
-    )
-    allows_public_repositories: Union[Unset, bool] = Field(
-        description="Whether the runner group can be used by `public` repositories.",
-        default=False,
-    )
-    restricted_to_workflows: Union[Unset, bool] = Field(
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-        default=False,
-    )
-    selected_workflows: Union[Unset, List[str]] = Field(
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-        default=UNSET,
-    )
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubRestModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
-
-    name: Union[Unset, str] = Field(
-        description="Name of the runner group.", default=UNSET
-    )
-    visibility: Union[Unset, Literal["selected", "all"]] = Field(
-        description="Visibility of a runner group. You can select all organizations or select individual organizations.",
-        default="all",
-    )
-    allows_public_repositories: Union[Unset, bool] = Field(
-        description="Whether the runner group can be used by `public` repositories.",
-        default=False,
-    )
-    restricted_to_workflows: Union[Unset, bool] = Field(
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-        default=False,
-    )
-    selected_workflows: Union[Unset, List[str]] = Field(
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-        default=UNSET,
-    )
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200(
-    GitHubRestModel
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
-
-    total_count: float = Field(default=...)
-    organizations: List[OrganizationSimple] = Field(default=...)
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
-    GitHubRestModel
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
-
-    selected_organization_ids: List[int] = Field(
-        description="List of organization IDs that can access the runner group.",
-        default=...,
-    )
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(
-    GitHubRestModel
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float = Field(default=...)
-    runners: List[Runner] = Field(default=...)
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(
-    GitHubRestModel
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: List[int] = Field(
-        description="List of runner IDs to add to the runner group.", default=...
-    )
-
-
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubRestModel):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
-
-    total_count: Union[Unset, float] = Field(default=UNSET)
-    runners: Union[Unset, List[Runner]] = Field(default=UNSET)
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubRestModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
-
-    total_count: int = Field(default=...)
-    labels: List[RunnerLabel] = Field(default=...)
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: List[str] = Field(
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-        max_items=100,
-        default=...,
-    )
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
-
-    labels: List[str] = Field(
-        description="The names of the custom labels to add to the runner.",
-        max_items=100,
-        min_items=1,
-        default=...,
-    )
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200(
-    GitHubRestModel
-):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int = Field(default=...)
-    labels: List[RunnerLabel] = Field(default=...)
-
-
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubRestModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503(GitHubRestModel):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
 
     code: Union[Unset, str] = Field(default=UNSET)
     message: Union[Unset, str] = Field(default=UNSET)
     documentation_url: Union[Unset, str] = Field(default=UNSET)
-
-
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubRestModel):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
-
-    advanced_security_enabled_for_new_repositories: Union[Unset, bool] = Field(
-        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/get-started/learning-about-github/about-github-advanced-security)."',
-        default=UNSET,
-    )
-    secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = Field(
-        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)."',
-        default=UNSET,
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: Union[
-        Unset, bool
-    ] = Field(
-        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
-        default=UNSET,
-    )
-    secret_scanning_push_protection_custom_link: Union[Unset, Union[str, None]] = Field(
-        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
-        default=UNSET,
-    )
 
 
 class GistsPostBody(GitHubRestModel):
@@ -11646,17 +11417,6 @@ class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubRestModel):
 
     ignored: Union[Unset, bool] = Field(
         description="Whether to block all notifications from a thread.", default=False
-    )
-
-
-class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubRestModel):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: Union[Unset, int] = Field(
-        description="The number of custom roles in this organization", default=UNSET
-    )
-    custom_roles: Union[Unset, List[OrganizationCustomRepositoryRole]] = Field(
-        default=UNSET
     )
 
 
@@ -11811,94 +11571,72 @@ class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubRestModel):
     )
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubRestModel):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class OrgsOrgActionsRequiredWorkflowsGetResponse200(GitHubRestModel):
+    """OrgsOrgActionsRequiredWorkflowsGetResponse200"""
 
-    total_count: float = Field(default=...)
-    runner_groups: List[RunnerGroupsOrg] = Field(default=...)
+    total_count: int = Field(default=...)
+    required_workflows: List[RequiredWorkflow] = Field(default=...)
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubRestModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class OrgsOrgActionsRequiredWorkflowsPostBody(GitHubRestModel):
+    """OrgsOrgActionsRequiredWorkflowsPostBody"""
 
-    name: str = Field(description="Name of the runner group.", default=...)
-    visibility: Union[Unset, Literal["selected", "all", "private"]] = Field(
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+    workflow_file_path: str = Field(
+        description="Path of the workflow file to be configured as a required workflow.",
+        default=...,
+    )
+    repository_id: str = Field(
+        description="The ID of the repository that contains the workflow file.",
+        default=...,
+    )
+    scope: Union[Unset, Literal["selected", "all"]] = Field(
+        description="Enable the required workflow for all repositories or selected repositories in the organization.",
         default="all",
     )
     selected_repository_ids: Union[Unset, List[int]] = Field(
-        description="List of repository IDs that can access the runner group.",
-        default=UNSET,
-    )
-    runners: Union[Unset, List[int]] = Field(
-        description="List of runner IDs to add to the runner group.", default=UNSET
-    )
-    allows_public_repositories: Union[Unset, bool] = Field(
-        description="Whether the runner group can be used by `public` repositories.",
-        default=False,
-    )
-    restricted_to_workflows: Union[Unset, bool] = Field(
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-        default=False,
-    )
-    selected_workflows: Union[Unset, List[str]] = Field(
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description="A list of repository IDs where you want to enable the required workflow. You can only provide a list of repository ids when the `scope` is set to `selected`.",
         default=UNSET,
     )
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubRestModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody(GitHubRestModel):
+    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody"""
 
-    name: str = Field(description="Name of the runner group.", default=...)
-    visibility: Union[Unset, Literal["selected", "all", "private"]] = Field(
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
+    workflow_file_path: Union[Unset, str] = Field(
+        description="Path of the workflow file to be configured as a required workflow.",
         default=UNSET,
     )
-    allows_public_repositories: Union[Unset, bool] = Field(
-        description="Whether the runner group can be used by `public` repositories.",
-        default=False,
+    repository_id: Union[Unset, str] = Field(
+        description="The ID of the repository that contains the workflow file.",
+        default=UNSET,
     )
-    restricted_to_workflows: Union[Unset, bool] = Field(
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-        default=False,
+    scope: Union[Unset, Literal["selected", "all"]] = Field(
+        description="Enable the required workflow for all repositories or selected repositories in the organization.",
+        default="all",
     )
-    selected_workflows: Union[Unset, List[str]] = Field(
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    selected_repository_ids: Union[Unset, List[int]] = Field(
+        description="A list of repository IDs where you want to enable the required workflow. A list of repository IDs where you want to enable the required workflow. You can only provide a list of repository ids when the `scope` is set to `selected`.",
         default=UNSET,
     )
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200(
+class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200(
     GitHubRestModel
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200"""
 
     total_count: float = Field(default=...)
-    repositories: List[MinimalRepository] = Field(default=...)
+    repositories: List[Repository] = Field(default=...)
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubRestModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
+class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody(
+    GitHubRestModel
+):
+    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
-        description="List of repository IDs that can access the runner group.",
+        description="The IDs of the repositories for which the workflow should be required.",
         default=...,
-    )
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(GitHubRestModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float = Field(default=...)
-    runners: List[Runner] = Field(default=...)
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubRestModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: List[int] = Field(
-        description="List of runner IDs to add to the runner group.", default=...
     )
 
 
@@ -11907,6 +11645,13 @@ class OrgsOrgActionsRunnersGetResponse200(GitHubRestModel):
 
     total_count: int = Field(default=...)
     runners: List[Runner] = Field(default=...)
+
+
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200(GitHubRestModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
+
+    total_count: int = Field(default=...)
+    labels: List[RunnerLabel] = Field(default=...)
 
 
 class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
@@ -11928,6 +11673,13 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
         min_items=1,
         default=...,
     )
+
+
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubRestModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+
+    total_count: int = Field(default=...)
+    labels: List[RunnerLabel] = Field(default=...)
 
 
 class OrgsOrgActionsSecretsGetResponse200(GitHubRestModel):
@@ -11974,6 +11726,63 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     )
 
 
+class OrgsOrgActionsVariablesGetResponse200(GitHubRestModel):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int = Field(default=...)
+    variables: List[OrganizationActionsVariable] = Field(default=...)
+
+
+class OrgsOrgActionsVariablesPostBody(GitHubRestModel):
+    """OrgsOrgActionsVariablesPostBody"""
+
+    name: str = Field(description="The name of the variable.", default=...)
+    value: str = Field(description="The value of the variable.", default=...)
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+        default=...,
+    )
+    selected_repository_ids: Union[Unset, List[int]] = Field(
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        default=UNSET,
+    )
+
+
+class OrgsOrgActionsVariablesNamePatchBody(GitHubRestModel):
+    """OrgsOrgActionsVariablesNamePatchBody"""
+
+    name: Union[Unset, str] = Field(
+        description="The name of the variable.", default=UNSET
+    )
+    value: Union[Unset, str] = Field(
+        description="The value of the variable.", default=UNSET
+    )
+    visibility: Union[Unset, Literal["all", "private", "selected"]] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+        default=UNSET,
+    )
+    selected_repository_ids: Union[Unset, List[int]] = Field(
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        default=UNSET,
+    )
+
+
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200(GitHubRestModel):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+
+    total_count: int = Field(default=...)
+    repositories: List[MinimalRepository] = Field(default=...)
+
+
+class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubRestModel):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+
+    selected_repository_ids: List[int] = Field(
+        description="The IDs of the repositories that can access the organization variable.",
+        default=...,
+    )
+
+
 class OrgsOrgCodespacesGetResponse200(GitHubRestModel):
     """OrgsOrgCodespacesGetResponse200"""
 
@@ -11994,8 +11803,29 @@ class OrgsOrgCodespacesBillingPutBody(GitHubRestModel):
         default=...,
     )
     selected_usernames: Union[Unset, List[str]] = Field(
-        description="The usernames of the organization members who should be granted access to codespaces in the organization. Required when `visibility` is `selected_members`.",
+        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
+        max_items=100,
         default=UNSET,
+    )
+
+
+class OrgsOrgCodespacesBillingSelectedUsersPostBody(GitHubRestModel):
+    """OrgsOrgCodespacesBillingSelectedUsersPostBody"""
+
+    selected_usernames: List[str] = Field(
+        description="The usernames of the organization members whose codespaces be billed to the organization.",
+        max_items=100,
+        default=...,
+    )
+
+
+class OrgsOrgCodespacesBillingSelectedUsersDeleteBody(GitHubRestModel):
+    """OrgsOrgCodespacesBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: List[str] = Field(
+        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
+        max_items=100,
+        default=...,
     )
 
 
@@ -12040,44 +11870,6 @@ class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     selected_repository_ids: List[int] = Field(
         description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/codespaces#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=...,
-    )
-
-
-class OrgsOrgCustomRolesPostBody(GitHubRestModel):
-    """OrgsOrgCustomRolesPostBody"""
-
-    name: str = Field(description="The name of the custom role.", default=...)
-    description: Union[Unset, str] = Field(
-        description="A short description about the intended usage of this role or what permissions it grants.",
-        default=UNSET,
-    )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions.",
-        default=...,
-    )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role.",
-        default=...,
-    )
-
-
-class OrgsOrgCustomRolesRoleIdPatchBody(GitHubRestModel):
-    """OrgsOrgCustomRolesRoleIdPatchBody"""
-
-    name: Union[Unset, str] = Field(
-        description="The name of the custom role.", default=UNSET
-    )
-    description: Union[Unset, str] = Field(
-        description="A short description about who this role is for or what permissions it grants.",
-        default=UNSET,
-    )
-    base_role: Union[Unset, Literal["read", "triage", "write", "maintain"]] = Field(
-        description="The system role from which this role inherits permissions.",
-        default=UNSET,
-    )
-    permissions: Union[Unset, List[str]] = Field(
-        description="A list of additional permissions included in this role. If specified, these permissions will replace any currently set on the role.",
-        default=UNSET,
     )
 
 
@@ -12254,7 +12046,7 @@ class OrgsOrgInvitationsPostBody(GitHubRestModel):
         default=UNSET,
     )
     role: Union[Unset, Literal["admin", "direct_member", "billing_manager"]] = Field(
-        description="The role for the new member. \n\\* `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n\\* `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n\\* `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.",
+        description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.",
         default="direct_member",
     )
     team_ids: Union[Unset, List[int]] = Field(
@@ -12274,7 +12066,7 @@ class OrgsOrgMembershipsUsernamePutBody(GitHubRestModel):
     """OrgsOrgMembershipsUsernamePutBody"""
 
     role: Union[Unset, Literal["admin", "member"]] = Field(
-        description="The role to give the user in the organization. Can be one of:  \n\\* `admin` - The user will become an owner of the organization.  \n\\* `member` - The user will become a non-owner member of the organization.",
+        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
         default="member",
     )
 
@@ -12363,9 +12155,8 @@ class OrgsOrgReposPostBody(GitHubRestModel):
     private: Union[Unset, bool] = Field(
         description="Whether the repository is private.", default=False
     )
-    visibility: Union[Unset, Literal["public", "private", "internal"]] = Field(
-        description='Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. Note: For GitHub Enterprise Server and GitHub AE, this endpoint will only list repositories available to all users on the enterprise. For more information, see "[Creating an internal repository](https://docs.github.com/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.',
-        default=UNSET,
+    visibility: Union[Unset, Literal["public", "private"]] = Field(
+        description="The visibility of the repository.", default=UNSET
     )
     has_issues: Union[Unset, bool] = Field(
         description="Either `true` to enable issues for this repository or `false` to disable them.",
@@ -12419,7 +12210,7 @@ class OrgsOrgReposPostBody(GitHubRestModel):
         default=False,
     )
     delete_branch_on_merge: Union[Unset, bool] = Field(
-        description="Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion.",
+        description="Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion. **The authenticated user must be an organization owner to set this property to `true`.**",
         default=False,
     )
     use_squash_pr_title_as_default: Union[Unset, bool] = Field(
@@ -12464,7 +12255,7 @@ class OrgsOrgTeamsPostBody(GitHubRestModel):
         default=UNSET,
     )
     privacy: Union[Unset, Literal["secret", "closed"]] = Field(
-        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n\\* `secret` - only visible to organization owners and members of this team.  \n\\* `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n\\* `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
+        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
         default=UNSET,
     )
     permission: Union[Unset, Literal["pull", "push"]] = Field(
@@ -12484,7 +12275,7 @@ class OrgsOrgTeamsTeamSlugPatchBody(GitHubRestModel):
         description="The description of the team.", default=UNSET
     )
     privacy: Union[Unset, Literal["secret", "closed"]] = Field(
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n\\* `secret` - only visible to organization owners and members of this team.  \n\\* `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n\\* `closed` - visible to all members of this organization.",
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
         default=UNSET,
     )
     permission: Union[Unset, Literal["pull", "push", "admin"]] = Field(
@@ -12773,6 +12564,13 @@ class ProjectsProjectIdColumnsPostBody(GitHubRestModel):
     name: str = Field(description="Name of the project column", default=...)
 
 
+class ReposOrgRepoActionsRequiredWorkflowsGetResponse200(GitHubRestModel):
+    """ReposOrgRepoActionsRequiredWorkflowsGetResponse200"""
+
+    total_count: int = Field(default=...)
+    required_workflows: List[RepoRequiredWorkflow] = Field(default=...)
+
+
 class ReposOwnerRepoDeleteResponse403(GitHubRestModel):
     """ReposOwnerRepoDeleteResponse403"""
 
@@ -12796,9 +12594,8 @@ class ReposOwnerRepoPatchBody(GitHubRestModel):
         description="Either `true` to make the repository private or `false` to make it public. Default: `false`.  \n**Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://docs.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.",
         default=False,
     )
-    visibility: Union[Unset, Literal["public", "private", "internal"]] = Field(
-        description='Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`."',
-        default=UNSET,
+    visibility: Union[Unset, Literal["public", "private"]] = Field(
+        description="The visibility of the repository.", default=UNSET
     )
     security_and_analysis: Union[
         Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysis, None]
@@ -12988,6 +12785,22 @@ class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubRestModel):
     )
 
 
+class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubRestModel):
+    """Actions OIDC subject customization for a repository
+
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored.",
+        default=...,
+    )
+    include_claim_keys: Union[Unset, List[str]] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        default=UNSET,
+    )
+
+
 class ReposOwnerRepoActionsPermissionsPutBody(GitHubRestModel):
     """ReposOwnerRepoActionsPermissionsPutBody"""
 
@@ -12998,6 +12811,17 @@ class ReposOwnerRepoActionsPermissionsPutBody(GitHubRestModel):
         description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
         default=UNSET,
     )
+
+
+class ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200(
+    GitHubRestModel
+):
+    """ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse20
+    0
+    """
+
+    total_count: int = Field(default=...)
+    workflow_runs: List[WorkflowRun] = Field(default=...)
 
 
 class ReposOwnerRepoActionsRunnersGetResponse200(GitHubRestModel):
@@ -13106,6 +12930,31 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubRestModel):
     )
     key_id: Union[Unset, str] = Field(
         description="ID of the key you used to encrypt the secret.", default=UNSET
+    )
+
+
+class ReposOwnerRepoActionsVariablesGetResponse200(GitHubRestModel):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
+
+    total_count: int = Field(default=...)
+    variables: List[ActionsVariable] = Field(default=...)
+
+
+class ReposOwnerRepoActionsVariablesPostBody(GitHubRestModel):
+    """ReposOwnerRepoActionsVariablesPostBody"""
+
+    name: str = Field(description="The name of the variable.", default=...)
+    value: str = Field(description="The value of the variable.", default=...)
+
+
+class ReposOwnerRepoActionsVariablesNamePatchBody(GitHubRestModel):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+
+    name: Union[Unset, str] = Field(
+        description="The name of the variable.", default=UNSET
+    )
+    value: Union[Unset, str] = Field(
+        description="The value of the variable.", default=UNSET
     )
 
 
@@ -15111,28 +14960,31 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubRestModel):
         description="The contents of the issue.", default=UNSET
     )
     assignee: Union[Unset, Union[str, None]] = Field(
-        description="Login for the user that this issue should be assigned to. **This field is deprecated.**",
+        description="Username to assign to this issue. **This field is deprecated.**",
         default=UNSET,
     )
     state: Union[Unset, Literal["open", "closed"]] = Field(
-        description="State of the issue. Either `open` or `closed`.", default=UNSET
+        description="The open or closed state of the issue.", default=UNSET
     )
     state_reason: Union[
         Unset, Union[None, Literal["completed", "not_planned", "reopened"]]
-    ] = Field(description="The reason for the current state", default=UNSET)
+    ] = Field(
+        description="The reason for the state change. Ignored unless `state` is changed.",
+        default=UNSET,
+    )
     milestone: Union[Unset, Union[str, int, None]] = Field(
-        description="The `number` of the milestone to associate this issue with or `null` to remove current. _NOTE: Only users with push access can set the milestone for issues. The milestone is silently dropped otherwise._",
+        description="The `number` of the milestone to associate this issue with or use `null` to remove the current milestone. Only users with push access can set the milestone for issues. Without push access to the repository, milestone changes are silently dropped.",
         default=UNSET,
     )
     labels: Union[
         Unset,
         List[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]],
     ] = Field(
-        description="Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._",
+        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
         default=UNSET,
     )
     assignees: Union[Unset, List[str]] = Field(
-        description="Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
+        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
         default=UNSET,
     )
 
@@ -15240,7 +15092,7 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubRestModel):
     lock_reason: Union[
         Unset, Literal["off-topic", "too heated", "resolved", "spam"]
     ] = Field(
-        description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n\\* `off-topic`  \n\\* `too heated`  \n\\* `resolved`  \n\\* `spam`",
+        description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
         default=UNSET,
     )
 
@@ -15406,10 +15258,6 @@ class ReposOwnerRepoPagesPutBodyAnyof0(GitHubRestModel):
         description="Specify whether HTTPS should be enforced for the repository.",
         default=UNSET,
     )
-    public: Union[Unset, bool] = Field(
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
-        default=UNSET,
-    )
     build_type: Literal["legacy", "workflow"] = Field(
         description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
         default=...,
@@ -15437,10 +15285,6 @@ class ReposOwnerRepoPagesPutBodyAnyof1(GitHubRestModel):
         description="Specify whether HTTPS should be enforced for the repository.",
         default=UNSET,
     )
-    public: Union[Unset, bool] = Field(
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
-        default=UNSET,
-    )
     build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
         description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
         default=UNSET,
@@ -15463,10 +15307,6 @@ class ReposOwnerRepoPagesPutBodyAnyof2(GitHubRestModel):
     )
     https_enforced: Union[Unset, bool] = Field(
         description="Specify whether HTTPS should be enforced for the repository.",
-        default=UNSET,
-    )
-    public: Union[Unset, bool] = Field(
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
         default=UNSET,
     )
     build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
@@ -15496,10 +15336,6 @@ class ReposOwnerRepoPagesPutBodyAnyof3(GitHubRestModel):
         description="Specify whether HTTPS should be enforced for the repository.",
         default=UNSET,
     )
-    public: bool = Field(
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
-        default=...,
-    )
     build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
         description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
         default=UNSET,
@@ -15526,10 +15362,6 @@ class ReposOwnerRepoPagesPutBodyAnyof4(GitHubRestModel):
     https_enforced: bool = Field(
         description="Specify whether HTTPS should be enforced for the repository.",
         default=...,
-    )
-    public: Union[Unset, bool] = Field(
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility. This feature is only available to repositories in an organization on an Enterprise plan.",
-        default=UNSET,
     )
     build_type: Union[Unset, Literal["legacy", "workflow"]] = Field(
         description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
@@ -16173,6 +16005,37 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
     )
 
 
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200(
+    GitHubRestModel
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200"""
+
+    total_count: int = Field(default=...)
+    variables: List[ActionsVariable] = Field(default=...)
+
+
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody(
+    GitHubRestModel
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody"""
+
+    name: str = Field(description="The name of the variable.", default=...)
+    value: str = Field(description="The value of the variable.", default=...)
+
+
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody(
+    GitHubRestModel
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+
+    name: Union[Unset, str] = Field(
+        description="The name of the variable.", default=UNSET
+    )
+    value: Union[Unset, str] = Field(
+        description="The value of the variable.", default=UNSET
+    )
+
+
 class SearchCodeGetResponse200(GitHubRestModel):
     """SearchCodeGetResponse200"""
 
@@ -16237,7 +16100,7 @@ class TeamsTeamIdPatchBody(GitHubRestModel):
         description="The description of the team.", default=UNSET
     )
     privacy: Union[Unset, Literal["secret", "closed"]] = Field(
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n\\* `secret` - only visible to organization owners and members of this team.  \n\\* `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n\\* `closed` - visible to all members of this organization.",
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
         default=UNSET,
     )
     permission: Union[Unset, Literal["pull", "push", "admin"]] = Field(
@@ -16479,7 +16342,7 @@ class UserCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     key_id: str = Field(
         description="ID of the key you used to encrypt the secret.", default=...
     )
-    selected_repository_ids: Union[Unset, List[str]] = Field(
+    selected_repository_ids: Union[Unset, List[Union[int, str]]] = Field(
         description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/reference/codespaces#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/reference/codespaces#remove-a-selected-repository-from-a-user-secret) endpoints.",
         default=UNSET,
     )
@@ -16521,6 +16384,17 @@ class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubRestModel):
 
     total_count: int = Field(default=...)
     machines: List[CodespaceMachine] = Field(default=...)
+
+
+class UserCodespacesCodespaceNamePublishPostBody(GitHubRestModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
+
+    name: Union[Unset, str] = Field(
+        description="A name for the new repository.", default=UNSET
+    )
+    private: Union[Unset, bool] = Field(
+        description="Whether the new repository should be private.", default=False
+    )
 
 
 class UserEmailVisibilityPatchBody(GitHubRestModel):
@@ -16790,40 +16664,6 @@ ScopedInstallation.update_forward_refs()
 Authorization.update_forward_refs()
 AuthorizationPropApp.update_forward_refs()
 CodeOfConduct.update_forward_refs()
-ServerStatisticsItems.update_forward_refs()
-ServerStatisticsItemsPropGithubConnect.update_forward_refs()
-ServerStatisticsItemsPropGheStats.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropComments.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropGists.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropHooks.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropIssues.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropMilestones.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropOrgs.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropPages.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropPulls.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropRepos.update_forward_refs()
-ServerStatisticsItemsPropGheStatsPropUsers.update_forward_refs()
-ServerStatisticsItemsPropDormantUsers.update_forward_refs()
-ActionsCacheUsageOrgEnterprise.update_forward_refs()
-ActionsEnterprisePermissions.update_forward_refs()
-OrganizationSimple.update_forward_refs()
-SelectedActions.update_forward_refs()
-ActionsGetDefaultWorkflowPermissions.update_forward_refs()
-ActionsSetDefaultWorkflowPermissions.update_forward_refs()
-RunnerGroupsEnterprise.update_forward_refs()
-RunnerLabel.update_forward_refs()
-Runner.update_forward_refs()
-RunnerApplication.update_forward_refs()
-AuthenticationToken.update_forward_refs()
-AuthenticationTokenPropPermissions.update_forward_refs()
-CodeScanningAlertRule.update_forward_refs()
-CodeScanningAnalysisTool.update_forward_refs()
-CodeScanningAlertLocation.update_forward_refs()
-CodeScanningAlertInstance.update_forward_refs()
-CodeScanningAlertInstancePropMessage.update_forward_refs()
-SimpleRepository.update_forward_refs()
-CodeScanningOrganizationAlertItems.update_forward_refs()
-EnterpriseSecurityAnalysisSettings.update_forward_refs()
 DependabotAlertPackage.update_forward_refs()
 DependabotAlertSecurityVulnerability.update_forward_refs()
 DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion.update_forward_refs()
@@ -16832,12 +16672,10 @@ DependabotAlertSecurityAdvisoryPropCvss.update_forward_refs()
 DependabotAlertSecurityAdvisoryPropCwesItems.update_forward_refs()
 DependabotAlertSecurityAdvisoryPropIdentifiersItems.update_forward_refs()
 DependabotAlertSecurityAdvisoryPropReferencesItems.update_forward_refs()
+SimpleRepository.update_forward_refs()
 DependabotAlertWithRepository.update_forward_refs()
 DependabotAlertWithRepositoryPropDependency.update_forward_refs()
 OrganizationSecretScanningAlert.update_forward_refs()
-AdvancedSecurityActiveCommittersUser.update_forward_refs()
-AdvancedSecurityActiveCommittersRepository.update_forward_refs()
-AdvancedSecurityActiveCommitters.update_forward_refs()
 Actor.update_forward_refs()
 Milestone.update_forward_refs()
 ReactionRollup.update_forward_refs()
@@ -16884,16 +16722,32 @@ MinimalRepositoryPropLicense.update_forward_refs()
 Thread.update_forward_refs()
 ThreadPropSubject.update_forward_refs()
 ThreadSubscription.update_forward_refs()
-OrganizationCustomRepositoryRole.update_forward_refs()
+OrganizationSimple.update_forward_refs()
 OrganizationFull.update_forward_refs()
 OrganizationFullPropPlan.update_forward_refs()
+ActionsCacheUsageOrgEnterprise.update_forward_refs()
 ActionsCacheUsageByRepository.update_forward_refs()
 OidcCustomSub.update_forward_refs()
 EmptyObject.update_forward_refs()
 ActionsOrganizationPermissions.update_forward_refs()
-RunnerGroupsOrg.update_forward_refs()
+SelectedActions.update_forward_refs()
+ActionsGetDefaultWorkflowPermissions.update_forward_refs()
+ActionsSetDefaultWorkflowPermissions.update_forward_refs()
+RequiredWorkflow.update_forward_refs()
+RunnerLabel.update_forward_refs()
+Runner.update_forward_refs()
+RunnerApplication.update_forward_refs()
+AuthenticationToken.update_forward_refs()
+AuthenticationTokenPropPermissions.update_forward_refs()
 OrganizationActionsSecret.update_forward_refs()
 ActionsPublicKey.update_forward_refs()
+OrganizationActionsVariable.update_forward_refs()
+CodeScanningAlertRule.update_forward_refs()
+CodeScanningAnalysisTool.update_forward_refs()
+CodeScanningAlertLocation.update_forward_refs()
+CodeScanningAlertInstance.update_forward_refs()
+CodeScanningAlertInstancePropMessage.update_forward_refs()
+CodeScanningOrganizationAlertItems.update_forward_refs()
 CodespaceMachine.update_forward_refs()
 Codespace.update_forward_refs()
 CodespacePropGitStatus.update_forward_refs()
@@ -16903,7 +16757,6 @@ CodespacesPublicKey.update_forward_refs()
 OrganizationDependabotSecret.update_forward_refs()
 DependabotPublicKey.update_forward_refs()
 OrganizationInvitation.update_forward_refs()
-OrganizationFineGrainedPermission.update_forward_refs()
 OrgHook.update_forward_refs()
 OrgHookPropConfig.update_forward_refs()
 InteractionLimitResponse.update_forward_refs()
@@ -16941,6 +16794,12 @@ ProjectCollaboratorPermission.update_forward_refs()
 RateLimit.update_forward_refs()
 RateLimitOverview.update_forward_refs()
 RateLimitOverviewPropResources.update_forward_refs()
+RepoRequiredWorkflow.update_forward_refs()
+WorkflowUsage.update_forward_refs()
+WorkflowUsagePropBillable.update_forward_refs()
+WorkflowUsagePropBillablePropUbuntu.update_forward_refs()
+WorkflowUsagePropBillablePropMacos.update_forward_refs()
+WorkflowUsagePropBillablePropWindows.update_forward_refs()
 CodeOfConductSimple.update_forward_refs()
 FullRepository.update_forward_refs()
 FullRepositoryPropPermissions.update_forward_refs()
@@ -16979,12 +16838,8 @@ WorkflowRunUsagePropBillablePropMacosPropJobRunsItems.update_forward_refs()
 WorkflowRunUsagePropBillablePropWindows.update_forward_refs()
 WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems.update_forward_refs()
 ActionsSecret.update_forward_refs()
+ActionsVariable.update_forward_refs()
 Workflow.update_forward_refs()
-WorkflowUsage.update_forward_refs()
-WorkflowUsagePropBillable.update_forward_refs()
-WorkflowUsagePropBillablePropUbuntu.update_forward_refs()
-WorkflowUsagePropBillablePropMacos.update_forward_refs()
-WorkflowUsagePropBillablePropWindows.update_forward_refs()
 Autolink.update_forward_refs()
 ProtectedBranchRequiredStatusCheck.update_forward_refs()
 ProtectedBranchRequiredStatusCheckPropChecksItems.update_forward_refs()
@@ -17283,6 +17138,9 @@ PrivateUserPropPlan.update_forward_refs()
 CodespacesSecret.update_forward_refs()
 CodespacesUserPublicKey.update_forward_refs()
 CodespaceExportDetails.update_forward_refs()
+CodespaceWithFullRepository.update_forward_refs()
+CodespaceWithFullRepositoryPropGitStatus.update_forward_refs()
+CodespaceWithFullRepositoryPropRuntimeConstraints.update_forward_refs()
 Email.update_forward_refs()
 GpgKey.update_forward_refs()
 GpgKeyPropEmailsItems.update_forward_refs()
@@ -17299,6 +17157,7 @@ SimpleInstallation.update_forward_refs()
 SimpleCheckSuite.update_forward_refs()
 CheckRunWithSimpleCheckSuite.update_forward_refs()
 CheckRunWithSimpleCheckSuitePropOutput.update_forward_refs()
+ProjectsV2.update_forward_refs()
 ProjectsV2Item.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201Allof1.update_forward_refs()
@@ -17311,23 +17170,7 @@ ApplicationsClientIdTokenDeleteBody.update_forward_refs()
 ApplicationsClientIdTokenPatchBody.update_forward_refs()
 ApplicationsClientIdTokenScopedPostBody.update_forward_refs()
 EmojisGetResponse200.update_forward_refs()
-EnterprisesEnterpriseActionsPermissionsPutBody.update_forward_refs()
-EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200.update_forward_refs()
-EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody.update_forward_refs()
-EnterprisesEnterpriseActionsRunnerGroupsGetResponse200.update_forward_refs()
-EnterprisesEnterpriseActionsRunnerGroupsPostBody.update_forward_refs()
-EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody.update_forward_refs()
-EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200.update_forward_refs()
-EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody.update_forward_refs()
-EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200.update_forward_refs()
-EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody.update_forward_refs()
-EnterprisesEnterpriseActionsRunnersGetResponse200.update_forward_refs()
-EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200.update_forward_refs()
-EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody.update_forward_refs()
-EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody.update_forward_refs()
-EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200.update_forward_refs()
-EnterprisesEnterpriseCodeScanningAlertsGetResponse503.update_forward_refs()
-EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody.update_forward_refs()
+EnterprisesEnterpriseSecretScanningAlertsGetResponse503.update_forward_refs()
 GistsPostBody.update_forward_refs()
 GistsPostBodyPropFiles.update_forward_refs()
 GistsGistIdGetResponse403.update_forward_refs()
@@ -17343,34 +17186,38 @@ MarkdownPostBody.update_forward_refs()
 NotificationsPutBody.update_forward_refs()
 NotificationsPutResponse202.update_forward_refs()
 NotificationsThreadsThreadIdSubscriptionPutBody.update_forward_refs()
-OrganizationsOrganizationIdCustomRolesGetResponse200.update_forward_refs()
 OrgsOrgPatchBody.update_forward_refs()
 OrgsOrgActionsCacheUsageByRepositoryGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsPutBody.update_forward_refs()
 OrgsOrgActionsPermissionsRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsRepositoriesPutBody.update_forward_refs()
-OrgsOrgActionsRunnerGroupsGetResponse200.update_forward_refs()
-OrgsOrgActionsRunnerGroupsPostBody.update_forward_refs()
-OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody.update_forward_refs()
-OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200.update_forward_refs()
-OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody.update_forward_refs()
-OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200.update_forward_refs()
-OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody.update_forward_refs()
+OrgsOrgActionsRequiredWorkflowsGetResponse200.update_forward_refs()
+OrgsOrgActionsRequiredWorkflowsPostBody.update_forward_refs()
+OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody.update_forward_refs()
+OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200.update_forward_refs()
+OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody.update_forward_refs()
 OrgsOrgActionsRunnersGetResponse200.update_forward_refs()
+OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200.update_forward_refs()
 OrgsOrgActionsRunnersRunnerIdLabelsPutBody.update_forward_refs()
 OrgsOrgActionsRunnersRunnerIdLabelsPostBody.update_forward_refs()
+OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200.update_forward_refs()
 OrgsOrgActionsSecretsGetResponse200.update_forward_refs()
 OrgsOrgActionsSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgActionsSecretsSecretNameRepositoriesPutBody.update_forward_refs()
+OrgsOrgActionsVariablesGetResponse200.update_forward_refs()
+OrgsOrgActionsVariablesPostBody.update_forward_refs()
+OrgsOrgActionsVariablesNamePatchBody.update_forward_refs()
+OrgsOrgActionsVariablesNameRepositoriesGetResponse200.update_forward_refs()
+OrgsOrgActionsVariablesNameRepositoriesPutBody.update_forward_refs()
 OrgsOrgCodespacesGetResponse200.update_forward_refs()
 OrgsOrgCodespacesBillingPutBody.update_forward_refs()
+OrgsOrgCodespacesBillingSelectedUsersPostBody.update_forward_refs()
+OrgsOrgCodespacesBillingSelectedUsersDeleteBody.update_forward_refs()
 OrgsOrgCodespacesSecretsGetResponse200.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody.update_forward_refs()
-OrgsOrgCustomRolesPostBody.update_forward_refs()
-OrgsOrgCustomRolesRoleIdPatchBody.update_forward_refs()
 OrgsOrgDependabotSecretsGetResponse200.update_forward_refs()
 OrgsOrgDependabotSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
@@ -17423,6 +17270,7 @@ ProjectsProjectIdPatchBody.update_forward_refs()
 ProjectsProjectIdPatchResponse403.update_forward_refs()
 ProjectsProjectIdCollaboratorsUsernamePutBody.update_forward_refs()
 ProjectsProjectIdColumnsPostBody.update_forward_refs()
+ReposOrgRepoActionsRequiredWorkflowsGetResponse200.update_forward_refs()
 ReposOwnerRepoDeleteResponse403.update_forward_refs()
 ReposOwnerRepoPatchBody.update_forward_refs()
 ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
@@ -17431,7 +17279,9 @@ ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection.u
 ReposOwnerRepoPatchBodyPropSecurityAndAnalysis.update_forward_refs()
 ReposOwnerRepoActionsArtifactsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsJobsJobIdRerunPostBody.update_forward_refs()
+ReposOwnerRepoActionsOidcCustomizationSubPutBody.update_forward_refs()
 ReposOwnerRepoActionsPermissionsPutBody.update_forward_refs()
+ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunnersGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody.update_forward_refs()
 ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody.update_forward_refs()
@@ -17444,6 +17294,9 @@ ReposOwnerRepoActionsRunsRunIdRerunPostBody.update_forward_refs()
 ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody.update_forward_refs()
 ReposOwnerRepoActionsSecretsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsSecretsSecretNamePutBody.update_forward_refs()
+ReposOwnerRepoActionsVariablesGetResponse200.update_forward_refs()
+ReposOwnerRepoActionsVariablesPostBody.update_forward_refs()
+ReposOwnerRepoActionsVariablesNamePatchBody.update_forward_refs()
 ReposOwnerRepoActionsWorkflowsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody.update_forward_refs()
 ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs.update_forward_refs()
@@ -17622,6 +17475,9 @@ ReposOwnerRepoTransferPostBody.update_forward_refs()
 ReposTemplateOwnerTemplateRepoGeneratePostBody.update_forward_refs()
 RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200.update_forward_refs()
 RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody.update_forward_refs()
+RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200.update_forward_refs()
+RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody.update_forward_refs()
+RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody.update_forward_refs()
 SearchCodeGetResponse200.update_forward_refs()
 SearchCommitsGetResponse200.update_forward_refs()
 SearchIssuesGetResponse200.update_forward_refs()
@@ -17651,6 +17507,7 @@ UserCodespacesSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 UserCodespacesSecretsSecretNameRepositoriesPutBody.update_forward_refs()
 UserCodespacesCodespaceNamePatchBody.update_forward_refs()
 UserCodespacesCodespaceNameMachinesGetResponse200.update_forward_refs()
+UserCodespacesCodespaceNamePublishPostBody.update_forward_refs()
 UserEmailVisibilityPatchBody.update_forward_refs()
 UserEmailsPostBodyOneof0.update_forward_refs()
 UserEmailsDeleteBodyOneof0.update_forward_refs()
@@ -17698,40 +17555,6 @@ __all__ = [
     "Authorization",
     "AuthorizationPropApp",
     "CodeOfConduct",
-    "ServerStatisticsItems",
-    "ServerStatisticsItemsPropGithubConnect",
-    "ServerStatisticsItemsPropGheStats",
-    "ServerStatisticsItemsPropGheStatsPropComments",
-    "ServerStatisticsItemsPropGheStatsPropGists",
-    "ServerStatisticsItemsPropGheStatsPropHooks",
-    "ServerStatisticsItemsPropGheStatsPropIssues",
-    "ServerStatisticsItemsPropGheStatsPropMilestones",
-    "ServerStatisticsItemsPropGheStatsPropOrgs",
-    "ServerStatisticsItemsPropGheStatsPropPages",
-    "ServerStatisticsItemsPropGheStatsPropPulls",
-    "ServerStatisticsItemsPropGheStatsPropRepos",
-    "ServerStatisticsItemsPropGheStatsPropUsers",
-    "ServerStatisticsItemsPropDormantUsers",
-    "ActionsCacheUsageOrgEnterprise",
-    "ActionsEnterprisePermissions",
-    "OrganizationSimple",
-    "SelectedActions",
-    "ActionsGetDefaultWorkflowPermissions",
-    "ActionsSetDefaultWorkflowPermissions",
-    "RunnerGroupsEnterprise",
-    "RunnerLabel",
-    "Runner",
-    "RunnerApplication",
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
-    "CodeScanningAlertRule",
-    "CodeScanningAnalysisTool",
-    "CodeScanningAlertLocation",
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
-    "SimpleRepository",
-    "CodeScanningOrganizationAlertItems",
-    "EnterpriseSecurityAnalysisSettings",
     "DependabotAlertPackage",
     "DependabotAlertSecurityVulnerability",
     "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
@@ -17740,12 +17563,10 @@ __all__ = [
     "DependabotAlertSecurityAdvisoryPropCwesItems",
     "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
     "DependabotAlertSecurityAdvisoryPropReferencesItems",
+    "SimpleRepository",
     "DependabotAlertWithRepository",
     "DependabotAlertWithRepositoryPropDependency",
     "OrganizationSecretScanningAlert",
-    "AdvancedSecurityActiveCommittersUser",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommitters",
     "Actor",
     "Milestone",
     "ReactionRollup",
@@ -17792,16 +17613,32 @@ __all__ = [
     "Thread",
     "ThreadPropSubject",
     "ThreadSubscription",
-    "OrganizationCustomRepositoryRole",
+    "OrganizationSimple",
     "OrganizationFull",
     "OrganizationFullPropPlan",
+    "ActionsCacheUsageOrgEnterprise",
     "ActionsCacheUsageByRepository",
     "OidcCustomSub",
     "EmptyObject",
     "ActionsOrganizationPermissions",
-    "RunnerGroupsOrg",
+    "SelectedActions",
+    "ActionsGetDefaultWorkflowPermissions",
+    "ActionsSetDefaultWorkflowPermissions",
+    "RequiredWorkflow",
+    "RunnerLabel",
+    "Runner",
+    "RunnerApplication",
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
     "OrganizationActionsSecret",
     "ActionsPublicKey",
+    "OrganizationActionsVariable",
+    "CodeScanningAlertRule",
+    "CodeScanningAnalysisTool",
+    "CodeScanningAlertLocation",
+    "CodeScanningAlertInstance",
+    "CodeScanningAlertInstancePropMessage",
+    "CodeScanningOrganizationAlertItems",
     "CodespaceMachine",
     "Codespace",
     "CodespacePropGitStatus",
@@ -17811,7 +17648,6 @@ __all__ = [
     "OrganizationDependabotSecret",
     "DependabotPublicKey",
     "OrganizationInvitation",
-    "OrganizationFineGrainedPermission",
     "OrgHook",
     "OrgHookPropConfig",
     "InteractionLimitResponse",
@@ -17849,6 +17685,12 @@ __all__ = [
     "RateLimit",
     "RateLimitOverview",
     "RateLimitOverviewPropResources",
+    "RepoRequiredWorkflow",
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropWindows",
     "CodeOfConductSimple",
     "FullRepository",
     "FullRepositoryPropPermissions",
@@ -17887,12 +17729,8 @@ __all__ = [
     "WorkflowRunUsagePropBillablePropWindows",
     "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
     "ActionsSecret",
+    "ActionsVariable",
     "Workflow",
-    "WorkflowUsage",
-    "WorkflowUsagePropBillable",
-    "WorkflowUsagePropBillablePropUbuntu",
-    "WorkflowUsagePropBillablePropMacos",
-    "WorkflowUsagePropBillablePropWindows",
     "Autolink",
     "ProtectedBranchRequiredStatusCheck",
     "ProtectedBranchRequiredStatusCheckPropChecksItems",
@@ -18191,6 +18029,9 @@ __all__ = [
     "CodespacesSecret",
     "CodespacesUserPublicKey",
     "CodespaceExportDetails",
+    "CodespaceWithFullRepository",
+    "CodespaceWithFullRepositoryPropGitStatus",
+    "CodespaceWithFullRepositoryPropRuntimeConstraints",
     "Email",
     "GpgKey",
     "GpgKeyPropEmailsItems",
@@ -18207,6 +18048,7 @@ __all__ = [
     "SimpleCheckSuite",
     "CheckRunWithSimpleCheckSuite",
     "CheckRunWithSimpleCheckSuitePropOutput",
+    "ProjectsV2",
     "ProjectsV2Item",
     "AppManifestsCodeConversionsPostResponse201",
     "AppManifestsCodeConversionsPostResponse201Allof1",
@@ -18219,23 +18061,7 @@ __all__ = [
     "ApplicationsClientIdTokenPatchBody",
     "ApplicationsClientIdTokenScopedPostBody",
     "EmojisGetResponse200",
-    "EnterprisesEnterpriseActionsPermissionsPutBody",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody",
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
-    "EnterprisesEnterpriseActionsRunnerGroupsPostBody",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody",
-    "EnterprisesEnterpriseActionsRunnersGetResponse200",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200",
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503",
-    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",
+    "EnterprisesEnterpriseSecretScanningAlertsGetResponse503",
     "GistsPostBody",
     "GistsPostBodyPropFiles",
     "GistsGistIdGetResponse403",
@@ -18251,34 +18077,38 @@ __all__ = [
     "NotificationsPutBody",
     "NotificationsPutResponse202",
     "NotificationsThreadsThreadIdSubscriptionPutBody",
-    "OrganizationsOrganizationIdCustomRolesGetResponse200",
     "OrgsOrgPatchBody",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
     "OrgsOrgActionsPermissionsPutBody",
     "OrgsOrgActionsPermissionsRepositoriesGetResponse200",
     "OrgsOrgActionsPermissionsRepositoriesPutBody",
-    "OrgsOrgActionsRunnerGroupsGetResponse200",
-    "OrgsOrgActionsRunnerGroupsPostBody",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",
+    "OrgsOrgActionsRequiredWorkflowsGetResponse200",
+    "OrgsOrgActionsRequiredWorkflowsPostBody",
+    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody",
+    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200",
+    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody",
     "OrgsOrgActionsRunnersGetResponse200",
+    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",
     "OrgsOrgActionsRunnersRunnerIdLabelsPutBody",
     "OrgsOrgActionsRunnersRunnerIdLabelsPostBody",
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",
     "OrgsOrgActionsSecretsGetResponse200",
     "OrgsOrgActionsSecretsSecretNamePutBody",
     "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",
     "OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",
+    "OrgsOrgActionsVariablesGetResponse200",
+    "OrgsOrgActionsVariablesPostBody",
+    "OrgsOrgActionsVariablesNamePatchBody",
+    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200",
+    "OrgsOrgActionsVariablesNameRepositoriesPutBody",
     "OrgsOrgCodespacesGetResponse200",
     "OrgsOrgCodespacesBillingPutBody",
+    "OrgsOrgCodespacesBillingSelectedUsersPostBody",
+    "OrgsOrgCodespacesBillingSelectedUsersDeleteBody",
     "OrgsOrgCodespacesSecretsGetResponse200",
     "OrgsOrgCodespacesSecretsSecretNamePutBody",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",
-    "OrgsOrgCustomRolesPostBody",
-    "OrgsOrgCustomRolesRoleIdPatchBody",
     "OrgsOrgDependabotSecretsGetResponse200",
     "OrgsOrgDependabotSecretsSecretNamePutBody",
     "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",
@@ -18331,6 +18161,7 @@ __all__ = [
     "ProjectsProjectIdPatchResponse403",
     "ProjectsProjectIdCollaboratorsUsernamePutBody",
     "ProjectsProjectIdColumnsPostBody",
+    "ReposOrgRepoActionsRequiredWorkflowsGetResponse200",
     "ReposOwnerRepoDeleteResponse403",
     "ReposOwnerRepoPatchBody",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
@@ -18339,7 +18170,9 @@ __all__ = [
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
     "ReposOwnerRepoActionsArtifactsGetResponse200",
     "ReposOwnerRepoActionsJobsJobIdRerunPostBody",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBody",
     "ReposOwnerRepoActionsPermissionsPutBody",
+    "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200",
     "ReposOwnerRepoActionsRunnersGetResponse200",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",
@@ -18352,6 +18185,9 @@ __all__ = [
     "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",
     "ReposOwnerRepoActionsSecretsGetResponse200",
     "ReposOwnerRepoActionsSecretsSecretNamePutBody",
+    "ReposOwnerRepoActionsVariablesGetResponse200",
+    "ReposOwnerRepoActionsVariablesPostBody",
+    "ReposOwnerRepoActionsVariablesNamePatchBody",
     "ReposOwnerRepoActionsWorkflowsGetResponse200",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
@@ -18530,6 +18366,9 @@ __all__ = [
     "ReposTemplateOwnerTemplateRepoGeneratePostBody",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200",
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody",
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody",
     "SearchCodeGetResponse200",
     "SearchCommitsGetResponse200",
     "SearchIssuesGetResponse200",
@@ -18559,6 +18398,7 @@ __all__ = [
     "UserCodespacesSecretsSecretNameRepositoriesPutBody",
     "UserCodespacesCodespaceNamePatchBody",
     "UserCodespacesCodespaceNameMachinesGetResponse200",
+    "UserCodespacesCodespaceNamePublishPostBody",
     "UserEmailVisibilityPatchBody",
     "UserEmailsPostBodyOneof0",
     "UserEmailsDeleteBodyOneof0",

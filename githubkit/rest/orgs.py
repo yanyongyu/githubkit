@@ -14,12 +14,10 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 from .types import (
     OrgsOrgPatchBodyType,
     OrgsOrgHooksPostBodyType,
-    OrgsOrgCustomRolesPostBodyType,
     OrgsOrgInvitationsPostBodyType,
     OrgsOrgHooksHookIdPatchBodyType,
     OrgsOrgHooksPostBodyPropConfigType,
     UserMembershipsOrgsOrgPatchBodyType,
-    OrgsOrgCustomRolesRoleIdPatchBodyType,
     OrgsOrgHooksHookIdConfigPatchBodyType,
     OrgsOrgMembershipsUsernamePutBodyType,
     OrgsOrgHooksHookIdPatchBodyPropConfigType,
@@ -42,20 +40,15 @@ from .models import (
     OrgsOrgHooksPostBody,
     ValidationErrorSimple,
     OrganizationInvitation,
-    OrgsOrgCustomRolesPostBody,
     OrgsOrgInvitationsPostBody,
     OrgsOrgHooksHookIdPatchBody,
     UserMembershipsOrgsOrgPatchBody,
-    OrganizationCustomRepositoryRole,
-    OrganizationFineGrainedPermission,
-    OrgsOrgCustomRolesRoleIdPatchBody,
     OrgsOrgHooksHookIdConfigPatchBody,
     OrgsOrgMembershipsUsernamePutBody,
     OrgsOrgInstallationsGetResponse200,
     OrgsOrgOutsideCollaboratorsUsernamePutBody,
     OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-    OrganizationsOrganizationIdCustomRolesGetResponse200,
     OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
 )
 
@@ -104,30 +97,6 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             response_model=List[OrganizationSimple],
-        )
-
-    def list_custom_roles(
-        self,
-        organization_id: str,
-    ) -> "Response[OrganizationsOrganizationIdCustomRolesGetResponse200]":
-        url = f"/organizations/{organization_id}/custom_roles"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=OrganizationsOrganizationIdCustomRolesGetResponse200,
-        )
-
-    async def async_list_custom_roles(
-        self,
-        organization_id: str,
-    ) -> "Response[OrganizationsOrganizationIdCustomRolesGetResponse200]":
-        url = f"/organizations/{organization_id}/custom_roles"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=OrganizationsOrganizationIdCustomRolesGetResponse200,
         )
 
     def get(
@@ -434,250 +403,6 @@ class OrgsClient:
             url,
         )
 
-    @overload
-    def create_custom_role(
-        self, org: str, *, data: OrgsOrgCustomRolesPostBodyType
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    @overload
-    def create_custom_role(
-        self,
-        org: str,
-        *,
-        data: Unset = UNSET,
-        name: str,
-        description: Union[Unset, str] = UNSET,
-        base_role: Literal["read", "triage", "write", "maintain"],
-        permissions: List[str],
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    def create_custom_role(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgCustomRolesPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        url = f"/orgs/{org}/custom_roles"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCustomRolesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=OrganizationCustomRepositoryRole,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    async def async_create_custom_role(
-        self, org: str, *, data: OrgsOrgCustomRolesPostBodyType
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    @overload
-    async def async_create_custom_role(
-        self,
-        org: str,
-        *,
-        data: Unset = UNSET,
-        name: str,
-        description: Union[Unset, str] = UNSET,
-        base_role: Literal["read", "triage", "write", "maintain"],
-        permissions: List[str],
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    async def async_create_custom_role(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgCustomRolesPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        url = f"/orgs/{org}/custom_roles"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCustomRolesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=OrganizationCustomRepositoryRole,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
-    def get_custom_role(
-        self,
-        org: str,
-        role_id: int,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        url = f"/orgs/{org}/custom_roles/{role_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=OrganizationCustomRepositoryRole,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    async def async_get_custom_role(
-        self,
-        org: str,
-        role_id: int,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        url = f"/orgs/{org}/custom_roles/{role_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=OrganizationCustomRepositoryRole,
-            error_models={
-                "404": BasicError,
-            },
-        )
-
-    def delete_custom_role(
-        self,
-        org: str,
-        role_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/custom_roles/{role_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_custom_role(
-        self,
-        org: str,
-        role_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/custom_roles/{role_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    @overload
-    def update_custom_role(
-        self, org: str, role_id: int, *, data: OrgsOrgCustomRolesRoleIdPatchBodyType
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    @overload
-    def update_custom_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
-        base_role: Union[Unset, Literal["read", "triage", "write", "maintain"]] = UNSET,
-        permissions: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    def update_custom_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        data: Union[Unset, OrgsOrgCustomRolesRoleIdPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        url = f"/orgs/{org}/custom_roles/{role_id}"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCustomRolesRoleIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=OrganizationCustomRepositoryRole,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    async def async_update_custom_role(
-        self, org: str, role_id: int, *, data: OrgsOrgCustomRolesRoleIdPatchBodyType
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    @overload
-    async def async_update_custom_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
-        base_role: Union[Unset, Literal["read", "triage", "write", "maintain"]] = UNSET,
-        permissions: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        ...
-
-    async def async_update_custom_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        data: Union[Unset, OrgsOrgCustomRolesRoleIdPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[OrganizationCustomRepositoryRole]":
-        url = f"/orgs/{org}/custom_roles/{role_id}"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCustomRolesRoleIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=OrganizationCustomRepositoryRole,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-            },
-        )
-
     def list_failed_invitations(
         self,
         org: str,
@@ -722,30 +447,6 @@ class OrgsClient:
             error_models={
                 "404": BasicError,
             },
-        )
-
-    def list_fine_grained_permissions(
-        self,
-        org: str,
-    ) -> "Response[List[OrganizationFineGrainedPermission]]":
-        url = f"/orgs/{org}/fine_grained_permissions"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=List[OrganizationFineGrainedPermission],
-        )
-
-    async def async_list_fine_grained_permissions(
-        self,
-        org: str,
-    ) -> "Response[List[OrganizationFineGrainedPermission]]":
-        url = f"/orgs/{org}/fine_grained_permissions"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=List[OrganizationFineGrainedPermission],
         )
 
     def list_webhooks(
@@ -1375,12 +1076,21 @@ class OrgsClient:
         org: str,
         per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
+        role: Union[
+            Unset,
+            Literal[
+                "all", "admin", "direct_member", "billing_manager", "hiring_manager"
+            ],
+        ] = "all",
+        invitation_source: Union[Unset, Literal["all", "member", "scim"]] = "all",
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
         params = {
             "per_page": per_page,
             "page": page,
+            "role": role,
+            "invitation_source": invitation_source,
         }
 
         return self._github.request(
@@ -1398,12 +1108,21 @@ class OrgsClient:
         org: str,
         per_page: Union[Unset, int] = 30,
         page: Union[Unset, int] = 1,
+        role: Union[
+            Unset,
+            Literal[
+                "all", "admin", "direct_member", "billing_manager", "hiring_manager"
+            ],
+        ] = "all",
+        invitation_source: Union[Unset, Literal["all", "member", "scim"]] = "all",
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
         params = {
             "per_page": per_page,
             "page": page,
+            "role": role,
+            "invitation_source": invitation_source,
         }
 
         return await self._github.arequest(

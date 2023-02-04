@@ -37,7 +37,7 @@ from .models import (
     ReposOwnerRepoNotificationsPutBody,
     ReposOwnerRepoNotificationsPutResponse202,
     NotificationsThreadsThreadIdSubscriptionPutBody,
-    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+    EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
 )
 
 if TYPE_CHECKING:
@@ -68,7 +68,7 @@ class ActivityClient:
             response_model=List[Event],
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -91,7 +91,7 @@ class ActivityClient:
             response_model=List[Event],
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 

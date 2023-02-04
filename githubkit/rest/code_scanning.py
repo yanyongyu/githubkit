@@ -29,7 +29,7 @@ from .models import (
     CodeScanningOrganizationAlertItems,
     ReposOwnerRepoCodeScanningSarifsPostBody,
     ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
-    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+    EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
 )
 
 if TYPE_CHECKING:
@@ -40,82 +40,6 @@ if TYPE_CHECKING:
 class CodeScanningClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
-
-    def list_alerts_for_enterprise(
-        self,
-        enterprise: str,
-        tool_name: Union[Unset, str] = UNSET,
-        tool_guid: Union[Unset, Union[str, None]] = UNSET,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-    ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
-        url = f"/enterprises/{enterprise}/code-scanning/alerts"
-
-        params = {
-            "tool_name": tool_name,
-            "tool_guid": tool_guid,
-            "before": before,
-            "after": after,
-            "page": page,
-            "per_page": per_page,
-            "direction": direction,
-            "state": state,
-            "sort": sort,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[CodeScanningOrganizationAlertItems],
-            error_models={
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_list_alerts_for_enterprise(
-        self,
-        enterprise: str,
-        tool_name: Union[Unset, str] = UNSET,
-        tool_guid: Union[Unset, Union[str, None]] = UNSET,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        state: Union[Unset, Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-    ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
-        url = f"/enterprises/{enterprise}/code-scanning/alerts"
-
-        params = {
-            "tool_name": tool_name,
-            "tool_guid": tool_guid,
-            "before": before,
-            "after": after,
-            "page": page,
-            "per_page": per_page,
-            "direction": direction,
-            "state": state,
-            "sort": sort,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=List[CodeScanningOrganizationAlertItems],
-            error_models={
-                "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
 
     def list_alerts_for_org(
         self,
@@ -156,7 +80,7 @@ class CodeScanningClient:
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -199,7 +123,7 @@ class CodeScanningClient:
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -242,7 +166,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -285,7 +209,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -304,7 +228,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -323,7 +247,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -382,7 +306,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -441,7 +365,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -470,7 +394,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -499,7 +423,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -537,7 +461,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -575,7 +499,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -594,7 +518,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -613,7 +537,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -639,7 +563,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -665,7 +589,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -683,7 +607,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -701,7 +625,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -720,7 +644,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -739,7 +663,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -795,7 +719,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -851,7 +775,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -869,7 +793,7 @@ class CodeScanningClient:
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -887,6 +811,6 @@ class CodeScanningClient:
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )

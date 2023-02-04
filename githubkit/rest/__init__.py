@@ -40,8 +40,6 @@ from .code_scanning import CodeScanningClient
 from .secret_scanning import SecretScanningClient
 from .codes_of_conduct import CodesOfConductClient
 from .dependency_graph import DependencyGraphClient
-from .enterprise_admin import EnterpriseAdminClient
-from .server_statistics import ServerStatisticsClient
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
@@ -68,32 +66,12 @@ class RestNamespace:
         return EmojisClient(self._github)
 
     @cached_property
-    def server_statistics(self) -> ServerStatisticsClient:
-        return ServerStatisticsClient(self._github)
-
-    @cached_property
-    def actions(self) -> ActionsClient:
-        return ActionsClient(self._github)
-
-    @cached_property
-    def enterprise_admin(self) -> EnterpriseAdminClient:
-        return EnterpriseAdminClient(self._github)
-
-    @cached_property
-    def code_scanning(self) -> CodeScanningClient:
-        return CodeScanningClient(self._github)
-
-    @cached_property
     def dependabot(self) -> DependabotClient:
         return DependabotClient(self._github)
 
     @cached_property
     def secret_scanning(self) -> SecretScanningClient:
         return SecretScanningClient(self._github)
-
-    @cached_property
-    def billing(self) -> BillingClient:
-        return BillingClient(self._github)
 
     @cached_property
     def activity(self) -> ActivityClient:
@@ -124,8 +102,16 @@ class RestNamespace:
         return OrgsClient(self._github)
 
     @cached_property
+    def actions(self) -> ActionsClient:
+        return ActionsClient(self._github)
+
+    @cached_property
     def oidc(self) -> OidcClient:
         return OidcClient(self._github)
+
+    @cached_property
+    def code_scanning(self) -> CodeScanningClient:
+        return CodeScanningClient(self._github)
 
     @cached_property
     def codespaces(self) -> CodespacesClient:
@@ -150,6 +136,10 @@ class RestNamespace:
     @cached_property
     def repos(self) -> ReposClient:
         return ReposClient(self._github)
+
+    @cached_property
+    def billing(self) -> BillingClient:
+        return BillingClient(self._github)
 
     @cached_property
     def teams(self) -> TeamsClient:

@@ -693,411 +693,6 @@ class CodeOfConductType(TypedDict):
     html_url: Union[str, None]
 
 
-class ServerStatisticsItemsType(TypedDict):
-    """ServerStatisticsItems"""
-
-    server_id: NotRequired[str]
-    collection_date: NotRequired[str]
-    schema_version: NotRequired[str]
-    ghes_version: NotRequired[str]
-    host_name: NotRequired[str]
-    github_connect: NotRequired[ServerStatisticsItemsPropGithubConnectType]
-    ghe_stats: NotRequired[ServerStatisticsItemsPropGheStatsType]
-    dormant_users: NotRequired[ServerStatisticsItemsPropDormantUsersType]
-
-
-class ServerStatisticsItemsPropGithubConnectType(TypedDict):
-    """ServerStatisticsItemsPropGithubConnect"""
-
-    features_enabled: NotRequired[List[str]]
-
-
-class ServerStatisticsItemsPropGheStatsType(TypedDict):
-    """ServerStatisticsItemsPropGheStats"""
-
-    comments: NotRequired[ServerStatisticsItemsPropGheStatsPropCommentsType]
-    gists: NotRequired[ServerStatisticsItemsPropGheStatsPropGistsType]
-    hooks: NotRequired[ServerStatisticsItemsPropGheStatsPropHooksType]
-    issues: NotRequired[ServerStatisticsItemsPropGheStatsPropIssuesType]
-    milestones: NotRequired[ServerStatisticsItemsPropGheStatsPropMilestonesType]
-    orgs: NotRequired[ServerStatisticsItemsPropGheStatsPropOrgsType]
-    pages: NotRequired[ServerStatisticsItemsPropGheStatsPropPagesType]
-    pulls: NotRequired[ServerStatisticsItemsPropGheStatsPropPullsType]
-    repos: NotRequired[ServerStatisticsItemsPropGheStatsPropReposType]
-    users: NotRequired[ServerStatisticsItemsPropGheStatsPropUsersType]
-
-
-class ServerStatisticsItemsPropGheStatsPropCommentsType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropComments"""
-
-    total_commit_comments: NotRequired[int]
-    total_gist_comments: NotRequired[int]
-    total_issue_comments: NotRequired[int]
-    total_pull_request_comments: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropGistsType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropGists"""
-
-    total_gists: NotRequired[int]
-    private_gists: NotRequired[int]
-    public_gists: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropHooksType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropHooks"""
-
-    total_hooks: NotRequired[int]
-    active_hooks: NotRequired[int]
-    inactive_hooks: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropIssuesType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropIssues"""
-
-    total_issues: NotRequired[int]
-    open_issues: NotRequired[int]
-    closed_issues: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropMilestonesType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropMilestones"""
-
-    total_milestones: NotRequired[int]
-    open_milestones: NotRequired[int]
-    closed_milestones: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropOrgsType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropOrgs"""
-
-    total_orgs: NotRequired[int]
-    disabled_orgs: NotRequired[int]
-    total_teams: NotRequired[int]
-    total_team_members: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropPagesType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropPages"""
-
-    total_pages: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropPullsType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropPulls"""
-
-    total_pulls: NotRequired[int]
-    merged_pulls: NotRequired[int]
-    mergeable_pulls: NotRequired[int]
-    unmergeable_pulls: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropReposType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropRepos"""
-
-    total_repos: NotRequired[int]
-    root_repos: NotRequired[int]
-    fork_repos: NotRequired[int]
-    org_repos: NotRequired[int]
-    total_pushes: NotRequired[int]
-    total_wikis: NotRequired[int]
-
-
-class ServerStatisticsItemsPropGheStatsPropUsersType(TypedDict):
-    """ServerStatisticsItemsPropGheStatsPropUsers"""
-
-    total_users: NotRequired[int]
-    admin_users: NotRequired[int]
-    suspended_users: NotRequired[int]
-
-
-class ServerStatisticsItemsPropDormantUsersType(TypedDict):
-    """ServerStatisticsItemsPropDormantUsers"""
-
-    total_dormant_users: NotRequired[int]
-    dormancy_threshold: NotRequired[str]
-
-
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
-
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
-
-
-class ActionsEnterprisePermissionsType(TypedDict):
-    """ActionsEnterprisePermissions"""
-
-    enabled_organizations: Literal["all", "none", "selected"]
-    selected_organizations_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-
-
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
-
-    A GitHub organization.
-    """
-
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-
-
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
-
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[List[str]]
-
-
-class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
-
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
-
-
-class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
-
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
-
-
-class RunnerGroupsEnterpriseType(TypedDict):
-    """RunnerGroupsEnterprise"""
-
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_organizations_url: NotRequired[str]
-    runners_url: str
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
-
-
-class RunnerLabelType(TypedDict):
-    """Self hosted runner label
-
-    A label for a self hosted runner
-    """
-
-    id: NotRequired[int]
-    name: str
-    type: NotRequired[Literal["read-only", "custom"]]
-
-
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: List[RunnerLabelType]
-
-
-class RunnerApplicationType(TypedDict):
-    """Runner Application
-
-    Runner Application
-    """
-
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
-
-
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
-
-    Authentication Token
-    """
-
-    token: str
-    expires_at: datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[List[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
-
-
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-class CodeScanningAlertRuleType(TypedDict):
-    """CodeScanningAlertRule"""
-
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[List[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-
-
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
-
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
-
-
-class CodeScanningAlertLocationType(TypedDict):
-    """CodeScanningAlertLocation
-
-    Describe a region within a file for the alert.
-    """
-
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeScanningAlertInstanceType(TypedDict):
-    """CodeScanningAlertInstance"""
-
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Literal["open", "closed", "dismissed", "fixed"]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        List[Union[None, Literal["source", "generated", "test", "library"]]]
-    ]
-
-
-class CodeScanningAlertInstancePropMessageType(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-class SimpleRepositoryType(TypedDict):
-    """Simple Repository
-
-    A GitHub repository.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    hooks_url: str
-
-
-class CodeScanningOrganizationAlertItemsType(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
-
-    number: int
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Literal["open", "closed", "dismissed", "fixed"]
-    fixed_at: NotRequired[Union[datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    repository: SimpleRepositoryType
-
-
-class EnterpriseSecurityAnalysisSettingsType(TypedDict):
-    """Enterprise Security Analysis Settings"""
-
-    advanced_security_enabled_for_new_repositories: bool
-    secret_scanning_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-
-
 class DependabotAlertPackageType(TypedDict):
     """DependabotAlertPackage
 
@@ -1191,6 +786,60 @@ class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
     url: str
 
 
+class SimpleRepositoryType(TypedDict):
+    """Simple Repository
+
+    A GitHub repository.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    hooks_url: str
+
+
 class DependabotAlertWithRepositoryType(TypedDict):
     """DependabotAlertWithRepository
 
@@ -1253,31 +902,6 @@ class OrganizationSecretScanningAlertType(TypedDict):
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
     push_protection_bypassed_at: NotRequired[Union[datetime, None]]
     resolution_comment: NotRequired[Union[str, None]]
-
-
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str
-    last_pushed_date: str
-
-
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
-
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: List[
-        AdvancedSecurityActiveCommittersUserType
-    ]
-
-
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    repositories: List[AdvancedSecurityActiveCommittersRepositoryType]
 
 
 class ActorType(TypedDict):
@@ -2064,20 +1688,24 @@ class ThreadSubscriptionType(TypedDict):
     repository_url: NotRequired[str]
 
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    Custom repository roles created by organization administrators
+    A GitHub organization.
     """
 
+    login: str
     id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[List[str]]
-    organization: NotRequired[SimpleUserType]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
 class OrganizationFullType(TypedDict):
@@ -2154,6 +1782,13 @@ class OrganizationFullPropPlanType(TypedDict):
     seats: NotRequired[int]
 
 
+class ActionsCacheUsageOrgEnterpriseType(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
+
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
+
+
 class ActionsCacheUsageByRepositoryType(TypedDict):
     """Actions Cache Usage by repository
 
@@ -2190,21 +1825,102 @@ class ActionsOrganizationPermissionsType(TypedDict):
     selected_actions_url: NotRequired[str]
 
 
-class RunnerGroupsOrgType(TypedDict):
-    """RunnerGroupsOrg"""
+class SelectedActionsType(TypedDict):
+    """SelectedActions"""
+
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[List[str]]
+
+
+class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsGetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: Literal["read", "write"]
+    can_approve_pull_request_reviews: bool
+
+
+class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
+
+
+class RequiredWorkflowType(TypedDict):
+    """RequiredWorkflow"""
 
     id: float
     name: str
-    visibility: str
-    default: bool
+    path: str
+    scope: Literal["all", "selected"]
+    ref: str
+    state: Literal["active", "deleted"]
     selected_repositories_url: NotRequired[str]
-    runners_url: str
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
+    created_at: datetime
+    updated_at: datetime
+    repository: MinimalRepositoryType
+
+
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
+
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
+
+
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
+    """
+
+    id: int
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: List[RunnerLabelType]
+
+
+class RunnerApplicationType(TypedDict):
+    """Runner Application
+
+    Runner Application
+    """
+
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
+
+
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
+
+    Authentication Token
+    """
+
+    token: str
+    expires_at: datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[List[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
 class OrganizationActionsSecretType(TypedDict):
@@ -2232,6 +1948,103 @@ class ActionsPublicKeyType(TypedDict):
     url: NotRequired[str]
     title: NotRequired[str]
     created_at: NotRequired[str]
+
+
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+class CodeScanningAlertRuleType(TypedDict):
+    """CodeScanningAlertRule"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[List[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+
+
+class CodeScanningAnalysisToolType(TypedDict):
+    """CodeScanningAnalysisTool"""
+
+    name: NotRequired[str]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
+
+
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Literal["open", "closed", "dismissed", "fixed"]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        List[Union[None, Literal["source", "generated", "test", "library"]]]
+    ]
+
+
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class CodeScanningOrganizationAlertItemsType(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
+
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Literal["open", "closed", "dismissed", "fixed"]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    repository: SimpleRepositoryType
 
 
 class CodespaceMachineType(TypedDict):
@@ -2295,6 +2108,7 @@ class CodespaceType(TypedDict):
     machines_url: str
     start_url: str
     stop_url: str
+    publish_url: NotRequired[Union[str, None]]
     pulls_url: Union[str, None]
     recent_folders: List[str]
     runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
@@ -2392,16 +2206,7 @@ class OrganizationInvitationType(TypedDict):
     team_count: int
     node_id: str
     invitation_teams_url: str
-
-
-class OrganizationFineGrainedPermissionType(TypedDict):
-    """Organization Fine-Grained Permission
-
-    Fine-grained permissions available for the organization
-    """
-
-    name: str
-    description: str
+    invitation_source: NotRequired[str]
 
 
 class OrgHookType(TypedDict):
@@ -2659,6 +2464,7 @@ class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
     windows_16_core: NotRequired[int]
     windows_32_core: NotRequired[int]
     windows_64_core: NotRequired[int]
+    macos_12_core: NotRequired[int]
     total: NotRequired[int]
 
 
@@ -3065,6 +2871,60 @@ class RateLimitOverviewPropResourcesType(TypedDict):
     dependency_snapshots: NotRequired[RateLimitType]
 
 
+class RepoRequiredWorkflowType(TypedDict):
+    """Required workflow
+
+    A GitHub Actions required workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal["active", "deleted"]
+    source_repository: MinimalRepositoryType
+    created_at: datetime
+    updated_at: datetime
+    url: str
+    html_url: str
+    badge_url: str
+
+
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
+
+    Workflow Usage
+    """
+
+    billable: WorkflowUsagePropBillableType
+
+
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+
+
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
+
+
 class CodeOfConductSimpleType(TypedDict):
     """Code Of Conduct Simple
 
@@ -3323,7 +3183,7 @@ class ActionsRepositoryPermissionsType(TypedDict):
 class ActionsWorkflowAccessToRepositoryType(TypedDict):
     """ActionsWorkflowAccessToRepository"""
 
-    access_level: Literal["none", "user", "organization", "enterprise"]
+    access_level: Literal["none", "user", "organization"]
 
 
 class ReferencedWorkflowType(TypedDict):
@@ -3615,6 +3475,15 @@ class ActionsSecretType(TypedDict):
     updated_at: datetime
 
 
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
+
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
+
+
 class WorkflowType(TypedDict):
     """Workflow
 
@@ -3634,41 +3503,6 @@ class WorkflowType(TypedDict):
     html_url: str
     badge_url: str
     deleted_at: NotRequired[datetime]
-
-
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
-
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillableType
-
-
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
 
 
 class AutolinkType(TypedDict):
@@ -8070,6 +7904,84 @@ class CodespaceExportDetailsType(TypedDict):
     html_url: NotRequired[Union[str, None]]
 
 
+class CodespaceWithFullRepositoryType(TypedDict):
+    """Codespace
+
+    A codespace.
+    """
+
+    id: int
+    name: str
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserType
+    billable_owner: SimpleUserType
+    repository: FullRepositoryType
+    machine: Union[None, CodespaceMachineType]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
+    created_at: datetime
+    updated_at: datetime
+    last_used_at: datetime
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ]
+    url: str
+    git_status: CodespaceWithFullRepositoryPropGitStatusType
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: List[str]
+    runtime_constraints: NotRequired[
+        CodespaceWithFullRepositoryPropRuntimeConstraintsType
+    ]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[datetime, None]]
+
+
+class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
+    """CodespaceWithFullRepositoryPropGitStatus
+
+    Details about the codespace's git repository.
+    """
+
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
+
+
+class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
+    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[List[str], None]]
+
+
 class EmailType(TypedDict):
     """Email
 
@@ -8322,6 +8234,28 @@ class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
     title: Union[str, None]
 
 
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
+
+    A projects v2 project
+    """
+
+    id: float
+    node_id: str
+    owner: SimpleUserType
+    creator: SimpleUserType
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[datetime, None]
+    created_at: datetime
+    updated_at: datetime
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[datetime, None]
+    deleted_by: Union[None, SimpleUserType]
+
+
 class ProjectsV2ItemType(TypedDict):
     """Projects v2 Item
 
@@ -8430,137 +8364,12 @@ class EmojisGetResponse200Type(TypedDict):
     """EmojisGetResponse200"""
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
-
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: List[OrganizationSimpleType]
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
-
-    selected_organization_ids: List[int]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
-
-    total_count: float
-    runner_groups: List[RunnerGroupsEnterpriseType]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
-
-    name: str
-    visibility: NotRequired[Literal["selected", "all"]]
-    selected_organization_ids: NotRequired[List[int]]
-    runners: NotRequired[List[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
-
-    name: NotRequired[str]
-    visibility: NotRequired[Literal["selected", "all"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: List[OrganizationSimpleType]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
-
-    selected_organization_ids: List[int]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: List[RunnerType]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: List[int]
-
-
-class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
-
-    total_count: NotRequired[float]
-    runners: NotRequired[List[RunnerType]]
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
-
-    total_count: int
-    labels: List[RunnerLabelType]
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: List[str]
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
-
-    labels: List[str]
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int
-    labels: List[RunnerLabelType]
-
-
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
 
     code: NotRequired[str]
     message: NotRequired[str]
     documentation_url: NotRequired[str]
-
-
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
-
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
 
 
 class GistsPostBodyType(TypedDict):
@@ -8676,13 +8485,6 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
     ignored: NotRequired[bool]
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
-
-
 class OrgsOrgPatchBodyType(TypedDict):
     """OrgsOrgPatchBody"""
 
@@ -8748,59 +8550,46 @@ class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
     selected_repository_ids: List[int]
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class OrgsOrgActionsRequiredWorkflowsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRequiredWorkflowsGetResponse200"""
 
-    total_count: float
-    runner_groups: List[RunnerGroupsOrgType]
+    total_count: int
+    required_workflows: List[RequiredWorkflowType]
 
 
-class OrgsOrgActionsRunnerGroupsPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class OrgsOrgActionsRequiredWorkflowsPostBodyType(TypedDict):
+    """OrgsOrgActionsRequiredWorkflowsPostBody"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
+    workflow_file_path: str
+    repository_id: str
+    scope: NotRequired[Literal["selected", "all"]]
     selected_repository_ids: NotRequired[List[int]]
-    runners: NotRequired[List[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
+    workflow_file_path: NotRequired[str]
+    repository_id: NotRequired[str]
+    scope: NotRequired[Literal["selected", "all"]]
+    selected_repository_ids: NotRequired[List[int]]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200"""
 
     total_count: float
-    repositories: List[MinimalRepositoryType]
+    repositories: List[RepositoryType]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
+class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType(
+    TypedDict
+):
+    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody"""
 
     selected_repository_ids: List[int]
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: List[RunnerType]
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: List[int]
 
 
 class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
@@ -8808,6 +8597,13 @@ class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
 
     total_count: int
     runners: List[RunnerType]
+
+
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
+
+    total_count: int
+    labels: List[RunnerLabelType]
 
 
 class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
@@ -8820,6 +8616,13 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
     """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
 
     labels: List[str]
+
+
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+
+    total_count: int
+    labels: List[RunnerLabelType]
 
 
 class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
@@ -8851,6 +8654,44 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
     selected_repository_ids: List[int]
 
 
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: List[OrganizationActionsVariableType]
+
+
+class OrgsOrgActionsVariablesPostBodyType(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
+
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[List[int]]
+
+
+class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
+    """OrgsOrgActionsVariablesNamePatchBody"""
+
+    name: NotRequired[str]
+    value: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[List[int]]
+
+
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: List[MinimalRepositoryType]
+
+
+class OrgsOrgActionsVariablesNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+
+    selected_repository_ids: List[int]
+
+
 class OrgsOrgCodespacesGetResponse200Type(TypedDict):
     """OrgsOrgCodespacesGetResponse200"""
 
@@ -8868,6 +8709,18 @@ class OrgsOrgCodespacesBillingPutBodyType(TypedDict):
         "all_members_and_outside_collaborators",
     ]
     selected_usernames: NotRequired[List[str]]
+
+
+class OrgsOrgCodespacesBillingSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCodespacesBillingSelectedUsersPostBody"""
+
+    selected_usernames: List[str]
+
+
+class OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCodespacesBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: List[str]
 
 
 class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
@@ -8897,24 +8750,6 @@ class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
     """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int]
-
-
-class OrgsOrgCustomRolesPostBodyType(TypedDict):
-    """OrgsOrgCustomRolesPostBody"""
-
-    name: str
-    description: NotRequired[str]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: List[str]
-
-
-class OrgsOrgCustomRolesRoleIdPatchBodyType(TypedDict):
-    """OrgsOrgCustomRolesRoleIdPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[List[str]]
 
 
 class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
@@ -9079,7 +8914,7 @@ class OrgsOrgReposPostBodyType(TypedDict):
     description: NotRequired[str]
     homepage: NotRequired[str]
     private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
+    visibility: NotRequired[Literal["public", "private"]]
     has_issues: NotRequired[bool]
     has_projects: NotRequired[bool]
     has_wiki: NotRequired[bool]
@@ -9347,6 +9182,13 @@ class ProjectsProjectIdColumnsPostBodyType(TypedDict):
     name: str
 
 
+class ReposOrgRepoActionsRequiredWorkflowsGetResponse200Type(TypedDict):
+    """ReposOrgRepoActionsRequiredWorkflowsGetResponse200"""
+
+    total_count: int
+    required_workflows: List[RepoRequiredWorkflowType]
+
+
 class ReposOwnerRepoDeleteResponse403Type(TypedDict):
     """ReposOwnerRepoDeleteResponse403"""
 
@@ -9361,7 +9203,7 @@ class ReposOwnerRepoPatchBodyType(TypedDict):
     description: NotRequired[str]
     homepage: NotRequired[str]
     private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
+    visibility: NotRequired[Literal["public", "private"]]
     security_and_analysis: NotRequired[
         Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
     ]
@@ -9469,11 +9311,32 @@ class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
     enable_debug_logging: NotRequired[bool]
 
 
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
+
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[List[str]]
+
+
 class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
     """ReposOwnerRepoActionsPermissionsPutBody"""
 
     enabled: bool
     allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+
+
+class ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse20
+    0
+    """
+
+    total_count: int
+    workflow_runs: List[WorkflowRunType]
 
 
 class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
@@ -9557,6 +9420,27 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
 
     encrypted_value: NotRequired[str]
     key_id: NotRequired[str]
+
+
+class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: List[ActionsVariableType]
+
+
+class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
+
+    name: str
+    value: str
+
+
+class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
 class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
@@ -10952,7 +10836,6 @@ class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
 
     cname: NotRequired[Union[str, None]]
     https_enforced: NotRequired[bool]
-    public: NotRequired[bool]
     build_type: Literal["legacy", "workflow"]
     source: NotRequired[
         Union[
@@ -10967,7 +10850,6 @@ class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
 
     cname: NotRequired[Union[str, None]]
     https_enforced: NotRequired[bool]
-    public: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
     source: Union[
         Literal["gh-pages", "master", "master /docs"],
@@ -10980,7 +10862,6 @@ class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
 
     cname: Union[str, None]
     https_enforced: NotRequired[bool]
-    public: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
     source: NotRequired[
         Union[
@@ -10995,7 +10876,6 @@ class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
 
     cname: NotRequired[Union[str, None]]
     https_enforced: NotRequired[bool]
-    public: bool
     build_type: NotRequired[Literal["legacy", "workflow"]]
     source: NotRequired[
         Union[
@@ -11010,7 +10890,6 @@ class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
 
     cname: NotRequired[Union[str, None]]
     https_enforced: bool
-    public: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
     source: NotRequired[
         Union[
@@ -11357,6 +11236,33 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
     key_id: str
 
 
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200Type(
+    TypedDict
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200"""
+
+    total_count: int
+    variables: List[ActionsVariableType]
+
+
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody"""
+
+    name: str
+    value: str
+
+
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+
+    name: NotRequired[str]
+    value: NotRequired[str]
+
+
 class SearchCodeGetResponse200Type(TypedDict):
     """SearchCodeGetResponse200"""
 
@@ -11564,7 +11470,7 @@ class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
 
     encrypted_value: NotRequired[str]
     key_id: str
-    selected_repository_ids: NotRequired[List[str]]
+    selected_repository_ids: NotRequired[List[Union[int, str]]]
 
 
 class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
@@ -11593,6 +11499,13 @@ class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
 
     total_count: int
     machines: List[CodespaceMachineType]
+
+
+class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
+
+    name: NotRequired[str]
+    private: NotRequired[bool]
 
 
 class UserEmailVisibilityPatchBodyType(TypedDict):
@@ -11755,40 +11668,6 @@ __all__ = [
     "AuthorizationType",
     "AuthorizationPropAppType",
     "CodeOfConductType",
-    "ServerStatisticsItemsType",
-    "ServerStatisticsItemsPropGithubConnectType",
-    "ServerStatisticsItemsPropGheStatsType",
-    "ServerStatisticsItemsPropGheStatsPropCommentsType",
-    "ServerStatisticsItemsPropGheStatsPropGistsType",
-    "ServerStatisticsItemsPropGheStatsPropHooksType",
-    "ServerStatisticsItemsPropGheStatsPropIssuesType",
-    "ServerStatisticsItemsPropGheStatsPropMilestonesType",
-    "ServerStatisticsItemsPropGheStatsPropOrgsType",
-    "ServerStatisticsItemsPropGheStatsPropPagesType",
-    "ServerStatisticsItemsPropGheStatsPropPullsType",
-    "ServerStatisticsItemsPropGheStatsPropReposType",
-    "ServerStatisticsItemsPropGheStatsPropUsersType",
-    "ServerStatisticsItemsPropDormantUsersType",
-    "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsEnterprisePermissionsType",
-    "OrganizationSimpleType",
-    "SelectedActionsType",
-    "ActionsGetDefaultWorkflowPermissionsType",
-    "ActionsSetDefaultWorkflowPermissionsType",
-    "RunnerGroupsEnterpriseType",
-    "RunnerLabelType",
-    "RunnerType",
-    "RunnerApplicationType",
-    "AuthenticationTokenType",
-    "AuthenticationTokenPropPermissionsType",
-    "CodeScanningAlertRuleType",
-    "CodeScanningAnalysisToolType",
-    "CodeScanningAlertLocationType",
-    "CodeScanningAlertInstanceType",
-    "CodeScanningAlertInstancePropMessageType",
-    "SimpleRepositoryType",
-    "CodeScanningOrganizationAlertItemsType",
-    "EnterpriseSecurityAnalysisSettingsType",
     "DependabotAlertPackageType",
     "DependabotAlertSecurityVulnerabilityType",
     "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
@@ -11797,12 +11676,10 @@ __all__ = [
     "DependabotAlertSecurityAdvisoryPropCwesItemsType",
     "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
     "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "SimpleRepositoryType",
     "DependabotAlertWithRepositoryType",
     "DependabotAlertWithRepositoryPropDependencyType",
     "OrganizationSecretScanningAlertType",
-    "AdvancedSecurityActiveCommittersUserType",
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersType",
     "ActorType",
     "MilestoneType",
     "ReactionRollupType",
@@ -11849,16 +11726,32 @@ __all__ = [
     "ThreadType",
     "ThreadPropSubjectType",
     "ThreadSubscriptionType",
-    "OrganizationCustomRepositoryRoleType",
+    "OrganizationSimpleType",
     "OrganizationFullType",
     "OrganizationFullPropPlanType",
+    "ActionsCacheUsageOrgEnterpriseType",
     "ActionsCacheUsageByRepositoryType",
     "OidcCustomSubType",
     "EmptyObjectType",
     "ActionsOrganizationPermissionsType",
-    "RunnerGroupsOrgType",
+    "SelectedActionsType",
+    "ActionsGetDefaultWorkflowPermissionsType",
+    "ActionsSetDefaultWorkflowPermissionsType",
+    "RequiredWorkflowType",
+    "RunnerLabelType",
+    "RunnerType",
+    "RunnerApplicationType",
+    "AuthenticationTokenType",
+    "AuthenticationTokenPropPermissionsType",
     "OrganizationActionsSecretType",
     "ActionsPublicKeyType",
+    "OrganizationActionsVariableType",
+    "CodeScanningAlertRuleType",
+    "CodeScanningAnalysisToolType",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningOrganizationAlertItemsType",
     "CodespaceMachineType",
     "CodespaceType",
     "CodespacePropGitStatusType",
@@ -11868,7 +11761,6 @@ __all__ = [
     "OrganizationDependabotSecretType",
     "DependabotPublicKeyType",
     "OrganizationInvitationType",
-    "OrganizationFineGrainedPermissionType",
     "OrgHookType",
     "OrgHookPropConfigType",
     "InteractionLimitResponseType",
@@ -11906,6 +11798,12 @@ __all__ = [
     "RateLimitType",
     "RateLimitOverviewType",
     "RateLimitOverviewPropResourcesType",
+    "RepoRequiredWorkflowType",
+    "WorkflowUsageType",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropWindowsType",
     "CodeOfConductSimpleType",
     "FullRepositoryType",
     "FullRepositoryPropPermissionsType",
@@ -11944,12 +11842,8 @@ __all__ = [
     "WorkflowRunUsagePropBillablePropWindowsType",
     "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
     "ActionsSecretType",
+    "ActionsVariableType",
     "WorkflowType",
-    "WorkflowUsageType",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropWindowsType",
     "AutolinkType",
     "ProtectedBranchRequiredStatusCheckType",
     "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
@@ -12248,6 +12142,9 @@ __all__ = [
     "CodespacesSecretType",
     "CodespacesUserPublicKeyType",
     "CodespaceExportDetailsType",
+    "CodespaceWithFullRepositoryType",
+    "CodespaceWithFullRepositoryPropGitStatusType",
+    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
     "EmailType",
     "GpgKeyType",
     "GpgKeyPropEmailsItemsType",
@@ -12264,6 +12161,7 @@ __all__ = [
     "SimpleCheckSuiteType",
     "CheckRunWithSimpleCheckSuiteType",
     "CheckRunWithSimpleCheckSuitePropOutputType",
+    "ProjectsV2Type",
     "ProjectsV2ItemType",
     "AppManifestsCodeConversionsPostResponse201Type",
     "AppManifestsCodeConversionsPostResponse201Allof1Type",
@@ -12276,23 +12174,7 @@ __all__ = [
     "ApplicationsClientIdTokenPatchBodyType",
     "ApplicationsClientIdTokenScopedPostBodyType",
     "EmojisGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
-    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
-    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",
+    "EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",
     "GistsPostBodyType",
     "GistsPostBodyPropFilesType",
     "GistsGistIdGetResponse403Type",
@@ -12308,34 +12190,38 @@ __all__ = [
     "NotificationsPutBodyType",
     "NotificationsPutResponse202Type",
     "NotificationsThreadsThreadIdSubscriptionPutBodyType",
-    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
     "OrgsOrgPatchBodyType",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
     "OrgsOrgActionsPermissionsPutBodyType",
     "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
     "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
-    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsPostBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
+    "OrgsOrgActionsRequiredWorkflowsGetResponse200Type",
+    "OrgsOrgActionsRequiredWorkflowsPostBodyType",
+    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType",
+    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200Type",
+    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType",
     "OrgsOrgActionsRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",
     "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",
     "OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType",
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",
     "OrgsOrgActionsSecretsGetResponse200Type",
     "OrgsOrgActionsSecretsSecretNamePutBodyType",
     "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
     "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsVariablesPostBodyType",
+    "OrgsOrgActionsVariablesNamePatchBodyType",
+    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
+    "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
     "OrgsOrgCodespacesGetResponse200Type",
     "OrgsOrgCodespacesBillingPutBodyType",
+    "OrgsOrgCodespacesBillingSelectedUsersPostBodyType",
+    "OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType",
     "OrgsOrgCodespacesSecretsGetResponse200Type",
     "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
-    "OrgsOrgCustomRolesPostBodyType",
-    "OrgsOrgCustomRolesRoleIdPatchBodyType",
     "OrgsOrgDependabotSecretsGetResponse200Type",
     "OrgsOrgDependabotSecretsSecretNamePutBodyType",
     "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
@@ -12388,6 +12274,7 @@ __all__ = [
     "ProjectsProjectIdPatchResponse403Type",
     "ProjectsProjectIdCollaboratorsUsernamePutBodyType",
     "ProjectsProjectIdColumnsPostBodyType",
+    "ReposOrgRepoActionsRequiredWorkflowsGetResponse200Type",
     "ReposOwnerRepoDeleteResponse403Type",
     "ReposOwnerRepoPatchBodyType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
@@ -12396,7 +12283,9 @@ __all__ = [
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
     "ReposOwnerRepoActionsArtifactsGetResponse200Type",
     "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
     "ReposOwnerRepoActionsPermissionsPutBodyType",
+    "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200Type",
     "ReposOwnerRepoActionsRunnersGetResponse200Type",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",
@@ -12409,6 +12298,9 @@ __all__ = [
     "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",
     "ReposOwnerRepoActionsSecretsGetResponse200Type",
     "ReposOwnerRepoActionsSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoActionsVariablesGetResponse200Type",
+    "ReposOwnerRepoActionsVariablesPostBodyType",
+    "ReposOwnerRepoActionsVariablesNamePatchBodyType",
     "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
     "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
@@ -12587,6 +12479,9 @@ __all__ = [
     "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type",
     "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType",
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
     "SearchCodeGetResponse200Type",
     "SearchCommitsGetResponse200Type",
     "SearchIssuesGetResponse200Type",
@@ -12616,6 +12511,7 @@ __all__ = [
     "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
     "UserCodespacesCodespaceNamePatchBodyType",
     "UserCodespacesCodespaceNameMachinesGetResponse200Type",
+    "UserCodespacesCodespaceNamePublishPostBodyType",
     "UserEmailVisibilityPatchBodyType",
     "UserEmailsPostBodyOneof0Type",
     "UserEmailsDeleteBodyOneof0Type",

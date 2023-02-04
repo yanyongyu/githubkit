@@ -173,6 +173,7 @@ from .models import (
     RegistryPackagePublished,
     CodeScanningAlertReopened,
     DiscussionCategoryChanged,
+    InstallationTargetRenamed,
     MergeGroupChecksRequested,
     OrganizationMemberInvited,
     OrganizationMemberRemoved,
@@ -322,6 +323,7 @@ InstallationRepositoriesEvent = Annotated[
     ],
     Field(discriminator="action"),
 ]
+InstallationTargetEvent = InstallationTargetRenamed
 IssueCommentEvent = Annotated[
     Union[
         IssueCommentCreated,
@@ -634,6 +636,7 @@ WebhookEvent = Union[
     GollumEvent,
     InstallationEvent,
     InstallationRepositoriesEvent,
+    InstallationTargetEvent,
     IssueCommentEvent,
     IssuesEvent,
     LabelEvent,
@@ -769,6 +772,9 @@ webhook_action_types = {
     "installation_repositories": {
         "added": InstallationRepositoriesAdded,
         "removed": InstallationRepositoriesRemoved,
+    },
+    "installation_target": {
+        "renamed": InstallationTargetRenamed,
     },
     "issue_comment": {
         "created": IssueCommentCreated,
@@ -1004,6 +1010,7 @@ webhook_event_types = {
     "gollum": GollumEvent,
     "installation": InstallationEvent,
     "installation_repositories": InstallationRepositoriesEvent,
+    "installation_target": InstallationTargetEvent,
     "issue_comment": IssueCommentEvent,
     "issues": IssuesEvent,
     "label": LabelEvent,
@@ -1066,6 +1073,7 @@ __all__ = [
     "GollumEvent",
     "InstallationEvent",
     "InstallationRepositoriesEvent",
+    "InstallationTargetEvent",
     "IssueCommentEvent",
     "IssuesEvent",
     "LabelEvent",

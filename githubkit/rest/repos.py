@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
+from githubkit.typing import FileTypes
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
@@ -197,8 +198,8 @@ from .models import (
     ReposTemplateOwnerTemplateRepoGeneratePostBody,
     ReposOwnerRepoEnvironmentsEnvironmentNamePutBody,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
     ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
+    EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
@@ -229,10 +230,7 @@ class ReposClient:
         self,
         org: str,
         type: Union[
-            Unset,
-            Literal[
-                "all", "public", "private", "forks", "sources", "member", "internal"
-            ],
+            Unset, Literal["all", "public", "private", "forks", "sources", "member"]
         ] = UNSET,
         sort: Union[
             Unset, Literal["created", "updated", "pushed", "full_name"]
@@ -262,10 +260,7 @@ class ReposClient:
         self,
         org: str,
         type: Union[
-            Unset,
-            Literal[
-                "all", "public", "private", "forks", "sources", "member", "internal"
-            ],
+            Unset, Literal["all", "public", "private", "forks", "sources", "member"]
         ] = UNSET,
         sort: Union[
             Unset, Literal["created", "updated", "pushed", "full_name"]
@@ -307,7 +302,7 @@ class ReposClient:
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
         private: Union[Unset, bool] = False,
-        visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        visibility: Union[Unset, Literal["public", "private"]] = UNSET,
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
         has_wiki: Union[Unset, bool] = True,
@@ -379,7 +374,7 @@ class ReposClient:
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
         private: Union[Unset, bool] = False,
-        visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        visibility: Union[Unset, Literal["public", "private"]] = UNSET,
         has_issues: Union[Unset, bool] = True,
         has_projects: Union[Unset, bool] = True,
         has_wiki: Union[Unset, bool] = True,
@@ -522,7 +517,7 @@ class ReposClient:
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
         private: Union[Unset, bool] = False,
-        visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        visibility: Union[Unset, Literal["public", "private"]] = UNSET,
         security_and_analysis: Union[
             Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
         ] = UNSET,
@@ -604,7 +599,7 @@ class ReposClient:
         description: Union[Unset, str] = UNSET,
         homepage: Union[Unset, str] = UNSET,
         private: Union[Unset, bool] = False,
-        visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        visibility: Union[Unset, Literal["public", "private"]] = UNSET,
         security_and_analysis: Union[
             Unset, Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
         ] = UNSET,
@@ -4597,7 +4592,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -4625,7 +4620,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -4772,7 +4767,7 @@ class ReposClient:
             error_models={
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -4799,7 +4794,7 @@ class ReposClient:
             error_models={
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -5039,7 +5034,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "409": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -5101,7 +5096,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "409": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -7736,7 +7731,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: Union[Unset, bool] = UNSET,
-        public: Union[Unset, bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
         source: Union[
             Unset,
@@ -7757,7 +7751,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: Union[Unset, bool] = UNSET,
-        public: Union[Unset, bool] = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Literal["gh-pages", "master", "master /docs"],
@@ -7775,7 +7768,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[str, None],
         https_enforced: Union[Unset, bool] = UNSET,
-        public: Union[Unset, bool] = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Unset,
@@ -7796,7 +7788,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: Union[Unset, bool] = UNSET,
-        public: bool,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Unset,
@@ -7817,7 +7808,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: bool,
-        public: Union[Unset, bool] = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Unset,
@@ -7900,7 +7890,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: Union[Unset, bool] = UNSET,
-        public: Union[Unset, bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
         source: Union[
             Unset,
@@ -7921,7 +7910,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: Union[Unset, bool] = UNSET,
-        public: Union[Unset, bool] = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Literal["gh-pages", "master", "master /docs"],
@@ -7939,7 +7927,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[str, None],
         https_enforced: Union[Unset, bool] = UNSET,
-        public: Union[Unset, bool] = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Unset,
@@ -7960,7 +7947,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: Union[Unset, bool] = UNSET,
-        public: bool,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Unset,
@@ -7981,7 +7967,6 @@ class ReposClient:
         data: Unset = UNSET,
         cname: Union[Unset, Union[str, None]] = UNSET,
         https_enforced: bool,
-        public: Union[Unset, bool] = UNSET,
         build_type: Union[Unset, Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Unset,
@@ -9289,7 +9274,7 @@ class ReposClient:
         name: str,
         label: Union[Unset, str] = UNSET,
         *,
-        data: str,
+        data: FileTypes,
         **kwargs,
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/assets"
@@ -9303,7 +9288,7 @@ class ReposClient:
             kwargs = UNSET
 
         content = kwargs if data is UNSET else data
-        content = parse_obj_as(str, content)
+        content = parse_obj_as(FileTypes, content)
         content = (
             content.dict(by_alias=True) if isinstance(content, BaseModel) else content
         )
@@ -9325,7 +9310,7 @@ class ReposClient:
         name: str,
         label: Union[Unset, str] = UNSET,
         *,
-        data: str,
+        data: FileTypes,
         **kwargs,
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/assets"
@@ -9339,7 +9324,7 @@ class ReposClient:
             kwargs = UNSET
 
         content = kwargs if data is UNSET else data
-        content = parse_obj_as(str, content)
+        content = parse_obj_as(FileTypes, content)
         content = (
             content.dict(by_alias=True) if isinstance(content, BaseModel) else content
         )

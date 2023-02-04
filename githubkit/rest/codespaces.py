@@ -19,7 +19,10 @@ from .types import (
     UserCodespacesCodespaceNamePatchBodyType,
     UserCodespacesSecretsSecretNamePutBodyType,
     OrgsOrgCodespacesSecretsSecretNamePutBodyType,
+    UserCodespacesCodespaceNamePublishPostBodyType,
     UserCodespacesPostBodyOneof1PropPullRequestType,
+    OrgsOrgCodespacesBillingSelectedUsersPostBodyType,
+    OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType,
     ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
     ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
@@ -36,6 +39,7 @@ from .models import (
     RepoCodespacesSecret,
     CodespaceExportDetails,
     CodespacesUserPublicKey,
+    CodespaceWithFullRepository,
     UserCodespacesGetResponse200,
     UserCodespacesPostBodyOneof0,
     UserCodespacesPostBodyOneof1,
@@ -49,17 +53,20 @@ from .models import (
     UserCodespacesSecretsSecretNamePutBody,
     OrgsOrgCodespacesSecretsSecretNamePutBody,
     ReposOwnerRepoCodespacesNewGetResponse200,
+    UserCodespacesCodespaceNamePublishPostBody,
+    OrgsOrgCodespacesBillingSelectedUsersPostBody,
     ReposOwnerRepoCodespacesSecretsGetResponse200,
     OrgsOrgMembersUsernameCodespacesGetResponse200,
     ReposOwnerRepoCodespacesMachinesGetResponse200,
+    OrgsOrgCodespacesBillingSelectedUsersDeleteBody,
     ReposOwnerRepoPullsPullNumberCodespacesPostBody,
     ReposOwnerRepoCodespacesSecretsSecretNamePutBody,
     UserCodespacesCodespaceNameMachinesGetResponse200,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     UserCodespacesSecretsSecretNameRepositoriesPutBody,
     ReposOwnerRepoCodespacesDevcontainersGetResponse200,
-    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
     OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody,
+    EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
     UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
     OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
 )
@@ -214,6 +221,178 @@ class CodespacesClient:
 
         return await self._github.arequest(
             "PUT",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def set_codespaces_billing_users(
+        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        selected_usernames: List[str],
+    ) -> "Response":
+        ...
+
+    def set_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/codespaces/billing/selected_users"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_codespaces_billing_users(
+        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        selected_usernames: List[str],
+    ) -> "Response":
+        ...
+
+    async def async_set_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/codespaces/billing/selected_users"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def delete_codespaces_billing_users(
+        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    def delete_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        selected_usernames: List[str],
+    ) -> "Response":
+        ...
+
+    def delete_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/codespaces/billing/selected_users"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_delete_codespaces_billing_users(
+        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_delete_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        selected_usernames: List[str],
+    ) -> "Response":
+        ...
+
+    async def async_delete_codespaces_billing_users(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/codespaces/billing/selected_users"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
             url,
             json=exclude_unset(json),
             error_models={
@@ -914,7 +1093,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -975,7 +1154,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -1427,7 +1606,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -1493,7 +1672,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -1621,7 +1800,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -1695,7 +1874,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 
@@ -1797,7 +1976,7 @@ class CodespacesClient:
         data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: str,
-        selected_repository_ids: Union[Unset, List[str]] = UNSET,
+        selected_repository_ids: Union[Unset, List[Union[int, str]]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -1842,7 +2021,7 @@ class CodespacesClient:
         data: Unset = UNSET,
         encrypted_value: Union[Unset, str] = UNSET,
         key_id: str,
-        selected_repository_ids: Union[Unset, List[str]] = UNSET,
+        selected_repository_ids: Union[Unset, List[Union[int, str]]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2374,6 +2553,104 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    @overload
+    def publish_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: UserCodespacesCodespaceNamePublishPostBodyType,
+    ) -> "Response[CodespaceWithFullRepository]":
+        ...
+
+    @overload
+    def publish_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        private: Union[Unset, bool] = False,
+    ) -> "Response[CodespaceWithFullRepository]":
+        ...
+
+    def publish_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Union[Unset, UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CodespaceWithFullRepository]":
+        url = f"/user/codespaces/{codespace_name}/publish"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesCodespaceNamePublishPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=CodespaceWithFullRepository,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_publish_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: UserCodespacesCodespaceNamePublishPostBodyType,
+    ) -> "Response[CodespaceWithFullRepository]":
+        ...
+
+    @overload
+    async def async_publish_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        private: Union[Unset, bool] = False,
+    ) -> "Response[CodespaceWithFullRepository]":
+        ...
+
+    async def async_publish_for_authenticated_user(
+        self,
+        codespace_name: str,
+        *,
+        data: Union[Unset, UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[CodespaceWithFullRepository]":
+        url = f"/user/codespaces/{codespace_name}/publish"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserCodespacesCodespaceNamePublishPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=CodespaceWithFullRepository,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

@@ -83,7 +83,7 @@ from .models import (
     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+    EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
 )
@@ -481,7 +481,7 @@ class IssuesClient:
             error_models={
                 "403": BasicError,
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "404": BasicError,
                 "410": BasicError,
             },
@@ -537,7 +537,7 @@ class IssuesClient:
             error_models={
                 "403": BasicError,
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "404": BasicError,
                 "410": BasicError,
             },
@@ -954,7 +954,7 @@ class IssuesClient:
             response_model=Issue,
             error_models={
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "403": BasicError,
                 "404": BasicError,
                 "410": BasicError,
@@ -1026,7 +1026,7 @@ class IssuesClient:
             response_model=Issue,
             error_models={
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "403": BasicError,
                 "404": BasicError,
                 "410": BasicError,
@@ -1239,6 +1239,40 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             response_model=Issue,
+        )
+
+    def check_user_can_be_assigned_to_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        assignee: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}"
+
+        return self._github.request(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_check_user_can_be_assigned_to_issue(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        assignee: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def list_comments(

@@ -309,6 +309,9 @@ class Repository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=True
+    )
     forks_count: int = Field(default=...)
     mirror_url: Union[str, None] = Field(default=...)
     archived: bool = Field(
@@ -1002,6 +1005,7 @@ class AppPropPermissions(GitHubWebhookModel):
     discussions: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     emails: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     environments: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
+    followers: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     issues: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     keys: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     members: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
@@ -4597,6 +4601,9 @@ class ForkEventPropForkee(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=True
+    )
     forks_count: int = Field(default=...)
     mirror_url: Union[str, None] = Field(default=...)
     archived: bool = Field(
@@ -4839,6 +4846,7 @@ class InstallationPropPermissions(GitHubWebhookModel):
         description="The level of permission granted to the access token for organization teams and members.",
         default=UNSET,
     )
+    merge_queues: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
     metadata: Union[Unset, Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to search repositories, list collaborators, and access repository metadata.",
         default=UNSET,
@@ -5337,6 +5345,92 @@ class InstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubWebhookM
     private: bool = Field(
         description="Whether the repository is private or public.", default=...
     )
+
+
+class InstallationTargetRenamed(GitHubWebhookModel):
+    """installation_target renamed event
+
+    Somebody renamed the user or organization account that a GitHub App is installed
+    on.
+    """
+
+    changes: InstallationTargetRenamedPropChanges = Field(default=...)
+    action: Literal["renamed"] = Field(default=...)
+    account: InstallationTargetRenamedPropAccount = Field(default=...)
+    repository: Union[Unset, Repository] = Field(
+        title="Repository", description="A git repository", default=UNSET
+    )
+    sender: Union[Unset, User] = Field(title="User", default=UNSET)
+    installation: InstallationLite = Field(
+        title="InstallationLite", description="Installation", default=...
+    )
+    organization: Union[Unset, Organization] = Field(
+        title="Organization", default=UNSET
+    )
+    target_type: str = Field(default=...)
+
+
+class InstallationTargetRenamedPropChanges(GitHubWebhookModel):
+    """InstallationTargetRenamedPropChanges"""
+
+    login: Union[Unset, InstallationTargetRenamedPropChangesPropLogin] = Field(
+        default=UNSET
+    )
+    slug: Union[Unset, InstallationTargetRenamedPropChangesPropSlug] = Field(
+        default=UNSET
+    )
+
+
+class InstallationTargetRenamedPropChangesPropLogin(GitHubWebhookModel):
+    """InstallationTargetRenamedPropChangesPropLogin"""
+
+    from_: str = Field(default=..., alias="from")
+
+
+class InstallationTargetRenamedPropChangesPropSlug(GitHubWebhookModel):
+    """InstallationTargetRenamedPropChangesPropSlug"""
+
+    from_: str = Field(default=..., alias="from")
+
+
+class InstallationTargetRenamedPropAccount(GitHubWebhookModel):
+    """InstallationTargetRenamedPropAccount"""
+
+    avatar_url: str = Field(default=...)
+    created_at: Union[Unset, datetime] = Field(default=UNSET)
+    description: Union[Unset, None] = Field(default=UNSET)
+    events_url: Union[Unset, str] = Field(default=UNSET)
+    followers: Union[Unset, int] = Field(default=UNSET)
+    followers_url: Union[Unset, str] = Field(default=UNSET)
+    following: Union[Unset, int] = Field(default=UNSET)
+    following_url: Union[Unset, str] = Field(default=UNSET)
+    gists_url: Union[Unset, str] = Field(default=UNSET)
+    gravatar_id: Union[Unset, str] = Field(default=UNSET)
+    has_organization_projects: Union[Unset, bool] = Field(default=UNSET)
+    has_repository_projects: Union[Unset, bool] = Field(default=UNSET)
+    hooks_url: Union[Unset, str] = Field(default=UNSET)
+    html_url: str = Field(default=...)
+    id: int = Field(default=...)
+    is_verified: Union[Unset, bool] = Field(default=UNSET)
+    issues_url: Union[Unset, str] = Field(default=UNSET)
+    login: Union[Unset, str] = Field(default=UNSET)
+    members_url: Union[Unset, str] = Field(default=UNSET)
+    name: Union[Unset, str] = Field(default=UNSET)
+    node_id: str = Field(default=...)
+    organizations_url: Union[Unset, str] = Field(default=UNSET)
+    public_gists: Union[Unset, int] = Field(default=UNSET)
+    public_members_url: Union[Unset, str] = Field(default=UNSET)
+    public_repos: Union[Unset, int] = Field(default=UNSET)
+    received_events_url: Union[Unset, str] = Field(default=UNSET)
+    repos_url: Union[Unset, str] = Field(default=UNSET)
+    site_admin: Union[Unset, bool] = Field(default=UNSET)
+    slug: Union[Unset, str] = Field(default=UNSET)
+    starred_url: Union[Unset, str] = Field(default=UNSET)
+    subscriptions_url: Union[Unset, str] = Field(default=UNSET)
+    type: Union[Unset, Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    url: Union[Unset, str] = Field(default=UNSET)
+    website_url: Union[Unset, None] = Field(default=UNSET)
 
 
 class IssueCommentCreated(GitHubWebhookModel):
@@ -7853,17 +7947,25 @@ class OrganizationMemberRemoved(GitHubWebhookModel):
 class OrganizationRenamed(GitHubWebhookModel):
     """organization renamed event"""
 
+    changes: OrganizationRenamedPropChanges = Field(default=...)
     action: Literal["renamed"] = Field(default=...)
-    membership: Membership = Field(
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
-        default=...,
-    )
     sender: User = Field(title="User", default=...)
     installation: Union[Unset, InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
+
+
+class OrganizationRenamedPropChanges(GitHubWebhookModel):
+    """OrganizationRenamedPropChanges"""
+
+    login: OrganizationRenamedPropChangesPropLogin = Field(default=...)
+
+
+class OrganizationRenamedPropChangesPropLogin(GitHubWebhookModel):
+    """OrganizationRenamedPropChangesPropLogin"""
+
+    from_: str = Field(default=..., alias="from")
 
 
 class PackagePublished(GitHubWebhookModel):
@@ -9565,6 +9667,9 @@ class PublicEventPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=True
+    )
     forks_count: int = Field(default=...)
     mirror_url: Union[str, None] = Field(default=...)
     archived: bool = Field(
@@ -12837,6 +12942,9 @@ class RepositoryArchivedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=True
+    )
     forks_count: int = Field(default=...)
     mirror_url: Union[str, None] = Field(default=...)
     archived: Literal[True] = Field(
@@ -13178,6 +13286,9 @@ class RepositoryPrivatizedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=True
+    )
     forks_count: int = Field(default=...)
     mirror_url: Union[str, None] = Field(default=...)
     archived: bool = Field(
@@ -13438,6 +13549,9 @@ class RepositoryPublicizedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=True
+    )
     forks_count: int = Field(default=...)
     mirror_url: Union[str, None] = Field(default=...)
     archived: bool = Field(
@@ -13770,6 +13884,9 @@ class RepositoryUnarchivedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
+    has_discussions: Union[Unset, bool] = Field(
+        description="Whether discussions are enabled.", default=True
+    )
     forks_count: int = Field(default=...)
     mirror_url: Union[str, None] = Field(default=...)
     archived: Literal[False] = Field(
@@ -15298,6 +15415,7 @@ class WorkflowJobCompletedPropWorkflowJob(GitHubWebhookModel):
     )
     started_at: datetime = Field(default=...)
     completed_at: Union[datetime, None] = Field(default=...)
+    workflow_name: str = Field(default=...)
 
 
 class WorkflowJob(GitHubWebhookModel):
@@ -15349,6 +15467,7 @@ class WorkflowJob(GitHubWebhookModel):
     )
     started_at: datetime = Field(default=...)
     completed_at: Union[datetime, None] = Field(default=...)
+    workflow_name: str = Field(default=...)
 
 
 class WorkflowStepInProgress(GitHubWebhookModel):
@@ -15440,6 +15559,7 @@ class WorkflowJobInProgressPropWorkflowJob(GitHubWebhookModel):
     )
     started_at: datetime = Field(default=...)
     completed_at: Union[datetime, None] = Field(default=...)
+    workflow_name: str = Field(default=...)
 
 
 class WorkflowJobInProgressPropWorkflowJobAllof1(GitHubWebhookModel):
@@ -15507,6 +15627,7 @@ class WorkflowJobQueuedPropWorkflowJob(GitHubWebhookModel):
     )
     started_at: datetime = Field(default=...)
     completed_at: Union[datetime, None] = Field(default=...)
+    workflow_name: str = Field(default=...)
 
 
 class WorkflowJobQueuedPropWorkflowJobAllof1(GitHubWebhookModel):
@@ -16156,6 +16277,11 @@ InstallationRepositoriesAddedPropRepositoriesRemovedItems.update_forward_refs()
 InstallationRepositoriesRemoved.update_forward_refs()
 InstallationRepositoriesRemovedPropRepositoriesAddedItems.update_forward_refs()
 InstallationRepositoriesRemovedPropRepositoriesRemovedItems.update_forward_refs()
+InstallationTargetRenamed.update_forward_refs()
+InstallationTargetRenamedPropChanges.update_forward_refs()
+InstallationTargetRenamedPropChangesPropLogin.update_forward_refs()
+InstallationTargetRenamedPropChangesPropSlug.update_forward_refs()
+InstallationTargetRenamedPropAccount.update_forward_refs()
 IssueCommentCreated.update_forward_refs()
 IssueCommentCreatedPropIssue.update_forward_refs()
 Issue.update_forward_refs()
@@ -16280,6 +16406,8 @@ OrganizationMemberInvited.update_forward_refs()
 OrganizationMemberInvitedPropInvitation.update_forward_refs()
 OrganizationMemberRemoved.update_forward_refs()
 OrganizationRenamed.update_forward_refs()
+OrganizationRenamedPropChanges.update_forward_refs()
+OrganizationRenamedPropChangesPropLogin.update_forward_refs()
 PackagePublished.update_forward_refs()
 PackagePublishedPropPackage.update_forward_refs()
 PackagePublishedPropPackagePropPackageVersionOneof0.update_forward_refs()
@@ -16903,6 +17031,11 @@ __all__ = [
     "InstallationRepositoriesRemoved",
     "InstallationRepositoriesRemovedPropRepositoriesAddedItems",
     "InstallationRepositoriesRemovedPropRepositoriesRemovedItems",
+    "InstallationTargetRenamed",
+    "InstallationTargetRenamedPropChanges",
+    "InstallationTargetRenamedPropChangesPropLogin",
+    "InstallationTargetRenamedPropChangesPropSlug",
+    "InstallationTargetRenamedPropAccount",
     "IssueCommentCreated",
     "IssueCommentCreatedPropIssue",
     "Issue",
@@ -17027,6 +17160,8 @@ __all__ = [
     "OrganizationMemberInvitedPropInvitation",
     "OrganizationMemberRemoved",
     "OrganizationRenamed",
+    "OrganizationRenamedPropChanges",
+    "OrganizationRenamedPropChangesPropLogin",
     "PackagePublished",
     "PackagePublishedPropPackage",
     "PackagePublishedPropPackagePropPackageVersionOneof0",

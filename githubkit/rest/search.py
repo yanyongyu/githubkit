@@ -21,7 +21,7 @@ from .models import (
     SearchTopicsGetResponse200,
     SearchCommitsGetResponse200,
     SearchRepositoriesGetResponse200,
-    EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+    EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
 )
 
 if TYPE_CHECKING:
@@ -57,7 +57,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchCodeGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
             },
@@ -87,7 +87,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchCodeGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
             },
@@ -182,7 +182,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchIssuesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
             },
@@ -227,7 +227,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchIssuesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
             },
@@ -323,7 +323,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchRepositoriesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
             },
         )
@@ -354,7 +354,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchRepositoriesGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
             },
         )
@@ -425,7 +425,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchUsersGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
             },
         )
@@ -454,7 +454,7 @@ class SearchClient:
             params=exclude_unset(params),
             response_model=SearchUsersGetResponse200,
             error_models={
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
                 "422": ValidationError,
             },
         )

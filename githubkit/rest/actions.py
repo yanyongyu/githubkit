@@ -14,29 +14,35 @@ from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
     SelectedActionsType,
-    OidcCustomSubRepoType,
+    OrgsOrgActionsVariablesPostBodyType,
     OrgsOrgActionsPermissionsPutBodyType,
     ActionsWorkflowAccessToRepositoryType,
-    OrgsOrgActionsRunnerGroupsPostBodyType,
     ActionsSetDefaultWorkflowPermissionsType,
+    OrgsOrgActionsVariablesNamePatchBodyType,
     OrgsOrgActionsSecretsSecretNamePutBodyType,
+    ReposOwnerRepoActionsVariablesPostBodyType,
+    OrgsOrgActionsRequiredWorkflowsPostBodyType,
     ReposOwnerRepoActionsPermissionsPutBodyType,
     OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ReposOwnerRepoActionsJobsJobIdRerunPostBodyType,
     ReposOwnerRepoActionsRunsRunIdRerunPostBodyType,
+    ReposOwnerRepoActionsVariablesNamePatchBodyType,
     OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+    OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
+    ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
     ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+    OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType,
     ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
+    OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType,
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
     ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
 )
 from .models import (
@@ -50,65 +56,80 @@ from .models import (
     WorkflowRun,
     ActionsSecret,
     WorkflowUsage,
-    RunnerGroupsOrg,
+    ActionsVariable,
     SelectedActions,
     ActionsCacheList,
     ActionsPublicKey,
+    RequiredWorkflow,
     WorkflowRunUsage,
     OidcCustomSubRepo,
     PendingDeployment,
     RunnerApplication,
     AuthenticationToken,
     EnvironmentApprovals,
+    RepoRequiredWorkflow,
     ValidationErrorSimple,
     OrganizationActionsSecret,
+    OrganizationActionsVariable,
     ActionsRepositoryPermissions,
     ActionsCacheUsageByRepository,
     ActionsCacheUsageOrgEnterprise,
     ActionsOrganizationPermissions,
+    OrgsOrgActionsVariablesPostBody,
     OrgsOrgActionsPermissionsPutBody,
     ActionsWorkflowAccessToRepository,
-    OrgsOrgActionsRunnerGroupsPostBody,
     OrgsOrgActionsRunnersGetResponse200,
     OrgsOrgActionsSecretsGetResponse200,
     ActionsGetDefaultWorkflowPermissions,
     ActionsSetDefaultWorkflowPermissions,
+    OrgsOrgActionsVariablesNamePatchBody,
+    OrgsOrgActionsVariablesGetResponse200,
     OrgsOrgActionsSecretsSecretNamePutBody,
+    ReposOwnerRepoActionsVariablesPostBody,
+    OrgsOrgActionsRequiredWorkflowsPostBody,
     ReposOwnerRepoActionsPermissionsPutBody,
     ReposOwnerRepoActionsRunsGetResponse200,
-    OrgsOrgActionsRunnerGroupsGetResponse200,
     OrgsOrgActionsRunnersRunnerIdLabelsPutBody,
     ReposOwnerRepoActionsRunnersGetResponse200,
     ReposOwnerRepoActionsSecretsGetResponse200,
     OrgsOrgActionsRunnersRunnerIdLabelsPostBody,
     ReposOwnerRepoActionsJobsJobIdRerunPostBody,
     ReposOwnerRepoActionsRunsRunIdRerunPostBody,
+    ReposOwnerRepoActionsVariablesNamePatchBody,
     OrgsOrgActionsPermissionsRepositoriesPutBody,
     ReposOwnerRepoActionsArtifactsGetResponse200,
+    ReposOwnerRepoActionsVariablesGetResponse200,
     ReposOwnerRepoActionsWorkflowsGetResponse200,
+    OrgsOrgActionsRequiredWorkflowsGetResponse200,
     ReposOwnerRepoActionsSecretsSecretNamePutBody,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
+    OrgsOrgActionsVariablesNameRepositoriesPutBody,
+    ReposOwnerRepoActionsOidcCustomizationSubPutBody,
     ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
+    OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody,
     OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
     OrgsOrgActionsSecretsSecretNameRepositoriesPutBody,
+    ReposOrgRepoActionsRequiredWorkflowsGetResponse200,
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody,
     OrgsOrgActionsPermissionsRepositoriesGetResponse200,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
+    OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
+    OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
     ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
     ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
     ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody,
     OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody,
+    OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody,
     ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
     ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-    OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-    EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+    OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody,
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody,
     ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
+    OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200,
     RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
+    ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200,
 )
 
 if TYPE_CHECKING:
@@ -119,132 +140,6 @@ if TYPE_CHECKING:
 class ActionsClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
-
-    def get_actions_cache_usage_for_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsCacheUsageOrgEnterprise]":
-        url = f"/enterprises/{enterprise}/actions/cache/usage"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsCacheUsageOrgEnterprise,
-        )
-
-    async def async_get_actions_cache_usage_for_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsCacheUsageOrgEnterprise]":
-        url = f"/enterprises/{enterprise}/actions/cache/usage"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsCacheUsageOrgEnterprise,
-        )
-
-    def get_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
-        )
-
-    async def async_get_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-    ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
-        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=ActionsGetDefaultWorkflowPermissions,
-        )
-
-    @overload
-    def set_github_actions_default_workflow_permissions_enterprise(
-        self, enterprise: str, *, data: ActionsSetDefaultWorkflowPermissionsType
-    ) -> "Response":
-        ...
-
-    @overload
-    def set_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Unset = UNSET,
-        default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
-        can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
-    ) -> "Response":
-        ...
-
-    def set_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    @overload
-    async def async_set_github_actions_default_workflow_permissions_enterprise(
-        self, enterprise: str, *, data: ActionsSetDefaultWorkflowPermissionsType
-    ) -> "Response":
-        ...
-
-    @overload
-    async def async_set_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Unset = UNSET,
-        default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
-        can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
-    ) -> "Response":
-        ...
-
-    async def async_set_github_actions_default_workflow_permissions_enterprise(
-        self,
-        enterprise: str,
-        *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/enterprises/{enterprise}/actions/permissions/workflow"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
 
     def get_actions_cache_usage_for_org(
         self,
@@ -736,7 +631,6 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            error_models={},
         )
 
     @overload
@@ -779,376 +673,366 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+        )
+
+    def list_required_workflows(
+        self,
+        org: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[OrgsOrgActionsRequiredWorkflowsGetResponse200]":
+        url = f"/orgs/{org}/actions/required_workflows"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsRequiredWorkflowsGetResponse200,
+        )
+
+    async def async_list_required_workflows(
+        self,
+        org: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[OrgsOrgActionsRequiredWorkflowsGetResponse200]":
+        url = f"/orgs/{org}/actions/required_workflows"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsRequiredWorkflowsGetResponse200,
+        )
+
+    @overload
+    def create_required_workflow(
+        self, org: str, *, data: OrgsOrgActionsRequiredWorkflowsPostBodyType
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    @overload
+    def create_required_workflow(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        workflow_file_path: str,
+        repository_id: str,
+        scope: Union[Unset, Literal["selected", "all"]] = "all",
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    def create_required_workflow(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsRequiredWorkflowsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RequiredWorkflow]":
+        url = f"/orgs/{org}/actions/required_workflows"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRequiredWorkflowsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=RequiredWorkflow,
+            error_models={
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_create_required_workflow(
+        self, org: str, *, data: OrgsOrgActionsRequiredWorkflowsPostBodyType
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    @overload
+    async def async_create_required_workflow(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        workflow_file_path: str,
+        repository_id: str,
+        scope: Union[Unset, Literal["selected", "all"]] = "all",
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    async def async_create_required_workflow(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsRequiredWorkflowsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RequiredWorkflow]":
+        url = f"/orgs/{org}/actions/required_workflows"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRequiredWorkflowsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=RequiredWorkflow,
+            error_models={
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+    ) -> "Response[RequiredWorkflow]":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=RequiredWorkflow,
+        )
+
+    async def async_get_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+    ) -> "Response[RequiredWorkflow]":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=RequiredWorkflow,
+        )
+
+    def delete_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    @overload
+    def update_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+        *,
+        data: OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType,
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    @overload
+    def update_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+        *,
+        data: Unset = UNSET,
+        workflow_file_path: Union[Unset, str] = UNSET,
+        repository_id: Union[Unset, str] = UNSET,
+        scope: Union[Unset, Literal["selected", "all"]] = "all",
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    def update_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RequiredWorkflow]":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            response_model=RequiredWorkflow,
+            error_models={
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+        *,
+        data: OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType,
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    @overload
+    async def async_update_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+        *,
+        data: Unset = UNSET,
+        workflow_file_path: Union[Unset, str] = UNSET,
+        repository_id: Union[Unset, str] = UNSET,
+        scope: Union[Unset, Literal["selected", "all"]] = "all",
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[RequiredWorkflow]":
+        ...
+
+    async def async_update_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+        *,
+        data: Union[
+            Unset, OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[RequiredWorkflow]":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            response_model=RequiredWorkflow,
+            error_models={
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def list_selected_repositories_required_workflow(
+        self,
+        org: str,
+        required_workflow_id: int,
+    ) -> "Response[OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200,
             error_models={},
         )
 
-    def list_self_hosted_runner_groups_for_org(
+    async def async_list_selected_repositories_required_workflow(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        visible_to_repository: Union[Unset, str] = UNSET,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "visible_to_repository": visible_to_repository,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
-        )
-
-    async def async_list_self_hosted_runner_groups_for_org(
-        self,
-        org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        visible_to_repository: Union[Unset, str] = UNSET,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "visible_to_repository": visible_to_repository,
-        }
+        required_workflow_id: int,
+    ) -> "Response[OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
 
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
+            response_model=OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200,
+            error_models={},
         )
 
     @overload
-    def create_self_hosted_runner_group_for_org(
-        self, org: str, *, data: OrgsOrgActionsRunnerGroupsPostBodyType
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    @overload
-    def create_self_hosted_runner_group_for_org(
+    def set_selected_repos_to_required_workflow(
         self,
         org: str,
+        required_workflow_id: int,
         *,
-        data: Unset = UNSET,
-        name: str,
-        visibility: Union[Unset, Literal["selected", "all", "private"]] = "all",
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
-        runners: Union[Unset, List[int]] = UNSET,
-        allows_public_repositories: Union[Unset, bool] = False,
-        restricted_to_workflows: Union[Unset, bool] = False,
-        selected_workflows: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    def create_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnerGroupsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=RunnerGroupsOrg,
-        )
-
-    @overload
-    async def async_create_self_hosted_runner_group_for_org(
-        self, org: str, *, data: OrgsOrgActionsRunnerGroupsPostBodyType
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    @overload
-    async def async_create_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        *,
-        data: Unset = UNSET,
-        name: str,
-        visibility: Union[Unset, Literal["selected", "all", "private"]] = "all",
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
-        runners: Union[Unset, List[int]] = UNSET,
-        allows_public_repositories: Union[Unset, bool] = False,
-        restricted_to_workflows: Union[Unset, bool] = False,
-        selected_workflows: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    async def async_create_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnerGroupsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            response_model=RunnerGroupsOrg,
-        )
-
-    def get_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
-
-        return self._github.request(
-            "GET",
-            url,
-            response_model=RunnerGroupsOrg,
-        )
-
-    async def async_get_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            response_model=RunnerGroupsOrg,
-        )
-
-    def delete_self_hosted_runner_group_from_org(
-        self,
-        org: str,
-        runner_group_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
-
-        return self._github.request(
-            "DELETE",
-            url,
-        )
-
-    async def async_delete_self_hosted_runner_group_from_org(
-        self,
-        org: str,
-        runner_group_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    @overload
-    def update_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    @overload
-    def update_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Unset = UNSET,
-        name: str,
-        visibility: Union[Unset, Literal["selected", "all", "private"]] = UNSET,
-        allows_public_repositories: Union[Unset, bool] = False,
-        restricted_to_workflows: Union[Unset, bool] = False,
-        selected_workflows: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    def update_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Union[
-            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=RunnerGroupsOrg,
-        )
-
-    @overload
-    async def async_update_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    @overload
-    async def async_update_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Unset = UNSET,
-        name: str,
-        visibility: Union[Unset, Literal["selected", "all", "private"]] = UNSET,
-        allows_public_repositories: Union[Unset, bool] = False,
-        restricted_to_workflows: Union[Unset, bool] = False,
-        selected_workflows: Union[Unset, List[str]] = UNSET,
-    ) -> "Response[RunnerGroupsOrg]":
-        ...
-
-    async def async_update_self_hosted_runner_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Union[
-            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response[RunnerGroupsOrg]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            response_model=RunnerGroupsOrg,
-        )
-
-    def list_repo_access_to_self_hosted_runner_group_in_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-        )
-
-    async def async_list_repo_access_to_self_hosted_runner_group_in_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-        )
-
-    @overload
-    def set_repo_access_to_self_hosted_runner_group_in_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+        data: OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType,
     ) -> "Response":
         ...
 
     @overload
-    def set_repo_access_to_self_hosted_runner_group_in_org(
+    def set_selected_repos_to_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
+        required_workflow_id: int,
         *,
         data: Unset = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
 
-    def set_repo_access_to_self_hosted_runner_group_in_org(
+    def set_selected_repos_to_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
+        required_workflow_id: int,
         *,
         data: Union[
-            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
+            Unset,
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType,
         ] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
 
         if not kwargs:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = parse_obj_as(
-            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody, json
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody, json
         )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
@@ -1159,44 +1043,45 @@ class ActionsClient:
         )
 
     @overload
-    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+    async def async_set_selected_repos_to_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
+        required_workflow_id: int,
         *,
-        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+        data: OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType,
     ) -> "Response":
         ...
 
     @overload
-    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+    async def async_set_selected_repos_to_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
+        required_workflow_id: int,
         *,
         data: Unset = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
 
-    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+    async def async_set_selected_repos_to_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
+        required_workflow_id: int,
         *,
         data: Union[
-            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
+            Unset,
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType,
         ] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
 
         if not kwargs:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = parse_obj_as(
-            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody, json
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody, json
         )
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
@@ -1206,216 +1091,60 @@ class ActionsClient:
             json=exclude_unset(json),
         )
 
-    def remove_repo_access_to_self_hosted_runner_group_in_org(
+    def add_selected_repo_to_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
+        required_workflow_id: int,
         repository_id: int,
     ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
         return self._github.request(
-            "DELETE",
+            "PUT",
             url,
+            error_models={},
         )
 
-    async def async_remove_repo_access_to_self_hosted_runner_group_in_org(
+    async def async_add_selected_repo_to_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
+        required_workflow_id: int,
         repository_id: int,
     ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-        )
-
-    def list_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        )
-
-    async def async_list_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-    ) -> "Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        )
-
-    @overload
-    def set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-    ) -> "Response":
-        ...
-
-    @overload
-    def set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Unset = UNSET,
-        runners: List[int],
-    ) -> "Response":
-        ...
-
-    def set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Union[
-            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-        )
-
-    @overload
-    async def async_set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-    ) -> "Response":
-        ...
-
-    @overload
-    async def async_set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Unset = UNSET,
-        runners: List[int],
-    ) -> "Response":
-        ...
-
-    async def async_set_self_hosted_runners_in_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        *,
-        data: Union[
-            Unset, OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
         return await self._github.arequest(
             "PUT",
             url,
-            json=exclude_unset(json),
+            error_models={},
         )
 
-    def add_self_hosted_runner_to_group_for_org(
+    def remove_selected_repo_from_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
-        runner_id: int,
+        required_workflow_id: int,
+        repository_id: int,
     ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
-
-        return self._github.request(
-            "PUT",
-            url,
-        )
-
-    async def async_add_self_hosted_runner_to_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-        )
-
-    def remove_self_hosted_runner_from_group_for_org(
-        self,
-        org: str,
-        runner_group_id: int,
-        runner_id: int,
-    ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
         return self._github.request(
             "DELETE",
             url,
+            error_models={},
         )
 
-    async def async_remove_self_hosted_runner_from_group_for_org(
+    async def async_remove_selected_repo_from_required_workflow(
         self,
         org: str,
-        runner_group_id: int,
-        runner_id: int,
+        required_workflow_id: int,
+        repository_id: int,
     ) -> "Response":
-        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+        url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
         return await self._github.arequest(
             "DELETE",
             url,
+            error_models={},
         )
 
     def list_self_hosted_runners_for_org(
@@ -1584,13 +1313,13 @@ class ActionsClient:
         self,
         org: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         return self._github.request(
             "GET",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -1600,13 +1329,13 @@ class ActionsClient:
         self,
         org: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -1619,7 +1348,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -1630,7 +1359,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     def set_custom_labels_for_self_hosted_runner_for_org(
@@ -1640,7 +1369,7 @@ class ActionsClient:
         *,
         data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -1654,7 +1383,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1668,7 +1397,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -1679,7 +1408,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
@@ -1689,7 +1418,7 @@ class ActionsClient:
         *,
         data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -1703,7 +1432,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1717,7 +1446,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -1728,7 +1457,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     def add_custom_labels_to_self_hosted_runner_for_org(
@@ -1738,7 +1467,7 @@ class ActionsClient:
         *,
         data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -1752,7 +1481,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1766,7 +1495,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -1777,7 +1506,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
@@ -1787,7 +1516,7 @@ class ActionsClient:
         *,
         data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -1801,7 +1530,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1812,13 +1541,13 @@ class ActionsClient:
         self,
         org: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         return self._github.request(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -1828,13 +1557,13 @@ class ActionsClient:
         self,
         org: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         return await self._github.arequest(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -1845,13 +1574,13 @@ class ActionsClient:
         org: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels/{name}"
 
         return self._github.request(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -1863,13 +1592,13 @@ class ActionsClient:
         org: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels/{name}"
 
         return await self._github.arequest(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -2274,6 +2003,572 @@ class ActionsClient:
             "DELETE",
             url,
             error_models={},
+        )
+
+    def list_org_variables(
+        self,
+        org: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[OrgsOrgActionsVariablesGetResponse200]":
+        url = f"/orgs/{org}/actions/variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsVariablesGetResponse200,
+        )
+
+    async def async_list_org_variables(
+        self,
+        org: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[OrgsOrgActionsVariablesGetResponse200]":
+        url = f"/orgs/{org}/actions/variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsVariablesGetResponse200,
+        )
+
+    @overload
+    def create_org_variable(
+        self, org: str, *, data: OrgsOrgActionsVariablesPostBodyType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_org_variable(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        value: str,
+        visibility: Literal["all", "private", "selected"],
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def create_org_variable(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsVariablesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/orgs/{org}/actions/variables"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsVariablesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+        )
+
+    @overload
+    async def async_create_org_variable(
+        self, org: str, *, data: OrgsOrgActionsVariablesPostBodyType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_org_variable(
+        self,
+        org: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        value: str,
+        visibility: Literal["all", "private", "selected"],
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_org_variable(
+        self,
+        org: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsVariablesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/orgs/{org}/actions/variables"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsVariablesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+        )
+
+    def get_org_variable(
+        self,
+        org: str,
+        name: str,
+    ) -> "Response[OrganizationActionsVariable]":
+        url = f"/orgs/{org}/actions/variables/{name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=OrganizationActionsVariable,
+        )
+
+    async def async_get_org_variable(
+        self,
+        org: str,
+        name: str,
+    ) -> "Response[OrganizationActionsVariable]":
+        url = f"/orgs/{org}/actions/variables/{name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=OrganizationActionsVariable,
+        )
+
+    def delete_org_variable(
+        self,
+        org: str,
+        name: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_org_variable(
+        self,
+        org: str,
+        name: str,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    @overload
+    def update_org_variable(
+        self, org: str, name: str, *, data: OrgsOrgActionsVariablesNamePatchBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        value: Union[Unset, str] = UNSET,
+        visibility: Union[Unset, Literal["all", "private", "selected"]] = UNSET,
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response":
+        ...
+
+    def update_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsVariablesNamePatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+        )
+
+    @overload
+    async def async_update_org_variable(
+        self, org: str, name: str, *, data: OrgsOrgActionsVariablesNamePatchBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        value: Union[Unset, str] = UNSET,
+        visibility: Union[Unset, Literal["all", "private", "selected"]] = UNSET,
+        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_update_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsVariablesNamePatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+        )
+
+    def list_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
+            error_models={},
+        )
+
+    async def async_list_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
+    ) -> "Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
+            error_models={},
+        )
+
+    @overload
+    def set_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def set_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Unset = UNSET,
+        selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    def set_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsVariablesNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            error_models={},
+        )
+
+    @overload
+    async def async_set_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_set_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Unset = UNSET,
+        selected_repository_ids: List[int],
+    ) -> "Response":
+        ...
+
+    async def async_set_selected_repos_for_org_variable(
+        self,
+        org: str,
+        name: str,
+        *,
+        data: Union[Unset, OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsVariablesNameRepositoriesPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            error_models={},
+        )
+
+    def add_selected_repo_to_org_variable(
+        self,
+        org: str,
+        name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
+
+        return self._github.request(
+            "PUT",
+            url,
+            error_models={},
+        )
+
+    async def async_add_selected_repo_to_org_variable(
+        self,
+        org: str,
+        name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            error_models={},
+        )
+
+    def remove_selected_repo_from_org_variable(
+        self,
+        org: str,
+        name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+            error_models={},
+        )
+
+    async def async_remove_selected_repo_from_org_variable(
+        self,
+        org: str,
+        name: str,
+        repository_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            error_models={},
+        )
+
+    def list_repo_required_workflows(
+        self,
+        org: str,
+        repo: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOrgRepoActionsRequiredWorkflowsGetResponse200]":
+        url = f"/repos/{org}/{repo}/actions/required_workflows"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOrgRepoActionsRequiredWorkflowsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_repo_required_workflows(
+        self,
+        org: str,
+        repo: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOrgRepoActionsRequiredWorkflowsGetResponse200]":
+        url = f"/repos/{org}/{repo}/actions/required_workflows"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOrgRepoActionsRequiredWorkflowsGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def get_repo_required_workflow(
+        self,
+        org: str,
+        repo: str,
+        required_workflow_id_for_repo: int,
+    ) -> "Response[RepoRequiredWorkflow]":
+        url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=RepoRequiredWorkflow,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_repo_required_workflow(
+        self,
+        org: str,
+        repo: str,
+        required_workflow_id_for_repo: int,
+    ) -> "Response[RepoRequiredWorkflow]":
+        url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=RepoRequiredWorkflow,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def get_repo_required_workflow_usage(
+        self,
+        org: str,
+        repo: str,
+        required_workflow_id_for_repo: int,
+    ) -> "Response[WorkflowUsage]":
+        url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/timing"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=WorkflowUsage,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_repo_required_workflow_usage(
+        self,
+        org: str,
+        repo: str,
+        required_workflow_id_for_repo: int,
+    ) -> "Response[WorkflowUsage]":
+        url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/timing"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=WorkflowUsage,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def list_artifacts_for_repo(
@@ -2770,7 +3065,11 @@ class ActionsClient:
 
     @overload
     def set_custom_oidc_sub_claim_for_repo(
-        self, owner: str, repo: str, *, data: OidcCustomSubRepoType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2791,7 +3090,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, OidcCustomSubRepoType] = UNSET,
+        data: Union[
+            Unset, ReposOwnerRepoActionsOidcCustomizationSubPutBodyType
+        ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
@@ -2800,7 +3101,7 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OidcCustomSubRepo, json)
+        json = parse_obj_as(ReposOwnerRepoActionsOidcCustomizationSubPutBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2817,7 +3118,11 @@ class ActionsClient:
 
     @overload
     async def async_set_custom_oidc_sub_claim_for_repo(
-        self, owner: str, repo: str, *, data: OidcCustomSubRepoType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2838,7 +3143,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, OidcCustomSubRepoType] = UNSET,
+        data: Union[
+            Unset, ReposOwnerRepoActionsOidcCustomizationSubPutBodyType
+        ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
@@ -2847,7 +3154,7 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OidcCustomSubRepo, json)
+        json = parse_obj_as(ReposOwnerRepoActionsOidcCustomizationSubPutBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3017,7 +3324,7 @@ class ActionsClient:
         repo: str,
         *,
         data: Unset = UNSET,
-        access_level: Literal["none", "user", "organization", "enterprise"],
+        access_level: Literal["none", "user", "organization"],
     ) -> "Response":
         ...
 
@@ -3057,7 +3364,7 @@ class ActionsClient:
         repo: str,
         *,
         data: Unset = UNSET,
-        access_level: Literal["none", "user", "organization", "enterprise"],
+        access_level: Literal["none", "user", "organization"],
     ) -> "Response":
         ...
 
@@ -3304,6 +3611,118 @@ class ActionsClient:
             error_models={},
         )
 
+    def list_required_workflow_runs(
+        self,
+        owner: str,
+        repo: str,
+        required_workflow_id_for_repo: int,
+        actor: Union[Unset, str] = UNSET,
+        branch: Union[Unset, str] = UNSET,
+        event: Union[Unset, str] = UNSET,
+        status: Union[
+            Unset,
+            Literal[
+                "completed",
+                "action_required",
+                "cancelled",
+                "failure",
+                "neutral",
+                "skipped",
+                "stale",
+                "success",
+                "timed_out",
+                "in_progress",
+                "queued",
+                "requested",
+                "waiting",
+                "pending",
+            ],
+        ] = UNSET,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+        created: Union[Unset, datetime] = UNSET,
+        exclude_pull_requests: Union[Unset, bool] = False,
+        check_suite_id: Union[Unset, int] = UNSET,
+        head_sha: Union[Unset, str] = UNSET,
+    ) -> "Response[ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/runs"
+
+        params = {
+            "actor": actor,
+            "branch": branch,
+            "event": event,
+            "status": status,
+            "per_page": per_page,
+            "page": page,
+            "created": created,
+            "exclude_pull_requests": exclude_pull_requests,
+            "check_suite_id": check_suite_id,
+            "head_sha": head_sha,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200,
+        )
+
+    async def async_list_required_workflow_runs(
+        self,
+        owner: str,
+        repo: str,
+        required_workflow_id_for_repo: int,
+        actor: Union[Unset, str] = UNSET,
+        branch: Union[Unset, str] = UNSET,
+        event: Union[Unset, str] = UNSET,
+        status: Union[
+            Unset,
+            Literal[
+                "completed",
+                "action_required",
+                "cancelled",
+                "failure",
+                "neutral",
+                "skipped",
+                "stale",
+                "success",
+                "timed_out",
+                "in_progress",
+                "queued",
+                "requested",
+                "waiting",
+                "pending",
+            ],
+        ] = UNSET,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+        created: Union[Unset, datetime] = UNSET,
+        exclude_pull_requests: Union[Unset, bool] = False,
+        check_suite_id: Union[Unset, int] = UNSET,
+        head_sha: Union[Unset, str] = UNSET,
+    ) -> "Response[ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/runs"
+
+        params = {
+            "actor": actor,
+            "branch": branch,
+            "event": event,
+            "status": status,
+            "per_page": per_page,
+            "page": page,
+            "created": created,
+            "exclude_pull_requests": exclude_pull_requests,
+            "check_suite_id": check_suite_id,
+            "head_sha": head_sha,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200,
+        )
+
     def list_self_hosted_runners_for_repo(
         self,
         owner: str,
@@ -3483,13 +3902,13 @@ class ActionsClient:
         owner: str,
         repo: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         return self._github.request(
             "GET",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -3500,13 +3919,13 @@ class ActionsClient:
         owner: str,
         repo: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         return await self._github.arequest(
             "GET",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -3520,7 +3939,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -3532,7 +3951,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     def set_custom_labels_for_self_hosted_runner_for_repo(
@@ -3545,7 +3964,7 @@ class ActionsClient:
             Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -3559,7 +3978,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -3574,7 +3993,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -3586,7 +4005,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
@@ -3599,7 +4018,7 @@ class ActionsClient:
             Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -3613,7 +4032,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -3628,7 +4047,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -3640,7 +4059,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     def add_custom_labels_to_self_hosted_runner_for_repo(
@@ -3653,7 +4072,7 @@ class ActionsClient:
             Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -3667,7 +4086,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -3682,7 +4101,7 @@ class ActionsClient:
         runner_id: int,
         *,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     @overload
@@ -3694,7 +4113,7 @@ class ActionsClient:
         *,
         data: Unset = UNSET,
         labels: List[str],
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
@@ -3707,7 +4126,7 @@ class ActionsClient:
             Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         if not kwargs:
@@ -3721,7 +4140,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -3733,13 +4152,13 @@ class ActionsClient:
         owner: str,
         repo: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         return self._github.request(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -3750,13 +4169,13 @@ class ActionsClient:
         owner: str,
         repo: str,
         runner_id: int,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         return await self._github.arequest(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
             },
@@ -3768,13 +4187,13 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}"
 
         return self._github.request(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -3787,13 +4206,13 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         name: str,
-    ) -> "Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]":
+    ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}"
 
         return await self._github.arequest(
             "DELETE",
             url,
-            response_model=EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+            response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -3823,6 +4242,7 @@ class ActionsClient:
                 "queued",
                 "requested",
                 "waiting",
+                "pending",
             ],
         ] = UNSET,
         per_page: Union[Unset, int] = 30,
@@ -3877,6 +4297,7 @@ class ActionsClient:
                 "queued",
                 "requested",
                 "waiting",
+                "pending",
             ],
         ] = UNSET,
         per_page: Union[Unset, int] = 30,
@@ -4950,6 +5371,282 @@ class ActionsClient:
             url,
         )
 
+    def list_repo_variables(
+        self,
+        owner: str,
+        repo: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoActionsVariablesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsVariablesGetResponse200,
+        )
+
+    async def async_list_repo_variables(
+        self,
+        owner: str,
+        repo: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoActionsVariablesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsVariablesGetResponse200,
+        )
+
+    @overload
+    def create_repo_variable(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoActionsVariablesPostBodyType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        value: str,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def create_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/actions/variables"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsVariablesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+        )
+
+    @overload
+    async def async_create_repo_variable(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoActionsVariablesPostBodyType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        value: str,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/actions/variables"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsVariablesPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+        )
+
+    def get_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response[ActionsVariable]":
+        url = f"/repos/{owner}/{repo}/actions/variables/{name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ActionsVariable,
+        )
+
+    async def async_get_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response[ActionsVariable]":
+        url = f"/repos/{owner}/{repo}/actions/variables/{name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ActionsVariable,
+        )
+
+    def delete_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/variables/{name}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/variables/{name}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    @overload
+    def update_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+        *,
+        data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        value: Union[Unset, str] = UNSET,
+    ) -> "Response":
+        ...
+
+    def update_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/variables/{name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsVariablesNamePatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+        )
+
+    @overload
+    async def async_update_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+        *,
+        data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        value: Union[Unset, str] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_update_repo_variable(
+        self,
+        owner: str,
+        repo: str,
+        name: str,
+        *,
+        data: Union[Unset, ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/variables/{name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsVariablesNamePatchBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+        )
+
     def list_repo_workflows(
         self,
         owner: str,
@@ -5206,6 +5903,7 @@ class ActionsClient:
                 "queued",
                 "requested",
                 "waiting",
+                "pending",
             ],
         ] = UNSET,
         per_page: Union[Unset, int] = 30,
@@ -5261,6 +5959,7 @@ class ActionsClient:
                 "queued",
                 "requested",
                 "waiting",
+                "pending",
             ],
         ] = UNSET,
         per_page: Union[Unset, int] = 30,
@@ -5550,4 +6249,310 @@ class ActionsClient:
         return await self._github.arequest(
             "DELETE",
             url,
+        )
+
+    def list_environment_variables(
+        self,
+        repository_id: int,
+        environment_name: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
+        )
+
+    async def async_list_environment_variables(
+        self,
+        repository_id: int,
+        environment_name: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
+        )
+
+    @overload
+    def create_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        *,
+        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def create_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        value: str,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def create_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        *,
+        data: Union[
+            Unset,
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+        )
+
+    @overload
+    async def async_create_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        *,
+        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_create_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        name: str,
+        value: str,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_create_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        *,
+        data: Union[
+            Unset,
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+        )
+
+    def get_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        name: str,
+    ) -> "Response[ActionsVariable]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=ActionsVariable,
+        )
+
+    async def async_get_environment_variable(
+        self,
+        repository_id: int,
+        environment_name: str,
+        name: str,
+    ) -> "Response[ActionsVariable]":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=ActionsVariable,
+        )
+
+    def delete_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+    ) -> "Response":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+
+        return self._github.request(
+            "DELETE",
+            url,
+        )
+
+    async def async_delete_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+    ) -> "Response":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+        )
+
+    @overload
+    def update_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+        *,
+        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        value: Union[Unset, str] = UNSET,
+    ) -> "Response":
+        ...
+
+    def update_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+        *,
+        data: Union[
+            Unset,
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+        )
+
+    @overload
+    async def async_update_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+        *,
+        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+        *,
+        data: Unset = UNSET,
+        name: Union[Unset, str] = UNSET,
+        value: Union[Unset, str] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_update_environment_variable(
+        self,
+        repository_id: int,
+        name: str,
+        environment_name: str,
+        *,
+        data: Union[
+            Unset,
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
         )
