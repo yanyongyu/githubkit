@@ -4717,7 +4717,7 @@ class InstallationCreated(GitHubWebhookModel):
         description="An array of repository objects that the installation can access.",
         default=UNSET,
     )
-    requester: Union[Unset, User] = Field(title="User", default=UNSET)
+    requester: Union[Unset, Union[None, User]] = Field(title="User", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 

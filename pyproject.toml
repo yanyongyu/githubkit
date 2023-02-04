@@ -111,6 +111,14 @@ webhook-types-output = "githubkit/webhooks/types.py"
 # https://github.com/github/rest-api-description/issues/1812
 "/components/schemas/pull-request-simple/properties/labels/items/properties/description" = { type = ["string", "null"] }
 
+# webhook installation created requester can be null
+# https://github.com/yanyongyu/githubkit/issues/14
+# https://docs.github.com/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#installation
+"/definitions/installation$created/properties/requester" = { anyOf = [
+  { type = "null" },
+  { "$ref" = "#/definitions/user" }
+], "$ref" = {} }
+
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
