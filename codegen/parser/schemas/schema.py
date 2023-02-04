@@ -4,7 +4,6 @@ from pydantic import Field, BaseModel
 
 
 class SchemaData(BaseModel):
-
     title: Optional[str] = Field(default=None, exclude=True)
     description: Optional[str] = Field(default=None, exclude=True)
     default: Optional[Any] = Field(default=None, exclude=True)
