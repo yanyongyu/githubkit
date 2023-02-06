@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "GitHubKit"
-version = "0.9.5"
+version = "0.9.6"
 description = "GitHub SDK for Python"
 authors = ["yanyongyu <yyy@yyydl.top>"]
 license = "MIT"
@@ -23,11 +23,11 @@ cryptography = { version = "^38.0.3", optional = true }
 [tool.poetry.group.dev.dependencies]
 tomli = "^2.0.1"
 isort = "^5.10.1"
-black = "^22.3.0"
+black = "^23.1.0"
 Jinja2 = "^3.1.2"
 nonemoji = "^0.1.2"
 jsonpointer = "^2.3"
-pre-commit = "^2.16.0"
+pre-commit = "^3.0.0"
 openapi-schema-pydantic = "^1.2.4"
 
 [tool.poetry.extras]
