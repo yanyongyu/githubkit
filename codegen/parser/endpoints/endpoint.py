@@ -52,6 +52,10 @@ class EndpointData(BaseModel):
     def cookie_params(self) -> List[Parameter]:
         return [param for param in self.parameters if param.param_in == "cookie"]
 
+    @property
+    def param_names(self) -> List[str]:
+        return [param.prop_name for param in self.parameters]
+
     def get_imports(self) -> Set[str]:
         imports = set()
         for param in self.parameters:

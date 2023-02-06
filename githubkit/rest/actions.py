@@ -2192,7 +2192,6 @@ class ActionsClient:
         name: str,
         *,
         data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
         value: Union[Unset, str] = UNSET,
         visibility: Union[Unset, Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Union[Unset, List[int]] = UNSET,
@@ -2235,7 +2234,6 @@ class ActionsClient:
         name: str,
         *,
         data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
         value: Union[Unset, str] = UNSET,
         visibility: Union[Unset, Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Union[Unset, List[int]] = UNSET,
@@ -5570,7 +5568,6 @@ class ActionsClient:
         name: str,
         *,
         data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
         value: Union[Unset, str] = UNSET,
     ) -> "Response":
         ...
@@ -5618,7 +5615,6 @@ class ActionsClient:
         name: str,
         *,
         data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
         value: Union[Unset, str] = UNSET,
     ) -> "Response":
         ...
@@ -6468,7 +6464,6 @@ class ActionsClient:
         environment_name: str,
         *,
         data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
         value: Union[Unset, str] = UNSET,
     ) -> "Response":
         ...
@@ -6522,7 +6517,6 @@ class ActionsClient:
         environment_name: str,
         *,
         data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
         value: Union[Unset, str] = UNSET,
     ) -> "Response":
         ...
