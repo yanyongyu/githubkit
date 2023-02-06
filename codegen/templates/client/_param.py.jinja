@@ -22,9 +22,11 @@
 {% endfor %}
 {% endmacro %}
 
-{% macro body_params(model) %}
+{% macro body_params(model, exclude=[]) %}
 {% for prop in model.properties %}
+{% if prop.prop_name not in exclude %}
 {{ prop.get_param_defination() }},
+{% endif %}
 {% endfor %}
 {% endmacro %}
 
@@ -44,7 +46,7 @@
 {{ cookie_params(endpoint) }}
 *,
 data: Unset = UNSET,
-{{ body_params(model) }}
+{{ body_params(model, endpoint.param_names) }}
 {% endmacro %}
 
 {% macro endpoint_params(endpoint, model) %}
