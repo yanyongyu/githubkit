@@ -130,7 +130,7 @@ def build():
     logger.info(f"Loaded config: {config!r}")
 
     logger.info("Start getting OpenAPI source...")
-    source = get_source(httpx.URL(config.rest_descrition_source))
+    source = get_source(httpx.URL(config.rest_description_source))
     logger.info(f"Getting schema from {source.uri} succeeded!")
 
     logger.info("Start parsing OpenAPI spec...")

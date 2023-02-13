@@ -57,7 +57,7 @@ reportPrivateImportUsage = false
 reportShadowedImports = false
 
 [tool.codegen]
-rest-descrition-source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
+rest-description-source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.json"
 webhook-schema-source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
 client-output = "githubkit/rest/"
 webhooks-output = "githubkit/webhooks/models.py"
