@@ -301,18 +301,12 @@ class GitHubCore(Generic[A]):
 
     def _convert(self, obj: Any) -> Any:
         if isinstance(obj, dict):
-            for k, v in obj.items():
-                obj[k] = self._convert(v)
+            return {k: self._convert(v) for k, v in obj.items()}
 
-            return obj
+        if isinstance(obj, (list, tuple)):
+            return [self._convert(item) for item in obj]
 
-        if isinstance(obj, list):
-            for i, item in enumerate(obj):
-                obj[i] = self._convert(item)
-
-            return obj
-
-        if isinstance(obj, (int, float, str, bool, type(None))):
+        if obj is None or isinstance(obj, (int, float, str, bool)):
             return obj
 
         return pydantic_encoder(obj)
