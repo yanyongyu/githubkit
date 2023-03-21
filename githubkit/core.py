@@ -312,7 +312,7 @@ class GitHubCore(Generic[A]):
 
             return obj
 
-        if isinstance(obj, (int, float, str, bool, bytes, type(None))):
+        if isinstance(obj, (int, float, str, bool, type(None))):
             return obj
 
         return pydantic_encoder(obj)
