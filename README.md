@@ -70,7 +70,7 @@ pdm add githubkit[auth-oauth-device]
 Initialize a github client with no authentication:
 
 ```python
-from githubkit import GitHub
+from githubkit import GitHub, UnauthAuthStrategy
 
 github = GitHub()
 # or, use UnauthAuthStrategy
