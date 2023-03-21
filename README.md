@@ -303,3 +303,15 @@ from githubkit import GitHub, OAuthAppAuthStrategy
 github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 user_github = github.with_auth(github.auth.as_web_user("<code>"))
 ```
+
+## Development
+
+Open in Codespaces (Dev Container):
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=master&repo=512138996)
+
+Generate latest models and apis:
+
+```bash
+python -m codegen && isort . && black .
+```
