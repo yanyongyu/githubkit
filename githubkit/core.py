@@ -17,6 +17,7 @@ from typing import (
 )
 
 import httpx
+from pydantic.json import pydantic_encoder
 
 from .response import Response
 from .config import Config, get_config
@@ -237,7 +238,7 @@ class GitHubCore(Generic[A]):
                     content=content,
                     data=data,
                     files=files,
-                    json=json,
+                    json=self._convert(json),
                     headers=headers,
                     cookies=cookies,
                 )
@@ -269,7 +270,7 @@ class GitHubCore(Generic[A]):
                     content=content,
                     data=data,
                     files=files,
-                    json=json,
+                    json=self._convert(json),
                     headers=headers,
                     cookies=cookies,
                 )
@@ -297,6 +298,18 @@ class GitHubCore(Generic[A]):
             rep = Response(response, error_model)
             raise RequestFailed(rep)
         return Response(response, response_model)
+
+    def _convert(self, obj: Any) -> Any:
+        if isinstance(obj, dict):
+            return {k: self._convert(v) for k, v in obj.items()}
+
+        if isinstance(obj, (list, tuple)):
+            return [self._convert(item) for item in obj]
+
+        if obj is None or isinstance(obj, (int, float, str, bool)):
+            return obj
+
+        return pydantic_encoder(obj)
 
     # sync request and check
     def request(
