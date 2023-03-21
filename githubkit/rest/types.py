@@ -288,6 +288,19 @@ class EnterpriseType(TypedDict):
     avatar_url: str
 
 
+class IntegrationInstallationRequestType(TypedDict):
+    """Integration Installation Request
+
+    Request to install an integration on a target
+    """
+
+    id: int
+    node_id: NotRequired[str]
+    account: Union[SimpleUserType, EnterpriseType]
+    requester: SimpleUserType
+    created_at: datetime
+
+
 class AppPermissionsType(TypedDict):
     """App Permissions
 
@@ -2355,7 +2368,7 @@ class MigrationType(TypedDict):
     updated_at: datetime
     node_id: str
     archive_url: NotRequired[str]
-    exclude: NotRequired[List[Any]]
+    exclude: NotRequired[List[str]]
 
 
 class PackageType(TypedDict):
@@ -3137,6 +3150,7 @@ class JobType(TypedDict):
             "action_required",
         ],
     ]
+    created_at: datetime
     started_at: datetime
     completed_at: Union[datetime, None]
     name: str
@@ -3170,6 +3184,26 @@ class OidcCustomSubRepoType(TypedDict):
 
     use_default: bool
     include_claim_keys: NotRequired[List[str]]
+
+
+class ActionsSecretType(TypedDict):
+    """Actions Secret
+
+    Set secrets for GitHub Actions.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
+
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
 
 
 class ActionsRepositoryPermissionsType(TypedDict):
@@ -3318,7 +3352,7 @@ class EnvironmentApprovalsType(TypedDict):
     """
 
     environments: List[EnvironmentApprovalsPropEnvironmentsItemsType]
-    state: Literal["approved", "rejected"]
+    state: Literal["approved", "rejected", "pending"]
     user: SimpleUserType
     comment: str
 
@@ -3462,26 +3496,6 @@ class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType(TypedDict):
 
     job_id: int
     duration_ms: int
-
-
-class ActionsSecretType(TypedDict):
-    """Actions Secret
-
-    Set secrets for GitHub Actions.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
-
-
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
-
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
 
 
 class WorkflowType(TypedDict):
@@ -8086,6 +8100,16 @@ class UserMarketplacePurchaseType(TypedDict):
     plan: MarketplaceListingPlanType
 
 
+class SocialAccountType(TypedDict):
+    """Social account
+
+    Social media account
+    """
+
+    provider: str
+    url: str
+
+
 class SshSigningKeyType(TypedDict):
     """SSH Signing Key
 
@@ -8232,6 +8256,127 @@ class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
     summary: Union[str, None]
     text: Union[str, None]
     title: Union[str, None]
+
+
+class DiscussionType(TypedDict):
+    """Discussion
+
+    A Discussion in a repository.
+    """
+
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
+    answer_html_url: Union[str, None]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    category: DiscussionPropCategoryType
+    comments: int
+    created_at: datetime
+    html_url: str
+    id: int
+    locked: bool
+    node_id: str
+    number: int
+    reactions: NotRequired[DiscussionPropReactionsType]
+    repository_url: str
+    state: Literal["open", "closed", "locked", "converting", "transferring"]
+    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: datetime
+    user: Union[DiscussionPropUserType, None]
+
+
+class DiscussionPropAnswerChosenByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class DiscussionPropCategoryType(TypedDict):
+    """DiscussionPropCategory"""
+
+    created_at: datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class DiscussionPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class DiscussionPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 class ProjectsV2Type(TypedDict):
@@ -9321,6 +9466,20 @@ class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
     include_claim_keys: NotRequired[List[str]]
 
 
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: List[ActionsSecretType]
+
+
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+
+    total_count: int
+    variables: List[ActionsVariableType]
+
+
 class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
     """ReposOwnerRepoActionsPermissionsPutBody"""
 
@@ -10123,6 +10282,7 @@ class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsT
 
     path: str
     name: NotRequired[str]
+    display_name: NotRequired[str]
 
 
 class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
@@ -10947,6 +11107,7 @@ class ReposOwnerRepoPullsPostBodyType(TypedDict):
 
     title: NotRequired[str]
     head: str
+    head_repo: NotRequired[str]
     base: str
     body: NotRequired[str]
     maintainer_can_modify: NotRequired[bool]
@@ -11629,6 +11790,28 @@ class UserReposPostBodyType(TypedDict):
     is_template: NotRequired[bool]
 
 
+class UserSocialAccountsPostBodyType(TypedDict):
+    """UserSocialAccountsPostBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: List[str]
+
+
+class UserSocialAccountsDeleteBodyType(TypedDict):
+    """UserSocialAccountsDeleteBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: List[str]
+
+
 class UserSshSigningKeysPostBodyType(TypedDict):
     """UserSshSigningKeysPostBody"""
 
@@ -11655,6 +11838,7 @@ __all__ = [
     "HookDeliveryPropResponseType",
     "HookDeliveryPropResponsePropHeadersType",
     "EnterpriseType",
+    "IntegrationInstallationRequestType",
     "AppPermissionsType",
     "InstallationType",
     "LicenseSimpleType",
@@ -11814,6 +11998,8 @@ __all__ = [
     "JobType",
     "JobPropStepsItemsType",
     "OidcCustomSubRepoType",
+    "ActionsSecretType",
+    "ActionsVariableType",
     "ActionsRepositoryPermissionsType",
     "ActionsWorkflowAccessToRepositoryType",
     "ReferencedWorkflowType",
@@ -11841,8 +12027,6 @@ __all__ = [
     "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType",
     "WorkflowRunUsagePropBillablePropWindowsType",
     "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
-    "ActionsSecretType",
-    "ActionsVariableType",
     "WorkflowType",
     "AutolinkType",
     "ProtectedBranchRequiredStatusCheckType",
@@ -12152,6 +12336,7 @@ __all__ = [
     "KeyType",
     "MarketplaceAccountType",
     "UserMarketplacePurchaseType",
+    "SocialAccountType",
     "SshSigningKeyType",
     "StarredRepositoryType",
     "HovercardType",
@@ -12161,6 +12346,11 @@ __all__ = [
     "SimpleCheckSuiteType",
     "CheckRunWithSimpleCheckSuiteType",
     "CheckRunWithSimpleCheckSuitePropOutputType",
+    "DiscussionType",
+    "DiscussionPropAnswerChosenByType",
+    "DiscussionPropCategoryType",
+    "DiscussionPropReactionsType",
+    "DiscussionPropUserType",
     "ProjectsV2Type",
     "ProjectsV2ItemType",
     "AppManifestsCodeConversionsPostResponse201Type",
@@ -12284,6 +12474,8 @@ __all__ = [
     "ReposOwnerRepoActionsArtifactsGetResponse200Type",
     "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
     "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
     "ReposOwnerRepoActionsPermissionsPutBodyType",
     "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200Type",
     "ReposOwnerRepoActionsRunnersGetResponse200Type",
@@ -12524,5 +12716,7 @@ __all__ = [
     "UserMigrationsPostBodyType",
     "UserProjectsPostBodyType",
     "UserReposPostBodyType",
+    "UserSocialAccountsPostBodyType",
+    "UserSocialAccountsDeleteBodyType",
     "UserSshSigningKeysPostBodyType",
 ]

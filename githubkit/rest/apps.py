@@ -37,6 +37,7 @@ from .models import (
     AppHookConfigPatchBody,
     MarketplaceListingPlan,
     UserMarketplacePurchase,
+    IntegrationInstallationRequest,
     UserInstallationsGetResponse200,
     ApplicationsClientIdTokenPostBody,
     ApplicationsClientIdTokenPatchBody,
@@ -320,6 +321,50 @@ class AppsClient:
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def list_installation_requests_for_authenticated_app(
+        self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[IntegrationInstallationRequest]]":
+        url = "/app/installation-requests"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[IntegrationInstallationRequest],
+            error_models={
+                "401": BasicError,
+            },
+        )
+
+    async def async_list_installation_requests_for_authenticated_app(
+        self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[IntegrationInstallationRequest]]":
+        url = "/app/installation-requests"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[IntegrationInstallationRequest],
+            error_models={
+                "401": BasicError,
             },
         )
 

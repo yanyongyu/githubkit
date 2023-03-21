@@ -17,8 +17,10 @@ from .types import (
     UserGpgKeysPostBodyType,
     UserEmailsPostBodyOneof0Type,
     UserEmailsDeleteBodyOneof0Type,
+    UserSocialAccountsPostBodyType,
     UserSshSigningKeysPostBodyType,
     UserEmailVisibilityPatchBodyType,
+    UserSocialAccountsDeleteBodyType,
 )
 from .models import (
     Key,
@@ -30,6 +32,7 @@ from .models import (
     PublicUser,
     SimpleUser,
     PrivateUser,
+    SocialAccount,
     SshSigningKey,
     UserPatchBody,
     ValidationError,
@@ -37,8 +40,10 @@ from .models import (
     UserGpgKeysPostBody,
     UserEmailsPostBodyOneof0,
     UserEmailsDeleteBodyOneof0,
+    UserSocialAccountsPostBody,
     UserSshSigningKeysPostBody,
     UserEmailVisibilityPatchBody,
+    UserSocialAccountsDeleteBody,
 )
 
 if TYPE_CHECKING:
@@ -1264,6 +1269,212 @@ class UsersClient:
             },
         )
 
+    def list_social_accounts_for_authenticated_user(
+        self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SocialAccount]]":
+        url = "/user/social_accounts"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SocialAccount],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_list_social_accounts_for_authenticated_user(
+        self,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SocialAccount]]":
+        url = "/user/social_accounts"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SocialAccount],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    def add_social_account_for_authenticated_user(
+        self, *, data: UserSocialAccountsPostBodyType
+    ) -> "Response[List[SocialAccount]]":
+        ...
+
+    @overload
+    def add_social_account_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        account_urls: List[str],
+    ) -> "Response[List[SocialAccount]]":
+        ...
+
+    def add_social_account_for_authenticated_user(
+        self, *, data: Union[Unset, UserSocialAccountsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[List[SocialAccount]]":
+        url = "/user/social_accounts"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserSocialAccountsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=List[SocialAccount],
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_social_account_for_authenticated_user(
+        self, *, data: UserSocialAccountsPostBodyType
+    ) -> "Response[List[SocialAccount]]":
+        ...
+
+    @overload
+    async def async_add_social_account_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        account_urls: List[str],
+    ) -> "Response[List[SocialAccount]]":
+        ...
+
+    async def async_add_social_account_for_authenticated_user(
+        self, *, data: Union[Unset, UserSocialAccountsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[List[SocialAccount]]":
+        url = "/user/social_accounts"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserSocialAccountsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            response_model=List[SocialAccount],
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    def delete_social_account_for_authenticated_user(
+        self, *, data: UserSocialAccountsDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    def delete_social_account_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        account_urls: List[str],
+    ) -> "Response":
+        ...
+
+    def delete_social_account_for_authenticated_user(
+        self, *, data: Union[Unset, UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
+    ) -> "Response":
+        url = "/user/social_accounts"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserSocialAccountsDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    async def async_delete_social_account_for_authenticated_user(
+        self, *, data: UserSocialAccountsDeleteBodyType
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_delete_social_account_for_authenticated_user(
+        self,
+        *,
+        data: Unset = UNSET,
+        account_urls: List[str],
+    ) -> "Response":
+        ...
+
+    async def async_delete_social_account_for_authenticated_user(
+        self, *, data: Union[Unset, UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
+    ) -> "Response":
+        url = "/user/social_accounts"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(UserSocialAccountsDeleteBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def list_ssh_signing_keys_for_authenticated_user(
         self,
         per_page: Union[Unset, int] = 30,
@@ -1764,6 +1975,46 @@ class UsersClient:
             url,
             params=exclude_unset(params),
             response_model=List[KeySimple],
+        )
+
+    def list_social_accounts_for_user(
+        self,
+        username: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SocialAccount]]":
+        url = f"/users/{username}/social_accounts"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SocialAccount],
+        )
+
+    async def async_list_social_accounts_for_user(
+        self,
+        username: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[List[SocialAccount]]":
+        url = f"/users/{username}/social_accounts"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=List[SocialAccount],
         )
 
     def list_ssh_signing_keys_for_user(

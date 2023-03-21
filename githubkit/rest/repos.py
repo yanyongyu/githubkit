@@ -4269,6 +4269,7 @@ class ReposClient:
         sha: Union[Unset, str] = UNSET,
         path: Union[Unset, str] = UNSET,
         author: Union[Unset, str] = UNSET,
+        committer: Union[Unset, str] = UNSET,
         since: Union[Unset, datetime] = UNSET,
         until: Union[Unset, datetime] = UNSET,
         per_page: Union[Unset, int] = 30,
@@ -4280,6 +4281,7 @@ class ReposClient:
             "sha": sha,
             "path": path,
             "author": author,
+            "committer": committer,
             "since": since,
             "until": until,
             "per_page": per_page,
@@ -4306,6 +4308,7 @@ class ReposClient:
         sha: Union[Unset, str] = UNSET,
         path: Union[Unset, str] = UNSET,
         author: Union[Unset, str] = UNSET,
+        committer: Union[Unset, str] = UNSET,
         since: Union[Unset, datetime] = UNSET,
         until: Union[Unset, datetime] = UNSET,
         per_page: Union[Unset, int] = 30,
@@ -4317,6 +4320,7 @@ class ReposClient:
             "sha": sha,
             "path": path,
             "author": author,
+            "committer": committer,
             "since": since,
             "until": until,
             "per_page": per_page,
@@ -9986,7 +9990,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Union[Unset, Literal["", "day", "week"]] = "day",
+        per: Union[Unset, Literal["day", "week"]] = "day",
     ) -> "Response[CloneTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/clones"
 
@@ -10008,7 +10012,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Union[Unset, Literal["", "day", "week"]] = "day",
+        per: Union[Unset, Literal["day", "week"]] = "day",
     ) -> "Response[CloneTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/clones"
 
@@ -10094,7 +10098,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Union[Unset, Literal["", "day", "week"]] = "day",
+        per: Union[Unset, Literal["day", "week"]] = "day",
     ) -> "Response[ViewTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/views"
 
@@ -10116,7 +10120,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: Union[Unset, Literal["", "day", "week"]] = "day",
+        per: Union[Unset, Literal["day", "week"]] = "day",
     ) -> "Response[ViewTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/views"
 

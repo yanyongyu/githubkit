@@ -116,6 +116,8 @@ from .models import (
     OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
     ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
     ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
+    ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
+    ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
     ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody,
     OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
     OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody,
@@ -3165,6 +3167,90 @@ class ActionsClient:
                 "400": BasicError,
                 "422": ValidationErrorSimple,
             },
+        )
+
+    def list_repo_organization_secrets(
+        self,
+        owner: str,
+        repo: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/organization-secrets"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
+        )
+
+    async def async_list_repo_organization_secrets(
+        self,
+        owner: str,
+        repo: str,
+        per_page: Union[Unset, int] = 30,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/organization-secrets"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
+        )
+
+    def list_repo_organization_variables(
+        self,
+        owner: str,
+        repo: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/organization-variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
+        )
+
+    async def async_list_repo_organization_variables(
+        self,
+        owner: str,
+        repo: str,
+        per_page: Union[Unset, int] = 10,
+        page: Union[Unset, int] = 1,
+    ) -> "Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/actions/organization-variables"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         )
 
     def get_github_actions_permissions_repository(

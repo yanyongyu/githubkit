@@ -383,6 +383,25 @@ class Enterprise(GitHubRestModel):
     avatar_url: str = Field(default=...)
 
 
+class IntegrationInstallationRequest(GitHubRestModel):
+    """Integration Installation Request
+
+    Request to install an integration on a target
+    """
+
+    id: int = Field(
+        description="Unique identifier of the request installation.", default=...
+    )
+    node_id: Union[Unset, str] = Field(default=UNSET)
+    account: Union[SimpleUser, Enterprise] = Field(
+        title="Enterprise", description="An enterprise on GitHub.", default=...
+    )
+    requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    created_at: datetime = Field(default=...)
+
+
 class AppPermissions(GitHubRestModel):
     """App Permissions
 
@@ -3412,7 +3431,10 @@ class Migration(GitHubRestModel):
     updated_at: datetime = Field(default=...)
     node_id: str = Field(default=...)
     archive_url: Union[Unset, str] = Field(default=UNSET)
-    exclude: Union[Unset, List[Any]] = Field(default=UNSET)
+    exclude: Union[Unset, List[str]] = Field(
+        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+        default=UNSET,
+    )
 
 
 class Package(GitHubRestModel):
@@ -4484,6 +4506,9 @@ class Job(GitHubRestModel):
             "action_required",
         ],
     ] = Field(description="The outcome of the job.", default=...)
+    created_at: datetime = Field(
+        description="The time that the job created, in ISO 8601 format.", default=...
+    )
     started_at: datetime = Field(
         description="The time that the job started, in ISO 8601 format.", default=...
     )
@@ -4556,6 +4581,32 @@ class OidcCustomSubRepo(GitHubRestModel):
     include_claim_keys: Union[Unset, List[str]] = Field(
         description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
         default=UNSET,
+    )
+
+
+class ActionsSecret(GitHubRestModel):
+    """Actions Secret
+
+    Set secrets for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the secret.", default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+
+
+class ActionsVariable(GitHubRestModel):
+    """Actions Variable"""
+
+    name: str = Field(description="The name of the variable.", default=...)
+    value: str = Field(description="The value of the variable.", default=...)
+    created_at: datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        default=...,
     )
 
 
@@ -4766,8 +4817,8 @@ class EnvironmentApprovals(GitHubRestModel):
         description="The list of environments that were approved or rejected",
         default=...,
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether deployment to the environment(s) was approved or rejected",
+    state: Literal["approved", "rejected", "pending"] = Field(
+        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)",
         default=...,
     )
     user: SimpleUser = Field(
@@ -4969,32 +5020,6 @@ class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubRestModel):
 
     job_id: int = Field(default=...)
     duration_ms: int = Field(default=...)
-
-
-class ActionsSecret(GitHubRestModel):
-    """Actions Secret
-
-    Set secrets for GitHub Actions.
-    """
-
-    name: str = Field(description="The name of the secret.", default=...)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-
-
-class ActionsVariable(GitHubRestModel):
-    """Actions Variable"""
-
-    name: str = Field(description="The name of the variable.", default=...)
-    value: str = Field(description="The value of the variable.", default=...)
-    created_at: datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-        default=...,
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-        default=...,
-    )
 
 
 class Workflow(GitHubRestModel):
@@ -7234,7 +7259,10 @@ class Environment(GitHubRestModel):
                 EnvironmentPropProtectionRulesItemsAnyof2,
             ]
         ],
-    ] = Field(default=UNSET)
+    ] = Field(
+        description="Built-in deployment protection rules for the environment.",
+        default=UNSET,
+    )
     deployment_branch_policy: Union[
         Unset, Union[DeploymentBranchPolicySettings, None]
     ] = Field(
@@ -10891,6 +10919,16 @@ class UserMarketplacePurchase(GitHubRestModel):
     )
 
 
+class SocialAccount(GitHubRestModel):
+    """Social account
+
+    Social media account
+    """
+
+    provider: str = Field(default=...)
+    url: str = Field(default=...)
+
+
 class SshSigningKey(GitHubRestModel):
     """SSH Signing Key
 
@@ -11068,6 +11106,140 @@ class CheckRunWithSimpleCheckSuitePropOutput(GitHubRestModel):
     title: Union[str, None] = Field(default=...)
 
 
+class Discussion(GitHubRestModel):
+    """Discussion
+
+    A Discussion in a repository.
+    """
+
+    active_lock_reason: Union[str, None] = Field(default=...)
+    answer_chosen_at: Union[str, None] = Field(default=...)
+    answer_chosen_by: Union[DiscussionPropAnswerChosenBy, None] = Field(
+        title="User", default=...
+    )
+    answer_html_url: Union[str, None] = Field(default=...)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+        default=...,
+    )
+    body: str = Field(default=...)
+    category: DiscussionPropCategory = Field(default=...)
+    comments: int = Field(default=...)
+    created_at: datetime = Field(default=...)
+    html_url: str = Field(default=...)
+    id: int = Field(default=...)
+    locked: bool = Field(default=...)
+    node_id: str = Field(default=...)
+    number: int = Field(default=...)
+    reactions: Union[Unset, DiscussionPropReactions] = Field(
+        title="Reactions", default=UNSET
+    )
+    repository_url: str = Field(default=...)
+    state: Literal["open", "closed", "locked", "converting", "transferring"] = Field(
+        description="The current state of the discussion.\n`converting` means that the discussion is being converted from an issue.\n`transferring` means that the discussion is being transferred from another repository.",
+        default=...,
+    )
+    state_reason: Union[
+        None, Literal["resolved", "outdated", "duplicate", "reopened"]
+    ] = Field(description="The reason for the current state", default=...)
+    timeline_url: Union[Unset, str] = Field(default=UNSET)
+    title: str = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    user: Union[DiscussionPropUser, None] = Field(title="User", default=...)
+
+
+class DiscussionPropAnswerChosenBy(GitHubRestModel):
+    """User"""
+
+    avatar_url: Union[Unset, str] = Field(default=UNSET)
+    deleted: Union[Unset, bool] = Field(default=UNSET)
+    email: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    events_url: Union[Unset, str] = Field(default=UNSET)
+    followers_url: Union[Unset, str] = Field(default=UNSET)
+    following_url: Union[Unset, str] = Field(default=UNSET)
+    gists_url: Union[Unset, str] = Field(default=UNSET)
+    gravatar_id: Union[Unset, str] = Field(default=UNSET)
+    html_url: Union[Unset, str] = Field(default=UNSET)
+    id: int = Field(default=...)
+    login: str = Field(default=...)
+    name: Union[Unset, str] = Field(default=UNSET)
+    node_id: Union[Unset, str] = Field(default=UNSET)
+    organizations_url: Union[Unset, str] = Field(default=UNSET)
+    received_events_url: Union[Unset, str] = Field(default=UNSET)
+    repos_url: Union[Unset, str] = Field(default=UNSET)
+    site_admin: Union[Unset, bool] = Field(default=UNSET)
+    starred_url: Union[Unset, str] = Field(default=UNSET)
+    subscriptions_url: Union[Unset, str] = Field(default=UNSET)
+    type: Union[Unset, Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Union[Unset, str] = Field(default=UNSET)
+
+
+class DiscussionPropCategory(GitHubRestModel):
+    """DiscussionPropCategory"""
+
+    created_at: datetime = Field(default=...)
+    description: str = Field(default=...)
+    emoji: str = Field(default=...)
+    id: int = Field(default=...)
+    is_answerable: bool = Field(default=...)
+    name: str = Field(default=...)
+    node_id: Union[Unset, str] = Field(default=UNSET)
+    repository_id: int = Field(default=...)
+    slug: str = Field(default=...)
+    updated_at: str = Field(default=...)
+
+
+class DiscussionPropReactions(GitHubRestModel):
+    """Reactions"""
+
+    plus_one: int = Field(default=..., alias="+1")
+    minus_one: int = Field(default=..., alias="-1")
+    confused: int = Field(default=...)
+    eyes: int = Field(default=...)
+    heart: int = Field(default=...)
+    hooray: int = Field(default=...)
+    laugh: int = Field(default=...)
+    rocket: int = Field(default=...)
+    total_count: int = Field(default=...)
+    url: str = Field(default=...)
+
+
+class DiscussionPropUser(GitHubRestModel):
+    """User"""
+
+    avatar_url: Union[Unset, str] = Field(default=UNSET)
+    deleted: Union[Unset, bool] = Field(default=UNSET)
+    email: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    events_url: Union[Unset, str] = Field(default=UNSET)
+    followers_url: Union[Unset, str] = Field(default=UNSET)
+    following_url: Union[Unset, str] = Field(default=UNSET)
+    gists_url: Union[Unset, str] = Field(default=UNSET)
+    gravatar_id: Union[Unset, str] = Field(default=UNSET)
+    html_url: Union[Unset, str] = Field(default=UNSET)
+    id: int = Field(default=...)
+    login: str = Field(default=...)
+    name: Union[Unset, str] = Field(default=UNSET)
+    node_id: Union[Unset, str] = Field(default=UNSET)
+    organizations_url: Union[Unset, str] = Field(default=UNSET)
+    received_events_url: Union[Unset, str] = Field(default=UNSET)
+    repos_url: Union[Unset, str] = Field(default=UNSET)
+    site_admin: Union[Unset, bool] = Field(default=UNSET)
+    starred_url: Union[Unset, str] = Field(default=UNSET)
+    subscriptions_url: Union[Unset, str] = Field(default=UNSET)
+    type: Union[Unset, Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Union[Unset, str] = Field(default=UNSET)
+
+
 class ProjectsV2(GitHubRestModel):
     """Projects v2 Project
 
@@ -11218,7 +11390,7 @@ class ApplicationsClientIdTokenPostBody(GitHubRestModel):
     """ApplicationsClientIdTokenPostBody"""
 
     access_token: str = Field(
-        description="The access_token of the OAuth application.", default=...
+        description="The access_token of the OAuth or GitHub application.", default=...
     )
 
 
@@ -11235,7 +11407,7 @@ class ApplicationsClientIdTokenPatchBody(GitHubRestModel):
     """ApplicationsClientIdTokenPatchBody"""
 
     access_token: str = Field(
-        description="The access_token of the OAuth application.", default=...
+        description="The access_token of the OAuth or GitHub application.", default=...
     )
 
 
@@ -12801,6 +12973,20 @@ class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubRestModel):
     )
 
 
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubRestModel):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int = Field(default=...)
+    secrets: List[ActionsSecret] = Field(default=...)
+
+
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubRestModel):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+
+    total_count: int = Field(default=...)
+    variables: List[ActionsVariable] = Field(default=...)
+
+
 class ReposOwnerRepoActionsPermissionsPutBody(GitHubRestModel):
     """ReposOwnerRepoActionsPermissionsPutBody"""
 
@@ -14065,6 +14251,7 @@ class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
 
     path: str = Field(default=...)
     name: Union[Unset, str] = Field(default=UNSET)
+    display_name: Union[Unset, str] = Field(default=UNSET)
 
 
 class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubRestModel):
@@ -15465,6 +15652,10 @@ class ReposOwnerRepoPullsPostBody(GitHubRestModel):
         description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`.",
         default=...,
     )
+    head_repo: Union[Unset, str] = Field(
+        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
+        default=UNSET,
+    )
     base: str = Field(
         description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository.",
         default=...,
@@ -16620,6 +16811,32 @@ class UserReposPostBody(GitHubRestModel):
     )
 
 
+class UserSocialAccountsPostBody(GitHubRestModel):
+    """UserSocialAccountsPostBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: List[str] = Field(
+        description="Full URLs for the social media profiles to add.", default=...
+    )
+
+
+class UserSocialAccountsDeleteBody(GitHubRestModel):
+    """UserSocialAccountsDeleteBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: List[str] = Field(
+        description="Full URLs for the social media profiles to delete.", default=...
+    )
+
+
 class UserSshSigningKeysPostBody(GitHubRestModel):
     """UserSshSigningKeysPostBody"""
 
@@ -16651,6 +16868,7 @@ HookDeliveryPropRequestPropPayload.update_forward_refs()
 HookDeliveryPropResponse.update_forward_refs()
 HookDeliveryPropResponsePropHeaders.update_forward_refs()
 Enterprise.update_forward_refs()
+IntegrationInstallationRequest.update_forward_refs()
 AppPermissions.update_forward_refs()
 Installation.update_forward_refs()
 LicenseSimple.update_forward_refs()
@@ -16810,6 +17028,8 @@ ActionsCacheListPropActionsCachesItems.update_forward_refs()
 Job.update_forward_refs()
 JobPropStepsItems.update_forward_refs()
 OidcCustomSubRepo.update_forward_refs()
+ActionsSecret.update_forward_refs()
+ActionsVariable.update_forward_refs()
 ActionsRepositoryPermissions.update_forward_refs()
 ActionsWorkflowAccessToRepository.update_forward_refs()
 ReferencedWorkflow.update_forward_refs()
@@ -16837,8 +17057,6 @@ WorkflowRunUsagePropBillablePropMacos.update_forward_refs()
 WorkflowRunUsagePropBillablePropMacosPropJobRunsItems.update_forward_refs()
 WorkflowRunUsagePropBillablePropWindows.update_forward_refs()
 WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems.update_forward_refs()
-ActionsSecret.update_forward_refs()
-ActionsVariable.update_forward_refs()
 Workflow.update_forward_refs()
 Autolink.update_forward_refs()
 ProtectedBranchRequiredStatusCheck.update_forward_refs()
@@ -17148,6 +17366,7 @@ GpgKeyPropSubkeysItems.update_forward_refs()
 Key.update_forward_refs()
 MarketplaceAccount.update_forward_refs()
 UserMarketplacePurchase.update_forward_refs()
+SocialAccount.update_forward_refs()
 SshSigningKey.update_forward_refs()
 StarredRepository.update_forward_refs()
 Hovercard.update_forward_refs()
@@ -17157,6 +17376,11 @@ SimpleInstallation.update_forward_refs()
 SimpleCheckSuite.update_forward_refs()
 CheckRunWithSimpleCheckSuite.update_forward_refs()
 CheckRunWithSimpleCheckSuitePropOutput.update_forward_refs()
+Discussion.update_forward_refs()
+DiscussionPropAnswerChosenBy.update_forward_refs()
+DiscussionPropCategory.update_forward_refs()
+DiscussionPropReactions.update_forward_refs()
+DiscussionPropUser.update_forward_refs()
 ProjectsV2.update_forward_refs()
 ProjectsV2Item.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
@@ -17280,6 +17504,8 @@ ReposOwnerRepoPatchBodyPropSecurityAndAnalysis.update_forward_refs()
 ReposOwnerRepoActionsArtifactsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsJobsJobIdRerunPostBody.update_forward_refs()
 ReposOwnerRepoActionsOidcCustomizationSubPutBody.update_forward_refs()
+ReposOwnerRepoActionsOrganizationSecretsGetResponse200.update_forward_refs()
+ReposOwnerRepoActionsOrganizationVariablesGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsPermissionsPutBody.update_forward_refs()
 ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunnersGetResponse200.update_forward_refs()
@@ -17520,6 +17746,8 @@ UserMembershipsOrgsOrgPatchBody.update_forward_refs()
 UserMigrationsPostBody.update_forward_refs()
 UserProjectsPostBody.update_forward_refs()
 UserReposPostBody.update_forward_refs()
+UserSocialAccountsPostBody.update_forward_refs()
+UserSocialAccountsDeleteBody.update_forward_refs()
 UserSshSigningKeysPostBody.update_forward_refs()
 
 __all__ = [
@@ -17542,6 +17770,7 @@ __all__ = [
     "HookDeliveryPropResponse",
     "HookDeliveryPropResponsePropHeaders",
     "Enterprise",
+    "IntegrationInstallationRequest",
     "AppPermissions",
     "Installation",
     "LicenseSimple",
@@ -17701,6 +17930,8 @@ __all__ = [
     "Job",
     "JobPropStepsItems",
     "OidcCustomSubRepo",
+    "ActionsSecret",
+    "ActionsVariable",
     "ActionsRepositoryPermissions",
     "ActionsWorkflowAccessToRepository",
     "ReferencedWorkflow",
@@ -17728,8 +17959,6 @@ __all__ = [
     "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
     "WorkflowRunUsagePropBillablePropWindows",
     "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
-    "ActionsSecret",
-    "ActionsVariable",
     "Workflow",
     "Autolink",
     "ProtectedBranchRequiredStatusCheck",
@@ -18039,6 +18268,7 @@ __all__ = [
     "Key",
     "MarketplaceAccount",
     "UserMarketplacePurchase",
+    "SocialAccount",
     "SshSigningKey",
     "StarredRepository",
     "Hovercard",
@@ -18048,6 +18278,11 @@ __all__ = [
     "SimpleCheckSuite",
     "CheckRunWithSimpleCheckSuite",
     "CheckRunWithSimpleCheckSuitePropOutput",
+    "Discussion",
+    "DiscussionPropAnswerChosenBy",
+    "DiscussionPropCategory",
+    "DiscussionPropReactions",
+    "DiscussionPropUser",
     "ProjectsV2",
     "ProjectsV2Item",
     "AppManifestsCodeConversionsPostResponse201",
@@ -18171,6 +18406,8 @@ __all__ = [
     "ReposOwnerRepoActionsArtifactsGetResponse200",
     "ReposOwnerRepoActionsJobsJobIdRerunPostBody",
     "ReposOwnerRepoActionsOidcCustomizationSubPutBody",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200",
     "ReposOwnerRepoActionsPermissionsPutBody",
     "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200",
     "ReposOwnerRepoActionsRunnersGetResponse200",
@@ -18411,5 +18648,7 @@ __all__ = [
     "UserMigrationsPostBody",
     "UserProjectsPostBody",
     "UserReposPostBody",
+    "UserSocialAccountsPostBody",
+    "UserSocialAccountsDeleteBody",
     "UserSshSigningKeysPostBody",
 ]

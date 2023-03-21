@@ -29,12 +29,16 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/packages"
 
         params = {
             "package_type": package_type,
             "visibility": visibility,
+            "page": page,
+            "per_page": per_page,
         }
 
         return self._github.request(
@@ -55,12 +59,16 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/packages"
 
         params = {
             "package_type": package_type,
             "visibility": visibility,
+            "page": page,
+            "per_page": per_page,
         }
 
         return await self._github.arequest(
@@ -384,12 +392,16 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[Package]]":
         url = "/user/packages"
 
         params = {
             "package_type": package_type,
             "visibility": visibility,
+            "page": page,
+            "per_page": per_page,
         }
 
         return self._github.request(
@@ -397,6 +409,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             response_model=List[Package],
+            error_models={},
         )
 
     async def async_list_packages_for_authenticated_user(
@@ -405,12 +418,16 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[Package]]":
         url = "/user/packages"
 
         params = {
             "package_type": package_type,
             "visibility": visibility,
+            "page": page,
+            "per_page": per_page,
         }
 
         return await self._github.arequest(
@@ -418,6 +435,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             response_model=List[Package],
+            error_models={},
         )
 
     def get_package_for_authenticated_user(
@@ -717,12 +735,16 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/packages"
 
         params = {
             "package_type": package_type,
             "visibility": visibility,
+            "page": page,
+            "per_page": per_page,
         }
 
         return self._github.request(
@@ -743,12 +765,16 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         visibility: Union[Unset, Literal["public", "private", "internal"]] = UNSET,
+        page: Union[Unset, int] = 1,
+        per_page: Union[Unset, int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/packages"
 
         params = {
             "package_type": package_type,
             "visibility": visibility,
+            "page": page,
+            "per_page": per_page,
         }
 
         return await self._github.arequest(
