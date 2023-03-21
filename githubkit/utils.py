@@ -1,6 +1,8 @@
 import inspect
 from typing import Any, Dict, Literal
 
+from pydantic.json import pydantic_encoder
+
 
 class Unset:
     def __repr__(self) -> str:
@@ -46,3 +48,16 @@ def is_async(obj: Any) -> bool:
         return False
     func_ = getattr(obj, "__call__", None)
     return inspect.iscoroutinefunction(func_)
+
+
+def obj_to_jsonable(obj: Any) -> Any:
+    if isinstance(obj, dict):
+        return {k: obj_to_jsonable(v) for k, v in obj.items()}
+
+    if isinstance(obj, (list, tuple)):
+        return [obj_to_jsonable(item) for item in obj]
+
+    if obj is None or isinstance(obj, (int, float, str, bool)):
+        return obj
+
+    return pydantic_encoder(obj)
