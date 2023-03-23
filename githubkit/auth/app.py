@@ -33,7 +33,7 @@ class AppAuth(httpx.Auth):
     """GitHub App or Installation Authentication Hook"""
 
     github: "GitHubCore"
-    app_id: str | int
+    app_id: Union[str, int]
     private_key: str
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
@@ -219,7 +219,7 @@ class AppAuth(httpx.Auth):
 class AppAuthStrategy(BaseAuthStrategy):
     """GitHub App Authentication"""
 
-    app_id: str | int
+    app_id: Union[str, int]
     private_key: str
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
@@ -266,7 +266,7 @@ class AppAuthStrategy(BaseAuthStrategy):
 class AppInstallationAuthStrategy(BaseAuthStrategy):
     """GitHub App Installation Authentication"""
 
-    app_id: str | int
+    app_id: Union[str, int]
     private_key: str
     installation_id: int
     client_id: Optional[str] = None
