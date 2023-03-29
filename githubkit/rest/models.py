@@ -516,6 +516,16 @@ class AppPermissions(GitHubRestModel):
         description="The level of permission to grant the access token to manage the post-receive hooks for an organization.",
         default=UNSET,
     )
+    organization_personal_access_tokens: Union[Unset, Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization.",
+        default=UNSET,
+    )
+    organization_personal_access_token_requests: Union[
+        Unset, Literal["read", "write"]
+    ] = Field(
+        description="The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.",
+        default=UNSET,
+    )
     organization_plan: Union[Unset, Literal["read"]] = Field(
         description="The level of permission to grant the access token for viewing an organization's plan.",
         default=UNSET,
@@ -723,7 +733,7 @@ class Repository(GitHubRestModel):
     template_repository: Union[
         Unset, Union[RepositoryPropTemplateRepository, None]
     ] = Field(default=UNSET)
-    temp_clone_token: Union[Unset, str] = Field(default=UNSET)
+    temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
@@ -909,7 +919,7 @@ class RepositoryPropTemplateRepository(GitHubRestModel):
         default=UNSET
     )
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
-    temp_clone_token: Union[Unset, str] = Field(default=UNSET)
+    temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_auto_merge: Union[Unset, bool] = Field(default=UNSET)
     delete_branch_on_merge: Union[Unset, bool] = Field(default=UNSET)
@@ -2340,7 +2350,7 @@ class MinimalRepository(GitHubRestModel):
     updated_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
     permissions: Union[Unset, MinimalRepositoryPropPermissions] = Field(default=UNSET)
     role_name: Union[Unset, str] = Field(default=UNSET)
-    temp_clone_token: Union[Unset, str] = Field(default=UNSET)
+    temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
     delete_branch_on_merge: Union[Unset, bool] = Field(default=UNSET)
     subscribers_count: Union[Unset, int] = Field(default=UNSET)
     network_count: Union[Unset, int] = Field(default=UNSET)
@@ -2441,6 +2451,165 @@ class OrganizationSimple(GitHubRestModel):
     public_members_url: str = Field(default=...)
     avatar_url: str = Field(default=...)
     description: Union[str, None] = Field(default=...)
+
+
+class OrganizationProgrammaticAccessGrantRequest(GitHubRestModel):
+    """Simple Organization Programmatic Access Grant Request
+
+    Minimal representation of an organization programmatic access grant request for
+    enumerations
+    """
+
+    id: int = Field(
+        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests.",
+        default=...,
+    )
+    reason: Union[str, None] = Field(
+        description="Reason for requesting access.", default=...
+    )
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested.", default=...
+    )
+    repositories_url: str = Field(
+        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`.",
+        default=...,
+    )
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission.",
+        default=...,
+    )
+    created_at: str = Field(
+        description="Date and time when the request for access was created.",
+        default=...,
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired.",
+        default=...,
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires.",
+        default=...,
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication.",
+        default=...,
+    )
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubRestModel):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: Union[
+        Unset, OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Union[
+        Unset, OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Union[
+        Unset, OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
+    ] = Field(default=UNSET)
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
+
+
+class OrganizationProgrammaticAccessGrant(GitHubRestModel):
+    """Organization Programmatic Access Grant
+
+    Minimal representation of an organization programmatic access grant for
+    enumerations
+    """
+
+    id: int = Field(
+        description="Unique identifier of the fine-grained personal access token. The `pat_id` used to get details about an approved fine-grained personal access token.",
+        default=...,
+    )
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested.", default=...
+    )
+    repositories_url: str = Field(
+        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`.",
+        default=...,
+    )
+    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission.",
+        default=...,
+    )
+    access_granted_at: str = Field(
+        description="Date and time when the fine-grained personal access token was approved to access the organization.",
+        default=...,
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired.",
+        default=...,
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires.",
+        default=...,
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication.",
+        default=...,
+    )
+
+
+class OrganizationProgrammaticAccessGrantPropPermissions(GitHubRestModel):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: Union[
+        Unset, OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Union[
+        Unset, OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Union[
+        Unset, OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+    ] = Field(default=UNSET)
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
 
 
 class OrganizationFull(GitHubRestModel):
@@ -3226,6 +3395,33 @@ class DependabotPublicKey(GitHubRestModel):
     key: str = Field(description="The Base64 encoded public key.", default=...)
 
 
+class Package(GitHubRestModel):
+    """Package
+
+    A software package
+    """
+
+    id: int = Field(description="Unique identifier of the package.", default=...)
+    name: str = Field(description="The name of the package.", default=...)
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field(default=...)
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    version_count: int = Field(
+        description="The number of versions of the package.", default=...
+    )
+    visibility: Literal["private", "public"] = Field(default=...)
+    owner: Union[Unset, Union[None, SimpleUser]] = Field(
+        title="Simple User", description="A GitHub user.", default=UNSET
+    )
+    repository: Union[Unset, Union[None, MinimalRepository]] = Field(
+        title="Minimal Repository", description="Minimal Repository", default=UNSET
+    )
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+
+
 class OrganizationInvitation(GitHubRestModel):
     """Organization Invitation
 
@@ -3435,33 +3631,6 @@ class Migration(GitHubRestModel):
         description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
         default=UNSET,
     )
-
-
-class Package(GitHubRestModel):
-    """Package
-
-    A software package
-    """
-
-    id: int = Field(description="Unique identifier of the package.", default=...)
-    name: str = Field(description="The name of the package.", default=...)
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field(default=...)
-    url: str = Field(default=...)
-    html_url: str = Field(default=...)
-    version_count: int = Field(
-        description="The number of versions of the package.", default=...
-    )
-    visibility: Literal["private", "public"] = Field(default=...)
-    owner: Union[Unset, Union[None, SimpleUser]] = Field(
-        title="Simple User", description="A GitHub user.", default=UNSET
-    )
-    repository: Union[Unset, Union[None, MinimalRepository]] = Field(
-        title="Minimal Repository", description="Minimal Repository", default=UNSET
-    )
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
 
 
 class PackageVersion(GitHubRestModel):
@@ -4034,7 +4203,7 @@ class TeamRepository(GitHubRestModel):
     template_repository: Union[Unset, Union[None, Repository]] = Field(
         title="Repository", description="A repository on GitHub.", default=UNSET
     )
-    temp_clone_token: Union[Unset, str] = Field(default=UNSET)
+    temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
@@ -6133,6 +6302,58 @@ class CodeScanningCodeqlDatabase(GitHubRestModel):
     url: str = Field(
         description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property.",
         default=...,
+    )
+
+
+class CodeScanningDefaultSetup(GitHubRestModel):
+    """CodeScanningDefaultSetup
+
+    Configuration for code scanning default setup.
+    """
+
+    state: Union[Unset, Literal["configured", "not-configured"]] = Field(
+        description="Code scanning default setup has been configured or not.",
+        default=UNSET,
+    )
+    languages: Union[Unset, List[Literal["javascript", "python", "ruby"]]] = Field(
+        description="Languages to be analysed.", default=UNSET
+    )
+    query_suite: Union[Unset, Literal["default", "extended"]] = Field(
+        description="CodeQL query suite to be used.", default=UNSET
+    )
+    updated_at: Union[Unset, Union[datetime, None]] = Field(
+        description="Timestamp of latest configuration update.", default=UNSET
+    )
+
+
+class CodeScanningDefaultSetupUpdate(GitHubRestModel):
+    """CodeScanningDefaultSetupUpdate
+
+    Configuration for code scanning default setup.
+    """
+
+    state: Literal["configured", "not-configured"] = Field(
+        description="Whether code scanning default setup has been configured or not.",
+        default=...,
+    )
+    query_suite: Union[Unset, Literal["default", "extended"]] = Field(
+        description="CodeQL query suite to be used.", default=UNSET
+    )
+
+
+class CodeScanningDefaultSetupUpdateResponse(GitHubRestModel):
+    """CodeScanningDefaultSetupUpdateResponse
+
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: Union[Unset, int] = Field(
+        description="ID of the corresponding run.", default=UNSET
+    )
+    run_url: Union[Unset, str] = Field(
+        description="URL of the corresponding run.", default=UNSET
     )
 
 
@@ -8605,6 +8826,10 @@ class PullRequestReviewComment(GitHubRestModel):
         description="The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment",
         default="RIGHT",
     )
+    subject_type: Union[Unset, Literal["line", "file"]] = Field(
+        description="The level at which the comment is targeted, can be a diff line or a file.",
+        default=UNSET,
+    )
     reactions: Union[Unset, ReactionRollup] = Field(
         title="Reaction Rollup", default=UNSET
     )
@@ -9271,7 +9496,7 @@ class PullRequestPropHeadPropRepo(GitHubRestModel):
     permissions: Union[Unset, PullRequestPropHeadPropRepoPropPermissions] = Field(
         default=UNSET
     )
-    temp_clone_token: Union[Unset, str] = Field(default=UNSET)
+    temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
@@ -9402,7 +9627,7 @@ class PullRequestPropBasePropRepo(GitHubRestModel):
     permissions: Union[Unset, PullRequestPropBasePropRepoPropPermissions] = Field(
         default=UNSET
     )
-    temp_clone_token: Union[Unset, str] = Field(default=UNSET)
+    temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
@@ -10407,7 +10632,7 @@ class RepoSearchResultItem(GitHubRestModel):
     text_matches: Union[Unset, List[SearchResultTextMatchesItems]] = Field(
         title="Search Result Text Matches", default=UNSET
     )
-    temp_clone_token: Union[Unset, str] = Field(default=UNSET)
+    temp_clone_token: Union[Unset, Union[str, None]] = Field(default=UNSET)
     allow_merge_commit: Union[Unset, bool] = Field(default=UNSET)
     allow_squash_merge: Union[Unset, bool] = Field(default=UNSET)
     allow_rebase_merge: Union[Unset, bool] = Field(default=UNSET)
@@ -11240,6 +11465,181 @@ class DiscussionPropUser(GitHubRestModel):
     url: Union[Unset, str] = Field(default=UNSET)
 
 
+class PersonalAccessTokenRequest(GitHubRestModel):
+    """Personal Access Token Request
+
+    Details of a Personal Access Token Request.
+    """
+
+    id: int = Field(
+        description="Unique identifier of the request for access via fine-grained personal access token. Used as the `pat_request_id` parameter in the list and review API calls.",
+        default=...,
+    )
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAdded = Field(
+        description="New requested permissions, categorized by type of permission.",
+        default=...,
+    )
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgraded = Field(
+        description="Requested permissions that elevate access for a previously approved request for access, categorized by type of permission.",
+        default=...,
+    )
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResult = Field(
+        description="Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`.",
+        default=...,
+    )
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested.", default=...
+    )
+    repository_count: Union[int, None] = Field(
+        description="The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`.",
+        default=...,
+    )
+    repositories: Union[
+        List[PersonalAccessTokenRequestPropRepositoriesItems], None
+    ] = Field(
+        description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`.",
+        default=...,
+    )
+    created_at: str = Field(
+        description="Date and time when the request for access was created.",
+        default=...,
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired.",
+        default=...,
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires.",
+        default=...,
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication.",
+        default=...,
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsAdded(GitHubRestModel):
+    """PersonalAccessTokenRequestPropPermissionsAdded
+
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+    ] = Field(default=UNSET)
+    other: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsAddedPropOther
+    ] = Field(default=UNSET)
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOrganization(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropRepository(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOther(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgraded(GitHubRestModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+    ] = Field(default=UNSET)
+    other: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+    ] = Field(default=UNSET)
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOther(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResult(GitHubRestModel):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+    ] = Field(default=UNSET)
+    repository: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsResultPropRepository
+    ] = Field(default=UNSET)
+    other: Union[
+        Unset, PersonalAccessTokenRequestPropPermissionsResultPropOther
+    ] = Field(default=UNSET)
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOrganization(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropRepository(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOther(
+    GitHubRestModel, extra=Extra.allow
+):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+
+
+class PersonalAccessTokenRequestPropRepositoriesItems(GitHubRestModel):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
+
+    full_name: str = Field(default=...)
+    id: int = Field(description="Unique identifier of the repository", default=...)
+    name: str = Field(description="The name of the repository.", default=...)
+    node_id: str = Field(default=...)
+    private: bool = Field(
+        description="Whether the repository is private or public.", default=...
+    )
+
+
 class ProjectsV2(GitHubRestModel):
     """Projects v2 Project
 
@@ -11589,6 +11989,62 @@ class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubRestModel):
 
     ignored: Union[Unset, bool] = Field(
         description="Whether to block all notifications from a thread.", default=False
+    )
+
+
+class OrganizationsOrgPersonalAccessTokenRequestsPostBody(GitHubRestModel):
+    """OrganizationsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: Union[Unset, List[int]] = Field(
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
+        max_items=100,
+        min_items=1,
+        default=UNSET,
+    )
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests.", default=...
+    )
+    reason: Union[Unset, Union[str, None]] = Field(
+        description="Reason for approving or denying the requests. Max 1024 characters.",
+        max_length=1024,
+        default=UNSET,
+    )
+
+
+class OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubRestModel):
+    """OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request.", default=...
+    )
+    reason: Union[Unset, Union[str, None]] = Field(
+        description="Reason for approving or denying the request. Max 1024 characters.",
+        max_length=1024,
+        default=UNSET,
+    )
+
+
+class OrganizationsOrgPersonalAccessTokensPostBody(GitHubRestModel):
+    """OrganizationsOrgPersonalAccessTokensPostBody"""
+
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token.",
+        default=...,
+    )
+    pat_ids: List[int] = Field(
+        description="The IDs of the fine-grained personal access tokens.",
+        max_items=100,
+        min_items=1,
+        default=...,
+    )
+
+
+class OrganizationsOrgPersonalAccessTokensPatIdPostBody(GitHubRestModel):
+    """OrganizationsOrgPersonalAccessTokensPatIdPostBody"""
+
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token.",
+        default=...,
     )
 
 
@@ -15793,6 +16249,9 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubRestModel):
         description='The ID of the review comment to reply to. To find the ID of a review comment with ["List review comments on a pull request"](#list-review-comments-on-a-pull-request). When specified, all parameters other than `body` in the request body are ignored.',
         default=UNSET,
     )
+    subject_type: Union[Unset, Literal["LINE", "FILE"]] = Field(
+        description="The level at which the comment is targeted.", default=UNSET
+    )
 
 
 class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubRestModel):
@@ -16941,6 +17400,16 @@ Thread.update_forward_refs()
 ThreadPropSubject.update_forward_refs()
 ThreadSubscription.update_forward_refs()
 OrganizationSimple.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequest.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissions.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther.update_forward_refs()
+OrganizationProgrammaticAccessGrant.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissions.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepository.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissionsPropOther.update_forward_refs()
 OrganizationFull.update_forward_refs()
 OrganizationFullPropPlan.update_forward_refs()
 ActionsCacheUsageOrgEnterprise.update_forward_refs()
@@ -16974,6 +17443,7 @@ CodespacesOrgSecret.update_forward_refs()
 CodespacesPublicKey.update_forward_refs()
 OrganizationDependabotSecret.update_forward_refs()
 DependabotPublicKey.update_forward_refs()
+Package.update_forward_refs()
 OrganizationInvitation.update_forward_refs()
 OrgHook.update_forward_refs()
 OrgHookPropConfig.update_forward_refs()
@@ -16985,7 +17455,6 @@ TeamPropPermissions.update_forward_refs()
 OrgMembership.update_forward_refs()
 OrgMembershipPropPermissions.update_forward_refs()
 Migration.update_forward_refs()
-Package.update_forward_refs()
 PackageVersion.update_forward_refs()
 PackageVersionPropMetadata.update_forward_refs()
 PackageVersionPropMetadataPropContainer.update_forward_refs()
@@ -17122,6 +17591,9 @@ CodeScanningAlert.update_forward_refs()
 CodeScanningAnalysis.update_forward_refs()
 CodeScanningAnalysisDeletion.update_forward_refs()
 CodeScanningCodeqlDatabase.update_forward_refs()
+CodeScanningDefaultSetup.update_forward_refs()
+CodeScanningDefaultSetupUpdate.update_forward_refs()
+CodeScanningDefaultSetupUpdateResponse.update_forward_refs()
 CodeScanningSarifsReceipt.update_forward_refs()
 CodeScanningSarifsStatus.update_forward_refs()
 CodeownersErrors.update_forward_refs()
@@ -17381,6 +17853,20 @@ DiscussionPropAnswerChosenBy.update_forward_refs()
 DiscussionPropCategory.update_forward_refs()
 DiscussionPropReactions.update_forward_refs()
 DiscussionPropUser.update_forward_refs()
+PersonalAccessTokenRequest.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsAdded.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganization.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsAddedPropRepository.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsAddedPropOther.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsUpgraded.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOther.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsResult.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsResultPropOrganization.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsResultPropRepository.update_forward_refs()
+PersonalAccessTokenRequestPropPermissionsResultPropOther.update_forward_refs()
+PersonalAccessTokenRequestPropRepositoriesItems.update_forward_refs()
 ProjectsV2.update_forward_refs()
 ProjectsV2Item.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
@@ -17410,6 +17896,10 @@ MarkdownPostBody.update_forward_refs()
 NotificationsPutBody.update_forward_refs()
 NotificationsPutResponse202.update_forward_refs()
 NotificationsThreadsThreadIdSubscriptionPutBody.update_forward_refs()
+OrganizationsOrgPersonalAccessTokenRequestsPostBody.update_forward_refs()
+OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody.update_forward_refs()
+OrganizationsOrgPersonalAccessTokensPostBody.update_forward_refs()
+OrganizationsOrgPersonalAccessTokensPatIdPostBody.update_forward_refs()
 OrgsOrgPatchBody.update_forward_refs()
 OrgsOrgActionsCacheUsageByRepositoryGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsPutBody.update_forward_refs()
@@ -17843,6 +18333,16 @@ __all__ = [
     "ThreadPropSubject",
     "ThreadSubscription",
     "OrganizationSimple",
+    "OrganizationProgrammaticAccessGrantRequest",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
+    "OrganizationProgrammaticAccessGrant",
+    "OrganizationProgrammaticAccessGrantPropPermissions",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
     "OrganizationFull",
     "OrganizationFullPropPlan",
     "ActionsCacheUsageOrgEnterprise",
@@ -17876,6 +18376,7 @@ __all__ = [
     "CodespacesPublicKey",
     "OrganizationDependabotSecret",
     "DependabotPublicKey",
+    "Package",
     "OrganizationInvitation",
     "OrgHook",
     "OrgHookPropConfig",
@@ -17887,7 +18388,6 @@ __all__ = [
     "OrgMembership",
     "OrgMembershipPropPermissions",
     "Migration",
-    "Package",
     "PackageVersion",
     "PackageVersionPropMetadata",
     "PackageVersionPropMetadataPropContainer",
@@ -18024,6 +18524,9 @@ __all__ = [
     "CodeScanningAnalysis",
     "CodeScanningAnalysisDeletion",
     "CodeScanningCodeqlDatabase",
+    "CodeScanningDefaultSetup",
+    "CodeScanningDefaultSetupUpdate",
+    "CodeScanningDefaultSetupUpdateResponse",
     "CodeScanningSarifsReceipt",
     "CodeScanningSarifsStatus",
     "CodeownersErrors",
@@ -18283,6 +18786,20 @@ __all__ = [
     "DiscussionPropCategory",
     "DiscussionPropReactions",
     "DiscussionPropUser",
+    "PersonalAccessTokenRequest",
+    "PersonalAccessTokenRequestPropPermissionsAdded",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsUpgraded",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsResult",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOther",
+    "PersonalAccessTokenRequestPropRepositoriesItems",
     "ProjectsV2",
     "ProjectsV2Item",
     "AppManifestsCodeConversionsPostResponse201",
@@ -18312,6 +18829,10 @@ __all__ = [
     "NotificationsPutBody",
     "NotificationsPutResponse202",
     "NotificationsThreadsThreadIdSubscriptionPutBody",
+    "OrganizationsOrgPersonalAccessTokenRequestsPostBody",
+    "OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",
+    "OrganizationsOrgPersonalAccessTokensPostBody",
+    "OrganizationsOrgPersonalAccessTokensPatIdPostBody",
     "OrgsOrgPatchBody",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
     "OrgsOrgActionsPermissionsPutBody",

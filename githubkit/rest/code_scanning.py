@@ -13,19 +13,23 @@ from pydantic import BaseModel, parse_obj_as
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from .types import (
+    CodeScanningDefaultSetupUpdateType,
     ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
 )
 from .models import (
     BasicError,
+    EmptyObject,
     CodeScanningAlert,
     CodeScanningAnalysis,
     CodeScanningAlertItems,
+    CodeScanningDefaultSetup,
     CodeScanningSarifsStatus,
     CodeScanningAlertInstance,
     CodeScanningSarifsReceipt,
     CodeScanningCodeqlDatabase,
     CodeScanningAnalysisDeletion,
+    CodeScanningDefaultSetupUpdate,
     CodeScanningOrganizationAlertItems,
     ReposOwnerRepoCodeScanningSarifsPostBody,
     ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
@@ -663,6 +667,138 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_default_setup(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[CodeScanningDefaultSetup]":
+        url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=CodeScanningDefaultSetup,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_default_setup(
+        self,
+        owner: str,
+        repo: str,
+    ) -> "Response[CodeScanningDefaultSetup]":
+        url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=CodeScanningDefaultSetup,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_default_setup(
+        self, owner: str, repo: str, *, data: CodeScanningDefaultSetupUpdateType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    def update_default_setup(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        state: Literal["configured", "not-configured"],
+        query_suite: Union[Unset, Literal["default", "extended"]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    def update_default_setup(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, CodeScanningDefaultSetupUpdateType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(CodeScanningDefaultSetupUpdate, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_default_setup(
+        self, owner: str, repo: str, *, data: CodeScanningDefaultSetupUpdateType
+    ) -> "Response[EmptyObject]":
+        ...
+
+    @overload
+    async def async_update_default_setup(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Unset = UNSET,
+        state: Literal["configured", "not-configured"],
+        query_suite: Union[Unset, Literal["default", "extended"]] = UNSET,
+    ) -> "Response[EmptyObject]":
+        ...
+
+    async def async_update_default_setup(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Union[Unset, CodeScanningDefaultSetupUpdateType] = UNSET,
+        **kwargs,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(CodeScanningDefaultSetupUpdate, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            response_model=EmptyObject,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )

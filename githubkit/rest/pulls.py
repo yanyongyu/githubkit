@@ -697,6 +697,7 @@ class PullsClient:
         start_line: Union[Unset, int] = UNSET,
         start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Union[Unset, int] = UNSET,
+        subject_type: Union[Unset, Literal["LINE", "FILE"]] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
         ...
 
@@ -757,6 +758,7 @@ class PullsClient:
         start_line: Union[Unset, int] = UNSET,
         start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Union[Unset, int] = UNSET,
+        subject_type: Union[Unset, Literal["LINE", "FILE"]] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
         ...
 

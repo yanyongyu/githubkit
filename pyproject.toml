@@ -118,6 +118,15 @@ webhook-types-output = "githubkit/webhooks/types.py"
   { "$ref" = "#/definitions/user" }
 ], "$ref" = {} }
 
+# https://github.com/github/rest-api-description/issues/621
+"/components/schemas/repository/properties/temp_clone_token" = { type = ["string", "null"] }
+"/components/schemas/repository/properties/template_repository/properties/temp_clone_token" = { type = ["string", "null"] }
+"/components/schemas/minimal-repository/properties/temp_clone_token" = { type = ["string", "null"] }
+"/components/schemas/team-repository/properties/temp_clone_token" = { type = ["string", "null"] }
+"/components/schemas/pull-request/properties/head/properties/repo/properties/temp_clone_token" = { type = ["string", "null"] }
+"/components/schemas/pull-request/properties/base/properties/repo/properties/temp_clone_token" = { type = ["string", "null"] }
+"/components/schemas/repo-search-result-item/properties/temp_clone_token" = { type = ["string", "null"] }
+
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]

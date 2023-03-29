@@ -118,16 +118,16 @@ class RestNamespace:
         return CodespacesClient(self._github)
 
     @cached_property
+    def packages(self) -> PackagesClient:
+        return PackagesClient(self._github)
+
+    @cached_property
     def interactions(self) -> InteractionsClient:
         return InteractionsClient(self._github)
 
     @cached_property
     def migrations(self) -> MigrationsClient:
         return MigrationsClient(self._github)
-
-    @cached_property
-    def packages(self) -> PackagesClient:
-        return PackagesClient(self._github)
 
     @cached_property
     def projects(self) -> ProjectsClient:

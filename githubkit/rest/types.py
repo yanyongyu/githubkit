@@ -337,6 +337,8 @@ class AppPermissionsType(TypedDict):
     organization_custom_roles: NotRequired[Literal["read", "write"]]
     organization_announcement_banners: NotRequired[Literal["read", "write"]]
     organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_personal_access_tokens: NotRequired[Literal["read", "write"]]
+    organization_personal_access_token_requests: NotRequired[Literal["read", "write"]]
     organization_plan: NotRequired[Literal["read"]]
     organization_projects: NotRequired[Literal["read", "write", "admin"]]
     organization_packages: NotRequired[Literal["read", "write"]]
@@ -473,7 +475,7 @@ class RepositoryType(TypedDict):
     updated_at: Union[datetime, None]
     allow_rebase_merge: NotRequired[bool]
     template_repository: NotRequired[Union[RepositoryPropTemplateRepositoryType, None]]
-    temp_clone_token: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
     allow_squash_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
     delete_branch_on_merge: NotRequired[bool]
@@ -617,7 +619,7 @@ class RepositoryPropTemplateRepositoryType(TypedDict):
     updated_at: NotRequired[str]
     permissions: NotRequired[RepositoryPropTemplateRepositoryPropPermissionsType]
     allow_rebase_merge: NotRequired[bool]
-    temp_clone_token: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
     allow_squash_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
     delete_branch_on_merge: NotRequired[bool]
@@ -1626,7 +1628,7 @@ class MinimalRepositoryType(TypedDict):
     updated_at: NotRequired[Union[datetime, None]]
     permissions: NotRequired[MinimalRepositoryPropPermissionsType]
     role_name: NotRequired[str]
-    temp_clone_token: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
     delete_branch_on_merge: NotRequired[bool]
     subscribers_count: NotRequired[int]
     network_count: NotRequired[int]
@@ -1719,6 +1721,103 @@ class OrganizationSimpleType(TypedDict):
     public_members_url: str
     avatar_url: str
     description: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
+    """Simple Organization Programmatic Access Grant Request
+
+    Minimal representation of an organization programmatic access grant request for
+    enumerations
+    """
+
+    id: int
+    reason: Union[str, None]
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
+    created_at: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
+    ]
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
+
+
+class OrganizationProgrammaticAccessGrantType(TypedDict):
+    """Organization Programmatic Access Grant
+
+    Minimal representation of an organization programmatic access grant for
+    enumerations
+    """
+
+    id: int
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
+    access_granted_at: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
 
 
 class OrganizationFullType(TypedDict):
@@ -2202,6 +2301,25 @@ class DependabotPublicKeyType(TypedDict):
     key: str
 
 
+class PackageType(TypedDict):
+    """Package
+
+    A software package
+    """
+
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    created_at: datetime
+    updated_at: datetime
+
+
 class OrganizationInvitationType(TypedDict):
     """Organization Invitation
 
@@ -2369,25 +2487,6 @@ class MigrationType(TypedDict):
     node_id: str
     archive_url: NotRequired[str]
     exclude: NotRequired[List[str]]
-
-
-class PackageType(TypedDict):
-    """Package
-
-    A software package
-    """
-
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: datetime
-    updated_at: datetime
 
 
 class PackageVersionType(TypedDict):
@@ -2780,7 +2879,7 @@ class TeamRepositoryType(TypedDict):
     updated_at: Union[datetime, None]
     allow_rebase_merge: NotRequired[bool]
     template_repository: NotRequired[Union[None, RepositoryType]]
-    temp_clone_token: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
     allow_squash_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
     delete_branch_on_merge: NotRequired[bool]
@@ -4338,6 +4437,40 @@ class CodeScanningCodeqlDatabaseType(TypedDict):
     created_at: datetime
     updated_at: datetime
     url: str
+
+
+class CodeScanningDefaultSetupType(TypedDict):
+    """CodeScanningDefaultSetup
+
+    Configuration for code scanning default setup.
+    """
+
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[List[Literal["javascript", "python", "ruby"]]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    updated_at: NotRequired[Union[datetime, None]]
+
+
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
+
+    Configuration for code scanning default setup.
+    """
+
+    state: Literal["configured", "not-configured"]
+    query_suite: NotRequired[Literal["default", "extended"]]
+
+
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
+
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 class CodeScanningSarifsReceiptType(TypedDict):
@@ -6246,6 +6379,7 @@ class PullRequestReviewCommentType(TypedDict):
     line: NotRequired[int]
     original_line: NotRequired[int]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
     reactions: NotRequired[ReactionRollupType]
     body_html: NotRequired[str]
     body_text: NotRequired[str]
@@ -6791,7 +6925,7 @@ class PullRequestPropHeadPropRepoType(TypedDict):
     open_issues: int
     open_issues_count: int
     permissions: NotRequired[PullRequestPropHeadPropRepoPropPermissionsType]
-    temp_clone_token: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
     allow_merge_commit: NotRequired[bool]
     allow_squash_merge: NotRequired[bool]
     allow_rebase_merge: NotRequired[bool]
@@ -6915,7 +7049,7 @@ class PullRequestPropBasePropRepoType(TypedDict):
     open_issues: int
     open_issues_count: int
     permissions: NotRequired[PullRequestPropBasePropRepoPropPermissionsType]
-    temp_clone_token: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
     allow_merge_commit: NotRequired[bool]
     allow_squash_merge: NotRequired[bool]
     allow_rebase_merge: NotRequired[bool]
@@ -7699,7 +7833,7 @@ class RepoSearchResultItemType(TypedDict):
     license_: Union[None, LicenseSimpleType]
     permissions: NotRequired[RepoSearchResultItemPropPermissionsType]
     text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
-    temp_clone_token: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
     allow_merge_commit: NotRequired[bool]
     allow_squash_merge: NotRequired[bool]
     allow_rebase_merge: NotRequired[bool]
@@ -8379,6 +8513,119 @@ class DiscussionPropUserType(TypedDict):
     url: NotRequired[str]
 
 
+class PersonalAccessTokenRequestType(TypedDict):
+    """Personal Access Token Request
+
+    Details of a Personal Access Token Request.
+    """
+
+    id: int
+    owner: SimpleUserType
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
+    repository_selection: Literal["none", "all", "subset"]
+    repository_count: Union[int, None]
+    repositories: Union[List[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
+    created_at: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAdded
+
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOtherType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOtherType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+
+
+class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
+
+
 class ProjectsV2Type(TypedDict):
     """Projects v2 Project
 
@@ -8628,6 +8875,34 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
     """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
     ignored: NotRequired[bool]
+
+
+class OrganizationsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrganizationsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: NotRequired[List[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
+
+
+class OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
+    """OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
+
+
+class OrganizationsOrgPersonalAccessTokensPostBodyType(TypedDict):
+    """OrganizationsOrgPersonalAccessTokensPostBody"""
+
+    action: Literal["revoke"]
+    pat_ids: List[int]
+
+
+class OrganizationsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
+    """OrganizationsOrgPersonalAccessTokensPatIdPostBody"""
+
+    action: Literal["revoke"]
 
 
 class OrgsOrgPatchBodyType(TypedDict):
@@ -11165,6 +11440,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
     start_line: NotRequired[int]
     start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
     in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["LINE", "FILE"]]
 
 
 class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
@@ -11911,6 +12187,16 @@ __all__ = [
     "ThreadPropSubjectType",
     "ThreadSubscriptionType",
     "OrganizationSimpleType",
+    "OrganizationProgrammaticAccessGrantRequestType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
     "OrganizationFullType",
     "OrganizationFullPropPlanType",
     "ActionsCacheUsageOrgEnterpriseType",
@@ -11944,6 +12230,7 @@ __all__ = [
     "CodespacesPublicKeyType",
     "OrganizationDependabotSecretType",
     "DependabotPublicKeyType",
+    "PackageType",
     "OrganizationInvitationType",
     "OrgHookType",
     "OrgHookPropConfigType",
@@ -11955,7 +12242,6 @@ __all__ = [
     "OrgMembershipType",
     "OrgMembershipPropPermissionsType",
     "MigrationType",
-    "PackageType",
     "PackageVersionType",
     "PackageVersionPropMetadataType",
     "PackageVersionPropMetadataPropContainerType",
@@ -12092,6 +12378,9 @@ __all__ = [
     "CodeScanningAnalysisType",
     "CodeScanningAnalysisDeletionType",
     "CodeScanningCodeqlDatabaseType",
+    "CodeScanningDefaultSetupType",
+    "CodeScanningDefaultSetupUpdateType",
+    "CodeScanningDefaultSetupUpdateResponseType",
     "CodeScanningSarifsReceiptType",
     "CodeScanningSarifsStatusType",
     "CodeownersErrorsType",
@@ -12351,6 +12640,20 @@ __all__ = [
     "DiscussionPropCategoryType",
     "DiscussionPropReactionsType",
     "DiscussionPropUserType",
+    "PersonalAccessTokenRequestType",
+    "PersonalAccessTokenRequestPropPermissionsAddedType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsResultType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
+    "PersonalAccessTokenRequestPropRepositoriesItemsType",
     "ProjectsV2Type",
     "ProjectsV2ItemType",
     "AppManifestsCodeConversionsPostResponse201Type",
@@ -12380,6 +12683,10 @@ __all__ = [
     "NotificationsPutBodyType",
     "NotificationsPutResponse202Type",
     "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+    "OrganizationsOrgPersonalAccessTokenRequestsPostBodyType",
+    "OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",
+    "OrganizationsOrgPersonalAccessTokensPostBodyType",
+    "OrganizationsOrgPersonalAccessTokensPatIdPostBodyType",
     "OrgsOrgPatchBodyType",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
     "OrgsOrgActionsPermissionsPutBodyType",

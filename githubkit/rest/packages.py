@@ -22,6 +22,38 @@ class PackagesClient:
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
+    def list_docker_migration_conflicting_packages_for_organization(
+        self,
+        org: str,
+    ) -> "Response[List[Package]]":
+        url = f"/orgs/{org}/docker/conflicts"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=List[Package],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_list_docker_migration_conflicting_packages_for_organization(
+        self,
+        org: str,
+    ) -> "Response[List[Package]]":
+        url = f"/orgs/{org}/docker/conflicts"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=List[Package],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
     def list_packages_for_organization(
         self,
         org: str,
@@ -386,6 +418,28 @@ class PackagesClient:
             },
         )
 
+    def list_docker_migration_conflicting_packages_for_authenticated_user(
+        self,
+    ) -> "Response[List[Package]]":
+        url = "/user/docker/conflicts"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=List[Package],
+        )
+
+    async def async_list_docker_migration_conflicting_packages_for_authenticated_user(
+        self,
+    ) -> "Response[List[Package]]":
+        url = "/user/docker/conflicts"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=List[Package],
+        )
+
     def list_packages_for_authenticated_user(
         self,
         package_type: Literal[
@@ -723,6 +777,38 @@ class PackagesClient:
             url,
             error_models={
                 "404": BasicError,
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    def list_docker_migration_conflicting_packages_for_user(
+        self,
+        username: str,
+    ) -> "Response[List[Package]]":
+        url = f"/users/{username}/docker/conflicts"
+
+        return self._github.request(
+            "GET",
+            url,
+            response_model=List[Package],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    async def async_list_docker_migration_conflicting_packages_for_user(
+        self,
+        username: str,
+    ) -> "Response[List[Package]]":
+        url = f"/users/{username}/docker/conflicts"
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            response_model=List[Package],
+            error_models={
                 "403": BasicError,
                 "401": BasicError,
             },
