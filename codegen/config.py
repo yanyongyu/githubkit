@@ -6,6 +6,7 @@ import openapi_schema_pydantic as oas
 
 class Config(BaseModel):
     rest_description_source: str
+    rest_api_version: str
     webhook_schema_source: str
     class_overrides: Dict[str, str] = {}
     field_overrides: Dict[str, str] = {}

@@ -25,6 +25,8 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
 class {{ pascal_case(tag) }}Client:
+    _REST_API_VERSION = "{{ rest_api_version }}"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
