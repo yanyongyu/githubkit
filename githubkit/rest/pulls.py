@@ -68,6 +68,8 @@ if TYPE_CHECKING:
 
 
 class PullsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -97,10 +99,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestSimple],
             error_models={
                 "422": ValidationError,
@@ -133,10 +140,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestSimple],
             error_models={
                 "422": ValidationError,
@@ -177,6 +189,10 @@ class PullsClient:
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -188,6 +204,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequest,
             error_models={
                 "403": BasicError,
@@ -229,6 +246,10 @@ class PullsClient:
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -240,6 +261,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequest,
             error_models={
                 "403": BasicError,
@@ -267,10 +289,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestReviewComment],
         )
 
@@ -294,10 +321,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestReviewComment],
         )
 
@@ -309,9 +341,14 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -326,9 +363,14 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -343,9 +385,14 @@ class PullsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -359,9 +406,14 @@ class PullsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -401,6 +453,10 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -412,6 +468,7 @@ class PullsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
         )
 
@@ -449,6 +506,10 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -460,6 +521,7 @@ class PullsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
         )
 
@@ -471,9 +533,14 @@ class PullsClient:
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequest,
             error_models={
                 "404": BasicError,
@@ -490,9 +557,14 @@ class PullsClient:
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequest,
             error_models={
                 "404": BasicError,
@@ -539,6 +611,10 @@ class PullsClient:
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -550,6 +626,7 @@ class PullsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequest,
             error_models={
                 "422": ValidationError,
@@ -595,6 +672,10 @@ class PullsClient:
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -606,6 +687,7 @@ class PullsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequest,
             error_models={
                 "422": ValidationError,
@@ -634,10 +716,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestReviewComment],
         )
 
@@ -662,10 +749,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestReviewComment],
         )
 
@@ -712,6 +804,10 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -723,6 +819,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
             error_models={
                 "422": ValidationError,
@@ -773,6 +870,10 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -784,6 +885,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
             error_models={
                 "422": ValidationError,
@@ -830,6 +932,10 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -843,6 +949,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -888,6 +995,10 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -901,6 +1012,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewComment,
             error_models={
                 "404": BasicError,
@@ -922,10 +1034,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Commit],
         )
 
@@ -944,10 +1061,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Commit],
         )
 
@@ -966,10 +1088,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DiffEntry],
             error_models={
                 "422": ValidationError,
@@ -993,10 +1120,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DiffEntry],
             error_models={
                 "422": ValidationError,
@@ -1013,9 +1145,14 @@ class PullsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1027,9 +1164,14 @@ class PullsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1074,6 +1216,10 @@ class PullsClient:
     ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1087,6 +1233,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestMergeResult,
             error_models={
                 "405": ReposOwnerRepoPullsPullNumberMergePutResponse405,
@@ -1138,6 +1285,10 @@ class PullsClient:
     ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1151,6 +1302,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestMergeResult,
             error_models={
                 "405": ReposOwnerRepoPullsPullNumberMergePutResponse405,
@@ -1169,9 +1321,14 @@ class PullsClient:
     ) -> "Response[PullRequestReviewRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewRequest,
         )
 
@@ -1183,9 +1340,14 @@ class PullsClient:
     ) -> "Response[PullRequestReviewRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReviewRequest,
         )
 
@@ -1249,6 +1411,10 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1266,6 +1432,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestSimple,
             error_models={
                 "403": BasicError,
@@ -1332,6 +1499,10 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1349,6 +1520,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestSimple,
             error_models={
                 "403": BasicError,
@@ -1392,6 +1564,10 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1405,6 +1581,7 @@ class PullsClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestSimple,
             error_models={
                 "422": ValidationError,
@@ -1448,6 +1625,10 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1461,6 +1642,7 @@ class PullsClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestSimple,
             error_models={
                 "422": ValidationError,
@@ -1482,10 +1664,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestReview],
         )
 
@@ -1504,10 +1691,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestReview],
         )
 
@@ -1551,6 +1743,10 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1562,6 +1758,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -1609,6 +1806,10 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1620,6 +1821,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -1636,9 +1838,14 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -1654,9 +1861,14 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -1702,6 +1914,10 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1713,6 +1929,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -1758,6 +1975,10 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1769,6 +1990,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -1784,9 +2006,14 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -1803,9 +2030,14 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "422": ValidationErrorSimple,
@@ -1829,10 +2061,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ReviewComment],
             error_models={
                 "404": BasicError,
@@ -1855,10 +2092,15 @@ class PullsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ReviewComment],
             error_models={
                 "404": BasicError,
@@ -1907,6 +2149,10 @@ class PullsClient:
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1920,6 +2166,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -1969,6 +2216,10 @@ class PullsClient:
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1982,6 +2233,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -2029,6 +2281,10 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2042,6 +2298,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -2090,6 +2347,10 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2103,6 +2364,7 @@ class PullsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PullRequestReview,
             error_models={
                 "404": BasicError,
@@ -2149,6 +2411,10 @@ class PullsClient:
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2162,6 +2428,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
             error_models={
                 "422": ValidationError,
@@ -2207,6 +2474,10 @@ class PullsClient:
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2220,6 +2491,7 @@ class PullsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
             error_models={
                 "422": ValidationError,

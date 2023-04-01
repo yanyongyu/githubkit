@@ -7,8 +7,8 @@ import tomli
 from jinja2 import Environment, PackageLoader
 
 from .log import logger
-from .config import Config
 from .source import get_source
+from .config import Config, RestConfig, WebhookConfig
 from .parser import (
     OpenAPIData,
     WebhookData,
@@ -39,16 +39,14 @@ env.globals.update(
 def load_config() -> Config:
     pyproject = tomli.loads(Path("./pyproject.toml").read_text())
     config_dict: Dict[str, Any] = pyproject.get("tool", {}).get("codegen", {})
-    config_dict = {
-        k.replace("--", "").replace("-", "_"): v for k, v in config_dict.items()
-    }
+
     return Config.parse_obj(config_dict)
 
 
-def build_rest_api(data: OpenAPIData, config: Config):
+def build_rest_api(data: OpenAPIData, rest: RestConfig):
     logger.info("Start generating rest api codes...")
 
-    client_path = Path(config.client_output)
+    client_path = Path(rest.output_dir)
     shutil.rmtree(client_path)
     client_path.mkdir(parents=True, exist_ok=True)
 
@@ -74,7 +72,7 @@ def build_rest_api(data: OpenAPIData, config: Config):
         tag_path = client_path / f"{tag}.py"
         tag_path.write_text(
             client_template.render(
-                tag=tag, endpoints=endpoints, rest_api_version=config.rest_api_version
+                tag=tag, endpoints=endpoints, rest_api_version=rest.version
             )
         )
         logger.info(f"Successfully built endpoints for tag {tag}!")
@@ -92,13 +90,13 @@ def build_rest_api(data: OpenAPIData, config: Config):
     logger.info("Successfully generated rest api codes!")
 
 
-def build_webhook(data: WebhookData, config: Config):
+def build_webhook(data: WebhookData, webhook: WebhookConfig):
     logger.info("Start generating webhook codes...")
 
     # build models
     logger.info("Building webhook models...")
     models_template = env.get_template("models/webhooks.py.jinja")
-    models_path = Path(config.webhooks_output)
+    models_path = Path(webhook.output)
     models_path.parent.mkdir(parents=True, exist_ok=True)
     models_path.write_text(models_template.render(models=data.models))
     logger.info("Successfully built webhook models!")
@@ -106,7 +104,7 @@ def build_webhook(data: WebhookData, config: Config):
     # build types
     logger.info("Building webhook types...")
     types_template = env.get_template("models/webhook_types.py.jinja")
-    types_path = Path(config.webhook_types_output)
+    types_path = Path(webhook.types_output)
     types_path.parent.mkdir(parents=True, exist_ok=True)
     types_path.write_text(
         types_template.render(
@@ -133,30 +131,31 @@ def build():
     config = load_config()
     logger.info(f"Loaded config: {config!r}")
 
-    logger.info("Start getting OpenAPI source...")
-    source = get_source(httpx.URL(config.rest_description_source))
-    logger.info(f"Getting schema from {source.uri} succeeded!")
+    for versioned_rest in config.rest:
+        logger.info(f"Start getting OpenAPI source for {versioned_rest.version}...")
+        source = get_source(httpx.URL(versioned_rest.description_source))
+        logger.info(f"Getting schema from {source.uri} succeeded!")
 
-    logger.info("Start parsing OpenAPI spec...")
-    _patch_openapi_spec(source.root)
-    parsed_data = parse_openapi_spec(source, config)
-    logger.info(
-        "Successfully parsed OpenAPI spec: "
-        f"{len(parsed_data.schemas)} schemas, {len(parsed_data.endpoints)} endpoints"
-    )
+        logger.info(f"Start parsing OpenAPI spec for {versioned_rest.version}...")
+        _patch_openapi_spec(source.root)
+        parsed_data = parse_openapi_spec(source, versioned_rest, config)
+        logger.info(
+            f"Successfully parsed OpenAPI spec {versioned_rest.version}: "
+            f"{len(parsed_data.schemas)} schemas, {len(parsed_data.endpoints)} endpoints"
+        )
 
-    build_rest_api(parsed_data, config)
+        build_rest_api(parsed_data, versioned_rest)
 
-    del parsed_data
+        del parsed_data
 
     logger.info("Start getting Webhook source...")
-    source = get_source(httpx.URL(config.webhook_schema_source))
+    source = get_source(httpx.URL(config.webhook.schema_source))
     logger.info(f"Getting schema from {source.uri} succeeded!")
 
     logger.info("Start parsing Webhook spec...")
-    parsed_data = parse_webhook_schema(source, config)
+    parsed_data = parse_webhook_schema(source, config.webhook, config)
     logger.info(
         f"Successfully parsed Webhook spec: {len(parsed_data.definitions)} schemas"
     )
 
-    build_webhook(parsed_data, config)
+    build_webhook(parsed_data, config.webhook)

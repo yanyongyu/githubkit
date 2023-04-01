@@ -43,6 +43,8 @@ if TYPE_CHECKING:
 
 
 class GistsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -60,10 +62,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "403": BasicError,
@@ -84,10 +91,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "403": BasicError,
@@ -114,6 +126,10 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = "/gists"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -125,6 +141,7 @@ class GistsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -153,6 +170,10 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = "/gists"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -164,6 +185,7 @@ class GistsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -186,10 +208,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "422": ValidationError,
@@ -211,10 +238,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "422": ValidationError,
@@ -236,10 +268,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "401": BasicError,
@@ -261,10 +298,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "401": BasicError,
@@ -278,9 +320,14 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "403": GistsGistIdGetResponse403,
@@ -294,9 +341,14 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "403": GistsGistIdGetResponse403,
@@ -310,9 +362,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -325,9 +382,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -384,6 +446,10 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -398,6 +464,7 @@ class GistsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -455,6 +522,10 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -469,6 +540,7 @@ class GistsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -489,10 +561,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GistComment],
             error_models={
                 "404": BasicError,
@@ -513,10 +590,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GistComment],
             error_models={
                 "404": BasicError,
@@ -549,6 +631,10 @@ class GistsClient:
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -560,6 +646,7 @@ class GistsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -592,6 +679,10 @@ class GistsClient:
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -603,6 +694,7 @@ class GistsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -617,9 +709,14 @@ class GistsClient:
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -634,9 +731,14 @@ class GistsClient:
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -651,9 +753,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -667,9 +774,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -707,6 +819,10 @@ class GistsClient:
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -718,6 +834,7 @@ class GistsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -755,6 +872,10 @@ class GistsClient:
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -766,6 +887,7 @@ class GistsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GistComment,
             error_models={
                 "404": BasicError,
@@ -785,10 +907,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GistCommit],
             error_models={
                 "404": BasicError,
@@ -809,10 +936,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GistCommit],
             error_models={
                 "404": BasicError,
@@ -833,10 +965,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GistSimple],
             error_models={
                 "404": BasicError,
@@ -857,10 +994,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GistSimple],
             error_models={
                 "404": BasicError,
@@ -874,9 +1016,14 @@ class GistsClient:
     ) -> "Response[BaseGist]":
         url = f"/gists/{gist_id}/forks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=BaseGist,
             error_models={
                 "404": BasicError,
@@ -891,9 +1038,14 @@ class GistsClient:
     ) -> "Response[BaseGist]":
         url = f"/gists/{gist_id}/forks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=BaseGist,
             error_models={
                 "404": BasicError,
@@ -908,9 +1060,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": GistsGistIdStarGetResponse404,
                 "403": BasicError,
@@ -923,9 +1080,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": GistsGistIdStarGetResponse404,
                 "403": BasicError,
@@ -938,9 +1100,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -953,9 +1120,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -968,9 +1140,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -983,9 +1160,14 @@ class GistsClient:
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -999,9 +1181,14 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}/{sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -1017,9 +1204,14 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}/{sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GistSimple,
             error_models={
                 "422": ValidationError,
@@ -1043,10 +1235,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "422": ValidationError,
@@ -1068,10 +1265,15 @@ class GistsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[BaseGist],
             error_models={
                 "422": ValidationError,

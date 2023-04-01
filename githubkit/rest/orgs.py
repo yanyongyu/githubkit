@@ -70,6 +70,8 @@ if TYPE_CHECKING:
 
 
 class OrgsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -85,10 +87,15 @@ class OrgsClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSimple],
         )
 
@@ -104,10 +111,15 @@ class OrgsClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSimple],
         )
 
@@ -138,10 +150,15 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationProgrammaticAccessGrantRequest],
             error_models={
                 "500": BasicError,
@@ -178,10 +195,15 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationProgrammaticAccessGrantRequest],
             error_models={
                 "500": BasicError,
@@ -220,6 +242,10 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -231,6 +257,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -269,6 +296,10 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -280,6 +311,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -323,6 +355,10 @@ class OrgsClient:
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -336,6 +372,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -378,6 +415,10 @@ class OrgsClient:
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -391,6 +432,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -413,10 +455,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -439,10 +486,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -478,10 +530,15 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationProgrammaticAccessGrant],
             error_models={
                 "500": BasicError,
@@ -518,10 +575,15 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationProgrammaticAccessGrant],
             error_models={
                 "500": BasicError,
@@ -557,6 +619,10 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -568,6 +634,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -603,6 +670,10 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -614,6 +685,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -656,6 +728,10 @@ class OrgsClient:
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -667,6 +743,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -708,6 +785,10 @@ class OrgsClient:
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -719,6 +800,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -741,10 +823,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -767,10 +854,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "500": BasicError,
@@ -785,9 +877,14 @@ class OrgsClient:
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationFull,
             error_models={
                 "404": BasicError,
@@ -800,9 +897,14 @@ class OrgsClient:
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationFull,
             error_models={
                 "404": BasicError,
@@ -815,9 +917,14 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "404": BasicError,
@@ -831,9 +938,14 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "404": BasicError,
@@ -898,6 +1010,10 @@ class OrgsClient:
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -909,6 +1025,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrganizationFull,
             error_models={
                 "422": Union[ValidationError, ValidationErrorSimple],
@@ -973,6 +1090,10 @@ class OrgsClient:
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -984,6 +1105,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrganizationFull,
             error_models={
                 "422": Union[ValidationError, ValidationErrorSimple],
@@ -1004,10 +1126,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1024,10 +1151,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1038,9 +1170,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1053,9 +1190,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1068,9 +1210,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -1083,9 +1230,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -1098,9 +1250,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_unblock_user(
@@ -1110,9 +1267,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_failed_invitations(
@@ -1128,10 +1290,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -1151,10 +1318,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -1174,10 +1346,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrgHook],
             error_models={
                 "404": BasicError,
@@ -1197,10 +1374,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrgHook],
             error_models={
                 "404": BasicError,
@@ -1235,6 +1417,10 @@ class OrgsClient:
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1246,6 +1432,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1281,6 +1468,10 @@ class OrgsClient:
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1292,6 +1483,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1306,9 +1498,14 @@ class OrgsClient:
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgHook,
             error_models={
                 "404": BasicError,
@@ -1322,9 +1519,14 @@ class OrgsClient:
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgHook,
             error_models={
                 "404": BasicError,
@@ -1338,9 +1540,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1353,9 +1560,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1395,6 +1607,10 @@ class OrgsClient:
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1406,6 +1622,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1447,6 +1664,10 @@ class OrgsClient:
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1458,6 +1679,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgHook,
             error_models={
                 "422": ValidationError,
@@ -1472,9 +1694,14 @@ class OrgsClient:
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -1485,9 +1712,14 @@ class OrgsClient:
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -1524,6 +1756,10 @@ class OrgsClient:
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -1536,6 +1772,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -1573,6 +1810,10 @@ class OrgsClient:
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1584,6 +1825,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -1603,10 +1845,15 @@ class OrgsClient:
             "redelivery": redelivery,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -1630,10 +1877,15 @@ class OrgsClient:
             "redelivery": redelivery,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -1649,9 +1901,14 @@ class OrgsClient:
     ) -> "Response[HookDelivery]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -1667,9 +1924,14 @@ class OrgsClient:
     ) -> "Response[HookDelivery]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -1685,9 +1947,14 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -1703,9 +1970,14 @@ class OrgsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -1720,9 +1992,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}/pings"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1735,9 +2012,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}/pings"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1756,10 +2038,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgInstallationsGetResponse200,
         )
 
@@ -1776,10 +2063,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgInstallationsGetResponse200,
         )
 
@@ -1805,10 +2097,15 @@ class OrgsClient:
             "invitation_source": invitation_source,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -1837,10 +2134,15 @@ class OrgsClient:
             "invitation_source": invitation_source,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
             error_models={
                 "404": BasicError,
@@ -1877,6 +2179,10 @@ class OrgsClient:
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1888,6 +2194,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrganizationInvitation,
             error_models={
                 "422": ValidationError,
@@ -1925,6 +2232,10 @@ class OrgsClient:
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1936,6 +2247,7 @@ class OrgsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrganizationInvitation,
             error_models={
                 "422": ValidationError,
@@ -1950,9 +2262,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -1966,9 +2283,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -1989,10 +2311,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "404": BasicError,
@@ -2013,10 +2340,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "404": BasicError,
@@ -2040,10 +2372,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -2067,10 +2404,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -2084,9 +2426,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2097,9 +2444,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2110,9 +2462,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -2125,9 +2482,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -2140,9 +2502,14 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "404": BasicError,
@@ -2157,9 +2524,14 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "404": BasicError,
@@ -2198,6 +2570,10 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2209,6 +2585,7 @@ class OrgsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "422": ValidationError,
@@ -2247,6 +2624,10 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2258,6 +2639,7 @@ class OrgsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "422": ValidationError,
@@ -2272,9 +2654,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2288,9 +2675,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2312,10 +2704,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -2334,10 +2731,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -2372,6 +2774,10 @@ class OrgsClient:
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2383,6 +2789,7 @@ class OrgsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
             error_models={
                 "404": BasicError,
@@ -2420,6 +2827,10 @@ class OrgsClient:
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2431,6 +2842,7 @@ class OrgsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
             error_models={
                 "404": BasicError,
@@ -2444,9 +2856,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
             },
@@ -2459,9 +2876,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
             },
@@ -2480,10 +2902,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -2500,10 +2927,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -2514,9 +2946,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2527,9 +2964,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2540,9 +2982,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -2555,9 +3002,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -2570,9 +3022,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_public_membership_for_authenticated_user(
@@ -2582,9 +3039,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_security_manager_teams(
@@ -2593,9 +3055,14 @@ class OrgsClient:
     ) -> "Response[List[TeamSimple]]":
         url = f"/orgs/{org}/security-managers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[TeamSimple],
         )
 
@@ -2605,9 +3072,14 @@ class OrgsClient:
     ) -> "Response[List[TeamSimple]]":
         url = f"/orgs/{org}/security-managers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[TeamSimple],
         )
 
@@ -2618,9 +3090,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2631,9 +3108,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2644,9 +3126,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_security_manager_team(
@@ -2656,9 +3143,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def enable_or_disable_security_product_on_all_org_repos(
@@ -2677,9 +3169,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/{security_product}/{enablement}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2699,9 +3196,14 @@ class OrgsClient:
     ) -> "Response":
         url = f"/orgs/{org}/{security_product}/{enablement}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2719,10 +3221,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrgMembership],
             error_models={
                 "403": BasicError,
@@ -2745,10 +3252,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrgMembership],
             error_models={
                 "403": BasicError,
@@ -2763,9 +3275,14 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -2779,9 +3296,14 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -2814,6 +3336,10 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2825,6 +3351,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -2858,6 +3385,10 @@ class OrgsClient:
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2869,6 +3400,7 @@ class OrgsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgMembership,
             error_models={
                 "403": BasicError,
@@ -2889,10 +3421,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSimple],
             error_models={
                 "403": BasicError,
@@ -2912,10 +3449,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSimple],
             error_models={
                 "403": BasicError,
@@ -2936,10 +3478,15 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSimple],
         )
 
@@ -2956,9 +3503,14 @@ class OrgsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSimple],
         )

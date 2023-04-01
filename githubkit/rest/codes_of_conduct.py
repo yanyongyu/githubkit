@@ -19,6 +19,8 @@ if TYPE_CHECKING:
 
 
 class CodesOfConductClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -27,9 +29,14 @@ class CodesOfConductClient:
     ) -> "Response[List[CodeOfConduct]]":
         url = "/codes_of_conduct"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[CodeOfConduct],
         )
 
@@ -38,9 +45,14 @@ class CodesOfConductClient:
     ) -> "Response[List[CodeOfConduct]]":
         url = "/codes_of_conduct"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[CodeOfConduct],
         )
 
@@ -50,9 +62,14 @@ class CodesOfConductClient:
     ) -> "Response[CodeOfConduct]":
         url = f"/codes_of_conduct/{key}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeOfConduct,
             error_models={
                 "404": BasicError,
@@ -65,9 +82,14 @@ class CodesOfConductClient:
     ) -> "Response[CodeOfConduct]":
         url = f"/codes_of_conduct/{key}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeOfConduct,
             error_models={
                 "404": BasicError,

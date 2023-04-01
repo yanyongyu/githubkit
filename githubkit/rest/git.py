@@ -46,6 +46,8 @@ if TYPE_CHECKING:
 
 
 class GitClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -77,6 +79,10 @@ class GitClient:
     ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -88,6 +94,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ShortBlob,
             error_models={
                 "404": BasicError,
@@ -125,6 +132,10 @@ class GitClient:
     ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -136,6 +147,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ShortBlob,
             error_models={
                 "404": BasicError,
@@ -153,9 +165,14 @@ class GitClient:
     ) -> "Response[Blob]":
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Blob,
             error_models={
                 "404": BasicError,
@@ -172,9 +189,14 @@ class GitClient:
     ) -> "Response[Blob]":
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Blob,
             error_models={
                 "404": BasicError,
@@ -217,6 +239,10 @@ class GitClient:
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -228,6 +254,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitCommit,
             error_models={
                 "422": ValidationError,
@@ -269,6 +296,10 @@ class GitClient:
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -280,6 +311,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitCommit,
             error_models={
                 "422": ValidationError,
@@ -295,9 +327,14 @@ class GitClient:
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GitCommit,
             error_models={
                 "404": BasicError,
@@ -312,9 +349,14 @@ class GitClient:
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GitCommit,
             error_models={
                 "404": BasicError,
@@ -329,9 +371,14 @@ class GitClient:
     ) -> "Response[List[GitRef]]":
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[GitRef],
         )
 
@@ -343,9 +390,14 @@ class GitClient:
     ) -> "Response[List[GitRef]]":
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[GitRef],
         )
 
@@ -357,9 +409,14 @@ class GitClient:
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GitRef,
             error_models={
                 "404": BasicError,
@@ -374,9 +431,14 @@ class GitClient:
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GitRef,
             error_models={
                 "404": BasicError,
@@ -412,6 +474,10 @@ class GitClient:
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -423,6 +489,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -458,6 +525,10 @@ class GitClient:
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -469,6 +540,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -483,9 +555,14 @@ class GitClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -499,9 +576,14 @@ class GitClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -542,6 +624,10 @@ class GitClient:
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -553,6 +639,7 @@ class GitClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -594,6 +681,10 @@ class GitClient:
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -605,6 +696,7 @@ class GitClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
@@ -642,6 +734,10 @@ class GitClient:
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -653,6 +749,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitTag,
             error_models={
                 "422": ValidationError,
@@ -690,6 +787,10 @@ class GitClient:
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -701,6 +802,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitTag,
             error_models={
                 "422": ValidationError,
@@ -715,9 +817,14 @@ class GitClient:
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GitTag,
             error_models={
                 "404": BasicError,
@@ -732,9 +839,14 @@ class GitClient:
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GitTag,
             error_models={
                 "404": BasicError,
@@ -769,6 +881,10 @@ class GitClient:
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -780,6 +896,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitTree,
             error_models={
                 "422": ValidationError,
@@ -816,6 +933,10 @@ class GitClient:
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -827,6 +948,7 @@ class GitClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GitTree,
             error_models={
                 "422": ValidationError,
@@ -848,10 +970,15 @@ class GitClient:
             "recursive": recursive,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=GitTree,
             error_models={
                 "422": ValidationError,
@@ -872,10 +999,15 @@ class GitClient:
             "recursive": recursive,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=GitTree,
             error_models={
                 "422": ValidationError,

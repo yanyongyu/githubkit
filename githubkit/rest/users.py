@@ -52,6 +52,8 @@ if TYPE_CHECKING:
 
 
 class UsersClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -60,9 +62,14 @@ class UsersClient:
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = "/user"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[PrivateUser, PublicUser],
             error_models={
                 "403": BasicError,
@@ -75,9 +82,14 @@ class UsersClient:
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = "/user"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[PrivateUser, PublicUser],
             error_models={
                 "403": BasicError,
@@ -112,6 +124,10 @@ class UsersClient:
     ) -> "Response[PrivateUser]":
         url = "/user"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -123,6 +139,7 @@ class UsersClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PrivateUser,
             error_models={
                 "404": BasicError,
@@ -159,6 +176,10 @@ class UsersClient:
     ) -> "Response[PrivateUser]":
         url = "/user"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -170,6 +191,7 @@ class UsersClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PrivateUser,
             error_models={
                 "404": BasicError,
@@ -191,10 +213,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -215,10 +242,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -233,9 +265,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -249,9 +286,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -265,9 +307,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -282,9 +329,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -299,9 +351,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -315,9 +372,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -345,6 +407,10 @@ class UsersClient:
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -356,6 +422,7 @@ class UsersClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "404": BasicError,
@@ -385,6 +452,10 @@ class UsersClient:
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -396,6 +467,7 @@ class UsersClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "404": BasicError,
@@ -417,10 +489,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "404": BasicError,
@@ -441,10 +518,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "404": BasicError,
@@ -477,6 +559,10 @@ class UsersClient:
         **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -489,6 +575,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "422": ValidationError,
@@ -522,6 +609,10 @@ class UsersClient:
         **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -534,6 +625,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "422": ValidationError,
@@ -572,6 +664,10 @@ class UsersClient:
     ) -> "Response":
         url = "/user/emails"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -583,6 +679,7 @@ class UsersClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -620,6 +717,10 @@ class UsersClient:
     ) -> "Response":
         url = "/user/emails"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -631,6 +732,7 @@ class UsersClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -651,10 +753,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "403": BasicError,
@@ -674,10 +781,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "403": BasicError,
@@ -697,10 +809,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "403": BasicError,
@@ -720,10 +837,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "403": BasicError,
@@ -737,9 +859,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/following/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -753,9 +880,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/following/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -769,9 +901,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/following/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -785,9 +922,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/following/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -801,9 +943,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/following/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -817,9 +964,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/following/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -839,10 +991,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GpgKey],
             error_models={
                 "404": BasicError,
@@ -863,10 +1020,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GpgKey],
             error_models={
                 "404": BasicError,
@@ -896,6 +1058,10 @@ class UsersClient:
     ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -907,6 +1073,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GpgKey,
             error_models={
                 "422": ValidationError,
@@ -937,6 +1104,10 @@ class UsersClient:
     ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -948,6 +1119,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=GpgKey,
             error_models={
                 "422": ValidationError,
@@ -963,9 +1135,14 @@ class UsersClient:
     ) -> "Response[GpgKey]":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GpgKey,
             error_models={
                 "404": BasicError,
@@ -980,9 +1157,14 @@ class UsersClient:
     ) -> "Response[GpgKey]":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=GpgKey,
             error_models={
                 "404": BasicError,
@@ -997,9 +1179,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1014,9 +1201,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1037,10 +1229,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Key],
             error_models={
                 "404": BasicError,
@@ -1061,10 +1258,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Key],
             error_models={
                 "404": BasicError,
@@ -1094,6 +1296,10 @@ class UsersClient:
     ) -> "Response[Key]":
         url = "/user/keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1105,6 +1311,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Key,
             error_models={
                 "422": ValidationError,
@@ -1135,6 +1342,10 @@ class UsersClient:
     ) -> "Response[Key]":
         url = "/user/keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1146,6 +1357,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Key,
             error_models={
                 "422": ValidationError,
@@ -1161,9 +1373,14 @@ class UsersClient:
     ) -> "Response[Key]":
         url = f"/user/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Key,
             error_models={
                 "404": BasicError,
@@ -1178,9 +1395,14 @@ class UsersClient:
     ) -> "Response[Key]":
         url = f"/user/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Key,
             error_models={
                 "404": BasicError,
@@ -1195,9 +1417,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1211,9 +1438,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1233,10 +1465,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "404": BasicError,
@@ -1257,10 +1494,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Email],
             error_models={
                 "404": BasicError,
@@ -1281,10 +1523,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SocialAccount],
             error_models={
                 "404": BasicError,
@@ -1305,10 +1552,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SocialAccount],
             error_models={
                 "404": BasicError,
@@ -1337,6 +1589,10 @@ class UsersClient:
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1348,6 +1604,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SocialAccount],
             error_models={
                 "422": ValidationError,
@@ -1377,6 +1634,10 @@ class UsersClient:
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1388,6 +1649,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SocialAccount],
             error_models={
                 "422": ValidationError,
@@ -1417,6 +1679,10 @@ class UsersClient:
     ) -> "Response":
         url = "/user/social_accounts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1428,6 +1694,7 @@ class UsersClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -1456,6 +1723,10 @@ class UsersClient:
     ) -> "Response":
         url = "/user/social_accounts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1467,6 +1738,7 @@ class UsersClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -1487,10 +1759,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SshSigningKey],
             error_models={
                 "404": BasicError,
@@ -1511,10 +1788,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SshSigningKey],
             error_models={
                 "404": BasicError,
@@ -1544,6 +1826,10 @@ class UsersClient:
     ) -> "Response[SshSigningKey]":
         url = "/user/ssh_signing_keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1555,6 +1841,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=SshSigningKey,
             error_models={
                 "422": ValidationError,
@@ -1585,6 +1872,10 @@ class UsersClient:
     ) -> "Response[SshSigningKey]":
         url = "/user/ssh_signing_keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1596,6 +1887,7 @@ class UsersClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=SshSigningKey,
             error_models={
                 "422": ValidationError,
@@ -1611,9 +1903,14 @@ class UsersClient:
     ) -> "Response[SshSigningKey]":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SshSigningKey,
             error_models={
                 "404": BasicError,
@@ -1628,9 +1925,14 @@ class UsersClient:
     ) -> "Response[SshSigningKey]":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SshSigningKey,
             error_models={
                 "404": BasicError,
@@ -1645,9 +1947,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1661,9 +1968,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1683,10 +1995,15 @@ class UsersClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1702,10 +2019,15 @@ class UsersClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1715,9 +2037,14 @@ class UsersClient:
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = f"/users/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[PrivateUser, PublicUser],
             error_models={
                 "404": BasicError,
@@ -1730,9 +2057,14 @@ class UsersClient:
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = f"/users/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[PrivateUser, PublicUser],
             error_models={
                 "404": BasicError,
@@ -1752,10 +2084,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1772,10 +2109,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1792,10 +2134,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1812,10 +2159,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1826,9 +2178,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/users/{username}/following/{target_user}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1839,9 +2196,14 @@ class UsersClient:
     ) -> "Response":
         url = f"/users/{username}/following/{target_user}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1858,10 +2220,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GpgKey],
         )
 
@@ -1878,10 +2245,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[GpgKey],
         )
 
@@ -1900,10 +2272,15 @@ class UsersClient:
             "subject_id": subject_id,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Hovercard,
             error_models={
                 "404": BasicError,
@@ -1926,10 +2303,15 @@ class UsersClient:
             "subject_id": subject_id,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Hovercard,
             error_models={
                 "404": BasicError,
@@ -1950,10 +2332,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[KeySimple],
         )
 
@@ -1970,10 +2357,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[KeySimple],
         )
 
@@ -1990,10 +2382,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SocialAccount],
         )
 
@@ -2010,10 +2407,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SocialAccount],
         )
 
@@ -2030,10 +2432,15 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SshSigningKey],
         )
 
@@ -2050,9 +2457,14 @@ class UsersClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SshSigningKey],
         )

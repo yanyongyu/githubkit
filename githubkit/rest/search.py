@@ -30,6 +30,8 @@ if TYPE_CHECKING:
 
 
 class SearchClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -51,10 +53,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchCodeGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -81,10 +88,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchCodeGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -111,10 +123,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchCommitsGetResponse200,
         )
 
@@ -136,10 +153,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchCommitsGetResponse200,
         )
 
@@ -176,10 +198,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchIssuesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -221,10 +248,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchIssuesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -253,10 +285,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -285,10 +322,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -317,10 +359,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchRepositoriesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -348,10 +395,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchRepositoriesGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -373,10 +425,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchTopicsGetResponse200,
         )
 
@@ -394,10 +451,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchTopicsGetResponse200,
         )
 
@@ -419,10 +481,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchUsersGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -448,10 +515,15 @@ class SearchClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=SearchUsersGetResponse200,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,

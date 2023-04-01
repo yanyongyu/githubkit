@@ -43,6 +43,8 @@ if TYPE_CHECKING:
 
 
 class ReactionsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -69,10 +71,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -99,10 +106,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -148,6 +160,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -162,6 +178,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )
 
@@ -207,6 +224,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -221,6 +242,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )
 
@@ -234,9 +256,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_for_team_discussion_comment(
@@ -249,9 +276,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_for_team_discussion_in_org(
@@ -276,10 +308,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -305,10 +342,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -350,6 +392,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -363,6 +409,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )
 
@@ -404,6 +451,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -417,6 +468,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )
 
@@ -429,9 +481,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_for_team_discussion(
@@ -443,9 +500,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_for_commit_comment(
@@ -470,10 +532,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -502,10 +569,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -550,6 +622,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -561,6 +637,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -605,6 +682,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -616,6 +697,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -631,9 +713,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_for_commit_comment(
@@ -645,9 +732,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_for_issue_comment(
@@ -672,10 +764,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -704,10 +801,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -752,6 +854,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -765,6 +871,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -809,6 +916,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -822,6 +933,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -837,9 +949,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_for_issue_comment(
@@ -851,9 +968,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_for_issue(
@@ -878,10 +1000,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -911,10 +1038,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -960,6 +1092,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -971,6 +1107,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1015,6 +1152,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1026,6 +1167,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1041,9 +1183,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_for_issue(
@@ -1055,9 +1202,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_for_pull_request_review_comment(
@@ -1082,10 +1234,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -1114,10 +1271,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -1162,6 +1324,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1173,6 +1339,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1217,6 +1384,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1228,6 +1399,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1245,9 +1417,14 @@ class ReactionsClient:
             f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_for_pull_request_comment(
@@ -1261,9 +1438,14 @@ class ReactionsClient:
             f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_for_release(
@@ -1285,10 +1467,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -1314,10 +1501,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
             error_models={
                 "404": BasicError,
@@ -1360,6 +1552,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1371,6 +1567,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1413,6 +1610,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1424,6 +1625,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
             error_models={
                 "422": ValidationError,
@@ -1439,9 +1641,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_for_release(
@@ -1453,9 +1660,14 @@ class ReactionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_for_team_discussion_comment_legacy(
@@ -1480,10 +1692,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -1509,10 +1726,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -1555,6 +1777,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1569,6 +1795,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )
 
@@ -1611,6 +1838,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1625,6 +1856,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )
 
@@ -1649,10 +1881,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -1677,10 +1914,15 @@ class ReactionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Reaction],
         )
 
@@ -1719,6 +1961,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1732,6 +1978,7 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )
 
@@ -1770,6 +2017,10 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1783,5 +2034,6 @@ class ReactionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Reaction,
         )

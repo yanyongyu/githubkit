@@ -20,6 +20,8 @@ if TYPE_CHECKING:
 
 
 class MetaClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -28,9 +30,14 @@ class MetaClient:
     ) -> "Response[Root]":
         url = "/"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Root,
         )
 
@@ -39,9 +46,14 @@ class MetaClient:
     ) -> "Response[Root]":
         url = "/"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Root,
         )
 
@@ -50,9 +62,14 @@ class MetaClient:
     ) -> "Response[ApiOverview]":
         url = "/meta"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ApiOverview,
         )
 
@@ -61,9 +78,14 @@ class MetaClient:
     ) -> "Response[ApiOverview]":
         url = "/meta"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ApiOverview,
         )
 
@@ -77,10 +99,15 @@ class MetaClient:
             "s": s,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=str,
         )
 
@@ -94,10 +121,15 @@ class MetaClient:
             "s": s,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=str,
         )
 
@@ -106,9 +138,14 @@ class MetaClient:
     ) -> "Response[List[date]]":
         url = "/versions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[date],
             error_models={
                 "404": BasicError,
@@ -120,9 +157,14 @@ class MetaClient:
     ) -> "Response[List[date]]":
         url = "/versions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[date],
             error_models={
                 "404": BasicError,
@@ -134,9 +176,14 @@ class MetaClient:
     ) -> "Response[str]":
         url = "/zen"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=str,
         )
 
@@ -145,8 +192,13 @@ class MetaClient:
     ) -> "Response[str]":
         url = "/zen"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=str,
         )

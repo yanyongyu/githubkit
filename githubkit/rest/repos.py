@@ -223,6 +223,8 @@ if TYPE_CHECKING:
 
 
 class ReposClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -249,10 +251,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )
 
@@ -279,10 +286,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )
 
@@ -340,6 +352,10 @@ class ReposClient:
     ) -> "Response[Repository]":
         url = f"/orgs/{org}/repos"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -351,6 +367,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Repository,
             error_models={
                 "403": BasicError,
@@ -412,6 +429,10 @@ class ReposClient:
     ) -> "Response[Repository]":
         url = f"/orgs/{org}/repos"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -423,6 +444,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Repository,
             error_models={
                 "403": BasicError,
@@ -437,9 +459,14 @@ class ReposClient:
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -454,9 +481,14 @@ class ReposClient:
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -471,9 +503,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": ReposOwnerRepoDeleteResponse403,
                 "404": BasicError,
@@ -487,9 +524,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": ReposOwnerRepoDeleteResponse403,
                 "404": BasicError,
@@ -559,6 +601,10 @@ class ReposClient:
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -570,6 +616,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -641,6 +688,10 @@ class ReposClient:
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -652,6 +703,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FullRepository,
             error_models={
                 "403": BasicError,
@@ -672,10 +724,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Autolink],
         )
 
@@ -691,10 +748,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Autolink],
         )
 
@@ -727,6 +789,10 @@ class ReposClient:
     ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -738,6 +804,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Autolink,
             error_models={
                 "422": ValidationError,
@@ -773,6 +840,10 @@ class ReposClient:
     ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -784,6 +855,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Autolink,
             error_models={
                 "422": ValidationError,
@@ -798,9 +870,14 @@ class ReposClient:
     ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Autolink,
             error_models={
                 "404": BasicError,
@@ -815,9 +892,14 @@ class ReposClient:
     ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Autolink,
             error_models={
                 "404": BasicError,
@@ -832,9 +914,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -848,9 +935,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/autolinks/{autolink_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -863,9 +955,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_enable_automated_security_fixes(
@@ -875,9 +972,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     def disable_automated_security_fixes(
@@ -887,9 +989,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_disable_automated_security_fixes(
@@ -899,9 +1006,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_branches(
@@ -920,10 +1032,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ShortBranch],
             error_models={
                 "404": BasicError,
@@ -946,10 +1063,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ShortBranch],
             error_models={
                 "404": BasicError,
@@ -964,9 +1086,14 @@ class ReposClient:
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=BranchWithProtection,
             error_models={
                 "404": BasicError,
@@ -981,9 +1108,14 @@ class ReposClient:
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=BranchWithProtection,
             error_models={
                 "404": BasicError,
@@ -998,9 +1130,14 @@ class ReposClient:
     ) -> "Response[BranchProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=BranchProtection,
             error_models={
                 "404": BasicError,
@@ -1015,9 +1152,14 @@ class ReposClient:
     ) -> "Response[BranchProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=BranchProtection,
             error_models={
                 "404": BasicError,
@@ -1076,6 +1218,10 @@ class ReposClient:
     ) -> "Response[ProtectedBranch]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1087,6 +1233,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProtectedBranch,
             error_models={
                 "403": BasicError,
@@ -1147,6 +1294,10 @@ class ReposClient:
     ) -> "Response[ProtectedBranch]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1158,6 +1309,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProtectedBranch,
             error_models={
                 "403": BasicError,
@@ -1174,9 +1326,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -1190,9 +1347,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -1206,9 +1368,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -1220,9 +1387,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -1234,9 +1406,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -1248,9 +1425,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
         )
 
@@ -1262,9 +1444,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1278,9 +1465,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1294,9 +1486,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchPullRequestReview,
         )
 
@@ -1308,9 +1505,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchPullRequestReview,
         )
 
@@ -1322,9 +1524,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1338,9 +1545,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1397,6 +1609,10 @@ class ReposClient:
     ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1411,6 +1627,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchPullRequestReview,
             error_models={
                 "422": ValidationError,
@@ -1468,6 +1685,10 @@ class ReposClient:
     ) -> "Response[ProtectedBranchPullRequestReview]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1482,6 +1703,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchPullRequestReview,
             error_models={
                 "422": ValidationError,
@@ -1496,9 +1718,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -1513,9 +1740,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -1530,9 +1762,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -1547,9 +1784,14 @@ class ReposClient:
     ) -> "Response[ProtectedBranchAdminEnforced]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=ProtectedBranchAdminEnforced,
             error_models={
                 "404": BasicError,
@@ -1564,9 +1806,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1580,9 +1827,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -1598,9 +1850,14 @@ class ReposClient:
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -1617,9 +1874,14 @@ class ReposClient:
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -1636,9 +1898,14 @@ class ReposClient:
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_status_check_protection(
@@ -1651,9 +1918,14 @@ class ReposClient:
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -1705,6 +1977,10 @@ class ReposClient:
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1718,6 +1994,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -1774,6 +2051,10 @@ class ReposClient:
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1787,6 +2068,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=StatusCheckPolicy,
             error_models={
                 "404": BasicError,
@@ -1802,9 +2084,14 @@ class ReposClient:
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "404": BasicError,
@@ -1819,9 +2106,14 @@ class ReposClient:
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "404": BasicError,
@@ -1874,6 +2166,10 @@ class ReposClient:
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1891,6 +2187,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "422": ValidationError,
@@ -1943,6 +2240,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -1961,6 +2262,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "422": ValidationError,
@@ -2014,6 +2316,10 @@ class ReposClient:
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2031,6 +2337,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "422": ValidationError,
@@ -2085,6 +2392,10 @@ class ReposClient:
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2102,6 +2413,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "422": ValidationError,
@@ -2156,6 +2468,10 @@ class ReposClient:
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2173,6 +2489,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "404": BasicError,
@@ -2226,6 +2543,10 @@ class ReposClient:
     ) -> "Response[List[str]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2243,6 +2564,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[str],
             error_models={
                 "404": BasicError,
@@ -2258,9 +2580,14 @@ class ReposClient:
     ) -> "Response[BranchRestrictionPolicy]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=BranchRestrictionPolicy,
             error_models={
                 "404": BasicError,
@@ -2275,9 +2602,14 @@ class ReposClient:
     ) -> "Response[BranchRestrictionPolicy]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=BranchRestrictionPolicy,
             error_models={
                 "404": BasicError,
@@ -2292,9 +2624,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_access_restrictions(
@@ -2305,9 +2642,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def get_apps_with_access_to_protected_branch(
@@ -2318,9 +2660,14 @@ class ReposClient:
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "404": BasicError,
@@ -2335,9 +2682,14 @@ class ReposClient:
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "404": BasicError,
@@ -2390,6 +2742,10 @@ class ReposClient:
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2407,6 +2763,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "422": ValidationError,
@@ -2459,6 +2816,10 @@ class ReposClient:
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2476,6 +2837,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "422": ValidationError,
@@ -2527,6 +2889,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -2545,6 +2911,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "422": ValidationError,
@@ -2596,6 +2963,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -2614,6 +2985,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "422": ValidationError,
@@ -2665,6 +3037,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -2683,6 +3059,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "422": ValidationError,
@@ -2735,6 +3112,10 @@ class ReposClient:
     ) -> "Response[List[Integration]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2752,6 +3133,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Integration],
             error_models={
                 "422": ValidationError,
@@ -2766,9 +3148,14 @@ class ReposClient:
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "404": BasicError,
@@ -2783,9 +3170,14 @@ class ReposClient:
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "404": BasicError,
@@ -2838,6 +3230,10 @@ class ReposClient:
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2855,6 +3251,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "422": ValidationError,
@@ -2907,6 +3304,10 @@ class ReposClient:
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2924,6 +3325,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "422": ValidationError,
@@ -2975,6 +3377,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -2993,6 +3399,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "422": ValidationError,
@@ -3044,6 +3451,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -3062,6 +3473,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "422": ValidationError,
@@ -3113,6 +3525,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -3131,6 +3547,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "422": ValidationError,
@@ -3183,6 +3600,10 @@ class ReposClient:
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3200,6 +3621,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "422": ValidationError,
@@ -3214,9 +3636,14 @@ class ReposClient:
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -3231,9 +3658,14 @@ class ReposClient:
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -3286,6 +3718,10 @@ class ReposClient:
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3303,6 +3739,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -3355,6 +3792,10 @@ class ReposClient:
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3372,6 +3813,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -3423,6 +3865,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -3441,6 +3887,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -3492,6 +3939,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -3510,6 +3961,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -3561,6 +4013,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -3579,6 +4035,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -3631,6 +4088,10 @@ class ReposClient:
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3648,6 +4109,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "422": ValidationError,
@@ -3688,6 +4150,10 @@ class ReposClient:
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3699,6 +4165,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=BranchWithProtection,
             error_models={
                 "403": BasicError,
@@ -3741,6 +4208,10 @@ class ReposClient:
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3752,6 +4223,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=BranchWithProtection,
             error_models={
                 "403": BasicError,
@@ -3772,10 +4244,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CodeownersErrors,
             error_models={},
         )
@@ -3792,10 +4269,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CodeownersErrors,
             error_models={},
         )
@@ -3820,10 +4302,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Collaborator],
             error_models={
                 "404": BasicError,
@@ -3850,10 +4337,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Collaborator],
             error_models={
                 "404": BasicError,
@@ -3868,9 +4360,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -3882,9 +4379,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -3922,6 +4424,10 @@ class ReposClient:
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3933,6 +4439,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RepositoryInvitation,
             error_models={
                 "422": ValidationError,
@@ -3974,6 +4481,10 @@ class ReposClient:
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3985,6 +4496,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RepositoryInvitation,
             error_models={
                 "422": ValidationError,
@@ -4000,9 +4512,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_collaborator(
@@ -4013,9 +4530,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def get_collaborator_permission_level(
@@ -4026,9 +4548,14 @@ class ReposClient:
     ) -> "Response[RepositoryCollaboratorPermission]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}/permission"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepositoryCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -4043,9 +4570,14 @@ class ReposClient:
     ) -> "Response[RepositoryCollaboratorPermission]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}/permission"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepositoryCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -4066,10 +4598,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CommitComment],
         )
 
@@ -4087,10 +4624,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CommitComment],
         )
 
@@ -4102,9 +4644,14 @@ class ReposClient:
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -4119,9 +4666,14 @@ class ReposClient:
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -4136,9 +4688,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -4152,9 +4709,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -4194,6 +4756,10 @@ class ReposClient:
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4205,6 +4771,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -4245,6 +4812,10 @@ class ReposClient:
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4256,6 +4827,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CommitComment,
             error_models={
                 "404": BasicError,
@@ -4288,10 +4860,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Commit],
             error_models={
                 "500": BasicError,
@@ -4327,10 +4904,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Commit],
             error_models={
                 "500": BasicError,
@@ -4348,9 +4930,14 @@ class ReposClient:
     ) -> "Response[List[BranchShort]]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[BranchShort],
             error_models={
                 "422": ValidationError,
@@ -4365,9 +4952,14 @@ class ReposClient:
     ) -> "Response[List[BranchShort]]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[BranchShort],
             error_models={
                 "422": ValidationError,
@@ -4389,10 +4981,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CommitComment],
         )
 
@@ -4411,10 +5008,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CommitComment],
         )
 
@@ -4455,6 +5057,10 @@ class ReposClient:
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4466,6 +5072,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CommitComment,
             error_models={
                 "403": BasicError,
@@ -4510,6 +5117,10 @@ class ReposClient:
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4521,6 +5132,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CommitComment,
             error_models={
                 "403": BasicError,
@@ -4543,10 +5155,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestSimple],
         )
 
@@ -4565,10 +5182,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PullRequestSimple],
         )
 
@@ -4587,10 +5209,15 @@ class ReposClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Commit,
             error_models={
                 "422": ValidationError,
@@ -4615,10 +5242,15 @@ class ReposClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Commit,
             error_models={
                 "422": ValidationError,
@@ -4643,10 +5275,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CombinedCommitStatus,
             error_models={
                 "404": BasicError,
@@ -4668,10 +5305,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CombinedCommitStatus,
             error_models={
                 "404": BasicError,
@@ -4693,10 +5335,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Status],
         )
 
@@ -4715,10 +5362,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Status],
         )
 
@@ -4729,9 +5381,14 @@ class ReposClient:
     ) -> "Response[CommunityProfile]":
         url = f"/repos/{owner}/{repo}/community/profile"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CommunityProfile,
         )
 
@@ -4742,9 +5399,14 @@ class ReposClient:
     ) -> "Response[CommunityProfile]":
         url = f"/repos/{owner}/{repo}/community/profile"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CommunityProfile,
         )
 
@@ -4763,10 +5425,15 @@ class ReposClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CommitComparison,
             error_models={
                 "404": BasicError,
@@ -4790,10 +5457,15 @@ class ReposClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CommitComparison,
             error_models={
                 "404": BasicError,
@@ -4815,10 +5487,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Union[
                 List[ContentDirectoryItems],
                 ContentFile,
@@ -4844,10 +5521,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Union[
                 List[ContentDirectoryItems],
                 ContentFile,
@@ -4901,6 +5583,10 @@ class ReposClient:
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4912,6 +5598,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FileCommit,
             error_models={
                 "404": BasicError,
@@ -4961,6 +5648,10 @@ class ReposClient:
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4972,6 +5663,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FileCommit,
             error_models={
                 "404": BasicError,
@@ -5022,6 +5714,10 @@ class ReposClient:
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5033,6 +5729,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FileCommit,
             error_models={
                 "422": ValidationError,
@@ -5084,6 +5781,10 @@ class ReposClient:
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5095,6 +5796,7 @@ class ReposClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FileCommit,
             error_models={
                 "422": ValidationError,
@@ -5120,10 +5822,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Contributor],
             error_models={
                 "403": BasicError,
@@ -5147,10 +5854,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Contributor],
             error_models={
                 "403": BasicError,
@@ -5180,10 +5892,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Deployment],
         )
 
@@ -5209,10 +5926,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Deployment],
         )
 
@@ -5253,6 +5975,10 @@ class ReposClient:
     ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5264,6 +5990,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Deployment,
             error_models={
                 "422": ValidationError,
@@ -5307,6 +6034,10 @@ class ReposClient:
     ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5318,6 +6049,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Deployment,
             error_models={
                 "422": ValidationError,
@@ -5332,9 +6064,14 @@ class ReposClient:
     ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Deployment,
             error_models={
                 "404": BasicError,
@@ -5349,9 +6086,14 @@ class ReposClient:
     ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Deployment,
             error_models={
                 "404": BasicError,
@@ -5366,9 +6108,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -5383,9 +6130,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -5407,10 +6159,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DeploymentStatus],
             error_models={
                 "404": BasicError,
@@ -5432,10 +6189,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DeploymentStatus],
             error_models={
                 "404": BasicError,
@@ -5492,6 +6254,10 @@ class ReposClient:
     ) -> "Response[DeploymentStatus]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5503,6 +6269,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeploymentStatus,
             error_models={
                 "422": ValidationError,
@@ -5559,6 +6326,10 @@ class ReposClient:
     ) -> "Response[DeploymentStatus]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5570,6 +6341,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeploymentStatus,
             error_models={
                 "422": ValidationError,
@@ -5585,9 +6357,14 @@ class ReposClient:
     ) -> "Response[DeploymentStatus]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DeploymentStatus,
             error_models={
                 "404": BasicError,
@@ -5603,9 +6380,14 @@ class ReposClient:
     ) -> "Response[DeploymentStatus]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DeploymentStatus,
             error_models={
                 "404": BasicError,
@@ -5642,6 +6424,10 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5653,6 +6439,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -5688,6 +6475,10 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5699,6 +6490,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -5718,10 +6510,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoEnvironmentsGetResponse200,
         )
 
@@ -5739,10 +6536,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoEnvironmentsGetResponse200,
         )
 
@@ -5754,9 +6556,14 @@ class ReposClient:
     ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Environment,
         )
 
@@ -5768,9 +6575,14 @@ class ReposClient:
     ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Environment,
         )
 
@@ -5824,6 +6636,10 @@ class ReposClient:
     ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5837,6 +6653,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Environment,
             error_models={
                 "422": BasicError,
@@ -5893,6 +6710,10 @@ class ReposClient:
     ) -> "Response[Environment]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5906,6 +6727,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Environment,
             error_models={
                 "422": BasicError,
@@ -5920,9 +6742,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_an_environment(
@@ -5933,9 +6760,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_deployment_branch_policies(
@@ -5953,10 +6785,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         )
 
@@ -5975,10 +6812,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         )
 
@@ -6016,6 +6858,10 @@ class ReposClient:
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6027,6 +6873,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeploymentBranchPolicy,
             error_models={},
         )
@@ -6065,6 +6912,10 @@ class ReposClient:
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6076,6 +6927,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeploymentBranchPolicy,
             error_models={},
         )
@@ -6089,9 +6941,14 @@ class ReposClient:
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DeploymentBranchPolicy,
         )
 
@@ -6104,9 +6961,14 @@ class ReposClient:
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DeploymentBranchPolicy,
         )
 
@@ -6146,6 +7008,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -6158,6 +7024,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeploymentBranchPolicy,
         )
 
@@ -6198,6 +7065,10 @@ class ReposClient:
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6209,6 +7080,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeploymentBranchPolicy,
         )
 
@@ -6221,9 +7093,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_deployment_branch_policy(
@@ -6235,9 +7112,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_forks(
@@ -6258,10 +7140,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "400": BasicError,
@@ -6286,10 +7173,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "400": BasicError,
@@ -6329,6 +7221,10 @@ class ReposClient:
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6340,6 +7236,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FullRepository,
             error_models={
                 "400": BasicError,
@@ -6382,6 +7279,10 @@ class ReposClient:
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6393,6 +7294,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=FullRepository,
             error_models={
                 "400": BasicError,
@@ -6416,10 +7318,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Hook],
             error_models={
                 "404": BasicError,
@@ -6440,10 +7347,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Hook],
             error_models={
                 "404": BasicError,
@@ -6484,6 +7396,10 @@ class ReposClient:
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6495,6 +7411,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -6537,6 +7454,10 @@ class ReposClient:
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6548,6 +7469,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -6564,9 +7486,14 @@ class ReposClient:
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -6581,9 +7508,14 @@ class ReposClient:
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Hook,
             error_models={
                 "404": BasicError,
@@ -6598,9 +7530,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -6614,9 +7551,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -6660,6 +7602,10 @@ class ReposClient:
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6671,6 +7617,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Hook,
             error_models={
                 "422": ValidationError,
@@ -6716,6 +7663,10 @@ class ReposClient:
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6727,6 +7678,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Hook,
             error_models={
                 "422": ValidationError,
@@ -6742,9 +7694,14 @@ class ReposClient:
     ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -6756,9 +7713,14 @@ class ReposClient:
     ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -6798,6 +7760,10 @@ class ReposClient:
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -6810,6 +7776,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -6850,6 +7817,10 @@ class ReposClient:
     ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6861,6 +7832,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -6881,10 +7853,15 @@ class ReposClient:
             "redelivery": redelivery,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -6909,10 +7886,15 @@ class ReposClient:
             "redelivery": redelivery,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -6929,9 +7911,14 @@ class ReposClient:
     ) -> "Response[HookDelivery]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -6948,9 +7935,14 @@ class ReposClient:
     ) -> "Response[HookDelivery]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -6967,9 +7959,14 @@ class ReposClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -6986,9 +7983,14 @@ class ReposClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -7004,9 +8006,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/pings"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -7020,9 +8027,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/pings"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -7036,9 +8048,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/tests"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -7052,9 +8069,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/tests"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -7074,10 +8096,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[RepositoryInvitation],
         )
 
@@ -7095,10 +8122,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[RepositoryInvitation],
         )
 
@@ -7110,9 +8142,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_invitation(
@@ -7123,9 +8160,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -7164,6 +8206,10 @@ class ReposClient:
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7175,6 +8221,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RepositoryInvitation,
         )
 
@@ -7214,6 +8261,10 @@ class ReposClient:
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7225,6 +8276,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RepositoryInvitation,
         )
 
@@ -7242,10 +8294,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DeployKey],
         )
 
@@ -7263,10 +8320,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DeployKey],
         )
 
@@ -7299,6 +8361,10 @@ class ReposClient:
     ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7310,6 +8376,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeployKey,
             error_models={
                 "422": ValidationError,
@@ -7345,6 +8412,10 @@ class ReposClient:
     ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7356,6 +8427,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DeployKey,
             error_models={
                 "422": ValidationError,
@@ -7370,9 +8442,14 @@ class ReposClient:
     ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DeployKey,
             error_models={
                 "404": BasicError,
@@ -7387,9 +8464,14 @@ class ReposClient:
     ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DeployKey,
             error_models={
                 "404": BasicError,
@@ -7404,9 +8486,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_deploy_key(
@@ -7417,9 +8504,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_languages(
@@ -7429,9 +8521,14 @@ class ReposClient:
     ) -> "Response[Language]":
         url = f"/repos/{owner}/{repo}/languages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Language,
         )
 
@@ -7442,9 +8539,14 @@ class ReposClient:
     ) -> "Response[Language]":
         url = f"/repos/{owner}/{repo}/languages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Language,
         )
 
@@ -7455,9 +8557,14 @@ class ReposClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/repos/{owner}/{repo}/lfs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={},
         )
@@ -7469,9 +8576,14 @@ class ReposClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/repos/{owner}/{repo}/lfs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={},
         )
@@ -7483,9 +8595,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/lfs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_disable_lfs_for_repo(
@@ -7495,9 +8612,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/lfs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -7527,6 +8649,10 @@ class ReposClient:
     ) -> "Response[MergedUpstream]":
         url = f"/repos/{owner}/{repo}/merge-upstream"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7538,6 +8664,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=MergedUpstream,
             error_models={},
         )
@@ -7569,6 +8696,10 @@ class ReposClient:
     ) -> "Response[MergedUpstream]":
         url = f"/repos/{owner}/{repo}/merge-upstream"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7580,6 +8711,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=MergedUpstream,
             error_models={},
         )
@@ -7613,6 +8745,10 @@ class ReposClient:
     ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/merges"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7624,6 +8760,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Commit,
             error_models={
                 "403": BasicError,
@@ -7660,6 +8797,10 @@ class ReposClient:
     ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/merges"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7671,6 +8812,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Commit,
             error_models={
                 "403": BasicError,
@@ -7685,9 +8827,14 @@ class ReposClient:
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Page,
             error_models={
                 "404": BasicError,
@@ -7701,9 +8848,14 @@ class ReposClient:
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Page,
             error_models={
                 "404": BasicError,
@@ -7842,6 +8994,10 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -7862,6 +9018,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "400": BasicError,
@@ -8001,6 +9158,10 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8021,6 +9182,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "400": BasicError,
@@ -8085,6 +9247,10 @@ class ReposClient:
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8104,6 +9270,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Page,
             error_models={
                 "422": ValidationError,
@@ -8168,6 +9335,10 @@ class ReposClient:
     ) -> "Response[Page]":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8187,6 +9358,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Page,
             error_models={
                 "422": ValidationError,
@@ -8201,9 +9373,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -8218,9 +9395,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pages"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -8242,10 +9424,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PageBuild],
         )
 
@@ -8263,10 +9450,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PageBuild],
         )
 
@@ -8277,9 +9469,14 @@ class ReposClient:
     ) -> "Response[PageBuildStatus]":
         url = f"/repos/{owner}/{repo}/pages/builds"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=PageBuildStatus,
         )
 
@@ -8290,9 +9487,14 @@ class ReposClient:
     ) -> "Response[PageBuildStatus]":
         url = f"/repos/{owner}/{repo}/pages/builds"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=PageBuildStatus,
         )
 
@@ -8303,9 +9505,14 @@ class ReposClient:
     ) -> "Response[PageBuild]":
         url = f"/repos/{owner}/{repo}/pages/builds/latest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PageBuild,
         )
 
@@ -8316,9 +9523,14 @@ class ReposClient:
     ) -> "Response[PageBuild]":
         url = f"/repos/{owner}/{repo}/pages/builds/latest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PageBuild,
         )
 
@@ -8330,9 +9542,14 @@ class ReposClient:
     ) -> "Response[PageBuild]":
         url = f"/repos/{owner}/{repo}/pages/builds/{build_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PageBuild,
         )
 
@@ -8344,9 +9561,14 @@ class ReposClient:
     ) -> "Response[PageBuild]":
         url = f"/repos/{owner}/{repo}/pages/builds/{build_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PageBuild,
         )
 
@@ -8380,6 +9602,10 @@ class ReposClient:
     ) -> "Response[PageDeployment]":
         url = f"/repos/{owner}/{repo}/pages/deployment"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8391,6 +9617,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PageDeployment,
             error_models={
                 "400": BasicError,
@@ -8429,6 +9656,10 @@ class ReposClient:
     ) -> "Response[PageDeployment]":
         url = f"/repos/{owner}/{repo}/pages/deployment"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8440,6 +9671,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PageDeployment,
             error_models={
                 "400": BasicError,
@@ -8455,9 +9687,14 @@ class ReposClient:
     ) -> "Response[PagesHealthCheck]":
         url = f"/repos/{owner}/{repo}/pages/health"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PagesHealthCheck,
             error_models={
                 "404": BasicError,
@@ -8471,9 +9708,14 @@ class ReposClient:
     ) -> "Response[PagesHealthCheck]":
         url = f"/repos/{owner}/{repo}/pages/health"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PagesHealthCheck,
             error_models={
                 "404": BasicError,
@@ -8492,10 +9734,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -8515,10 +9762,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -8539,10 +9791,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -8563,10 +9820,15 @@ class ReposClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ContentFile,
             error_models={
                 "404": BasicError,
@@ -8588,10 +9850,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Release],
             error_models={
                 "404": BasicError,
@@ -8612,10 +9879,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Release],
             error_models={
                 "404": BasicError,
@@ -8657,6 +9929,10 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8668,6 +9944,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -8710,6 +9987,10 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8721,6 +10002,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -8736,9 +10018,14 @@ class ReposClient:
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ReleaseAsset,
             error_models={
                 "404": BasicError,
@@ -8753,9 +10040,14 @@ class ReposClient:
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ReleaseAsset,
             error_models={
                 "404": BasicError,
@@ -8770,9 +10062,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_release_asset(
@@ -8783,9 +10080,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -8824,6 +10126,10 @@ class ReposClient:
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8835,6 +10141,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReleaseAsset,
         )
 
@@ -8874,6 +10181,10 @@ class ReposClient:
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8885,6 +10196,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReleaseAsset,
         )
 
@@ -8922,6 +10234,10 @@ class ReposClient:
     ) -> "Response[ReleaseNotesContent]":
         url = f"/repos/{owner}/{repo}/releases/generate-notes"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8933,6 +10249,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReleaseNotesContent,
             error_models={
                 "404": BasicError,
@@ -8973,6 +10290,10 @@ class ReposClient:
     ) -> "Response[ReleaseNotesContent]":
         url = f"/repos/{owner}/{repo}/releases/generate-notes"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -8984,6 +10305,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReleaseNotesContent,
             error_models={
                 "404": BasicError,
@@ -8997,9 +10319,14 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/latest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Release,
         )
 
@@ -9010,9 +10337,14 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/latest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Release,
         )
 
@@ -9024,9 +10356,14 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/tags/{tag}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -9041,9 +10378,14 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/tags/{tag}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -9058,9 +10400,14 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -9075,9 +10422,14 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -9092,9 +10444,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_release(
@@ -9105,9 +10462,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -9151,6 +10513,10 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9162,6 +10528,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -9209,6 +10576,10 @@ class ReposClient:
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9220,6 +10591,7 @@ class ReposClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Release,
             error_models={
                 "404": BasicError,
@@ -9241,10 +10613,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ReleaseAsset],
         )
 
@@ -9263,10 +10640,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ReleaseAsset],
         )
 
@@ -9288,6 +10670,10 @@ class ReposClient:
             "label": label,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9302,6 +10688,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             content=exclude_unset(content),
+            headers=exclude_unset(headers),
             response_model=ReleaseAsset,
             error_models={},
         )
@@ -9324,6 +10711,10 @@ class ReposClient:
             "label": label,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9338,6 +10729,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             content=exclude_unset(content),
+            headers=exclude_unset(headers),
             response_model=ReleaseAsset,
             error_models={},
         )
@@ -9349,9 +10741,14 @@ class ReposClient:
     ) -> "Response[List[List[int]]]":
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[List[int]],
         )
 
@@ -9362,9 +10759,14 @@ class ReposClient:
     ) -> "Response[List[List[int]]]":
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[List[int]],
         )
 
@@ -9375,9 +10777,14 @@ class ReposClient:
     ) -> "Response[List[CommitActivity]]":
         url = f"/repos/{owner}/{repo}/stats/commit_activity"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[CommitActivity],
         )
 
@@ -9388,9 +10795,14 @@ class ReposClient:
     ) -> "Response[List[CommitActivity]]":
         url = f"/repos/{owner}/{repo}/stats/commit_activity"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[CommitActivity],
         )
 
@@ -9401,9 +10813,14 @@ class ReposClient:
     ) -> "Response[List[ContributorActivity]]":
         url = f"/repos/{owner}/{repo}/stats/contributors"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[ContributorActivity],
         )
 
@@ -9414,9 +10831,14 @@ class ReposClient:
     ) -> "Response[List[ContributorActivity]]":
         url = f"/repos/{owner}/{repo}/stats/contributors"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[ContributorActivity],
         )
 
@@ -9427,9 +10849,14 @@ class ReposClient:
     ) -> "Response[ParticipationStats]":
         url = f"/repos/{owner}/{repo}/stats/participation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ParticipationStats,
             error_models={
                 "404": BasicError,
@@ -9443,9 +10870,14 @@ class ReposClient:
     ) -> "Response[ParticipationStats]":
         url = f"/repos/{owner}/{repo}/stats/participation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ParticipationStats,
             error_models={
                 "404": BasicError,
@@ -9459,9 +10891,14 @@ class ReposClient:
     ) -> "Response[List[List[int]]]":
         url = f"/repos/{owner}/{repo}/stats/punch_card"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[List[int]],
         )
 
@@ -9472,9 +10909,14 @@ class ReposClient:
     ) -> "Response[List[List[int]]]":
         url = f"/repos/{owner}/{repo}/stats/punch_card"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[List[int]],
         )
 
@@ -9515,6 +10957,10 @@ class ReposClient:
     ) -> "Response[Status]":
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9526,6 +10972,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Status,
         )
 
@@ -9566,6 +11013,10 @@ class ReposClient:
     ) -> "Response[Status]":
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9577,6 +11028,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Status,
         )
 
@@ -9594,10 +11046,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Tag],
         )
 
@@ -9615,10 +11072,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Tag],
         )
 
@@ -9629,9 +11091,14 @@ class ReposClient:
     ) -> "Response[List[TagProtection]]":
         url = f"/repos/{owner}/{repo}/tags/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[TagProtection],
             error_models={
                 "403": BasicError,
@@ -9646,9 +11113,14 @@ class ReposClient:
     ) -> "Response[List[TagProtection]]":
         url = f"/repos/{owner}/{repo}/tags/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[TagProtection],
             error_models={
                 "403": BasicError,
@@ -9683,6 +11155,10 @@ class ReposClient:
     ) -> "Response[TagProtection]":
         url = f"/repos/{owner}/{repo}/tags/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9694,6 +11170,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TagProtection,
             error_models={
                 "403": BasicError,
@@ -9728,6 +11205,10 @@ class ReposClient:
     ) -> "Response[TagProtection]":
         url = f"/repos/{owner}/{repo}/tags/protection"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9739,6 +11220,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TagProtection,
             error_models={
                 "403": BasicError,
@@ -9754,9 +11236,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/tags/protection/{tag_protection_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -9771,9 +11258,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/tags/protection/{tag_protection_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -9788,9 +11280,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/tarball/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_download_tarball_archive(
@@ -9801,9 +11298,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/tarball/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_teams(
@@ -9820,10 +11322,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
         )
 
@@ -9841,10 +11348,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
         )
 
@@ -9862,10 +11374,15 @@ class ReposClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -9886,10 +11403,15 @@ class ReposClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -9923,6 +11445,10 @@ class ReposClient:
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9934,6 +11460,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -9968,6 +11495,10 @@ class ReposClient:
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -9979,6 +11510,7 @@ class ReposClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Topic,
             error_models={
                 "404": BasicError,
@@ -9998,10 +11530,15 @@ class ReposClient:
             "per": per,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CloneTraffic,
             error_models={
                 "403": BasicError,
@@ -10020,10 +11557,15 @@ class ReposClient:
             "per": per,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CloneTraffic,
             error_models={
                 "403": BasicError,
@@ -10037,9 +11579,14 @@ class ReposClient:
     ) -> "Response[List[ContentTraffic]]":
         url = f"/repos/{owner}/{repo}/traffic/popular/paths"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[ContentTraffic],
             error_models={
                 "403": BasicError,
@@ -10053,9 +11600,14 @@ class ReposClient:
     ) -> "Response[List[ContentTraffic]]":
         url = f"/repos/{owner}/{repo}/traffic/popular/paths"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[ContentTraffic],
             error_models={
                 "403": BasicError,
@@ -10069,9 +11621,14 @@ class ReposClient:
     ) -> "Response[List[ReferrerTraffic]]":
         url = f"/repos/{owner}/{repo}/traffic/popular/referrers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[ReferrerTraffic],
             error_models={
                 "403": BasicError,
@@ -10085,9 +11642,14 @@ class ReposClient:
     ) -> "Response[List[ReferrerTraffic]]":
         url = f"/repos/{owner}/{repo}/traffic/popular/referrers"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[ReferrerTraffic],
             error_models={
                 "403": BasicError,
@@ -10106,10 +11668,15 @@ class ReposClient:
             "per": per,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ViewTraffic,
             error_models={
                 "403": BasicError,
@@ -10128,10 +11695,15 @@ class ReposClient:
             "per": per,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ViewTraffic,
             error_models={
                 "403": BasicError,
@@ -10167,6 +11739,10 @@ class ReposClient:
     ) -> "Response[MinimalRepository]":
         url = f"/repos/{owner}/{repo}/transfer"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -10178,6 +11754,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=MinimalRepository,
         )
 
@@ -10210,6 +11787,10 @@ class ReposClient:
     ) -> "Response[MinimalRepository]":
         url = f"/repos/{owner}/{repo}/transfer"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -10221,6 +11802,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=MinimalRepository,
         )
 
@@ -10231,9 +11813,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -10244,9 +11831,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -10257,9 +11849,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_enable_vulnerability_alerts(
@@ -10269,9 +11866,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     def disable_vulnerability_alerts(
@@ -10281,9 +11883,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_disable_vulnerability_alerts(
@@ -10293,9 +11900,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def download_zipball_archive(
@@ -10306,9 +11918,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/zipball/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_download_zipball_archive(
@@ -10319,9 +11936,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/zipball/{ref}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -10359,6 +11981,10 @@ class ReposClient:
     ) -> "Response[Repository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -10370,6 +11996,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Repository,
         )
 
@@ -10408,6 +12035,10 @@ class ReposClient:
     ) -> "Response[Repository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -10419,6 +12050,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Repository,
         )
 
@@ -10432,10 +12064,15 @@ class ReposClient:
             "since": since,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "422": ValidationError,
@@ -10452,10 +12089,15 @@ class ReposClient:
             "since": since,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "422": ValidationError,
@@ -10492,10 +12134,15 @@ class ReposClient:
             "before": before,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Repository],
             error_models={
                 "422": ValidationError,
@@ -10534,10 +12181,15 @@ class ReposClient:
             "before": before,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Repository],
             error_models={
                 "422": ValidationError,
@@ -10594,6 +12246,10 @@ class ReposClient:
     ) -> "Response[Repository]":
         url = "/user/repos"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -10605,6 +12261,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Repository,
             error_models={
                 "401": BasicError,
@@ -10663,6 +12320,10 @@ class ReposClient:
     ) -> "Response[Repository]":
         url = "/user/repos"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -10674,6 +12335,7 @@ class ReposClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Repository,
             error_models={
                 "401": BasicError,
@@ -10696,10 +12358,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[RepositoryInvitation],
             error_models={
                 "404": BasicError,
@@ -10720,10 +12387,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[RepositoryInvitation],
             error_models={
                 "404": BasicError,
@@ -10738,9 +12410,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/user/repository_invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "409": BasicError,
                 "404": BasicError,
@@ -10754,9 +12431,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/user/repository_invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "409": BasicError,
                 "404": BasicError,
@@ -10770,9 +12452,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/user/repository_invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PATCH",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "409": BasicError,
@@ -10786,9 +12473,14 @@ class ReposClient:
     ) -> "Response":
         url = f"/user/repository_invitations/{invitation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PATCH",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "409": BasicError,
@@ -10817,10 +12509,15 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )
 
@@ -10845,9 +12542,14 @@ class ReposClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )

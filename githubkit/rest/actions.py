@@ -140,6 +140,8 @@ if TYPE_CHECKING:
 
 
 class ActionsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -149,9 +151,14 @@ class ActionsClient:
     ) -> "Response[ActionsCacheUsageOrgEnterprise]":
         url = f"/orgs/{org}/actions/cache/usage"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsCacheUsageOrgEnterprise,
         )
 
@@ -161,9 +168,14 @@ class ActionsClient:
     ) -> "Response[ActionsCacheUsageOrgEnterprise]":
         url = f"/orgs/{org}/actions/cache/usage"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsCacheUsageOrgEnterprise,
         )
 
@@ -180,10 +192,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         )
 
@@ -200,10 +217,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         )
 
@@ -213,9 +235,14 @@ class ActionsClient:
     ) -> "Response[ActionsOrganizationPermissions]":
         url = f"/orgs/{org}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsOrganizationPermissions,
         )
 
@@ -225,9 +252,14 @@ class ActionsClient:
     ) -> "Response[ActionsOrganizationPermissions]":
         url = f"/orgs/{org}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsOrganizationPermissions,
         )
 
@@ -257,6 +289,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -268,6 +304,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -296,6 +333,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -307,6 +348,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def list_selected_repositories_enabled_github_actions_organization(
@@ -322,10 +364,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         )
 
@@ -342,10 +389,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         )
 
@@ -374,6 +426,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -385,6 +441,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -412,6 +469,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -423,6 +484,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def enable_selected_repository_github_actions_organization(
@@ -432,9 +494,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_enable_selected_repository_github_actions_organization(
@@ -444,9 +511,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     def disable_selected_repository_github_actions_organization(
@@ -456,9 +528,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_disable_selected_repository_github_actions_organization(
@@ -468,9 +545,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def get_allowed_actions_organization(
@@ -479,9 +561,14 @@ class ActionsClient:
     ) -> "Response[SelectedActions]":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SelectedActions,
         )
 
@@ -491,9 +578,14 @@ class ActionsClient:
     ) -> "Response[SelectedActions]":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SelectedActions,
         )
 
@@ -520,6 +612,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -531,6 +627,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -556,6 +653,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -567,6 +668,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def get_github_actions_default_workflow_permissions_organization(
@@ -575,9 +677,14 @@ class ActionsClient:
     ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
         url = f"/orgs/{org}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -587,9 +694,14 @@ class ActionsClient:
     ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
         url = f"/orgs/{org}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -622,6 +734,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -633,6 +749,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -664,6 +781,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -675,6 +796,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def list_required_workflows(
@@ -690,10 +812,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRequiredWorkflowsGetResponse200,
         )
 
@@ -710,10 +837,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRequiredWorkflowsGetResponse200,
         )
 
@@ -745,6 +877,10 @@ class ActionsClient:
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -756,6 +892,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RequiredWorkflow,
             error_models={
                 "422": ValidationErrorSimple,
@@ -790,6 +927,10 @@ class ActionsClient:
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -801,6 +942,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RequiredWorkflow,
             error_models={
                 "422": ValidationErrorSimple,
@@ -814,9 +956,14 @@ class ActionsClient:
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RequiredWorkflow,
         )
 
@@ -827,9 +974,14 @@ class ActionsClient:
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RequiredWorkflow,
         )
 
@@ -840,9 +992,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_required_workflow(
@@ -852,9 +1009,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -893,6 +1055,10 @@ class ActionsClient:
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -906,6 +1072,7 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RequiredWorkflow,
             error_models={
                 "422": ValidationErrorSimple,
@@ -948,6 +1115,10 @@ class ActionsClient:
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -961,6 +1132,7 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RequiredWorkflow,
             error_models={
                 "422": ValidationErrorSimple,
@@ -974,9 +1146,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200,
             error_models={},
         )
@@ -988,9 +1165,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200,
             error_models={},
         )
@@ -1029,6 +1211,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1042,6 +1228,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -1078,6 +1265,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1091,6 +1282,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def add_selected_repo_to_required_workflow(
@@ -1101,9 +1293,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1115,9 +1312,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1129,9 +1331,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1143,9 +1350,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/required_workflows/{required_workflow_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1162,10 +1374,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersGetResponse200,
         )
 
@@ -1182,10 +1399,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersGetResponse200,
         )
 
@@ -1195,9 +1417,14 @@ class ActionsClient:
     ) -> "Response[List[RunnerApplication]]":
         url = f"/orgs/{org}/actions/runners/downloads"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[RunnerApplication],
         )
 
@@ -1207,9 +1434,14 @@ class ActionsClient:
     ) -> "Response[List[RunnerApplication]]":
         url = f"/orgs/{org}/actions/runners/downloads"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[RunnerApplication],
         )
 
@@ -1219,9 +1451,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/orgs/{org}/actions/runners/registration-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -1231,9 +1468,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/orgs/{org}/actions/runners/registration-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -1243,9 +1485,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/orgs/{org}/actions/runners/remove-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -1255,9 +1502,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/orgs/{org}/actions/runners/remove-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -1268,9 +1520,14 @@ class ActionsClient:
     ) -> "Response[Runner]":
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Runner,
         )
 
@@ -1281,9 +1538,14 @@ class ActionsClient:
     ) -> "Response[Runner]":
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Runner,
         )
 
@@ -1294,9 +1556,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_self_hosted_runner_from_org(
@@ -1306,9 +1573,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_labels_for_self_hosted_runner_for_org(
@@ -1318,9 +1590,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1334,9 +1611,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1374,6 +1656,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1385,6 +1671,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1423,6 +1710,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1434,6 +1725,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1472,6 +1764,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1483,6 +1779,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1521,6 +1818,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1532,6 +1833,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1546,9 +1848,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -1562,9 +1869,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -1579,9 +1891,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1597,9 +1914,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1620,10 +1942,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsSecretsGetResponse200,
         )
 
@@ -1640,10 +1967,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsSecretsGetResponse200,
         )
 
@@ -1653,9 +1985,14 @@ class ActionsClient:
     ) -> "Response[ActionsPublicKey]":
         url = f"/orgs/{org}/actions/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsPublicKey,
         )
 
@@ -1665,9 +2002,14 @@ class ActionsClient:
     ) -> "Response[ActionsPublicKey]":
         url = f"/orgs/{org}/actions/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsPublicKey,
         )
 
@@ -1678,9 +2020,14 @@ class ActionsClient:
     ) -> "Response[OrganizationActionsSecret]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationActionsSecret,
         )
 
@@ -1691,9 +2038,14 @@ class ActionsClient:
     ) -> "Response[OrganizationActionsSecret]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationActionsSecret,
         )
 
@@ -1731,6 +2083,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1742,6 +2098,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -1779,6 +2136,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1790,6 +2151,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -1800,9 +2162,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_org_secret(
@@ -1812,9 +2179,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_selected_repos_for_org_secret(
@@ -1831,10 +2203,15 @@ class ActionsClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -1852,10 +2229,15 @@ class ActionsClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -1892,6 +2274,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1903,6 +2289,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -1938,6 +2325,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1949,6 +2340,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def add_selected_repo_to_org_secret(
@@ -1959,9 +2351,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1973,9 +2370,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1987,9 +2389,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2001,9 +2408,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2020,10 +2432,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsVariablesGetResponse200,
         )
 
@@ -2040,10 +2457,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsVariablesGetResponse200,
         )
 
@@ -2075,6 +2497,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/variables"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2086,6 +2512,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -2117,6 +2544,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/variables"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2128,6 +2559,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -2138,9 +2570,14 @@ class ActionsClient:
     ) -> "Response[OrganizationActionsVariable]":
         url = f"/orgs/{org}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationActionsVariable,
         )
 
@@ -2151,9 +2588,14 @@ class ActionsClient:
     ) -> "Response[OrganizationActionsVariable]":
         url = f"/orgs/{org}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationActionsVariable,
         )
 
@@ -2164,9 +2606,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_org_variable(
@@ -2176,9 +2623,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -2209,6 +2661,10 @@ class ActionsClient:
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -2221,6 +2677,7 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -2252,6 +2709,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2263,6 +2724,7 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def list_selected_repos_for_org_variable(
@@ -2279,10 +2741,15 @@ class ActionsClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
             error_models={},
         )
@@ -2301,10 +2768,15 @@ class ActionsClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
             error_models={},
         )
@@ -2340,6 +2812,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2351,6 +2827,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2385,6 +2862,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2396,6 +2877,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2407,9 +2889,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2421,9 +2908,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2435,9 +2927,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2449,9 +2946,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2469,10 +2971,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOrgRepoActionsRequiredWorkflowsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -2493,10 +3000,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOrgRepoActionsRequiredWorkflowsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -2511,9 +3023,14 @@ class ActionsClient:
     ) -> "Response[RepoRequiredWorkflow]":
         url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepoRequiredWorkflow,
             error_models={
                 "404": BasicError,
@@ -2528,9 +3045,14 @@ class ActionsClient:
     ) -> "Response[RepoRequiredWorkflow]":
         url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepoRequiredWorkflow,
             error_models={
                 "404": BasicError,
@@ -2545,9 +3067,14 @@ class ActionsClient:
     ) -> "Response[WorkflowUsage]":
         url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/timing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WorkflowUsage,
             error_models={
                 "404": BasicError,
@@ -2562,9 +3089,14 @@ class ActionsClient:
     ) -> "Response[WorkflowUsage]":
         url = f"/repos/{org}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/timing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WorkflowUsage,
             error_models={
                 "404": BasicError,
@@ -2587,10 +3119,15 @@ class ActionsClient:
             "name": name,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsArtifactsGetResponse200,
         )
 
@@ -2610,10 +3147,15 @@ class ActionsClient:
             "name": name,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsArtifactsGetResponse200,
         )
 
@@ -2625,9 +3167,14 @@ class ActionsClient:
     ) -> "Response[Artifact]":
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Artifact,
         )
 
@@ -2639,9 +3186,14 @@ class ActionsClient:
     ) -> "Response[Artifact]":
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Artifact,
         )
 
@@ -2653,9 +3205,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_artifact(
@@ -2666,9 +3223,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def download_artifact(
@@ -2680,9 +3242,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "410": BasicError,
             },
@@ -2697,9 +3264,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "410": BasicError,
             },
@@ -2712,9 +3284,14 @@ class ActionsClient:
     ) -> "Response[ActionsCacheUsageByRepository]":
         url = f"/repos/{owner}/{repo}/actions/cache/usage"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsCacheUsageByRepository,
         )
 
@@ -2725,9 +3302,14 @@ class ActionsClient:
     ) -> "Response[ActionsCacheUsageByRepository]":
         url = f"/repos/{owner}/{repo}/actions/cache/usage"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsCacheUsageByRepository,
         )
 
@@ -2755,10 +3337,15 @@ class ActionsClient:
             "direction": direction,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ActionsCacheList,
         )
 
@@ -2786,10 +3373,15 @@ class ActionsClient:
             "direction": direction,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ActionsCacheList,
         )
 
@@ -2807,10 +3399,15 @@ class ActionsClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ActionsCacheList,
         )
 
@@ -2828,10 +3425,15 @@ class ActionsClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ActionsCacheList,
         )
 
@@ -2843,9 +3445,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_actions_cache_by_id(
@@ -2856,9 +3463,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def get_job_for_workflow_run(
@@ -2869,9 +3481,14 @@ class ActionsClient:
     ) -> "Response[Job]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Job,
         )
 
@@ -2883,9 +3500,14 @@ class ActionsClient:
     ) -> "Response[Job]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Job,
         )
 
@@ -2897,9 +3519,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_download_job_logs_for_workflow_run(
@@ -2910,9 +3537,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -2953,6 +3585,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2966,6 +3602,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -3010,6 +3647,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3023,6 +3664,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -3036,9 +3678,14 @@ class ActionsClient:
     ) -> "Response[OidcCustomSubRepo]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OidcCustomSubRepo,
             error_models={
                 "400": BasicError,
@@ -3053,9 +3700,14 @@ class ActionsClient:
     ) -> "Response[OidcCustomSubRepo]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OidcCustomSubRepo,
             error_models={
                 "400": BasicError,
@@ -3097,6 +3749,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3108,6 +3764,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -3150,6 +3807,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3161,6 +3822,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -3183,10 +3845,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         )
 
@@ -3204,10 +3871,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         )
 
@@ -3225,10 +3897,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         )
 
@@ -3246,10 +3923,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         )
 
@@ -3260,9 +3942,14 @@ class ActionsClient:
     ) -> "Response[ActionsRepositoryPermissions]":
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsRepositoryPermissions,
         )
 
@@ -3273,9 +3960,14 @@ class ActionsClient:
     ) -> "Response[ActionsRepositoryPermissions]":
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsRepositoryPermissions,
         )
 
@@ -3311,6 +4003,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3322,6 +4018,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -3356,6 +4053,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3367,6 +4068,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def get_workflow_access_to_repository(
@@ -3376,9 +4078,14 @@ class ActionsClient:
     ) -> "Response[ActionsWorkflowAccessToRepository]":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsWorkflowAccessToRepository,
         )
 
@@ -3389,9 +4096,14 @@ class ActionsClient:
     ) -> "Response[ActionsWorkflowAccessToRepository]":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsWorkflowAccessToRepository,
         )
 
@@ -3422,6 +4134,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3433,6 +4149,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -3462,6 +4179,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3473,6 +4194,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def get_allowed_actions_repository(
@@ -3482,9 +4204,14 @@ class ActionsClient:
     ) -> "Response[SelectedActions]":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SelectedActions,
         )
 
@@ -3495,9 +4222,14 @@ class ActionsClient:
     ) -> "Response[SelectedActions]":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SelectedActions,
         )
 
@@ -3530,6 +4262,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3541,6 +4277,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -3572,6 +4309,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3583,6 +4324,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def get_github_actions_default_workflow_permissions_repository(
@@ -3592,9 +4334,14 @@ class ActionsClient:
     ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -3605,9 +4352,14 @@ class ActionsClient:
     ) -> "Response[ActionsGetDefaultWorkflowPermissions]":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsGetDefaultWorkflowPermissions,
         )
 
@@ -3639,6 +4391,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3650,6 +4406,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -3681,6 +4438,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3692,6 +4453,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -3744,10 +4506,15 @@ class ActionsClient:
             "head_sha": head_sha,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200,
         )
 
@@ -3800,10 +4567,15 @@ class ActionsClient:
             "head_sha": head_sha,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200,
         )
 
@@ -3821,10 +4593,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunnersGetResponse200,
         )
 
@@ -3842,10 +4619,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunnersGetResponse200,
         )
 
@@ -3856,9 +4638,14 @@ class ActionsClient:
     ) -> "Response[List[RunnerApplication]]":
         url = f"/repos/{owner}/{repo}/actions/runners/downloads"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[RunnerApplication],
         )
 
@@ -3869,9 +4656,14 @@ class ActionsClient:
     ) -> "Response[List[RunnerApplication]]":
         url = f"/repos/{owner}/{repo}/actions/runners/downloads"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[RunnerApplication],
         )
 
@@ -3882,9 +4674,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/repos/{owner}/{repo}/actions/runners/registration-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -3895,9 +4692,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/repos/{owner}/{repo}/actions/runners/registration-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -3908,9 +4710,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/repos/{owner}/{repo}/actions/runners/remove-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -3921,9 +4728,14 @@ class ActionsClient:
     ) -> "Response[AuthenticationToken]":
         url = f"/repos/{owner}/{repo}/actions/runners/remove-token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AuthenticationToken,
         )
 
@@ -3935,9 +4747,14 @@ class ActionsClient:
     ) -> "Response[Runner]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Runner,
         )
 
@@ -3949,9 +4766,14 @@ class ActionsClient:
     ) -> "Response[Runner]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Runner,
         )
 
@@ -3963,9 +4785,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_self_hosted_runner_from_repo(
@@ -3976,9 +4803,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_labels_for_self_hosted_runner_for_repo(
@@ -3989,9 +4821,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4006,9 +4843,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4051,6 +4893,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4062,6 +4908,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4105,6 +4952,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4116,6 +4967,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4159,6 +5011,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4170,6 +5026,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4213,6 +5070,10 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4224,6 +5085,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4239,9 +5101,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -4256,9 +5123,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
             error_models={
                 "404": BasicError,
@@ -4274,9 +5146,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4293,9 +5170,14 @@ class ActionsClient:
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4351,10 +5233,15 @@ class ActionsClient:
             "head_sha": head_sha,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsGetResponse200,
         )
 
@@ -4406,10 +5293,15 @@ class ActionsClient:
             "head_sha": head_sha,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsGetResponse200,
         )
 
@@ -4426,10 +5318,15 @@ class ActionsClient:
             "exclude_pull_requests": exclude_pull_requests,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=WorkflowRun,
         )
 
@@ -4446,10 +5343,15 @@ class ActionsClient:
             "exclude_pull_requests": exclude_pull_requests,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=WorkflowRun,
         )
 
@@ -4461,9 +5363,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_workflow_run(
@@ -4474,9 +5381,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def get_reviews_for_run(
@@ -4487,9 +5399,14 @@ class ActionsClient:
     ) -> "Response[List[EnvironmentApprovals]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[EnvironmentApprovals],
         )
 
@@ -4501,9 +5418,14 @@ class ActionsClient:
     ) -> "Response[List[EnvironmentApprovals]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/approvals"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[EnvironmentApprovals],
         )
 
@@ -4515,9 +5437,14 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/approve"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -4533,9 +5460,14 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/approve"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -4558,10 +5490,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         )
 
@@ -4580,10 +5517,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
         )
 
@@ -4601,10 +5543,15 @@ class ActionsClient:
             "exclude_pull_requests": exclude_pull_requests,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=WorkflowRun,
         )
 
@@ -4622,10 +5569,15 @@ class ActionsClient:
             "exclude_pull_requests": exclude_pull_requests,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=WorkflowRun,
         )
 
@@ -4645,10 +5597,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4671,10 +5628,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
             error_models={
                 "404": BasicError,
@@ -4690,9 +5652,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_download_workflow_run_attempt_logs(
@@ -4704,9 +5671,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     def cancel_workflow_run(
@@ -4717,9 +5689,14 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "409": BasicError,
@@ -4734,9 +5711,14 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "409": BasicError,
@@ -4760,10 +5742,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         )
 
@@ -4784,10 +5771,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
         )
 
@@ -4799,9 +5791,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_download_workflow_run_logs(
@@ -4812,9 +5809,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
         )
 
     def delete_workflow_run_logs(
@@ -4825,9 +5827,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "500": BasicError,
@@ -4842,9 +5849,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "500": BasicError,
@@ -4859,9 +5871,14 @@ class ActionsClient:
     ) -> "Response[List[PendingDeployment]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[PendingDeployment],
         )
 
@@ -4873,9 +5890,14 @@ class ActionsClient:
     ) -> "Response[List[PendingDeployment]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[PendingDeployment],
         )
 
@@ -4917,6 +5939,10 @@ class ActionsClient:
     ) -> "Response[List[Deployment]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4930,6 +5956,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Deployment],
         )
 
@@ -4971,6 +5998,10 @@ class ActionsClient:
     ) -> "Response[List[Deployment]]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -4984,6 +6015,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=List[Deployment],
         )
 
@@ -5025,6 +6057,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5038,6 +6074,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5079,6 +6116,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5092,6 +6133,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5134,6 +6176,10 @@ class ActionsClient:
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -5148,6 +6194,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5191,6 +6238,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5204,6 +6255,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5215,9 +6267,14 @@ class ActionsClient:
     ) -> "Response[WorkflowRunUsage]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/timing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WorkflowRunUsage,
         )
 
@@ -5229,9 +6286,14 @@ class ActionsClient:
     ) -> "Response[WorkflowRunUsage]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/timing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WorkflowRunUsage,
         )
 
@@ -5249,10 +6311,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsSecretsGetResponse200,
         )
 
@@ -5270,10 +6337,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsSecretsGetResponse200,
         )
 
@@ -5284,9 +6356,14 @@ class ActionsClient:
     ) -> "Response[ActionsPublicKey]":
         url = f"/repos/{owner}/{repo}/actions/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsPublicKey,
         )
 
@@ -5297,9 +6374,14 @@ class ActionsClient:
     ) -> "Response[ActionsPublicKey]":
         url = f"/repos/{owner}/{repo}/actions/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsPublicKey,
         )
 
@@ -5311,9 +6393,14 @@ class ActionsClient:
     ) -> "Response[ActionsSecret]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsSecret,
         )
 
@@ -5325,9 +6412,14 @@ class ActionsClient:
     ) -> "Response[ActionsSecret]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsSecret,
         )
 
@@ -5366,6 +6458,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5377,6 +6473,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5415,6 +6512,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5426,6 +6527,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5437,9 +6539,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_repo_secret(
@@ -5450,9 +6557,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_repo_variables(
@@ -5469,10 +6581,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsVariablesGetResponse200,
         )
 
@@ -5490,10 +6607,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsVariablesGetResponse200,
         )
 
@@ -5525,6 +6647,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/variables"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5536,6 +6662,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5567,6 +6694,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/variables"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5578,6 +6709,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -5589,9 +6721,14 @@ class ActionsClient:
     ) -> "Response[ActionsVariable]":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsVariable,
         )
 
@@ -5603,9 +6740,14 @@ class ActionsClient:
     ) -> "Response[ActionsVariable]":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsVariable,
         )
 
@@ -5617,9 +6759,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_repo_variable(
@@ -5630,9 +6777,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -5668,6 +6820,10 @@ class ActionsClient:
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -5680,6 +6836,7 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -5716,6 +6873,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5727,6 +6888,7 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def list_repo_workflows(
@@ -5743,10 +6905,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsWorkflowsGetResponse200,
         )
 
@@ -5764,10 +6931,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsWorkflowsGetResponse200,
         )
 
@@ -5779,9 +6951,14 @@ class ActionsClient:
     ) -> "Response[Workflow]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Workflow,
         )
 
@@ -5793,9 +6970,14 @@ class ActionsClient:
     ) -> "Response[Workflow]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Workflow,
         )
 
@@ -5807,9 +6989,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_disable_workflow(
@@ -5820,9 +7007,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -5864,6 +7056,10 @@ class ActionsClient:
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -5878,6 +7074,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -5920,6 +7117,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -5933,6 +7134,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def enable_workflow(
@@ -5943,9 +7145,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_enable_workflow(
@@ -5956,9 +7163,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_workflow_runs(
@@ -6010,10 +7222,15 @@ class ActionsClient:
             "head_sha": head_sha,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         )
 
@@ -6066,10 +7283,15 @@ class ActionsClient:
             "head_sha": head_sha,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
         )
 
@@ -6081,9 +7303,14 @@ class ActionsClient:
     ) -> "Response[WorkflowUsage]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WorkflowUsage,
         )
 
@@ -6095,9 +7322,14 @@ class ActionsClient:
     ) -> "Response[WorkflowUsage]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WorkflowUsage,
         )
 
@@ -6115,10 +7347,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
@@ -6136,10 +7373,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
@@ -6150,9 +7392,14 @@ class ActionsClient:
     ) -> "Response[ActionsPublicKey]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsPublicKey,
         )
 
@@ -6163,9 +7410,14 @@ class ActionsClient:
     ) -> "Response[ActionsPublicKey]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsPublicKey,
         )
 
@@ -6177,9 +7429,14 @@ class ActionsClient:
     ) -> "Response[ActionsSecret]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsSecret,
         )
 
@@ -6191,9 +7448,14 @@ class ActionsClient:
     ) -> "Response[ActionsSecret]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsSecret,
         )
 
@@ -6235,6 +7497,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6249,6 +7515,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -6290,6 +7557,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6304,6 +7575,7 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -6315,9 +7587,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_environment_secret(
@@ -6328,9 +7605,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_environment_variables(
@@ -6347,10 +7629,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
@@ -6368,10 +7655,15 @@ class ActionsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
@@ -6410,6 +7702,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6423,6 +7719,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -6461,6 +7758,10 @@ class ActionsClient:
     ) -> "Response[EmptyObject]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6474,6 +7775,7 @@ class ActionsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -6485,9 +7787,14 @@ class ActionsClient:
     ) -> "Response[ActionsVariable]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsVariable,
         )
 
@@ -6499,9 +7806,14 @@ class ActionsClient:
     ) -> "Response[ActionsVariable]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ActionsVariable,
         )
 
@@ -6513,9 +7825,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_environment_variable(
@@ -6526,9 +7843,14 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -6567,6 +7889,10 @@ class ActionsClient:
         **kwargs,
     ) -> "Response":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -6582,6 +7908,7 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -6621,6 +7948,10 @@ class ActionsClient:
     ) -> "Response":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -6635,4 +7966,5 @@ class ActionsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )

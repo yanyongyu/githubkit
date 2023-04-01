@@ -27,6 +27,8 @@ if TYPE_CHECKING:
 
 
 class SecretScanningClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -55,10 +57,15 @@ class SecretScanningClient:
             "after": after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -91,10 +98,15 @@ class SecretScanningClient:
             "after": after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -129,10 +141,15 @@ class SecretScanningClient:
             "after": after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -167,10 +184,15 @@ class SecretScanningClient:
             "after": after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
@@ -206,10 +228,15 @@ class SecretScanningClient:
             "after": after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SecretScanningAlert],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -244,10 +271,15 @@ class SecretScanningClient:
             "after": after,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SecretScanningAlert],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -262,9 +294,14 @@ class SecretScanningClient:
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -279,9 +316,14 @@ class SecretScanningClient:
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -330,6 +372,10 @@ class SecretScanningClient:
         **kwargs,
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -344,6 +390,7 @@ class SecretScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -393,6 +440,10 @@ class SecretScanningClient:
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -406,6 +457,7 @@ class SecretScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=SecretScanningAlert,
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -427,10 +479,15 @@ class SecretScanningClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SecretScanningLocation],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -452,10 +509,15 @@ class SecretScanningClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SecretScanningLocation],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,

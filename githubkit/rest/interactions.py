@@ -27,6 +27,8 @@ if TYPE_CHECKING:
 
 
 class InteractionsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -36,9 +38,14 @@ class InteractionsClient:
     ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
         url = f"/orgs/{org}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[
                 InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
             ],
@@ -50,9 +57,14 @@ class InteractionsClient:
     ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
         url = f"/orgs/{org}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[
                 InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1
             ],
@@ -83,6 +95,10 @@ class InteractionsClient:
     ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -94,6 +110,7 @@ class InteractionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -125,6 +142,10 @@ class InteractionsClient:
     ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -136,6 +157,7 @@ class InteractionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -148,9 +170,14 @@ class InteractionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_restrictions_for_org(
@@ -159,9 +186,14 @@ class InteractionsClient:
     ) -> "Response":
         url = f"/orgs/{org}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def get_restrictions_for_repo(
@@ -171,9 +203,14 @@ class InteractionsClient:
     ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[
                 InteractionLimitResponse,
                 ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
@@ -187,9 +224,14 @@ class InteractionsClient:
     ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[
                 InteractionLimitResponse,
                 ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
@@ -227,6 +269,10 @@ class InteractionsClient:
     ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -238,6 +284,7 @@ class InteractionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InteractionLimitResponse,
             error_models={},
         )
@@ -273,6 +320,10 @@ class InteractionsClient:
     ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -284,6 +335,7 @@ class InteractionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InteractionLimitResponse,
             error_models={},
         )
@@ -295,9 +347,14 @@ class InteractionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -308,9 +365,14 @@ class InteractionsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -319,9 +381,14 @@ class InteractionsClient:
     ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
         url = "/user/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[
                 InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
             ],
@@ -332,9 +399,14 @@ class InteractionsClient:
     ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
         url = "/user/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Union[
                 InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1
             ],
@@ -364,6 +436,10 @@ class InteractionsClient:
     ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -375,6 +451,7 @@ class InteractionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -405,6 +482,10 @@ class InteractionsClient:
     ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -416,6 +497,7 @@ class InteractionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InteractionLimitResponse,
             error_models={
                 "422": ValidationError,
@@ -427,9 +509,14 @@ class InteractionsClient:
     ) -> "Response":
         url = "/user/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_restrictions_for_authenticated_user(
@@ -437,7 +524,12 @@ class InteractionsClient:
     ) -> "Response":
         url = "/user/interaction-limits"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )

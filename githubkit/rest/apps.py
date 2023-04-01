@@ -57,6 +57,8 @@ if TYPE_CHECKING:
 
 
 class AppsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -65,9 +67,14 @@ class AppsClient:
     ) -> "Response[Integration]":
         url = "/app"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Integration,
         )
 
@@ -76,9 +83,14 @@ class AppsClient:
     ) -> "Response[Integration]":
         url = "/app"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Integration,
         )
 
@@ -88,9 +100,14 @@ class AppsClient:
     ) -> "Response[AppManifestsCodeConversionsPostResponse201]":
         url = f"/app-manifests/{code}/conversions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppManifestsCodeConversionsPostResponse201,
             error_models={
                 "404": BasicError,
@@ -104,9 +121,14 @@ class AppsClient:
     ) -> "Response[AppManifestsCodeConversionsPostResponse201]":
         url = f"/app-manifests/{code}/conversions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppManifestsCodeConversionsPostResponse201,
             error_models={
                 "404": BasicError,
@@ -119,9 +141,14 @@ class AppsClient:
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -130,9 +157,14 @@ class AppsClient:
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -158,6 +190,10 @@ class AppsClient:
         self, *, data: Union[Unset, AppHookConfigPatchBodyType] = UNSET, **kwargs
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -170,6 +206,7 @@ class AppsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -196,6 +233,10 @@ class AppsClient:
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -207,6 +248,7 @@ class AppsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=WebhookConfig,
         )
 
@@ -224,10 +266,15 @@ class AppsClient:
             "redelivery": redelivery,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -249,10 +296,15 @@ class AppsClient:
             "redelivery": redelivery,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[HookDeliveryItem],
             error_models={
                 "400": BasicError,
@@ -266,9 +318,14 @@ class AppsClient:
     ) -> "Response[HookDelivery]":
         url = f"/app/hook/deliveries/{delivery_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -282,9 +339,14 @@ class AppsClient:
     ) -> "Response[HookDelivery]":
         url = f"/app/hook/deliveries/{delivery_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=HookDelivery,
             error_models={
                 "400": BasicError,
@@ -298,9 +360,14 @@ class AppsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/app/hook/deliveries/{delivery_id}/attempts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -314,9 +381,14 @@ class AppsClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/app/hook/deliveries/{delivery_id}/attempts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "400": BasicError,
@@ -336,10 +408,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[IntegrationInstallationRequest],
             error_models={
                 "401": BasicError,
@@ -358,10 +435,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[IntegrationInstallationRequest],
             error_models={
                 "401": BasicError,
@@ -384,10 +466,15 @@ class AppsClient:
             "outdated": outdated,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Installation],
         )
 
@@ -407,10 +494,15 @@ class AppsClient:
             "outdated": outdated,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Installation],
         )
 
@@ -420,9 +512,14 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/app/installations/{installation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -435,9 +532,14 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/app/installations/{installation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -450,9 +552,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/app/installations/{installation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -464,9 +571,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/app/installations/{installation_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -506,6 +618,10 @@ class AppsClient:
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -517,6 +633,7 @@ class AppsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InstallationToken,
             error_models={
                 "403": BasicError,
@@ -560,6 +677,10 @@ class AppsClient:
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -571,6 +692,7 @@ class AppsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=InstallationToken,
             error_models={
                 "403": BasicError,
@@ -586,9 +708,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -600,9 +727,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -614,9 +746,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -628,9 +765,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -661,6 +803,10 @@ class AppsClient:
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -672,6 +818,7 @@ class AppsClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -702,6 +849,10 @@ class AppsClient:
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -713,6 +864,7 @@ class AppsClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -743,6 +895,10 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -754,6 +910,7 @@ class AppsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -786,6 +943,10 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -797,6 +958,7 @@ class AppsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -829,6 +991,10 @@ class AppsClient:
     ) -> "Response":
         url = f"/applications/{client_id}/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -840,6 +1006,7 @@ class AppsClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -870,6 +1037,10 @@ class AppsClient:
     ) -> "Response":
         url = f"/applications/{client_id}/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -881,6 +1052,7 @@ class AppsClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
             },
@@ -911,6 +1083,10 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -922,6 +1098,7 @@ class AppsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -953,6 +1130,10 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -964,6 +1145,7 @@ class AppsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Authorization,
             error_models={
                 "422": ValidationError,
@@ -1000,6 +1182,10 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1011,6 +1197,7 @@ class AppsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Authorization,
             error_models={
                 "401": BasicError,
@@ -1050,6 +1237,10 @@ class AppsClient:
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1061,6 +1252,7 @@ class AppsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Authorization,
             error_models={
                 "401": BasicError,
@@ -1076,9 +1268,14 @@ class AppsClient:
     ) -> "Response[Integration]":
         url = f"/apps/{app_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Integration,
             error_models={
                 "403": BasicError,
@@ -1092,9 +1289,14 @@ class AppsClient:
     ) -> "Response[Integration]":
         url = f"/apps/{app_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Integration,
             error_models={
                 "403": BasicError,
@@ -1114,10 +1316,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=InstallationRepositoriesGetResponse200,
             error_models={
                 "403": BasicError,
@@ -1137,10 +1344,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=InstallationRepositoriesGetResponse200,
             error_models={
                 "403": BasicError,
@@ -1153,9 +1365,14 @@ class AppsClient:
     ) -> "Response":
         url = "/installation/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_revoke_installation_access_token(
@@ -1163,9 +1380,14 @@ class AppsClient:
     ) -> "Response":
         url = "/installation/token"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def get_subscription_plan_for_account(
@@ -1174,9 +1396,14 @@ class AppsClient:
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/accounts/{account_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=MarketplacePurchase,
             error_models={
                 "404": BasicError,
@@ -1190,9 +1417,14 @@ class AppsClient:
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/accounts/{account_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=MarketplacePurchase,
             error_models={
                 "404": BasicError,
@@ -1212,10 +1444,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplaceListingPlan],
             error_models={
                 "404": BasicError,
@@ -1235,10 +1472,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplaceListingPlan],
             error_models={
                 "404": BasicError,
@@ -1263,10 +1505,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplacePurchase],
             error_models={
                 "404": BasicError,
@@ -1292,10 +1539,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplacePurchase],
             error_models={
                 "404": BasicError,
@@ -1310,9 +1562,14 @@ class AppsClient:
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/stubbed/accounts/{account_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=MarketplacePurchase,
             error_models={
                 "401": BasicError,
@@ -1325,9 +1582,14 @@ class AppsClient:
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/stubbed/accounts/{account_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=MarketplacePurchase,
             error_models={
                 "401": BasicError,
@@ -1346,10 +1608,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplaceListingPlan],
             error_models={
                 "401": BasicError,
@@ -1368,10 +1635,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplaceListingPlan],
             error_models={
                 "401": BasicError,
@@ -1395,10 +1667,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -1422,10 +1699,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -1438,9 +1720,14 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/orgs/{org}/installation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
         )
 
@@ -1450,9 +1737,14 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/orgs/{org}/installation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
         )
 
@@ -1463,9 +1755,14 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/repos/{owner}/{repo}/installation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -1479,9 +1776,14 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/repos/{owner}/{repo}/installation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
             error_models={
                 "404": BasicError,
@@ -1500,10 +1802,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserInstallationsGetResponse200,
             error_models={
                 "403": BasicError,
@@ -1523,10 +1830,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserInstallationsGetResponse200,
             error_models={
                 "403": BasicError,
@@ -1547,10 +1859,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserInstallationsInstallationIdRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1571,10 +1888,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserInstallationsInstallationIdRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -1589,9 +1911,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1605,9 +1932,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1621,9 +1953,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1637,9 +1974,14 @@ class AppsClient:
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1658,10 +2000,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -1681,10 +2028,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -1704,10 +2056,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -1726,10 +2083,15 @@ class AppsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
@@ -1742,9 +2104,14 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/users/{username}/installation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
         )
 
@@ -1754,8 +2121,13 @@ class AppsClient:
     ) -> "Response[Installation]":
         url = f"/users/{username}/installation"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Installation,
         )

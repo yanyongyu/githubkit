@@ -70,6 +70,8 @@ if TYPE_CHECKING:
 
 
 class TeamsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -86,10 +88,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "403": BasicError,
@@ -109,10 +116,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "403": BasicError,
@@ -150,6 +162,10 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -161,6 +177,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "422": ValidationError,
@@ -199,6 +216,10 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -210,6 +231,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "422": ValidationError,
@@ -224,9 +246,14 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -240,9 +267,14 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -256,9 +288,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_in_org(
@@ -268,9 +305,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -308,6 +350,10 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -319,6 +365,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -362,6 +409,10 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -373,6 +424,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -399,10 +451,15 @@ class TeamsClient:
             "pinned": pinned,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussion],
         )
 
@@ -424,10 +481,15 @@ class TeamsClient:
             "pinned": pinned,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussion],
         )
 
@@ -464,6 +526,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -475,6 +541,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -511,6 +578,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -522,6 +593,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -533,9 +605,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -547,9 +624,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -561,9 +643,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_discussion_in_org(
@@ -574,9 +661,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -618,6 +710,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -631,6 +727,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -673,6 +770,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -686,6 +787,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -706,10 +808,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussionComment],
         )
 
@@ -730,10 +837,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussionComment],
         )
 
@@ -773,6 +885,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -786,6 +902,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -825,6 +942,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -838,6 +959,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -850,9 +972,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -865,9 +992,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -880,9 +1012,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_discussion_comment_in_org(
@@ -894,9 +1031,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -939,6 +1081,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -953,6 +1099,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -996,6 +1143,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1010,6 +1161,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -1027,10 +1179,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
         )
 
@@ -1048,10 +1205,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
         )
 
@@ -1071,10 +1233,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1094,10 +1261,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -1109,9 +1281,14 @@ class TeamsClient:
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={},
         )
@@ -1124,9 +1301,14 @@ class TeamsClient:
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={},
         )
@@ -1164,6 +1346,10 @@ class TeamsClient:
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -1176,6 +1362,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={},
         )
@@ -1214,6 +1401,10 @@ class TeamsClient:
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1225,6 +1416,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={},
         )
@@ -1237,9 +1429,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1251,9 +1448,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -1271,10 +1473,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamProject],
         )
 
@@ -1292,10 +1499,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamProject],
         )
 
@@ -1307,9 +1519,14 @@ class TeamsClient:
     ) -> "Response[TeamProject]":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamProject,
             error_models={},
         )
@@ -1322,9 +1539,14 @@ class TeamsClient:
     ) -> "Response[TeamProject]":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamProject,
             error_models={},
         )
@@ -1367,6 +1589,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1380,6 +1606,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "403": OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
             },
@@ -1423,6 +1650,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1436,6 +1667,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "403": OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
             },
@@ -1449,9 +1681,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_project_in_org(
@@ -1462,9 +1699,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_repos_in_org(
@@ -1481,10 +1723,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )
 
@@ -1502,10 +1749,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )
 
@@ -1518,9 +1770,14 @@ class TeamsClient:
     ) -> "Response[TeamRepository]":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamRepository,
             error_models={},
         )
@@ -1534,9 +1791,14 @@ class TeamsClient:
     ) -> "Response[TeamRepository]":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamRepository,
             error_models={},
         )
@@ -1578,6 +1840,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1589,6 +1855,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -1628,6 +1895,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1639,6 +1910,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def remove_repo_in_org(
@@ -1650,9 +1922,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_repo_in_org(
@@ -1664,9 +1941,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_child_in_org(
@@ -1683,10 +1965,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
         )
 
@@ -1704,10 +1991,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
         )
 
@@ -1717,9 +2009,14 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -1732,9 +2029,14 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -1747,9 +2049,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1762,9 +2069,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1800,6 +2112,10 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1811,6 +2127,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -1848,6 +2165,10 @@ class TeamsClient:
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1859,6 +2180,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamFull,
             error_models={
                 "404": BasicError,
@@ -1882,10 +2204,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussion],
         )
 
@@ -1904,10 +2231,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussion],
         )
 
@@ -1938,6 +2270,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1949,6 +2285,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -1979,6 +2316,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1990,6 +2331,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -2000,9 +2342,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -2013,9 +2360,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -2026,9 +2378,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_discussion_legacy(
@@ -2038,9 +2395,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -2075,6 +2437,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2086,6 +2452,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -2121,6 +2488,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2132,6 +2503,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussion,
         )
 
@@ -2151,10 +2523,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussionComment],
         )
 
@@ -2174,10 +2551,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamDiscussionComment],
         )
 
@@ -2214,6 +2596,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2227,6 +2613,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -2263,6 +2650,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2276,6 +2667,7 @@ class TeamsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -2287,9 +2679,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -2301,9 +2698,14 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -2315,9 +2717,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_discussion_comment_legacy(
@@ -2328,9 +2735,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -2370,6 +2782,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2383,6 +2799,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -2423,6 +2840,10 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2436,6 +2857,7 @@ class TeamsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamDiscussionComment,
         )
 
@@ -2452,10 +2874,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
         )
 
@@ -2472,10 +2899,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[OrganizationInvitation],
         )
 
@@ -2494,10 +2926,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -2519,10 +2956,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -2536,9 +2978,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2549,9 +2996,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2562,9 +3014,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -2577,9 +3034,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -2592,9 +3054,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2605,9 +3072,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2618,9 +3090,14 @@ class TeamsClient:
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={
                 "404": BasicError,
@@ -2634,9 +3111,14 @@ class TeamsClient:
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={
                 "404": BasicError,
@@ -2673,6 +3155,10 @@ class TeamsClient:
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -2685,6 +3171,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={
                 "404": BasicError,
@@ -2722,6 +3209,10 @@ class TeamsClient:
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2733,6 +3224,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=TeamMembership,
             error_models={
                 "404": BasicError,
@@ -2746,9 +3238,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2759,9 +3256,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/memberships/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -2778,10 +3280,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamProject],
             error_models={
                 "404": BasicError,
@@ -2801,10 +3308,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamProject],
             error_models={
                 "404": BasicError,
@@ -2818,9 +3330,14 @@ class TeamsClient:
     ) -> "Response[TeamProject]":
         url = f"/teams/{team_id}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamProject,
             error_models={},
         )
@@ -2832,9 +3349,14 @@ class TeamsClient:
     ) -> "Response[TeamProject]":
         url = f"/teams/{team_id}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamProject,
             error_models={},
         )
@@ -2870,6 +3392,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2881,6 +3407,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "403": TeamsTeamIdProjectsProjectIdPutResponse403,
                 "404": BasicError,
@@ -2919,6 +3446,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2930,6 +3461,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "403": TeamsTeamIdProjectsProjectIdPutResponse403,
                 "404": BasicError,
@@ -2944,9 +3476,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -2960,9 +3497,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -2982,10 +3524,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -3005,10 +3552,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -3023,9 +3575,14 @@ class TeamsClient:
     ) -> "Response[TeamRepository]":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamRepository,
             error_models={},
         )
@@ -3038,9 +3595,14 @@ class TeamsClient:
     ) -> "Response[TeamRepository]":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=TeamRepository,
             error_models={},
         )
@@ -3079,6 +3641,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3090,6 +3656,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "422": ValidationError,
@@ -3130,6 +3697,10 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -3141,6 +3712,7 @@ class TeamsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "422": ValidationError,
@@ -3155,9 +3727,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_remove_repo_legacy(
@@ -3168,9 +3745,14 @@ class TeamsClient:
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_child_legacy(
@@ -3186,10 +3768,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "404": BasicError,
@@ -3211,10 +3798,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Team],
             error_models={
                 "404": BasicError,
@@ -3235,10 +3827,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamFull],
             error_models={
                 "404": BasicError,
@@ -3258,10 +3855,15 @@ class TeamsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[TeamFull],
             error_models={
                 "404": BasicError,

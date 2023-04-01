@@ -1,17 +1,27 @@
-from typing import Any, Dict
+from typing import Any, Dict, List
 
-from pydantic import BaseModel
 import openapi_schema_pydantic as oas
+from pydantic import Field, BaseModel
 
 
-class Config(BaseModel):
-    rest_description_source: str
-    rest_api_version: str
-    webhook_schema_source: str
-    class_overrides: Dict[str, str] = {}
-    field_overrides: Dict[str, str] = {}
-    schema_overrides: Dict[str, Dict[str, Any]] = {}
+class Overridable(BaseModel):
+    class_overrides: Dict[str, str] = Field(default_factory=dict)
+    field_overrides: Dict[str, str] = Field(default_factory=dict)
+    schema_overrides: Dict[str, Dict[str, Any]] = Field(default_factory=dict)
 
-    client_output: str
-    webhooks_output: str
-    webhook_types_output: str
+
+class RestConfig(Overridable):
+    version: str
+    description_source: str
+    output_dir: str
+
+
+class WebhookConfig(Overridable):
+    schema_source: str
+    output: str
+    types_output: str
+
+
+class Config(Overridable):
+    rest: List[RestConfig]
+    webhook: WebhookConfig

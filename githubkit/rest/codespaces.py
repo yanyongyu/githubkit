@@ -77,6 +77,8 @@ if TYPE_CHECKING:
 
 
 class CodespacesClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -93,10 +95,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -119,10 +126,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -163,6 +175,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -174,6 +190,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -212,6 +229,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -223,6 +244,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -255,6 +277,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -266,6 +292,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -298,6 +325,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -309,6 +340,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -340,6 +372,10 @@ class CodespacesClient:
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -352,6 +388,7 @@ class CodespacesClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -384,6 +421,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -395,6 +436,7 @@ class CodespacesClient:
             "DELETE",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -415,10 +457,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgCodespacesSecretsGetResponse200,
         )
 
@@ -435,10 +482,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgCodespacesSecretsGetResponse200,
         )
 
@@ -448,9 +500,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesPublicKey]":
         url = f"/orgs/{org}/codespaces/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesPublicKey,
         )
 
@@ -460,9 +517,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesPublicKey]":
         url = f"/orgs/{org}/codespaces/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesPublicKey,
         )
 
@@ -473,9 +535,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesOrgSecret]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesOrgSecret,
         )
 
@@ -486,9 +553,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesOrgSecret]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesOrgSecret,
         )
 
@@ -526,6 +598,10 @@ class CodespacesClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -537,6 +613,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -578,6 +655,10 @@ class CodespacesClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -589,6 +670,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -603,9 +685,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -618,9 +705,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -640,10 +732,15 @@ class CodespacesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -664,10 +761,15 @@ class CodespacesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "404": BasicError,
@@ -707,6 +809,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -718,6 +824,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -756,6 +863,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -767,6 +878,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -782,9 +894,14 @@ class CodespacesClient:
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -801,9 +918,14 @@ class CodespacesClient:
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -820,9 +942,14 @@ class CodespacesClient:
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -839,9 +966,14 @@ class CodespacesClient:
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -862,10 +994,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgMembersUsernameCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -889,10 +1026,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgMembersUsernameCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -910,9 +1052,14 @@ class CodespacesClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -930,9 +1077,14 @@ class CodespacesClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -950,9 +1102,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}/stop"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -970,9 +1127,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}/stop"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -996,10 +1158,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1023,10 +1190,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1076,6 +1248,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1087,6 +1263,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "400": BasicError,
@@ -1137,6 +1314,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1148,6 +1329,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "400": BasicError,
@@ -1172,10 +1354,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesDevcontainersGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1200,10 +1387,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesDevcontainersGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1228,10 +1420,15 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1255,10 +1452,15 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1282,10 +1484,15 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesNewGetResponse200,
             error_models={
                 "401": BasicError,
@@ -1308,10 +1515,15 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesNewGetResponse200,
             error_models={
                 "401": BasicError,
@@ -1334,10 +1546,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesSecretsGetResponse200,
         )
 
@@ -1355,10 +1572,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCodespacesSecretsGetResponse200,
         )
 
@@ -1369,9 +1591,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesPublicKey]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesPublicKey,
         )
 
@@ -1382,9 +1609,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesPublicKey]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesPublicKey,
         )
 
@@ -1396,9 +1628,14 @@ class CodespacesClient:
     ) -> "Response[RepoCodespacesSecret]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepoCodespacesSecret,
         )
 
@@ -1410,9 +1647,14 @@ class CodespacesClient:
     ) -> "Response[RepoCodespacesSecret]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepoCodespacesSecret,
         )
 
@@ -1453,6 +1695,10 @@ class CodespacesClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1464,6 +1710,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -1504,6 +1751,10 @@ class CodespacesClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1515,6 +1766,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -1526,9 +1778,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_repo_secret(
@@ -1539,9 +1796,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -1588,6 +1850,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1601,6 +1867,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -1654,6 +1921,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1667,6 +1938,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -1690,10 +1962,15 @@ class CodespacesClient:
             "repository_id": repository_id,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1717,10 +1994,15 @@ class CodespacesClient:
             "repository_id": repository_id,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserCodespacesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -1782,6 +2064,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1795,6 +2081,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -1856,6 +2143,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1869,6 +2160,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -1890,10 +2182,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserCodespacesSecretsGetResponse200,
         )
 
@@ -1909,10 +2206,15 @@ class CodespacesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=UserCodespacesSecretsGetResponse200,
         )
 
@@ -1921,9 +2223,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesUserPublicKey]":
         url = "/user/codespaces/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesUserPublicKey,
         )
 
@@ -1932,9 +2239,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesUserPublicKey]":
         url = "/user/codespaces/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesUserPublicKey,
         )
 
@@ -1944,9 +2256,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesSecret]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesSecret,
         )
 
@@ -1956,9 +2273,14 @@ class CodespacesClient:
     ) -> "Response[CodespacesSecret]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespacesSecret,
         )
 
@@ -1989,6 +2311,10 @@ class CodespacesClient:
     ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2000,6 +2326,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "422": ValidationError,
@@ -2034,6 +2361,10 @@ class CodespacesClient:
     ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2045,6 +2376,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "422": ValidationError,
@@ -2058,9 +2390,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_secret_for_authenticated_user(
@@ -2069,9 +2406,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_repositories_for_secret_for_authenticated_user(
@@ -2080,9 +2422,14 @@ class CodespacesClient:
     ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "401": BasicError,
@@ -2098,9 +2445,14 @@ class CodespacesClient:
     ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
             error_models={
                 "401": BasicError,
@@ -2140,6 +2492,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2151,6 +2507,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2189,6 +2546,10 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2200,6 +2561,7 @@ class CodespacesClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2215,9 +2577,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2233,9 +2600,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2251,9 +2623,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2269,9 +2646,14 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2286,9 +2668,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -2304,9 +2691,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -2322,9 +2714,14 @@ class CodespacesClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/user/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -2340,9 +2737,14 @@ class CodespacesClient:
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/user/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
                 "500": BasicError,
@@ -2382,6 +2784,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2393,6 +2799,7 @@ class CodespacesClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -2431,6 +2838,10 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2442,6 +2853,7 @@ class CodespacesClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "401": BasicError,
@@ -2456,9 +2868,14 @@ class CodespacesClient:
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespaceExportDetails,
             error_models={
                 "500": BasicError,
@@ -2475,9 +2892,14 @@ class CodespacesClient:
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespaceExportDetails,
             error_models={
                 "500": BasicError,
@@ -2495,9 +2917,14 @@ class CodespacesClient:
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports/{export_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespaceExportDetails,
             error_models={
                 "404": BasicError,
@@ -2511,9 +2938,14 @@ class CodespacesClient:
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports/{export_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodespaceExportDetails,
             error_models={
                 "404": BasicError,
@@ -2526,9 +2958,14 @@ class CodespacesClient:
     ) -> "Response[UserCodespacesCodespaceNameMachinesGetResponse200]":
         url = f"/user/codespaces/{codespace_name}/machines"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=UserCodespacesCodespaceNameMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -2544,9 +2981,14 @@ class CodespacesClient:
     ) -> "Response[UserCodespacesCodespaceNameMachinesGetResponse200]":
         url = f"/user/codespaces/{codespace_name}/machines"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=UserCodespacesCodespaceNameMachinesGetResponse200,
             error_models={
                 "500": BasicError,
@@ -2585,6 +3027,10 @@ class CodespacesClient:
     ) -> "Response[CodespaceWithFullRepository]":
         url = f"/user/codespaces/{codespace_name}/publish"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2596,6 +3042,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CodespaceWithFullRepository,
             error_models={
                 "401": BasicError,
@@ -2634,6 +3081,10 @@ class CodespacesClient:
     ) -> "Response[CodespaceWithFullRepository]":
         url = f"/user/codespaces/{codespace_name}/publish"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -2645,6 +3096,7 @@ class CodespacesClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CodespaceWithFullRepository,
             error_models={
                 "401": BasicError,
@@ -2660,9 +3112,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/start"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -2681,9 +3138,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/start"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -2702,9 +3164,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/stop"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,
@@ -2720,9 +3187,14 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/stop"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=Codespace,
             error_models={
                 "500": BasicError,

@@ -49,6 +49,8 @@ if TYPE_CHECKING:
 
 
 class ChecksClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -146,6 +148,10 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -163,6 +169,7 @@ class ChecksClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckRun,
         )
 
@@ -260,6 +267,10 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -277,6 +288,7 @@ class ChecksClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckRun,
         )
 
@@ -288,9 +300,14 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CheckRun,
         )
 
@@ -302,9 +319,14 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CheckRun,
         )
 
@@ -407,6 +429,10 @@ class ChecksClient:
         **kwargs,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -425,6 +451,7 @@ class ChecksClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckRun,
         )
 
@@ -528,6 +555,10 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -545,6 +576,7 @@ class ChecksClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckRun,
         )
 
@@ -563,10 +595,15 @@ class ChecksClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CheckAnnotation],
         )
 
@@ -585,10 +622,15 @@ class ChecksClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CheckAnnotation],
         )
 
@@ -600,9 +642,14 @@ class ChecksClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -619,9 +666,14 @@ class ChecksClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -657,6 +709,10 @@ class ChecksClient:
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -668,6 +724,7 @@ class ChecksClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckSuite,
         )
 
@@ -698,6 +755,10 @@ class ChecksClient:
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -709,6 +770,7 @@ class ChecksClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckSuite,
         )
 
@@ -748,6 +810,10 @@ class ChecksClient:
     ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -759,6 +825,7 @@ class ChecksClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckSuitePreference,
         )
 
@@ -798,6 +865,10 @@ class ChecksClient:
     ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -809,6 +880,7 @@ class ChecksClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CheckSuitePreference,
         )
 
@@ -820,9 +892,14 @@ class ChecksClient:
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CheckSuite,
         )
 
@@ -834,9 +911,14 @@ class ChecksClient:
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CheckSuite,
         )
 
@@ -861,10 +943,15 @@ class ChecksClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         )
 
@@ -889,10 +976,15 @@ class ChecksClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         )
 
@@ -904,9 +996,14 @@ class ChecksClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -918,9 +1015,14 @@ class ChecksClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -947,10 +1049,15 @@ class ChecksClient:
             "app_id": app_id,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         )
 
@@ -977,10 +1084,15 @@ class ChecksClient:
             "app_id": app_id,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
         )
 
@@ -1003,10 +1115,15 @@ class ChecksClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         )
 
@@ -1029,9 +1146,14 @@ class ChecksClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
         )

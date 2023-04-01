@@ -20,6 +20,8 @@ if TYPE_CHECKING:
 
 
 class MarkdownClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -43,6 +45,10 @@ class MarkdownClient:
     ) -> "Response[str]":
         url = "/markdown"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -54,6 +60,7 @@ class MarkdownClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=str,
         )
 
@@ -77,6 +84,10 @@ class MarkdownClient:
     ) -> "Response[str]":
         url = "/markdown"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -88,11 +99,16 @@ class MarkdownClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=str,
         )
 
     def render_raw(self, *, data: str, **kwargs) -> "Response[str]":
         url = "/markdown/raw"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -107,11 +123,16 @@ class MarkdownClient:
             "POST",
             url,
             content=exclude_unset(content),
+            headers=exclude_unset(headers),
             response_model=str,
         )
 
     async def async_render_raw(self, *, data: str, **kwargs) -> "Response[str]":
         url = "/markdown/raw"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -126,5 +147,6 @@ class MarkdownClient:
             "POST",
             url,
             content=exclude_unset(content),
+            headers=exclude_unset(headers),
             response_model=str,
         )

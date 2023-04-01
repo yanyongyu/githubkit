@@ -20,6 +20,8 @@ if TYPE_CHECKING:
 
 
 class OidcClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -29,9 +31,14 @@ class OidcClient:
     ) -> "Response[OidcCustomSub]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OidcCustomSub,
         )
 
@@ -41,9 +48,14 @@ class OidcClient:
     ) -> "Response[OidcCustomSub]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OidcCustomSub,
         )
 
@@ -68,6 +80,10 @@ class OidcClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -79,6 +95,7 @@ class OidcClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,
@@ -107,6 +124,10 @@ class OidcClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -118,6 +139,7 @@ class OidcClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "404": BasicError,

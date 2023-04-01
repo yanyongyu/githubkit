@@ -7,8 +7,8 @@ from typing import Any, Dict, List, Union, Optional
 from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
 
-from . import get_config
 from ..source import Source
+from . import get_override_config
 
 DELIMITERS = r"\. _-"
 
@@ -80,20 +80,29 @@ def build_boolean(value: Union[bool, str]) -> bool:
 
 
 def build_class_name(name: str) -> str:
-    config = get_config()
+    sources = get_override_config()
     class_name = fix_reserved_words(pascal_case(name))
-    return config.class_overrides.get(class_name, class_name)
+    for override_source in sources:
+        if override := override_source.class_overrides.get(class_name):
+            return override
+    return class_name
 
 
 def build_prop_name(name: str) -> str:
-    config = get_config()
-    name = config.field_overrides.get(name, name)
+    sources = get_override_config()
+    for override_source in sources:
+        if override := override_source.field_overrides.get(name):
+            name = override
+            break
     return fix_reserved_words(snake_case(name))
 
 
 def get_schema_override(source: Source) -> Optional[Dict[str, Any]]:
-    config = get_config()
-    return config.schema_overrides.get(source.pointer.path, None)
+    sources = get_override_config()
+    for override_source in sources:
+        if schema := override_source.schema_overrides.get(source.pointer.path):
+            return schema
+    return None
 
 
 def merge_dict(old: dict, new: dict):

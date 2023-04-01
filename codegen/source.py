@@ -38,7 +38,7 @@ class Source:
 
 
 @cache
-def get_content(source: Union[httpx.URL, Path]) -> OpenAPI:
+def get_content(source: Union[httpx.URL, Path]) -> dict:
     return (
         json.loads(source.read_text())
         if isinstance(source, Path)

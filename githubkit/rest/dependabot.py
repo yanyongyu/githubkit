@@ -41,6 +41,8 @@ if TYPE_CHECKING:
 
 
 class DependabotClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -77,10 +79,15 @@ class DependabotClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependabotAlertWithRepository],
             error_models={
                 "403": BasicError,
@@ -122,10 +129,15 @@ class DependabotClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependabotAlertWithRepository],
             error_models={
                 "403": BasicError,
@@ -167,10 +179,15 @@ class DependabotClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependabotAlertWithRepository],
             error_models={
                 "400": BasicError,
@@ -213,10 +230,15 @@ class DependabotClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependabotAlertWithRepository],
             error_models={
                 "400": BasicError,
@@ -239,10 +261,15 @@ class DependabotClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgDependabotSecretsGetResponse200,
         )
 
@@ -259,10 +286,15 @@ class DependabotClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgDependabotSecretsGetResponse200,
         )
 
@@ -272,9 +304,14 @@ class DependabotClient:
     ) -> "Response[DependabotPublicKey]":
         url = f"/orgs/{org}/dependabot/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotPublicKey,
         )
 
@@ -284,9 +321,14 @@ class DependabotClient:
     ) -> "Response[DependabotPublicKey]":
         url = f"/orgs/{org}/dependabot/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotPublicKey,
         )
 
@@ -297,9 +339,14 @@ class DependabotClient:
     ) -> "Response[OrganizationDependabotSecret]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationDependabotSecret,
         )
 
@@ -310,9 +357,14 @@ class DependabotClient:
     ) -> "Response[OrganizationDependabotSecret]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=OrganizationDependabotSecret,
         )
 
@@ -350,6 +402,10 @@ class DependabotClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -361,6 +417,7 @@ class DependabotClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -398,6 +455,10 @@ class DependabotClient:
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -409,6 +470,7 @@ class DependabotClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -419,9 +481,14 @@ class DependabotClient:
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_org_secret(
@@ -431,9 +498,14 @@ class DependabotClient:
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_selected_repos_for_org_secret(
@@ -450,10 +522,15 @@ class DependabotClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -471,10 +548,15 @@ class DependabotClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
 
@@ -511,6 +593,10 @@ class DependabotClient:
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -522,6 +608,7 @@ class DependabotClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     @overload
@@ -557,6 +644,10 @@ class DependabotClient:
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -568,6 +659,7 @@ class DependabotClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def add_selected_repo_to_org_secret(
@@ -580,9 +672,14 @@ class DependabotClient:
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -596,9 +693,14 @@ class DependabotClient:
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -612,9 +714,14 @@ class DependabotClient:
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -628,9 +735,14 @@ class DependabotClient:
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={},
         )
 
@@ -672,10 +784,15 @@ class DependabotClient:
             "last": last,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependabotAlert],
             error_models={
                 "400": BasicError,
@@ -723,10 +840,15 @@ class DependabotClient:
             "last": last,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependabotAlert],
             error_models={
                 "400": BasicError,
@@ -744,9 +866,14 @@ class DependabotClient:
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotAlert,
             error_models={
                 "403": BasicError,
@@ -762,9 +889,14 @@ class DependabotClient:
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotAlert,
             error_models={
                 "403": BasicError,
@@ -819,6 +951,10 @@ class DependabotClient:
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -830,6 +966,7 @@ class DependabotClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DependabotAlert,
             error_models={
                 "400": BasicError,
@@ -887,6 +1024,10 @@ class DependabotClient:
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -898,6 +1039,7 @@ class DependabotClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=DependabotAlert,
             error_models={
                 "400": BasicError,
@@ -922,10 +1064,15 @@ class DependabotClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoDependabotSecretsGetResponse200,
         )
 
@@ -943,10 +1090,15 @@ class DependabotClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoDependabotSecretsGetResponse200,
         )
 
@@ -957,9 +1109,14 @@ class DependabotClient:
     ) -> "Response[DependabotPublicKey]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotPublicKey,
         )
 
@@ -970,9 +1127,14 @@ class DependabotClient:
     ) -> "Response[DependabotPublicKey]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/public-key"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotPublicKey,
         )
 
@@ -984,9 +1146,14 @@ class DependabotClient:
     ) -> "Response[DependabotSecret]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotSecret,
         )
 
@@ -998,9 +1165,14 @@ class DependabotClient:
     ) -> "Response[DependabotSecret]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=DependabotSecret,
         )
 
@@ -1041,6 +1213,10 @@ class DependabotClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1052,6 +1228,7 @@ class DependabotClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -1092,6 +1269,10 @@ class DependabotClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1103,6 +1284,7 @@ class DependabotClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
         )
 
@@ -1114,9 +1296,14 @@ class DependabotClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_repo_secret(
@@ -1127,7 +1314,12 @@ class DependabotClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )

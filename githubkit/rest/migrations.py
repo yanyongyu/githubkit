@@ -41,6 +41,8 @@ if TYPE_CHECKING:
 
 
 class MigrationsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -59,10 +61,15 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Migration],
         )
 
@@ -81,10 +88,15 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Migration],
         )
 
@@ -121,6 +133,10 @@ class MigrationsClient:
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -132,6 +148,7 @@ class MigrationsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -172,6 +189,10 @@ class MigrationsClient:
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -183,6 +204,7 @@ class MigrationsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -202,10 +224,15 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -224,10 +251,15 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -241,9 +273,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -256,9 +293,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -271,9 +313,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -286,9 +333,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -302,9 +354,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -318,9 +375,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
             },
@@ -340,10 +402,15 @@ class MigrationsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -364,10 +431,15 @@ class MigrationsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -381,9 +453,14 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "404": BasicError,
@@ -398,9 +475,14 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "404": BasicError,
@@ -439,6 +521,10 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -450,6 +536,7 @@ class MigrationsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -489,6 +576,10 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -500,6 +591,7 @@ class MigrationsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -515,9 +607,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "503": BasicError,
             },
@@ -530,9 +627,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "503": BasicError,
             },
@@ -572,6 +674,10 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -583,6 +689,7 @@ class MigrationsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "503": BasicError,
@@ -623,6 +730,10 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -634,6 +745,7 @@ class MigrationsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "503": BasicError,
@@ -652,10 +764,15 @@ class MigrationsClient:
             "since": since,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PorterAuthor],
             error_models={
                 "404": BasicError,
@@ -675,10 +792,15 @@ class MigrationsClient:
             "since": since,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PorterAuthor],
             error_models={
                 "404": BasicError,
@@ -721,6 +843,10 @@ class MigrationsClient:
     ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -732,6 +858,7 @@ class MigrationsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PorterAuthor,
             error_models={
                 "422": ValidationError,
@@ -775,6 +902,10 @@ class MigrationsClient:
     ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -786,6 +917,7 @@ class MigrationsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=PorterAuthor,
             error_models={
                 "422": ValidationError,
@@ -801,9 +933,14 @@ class MigrationsClient:
     ) -> "Response[List[PorterLargeFile]]":
         url = f"/repos/{owner}/{repo}/import/large_files"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[PorterLargeFile],
             error_models={
                 "503": BasicError,
@@ -817,9 +954,14 @@ class MigrationsClient:
     ) -> "Response[List[PorterLargeFile]]":
         url = f"/repos/{owner}/{repo}/import/large_files"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[PorterLargeFile],
             error_models={
                 "503": BasicError,
@@ -853,6 +995,10 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -864,6 +1010,7 @@ class MigrationsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -898,6 +1045,10 @@ class MigrationsClient:
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -909,6 +1060,7 @@ class MigrationsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Import,
             error_models={
                 "422": ValidationError,
@@ -928,10 +1080,15 @@ class MigrationsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Migration],
             error_models={
                 "403": BasicError,
@@ -951,10 +1108,15 @@ class MigrationsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Migration],
             error_models={
                 "403": BasicError,
@@ -990,6 +1152,10 @@ class MigrationsClient:
     ) -> "Response[Migration]":
         url = "/user/migrations"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1001,6 +1167,7 @@ class MigrationsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "422": ValidationError,
@@ -1037,6 +1204,10 @@ class MigrationsClient:
     ) -> "Response[Migration]":
         url = "/user/migrations"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1048,6 +1219,7 @@ class MigrationsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "422": ValidationError,
@@ -1067,10 +1239,15 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -1090,10 +1267,15 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Migration,
             error_models={
                 "404": BasicError,
@@ -1108,9 +1290,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1123,9 +1310,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1138,9 +1330,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1154,9 +1351,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1171,9 +1373,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/repos/{repo_name}/lock"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1188,9 +1395,14 @@ class MigrationsClient:
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/repos/{repo_name}/lock"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1211,10 +1423,15 @@ class MigrationsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "404": BasicError,
@@ -1234,10 +1451,15 @@ class MigrationsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "404": BasicError,

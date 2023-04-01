@@ -19,6 +19,8 @@ if TYPE_CHECKING:
 
 
 class LicensesClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -36,10 +38,15 @@ class LicensesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[LicenseSimple],
         )
 
@@ -57,10 +64,15 @@ class LicensesClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[LicenseSimple],
         )
 
@@ -70,9 +82,14 @@ class LicensesClient:
     ) -> "Response[License]":
         url = f"/licenses/{license}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=License,
             error_models={
                 "403": BasicError,
@@ -86,9 +103,14 @@ class LicensesClient:
     ) -> "Response[License]":
         url = f"/licenses/{license}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=License,
             error_models={
                 "403": BasicError,
@@ -103,9 +125,14 @@ class LicensesClient:
     ) -> "Response[LicenseContent]":
         url = f"/repos/{owner}/{repo}/license"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=LicenseContent,
         )
 
@@ -116,8 +143,13 @@ class LicensesClient:
     ) -> "Response[LicenseContent]":
         url = f"/repos/{owner}/{repo}/license"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=LicenseContent,
         )

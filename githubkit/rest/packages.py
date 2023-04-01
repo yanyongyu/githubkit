@@ -19,6 +19,8 @@ if TYPE_CHECKING:
 
 
 class PackagesClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -28,9 +30,14 @@ class PackagesClient:
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/docker/conflicts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -44,9 +51,14 @@ class PackagesClient:
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/docker/conflicts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -73,10 +85,15 @@ class PackagesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -103,10 +120,15 @@ class PackagesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -124,9 +146,14 @@ class PackagesClient:
     ) -> "Response[Package]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Package,
         )
 
@@ -140,9 +167,14 @@ class PackagesClient:
     ) -> "Response[Package]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Package,
         )
 
@@ -156,9 +188,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -176,9 +213,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -201,10 +243,15 @@ class PackagesClient:
             "token": token,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -227,10 +274,15 @@ class PackagesClient:
             "token": token,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -257,10 +309,15 @@ class PackagesClient:
             "state": state,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -288,10 +345,15 @@ class PackagesClient:
             "state": state,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -311,9 +373,14 @@ class PackagesClient:
     ) -> "Response[PackageVersion]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PackageVersion,
         )
 
@@ -328,9 +395,14 @@ class PackagesClient:
     ) -> "Response[PackageVersion]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PackageVersion,
         )
 
@@ -345,9 +417,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -366,9 +443,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -387,9 +469,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -408,9 +495,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -423,9 +515,14 @@ class PackagesClient:
     ) -> "Response[List[Package]]":
         url = "/user/docker/conflicts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Package],
         )
 
@@ -434,9 +531,14 @@ class PackagesClient:
     ) -> "Response[List[Package]]":
         url = "/user/docker/conflicts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Package],
         )
 
@@ -458,10 +560,15 @@ class PackagesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={},
         )
@@ -484,10 +591,15 @@ class PackagesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={},
         )
@@ -501,9 +613,14 @@ class PackagesClient:
     ) -> "Response[Package]":
         url = f"/user/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Package,
         )
 
@@ -516,9 +633,14 @@ class PackagesClient:
     ) -> "Response[Package]":
         url = f"/user/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Package,
         )
 
@@ -531,9 +653,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -550,9 +677,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -574,10 +706,15 @@ class PackagesClient:
             "token": token,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -599,10 +736,15 @@ class PackagesClient:
             "token": token,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -628,10 +770,15 @@ class PackagesClient:
             "state": state,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -658,10 +805,15 @@ class PackagesClient:
             "state": state,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -680,9 +832,14 @@ class PackagesClient:
     ) -> "Response[PackageVersion]":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PackageVersion,
         )
 
@@ -696,9 +853,14 @@ class PackagesClient:
     ) -> "Response[PackageVersion]":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PackageVersion,
         )
 
@@ -712,9 +874,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -732,9 +899,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -752,9 +924,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -772,9 +949,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -788,9 +970,14 @@ class PackagesClient:
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/docker/conflicts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -804,9 +991,14 @@ class PackagesClient:
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/docker/conflicts"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -833,10 +1025,15 @@ class PackagesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -863,10 +1060,15 @@ class PackagesClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Package],
             error_models={
                 "403": BasicError,
@@ -884,9 +1086,14 @@ class PackagesClient:
     ) -> "Response[Package]":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Package,
         )
 
@@ -900,9 +1107,14 @@ class PackagesClient:
     ) -> "Response[Package]":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Package,
         )
 
@@ -916,9 +1128,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -936,9 +1153,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -961,10 +1183,15 @@ class PackagesClient:
             "token": token,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -987,10 +1214,15 @@ class PackagesClient:
             "token": token,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1008,9 +1240,14 @@ class PackagesClient:
     ) -> "Response[List[PackageVersion]]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -1029,9 +1266,14 @@ class PackagesClient:
     ) -> "Response[List[PackageVersion]]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[PackageVersion],
             error_models={
                 "404": BasicError,
@@ -1051,9 +1293,14 @@ class PackagesClient:
     ) -> "Response[PackageVersion]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PackageVersion,
         )
 
@@ -1068,9 +1315,14 @@ class PackagesClient:
     ) -> "Response[PackageVersion]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=PackageVersion,
         )
 
@@ -1085,9 +1337,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1106,9 +1363,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1127,9 +1389,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1148,9 +1415,14 @@ class PackagesClient:
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "POST",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,

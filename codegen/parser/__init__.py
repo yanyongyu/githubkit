@@ -1,16 +1,16 @@
 from contextvars import ContextVar
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Tuple, Union, Optional
 
 import httpx
 from openapi_schema_pydantic import OpenAPI
 
 # parser context
+_override_config: ContextVar[Tuple["Overridable", ...]] = ContextVar("override_config")
 _schemas: ContextVar[Dict[httpx.URL, "SchemaData"]] = ContextVar("schemas")
-_config: ContextVar["Config"] = ContextVar("config")
 
 
-def get_config() -> "Config":
-    return _config.get()
+def get_override_config() -> Tuple["Overridable", ...]:
+    return _override_config.get()
 
 
 def get_schemas() -> Dict[httpx.URL, "SchemaData"]:
@@ -27,7 +27,6 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
     _schemas.get()[ref] = schema
 
 
-from ..config import Config
 from ..source import Source
 from .endpoints import parse_endpoint
 from .utils import sanitize as sanitize
@@ -39,13 +38,14 @@ from .utils import pascal_case as pascal_case
 from .endpoints import EndpointData as EndpointData
 from .schemas import SchemaData, UnionSchema, parse_schema
 from .utils import fix_reserved_words as fix_reserved_words
+from ..config import Config, RestConfig, Overridable, WebhookConfig
 
 
-def parse_openapi_spec(source: Source, config: Config) -> OpenAPIData:
+def parse_openapi_spec(source: Source, rest: RestConfig, config: Config) -> OpenAPIData:
     source = source.get_root()
 
+    _ot = _override_config.set((rest, config))
     _st = _schemas.set({})
-    _ct = _config.set(config)
 
     try:
         openapi = OpenAPI.parse_obj(source.root)
@@ -70,15 +70,17 @@ def parse_openapi_spec(source: Source, config: Config) -> OpenAPIData:
             schemas=list(get_schemas().values()),
         )
     finally:
+        _override_config.reset(_ot)
         _schemas.reset(_st)
-        _config.reset(_ct)
 
 
-def parse_webhook_schema(source: Source, config: Config) -> WebhookData:
+def parse_webhook_schema(
+    source: Source, webhook: WebhookConfig, config: Config
+) -> WebhookData:
     source = source.get_root()
 
+    _ot = _override_config.set((webhook, config))
     _st = _schemas.set({})
-    _ct = _config.set(config)
 
     try:
         root_schema = parse_schema(source, "webhook_schema")
@@ -106,5 +108,5 @@ def parse_webhook_schema(source: Source, config: Config) -> WebhookData:
             definitions=definitions,
         )
     finally:
+        _override_config.reset(_ot)
         _schemas.reset(_st)
-        _config.reset(_ct)

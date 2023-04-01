@@ -42,6 +42,8 @@ if TYPE_CHECKING:
 
 
 class CodeScanningClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -77,10 +79,15 @@ class CodeScanningClient:
             "severity": severity,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
@@ -120,10 +127,15 @@ class CodeScanningClient:
             "severity": severity,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
@@ -162,10 +174,15 @@ class CodeScanningClient:
             "severity": severity,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningAlertItems],
             error_models={
                 "403": BasicError,
@@ -205,10 +222,15 @@ class CodeScanningClient:
             "severity": severity,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningAlertItems],
             error_models={
                 "403": BasicError,
@@ -225,9 +247,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningAlert,
             error_models={
                 "403": BasicError,
@@ -244,9 +271,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningAlert,
             error_models={
                 "403": BasicError,
@@ -294,6 +326,10 @@ class CodeScanningClient:
         **kwargs,
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -306,6 +342,7 @@ class CodeScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CodeScanningAlert,
             error_models={
                 "403": BasicError,
@@ -354,6 +391,10 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -365,6 +406,7 @@ class CodeScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CodeScanningAlert,
             error_models={
                 "403": BasicError,
@@ -390,10 +432,15 @@ class CodeScanningClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningAlertInstance],
             error_models={
                 "403": BasicError,
@@ -419,10 +466,15 @@ class CodeScanningClient:
             "ref": ref,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningAlertInstance],
             error_models={
                 "403": BasicError,
@@ -457,10 +509,15 @@ class CodeScanningClient:
             "sort": sort,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningAnalysis],
             error_models={
                 "403": BasicError,
@@ -495,10 +552,15 @@ class CodeScanningClient:
             "sort": sort,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningAnalysis],
             error_models={
                 "403": BasicError,
@@ -515,9 +577,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningAnalysis]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningAnalysis,
             error_models={
                 "403": BasicError,
@@ -534,9 +601,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningAnalysis]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningAnalysis,
             error_models={
                 "403": BasicError,
@@ -558,10 +630,15 @@ class CodeScanningClient:
             "confirm_delete": confirm_delete,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CodeScanningAnalysisDeletion,
             error_models={
                 "400": BasicError,
@@ -584,10 +661,15 @@ class CodeScanningClient:
             "confirm_delete": confirm_delete,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=CodeScanningAnalysisDeletion,
             error_models={
                 "400": BasicError,
@@ -604,9 +686,14 @@ class CodeScanningClient:
     ) -> "Response[List[CodeScanningCodeqlDatabase]]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningCodeqlDatabase],
             error_models={
                 "403": BasicError,
@@ -622,9 +709,14 @@ class CodeScanningClient:
     ) -> "Response[List[CodeScanningCodeqlDatabase]]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=List[CodeScanningCodeqlDatabase],
             error_models={
                 "403": BasicError,
@@ -641,9 +733,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningCodeqlDatabase]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningCodeqlDatabase,
             error_models={
                 "403": BasicError,
@@ -660,9 +757,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningCodeqlDatabase]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningCodeqlDatabase,
             error_models={
                 "403": BasicError,
@@ -678,9 +780,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningDefaultSetup]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningDefaultSetup,
             error_models={
                 "403": BasicError,
@@ -696,9 +803,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningDefaultSetup]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningDefaultSetup,
             error_models={
                 "403": BasicError,
@@ -735,6 +847,10 @@ class CodeScanningClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -746,6 +862,7 @@ class CodeScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -783,6 +900,10 @@ class CodeScanningClient:
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -794,6 +915,7 @@ class CodeScanningClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=EmptyObject,
             error_models={
                 "403": BasicError,
@@ -840,6 +962,10 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -851,6 +977,7 @@ class CodeScanningClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CodeScanningSarifsReceipt,
             error_models={
                 "403": BasicError,
@@ -896,6 +1023,10 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -907,6 +1038,7 @@ class CodeScanningClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=CodeScanningSarifsReceipt,
             error_models={
                 "403": BasicError,
@@ -923,9 +1055,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningSarifsStatus]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,
@@ -941,9 +1078,14 @@ class CodeScanningClient:
     ) -> "Response[CodeScanningSarifsStatus]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,

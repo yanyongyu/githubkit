@@ -62,6 +62,8 @@ if TYPE_CHECKING:
 
 
 class ProjectsClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -80,10 +82,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Project],
             error_models={
                 "422": ValidationErrorSimple,
@@ -105,10 +112,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Project],
             error_models={
                 "422": ValidationErrorSimple,
@@ -141,6 +153,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -152,6 +168,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -188,6 +205,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -199,6 +220,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -215,9 +237,14 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -232,9 +259,14 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -249,9 +281,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/columns/cards/{card_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": ProjectsColumnsCardsCardIdDeleteResponse403,
                 "401": BasicError,
@@ -265,9 +302,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/columns/cards/{card_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": ProjectsColumnsCardsCardIdDeleteResponse403,
                 "401": BasicError,
@@ -304,6 +346,10 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -315,6 +361,7 @@ class ProjectsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -353,6 +400,10 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -364,6 +415,7 @@ class ProjectsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -399,6 +451,10 @@ class ProjectsClient:
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -410,6 +466,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectsColumnsCardsCardIdMovesPostResponse201,
             error_models={
                 "403": ProjectsColumnsCardsCardIdMovesPostResponse403,
@@ -445,6 +502,10 @@ class ProjectsClient:
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -456,6 +517,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectsColumnsCardsCardIdMovesPostResponse201,
             error_models={
                 "403": ProjectsColumnsCardsCardIdMovesPostResponse403,
@@ -471,9 +533,14 @@ class ProjectsClient:
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -488,9 +555,14 @@ class ProjectsClient:
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -505,9 +577,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/columns/{column_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -520,9 +597,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/columns/{column_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -554,6 +636,10 @@ class ProjectsClient:
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -565,6 +651,7 @@ class ProjectsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -597,6 +684,10 @@ class ProjectsClient:
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -608,6 +699,7 @@ class ProjectsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -632,10 +724,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ProjectCard],
             error_models={
                 "403": BasicError,
@@ -660,10 +757,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ProjectCard],
             error_models={
                 "403": BasicError,
@@ -719,6 +821,10 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -736,6 +842,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -793,6 +900,10 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -810,6 +921,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectCard,
             error_models={
                 "403": BasicError,
@@ -844,6 +956,10 @@ class ProjectsClient:
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -855,6 +971,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectsColumnsColumnIdMovesPostResponse201,
             error_models={
                 "403": BasicError,
@@ -888,6 +1005,10 @@ class ProjectsClient:
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -899,6 +1020,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectsColumnsColumnIdMovesPostResponse201,
             error_models={
                 "403": BasicError,
@@ -913,9 +1035,14 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -929,9 +1056,14 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -945,9 +1077,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": ProjectsProjectIdDeleteResponse403,
                 "401": BasicError,
@@ -962,9 +1099,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": ProjectsProjectIdDeleteResponse403,
                 "401": BasicError,
@@ -1007,6 +1149,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1018,6 +1164,7 @@ class ProjectsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "403": ProjectsProjectIdPatchResponse403,
@@ -1061,6 +1208,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1072,6 +1223,7 @@ class ProjectsClient:
             "PATCH",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "403": ProjectsProjectIdPatchResponse403,
@@ -1096,10 +1248,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -1124,10 +1281,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
             error_models={
                 "404": BasicError,
@@ -1172,6 +1334,10 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1185,6 +1351,7 @@ class ProjectsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1228,6 +1395,10 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1241,6 +1412,7 @@ class ProjectsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1256,9 +1428,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1274,9 +1451,14 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1292,9 +1474,14 @@ class ProjectsClient:
     ) -> "Response[ProjectCollaboratorPermission]":
         url = f"/projects/{project_id}/collaborators/{username}/permission"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProjectCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -1311,9 +1498,14 @@ class ProjectsClient:
     ) -> "Response[ProjectCollaboratorPermission]":
         url = f"/projects/{project_id}/collaborators/{username}/permission"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ProjectCollaboratorPermission,
             error_models={
                 "404": BasicError,
@@ -1336,10 +1528,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ProjectColumn],
             error_models={
                 "403": BasicError,
@@ -1360,10 +1557,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[ProjectColumn],
             error_models={
                 "403": BasicError,
@@ -1396,6 +1598,10 @@ class ProjectsClient:
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1407,6 +1613,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -1440,6 +1647,10 @@ class ProjectsClient:
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1451,6 +1662,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ProjectColumn,
             error_models={
                 "403": BasicError,
@@ -1475,10 +1687,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Project],
             error_models={
                 "401": BasicError,
@@ -1505,10 +1722,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Project],
             error_models={
                 "401": BasicError,
@@ -1547,6 +1769,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1558,6 +1784,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -1596,6 +1823,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1607,6 +1838,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "401": BasicError,
@@ -1638,6 +1870,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = "/user/projects"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1649,6 +1885,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -1678,6 +1915,10 @@ class ProjectsClient:
     ) -> "Response[Project]":
         url = "/user/projects"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -1689,6 +1930,7 @@ class ProjectsClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=Project,
             error_models={
                 "403": BasicError,
@@ -1712,10 +1954,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Project],
             error_models={
                 "422": ValidationError,
@@ -1737,10 +1984,15 @@ class ProjectsClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Project],
             error_models={
                 "422": ValidationError,

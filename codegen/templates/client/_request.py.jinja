@@ -11,11 +11,13 @@ url = "{{ endpoint.path }}"
 {% endmacro %}
 
 {% macro build_query(params) %}
+{% if params %}
 params = {
     {% for param in params %}
     "{{ param.name }}": {{ param.prop_name }},
     {% endfor %}
 }
+{% endif %}
 {% endmacro %}
 
 {% macro build_header(params) %}
@@ -23,15 +25,18 @@ headers = {
     {% for param in params %}
     "{{ param.name }}": {{ param.prop_name }},
     {% endfor %}
+    "X-GitHub-Api-Version": self._REST_API_VERSION,
 }
 {% endmacro %}
 
 {% macro build_cookie(params) %}
+{% if params %}
 cookies = {
     {% for param in params %}
     "{{ param.name }}": {{ param.prop_name }},
     {% endfor %}
 }
+{% endif %}
 {% endmacro %}
 
 {% macro build_body(request_body) %}
@@ -49,9 +54,9 @@ if not kwargs:
 
 {% macro build_request(endpoint) %}
 {{ build_path(endpoint) }}
-{% if endpoint.query_params %}
 {{ build_query(endpoint.query_params) }}
-{% endif %}
+{{ build_header(endpoint.header_params) }}
+{{ build_cookie(endpoint.cookie_params) }}
 {% if endpoint.request_body %}
 {{ build_body(endpoint.request_body) }}
 {% endif %}
@@ -67,11 +72,7 @@ params=exclude_unset(params),
 {% set name = TYPE_MAPPING[endpoint.request_body.type] %}
 {{ name }}=exclude_unset({{ name }}),
 {% endif %}
-{% if endpoint.header_params %}
-headers=exclude_unset({**headers, "X-GitHub-Api-Version": self._REST_API_VERSION}),
-{% else %}
-headers={"X-GitHub-Api-Version": self._REST_API_VERSION},
-{% endif %}
+headers=exclude_unset(headers),
 {% if endpoint.cookie_params %}
 cookies=exclude_unset(cookies),
 {% endif %}

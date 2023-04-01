@@ -46,6 +46,8 @@ if TYPE_CHECKING:
 
 
 class ActivityClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -61,10 +63,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
             error_models={
                 "403": BasicError,
@@ -84,10 +91,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
             error_models={
                 "403": BasicError,
@@ -100,9 +112,14 @@ class ActivityClient:
     ) -> "Response[Feed]":
         url = "/feeds"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Feed,
         )
 
@@ -111,9 +128,14 @@ class ActivityClient:
     ) -> "Response[Feed]":
         url = "/feeds"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Feed,
         )
 
@@ -131,10 +153,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
             error_models={
                 "404": BasicError,
@@ -156,10 +183,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
             error_models={
                 "404": BasicError,
@@ -187,10 +219,15 @@ class ActivityClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Thread],
             error_models={
                 "403": BasicError,
@@ -219,10 +256,15 @@ class ActivityClient:
             "per_page": per_page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Thread],
             error_models={
                 "403": BasicError,
@@ -252,6 +294,10 @@ class ActivityClient:
     ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -263,6 +309,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=NotificationsPutResponse202,
             error_models={
                 "403": BasicError,
@@ -291,6 +338,10 @@ class ActivityClient:
     ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -302,6 +353,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=NotificationsPutResponse202,
             error_models={
                 "403": BasicError,
@@ -315,9 +367,14 @@ class ActivityClient:
     ) -> "Response[Thread]":
         url = f"/notifications/threads/{thread_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Thread,
             error_models={
                 "403": BasicError,
@@ -331,9 +388,14 @@ class ActivityClient:
     ) -> "Response[Thread]":
         url = f"/notifications/threads/{thread_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=Thread,
             error_models={
                 "403": BasicError,
@@ -347,9 +409,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PATCH",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -361,9 +428,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PATCH",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
             },
@@ -375,9 +447,14 @@ class ActivityClient:
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -391,9 +468,14 @@ class ActivityClient:
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -428,6 +510,10 @@ class ActivityClient:
         **kwargs,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
 
         if not kwargs:
             kwargs = UNSET
@@ -440,6 +526,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -475,6 +562,10 @@ class ActivityClient:
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -486,6 +577,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ThreadSubscription,
             error_models={
                 "403": BasicError,
@@ -499,9 +591,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -514,9 +611,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -536,10 +638,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -556,10 +663,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -577,10 +689,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -598,10 +715,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -627,10 +749,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Thread],
         )
 
@@ -656,10 +783,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Thread],
         )
 
@@ -694,6 +826,10 @@ class ActivityClient:
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -705,6 +841,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoNotificationsPutResponse202,
         )
 
@@ -739,6 +876,10 @@ class ActivityClient:
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -750,6 +891,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoNotificationsPutResponse202,
         )
 
@@ -767,10 +909,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Union[List[SimpleUser], List[Stargazer]],
             error_models={
                 "422": ValidationError,
@@ -791,10 +938,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Union[List[SimpleUser], List[Stargazer]],
             error_models={
                 "422": ValidationError,
@@ -815,10 +967,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -836,10 +993,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[SimpleUser],
         )
 
@@ -850,9 +1012,14 @@ class ActivityClient:
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepositorySubscription,
             error_models={
                 "403": BasicError,
@@ -866,9 +1033,14 @@ class ActivityClient:
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=RepositorySubscription,
             error_models={
                 "403": BasicError,
@@ -907,6 +1079,10 @@ class ActivityClient:
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -918,6 +1094,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RepositorySubscription,
         )
 
@@ -953,6 +1130,10 @@ class ActivityClient:
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -964,6 +1145,7 @@ class ActivityClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=RepositorySubscription,
         )
 
@@ -974,9 +1156,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     async def async_delete_repo_subscription(
@@ -986,9 +1173,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/subscription"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
         )
 
     def list_repos_starred_by_authenticated_user(
@@ -1007,10 +1199,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Repository],
             error_models={
                 "403": BasicError,
@@ -1034,10 +1231,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Repository],
             error_models={
                 "403": BasicError,
@@ -1052,9 +1254,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1069,9 +1276,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1086,9 +1298,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1103,9 +1320,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "PUT",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1120,9 +1342,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1137,9 +1364,14 @@ class ActivityClient:
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "DELETE",
             url,
+            headers=exclude_unset(headers),
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1159,10 +1391,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "403": BasicError,
@@ -1182,10 +1419,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
             error_models={
                 "403": BasicError,
@@ -1206,10 +1448,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1226,10 +1473,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1247,10 +1499,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1268,10 +1525,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1288,10 +1550,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1308,10 +1575,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1328,10 +1600,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1348,10 +1625,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1368,10 +1650,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1388,10 +1675,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[Event],
         )
 
@@ -1412,10 +1704,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Union[List[StarredRepository], List[Repository]],
         )
 
@@ -1436,10 +1733,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=Union[List[StarredRepository], List[Repository]],
         )
 
@@ -1456,10 +1758,15 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )
 
@@ -1476,9 +1783,14 @@ class ActivityClient:
             "page": page,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[MinimalRepository],
         )

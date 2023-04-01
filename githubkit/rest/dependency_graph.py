@@ -32,6 +32,8 @@ if TYPE_CHECKING:
 
 
 class DependencyGraphClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -48,10 +50,15 @@ class DependencyGraphClient:
             "name": name,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependencyGraphDiffItems],
             error_models={
                 "404": BasicError,
@@ -72,10 +79,15 @@ class DependencyGraphClient:
             "name": name,
         }
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
             params=exclude_unset(params),
+            headers=exclude_unset(headers),
             response_model=List[DependencyGraphDiffItems],
             error_models={
                 "404": BasicError,
@@ -117,6 +129,10 @@ class DependencyGraphClient:
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -128,6 +144,7 @@ class DependencyGraphClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         )
 
@@ -165,6 +182,10 @@ class DependencyGraphClient:
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         if not kwargs:
             kwargs = UNSET
 
@@ -176,5 +197,6 @@ class DependencyGraphClient:
             "POST",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
             response_model=ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         )

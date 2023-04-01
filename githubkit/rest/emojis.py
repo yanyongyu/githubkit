@@ -19,6 +19,8 @@ if TYPE_CHECKING:
 
 
 class EmojisClient:
+    _REST_API_VERSION = "2022-11-28"
+
     def __init__(self, github: "GitHubCore"):
         self._github = github
 
@@ -27,9 +29,14 @@ class EmojisClient:
     ) -> "Response[EmojisGetResponse200]":
         url = "/emojis"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return self._github.request(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=EmojisGetResponse200,
         )
 
@@ -38,8 +45,13 @@ class EmojisClient:
     ) -> "Response[EmojisGetResponse200]":
         url = "/emojis"
 
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
         return await self._github.arequest(
             "GET",
             url,
+            headers=exclude_unset(headers),
             response_model=EmojisGetResponse200,
         )
