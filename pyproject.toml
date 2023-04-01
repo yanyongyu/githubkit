@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "GitHubKit"
-version = "0.9.8"
+version = "0.10.0"
 description = "GitHub SDK for Python"
 authors = ["yanyongyu <yyy@yyydl.top>"]
 license = "MIT"
@@ -83,9 +83,6 @@ output_dir = "githubkit/rest/"
 "/components/schemas/timeline-commit-commented-event/properties/event" = { const = "commit_commented" }
 "/components/schemas/timeline-assigned-issue-event/properties/event" = { const = "assigned" }
 "/components/schemas/timeline-unassigned-issue-event/properties/event" = { const = "unassigned" }
-
-# webhook fork forkee topic array type
-"/components/schemas/webhook-fork/properties/forkee/allOf/0/properties/topics/items" = { type = ["string", "null"] }
 
 # https://github.com/github/rest-api-description/issues/1639
 "/components/schemas/issue/properties/body_text" = { type = ["string", "null"] }
