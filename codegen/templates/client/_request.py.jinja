@@ -68,9 +68,9 @@ params=exclude_unset(params),
 {{ name }}=exclude_unset({{ name }}),
 {% endif %}
 {% if endpoint.header_params %}
-headers=exclude_unset({**headers, **{'X-Github-Api-Version': self._REST_API_VERSION}}),
+headers=exclude_unset({**headers, "X-Github-Api-Version": self._REST_API_VERSION}),
 {% else %}
-headers={'X-Github-Api-Version': self._REST_API_VERSION},
+headers={"X-Github-Api-Version": self._REST_API_VERSION},
 {% endif %}
 {% if endpoint.cookie_params %}
 cookies=exclude_unset(cookies),
