@@ -72,7 +72,11 @@ def build_rest_api(data: OpenAPIData, config: Config):
     for tag, endpoints in data.endpoints_by_tag.items():
         logger.info(f"Building endpoints for tag {tag}...")
         tag_path = client_path / f"{tag}.py"
-        tag_path.write_text(client_template.render(tag=tag, endpoints=endpoints))
+        tag_path.write_text(
+            client_template.render(
+                tag=tag, endpoints=endpoints, rest_api_version=config.rest_api_version
+            )
+        )
         logger.info(f"Successfully built endpoints for tag {tag}!")
     logger.info("Successfully built endpoints!")
 
