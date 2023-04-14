@@ -1,12 +1,14 @@
 import inspect
 from enum import Enum
-from typing import Any, Dict, Union, Literal, TypeVar
+from typing_extensions import TypeAlias
+from typing import Any, Dict, Union, Literal, TypeVar, final
 
 from pydantic.json import pydantic_encoder
 
 T = TypeVar("T")
 
 
+@final
 class Unset(Enum):
     _UNSET = object()
 
@@ -37,7 +39,7 @@ class Unset(Enum):
 
 
 UNSET = Unset._UNSET
-MISSING = Union[Literal[UNSET], T]
+MISSING: TypeAlias = Union[Literal[UNSET], T]
 
 
 def exclude_unset(data: Any) -> Any:
