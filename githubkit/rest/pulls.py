@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     ReposOwnerRepoPullsPostBodyType,
@@ -80,15 +80,15 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        head: Union[Unset, str] = UNSET,
-        base: Union[Unset, str] = UNSET,
-        sort: Union[
-            Unset, Literal["created", "updated", "popularity", "long-running"]
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        head: MISSING[str] = UNSET,
+        base: MISSING[str] = UNSET,
+        sort: MISSING[
+            Literal["created", "updated", "popularity", "long-running"]
         ] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestSimple]]":
         url = f"/repos/{owner}/{repo}/pulls"
 
@@ -121,15 +121,15 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        head: Union[Unset, str] = UNSET,
-        base: Union[Unset, str] = UNSET,
-        sort: Union[
-            Unset, Literal["created", "updated", "popularity", "long-running"]
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        head: MISSING[str] = UNSET,
+        base: MISSING[str] = UNSET,
+        sort: MISSING[
+            Literal["created", "updated", "popularity", "long-running"]
         ] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestSimple]]":
         url = f"/repos/{owner}/{repo}/pulls"
 
@@ -170,15 +170,15 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
         head: str,
-        head_repo: Union[Unset, str] = UNSET,
+        head_repo: MISSING[str] = UNSET,
         base: str,
-        body: Union[Unset, str] = UNSET,
-        maintainer_can_modify: Union[Unset, bool] = UNSET,
-        draft: Union[Unset, bool] = UNSET,
-        issue: Union[Unset, int] = UNSET,
+        body: MISSING[str] = UNSET,
+        maintainer_can_modify: MISSING[bool] = UNSET,
+        draft: MISSING[bool] = UNSET,
+        issue: MISSING[int] = UNSET,
     ) -> "Response[PullRequest]":
         ...
 
@@ -187,7 +187,7 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
@@ -227,15 +227,15 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
         head: str,
-        head_repo: Union[Unset, str] = UNSET,
+        head_repo: MISSING[str] = UNSET,
         base: str,
-        body: Union[Unset, str] = UNSET,
-        maintainer_can_modify: Union[Unset, bool] = UNSET,
-        draft: Union[Unset, bool] = UNSET,
-        issue: Union[Unset, int] = UNSET,
+        body: MISSING[str] = UNSET,
+        maintainer_can_modify: MISSING[bool] = UNSET,
+        draft: MISSING[bool] = UNSET,
+        issue: MISSING[int] = UNSET,
     ) -> "Response[PullRequest]":
         ...
 
@@ -244,7 +244,7 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
@@ -276,11 +276,11 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
-        sort: Union[Unset, Literal["created", "updated", "created_at"]] = UNSET,
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated", "created_at"]] = UNSET,
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/comments"
 
@@ -308,11 +308,11 @@ class PullsClient:
         self,
         owner: str,
         repo: str,
-        sort: Union[Unset, Literal["created", "updated", "created_at"]] = UNSET,
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated", "created_at"]] = UNSET,
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/comments"
 
@@ -440,7 +440,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -451,7 +451,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
@@ -493,7 +493,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -504,7 +504,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
@@ -583,7 +583,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> "Response[PullRequest]":
         ...
 
@@ -594,12 +594,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
-        state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        base: Union[Unset, str] = UNSET,
-        maintainer_can_modify: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = UNSET,
+        base: MISSING[str] = UNSET,
+        maintainer_can_modify: MISSING[bool] = UNSET,
     ) -> "Response[PullRequest]":
         ...
 
@@ -609,7 +609,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -644,7 +644,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> "Response[PullRequest]":
         ...
 
@@ -655,12 +655,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
-        state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        base: Union[Unset, str] = UNSET,
-        maintainer_can_modify: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = UNSET,
+        base: MISSING[str] = UNSET,
+        maintainer_can_modify: MISSING[bool] = UNSET,
     ) -> "Response[PullRequest]":
         ...
 
@@ -670,7 +670,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -703,11 +703,11 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
@@ -736,11 +736,11 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
@@ -782,17 +782,17 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
         commit_id: str,
         path: str,
-        position: Union[Unset, int] = UNSET,
-        side: Union[Unset, Literal["LEFT", "RIGHT"]] = UNSET,
+        position: MISSING[int] = UNSET,
+        side: MISSING[Literal["LEFT", "RIGHT"]] = UNSET,
         line: int,
-        start_line: Union[Unset, int] = UNSET,
-        start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
-        in_reply_to: Union[Unset, int] = UNSET,
-        subject_type: Union[Unset, Literal["LINE", "FILE"]] = UNSET,
+        start_line: MISSING[int] = UNSET,
+        start_side: MISSING[Literal["LEFT", "RIGHT", "side"]] = UNSET,
+        in_reply_to: MISSING[int] = UNSET,
+        subject_type: MISSING[Literal["LINE", "FILE"]] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
         ...
 
@@ -802,7 +802,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
@@ -848,17 +848,17 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
         commit_id: str,
         path: str,
-        position: Union[Unset, int] = UNSET,
-        side: Union[Unset, Literal["LEFT", "RIGHT"]] = UNSET,
+        position: MISSING[int] = UNSET,
+        side: MISSING[Literal["LEFT", "RIGHT"]] = UNSET,
         line: int,
-        start_line: Union[Unset, int] = UNSET,
-        start_side: Union[Unset, Literal["LEFT", "RIGHT", "side"]] = UNSET,
-        in_reply_to: Union[Unset, int] = UNSET,
-        subject_type: Union[Unset, Literal["LINE", "FILE"]] = UNSET,
+        start_line: MISSING[int] = UNSET,
+        start_side: MISSING[Literal["LEFT", "RIGHT", "side"]] = UNSET,
+        in_reply_to: MISSING[int] = UNSET,
+        subject_type: MISSING[Literal["LINE", "FILE"]] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
         ...
 
@@ -868,7 +868,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
@@ -916,7 +916,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -928,8 +928,8 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
@@ -979,7 +979,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -991,8 +991,8 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
@@ -1027,8 +1027,8 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Commit]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/commits"
 
@@ -1054,8 +1054,8 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Commit]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/commits"
 
@@ -1081,8 +1081,8 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[DiffEntry]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/files"
 
@@ -1113,8 +1113,8 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[DiffEntry]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/files"
 
@@ -1185,8 +1185,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
         ...
@@ -1198,11 +1198,11 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        commit_title: Union[Unset, str] = UNSET,
-        commit_message: Union[Unset, str] = UNSET,
-        sha: Union[Unset, str] = UNSET,
-        merge_method: Union[Unset, Literal["merge", "squash", "rebase"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        commit_title: MISSING[str] = UNSET,
+        commit_message: MISSING[str] = UNSET,
+        sha: MISSING[str] = UNSET,
+        merge_method: MISSING[Literal["merge", "squash", "rebase"]] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
         ...
 
@@ -1212,8 +1212,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestMergeResult]":
@@ -1254,8 +1254,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
         ...
@@ -1267,11 +1267,11 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        commit_title: Union[Unset, str] = UNSET,
-        commit_message: Union[Unset, str] = UNSET,
-        sha: Union[Unset, str] = UNSET,
-        merge_method: Union[Unset, Literal["merge", "squash", "rebase"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        commit_title: MISSING[str] = UNSET,
+        commit_message: MISSING[str] = UNSET,
+        sha: MISSING[str] = UNSET,
+        merge_method: MISSING[Literal["merge", "squash", "rebase"]] = UNSET,
     ) -> "Response[PullRequestMergeResult]":
         ...
 
@@ -1281,8 +1281,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestMergeResult]":
@@ -1361,12 +1361,11 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[PullRequestSimple]":
         ...
@@ -1378,9 +1377,9 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         reviewers: List[str],
-        team_reviewers: Union[Unset, List[str]] = UNSET,
+        team_reviewers: MISSING[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
         ...
 
@@ -1391,8 +1390,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        reviewers: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        reviewers: MISSING[List[str]] = UNSET,
         team_reviewers: List[str],
     ) -> "Response[PullRequestSimple]":
         ...
@@ -1403,12 +1402,11 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestSimple]":
@@ -1449,12 +1447,11 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[PullRequestSimple]":
         ...
@@ -1466,9 +1463,9 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         reviewers: List[str],
-        team_reviewers: Union[Unset, List[str]] = UNSET,
+        team_reviewers: MISSING[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
         ...
 
@@ -1479,8 +1476,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        reviewers: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        reviewers: MISSING[List[str]] = UNSET,
         team_reviewers: List[str],
     ) -> "Response[PullRequestSimple]":
         ...
@@ -1491,12 +1488,11 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestSimple]":
@@ -1548,9 +1544,9 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         reviewers: List[str],
-        team_reviewers: Union[Unset, List[str]] = UNSET,
+        team_reviewers: MISSING[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
         ...
 
@@ -1560,8 +1556,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestSimple]":
@@ -1609,9 +1605,9 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         reviewers: List[str],
-        team_reviewers: Union[Unset, List[str]] = UNSET,
+        team_reviewers: MISSING[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
         ...
 
@@ -1621,8 +1617,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestSimple]":
@@ -1657,8 +1653,8 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestReview]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
@@ -1684,8 +1680,8 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[PullRequestReview]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
@@ -1713,7 +1709,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
 
@@ -1724,13 +1720,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        commit_id: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
-        event: Union[Unset, Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
-        comments: Union[
-            Unset,
-            List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType],
+        data: Literal[UNSET] = UNSET,
+        commit_id: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
+        event: MISSING[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
+        comments: MISSING[
+            List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1741,7 +1736,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
@@ -1776,7 +1771,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
 
@@ -1787,13 +1782,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        commit_id: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
-        event: Union[Unset, Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
-        comments: Union[
-            Unset,
-            List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType],
+        data: Literal[UNSET] = UNSET,
+        commit_id: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
+        event: MISSING[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
+        comments: MISSING[
+            List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1804,7 +1798,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
@@ -1898,7 +1892,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1910,9 +1904,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
@@ -1959,7 +1951,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1971,9 +1963,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
@@ -2054,8 +2044,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[ReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"
 
@@ -2085,8 +2075,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[ReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"
 
@@ -2130,9 +2120,9 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         message: str,
-        event: Union[Unset, Literal["DISMISS"]] = UNSET,
+        event: MISSING[Literal["DISMISS"]] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
 
@@ -2143,8 +2133,8 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
@@ -2197,9 +2187,9 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         message: str,
-        event: Union[Unset, Literal["DISMISS"]] = UNSET,
+        event: MISSING[Literal["DISMISS"]] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
 
@@ -2210,8 +2200,8 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
@@ -2264,8 +2254,8 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Unset = UNSET,
-        body: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        body: MISSING[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> "Response[PullRequestReview]":
         ...
@@ -2277,8 +2267,8 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
@@ -2330,8 +2320,8 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Unset = UNSET,
-        body: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        body: MISSING[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> "Response[PullRequestReview]":
         ...
@@ -2343,8 +2333,8 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
+        data: MISSING[
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
@@ -2383,8 +2373,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         ...
@@ -2396,8 +2386,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        expected_head_sha: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        expected_head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         ...
 
@@ -2407,8 +2397,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
@@ -2446,8 +2436,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         ...
@@ -2459,8 +2449,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Unset = UNSET,
-        expected_head_sha: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        expected_head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         ...
 
@@ -2470,8 +2460,8 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":

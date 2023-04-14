@@ -8,11 +8,11 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .models import (
     Blob,
@@ -66,9 +66,9 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         content: str,
-        encoding: Union[Unset, str] = "utf-8",
+        encoding: MISSING[str] = "utf-8",
     ) -> "Response[ShortBlob]":
         ...
 
@@ -77,7 +77,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
@@ -119,9 +119,9 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         content: str,
-        encoding: Union[Unset, str] = "utf-8",
+        encoding: MISSING[str] = "utf-8",
     ) -> "Response[ShortBlob]":
         ...
 
@@ -130,7 +130,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
@@ -220,15 +220,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         message: str,
         tree: str,
-        parents: Union[Unset, List[str]] = UNSET,
-        author: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
-        committer: Union[
-            Unset, ReposOwnerRepoGitCommitsPostBodyPropCommitterType
-        ] = UNSET,
-        signature: Union[Unset, str] = UNSET,
+        parents: MISSING[List[str]] = UNSET,
+        author: MISSING[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
+        committer: MISSING[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
+        signature: MISSING[str] = UNSET,
     ) -> "Response[GitCommit]":
         ...
 
@@ -237,7 +235,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
@@ -277,15 +275,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         message: str,
         tree: str,
-        parents: Union[Unset, List[str]] = UNSET,
-        author: Union[Unset, ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
-        committer: Union[
-            Unset, ReposOwnerRepoGitCommitsPostBodyPropCommitterType
-        ] = UNSET,
-        signature: Union[Unset, str] = UNSET,
+        parents: MISSING[List[str]] = UNSET,
+        author: MISSING[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
+        committer: MISSING[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
+        signature: MISSING[str] = UNSET,
     ) -> "Response[GitCommit]":
         ...
 
@@ -294,7 +290,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
@@ -460,10 +456,10 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         ref: str,
         sha: str,
-        key: Union[Unset, str] = UNSET,
+        key: MISSING[str] = UNSET,
     ) -> "Response[GitRef]":
         ...
 
@@ -472,7 +468,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitRefsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
@@ -511,10 +507,10 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         ref: str,
         sha: str,
-        key: Union[Unset, str] = UNSET,
+        key: MISSING[str] = UNSET,
     ) -> "Response[GitRef]":
         ...
 
@@ -523,7 +519,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitRefsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
@@ -610,9 +606,9 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         sha: str,
-        force: Union[Unset, bool] = False,
+        force: MISSING[bool] = False,
     ) -> "Response[GitRef]":
         ...
 
@@ -622,7 +618,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -667,9 +663,9 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         sha: str,
-        force: Union[Unset, bool] = False,
+        force: MISSING[bool] = False,
     ) -> "Response[GitRef]":
         ...
 
@@ -679,7 +675,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -718,12 +714,12 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         tag: str,
         message: str,
         object_: str,
         type: Literal["commit", "tree", "blob"],
-        tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
+        tagger: MISSING[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
     ) -> "Response[GitTag]":
         ...
 
@@ -732,7 +728,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitTagsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
@@ -771,12 +767,12 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         tag: str,
         message: str,
         object_: str,
         type: Literal["commit", "tree", "blob"],
-        tagger: Union[Unset, ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
+        tagger: MISSING[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
     ) -> "Response[GitTag]":
         ...
 
@@ -785,7 +781,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitTagsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
@@ -868,9 +864,9 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
-        base_tree: Union[Unset, str] = UNSET,
+        base_tree: MISSING[str] = UNSET,
     ) -> "Response[GitTree]":
         ...
 
@@ -879,7 +875,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitTreesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
@@ -920,9 +916,9 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
-        base_tree: Union[Unset, str] = UNSET,
+        base_tree: MISSING[str] = UNSET,
     ) -> "Response[GitTree]":
         ...
 
@@ -931,7 +927,7 @@ class GitClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoGitTreesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
@@ -965,7 +961,7 @@ class GitClient:
         owner: str,
         repo: str,
         tree_sha: str,
-        recursive: Union[Unset, str] = UNSET,
+        recursive: MISSING[str] = UNSET,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"
 
@@ -994,7 +990,7 @@ class GitClient:
         owner: str,
         repo: str,
         tree_sha: str,
-        recursive: Union[Unset, str] = UNSET,
+        recursive: MISSING[str] = UNSET,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"
 

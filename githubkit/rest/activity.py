@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     NotificationsPutBodyType,
@@ -56,8 +56,8 @@ class ActivityClient:
 
     def list_public_events(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = "/events"
 
@@ -84,8 +84,8 @@ class ActivityClient:
 
     async def async_list_public_events(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = "/events"
 
@@ -146,8 +146,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/networks/{owner}/{repo}/events"
 
@@ -176,8 +176,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/networks/{owner}/{repo}/events"
 
@@ -204,12 +204,12 @@ class ActivityClient:
 
     def list_notifications_for_authenticated_user(
         self,
-        all_: Union[Unset, bool] = False,
-        participating: Union[Unset, bool] = False,
-        since: Union[Unset, datetime] = UNSET,
-        before: Union[Unset, datetime] = UNSET,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 50,
+        all_: MISSING[bool] = False,
+        participating: MISSING[bool] = False,
+        since: MISSING[datetime] = UNSET,
+        before: MISSING[datetime] = UNSET,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 50,
     ) -> "Response[List[Thread]]":
         url = "/notifications"
 
@@ -241,12 +241,12 @@ class ActivityClient:
 
     async def async_list_notifications_for_authenticated_user(
         self,
-        all_: Union[Unset, bool] = False,
-        participating: Union[Unset, bool] = False,
-        since: Union[Unset, datetime] = UNSET,
-        before: Union[Unset, datetime] = UNSET,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 50,
+        all_: MISSING[bool] = False,
+        participating: MISSING[bool] = False,
+        since: MISSING[datetime] = UNSET,
+        before: MISSING[datetime] = UNSET,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 50,
     ) -> "Response[List[Thread]]":
         url = "/notifications"
 
@@ -278,7 +278,7 @@ class ActivityClient:
 
     @overload
     def mark_notifications_as_read(
-        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET
+        self, *, data: MISSING[NotificationsPutBodyType] = UNSET
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
@@ -286,14 +286,14 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        data: Unset = UNSET,
-        last_read_at: Union[Unset, datetime] = UNSET,
-        read: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        last_read_at: MISSING[datetime] = UNSET,
+        read: MISSING[bool] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
     def mark_notifications_as_read(
-        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[NotificationsPutBodyType] = UNSET, **kwargs
     ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
@@ -322,7 +322,7 @@ class ActivityClient:
 
     @overload
     async def async_mark_notifications_as_read(
-        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET
+        self, *, data: MISSING[NotificationsPutBodyType] = UNSET
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
@@ -330,14 +330,14 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        data: Unset = UNSET,
-        last_read_at: Union[Unset, datetime] = UNSET,
-        read: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        last_read_at: MISSING[datetime] = UNSET,
+        read: MISSING[bool] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
     async def async_mark_notifications_as_read(
-        self, *, data: Union[Unset, NotificationsPutBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[NotificationsPutBodyType] = UNSET, **kwargs
     ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
@@ -491,7 +491,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+        data: MISSING[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> "Response[ThreadSubscription]":
         ...
 
@@ -500,8 +500,8 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Unset = UNSET,
-        ignored: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        ignored: MISSING[bool] = False,
     ) -> "Response[ThreadSubscription]":
         ...
 
@@ -509,7 +509,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+        data: MISSING[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -542,7 +542,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+        data: MISSING[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> "Response[ThreadSubscription]":
         ...
 
@@ -551,8 +551,8 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Unset = UNSET,
-        ignored: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        ignored: MISSING[bool] = False,
     ) -> "Response[ThreadSubscription]":
         ...
 
@@ -560,7 +560,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Union[Unset, NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
+        data: MISSING[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -631,8 +631,8 @@ class ActivityClient:
     def list_public_org_events(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/orgs/{org}/events"
 
@@ -656,8 +656,8 @@ class ActivityClient:
     async def async_list_public_org_events(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/orgs/{org}/events"
 
@@ -682,8 +682,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/repos/{owner}/{repo}/events"
 
@@ -708,8 +708,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/repos/{owner}/{repo}/events"
 
@@ -734,12 +734,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        all_: Union[Unset, bool] = False,
-        participating: Union[Unset, bool] = False,
-        since: Union[Unset, datetime] = UNSET,
-        before: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        all_: MISSING[bool] = False,
+        participating: MISSING[bool] = False,
+        since: MISSING[datetime] = UNSET,
+        before: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Thread]]":
         url = f"/repos/{owner}/{repo}/notifications"
 
@@ -768,12 +768,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        all_: Union[Unset, bool] = False,
-        participating: Union[Unset, bool] = False,
-        since: Union[Unset, datetime] = UNSET,
-        before: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        all_: MISSING[bool] = False,
+        participating: MISSING[bool] = False,
+        since: MISSING[datetime] = UNSET,
+        before: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Thread]]":
         url = f"/repos/{owner}/{repo}/notifications"
 
@@ -804,7 +804,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
 
@@ -814,8 +814,8 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        last_read_at: Union[Unset, datetime] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        last_read_at: MISSING[datetime] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
 
@@ -824,7 +824,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
@@ -854,7 +854,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
 
@@ -864,8 +864,8 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        last_read_at: Union[Unset, datetime] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        last_read_at: MISSING[datetime] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
 
@@ -874,7 +874,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoNotificationsPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
@@ -902,8 +902,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[Union[List[SimpleUser], List[Stargazer]]]":
         url = f"/repos/{owner}/{repo}/stargazers"
 
@@ -931,8 +931,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[Union[List[SimpleUser], List[Stargazer]]]":
         url = f"/repos/{owner}/{repo}/stargazers"
 
@@ -960,8 +960,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/subscribers"
 
@@ -986,8 +986,8 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/subscribers"
 
@@ -1056,7 +1056,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> "Response[RepositorySubscription]":
         ...
 
@@ -1066,9 +1066,9 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        subscribed: Union[Unset, bool] = UNSET,
-        ignored: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        subscribed: MISSING[bool] = UNSET,
+        ignored: MISSING[bool] = UNSET,
     ) -> "Response[RepositorySubscription]":
         ...
 
@@ -1077,7 +1077,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1107,7 +1107,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> "Response[RepositorySubscription]":
         ...
 
@@ -1117,9 +1117,9 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        subscribed: Union[Unset, bool] = UNSET,
-        ignored: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        subscribed: MISSING[bool] = UNSET,
+        ignored: MISSING[bool] = UNSET,
     ) -> "Response[RepositorySubscription]":
         ...
 
@@ -1128,7 +1128,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1188,10 +1188,10 @@ class ActivityClient:
 
     def list_repos_starred_by_authenticated_user(
         self,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Repository]]":
         url = "/user/starred"
 
@@ -1220,10 +1220,10 @@ class ActivityClient:
 
     async def async_list_repos_starred_by_authenticated_user(
         self,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Repository]]":
         url = "/user/starred"
 
@@ -1384,8 +1384,8 @@ class ActivityClient:
 
     def list_watched_repos_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = "/user/subscriptions"
 
@@ -1412,8 +1412,8 @@ class ActivityClient:
 
     async def async_list_watched_repos_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = "/user/subscriptions"
 
@@ -1441,8 +1441,8 @@ class ActivityClient:
     def list_events_for_authenticated_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events"
 
@@ -1466,8 +1466,8 @@ class ActivityClient:
     async def async_list_events_for_authenticated_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events"
 
@@ -1492,8 +1492,8 @@ class ActivityClient:
         self,
         username: str,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/orgs/{org}"
 
@@ -1518,8 +1518,8 @@ class ActivityClient:
         self,
         username: str,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/orgs/{org}"
 
@@ -1543,8 +1543,8 @@ class ActivityClient:
     def list_public_events_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/public"
 
@@ -1568,8 +1568,8 @@ class ActivityClient:
     async def async_list_public_events_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/public"
 
@@ -1593,8 +1593,8 @@ class ActivityClient:
     def list_received_events_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events"
 
@@ -1618,8 +1618,8 @@ class ActivityClient:
     async def async_list_received_events_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events"
 
@@ -1643,8 +1643,8 @@ class ActivityClient:
     def list_received_public_events_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events/public"
 
@@ -1668,8 +1668,8 @@ class ActivityClient:
     async def async_list_received_public_events_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events/public"
 
@@ -1693,10 +1693,10 @@ class ActivityClient:
     def list_repos_starred_by_user(
         self,
         username: str,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[Union[List[StarredRepository], List[Repository]]]":
         url = f"/users/{username}/starred"
 
@@ -1722,10 +1722,10 @@ class ActivityClient:
     async def async_list_repos_starred_by_user(
         self,
         username: str,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[Union[List[StarredRepository], List[Repository]]]":
         url = f"/users/{username}/starred"
 
@@ -1751,8 +1751,8 @@ class ActivityClient:
     def list_repos_watched_by_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/users/{username}/subscriptions"
 
@@ -1776,8 +1776,8 @@ class ActivityClient:
     async def async_list_repos_watched_by_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/users/{username}/subscriptions"
 

@@ -64,8 +64,7 @@ class EndpointData(BaseModel):
             imports.update(self.request_body.get_param_imports())
             imports.update(self.request_body.get_using_imports())
             if self.request_body.allowed_models:
-                imports.add("from typing import Union")
-                imports.add("from githubkit.utils import UNSET, Unset")
+                imports.add("from githubkit.utils import UNSET, MISSING")
         if self.success_response:
             imports.update(self.success_response.get_using_imports())
         for resp in self.error_responses.values():

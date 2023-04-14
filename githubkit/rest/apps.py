@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     AppPermissionsType,
@@ -181,16 +181,16 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        data: Unset = UNSET,
-        url: Union[Unset, str] = UNSET,
-        content_type: Union[Unset, str] = UNSET,
-        secret: Union[Unset, str] = UNSET,
-        insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        url: MISSING[str] = UNSET,
+        content_type: MISSING[str] = UNSET,
+        secret: MISSING[str] = UNSET,
+        insecure_ssl: MISSING[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
     def update_webhook_config_for_app(
-        self, *, data: Union[Unset, AppHookConfigPatchBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[AppHookConfigPatchBodyType] = UNSET, **kwargs
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
@@ -223,16 +223,16 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        data: Unset = UNSET,
-        url: Union[Unset, str] = UNSET,
-        content_type: Union[Unset, str] = UNSET,
-        secret: Union[Unset, str] = UNSET,
-        insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        url: MISSING[str] = UNSET,
+        content_type: MISSING[str] = UNSET,
+        secret: MISSING[str] = UNSET,
+        insecure_ssl: MISSING[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
     async def async_update_webhook_config_for_app(
-        self, *, data: Union[Unset, AppHookConfigPatchBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[AppHookConfigPatchBodyType] = UNSET, **kwargs
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
@@ -257,9 +257,9 @@ class AppsClient:
 
     def list_webhook_deliveries(
         self,
-        per_page: Union[Unset, int] = 30,
-        cursor: Union[Unset, str] = UNSET,
-        redelivery: Union[Unset, bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        cursor: MISSING[str] = UNSET,
+        redelivery: MISSING[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = "/app/hook/deliveries"
 
@@ -287,9 +287,9 @@ class AppsClient:
 
     async def async_list_webhook_deliveries(
         self,
-        per_page: Union[Unset, int] = 30,
-        cursor: Union[Unset, str] = UNSET,
-        redelivery: Union[Unset, bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        cursor: MISSING[str] = UNSET,
+        redelivery: MISSING[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = "/app/hook/deliveries"
 
@@ -401,8 +401,8 @@ class AppsClient:
 
     def list_installation_requests_for_authenticated_app(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IntegrationInstallationRequest]]":
         url = "/app/installation-requests"
 
@@ -428,8 +428,8 @@ class AppsClient:
 
     async def async_list_installation_requests_for_authenticated_app(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IntegrationInstallationRequest]]":
         url = "/app/installation-requests"
 
@@ -455,10 +455,10 @@ class AppsClient:
 
     def list_installations(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        since: Union[Unset, datetime] = UNSET,
-        outdated: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        since: MISSING[datetime] = UNSET,
+        outdated: MISSING[str] = UNSET,
     ) -> "Response[List[Installation]]":
         url = "/app/installations"
 
@@ -483,10 +483,10 @@ class AppsClient:
 
     async def async_list_installations(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        since: Union[Unset, datetime] = UNSET,
-        outdated: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        since: MISSING[datetime] = UNSET,
+        outdated: MISSING[str] = UNSET,
     ) -> "Response[List[Installation]]":
         url = "/app/installations"
 
@@ -592,9 +592,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Union[
-            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
-        ] = UNSET,
+        data: MISSING[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> "Response[InstallationToken]":
         ...
 
@@ -603,10 +601,10 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Unset = UNSET,
-        repositories: Union[Unset, List[str]] = UNSET,
-        repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissionsType] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        repositories: MISSING[List[str]] = UNSET,
+        repository_ids: MISSING[List[int]] = UNSET,
+        permissions: MISSING[AppPermissionsType] = UNSET,
     ) -> "Response[InstallationToken]":
         ...
 
@@ -614,9 +612,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Union[
-            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
-        ] = UNSET,
+        data: MISSING[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
@@ -651,9 +647,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Union[
-            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
-        ] = UNSET,
+        data: MISSING[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> "Response[InstallationToken]":
         ...
 
@@ -662,10 +656,10 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Unset = UNSET,
-        repositories: Union[Unset, List[str]] = UNSET,
-        repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissionsType] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        repositories: MISSING[List[str]] = UNSET,
+        repository_ids: MISSING[List[int]] = UNSET,
+        permissions: MISSING[AppPermissionsType] = UNSET,
     ) -> "Response[InstallationToken]":
         ...
 
@@ -673,9 +667,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Union[
-            Unset, AppInstallationsInstallationIdAccessTokensPostBodyType
-        ] = UNSET,
+        data: MISSING[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
@@ -792,7 +784,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response":
         ...
@@ -801,7 +793,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdGrantDeleteBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
@@ -838,7 +830,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response":
         ...
@@ -847,7 +839,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdGrantDeleteBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
@@ -884,7 +876,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -893,7 +885,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenPostBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
@@ -932,7 +924,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -941,7 +933,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenPostBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
@@ -980,7 +972,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response":
         ...
@@ -989,7 +981,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenDeleteBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/token"
@@ -1026,7 +1018,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response":
         ...
@@ -1035,7 +1027,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenDeleteBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/token"
@@ -1072,7 +1064,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -1081,7 +1073,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenPatchBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
@@ -1119,7 +1111,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -1128,7 +1120,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenPatchBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
@@ -1166,13 +1158,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
-        target: Union[Unset, str] = UNSET,
-        target_id: Union[Unset, int] = UNSET,
-        repositories: Union[Unset, List[str]] = UNSET,
-        repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissionsType] = UNSET,
+        target: MISSING[str] = UNSET,
+        target_id: MISSING[int] = UNSET,
+        repositories: MISSING[List[str]] = UNSET,
+        repository_ids: MISSING[List[int]] = UNSET,
+        permissions: MISSING[AppPermissionsType] = UNSET,
     ) -> "Response[Authorization]":
         ...
 
@@ -1180,7 +1172,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
@@ -1221,13 +1213,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_token: str,
-        target: Union[Unset, str] = UNSET,
-        target_id: Union[Unset, int] = UNSET,
-        repositories: Union[Unset, List[str]] = UNSET,
-        repository_ids: Union[Unset, List[int]] = UNSET,
-        permissions: Union[Unset, AppPermissionsType] = UNSET,
+        target: MISSING[str] = UNSET,
+        target_id: MISSING[int] = UNSET,
+        repositories: MISSING[List[str]] = UNSET,
+        repository_ids: MISSING[List[int]] = UNSET,
+        permissions: MISSING[AppPermissionsType] = UNSET,
     ) -> "Response[Authorization]":
         ...
 
@@ -1235,7 +1227,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Union[Unset, ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
+        data: MISSING[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
@@ -1309,8 +1301,8 @@ class AppsClient:
 
     def list_repos_accessible_to_installation(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[InstallationRepositoriesGetResponse200]":
         url = "/installation/repositories"
 
@@ -1337,8 +1329,8 @@ class AppsClient:
 
     async def async_list_repos_accessible_to_installation(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[InstallationRepositoriesGetResponse200]":
         url = "/installation/repositories"
 
@@ -1437,8 +1429,8 @@ class AppsClient:
 
     def list_plans(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/plans"
 
@@ -1465,8 +1457,8 @@ class AppsClient:
 
     async def async_list_plans(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/plans"
 
@@ -1494,10 +1486,10 @@ class AppsClient:
     def list_accounts_for_plan(
         self,
         plan_id: int,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/plans/{plan_id}/accounts"
 
@@ -1528,10 +1520,10 @@ class AppsClient:
     async def async_list_accounts_for_plan(
         self,
         plan_id: int,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/plans/{plan_id}/accounts"
 
@@ -1601,8 +1593,8 @@ class AppsClient:
 
     def list_plans_stubbed(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/stubbed/plans"
 
@@ -1628,8 +1620,8 @@ class AppsClient:
 
     async def async_list_plans_stubbed(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/stubbed/plans"
 
@@ -1656,10 +1648,10 @@ class AppsClient:
     def list_accounts_for_plan_stubbed(
         self,
         plan_id: int,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/stubbed/plans/{plan_id}/accounts"
 
@@ -1688,10 +1680,10 @@ class AppsClient:
     async def async_list_accounts_for_plan_stubbed(
         self,
         plan_id: int,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/stubbed/plans/{plan_id}/accounts"
 
@@ -1795,8 +1787,8 @@ class AppsClient:
 
     def list_installations_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[UserInstallationsGetResponse200]":
         url = "/user/installations"
 
@@ -1823,8 +1815,8 @@ class AppsClient:
 
     async def async_list_installations_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[UserInstallationsGetResponse200]":
         url = "/user/installations"
 
@@ -1852,8 +1844,8 @@ class AppsClient:
     def list_installation_repos_for_authenticated_user(
         self,
         installation_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[UserInstallationsInstallationIdRepositoriesGetResponse200]":
         url = f"/user/installations/{installation_id}/repositories"
 
@@ -1881,8 +1873,8 @@ class AppsClient:
     async def async_list_installation_repos_for_authenticated_user(
         self,
         installation_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[UserInstallationsInstallationIdRepositoriesGetResponse200]":
         url = f"/user/installations/{installation_id}/repositories"
 
@@ -1993,8 +1985,8 @@ class AppsClient:
 
     def list_subscriptions_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases"
 
@@ -2021,8 +2013,8 @@ class AppsClient:
 
     async def async_list_subscriptions_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases"
 
@@ -2049,8 +2041,8 @@ class AppsClient:
 
     def list_subscriptions_for_authenticated_user_stubbed(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases/stubbed"
 
@@ -2076,8 +2068,8 @@ class AppsClient:
 
     async def async_list_subscriptions_for_authenticated_user_stubbed(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases/stubbed"
 

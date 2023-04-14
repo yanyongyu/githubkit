@@ -8,11 +8,11 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, overload
+from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .models import License, BasicError, LicenseSimple, LicenseContent
 
@@ -29,9 +29,9 @@ class LicensesClient:
 
     def get_all_commonly_used(
         self,
-        featured: Union[Unset, bool] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        featured: MISSING[bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[LicenseSimple]]":
         url = "/licenses"
 
@@ -55,9 +55,9 @@ class LicensesClient:
 
     async def async_get_all_commonly_used(
         self,
-        featured: Union[Unset, bool] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        featured: MISSING[bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[LicenseSimple]]":
         url = "/licenses"
 

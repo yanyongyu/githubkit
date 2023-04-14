@@ -8,11 +8,11 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Union, Literal, overload
+from typing import TYPE_CHECKING, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .models import MarkdownPostBody
 from .types import MarkdownPostBodyType
@@ -36,15 +36,15 @@ class MarkdownClient:
     def render(
         self,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         text: str,
-        mode: Union[Unset, Literal["markdown", "gfm"]] = "markdown",
-        context: Union[Unset, str] = UNSET,
+        mode: MISSING[Literal["markdown", "gfm"]] = "markdown",
+        context: MISSING[str] = UNSET,
     ) -> "Response[str]":
         ...
 
     def render(
-        self, *, data: Union[Unset, MarkdownPostBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[MarkdownPostBodyType] = UNSET, **kwargs
     ) -> "Response[str]":
         url = "/markdown"
 
@@ -75,15 +75,15 @@ class MarkdownClient:
     async def async_render(
         self,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         text: str,
-        mode: Union[Unset, Literal["markdown", "gfm"]] = "markdown",
-        context: Union[Unset, str] = UNSET,
+        mode: MISSING[Literal["markdown", "gfm"]] = "markdown",
+        context: MISSING[str] = UNSET,
     ) -> "Response[str]":
         ...
 
     async def async_render(
-        self, *, data: Union[Unset, MarkdownPostBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[MarkdownPostBodyType] = UNSET, **kwargs
     ) -> "Response[str]":
         url = "/markdown"
 

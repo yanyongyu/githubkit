@@ -45,7 +45,7 @@
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
 *,
-data: Unset = UNSET,
+data: Literal[UNSET] = UNSET,
 {{ body_params(model, endpoint.param_names) }}
 {% endmacro %}
 

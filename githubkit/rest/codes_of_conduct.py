@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, overload
+from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 

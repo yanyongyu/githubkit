@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     OrgsOrgPatchBodyType,
@@ -80,8 +80,8 @@ class OrgsClient:
 
     def list(
         self,
-        since: Union[Unset, int] = UNSET,
-        per_page: Union[Unset, int] = 30,
+        since: MISSING[int] = UNSET,
+        per_page: MISSING[int] = 30,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/organizations"
 
@@ -104,8 +104,8 @@ class OrgsClient:
 
     async def async_list(
         self,
-        since: Union[Unset, int] = UNSET,
-        per_page: Union[Unset, int] = 30,
+        since: MISSING[int] = UNSET,
+        per_page: MISSING[int] = 30,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/organizations"
 
@@ -129,15 +129,15 @@ class OrgsClient:
     def list_pat_grant_requests(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        sort: Union[Unset, Literal["created_at"]] = "created_at",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        owner: Union[Unset, List[str]] = UNSET,
-        repository: Union[Unset, str] = UNSET,
-        permission: Union[Unset, str] = UNSET,
-        last_used_before: Union[Unset, datetime] = UNSET,
-        last_used_after: Union[Unset, datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        sort: MISSING[Literal["created_at"]] = "created_at",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        owner: MISSING[List[str]] = UNSET,
+        repository: MISSING[str] = UNSET,
+        permission: MISSING[str] = UNSET,
+        last_used_before: MISSING[datetime] = UNSET,
+        last_used_after: MISSING[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
@@ -174,15 +174,15 @@ class OrgsClient:
     async def async_list_pat_grant_requests(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        sort: Union[Unset, Literal["created_at"]] = "created_at",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        owner: Union[Unset, List[str]] = UNSET,
-        repository: Union[Unset, str] = UNSET,
-        permission: Union[Unset, str] = UNSET,
-        last_used_before: Union[Unset, datetime] = UNSET,
-        last_used_after: Union[Unset, datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        sort: MISSING[Literal["created_at"]] = "created_at",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        owner: MISSING[List[str]] = UNSET,
+        repository: MISSING[str] = UNSET,
+        permission: MISSING[str] = UNSET,
+        last_used_before: MISSING[datetime] = UNSET,
+        last_used_after: MISSING[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
@@ -227,10 +227,10 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        pat_request_ids: Union[Unset, List[int]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        pat_request_ids: MISSING[List[int]] = UNSET,
         action: Literal["approve", "deny"],
-        reason: Union[Unset, Union[str, None]] = UNSET,
+        reason: MISSING[Union[str, None]] = UNSET,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -238,9 +238,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[
-            Unset, OrganizationsOrgPersonalAccessTokenRequestsPostBodyType
-        ] = UNSET,
+        data: MISSING[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
@@ -281,10 +279,10 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        pat_request_ids: Union[Unset, List[int]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        pat_request_ids: MISSING[List[int]] = UNSET,
         action: Literal["approve", "deny"],
-        reason: Union[Unset, Union[str, None]] = UNSET,
+        reason: MISSING[Union[str, None]] = UNSET,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -292,9 +290,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[
-            Unset, OrganizationsOrgPersonalAccessTokenRequestsPostBodyType
-        ] = UNSET,
+        data: MISSING[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
@@ -340,9 +336,9 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         action: Literal["approve", "deny"],
-        reason: Union[Unset, Union[str, None]] = UNSET,
+        reason: MISSING[Union[str, None]] = UNSET,
     ) -> "Response":
         ...
 
@@ -351,8 +347,8 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        data: Union[
-            Unset, OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
+        data: MISSING[
+            OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -400,9 +396,9 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         action: Literal["approve", "deny"],
-        reason: Union[Unset, Union[str, None]] = UNSET,
+        reason: MISSING[Union[str, None]] = UNSET,
     ) -> "Response":
         ...
 
@@ -411,8 +407,8 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        data: Union[
-            Unset, OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
+        data: MISSING[
+            OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -448,8 +444,8 @@ class OrgsClient:
         self,
         org: str,
         pat_request_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
 
@@ -479,8 +475,8 @@ class OrgsClient:
         self,
         org: str,
         pat_request_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
 
@@ -509,15 +505,15 @@ class OrgsClient:
     def list_pat_grants(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        sort: Union[Unset, Literal["created_at"]] = "created_at",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        owner: Union[Unset, List[str]] = UNSET,
-        repository: Union[Unset, str] = UNSET,
-        permission: Union[Unset, str] = UNSET,
-        last_used_before: Union[Unset, datetime] = UNSET,
-        last_used_after: Union[Unset, datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        sort: MISSING[Literal["created_at"]] = "created_at",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        owner: MISSING[List[str]] = UNSET,
+        repository: MISSING[str] = UNSET,
+        permission: MISSING[str] = UNSET,
+        last_used_before: MISSING[datetime] = UNSET,
+        last_used_after: MISSING[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
         url = f"/organizations/{org}/personal-access-tokens"
 
@@ -554,15 +550,15 @@ class OrgsClient:
     async def async_list_pat_grants(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        sort: Union[Unset, Literal["created_at"]] = "created_at",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        owner: Union[Unset, List[str]] = UNSET,
-        repository: Union[Unset, str] = UNSET,
-        permission: Union[Unset, str] = UNSET,
-        last_used_before: Union[Unset, datetime] = UNSET,
-        last_used_after: Union[Unset, datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        sort: MISSING[Literal["created_at"]] = "created_at",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        owner: MISSING[List[str]] = UNSET,
+        repository: MISSING[str] = UNSET,
+        permission: MISSING[str] = UNSET,
+        last_used_before: MISSING[datetime] = UNSET,
+        last_used_after: MISSING[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
         url = f"/organizations/{org}/personal-access-tokens"
 
@@ -607,7 +603,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         action: Literal["revoke"],
         pat_ids: List[int],
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
@@ -617,7 +613,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
+        data: MISSING[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
@@ -658,7 +654,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         action: Literal["revoke"],
         pat_ids: List[int],
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
@@ -668,7 +664,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
+        data: MISSING[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
@@ -714,7 +710,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         action: Literal["revoke"],
     ) -> "Response":
         ...
@@ -724,9 +720,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        data: Union[
-            Unset, OrganizationsOrgPersonalAccessTokensPatIdPostBodyType
-        ] = UNSET,
+        data: MISSING[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
@@ -771,7 +765,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         action: Literal["revoke"],
     ) -> "Response":
         ...
@@ -781,9 +775,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        data: Union[
-            Unset, OrganizationsOrgPersonalAccessTokensPatIdPostBodyType
-        ] = UNSET,
+        data: MISSING[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
@@ -816,8 +808,8 @@ class OrgsClient:
         self,
         org: str,
         pat_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
 
@@ -847,8 +839,8 @@ class OrgsClient:
         self,
         org: str,
         pat_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
 
@@ -958,7 +950,7 @@ class OrgsClient:
 
     @overload
     def update(
-        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET
+        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -967,49 +959,47 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        billing_email: Union[Unset, str] = UNSET,
-        company: Union[Unset, str] = UNSET,
-        email: Union[Unset, str] = UNSET,
-        twitter_username: Union[Unset, str] = UNSET,
-        location: Union[Unset, str] = UNSET,
-        name: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
-        has_organization_projects: Union[Unset, bool] = UNSET,
-        has_repository_projects: Union[Unset, bool] = UNSET,
-        default_repository_permission: Union[
-            Unset, Literal["read", "write", "admin", "none"]
+        data: Literal[UNSET] = UNSET,
+        billing_email: MISSING[str] = UNSET,
+        company: MISSING[str] = UNSET,
+        email: MISSING[str] = UNSET,
+        twitter_username: MISSING[str] = UNSET,
+        location: MISSING[str] = UNSET,
+        name: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
+        has_organization_projects: MISSING[bool] = UNSET,
+        has_repository_projects: MISSING[bool] = UNSET,
+        default_repository_permission: MISSING[
+            Literal["read", "write", "admin", "none"]
         ] = "read",
-        members_can_create_repositories: Union[Unset, bool] = True,
-        members_can_create_internal_repositories: Union[Unset, bool] = UNSET,
-        members_can_create_private_repositories: Union[Unset, bool] = UNSET,
-        members_can_create_public_repositories: Union[Unset, bool] = UNSET,
-        members_allowed_repository_creation_type: Union[
-            Unset, Literal["all", "private", "none"]
+        members_can_create_repositories: MISSING[bool] = True,
+        members_can_create_internal_repositories: MISSING[bool] = UNSET,
+        members_can_create_private_repositories: MISSING[bool] = UNSET,
+        members_can_create_public_repositories: MISSING[bool] = UNSET,
+        members_allowed_repository_creation_type: MISSING[
+            Literal["all", "private", "none"]
         ] = UNSET,
-        members_can_create_pages: Union[Unset, bool] = True,
-        members_can_create_public_pages: Union[Unset, bool] = True,
-        members_can_create_private_pages: Union[Unset, bool] = True,
-        members_can_fork_private_repositories: Union[Unset, bool] = False,
-        web_commit_signoff_required: Union[Unset, bool] = False,
-        blog: Union[Unset, str] = UNSET,
-        advanced_security_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        dependabot_alerts_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        dependabot_security_updates_enabled_for_new_repositories: Union[
-            Unset, bool
+        members_can_create_pages: MISSING[bool] = True,
+        members_can_create_public_pages: MISSING[bool] = True,
+        members_can_create_private_pages: MISSING[bool] = True,
+        members_can_fork_private_repositories: MISSING[bool] = False,
+        web_commit_signoff_required: MISSING[bool] = False,
+        blog: MISSING[str] = UNSET,
+        advanced_security_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        dependabot_alerts_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        dependabot_security_updates_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        dependency_graph_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: MISSING[
+            bool
         ] = UNSET,
-        dependency_graph_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        secret_scanning_push_protection_enabled_for_new_repositories: Union[
-            Unset, bool
-        ] = UNSET,
-        secret_scanning_push_protection_custom_link_enabled: Union[Unset, bool] = UNSET,
-        secret_scanning_push_protection_custom_link: Union[Unset, str] = UNSET,
+        secret_scanning_push_protection_custom_link_enabled: MISSING[bool] = UNSET,
+        secret_scanning_push_protection_custom_link: MISSING[str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
     def update(
-        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET, **kwargs
+        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET, **kwargs
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
@@ -1038,7 +1028,7 @@ class OrgsClient:
 
     @overload
     async def async_update(
-        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET
+        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -1047,49 +1037,47 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        billing_email: Union[Unset, str] = UNSET,
-        company: Union[Unset, str] = UNSET,
-        email: Union[Unset, str] = UNSET,
-        twitter_username: Union[Unset, str] = UNSET,
-        location: Union[Unset, str] = UNSET,
-        name: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
-        has_organization_projects: Union[Unset, bool] = UNSET,
-        has_repository_projects: Union[Unset, bool] = UNSET,
-        default_repository_permission: Union[
-            Unset, Literal["read", "write", "admin", "none"]
+        data: Literal[UNSET] = UNSET,
+        billing_email: MISSING[str] = UNSET,
+        company: MISSING[str] = UNSET,
+        email: MISSING[str] = UNSET,
+        twitter_username: MISSING[str] = UNSET,
+        location: MISSING[str] = UNSET,
+        name: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
+        has_organization_projects: MISSING[bool] = UNSET,
+        has_repository_projects: MISSING[bool] = UNSET,
+        default_repository_permission: MISSING[
+            Literal["read", "write", "admin", "none"]
         ] = "read",
-        members_can_create_repositories: Union[Unset, bool] = True,
-        members_can_create_internal_repositories: Union[Unset, bool] = UNSET,
-        members_can_create_private_repositories: Union[Unset, bool] = UNSET,
-        members_can_create_public_repositories: Union[Unset, bool] = UNSET,
-        members_allowed_repository_creation_type: Union[
-            Unset, Literal["all", "private", "none"]
+        members_can_create_repositories: MISSING[bool] = True,
+        members_can_create_internal_repositories: MISSING[bool] = UNSET,
+        members_can_create_private_repositories: MISSING[bool] = UNSET,
+        members_can_create_public_repositories: MISSING[bool] = UNSET,
+        members_allowed_repository_creation_type: MISSING[
+            Literal["all", "private", "none"]
         ] = UNSET,
-        members_can_create_pages: Union[Unset, bool] = True,
-        members_can_create_public_pages: Union[Unset, bool] = True,
-        members_can_create_private_pages: Union[Unset, bool] = True,
-        members_can_fork_private_repositories: Union[Unset, bool] = False,
-        web_commit_signoff_required: Union[Unset, bool] = False,
-        blog: Union[Unset, str] = UNSET,
-        advanced_security_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        dependabot_alerts_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        dependabot_security_updates_enabled_for_new_repositories: Union[
-            Unset, bool
+        members_can_create_pages: MISSING[bool] = True,
+        members_can_create_public_pages: MISSING[bool] = True,
+        members_can_create_private_pages: MISSING[bool] = True,
+        members_can_fork_private_repositories: MISSING[bool] = False,
+        web_commit_signoff_required: MISSING[bool] = False,
+        blog: MISSING[str] = UNSET,
+        advanced_security_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        dependabot_alerts_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        dependabot_security_updates_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        dependency_graph_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: MISSING[bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: MISSING[
+            bool
         ] = UNSET,
-        dependency_graph_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        secret_scanning_enabled_for_new_repositories: Union[Unset, bool] = UNSET,
-        secret_scanning_push_protection_enabled_for_new_repositories: Union[
-            Unset, bool
-        ] = UNSET,
-        secret_scanning_push_protection_custom_link_enabled: Union[Unset, bool] = UNSET,
-        secret_scanning_push_protection_custom_link: Union[Unset, str] = UNSET,
+        secret_scanning_push_protection_custom_link_enabled: MISSING[bool] = UNSET,
+        secret_scanning_push_protection_custom_link: MISSING[str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
     async def async_update(
-        self, org: str, *, data: Union[Unset, OrgsOrgPatchBodyType] = UNSET, **kwargs
+        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET, **kwargs
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
@@ -1119,8 +1107,8 @@ class OrgsClient:
     def list_blocked_users(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
 
@@ -1144,8 +1132,8 @@ class OrgsClient:
     async def async_list_blocked_users(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
 
@@ -1283,8 +1271,8 @@ class OrgsClient:
     def list_failed_invitations(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/failed_invitations"
 
@@ -1311,8 +1299,8 @@ class OrgsClient:
     async def async_list_failed_invitations(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/failed_invitations"
 
@@ -1339,8 +1327,8 @@ class OrgsClient:
     def list_webhooks(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrgHook]]":
         url = f"/orgs/{org}/hooks"
 
@@ -1367,8 +1355,8 @@ class OrgsClient:
     async def async_list_webhooks(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrgHook]]":
         url = f"/orgs/{org}/hooks"
 
@@ -1403,20 +1391,16 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
-        events: Union[Unset, List[str]] = ["push"],
-        active: Union[Unset, bool] = True,
+        events: MISSING[List[str]] = ["push"],
+        active: MISSING[bool] = True,
     ) -> "Response[OrgHook]":
         ...
 
     def create_webhook(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgHooksPostBodyType] = UNSET,
-        **kwargs,
+        self, org: str, *, data: MISSING[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
@@ -1454,20 +1438,16 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
-        events: Union[Unset, List[str]] = ["push"],
-        active: Union[Unset, bool] = True,
+        events: MISSING[List[str]] = ["push"],
+        active: MISSING[bool] = True,
     ) -> "Response[OrgHook]":
         ...
 
     async def async_create_webhook(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgHooksPostBodyType] = UNSET,
-        **kwargs,
+        self, org: str, *, data: MISSING[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
@@ -1582,7 +1562,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1592,11 +1572,11 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Unset = UNSET,
-        config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: Union[Unset, List[str]] = ["push"],
-        active: Union[Unset, bool] = True,
-        name: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        config: MISSING[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
+        events: MISSING[List[str]] = ["push"],
+        active: MISSING[bool] = True,
+        name: MISSING[str] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1605,7 +1585,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
@@ -1639,7 +1619,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1649,11 +1629,11 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Unset = UNSET,
-        config: Union[Unset, OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: Union[Unset, List[str]] = ["push"],
-        active: Union[Unset, bool] = True,
-        name: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        config: MISSING[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
+        events: MISSING[List[str]] = ["push"],
+        active: MISSING[bool] = True,
+        name: MISSING[str] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1662,7 +1642,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
@@ -1732,7 +1712,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1742,11 +1722,11 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Unset = UNSET,
-        url: Union[Unset, str] = UNSET,
-        content_type: Union[Unset, str] = UNSET,
-        secret: Union[Unset, str] = UNSET,
-        insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        url: MISSING[str] = UNSET,
+        content_type: MISSING[str] = UNSET,
+        secret: MISSING[str] = UNSET,
+        insecure_ssl: MISSING[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1755,7 +1735,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
@@ -1785,7 +1765,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1795,11 +1775,11 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Unset = UNSET,
-        url: Union[Unset, str] = UNSET,
-        content_type: Union[Unset, str] = UNSET,
-        secret: Union[Unset, str] = UNSET,
-        insecure_ssl: Union[Unset, Union[str, float]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        url: MISSING[str] = UNSET,
+        content_type: MISSING[str] = UNSET,
+        secret: MISSING[str] = UNSET,
+        insecure_ssl: MISSING[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1808,7 +1788,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: Union[Unset, OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
@@ -1836,9 +1816,9 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
-        per_page: Union[Unset, int] = 30,
-        cursor: Union[Unset, str] = UNSET,
-        redelivery: Union[Unset, bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        cursor: MISSING[str] = UNSET,
+        redelivery: MISSING[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -1868,9 +1848,9 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
-        per_page: Union[Unset, int] = 30,
-        cursor: Union[Unset, str] = UNSET,
-        redelivery: Union[Unset, bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        cursor: MISSING[str] = UNSET,
+        redelivery: MISSING[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -2031,8 +2011,8 @@ class OrgsClient:
     def list_app_installations(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgInstallationsGetResponse200]":
         url = f"/orgs/{org}/installations"
 
@@ -2056,8 +2036,8 @@ class OrgsClient:
     async def async_list_app_installations(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgInstallationsGetResponse200]":
         url = f"/orgs/{org}/installations"
 
@@ -2081,15 +2061,14 @@ class OrgsClient:
     def list_pending_invitations(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        role: Union[
-            Unset,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        role: MISSING[
             Literal[
                 "all", "admin", "direct_member", "billing_manager", "hiring_manager"
-            ],
+            ]
         ] = "all",
-        invitation_source: Union[Unset, Literal["all", "member", "scim"]] = "all",
+        invitation_source: MISSING[Literal["all", "member", "scim"]] = "all",
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
@@ -2118,15 +2097,14 @@ class OrgsClient:
     async def async_list_pending_invitations(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        role: Union[
-            Unset,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        role: MISSING[
             Literal[
                 "all", "admin", "direct_member", "billing_manager", "hiring_manager"
-            ],
+            ]
         ] = "all",
-        invitation_source: Union[Unset, Literal["all", "member", "scim"]] = "all",
+        invitation_source: MISSING[Literal["all", "member", "scim"]] = "all",
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
@@ -2154,7 +2132,7 @@ class OrgsClient:
 
     @overload
     def create_invitation(
-        self, org: str, *, data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET
+        self, org: str, *, data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2163,13 +2141,13 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        invitee_id: Union[Unset, int] = UNSET,
-        email: Union[Unset, str] = UNSET,
-        role: Union[
-            Unset, Literal["admin", "direct_member", "billing_manager"]
+        data: Literal[UNSET] = UNSET,
+        invitee_id: MISSING[int] = UNSET,
+        email: MISSING[str] = UNSET,
+        role: MISSING[
+            Literal["admin", "direct_member", "billing_manager"]
         ] = "direct_member",
-        team_ids: Union[Unset, List[int]] = UNSET,
+        team_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2177,7 +2155,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
@@ -2207,7 +2185,7 @@ class OrgsClient:
 
     @overload
     async def async_create_invitation(
-        self, org: str, *, data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET
+        self, org: str, *, data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2216,13 +2194,13 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        invitee_id: Union[Unset, int] = UNSET,
-        email: Union[Unset, str] = UNSET,
-        role: Union[
-            Unset, Literal["admin", "direct_member", "billing_manager"]
+        data: Literal[UNSET] = UNSET,
+        invitee_id: MISSING[int] = UNSET,
+        email: MISSING[str] = UNSET,
+        role: MISSING[
+            Literal["admin", "direct_member", "billing_manager"]
         ] = "direct_member",
-        team_ids: Union[Unset, List[int]] = UNSET,
+        team_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2230,7 +2208,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgInvitationsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
@@ -2304,8 +2282,8 @@ class OrgsClient:
         self,
         org: str,
         invitation_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -2333,8 +2311,8 @@ class OrgsClient:
         self,
         org: str,
         invitation_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -2361,10 +2339,10 @@ class OrgsClient:
     def list_members(
         self,
         org: str,
-        filter_: Union[Unset, Literal["2fa_disabled", "all"]] = "all",
-        role: Union[Unset, Literal["all", "admin", "member"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
+        role: MISSING[Literal["all", "admin", "member"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/members"
 
@@ -2393,10 +2371,10 @@ class OrgsClient:
     async def async_list_members(
         self,
         org: str,
-        filter_: Union[Unset, Literal["2fa_disabled", "all"]] = "all",
-        role: Union[Unset, Literal["all", "admin", "member"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
+        role: MISSING[Literal["all", "admin", "member"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/members"
 
@@ -2548,7 +2526,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2558,8 +2536,8 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Unset = UNSET,
-        role: Union[Unset, Literal["admin", "member"]] = "member",
+        data: Literal[UNSET] = UNSET,
+        role: MISSING[Literal["admin", "member"]] = "member",
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2568,7 +2546,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
@@ -2602,7 +2580,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2612,8 +2590,8 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Unset = UNSET,
-        role: Union[Unset, Literal["admin", "member"]] = "member",
+        data: Literal[UNSET] = UNSET,
+        role: MISSING[Literal["admin", "member"]] = "member",
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2622,7 +2600,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
@@ -2695,9 +2673,9 @@ class OrgsClient:
     def list_outside_collaborators(
         self,
         org: str,
-        filter_: Union[Unset, Literal["2fa_disabled", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/outside_collaborators"
 
@@ -2722,9 +2700,9 @@ class OrgsClient:
     async def async_list_outside_collaborators(
         self,
         org: str,
-        filter_: Union[Unset, Literal["2fa_disabled", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/outside_collaborators"
 
@@ -2752,7 +2730,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2762,8 +2740,8 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Unset = UNSET,
-        async_: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        async_: MISSING[bool] = False,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2772,7 +2750,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
@@ -2805,7 +2783,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2815,8 +2793,8 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Unset = UNSET,
-        async_: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        async_: MISSING[bool] = False,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2825,7 +2803,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
@@ -2895,8 +2873,8 @@ class OrgsClient:
     def list_public_members(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/public_members"
 
@@ -2920,8 +2898,8 @@ class OrgsClient:
     async def async_list_public_members(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/public_members"
 
@@ -3212,9 +3190,9 @@ class OrgsClient:
 
     def list_memberships_for_authenticated_user(
         self,
-        state: Union[Unset, Literal["active", "pending"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["active", "pending"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrgMembership]]":
         url = "/user/memberships/orgs"
 
@@ -3243,9 +3221,9 @@ class OrgsClient:
 
     async def async_list_memberships_for_authenticated_user(
         self,
-        state: Union[Unset, Literal["active", "pending"]] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["active", "pending"]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrgMembership]]":
         url = "/user/memberships/orgs"
 
@@ -3325,7 +3303,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         state: Literal["active"],
     ) -> "Response[OrgMembership]":
         ...
@@ -3334,7 +3312,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, UserMembershipsOrgsOrgPatchBodyType] = UNSET,
+        data: MISSING[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
@@ -3374,7 +3352,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         state: Literal["active"],
     ) -> "Response[OrgMembership]":
         ...
@@ -3383,7 +3361,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, UserMembershipsOrgsOrgPatchBodyType] = UNSET,
+        data: MISSING[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
@@ -3414,8 +3392,8 @@ class OrgsClient:
 
     def list_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/user/orgs"
 
@@ -3442,8 +3420,8 @@ class OrgsClient:
 
     async def async_list_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/user/orgs"
 
@@ -3471,8 +3449,8 @@ class OrgsClient:
     def list_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = f"/users/{username}/orgs"
 
@@ -3496,8 +3474,8 @@ class OrgsClient:
     async def async_list_for_user(
         self,
         username: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = f"/users/{username}/orgs"
 

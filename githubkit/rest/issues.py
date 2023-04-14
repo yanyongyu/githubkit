@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     ReposOwnerRepoIssuesPostBodyType,
@@ -104,21 +104,20 @@ class IssuesClient:
 
     def list(
         self,
-        filter_: Union[
-            Unset,
-            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"],
+        filter_: MISSING[
+            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = "assigned",
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        collab: Union[Unset, bool] = UNSET,
-        orgs: Union[Unset, bool] = UNSET,
-        owned: Union[Unset, bool] = UNSET,
-        pulls: Union[Unset, bool] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        collab: MISSING[bool] = UNSET,
+        orgs: MISSING[bool] = UNSET,
+        owned: MISSING[bool] = UNSET,
+        pulls: MISSING[bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = "/issues"
 
@@ -155,21 +154,20 @@ class IssuesClient:
 
     async def async_list(
         self,
-        filter_: Union[
-            Unset,
-            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"],
+        filter_: MISSING[
+            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = "assigned",
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        collab: Union[Unset, bool] = UNSET,
-        orgs: Union[Unset, bool] = UNSET,
-        owned: Union[Unset, bool] = UNSET,
-        pulls: Union[Unset, bool] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        collab: MISSING[bool] = UNSET,
+        orgs: MISSING[bool] = UNSET,
+        owned: MISSING[bool] = UNSET,
+        pulls: MISSING[bool] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = "/issues"
 
@@ -207,17 +205,16 @@ class IssuesClient:
     def list_for_org(
         self,
         org: str,
-        filter_: Union[
-            Unset,
-            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"],
+        filter_: MISSING[
+            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = "assigned",
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = f"/orgs/{org}/issues"
 
@@ -250,17 +247,16 @@ class IssuesClient:
     async def async_list_for_org(
         self,
         org: str,
-        filter_: Union[
-            Unset,
-            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"],
+        filter_: MISSING[
+            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = "assigned",
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = f"/orgs/{org}/issues"
 
@@ -294,8 +290,8 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/assignees"
 
@@ -323,8 +319,8 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/assignees"
 
@@ -394,17 +390,17 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        milestone: Union[Unset, str] = UNSET,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        assignee: Union[Unset, str] = UNSET,
-        creator: Union[Unset, str] = UNSET,
-        mentioned: Union[Unset, str] = UNSET,
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        milestone: MISSING[str] = UNSET,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        assignee: MISSING[str] = UNSET,
+        creator: MISSING[str] = UNSET,
+        mentioned: MISSING[str] = UNSET,
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = f"/repos/{owner}/{repo}/issues"
 
@@ -442,17 +438,17 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        milestone: Union[Unset, str] = UNSET,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        assignee: Union[Unset, str] = UNSET,
-        creator: Union[Unset, str] = UNSET,
-        mentioned: Union[Unset, str] = UNSET,
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        milestone: MISSING[str] = UNSET,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        assignee: MISSING[str] = UNSET,
+        creator: MISSING[str] = UNSET,
+        mentioned: MISSING[str] = UNSET,
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = f"/repos/{owner}/{repo}/issues"
 
@@ -498,16 +494,15 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: Union[str, int],
-        body: Union[Unset, str] = UNSET,
-        assignee: Union[Unset, Union[str, None]] = UNSET,
-        milestone: Union[Unset, Union[str, int, None]] = UNSET,
-        labels: Union[
-            Unset,
-            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]],
+        body: MISSING[str] = UNSET,
+        assignee: MISSING[Union[str, None]] = UNSET,
+        milestone: MISSING[Union[str, int, None]] = UNSET,
+        labels: MISSING[
+            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -516,7 +511,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues"
@@ -559,16 +554,15 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: Union[str, int],
-        body: Union[Unset, str] = UNSET,
-        assignee: Union[Unset, Union[str, None]] = UNSET,
-        milestone: Union[Unset, Union[str, int, None]] = UNSET,
-        labels: Union[
-            Unset,
-            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]],
+        body: MISSING[str] = UNSET,
+        assignee: MISSING[Union[str, None]] = UNSET,
+        milestone: MISSING[Union[str, int, None]] = UNSET,
+        labels: MISSING[
+            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -577,7 +571,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues"
@@ -612,11 +606,11 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/comments"
 
@@ -648,11 +642,11 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = UNSET,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = UNSET,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/comments"
 
@@ -778,7 +772,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -789,7 +783,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -834,7 +828,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -845,7 +839,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -876,8 +870,8 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IssueEvent]]":
         url = f"/repos/{owner}/{repo}/issues/events"
 
@@ -905,8 +899,8 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IssueEvent]]":
         url = f"/repos/{owner}/{repo}/issues/events"
 
@@ -1031,7 +1025,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1042,25 +1036,24 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, Union[str, int, None]] = UNSET,
-        body: Union[Unset, Union[str, None]] = UNSET,
-        assignee: Union[Unset, Union[str, None]] = UNSET,
-        state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        state_reason: Union[
-            Unset, Union[None, Literal["completed", "not_planned", "reopened"]]
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[Union[str, int, None]] = UNSET,
+        body: MISSING[Union[str, None]] = UNSET,
+        assignee: MISSING[Union[str, None]] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = UNSET,
+        state_reason: MISSING[
+            Union[None, Literal["completed", "not_planned", "reopened"]]
         ] = UNSET,
-        milestone: Union[Unset, Union[str, int, None]] = UNSET,
-        labels: Union[
-            Unset,
+        milestone: MISSING[Union[str, int, None]] = UNSET,
+        labels: MISSING[
             List[
                 Union[
                     str,
                     ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
                 ]
-            ],
+            ]
         ] = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1070,7 +1063,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
@@ -1108,7 +1101,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1119,25 +1112,24 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, Union[str, int, None]] = UNSET,
-        body: Union[Unset, Union[str, None]] = UNSET,
-        assignee: Union[Unset, Union[str, None]] = UNSET,
-        state: Union[Unset, Literal["open", "closed"]] = UNSET,
-        state_reason: Union[
-            Unset, Union[None, Literal["completed", "not_planned", "reopened"]]
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[Union[str, int, None]] = UNSET,
+        body: MISSING[Union[str, None]] = UNSET,
+        assignee: MISSING[Union[str, None]] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = UNSET,
+        state_reason: MISSING[
+            Union[None, Literal["completed", "not_planned", "reopened"]]
         ] = UNSET,
-        milestone: Union[Unset, Union[str, int, None]] = UNSET,
-        labels: Union[
-            Unset,
+        milestone: MISSING[Union[str, int, None]] = UNSET,
+        labels: MISSING[
             List[
                 Union[
                     str,
                     ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
                 ]
-            ],
+            ]
         ] = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1147,7 +1139,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
@@ -1185,9 +1177,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1198,8 +1188,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1209,9 +1199,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1242,9 +1230,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1255,8 +1241,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1266,9 +1252,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1299,9 +1283,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1312,8 +1294,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1323,9 +1305,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1356,9 +1336,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1369,8 +1347,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        assignees: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        assignees: MISSING[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
 
@@ -1380,9 +1358,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1455,9 +1431,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
 
@@ -1488,9 +1464,9 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
 
@@ -1534,7 +1510,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -1545,7 +1521,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
@@ -1593,7 +1569,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -1604,7 +1580,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[Unset, ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
@@ -1639,8 +1615,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, AssignedIssueEvent, UnassignedIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/events"
 
@@ -1687,8 +1663,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, AssignedIssueEvent, UnassignedIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/events"
 
@@ -1735,8 +1711,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
@@ -1766,8 +1742,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
@@ -1799,15 +1775,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -1819,8 +1794,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
 
@@ -1831,10 +1806,9 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[
-            Unset,
-            List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType],
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[
+            List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -1845,15 +1819,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[List[Label]]":
@@ -1899,15 +1872,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -1919,8 +1891,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
 
@@ -1931,10 +1903,9 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[
-            Unset,
-            List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType],
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[
+            List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -1945,15 +1916,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[List[Label]]":
@@ -1999,15 +1969,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -2019,8 +1988,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
 
@@ -2031,12 +2000,9 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[
-            Unset,
-            List[
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType
-            ],
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[
+            List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -2047,15 +2013,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[List[Label]]":
@@ -2101,15 +2066,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -2121,8 +2085,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
 
@@ -2133,12 +2097,9 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        labels: Union[
-            Unset,
-            List[
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType
-            ],
+        data: Literal[UNSET] = UNSET,
+        labels: MISSING[
+            List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -2149,15 +2110,14 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 List[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
                 List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[List[Label]]":
@@ -2295,8 +2255,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -2308,9 +2268,9 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        lock_reason: Union[
-            Unset, Literal["off-topic", "too heated", "resolved", "spam"]
+        data: Literal[UNSET] = UNSET,
+        lock_reason: MISSING[
+            Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -2321,8 +2281,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -2361,8 +2321,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -2374,9 +2334,9 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Unset = UNSET,
-        lock_reason: Union[
-            Unset, Literal["off-topic", "too heated", "resolved", "spam"]
+        data: Literal[UNSET] = UNSET,
+        lock_reason: MISSING[
+            Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -2387,8 +2347,8 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -2469,8 +2429,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent, TimelineCommentEvent, TimelineCrossReferencedEvent, TimelineCommittedEvent, TimelineReviewedEvent, TimelineLineCommentedEvent, TimelineCommitCommentedEvent, TimelineAssignedIssueEvent, TimelineUnassignedIssueEvent, StateChangeIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/timeline"
 
@@ -2525,8 +2485,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent, TimelineCommentEvent, TimelineCrossReferencedEvent, TimelineCommittedEvent, TimelineReviewedEvent, TimelineLineCommentedEvent, TimelineCommitCommentedEvent, TimelineAssignedIssueEvent, TimelineUnassignedIssueEvent, StateChangeIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/timeline"
 
@@ -2580,8 +2540,8 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/labels"
 
@@ -2609,8 +2569,8 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/labels"
 
@@ -2646,10 +2606,10 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        color: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
+        color: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
     ) -> "Response[Label]":
         ...
 
@@ -2658,7 +2618,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoLabelsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels"
@@ -2698,10 +2658,10 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        color: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
+        color: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
     ) -> "Response[Label]":
         ...
 
@@ -2710,7 +2670,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoLabelsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels"
@@ -2825,7 +2785,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> "Response[Label]":
         ...
 
@@ -2836,10 +2796,10 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Unset = UNSET,
-        new_name: Union[Unset, str] = UNSET,
-        color: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        new_name: MISSING[str] = UNSET,
+        color: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
     ) -> "Response[Label]":
         ...
 
@@ -2849,7 +2809,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -2880,7 +2840,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> "Response[Label]":
         ...
 
@@ -2891,10 +2851,10 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Unset = UNSET,
-        new_name: Union[Unset, str] = UNSET,
-        color: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        new_name: MISSING[str] = UNSET,
+        color: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
     ) -> "Response[Label]":
         ...
 
@@ -2904,7 +2864,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -2932,11 +2892,11 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        sort: Union[Unset, Literal["due_on", "completeness"]] = "due_on",
-        direction: Union[Unset, Literal["asc", "desc"]] = "asc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        sort: MISSING[Literal["due_on", "completeness"]] = "due_on",
+        direction: MISSING[Literal["asc", "desc"]] = "asc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Milestone]]":
         url = f"/repos/{owner}/{repo}/milestones"
 
@@ -2967,11 +2927,11 @@ class IssuesClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        sort: Union[Unset, Literal["due_on", "completeness"]] = "due_on",
-        direction: Union[Unset, Literal["asc", "desc"]] = "asc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        sort: MISSING[Literal["due_on", "completeness"]] = "due_on",
+        direction: MISSING[Literal["asc", "desc"]] = "asc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Milestone]]":
         url = f"/repos/{owner}/{repo}/milestones"
 
@@ -3010,11 +2970,11 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: str,
-        state: Union[Unset, Literal["open", "closed"]] = "open",
-        description: Union[Unset, str] = UNSET,
-        due_on: Union[Unset, datetime] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = "open",
+        description: MISSING[str] = UNSET,
+        due_on: MISSING[datetime] = UNSET,
     ) -> "Response[Milestone]":
         ...
 
@@ -3023,7 +2983,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoMilestonesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones"
@@ -3063,11 +3023,11 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: str,
-        state: Union[Unset, Literal["open", "closed"]] = "open",
-        description: Union[Unset, str] = UNSET,
-        due_on: Union[Unset, datetime] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = "open",
+        description: MISSING[str] = UNSET,
+        due_on: MISSING[datetime] = UNSET,
     ) -> "Response[Milestone]":
         ...
 
@@ -3076,7 +3036,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoMilestonesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones"
@@ -3197,9 +3157,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> "Response[Milestone]":
         ...
 
@@ -3210,11 +3168,11 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        state: Union[Unset, Literal["open", "closed"]] = "open",
-        description: Union[Unset, str] = UNSET,
-        due_on: Union[Unset, datetime] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = "open",
+        description: MISSING[str] = UNSET,
+        due_on: MISSING[datetime] = UNSET,
     ) -> "Response[Milestone]":
         ...
 
@@ -3224,9 +3182,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3257,9 +3213,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> "Response[Milestone]":
         ...
 
@@ -3270,11 +3224,11 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        state: Union[Unset, Literal["open", "closed"]] = "open",
-        description: Union[Unset, str] = UNSET,
-        due_on: Union[Unset, datetime] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        state: MISSING[Literal["open", "closed"]] = "open",
+        description: MISSING[str] = UNSET,
+        due_on: MISSING[datetime] = UNSET,
     ) -> "Response[Milestone]":
         ...
 
@@ -3284,9 +3238,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3315,8 +3267,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}/labels"
 
@@ -3342,8 +3294,8 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}/labels"
 
@@ -3366,17 +3318,16 @@ class IssuesClient:
 
     def list_for_authenticated_user(
         self,
-        filter_: Union[
-            Unset,
-            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"],
+        filter_: MISSING[
+            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = "assigned",
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = "/user/issues"
 
@@ -3408,17 +3359,16 @@ class IssuesClient:
 
     async def async_list_for_authenticated_user(
         self,
-        filter_: Union[
-            Unset,
-            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"],
+        filter_: MISSING[
+            Literal["assigned", "created", "mentioned", "subscribed", "repos", "all"]
         ] = "assigned",
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        labels: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated", "comments"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        since: Union[Unset, datetime] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        labels: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated", "comments"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        since: MISSING[datetime] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Issue]]":
         url = "/user/issues"
 

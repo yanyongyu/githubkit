@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
 from .models import (
@@ -38,14 +38,14 @@ class SecretScanningClient:
     def list_alerts_for_enterprise(
         self,
         enterprise: str,
-        state: Union[Unset, Literal["open", "resolved"]] = UNSET,
-        secret_type: Union[Unset, str] = UNSET,
-        resolution: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
+        state: MISSING[Literal["open", "resolved"]] = UNSET,
+        secret_type: MISSING[str] = UNSET,
+        resolution: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        before: MISSING[str] = UNSET,
+        after: MISSING[str] = UNSET,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/enterprises/{enterprise}/secret-scanning/alerts"
 
@@ -79,14 +79,14 @@ class SecretScanningClient:
     async def async_list_alerts_for_enterprise(
         self,
         enterprise: str,
-        state: Union[Unset, Literal["open", "resolved"]] = UNSET,
-        secret_type: Union[Unset, str] = UNSET,
-        resolution: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
+        state: MISSING[Literal["open", "resolved"]] = UNSET,
+        secret_type: MISSING[str] = UNSET,
+        resolution: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        before: MISSING[str] = UNSET,
+        after: MISSING[str] = UNSET,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/enterprises/{enterprise}/secret-scanning/alerts"
 
@@ -120,15 +120,15 @@ class SecretScanningClient:
     def list_alerts_for_org(
         self,
         org: str,
-        state: Union[Unset, Literal["open", "resolved"]] = UNSET,
-        secret_type: Union[Unset, str] = UNSET,
-        resolution: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
+        state: MISSING[Literal["open", "resolved"]] = UNSET,
+        secret_type: MISSING[str] = UNSET,
+        resolution: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
+        before: MISSING[str] = UNSET,
+        after: MISSING[str] = UNSET,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/orgs/{org}/secret-scanning/alerts"
 
@@ -163,15 +163,15 @@ class SecretScanningClient:
     async def async_list_alerts_for_org(
         self,
         org: str,
-        state: Union[Unset, Literal["open", "resolved"]] = UNSET,
-        secret_type: Union[Unset, str] = UNSET,
-        resolution: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
+        state: MISSING[Literal["open", "resolved"]] = UNSET,
+        secret_type: MISSING[str] = UNSET,
+        resolution: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
+        before: MISSING[str] = UNSET,
+        after: MISSING[str] = UNSET,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/orgs/{org}/secret-scanning/alerts"
 
@@ -207,15 +207,15 @@ class SecretScanningClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "resolved"]] = UNSET,
-        secret_type: Union[Unset, str] = UNSET,
-        resolution: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
+        state: MISSING[Literal["open", "resolved"]] = UNSET,
+        secret_type: MISSING[str] = UNSET,
+        resolution: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
+        before: MISSING[str] = UNSET,
+        after: MISSING[str] = UNSET,
     ) -> "Response[List[SecretScanningAlert]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
 
@@ -250,15 +250,15 @@ class SecretScanningClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "resolved"]] = UNSET,
-        secret_type: Union[Unset, str] = UNSET,
-        resolution: Union[Unset, str] = UNSET,
-        sort: Union[Unset, Literal["created", "updated"]] = "created",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
-        before: Union[Unset, str] = UNSET,
-        after: Union[Unset, str] = UNSET,
+        state: MISSING[Literal["open", "resolved"]] = UNSET,
+        secret_type: MISSING[str] = UNSET,
+        resolution: MISSING[str] = UNSET,
+        sort: MISSING[Literal["created", "updated"]] = "created",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
+        before: MISSING[str] = UNSET,
+        after: MISSING[str] = UNSET,
     ) -> "Response[List[SecretScanningAlert]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
 
@@ -351,15 +351,14 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         state: Literal["open", "resolved"],
-        resolution: Union[
-            Unset,
+        resolution: MISSING[
             Union[
                 None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
-            ],
+            ]
         ] = UNSET,
-        resolution_comment: Union[Unset, Union[str, None]] = UNSET,
+        resolution_comment: MISSING[Union[str, None]] = UNSET,
     ) -> "Response[SecretScanningAlert]":
         ...
 
@@ -369,8 +368,8 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+        data: MISSING[
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[SecretScanningAlert]":
@@ -418,15 +417,14 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         state: Literal["open", "resolved"],
-        resolution: Union[
-            Unset,
+        resolution: MISSING[
             Union[
                 None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
-            ],
+            ]
         ] = UNSET,
-        resolution_comment: Union[Unset, Union[str, None]] = UNSET,
+        resolution_comment: MISSING[Union[str, None]] = UNSET,
     ) -> "Response[SecretScanningAlert]":
         ...
 
@@ -436,8 +434,8 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+        data: MISSING[
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[SecretScanningAlert]":
@@ -472,8 +470,8 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
     ) -> "Response[List[SecretScanningLocation]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
 
@@ -502,8 +500,8 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
     ) -> "Response[List[SecretScanningLocation]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
 

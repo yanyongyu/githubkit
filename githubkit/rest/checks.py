@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .models import (
     CheckRun,
@@ -76,13 +76,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         head_sha: str,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
         status: Literal["completed"],
-        started_at: Union[Unset, datetime] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -93,10 +93,10 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -107,15 +107,14 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         head_sha: str,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
-        started_at: Union[Unset, datetime] = UNSET,
-        conclusion: Union[
-            Unset,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
+        status: MISSING[Literal["queued", "in_progress"]] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
+        conclusion: MISSING[
             Literal[
                 "action_required",
                 "cancelled",
@@ -125,12 +124,12 @@ class ChecksClient:
                 "skipped",
                 "stale",
                 "timed_out",
-            ],
+            ]
         ] = UNSET,
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -140,12 +139,11 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
                 ReposOwnerRepoCheckRunsPostBodyOneof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[CheckRun]":
@@ -195,13 +193,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         head_sha: str,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
         status: Literal["completed"],
-        started_at: Union[Unset, datetime] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -212,10 +210,10 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -226,15 +224,14 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         head_sha: str,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
-        started_at: Union[Unset, datetime] = UNSET,
-        conclusion: Union[
-            Unset,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
+        status: MISSING[Literal["queued", "in_progress"]] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
+        conclusion: MISSING[
             Literal[
                 "action_required",
                 "cancelled",
@@ -244,12 +241,12 @@ class ChecksClient:
                 "skipped",
                 "stale",
                 "timed_out",
-            ],
+            ]
         ] = UNSET,
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[Unset, ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -259,12 +256,11 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
                 ReposOwnerRepoCheckRunsPostBodyOneof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[CheckRun]":
@@ -354,12 +350,12 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
-        started_at: Union[Unset, datetime] = UNSET,
-        status: Union[Unset, Literal["completed"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
+        status: MISSING[Literal["completed"]] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -370,12 +366,12 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[
-            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -387,14 +383,13 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
-        started_at: Union[Unset, datetime] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
-        conclusion: Union[
-            Unset,
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
+        status: MISSING[Literal["queued", "in_progress"]] = UNSET,
+        conclusion: MISSING[
             Literal[
                 "action_required",
                 "cancelled",
@@ -404,14 +399,14 @@ class ChecksClient:
                 "skipped",
                 "stale",
                 "timed_out",
-            ],
+            ]
         ] = UNSET,
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[
-            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -422,12 +417,11 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[CheckRun]":
@@ -479,12 +473,12 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
-        started_at: Union[Unset, datetime] = UNSET,
-        status: Union[Unset, Literal["completed"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
+        status: MISSING[Literal["completed"]] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -495,12 +489,12 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[
-            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -512,14 +506,13 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        details_url: Union[Unset, str] = UNSET,
-        external_id: Union[Unset, str] = UNSET,
-        started_at: Union[Unset, datetime] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress"]] = UNSET,
-        conclusion: Union[
-            Unset,
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        details_url: MISSING[str] = UNSET,
+        external_id: MISSING[str] = UNSET,
+        started_at: MISSING[datetime] = UNSET,
+        status: MISSING[Literal["queued", "in_progress"]] = UNSET,
+        conclusion: MISSING[
             Literal[
                 "action_required",
                 "cancelled",
@@ -529,14 +522,14 @@ class ChecksClient:
                 "skipped",
                 "stale",
                 "timed_out",
-            ],
+            ]
         ] = UNSET,
-        completed_at: Union[Unset, datetime] = UNSET,
-        output: Union[
-            Unset, ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
+        completed_at: MISSING[datetime] = UNSET,
+        output: MISSING[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
-        actions: Union[
-            Unset, List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+        actions: MISSING[
+            List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
     ) -> "Response[CheckRun]":
         ...
@@ -547,12 +540,11 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[CheckRun]":
@@ -588,8 +580,8 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[CheckAnnotation]]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
 
@@ -615,8 +607,8 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[CheckAnnotation]]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
 
@@ -697,7 +689,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         head_sha: str,
     ) -> "Response[CheckSuite]":
         ...
@@ -707,7 +699,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
@@ -743,7 +735,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         head_sha: str,
     ) -> "Response[CheckSuite]":
         ...
@@ -753,7 +745,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
@@ -793,12 +785,11 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        auto_trigger_checks: Union[
-            Unset,
+        data: Literal[UNSET] = UNSET,
+        auto_trigger_checks: MISSING[
             List[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[CheckSuitePreference]":
         ...
@@ -808,7 +799,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
@@ -848,12 +839,11 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        auto_trigger_checks: Union[
-            Unset,
+        data: Literal[UNSET] = UNSET,
+        auto_trigger_checks: MISSING[
             List[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
-            ],
+            ]
         ] = UNSET,
     ) -> "Response[CheckSuitePreference]":
         ...
@@ -863,7 +853,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
@@ -930,11 +920,11 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
-        check_name: Union[Unset, str] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress", "completed"]] = UNSET,
-        filter_: Union[Unset, Literal["latest", "all"]] = "latest",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        check_name: MISSING[str] = UNSET,
+        status: MISSING[Literal["queued", "in_progress", "completed"]] = UNSET,
+        filter_: MISSING[Literal["latest", "all"]] = "latest",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"
 
@@ -963,11 +953,11 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
-        check_name: Union[Unset, str] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress", "completed"]] = UNSET,
-        filter_: Union[Unset, Literal["latest", "all"]] = "latest",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        check_name: MISSING[str] = UNSET,
+        status: MISSING[Literal["queued", "in_progress", "completed"]] = UNSET,
+        filter_: MISSING[Literal["latest", "all"]] = "latest",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"
 
@@ -1034,12 +1024,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         ref: str,
-        check_name: Union[Unset, str] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress", "completed"]] = UNSET,
-        filter_: Union[Unset, Literal["latest", "all"]] = "latest",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        app_id: Union[Unset, int] = UNSET,
+        check_name: MISSING[str] = UNSET,
+        status: MISSING[Literal["queued", "in_progress", "completed"]] = UNSET,
+        filter_: MISSING[Literal["latest", "all"]] = "latest",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        app_id: MISSING[int] = UNSET,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-runs"
 
@@ -1069,12 +1059,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         ref: str,
-        check_name: Union[Unset, str] = UNSET,
-        status: Union[Unset, Literal["queued", "in_progress", "completed"]] = UNSET,
-        filter_: Union[Unset, Literal["latest", "all"]] = "latest",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        app_id: Union[Unset, int] = UNSET,
+        check_name: MISSING[str] = UNSET,
+        status: MISSING[Literal["queued", "in_progress", "completed"]] = UNSET,
+        filter_: MISSING[Literal["latest", "all"]] = "latest",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        app_id: MISSING[int] = UNSET,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-runs"
 
@@ -1104,10 +1094,10 @@ class ChecksClient:
         owner: str,
         repo: str,
         ref: str,
-        app_id: Union[Unset, int] = UNSET,
-        check_name: Union[Unset, str] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        app_id: MISSING[int] = UNSET,
+        check_name: MISSING[str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-suites"
 
@@ -1135,10 +1125,10 @@ class ChecksClient:
         owner: str,
         repo: str,
         ref: str,
-        app_id: Union[Unset, int] = UNSET,
-        check_name: Union[Unset, str] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        app_id: MISSING[int] = UNSET,
+        check_name: MISSING[str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-suites"
 

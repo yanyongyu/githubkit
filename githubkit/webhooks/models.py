@@ -15,7 +15,7 @@ from typing import Any, List, Union, Literal
 
 from pydantic import Extra, Field, BaseModel
 
-from githubkit.utils import UNSET, Unset
+from githubkit.utils import UNSET, MISSING
 
 
 class GitHubWebhookModel(BaseModel, allow_population_by_field_name=True):
@@ -41,12 +41,10 @@ class BranchProtectionRuleCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class BranchProtectionRule(GitHubWebhookModel):
@@ -99,7 +97,7 @@ class BranchProtectionRule(GitHubWebhookModel):
         "off", "non_admins", "everyone"
     ] = Field(title="Branch protection rule enforcement level", default=...)
     admin_enforced: bool = Field(title="Branch protection rule boolean", default=...)
-    create_protected: Union[Unset, bool] = Field(
+    create_protected: MISSING[bool] = Field(
         title="Branch protection rule boolean", default=UNSET
     )
     allow_force_pushes_enforcement_level: Literal[
@@ -312,7 +310,7 @@ class Repository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
-    has_discussions: Union[Unset, bool] = Field(
+    has_discussions: MISSING[bool] = Field(
         description="Whether discussions are enabled.", default=True
     )
     forks_count: int = Field(default=...)
@@ -320,7 +318,7 @@ class Repository(GitHubWebhookModel):
     archived: bool = Field(
         description="Whether the repository is archived.", default=False
     )
-    disabled: Union[Unset, bool] = Field(
+    disabled: MISSING[bool] = Field(
         description="Returns whether or not this repository is disabled.", default=UNSET
     )
     open_issues_count: int = Field(default=...)
@@ -330,43 +328,43 @@ class Repository(GitHubWebhookModel):
     forks: int = Field(default=...)
     open_issues: int = Field(default=...)
     watchers: int = Field(default=...)
-    stargazers: Union[Unset, int] = Field(default=UNSET)
+    stargazers: MISSING[int] = Field(default=UNSET)
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
-    allow_squash_merge: Union[Unset, bool] = Field(
+    allow_squash_merge: MISSING[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
-    allow_merge_commit: Union[Unset, bool] = Field(
+    allow_merge_commit: MISSING[bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
-    allow_rebase_merge: Union[Unset, bool] = Field(
+    allow_rebase_merge: MISSING[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    allow_auto_merge: Union[Unset, bool] = Field(
+    allow_auto_merge: MISSING[bool] = Field(
         description="Whether to allow auto-merge for pull requests.", default=False
     )
-    allow_forking: Union[Unset, bool] = Field(
+    allow_forking: MISSING[bool] = Field(
         description="Whether to allow private forks", default=UNSET
     )
-    allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
-    squash_merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    squash_merge_commit_title: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_title: Union[Unset, str] = Field(default=UNSET)
+    allow_update_branch: MISSING[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: MISSING[bool] = Field(default=UNSET)
+    squash_merge_commit_message: MISSING[str] = Field(default=UNSET)
+    squash_merge_commit_title: MISSING[str] = Field(default=UNSET)
+    merge_commit_message: MISSING[str] = Field(default=UNSET)
+    merge_commit_title: MISSING[str] = Field(default=UNSET)
     is_template: bool = Field(default=...)
     web_commit_signoff_required: bool = Field(default=...)
     topics: List[str] = Field(default=...)
     visibility: Literal["public", "private", "internal"] = Field(default=...)
-    delete_branch_on_merge: Union[Unset, bool] = Field(
+    delete_branch_on_merge: MISSING[bool] = Field(
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
-    master_branch: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
-    public: Union[Unset, bool] = Field(default=UNSET)
-    organization: Union[Unset, str] = Field(default=UNSET)
+    master_branch: MISSING[str] = Field(default=UNSET)
+    permissions: MISSING[RepositoryPropPermissions] = Field(default=UNSET)
+    public: MISSING[bool] = Field(default=UNSET)
+    organization: MISSING[str] = Field(default=UNSET)
 
 
 class User(GitHubWebhookModel):
@@ -375,8 +373,8 @@ class User(GitHubWebhookModel):
     login: str = Field(default=...)
     id: int = Field(default=...)
     node_id: str = Field(default=...)
-    name: Union[Unset, str] = Field(default=UNSET)
-    email: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    name: MISSING[str] = Field(default=UNSET)
+    email: MISSING[Union[str, None]] = Field(default=UNSET)
     avatar_url: str = Field(default=...)
     gravatar_id: str = Field(default=...)
     url: str = Field(default=...)
@@ -410,8 +408,8 @@ class RepositoryPropPermissions(GitHubWebhookModel):
     pull: bool = Field(default=...)
     push: bool = Field(default=...)
     admin: bool = Field(default=...)
-    maintain: Union[Unset, bool] = Field(default=UNSET)
-    triage: Union[Unset, bool] = Field(default=UNSET)
+    maintain: MISSING[bool] = Field(default=UNSET)
+    triage: MISSING[bool] = Field(default=UNSET)
 
 
 class InstallationLite(GitHubWebhookModel):
@@ -431,7 +429,7 @@ class Organization(GitHubWebhookModel):
     id: int = Field(default=...)
     node_id: str = Field(default=...)
     url: str = Field(default=...)
-    html_url: Union[Unset, str] = Field(default=UNSET)
+    html_url: MISSING[str] = Field(default=UNSET)
     repos_url: str = Field(default=...)
     events_url: str = Field(default=...)
     hooks_url: str = Field(default=...)
@@ -461,12 +459,10 @@ class BranchProtectionRuleDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class BranchProtectionRuleEdited(GitHubWebhookModel):
@@ -484,7 +480,7 @@ class BranchProtectionRuleEdited(GitHubWebhookModel):
         description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
         default=...,
     )
-    changes: Union[Unset, BranchProtectionRuleEditedPropChanges] = Field(
+    changes: MISSING[BranchProtectionRuleEditedPropChanges] = Field(
         description="If the action was `edited`, the changes to the rule.",
         default=UNSET,
     )
@@ -492,12 +488,10 @@ class BranchProtectionRuleEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class BranchProtectionRuleEditedPropChanges(GitHubWebhookModel):
@@ -506,59 +500,53 @@ class BranchProtectionRuleEditedPropChanges(GitHubWebhookModel):
     If the action was `edited`, the changes to the rule.
     """
 
-    admin_enforced: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropAdminEnforced
+    admin_enforced: MISSING[
+        BranchProtectionRuleEditedPropChangesPropAdminEnforced
     ] = Field(default=UNSET)
-    allow_deletions_enforcement_level: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropAllowDeletionsEnforcementLevel
+    allow_deletions_enforcement_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropAllowDeletionsEnforcementLevel
     ] = Field(default=UNSET)
-    allow_force_pushes_enforcement_level: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropAllowForcePushesEnforcementLevel
+    allow_force_pushes_enforcement_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropAllowForcePushesEnforcementLevel
     ] = Field(default=UNSET)
-    authorized_actors_only: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
+    authorized_actors_only: MISSING[
+        BranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
     ] = Field(default=UNSET)
-    authorized_actor_names: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
+    authorized_actor_names: MISSING[
+        BranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
     ] = Field(default=UNSET)
-    authorized_dismissal_actors_only: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
+    authorized_dismissal_actors_only: MISSING[
+        BranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
     ] = Field(default=UNSET)
-    dismiss_stale_reviews_on_push: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropDismissStaleReviewsOnPush
+    dismiss_stale_reviews_on_push: MISSING[
+        BranchProtectionRuleEditedPropChangesPropDismissStaleReviewsOnPush
     ] = Field(default=UNSET)
-    pull_request_reviews_enforcement_level: Union[
-        Unset,
-        BranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel,
+    pull_request_reviews_enforcement_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
     ] = Field(default=UNSET)
-    require_code_owner_review: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropRequireCodeOwnerReview
+    require_code_owner_review: MISSING[
+        BranchProtectionRuleEditedPropChangesPropRequireCodeOwnerReview
     ] = Field(default=UNSET)
-    required_approving_review_count: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropRequiredApprovingReviewCount
+    required_approving_review_count: MISSING[
+        BranchProtectionRuleEditedPropChangesPropRequiredApprovingReviewCount
     ] = Field(default=UNSET)
-    required_conversation_resolution_level: Union[
-        Unset,
-        BranchProtectionRuleEditedPropChangesPropRequiredConversationResolutionLevel,
+    required_conversation_resolution_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropRequiredConversationResolutionLevel
     ] = Field(default=UNSET)
-    required_deployments_enforcement_level: Union[
-        Unset,
-        BranchProtectionRuleEditedPropChangesPropRequiredDeploymentsEnforcementLevel,
+    required_deployments_enforcement_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropRequiredDeploymentsEnforcementLevel
     ] = Field(default=UNSET)
-    required_status_checks: Union[
-        Unset, BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
+    required_status_checks: MISSING[
+        BranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
     ] = Field(default=UNSET)
-    required_status_checks_enforcement_level: Union[
-        Unset,
-        BranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel,
+    required_status_checks_enforcement_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
     ] = Field(default=UNSET)
-    signature_requirement_enforcement_level: Union[
-        Unset,
-        BranchProtectionRuleEditedPropChangesPropSignatureRequirementEnforcementLevel,
+    signature_requirement_enforcement_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropSignatureRequirementEnforcementLevel
     ] = Field(default=UNSET)
-    linear_history_requirement_enforcement_level: Union[
-        Unset,
-        BranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel,
+    linear_history_requirement_enforcement_level: MISSING[
+        BranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
     ] = Field(default=UNSET)
 
 
@@ -722,19 +710,17 @@ class CheckRunCompleted(GitHubWebhookModel):
         description="The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).",
         default=...,
     )
-    requested_action: Union[
-        Unset, Union[CheckRunCompletedPropRequestedAction, None]
+    requested_action: MISSING[
+        Union[CheckRunCompletedPropRequestedAction, None]
     ] = Field(description="The action requested by the user.", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CheckRunCompletedPropCheckRun(GitHubWebhookModel):
@@ -745,14 +731,14 @@ class CheckRunCompletedPropCheckRun(GitHubWebhookModel):
     """
 
     id: int = Field(description="The id of the check.", default=...)
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_sha: str = Field(
         description="The SHA of the commit that is being checked.", default=...
     )
     external_id: str = Field(default=...)
     url: str = Field(default=...)
     html_url: str = Field(default=...)
-    details_url: Union[Unset, str] = Field(default=UNSET)
+    details_url: MISSING[str] = Field(default=UNSET)
     status: Literal["completed"] = Field(
         description="The current status of the check run. Can be `queued`, `in_progress`, or `completed`.",
         default=...,
@@ -790,7 +776,7 @@ class CheckRunCompletedPropCheckRun(GitHubWebhookModel):
         default=...,
     )
     pull_requests: List[CheckRunPullRequest] = Field(default=...)
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -800,7 +786,7 @@ class CheckRunCompletedPropCheckRun(GitHubWebhookModel):
 class CheckRunCompletedPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunCompletedPropCheckRunPropOutput"""
 
-    title: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    title: MISSING[Union[str, None]] = Field(default=UNSET)
     summary: Union[str, None] = Field(default=...)
     text: Union[str, None] = Field(default=...)
     annotations_count: int = Field(default=...)
@@ -814,7 +800,7 @@ class CheckRunCompletedPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="The id of the check suite that this check run is part of.",
         default=...,
     )
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_branch: Union[str, None] = Field(default=...)
     head_sha: str = Field(
         description="The SHA of the head commit that is being checked.", default=...
@@ -839,7 +825,7 @@ class CheckRunCompletedPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.  \n  \n**Note:**\n\n*   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.\n*   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.",
         default=...,
     )
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -918,7 +904,7 @@ class App(GitHubWebhookModel):
     """
 
     id: int = Field(description="Unique identifier of the GitHub app", default=...)
-    slug: Union[Unset, str] = Field(
+    slug: MISSING[str] = Field(
         description="The slug name of the GitHub app", default=UNSET
     )
     node_id: str = Field(default=...)
@@ -929,11 +915,10 @@ class App(GitHubWebhookModel):
     html_url: str = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    permissions: Union[Unset, AppPropPermissions] = Field(
+    permissions: MISSING[AppPropPermissions] = Field(
         description="The set of permissions for the GitHub app", default=UNSET
     )
-    events: Union[
-        Unset,
+    events: MISSING[
         List[
             Literal[
                 "branch_protection_rule",
@@ -989,7 +974,7 @@ class App(GitHubWebhookModel):
                 "workflow_run",
                 "workflow_job",
             ]
-        ],
+        ]
     ] = Field(description="The list of events for the GitHub app", default=UNSET)
 
 
@@ -999,59 +984,53 @@ class AppPropPermissions(GitHubWebhookModel):
     The set of permissions for the GitHub app
     """
 
-    actions: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    administration: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    blocking: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    checks: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    content_references: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    contents: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    deployments: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    discussions: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    emails: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    environments: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    followers: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    gpg_keys: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    interaction_limits: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    issues: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    keys: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    members: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    merge_queues: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    metadata: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    organization_administration: Union[Unset, Literal["read", "write"]] = Field(
+    actions: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    administration: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    blocking: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    checks: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    content_references: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    contents: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    deployments: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    discussions: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    emails: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    environments: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    followers: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    gpg_keys: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    interaction_limits: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    issues: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    keys: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    members: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    merge_queues: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    metadata: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    organization_administration: MISSING[Literal["read", "write"]] = Field(
         default=UNSET
     )
-    organization_hooks: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    organization_packages: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    organization_plan: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    organization_secrets: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    organization_self_hosted_runners: Union[Unset, Literal["read", "write"]] = Field(
+    organization_hooks: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    organization_packages: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    organization_plan: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    organization_secrets: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    organization_self_hosted_runners: MISSING[Literal["read", "write"]] = Field(
         default=UNSET
     )
-    organization_user_blocking: Union[Unset, Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    packages: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    pages: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    plan: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    pull_requests: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    repository_hooks: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    repository_projects: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    secret_scanning_alerts: Union[Unset, Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    secrets: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    security_events: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    security_scanning_alert: Union[Unset, Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    single_file: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    starring: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    statuses: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    team_discussions: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    vulnerability_alerts: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    watching: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    workflows: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
+    organization_user_blocking: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    packages: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    pages: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    plan: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    pull_requests: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    repository_hooks: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    repository_projects: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    secret_scanning_alerts: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    secrets: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    security_events: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    security_scanning_alert: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    single_file: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    starring: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    statuses: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    team_discussions: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    vulnerability_alerts: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    watching: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    workflows: MISSING[Literal["read", "write"]] = Field(default=UNSET)
 
 
 class CheckRunCompletedPropRequestedAction(GitHubWebhookModel):
@@ -1060,7 +1039,7 @@ class CheckRunCompletedPropRequestedAction(GitHubWebhookModel):
     The action requested by the user.
     """
 
-    identifier: Union[Unset, str] = Field(
+    identifier: MISSING[str] = Field(
         description="The integrator reference of the action requested by the user.",
         default=UNSET,
     )
@@ -1074,19 +1053,17 @@ class CheckRunCreated(GitHubWebhookModel):
         description="The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).",
         default=...,
     )
-    requested_action: Union[
-        Unset, Union[CheckRunCreatedPropRequestedAction, None]
-    ] = Field(description="The action requested by the user.", default=UNSET)
+    requested_action: MISSING[Union[CheckRunCreatedPropRequestedAction, None]] = Field(
+        description="The action requested by the user.", default=UNSET
+    )
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CheckRunCreatedPropCheckRun(GitHubWebhookModel):
@@ -1097,14 +1074,14 @@ class CheckRunCreatedPropCheckRun(GitHubWebhookModel):
     """
 
     id: int = Field(description="The id of the check.", default=...)
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_sha: str = Field(
         description="The SHA of the commit that is being checked.", default=...
     )
     external_id: str = Field(default=...)
     url: str = Field(default=...)
     html_url: str = Field(default=...)
-    details_url: Union[Unset, str] = Field(default=UNSET)
+    details_url: MISSING[str] = Field(default=UNSET)
     status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
         description="The current status of the check run. Can be `queued`, `in_progress`, or `completed`.",
         default=...,
@@ -1142,7 +1119,7 @@ class CheckRunCreatedPropCheckRun(GitHubWebhookModel):
         default=...,
     )
     pull_requests: List[CheckRunPullRequest] = Field(default=...)
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -1152,7 +1129,7 @@ class CheckRunCreatedPropCheckRun(GitHubWebhookModel):
 class CheckRunCreatedPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunCreatedPropCheckRunPropOutput"""
 
-    title: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    title: MISSING[Union[str, None]] = Field(default=UNSET)
     summary: Union[str, None] = Field(default=...)
     text: Union[str, None] = Field(default=...)
     annotations_count: int = Field(default=...)
@@ -1166,7 +1143,7 @@ class CheckRunCreatedPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="The id of the check suite that this check run is part of.",
         default=...,
     )
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_branch: Union[str, None] = Field(default=...)
     head_sha: str = Field(
         description="The SHA of the head commit that is being checked.", default=...
@@ -1191,7 +1168,7 @@ class CheckRunCreatedPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.  \n  \n**Note:**\n\n*   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.\n*   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.",
         default=...,
     )
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -1211,7 +1188,7 @@ class CheckRunCreatedPropRequestedAction(GitHubWebhookModel):
     The action requested by the user.
     """
 
-    identifier: Union[Unset, str] = Field(
+    identifier: MISSING[str] = Field(
         description="The integrator reference of the action requested by the user.",
         default=UNSET,
     )
@@ -1232,12 +1209,10 @@ class CheckRunRequestedAction(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CheckRunRequestedActionPropCheckRun(GitHubWebhookModel):
@@ -1248,14 +1223,14 @@ class CheckRunRequestedActionPropCheckRun(GitHubWebhookModel):
     """
 
     id: int = Field(description="The id of the check.", default=...)
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_sha: str = Field(
         description="The SHA of the commit that is being checked.", default=...
     )
     external_id: str = Field(default=...)
     url: str = Field(default=...)
     html_url: str = Field(default=...)
-    details_url: Union[Unset, str] = Field(default=UNSET)
+    details_url: MISSING[str] = Field(default=UNSET)
     status: Literal["queued", "in_progress", "completed"] = Field(
         description="The current status of the check run. Can be `queued`, `in_progress`, or `completed`.",
         default=...,
@@ -1293,7 +1268,7 @@ class CheckRunRequestedActionPropCheckRun(GitHubWebhookModel):
         default=...,
     )
     pull_requests: List[CheckRunPullRequest] = Field(default=...)
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -1303,7 +1278,7 @@ class CheckRunRequestedActionPropCheckRun(GitHubWebhookModel):
 class CheckRunRequestedActionPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunRequestedActionPropCheckRunPropOutput"""
 
-    title: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    title: MISSING[Union[str, None]] = Field(default=UNSET)
     summary: Union[str, None] = Field(default=...)
     text: Union[str, None] = Field(default=...)
     annotations_count: int = Field(default=...)
@@ -1317,7 +1292,7 @@ class CheckRunRequestedActionPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="The id of the check suite that this check run is part of.",
         default=...,
     )
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_branch: Union[str, None] = Field(default=...)
     head_sha: str = Field(
         description="The SHA of the head commit that is being checked.", default=...
@@ -1344,7 +1319,7 @@ class CheckRunRequestedActionPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.  \n  \n**Note:**\n\n*   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.\n*   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.",
         default=...,
     )
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -1364,7 +1339,7 @@ class CheckRunRequestedActionPropRequestedAction(GitHubWebhookModel):
     The action requested by the user.
     """
 
-    identifier: Union[Unset, str] = Field(
+    identifier: MISSING[str] = Field(
         description="The integrator reference of the action requested by the user.",
         default=UNSET,
     )
@@ -1378,19 +1353,17 @@ class CheckRunRerequested(GitHubWebhookModel):
         description="The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).",
         default=...,
     )
-    requested_action: Union[
-        Unset, Union[CheckRunRerequestedPropRequestedAction, None]
+    requested_action: MISSING[
+        Union[CheckRunRerequestedPropRequestedAction, None]
     ] = Field(description="The action requested by the user.", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CheckRunRerequestedPropCheckRun(GitHubWebhookModel):
@@ -1401,14 +1374,14 @@ class CheckRunRerequestedPropCheckRun(GitHubWebhookModel):
     """
 
     id: int = Field(description="The id of the check.", default=...)
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_sha: str = Field(
         description="The SHA of the commit that is being checked.", default=...
     )
     external_id: str = Field(default=...)
     url: str = Field(default=...)
     html_url: str = Field(default=...)
-    details_url: Union[Unset, str] = Field(default=UNSET)
+    details_url: MISSING[str] = Field(default=UNSET)
     status: Literal["completed"] = Field(
         description="The phase of the lifecycle that the check is currently in.",
         default=...,
@@ -1446,7 +1419,7 @@ class CheckRunRerequestedPropCheckRun(GitHubWebhookModel):
         default=...,
     )
     pull_requests: List[CheckRunPullRequest] = Field(default=...)
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -1456,7 +1429,7 @@ class CheckRunRerequestedPropCheckRun(GitHubWebhookModel):
 class CheckRunRerequestedPropCheckRunPropOutput(GitHubWebhookModel):
     """CheckRunRerequestedPropCheckRunPropOutput"""
 
-    title: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    title: MISSING[Union[str, None]] = Field(default=UNSET)
     summary: Union[str, None] = Field(default=...)
     text: Union[str, None] = Field(default=...)
     annotations_count: int = Field(default=...)
@@ -1470,7 +1443,7 @@ class CheckRunRerequestedPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="The id of the check suite that this check run is part of.",
         default=...,
     )
-    node_id: Union[Unset, str] = Field(default=UNSET)
+    node_id: MISSING[str] = Field(default=UNSET)
     head_branch: Union[str, None] = Field(default=...)
     head_sha: str = Field(
         description="The SHA of the head commit that is being checked.", default=...
@@ -1492,7 +1465,7 @@ class CheckRunRerequestedPropCheckRunPropCheckSuite(GitHubWebhookModel):
         description="An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.  \n  \n**Note:**\n\n*   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.\n*   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.",
         default=...,
     )
-    deployment: Union[Unset, CheckRunDeployment] = Field(
+    deployment: MISSING[CheckRunDeployment] = Field(
         title="Check Run Deployment",
         description="A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
         default=UNSET,
@@ -1512,7 +1485,7 @@ class CheckRunRerequestedPropRequestedAction(GitHubWebhookModel):
     The action requested by the user.
     """
 
-    identifier: Union[Unset, str] = Field(
+    identifier: MISSING[str] = Field(
         description="The integrator reference of the action requested by the user.",
         default=UNSET,
     )
@@ -1530,12 +1503,10 @@ class CheckSuiteCompleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CheckSuiteCompletedPropCheckSuite(GitHubWebhookModel):
@@ -1589,8 +1560,8 @@ class CheckSuiteCompletedPropCheckSuite(GitHubWebhookModel):
     )
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    runs_rerequestable: Union[Unset, bool] = Field(default=UNSET)
-    rerequestable: Union[Unset, bool] = Field(default=UNSET)
+    runs_rerequestable: MISSING[bool] = Field(default=UNSET)
+    rerequestable: MISSING[bool] = Field(default=UNSET)
     latest_check_runs_count: int = Field(default=...)
     check_runs_url: str = Field(default=...)
     head_commit: CommitSimple = Field(title="SimpleCommit", default=...)
@@ -1625,8 +1596,8 @@ class Committer(GitHubWebhookModel):
     email: Union[str, None] = Field(
         description="The git author's email address.", default=...
     )
-    date: Union[Unset, datetime] = Field(default=UNSET)
-    username: Union[Unset, str] = Field(default=UNSET)
+    date: MISSING[datetime] = Field(default=UNSET)
+    username: MISSING[str] = Field(default=UNSET)
 
 
 class CheckSuiteRequested(GitHubWebhookModel):
@@ -1641,12 +1612,10 @@ class CheckSuiteRequested(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CheckSuiteRequestedPropCheckSuite(GitHubWebhookModel):
@@ -1700,8 +1669,8 @@ class CheckSuiteRequestedPropCheckSuite(GitHubWebhookModel):
     )
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    runs_rerequestable: Union[Unset, bool] = Field(default=UNSET)
-    rerequestable: Union[Unset, bool] = Field(default=UNSET)
+    runs_rerequestable: MISSING[bool] = Field(default=UNSET)
+    rerequestable: MISSING[bool] = Field(default=UNSET)
     latest_check_runs_count: int = Field(default=...)
     check_runs_url: str = Field(default=...)
     head_commit: CommitSimple = Field(title="SimpleCommit", default=...)
@@ -1719,12 +1688,10 @@ class CheckSuiteRerequested(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CheckSuiteRerequestedPropCheckSuite(GitHubWebhookModel):
@@ -1802,12 +1769,10 @@ class CodeScanningAlertAppearedInBranch(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CodeScanningAlertAppearedInBranchPropAlert(GitHubWebhookModel):
@@ -1826,7 +1791,7 @@ class CodeScanningAlertAppearedInBranchPropAlert(GitHubWebhookModel):
         description="The GitHub URL of the alert resource.", default=...
     )
     instances: List[AlertInstance] = Field(default=...)
-    most_recent_instance: Union[Unset, AlertInstance] = Field(
+    most_recent_instance: MISSING[AlertInstance] = Field(
         title="Alert Instance", default=UNSET
     )
     state: Literal["open", "dismissed", "fixed"] = Field(
@@ -1865,26 +1830,26 @@ class AlertInstance(GitHubWebhookModel):
     state: Literal["open", "dismissed", "fixed"] = Field(
         description="State of a code scanning alert.", default=...
     )
-    commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, AlertInstancePropMessage] = Field(default=UNSET)
-    location: Union[Unset, AlertInstancePropLocation] = Field(default=UNSET)
-    classifications: Union[Unset, List[str]] = Field(default=UNSET)
+    commit_sha: MISSING[str] = Field(default=UNSET)
+    message: MISSING[AlertInstancePropMessage] = Field(default=UNSET)
+    location: MISSING[AlertInstancePropLocation] = Field(default=UNSET)
+    classifications: MISSING[List[str]] = Field(default=UNSET)
 
 
 class AlertInstancePropMessage(GitHubWebhookModel):
     """AlertInstancePropMessage"""
 
-    text: Union[Unset, str] = Field(default=UNSET)
+    text: MISSING[str] = Field(default=UNSET)
 
 
 class AlertInstancePropLocation(GitHubWebhookModel):
     """AlertInstancePropLocation"""
 
-    path: Union[Unset, str] = Field(default=UNSET)
-    start_line: Union[Unset, int] = Field(default=UNSET)
-    end_line: Union[Unset, int] = Field(default=UNSET)
-    start_column: Union[Unset, int] = Field(default=UNSET)
-    end_column: Union[Unset, int] = Field(default=UNSET)
+    path: MISSING[str] = Field(default=UNSET)
+    start_line: MISSING[int] = Field(default=UNSET)
+    end_line: MISSING[int] = Field(default=UNSET)
+    start_column: MISSING[int] = Field(default=UNSET)
+    end_column: MISSING[int] = Field(default=UNSET)
 
 
 class CodeScanningAlertAppearedInBranchPropAlertPropRule(GitHubWebhookModel):
@@ -1921,8 +1886,8 @@ class GithubOrg(GitHubWebhookModel):
     login: Literal["github"] = Field(default=...)
     id: Literal[9919] = Field(default=...)
     node_id: Literal["MDEyOk9yZ2FuaXphdGlvbjk5MTk="] = Field(default=...)
-    name: Union[Unset, Literal["GitHub"]] = Field(default=UNSET)
-    email: Union[Unset, None] = Field(default=UNSET)
+    name: MISSING[Literal["GitHub"]] = Field(default=UNSET)
+    email: MISSING[None] = Field(default=UNSET)
     avatar_url: Literal["https://avatars.githubusercontent.com/u/9919?v=4"] = Field(
         default=...
     )
@@ -1977,12 +1942,10 @@ class CodeScanningAlertClosedByUser(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CodeScanningAlertClosedByUserPropAlert(GitHubWebhookModel):
@@ -2003,7 +1966,7 @@ class CodeScanningAlertClosedByUserPropAlert(GitHubWebhookModel):
     instances: List[CodeScanningAlertClosedByUserPropAlertPropInstancesItems] = Field(
         default=...
     )
-    most_recent_instance: Union[Unset, AlertInstance] = Field(
+    most_recent_instance: MISSING[AlertInstance] = Field(
         title="Alert Instance", default=UNSET
     )
     state: Literal["dismissed"] = Field(
@@ -2040,10 +2003,10 @@ class CodeScanningAlertClosedByUserPropAlertPropInstancesItems(GitHubWebhookMode
         default=...,
     )
     state: Literal["dismissed"] = Field(default=...)
-    commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, AlertInstancePropMessage] = Field(default=UNSET)
-    location: Union[Unset, AlertInstancePropLocation] = Field(default=UNSET)
-    classifications: Union[Unset, List[str]] = Field(default=UNSET)
+    commit_sha: MISSING[str] = Field(default=UNSET)
+    message: MISSING[AlertInstancePropMessage] = Field(default=UNSET)
+    location: MISSING[AlertInstancePropLocation] = Field(default=UNSET)
+    classifications: MISSING[List[str]] = Field(default=UNSET)
 
 
 class CodeScanningAlertClosedByUserPropAlertPropInstancesItemsAllof1(
@@ -2068,10 +2031,10 @@ class CodeScanningAlertClosedByUserPropAlertPropRule(GitHubWebhookModel):
         description="A short description of the rule used to detect the alert.",
         default=...,
     )
-    name: Union[Unset, str] = Field(default=UNSET)
-    full_description: Union[Unset, str] = Field(default=UNSET)
-    tags: Union[Unset, None] = Field(default=UNSET)
-    help_: Union[Unset, None] = Field(default=UNSET, alias="help")
+    name: MISSING[str] = Field(default=UNSET)
+    full_description: MISSING[str] = Field(default=UNSET)
+    tags: MISSING[None] = Field(default=UNSET)
+    help_: MISSING[None] = Field(default=UNSET, alias="help")
 
 
 class CodeScanningAlertClosedByUserPropAlertPropTool(GitHubWebhookModel):
@@ -2084,7 +2047,7 @@ class CodeScanningAlertClosedByUserPropAlertPropTool(GitHubWebhookModel):
     version: Union[str, None] = Field(
         description="The version of the tool used to detect the alert.", default=...
     )
-    guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    guid: MISSING[Union[str, None]] = Field(default=UNSET)
 
 
 class CodeScanningAlertCreated(GitHubWebhookModel):
@@ -2106,12 +2069,10 @@ class CodeScanningAlertCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CodeScanningAlertCreatedPropAlert(GitHubWebhookModel):
@@ -2132,7 +2093,7 @@ class CodeScanningAlertCreatedPropAlert(GitHubWebhookModel):
     instances: List[CodeScanningAlertCreatedPropAlertPropInstancesItems] = Field(
         default=...
     )
-    most_recent_instance: Union[Unset, AlertInstance] = Field(
+    most_recent_instance: MISSING[AlertInstance] = Field(
         title="Alert Instance", default=UNSET
     )
     state: Literal["open", "dismissed"] = Field(
@@ -2167,10 +2128,10 @@ class CodeScanningAlertCreatedPropAlertPropInstancesItems(GitHubWebhookModel):
         default=...,
     )
     state: Literal["open", "dismissed"] = Field(default=...)
-    commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, AlertInstancePropMessage] = Field(default=UNSET)
-    location: Union[Unset, AlertInstancePropLocation] = Field(default=UNSET)
-    classifications: Union[Unset, List[str]] = Field(default=UNSET)
+    commit_sha: MISSING[str] = Field(default=UNSET)
+    message: MISSING[AlertInstancePropMessage] = Field(default=UNSET)
+    location: MISSING[AlertInstancePropLocation] = Field(default=UNSET)
+    classifications: MISSING[List[str]] = Field(default=UNSET)
 
 
 class CodeScanningAlertCreatedPropAlertPropInstancesItemsAllof1(GitHubWebhookModel):
@@ -2193,10 +2154,10 @@ class CodeScanningAlertCreatedPropAlertPropRule(GitHubWebhookModel):
         description="A short description of the rule used to detect the alert.",
         default=...,
     )
-    name: Union[Unset, str] = Field(default=UNSET)
-    full_description: Union[Unset, str] = Field(default=UNSET)
-    tags: Union[Unset, None] = Field(default=UNSET)
-    help_: Union[Unset, None] = Field(default=UNSET, alias="help")
+    name: MISSING[str] = Field(default=UNSET)
+    full_description: MISSING[str] = Field(default=UNSET)
+    tags: MISSING[None] = Field(default=UNSET)
+    help_: MISSING[None] = Field(default=UNSET, alias="help")
 
 
 class CodeScanningAlertCreatedPropAlertPropTool(GitHubWebhookModel):
@@ -2209,7 +2170,7 @@ class CodeScanningAlertCreatedPropAlertPropTool(GitHubWebhookModel):
     version: Union[str, None] = Field(
         description="The version of the tool used to detect the alert.", default=...
     )
-    guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    guid: MISSING[Union[str, None]] = Field(default=UNSET)
 
 
 class CodeScanningAlertFixed(GitHubWebhookModel):
@@ -2231,12 +2192,10 @@ class CodeScanningAlertFixed(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CodeScanningAlertFixedPropAlert(GitHubWebhookModel):
@@ -2273,10 +2232,10 @@ class CodeScanningAlertFixedPropAlert(GitHubWebhookModel):
     )
     rule: CodeScanningAlertFixedPropAlertPropRule = Field(default=...)
     tool: CodeScanningAlertFixedPropAlertPropTool = Field(default=...)
-    most_recent_instance: Union[Unset, AlertInstance] = Field(
+    most_recent_instance: MISSING[AlertInstance] = Field(
         title="Alert Instance", default=UNSET
     )
-    instances_url: Union[Unset, str] = Field(default=UNSET)
+    instances_url: MISSING[str] = Field(default=UNSET)
 
 
 class CodeScanningAlertFixedPropAlertPropInstancesItems(GitHubWebhookModel):
@@ -2295,10 +2254,10 @@ class CodeScanningAlertFixedPropAlertPropInstancesItems(GitHubWebhookModel):
         default=...,
     )
     state: Literal["fixed"] = Field(default=...)
-    commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, AlertInstancePropMessage] = Field(default=UNSET)
-    location: Union[Unset, AlertInstancePropLocation] = Field(default=UNSET)
-    classifications: Union[Unset, List[str]] = Field(default=UNSET)
+    commit_sha: MISSING[str] = Field(default=UNSET)
+    message: MISSING[AlertInstancePropMessage] = Field(default=UNSET)
+    location: MISSING[AlertInstancePropLocation] = Field(default=UNSET)
+    classifications: MISSING[List[str]] = Field(default=UNSET)
 
 
 class CodeScanningAlertFixedPropAlertPropInstancesItemsAllof1(GitHubWebhookModel):
@@ -2321,10 +2280,10 @@ class CodeScanningAlertFixedPropAlertPropRule(GitHubWebhookModel):
         description="A short description of the rule used to detect the alert.",
         default=...,
     )
-    name: Union[Unset, str] = Field(default=UNSET)
-    full_description: Union[Unset, str] = Field(default=UNSET)
-    tags: Union[Unset, None] = Field(default=UNSET)
-    help_: Union[Unset, None] = Field(default=UNSET, alias="help")
+    name: MISSING[str] = Field(default=UNSET)
+    full_description: MISSING[str] = Field(default=UNSET)
+    tags: MISSING[None] = Field(default=UNSET)
+    help_: MISSING[None] = Field(default=UNSET, alias="help")
 
 
 class CodeScanningAlertFixedPropAlertPropTool(GitHubWebhookModel):
@@ -2337,7 +2296,7 @@ class CodeScanningAlertFixedPropAlertPropTool(GitHubWebhookModel):
     version: Union[str, None] = Field(
         description="The version of the tool used to detect the alert.", default=...
     )
-    guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    guid: MISSING[Union[str, None]] = Field(default=UNSET)
 
 
 class CodeScanningAlertReopened(GitHubWebhookModel):
@@ -2359,12 +2318,10 @@ class CodeScanningAlertReopened(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CodeScanningAlertReopenedPropAlert(GitHubWebhookModel):
@@ -2385,7 +2342,7 @@ class CodeScanningAlertReopenedPropAlert(GitHubWebhookModel):
     instances: List[CodeScanningAlertReopenedPropAlertPropInstancesItems] = Field(
         default=...
     )
-    most_recent_instance: Union[Unset, AlertInstance] = Field(
+    most_recent_instance: MISSING[AlertInstance] = Field(
         title="Alert Instance", default=UNSET
     )
     state: Literal["open", "dismissed", "fixed"] = Field(
@@ -2420,10 +2377,10 @@ class CodeScanningAlertReopenedPropAlertPropInstancesItems(GitHubWebhookModel):
         default=...,
     )
     state: Literal["open"] = Field(default=...)
-    commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, AlertInstancePropMessage] = Field(default=UNSET)
-    location: Union[Unset, AlertInstancePropLocation] = Field(default=UNSET)
-    classifications: Union[Unset, List[str]] = Field(default=UNSET)
+    commit_sha: MISSING[str] = Field(default=UNSET)
+    message: MISSING[AlertInstancePropMessage] = Field(default=UNSET)
+    location: MISSING[AlertInstancePropLocation] = Field(default=UNSET)
+    classifications: MISSING[List[str]] = Field(default=UNSET)
 
 
 class CodeScanningAlertReopenedPropAlertPropInstancesItemsAllof1(GitHubWebhookModel):
@@ -2446,10 +2403,10 @@ class CodeScanningAlertReopenedPropAlertPropRule(GitHubWebhookModel):
         description="A short description of the rule used to detect the alert.",
         default=...,
     )
-    name: Union[Unset, str] = Field(default=UNSET)
-    full_description: Union[Unset, str] = Field(default=UNSET)
-    tags: Union[Unset, None] = Field(default=UNSET)
-    help_: Union[Unset, None] = Field(default=UNSET, alias="help")
+    name: MISSING[str] = Field(default=UNSET)
+    full_description: MISSING[str] = Field(default=UNSET)
+    tags: MISSING[None] = Field(default=UNSET)
+    help_: MISSING[None] = Field(default=UNSET, alias="help")
 
 
 class CodeScanningAlertReopenedPropAlertPropTool(GitHubWebhookModel):
@@ -2462,7 +2419,7 @@ class CodeScanningAlertReopenedPropAlertPropTool(GitHubWebhookModel):
     version: Union[str, None] = Field(
         description="The version of the tool used to detect the alert.", default=...
     )
-    guid: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    guid: MISSING[Union[str, None]] = Field(default=UNSET)
 
 
 class CodeScanningAlertReopenedByUser(GitHubWebhookModel):
@@ -2484,12 +2441,10 @@ class CodeScanningAlertReopenedByUser(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CodeScanningAlertReopenedByUserPropAlert(GitHubWebhookModel):
@@ -2510,7 +2465,7 @@ class CodeScanningAlertReopenedByUserPropAlert(GitHubWebhookModel):
     instances: List[CodeScanningAlertReopenedByUserPropAlertPropInstancesItems] = Field(
         default=...
     )
-    most_recent_instance: Union[Unset, AlertInstance] = Field(
+    most_recent_instance: MISSING[AlertInstance] = Field(
         title="Alert Instance", default=UNSET
     )
     state: Literal["open"] = Field(
@@ -2545,10 +2500,10 @@ class CodeScanningAlertReopenedByUserPropAlertPropInstancesItems(GitHubWebhookMo
         default=...,
     )
     state: Literal["open"] = Field(default=...)
-    commit_sha: Union[Unset, str] = Field(default=UNSET)
-    message: Union[Unset, AlertInstancePropMessage] = Field(default=UNSET)
-    location: Union[Unset, AlertInstancePropLocation] = Field(default=UNSET)
-    classifications: Union[Unset, List[str]] = Field(default=UNSET)
+    commit_sha: MISSING[str] = Field(default=UNSET)
+    message: MISSING[AlertInstancePropMessage] = Field(default=UNSET)
+    location: MISSING[AlertInstancePropLocation] = Field(default=UNSET)
+    classifications: MISSING[List[str]] = Field(default=UNSET)
 
 
 class CodeScanningAlertReopenedByUserPropAlertPropInstancesItemsAllof1(
@@ -2605,12 +2560,10 @@ class CommitCommentCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class CommitCommentCreatedPropComment(GitHubWebhookModel):
@@ -2688,12 +2641,10 @@ class CreateEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DeleteEvent(GitHubWebhookModel):
@@ -2718,12 +2669,10 @@ class DeleteEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DependabotAlertCreated(GitHubWebhookModel):
@@ -2735,12 +2684,10 @@ class DependabotAlertCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DependabotAlertCreatedPropAlert(GitHubWebhookModel):
@@ -3060,12 +3007,10 @@ class DependabotAlertDismissed(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DependabotAlertDismissedPropAlert(GitHubWebhookModel):
@@ -3130,12 +3075,10 @@ class DependabotAlertFixed(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DependabotAlertFixedPropAlert(GitHubWebhookModel):
@@ -3201,12 +3144,10 @@ class DependabotAlertReintroduced(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DependabotAlertReopened(GitHubWebhookModel):
@@ -3220,12 +3161,10 @@ class DependabotAlertReopened(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DeployKeyCreated(GitHubWebhookModel):
@@ -3240,12 +3179,10 @@ class DeployKeyCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DeployKeyCreatedPropKey(GitHubWebhookModel):
@@ -3276,12 +3213,10 @@ class DeployKeyDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DeployKeyDeletedPropKey(GitHubWebhookModel):
@@ -3317,12 +3252,10 @@ class DeploymentCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class Deployment(GitHubWebhookModel):
@@ -3345,11 +3278,11 @@ class Deployment(GitHubWebhookModel):
     environment: str = Field(
         description="Name of the target deployment environment.", default=...
     )
-    transient_environment: Union[Unset, bool] = Field(
+    transient_environment: MISSING[bool] = Field(
         description="Specifies if the given environment will no longer exist at some point in the future. Default: false.",
         default=UNSET,
     )
-    production_environment: Union[Unset, bool] = Field(
+    production_environment: MISSING[bool] = Field(
         description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
         default=UNSET,
     )
@@ -3359,7 +3292,7 @@ class Deployment(GitHubWebhookModel):
     updated_at: datetime = Field(default=...)
     statuses_url: str = Field(default=...)
     repository_url: str = Field(default=...)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
@@ -3390,8 +3323,8 @@ class DeploymentWorkflowRun(GitHubWebhookModel):
 
     id: int = Field(default=...)
     name: str = Field(default=...)
-    path: Union[Unset, str] = Field(default=UNSET)
-    display_title: Union[Unset, str] = Field(default=UNSET)
+    path: MISSING[str] = Field(default=UNSET)
+    display_title: MISSING[str] = Field(default=UNSET)
     node_id: str = Field(default=...)
     head_branch: str = Field(default=...)
     head_sha: str = Field(default=...)
@@ -3424,7 +3357,7 @@ class DeploymentWorkflowRun(GitHubWebhookModel):
     triggering_actor: User = Field(title="User", default=...)
     run_attempt: int = Field(default=...)
     run_started_at: datetime = Field(default=...)
-    referenced_workflows: Union[Unset, List[ReferencedWorkflow]] = Field(default=UNSET)
+    referenced_workflows: MISSING[List[ReferencedWorkflow]] = Field(default=UNSET)
 
 
 class ReferencedWorkflow(GitHubWebhookModel):
@@ -3435,7 +3368,7 @@ class ReferencedWorkflow(GitHubWebhookModel):
 
     path: str = Field(default=...)
     sha: str = Field(default=...)
-    ref: Union[Unset, str] = Field(default=UNSET)
+    ref: MISSING[str] = Field(default=UNSET)
 
 
 class DeploymentStatusCreated(GitHubWebhookModel):
@@ -3451,21 +3384,19 @@ class DeploymentStatusCreated(GitHubWebhookModel):
         description="The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
         default=...,
     )
-    check_run: Union[Unset, DeploymentStatusCreatedPropCheckRun] = Field(default=UNSET)
-    workflow_run: Union[Unset, DeploymentWorkflowRun] = Field(
+    check_run: MISSING[DeploymentStatusCreatedPropCheckRun] = Field(default=UNSET)
+    workflow_run: MISSING[DeploymentWorkflowRun] = Field(
         title="Deployment Workflow Run", default=UNSET
     )
-    workflow: Union[Unset, Workflow] = Field(title="Workflow", default=UNSET)
+    workflow: MISSING[Workflow] = Field(title="Workflow", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DeploymentStatusCreatedPropDeploymentStatus(GitHubWebhookModel):
@@ -3489,8 +3420,8 @@ class DeploymentStatusCreatedPropDeploymentStatus(GitHubWebhookModel):
         default=...,
     )
     environment: str = Field(default=...)
-    environment_url: Union[Unset, Union[str, Literal[""]]] = Field(default=UNSET)
-    log_url: Union[Unset, str] = Field(default=UNSET)
+    environment_url: MISSING[Union[str, Literal[""]]] = Field(default=UNSET)
+    log_url: MISSING[str] = Field(default=UNSET)
     target_url: str = Field(
         description="The optional link added to the status.", default=...
     )
@@ -3498,7 +3429,7 @@ class DeploymentStatusCreatedPropDeploymentStatus(GitHubWebhookModel):
     updated_at: datetime = Field(default=...)
     deployment_url: str = Field(default=...)
     repository_url: str = Field(default=...)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
@@ -3552,12 +3483,10 @@ class DiscussionAnswered(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionAnsweredPropDiscussion(GitHubWebhookModel):
@@ -3595,7 +3524,7 @@ class DiscussionAnsweredPropDiscussion(GitHubWebhookModel):
     )
     active_lock_reason: Union[str, None] = Field(default=...)
     body: str = Field(description="The discussion post's body text.", default=...)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
 
 
 class Discussion(GitHubWebhookModel):
@@ -3633,7 +3562,7 @@ class Discussion(GitHubWebhookModel):
     )
     active_lock_reason: Union[str, None] = Field(default=...)
     body: str = Field(description="The discussion post's body text.", default=...)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
 
 
 class DiscussionPropCategory(GitHubWebhookModel):
@@ -3734,12 +3663,10 @@ class DiscussionCategoryChanged(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionCategoryChangedPropChanges(GitHubWebhookModel):
@@ -3779,12 +3706,10 @@ class DiscussionCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionCreatedPropDiscussion(GitHubWebhookModel):
@@ -3822,7 +3747,7 @@ class DiscussionCreatedPropDiscussion(GitHubWebhookModel):
     )
     active_lock_reason: Union[str, None] = Field(default=...)
     body: str = Field(description="The discussion post's body text.", default=...)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
 
 
 class DiscussionCreatedPropDiscussionAllof1(GitHubWebhookModel):
@@ -3844,37 +3769,33 @@ class DiscussionDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionEdited(GitHubWebhookModel):
     """discussion edited event"""
 
-    changes: Union[Unset, DiscussionEditedPropChanges] = Field(default=UNSET)
+    changes: MISSING[DiscussionEditedPropChanges] = Field(default=UNSET)
     action: Literal["edited"] = Field(default=...)
     discussion: Discussion = Field(title="Discussion", default=...)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionEditedPropChanges(GitHubWebhookModel):
     """DiscussionEditedPropChanges"""
 
-    title: Union[Unset, DiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
-    body: Union[Unset, DiscussionEditedPropChangesPropBody] = Field(default=UNSET)
+    title: MISSING[DiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
+    body: MISSING[DiscussionEditedPropChangesPropBody] = Field(default=UNSET)
 
 
 class DiscussionEditedPropChangesPropTitle(GitHubWebhookModel):
@@ -3899,12 +3820,10 @@ class DiscussionLabeled(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class Label(GitHubWebhookModel):
@@ -3931,12 +3850,10 @@ class DiscussionLocked(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionLockedPropDiscussion(GitHubWebhookModel):
@@ -3974,7 +3891,7 @@ class DiscussionLockedPropDiscussion(GitHubWebhookModel):
     )
     active_lock_reason: Union[str, None] = Field(default=...)
     body: str = Field(description="The discussion post's body text.", default=...)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
 
 
 class DiscussionLockedPropDiscussionAllof1(GitHubWebhookModel):
@@ -3993,12 +3910,10 @@ class DiscussionPinned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionTransferred(GitHubWebhookModel):
@@ -4011,12 +3926,10 @@ class DiscussionTransferred(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionTransferredPropChanges(GitHubWebhookModel):
@@ -4038,12 +3951,10 @@ class DiscussionUnanswered(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionUnansweredPropDiscussion(GitHubWebhookModel):
@@ -4081,7 +3992,7 @@ class DiscussionUnansweredPropDiscussion(GitHubWebhookModel):
     )
     active_lock_reason: Union[str, None] = Field(default=...)
     body: str = Field(description="The discussion post's body text.", default=...)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
 
 
 class DiscussionUnansweredPropDiscussionAllof1(GitHubWebhookModel):
@@ -4153,12 +4064,10 @@ class DiscussionUnlabeled(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionUnlocked(GitHubWebhookModel):
@@ -4170,12 +4079,10 @@ class DiscussionUnlocked(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionUnlockedPropDiscussion(GitHubWebhookModel):
@@ -4213,7 +4120,7 @@ class DiscussionUnlockedPropDiscussion(GitHubWebhookModel):
     )
     active_lock_reason: Union[str, None] = Field(default=...)
     body: str = Field(description="The discussion post's body text.", default=...)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
 
 
 class DiscussionUnlockedPropDiscussionAllof1(GitHubWebhookModel):
@@ -4232,12 +4139,10 @@ class DiscussionUnpinned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionCommentCreated(GitHubWebhookModel):
@@ -4253,9 +4158,7 @@ class DiscussionCommentCreated(GitHubWebhookModel):
     installation: InstallationLite = Field(
         title="InstallationLite", description="Installation", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionCommentCreatedPropComment(GitHubWebhookModel):
@@ -4302,9 +4205,7 @@ class DiscussionCommentDeleted(GitHubWebhookModel):
     installation: InstallationLite = Field(
         title="InstallationLite", description="Installation", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionCommentDeletedPropComment(GitHubWebhookModel):
@@ -4352,9 +4253,7 @@ class DiscussionCommentEdited(GitHubWebhookModel):
     installation: InstallationLite = Field(
         title="InstallationLite", description="Installation", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class DiscussionCommentEditedPropChanges(GitHubWebhookModel):
@@ -4414,12 +4313,10 @@ class ForkEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ForkEventPropForkee(GitHubWebhookModel):
@@ -4610,7 +4507,7 @@ class ForkEventPropForkee(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
-    has_discussions: Union[Unset, bool] = Field(
+    has_discussions: MISSING[bool] = Field(
         description="Whether discussions are enabled.", default=True
     )
     forks_count: int = Field(default=...)
@@ -4618,7 +4515,7 @@ class ForkEventPropForkee(GitHubWebhookModel):
     archived: bool = Field(
         description="Whether the repository is archived.", default=False
     )
-    disabled: Union[Unset, bool] = Field(
+    disabled: MISSING[bool] = Field(
         description="Returns whether or not this repository is disabled.", default=UNSET
     )
     open_issues_count: int = Field(default=...)
@@ -4628,49 +4525,49 @@ class ForkEventPropForkee(GitHubWebhookModel):
     forks: int = Field(default=...)
     open_issues: int = Field(default=...)
     watchers: int = Field(default=...)
-    stargazers: Union[Unset, int] = Field(default=UNSET)
+    stargazers: MISSING[int] = Field(default=UNSET)
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
-    allow_squash_merge: Union[Unset, bool] = Field(
+    allow_squash_merge: MISSING[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
-    allow_merge_commit: Union[Unset, bool] = Field(
+    allow_merge_commit: MISSING[bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
-    allow_rebase_merge: Union[Unset, bool] = Field(
+    allow_rebase_merge: MISSING[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    allow_auto_merge: Union[Unset, bool] = Field(
+    allow_auto_merge: MISSING[bool] = Field(
         description="Whether to allow auto-merge for pull requests.", default=False
     )
-    allow_forking: Union[Unset, bool] = Field(
+    allow_forking: MISSING[bool] = Field(
         description="Whether to allow private forks", default=UNSET
     )
-    allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
-    squash_merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    squash_merge_commit_title: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_title: Union[Unset, str] = Field(default=UNSET)
+    allow_update_branch: MISSING[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: MISSING[bool] = Field(default=UNSET)
+    squash_merge_commit_message: MISSING[str] = Field(default=UNSET)
+    squash_merge_commit_title: MISSING[str] = Field(default=UNSET)
+    merge_commit_message: MISSING[str] = Field(default=UNSET)
+    merge_commit_title: MISSING[str] = Field(default=UNSET)
     is_template: bool = Field(default=...)
     web_commit_signoff_required: bool = Field(default=...)
     topics: List[str] = Field(default=...)
     visibility: Literal["public", "private", "internal"] = Field(default=...)
-    delete_branch_on_merge: Union[Unset, bool] = Field(
+    delete_branch_on_merge: MISSING[bool] = Field(
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
-    master_branch: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
-    public: Union[Unset, bool] = Field(default=UNSET)
-    organization: Union[Unset, str] = Field(default=UNSET)
+    master_branch: MISSING[str] = Field(default=UNSET)
+    permissions: MISSING[RepositoryPropPermissions] = Field(default=UNSET)
+    public: MISSING[bool] = Field(default=UNSET)
+    organization: MISSING[str] = Field(default=UNSET)
 
 
 class ForkEventPropForkeeAllof1(GitHubWebhookModel):
     """ForkEventPropForkeeAllof1"""
 
-    fork: Union[Unset, Literal[True]] = Field(default=UNSET)
+    fork: MISSING[Literal[True]] = Field(default=UNSET)
 
 
 class GithubAppAuthorizationRevoked(GitHubWebhookModel):
@@ -4693,12 +4590,10 @@ class GollumEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class GollumEventPropPagesItems(GitHubWebhookModel):
@@ -4722,11 +4617,11 @@ class InstallationCreated(GitHubWebhookModel):
     installation: Installation = Field(
         title="Installation", description="The GitHub App installation.", default=...
     )
-    repositories: Union[Unset, List[InstallationCreatedPropRepositoriesItems]] = Field(
+    repositories: MISSING[List[InstallationCreatedPropRepositoriesItems]] = Field(
         description="An array of repository objects that the installation can access.",
         default=UNSET,
     )
-    requester: Union[Unset, Union[None, User]] = Field(title="User", default=UNSET)
+    requester: MISSING[Union[None, User]] = Field(title="User", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -4746,7 +4641,7 @@ class Installation(GitHubWebhookModel):
     repositories_url: str = Field(default=...)
     html_url: str = Field(default=...)
     app_id: int = Field(default=...)
-    app_slug: Union[Unset, str] = Field(default=UNSET)
+    app_slug: MISSING[str] = Field(default=UNSET)
     target_id: int = Field(
         description="The ID of the user or organization this token is being scoped to.",
         default=...,
@@ -4810,8 +4705,8 @@ class Installation(GitHubWebhookModel):
     created_at: Union[datetime, int] = Field(default=...)
     updated_at: Union[datetime, int] = Field(default=...)
     single_file_name: Union[str, None] = Field(default=...)
-    has_multiple_single_files: Union[Unset, bool] = Field(default=UNSET)
-    single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
+    has_multiple_single_files: MISSING[bool] = Field(default=UNSET)
+    single_file_paths: MISSING[List[str]] = Field(default=UNSET)
     suspended_by: Union[User, None] = Field(title="User", default=...)
     suspended_at: Union[datetime, None] = Field(default=...)
 
@@ -4819,132 +4714,130 @@ class Installation(GitHubWebhookModel):
 class InstallationPropPermissions(GitHubWebhookModel):
     """InstallationPropPermissions"""
 
-    actions: Union[Unset, Literal["read", "write"]] = Field(
+    actions: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for GitHub Actions workflows, workflow runs, and artifacts.",
         default=UNSET,
     )
-    administration: Union[Unset, Literal["read", "write"]] = Field(
+    administration: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for repository creation, deletion, settings, teams, and collaborators creation.",
         default=UNSET,
     )
-    blocking: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    checks: Union[Unset, Literal["read", "write"]] = Field(
+    blocking: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    checks: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for checks on code.",
         default=UNSET,
     )
-    content_references: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    contents: Union[Unset, Literal["read", "write"]] = Field(
+    content_references: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    contents: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for repository contents, commits, branches, downloads, releases, and merges.",
         default=UNSET,
     )
-    deployments: Union[Unset, Literal["read", "write"]] = Field(
+    deployments: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for deployments and deployment statuses.",
         default=UNSET,
     )
-    discussions: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    emails: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    environments: Union[Unset, Literal["read", "write"]] = Field(
+    discussions: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    emails: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    environments: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for managing repository environments.",
         default=UNSET,
     )
-    issues: Union[Unset, Literal["read", "write"]] = Field(
+    issues: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for issues and related comments, assignees, labels, and milestones.",
         default=UNSET,
     )
-    members: Union[Unset, Literal["read", "write"]] = Field(
+    members: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for organization teams and members.",
         default=UNSET,
     )
-    merge_queues: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    metadata: Union[Unset, Literal["read", "write"]] = Field(
+    merge_queues: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    metadata: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to search repositories, list collaborators, and access repository metadata.",
         default=UNSET,
     )
-    organization_administration: Union[Unset, Literal["read", "write"]] = Field(
+    organization_administration: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage access to an organization.",
         default=UNSET,
     )
-    organization_events: Union[Unset, Literal["read", "write"]] = Field(default=UNSET)
-    organization_hooks: Union[Unset, Literal["read", "write"]] = Field(
+    organization_events: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    organization_hooks: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage the post-receive hooks for an organization.",
         default=UNSET,
     )
-    organization_packages: Union[Unset, Literal["read", "write"]] = Field(
+    organization_packages: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for organization packages published to GitHub Packages.",
         default=UNSET,
     )
-    organization_plan: Union[Unset, Literal["read", "write"]] = Field(
+    organization_plan: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for viewing an organization's plan.",
         default=UNSET,
     )
-    organization_projects: Union[Unset, Literal["read", "write"]] = Field(
+    organization_projects: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage organization projects and projects beta (where available).",
         default=UNSET,
     )
-    organization_secrets: Union[Unset, Literal["read", "write"]] = Field(
+    organization_secrets: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage organization secrets.",
         default=UNSET,
     )
-    organization_self_hosted_runners: Union[Unset, Literal["read", "write"]] = Field(
+    organization_self_hosted_runners: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to view and manage GitHub Actions self-hosted runners available to an organization.",
         default=UNSET,
     )
-    organization_user_blocking: Union[Unset, Literal["read", "write"]] = Field(
+    organization_user_blocking: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to view and manage users blocked by the organization.",
         default=UNSET,
     )
-    packages: Union[Unset, Literal["read", "write"]] = Field(
+    packages: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for packages published to GitHub Packages.",
         default=UNSET,
     )
-    pages: Union[Unset, Literal["read", "write"]] = Field(
+    pages: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds.",
         default=UNSET,
     )
-    pull_requests: Union[Unset, Literal["read", "write"]] = Field(
+    pull_requests: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for pull requests and related comments, assignees, labels, milestones, and merges.",
         default=UNSET,
     )
-    repository_hooks: Union[Unset, Literal["read", "write"]] = Field(
+    repository_hooks: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage the post-receive hooks for a repository.",
         default=UNSET,
     )
-    repository_projects: Union[Unset, Literal["read", "write"]] = Field(
+    repository_projects: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage repository projects, columns, and cards.",
         default=UNSET,
     )
-    secret_scanning_alerts: Union[Unset, Literal["read", "write"]] = Field(
+    secret_scanning_alerts: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to view and manage secret scanning alerts.",
         default=UNSET,
     )
-    secrets: Union[Unset, Literal["read", "write"]] = Field(
+    secrets: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage repository secrets.",
         default=UNSET,
     )
-    security_events: Union[Unset, Literal["read", "write"]] = Field(
+    security_events: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to view and manage security events like code scanning alerts.",
         default=UNSET,
     )
-    security_scanning_alert: Union[Unset, Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    single_file: Union[Unset, Literal["read", "write"]] = Field(
+    security_scanning_alert: MISSING[Literal["read", "write"]] = Field(default=UNSET)
+    single_file: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage just a single file.",
         default=UNSET,
     )
-    statuses: Union[Unset, Literal["read", "write"]] = Field(
+    statuses: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token for commit statuses.",
         default=UNSET,
     )
-    team_discussions: Union[Unset, Literal["read", "write"]] = Field(
+    team_discussions: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage team discussions and related comments.",
         default=UNSET,
     )
-    vulnerability_alerts: Union[Unset, Literal["read", "write"]] = Field(
+    vulnerability_alerts: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to manage Dependabot alerts.",
         default=UNSET,
     )
-    workflows: Union[Unset, Literal["read", "write"]] = Field(
+    workflows: MISSING[Literal["read", "write"]] = Field(
         description="The level of permission granted to the access token to update GitHub Actions workflow files.",
         default=UNSET,
     )
@@ -4969,11 +4862,11 @@ class InstallationDeleted(GitHubWebhookModel):
     installation: Installation = Field(
         title="Installation", description="The GitHub App installation.", default=...
     )
-    repositories: Union[Unset, List[InstallationDeletedPropRepositoriesItems]] = Field(
+    repositories: MISSING[List[InstallationDeletedPropRepositoriesItems]] = Field(
         description="An array of repository objects that the installation can access.",
         default=UNSET,
     )
-    requester: Union[Unset, None] = Field(default=UNSET)
+    requester: MISSING[None] = Field(default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -4996,13 +4889,13 @@ class InstallationNewPermissionsAccepted(GitHubWebhookModel):
     installation: Installation = Field(
         title="Installation", description="The GitHub App installation.", default=...
     )
-    repositories: Union[
-        Unset, List[InstallationNewPermissionsAcceptedPropRepositoriesItems]
+    repositories: MISSING[
+        List[InstallationNewPermissionsAcceptedPropRepositoriesItems]
     ] = Field(
         description="An array of repository objects that the installation can access.",
         default=UNSET,
     )
-    requester: Union[Unset, None] = Field(default=UNSET)
+    requester: MISSING[None] = Field(default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -5023,11 +4916,11 @@ class InstallationSuspend(GitHubWebhookModel):
 
     action: Literal["suspend"] = Field(default=...)
     installation: InstallationSuspendPropInstallation = Field(default=...)
-    repositories: Union[Unset, List[InstallationSuspendPropRepositoriesItems]] = Field(
+    repositories: MISSING[List[InstallationSuspendPropRepositoriesItems]] = Field(
         description="An array of repository objects that the installation can access.",
         default=UNSET,
     )
-    requester: Union[Unset, None] = Field(default=UNSET)
+    requester: MISSING[None] = Field(default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -5044,7 +4937,7 @@ class InstallationSuspendPropInstallation(GitHubWebhookModel):
     repositories_url: str = Field(default=...)
     html_url: str = Field(default=...)
     app_id: int = Field(default=...)
-    app_slug: Union[Unset, str] = Field(default=UNSET)
+    app_slug: MISSING[str] = Field(default=UNSET)
     target_id: int = Field(
         description="The ID of the user or organization this token is being scoped to.",
         default=...,
@@ -5108,8 +5001,8 @@ class InstallationSuspendPropInstallation(GitHubWebhookModel):
     created_at: Union[datetime, int] = Field(default=...)
     updated_at: Union[datetime, int] = Field(default=...)
     single_file_name: Union[str, None] = Field(default=...)
-    has_multiple_single_files: Union[Unset, bool] = Field(default=UNSET)
-    single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
+    has_multiple_single_files: MISSING[bool] = Field(default=UNSET)
+    single_file_paths: MISSING[List[str]] = Field(default=UNSET)
     suspended_by: User = Field(title="User", default=...)
     suspended_at: datetime = Field(default=...)
 
@@ -5138,13 +5031,11 @@ class InstallationUnsuspend(GitHubWebhookModel):
 
     action: Literal["unsuspend"] = Field(default=...)
     installation: InstallationUnsuspendPropInstallation = Field(default=...)
-    repositories: Union[
-        Unset, List[InstallationUnsuspendPropRepositoriesItems]
-    ] = Field(
+    repositories: MISSING[List[InstallationUnsuspendPropRepositoriesItems]] = Field(
         description="An array of repository objects that the installation can access.",
         default=UNSET,
     )
-    requester: Union[Unset, None] = Field(default=UNSET)
+    requester: MISSING[None] = Field(default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -5161,7 +5052,7 @@ class InstallationUnsuspendPropInstallation(GitHubWebhookModel):
     repositories_url: str = Field(default=...)
     html_url: str = Field(default=...)
     app_id: int = Field(default=...)
-    app_slug: Union[Unset, str] = Field(default=UNSET)
+    app_slug: MISSING[str] = Field(default=UNSET)
     target_id: int = Field(
         description="The ID of the user or organization this token is being scoped to.",
         default=...,
@@ -5225,8 +5116,8 @@ class InstallationUnsuspendPropInstallation(GitHubWebhookModel):
     created_at: Union[datetime, int] = Field(default=...)
     updated_at: Union[datetime, int] = Field(default=...)
     single_file_name: Union[str, None] = Field(default=...)
-    has_multiple_single_files: Union[Unset, bool] = Field(default=UNSET)
-    single_file_paths: Union[Unset, List[str]] = Field(default=UNSET)
+    has_multiple_single_files: MISSING[bool] = Field(default=UNSET)
+    single_file_paths: MISSING[List[str]] = Field(default=UNSET)
     suspended_by: Union[None, None] = Field(default=...)
     suspended_at: Union[None, None] = Field(default=...)
 
@@ -5292,15 +5183,13 @@ class InstallationRepositoriesAddedPropRepositoriesAddedItems(GitHubWebhookModel
 class InstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubWebhookModel):
     """InstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-    id: Union[Unset, int] = Field(
+    id: MISSING[int] = Field(
         description="Unique identifier of the repository", default=UNSET
     )
-    node_id: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(
-        description="The name of the repository.", default=UNSET
-    )
-    full_name: Union[Unset, str] = Field(default=UNSET)
-    private: Union[Unset, bool] = Field(
+    node_id: MISSING[str] = Field(default=UNSET)
+    name: MISSING[str] = Field(description="The name of the repository.", default=UNSET)
+    full_name: MISSING[str] = Field(default=UNSET)
+    private: MISSING[bool] = Field(
         description="Whether the repository is private or public.", default=UNSET
     )
 
@@ -5366,28 +5255,22 @@ class InstallationTargetRenamed(GitHubWebhookModel):
     changes: InstallationTargetRenamedPropChanges = Field(default=...)
     action: Literal["renamed"] = Field(default=...)
     account: InstallationTargetRenamedPropAccount = Field(default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
-    sender: Union[Unset, User] = Field(title="User", default=UNSET)
+    sender: MISSING[User] = Field(title="User", default=UNSET)
     installation: InstallationLite = Field(
         title="InstallationLite", description="Installation", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     target_type: str = Field(default=...)
 
 
 class InstallationTargetRenamedPropChanges(GitHubWebhookModel):
     """InstallationTargetRenamedPropChanges"""
 
-    login: Union[Unset, InstallationTargetRenamedPropChangesPropLogin] = Field(
-        default=UNSET
-    )
-    slug: Union[Unset, InstallationTargetRenamedPropChangesPropSlug] = Field(
-        default=UNSET
-    )
+    login: MISSING[InstallationTargetRenamedPropChangesPropLogin] = Field(default=UNSET)
+    slug: MISSING[InstallationTargetRenamedPropChangesPropSlug] = Field(default=UNSET)
 
 
 class InstallationTargetRenamedPropChangesPropLogin(GitHubWebhookModel):
@@ -5406,40 +5289,40 @@ class InstallationTargetRenamedPropAccount(GitHubWebhookModel):
     """InstallationTargetRenamedPropAccount"""
 
     avatar_url: str = Field(default=...)
-    created_at: Union[Unset, datetime] = Field(default=UNSET)
-    description: Union[Unset, None] = Field(default=UNSET)
-    events_url: Union[Unset, str] = Field(default=UNSET)
-    followers: Union[Unset, int] = Field(default=UNSET)
-    followers_url: Union[Unset, str] = Field(default=UNSET)
-    following: Union[Unset, int] = Field(default=UNSET)
-    following_url: Union[Unset, str] = Field(default=UNSET)
-    gists_url: Union[Unset, str] = Field(default=UNSET)
-    gravatar_id: Union[Unset, str] = Field(default=UNSET)
-    has_organization_projects: Union[Unset, bool] = Field(default=UNSET)
-    has_repository_projects: Union[Unset, bool] = Field(default=UNSET)
-    hooks_url: Union[Unset, str] = Field(default=UNSET)
+    created_at: MISSING[datetime] = Field(default=UNSET)
+    description: MISSING[None] = Field(default=UNSET)
+    events_url: MISSING[str] = Field(default=UNSET)
+    followers: MISSING[int] = Field(default=UNSET)
+    followers_url: MISSING[str] = Field(default=UNSET)
+    following: MISSING[int] = Field(default=UNSET)
+    following_url: MISSING[str] = Field(default=UNSET)
+    gists_url: MISSING[str] = Field(default=UNSET)
+    gravatar_id: MISSING[str] = Field(default=UNSET)
+    has_organization_projects: MISSING[bool] = Field(default=UNSET)
+    has_repository_projects: MISSING[bool] = Field(default=UNSET)
+    hooks_url: MISSING[str] = Field(default=UNSET)
     html_url: str = Field(default=...)
     id: int = Field(default=...)
-    is_verified: Union[Unset, bool] = Field(default=UNSET)
-    issues_url: Union[Unset, str] = Field(default=UNSET)
-    login: Union[Unset, str] = Field(default=UNSET)
-    members_url: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(default=UNSET)
+    is_verified: MISSING[bool] = Field(default=UNSET)
+    issues_url: MISSING[str] = Field(default=UNSET)
+    login: MISSING[str] = Field(default=UNSET)
+    members_url: MISSING[str] = Field(default=UNSET)
+    name: MISSING[str] = Field(default=UNSET)
     node_id: str = Field(default=...)
-    organizations_url: Union[Unset, str] = Field(default=UNSET)
-    public_gists: Union[Unset, int] = Field(default=UNSET)
-    public_members_url: Union[Unset, str] = Field(default=UNSET)
-    public_repos: Union[Unset, int] = Field(default=UNSET)
-    received_events_url: Union[Unset, str] = Field(default=UNSET)
-    repos_url: Union[Unset, str] = Field(default=UNSET)
-    site_admin: Union[Unset, bool] = Field(default=UNSET)
-    slug: Union[Unset, str] = Field(default=UNSET)
-    starred_url: Union[Unset, str] = Field(default=UNSET)
-    subscriptions_url: Union[Unset, str] = Field(default=UNSET)
-    type: Union[Unset, Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    updated_at: Union[Unset, datetime] = Field(default=UNSET)
-    url: Union[Unset, str] = Field(default=UNSET)
-    website_url: Union[Unset, None] = Field(default=UNSET)
+    organizations_url: MISSING[str] = Field(default=UNSET)
+    public_gists: MISSING[int] = Field(default=UNSET)
+    public_members_url: MISSING[str] = Field(default=UNSET)
+    public_repos: MISSING[int] = Field(default=UNSET)
+    received_events_url: MISSING[str] = Field(default=UNSET)
+    repos_url: MISSING[str] = Field(default=UNSET)
+    site_admin: MISSING[bool] = Field(default=UNSET)
+    slug: MISSING[str] = Field(default=UNSET)
+    starred_url: MISSING[str] = Field(default=UNSET)
+    subscriptions_url: MISSING[str] = Field(default=UNSET)
+    type: MISSING[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    updated_at: MISSING[datetime] = Field(default=UNSET)
+    url: MISSING[str] = Field(default=UNSET)
+    website_url: MISSING[None] = Field(default=UNSET)
 
 
 class IssueCommentCreated(GitHubWebhookModel):
@@ -5459,12 +5342,10 @@ class IssueCommentCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssueCommentCreatedPropIssue(GitHubWebhookModel):
@@ -5521,17 +5402,17 @@ class IssueCommentCreatedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -5556,12 +5437,12 @@ class Issue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
-    state: Union[Unset, Literal["open", "closed"]] = Field(
+    labels: MISSING[List[Label]] = Field(default=UNSET)
+    state: MISSING[Literal["open", "closed"]] = Field(
         description="State of the issue; either 'open' or 'closed'", default=UNSET
     )
-    locked: Union[Unset, bool] = Field(default=UNSET)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    locked: MISSING[bool] = Field(default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Union[Milestone, None] = Field(
         title="Milestone",
@@ -5589,17 +5470,17 @@ class Issue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -5633,11 +5514,11 @@ class Milestone(GitHubWebhookModel):
 class IssuePropPullRequest(GitHubWebhookModel):
     """IssuePropPullRequest"""
 
-    url: Union[Unset, str] = Field(default=UNSET)
-    html_url: Union[Unset, str] = Field(default=UNSET)
-    diff_url: Union[Unset, str] = Field(default=UNSET)
-    patch_url: Union[Unset, str] = Field(default=UNSET)
-    merged_at: Union[Unset, Union[datetime, None]] = Field(default=UNSET)
+    url: MISSING[str] = Field(default=UNSET)
+    html_url: MISSING[str] = Field(default=UNSET)
+    diff_url: MISSING[str] = Field(default=UNSET)
+    patch_url: MISSING[str] = Field(default=UNSET)
+    merged_at: MISSING[Union[datetime, None]] = Field(default=UNSET)
 
 
 class IssueCommentCreatedPropIssueAllof1(GitHubWebhookModel):
@@ -5705,12 +5586,10 @@ class IssueCommentDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssueCommentDeletedPropIssue(GitHubWebhookModel):
@@ -5767,17 +5646,17 @@ class IssueCommentDeletedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -5813,12 +5692,10 @@ class IssueCommentEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssueCommentEditedPropChanges(GitHubWebhookModel):
@@ -5827,7 +5704,7 @@ class IssueCommentEditedPropChanges(GitHubWebhookModel):
     The changes to the comment.
     """
 
-    body: Union[Unset, IssueCommentEditedPropChangesPropBody] = Field(default=UNSET)
+    body: MISSING[IssueCommentEditedPropChangesPropBody] = Field(default=UNSET)
 
 
 class IssueCommentEditedPropChangesPropBody(GitHubWebhookModel):
@@ -5892,17 +5769,17 @@ class IssueCommentEditedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -5933,7 +5810,7 @@ class IssuesAssigned(GitHubWebhookModel):
         description="The [issue](https://docs.github.com/en/rest/reference/issues) itself.",
         default=...,
     )
-    assignee: Union[Unset, Union[User, None]] = Field(
+    assignee: MISSING[Union[User, None]] = Field(
         title="User",
         description="The optional user who was assigned or unassigned from the issue.",
         default=UNSET,
@@ -5942,12 +5819,10 @@ class IssuesAssigned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesClosed(GitHubWebhookModel):
@@ -5964,12 +5839,10 @@ class IssuesClosed(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesClosedPropIssue(GitHubWebhookModel):
@@ -5992,10 +5865,10 @@ class IssuesClosedPropIssue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
+    labels: MISSING[List[Label]] = Field(default=UNSET)
     state: Literal["closed"] = Field(default=...)
-    locked: Union[Unset, bool] = Field(default=UNSET)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    locked: MISSING[bool] = Field(default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Union[Milestone, None] = Field(
         title="Milestone",
@@ -6023,17 +5896,17 @@ class IssuesClosedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -6058,12 +5931,10 @@ class IssuesDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesDemilestoned(GitHubWebhookModel):
@@ -6080,12 +5951,10 @@ class IssuesDemilestoned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesDemilestonedPropIssue(GitHubWebhookModel):
@@ -6105,12 +5974,12 @@ class IssuesDemilestonedPropIssue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
-    state: Union[Unset, Literal["open", "closed"]] = Field(
+    labels: MISSING[List[Label]] = Field(default=UNSET)
+    state: MISSING[Literal["open", "closed"]] = Field(
         description="State of the issue; either 'open' or 'closed'", default=UNSET
     )
-    locked: Union[Unset, bool] = Field(default=UNSET)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    locked: MISSING[bool] = Field(default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Union[None, None] = Field(default=...)
     comments: int = Field(default=...)
@@ -6134,17 +6003,17 @@ class IssuesDemilestonedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -6164,7 +6033,7 @@ class IssuesEdited(GitHubWebhookModel):
         description="The [issue](https://docs.github.com/en/rest/reference/issues) itself.",
         default=...,
     )
-    label: Union[Unset, Label] = Field(title="Label", default=UNSET)
+    label: MISSING[Label] = Field(title="Label", default=UNSET)
     changes: IssuesEditedPropChanges = Field(
         description="The changes to the issue.", default=...
     )
@@ -6172,12 +6041,10 @@ class IssuesEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesEditedPropChanges(GitHubWebhookModel):
@@ -6186,8 +6053,8 @@ class IssuesEditedPropChanges(GitHubWebhookModel):
     The changes to the issue.
     """
 
-    body: Union[Unset, IssuesEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Union[Unset, IssuesEditedPropChangesPropTitle] = Field(default=UNSET)
+    body: MISSING[IssuesEditedPropChangesPropBody] = Field(default=UNSET)
+    title: MISSING[IssuesEditedPropChangesPropTitle] = Field(default=UNSET)
 
 
 class IssuesEditedPropChangesPropBody(GitHubWebhookModel):
@@ -6215,17 +6082,15 @@ class IssuesLabeled(GitHubWebhookModel):
         description="The [issue](https://docs.github.com/en/rest/reference/issues) itself.",
         default=...,
     )
-    label: Union[Unset, Label] = Field(title="Label", default=UNSET)
+    label: MISSING[Label] = Field(title="Label", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesLocked(GitHubWebhookModel):
@@ -6237,12 +6102,10 @@ class IssuesLocked(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesLockedPropIssue(GitHubWebhookModel):
@@ -6262,12 +6125,12 @@ class IssuesLockedPropIssue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
-    state: Union[Unset, Literal["open", "closed"]] = Field(
+    labels: MISSING[List[Label]] = Field(default=UNSET)
+    state: MISSING[Literal["open", "closed"]] = Field(
         description="State of the issue; either 'open' or 'closed'", default=UNSET
     )
     locked: Literal[True] = Field(default=...)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Union[Milestone, None] = Field(
         title="Milestone",
@@ -6295,17 +6158,17 @@ class IssuesLockedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         Union[None, Literal["resolved", "off-topic", "too heated", "spam"]], None
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -6333,12 +6196,10 @@ class IssuesMilestoned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesMilestonedPropIssue(GitHubWebhookModel):
@@ -6358,12 +6219,12 @@ class IssuesMilestonedPropIssue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
-    state: Union[Unset, Literal["open", "closed"]] = Field(
+    labels: MISSING[List[Label]] = Field(default=UNSET)
+    state: MISSING[Literal["open", "closed"]] = Field(
         description="State of the issue; either 'open' or 'closed'", default=UNSET
     )
-    locked: Union[Unset, bool] = Field(default=UNSET)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    locked: MISSING[bool] = Field(default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Milestone = Field(
         title="Milestone",
@@ -6391,17 +6252,17 @@ class IssuesMilestonedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -6420,18 +6281,16 @@ class IssuesOpened(GitHubWebhookModel):
     """issues opened event"""
 
     action: Literal["opened"] = Field(default=...)
-    changes: Union[Unset, IssuesOpenedPropChanges] = Field(default=UNSET)
+    changes: MISSING[IssuesOpenedPropChanges] = Field(default=UNSET)
     issue: IssuesOpenedPropIssue = Field(default=...)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesOpenedPropChanges(GitHubWebhookModel):
@@ -6464,10 +6323,10 @@ class IssuesOpenedPropIssue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
+    labels: MISSING[List[Label]] = Field(default=UNSET)
     state: Literal["open"] = Field(default=...)
-    locked: Union[Unset, bool] = Field(default=UNSET)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    locked: MISSING[bool] = Field(default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Union[Milestone, None] = Field(
         title="Milestone",
@@ -6495,17 +6354,17 @@ class IssuesOpenedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -6530,12 +6389,10 @@ class IssuesPinned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesReopened(GitHubWebhookModel):
@@ -6547,12 +6404,10 @@ class IssuesReopened(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesReopenedPropIssue(GitHubWebhookModel):
@@ -6572,10 +6427,10 @@ class IssuesReopenedPropIssue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
+    labels: MISSING[List[Label]] = Field(default=UNSET)
     state: Literal["open"] = Field(default=...)
-    locked: Union[Unset, bool] = Field(default=UNSET)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    locked: MISSING[bool] = Field(default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Union[Milestone, None] = Field(
         title="Milestone",
@@ -6603,17 +6458,17 @@ class IssuesReopenedPropIssue(GitHubWebhookModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -6638,12 +6493,10 @@ class IssuesTransferred(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesTransferredPropChanges(GitHubWebhookModel):
@@ -6670,7 +6523,7 @@ class IssuesUnassigned(GitHubWebhookModel):
         description="The [issue](https://docs.github.com/en/rest/reference/issues) itself.",
         default=...,
     )
-    assignee: Union[Unset, Union[User, None]] = Field(
+    assignee: MISSING[Union[User, None]] = Field(
         title="User",
         description="The optional user who was assigned or unassigned from the issue.",
         default=UNSET,
@@ -6679,12 +6532,10 @@ class IssuesUnassigned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesUnlabeled(GitHubWebhookModel):
@@ -6696,17 +6547,15 @@ class IssuesUnlabeled(GitHubWebhookModel):
         description="The [issue](https://docs.github.com/en/rest/reference/issues) itself.",
         default=...,
     )
-    label: Union[Unset, Label] = Field(title="Label", default=UNSET)
+    label: MISSING[Label] = Field(title="Label", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesUnlocked(GitHubWebhookModel):
@@ -6718,12 +6567,10 @@ class IssuesUnlocked(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class IssuesUnlockedPropIssue(GitHubWebhookModel):
@@ -6743,12 +6590,12 @@ class IssuesUnlockedPropIssue(GitHubWebhookModel):
     )
     title: str = Field(description="Title of the issue", default=...)
     user: User = Field(title="User", default=...)
-    labels: Union[Unset, List[Label]] = Field(default=UNSET)
-    state: Union[Unset, Literal["open", "closed"]] = Field(
+    labels: MISSING[List[Label]] = Field(default=UNSET)
+    state: MISSING[Literal["open", "closed"]] = Field(
         description="State of the issue; either 'open' or 'closed'", default=UNSET
     )
     locked: Literal[False] = Field(default=...)
-    assignee: Union[Unset, Union[User, None]] = Field(title="User", default=UNSET)
+    assignee: MISSING[Union[User, None]] = Field(title="User", default=UNSET)
     assignees: List[User] = Field(default=...)
     milestone: Union[Milestone, None] = Field(
         title="Milestone",
@@ -6774,17 +6621,17 @@ class IssuesUnlockedPropIssue(GitHubWebhookModel):
         default=...,
     )
     active_lock_reason: Union[None, None] = Field(default=...)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    performed_via_github_app: Union[Unset, Union[App, None]] = Field(
+    draft: MISSING[bool] = Field(default=UNSET)
+    performed_via_github_app: MISSING[Union[App, None]] = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=UNSET,
     )
-    pull_request: Union[Unset, IssuePropPullRequest] = Field(default=UNSET)
+    pull_request: MISSING[IssuePropPullRequest] = Field(default=UNSET)
     body: Union[str, None] = Field(description="Contents of the issue", default=...)
     reactions: Reactions = Field(title="Reactions", default=...)
-    timeline_url: Union[Unset, str] = Field(default=UNSET)
-    state_reason: Union[Unset, Union[str, None]] = Field(
+    timeline_url: MISSING[str] = Field(default=UNSET)
+    state_reason: MISSING[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
 
@@ -6809,12 +6656,10 @@ class IssuesUnpinned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class LabelCreated(GitHubWebhookModel):
@@ -6826,12 +6671,10 @@ class LabelCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class LabelDeleted(GitHubWebhookModel):
@@ -6843,12 +6686,10 @@ class LabelDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class LabelEdited(GitHubWebhookModel):
@@ -6856,7 +6697,7 @@ class LabelEdited(GitHubWebhookModel):
 
     action: Literal["edited"] = Field(default=...)
     label: Label = Field(title="Label", default=...)
-    changes: Union[Unset, LabelEditedPropChanges] = Field(
+    changes: MISSING[LabelEditedPropChanges] = Field(
         description="The changes to the label if the action was `edited`.",
         default=UNSET,
     )
@@ -6864,12 +6705,10 @@ class LabelEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class LabelEditedPropChanges(GitHubWebhookModel):
@@ -6878,11 +6717,9 @@ class LabelEditedPropChanges(GitHubWebhookModel):
     The changes to the label if the action was `edited`.
     """
 
-    color: Union[Unset, LabelEditedPropChangesPropColor] = Field(default=UNSET)
-    name: Union[Unset, LabelEditedPropChangesPropName] = Field(default=UNSET)
-    description: Union[Unset, LabelEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
+    color: MISSING[LabelEditedPropChangesPropColor] = Field(default=UNSET)
+    name: MISSING[LabelEditedPropChangesPropName] = Field(default=UNSET)
+    description: MISSING[LabelEditedPropChangesPropDescription] = Field(default=UNSET)
 
 
 class LabelEditedPropChangesPropColor(GitHubWebhookModel):
@@ -6924,7 +6761,7 @@ class MarketplacePurchaseCancelled(GitHubWebhookModel):
     marketplace_purchase: MarketplacePurchaseCancelledPropMarketplacePurchase = Field(
         default=...
     )
-    previous_marketplace_purchase: Union[Unset, MarketplacePurchase] = Field(
+    previous_marketplace_purchase: MISSING[MarketplacePurchase] = Field(
         title="Marketplace Purchase", default=UNSET
     )
 
@@ -6972,7 +6809,7 @@ class MarketplacePurchase(GitHubWebhookModel):
     unit_count: int = Field(default=...)
     on_free_trial: bool = Field(default=...)
     free_trial_ends_on: Union[datetime, None] = Field(default=...)
-    next_billing_date: Union[Unset, str] = Field(default=UNSET)
+    next_billing_date: MISSING[str] = Field(default=UNSET)
     plan: MarketplacePurchasePropPlan = Field(default=...)
 
 
@@ -7015,7 +6852,7 @@ class MarketplacePurchaseChanged(GitHubWebhookModel):
     marketplace_purchase: MarketplacePurchaseChangedPropMarketplacePurchase = Field(
         default=...
     )
-    previous_marketplace_purchase: Union[Unset, MarketplacePurchase] = Field(
+    previous_marketplace_purchase: MISSING[MarketplacePurchase] = Field(
         title="Marketplace Purchase", default=UNSET
     )
 
@@ -7070,7 +6907,7 @@ class MarketplacePurchasePendingChange(GitHubWebhookModel):
     marketplace_purchase: MarketplacePurchasePendingChangePropMarketplacePurchase = (
         Field(default=...)
     )
-    previous_marketplace_purchase: Union[Unset, MarketplacePurchase] = Field(
+    previous_marketplace_purchase: MISSING[MarketplacePurchase] = Field(
         title="Marketplace Purchase", default=UNSET
     )
 
@@ -7125,7 +6962,7 @@ class MarketplacePurchasePendingChangeCancelled(GitHubWebhookModel):
     marketplace_purchase: MarketplacePurchasePendingChangeCancelledPropMarketplacePurchase = Field(
         default=...
     )
-    previous_marketplace_purchase: Union[Unset, MarketplacePurchase] = Field(
+    previous_marketplace_purchase: MISSING[MarketplacePurchase] = Field(
         title="Marketplace Purchase", default=UNSET
     )
 
@@ -7184,7 +7021,7 @@ class MarketplacePurchasePurchased(GitHubWebhookModel):
     marketplace_purchase: MarketplacePurchasePurchasedPropMarketplacePurchase = Field(
         default=...
     )
-    previous_marketplace_purchase: Union[Unset, MarketplacePurchase] = Field(
+    previous_marketplace_purchase: MISSING[MarketplacePurchase] = Field(
         title="Marketplace Purchase", default=UNSET
     )
 
@@ -7238,26 +7075,22 @@ class MemberAdded(GitHubWebhookModel):
     """
 
     action: Literal["added"] = Field(default=...)
-    changes: Union[Unset, MemberAddedPropChanges] = Field(default=UNSET)
+    changes: MISSING[MemberAddedPropChanges] = Field(default=UNSET)
     member: User = Field(title="User", default=...)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
 class MemberAddedPropChanges(GitHubWebhookModel):
     """MemberAddedPropChanges"""
 
-    permission: Union[Unset, MemberAddedPropChangesPropPermission] = Field(
-        default=UNSET
-    )
+    permission: MISSING[MemberAddedPropChangesPropPermission] = Field(default=UNSET)
 
 
 class MemberAddedPropChangesPropPermission(GitHubWebhookModel):
@@ -7277,12 +7110,10 @@ class MemberEdited(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -7313,12 +7144,10 @@ class MemberRemoved(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -7338,7 +7167,7 @@ class MembershipAdded(GitHubWebhookModel):
         default=...,
     )
     organization: Organization = Field(title="Organization", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -7365,7 +7194,7 @@ class Team(GitHubWebhookModel):
         description="Permission that the team will have for its repositories",
         default=...,
     )
-    parent: Union[Unset, Union[TeamPropParent, None]] = Field(default=UNSET)
+    parent: MISSING[Union[TeamPropParent, None]] = Field(default=UNSET)
 
 
 class TeamPropParent(GitHubWebhookModel):
@@ -7405,7 +7234,7 @@ class MembershipRemoved(GitHubWebhookModel):
         default=...,
     )
     organization: Organization = Field(title="Organization", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -7415,7 +7244,7 @@ class MembershipRemovedPropTeamOneof1(GitHubWebhookModel):
 
     id: int = Field(default=...)
     name: str = Field(default=...)
-    deleted: Union[Unset, bool] = Field(default=UNSET)
+    deleted: MISSING[bool] = Field(default=UNSET)
 
 
 class MergeGroupChecksRequested(GitHubWebhookModel):
@@ -7429,12 +7258,10 @@ class MergeGroupChecksRequested(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class MergeGroupChecksRequestedPropMergeGroup(GitHubWebhookModel):
@@ -7593,7 +7420,7 @@ class MetaDeletedPropHookPropConfig(GitHubWebhookModel):
         description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
         default=...,
     )
-    secret: Union[Unset, str] = Field(
+    secret: MISSING[str] = Field(
         description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
         default=UNSET,
     )
@@ -7615,12 +7442,10 @@ class MilestoneClosed(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class MilestoneClosedPropMilestone(GitHubWebhookModel):
@@ -7660,12 +7485,10 @@ class MilestoneCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class MilestoneCreatedPropMilestone(GitHubWebhookModel):
@@ -7709,12 +7532,10 @@ class MilestoneDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class MilestoneEdited(GitHubWebhookModel):
@@ -7734,12 +7555,10 @@ class MilestoneEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class MilestoneEditedPropChanges(GitHubWebhookModel):
@@ -7748,11 +7567,11 @@ class MilestoneEditedPropChanges(GitHubWebhookModel):
     The changes to the milestone if the action was `edited`.
     """
 
-    description: Union[Unset, MilestoneEditedPropChangesPropDescription] = Field(
+    description: MISSING[MilestoneEditedPropChangesPropDescription] = Field(
         default=UNSET
     )
-    due_on: Union[Unset, MilestoneEditedPropChangesPropDueOn] = Field(default=UNSET)
-    title: Union[Unset, MilestoneEditedPropChangesPropTitle] = Field(default=UNSET)
+    due_on: MISSING[MilestoneEditedPropChangesPropDueOn] = Field(default=UNSET)
+    title: MISSING[MilestoneEditedPropChangesPropTitle] = Field(default=UNSET)
 
 
 class MilestoneEditedPropChangesPropDescription(GitHubWebhookModel):
@@ -7794,12 +7613,10 @@ class MilestoneOpened(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class MilestoneOpenedPropMilestone(GitHubWebhookModel):
@@ -7836,7 +7653,7 @@ class OrgBlockBlocked(GitHubWebhookModel):
     action: Literal["blocked"] = Field(default=...)
     blocked_user: User = Field(title="User", default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -7848,7 +7665,7 @@ class OrgBlockUnblocked(GitHubWebhookModel):
     action: Literal["unblocked"] = Field(default=...)
     blocked_user: User = Field(title="User", default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -7858,13 +7675,13 @@ class OrganizationDeleted(GitHubWebhookModel):
     """organization deleted event"""
 
     action: Literal["deleted"] = Field(default=...)
-    membership: Union[Unset, Membership] = Field(
+    membership: MISSING[Membership] = Field(
         title="Membership",
         description="The membership between the user and the organization. Not present when the action is `member_invited`.",
         default=UNSET,
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -7896,7 +7713,7 @@ class OrganizationMemberAdded(GitHubWebhookModel):
         default=...,
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -7912,7 +7729,7 @@ class OrganizationMemberInvited(GitHubWebhookModel):
     )
     user: User = Field(title="User", default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -7947,7 +7764,7 @@ class OrganizationMemberRemoved(GitHubWebhookModel):
         default=...,
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -7959,7 +7776,7 @@ class OrganizationRenamed(GitHubWebhookModel):
     changes: OrganizationRenamedPropChanges = Field(default=...)
     action: Literal["renamed"] = Field(default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -7988,9 +7805,7 @@ class PackagePublished(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class PackagePublishedPropPackage(GitHubWebhookModel):
@@ -8030,45 +7845,43 @@ class PackagePublishedPropPackagePropPackageVersionOneof0(GitHubWebhookModel):
     summary: str = Field(default=...)
     name: str = Field(description="The name of the package version.", default=...)
     description: str = Field(default=...)
-    body: Union[
-        Unset,
-        Union[str, PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1],
+    body: MISSING[
+        Union[str, PackagePublishedPropPackagePropPackageVersionOneof0PropBodyOneof1]
     ] = Field(default=UNSET)
-    body_html: Union[Unset, str] = Field(default=UNSET)
-    release: Union[
-        Unset, PackagePublishedPropPackagePropPackageVersionOneof0PropRelease
+    body_html: MISSING[str] = Field(default=UNSET)
+    release: MISSING[
+        PackagePublishedPropPackagePropPackageVersionOneof0PropRelease
     ] = Field(default=UNSET)
-    manifest: Union[Unset, str] = Field(default=UNSET)
+    manifest: MISSING[str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    tag_name: Union[Unset, str] = Field(default=UNSET)
-    target_commitish: Union[Unset, str] = Field(default=UNSET)
-    target_oid: Union[Unset, str] = Field(default=UNSET)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    prerelease: Union[Unset, bool] = Field(default=UNSET)
-    created_at: Union[Unset, datetime] = Field(default=UNSET)
-    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    tag_name: MISSING[str] = Field(default=UNSET)
+    target_commitish: MISSING[str] = Field(default=UNSET)
+    target_oid: MISSING[str] = Field(default=UNSET)
+    draft: MISSING[bool] = Field(default=UNSET)
+    prerelease: MISSING[bool] = Field(default=UNSET)
+    created_at: MISSING[datetime] = Field(default=UNSET)
+    updated_at: MISSING[datetime] = Field(default=UNSET)
     metadata: List[Any] = Field(description="Package Version Metadata", default=...)
-    container_metadata: Union[
-        Unset,
+    container_metadata: MISSING[
         Union[
             PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
-    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+    docker_metadata: MISSING[List[Any]] = Field(default=UNSET)
+    npm_metadata: MISSING[Union[PackageNpmMetadata, None]] = Field(
         title="Package NPM Metadata", default=UNSET
     )
-    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+    nuget_metadata: MISSING[Union[List[PackageNugetMetadata], None]] = Field(
         default=UNSET
     )
-    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    rubygems_metadata: MISSING[List[Any]] = Field(default=UNSET)
     package_files: List[
         PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems
     ] = Field(default=...)
-    package_url: Union[Unset, str] = Field(default=UNSET)
-    author: Union[Unset, User] = Field(title="User", default=UNSET)
-    source_url: Union[Unset, str] = Field(default=UNSET)
+    package_url: MISSING[str] = Field(default=UNSET)
+    author: MISSING[User] = Field(title="User", default=UNSET)
+    source_url: MISSING[str] = Field(default=UNSET)
     installation_command: str = Field(default=...)
 
 
@@ -8142,23 +7955,20 @@ class PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOn
 ):
     """PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0"""
 
-    labels: Union[
-        Unset,
+    labels: MISSING[
         Union[
             PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    manifest: Union[
-        Unset,
+    manifest: MISSING[
         Union[
             PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    tag: Union[
-        Unset,
-        PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag,
+    tag: MISSING[
+        PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag
     ] = Field(default=UNSET)
 
 
@@ -8185,72 +7995,66 @@ class PackagePublishedPropPackagePropPackageVersionOneof0PropContainerMetadataOn
     opTag
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    name: MISSING[str] = Field(default=UNSET)
 
 
 class PackageNpmMetadata(GitHubWebhookModel):
     """Package NPM Metadata"""
 
-    name: Union[Unset, str] = Field(default=UNSET)
-    version: Union[Unset, str] = Field(default=UNSET)
-    npm_user: Union[Unset, str] = Field(default=UNSET)
-    author: Union[Unset, Union[PackageNpmMetadataPropAuthorOneof0, None]] = Field(
+    name: MISSING[str] = Field(default=UNSET)
+    version: MISSING[str] = Field(default=UNSET)
+    npm_user: MISSING[str] = Field(default=UNSET)
+    author: MISSING[Union[PackageNpmMetadataPropAuthorOneof0, None]] = Field(
         default=UNSET
     )
-    bugs: Union[Unset, Union[PackageNpmMetadataPropBugsOneof0, None]] = Field(
+    bugs: MISSING[Union[PackageNpmMetadataPropBugsOneof0, None]] = Field(default=UNSET)
+    dependencies: MISSING[PackageNpmMetadataPropDependencies] = Field(default=UNSET)
+    dev_dependencies: MISSING[PackageNpmMetadataPropDevDependencies] = Field(
         default=UNSET
     )
-    dependencies: Union[Unset, PackageNpmMetadataPropDependencies] = Field(
+    peer_dependencies: MISSING[PackageNpmMetadataPropPeerDependencies] = Field(
         default=UNSET
     )
-    dev_dependencies: Union[Unset, PackageNpmMetadataPropDevDependencies] = Field(
+    optional_dependencies: MISSING[PackageNpmMetadataPropOptionalDependencies] = Field(
         default=UNSET
     )
-    peer_dependencies: Union[Unset, PackageNpmMetadataPropPeerDependencies] = Field(
+    description: MISSING[str] = Field(default=UNSET)
+    dist: MISSING[Union[PackageNpmMetadataPropDistOneof0, None]] = Field(default=UNSET)
+    git_head: MISSING[str] = Field(default=UNSET)
+    homepage: MISSING[str] = Field(default=UNSET)
+    license_: MISSING[str] = Field(default=UNSET, alias="license")
+    main: MISSING[str] = Field(default=UNSET)
+    repository: MISSING[Union[PackageNpmMetadataPropRepositoryOneof0, None]] = Field(
         default=UNSET
     )
-    optional_dependencies: Union[
-        Unset, PackageNpmMetadataPropOptionalDependencies
-    ] = Field(default=UNSET)
-    description: Union[Unset, str] = Field(default=UNSET)
-    dist: Union[Unset, Union[PackageNpmMetadataPropDistOneof0, None]] = Field(
+    scripts: MISSING[PackageNpmMetadataPropScripts] = Field(default=UNSET)
+    id: MISSING[str] = Field(default=UNSET)
+    node_version: MISSING[str] = Field(default=UNSET)
+    npm_version: MISSING[str] = Field(default=UNSET)
+    has_shrinkwrap: MISSING[bool] = Field(default=UNSET)
+    maintainers: MISSING[List[PackageNpmMetadataPropMaintainersItems]] = Field(
         default=UNSET
     )
-    git_head: Union[Unset, str] = Field(default=UNSET)
-    homepage: Union[Unset, str] = Field(default=UNSET)
-    license_: Union[Unset, str] = Field(default=UNSET, alias="license")
-    main: Union[Unset, str] = Field(default=UNSET)
-    repository: Union[
-        Unset, Union[PackageNpmMetadataPropRepositoryOneof0, None]
-    ] = Field(default=UNSET)
-    scripts: Union[Unset, PackageNpmMetadataPropScripts] = Field(default=UNSET)
-    id: Union[Unset, str] = Field(default=UNSET)
-    node_version: Union[Unset, str] = Field(default=UNSET)
-    npm_version: Union[Unset, str] = Field(default=UNSET)
-    has_shrinkwrap: Union[Unset, bool] = Field(default=UNSET)
-    maintainers: Union[Unset, List[PackageNpmMetadataPropMaintainersItems]] = Field(
+    contributors: MISSING[List[PackageNpmMetadataPropContributorsItems]] = Field(
         default=UNSET
     )
-    contributors: Union[Unset, List[PackageNpmMetadataPropContributorsItems]] = Field(
+    engines: MISSING[PackageNpmMetadataPropEngines] = Field(default=UNSET)
+    keywords: MISSING[List[str]] = Field(default=UNSET)
+    files: MISSING[List[str]] = Field(default=UNSET)
+    bin_: MISSING[PackageNpmMetadataPropBin] = Field(default=UNSET, alias="bin")
+    man: MISSING[PackageNpmMetadataPropMan] = Field(default=UNSET)
+    directories: MISSING[Union[PackageNpmMetadataPropDirectoriesOneof0, None]] = Field(
         default=UNSET
     )
-    engines: Union[Unset, PackageNpmMetadataPropEngines] = Field(default=UNSET)
-    keywords: Union[Unset, List[str]] = Field(default=UNSET)
-    files: Union[Unset, List[str]] = Field(default=UNSET)
-    bin_: Union[Unset, PackageNpmMetadataPropBin] = Field(default=UNSET, alias="bin")
-    man: Union[Unset, PackageNpmMetadataPropMan] = Field(default=UNSET)
-    directories: Union[
-        Unset, Union[PackageNpmMetadataPropDirectoriesOneof0, None]
-    ] = Field(default=UNSET)
-    os: Union[Unset, List[str]] = Field(default=UNSET)
-    cpu: Union[Unset, List[str]] = Field(default=UNSET)
-    readme: Union[Unset, str] = Field(default=UNSET)
-    installation_command: Union[Unset, str] = Field(default=UNSET)
-    release_id: Union[Unset, int] = Field(default=UNSET)
-    commit_oid: Union[Unset, str] = Field(default=UNSET)
-    published_via_actions: Union[Unset, bool] = Field(default=UNSET)
-    deleted_by_id: Union[Unset, int] = Field(default=UNSET)
+    os: MISSING[List[str]] = Field(default=UNSET)
+    cpu: MISSING[List[str]] = Field(default=UNSET)
+    readme: MISSING[str] = Field(default=UNSET)
+    installation_command: MISSING[str] = Field(default=UNSET)
+    release_id: MISSING[int] = Field(default=UNSET)
+    commit_oid: MISSING[str] = Field(default=UNSET)
+    published_via_actions: MISSING[bool] = Field(default=UNSET)
+    deleted_by_id: MISSING[int] = Field(default=UNSET)
 
 
 class PackageNpmMetadataPropAuthorOneof0(GitHubWebhookModel, extra=Extra.allow):
@@ -8316,13 +8120,13 @@ class PackageNpmMetadataPropDirectoriesOneof0(GitHubWebhookModel, extra=Extra.al
 class PackageNugetMetadata(GitHubWebhookModel):
     """Package Nuget Metadata"""
 
-    id: Union[Unset, Union[str, PackageNugetMetadataPropIdOneof1, int]] = Field(
+    id: MISSING[Union[str, PackageNugetMetadataPropIdOneof1, int]] = Field(
         default=UNSET
     )
-    name: Union[Unset, str] = Field(default=UNSET)
-    value: Union[
-        Unset, Union[bool, str, int, PackageNugetMetadataPropValueOneof3]
-    ] = Field(default=UNSET)
+    name: MISSING[str] = Field(default=UNSET)
+    value: MISSING[Union[bool, str, int, PackageNugetMetadataPropValueOneof3]] = Field(
+        default=UNSET
+    )
 
 
 class PackageNugetMetadataPropIdOneof1(GitHubWebhookModel):
@@ -8332,10 +8136,10 @@ class PackageNugetMetadataPropIdOneof1(GitHubWebhookModel):
 class PackageNugetMetadataPropValueOneof3(GitHubWebhookModel):
     """PackageNugetMetadataPropValueOneof3"""
 
-    url: Union[Unset, str] = Field(default=UNSET)
-    branch: Union[Unset, str] = Field(default=UNSET)
-    commit: Union[Unset, str] = Field(default=UNSET)
-    type: Union[Unset, str] = Field(default=UNSET)
+    url: MISSING[str] = Field(default=UNSET)
+    branch: MISSING[str] = Field(default=UNSET)
+    commit: MISSING[str] = Field(default=UNSET)
+    type: MISSING[str] = Field(default=UNSET)
 
 
 class PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems(
@@ -8377,9 +8181,7 @@ class PackageUpdated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class PackageUpdatedPropPackage(GitHubWebhookModel):
@@ -8416,45 +8218,43 @@ class PackageUpdatedPropPackagePropPackageVersionOneof0(GitHubWebhookModel):
     summary: str = Field(default=...)
     name: str = Field(description="The name of the package version.", default=...)
     description: str = Field(default=...)
-    body: Union[
-        Unset,
-        Union[str, PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1],
+    body: MISSING[
+        Union[str, PackageUpdatedPropPackagePropPackageVersionOneof0PropBodyOneof1]
     ] = Field(default=UNSET)
-    body_html: Union[Unset, str] = Field(default=UNSET)
-    release: Union[
-        Unset, PackageUpdatedPropPackagePropPackageVersionOneof0PropRelease
+    body_html: MISSING[str] = Field(default=UNSET)
+    release: MISSING[
+        PackageUpdatedPropPackagePropPackageVersionOneof0PropRelease
     ] = Field(default=UNSET)
-    manifest: Union[Unset, str] = Field(default=UNSET)
+    manifest: MISSING[str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    tag_name: Union[Unset, str] = Field(default=UNSET)
-    target_commitish: Union[Unset, str] = Field(default=UNSET)
-    target_oid: Union[Unset, str] = Field(default=UNSET)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    prerelease: Union[Unset, bool] = Field(default=UNSET)
-    created_at: Union[Unset, datetime] = Field(default=UNSET)
-    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    tag_name: MISSING[str] = Field(default=UNSET)
+    target_commitish: MISSING[str] = Field(default=UNSET)
+    target_oid: MISSING[str] = Field(default=UNSET)
+    draft: MISSING[bool] = Field(default=UNSET)
+    prerelease: MISSING[bool] = Field(default=UNSET)
+    created_at: MISSING[datetime] = Field(default=UNSET)
+    updated_at: MISSING[datetime] = Field(default=UNSET)
     metadata: List[Any] = Field(description="Package Version Metadata", default=...)
-    container_metadata: Union[
-        Unset,
+    container_metadata: MISSING[
         Union[
             PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
-    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+    docker_metadata: MISSING[List[Any]] = Field(default=UNSET)
+    npm_metadata: MISSING[Union[PackageNpmMetadata, None]] = Field(
         title="Package NPM Metadata", default=UNSET
     )
-    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+    nuget_metadata: MISSING[Union[List[PackageNugetMetadata], None]] = Field(
         default=UNSET
     )
-    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    rubygems_metadata: MISSING[List[Any]] = Field(default=UNSET)
     package_files: List[
         PackageUpdatedPropPackagePropPackageVersionOneof0PropPackageFilesItems
     ] = Field(default=...)
-    package_url: Union[Unset, str] = Field(default=UNSET)
-    author: Union[Unset, User] = Field(title="User", default=UNSET)
-    source_url: Union[Unset, str] = Field(default=UNSET)
+    package_url: MISSING[str] = Field(default=UNSET)
+    author: MISSING[User] = Field(title="User", default=UNSET)
+    source_url: MISSING[str] = Field(default=UNSET)
     installation_command: str = Field(default=...)
 
 
@@ -8526,23 +8326,20 @@ class PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneo
 ):
     """PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0"""
 
-    labels: Union[
-        Unset,
+    labels: MISSING[
         Union[
             PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropLabels,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    manifest: Union[
-        Unset,
+    manifest: MISSING[
         Union[
             PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropManifest,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    tag: Union[
-        Unset,
-        PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag,
+    tag: MISSING[
+        PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneof0PropTag
     ] = Field(default=UNSET)
 
 
@@ -8569,8 +8366,8 @@ class PackageUpdatedPropPackagePropPackageVersionOneof0PropContainerMetadataOneo
     Tag
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    name: MISSING[str] = Field(default=UNSET)
 
 
 class PackageUpdatedPropPackagePropPackageVersionOneof0PropPackageFilesItems(
@@ -8616,12 +8413,10 @@ class PageBuildEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class PageBuildEventPropBuild(GitHubWebhookModel):
@@ -8659,13 +8454,11 @@ class PingEvent(GitHubWebhookModel):
         description="The [webhook configuration](https://docs.github.com/en/rest/reference/repos#get-a-repository-webhook).",
         default=...,
     )
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
-    sender: Union[Unset, User] = Field(title="User", default=UNSET)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    sender: MISSING[User] = Field(title="User", default=UNSET)
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class PingEventPropHook(GitHubWebhookModel):
@@ -8679,7 +8472,7 @@ class PingEventPropHook(GitHubWebhookModel):
     id: int = Field(default=...)
     name: str = Field(default=...)
     active: bool = Field(default=...)
-    app_id: Union[Unset, int] = Field(
+    app_id: MISSING[int] = Field(
         description="When you register a new GitHub App, GitHub sends a ping event to the **webhook URL** you specified during registration. The event contains the `app_id`, which is required for [authenticating](https://docs.github.com/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps) an app.",
         default=UNSET,
     )
@@ -8746,12 +8539,10 @@ class PingEventPropHook(GitHubWebhookModel):
     updated_at: datetime = Field(default=...)
     created_at: datetime = Field(default=...)
     url: str = Field(default=...)
-    test_url: Union[Unset, str] = Field(default=UNSET)
+    test_url: MISSING[str] = Field(default=UNSET)
     ping_url: str = Field(default=...)
     deliveries_url: str = Field(default=...)
-    last_response: Union[Unset, PingEventPropHookPropLastResponse] = Field(
-        default=UNSET
-    )
+    last_response: MISSING[PingEventPropHookPropLastResponse] = Field(default=UNSET)
 
 
 class PingEventPropHookPropConfig(GitHubWebhookModel):
@@ -8764,7 +8555,7 @@ class PingEventPropHookPropConfig(GitHubWebhookModel):
         description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
         default=...,
     )
-    secret: Union[Unset, str] = Field(
+    secret: MISSING[str] = Field(
         description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
         default=UNSET,
     )
@@ -8794,12 +8585,10 @@ class ProjectClosed(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class Project(GitHubWebhookModel):
@@ -8831,12 +8620,10 @@ class ProjectCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectDeleted(GitHubWebhookModel):
@@ -8848,19 +8635,17 @@ class ProjectDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectEdited(GitHubWebhookModel):
     """project edited event"""
 
     action: Literal["edited"] = Field(default=...)
-    changes: Union[Unset, ProjectEditedPropChanges] = Field(
+    changes: MISSING[ProjectEditedPropChanges] = Field(
         description="The changes to the project if the action was `edited`.",
         default=UNSET,
     )
@@ -8869,12 +8654,10 @@ class ProjectEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectEditedPropChanges(GitHubWebhookModel):
@@ -8883,8 +8666,8 @@ class ProjectEditedPropChanges(GitHubWebhookModel):
     The changes to the project if the action was `edited`.
     """
 
-    name: Union[Unset, ProjectEditedPropChangesPropName] = Field(default=UNSET)
-    body: Union[Unset, ProjectEditedPropChangesPropBody] = Field(default=UNSET)
+    name: MISSING[ProjectEditedPropChangesPropName] = Field(default=UNSET)
+    body: MISSING[ProjectEditedPropChangesPropBody] = Field(default=UNSET)
 
 
 class ProjectEditedPropChangesPropName(GitHubWebhookModel):
@@ -8916,12 +8699,10 @@ class ProjectReopened(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectCardConverted(GitHubWebhookModel):
@@ -8930,14 +8711,12 @@ class ProjectCardConverted(GitHubWebhookModel):
     action: Literal["converted"] = Field(default=...)
     changes: ProjectCardConvertedPropChanges = Field(default=...)
     project_card: ProjectCard = Field(title="Project Card", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -8970,8 +8749,8 @@ class ProjectCard(GitHubWebhookModel):
     creator: User = Field(title="User", default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    content_url: Union[Unset, str] = Field(default=UNSET)
-    after_id: Union[Unset, Union[str, float, None]] = Field(default=UNSET)
+    content_url: MISSING[str] = Field(default=UNSET)
+    after_id: MISSING[Union[str, float, None]] = Field(default=UNSET)
 
 
 class ProjectCardCreated(GitHubWebhookModel):
@@ -8979,14 +8758,12 @@ class ProjectCardCreated(GitHubWebhookModel):
 
     action: Literal["created"] = Field(default=...)
     project_card: ProjectCard = Field(title="Project Card", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -8996,14 +8773,12 @@ class ProjectCardDeleted(GitHubWebhookModel):
 
     action: Literal["deleted"] = Field(default=...)
     project_card: ProjectCard = Field(title="Project Card", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9014,14 +8789,12 @@ class ProjectCardEdited(GitHubWebhookModel):
     action: Literal["edited"] = Field(default=...)
     changes: ProjectCardEditedPropChanges = Field(default=...)
     project_card: ProjectCard = Field(title="Project Card", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9042,16 +8815,14 @@ class ProjectCardMoved(GitHubWebhookModel):
     """project_card moved event"""
 
     action: Literal["moved"] = Field(default=...)
-    changes: Union[Unset, ProjectCardMovedPropChanges] = Field(default=UNSET)
+    changes: MISSING[ProjectCardMovedPropChanges] = Field(default=UNSET)
     project_card: ProjectCardMovedPropProjectCard = Field(default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9084,7 +8855,7 @@ class ProjectCardMovedPropProjectCard(GitHubWebhookModel):
     creator: User = Field(title="User", default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    content_url: Union[Unset, str] = Field(default=UNSET)
+    content_url: MISSING[str] = Field(default=UNSET)
     after_id: Union[Union[float, None], None] = Field(default=...)
 
 
@@ -9099,16 +8870,14 @@ class ProjectColumnCreated(GitHubWebhookModel):
 
     action: Literal["created"] = Field(default=...)
     project_column: ProjectColumn = Field(title="Project Column", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectColumn(GitHubWebhookModel):
@@ -9131,16 +8900,14 @@ class ProjectColumnDeleted(GitHubWebhookModel):
 
     action: Literal["deleted"] = Field(default=...)
     project_column: ProjectColumn = Field(title="Project Column", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectColumnEdited(GitHubWebhookModel):
@@ -9149,22 +8916,20 @@ class ProjectColumnEdited(GitHubWebhookModel):
     action: Literal["edited"] = Field(default=...)
     changes: ProjectColumnEditedPropChanges = Field(default=...)
     project_column: ProjectColumn = Field(title="Project Column", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectColumnEditedPropChanges(GitHubWebhookModel):
     """ProjectColumnEditedPropChanges"""
 
-    name: Union[Unset, ProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
+    name: MISSING[ProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
 
 
 class ProjectColumnEditedPropChangesPropName(GitHubWebhookModel):
@@ -9178,16 +8943,14 @@ class ProjectColumnMoved(GitHubWebhookModel):
 
     action: Literal["moved"] = Field(default=...)
     project_column: ProjectColumn = Field(title="Project Column", default=...)
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ProjectsV2ItemArchived(GitHubWebhookModel):
@@ -9197,10 +8960,8 @@ class ProjectsV2ItemArchived(GitHubWebhookModel):
     action: Literal["archived"] = Field(default=...)
     projects_v2_item: ProjectsV2ItemArchivedPropProjectsV2Item = Field(default=...)
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9267,10 +9028,8 @@ class ProjectsV2ItemConverted(GitHubWebhookModel):
     action: Literal["converted"] = Field(default=...)
     projects_v2_item: ProjectsV2ItemConvertedPropProjectsV2Item = Field(default=...)
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9314,10 +9073,8 @@ class ProjectsV2ItemCreated(GitHubWebhookModel):
     action: Literal["created"] = Field(default=...)
     projects_v2_item: ProjectsV2ItemCreatedPropProjectsV2Item = Field(default=...)
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9352,10 +9109,8 @@ class ProjectsV2ItemDeleted(GitHubWebhookModel):
         default=...,
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9371,10 +9126,8 @@ class ProjectsV2ItemEdited(GitHubWebhookModel):
         default=...,
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9405,10 +9158,8 @@ class ProjectsV2ItemReordered(GitHubWebhookModel):
         default=...,
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9437,10 +9188,8 @@ class ProjectsV2ItemRestored(GitHubWebhookModel):
     action: Literal["restored"] = Field(default=...)
     projects_v2_item: ProjectsV2ItemRestoredPropProjectsV2Item = Field(default=...)
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -9486,12 +9235,10 @@ class PublicEvent(GitHubWebhookModel):
 
     repository: PublicEventPropRepository = Field(default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class PublicEventPropRepository(GitHubWebhookModel):
@@ -9676,7 +9423,7 @@ class PublicEventPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
-    has_discussions: Union[Unset, bool] = Field(
+    has_discussions: MISSING[bool] = Field(
         description="Whether discussions are enabled.", default=True
     )
     forks_count: int = Field(default=...)
@@ -9684,7 +9431,7 @@ class PublicEventPropRepository(GitHubWebhookModel):
     archived: bool = Field(
         description="Whether the repository is archived.", default=False
     )
-    disabled: Union[Unset, bool] = Field(
+    disabled: MISSING[bool] = Field(
         description="Returns whether or not this repository is disabled.", default=UNSET
     )
     open_issues_count: int = Field(default=...)
@@ -9694,43 +9441,43 @@ class PublicEventPropRepository(GitHubWebhookModel):
     forks: int = Field(default=...)
     open_issues: int = Field(default=...)
     watchers: int = Field(default=...)
-    stargazers: Union[Unset, int] = Field(default=UNSET)
+    stargazers: MISSING[int] = Field(default=UNSET)
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
-    allow_squash_merge: Union[Unset, bool] = Field(
+    allow_squash_merge: MISSING[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
-    allow_merge_commit: Union[Unset, bool] = Field(
+    allow_merge_commit: MISSING[bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
-    allow_rebase_merge: Union[Unset, bool] = Field(
+    allow_rebase_merge: MISSING[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    allow_auto_merge: Union[Unset, bool] = Field(
+    allow_auto_merge: MISSING[bool] = Field(
         description="Whether to allow auto-merge for pull requests.", default=False
     )
-    allow_forking: Union[Unset, bool] = Field(
+    allow_forking: MISSING[bool] = Field(
         description="Whether to allow private forks", default=UNSET
     )
-    allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
-    squash_merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    squash_merge_commit_title: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_title: Union[Unset, str] = Field(default=UNSET)
+    allow_update_branch: MISSING[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: MISSING[bool] = Field(default=UNSET)
+    squash_merge_commit_message: MISSING[str] = Field(default=UNSET)
+    squash_merge_commit_title: MISSING[str] = Field(default=UNSET)
+    merge_commit_message: MISSING[str] = Field(default=UNSET)
+    merge_commit_title: MISSING[str] = Field(default=UNSET)
     is_template: bool = Field(default=...)
     web_commit_signoff_required: bool = Field(default=...)
     topics: List[str] = Field(default=...)
     visibility: Literal["public", "private", "internal"] = Field(default=...)
-    delete_branch_on_merge: Union[Unset, bool] = Field(
+    delete_branch_on_merge: MISSING[bool] = Field(
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
-    master_branch: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
-    public: Union[Unset, bool] = Field(default=UNSET)
-    organization: Union[Unset, str] = Field(default=UNSET)
+    master_branch: MISSING[str] = Field(default=UNSET)
+    permissions: MISSING[RepositoryPropPermissions] = Field(default=UNSET)
+    public: MISSING[bool] = Field(default=UNSET)
+    organization: MISSING[str] = Field(default=UNSET)
 
 
 class PublicEventPropRepositoryAllof1(GitHubWebhookModel):
@@ -9749,12 +9496,10 @@ class PullRequestAssigned(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -9916,12 +9661,10 @@ class PullRequestAutoMergeDisabled(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -9935,12 +9678,10 @@ class PullRequestAutoMergeEnabled(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -9953,12 +9694,10 @@ class PullRequestClosed(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10069,12 +9808,10 @@ class PullRequestConvertedToDraft(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10192,12 +9929,10 @@ class PullRequestDemilestoned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class PullRequestDemilestonedPropPullRequest(GitHubWebhookModel):
@@ -10310,12 +10045,10 @@ class PullRequestDequeued(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10332,12 +10065,10 @@ class PullRequestEdited(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10347,9 +10078,9 @@ class PullRequestEditedPropChanges(GitHubWebhookModel):
     The changes to the comment if the action was `edited`.
     """
 
-    body: Union[Unset, PullRequestEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Union[Unset, PullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
-    base: Union[Unset, PullRequestEditedPropChangesPropBase] = Field(default=UNSET)
+    body: MISSING[PullRequestEditedPropChangesPropBody] = Field(default=UNSET)
+    title: MISSING[PullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
+    base: MISSING[PullRequestEditedPropChangesPropBase] = Field(default=UNSET)
 
 
 class PullRequestEditedPropChangesPropBody(GitHubWebhookModel):
@@ -10401,12 +10132,10 @@ class PullRequestLabeled(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10419,12 +10148,10 @@ class PullRequestLocked(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10443,12 +10170,10 @@ class PullRequestMilestoned(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class PullRequestMilestonedPropPullRequest(GitHubWebhookModel):
@@ -10557,12 +10282,10 @@ class PullRequestOpened(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10667,12 +10390,10 @@ class PullRequestQueued(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10685,12 +10406,10 @@ class PullRequestReadyForReview(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10800,12 +10519,10 @@ class PullRequestReopened(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10913,12 +10630,10 @@ class PullRequestReviewRequestRemovedOneof0(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10936,12 +10651,10 @@ class PullRequestReviewRequestRemovedOneof1(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10955,12 +10668,10 @@ class PullRequestReviewRequestedOneof0(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10978,12 +10689,10 @@ class PullRequestReviewRequestedOneof1(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -10998,12 +10707,10 @@ class PullRequestSynchronize(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11017,12 +10724,10 @@ class PullRequestUnassigned(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11036,12 +10741,10 @@ class PullRequestUnlabeled(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11054,12 +10757,10 @@ class PullRequestUnlocked(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11072,12 +10773,10 @@ class PullRequestReviewDismissed(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11272,21 +10971,17 @@ class PullRequestReviewEdited(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
 class PullRequestReviewEditedPropChanges(GitHubWebhookModel):
     """PullRequestReviewEditedPropChanges"""
 
-    body: Union[Unset, PullRequestReviewEditedPropChangesPropBody] = Field(
-        default=UNSET
-    )
+    body: MISSING[PullRequestReviewEditedPropChangesPropBody] = Field(default=UNSET)
 
 
 class PullRequestReviewEditedPropChangesPropBody(GitHubWebhookModel):
@@ -11312,12 +11007,10 @@ class PullRequestReviewSubmitted(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11334,12 +11027,10 @@ class PullRequestReviewCommentCreated(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11431,10 +11122,10 @@ class PullRequestReviewComment(GitHubWebhookModel):
         description="The side of the first line of the range for a multi-line comment.",
         default=...,
     )
-    in_reply_to_id: Union[Unset, int] = Field(
+    in_reply_to_id: MISSING[int] = Field(
         description="The comment ID to reply to.", default=UNSET
     )
-    subject_type: Union[Unset, Literal["line", "file"]] = Field(
+    subject_type: MISSING[Literal["line", "file"]] = Field(
         description="The level at which the comment is targeted, can be a diff line or a file.",
         default=UNSET,
     )
@@ -11479,7 +11170,7 @@ class PullRequestReviewCommentCreatedPropPullRequest(GitHubWebhookModel):
         description="A collection of related issues and pull requests.",
         default=...,
     )
-    draft: Union[Unset, bool] = Field(default=UNSET)
+    draft: MISSING[bool] = Field(default=UNSET)
     commits_url: str = Field(default=...)
     review_comments_url: str = Field(default=...)
     review_comment_url: str = Field(default=...)
@@ -11490,7 +11181,7 @@ class PullRequestReviewCommentCreatedPropPullRequest(GitHubWebhookModel):
     links: PullRequestReviewCommentCreatedPropPullRequestPropLinks = Field(
         default=..., alias="_links"
     )
-    auto_merge: Union[Unset, Union[AutoMerge, None]] = Field(
+    auto_merge: MISSING[Union[AutoMerge, None]] = Field(
         title="PullRequestAutoMerge",
         description="The status of auto merging a pull request.",
         default=UNSET,
@@ -11564,12 +11255,10 @@ class PullRequestReviewCommentDeleted(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11604,7 +11293,7 @@ class PullRequestReviewCommentDeletedPropPullRequest(GitHubWebhookModel):
         description="A collection of related issues and pull requests.",
         default=...,
     )
-    draft: Union[Unset, bool] = Field(default=UNSET)
+    draft: MISSING[bool] = Field(default=UNSET)
     commits_url: str = Field(default=...)
     review_comments_url: str = Field(default=...)
     review_comment_url: str = Field(default=...)
@@ -11615,7 +11304,7 @@ class PullRequestReviewCommentDeletedPropPullRequest(GitHubWebhookModel):
     links: PullRequestReviewCommentDeletedPropPullRequestPropLinks = Field(
         default=..., alias="_links"
     )
-    auto_merge: Union[Unset, Union[AutoMerge, None]] = Field(
+    auto_merge: MISSING[Union[AutoMerge, None]] = Field(
         title="PullRequestAutoMerge",
         description="The status of auto merging a pull request.",
         default=UNSET,
@@ -11692,12 +11381,10 @@ class PullRequestReviewCommentEdited(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11707,7 +11394,7 @@ class PullRequestReviewCommentEditedPropChanges(GitHubWebhookModel):
     The changes to the comment.
     """
 
-    body: Union[Unset, PullRequestReviewCommentEditedPropChangesPropBody] = Field(
+    body: MISSING[PullRequestReviewCommentEditedPropChangesPropBody] = Field(
         default=UNSET
     )
 
@@ -11751,7 +11438,7 @@ class PullRequestReviewCommentEditedPropPullRequest(GitHubWebhookModel):
         description="A collection of related issues and pull requests.",
         default=...,
     )
-    draft: Union[Unset, bool] = Field(default=UNSET)
+    draft: MISSING[bool] = Field(default=UNSET)
     commits_url: str = Field(default=...)
     review_comments_url: str = Field(default=...)
     review_comment_url: str = Field(default=...)
@@ -11762,7 +11449,7 @@ class PullRequestReviewCommentEditedPropPullRequest(GitHubWebhookModel):
     links: PullRequestReviewCommentEditedPropPullRequestPropLinks = Field(
         default=..., alias="_links"
     )
-    auto_merge: Union[Unset, Union[AutoMerge, None]] = Field(
+    auto_merge: MISSING[Union[AutoMerge, None]] = Field(
         title="PullRequestAutoMerge",
         description="The status of auto merging a pull request.",
         default=UNSET,
@@ -11832,12 +11519,10 @@ class PullRequestReviewThreadResolved(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11857,12 +11542,10 @@ class PullRequestReviewThreadUnresolved(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     sender: User = Field(title="User", default=...)
 
 
@@ -11920,12 +11603,10 @@ class PushEvent(GitHubWebhookModel):
         default=...,
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class Commit(GitHubWebhookModel):
@@ -11979,9 +11660,7 @@ class RegistryPackagePublished(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RegistryPackagePublishedPropRegistryPackage(GitHubWebhookModel):
@@ -12025,49 +11704,45 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0(
     summary: str = Field(default=...)
     name: str = Field(description="The name of the package version.", default=...)
     description: str = Field(default=...)
-    body: Union[
-        Unset,
+    body: MISSING[
         Union[
             str,
             RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1,
-        ],
+        ]
     ] = Field(default=UNSET)
-    body_html: Union[Unset, str] = Field(default=UNSET)
-    release: Union[
-        Unset,
-        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropRelease,
+    body_html: MISSING[str] = Field(default=UNSET)
+    release: MISSING[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropRelease
     ] = Field(default=UNSET)
-    manifest: Union[Unset, str] = Field(default=UNSET)
+    manifest: MISSING[str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    tag_name: Union[Unset, str] = Field(default=UNSET)
-    target_commitish: Union[Unset, str] = Field(default=UNSET)
-    target_oid: Union[Unset, str] = Field(default=UNSET)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    prerelease: Union[Unset, bool] = Field(default=UNSET)
-    created_at: Union[Unset, datetime] = Field(default=UNSET)
-    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    tag_name: MISSING[str] = Field(default=UNSET)
+    target_commitish: MISSING[str] = Field(default=UNSET)
+    target_oid: MISSING[str] = Field(default=UNSET)
+    draft: MISSING[bool] = Field(default=UNSET)
+    prerelease: MISSING[bool] = Field(default=UNSET)
+    created_at: MISSING[datetime] = Field(default=UNSET)
+    updated_at: MISSING[datetime] = Field(default=UNSET)
     metadata: List[Any] = Field(description="Package Version Metadata", default=...)
-    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
-    container_metadata: Union[
-        Unset,
-        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata,
+    docker_metadata: MISSING[List[Any]] = Field(default=UNSET)
+    container_metadata: MISSING[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata
     ] = Field(default=UNSET)
-    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+    npm_metadata: MISSING[Union[PackageNpmMetadata, None]] = Field(
         title="Package NPM Metadata", default=UNSET
     )
-    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+    nuget_metadata: MISSING[Union[List[PackageNugetMetadata], None]] = Field(
         default=UNSET
     )
-    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    rubygems_metadata: MISSING[List[Any]] = Field(default=UNSET)
     package_files: List[
         RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems
     ] = Field(default=...)
-    package_url: Union[Unset, str] = Field(default=UNSET)
-    author: Union[
-        Unset,
-        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropAuthor,
+    package_url: MISSING[str] = Field(default=UNSET)
+    author: MISSING[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropAuthor
     ] = Field(default=UNSET)
-    source_url: Union[Unset, str] = Field(default=UNSET)
+    source_url: MISSING[str] = Field(default=UNSET)
     installation_command: str = Field(default=...)
 
 
@@ -12084,11 +11759,10 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBod
     info: RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo = Field(
         default=...
     )
-    attributes: Union[
-        Unset,
-        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes,
+    attributes: MISSING[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes
     ] = Field(default=UNSET)
-    formatted: Union[Unset, bool] = Field(default=UNSET, alias="_formatted")
+    formatted: MISSING[bool] = Field(default=UNSET, alias="_formatted")
 
 
 class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository(
@@ -12152,23 +11826,20 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropCon
     Metadata
     """
 
-    labels: Union[
-        Unset,
+    labels: MISSING[
         Union[
             RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    manifest: Union[
-        Unset,
+    manifest: MISSING[
         Union[
             RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    tag: Union[
-        Unset,
-        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag,
+    tag: MISSING[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag
     ] = Field(default=UNSET)
 
 
@@ -12179,14 +11850,13 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropCon
     MetadataPropLabelsOneof0
     """
 
-    description: Union[Unset, str] = Field(default=UNSET)
-    source: Union[Unset, str] = Field(default=UNSET)
-    revision: Union[Unset, str] = Field(default=UNSET)
-    image_url: Union[Unset, str] = Field(default=UNSET)
-    licenses: Union[Unset, str] = Field(default=UNSET)
-    all_labels: Union[
-        Unset,
-        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels,
+    description: MISSING[str] = Field(default=UNSET)
+    source: MISSING[str] = Field(default=UNSET)
+    revision: MISSING[str] = Field(default=UNSET)
+    image_url: MISSING[str] = Field(default=UNSET)
+    licenses: MISSING[str] = Field(default=UNSET)
+    all_labels: MISSING[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels
     ] = Field(default=UNSET)
 
 
@@ -12205,19 +11875,17 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropCon
     MetadataPropManifestOneof0
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    media_type: Union[Unset, str] = Field(default=UNSET)
-    uri: Union[Unset, str] = Field(default=UNSET)
-    size: Union[Unset, int] = Field(default=UNSET)
-    config: Union[
-        Unset,
-        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig,
+    digest: MISSING[str] = Field(default=UNSET)
+    media_type: MISSING[str] = Field(default=UNSET)
+    uri: MISSING[str] = Field(default=UNSET)
+    size: MISSING[int] = Field(default=UNSET)
+    config: MISSING[
+        RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig
     ] = Field(default=UNSET)
-    layers: Union[
-        Unset,
+    layers: MISSING[
         List[
             RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems
-        ],
+        ]
     ] = Field(default=UNSET)
 
 
@@ -12228,9 +11896,9 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropCon
     MetadataPropManifestOneof0PropConfig
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    media_type: Union[Unset, str] = Field(default=UNSET)
-    size: Union[Unset, int] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    media_type: MISSING[str] = Field(default=UNSET)
+    size: MISSING[int] = Field(default=UNSET)
 
 
 class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems(
@@ -12240,9 +11908,9 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropCon
     MetadataPropManifestOneof0PropLayersItems
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    media_type: Union[Unset, str] = Field(default=UNSET)
-    size: Union[Unset, int] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    media_type: MISSING[str] = Field(default=UNSET)
+    size: MISSING[int] = Field(default=UNSET)
 
 
 class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag(
@@ -12252,8 +11920,8 @@ class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropCon
     MetadataPropTag
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    name: MISSING[str] = Field(default=UNSET)
 
 
 class RegistryPackagePublishedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems(
@@ -12322,9 +11990,7 @@ class RegistryPackageUpdated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RegistryPackageUpdatedPropRegistryPackage(GitHubWebhookModel):
@@ -12366,49 +12032,45 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0(
     summary: str = Field(default=...)
     name: str = Field(description="The name of the package version.", default=...)
     description: str = Field(default=...)
-    body: Union[
-        Unset,
+    body: MISSING[
         Union[
             str,
             RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1,
-        ],
+        ]
     ] = Field(default=UNSET)
-    body_html: Union[Unset, str] = Field(default=UNSET)
-    release: Union[
-        Unset,
-        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropRelease,
+    body_html: MISSING[str] = Field(default=UNSET)
+    release: MISSING[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropRelease
     ] = Field(default=UNSET)
-    manifest: Union[Unset, str] = Field(default=UNSET)
+    manifest: MISSING[str] = Field(default=UNSET)
     html_url: str = Field(default=...)
-    tag_name: Union[Unset, str] = Field(default=UNSET)
-    target_commitish: Union[Unset, str] = Field(default=UNSET)
-    target_oid: Union[Unset, str] = Field(default=UNSET)
-    draft: Union[Unset, bool] = Field(default=UNSET)
-    prerelease: Union[Unset, bool] = Field(default=UNSET)
-    created_at: Union[Unset, datetime] = Field(default=UNSET)
-    updated_at: Union[Unset, datetime] = Field(default=UNSET)
+    tag_name: MISSING[str] = Field(default=UNSET)
+    target_commitish: MISSING[str] = Field(default=UNSET)
+    target_oid: MISSING[str] = Field(default=UNSET)
+    draft: MISSING[bool] = Field(default=UNSET)
+    prerelease: MISSING[bool] = Field(default=UNSET)
+    created_at: MISSING[datetime] = Field(default=UNSET)
+    updated_at: MISSING[datetime] = Field(default=UNSET)
     metadata: List[Any] = Field(description="Package Version Metadata", default=...)
-    docker_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
-    container_metadata: Union[
-        Unset,
-        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata,
+    docker_metadata: MISSING[List[Any]] = Field(default=UNSET)
+    container_metadata: MISSING[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadata
     ] = Field(default=UNSET)
-    npm_metadata: Union[Unset, Union[PackageNpmMetadata, None]] = Field(
+    npm_metadata: MISSING[Union[PackageNpmMetadata, None]] = Field(
         title="Package NPM Metadata", default=UNSET
     )
-    nuget_metadata: Union[Unset, Union[List[PackageNugetMetadata], None]] = Field(
+    nuget_metadata: MISSING[Union[List[PackageNugetMetadata], None]] = Field(
         default=UNSET
     )
-    rubygems_metadata: Union[Unset, List[Any]] = Field(default=UNSET)
+    rubygems_metadata: MISSING[List[Any]] = Field(default=UNSET)
     package_files: List[
         RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems
     ] = Field(default=...)
-    package_url: Union[Unset, str] = Field(default=UNSET)
-    author: Union[
-        Unset,
-        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropAuthor,
+    package_url: MISSING[str] = Field(default=UNSET)
+    author: MISSING[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropAuthor
     ] = Field(default=UNSET)
-    source_url: Union[Unset, str] = Field(default=UNSET)
+    source_url: MISSING[str] = Field(default=UNSET)
     installation_command: str = Field(default=...)
 
 
@@ -12423,11 +12085,10 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyO
     info: RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropInfo = Field(
         default=...
     )
-    attributes: Union[
-        Unset,
-        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes,
+    attributes: MISSING[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropAttributes
     ] = Field(default=UNSET)
-    formatted: Union[Unset, bool] = Field(default=UNSET, alias="_formatted")
+    formatted: MISSING[bool] = Field(default=UNSET, alias="_formatted")
 
 
 class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropBodyOneof1PropRepository(
@@ -12491,23 +12152,20 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropConta
     tadata
     """
 
-    labels: Union[
-        Unset,
+    labels: MISSING[
         Union[
             RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    manifest: Union[
-        Unset,
+    manifest: MISSING[
         Union[
             RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0,
             None,
-        ],
+        ]
     ] = Field(default=UNSET)
-    tag: Union[
-        Unset,
-        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag,
+    tag: MISSING[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag
     ] = Field(default=UNSET)
 
 
@@ -12518,14 +12176,13 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropConta
     tadataPropLabelsOneof0
     """
 
-    description: Union[Unset, str] = Field(default=UNSET)
-    source: Union[Unset, str] = Field(default=UNSET)
-    revision: Union[Unset, str] = Field(default=UNSET)
-    image_url: Union[Unset, str] = Field(default=UNSET)
-    licenses: Union[Unset, str] = Field(default=UNSET)
-    all_labels: Union[
-        Unset,
-        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels,
+    description: MISSING[str] = Field(default=UNSET)
+    source: MISSING[str] = Field(default=UNSET)
+    revision: MISSING[str] = Field(default=UNSET)
+    image_url: MISSING[str] = Field(default=UNSET)
+    licenses: MISSING[str] = Field(default=UNSET)
+    all_labels: MISSING[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropLabelsOneof0PropAllLabels
     ] = Field(default=UNSET)
 
 
@@ -12544,19 +12201,17 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropConta
     tadataPropManifestOneof0
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    media_type: Union[Unset, str] = Field(default=UNSET)
-    uri: Union[Unset, str] = Field(default=UNSET)
-    size: Union[Unset, int] = Field(default=UNSET)
-    config: Union[
-        Unset,
-        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig,
+    digest: MISSING[str] = Field(default=UNSET)
+    media_type: MISSING[str] = Field(default=UNSET)
+    uri: MISSING[str] = Field(default=UNSET)
+    size: MISSING[int] = Field(default=UNSET)
+    config: MISSING[
+        RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropConfig
     ] = Field(default=UNSET)
-    layers: Union[
-        Unset,
+    layers: MISSING[
         List[
             RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems
-        ],
+        ]
     ] = Field(default=UNSET)
 
 
@@ -12567,9 +12222,9 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropConta
     tadataPropManifestOneof0PropConfig
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    media_type: Union[Unset, str] = Field(default=UNSET)
-    size: Union[Unset, int] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    media_type: MISSING[str] = Field(default=UNSET)
+    size: MISSING[int] = Field(default=UNSET)
 
 
 class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropManifestOneof0PropLayersItems(
@@ -12579,9 +12234,9 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropConta
     tadataPropManifestOneof0PropLayersItems
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    media_type: Union[Unset, str] = Field(default=UNSET)
-    size: Union[Unset, int] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    media_type: MISSING[str] = Field(default=UNSET)
+    size: MISSING[int] = Field(default=UNSET)
 
 
 class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropContainerMetadataPropTag(
@@ -12591,8 +12246,8 @@ class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropConta
     tadataPropTag
     """
 
-    digest: Union[Unset, str] = Field(default=UNSET)
-    name: Union[Unset, str] = Field(default=UNSET)
+    digest: MISSING[str] = Field(default=UNSET)
+    name: MISSING[str] = Field(default=UNSET)
 
 
 class RegistryPackageUpdatedPropRegistryPackagePropPackageVersionOneof0PropPackageFilesItems(
@@ -12663,12 +12318,10 @@ class ReleaseCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class Release(GitHubWebhookModel):
@@ -12704,9 +12357,9 @@ class Release(GitHubWebhookModel):
     tarball_url: Union[str, None] = Field(default=...)
     zipball_url: Union[str, None] = Field(default=...)
     body: str = Field(default=...)
-    mentions_count: Union[Unset, int] = Field(default=UNSET)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
-    discussion_url: Union[Unset, str] = Field(default=UNSET)
+    mentions_count: MISSING[int] = Field(default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
+    discussion_url: MISSING[str] = Field(default=UNSET)
 
 
 class ReleaseAsset(GitHubWebhookModel):
@@ -12729,7 +12382,7 @@ class ReleaseAsset(GitHubWebhookModel):
     download_count: int = Field(default=...)
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
-    uploader: Union[Unset, User] = Field(title="User", default=UNSET)
+    uploader: MISSING[User] = Field(title="User", default=UNSET)
 
 
 class ReleaseDeleted(GitHubWebhookModel):
@@ -12745,12 +12398,10 @@ class ReleaseDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ReleaseEdited(GitHubWebhookModel):
@@ -12767,19 +12418,17 @@ class ReleaseEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ReleaseEditedPropChanges(GitHubWebhookModel):
     """ReleaseEditedPropChanges"""
 
-    body: Union[Unset, ReleaseEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Union[Unset, ReleaseEditedPropChangesPropName] = Field(default=UNSET)
+    body: MISSING[ReleaseEditedPropChangesPropBody] = Field(default=UNSET)
+    name: MISSING[ReleaseEditedPropChangesPropName] = Field(default=UNSET)
 
 
 class ReleaseEditedPropChangesPropBody(GitHubWebhookModel):
@@ -12811,12 +12460,10 @@ class ReleasePrereleased(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ReleasePrereleasedPropRelease(GitHubWebhookModel):
@@ -12848,9 +12495,9 @@ class ReleasePrereleasedPropRelease(GitHubWebhookModel):
     tarball_url: Union[str, None] = Field(default=...)
     zipball_url: Union[str, None] = Field(default=...)
     body: str = Field(default=...)
-    mentions_count: Union[Unset, int] = Field(default=UNSET)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
-    discussion_url: Union[Unset, str] = Field(default=UNSET)
+    mentions_count: MISSING[int] = Field(default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
+    discussion_url: MISSING[str] = Field(default=UNSET)
 
 
 class ReleasePrereleasedPropReleaseAllof1(GitHubWebhookModel):
@@ -12871,12 +12518,10 @@ class ReleasePublished(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ReleasePublishedPropRelease(GitHubWebhookModel):
@@ -12908,9 +12553,9 @@ class ReleasePublishedPropRelease(GitHubWebhookModel):
     tarball_url: Union[str, None] = Field(default=...)
     zipball_url: Union[str, None] = Field(default=...)
     body: str = Field(default=...)
-    mentions_count: Union[Unset, int] = Field(default=UNSET)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
-    discussion_url: Union[Unset, str] = Field(default=UNSET)
+    mentions_count: MISSING[int] = Field(default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
+    discussion_url: MISSING[str] = Field(default=UNSET)
 
 
 class ReleasePublishedPropReleaseAllof1(GitHubWebhookModel):
@@ -12932,12 +12577,10 @@ class ReleaseReleased(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ReleaseUnpublished(GitHubWebhookModel):
@@ -12949,12 +12592,10 @@ class ReleaseUnpublished(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class ReleaseUnpublishedPropRelease(GitHubWebhookModel):
@@ -12986,9 +12627,9 @@ class ReleaseUnpublishedPropRelease(GitHubWebhookModel):
     tarball_url: Union[str, None] = Field(default=...)
     zipball_url: Union[str, None] = Field(default=...)
     body: str = Field(default=...)
-    mentions_count: Union[Unset, int] = Field(default=UNSET)
-    reactions: Union[Unset, Reactions] = Field(title="Reactions", default=UNSET)
-    discussion_url: Union[Unset, str] = Field(default=UNSET)
+    mentions_count: MISSING[int] = Field(default=UNSET)
+    reactions: MISSING[Reactions] = Field(title="Reactions", default=UNSET)
+    discussion_url: MISSING[str] = Field(default=UNSET)
 
 
 class ReleaseUnpublishedPropReleaseAllof1(GitHubWebhookModel):
@@ -13003,12 +12644,10 @@ class RepositoryArchived(GitHubWebhookModel):
     action: Literal["archived"] = Field(default=...)
     repository: RepositoryArchivedPropRepository = Field(default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryArchivedPropRepository(GitHubWebhookModel):
@@ -13195,7 +12834,7 @@ class RepositoryArchivedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
-    has_discussions: Union[Unset, bool] = Field(
+    has_discussions: MISSING[bool] = Field(
         description="Whether discussions are enabled.", default=True
     )
     forks_count: int = Field(default=...)
@@ -13203,7 +12842,7 @@ class RepositoryArchivedPropRepository(GitHubWebhookModel):
     archived: Literal[True] = Field(
         description="Whether the repository is archived.", default=False
     )
-    disabled: Union[Unset, bool] = Field(
+    disabled: MISSING[bool] = Field(
         description="Returns whether or not this repository is disabled.", default=UNSET
     )
     open_issues_count: int = Field(default=...)
@@ -13213,43 +12852,43 @@ class RepositoryArchivedPropRepository(GitHubWebhookModel):
     forks: int = Field(default=...)
     open_issues: int = Field(default=...)
     watchers: int = Field(default=...)
-    stargazers: Union[Unset, int] = Field(default=UNSET)
+    stargazers: MISSING[int] = Field(default=UNSET)
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
-    allow_squash_merge: Union[Unset, bool] = Field(
+    allow_squash_merge: MISSING[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
-    allow_merge_commit: Union[Unset, bool] = Field(
+    allow_merge_commit: MISSING[bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
-    allow_rebase_merge: Union[Unset, bool] = Field(
+    allow_rebase_merge: MISSING[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    allow_auto_merge: Union[Unset, bool] = Field(
+    allow_auto_merge: MISSING[bool] = Field(
         description="Whether to allow auto-merge for pull requests.", default=False
     )
-    allow_forking: Union[Unset, bool] = Field(
+    allow_forking: MISSING[bool] = Field(
         description="Whether to allow private forks", default=UNSET
     )
-    allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
-    squash_merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    squash_merge_commit_title: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_title: Union[Unset, str] = Field(default=UNSET)
+    allow_update_branch: MISSING[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: MISSING[bool] = Field(default=UNSET)
+    squash_merge_commit_message: MISSING[str] = Field(default=UNSET)
+    squash_merge_commit_title: MISSING[str] = Field(default=UNSET)
+    merge_commit_message: MISSING[str] = Field(default=UNSET)
+    merge_commit_title: MISSING[str] = Field(default=UNSET)
     is_template: bool = Field(default=...)
     web_commit_signoff_required: bool = Field(default=...)
     topics: List[str] = Field(default=...)
     visibility: Literal["public", "private", "internal"] = Field(default=...)
-    delete_branch_on_merge: Union[Unset, bool] = Field(
+    delete_branch_on_merge: MISSING[bool] = Field(
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
-    master_branch: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
-    public: Union[Unset, bool] = Field(default=UNSET)
-    organization: Union[Unset, str] = Field(default=UNSET)
+    master_branch: MISSING[str] = Field(default=UNSET)
+    permissions: MISSING[RepositoryPropPermissions] = Field(default=UNSET)
+    public: MISSING[bool] = Field(default=UNSET)
+    organization: MISSING[str] = Field(default=UNSET)
 
 
 class RepositoryArchivedPropRepositoryAllof1(GitHubWebhookModel):
@@ -13268,12 +12907,10 @@ class RepositoryCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryDeleted(GitHubWebhookModel):
@@ -13284,12 +12921,10 @@ class RepositoryDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryEdited(GitHubWebhookModel):
@@ -13301,26 +12936,22 @@ class RepositoryEdited(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryEditedPropChanges(GitHubWebhookModel):
     """RepositoryEditedPropChanges"""
 
-    description: Union[Unset, RepositoryEditedPropChangesPropDescription] = Field(
+    description: MISSING[RepositoryEditedPropChangesPropDescription] = Field(
         default=UNSET
     )
-    default_branch: Union[Unset, RepositoryEditedPropChangesPropDefaultBranch] = Field(
+    default_branch: MISSING[RepositoryEditedPropChangesPropDefaultBranch] = Field(
         default=UNSET
     )
-    homepage: Union[Unset, RepositoryEditedPropChangesPropHomepage] = Field(
-        default=UNSET
-    )
+    homepage: MISSING[RepositoryEditedPropChangesPropHomepage] = Field(default=UNSET)
 
 
 class RepositoryEditedPropChangesPropDescription(GitHubWebhookModel):
@@ -13347,12 +12978,10 @@ class RepositoryPrivatized(GitHubWebhookModel):
     action: Literal["privatized"] = Field(default=...)
     repository: RepositoryPrivatizedPropRepository = Field(default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryPrivatizedPropRepository(GitHubWebhookModel):
@@ -13539,7 +13168,7 @@ class RepositoryPrivatizedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
-    has_discussions: Union[Unset, bool] = Field(
+    has_discussions: MISSING[bool] = Field(
         description="Whether discussions are enabled.", default=True
     )
     forks_count: int = Field(default=...)
@@ -13547,7 +13176,7 @@ class RepositoryPrivatizedPropRepository(GitHubWebhookModel):
     archived: bool = Field(
         description="Whether the repository is archived.", default=False
     )
-    disabled: Union[Unset, bool] = Field(
+    disabled: MISSING[bool] = Field(
         description="Returns whether or not this repository is disabled.", default=UNSET
     )
     open_issues_count: int = Field(default=...)
@@ -13557,43 +13186,43 @@ class RepositoryPrivatizedPropRepository(GitHubWebhookModel):
     forks: int = Field(default=...)
     open_issues: int = Field(default=...)
     watchers: int = Field(default=...)
-    stargazers: Union[Unset, int] = Field(default=UNSET)
+    stargazers: MISSING[int] = Field(default=UNSET)
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
-    allow_squash_merge: Union[Unset, bool] = Field(
+    allow_squash_merge: MISSING[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
-    allow_merge_commit: Union[Unset, bool] = Field(
+    allow_merge_commit: MISSING[bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
-    allow_rebase_merge: Union[Unset, bool] = Field(
+    allow_rebase_merge: MISSING[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    allow_auto_merge: Union[Unset, bool] = Field(
+    allow_auto_merge: MISSING[bool] = Field(
         description="Whether to allow auto-merge for pull requests.", default=False
     )
-    allow_forking: Union[Unset, bool] = Field(
+    allow_forking: MISSING[bool] = Field(
         description="Whether to allow private forks", default=UNSET
     )
-    allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
-    squash_merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    squash_merge_commit_title: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_title: Union[Unset, str] = Field(default=UNSET)
+    allow_update_branch: MISSING[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: MISSING[bool] = Field(default=UNSET)
+    squash_merge_commit_message: MISSING[str] = Field(default=UNSET)
+    squash_merge_commit_title: MISSING[str] = Field(default=UNSET)
+    merge_commit_message: MISSING[str] = Field(default=UNSET)
+    merge_commit_title: MISSING[str] = Field(default=UNSET)
     is_template: bool = Field(default=...)
     web_commit_signoff_required: bool = Field(default=...)
     topics: List[str] = Field(default=...)
     visibility: Literal["public", "private", "internal"] = Field(default=...)
-    delete_branch_on_merge: Union[Unset, bool] = Field(
+    delete_branch_on_merge: MISSING[bool] = Field(
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
-    master_branch: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
-    public: Union[Unset, bool] = Field(default=UNSET)
-    organization: Union[Unset, str] = Field(default=UNSET)
+    master_branch: MISSING[str] = Field(default=UNSET)
+    permissions: MISSING[RepositoryPropPermissions] = Field(default=UNSET)
+    public: MISSING[bool] = Field(default=UNSET)
+    organization: MISSING[str] = Field(default=UNSET)
 
 
 class RepositoryPrivatizedPropRepositoryAllof1(GitHubWebhookModel):
@@ -13610,12 +13239,10 @@ class RepositoryPublicized(GitHubWebhookModel):
     action: Literal["publicized"] = Field(default=...)
     repository: RepositoryPublicizedPropRepository = Field(default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryPublicizedPropRepository(GitHubWebhookModel):
@@ -13802,7 +13429,7 @@ class RepositoryPublicizedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
-    has_discussions: Union[Unset, bool] = Field(
+    has_discussions: MISSING[bool] = Field(
         description="Whether discussions are enabled.", default=True
     )
     forks_count: int = Field(default=...)
@@ -13810,7 +13437,7 @@ class RepositoryPublicizedPropRepository(GitHubWebhookModel):
     archived: bool = Field(
         description="Whether the repository is archived.", default=False
     )
-    disabled: Union[Unset, bool] = Field(
+    disabled: MISSING[bool] = Field(
         description="Returns whether or not this repository is disabled.", default=UNSET
     )
     open_issues_count: int = Field(default=...)
@@ -13820,43 +13447,43 @@ class RepositoryPublicizedPropRepository(GitHubWebhookModel):
     forks: int = Field(default=...)
     open_issues: int = Field(default=...)
     watchers: int = Field(default=...)
-    stargazers: Union[Unset, int] = Field(default=UNSET)
+    stargazers: MISSING[int] = Field(default=UNSET)
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
-    allow_squash_merge: Union[Unset, bool] = Field(
+    allow_squash_merge: MISSING[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
-    allow_merge_commit: Union[Unset, bool] = Field(
+    allow_merge_commit: MISSING[bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
-    allow_rebase_merge: Union[Unset, bool] = Field(
+    allow_rebase_merge: MISSING[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    allow_auto_merge: Union[Unset, bool] = Field(
+    allow_auto_merge: MISSING[bool] = Field(
         description="Whether to allow auto-merge for pull requests.", default=False
     )
-    allow_forking: Union[Unset, bool] = Field(
+    allow_forking: MISSING[bool] = Field(
         description="Whether to allow private forks", default=UNSET
     )
-    allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
-    squash_merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    squash_merge_commit_title: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_title: Union[Unset, str] = Field(default=UNSET)
+    allow_update_branch: MISSING[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: MISSING[bool] = Field(default=UNSET)
+    squash_merge_commit_message: MISSING[str] = Field(default=UNSET)
+    squash_merge_commit_title: MISSING[str] = Field(default=UNSET)
+    merge_commit_message: MISSING[str] = Field(default=UNSET)
+    merge_commit_title: MISSING[str] = Field(default=UNSET)
     is_template: bool = Field(default=...)
     web_commit_signoff_required: bool = Field(default=...)
     topics: List[str] = Field(default=...)
     visibility: Literal["public", "private", "internal"] = Field(default=...)
-    delete_branch_on_merge: Union[Unset, bool] = Field(
+    delete_branch_on_merge: MISSING[bool] = Field(
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
-    master_branch: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
-    public: Union[Unset, bool] = Field(default=UNSET)
-    organization: Union[Unset, str] = Field(default=UNSET)
+    master_branch: MISSING[str] = Field(default=UNSET)
+    permissions: MISSING[RepositoryPropPermissions] = Field(default=UNSET)
+    public: MISSING[bool] = Field(default=UNSET)
+    organization: MISSING[str] = Field(default=UNSET)
 
 
 class RepositoryPublicizedPropRepositoryAllof1(GitHubWebhookModel):
@@ -13876,12 +13503,10 @@ class RepositoryRenamed(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryRenamedPropChanges(GitHubWebhookModel):
@@ -13911,12 +13536,10 @@ class RepositoryTransferred(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryTransferredPropChanges(GitHubWebhookModel):
@@ -13936,7 +13559,7 @@ class RepositoryTransferredPropChangesPropOwner(GitHubWebhookModel):
 class RepositoryTransferredPropChangesPropOwnerPropFrom(GitHubWebhookModel):
     """RepositoryTransferredPropChangesPropOwnerPropFrom"""
 
-    user: Union[Unset, User] = Field(title="User", default=UNSET)
+    user: MISSING[User] = Field(title="User", default=UNSET)
 
 
 class RepositoryUnarchived(GitHubWebhookModel):
@@ -13945,12 +13568,10 @@ class RepositoryUnarchived(GitHubWebhookModel):
     action: Literal["unarchived"] = Field(default=...)
     repository: RepositoryUnarchivedPropRepository = Field(default=...)
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryUnarchivedPropRepository(GitHubWebhookModel):
@@ -14137,7 +13758,7 @@ class RepositoryUnarchivedPropRepository(GitHubWebhookModel):
     )
     has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
     has_pages: bool = Field(default=...)
-    has_discussions: Union[Unset, bool] = Field(
+    has_discussions: MISSING[bool] = Field(
         description="Whether discussions are enabled.", default=True
     )
     forks_count: int = Field(default=...)
@@ -14145,7 +13766,7 @@ class RepositoryUnarchivedPropRepository(GitHubWebhookModel):
     archived: Literal[False] = Field(
         description="Whether the repository is archived.", default=False
     )
-    disabled: Union[Unset, bool] = Field(
+    disabled: MISSING[bool] = Field(
         description="Returns whether or not this repository is disabled.", default=UNSET
     )
     open_issues_count: int = Field(default=...)
@@ -14155,43 +13776,43 @@ class RepositoryUnarchivedPropRepository(GitHubWebhookModel):
     forks: int = Field(default=...)
     open_issues: int = Field(default=...)
     watchers: int = Field(default=...)
-    stargazers: Union[Unset, int] = Field(default=UNSET)
+    stargazers: MISSING[int] = Field(default=UNSET)
     default_branch: str = Field(
         description="The default branch of the repository.", default=...
     )
-    allow_squash_merge: Union[Unset, bool] = Field(
+    allow_squash_merge: MISSING[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
     )
-    allow_merge_commit: Union[Unset, bool] = Field(
+    allow_merge_commit: MISSING[bool] = Field(
         description="Whether to allow merge commits for pull requests.", default=True
     )
-    allow_rebase_merge: Union[Unset, bool] = Field(
+    allow_rebase_merge: MISSING[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    allow_auto_merge: Union[Unset, bool] = Field(
+    allow_auto_merge: MISSING[bool] = Field(
         description="Whether to allow auto-merge for pull requests.", default=False
     )
-    allow_forking: Union[Unset, bool] = Field(
+    allow_forking: MISSING[bool] = Field(
         description="Whether to allow private forks", default=UNSET
     )
-    allow_update_branch: Union[Unset, bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Union[Unset, bool] = Field(default=UNSET)
-    squash_merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    squash_merge_commit_title: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_message: Union[Unset, str] = Field(default=UNSET)
-    merge_commit_title: Union[Unset, str] = Field(default=UNSET)
+    allow_update_branch: MISSING[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: MISSING[bool] = Field(default=UNSET)
+    squash_merge_commit_message: MISSING[str] = Field(default=UNSET)
+    squash_merge_commit_title: MISSING[str] = Field(default=UNSET)
+    merge_commit_message: MISSING[str] = Field(default=UNSET)
+    merge_commit_title: MISSING[str] = Field(default=UNSET)
     is_template: bool = Field(default=...)
     web_commit_signoff_required: bool = Field(default=...)
     topics: List[str] = Field(default=...)
     visibility: Literal["public", "private", "internal"] = Field(default=...)
-    delete_branch_on_merge: Union[Unset, bool] = Field(
+    delete_branch_on_merge: MISSING[bool] = Field(
         description="Whether to delete head branches when pull requests are merged",
         default=False,
     )
-    master_branch: Union[Unset, str] = Field(default=UNSET)
-    permissions: Union[Unset, RepositoryPropPermissions] = Field(default=UNSET)
-    public: Union[Unset, bool] = Field(default=UNSET)
-    organization: Union[Unset, str] = Field(default=UNSET)
+    master_branch: MISSING[str] = Field(default=UNSET)
+    permissions: MISSING[RepositoryPropPermissions] = Field(default=UNSET)
+    public: MISSING[bool] = Field(default=UNSET)
+    organization: MISSING[str] = Field(default=UNSET)
 
 
 class RepositoryUnarchivedPropRepositoryAllof1(GitHubWebhookModel):
@@ -14215,9 +13836,7 @@ class RepositoryDispatchEvent(GitHubWebhookModel):
     installation: InstallationLite = Field(
         title="InstallationLite", description="Installation", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryDispatchEventPropClientPayload(GitHubWebhookModel, extra=Extra.allow):
@@ -14232,12 +13851,10 @@ class RepositoryImportEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryVulnerabilityAlertCreate(GitHubWebhookModel):
@@ -14249,9 +13866,7 @@ class RepositoryVulnerabilityAlertCreate(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryVulnerabilityAlertCreatePropAlert(GitHubWebhookModel):
@@ -14263,16 +13878,16 @@ class RepositoryVulnerabilityAlertCreatePropAlert(GitHubWebhookModel):
     state: Literal["open"] = Field(default=...)
     affected_range: str = Field(default=...)
     affected_package_name: str = Field(default=...)
-    dismisser: Union[Unset, User] = Field(title="User", default=UNSET)
-    dismiss_reason: Union[Unset, str] = Field(default=UNSET)
-    dismissed_at: Union[Unset, datetime] = Field(default=UNSET)
+    dismisser: MISSING[User] = Field(title="User", default=UNSET)
+    dismiss_reason: MISSING[str] = Field(default=UNSET)
+    dismissed_at: MISSING[datetime] = Field(default=UNSET)
     severity: str = Field(default=...)
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
     fixed_in: str = Field(default=...)
-    fixed_at: Union[Unset, datetime] = Field(default=UNSET)
-    fix_reason: Union[Unset, str] = Field(default=UNSET)
+    fixed_at: MISSING[datetime] = Field(default=UNSET)
+    fix_reason: MISSING[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
 
 
@@ -14288,16 +13903,16 @@ class RepositoryVulnerabilityAlertAlert(GitHubWebhookModel):
     state: Literal["open", "dismissed", "fixed"] = Field(default=...)
     affected_range: str = Field(default=...)
     affected_package_name: str = Field(default=...)
-    dismisser: Union[Unset, User] = Field(title="User", default=UNSET)
-    dismiss_reason: Union[Unset, str] = Field(default=UNSET)
-    dismissed_at: Union[Unset, datetime] = Field(default=UNSET)
+    dismisser: MISSING[User] = Field(title="User", default=UNSET)
+    dismiss_reason: MISSING[str] = Field(default=UNSET)
+    dismissed_at: MISSING[datetime] = Field(default=UNSET)
     severity: str = Field(default=...)
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
     fixed_in: str = Field(default=...)
-    fixed_at: Union[Unset, datetime] = Field(default=UNSET)
-    fix_reason: Union[Unset, str] = Field(default=UNSET)
+    fixed_at: MISSING[datetime] = Field(default=UNSET)
+    fix_reason: MISSING[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
 
 
@@ -14316,9 +13931,7 @@ class RepositoryVulnerabilityAlertDismiss(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryVulnerabilityAlertDismissPropAlert(GitHubWebhookModel):
@@ -14338,8 +13951,8 @@ class RepositoryVulnerabilityAlertDismissPropAlert(GitHubWebhookModel):
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
     fixed_in: str = Field(default=...)
-    fixed_at: Union[Unset, datetime] = Field(default=UNSET)
-    fix_reason: Union[Unset, str] = Field(default=UNSET)
+    fixed_at: MISSING[datetime] = Field(default=UNSET)
+    fix_reason: MISSING[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
 
 
@@ -14361,9 +13974,7 @@ class RepositoryVulnerabilityAlertReopen(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryVulnerabilityAlertReopenPropAlert(GitHubWebhookModel):
@@ -14375,16 +13986,16 @@ class RepositoryVulnerabilityAlertReopenPropAlert(GitHubWebhookModel):
     state: Literal["open"] = Field(default=...)
     affected_range: str = Field(default=...)
     affected_package_name: str = Field(default=...)
-    dismisser: Union[Unset, User] = Field(title="User", default=UNSET)
-    dismiss_reason: Union[Unset, str] = Field(default=UNSET)
-    dismissed_at: Union[Unset, datetime] = Field(default=UNSET)
+    dismisser: MISSING[User] = Field(title="User", default=UNSET)
+    dismiss_reason: MISSING[str] = Field(default=UNSET)
+    dismissed_at: MISSING[datetime] = Field(default=UNSET)
     severity: str = Field(default=...)
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
     fixed_in: str = Field(default=...)
-    fixed_at: Union[Unset, datetime] = Field(default=UNSET)
-    fix_reason: Union[Unset, str] = Field(default=UNSET)
+    fixed_at: MISSING[datetime] = Field(default=UNSET)
+    fix_reason: MISSING[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
 
 
@@ -14403,9 +14014,7 @@ class RepositoryVulnerabilityAlertResolve(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: GithubOrg = Field(title="GitHub Org", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class RepositoryVulnerabilityAlertResolvePropAlert(GitHubWebhookModel):
@@ -14417,9 +14026,9 @@ class RepositoryVulnerabilityAlertResolvePropAlert(GitHubWebhookModel):
     state: Literal["fixed"] = Field(default=...)
     affected_range: str = Field(default=...)
     affected_package_name: str = Field(default=...)
-    dismisser: Union[Unset, User] = Field(title="User", default=UNSET)
-    dismiss_reason: Union[Unset, str] = Field(default=UNSET)
-    dismissed_at: Union[Unset, datetime] = Field(default=UNSET)
+    dismisser: MISSING[User] = Field(title="User", default=UNSET)
+    dismiss_reason: MISSING[str] = Field(default=UNSET)
+    dismissed_at: MISSING[datetime] = Field(default=UNSET)
     severity: str = Field(default=...)
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
@@ -14448,10 +14057,8 @@ class SecretScanningAlertCreated(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -14479,10 +14086,8 @@ class SecretScanningAlertReopened(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     sender: User = Field(title="User", default=...)
@@ -14511,10 +14116,8 @@ class SecretScanningAlertResolved(GitHubWebhookModel):
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     sender: User = Field(title="User", default=...)
@@ -15050,7 +14653,7 @@ class SponsorshipEditedPropSponsorship(GitHubWebhookModel):
 class SponsorshipEditedPropChanges(GitHubWebhookModel):
     """SponsorshipEditedPropChanges"""
 
-    privacy_level: Union[Unset, SponsorshipEditedPropChangesPropPrivacyLevel] = Field(
+    privacy_level: MISSING[SponsorshipEditedPropChangesPropPrivacyLevel] = Field(
         default=UNSET
     )
 
@@ -15070,7 +14673,7 @@ class SponsorshipPendingCancellation(GitHubWebhookModel):
 
     action: Literal["pending_cancellation"] = Field(default=...)
     sponsorship: SponsorshipPendingCancellationPropSponsorship = Field(default=...)
-    effective_date: Union[Unset, str] = Field(
+    effective_date: MISSING[str] = Field(
         description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
         default=UNSET,
     )
@@ -15097,7 +14700,7 @@ class SponsorshipPendingTierChange(GitHubWebhookModel):
 
     action: Literal["pending_tier_change"] = Field(default=...)
     sponsorship: SponsorshipPendingTierChangePropSponsorship = Field(default=...)
-    effective_date: Union[Unset, str] = Field(
+    effective_date: MISSING[str] = Field(
         description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
         default=UNSET,
     )
@@ -15190,10 +14793,8 @@ class StarCreated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -15210,10 +14811,8 @@ class StarDeleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -15224,7 +14823,7 @@ class StatusEvent(GitHubWebhookModel):
     id: int = Field(description="The unique identifier of the status.", default=...)
     sha: str = Field(description="The Commit SHA.", default=...)
     name: str = Field(default=...)
-    avatar_url: Union[Unset, Union[str, None]] = Field(default=UNSET)
+    avatar_url: MISSING[Union[str, None]] = Field(default=UNSET)
     target_url: Union[str, None] = Field(
         description="The optional link added to the status.", default=...
     )
@@ -15248,12 +14847,10 @@ class StatusEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class StatusEventPropCommit(GitHubWebhookModel):
@@ -15290,7 +14887,7 @@ class StatusEventPropCommitPropCommitPropAuthor(GitHubWebhookModel):
         description="The git author's email address.", default=...
     )
     date: datetime = Field(default=...)
-    username: Union[Unset, str] = Field(default=UNSET)
+    username: MISSING[str] = Field(default=UNSET)
 
 
 class StatusEventPropCommitPropCommitPropAuthorAllof1(GitHubWebhookModel):
@@ -15307,7 +14904,7 @@ class StatusEventPropCommitPropCommitPropCommitter(GitHubWebhookModel):
         description="The git author's email address.", default=...
     )
     date: datetime = Field(default=...)
-    username: Union[Unset, str] = Field(default=UNSET)
+    username: MISSING[str] = Field(default=UNSET)
 
 
 class StatusEventPropCommitPropCommitPropCommitterAllof1(GitHubWebhookModel):
@@ -15378,12 +14975,12 @@ class TeamAddedToRepository(GitHubWebhookModel):
         description="Groups of organization members that gives permissions on specified repositories.",
         default=...,
     )
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
     organization: Organization = Field(title="Organization", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -15397,12 +14994,12 @@ class TeamCreated(GitHubWebhookModel):
         description="Groups of organization members that gives permissions on specified repositories.",
         default=...,
     )
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
     organization: Organization = Field(title="Organization", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -15416,12 +15013,12 @@ class TeamDeleted(GitHubWebhookModel):
         description="Groups of organization members that gives permissions on specified repositories.",
         default=...,
     )
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
     organization: Organization = Field(title="Organization", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -15438,12 +15035,12 @@ class TeamEdited(GitHubWebhookModel):
         description="Groups of organization members that gives permissions on specified repositories.",
         default=...,
     )
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
     organization: Organization = Field(title="Organization", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -15454,12 +15051,10 @@ class TeamEditedPropChanges(GitHubWebhookModel):
     The changes to the team if the action was `edited`.
     """
 
-    description: Union[Unset, TeamEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    name: Union[Unset, TeamEditedPropChangesPropName] = Field(default=UNSET)
-    privacy: Union[Unset, TeamEditedPropChangesPropPrivacy] = Field(default=UNSET)
-    repository: Union[Unset, TeamEditedPropChangesPropRepository] = Field(default=UNSET)
+    description: MISSING[TeamEditedPropChangesPropDescription] = Field(default=UNSET)
+    name: MISSING[TeamEditedPropChangesPropName] = Field(default=UNSET)
+    privacy: MISSING[TeamEditedPropChangesPropPrivacy] = Field(default=UNSET)
+    repository: MISSING[TeamEditedPropChangesPropRepository] = Field(default=UNSET)
 
 
 class TeamEditedPropChangesPropDescription(GitHubWebhookModel):
@@ -15509,15 +15104,15 @@ class TeamEditedPropChangesPropRepositoryPropPermissions(GitHubWebhookModel):
 class TeamEditedPropChangesPropRepositoryPropPermissionsPropFrom(GitHubWebhookModel):
     """TeamEditedPropChangesPropRepositoryPropPermissionsPropFrom"""
 
-    admin: Union[Unset, bool] = Field(
+    admin: MISSING[bool] = Field(
         description="The previous version of the team member's `admin` permission on a repository, if the action was `edited`.",
         default=UNSET,
     )
-    pull: Union[Unset, bool] = Field(
+    pull: MISSING[bool] = Field(
         description="The previous version of the team member's `pull` permission on a repository, if the action was `edited`.",
         default=UNSET,
     )
-    push: Union[Unset, bool] = Field(
+    push: MISSING[bool] = Field(
         description="The previous version of the team member's `push` permission on a repository, if the action was `edited`.",
         default=UNSET,
     )
@@ -15532,12 +15127,12 @@ class TeamRemovedFromRepository(GitHubWebhookModel):
         description="Groups of organization members that gives permissions on specified repositories.",
         default=...,
     )
-    repository: Union[Unset, Repository] = Field(
+    repository: MISSING[Repository] = Field(
         title="Repository", description="A git repository", default=UNSET
     )
     sender: User = Field(title="User", default=...)
     organization: Organization = Field(title="Organization", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -15554,7 +15149,7 @@ class TeamAddEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Organization = Field(title="Organization", default=...)
@@ -15568,12 +15163,10 @@ class WatchStarted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
 
 
 class WorkflowDispatchEvent(GitHubWebhookModel):
@@ -15590,12 +15183,10 @@ class WorkflowDispatchEvent(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     workflow: str = Field(
         description="Relative path to the workflow file which contains the workflow.",
         default=...,
@@ -15610,10 +15201,8 @@ class WorkflowJobCompleted(GitHubWebhookModel):
     """workflow_job completed event"""
 
     action: Literal["completed"] = Field(default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     repository: Repository = Field(
@@ -15769,10 +15358,8 @@ class WorkflowJobInProgress(GitHubWebhookModel):
     """workflow_job in_progress event"""
 
     action: Literal["in_progress"] = Field(default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     repository: Repository = Field(
@@ -15843,10 +15430,8 @@ class WorkflowJobQueued(GitHubWebhookModel):
     """workflow_job queued event"""
 
     action: Literal["queued"] = Field(default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
-    installation: Union[Unset, InstallationLite] = Field(
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
     repository: Repository = Field(
@@ -15917,16 +15502,14 @@ class WorkflowRunCompleted(GitHubWebhookModel):
     """workflow_run completed event"""
 
     action: Literal["completed"] = Field(default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
     workflow: Workflow = Field(title="Workflow", default=...)
     workflow_run: WorkflowRunCompletedPropWorkflowRun = Field(default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -16000,7 +15583,7 @@ class WorkflowRunCompletedPropWorkflowRun(GitHubWebhookModel):
         description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
         default=...,
     )
-    referenced_workflows: Union[Unset, List[ReferencedWorkflow]] = Field(default=UNSET)
+    referenced_workflows: MISSING[List[ReferencedWorkflow]] = Field(default=UNSET)
     run_started_at: datetime = Field(
         description="The start time of the latest run. Resets on re-run.", default=...
     )
@@ -16084,7 +15667,7 @@ class WorkflowRun(GitHubWebhookModel):
         description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
         default=...,
     )
-    referenced_workflows: Union[Unset, List[ReferencedWorkflow]] = Field(default=UNSET)
+    referenced_workflows: MISSING[List[ReferencedWorkflow]] = Field(default=UNSET)
     run_started_at: datetime = Field(
         description="The start time of the latest run. Resets on re-run.", default=...
     )
@@ -16306,16 +15889,14 @@ class WorkflowRunInProgress(GitHubWebhookModel):
     """workflow_run in_progress event"""
 
     action: Literal["in_progress"] = Field(default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
     workflow: Workflow = Field(title="Workflow", default=...)
     workflow_run: WorkflowRun = Field(title="Workflow Run", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 
@@ -16324,16 +15905,14 @@ class WorkflowRunRequested(GitHubWebhookModel):
     """workflow_run requested event"""
 
     action: Literal["requested"] = Field(default=...)
-    organization: Union[Unset, Organization] = Field(
-        title="Organization", default=UNSET
-    )
+    organization: MISSING[Organization] = Field(title="Organization", default=UNSET)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
     workflow: Workflow = Field(title="Workflow", default=...)
     workflow_run: WorkflowRun = Field(title="Workflow Run", default=...)
-    installation: Union[Unset, InstallationLite] = Field(
+    installation: MISSING[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
     )
 

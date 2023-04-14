@@ -8,11 +8,11 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, overload
+from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import OidcCustomSubType
 from .models import BasicError, EmptyObject, OidcCustomSub
@@ -73,13 +73,13 @@ class OidcClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         include_claim_keys: List[str],
     ) -> "Response[EmptyObject]":
         ...
 
     def update_oidc_custom_sub_template_for_org(
-        self, org: str, *, data: Union[Unset, OidcCustomSubType] = UNSET, **kwargs
+        self, org: str, *, data: MISSING[OidcCustomSubType] = UNSET, **kwargs
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
@@ -117,13 +117,13 @@ class OidcClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         include_claim_keys: List[str],
     ) -> "Response[EmptyObject]":
         ...
 
     async def async_update_oidc_custom_sub_template_for_org(
-        self, org: str, *, data: Union[Unset, OidcCustomSubType] = UNSET, **kwargs
+        self, org: str, *, data: MISSING[OidcCustomSubType] = UNSET, **kwargs
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 

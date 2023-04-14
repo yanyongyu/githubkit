@@ -1,21 +1,29 @@
 import inspect
-from typing import Any, Dict, Literal
+from enum import Enum
+from typing import Any, Dict, Union, Literal, TypeVar
 
 from pydantic.json import pydantic_encoder
 
+T = TypeVar("T")
 
-class Unset:
+
+class Unset(Enum):
+    _UNSET = object()
+
     def __repr__(self) -> str:
         return "<UNSET>"
+
+    def __str__(self) -> str:
+        return self.__repr__()
 
     def __bool__(self) -> Literal[False]:
         return False
 
     def __copy__(self):
-        return UNSET
+        return self._UNSET
 
     def __deepcopy__(self, memo: Dict[int, Any]):
-        return UNSET
+        return self._UNSET
 
     @classmethod
     def __get_validators__(cls):
@@ -23,12 +31,13 @@ class Unset:
 
     @classmethod
     def _validate(cls, value: Any):
-        if value is not UNSET:
+        if value is not cls._UNSET:
             raise ValueError(f"{value!r} is not UNSET")
         return value
 
 
-UNSET = Unset()
+UNSET = Unset._UNSET
+MISSING = Union[Literal[UNSET], T]
 
 
 def exclude_unset(data: Any) -> Any:

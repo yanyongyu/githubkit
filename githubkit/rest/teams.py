@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     OrgsOrgTeamsPostBodyType,
@@ -81,8 +81,8 @@ class TeamsClient:
     def list(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams"
 
@@ -109,8 +109,8 @@ class TeamsClient:
     async def async_list(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams"
 
@@ -145,26 +145,22 @@ class TeamsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        description: Union[Unset, str] = UNSET,
-        maintainers: Union[Unset, List[str]] = UNSET,
-        repo_names: Union[Unset, List[str]] = UNSET,
-        privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
-        notification_setting: Union[
-            Unset, Literal["notifications_enabled", "notifications_disabled"]
+        description: MISSING[str] = UNSET,
+        maintainers: MISSING[List[str]] = UNSET,
+        repo_names: MISSING[List[str]] = UNSET,
+        privacy: MISSING[Literal["secret", "closed"]] = UNSET,
+        notification_setting: MISSING[
+            Literal["notifications_enabled", "notifications_disabled"]
         ] = UNSET,
-        permission: Union[Unset, Literal["pull", "push"]] = "pull",
-        parent_team_id: Union[Unset, int] = UNSET,
+        permission: MISSING[Literal["pull", "push"]] = "pull",
+        parent_team_id: MISSING[int] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
     def create(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgTeamsPostBodyType] = UNSET,
-        **kwargs,
+        self, org: str, *, data: MISSING[OrgsOrgTeamsPostBodyType] = UNSET, **kwargs
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
@@ -202,26 +198,22 @@ class TeamsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        description: Union[Unset, str] = UNSET,
-        maintainers: Union[Unset, List[str]] = UNSET,
-        repo_names: Union[Unset, List[str]] = UNSET,
-        privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
-        notification_setting: Union[
-            Unset, Literal["notifications_enabled", "notifications_disabled"]
+        description: MISSING[str] = UNSET,
+        maintainers: MISSING[List[str]] = UNSET,
+        repo_names: MISSING[List[str]] = UNSET,
+        privacy: MISSING[Literal["secret", "closed"]] = UNSET,
+        notification_setting: MISSING[
+            Literal["notifications_enabled", "notifications_disabled"]
         ] = UNSET,
-        permission: Union[Unset, Literal["pull", "push"]] = "pull",
-        parent_team_id: Union[Unset, int] = UNSET,
+        permission: MISSING[Literal["pull", "push"]] = "pull",
+        parent_team_id: MISSING[int] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
     async def async_create(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgTeamsPostBodyType] = UNSET,
-        **kwargs,
+        self, org: str, *, data: MISSING[OrgsOrgTeamsPostBodyType] = UNSET, **kwargs
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
@@ -330,7 +322,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
@@ -340,15 +332,15 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
-        privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
-        notification_setting: Union[
-            Unset, Literal["notifications_enabled", "notifications_disabled"]
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
+        privacy: MISSING[Literal["secret", "closed"]] = UNSET,
+        notification_setting: MISSING[
+            Literal["notifications_enabled", "notifications_disabled"]
         ] = UNSET,
-        permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
-        parent_team_id: Union[Unset, Union[int, None]] = UNSET,
+        permission: MISSING[Literal["pull", "push", "admin"]] = "pull",
+        parent_team_id: MISSING[Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
@@ -357,7 +349,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
@@ -392,7 +384,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
@@ -402,15 +394,15 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        description: Union[Unset, str] = UNSET,
-        privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
-        notification_setting: Union[
-            Unset, Literal["notifications_enabled", "notifications_disabled"]
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        description: MISSING[str] = UNSET,
+        privacy: MISSING[Literal["secret", "closed"]] = UNSET,
+        notification_setting: MISSING[
+            Literal["notifications_enabled", "notifications_disabled"]
         ] = UNSET,
-        permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
-        parent_team_id: Union[Unset, Union[int, None]] = UNSET,
+        permission: MISSING[Literal["pull", "push", "admin"]] = "pull",
+        parent_team_id: MISSING[Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
@@ -419,7 +411,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
@@ -452,10 +444,10 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        pinned: Union[Unset, str] = UNSET,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        pinned: MISSING[str] = UNSET,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
@@ -482,10 +474,10 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        pinned: Union[Unset, str] = UNSET,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        pinned: MISSING[str] = UNSET,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
@@ -524,10 +516,10 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: str,
         body: str,
-        private: Union[Unset, bool] = False,
+        private: MISSING[bool] = False,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -536,7 +528,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
@@ -576,10 +568,10 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: str,
         body: str,
-        private: Union[Unset, bool] = False,
+        private: MISSING[bool] = False,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -588,7 +580,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
@@ -693,8 +685,8 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
@@ -706,9 +698,9 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -718,8 +710,8 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
@@ -753,8 +745,8 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
@@ -766,9 +758,9 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -778,8 +770,8 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
@@ -811,9 +803,9 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
@@ -840,9 +832,9 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
@@ -882,7 +874,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -893,8 +885,8 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -939,7 +931,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -950,8 +942,8 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -1076,7 +1068,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -1088,9 +1080,8 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Union[
-            Unset,
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -1138,7 +1129,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -1150,9 +1141,8 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Union[
-            Unset,
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        data: MISSING[
+            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -1184,8 +1174,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/teams/{team_slug}/invitations"
 
@@ -1210,8 +1200,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/teams/{team_slug}/invitations"
 
@@ -1236,9 +1226,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        role: Union[Unset, Literal["member", "maintainer", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        role: MISSING[Literal["member", "maintainer", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/teams/{team_slug}/members"
 
@@ -1264,9 +1254,9 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        role: Union[Unset, Literal["member", "maintainer", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        role: MISSING[Literal["member", "maintainer", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/teams/{team_slug}/members"
 
@@ -1335,7 +1325,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
 
@@ -1346,8 +1336,8 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Unset = UNSET,
-        role: Union[Unset, Literal["member", "maintainer"]] = "member",
+        data: Literal[UNSET] = UNSET,
+        role: MISSING[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
 
@@ -1357,7 +1347,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
@@ -1389,7 +1379,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
 
@@ -1400,8 +1390,8 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Unset = UNSET,
-        role: Union[Unset, Literal["member", "maintainer"]] = "member",
+        data: Literal[UNSET] = UNSET,
+        role: MISSING[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
 
@@ -1411,7 +1401,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
@@ -1478,8 +1468,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamProject]]":
         url = f"/orgs/{org}/teams/{team_slug}/projects"
 
@@ -1504,8 +1494,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamProject]]":
         url = f"/orgs/{org}/teams/{team_slug}/projects"
 
@@ -1573,8 +1563,8 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Union[
-            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
+        data: MISSING[
+            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -1586,8 +1576,8 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -1597,8 +1587,8 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Union[
-            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
+        data: MISSING[
+            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -1634,8 +1624,8 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Union[
-            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
+        data: MISSING[
+            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -1647,8 +1637,8 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -1658,8 +1648,8 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Union[
-            Unset, Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
+        data: MISSING[
+            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -1728,8 +1718,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/teams/{team_slug}/repos"
 
@@ -1754,8 +1744,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/teams/{team_slug}/repos"
 
@@ -1826,7 +1816,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
 
@@ -1838,8 +1828,8 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, str] = "push",
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[str] = "push",
     ) -> "Response":
         ...
 
@@ -1850,7 +1840,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
@@ -1881,7 +1871,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
 
@@ -1893,8 +1883,8 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, str] = "push",
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[str] = "push",
     ) -> "Response":
         ...
 
@@ -1905,7 +1895,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
@@ -1970,8 +1960,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams/{team_slug}/teams"
 
@@ -1996,8 +1986,8 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams/{team_slug}/teams"
 
@@ -2109,24 +2099,20 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        description: Union[Unset, str] = UNSET,
-        privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
-        notification_setting: Union[
-            Unset, Literal["notifications_enabled", "notifications_disabled"]
+        description: MISSING[str] = UNSET,
+        privacy: MISSING[Literal["secret", "closed"]] = UNSET,
+        notification_setting: MISSING[
+            Literal["notifications_enabled", "notifications_disabled"]
         ] = UNSET,
-        permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
-        parent_team_id: Union[Unset, Union[int, None]] = UNSET,
+        permission: MISSING[Literal["pull", "push", "admin"]] = "pull",
+        parent_team_id: MISSING[Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
     def update_legacy(
-        self,
-        team_id: int,
-        *,
-        data: Union[Unset, TeamsTeamIdPatchBodyType] = UNSET,
-        **kwargs,
+        self, team_id: int, *, data: MISSING[TeamsTeamIdPatchBodyType] = UNSET, **kwargs
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
@@ -2165,24 +2151,20 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        description: Union[Unset, str] = UNSET,
-        privacy: Union[Unset, Literal["secret", "closed"]] = UNSET,
-        notification_setting: Union[
-            Unset, Literal["notifications_enabled", "notifications_disabled"]
+        description: MISSING[str] = UNSET,
+        privacy: MISSING[Literal["secret", "closed"]] = UNSET,
+        notification_setting: MISSING[
+            Literal["notifications_enabled", "notifications_disabled"]
         ] = UNSET,
-        permission: Union[Unset, Literal["pull", "push", "admin"]] = "pull",
-        parent_team_id: Union[Unset, Union[int, None]] = UNSET,
+        permission: MISSING[Literal["pull", "push", "admin"]] = "pull",
+        parent_team_id: MISSING[Union[int, None]] = UNSET,
     ) -> "Response[TeamFull]":
         ...
 
     async def async_update_legacy(
-        self,
-        team_id: int,
-        *,
-        data: Union[Unset, TeamsTeamIdPatchBodyType] = UNSET,
-        **kwargs,
+        self, team_id: int, *, data: MISSING[TeamsTeamIdPatchBodyType] = UNSET, **kwargs
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
@@ -2213,9 +2195,9 @@ class TeamsClient:
     def list_discussions_legacy(
         self,
         team_id: int,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/teams/{team_id}/discussions"
 
@@ -2240,9 +2222,9 @@ class TeamsClient:
     async def async_list_discussions_legacy(
         self,
         team_id: int,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/teams/{team_id}/discussions"
 
@@ -2275,10 +2257,10 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: str,
         body: str,
-        private: Union[Unset, bool] = False,
+        private: MISSING[bool] = False,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2286,7 +2268,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Union[Unset, TeamsTeamIdDiscussionsPostBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
@@ -2321,10 +2303,10 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         title: str,
         body: str,
-        private: Union[Unset, bool] = False,
+        private: MISSING[bool] = False,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2332,7 +2314,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Union[Unset, TeamsTeamIdDiscussionsPostBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
@@ -2432,7 +2414,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2442,9 +2424,9 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2453,7 +2435,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
@@ -2483,7 +2465,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2493,9 +2475,9 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
-        title: Union[Unset, str] = UNSET,
-        body: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        title: MISSING[str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2504,7 +2486,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Union[Unset, TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
@@ -2532,9 +2514,9 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
@@ -2560,9 +2542,9 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
@@ -2600,7 +2582,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2610,8 +2592,8 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
+        data: MISSING[
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -2654,7 +2636,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2664,8 +2646,8 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Union[
-            Unset, TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
+        data: MISSING[
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -2784,7 +2766,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2795,9 +2777,8 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Union[
-            Unset,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        data: MISSING[
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -2842,7 +2823,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2853,9 +2834,8 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Union[
-            Unset,
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
+        data: MISSING[
+            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussionComment]":
@@ -2885,8 +2865,8 @@ class TeamsClient:
     def list_pending_invitations_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/teams/{team_id}/invitations"
 
@@ -2910,8 +2890,8 @@ class TeamsClient:
     async def async_list_pending_invitations_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/teams/{team_id}/invitations"
 
@@ -2935,9 +2915,9 @@ class TeamsClient:
     def list_members_legacy(
         self,
         team_id: int,
-        role: Union[Unset, Literal["member", "maintainer", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        role: MISSING[Literal["member", "maintainer", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/teams/{team_id}/members"
 
@@ -2965,9 +2945,9 @@ class TeamsClient:
     async def async_list_members_legacy(
         self,
         team_id: int,
-        role: Union[Unset, Literal["member", "maintainer", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        role: MISSING[Literal["member", "maintainer", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/teams/{team_id}/members"
 
@@ -3152,7 +3132,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
 
@@ -3162,8 +3142,8 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Unset = UNSET,
-        role: Union[Unset, Literal["member", "maintainer"]] = "member",
+        data: Literal[UNSET] = UNSET,
+        role: MISSING[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
 
@@ -3172,7 +3152,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
@@ -3205,7 +3185,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
 
@@ -3215,8 +3195,8 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Unset = UNSET,
-        role: Union[Unset, Literal["member", "maintainer"]] = "member",
+        data: Literal[UNSET] = UNSET,
+        role: MISSING[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
 
@@ -3225,7 +3205,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Union[Unset, TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
@@ -3291,8 +3271,8 @@ class TeamsClient:
     def list_projects_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamProject]]":
         url = f"/teams/{team_id}/projects"
 
@@ -3319,8 +3299,8 @@ class TeamsClient:
     async def async_list_projects_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamProject]]":
         url = f"/teams/{team_id}/projects"
 
@@ -3388,7 +3368,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
     ) -> "Response":
         ...
 
@@ -3398,8 +3378,8 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -3408,7 +3388,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
@@ -3442,7 +3422,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
     ) -> "Response":
         ...
 
@@ -3452,8 +3432,8 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["read", "write", "admin"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -3462,7 +3442,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Union[Unset, TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
@@ -3535,8 +3515,8 @@ class TeamsClient:
     def list_repos_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/teams/{team_id}/repos"
 
@@ -3563,8 +3543,8 @@ class TeamsClient:
     async def async_list_repos_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/teams/{team_id}/repos"
 
@@ -3635,7 +3615,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
 
@@ -3646,8 +3626,8 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["pull", "push", "admin"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["pull", "push", "admin"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -3657,7 +3637,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
@@ -3691,7 +3671,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
 
@@ -3702,8 +3682,8 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["pull", "push", "admin"]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["pull", "push", "admin"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -3713,7 +3693,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
+        data: MISSING[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
@@ -3779,8 +3759,8 @@ class TeamsClient:
     def list_child_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/teams/{team_id}/teams"
 
@@ -3809,8 +3789,8 @@ class TeamsClient:
     async def async_list_child_legacy(
         self,
         team_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/teams/{team_id}/teams"
 
@@ -3838,8 +3818,8 @@ class TeamsClient:
 
     def list_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamFull]]":
         url = "/user/teams"
 
@@ -3866,8 +3846,8 @@ class TeamsClient:
 
     async def async_list_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[TeamFull]]":
         url = "/user/teams"
 

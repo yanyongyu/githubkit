@@ -9,11 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import date
-from typing import TYPE_CHECKING, List, Union, overload
+from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .models import Root, BasicError, ApiOverview
 
@@ -94,7 +94,7 @@ class MetaClient:
 
     def get_octocat(
         self,
-        s: Union[Unset, str] = UNSET,
+        s: MISSING[str] = UNSET,
     ) -> "Response[str]":
         url = "/octocat"
 
@@ -116,7 +116,7 @@ class MetaClient:
 
     async def async_get_octocat(
         self,
-        s: Union[Unset, str] = UNSET,
+        s: MISSING[str] = UNSET,
     ) -> "Response[str]":
         url = "/octocat"
 

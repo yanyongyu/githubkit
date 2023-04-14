@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     UserMigrationsPostBodyType,
@@ -52,9 +52,9 @@ class MigrationsClient:
     def list_for_org(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
     ) -> "Response[List[Migration]]":
         url = f"/orgs/{org}/migrations"
 
@@ -79,9 +79,9 @@ class MigrationsClient:
     async def async_list_for_org(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
     ) -> "Response[List[Migration]]":
         url = f"/orgs/{org}/migrations"
 
@@ -114,16 +114,16 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         repositories: List[str],
-        lock_repositories: Union[Unset, bool] = False,
-        exclude_metadata: Union[Unset, bool] = False,
-        exclude_git_data: Union[Unset, bool] = False,
-        exclude_attachments: Union[Unset, bool] = False,
-        exclude_releases: Union[Unset, bool] = False,
-        exclude_owner_projects: Union[Unset, bool] = False,
-        org_metadata_only: Union[Unset, bool] = False,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        lock_repositories: MISSING[bool] = False,
+        exclude_metadata: MISSING[bool] = False,
+        exclude_git_data: MISSING[bool] = False,
+        exclude_attachments: MISSING[bool] = False,
+        exclude_releases: MISSING[bool] = False,
+        exclude_owner_projects: MISSING[bool] = False,
+        org_metadata_only: MISSING[bool] = False,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
     ) -> "Response[Migration]":
         ...
 
@@ -131,7 +131,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgMigrationsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
@@ -170,16 +170,16 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         repositories: List[str],
-        lock_repositories: Union[Unset, bool] = False,
-        exclude_metadata: Union[Unset, bool] = False,
-        exclude_git_data: Union[Unset, bool] = False,
-        exclude_attachments: Union[Unset, bool] = False,
-        exclude_releases: Union[Unset, bool] = False,
-        exclude_owner_projects: Union[Unset, bool] = False,
-        org_metadata_only: Union[Unset, bool] = False,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        lock_repositories: MISSING[bool] = False,
+        exclude_metadata: MISSING[bool] = False,
+        exclude_git_data: MISSING[bool] = False,
+        exclude_attachments: MISSING[bool] = False,
+        exclude_releases: MISSING[bool] = False,
+        exclude_owner_projects: MISSING[bool] = False,
+        org_metadata_only: MISSING[bool] = False,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
     ) -> "Response[Migration]":
         ...
 
@@ -187,7 +187,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgMigrationsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
@@ -219,7 +219,7 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations/{migration_id}"
 
@@ -246,7 +246,7 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations/{migration_id}"
 
@@ -395,8 +395,8 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/migrations/{migration_id}/repositories"
 
@@ -424,8 +424,8 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/migrations/{migration_id}/repositories"
 
@@ -505,12 +505,12 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         vcs_url: str,
-        vcs: Union[Unset, Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
-        vcs_username: Union[Unset, str] = UNSET,
-        vcs_password: Union[Unset, str] = UNSET,
-        tfvc_project: Union[Unset, str] = UNSET,
+        vcs: MISSING[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
+        vcs_username: MISSING[str] = UNSET,
+        vcs_password: MISSING[str] = UNSET,
+        tfvc_project: MISSING[str] = UNSET,
     ) -> "Response[Import]":
         ...
 
@@ -519,7 +519,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoImportPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
@@ -560,12 +560,12 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         vcs_url: str,
-        vcs: Union[Unset, Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
-        vcs_username: Union[Unset, str] = UNSET,
-        vcs_password: Union[Unset, str] = UNSET,
-        tfvc_project: Union[Unset, str] = UNSET,
+        vcs: MISSING[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
+        vcs_username: MISSING[str] = UNSET,
+        vcs_password: MISSING[str] = UNSET,
+        tfvc_project: MISSING[str] = UNSET,
     ) -> "Response[Import]":
         ...
 
@@ -574,7 +574,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoImportPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
@@ -649,7 +649,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        data: MISSING[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> "Response[Import]":
         ...
 
@@ -659,11 +659,11 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        vcs_username: Union[Unset, str] = UNSET,
-        vcs_password: Union[Unset, str] = UNSET,
-        vcs: Union[Unset, Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
-        tfvc_project: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        vcs_username: MISSING[str] = UNSET,
+        vcs_password: MISSING[str] = UNSET,
+        vcs: MISSING[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
+        tfvc_project: MISSING[str] = UNSET,
     ) -> "Response[Import]":
         ...
 
@@ -672,7 +672,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        data: MISSING[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
@@ -705,7 +705,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        data: MISSING[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> "Response[Import]":
         ...
 
@@ -715,11 +715,11 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        vcs_username: Union[Unset, str] = UNSET,
-        vcs_password: Union[Unset, str] = UNSET,
-        vcs: Union[Unset, Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
-        tfvc_project: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        vcs_username: MISSING[str] = UNSET,
+        vcs_password: MISSING[str] = UNSET,
+        vcs: MISSING[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
+        tfvc_project: MISSING[str] = UNSET,
     ) -> "Response[Import]":
         ...
 
@@ -728,7 +728,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
+        data: MISSING[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
@@ -759,7 +759,7 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
-        since: Union[Unset, int] = UNSET,
+        since: MISSING[int] = UNSET,
     ) -> "Response[List[PorterAuthor]]":
         url = f"/repos/{owner}/{repo}/import/authors"
 
@@ -787,7 +787,7 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
-        since: Union[Unset, int] = UNSET,
+        since: MISSING[int] = UNSET,
     ) -> "Response[List[PorterAuthor]]":
         url = f"/repos/{owner}/{repo}/import/authors"
 
@@ -818,7 +818,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> "Response[PorterAuthor]":
         ...
 
@@ -829,9 +829,9 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Unset = UNSET,
-        email: Union[Unset, str] = UNSET,
-        name: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        email: MISSING[str] = UNSET,
+        name: MISSING[str] = UNSET,
     ) -> "Response[PorterAuthor]":
         ...
 
@@ -841,7 +841,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
@@ -877,7 +877,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> "Response[PorterAuthor]":
         ...
 
@@ -888,9 +888,9 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Unset = UNSET,
-        email: Union[Unset, str] = UNSET,
-        name: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        email: MISSING[str] = UNSET,
+        name: MISSING[str] = UNSET,
     ) -> "Response[PorterAuthor]":
         ...
 
@@ -900,7 +900,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Union[Unset, ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
@@ -983,7 +983,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> "Response[Import]":
         ...
@@ -993,7 +993,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
@@ -1033,7 +1033,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> "Response[Import]":
         ...
@@ -1043,7 +1043,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
@@ -1073,8 +1073,8 @@ class MigrationsClient:
 
     def list_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Migration]]":
         url = "/user/migrations"
 
@@ -1101,8 +1101,8 @@ class MigrationsClient:
 
     async def async_list_for_authenticated_user(
         self,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Migration]]":
         url = "/user/migrations"
 
@@ -1137,21 +1137,21 @@ class MigrationsClient:
     def start_for_authenticated_user(
         self,
         *,
-        data: Unset = UNSET,
-        lock_repositories: Union[Unset, bool] = UNSET,
-        exclude_metadata: Union[Unset, bool] = UNSET,
-        exclude_git_data: Union[Unset, bool] = UNSET,
-        exclude_attachments: Union[Unset, bool] = UNSET,
-        exclude_releases: Union[Unset, bool] = UNSET,
-        exclude_owner_projects: Union[Unset, bool] = UNSET,
-        org_metadata_only: Union[Unset, bool] = False,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        lock_repositories: MISSING[bool] = UNSET,
+        exclude_metadata: MISSING[bool] = UNSET,
+        exclude_git_data: MISSING[bool] = UNSET,
+        exclude_attachments: MISSING[bool] = UNSET,
+        exclude_releases: MISSING[bool] = UNSET,
+        exclude_owner_projects: MISSING[bool] = UNSET,
+        org_metadata_only: MISSING[bool] = False,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
         repositories: List[str],
     ) -> "Response[Migration]":
         ...
 
     def start_for_authenticated_user(
-        self, *, data: Union[Unset, UserMigrationsPostBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[UserMigrationsPostBodyType] = UNSET, **kwargs
     ) -> "Response[Migration]":
         url = "/user/migrations"
 
@@ -1189,21 +1189,21 @@ class MigrationsClient:
     async def async_start_for_authenticated_user(
         self,
         *,
-        data: Unset = UNSET,
-        lock_repositories: Union[Unset, bool] = UNSET,
-        exclude_metadata: Union[Unset, bool] = UNSET,
-        exclude_git_data: Union[Unset, bool] = UNSET,
-        exclude_attachments: Union[Unset, bool] = UNSET,
-        exclude_releases: Union[Unset, bool] = UNSET,
-        exclude_owner_projects: Union[Unset, bool] = UNSET,
-        org_metadata_only: Union[Unset, bool] = False,
-        exclude: Union[Unset, List[Literal["repositories"]]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        lock_repositories: MISSING[bool] = UNSET,
+        exclude_metadata: MISSING[bool] = UNSET,
+        exclude_git_data: MISSING[bool] = UNSET,
+        exclude_attachments: MISSING[bool] = UNSET,
+        exclude_releases: MISSING[bool] = UNSET,
+        exclude_owner_projects: MISSING[bool] = UNSET,
+        org_metadata_only: MISSING[bool] = False,
+        exclude: MISSING[List[Literal["repositories"]]] = UNSET,
         repositories: List[str],
     ) -> "Response[Migration]":
         ...
 
     async def async_start_for_authenticated_user(
-        self, *, data: Union[Unset, UserMigrationsPostBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[UserMigrationsPostBodyType] = UNSET, **kwargs
     ) -> "Response[Migration]":
         url = "/user/migrations"
 
@@ -1234,7 +1234,7 @@ class MigrationsClient:
     def get_status_for_authenticated_user(
         self,
         migration_id: int,
-        exclude: Union[Unset, List[str]] = UNSET,
+        exclude: MISSING[List[str]] = UNSET,
     ) -> "Response[Migration]":
         url = f"/user/migrations/{migration_id}"
 
@@ -1262,7 +1262,7 @@ class MigrationsClient:
     async def async_get_status_for_authenticated_user(
         self,
         migration_id: int,
-        exclude: Union[Unset, List[str]] = UNSET,
+        exclude: MISSING[List[str]] = UNSET,
     ) -> "Response[Migration]":
         url = f"/user/migrations/{migration_id}"
 
@@ -1416,8 +1416,8 @@ class MigrationsClient:
     def list_repos_for_authenticated_user(
         self,
         migration_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/user/migrations/{migration_id}/repositories"
 
@@ -1444,8 +1444,8 @@ class MigrationsClient:
     async def async_list_repos_for_authenticated_user(
         self,
         migration_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/user/migrations/{migration_id}/repositories"
 

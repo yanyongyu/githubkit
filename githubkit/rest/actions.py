@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     SelectedActionsType,
@@ -185,8 +185,8 @@ class ActionsClient:
     def get_actions_cache_usage_by_repo_for_org(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]":
         url = f"/orgs/{org}/actions/cache/usage-by-repository"
 
@@ -210,8 +210,8 @@ class ActionsClient:
     async def async_get_actions_cache_usage_by_repo_for_org(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]":
         url = f"/orgs/{org}/actions/cache/usage-by-repository"
 
@@ -277,9 +277,9 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         enabled_repositories: Literal["all", "none", "selected"],
-        allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
+        allowed_actions: MISSING[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -287,7 +287,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsPermissionsPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions"
@@ -321,9 +321,9 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         enabled_repositories: Literal["all", "none", "selected"],
-        allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
+        allowed_actions: MISSING[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -331,7 +331,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsPermissionsPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions"
@@ -357,8 +357,8 @@ class ActionsClient:
     def list_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/permissions/repositories"
 
@@ -382,8 +382,8 @@ class ActionsClient:
     async def async_list_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/permissions/repositories"
 
@@ -415,7 +415,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -424,7 +424,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories"
@@ -458,7 +458,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -467,7 +467,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/repositories"
@@ -594,7 +594,7 @@ class ActionsClient:
 
     @overload
     def set_allowed_actions_organization(
-        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+        self, org: str, *, data: MISSING[SelectedActionsType] = UNSET
     ) -> "Response":
         ...
 
@@ -603,15 +603,15 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        github_owned_allowed: Union[Unset, bool] = UNSET,
-        verified_allowed: Union[Unset, bool] = UNSET,
-        patterns_allowed: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        github_owned_allowed: MISSING[bool] = UNSET,
+        verified_allowed: MISSING[bool] = UNSET,
+        patterns_allowed: MISSING[List[str]] = UNSET,
     ) -> "Response":
         ...
 
     def set_allowed_actions_organization(
-        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET, **kwargs
+        self, org: str, *, data: MISSING[SelectedActionsType] = UNSET, **kwargs
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
@@ -635,7 +635,7 @@ class ActionsClient:
 
     @overload
     async def async_set_allowed_actions_organization(
-        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+        self, org: str, *, data: MISSING[SelectedActionsType] = UNSET
     ) -> "Response":
         ...
 
@@ -644,15 +644,15 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        github_owned_allowed: Union[Unset, bool] = UNSET,
-        verified_allowed: Union[Unset, bool] = UNSET,
-        patterns_allowed: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        github_owned_allowed: MISSING[bool] = UNSET,
+        verified_allowed: MISSING[bool] = UNSET,
+        patterns_allowed: MISSING[List[str]] = UNSET,
     ) -> "Response":
         ...
 
     async def async_set_allowed_actions_organization(
-        self, org: str, *, data: Union[Unset, SelectedActionsType] = UNSET, **kwargs
+        self, org: str, *, data: MISSING[SelectedActionsType] = UNSET, **kwargs
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
@@ -713,7 +713,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        data: MISSING[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> "Response":
         ...
 
@@ -722,9 +722,9 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
-        can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        default_workflow_permissions: MISSING[Literal["read", "write"]] = UNSET,
+        can_approve_pull_request_reviews: MISSING[bool] = UNSET,
     ) -> "Response":
         ...
 
@@ -732,7 +732,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        data: MISSING[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/workflow"
@@ -760,7 +760,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        data: MISSING[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> "Response":
         ...
 
@@ -769,9 +769,9 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
-        default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
-        can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        default_workflow_permissions: MISSING[Literal["read", "write"]] = UNSET,
+        can_approve_pull_request_reviews: MISSING[bool] = UNSET,
     ) -> "Response":
         ...
 
@@ -779,7 +779,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        data: MISSING[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/permissions/workflow"
@@ -805,8 +805,8 @@ class ActionsClient:
     def list_required_workflows(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsRequiredWorkflowsGetResponse200]":
         url = f"/orgs/{org}/actions/required_workflows"
 
@@ -830,8 +830,8 @@ class ActionsClient:
     async def async_list_required_workflows(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsRequiredWorkflowsGetResponse200]":
         url = f"/orgs/{org}/actions/required_workflows"
 
@@ -863,11 +863,11 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         workflow_file_path: str,
         repository_id: str,
-        scope: Union[Unset, Literal["selected", "all"]] = "all",
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        scope: MISSING[Literal["selected", "all"]] = "all",
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[RequiredWorkflow]":
         ...
 
@@ -875,7 +875,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsRequiredWorkflowsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsRequiredWorkflowsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows"
@@ -913,11 +913,11 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         workflow_file_path: str,
         repository_id: str,
-        scope: Union[Unset, Literal["selected", "all"]] = "all",
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        scope: MISSING[Literal["selected", "all"]] = "all",
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[RequiredWorkflow]":
         ...
 
@@ -925,7 +925,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsRequiredWorkflowsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsRequiredWorkflowsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RequiredWorkflow]":
         url = f"/orgs/{org}/actions/required_workflows"
@@ -1038,11 +1038,11 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Unset = UNSET,
-        workflow_file_path: Union[Unset, str] = UNSET,
-        repository_id: Union[Unset, str] = UNSET,
-        scope: Union[Unset, Literal["selected", "all"]] = "all",
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        workflow_file_path: MISSING[str] = UNSET,
+        repository_id: MISSING[str] = UNSET,
+        scope: MISSING[Literal["selected", "all"]] = "all",
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[RequiredWorkflow]":
         ...
 
@@ -1051,8 +1051,8 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Union[
-            Unset, OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType
+        data: MISSING[
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[RequiredWorkflow]":
@@ -1098,11 +1098,11 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Unset = UNSET,
-        workflow_file_path: Union[Unset, str] = UNSET,
-        repository_id: Union[Unset, str] = UNSET,
-        scope: Union[Unset, Literal["selected", "all"]] = "all",
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        workflow_file_path: MISSING[str] = UNSET,
+        repository_id: MISSING[str] = UNSET,
+        scope: MISSING[Literal["selected", "all"]] = "all",
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[RequiredWorkflow]":
         ...
 
@@ -1111,8 +1111,8 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Union[
-            Unset, OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType
+        data: MISSING[
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[RequiredWorkflow]":
@@ -1196,7 +1196,7 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -1206,9 +1206,8 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Union[
-            Unset,
-            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType,
+        data: MISSING[
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -1250,7 +1249,7 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -1260,9 +1259,8 @@ class ActionsClient:
         org: str,
         required_workflow_id: int,
         *,
-        data: Union[
-            Unset,
-            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType,
+        data: MISSING[
+            OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -1367,8 +1365,8 @@ class ActionsClient:
     def list_self_hosted_runners_for_org(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsRunnersGetResponse200]":
         url = f"/orgs/{org}/actions/runners"
 
@@ -1392,8 +1390,8 @@ class ActionsClient:
     async def async_list_self_hosted_runners_for_org(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsRunnersGetResponse200]":
         url = f"/orgs/{org}/actions/runners"
 
@@ -1644,7 +1642,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -1654,7 +1652,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
@@ -1698,7 +1696,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -1708,7 +1706,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
@@ -1752,7 +1750,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -1762,7 +1760,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
@@ -1806,7 +1804,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -1816,7 +1814,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        data: Union[Unset, OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
@@ -1935,8 +1933,8 @@ class ActionsClient:
     def list_org_secrets(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsSecretsGetResponse200]":
         url = f"/orgs/{org}/actions/secrets"
 
@@ -1960,8 +1958,8 @@ class ActionsClient:
     async def async_list_org_secrets(
         self,
         org: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsSecretsGetResponse200]":
         url = f"/orgs/{org}/actions/secrets"
 
@@ -2068,11 +2066,11 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
-        encrypted_value: Union[Unset, str] = UNSET,
-        key_id: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        encrypted_value: MISSING[str] = UNSET,
+        key_id: MISSING[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2081,7 +2079,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Union[Unset, OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
@@ -2121,11 +2119,11 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
-        encrypted_value: Union[Unset, str] = UNSET,
-        key_id: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        encrypted_value: MISSING[str] = UNSET,
+        key_id: MISSING[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2134,7 +2132,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Union[Unset, OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
@@ -2196,8 +2194,8 @@ class ActionsClient:
         self,
         org: str,
         secret_name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
     ) -> "Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
@@ -2222,8 +2220,8 @@ class ActionsClient:
         self,
         org: str,
         secret_name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
     ) -> "Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
@@ -2260,7 +2258,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -2270,9 +2268,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Union[
-            Unset, OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType
-        ] = UNSET,
+        data: MISSING[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
@@ -2311,7 +2307,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -2321,9 +2317,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        data: Union[
-            Unset, OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType
-        ] = UNSET,
+        data: MISSING[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
@@ -2425,8 +2419,8 @@ class ActionsClient:
     def list_org_variables(
         self,
         org: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsVariablesGetResponse200]":
         url = f"/orgs/{org}/actions/variables"
 
@@ -2450,8 +2444,8 @@ class ActionsClient:
     async def async_list_org_variables(
         self,
         org: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[OrgsOrgActionsVariablesGetResponse200]":
         url = f"/orgs/{org}/actions/variables"
 
@@ -2483,11 +2477,11 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2495,7 +2489,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsVariablesPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/variables"
@@ -2530,11 +2524,11 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2542,7 +2536,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        data: Union[Unset, OrgsOrgActionsVariablesPostBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/variables"
@@ -2648,10 +2642,10 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Unset = UNSET,
-        value: Union[Unset, str] = UNSET,
-        visibility: Union[Unset, Literal["all", "private", "selected"]] = UNSET,
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        value: MISSING[str] = UNSET,
+        visibility: MISSING[Literal["all", "private", "selected"]] = UNSET,
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response":
         ...
 
@@ -2660,7 +2654,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Union[Unset, OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}"
@@ -2695,10 +2689,10 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Unset = UNSET,
-        value: Union[Unset, str] = UNSET,
-        visibility: Union[Unset, Literal["all", "private", "selected"]] = UNSET,
-        selected_repository_ids: Union[Unset, List[int]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        value: MISSING[str] = UNSET,
+        visibility: MISSING[Literal["all", "private", "selected"]] = UNSET,
+        selected_repository_ids: MISSING[List[int]] = UNSET,
     ) -> "Response":
         ...
 
@@ -2707,7 +2701,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Union[Unset, OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}"
@@ -2734,8 +2728,8 @@ class ActionsClient:
         self,
         org: str,
         name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
     ) -> "Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
 
@@ -2761,8 +2755,8 @@ class ActionsClient:
         self,
         org: str,
         name: str,
-        page: Union[Unset, int] = 1,
-        per_page: Union[Unset, int] = 30,
+        page: MISSING[int] = 1,
+        per_page: MISSING[int] = 30,
     ) -> "Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
 
@@ -2800,7 +2794,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -2810,7 +2804,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Union[Unset, OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
@@ -2850,7 +2844,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -2860,7 +2854,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        data: Union[Unset, OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
+        data: MISSING[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
@@ -2964,8 +2958,8 @@ class ActionsClient:
         self,
         org: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOrgRepoActionsRequiredWorkflowsGetResponse200]":
         url = f"/repos/{org}/{repo}/actions/required_workflows"
 
@@ -2993,8 +2987,8 @@ class ActionsClient:
         self,
         org: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOrgRepoActionsRequiredWorkflowsGetResponse200]":
         url = f"/repos/{org}/{repo}/actions/required_workflows"
 
@@ -3110,9 +3104,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        name: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        name: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsArtifactsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/artifacts"
 
@@ -3138,9 +3132,9 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        name: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        name: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsArtifactsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/artifacts"
 
@@ -3320,14 +3314,14 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        ref: Union[Unset, str] = UNSET,
-        key: Union[Unset, str] = UNSET,
-        sort: Union[
-            Unset, Literal["created_at", "last_accessed_at", "size_in_bytes"]
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        ref: MISSING[str] = UNSET,
+        key: MISSING[str] = UNSET,
+        sort: MISSING[
+            Literal["created_at", "last_accessed_at", "size_in_bytes"]
         ] = "last_accessed_at",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
     ) -> "Response[ActionsCacheList]":
         url = f"/repos/{owner}/{repo}/actions/caches"
 
@@ -3356,14 +3350,14 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        ref: Union[Unset, str] = UNSET,
-        key: Union[Unset, str] = UNSET,
-        sort: Union[
-            Unset, Literal["created_at", "last_accessed_at", "size_in_bytes"]
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        ref: MISSING[str] = UNSET,
+        key: MISSING[str] = UNSET,
+        sort: MISSING[
+            Literal["created_at", "last_accessed_at", "size_in_bytes"]
         ] = "last_accessed_at",
-        direction: Union[Unset, Literal["asc", "desc"]] = "desc",
+        direction: MISSING[Literal["asc", "desc"]] = "desc",
     ) -> "Response[ActionsCacheList]":
         url = f"/repos/{owner}/{repo}/actions/caches"
 
@@ -3393,7 +3387,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         key: str,
-        ref: Union[Unset, str] = UNSET,
+        ref: MISSING[str] = UNSET,
     ) -> "Response[ActionsCacheList]":
         url = f"/repos/{owner}/{repo}/actions/caches"
 
@@ -3419,7 +3413,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         key: str,
-        ref: Union[Unset, str] = UNSET,
+        ref: MISSING[str] = UNSET,
     ) -> "Response[ActionsCacheList]":
         url = f"/repos/{owner}/{repo}/actions/caches"
 
@@ -3557,8 +3551,8 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
@@ -3570,8 +3564,8 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        data: Unset = UNSET,
-        enable_debug_logging: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        enable_debug_logging: MISSING[bool] = False,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -3581,8 +3575,8 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -3619,8 +3613,8 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
@@ -3632,8 +3626,8 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        data: Unset = UNSET,
-        enable_debug_logging: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        enable_debug_logging: MISSING[bool] = False,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -3643,8 +3637,8 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -3734,9 +3728,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         use_default: bool,
-        include_claim_keys: Union[Unset, List[str]] = UNSET,
+        include_claim_keys: MISSING[List[str]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -3745,9 +3739,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsOidcCustomizationSubPutBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
@@ -3792,9 +3784,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         use_default: bool,
-        include_claim_keys: Union[Unset, List[str]] = UNSET,
+        include_claim_keys: MISSING[List[str]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -3803,9 +3795,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsOidcCustomizationSubPutBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
@@ -3838,8 +3828,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/organization-secrets"
 
@@ -3864,8 +3854,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/organization-secrets"
 
@@ -3890,8 +3880,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/organization-variables"
 
@@ -3916,8 +3906,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/organization-variables"
 
@@ -3990,9 +3980,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         enabled: bool,
-        allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
+        allowed_actions: MISSING[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -4001,7 +3991,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions"
@@ -4040,9 +4030,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         enabled: bool,
-        allowed_actions: Union[Unset, Literal["all", "local_only", "selected"]] = UNSET,
+        allowed_actions: MISSING[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> "Response":
         ...
 
@@ -4051,7 +4041,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions"
@@ -4122,7 +4112,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_level: Literal["none", "user", "organization"],
     ) -> "Response":
         ...
@@ -4132,7 +4122,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ActionsWorkflowAccessToRepositoryType] = UNSET,
+        data: MISSING[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
@@ -4167,7 +4157,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         access_level: Literal["none", "user", "organization"],
     ) -> "Response":
         ...
@@ -4177,7 +4167,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ActionsWorkflowAccessToRepositoryType] = UNSET,
+        data: MISSING[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
@@ -4238,7 +4228,7 @@ class ActionsClient:
 
     @overload
     def set_allowed_actions_repository(
-        self, owner: str, repo: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+        self, owner: str, repo: str, *, data: MISSING[SelectedActionsType] = UNSET
     ) -> "Response":
         ...
 
@@ -4248,10 +4238,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        github_owned_allowed: Union[Unset, bool] = UNSET,
-        verified_allowed: Union[Unset, bool] = UNSET,
-        patterns_allowed: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        github_owned_allowed: MISSING[bool] = UNSET,
+        verified_allowed: MISSING[bool] = UNSET,
+        patterns_allowed: MISSING[List[str]] = UNSET,
     ) -> "Response":
         ...
 
@@ -4260,7 +4250,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, SelectedActionsType] = UNSET,
+        data: MISSING[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
@@ -4285,7 +4275,7 @@ class ActionsClient:
 
     @overload
     async def async_set_allowed_actions_repository(
-        self, owner: str, repo: str, *, data: Union[Unset, SelectedActionsType] = UNSET
+        self, owner: str, repo: str, *, data: MISSING[SelectedActionsType] = UNSET
     ) -> "Response":
         ...
 
@@ -4295,10 +4285,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        github_owned_allowed: Union[Unset, bool] = UNSET,
-        verified_allowed: Union[Unset, bool] = UNSET,
-        patterns_allowed: Union[Unset, List[str]] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        github_owned_allowed: MISSING[bool] = UNSET,
+        verified_allowed: MISSING[bool] = UNSET,
+        patterns_allowed: MISSING[List[str]] = UNSET,
     ) -> "Response":
         ...
 
@@ -4307,7 +4297,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, SelectedActionsType] = UNSET,
+        data: MISSING[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
@@ -4378,9 +4368,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
-        can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        default_workflow_permissions: MISSING[Literal["read", "write"]] = UNSET,
+        can_approve_pull_request_reviews: MISSING[bool] = UNSET,
     ) -> "Response":
         ...
 
@@ -4389,7 +4379,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        data: MISSING[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
@@ -4425,9 +4415,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
-        default_workflow_permissions: Union[Unset, Literal["read", "write"]] = UNSET,
-        can_approve_pull_request_reviews: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        default_workflow_permissions: MISSING[Literal["read", "write"]] = UNSET,
+        can_approve_pull_request_reviews: MISSING[bool] = UNSET,
     ) -> "Response":
         ...
 
@@ -4436,7 +4426,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ActionsSetDefaultWorkflowPermissionsType] = UNSET,
+        data: MISSING[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
@@ -4465,11 +4455,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         required_workflow_id_for_repo: int,
-        actor: Union[Unset, str] = UNSET,
-        branch: Union[Unset, str] = UNSET,
-        event: Union[Unset, str] = UNSET,
-        status: Union[
-            Unset,
+        actor: MISSING[str] = UNSET,
+        branch: MISSING[str] = UNSET,
+        event: MISSING[str] = UNSET,
+        status: MISSING[
             Literal[
                 "completed",
                 "action_required",
@@ -4485,14 +4474,14 @@ class ActionsClient:
                 "requested",
                 "waiting",
                 "pending",
-            ],
+            ]
         ] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        created: Union[Unset, datetime] = UNSET,
-        exclude_pull_requests: Union[Unset, bool] = False,
-        check_suite_id: Union[Unset, int] = UNSET,
-        head_sha: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        created: MISSING[datetime] = UNSET,
+        exclude_pull_requests: MISSING[bool] = False,
+        check_suite_id: MISSING[int] = UNSET,
+        head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/runs"
 
@@ -4526,11 +4515,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         required_workflow_id_for_repo: int,
-        actor: Union[Unset, str] = UNSET,
-        branch: Union[Unset, str] = UNSET,
-        event: Union[Unset, str] = UNSET,
-        status: Union[
-            Unset,
+        actor: MISSING[str] = UNSET,
+        branch: MISSING[str] = UNSET,
+        event: MISSING[str] = UNSET,
+        status: MISSING[
             Literal[
                 "completed",
                 "action_required",
@@ -4546,14 +4534,14 @@ class ActionsClient:
                 "requested",
                 "waiting",
                 "pending",
-            ],
+            ]
         ] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        created: Union[Unset, datetime] = UNSET,
-        exclude_pull_requests: Union[Unset, bool] = False,
-        check_suite_id: Union[Unset, int] = UNSET,
-        head_sha: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        created: MISSING[datetime] = UNSET,
+        exclude_pull_requests: MISSING[bool] = False,
+        check_suite_id: MISSING[int] = UNSET,
+        head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/required_workflows/{required_workflow_id_for_repo}/runs"
 
@@ -4586,8 +4574,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunnersGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners"
 
@@ -4612,8 +4600,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunnersGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners"
 
@@ -4878,7 +4866,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -4889,9 +4877,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
@@ -4937,7 +4923,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -4948,9 +4934,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
@@ -4996,7 +4980,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -5007,9 +4991,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
@@ -5055,7 +5037,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         labels: List[str],
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         ...
@@ -5066,9 +5048,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType
-        ] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
@@ -5192,11 +5172,10 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        actor: Union[Unset, str] = UNSET,
-        branch: Union[Unset, str] = UNSET,
-        event: Union[Unset, str] = UNSET,
-        status: Union[
-            Unset,
+        actor: MISSING[str] = UNSET,
+        branch: MISSING[str] = UNSET,
+        event: MISSING[str] = UNSET,
+        status: MISSING[
             Literal[
                 "completed",
                 "action_required",
@@ -5212,14 +5191,14 @@ class ActionsClient:
                 "requested",
                 "waiting",
                 "pending",
-            ],
+            ]
         ] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        created: Union[Unset, datetime] = UNSET,
-        exclude_pull_requests: Union[Unset, bool] = False,
-        check_suite_id: Union[Unset, int] = UNSET,
-        head_sha: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        created: MISSING[datetime] = UNSET,
+        exclude_pull_requests: MISSING[bool] = False,
+        check_suite_id: MISSING[int] = UNSET,
+        head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs"
 
@@ -5252,11 +5231,10 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        actor: Union[Unset, str] = UNSET,
-        branch: Union[Unset, str] = UNSET,
-        event: Union[Unset, str] = UNSET,
-        status: Union[
-            Unset,
+        actor: MISSING[str] = UNSET,
+        branch: MISSING[str] = UNSET,
+        event: MISSING[str] = UNSET,
+        status: MISSING[
             Literal[
                 "completed",
                 "action_required",
@@ -5272,14 +5250,14 @@ class ActionsClient:
                 "requested",
                 "waiting",
                 "pending",
-            ],
+            ]
         ] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        created: Union[Unset, datetime] = UNSET,
-        exclude_pull_requests: Union[Unset, bool] = False,
-        check_suite_id: Union[Unset, int] = UNSET,
-        head_sha: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        created: MISSING[datetime] = UNSET,
+        exclude_pull_requests: MISSING[bool] = False,
+        check_suite_id: MISSING[int] = UNSET,
+        head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs"
 
@@ -5313,7 +5291,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        exclude_pull_requests: Union[Unset, bool] = False,
+        exclude_pull_requests: MISSING[bool] = False,
     ) -> "Response[WorkflowRun]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
@@ -5338,7 +5316,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        exclude_pull_requests: Union[Unset, bool] = False,
+        exclude_pull_requests: MISSING[bool] = False,
     ) -> "Response[WorkflowRun]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
@@ -5483,8 +5461,8 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"
 
@@ -5510,8 +5488,8 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"
 
@@ -5538,7 +5516,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
-        exclude_pull_requests: Union[Unset, bool] = False,
+        exclude_pull_requests: MISSING[bool] = False,
     ) -> "Response[WorkflowRun]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}"
 
@@ -5564,7 +5542,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
-        exclude_pull_requests: Union[Unset, bool] = False,
+        exclude_pull_requests: MISSING[bool] = False,
     ) -> "Response[WorkflowRun]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}"
 
@@ -5590,8 +5568,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs"
 
@@ -5621,8 +5599,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         attempt_number: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs"
 
@@ -5733,9 +5711,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        filter_: Union[Unset, Literal["latest", "all"]] = "latest",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        filter_: MISSING[Literal["latest", "all"]] = "latest",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"
 
@@ -5762,9 +5740,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         run_id: int,
-        filter_: Union[Unset, Literal["latest", "all"]] = "latest",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        filter_: MISSING[Literal["latest", "all"]] = "latest",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"
 
@@ -5922,7 +5900,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         environment_ids: List[int],
         state: Literal["approved", "rejected"],
         comment: str,
@@ -5935,8 +5913,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
+        data: MISSING[
+            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[List[Deployment]]":
@@ -5981,7 +5959,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         environment_ids: List[int],
         state: Literal["approved", "rejected"],
         comment: str,
@@ -5994,8 +5972,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
+        data: MISSING[
+            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[List[Deployment]]":
@@ -6029,8 +6007,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
@@ -6042,8 +6020,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Unset = UNSET,
-        enable_debug_logging: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        enable_debug_logging: MISSING[bool] = False,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -6053,8 +6031,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -6088,8 +6066,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
@@ -6101,8 +6079,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Unset = UNSET,
-        enable_debug_logging: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        enable_debug_logging: MISSING[bool] = False,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -6112,8 +6090,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset, Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -6147,9 +6125,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset,
-            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
@@ -6161,8 +6138,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Unset = UNSET,
-        enable_debug_logging: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        enable_debug_logging: MISSING[bool] = False,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -6172,9 +6149,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset,
-            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -6208,9 +6184,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset,
-            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
@@ -6222,8 +6197,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Unset = UNSET,
-        enable_debug_logging: Union[Unset, bool] = False,
+        data: Literal[UNSET] = UNSET,
+        enable_debug_logging: MISSING[bool] = False,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -6233,9 +6208,8 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        data: Union[
-            Unset,
-            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None],
+        data: MISSING[
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -6304,8 +6278,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/secrets"
 
@@ -6330,8 +6304,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/secrets"
 
@@ -6444,9 +6418,9 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
-        encrypted_value: Union[Unset, str] = UNSET,
-        key_id: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        encrypted_value: MISSING[str] = UNSET,
+        key_id: MISSING[str] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -6456,7 +6430,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
@@ -6498,9 +6472,9 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
-        encrypted_value: Union[Unset, str] = UNSET,
-        key_id: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        encrypted_value: MISSING[str] = UNSET,
+        key_id: MISSING[str] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -6510,7 +6484,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
@@ -6574,8 +6548,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsVariablesGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/variables"
 
@@ -6600,8 +6574,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsVariablesGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/variables"
 
@@ -6634,7 +6608,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         value: str,
     ) -> "Response[EmptyObject]":
@@ -6645,7 +6619,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/variables"
@@ -6681,7 +6655,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         value: str,
     ) -> "Response[EmptyObject]":
@@ -6692,7 +6666,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/actions/variables"
@@ -6808,8 +6782,8 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        data: Unset = UNSET,
-        value: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        value: MISSING[str] = UNSET,
     ) -> "Response":
         ...
 
@@ -6819,7 +6793,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
@@ -6860,8 +6834,8 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        data: Unset = UNSET,
-        value: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        value: MISSING[str] = UNSET,
     ) -> "Response":
         ...
 
@@ -6871,7 +6845,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        data: Union[Unset, ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
@@ -6898,8 +6872,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsWorkflowsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/workflows"
 
@@ -6924,8 +6898,8 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[ReposOwnerRepoActionsWorkflowsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/workflows"
 
@@ -7038,11 +7012,10 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         ref: str,
-        inputs: Union[
-            Unset,
-            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
+        inputs: MISSING[
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
     ) -> "Response":
         ...
@@ -7053,8 +7026,8 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
+        data: MISSING[
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -7098,11 +7071,10 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         ref: str,
-        inputs: Union[
-            Unset,
-            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
+        inputs: MISSING[
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
     ) -> "Response":
         ...
@@ -7113,8 +7085,8 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        data: Union[
-            Unset, ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
+        data: MISSING[
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -7181,11 +7153,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         workflow_id: Union[int, str],
-        actor: Union[Unset, str] = UNSET,
-        branch: Union[Unset, str] = UNSET,
-        event: Union[Unset, str] = UNSET,
-        status: Union[
-            Unset,
+        actor: MISSING[str] = UNSET,
+        branch: MISSING[str] = UNSET,
+        event: MISSING[str] = UNSET,
+        status: MISSING[
             Literal[
                 "completed",
                 "action_required",
@@ -7201,14 +7172,14 @@ class ActionsClient:
                 "requested",
                 "waiting",
                 "pending",
-            ],
+            ]
         ] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        created: Union[Unset, datetime] = UNSET,
-        exclude_pull_requests: Union[Unset, bool] = False,
-        check_suite_id: Union[Unset, int] = UNSET,
-        head_sha: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        created: MISSING[datetime] = UNSET,
+        exclude_pull_requests: MISSING[bool] = False,
+        check_suite_id: MISSING[int] = UNSET,
+        head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
 
@@ -7242,11 +7213,10 @@ class ActionsClient:
         owner: str,
         repo: str,
         workflow_id: Union[int, str],
-        actor: Union[Unset, str] = UNSET,
-        branch: Union[Unset, str] = UNSET,
-        event: Union[Unset, str] = UNSET,
-        status: Union[
-            Unset,
+        actor: MISSING[str] = UNSET,
+        branch: MISSING[str] = UNSET,
+        event: MISSING[str] = UNSET,
+        status: MISSING[
             Literal[
                 "completed",
                 "action_required",
@@ -7262,14 +7232,14 @@ class ActionsClient:
                 "requested",
                 "waiting",
                 "pending",
-            ],
+            ]
         ] = UNSET,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
-        created: Union[Unset, datetime] = UNSET,
-        exclude_pull_requests: Union[Unset, bool] = False,
-        check_suite_id: Union[Unset, int] = UNSET,
-        head_sha: Union[Unset, str] = UNSET,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
+        created: MISSING[datetime] = UNSET,
+        exclude_pull_requests: MISSING[bool] = False,
+        check_suite_id: MISSING[int] = UNSET,
+        head_sha: MISSING[str] = UNSET,
     ) -> "Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
 
@@ -7340,8 +7310,8 @@ class ActionsClient:
         self,
         repository_id: int,
         environment_name: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets"
 
@@ -7366,8 +7336,8 @@ class ActionsClient:
         self,
         repository_id: int,
         environment_name: str,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets"
 
@@ -7480,7 +7450,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         encrypted_value: str,
         key_id: str,
     ) -> "Response[EmptyObject]":
@@ -7492,9 +7462,8 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        data: Union[
-            Unset,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+        data: MISSING[
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -7540,7 +7509,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         encrypted_value: str,
         key_id: str,
     ) -> "Response[EmptyObject]":
@@ -7552,9 +7521,8 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        data: Union[
-            Unset,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+        data: MISSING[
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -7622,8 +7590,8 @@ class ActionsClient:
         self,
         repository_id: int,
         environment_name: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
 
@@ -7648,8 +7616,8 @@ class ActionsClient:
         self,
         repository_id: int,
         environment_name: str,
-        per_page: Union[Unset, int] = 10,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 10,
+        page: MISSING[int] = 1,
     ) -> "Response[RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200]":
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
 
@@ -7686,7 +7654,7 @@ class ActionsClient:
         repository_id: int,
         environment_name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         value: str,
     ) -> "Response[EmptyObject]":
@@ -7697,9 +7665,8 @@ class ActionsClient:
         repository_id: int,
         environment_name: str,
         *,
-        data: Union[
-            Unset,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+        data: MISSING[
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -7742,7 +7709,7 @@ class ActionsClient:
         repository_id: int,
         environment_name: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
         value: str,
     ) -> "Response[EmptyObject]":
@@ -7753,9 +7720,8 @@ class ActionsClient:
         repository_id: int,
         environment_name: str,
         *,
-        data: Union[
-            Unset,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+        data: MISSING[
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
@@ -7874,8 +7840,8 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        data: Unset = UNSET,
-        value: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        value: MISSING[str] = UNSET,
     ) -> "Response":
         ...
 
@@ -7885,9 +7851,8 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        data: Union[
-            Unset,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        data: MISSING[
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -7932,8 +7897,8 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        data: Unset = UNSET,
-        value: Union[Unset, str] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        value: MISSING[str] = UNSET,
     ) -> "Response":
         ...
 
@@ -7943,9 +7908,8 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        data: Union[
-            Unset,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        data: MISSING[
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> "Response":

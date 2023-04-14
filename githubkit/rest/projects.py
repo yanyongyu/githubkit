@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, Unset, exclude_unset
+from githubkit.utils import UNSET, MISSING, exclude_unset
 
 from .types import (
     UserProjectsPostBodyType,
@@ -73,9 +73,9 @@ class ProjectsClient:
     def list_for_org(
         self,
         org: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Project]]":
         url = f"/orgs/{org}/projects"
 
@@ -103,9 +103,9 @@ class ProjectsClient:
     async def async_list_for_org(
         self,
         org: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Project]]":
         url = f"/orgs/{org}/projects"
 
@@ -141,18 +141,14 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        body: Union[Unset, str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[Project]":
         ...
 
     def create_for_org(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgProjectsPostBodyType] = UNSET,
-        **kwargs,
+        self, org: str, *, data: MISSING[OrgsOrgProjectsPostBodyType] = UNSET, **kwargs
     ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
@@ -193,18 +189,14 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        body: Union[Unset, str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[Project]":
         ...
 
     async def async_create_for_org(
-        self,
-        org: str,
-        *,
-        data: Union[Unset, OrgsOrgProjectsPostBodyType] = UNSET,
-        **kwargs,
+        self, org: str, *, data: MISSING[OrgsOrgProjectsPostBodyType] = UNSET, **kwargs
     ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
@@ -325,7 +317,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> "Response[ProjectCard]":
         ...
 
@@ -334,9 +326,9 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Unset = UNSET,
-        note: Union[Unset, Union[str, None]] = UNSET,
-        archived: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        note: MISSING[Union[str, None]] = UNSET,
+        archived: MISSING[bool] = UNSET,
     ) -> "Response[ProjectCard]":
         ...
 
@@ -344,7 +336,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
@@ -379,7 +371,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> "Response[ProjectCard]":
         ...
 
@@ -388,9 +380,9 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Unset = UNSET,
-        note: Union[Unset, Union[str, None]] = UNSET,
-        archived: Union[Unset, bool] = UNSET,
+        data: Literal[UNSET] = UNSET,
+        note: MISSING[Union[str, None]] = UNSET,
+        archived: MISSING[bool] = UNSET,
     ) -> "Response[ProjectCard]":
         ...
 
@@ -398,7 +390,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
@@ -439,9 +431,9 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         position: str,
-        column_id: Union[Unset, int] = UNSET,
+        column_id: MISSING[int] = UNSET,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         ...
 
@@ -449,7 +441,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
@@ -490,9 +482,9 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         position: str,
-        column_id: Union[Unset, int] = UNSET,
+        column_id: MISSING[int] = UNSET,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         ...
 
@@ -500,7 +492,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
@@ -625,7 +617,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -634,7 +626,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsColumnIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
@@ -673,7 +665,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -682,7 +674,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsColumnIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
@@ -713,11 +705,11 @@ class ProjectsClient:
     def list_cards(
         self,
         column_id: int,
-        archived_state: Union[
-            Unset, Literal["all", "archived", "not_archived"]
+        archived_state: MISSING[
+            Literal["all", "archived", "not_archived"]
         ] = "not_archived",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[ProjectCard]]":
         url = f"/projects/columns/{column_id}/cards"
 
@@ -746,11 +738,11 @@ class ProjectsClient:
     async def async_list_cards(
         self,
         column_id: int,
-        archived_state: Union[
-            Unset, Literal["all", "archived", "not_archived"]
+        archived_state: MISSING[
+            Literal["all", "archived", "not_archived"]
         ] = "not_archived",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[ProjectCard]]":
         url = f"/projects/columns/{column_id}/cards"
 
@@ -793,7 +785,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         note: Union[str, None],
     ) -> "Response[ProjectCard]":
         ...
@@ -803,7 +795,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         content_id: int,
         content_type: str,
     ) -> "Response[ProjectCard]":
@@ -813,12 +805,11 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
                 ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[ProjectCard]":
@@ -872,7 +863,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         note: Union[str, None],
     ) -> "Response[ProjectCard]":
         ...
@@ -882,7 +873,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         content_id: int,
         content_type: str,
     ) -> "Response[ProjectCard]":
@@ -892,12 +883,11 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Union[
-            Unset,
+        data: MISSING[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
                 ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
-            ],
+            ]
         ] = UNSET,
         **kwargs,
     ) -> "Response[ProjectCard]":
@@ -945,7 +935,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         position: str,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         ...
@@ -954,7 +944,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
@@ -994,7 +984,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         position: str,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         ...
@@ -1003,7 +993,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Union[Unset, ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
+        data: MISSING[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
@@ -1120,10 +1110,7 @@ class ProjectsClient:
 
     @overload
     def update(
-        self,
-        project_id: int,
-        *,
-        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+        self, project_id: int, *, data: MISSING[ProjectsProjectIdPatchBodyType] = UNSET
     ) -> "Response[Project]":
         ...
 
@@ -1132,14 +1119,14 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        body: Union[Unset, Union[str, None]] = UNSET,
-        state: Union[Unset, str] = UNSET,
-        organization_permission: Union[
-            Unset, Literal["read", "write", "admin", "none"]
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        body: MISSING[Union[str, None]] = UNSET,
+        state: MISSING[str] = UNSET,
+        organization_permission: MISSING[
+            Literal["read", "write", "admin", "none"]
         ] = UNSET,
-        private: Union[Unset, bool] = UNSET,
+        private: MISSING[bool] = UNSET,
     ) -> "Response[Project]":
         ...
 
@@ -1147,7 +1134,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
@@ -1179,10 +1166,7 @@ class ProjectsClient:
 
     @overload
     async def async_update(
-        self,
-        project_id: int,
-        *,
-        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+        self, project_id: int, *, data: MISSING[ProjectsProjectIdPatchBodyType] = UNSET
     ) -> "Response[Project]":
         ...
 
@@ -1191,14 +1175,14 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Unset = UNSET,
-        name: Union[Unset, str] = UNSET,
-        body: Union[Unset, Union[str, None]] = UNSET,
-        state: Union[Unset, str] = UNSET,
-        organization_permission: Union[
-            Unset, Literal["read", "write", "admin", "none"]
+        data: Literal[UNSET] = UNSET,
+        name: MISSING[str] = UNSET,
+        body: MISSING[Union[str, None]] = UNSET,
+        state: MISSING[str] = UNSET,
+        organization_permission: MISSING[
+            Literal["read", "write", "admin", "none"]
         ] = UNSET,
-        private: Union[Unset, bool] = UNSET,
+        private: MISSING[bool] = UNSET,
     ) -> "Response[Project]":
         ...
 
@@ -1206,7 +1190,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Union[Unset, ProjectsProjectIdPatchBodyType] = UNSET,
+        data: MISSING[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
@@ -1239,9 +1223,9 @@ class ProjectsClient:
     def list_collaborators(
         self,
         project_id: int,
-        affiliation: Union[Unset, Literal["outside", "direct", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        affiliation: MISSING[Literal["outside", "direct", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/projects/{project_id}/collaborators"
 
@@ -1272,9 +1256,9 @@ class ProjectsClient:
     async def async_list_collaborators(
         self,
         project_id: int,
-        affiliation: Union[Unset, Literal["outside", "direct", "all"]] = "all",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        affiliation: MISSING[Literal["outside", "direct", "all"]] = "all",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/projects/{project_id}/collaborators"
 
@@ -1308,8 +1292,8 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Union[
-            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
+        data: MISSING[
+            Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -1320,8 +1304,8 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["read", "write", "admin"]] = "write",
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["read", "write", "admin"]] = "write",
     ) -> "Response":
         ...
 
@@ -1330,8 +1314,8 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Union[
-            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
+        data: MISSING[
+            Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -1369,8 +1353,8 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Union[
-            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
+        data: MISSING[
+            Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
     ) -> "Response":
         ...
@@ -1381,8 +1365,8 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Unset = UNSET,
-        permission: Union[Unset, Literal["read", "write", "admin"]] = "write",
+        data: Literal[UNSET] = UNSET,
+        permission: MISSING[Literal["read", "write", "admin"]] = "write",
     ) -> "Response":
         ...
 
@@ -1391,8 +1375,8 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Union[
-            Unset, Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
+        data: MISSING[
+            Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
         **kwargs,
     ) -> "Response":
@@ -1521,8 +1505,8 @@ class ProjectsClient:
     def list_columns(
         self,
         project_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[ProjectColumn]]":
         url = f"/projects/{project_id}/columns"
 
@@ -1550,8 +1534,8 @@ class ProjectsClient:
     async def async_list_columns(
         self,
         project_id: int,
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[ProjectColumn]]":
         url = f"/projects/{project_id}/columns"
 
@@ -1587,7 +1571,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -1596,7 +1580,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Union[Unset, ProjectsProjectIdColumnsPostBodyType] = UNSET,
+        data: MISSING[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
@@ -1636,7 +1620,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -1645,7 +1629,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Union[Unset, ProjectsProjectIdColumnsPostBodyType] = UNSET,
+        data: MISSING[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
@@ -1678,9 +1662,9 @@ class ProjectsClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Project]]":
         url = f"/repos/{owner}/{repo}/projects"
 
@@ -1713,9 +1697,9 @@ class ProjectsClient:
         self,
         owner: str,
         repo: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Project]]":
         url = f"/repos/{owner}/{repo}/projects"
 
@@ -1756,9 +1740,9 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        body: Union[Unset, str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[Project]":
         ...
 
@@ -1767,7 +1751,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoProjectsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
@@ -1810,9 +1794,9 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        body: Union[Unset, str] = UNSET,
+        body: MISSING[str] = UNSET,
     ) -> "Response[Project]":
         ...
 
@@ -1821,7 +1805,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        data: Union[Unset, ReposOwnerRepoProjectsPostBodyType] = UNSET,
+        data: MISSING[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
@@ -1862,14 +1846,14 @@ class ProjectsClient:
     def create_for_authenticated_user(
         self,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        body: Union[Unset, Union[str, None]] = UNSET,
+        body: MISSING[Union[str, None]] = UNSET,
     ) -> "Response[Project]":
         ...
 
     def create_for_authenticated_user(
-        self, *, data: Union[Unset, UserProjectsPostBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[UserProjectsPostBodyType] = UNSET, **kwargs
     ) -> "Response[Project]":
         url = "/user/projects"
 
@@ -1907,14 +1891,14 @@ class ProjectsClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        data: Unset = UNSET,
+        data: Literal[UNSET] = UNSET,
         name: str,
-        body: Union[Unset, Union[str, None]] = UNSET,
+        body: MISSING[Union[str, None]] = UNSET,
     ) -> "Response[Project]":
         ...
 
     async def async_create_for_authenticated_user(
-        self, *, data: Union[Unset, UserProjectsPostBodyType] = UNSET, **kwargs
+        self, *, data: MISSING[UserProjectsPostBodyType] = UNSET, **kwargs
     ) -> "Response[Project]":
         url = "/user/projects"
 
@@ -1945,9 +1929,9 @@ class ProjectsClient:
     def list_for_user(
         self,
         username: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Project]]":
         url = f"/users/{username}/projects"
 
@@ -1975,9 +1959,9 @@ class ProjectsClient:
     async def async_list_for_user(
         self,
         username: str,
-        state: Union[Unset, Literal["open", "closed", "all"]] = "open",
-        per_page: Union[Unset, int] = 30,
-        page: Union[Unset, int] = 1,
+        state: MISSING[Literal["open", "closed", "all"]] = "open",
+        per_page: MISSING[int] = 30,
+        page: MISSING[int] = 1,
     ) -> "Response[List[Project]]":
         url = f"/users/{username}/projects"
 
