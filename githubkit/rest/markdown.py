@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .models import MarkdownPostBody
 from .types import MarkdownPostBodyType
@@ -38,13 +38,13 @@ class MarkdownClient:
         *,
         data: Literal[UNSET] = UNSET,
         text: str,
-        mode: MISSING[Literal["markdown", "gfm"]] = "markdown",
-        context: MISSING[str] = UNSET,
+        mode: Missing[Literal["markdown", "gfm"]] = "markdown",
+        context: Missing[str] = UNSET,
     ) -> "Response[str]":
         ...
 
     def render(
-        self, *, data: MISSING[MarkdownPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[MarkdownPostBodyType] = UNSET, **kwargs
     ) -> "Response[str]":
         url = "/markdown"
 
@@ -77,13 +77,13 @@ class MarkdownClient:
         *,
         data: Literal[UNSET] = UNSET,
         text: str,
-        mode: MISSING[Literal["markdown", "gfm"]] = "markdown",
-        context: MISSING[str] = UNSET,
+        mode: Missing[Literal["markdown", "gfm"]] = "markdown",
+        context: Missing[str] = UNSET,
     ) -> "Response[str]":
         ...
 
     async def async_render(
-        self, *, data: MISSING[MarkdownPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[MarkdownPostBodyType] = UNSET, **kwargs
     ) -> "Response[str]":
         url = "/markdown"
 

@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import InteractionLimitType
 from .models import (
@@ -86,14 +86,14 @@ class InteractionsClient:
         *,
         data: Literal[UNSET] = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
-        expiry: MISSING[
+        expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
     def set_restrictions_for_org(
-        self, org: str, *, data: MISSING[InteractionLimitType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
     ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
@@ -132,14 +132,14 @@ class InteractionsClient:
         *,
         data: Literal[UNSET] = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
-        expiry: MISSING[
+        expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
     async def async_set_restrictions_for_org(
-        self, org: str, *, data: MISSING[InteractionLimitType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
     ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
@@ -253,7 +253,7 @@ class InteractionsClient:
         *,
         data: Literal[UNSET] = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
-        expiry: MISSING[
+        expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
@@ -264,7 +264,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[InteractionLimitType] = UNSET,
+        data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
@@ -303,7 +303,7 @@ class InteractionsClient:
         *,
         data: Literal[UNSET] = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
-        expiry: MISSING[
+        expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
@@ -314,7 +314,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[InteractionLimitType] = UNSET,
+        data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
@@ -423,14 +423,14 @@ class InteractionsClient:
         *,
         data: Literal[UNSET] = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
-        expiry: MISSING[
+        expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
     def set_restrictions_for_authenticated_user(
-        self, *, data: MISSING[InteractionLimitType] = UNSET, **kwargs
+        self, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
     ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 
@@ -468,14 +468,14 @@ class InteractionsClient:
         *,
         data: Literal[UNSET] = UNSET,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
-        expiry: MISSING[
+        expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
     async def async_set_restrictions_for_authenticated_user(
-        self, *, data: MISSING[InteractionLimitType] = UNSET, **kwargs
+        self, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
     ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 

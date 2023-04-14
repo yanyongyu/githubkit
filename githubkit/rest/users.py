@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     UserPatchBodyType,
@@ -102,7 +102,7 @@ class UsersClient:
 
     @overload
     def update_authenticated(
-        self, *, data: MISSING[UserPatchBodyType] = UNSET
+        self, *, data: Missing[UserPatchBodyType] = UNSET
     ) -> "Response[PrivateUser]":
         ...
 
@@ -111,19 +111,19 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        email: MISSING[str] = UNSET,
-        blog: MISSING[str] = UNSET,
-        twitter_username: MISSING[Union[str, None]] = UNSET,
-        company: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        hireable: MISSING[bool] = UNSET,
-        bio: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
+        email: Missing[str] = UNSET,
+        blog: Missing[str] = UNSET,
+        twitter_username: Missing[Union[str, None]] = UNSET,
+        company: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        hireable: Missing[bool] = UNSET,
+        bio: Missing[str] = UNSET,
     ) -> "Response[PrivateUser]":
         ...
 
     def update_authenticated(
-        self, *, data: MISSING[UserPatchBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserPatchBodyType] = UNSET, **kwargs
     ) -> "Response[PrivateUser]":
         url = "/user"
 
@@ -154,7 +154,7 @@ class UsersClient:
 
     @overload
     async def async_update_authenticated(
-        self, *, data: MISSING[UserPatchBodyType] = UNSET
+        self, *, data: Missing[UserPatchBodyType] = UNSET
     ) -> "Response[PrivateUser]":
         ...
 
@@ -163,19 +163,19 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        email: MISSING[str] = UNSET,
-        blog: MISSING[str] = UNSET,
-        twitter_username: MISSING[Union[str, None]] = UNSET,
-        company: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        hireable: MISSING[bool] = UNSET,
-        bio: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
+        email: Missing[str] = UNSET,
+        blog: Missing[str] = UNSET,
+        twitter_username: Missing[Union[str, None]] = UNSET,
+        company: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        hireable: Missing[bool] = UNSET,
+        bio: Missing[str] = UNSET,
     ) -> "Response[PrivateUser]":
         ...
 
     async def async_update_authenticated(
-        self, *, data: MISSING[UserPatchBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserPatchBodyType] = UNSET, **kwargs
     ) -> "Response[PrivateUser]":
         url = "/user"
 
@@ -206,8 +206,8 @@ class UsersClient:
 
     def list_blocked_by_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/blocks"
 
@@ -235,8 +235,8 @@ class UsersClient:
 
     async def async_list_blocked_by_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/blocks"
 
@@ -406,7 +406,7 @@ class UsersClient:
         ...
 
     def set_primary_email_visibility_for_authenticated_user(
-        self, *, data: MISSING[UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
@@ -451,7 +451,7 @@ class UsersClient:
         ...
 
     async def async_set_primary_email_visibility_for_authenticated_user(
-        self, *, data: MISSING[UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
@@ -482,8 +482,8 @@ class UsersClient:
 
     def list_emails_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
@@ -511,8 +511,8 @@ class UsersClient:
 
     async def async_list_emails_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
@@ -542,7 +542,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response[List[Email]]":
         ...
 
@@ -558,7 +558,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
@@ -592,7 +592,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response[List[Email]]":
         ...
 
@@ -608,7 +608,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
@@ -642,7 +642,7 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response":
         ...
 
@@ -658,7 +658,7 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response":
         url = "/user/emails"
@@ -691,7 +691,7 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response":
         ...
 
@@ -707,7 +707,7 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        data: MISSING[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
+        data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response":
         url = "/user/emails"
@@ -738,8 +738,8 @@ class UsersClient:
 
     def list_followers_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/followers"
 
@@ -766,8 +766,8 @@ class UsersClient:
 
     async def async_list_followers_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/followers"
 
@@ -794,8 +794,8 @@ class UsersClient:
 
     def list_followed_by_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/following"
 
@@ -822,8 +822,8 @@ class UsersClient:
 
     async def async_list_followed_by_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/following"
 
@@ -976,8 +976,8 @@ class UsersClient:
 
     def list_gpg_keys_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GpgKey]]":
         url = "/user/gpg_keys"
 
@@ -1005,8 +1005,8 @@ class UsersClient:
 
     async def async_list_gpg_keys_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GpgKey]]":
         url = "/user/gpg_keys"
 
@@ -1043,13 +1043,13 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
         armored_public_key: str,
     ) -> "Response[GpgKey]":
         ...
 
     def create_gpg_key_for_authenticated_user(
-        self, *, data: MISSING[UserGpgKeysPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserGpgKeysPostBodyType] = UNSET, **kwargs
     ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
@@ -1089,13 +1089,13 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
         armored_public_key: str,
     ) -> "Response[GpgKey]":
         ...
 
     async def async_create_gpg_key_for_authenticated_user(
-        self, *, data: MISSING[UserGpgKeysPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserGpgKeysPostBodyType] = UNSET, **kwargs
     ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
@@ -1214,8 +1214,8 @@ class UsersClient:
 
     def list_public_ssh_keys_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Key]]":
         url = "/user/keys"
 
@@ -1243,8 +1243,8 @@ class UsersClient:
 
     async def async_list_public_ssh_keys_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Key]]":
         url = "/user/keys"
 
@@ -1281,13 +1281,13 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        title: MISSING[str] = UNSET,
+        title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[Key]":
         ...
 
     def create_public_ssh_key_for_authenticated_user(
-        self, *, data: MISSING[UserKeysPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserKeysPostBodyType] = UNSET, **kwargs
     ) -> "Response[Key]":
         url = "/user/keys"
 
@@ -1327,13 +1327,13 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        title: MISSING[str] = UNSET,
+        title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[Key]":
         ...
 
     async def async_create_public_ssh_key_for_authenticated_user(
-        self, *, data: MISSING[UserKeysPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserKeysPostBodyType] = UNSET, **kwargs
     ) -> "Response[Key]":
         url = "/user/keys"
 
@@ -1450,8 +1450,8 @@ class UsersClient:
 
     def list_public_emails_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Email]]":
         url = "/user/public_emails"
 
@@ -1479,8 +1479,8 @@ class UsersClient:
 
     async def async_list_public_emails_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Email]]":
         url = "/user/public_emails"
 
@@ -1508,8 +1508,8 @@ class UsersClient:
 
     def list_social_accounts_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
@@ -1537,8 +1537,8 @@ class UsersClient:
 
     async def async_list_social_accounts_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
@@ -1580,7 +1580,7 @@ class UsersClient:
         ...
 
     def add_social_account_for_authenticated_user(
-        self, *, data: MISSING[UserSocialAccountsPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserSocialAccountsPostBodyType] = UNSET, **kwargs
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
@@ -1625,7 +1625,7 @@ class UsersClient:
         ...
 
     async def async_add_social_account_for_authenticated_user(
-        self, *, data: MISSING[UserSocialAccountsPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserSocialAccountsPostBodyType] = UNSET, **kwargs
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
@@ -1670,7 +1670,7 @@ class UsersClient:
         ...
 
     def delete_social_account_for_authenticated_user(
-        self, *, data: MISSING[UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
     ) -> "Response":
         url = "/user/social_accounts"
 
@@ -1714,7 +1714,7 @@ class UsersClient:
         ...
 
     async def async_delete_social_account_for_authenticated_user(
-        self, *, data: MISSING[UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
     ) -> "Response":
         url = "/user/social_accounts"
 
@@ -1744,8 +1744,8 @@ class UsersClient:
 
     def list_ssh_signing_keys_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SshSigningKey]]":
         url = "/user/ssh_signing_keys"
 
@@ -1773,8 +1773,8 @@ class UsersClient:
 
     async def async_list_ssh_signing_keys_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SshSigningKey]]":
         url = "/user/ssh_signing_keys"
 
@@ -1811,13 +1811,13 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        title: MISSING[str] = UNSET,
+        title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[SshSigningKey]":
         ...
 
     def create_ssh_signing_key_for_authenticated_user(
-        self, *, data: MISSING[UserSshSigningKeysPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserSshSigningKeysPostBodyType] = UNSET, **kwargs
     ) -> "Response[SshSigningKey]":
         url = "/user/ssh_signing_keys"
 
@@ -1857,13 +1857,13 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        title: MISSING[str] = UNSET,
+        title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[SshSigningKey]":
         ...
 
     async def async_create_ssh_signing_key_for_authenticated_user(
-        self, *, data: MISSING[UserSshSigningKeysPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserSshSigningKeysPostBodyType] = UNSET, **kwargs
     ) -> "Response[SshSigningKey]":
         url = "/user/ssh_signing_keys"
 
@@ -1980,8 +1980,8 @@ class UsersClient:
 
     def list(
         self,
-        since: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        since: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[SimpleUser]]":
         url = "/users"
 
@@ -2004,8 +2004,8 @@ class UsersClient:
 
     async def async_list(
         self,
-        since: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        since: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[SimpleUser]]":
         url = "/users"
 
@@ -2069,8 +2069,8 @@ class UsersClient:
     def list_followers_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/followers"
 
@@ -2094,8 +2094,8 @@ class UsersClient:
     async def async_list_followers_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/followers"
 
@@ -2119,8 +2119,8 @@ class UsersClient:
     def list_following_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/following"
 
@@ -2144,8 +2144,8 @@ class UsersClient:
     async def async_list_following_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/following"
 
@@ -2205,8 +2205,8 @@ class UsersClient:
     def list_gpg_keys_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GpgKey]]":
         url = f"/users/{username}/gpg_keys"
 
@@ -2230,8 +2230,8 @@ class UsersClient:
     async def async_list_gpg_keys_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GpgKey]]":
         url = f"/users/{username}/gpg_keys"
 
@@ -2255,10 +2255,10 @@ class UsersClient:
     def get_context_for_user(
         self,
         username: str,
-        subject_type: MISSING[
+        subject_type: Missing[
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
-        subject_id: MISSING[str] = UNSET,
+        subject_id: Missing[str] = UNSET,
     ) -> "Response[Hovercard]":
         url = f"/users/{username}/hovercard"
 
@@ -2286,10 +2286,10 @@ class UsersClient:
     async def async_get_context_for_user(
         self,
         username: str,
-        subject_type: MISSING[
+        subject_type: Missing[
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
-        subject_id: MISSING[str] = UNSET,
+        subject_id: Missing[str] = UNSET,
     ) -> "Response[Hovercard]":
         url = f"/users/{username}/hovercard"
 
@@ -2317,8 +2317,8 @@ class UsersClient:
     def list_public_keys_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[KeySimple]]":
         url = f"/users/{username}/keys"
 
@@ -2342,8 +2342,8 @@ class UsersClient:
     async def async_list_public_keys_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[KeySimple]]":
         url = f"/users/{username}/keys"
 
@@ -2367,8 +2367,8 @@ class UsersClient:
     def list_social_accounts_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SocialAccount]]":
         url = f"/users/{username}/social_accounts"
 
@@ -2392,8 +2392,8 @@ class UsersClient:
     async def async_list_social_accounts_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SocialAccount]]":
         url = f"/users/{username}/social_accounts"
 
@@ -2417,8 +2417,8 @@ class UsersClient:
     def list_ssh_signing_keys_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SshSigningKey]]":
         url = f"/users/{username}/ssh_signing_keys"
 
@@ -2442,8 +2442,8 @@ class UsersClient:
     async def async_list_ssh_signing_keys_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SshSigningKey]]":
         url = f"/users/{username}/ssh_signing_keys"
 

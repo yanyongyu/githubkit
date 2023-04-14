@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .models import (
     BasicError,
@@ -41,10 +41,10 @@ class SearchClient:
     def code(
         self,
         q: str,
-        sort: MISSING[Literal["indexed"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["indexed"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchCodeGetResponse200]":
         url = "/search/code"
 
@@ -76,10 +76,10 @@ class SearchClient:
     async def async_code(
         self,
         q: str,
-        sort: MISSING[Literal["indexed"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["indexed"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchCodeGetResponse200]":
         url = "/search/code"
 
@@ -111,10 +111,10 @@ class SearchClient:
     def commits(
         self,
         q: str,
-        sort: MISSING[Literal["author-date", "committer-date"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["author-date", "committer-date"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchCommitsGetResponse200]":
         url = "/search/commits"
 
@@ -141,10 +141,10 @@ class SearchClient:
     async def async_commits(
         self,
         q: str,
-        sort: MISSING[Literal["author-date", "committer-date"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["author-date", "committer-date"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchCommitsGetResponse200]":
         url = "/search/commits"
 
@@ -171,7 +171,7 @@ class SearchClient:
     def issues_and_pull_requests(
         self,
         q: str,
-        sort: MISSING[
+        sort: Missing[
             Literal[
                 "comments",
                 "reactions",
@@ -186,9 +186,9 @@ class SearchClient:
                 "updated",
             ]
         ] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchIssuesGetResponse200]":
         url = "/search/issues"
 
@@ -220,7 +220,7 @@ class SearchClient:
     async def async_issues_and_pull_requests(
         self,
         q: str,
-        sort: MISSING[
+        sort: Missing[
             Literal[
                 "comments",
                 "reactions",
@@ -235,9 +235,9 @@ class SearchClient:
                 "updated",
             ]
         ] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchIssuesGetResponse200]":
         url = "/search/issues"
 
@@ -270,10 +270,10 @@ class SearchClient:
         self,
         repository_id: int,
         q: str,
-        sort: MISSING[Literal["created", "updated"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["created", "updated"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchLabelsGetResponse200]":
         url = "/search/labels"
 
@@ -307,10 +307,10 @@ class SearchClient:
         self,
         repository_id: int,
         q: str,
-        sort: MISSING[Literal["created", "updated"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["created", "updated"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchLabelsGetResponse200]":
         url = "/search/labels"
 
@@ -343,12 +343,12 @@ class SearchClient:
     def repos(
         self,
         q: str,
-        sort: MISSING[
+        sort: Missing[
             Literal["stars", "forks", "help-wanted-issues", "updated"]
         ] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchRepositoriesGetResponse200]":
         url = "/search/repositories"
 
@@ -379,12 +379,12 @@ class SearchClient:
     async def async_repos(
         self,
         q: str,
-        sort: MISSING[
+        sort: Missing[
             Literal["stars", "forks", "help-wanted-issues", "updated"]
         ] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchRepositoriesGetResponse200]":
         url = "/search/repositories"
 
@@ -415,8 +415,8 @@ class SearchClient:
     def topics(
         self,
         q: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchTopicsGetResponse200]":
         url = "/search/topics"
 
@@ -441,8 +441,8 @@ class SearchClient:
     async def async_topics(
         self,
         q: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchTopicsGetResponse200]":
         url = "/search/topics"
 
@@ -467,10 +467,10 @@ class SearchClient:
     def users(
         self,
         q: str,
-        sort: MISSING[Literal["followers", "repositories", "joined"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["followers", "repositories", "joined"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchUsersGetResponse200]":
         url = "/search/users"
 
@@ -501,10 +501,10 @@ class SearchClient:
     async def async_users(
         self,
         q: str,
-        sort: MISSING[Literal["followers", "repositories", "joined"]] = UNSET,
-        order: MISSING[Literal["desc", "asc"]] = "desc",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["followers", "repositories", "joined"]] = UNSET,
+        order: Missing[Literal["desc", "asc"]] = "desc",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[SearchUsersGetResponse200]":
         url = "/search/users"
 

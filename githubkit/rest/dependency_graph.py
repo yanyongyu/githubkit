@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     MetadataType,
@@ -46,7 +46,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         basehead: str,
-        name: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
     ) -> "Response[List[DependencyGraphDiffItems]]":
         url = f"/repos/{owner}/{repo}/dependency-graph/compare/{basehead}"
 
@@ -75,7 +75,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         basehead: str,
-        name: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
     ) -> "Response[List[DependencyGraphDiffItems]]":
         url = f"/repos/{owner}/{repo}/dependency-graph/compare/{basehead}"
 
@@ -161,14 +161,14 @@ class DependencyGraphClient:
         sha: str,
         ref: str,
         detector: SnapshotPropDetectorType,
-        metadata: MISSING[MetadataType] = UNSET,
-        manifests: MISSING[SnapshotPropManifestsType] = UNSET,
+        metadata: Missing[MetadataType] = UNSET,
+        manifests: Missing[SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         ...
 
     def create_repository_snapshot(
-        self, owner: str, repo: str, *, data: MISSING[SnapshotType] = UNSET, **kwargs
+        self, owner: str, repo: str, *, data: Missing[SnapshotType] = UNSET, **kwargs
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
@@ -209,14 +209,14 @@ class DependencyGraphClient:
         sha: str,
         ref: str,
         detector: SnapshotPropDetectorType,
-        metadata: MISSING[MetadataType] = UNSET,
-        manifests: MISSING[SnapshotPropManifestsType] = UNSET,
+        metadata: Missing[MetadataType] = UNSET,
+        manifests: Missing[SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         ...
 
     async def async_create_repository_snapshot(
-        self, owner: str, repo: str, *, data: MISSING[SnapshotType] = UNSET, **kwargs
+        self, owner: str, repo: str, *, data: Missing[SnapshotType] = UNSET, **kwargs
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 

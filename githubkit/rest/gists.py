@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     GistsPostBodyType,
@@ -53,9 +53,9 @@ class GistsClient:
 
     def list(
         self,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = "/gists"
 
@@ -82,9 +82,9 @@ class GistsClient:
 
     async def async_list(
         self,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = "/gists"
 
@@ -118,14 +118,14 @@ class GistsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        description: MISSING[str] = UNSET,
+        description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
-        public: MISSING[Union[bool, Literal["true", "false"]]] = UNSET,
+        public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
     def create(
-        self, *, data: MISSING[GistsPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[GistsPostBodyType] = UNSET, **kwargs
     ) -> "Response[GistSimple]":
         url = "/gists"
 
@@ -162,14 +162,14 @@ class GistsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
-        description: MISSING[str] = UNSET,
+        description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
-        public: MISSING[Union[bool, Literal["true", "false"]]] = UNSET,
+        public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
     async def async_create(
-        self, *, data: MISSING[GistsPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[GistsPostBodyType] = UNSET, **kwargs
     ) -> "Response[GistSimple]":
         url = "/gists"
 
@@ -199,9 +199,9 @@ class GistsClient:
 
     def list_public(
         self,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/public"
 
@@ -229,9 +229,9 @@ class GistsClient:
 
     async def async_list_public(
         self,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/public"
 
@@ -259,9 +259,9 @@ class GistsClient:
 
     def list_starred(
         self,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/starred"
 
@@ -289,9 +289,9 @@ class GistsClient:
 
     async def async_list_starred(
         self,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/starred"
 
@@ -417,7 +417,7 @@ class GistsClient:
         *,
         data: Literal[UNSET] = UNSET,
         description: str,
-        files: MISSING[GistsGistIdPatchBodyPropFilesType] = UNSET,
+        files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
@@ -427,7 +427,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
-        description: MISSING[str] = UNSET,
+        description: Missing[str] = UNSET,
         files: GistsGistIdPatchBodyPropFilesType,
     ) -> "Response[GistSimple]":
         ...
@@ -436,7 +436,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 GistsGistIdPatchBodyAnyof0Type,
                 None,
@@ -492,7 +492,7 @@ class GistsClient:
         *,
         data: Literal[UNSET] = UNSET,
         description: str,
-        files: MISSING[GistsGistIdPatchBodyPropFilesType] = UNSET,
+        files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
@@ -502,7 +502,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
-        description: MISSING[str] = UNSET,
+        description: Missing[str] = UNSET,
         files: GistsGistIdPatchBodyPropFilesType,
     ) -> "Response[GistSimple]":
         ...
@@ -511,7 +511,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 GistsGistIdPatchBodyAnyof0Type,
                 None,
@@ -552,8 +552,8 @@ class GistsClient:
     def list_comments(
         self,
         gist_id: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GistComment]]":
         url = f"/gists/{gist_id}/comments"
 
@@ -581,8 +581,8 @@ class GistsClient:
     async def async_list_comments(
         self,
         gist_id: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GistComment]]":
         url = f"/gists/{gist_id}/comments"
 
@@ -627,7 +627,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: MISSING[GistsGistIdCommentsPostBodyType] = UNSET,
+        data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
@@ -675,7 +675,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: MISSING[GistsGistIdCommentsPostBodyType] = UNSET,
+        data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
@@ -815,7 +815,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        data: MISSING[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
+        data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
@@ -868,7 +868,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        data: MISSING[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
+        data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
@@ -898,8 +898,8 @@ class GistsClient:
     def list_commits(
         self,
         gist_id: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GistCommit]]":
         url = f"/gists/{gist_id}/commits"
 
@@ -927,8 +927,8 @@ class GistsClient:
     async def async_list_commits(
         self,
         gist_id: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GistCommit]]":
         url = f"/gists/{gist_id}/commits"
 
@@ -956,8 +956,8 @@ class GistsClient:
     def list_forks(
         self,
         gist_id: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GistSimple]]":
         url = f"/gists/{gist_id}/forks"
 
@@ -985,8 +985,8 @@ class GistsClient:
     async def async_list_forks(
         self,
         gist_id: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[GistSimple]]":
         url = f"/gists/{gist_id}/forks"
 
@@ -1224,9 +1224,9 @@ class GistsClient:
     def list_for_user(
         self,
         username: str,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = f"/users/{username}/gists"
 
@@ -1254,9 +1254,9 @@ class GistsClient:
     async def async_list_for_user(
         self,
         username: str,
-        since: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        since: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[BaseGist]]":
         url = f"/users/{username}/gists"
 

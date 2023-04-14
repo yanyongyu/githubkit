@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .models import Package, BasicError, PackageVersion
 
@@ -75,9 +75,9 @@ class PackagesClient:
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
-        visibility: MISSING[Literal["public", "private", "internal"]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/packages"
 
@@ -110,9 +110,9 @@ class PackagesClient:
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
-        visibility: MISSING[Literal["public", "private", "internal"]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/packages"
 
@@ -238,7 +238,7 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
-        token: MISSING[str] = UNSET,
+        token: Missing[str] = UNSET,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/restore"
 
@@ -269,7 +269,7 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
-        token: MISSING[str] = UNSET,
+        token: Missing[str] = UNSET,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/restore"
 
@@ -300,9 +300,9 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        state: MISSING[Literal["active", "deleted"]] = "active",
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["active", "deleted"]] = "active",
     ) -> "Response[List[PackageVersion]]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions"
 
@@ -336,9 +336,9 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        state: MISSING[Literal["active", "deleted"]] = "active",
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["active", "deleted"]] = "active",
     ) -> "Response[List[PackageVersion]]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions"
 
@@ -550,9 +550,9 @@ class PackagesClient:
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
-        visibility: MISSING[Literal["public", "private", "internal"]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[Package]]":
         url = "/user/packages"
 
@@ -581,9 +581,9 @@ class PackagesClient:
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
-        visibility: MISSING[Literal["public", "private", "internal"]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[Package]]":
         url = "/user/packages"
 
@@ -701,7 +701,7 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
-        token: MISSING[str] = UNSET,
+        token: Missing[str] = UNSET,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/restore"
 
@@ -731,7 +731,7 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
-        token: MISSING[str] = UNSET,
+        token: Missing[str] = UNSET,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/restore"
 
@@ -761,9 +761,9 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        state: MISSING[Literal["active", "deleted"]] = "active",
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["active", "deleted"]] = "active",
     ) -> "Response[List[PackageVersion]]":
         url = f"/user/packages/{package_type}/{package_name}/versions"
 
@@ -796,9 +796,9 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        state: MISSING[Literal["active", "deleted"]] = "active",
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["active", "deleted"]] = "active",
     ) -> "Response[List[PackageVersion]]":
         url = f"/user/packages/{package_type}/{package_name}/versions"
 
@@ -1015,9 +1015,9 @@ class PackagesClient:
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
-        visibility: MISSING[Literal["public", "private", "internal"]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/packages"
 
@@ -1050,9 +1050,9 @@ class PackagesClient:
         package_type: Literal[
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
-        visibility: MISSING[Literal["public", "private", "internal"]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/packages"
 
@@ -1178,7 +1178,7 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
-        token: MISSING[str] = UNSET,
+        token: Missing[str] = UNSET,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/restore"
 
@@ -1209,7 +1209,7 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
-        token: MISSING[str] = UNSET,
+        token: Missing[str] = UNSET,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/restore"
 

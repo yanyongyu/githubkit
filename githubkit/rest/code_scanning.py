@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     CodeScanningDefaultSetupUpdateType,
@@ -53,16 +53,16 @@ class CodeScanningClient:
     def list_alerts_for_org(
         self,
         org: str,
-        tool_name: MISSING[str] = UNSET,
-        tool_guid: MISSING[Union[str, None]] = UNSET,
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        state: MISSING[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        severity: MISSING[
+        tool_name: Missing[str] = UNSET,
+        tool_guid: Missing[Union[str, None]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
     ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
@@ -100,16 +100,16 @@ class CodeScanningClient:
     async def async_list_alerts_for_org(
         self,
         org: str,
-        tool_name: MISSING[str] = UNSET,
-        tool_guid: MISSING[Union[str, None]] = UNSET,
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        state: MISSING[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        severity: MISSING[
+        tool_name: Missing[str] = UNSET,
+        tool_guid: Missing[Union[str, None]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
     ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
@@ -148,15 +148,15 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
-        tool_name: MISSING[str] = UNSET,
-        tool_guid: MISSING[Union[str, None]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        ref: MISSING[str] = UNSET,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        state: MISSING[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
-        severity: MISSING[
+        tool_name: Missing[str] = UNSET,
+        tool_guid: Missing[Union[str, None]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        ref: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created", "updated"]] = "created",
+        state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
+        severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
     ) -> "Response[List[CodeScanningAlertItems]]":
@@ -195,15 +195,15 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
-        tool_name: MISSING[str] = UNSET,
-        tool_guid: MISSING[Union[str, None]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        ref: MISSING[str] = UNSET,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        state: MISSING[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
-        severity: MISSING[
+        tool_name: Missing[str] = UNSET,
+        tool_guid: Missing[Union[str, None]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        ref: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created", "updated"]] = "created",
+        state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
+        severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
     ) -> "Response[List[CodeScanningAlertItems]]":
@@ -306,10 +306,10 @@ class CodeScanningClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["open", "dismissed"],
-        dismissed_reason: MISSING[
+        dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
-        dismissed_comment: MISSING[Union[str, None]] = UNSET,
+        dismissed_comment: Missing[Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAlert]":
         ...
 
@@ -319,7 +319,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: MISSING[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -368,10 +368,10 @@ class CodeScanningClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["open", "dismissed"],
-        dismissed_reason: MISSING[
+        dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
-        dismissed_comment: MISSING[Union[str, None]] = UNSET,
+        dismissed_comment: Missing[Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAlert]":
         ...
 
@@ -381,7 +381,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: MISSING[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -415,9 +415,9 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        ref: MISSING[str] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        ref: Missing[str] = UNSET,
     ) -> "Response[List[CodeScanningAlertInstance]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"
 
@@ -449,9 +449,9 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        ref: MISSING[str] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        ref: Missing[str] = UNSET,
     ) -> "Response[List[CodeScanningAlertInstance]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"
 
@@ -482,14 +482,14 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
-        tool_name: MISSING[str] = UNSET,
-        tool_guid: MISSING[Union[str, None]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        ref: MISSING[str] = UNSET,
-        sarif_id: MISSING[str] = UNSET,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        sort: MISSING[Literal["created"]] = "created",
+        tool_name: Missing[str] = UNSET,
+        tool_guid: Missing[Union[str, None]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        ref: Missing[str] = UNSET,
+        sarif_id: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created"]] = "created",
     ) -> "Response[List[CodeScanningAnalysis]]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -525,14 +525,14 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
-        tool_name: MISSING[str] = UNSET,
-        tool_guid: MISSING[Union[str, None]] = UNSET,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        ref: MISSING[str] = UNSET,
-        sarif_id: MISSING[str] = UNSET,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        sort: MISSING[Literal["created"]] = "created",
+        tool_name: Missing[str] = UNSET,
+        tool_guid: Missing[Union[str, None]] = UNSET,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        ref: Missing[str] = UNSET,
+        sarif_id: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created"]] = "created",
     ) -> "Response[List[CodeScanningAnalysis]]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -617,7 +617,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         analysis_id: int,
-        confirm_delete: MISSING[Union[str, None]] = UNSET,
+        confirm_delete: Missing[Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAnalysisDeletion]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
@@ -648,7 +648,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         analysis_id: int,
-        confirm_delete: MISSING[Union[str, None]] = UNSET,
+        confirm_delete: Missing[Union[str, None]] = UNSET,
     ) -> "Response[CodeScanningAnalysisDeletion]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
@@ -828,7 +828,7 @@ class CodeScanningClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["configured", "not-configured"],
-        query_suite: MISSING[Literal["default", "extended"]] = UNSET,
+        query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -837,7 +837,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[CodeScanningDefaultSetupUpdateType] = UNSET,
+        data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
@@ -881,7 +881,7 @@ class CodeScanningClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["configured", "not-configured"],
-        query_suite: MISSING[Literal["default", "extended"]] = UNSET,
+        query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -890,7 +890,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[CodeScanningDefaultSetupUpdateType] = UNSET,
+        data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
@@ -940,10 +940,10 @@ class CodeScanningClient:
         commit_sha: str,
         ref: str,
         sarif: str,
-        checkout_uri: MISSING[str] = UNSET,
-        started_at: MISSING[datetime] = UNSET,
-        tool_name: MISSING[str] = UNSET,
-        validate_: MISSING[bool] = UNSET,
+        checkout_uri: Missing[str] = UNSET,
+        started_at: Missing[datetime] = UNSET,
+        tool_name: Missing[str] = UNSET,
+        validate_: Missing[bool] = UNSET,
     ) -> "Response[CodeScanningSarifsReceipt]":
         ...
 
@@ -952,7 +952,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
@@ -1001,10 +1001,10 @@ class CodeScanningClient:
         commit_sha: str,
         ref: str,
         sarif: str,
-        checkout_uri: MISSING[str] = UNSET,
-        started_at: MISSING[datetime] = UNSET,
-        tool_name: MISSING[str] = UNSET,
-        validate_: MISSING[bool] = UNSET,
+        checkout_uri: Missing[str] = UNSET,
+        started_at: Missing[datetime] = UNSET,
+        tool_name: Missing[str] = UNSET,
+        validate_: Missing[bool] = UNSET,
     ) -> "Response[CodeScanningSarifsReceipt]":
         ...
 
@@ -1013,7 +1013,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"

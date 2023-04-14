@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .models import License, BasicError, LicenseSimple, LicenseContent
 
@@ -29,9 +29,9 @@ class LicensesClient:
 
     def get_all_commonly_used(
         self,
-        featured: MISSING[bool] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        featured: Missing[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[LicenseSimple]]":
         url = "/licenses"
 
@@ -55,9 +55,9 @@ class LicensesClient:
 
     async def async_get_all_commonly_used(
         self,
-        featured: MISSING[bool] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        featured: Missing[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[LicenseSimple]]":
         url = "/licenses"
 

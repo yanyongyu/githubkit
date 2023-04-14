@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
@@ -57,13 +57,13 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -91,13 +91,13 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -153,7 +153,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -216,7 +216,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -290,13 +290,13 @@ class ReactionsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
@@ -323,13 +323,13 @@ class ReactionsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
@@ -382,7 +382,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -441,7 +441,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -512,13 +512,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
@@ -548,13 +548,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
@@ -610,7 +610,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
@@ -668,7 +668,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
@@ -738,13 +738,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
@@ -774,13 +774,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
@@ -836,7 +836,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -898,7 +898,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -972,13 +972,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         issue_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
@@ -1009,13 +1009,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         issue_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
@@ -1072,7 +1072,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        data: MISSING[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
@@ -1130,7 +1130,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        data: MISSING[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
@@ -1200,13 +1200,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
@@ -1236,13 +1236,13 @@ class ReactionsClient:
         owner: str,
         repo: str,
         comment_id: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
@@ -1298,7 +1298,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -1358,7 +1358,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -1434,11 +1434,11 @@ class ReactionsClient:
         owner: str,
         repo: str,
         release_id: int,
-        content: MISSING[
+        content: Missing[
             Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
@@ -1468,11 +1468,11 @@ class ReactionsClient:
         owner: str,
         repo: str,
         release_id: int,
-        content: MISSING[
+        content: Missing[
             Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
@@ -1526,7 +1526,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
@@ -1582,7 +1582,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
@@ -1652,13 +1652,13 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -1685,13 +1685,13 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -1744,7 +1744,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -1804,7 +1804,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -1837,13 +1837,13 @@ class ReactionsClient:
         self,
         team_id: int,
         discussion_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
@@ -1869,13 +1869,13 @@ class ReactionsClient:
         self,
         team_id: int,
         discussion_number: int,
-        content: MISSING[
+        content: Missing[
             Literal[
                 "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
             ]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
@@ -1925,7 +1925,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
@@ -1981,7 +1981,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,

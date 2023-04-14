@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .models import (
     BasicError,
@@ -45,12 +45,12 @@ class SecurityAdvisoriesClient:
         self,
         owner: str,
         repo: str,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        sort: MISSING[Literal["created", "updated", "published"]] = "created",
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        per_page: MISSING[int] = 30,
-        state: MISSING[Literal["triage", "draft", "published", "closed"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created", "updated", "published"]] = "created",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
     ) -> "Response[List[RepositoryAdvisory]]":
         url = f"/repos/{owner}/{repo}/security-advisories"
 
@@ -83,12 +83,12 @@ class SecurityAdvisoriesClient:
         self,
         owner: str,
         repo: str,
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        sort: MISSING[Literal["created", "updated", "published"]] = "created",
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        per_page: MISSING[int] = 30,
-        state: MISSING[Literal["triage", "draft", "published", "closed"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created", "updated", "published"]] = "created",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
     ) -> "Response[List[RepositoryAdvisory]]":
         url = f"/repos/{owner}/{repo}/security-advisories"
 
@@ -132,16 +132,16 @@ class SecurityAdvisoriesClient:
         data: Literal[UNSET] = UNSET,
         summary: str,
         description: str,
-        cve_id: MISSING[Union[str, None]] = UNSET,
+        cve_id: Missing[Union[str, None]] = UNSET,
         vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType],
-        cwe_ids: MISSING[Union[List[str], None]] = UNSET,
-        credits_: MISSING[
+        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        credits_: Missing[
             Union[List[RepositoryAdvisoryCreatePropCreditsItemsType], None]
         ] = UNSET,
-        severity: MISSING[
+        severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
-        cvss_vector_string: MISSING[Union[str, None]] = UNSET,
+        cvss_vector_string: Missing[Union[str, None]] = UNSET,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -150,7 +150,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[RepositoryAdvisoryCreateType] = UNSET,
+        data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories"
@@ -194,16 +194,16 @@ class SecurityAdvisoriesClient:
         data: Literal[UNSET] = UNSET,
         summary: str,
         description: str,
-        cve_id: MISSING[Union[str, None]] = UNSET,
+        cve_id: Missing[Union[str, None]] = UNSET,
         vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType],
-        cwe_ids: MISSING[Union[List[str], None]] = UNSET,
-        credits_: MISSING[
+        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        credits_: Missing[
             Union[List[RepositoryAdvisoryCreatePropCreditsItemsType], None]
         ] = UNSET,
-        severity: MISSING[
+        severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
-        cvss_vector_string: MISSING[Union[str, None]] = UNSET,
+        cvss_vector_string: Missing[Union[str, None]] = UNSET,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -212,7 +212,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[RepositoryAdvisoryCreateType] = UNSET,
+        data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories"
@@ -301,21 +301,21 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: Literal[UNSET] = UNSET,
-        summary: MISSING[str] = UNSET,
-        description: MISSING[str] = UNSET,
-        cve_id: MISSING[Union[str, None]] = UNSET,
-        vulnerabilities: MISSING[
+        summary: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        cve_id: Missing[Union[str, None]] = UNSET,
+        vulnerabilities: Missing[
             List[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
         ] = UNSET,
-        cwe_ids: MISSING[Union[List[str], None]] = UNSET,
-        credits_: MISSING[
+        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        credits_: Missing[
             Union[List[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
         ] = UNSET,
-        severity: MISSING[
+        severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
-        cvss_vector_string: MISSING[Union[str, None]] = UNSET,
-        state: MISSING[Literal["published", "closed", "draft"]] = UNSET,
+        cvss_vector_string: Missing[Union[str, None]] = UNSET,
+        state: Missing[Literal["published", "closed", "draft"]] = UNSET,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -325,7 +325,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        data: MISSING[RepositoryAdvisoryUpdateType] = UNSET,
+        data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
@@ -368,21 +368,21 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: Literal[UNSET] = UNSET,
-        summary: MISSING[str] = UNSET,
-        description: MISSING[str] = UNSET,
-        cve_id: MISSING[Union[str, None]] = UNSET,
-        vulnerabilities: MISSING[
+        summary: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        cve_id: Missing[Union[str, None]] = UNSET,
+        vulnerabilities: Missing[
             List[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
         ] = UNSET,
-        cwe_ids: MISSING[Union[List[str], None]] = UNSET,
-        credits_: MISSING[
+        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        credits_: Missing[
             Union[List[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
         ] = UNSET,
-        severity: MISSING[
+        severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
-        cvss_vector_string: MISSING[Union[str, None]] = UNSET,
-        state: MISSING[Literal["published", "closed", "draft"]] = UNSET,
+        cvss_vector_string: Missing[Union[str, None]] = UNSET,
+        state: Missing[Literal["published", "closed", "draft"]] = UNSET,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -392,7 +392,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        data: MISSING[RepositoryAdvisoryUpdateType] = UNSET,
+        data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"

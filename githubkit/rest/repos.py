@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 from pydantic import BaseModel, parse_obj_as
 
 from githubkit.typing import FileTypes
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     UserReposPostBodyType,
@@ -234,13 +234,13 @@ class ReposClient:
     def list_for_org(
         self,
         org: str,
-        type: MISSING[
+        type: Missing[
             Literal["all", "public", "private", "forks", "sources", "member"]
         ] = UNSET,
-        sort: MISSING[Literal["created", "updated", "pushed", "full_name"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["created", "updated", "pushed", "full_name"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/repos"
 
@@ -267,13 +267,13 @@ class ReposClient:
     async def async_list_for_org(
         self,
         org: str,
-        type: MISSING[
+        type: Missing[
             Literal["all", "public", "private", "forks", "sources", "member"]
         ] = UNSET,
-        sort: MISSING[Literal["created", "updated", "pushed", "full_name"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["created", "updated", "pushed", "full_name"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/repos"
 
@@ -310,38 +310,38 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         name: str,
-        description: MISSING[str] = UNSET,
-        homepage: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
-        visibility: MISSING[Literal["public", "private"]] = UNSET,
-        has_issues: MISSING[bool] = True,
-        has_projects: MISSING[bool] = True,
-        has_wiki: MISSING[bool] = True,
-        has_downloads: MISSING[bool] = True,
-        is_template: MISSING[bool] = False,
-        team_id: MISSING[int] = UNSET,
-        auto_init: MISSING[bool] = False,
-        gitignore_template: MISSING[str] = UNSET,
-        license_template: MISSING[str] = UNSET,
-        allow_squash_merge: MISSING[bool] = True,
-        allow_merge_commit: MISSING[bool] = True,
-        allow_rebase_merge: MISSING[bool] = True,
-        allow_auto_merge: MISSING[bool] = False,
-        delete_branch_on_merge: MISSING[bool] = False,
-        use_squash_pr_title_as_default: MISSING[bool] = False,
-        squash_merge_commit_title: MISSING[
+        description: Missing[str] = UNSET,
+        homepage: Missing[str] = UNSET,
+        private: Missing[bool] = False,
+        visibility: Missing[Literal["public", "private"]] = UNSET,
+        has_issues: Missing[bool] = True,
+        has_projects: Missing[bool] = True,
+        has_wiki: Missing[bool] = True,
+        has_downloads: Missing[bool] = True,
+        is_template: Missing[bool] = False,
+        team_id: Missing[int] = UNSET,
+        auto_init: Missing[bool] = False,
+        gitignore_template: Missing[str] = UNSET,
+        license_template: Missing[str] = UNSET,
+        allow_squash_merge: Missing[bool] = True,
+        allow_merge_commit: Missing[bool] = True,
+        allow_rebase_merge: Missing[bool] = True,
+        allow_auto_merge: Missing[bool] = False,
+        delete_branch_on_merge: Missing[bool] = False,
+        use_squash_pr_title_as_default: Missing[bool] = False,
+        squash_merge_commit_title: Missing[
             Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
         ] = UNSET,
-        squash_merge_commit_message: MISSING[
+        squash_merge_commit_message: Missing[
             Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
         ] = UNSET,
-        merge_commit_title: MISSING[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
-        merge_commit_message: MISSING[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
+        merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
     ) -> "Response[Repository]":
         ...
 
     def create_in_org(
-        self, org: str, *, data: MISSING[OrgsOrgReposPostBodyType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[OrgsOrgReposPostBodyType] = UNSET, **kwargs
     ) -> "Response[Repository]":
         url = f"/orgs/{org}/repos"
 
@@ -381,38 +381,38 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         name: str,
-        description: MISSING[str] = UNSET,
-        homepage: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
-        visibility: MISSING[Literal["public", "private"]] = UNSET,
-        has_issues: MISSING[bool] = True,
-        has_projects: MISSING[bool] = True,
-        has_wiki: MISSING[bool] = True,
-        has_downloads: MISSING[bool] = True,
-        is_template: MISSING[bool] = False,
-        team_id: MISSING[int] = UNSET,
-        auto_init: MISSING[bool] = False,
-        gitignore_template: MISSING[str] = UNSET,
-        license_template: MISSING[str] = UNSET,
-        allow_squash_merge: MISSING[bool] = True,
-        allow_merge_commit: MISSING[bool] = True,
-        allow_rebase_merge: MISSING[bool] = True,
-        allow_auto_merge: MISSING[bool] = False,
-        delete_branch_on_merge: MISSING[bool] = False,
-        use_squash_pr_title_as_default: MISSING[bool] = False,
-        squash_merge_commit_title: MISSING[
+        description: Missing[str] = UNSET,
+        homepage: Missing[str] = UNSET,
+        private: Missing[bool] = False,
+        visibility: Missing[Literal["public", "private"]] = UNSET,
+        has_issues: Missing[bool] = True,
+        has_projects: Missing[bool] = True,
+        has_wiki: Missing[bool] = True,
+        has_downloads: Missing[bool] = True,
+        is_template: Missing[bool] = False,
+        team_id: Missing[int] = UNSET,
+        auto_init: Missing[bool] = False,
+        gitignore_template: Missing[str] = UNSET,
+        license_template: Missing[str] = UNSET,
+        allow_squash_merge: Missing[bool] = True,
+        allow_merge_commit: Missing[bool] = True,
+        allow_rebase_merge: Missing[bool] = True,
+        allow_auto_merge: Missing[bool] = False,
+        delete_branch_on_merge: Missing[bool] = False,
+        use_squash_pr_title_as_default: Missing[bool] = False,
+        squash_merge_commit_title: Missing[
             Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
         ] = UNSET,
-        squash_merge_commit_message: MISSING[
+        squash_merge_commit_message: Missing[
             Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
         ] = UNSET,
-        merge_commit_title: MISSING[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
-        merge_commit_message: MISSING[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
+        merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
     ) -> "Response[Repository]":
         ...
 
     async def async_create_in_org(
-        self, org: str, *, data: MISSING[OrgsOrgReposPostBodyType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[OrgsOrgReposPostBodyType] = UNSET, **kwargs
     ) -> "Response[Repository]":
         url = f"/orgs/{org}/repos"
 
@@ -531,7 +531,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 
@@ -542,37 +542,37 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        description: MISSING[str] = UNSET,
-        homepage: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
-        visibility: MISSING[Literal["public", "private"]] = UNSET,
-        security_and_analysis: MISSING[
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        homepage: Missing[str] = UNSET,
+        private: Missing[bool] = False,
+        visibility: Missing[Literal["public", "private"]] = UNSET,
+        security_and_analysis: Missing[
             Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
         ] = UNSET,
-        has_issues: MISSING[bool] = True,
-        has_projects: MISSING[bool] = True,
-        has_wiki: MISSING[bool] = True,
-        is_template: MISSING[bool] = False,
-        default_branch: MISSING[str] = UNSET,
-        allow_squash_merge: MISSING[bool] = True,
-        allow_merge_commit: MISSING[bool] = True,
-        allow_rebase_merge: MISSING[bool] = True,
-        allow_auto_merge: MISSING[bool] = False,
-        delete_branch_on_merge: MISSING[bool] = False,
-        allow_update_branch: MISSING[bool] = False,
-        use_squash_pr_title_as_default: MISSING[bool] = False,
-        squash_merge_commit_title: MISSING[
+        has_issues: Missing[bool] = True,
+        has_projects: Missing[bool] = True,
+        has_wiki: Missing[bool] = True,
+        is_template: Missing[bool] = False,
+        default_branch: Missing[str] = UNSET,
+        allow_squash_merge: Missing[bool] = True,
+        allow_merge_commit: Missing[bool] = True,
+        allow_rebase_merge: Missing[bool] = True,
+        allow_auto_merge: Missing[bool] = False,
+        delete_branch_on_merge: Missing[bool] = False,
+        allow_update_branch: Missing[bool] = False,
+        use_squash_pr_title_as_default: Missing[bool] = False,
+        squash_merge_commit_title: Missing[
             Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
         ] = UNSET,
-        squash_merge_commit_message: MISSING[
+        squash_merge_commit_message: Missing[
             Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
         ] = UNSET,
-        merge_commit_title: MISSING[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
-        merge_commit_message: MISSING[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
-        archived: MISSING[bool] = False,
-        allow_forking: MISSING[bool] = False,
-        web_commit_signoff_required: MISSING[bool] = False,
+        merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
+        archived: Missing[bool] = False,
+        allow_forking: Missing[bool] = False,
+        web_commit_signoff_required: Missing[bool] = False,
     ) -> "Response[FullRepository]":
         ...
 
@@ -581,7 +581,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
@@ -616,7 +616,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 
@@ -627,37 +627,37 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        description: MISSING[str] = UNSET,
-        homepage: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
-        visibility: MISSING[Literal["public", "private"]] = UNSET,
-        security_and_analysis: MISSING[
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        homepage: Missing[str] = UNSET,
+        private: Missing[bool] = False,
+        visibility: Missing[Literal["public", "private"]] = UNSET,
+        security_and_analysis: Missing[
             Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
         ] = UNSET,
-        has_issues: MISSING[bool] = True,
-        has_projects: MISSING[bool] = True,
-        has_wiki: MISSING[bool] = True,
-        is_template: MISSING[bool] = False,
-        default_branch: MISSING[str] = UNSET,
-        allow_squash_merge: MISSING[bool] = True,
-        allow_merge_commit: MISSING[bool] = True,
-        allow_rebase_merge: MISSING[bool] = True,
-        allow_auto_merge: MISSING[bool] = False,
-        delete_branch_on_merge: MISSING[bool] = False,
-        allow_update_branch: MISSING[bool] = False,
-        use_squash_pr_title_as_default: MISSING[bool] = False,
-        squash_merge_commit_title: MISSING[
+        has_issues: Missing[bool] = True,
+        has_projects: Missing[bool] = True,
+        has_wiki: Missing[bool] = True,
+        is_template: Missing[bool] = False,
+        default_branch: Missing[str] = UNSET,
+        allow_squash_merge: Missing[bool] = True,
+        allow_merge_commit: Missing[bool] = True,
+        allow_rebase_merge: Missing[bool] = True,
+        allow_auto_merge: Missing[bool] = False,
+        delete_branch_on_merge: Missing[bool] = False,
+        allow_update_branch: Missing[bool] = False,
+        use_squash_pr_title_as_default: Missing[bool] = False,
+        squash_merge_commit_title: Missing[
             Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
         ] = UNSET,
-        squash_merge_commit_message: MISSING[
+        squash_merge_commit_message: Missing[
             Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
         ] = UNSET,
-        merge_commit_title: MISSING[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
-        merge_commit_message: MISSING[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
-        archived: MISSING[bool] = False,
-        allow_forking: MISSING[bool] = False,
-        web_commit_signoff_required: MISSING[bool] = False,
+        merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
+        archived: Missing[bool] = False,
+        allow_forking: Missing[bool] = False,
+        web_commit_signoff_required: Missing[bool] = False,
     ) -> "Response[FullRepository]":
         ...
 
@@ -666,7 +666,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}"
@@ -699,7 +699,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        page: MISSING[int] = 1,
+        page: Missing[int] = 1,
     ) -> "Response[List[Autolink]]":
         url = f"/repos/{owner}/{repo}/autolinks"
 
@@ -723,7 +723,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        page: MISSING[int] = 1,
+        page: Missing[int] = 1,
     ) -> "Response[List[Autolink]]":
         url = f"/repos/{owner}/{repo}/autolinks"
 
@@ -758,7 +758,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         key_prefix: str,
         url_template: str,
-        is_alphanumeric: MISSING[bool] = True,
+        is_alphanumeric: Missing[bool] = True,
     ) -> "Response[Autolink]":
         ...
 
@@ -767,7 +767,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks"
@@ -809,7 +809,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         key_prefix: str,
         url_template: str,
-        is_alphanumeric: MISSING[bool] = True,
+        is_alphanumeric: Missing[bool] = True,
     ) -> "Response[Autolink]":
         ...
 
@@ -818,7 +818,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Autolink]":
         url = f"/repos/{owner}/{repo}/autolinks"
@@ -1003,9 +1003,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        protected: MISSING[bool] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        protected: Missing[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[ShortBranch]]":
         url = f"/repos/{owner}/{repo}/branches"
 
@@ -1034,9 +1034,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        protected: MISSING[bool] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        protected: Missing[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[ShortBranch]]":
         url = f"/repos/{owner}/{repo}/branches"
 
@@ -1180,13 +1180,13 @@ class ReposClient:
         restrictions: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType, None
         ],
-        required_linear_history: MISSING[bool] = UNSET,
-        allow_force_pushes: MISSING[Union[bool, None]] = UNSET,
-        allow_deletions: MISSING[bool] = UNSET,
-        block_creations: MISSING[bool] = UNSET,
-        required_conversation_resolution: MISSING[bool] = UNSET,
-        lock_branch: MISSING[bool] = False,
-        allow_fork_syncing: MISSING[bool] = False,
+        required_linear_history: Missing[bool] = UNSET,
+        allow_force_pushes: Missing[Union[bool, None]] = UNSET,
+        allow_deletions: Missing[bool] = UNSET,
+        block_creations: Missing[bool] = UNSET,
+        required_conversation_resolution: Missing[bool] = UNSET,
+        lock_branch: Missing[bool] = False,
+        allow_fork_syncing: Missing[bool] = False,
     ) -> "Response[ProtectedBranch]":
         ...
 
@@ -1196,7 +1196,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProtectedBranch]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
@@ -1256,13 +1256,13 @@ class ReposClient:
         restrictions: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType, None
         ],
-        required_linear_history: MISSING[bool] = UNSET,
-        allow_force_pushes: MISSING[Union[bool, None]] = UNSET,
-        allow_deletions: MISSING[bool] = UNSET,
-        block_creations: MISSING[bool] = UNSET,
-        required_conversation_resolution: MISSING[bool] = UNSET,
-        lock_branch: MISSING[bool] = False,
-        allow_fork_syncing: MISSING[bool] = False,
+        required_linear_history: Missing[bool] = UNSET,
+        allow_force_pushes: Missing[Union[bool, None]] = UNSET,
+        allow_deletions: Missing[bool] = UNSET,
+        block_creations: Missing[bool] = UNSET,
+        required_conversation_resolution: Missing[bool] = UNSET,
+        lock_branch: Missing[bool] = False,
+        allow_fork_syncing: Missing[bool] = False,
     ) -> "Response[ProtectedBranch]":
         ...
 
@@ -1272,7 +1272,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProtectedBranch]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection"
@@ -1548,7 +1548,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
@@ -1562,14 +1562,14 @@ class ReposClient:
         branch: str,
         *,
         data: Literal[UNSET] = UNSET,
-        dismissal_restrictions: MISSING[
+        dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
-        dismiss_stale_reviews: MISSING[bool] = UNSET,
-        require_code_owner_reviews: MISSING[bool] = UNSET,
-        required_approving_review_count: MISSING[int] = UNSET,
-        require_last_push_approval: MISSING[bool] = False,
-        bypass_pull_request_allowances: MISSING[
+        dismiss_stale_reviews: Missing[bool] = UNSET,
+        require_code_owner_reviews: Missing[bool] = UNSET,
+        required_approving_review_count: Missing[int] = UNSET,
+        require_last_push_approval: Missing[bool] = False,
+        bypass_pull_request_allowances: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
@@ -1581,7 +1581,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
         **kwargs,
@@ -1620,7 +1620,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
@@ -1634,14 +1634,14 @@ class ReposClient:
         branch: str,
         *,
         data: Literal[UNSET] = UNSET,
-        dismissal_restrictions: MISSING[
+        dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
-        dismiss_stale_reviews: MISSING[bool] = UNSET,
-        require_code_owner_reviews: MISSING[bool] = UNSET,
-        required_approving_review_count: MISSING[int] = UNSET,
-        require_last_push_approval: MISSING[bool] = False,
-        bypass_pull_request_allowances: MISSING[
+        dismiss_stale_reviews: Missing[bool] = UNSET,
+        require_code_owner_reviews: Missing[bool] = UNSET,
+        required_approving_review_count: Missing[int] = UNSET,
+        require_last_push_approval: Missing[bool] = False,
+        bypass_pull_request_allowances: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
     ) -> "Response[ProtectedBranchPullRequestReview]":
@@ -1653,7 +1653,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
         **kwargs,
@@ -1910,7 +1910,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
     ) -> "Response[StatusCheckPolicy]":
@@ -1924,9 +1924,9 @@ class ReposClient:
         branch: str,
         *,
         data: Literal[UNSET] = UNSET,
-        strict: MISSING[bool] = UNSET,
-        contexts: MISSING[List[str]] = UNSET,
-        checks: MISSING[
+        strict: Missing[bool] = UNSET,
+        contexts: Missing[List[str]] = UNSET,
+        checks: Missing[
             List[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
@@ -1940,7 +1940,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
         **kwargs,
@@ -1981,7 +1981,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
     ) -> "Response[StatusCheckPolicy]":
@@ -1995,9 +1995,9 @@ class ReposClient:
         branch: str,
         *,
         data: Literal[UNSET] = UNSET,
-        strict: MISSING[bool] = UNSET,
-        contexts: MISSING[List[str]] = UNSET,
-        checks: MISSING[
+        strict: Missing[bool] = UNSET,
+        contexts: Missing[List[str]] = UNSET,
+        checks: Missing[
             List[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
@@ -2011,7 +2011,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
         **kwargs,
@@ -2096,7 +2096,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
                 List[str],
@@ -2123,7 +2123,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
                 List[str],
@@ -2169,7 +2169,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
                 List[str],
@@ -2196,7 +2196,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
                 List[str],
@@ -2242,7 +2242,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
                 List[str],
@@ -2269,7 +2269,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
                 List[str],
@@ -2316,7 +2316,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
                 List[str],
@@ -2343,7 +2343,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
                 List[str],
@@ -2390,7 +2390,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
                 List[str],
@@ -2417,7 +2417,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
                 List[str],
@@ -2463,7 +2463,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
                 List[str],
@@ -2490,7 +2490,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
                 List[str],
@@ -2660,7 +2660,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
                 List[str],
@@ -2687,7 +2687,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
                 List[str],
@@ -2732,7 +2732,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
                 List[str],
@@ -2759,7 +2759,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
                 List[str],
@@ -2804,7 +2804,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
                 List[str],
@@ -2831,7 +2831,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
                 List[str],
@@ -2876,7 +2876,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
                 List[str],
@@ -2903,7 +2903,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
                 List[str],
@@ -2948,7 +2948,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
                 List[str],
@@ -2975,7 +2975,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
                 List[str],
@@ -3020,7 +3020,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
                 List[str],
@@ -3047,7 +3047,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
                 List[str],
@@ -3136,7 +3136,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
                 List[str],
@@ -3163,7 +3163,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
                 List[str],
@@ -3208,7 +3208,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
                 List[str],
@@ -3235,7 +3235,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
                 List[str],
@@ -3280,7 +3280,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
                 List[str],
@@ -3307,7 +3307,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
                 List[str],
@@ -3352,7 +3352,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
                 List[str],
@@ -3379,7 +3379,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
                 List[str],
@@ -3424,7 +3424,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
                 List[str],
@@ -3451,7 +3451,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
                 List[str],
@@ -3496,7 +3496,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
                 List[str],
@@ -3523,7 +3523,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
                 List[str],
@@ -3612,7 +3612,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
                 List[str],
@@ -3639,7 +3639,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
                 List[str],
@@ -3684,7 +3684,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
                 List[str],
@@ -3711,7 +3711,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
                 List[str],
@@ -3756,7 +3756,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
                 List[str],
@@ -3783,7 +3783,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
                 List[str],
@@ -3828,7 +3828,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
                 List[str],
@@ -3855,7 +3855,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
                 List[str],
@@ -3900,7 +3900,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
                 List[str],
@@ -3927,7 +3927,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
                 List[str],
@@ -3972,7 +3972,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
                 List[str],
@@ -3999,7 +3999,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
                 List[str],
@@ -4066,7 +4066,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
@@ -4124,7 +4124,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        data: MISSING[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[BranchWithProtection]":
         url = f"/repos/{owner}/{repo}/branches/{branch}/rename"
@@ -4157,7 +4157,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[CodeownersErrors]":
         url = f"/repos/{owner}/{repo}/codeowners/errors"
 
@@ -4182,7 +4182,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[CodeownersErrors]":
         url = f"/repos/{owner}/{repo}/codeowners/errors"
 
@@ -4207,12 +4207,12 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        affiliation: MISSING[Literal["outside", "direct", "all"]] = "all",
-        permission: MISSING[
+        affiliation: Missing[Literal["outside", "direct", "all"]] = "all",
+        permission: Missing[
             Literal["pull", "triage", "push", "maintain", "admin"]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Collaborator]]":
         url = f"/repos/{owner}/{repo}/collaborators"
 
@@ -4242,12 +4242,12 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        affiliation: MISSING[Literal["outside", "direct", "all"]] = "all",
-        permission: MISSING[
+        affiliation: Missing[Literal["outside", "direct", "all"]] = "all",
+        permission: Missing[
             Literal["pull", "triage", "push", "maintain", "admin"]
         ] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Collaborator]]":
         url = f"/repos/{owner}/{repo}/collaborators"
 
@@ -4318,7 +4318,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        data: MISSING[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -4330,7 +4330,7 @@ class ReposClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
-        permission: MISSING[str] = "push",
+        permission: Missing[str] = "push",
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -4340,7 +4340,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        data: MISSING[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
@@ -4375,7 +4375,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        data: MISSING[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -4387,7 +4387,7 @@ class ReposClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
-        permission: MISSING[str] = "push",
+        permission: Missing[str] = "push",
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -4397,7 +4397,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        data: MISSING[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
@@ -4509,8 +4509,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[CommitComment]]":
         url = f"/repos/{owner}/{repo}/comments"
 
@@ -4535,8 +4535,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[CommitComment]]":
         url = f"/repos/{owner}/{repo}/comments"
 
@@ -4672,7 +4672,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
@@ -4728,7 +4728,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        data: MISSING[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}"
@@ -4759,14 +4759,14 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        sha: MISSING[str] = UNSET,
-        path: MISSING[str] = UNSET,
-        author: MISSING[str] = UNSET,
-        committer: MISSING[str] = UNSET,
-        since: MISSING[datetime] = UNSET,
-        until: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sha: Missing[str] = UNSET,
+        path: Missing[str] = UNSET,
+        author: Missing[str] = UNSET,
+        committer: Missing[str] = UNSET,
+        since: Missing[datetime] = UNSET,
+        until: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Commit]]":
         url = f"/repos/{owner}/{repo}/commits"
 
@@ -4803,14 +4803,14 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        sha: MISSING[str] = UNSET,
-        path: MISSING[str] = UNSET,
-        author: MISSING[str] = UNSET,
-        committer: MISSING[str] = UNSET,
-        since: MISSING[datetime] = UNSET,
-        until: MISSING[datetime] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sha: Missing[str] = UNSET,
+        path: Missing[str] = UNSET,
+        author: Missing[str] = UNSET,
+        committer: Missing[str] = UNSET,
+        since: Missing[datetime] = UNSET,
+        until: Missing[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Commit]]":
         url = f"/repos/{owner}/{repo}/commits"
 
@@ -4892,8 +4892,8 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[CommitComment]]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 
@@ -4919,8 +4919,8 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[CommitComment]]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
 
@@ -4961,9 +4961,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         body: str,
-        path: MISSING[str] = UNSET,
-        position: MISSING[int] = UNSET,
-        line: MISSING[int] = UNSET,
+        path: Missing[str] = UNSET,
+        position: Missing[int] = UNSET,
+        line: Missing[int] = UNSET,
     ) -> "Response[CommitComment]":
         ...
 
@@ -4973,7 +4973,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        data: MISSING[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
@@ -5021,9 +5021,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         body: str,
-        path: MISSING[str] = UNSET,
-        position: MISSING[int] = UNSET,
-        line: MISSING[int] = UNSET,
+        path: Missing[str] = UNSET,
+        position: Missing[int] = UNSET,
+        line: Missing[int] = UNSET,
     ) -> "Response[CommitComment]":
         ...
 
@@ -5033,7 +5033,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        data: MISSING[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CommitComment]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/comments"
@@ -5066,8 +5066,8 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[PullRequestSimple]]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/pulls"
 
@@ -5093,8 +5093,8 @@ class ReposClient:
         owner: str,
         repo: str,
         commit_sha: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[PullRequestSimple]]":
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/pulls"
 
@@ -5120,8 +5120,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/commits/{ref}"
 
@@ -5153,8 +5153,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/commits/{ref}"
 
@@ -5186,8 +5186,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[CombinedCommitStatus]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/status"
 
@@ -5216,8 +5216,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[CombinedCommitStatus]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/status"
 
@@ -5246,8 +5246,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Status]]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/statuses"
 
@@ -5273,8 +5273,8 @@ class ReposClient:
         owner: str,
         repo: str,
         ref: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Status]]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/statuses"
 
@@ -5336,8 +5336,8 @@ class ReposClient:
         owner: str,
         repo: str,
         basehead: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[CommitComparison]":
         url = f"/repos/{owner}/{repo}/compare/{basehead}"
 
@@ -5368,8 +5368,8 @@ class ReposClient:
         owner: str,
         repo: str,
         basehead: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[CommitComparison]":
         url = f"/repos/{owner}/{repo}/compare/{basehead}"
 
@@ -5400,7 +5400,7 @@ class ReposClient:
         owner: str,
         repo: str,
         path: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[Union[List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule]]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
@@ -5434,7 +5434,7 @@ class ReposClient:
         owner: str,
         repo: str,
         path: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[Union[List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule]]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
 
@@ -5484,10 +5484,10 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         message: str,
         content: str,
-        sha: MISSING[str] = UNSET,
-        branch: MISSING[str] = UNSET,
-        committer: MISSING[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
-        author: MISSING[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
+        sha: Missing[str] = UNSET,
+        branch: Missing[str] = UNSET,
+        committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
+        author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
         ...
 
@@ -5497,7 +5497,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        data: MISSING[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -5547,10 +5547,10 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         message: str,
         content: str,
-        sha: MISSING[str] = UNSET,
-        branch: MISSING[str] = UNSET,
-        committer: MISSING[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
-        author: MISSING[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
+        sha: Missing[str] = UNSET,
+        branch: Missing[str] = UNSET,
+        committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
+        author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
         ...
 
@@ -5560,7 +5560,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        data: MISSING[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -5610,11 +5610,11 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         message: str,
         sha: str,
-        branch: MISSING[str] = UNSET,
-        committer: MISSING[
+        branch: Missing[str] = UNSET,
+        committer: Missing[
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
-        author: MISSING[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
+        author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
         ...
 
@@ -5624,7 +5624,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        data: MISSING[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -5675,11 +5675,11 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         message: str,
         sha: str,
-        branch: MISSING[str] = UNSET,
-        committer: MISSING[
+        branch: Missing[str] = UNSET,
+        committer: Missing[
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
-        author: MISSING[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
+        author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
     ) -> "Response[FileCommit]":
         ...
 
@@ -5689,7 +5689,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        data: MISSING[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response[FileCommit]":
         url = f"/repos/{owner}/{repo}/contents/{path}"
@@ -5723,9 +5723,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        anon: MISSING[str] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        anon: Missing[str] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Contributor]]":
         url = f"/repos/{owner}/{repo}/contributors"
 
@@ -5755,9 +5755,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        anon: MISSING[str] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        anon: Missing[str] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Contributor]]":
         url = f"/repos/{owner}/{repo}/contributors"
 
@@ -5787,12 +5787,12 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        sha: MISSING[str] = "none",
-        ref: MISSING[str] = "none",
-        task: MISSING[str] = "none",
-        environment: MISSING[Union[str, None]] = "none",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sha: Missing[str] = "none",
+        ref: Missing[str] = "none",
+        task: Missing[str] = "none",
+        environment: Missing[Union[str, None]] = "none",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Deployment]]":
         url = f"/repos/{owner}/{repo}/deployments"
 
@@ -5821,12 +5821,12 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        sha: MISSING[str] = "none",
-        ref: MISSING[str] = "none",
-        task: MISSING[str] = "none",
-        environment: MISSING[Union[str, None]] = "none",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sha: Missing[str] = "none",
+        ref: Missing[str] = "none",
+        task: Missing[str] = "none",
+        environment: Missing[Union[str, None]] = "none",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Deployment]]":
         url = f"/repos/{owner}/{repo}/deployments"
 
@@ -5865,16 +5865,16 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         ref: str,
-        task: MISSING[str] = "deploy",
-        auto_merge: MISSING[bool] = True,
-        required_contexts: MISSING[List[str]] = UNSET,
-        payload: MISSING[
+        task: Missing[str] = "deploy",
+        auto_merge: Missing[bool] = True,
+        required_contexts: Missing[List[str]] = UNSET,
+        payload: Missing[
             Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
         ] = UNSET,
-        environment: MISSING[str] = "production",
-        description: MISSING[Union[str, None]] = "",
-        transient_environment: MISSING[bool] = False,
-        production_environment: MISSING[bool] = UNSET,
+        environment: Missing[str] = "production",
+        description: Missing[Union[str, None]] = "",
+        transient_environment: Missing[bool] = False,
+        production_environment: Missing[bool] = UNSET,
     ) -> "Response[Deployment]":
         ...
 
@@ -5883,7 +5883,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments"
@@ -5924,16 +5924,16 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         ref: str,
-        task: MISSING[str] = "deploy",
-        auto_merge: MISSING[bool] = True,
-        required_contexts: MISSING[List[str]] = UNSET,
-        payload: MISSING[
+        task: Missing[str] = "deploy",
+        auto_merge: Missing[bool] = True,
+        required_contexts: Missing[List[str]] = UNSET,
+        payload: Missing[
             Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
         ] = UNSET,
-        environment: MISSING[str] = "production",
-        description: MISSING[Union[str, None]] = "",
-        transient_environment: MISSING[bool] = False,
-        production_environment: MISSING[bool] = UNSET,
+        environment: Missing[str] = "production",
+        description: Missing[Union[str, None]] = "",
+        transient_environment: Missing[bool] = False,
+        production_environment: Missing[bool] = UNSET,
     ) -> "Response[Deployment]":
         ...
 
@@ -5942,7 +5942,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Deployment]":
         url = f"/repos/{owner}/{repo}/deployments"
@@ -6062,8 +6062,8 @@ class ReposClient:
         owner: str,
         repo: str,
         deployment_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[DeploymentStatus]]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 
@@ -6092,8 +6092,8 @@ class ReposClient:
         owner: str,
         repo: str,
         deployment_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[DeploymentStatus]]":
         url = f"/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"
 
@@ -6145,12 +6145,12 @@ class ReposClient:
             "pending",
             "success",
         ],
-        target_url: MISSING[str] = "",
-        log_url: MISSING[str] = "",
-        description: MISSING[str] = "",
-        environment: MISSING[Literal["production", "staging", "qa"]] = UNSET,
-        environment_url: MISSING[str] = "",
-        auto_inactive: MISSING[bool] = UNSET,
+        target_url: Missing[str] = "",
+        log_url: Missing[str] = "",
+        description: Missing[str] = "",
+        environment: Missing[Literal["production", "staging", "qa"]] = UNSET,
+        environment_url: Missing[str] = "",
+        auto_inactive: Missing[bool] = UNSET,
     ) -> "Response[DeploymentStatus]":
         ...
 
@@ -6160,7 +6160,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
         **kwargs,
@@ -6217,12 +6217,12 @@ class ReposClient:
             "pending",
             "success",
         ],
-        target_url: MISSING[str] = "",
-        log_url: MISSING[str] = "",
-        description: MISSING[str] = "",
-        environment: MISSING[Literal["production", "staging", "qa"]] = UNSET,
-        environment_url: MISSING[str] = "",
-        auto_inactive: MISSING[bool] = UNSET,
+        target_url: Missing[str] = "",
+        log_url: Missing[str] = "",
+        description: Missing[str] = "",
+        environment: Missing[Literal["production", "staging", "qa"]] = UNSET,
+        environment_url: Missing[str] = "",
+        auto_inactive: Missing[bool] = UNSET,
     ) -> "Response[DeploymentStatus]":
         ...
 
@@ -6232,7 +6232,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
         **kwargs,
@@ -6321,7 +6321,7 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         event_type: str,
-        client_payload: MISSING[
+        client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
     ) -> "Response":
@@ -6332,7 +6332,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
@@ -6372,7 +6372,7 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         event_type: str,
-        client_payload: MISSING[
+        client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
     ) -> "Response":
@@ -6383,7 +6383,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dispatches"
@@ -6413,8 +6413,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoEnvironmentsGetResponse200]":
         url = f"/repos/{owner}/{repo}/environments"
 
@@ -6439,8 +6439,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoEnvironmentsGetResponse200]":
         url = f"/repos/{owner}/{repo}/environments"
 
@@ -6506,7 +6506,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
@@ -6520,8 +6520,8 @@ class ReposClient:
         environment_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        wait_timer: MISSING[int] = UNSET,
-        reviewers: MISSING[
+        wait_timer: Missing[int] = UNSET,
+        reviewers: Missing[
             Union[
                 List[
                     ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
@@ -6529,7 +6529,7 @@ class ReposClient:
                 None,
             ]
         ] = UNSET,
-        deployment_branch_policy: MISSING[
+        deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
@@ -6541,7 +6541,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
         **kwargs,
@@ -6579,7 +6579,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
@@ -6593,8 +6593,8 @@ class ReposClient:
         environment_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        wait_timer: MISSING[int] = UNSET,
-        reviewers: MISSING[
+        wait_timer: Missing[int] = UNSET,
+        reviewers: Missing[
             Union[
                 List[
                     ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
@@ -6602,7 +6602,7 @@ class ReposClient:
                 None,
             ]
         ] = UNSET,
-        deployment_branch_policy: MISSING[
+        deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
     ) -> "Response[Environment]":
@@ -6614,7 +6614,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
         **kwargs,
@@ -6686,8 +6686,8 @@ class ReposClient:
         owner: str,
         repo: str,
         environment_name: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
 
@@ -6713,8 +6713,8 @@ class ReposClient:
         owner: str,
         repo: str,
         environment_name: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
 
@@ -6764,7 +6764,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        data: MISSING[DeploymentBranchPolicyNamePatternType] = UNSET,
+        data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
@@ -6818,7 +6818,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        data: MISSING[DeploymentBranchPolicyNamePatternType] = UNSET,
+        data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
@@ -6915,7 +6915,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        data: MISSING[DeploymentBranchPolicyNamePatternType] = UNSET,
+        data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
@@ -6971,7 +6971,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        data: MISSING[DeploymentBranchPolicyNamePatternType] = UNSET,
+        data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
@@ -7037,9 +7037,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        sort: MISSING[Literal["newest", "oldest", "stargazers", "watchers"]] = "newest",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = "newest",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/repos/{owner}/{repo}/forks"
 
@@ -7068,9 +7068,9 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        sort: MISSING[Literal["newest", "oldest", "stargazers", "watchers"]] = "newest",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        sort: Missing[Literal["newest", "oldest", "stargazers", "watchers"]] = "newest",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/repos/{owner}/{repo}/forks"
 
@@ -7101,7 +7101,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 
@@ -7112,9 +7112,9 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        organization: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        default_branch_only: MISSING[bool] = UNSET,
+        organization: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        default_branch_only: Missing[bool] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 
@@ -7123,7 +7123,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
@@ -7159,7 +7159,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 
@@ -7170,9 +7170,9 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        organization: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        default_branch_only: MISSING[bool] = UNSET,
+        organization: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        default_branch_only: Missing[bool] = UNSET,
     ) -> "Response[FullRepository]":
         ...
 
@@ -7181,7 +7181,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[FullRepository]":
         url = f"/repos/{owner}/{repo}/forks"
@@ -7215,8 +7215,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Hook]]":
         url = f"/repos/{owner}/{repo}/hooks"
 
@@ -7244,8 +7244,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Hook]]":
         url = f"/repos/{owner}/{repo}/hooks"
 
@@ -7275,7 +7275,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> "Response[Hook]":
         ...
 
@@ -7286,10 +7286,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        config: MISSING[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
-        events: MISSING[List[str]] = ["push"],
-        active: MISSING[bool] = True,
+        name: Missing[str] = UNSET,
+        config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
+        events: Missing[List[str]] = ["push"],
+        active: Missing[bool] = True,
     ) -> "Response[Hook]":
         ...
 
@@ -7298,7 +7298,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
@@ -7333,7 +7333,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> "Response[Hook]":
         ...
 
@@ -7344,10 +7344,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        config: MISSING[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
-        events: MISSING[List[str]] = ["push"],
-        active: MISSING[bool] = True,
+        name: Missing[str] = UNSET,
+        config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
+        events: Missing[List[str]] = ["push"],
+        active: Missing[bool] = True,
     ) -> "Response[Hook]":
         ...
 
@@ -7356,7 +7356,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks"
@@ -7490,11 +7490,11 @@ class ReposClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        config: MISSING[ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: MISSING[List[str]] = ["push"],
-        add_events: MISSING[List[str]] = UNSET,
-        remove_events: MISSING[List[str]] = UNSET,
-        active: MISSING[bool] = True,
+        config: Missing[ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
+        events: Missing[List[str]] = ["push"],
+        add_events: Missing[List[str]] = UNSET,
+        remove_events: Missing[List[str]] = UNSET,
+        active: Missing[bool] = True,
     ) -> "Response[Hook]":
         ...
 
@@ -7504,7 +7504,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        data: MISSING[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
@@ -7551,11 +7551,11 @@ class ReposClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        config: MISSING[ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: MISSING[List[str]] = ["push"],
-        add_events: MISSING[List[str]] = UNSET,
-        remove_events: MISSING[List[str]] = UNSET,
-        active: MISSING[bool] = True,
+        config: Missing[ReposOwnerRepoHooksHookIdPatchBodyPropConfigType] = UNSET,
+        events: Missing[List[str]] = ["push"],
+        add_events: Missing[List[str]] = UNSET,
+        remove_events: Missing[List[str]] = UNSET,
+        active: Missing[bool] = True,
     ) -> "Response[Hook]":
         ...
 
@@ -7565,7 +7565,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        data: MISSING[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Hook]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}"
@@ -7638,7 +7638,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        data: MISSING[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -7650,10 +7650,10 @@ class ReposClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        url: MISSING[str] = UNSET,
-        content_type: MISSING[str] = UNSET,
-        secret: MISSING[str] = UNSET,
-        insecure_ssl: MISSING[Union[str, float]] = UNSET,
+        url: Missing[str] = UNSET,
+        content_type: Missing[str] = UNSET,
+        secret: Missing[str] = UNSET,
+        insecure_ssl: Missing[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -7663,7 +7663,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        data: MISSING[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
@@ -7694,7 +7694,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        data: MISSING[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -7706,10 +7706,10 @@ class ReposClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        url: MISSING[str] = UNSET,
-        content_type: MISSING[str] = UNSET,
-        secret: MISSING[str] = UNSET,
-        insecure_ssl: MISSING[Union[str, float]] = UNSET,
+        url: Missing[str] = UNSET,
+        content_type: Missing[str] = UNSET,
+        secret: Missing[str] = UNSET,
+        insecure_ssl: Missing[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -7719,7 +7719,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        data: MISSING[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/config"
@@ -7748,9 +7748,9 @@ class ReposClient:
         owner: str,
         repo: str,
         hook_id: int,
-        per_page: MISSING[int] = 30,
-        cursor: MISSING[str] = UNSET,
-        redelivery: MISSING[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        cursor: Missing[str] = UNSET,
+        redelivery: Missing[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"
 
@@ -7781,9 +7781,9 @@ class ReposClient:
         owner: str,
         repo: str,
         hook_id: int,
-        per_page: MISSING[int] = 30,
-        cursor: MISSING[str] = UNSET,
-        redelivery: MISSING[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        cursor: Missing[str] = UNSET,
+        redelivery: Missing[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"
 
@@ -7993,8 +7993,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[RepositoryInvitation]]":
         url = f"/repos/{owner}/{repo}/invitations"
 
@@ -8019,8 +8019,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[RepositoryInvitation]]":
         url = f"/repos/{owner}/{repo}/invitations"
 
@@ -8084,7 +8084,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        data: MISSING[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -8096,7 +8096,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        permissions: MISSING[
+        permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
     ) -> "Response[RepositoryInvitation]":
@@ -8108,7 +8108,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        data: MISSING[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
@@ -8139,7 +8139,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        data: MISSING[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> "Response[RepositoryInvitation]":
         ...
 
@@ -8151,7 +8151,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        permissions: MISSING[
+        permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
     ) -> "Response[RepositoryInvitation]":
@@ -8163,7 +8163,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        data: MISSING[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryInvitation]":
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
@@ -8191,8 +8191,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[DeployKey]]":
         url = f"/repos/{owner}/{repo}/keys"
 
@@ -8217,8 +8217,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[DeployKey]]":
         url = f"/repos/{owner}/{repo}/keys"
 
@@ -8252,9 +8252,9 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        title: MISSING[str] = UNSET,
+        title: Missing[str] = UNSET,
         key: str,
-        read_only: MISSING[bool] = UNSET,
+        read_only: Missing[bool] = UNSET,
     ) -> "Response[DeployKey]":
         ...
 
@@ -8263,7 +8263,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoKeysPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys"
@@ -8303,9 +8303,9 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        title: MISSING[str] = UNSET,
+        title: Missing[str] = UNSET,
         key: str,
-        read_only: MISSING[bool] = UNSET,
+        read_only: Missing[bool] = UNSET,
     ) -> "Response[DeployKey]":
         ...
 
@@ -8314,7 +8314,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoKeysPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[DeployKey]":
         url = f"/repos/{owner}/{repo}/keys"
@@ -8551,7 +8551,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[MergedUpstream]":
         url = f"/repos/{owner}/{repo}/merge-upstream"
@@ -8598,7 +8598,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[MergedUpstream]":
         url = f"/repos/{owner}/{repo}/merge-upstream"
@@ -8638,7 +8638,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         base: str,
         head: str,
-        commit_message: MISSING[str] = UNSET,
+        commit_message: Missing[str] = UNSET,
     ) -> "Response[Commit]":
         ...
 
@@ -8647,7 +8647,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoMergesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/merges"
@@ -8690,7 +8690,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         base: str,
         head: str,
-        commit_message: MISSING[str] = UNSET,
+        commit_message: Missing[str] = UNSET,
     ) -> "Response[Commit]":
         ...
 
@@ -8699,7 +8699,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoMergesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Commit]":
         url = f"/repos/{owner}/{repo}/merges"
@@ -8792,10 +8792,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
-        https_enforced: MISSING[bool] = UNSET,
+        cname: Missing[Union[str, None]] = UNSET,
+        https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
-        source: MISSING[
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -8811,9 +8811,9 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
-        https_enforced: MISSING[bool] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
+        cname: Missing[Union[str, None]] = UNSET,
+        https_enforced: Missing[bool] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Literal["gh-pages", "master", "master /docs"],
             ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -8829,9 +8829,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         cname: Union[str, None],
-        https_enforced: MISSING[bool] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
-        source: MISSING[
+        https_enforced: Missing[bool] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -8847,10 +8847,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
-        https_enforced: MISSING[bool] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
-        source: MISSING[
+        cname: Missing[Union[str, None]] = UNSET,
+        https_enforced: Missing[bool] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -8866,10 +8866,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
+        cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
-        source: MISSING[
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -8883,7 +8883,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
                 ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -8951,10 +8951,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
-        https_enforced: MISSING[bool] = UNSET,
+        cname: Missing[Union[str, None]] = UNSET,
+        https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
-        source: MISSING[
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -8970,9 +8970,9 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
-        https_enforced: MISSING[bool] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
+        cname: Missing[Union[str, None]] = UNSET,
+        https_enforced: Missing[bool] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: Union[
             Literal["gh-pages", "master", "master /docs"],
             ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -8988,9 +8988,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         cname: Union[str, None],
-        https_enforced: MISSING[bool] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
-        source: MISSING[
+        https_enforced: Missing[bool] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -9006,10 +9006,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
-        https_enforced: MISSING[bool] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
-        source: MISSING[
+        cname: Missing[Union[str, None]] = UNSET,
+        https_enforced: Missing[bool] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -9025,10 +9025,10 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        cname: MISSING[Union[str, None]] = UNSET,
+        cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
-        source: MISSING[
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
+        source: Missing[
             Union[
                 Literal["gh-pages", "master", "master /docs"],
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -9042,7 +9042,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
                 ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -9109,7 +9109,7 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> "Response[Page]":
         ...
@@ -9122,7 +9122,7 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         build_type: Literal["legacy", "workflow"],
-        source: MISSING[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
+        source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> "Response[Page]":
         ...
 
@@ -9131,7 +9131,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
                 None,
@@ -9196,7 +9196,7 @@ class ReposClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        build_type: MISSING[Literal["legacy", "workflow"]] = UNSET,
+        build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> "Response[Page]":
         ...
@@ -9209,7 +9209,7 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         build_type: Literal["legacy", "workflow"],
-        source: MISSING[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
+        source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> "Response[Page]":
         ...
 
@@ -9218,7 +9218,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[
+        data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
                 None,
@@ -9309,8 +9309,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[PageBuild]]":
         url = f"/repos/{owner}/{repo}/pages/builds"
 
@@ -9335,8 +9335,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[PageBuild]]":
         url = f"/repos/{owner}/{repo}/pages/builds"
 
@@ -9481,7 +9481,7 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         artifact_url: str,
-        environment: MISSING[str] = "github-pages",
+        environment: Missing[str] = "github-pages",
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
     ) -> "Response[PageDeployment]":
@@ -9492,7 +9492,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PageDeployment]":
         url = f"/repos/{owner}/{repo}/pages/deployment"
@@ -9535,7 +9535,7 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         artifact_url: str,
-        environment: MISSING[str] = "github-pages",
+        environment: Missing[str] = "github-pages",
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
     ) -> "Response[PageDeployment]":
@@ -9546,7 +9546,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PageDeployment]":
         url = f"/repos/{owner}/{repo}/pages/deployment"
@@ -9621,7 +9621,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[ContentFile]":
         url = f"/repos/{owner}/{repo}/readme"
 
@@ -9649,7 +9649,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[ContentFile]":
         url = f"/repos/{owner}/{repo}/readme"
 
@@ -9678,7 +9678,7 @@ class ReposClient:
         owner: str,
         repo: str,
         dir_: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[ContentFile]":
         url = f"/repos/{owner}/{repo}/readme/{dir}"
 
@@ -9707,7 +9707,7 @@ class ReposClient:
         owner: str,
         repo: str,
         dir_: str,
-        ref: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
     ) -> "Response[ContentFile]":
         url = f"/repos/{owner}/{repo}/readme/{dir}"
 
@@ -9735,8 +9735,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Release]]":
         url = f"/repos/{owner}/{repo}/releases"
 
@@ -9764,8 +9764,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Release]]":
         url = f"/repos/{owner}/{repo}/releases"
 
@@ -9803,14 +9803,14 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         tag_name: str,
-        target_commitish: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        body: MISSING[str] = UNSET,
-        draft: MISSING[bool] = False,
-        prerelease: MISSING[bool] = False,
-        discussion_category_name: MISSING[str] = UNSET,
-        generate_release_notes: MISSING[bool] = False,
-        make_latest: MISSING[Literal["true", "false", "legacy"]] = True,
+        target_commitish: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        body: Missing[str] = UNSET,
+        draft: Missing[bool] = False,
+        prerelease: Missing[bool] = False,
+        discussion_category_name: Missing[str] = UNSET,
+        generate_release_notes: Missing[bool] = False,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
     ) -> "Response[Release]":
         ...
 
@@ -9819,7 +9819,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoReleasesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases"
@@ -9861,14 +9861,14 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         tag_name: str,
-        target_commitish: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        body: MISSING[str] = UNSET,
-        draft: MISSING[bool] = False,
-        prerelease: MISSING[bool] = False,
-        discussion_category_name: MISSING[str] = UNSET,
-        generate_release_notes: MISSING[bool] = False,
-        make_latest: MISSING[Literal["true", "false", "legacy"]] = True,
+        target_commitish: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        body: Missing[str] = UNSET,
+        draft: Missing[bool] = False,
+        prerelease: Missing[bool] = False,
+        discussion_category_name: Missing[str] = UNSET,
+        generate_release_notes: Missing[bool] = False,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
     ) -> "Response[Release]":
         ...
 
@@ -9877,7 +9877,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoReleasesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases"
@@ -9992,7 +9992,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> "Response[ReleaseAsset]":
         ...
 
@@ -10004,9 +10004,9 @@ class ReposClient:
         asset_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        label: MISSING[str] = UNSET,
-        state: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
+        label: Missing[str] = UNSET,
+        state: Missing[str] = UNSET,
     ) -> "Response[ReleaseAsset]":
         ...
 
@@ -10016,7 +10016,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
@@ -10047,7 +10047,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> "Response[ReleaseAsset]":
         ...
 
@@ -10059,9 +10059,9 @@ class ReposClient:
         asset_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        label: MISSING[str] = UNSET,
-        state: MISSING[str] = UNSET,
+        name: Missing[str] = UNSET,
+        label: Missing[str] = UNSET,
+        state: Missing[str] = UNSET,
     ) -> "Response[ReleaseAsset]":
         ...
 
@@ -10071,7 +10071,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReleaseAsset]":
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
@@ -10113,9 +10113,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         tag_name: str,
-        target_commitish: MISSING[str] = UNSET,
-        previous_tag_name: MISSING[str] = UNSET,
-        configuration_file_path: MISSING[str] = UNSET,
+        target_commitish: Missing[str] = UNSET,
+        previous_tag_name: Missing[str] = UNSET,
+        configuration_file_path: Missing[str] = UNSET,
     ) -> "Response[ReleaseNotesContent]":
         ...
 
@@ -10124,7 +10124,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReleaseNotesContent]":
         url = f"/repos/{owner}/{repo}/releases/generate-notes"
@@ -10169,9 +10169,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         tag_name: str,
-        target_commitish: MISSING[str] = UNSET,
-        previous_tag_name: MISSING[str] = UNSET,
-        configuration_file_path: MISSING[str] = UNSET,
+        target_commitish: Missing[str] = UNSET,
+        previous_tag_name: Missing[str] = UNSET,
+        configuration_file_path: Missing[str] = UNSET,
     ) -> "Response[ReleaseNotesContent]":
         ...
 
@@ -10180,7 +10180,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReleaseNotesContent]":
         url = f"/repos/{owner}/{repo}/releases/generate-notes"
@@ -10374,7 +10374,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> "Response[Release]":
         ...
 
@@ -10386,14 +10386,14 @@ class ReposClient:
         release_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        tag_name: MISSING[str] = UNSET,
-        target_commitish: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        body: MISSING[str] = UNSET,
-        draft: MISSING[bool] = UNSET,
-        prerelease: MISSING[bool] = UNSET,
-        make_latest: MISSING[Literal["true", "false", "legacy"]] = True,
-        discussion_category_name: MISSING[str] = UNSET,
+        tag_name: Missing[str] = UNSET,
+        target_commitish: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        body: Missing[str] = UNSET,
+        draft: Missing[bool] = UNSET,
+        prerelease: Missing[bool] = UNSET,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
+        discussion_category_name: Missing[str] = UNSET,
     ) -> "Response[Release]":
         ...
 
@@ -10403,7 +10403,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
@@ -10437,7 +10437,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> "Response[Release]":
         ...
 
@@ -10449,14 +10449,14 @@ class ReposClient:
         release_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        tag_name: MISSING[str] = UNSET,
-        target_commitish: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        body: MISSING[str] = UNSET,
-        draft: MISSING[bool] = UNSET,
-        prerelease: MISSING[bool] = UNSET,
-        make_latest: MISSING[Literal["true", "false", "legacy"]] = True,
-        discussion_category_name: MISSING[str] = UNSET,
+        tag_name: Missing[str] = UNSET,
+        target_commitish: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        body: Missing[str] = UNSET,
+        draft: Missing[bool] = UNSET,
+        prerelease: Missing[bool] = UNSET,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
+        discussion_category_name: Missing[str] = UNSET,
     ) -> "Response[Release]":
         ...
 
@@ -10466,7 +10466,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        data: MISSING[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Release]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
@@ -10498,8 +10498,8 @@ class ReposClient:
         owner: str,
         repo: str,
         release_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[ReleaseAsset]]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/assets"
 
@@ -10525,8 +10525,8 @@ class ReposClient:
         owner: str,
         repo: str,
         release_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[ReleaseAsset]]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/assets"
 
@@ -10553,7 +10553,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         name: str,
-        label: MISSING[str] = UNSET,
+        label: Missing[str] = UNSET,
         *,
         data: FileTypes,
         **kwargs,
@@ -10594,7 +10594,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         name: str,
-        label: MISSING[str] = UNSET,
+        label: Missing[str] = UNSET,
         *,
         data: FileTypes,
         **kwargs,
@@ -10835,9 +10835,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["error", "failure", "pending", "success"],
-        target_url: MISSING[Union[str, None]] = UNSET,
-        description: MISSING[Union[str, None]] = UNSET,
-        context: MISSING[str] = "default",
+        target_url: Missing[Union[str, None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        context: Missing[str] = "default",
     ) -> "Response[Status]":
         ...
 
@@ -10847,7 +10847,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        data: MISSING[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Status]":
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
@@ -10891,9 +10891,9 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["error", "failure", "pending", "success"],
-        target_url: MISSING[Union[str, None]] = UNSET,
-        description: MISSING[Union[str, None]] = UNSET,
-        context: MISSING[str] = "default",
+        target_url: Missing[Union[str, None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        context: Missing[str] = "default",
     ) -> "Response[Status]":
         ...
 
@@ -10903,7 +10903,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        data: MISSING[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Status]":
         url = f"/repos/{owner}/{repo}/statuses/{sha}"
@@ -10931,8 +10931,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Tag]]":
         url = f"/repos/{owner}/{repo}/tags"
 
@@ -10957,8 +10957,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Tag]]":
         url = f"/repos/{owner}/{repo}/tags"
 
@@ -11045,7 +11045,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TagProtection]":
         url = f"/repos/{owner}/{repo}/tags/protection"
@@ -11095,7 +11095,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TagProtection]":
         url = f"/repos/{owner}/{repo}/tags/protection"
@@ -11207,8 +11207,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/teams"
 
@@ -11233,8 +11233,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/repos/{owner}/{repo}/teams"
 
@@ -11259,8 +11259,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
 
@@ -11288,8 +11288,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
 
@@ -11335,7 +11335,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoTopicsPutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
@@ -11385,7 +11385,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoTopicsPutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Topic]":
         url = f"/repos/{owner}/{repo}/topics"
@@ -11417,7 +11417,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: MISSING[Literal["day", "week"]] = "day",
+        per: Missing[Literal["day", "week"]] = "day",
     ) -> "Response[CloneTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/clones"
 
@@ -11444,7 +11444,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: MISSING[Literal["day", "week"]] = "day",
+        per: Missing[Literal["day", "week"]] = "day",
     ) -> "Response[CloneTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/clones"
 
@@ -11555,7 +11555,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: MISSING[Literal["day", "week"]] = "day",
+        per: Missing[Literal["day", "week"]] = "day",
     ) -> "Response[ViewTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/views"
 
@@ -11582,7 +11582,7 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        per: MISSING[Literal["day", "week"]] = "day",
+        per: Missing[Literal["day", "week"]] = "day",
     ) -> "Response[ViewTraffic]":
         url = f"/repos/{owner}/{repo}/traffic/views"
 
@@ -11619,8 +11619,8 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         new_owner: str,
-        new_name: MISSING[str] = UNSET,
-        team_ids: MISSING[List[int]] = UNSET,
+        new_name: Missing[str] = UNSET,
+        team_ids: Missing[List[int]] = UNSET,
     ) -> "Response[MinimalRepository]":
         ...
 
@@ -11629,7 +11629,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoTransferPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[MinimalRepository]":
         url = f"/repos/{owner}/{repo}/transfer"
@@ -11667,8 +11667,8 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         new_owner: str,
-        new_name: MISSING[str] = UNSET,
-        team_ids: MISSING[List[int]] = UNSET,
+        new_name: Missing[str] = UNSET,
+        team_ids: Missing[List[int]] = UNSET,
     ) -> "Response[MinimalRepository]":
         ...
 
@@ -11677,7 +11677,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[ReposOwnerRepoTransferPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[MinimalRepository]":
         url = f"/repos/{owner}/{repo}/transfer"
@@ -11858,11 +11858,11 @@ class ReposClient:
         template_repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        owner: MISSING[str] = UNSET,
+        owner: Missing[str] = UNSET,
         name: str,
-        description: MISSING[str] = UNSET,
-        include_all_branches: MISSING[bool] = False,
-        private: MISSING[bool] = False,
+        description: Missing[str] = UNSET,
+        include_all_branches: Missing[bool] = False,
+        private: Missing[bool] = False,
     ) -> "Response[Repository]":
         ...
 
@@ -11871,7 +11871,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        data: MISSING[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
+        data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Repository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
@@ -11912,11 +11912,11 @@ class ReposClient:
         template_repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        owner: MISSING[str] = UNSET,
+        owner: Missing[str] = UNSET,
         name: str,
-        description: MISSING[str] = UNSET,
-        include_all_branches: MISSING[bool] = False,
-        private: MISSING[bool] = False,
+        description: Missing[str] = UNSET,
+        include_all_branches: Missing[bool] = False,
+        private: Missing[bool] = False,
     ) -> "Response[Repository]":
         ...
 
@@ -11925,7 +11925,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        data: MISSING[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
+        data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Repository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
@@ -11951,7 +11951,7 @@ class ReposClient:
 
     def list_public(
         self,
-        since: MISSING[int] = UNSET,
+        since: Missing[int] = UNSET,
     ) -> "Response[List[MinimalRepository]]":
         url = "/repositories"
 
@@ -11976,7 +11976,7 @@ class ReposClient:
 
     async def async_list_public(
         self,
-        since: MISSING[int] = UNSET,
+        since: Missing[int] = UNSET,
     ) -> "Response[List[MinimalRepository]]":
         url = "/repositories"
 
@@ -12001,17 +12001,17 @@ class ReposClient:
 
     def list_for_authenticated_user(
         self,
-        visibility: MISSING[Literal["all", "public", "private"]] = "all",
-        affiliation: MISSING[str] = "owner,collaborator,organization_member",
-        type: MISSING[Literal["all", "owner", "public", "private", "member"]] = "all",
-        sort: MISSING[
+        visibility: Missing[Literal["all", "public", "private"]] = "all",
+        affiliation: Missing[str] = "owner,collaborator,organization_member",
+        type: Missing[Literal["all", "owner", "public", "private", "member"]] = "all",
+        sort: Missing[
             Literal["created", "updated", "pushed", "full_name"]
         ] = "full_name",
-        direction: MISSING[Literal["asc", "desc"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        since: MISSING[datetime] = UNSET,
-        before: MISSING[datetime] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        since: Missing[datetime] = UNSET,
+        before: Missing[datetime] = UNSET,
     ) -> "Response[List[Repository]]":
         url = "/user/repos"
 
@@ -12046,17 +12046,17 @@ class ReposClient:
 
     async def async_list_for_authenticated_user(
         self,
-        visibility: MISSING[Literal["all", "public", "private"]] = "all",
-        affiliation: MISSING[str] = "owner,collaborator,organization_member",
-        type: MISSING[Literal["all", "owner", "public", "private", "member"]] = "all",
-        sort: MISSING[
+        visibility: Missing[Literal["all", "public", "private"]] = "all",
+        affiliation: Missing[str] = "owner,collaborator,organization_member",
+        type: Missing[Literal["all", "owner", "public", "private", "member"]] = "all",
+        sort: Missing[
             Literal["created", "updated", "pushed", "full_name"]
         ] = "full_name",
-        direction: MISSING[Literal["asc", "desc"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        since: MISSING[datetime] = UNSET,
-        before: MISSING[datetime] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        since: Missing[datetime] = UNSET,
+        before: Missing[datetime] = UNSET,
     ) -> "Response[List[Repository]]":
         url = "/user/repos"
 
@@ -12101,37 +12101,37 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         name: str,
-        description: MISSING[str] = UNSET,
-        homepage: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
-        has_issues: MISSING[bool] = True,
-        has_projects: MISSING[bool] = True,
-        has_wiki: MISSING[bool] = True,
-        has_discussions: MISSING[bool] = False,
-        team_id: MISSING[int] = UNSET,
-        auto_init: MISSING[bool] = False,
-        gitignore_template: MISSING[str] = UNSET,
-        license_template: MISSING[str] = UNSET,
-        allow_squash_merge: MISSING[bool] = True,
-        allow_merge_commit: MISSING[bool] = True,
-        allow_rebase_merge: MISSING[bool] = True,
-        allow_auto_merge: MISSING[bool] = False,
-        delete_branch_on_merge: MISSING[bool] = False,
-        squash_merge_commit_title: MISSING[
+        description: Missing[str] = UNSET,
+        homepage: Missing[str] = UNSET,
+        private: Missing[bool] = False,
+        has_issues: Missing[bool] = True,
+        has_projects: Missing[bool] = True,
+        has_wiki: Missing[bool] = True,
+        has_discussions: Missing[bool] = False,
+        team_id: Missing[int] = UNSET,
+        auto_init: Missing[bool] = False,
+        gitignore_template: Missing[str] = UNSET,
+        license_template: Missing[str] = UNSET,
+        allow_squash_merge: Missing[bool] = True,
+        allow_merge_commit: Missing[bool] = True,
+        allow_rebase_merge: Missing[bool] = True,
+        allow_auto_merge: Missing[bool] = False,
+        delete_branch_on_merge: Missing[bool] = False,
+        squash_merge_commit_title: Missing[
             Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
         ] = UNSET,
-        squash_merge_commit_message: MISSING[
+        squash_merge_commit_message: Missing[
             Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
         ] = UNSET,
-        merge_commit_title: MISSING[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
-        merge_commit_message: MISSING[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
-        has_downloads: MISSING[bool] = True,
-        is_template: MISSING[bool] = False,
+        merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
+        has_downloads: Missing[bool] = True,
+        is_template: Missing[bool] = False,
     ) -> "Response[Repository]":
         ...
 
     def create_for_authenticated_user(
-        self, *, data: MISSING[UserReposPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserReposPostBodyType] = UNSET, **kwargs
     ) -> "Response[Repository]":
         url = "/user/repos"
 
@@ -12173,37 +12173,37 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         name: str,
-        description: MISSING[str] = UNSET,
-        homepage: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
-        has_issues: MISSING[bool] = True,
-        has_projects: MISSING[bool] = True,
-        has_wiki: MISSING[bool] = True,
-        has_discussions: MISSING[bool] = False,
-        team_id: MISSING[int] = UNSET,
-        auto_init: MISSING[bool] = False,
-        gitignore_template: MISSING[str] = UNSET,
-        license_template: MISSING[str] = UNSET,
-        allow_squash_merge: MISSING[bool] = True,
-        allow_merge_commit: MISSING[bool] = True,
-        allow_rebase_merge: MISSING[bool] = True,
-        allow_auto_merge: MISSING[bool] = False,
-        delete_branch_on_merge: MISSING[bool] = False,
-        squash_merge_commit_title: MISSING[
+        description: Missing[str] = UNSET,
+        homepage: Missing[str] = UNSET,
+        private: Missing[bool] = False,
+        has_issues: Missing[bool] = True,
+        has_projects: Missing[bool] = True,
+        has_wiki: Missing[bool] = True,
+        has_discussions: Missing[bool] = False,
+        team_id: Missing[int] = UNSET,
+        auto_init: Missing[bool] = False,
+        gitignore_template: Missing[str] = UNSET,
+        license_template: Missing[str] = UNSET,
+        allow_squash_merge: Missing[bool] = True,
+        allow_merge_commit: Missing[bool] = True,
+        allow_rebase_merge: Missing[bool] = True,
+        allow_auto_merge: Missing[bool] = False,
+        delete_branch_on_merge: Missing[bool] = False,
+        squash_merge_commit_title: Missing[
             Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
         ] = UNSET,
-        squash_merge_commit_message: MISSING[
+        squash_merge_commit_message: Missing[
             Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
         ] = UNSET,
-        merge_commit_title: MISSING[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
-        merge_commit_message: MISSING[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
-        has_downloads: MISSING[bool] = True,
-        is_template: MISSING[bool] = False,
+        merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
+        merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
+        has_downloads: Missing[bool] = True,
+        is_template: Missing[bool] = False,
     ) -> "Response[Repository]":
         ...
 
     async def async_create_for_authenticated_user(
-        self, *, data: MISSING[UserReposPostBodyType] = UNSET, **kwargs
+        self, *, data: Missing[UserReposPostBodyType] = UNSET, **kwargs
     ) -> "Response[Repository]":
         url = "/user/repos"
 
@@ -12235,8 +12235,8 @@ class ReposClient:
 
     def list_invitations_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[RepositoryInvitation]]":
         url = "/user/repository_invitations"
 
@@ -12264,8 +12264,8 @@ class ReposClient:
 
     async def async_list_invitations_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[RepositoryInvitation]]":
         url = "/user/repository_invitations"
 
@@ -12378,13 +12378,13 @@ class ReposClient:
     def list_for_user(
         self,
         username: str,
-        type: MISSING[Literal["all", "owner", "member"]] = "owner",
-        sort: MISSING[
+        type: Missing[Literal["all", "owner", "member"]] = "owner",
+        sort: Missing[
             Literal["created", "updated", "pushed", "full_name"]
         ] = "full_name",
-        direction: MISSING[Literal["asc", "desc"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/users/{username}/repos"
 
@@ -12411,13 +12411,13 @@ class ReposClient:
     async def async_list_for_user(
         self,
         username: str,
-        type: MISSING[Literal["all", "owner", "member"]] = "owner",
-        sort: MISSING[
+        type: Missing[Literal["all", "owner", "member"]] = "owner",
+        sort: Missing[
             Literal["created", "updated", "pushed", "full_name"]
         ] = "full_name",
-        direction: MISSING[Literal["asc", "desc"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/users/{username}/repos"
 

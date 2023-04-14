@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     OrgsOrgPatchBodyType,
@@ -80,8 +80,8 @@ class OrgsClient:
 
     def list(
         self,
-        since: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        since: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/organizations"
 
@@ -104,8 +104,8 @@ class OrgsClient:
 
     async def async_list(
         self,
-        since: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        since: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/organizations"
 
@@ -129,15 +129,15 @@ class OrgsClient:
     def list_pat_grant_requests(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        sort: MISSING[Literal["created_at"]] = "created_at",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        owner: MISSING[List[str]] = UNSET,
-        repository: MISSING[str] = UNSET,
-        permission: MISSING[str] = UNSET,
-        last_used_before: MISSING[datetime] = UNSET,
-        last_used_after: MISSING[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
@@ -174,15 +174,15 @@ class OrgsClient:
     async def async_list_pat_grant_requests(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        sort: MISSING[Literal["created_at"]] = "created_at",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        owner: MISSING[List[str]] = UNSET,
-        repository: MISSING[str] = UNSET,
-        permission: MISSING[str] = UNSET,
-        last_used_before: MISSING[datetime] = UNSET,
-        last_used_after: MISSING[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
@@ -228,9 +228,9 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
-        pat_request_ids: MISSING[List[int]] = UNSET,
+        pat_request_ids: Missing[List[int]] = UNSET,
         action: Literal["approve", "deny"],
-        reason: MISSING[Union[str, None]] = UNSET,
+        reason: Missing[Union[str, None]] = UNSET,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -238,7 +238,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
+        data: Missing[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
@@ -280,9 +280,9 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
-        pat_request_ids: MISSING[List[int]] = UNSET,
+        pat_request_ids: Missing[List[int]] = UNSET,
         action: Literal["approve", "deny"],
-        reason: MISSING[Union[str, None]] = UNSET,
+        reason: Missing[Union[str, None]] = UNSET,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -290,7 +290,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
+        data: Missing[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
@@ -338,7 +338,7 @@ class OrgsClient:
         *,
         data: Literal[UNSET] = UNSET,
         action: Literal["approve", "deny"],
-        reason: MISSING[Union[str, None]] = UNSET,
+        reason: Missing[Union[str, None]] = UNSET,
     ) -> "Response":
         ...
 
@@ -347,7 +347,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
         **kwargs,
@@ -398,7 +398,7 @@ class OrgsClient:
         *,
         data: Literal[UNSET] = UNSET,
         action: Literal["approve", "deny"],
-        reason: MISSING[Union[str, None]] = UNSET,
+        reason: Missing[Union[str, None]] = UNSET,
     ) -> "Response":
         ...
 
@@ -407,7 +407,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        data: MISSING[
+        data: Missing[
             OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
         **kwargs,
@@ -444,8 +444,8 @@ class OrgsClient:
         self,
         org: str,
         pat_request_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
 
@@ -475,8 +475,8 @@ class OrgsClient:
         self,
         org: str,
         pat_request_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
 
@@ -505,15 +505,15 @@ class OrgsClient:
     def list_pat_grants(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        sort: MISSING[Literal["created_at"]] = "created_at",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        owner: MISSING[List[str]] = UNSET,
-        repository: MISSING[str] = UNSET,
-        permission: MISSING[str] = UNSET,
-        last_used_before: MISSING[datetime] = UNSET,
-        last_used_after: MISSING[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
         url = f"/organizations/{org}/personal-access-tokens"
 
@@ -550,15 +550,15 @@ class OrgsClient:
     async def async_list_pat_grants(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        sort: MISSING[Literal["created_at"]] = "created_at",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        owner: MISSING[List[str]] = UNSET,
-        repository: MISSING[str] = UNSET,
-        permission: MISSING[str] = UNSET,
-        last_used_before: MISSING[datetime] = UNSET,
-        last_used_after: MISSING[datetime] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
     ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
         url = f"/organizations/{org}/personal-access-tokens"
 
@@ -613,7 +613,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
+        data: Missing[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
@@ -664,7 +664,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
+        data: Missing[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
@@ -720,7 +720,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        data: MISSING[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
+        data: Missing[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
@@ -775,7 +775,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        data: MISSING[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
+        data: Missing[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
@@ -808,8 +808,8 @@ class OrgsClient:
         self,
         org: str,
         pat_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
 
@@ -839,8 +839,8 @@ class OrgsClient:
         self,
         org: str,
         pat_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
 
@@ -950,7 +950,7 @@ class OrgsClient:
 
     @overload
     def update(
-        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET
+        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -960,46 +960,46 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
-        billing_email: MISSING[str] = UNSET,
-        company: MISSING[str] = UNSET,
-        email: MISSING[str] = UNSET,
-        twitter_username: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        description: MISSING[str] = UNSET,
-        has_organization_projects: MISSING[bool] = UNSET,
-        has_repository_projects: MISSING[bool] = UNSET,
-        default_repository_permission: MISSING[
+        billing_email: Missing[str] = UNSET,
+        company: Missing[str] = UNSET,
+        email: Missing[str] = UNSET,
+        twitter_username: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        has_organization_projects: Missing[bool] = UNSET,
+        has_repository_projects: Missing[bool] = UNSET,
+        default_repository_permission: Missing[
             Literal["read", "write", "admin", "none"]
         ] = "read",
-        members_can_create_repositories: MISSING[bool] = True,
-        members_can_create_internal_repositories: MISSING[bool] = UNSET,
-        members_can_create_private_repositories: MISSING[bool] = UNSET,
-        members_can_create_public_repositories: MISSING[bool] = UNSET,
-        members_allowed_repository_creation_type: MISSING[
+        members_can_create_repositories: Missing[bool] = True,
+        members_can_create_internal_repositories: Missing[bool] = UNSET,
+        members_can_create_private_repositories: Missing[bool] = UNSET,
+        members_can_create_public_repositories: Missing[bool] = UNSET,
+        members_allowed_repository_creation_type: Missing[
             Literal["all", "private", "none"]
         ] = UNSET,
-        members_can_create_pages: MISSING[bool] = True,
-        members_can_create_public_pages: MISSING[bool] = True,
-        members_can_create_private_pages: MISSING[bool] = True,
-        members_can_fork_private_repositories: MISSING[bool] = False,
-        web_commit_signoff_required: MISSING[bool] = False,
-        blog: MISSING[str] = UNSET,
-        advanced_security_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        dependabot_alerts_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        dependabot_security_updates_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        dependency_graph_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        secret_scanning_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        secret_scanning_push_protection_enabled_for_new_repositories: MISSING[
+        members_can_create_pages: Missing[bool] = True,
+        members_can_create_public_pages: Missing[bool] = True,
+        members_can_create_private_pages: Missing[bool] = True,
+        members_can_fork_private_repositories: Missing[bool] = False,
+        web_commit_signoff_required: Missing[bool] = False,
+        blog: Missing[str] = UNSET,
+        advanced_security_enabled_for_new_repositories: Missing[bool] = UNSET,
+        dependabot_alerts_enabled_for_new_repositories: Missing[bool] = UNSET,
+        dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = UNSET,
+        dependency_graph_enabled_for_new_repositories: Missing[bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: Missing[bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: Missing[
             bool
         ] = UNSET,
-        secret_scanning_push_protection_custom_link_enabled: MISSING[bool] = UNSET,
-        secret_scanning_push_protection_custom_link: MISSING[str] = UNSET,
+        secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
+        secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
     def update(
-        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET, **kwargs
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
@@ -1028,7 +1028,7 @@ class OrgsClient:
 
     @overload
     async def async_update(
-        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET
+        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -1038,46 +1038,46 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
-        billing_email: MISSING[str] = UNSET,
-        company: MISSING[str] = UNSET,
-        email: MISSING[str] = UNSET,
-        twitter_username: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        name: MISSING[str] = UNSET,
-        description: MISSING[str] = UNSET,
-        has_organization_projects: MISSING[bool] = UNSET,
-        has_repository_projects: MISSING[bool] = UNSET,
-        default_repository_permission: MISSING[
+        billing_email: Missing[str] = UNSET,
+        company: Missing[str] = UNSET,
+        email: Missing[str] = UNSET,
+        twitter_username: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        has_organization_projects: Missing[bool] = UNSET,
+        has_repository_projects: Missing[bool] = UNSET,
+        default_repository_permission: Missing[
             Literal["read", "write", "admin", "none"]
         ] = "read",
-        members_can_create_repositories: MISSING[bool] = True,
-        members_can_create_internal_repositories: MISSING[bool] = UNSET,
-        members_can_create_private_repositories: MISSING[bool] = UNSET,
-        members_can_create_public_repositories: MISSING[bool] = UNSET,
-        members_allowed_repository_creation_type: MISSING[
+        members_can_create_repositories: Missing[bool] = True,
+        members_can_create_internal_repositories: Missing[bool] = UNSET,
+        members_can_create_private_repositories: Missing[bool] = UNSET,
+        members_can_create_public_repositories: Missing[bool] = UNSET,
+        members_allowed_repository_creation_type: Missing[
             Literal["all", "private", "none"]
         ] = UNSET,
-        members_can_create_pages: MISSING[bool] = True,
-        members_can_create_public_pages: MISSING[bool] = True,
-        members_can_create_private_pages: MISSING[bool] = True,
-        members_can_fork_private_repositories: MISSING[bool] = False,
-        web_commit_signoff_required: MISSING[bool] = False,
-        blog: MISSING[str] = UNSET,
-        advanced_security_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        dependabot_alerts_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        dependabot_security_updates_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        dependency_graph_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        secret_scanning_enabled_for_new_repositories: MISSING[bool] = UNSET,
-        secret_scanning_push_protection_enabled_for_new_repositories: MISSING[
+        members_can_create_pages: Missing[bool] = True,
+        members_can_create_public_pages: Missing[bool] = True,
+        members_can_create_private_pages: Missing[bool] = True,
+        members_can_fork_private_repositories: Missing[bool] = False,
+        web_commit_signoff_required: Missing[bool] = False,
+        blog: Missing[str] = UNSET,
+        advanced_security_enabled_for_new_repositories: Missing[bool] = UNSET,
+        dependabot_alerts_enabled_for_new_repositories: Missing[bool] = UNSET,
+        dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = UNSET,
+        dependency_graph_enabled_for_new_repositories: Missing[bool] = UNSET,
+        secret_scanning_enabled_for_new_repositories: Missing[bool] = UNSET,
+        secret_scanning_push_protection_enabled_for_new_repositories: Missing[
             bool
         ] = UNSET,
-        secret_scanning_push_protection_custom_link_enabled: MISSING[bool] = UNSET,
-        secret_scanning_push_protection_custom_link: MISSING[str] = UNSET,
+        secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
+        secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
     async def async_update(
-        self, org: str, *, data: MISSING[OrgsOrgPatchBodyType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET, **kwargs
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
@@ -1107,8 +1107,8 @@ class OrgsClient:
     def list_blocked_users(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
 
@@ -1132,8 +1132,8 @@ class OrgsClient:
     async def async_list_blocked_users(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
 
@@ -1271,8 +1271,8 @@ class OrgsClient:
     def list_failed_invitations(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/failed_invitations"
 
@@ -1299,8 +1299,8 @@ class OrgsClient:
     async def async_list_failed_invitations(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/failed_invitations"
 
@@ -1327,8 +1327,8 @@ class OrgsClient:
     def list_webhooks(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrgHook]]":
         url = f"/orgs/{org}/hooks"
 
@@ -1355,8 +1355,8 @@ class OrgsClient:
     async def async_list_webhooks(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrgHook]]":
         url = f"/orgs/{org}/hooks"
 
@@ -1394,13 +1394,13 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
-        events: MISSING[List[str]] = ["push"],
-        active: MISSING[bool] = True,
+        events: Missing[List[str]] = ["push"],
+        active: Missing[bool] = True,
     ) -> "Response[OrgHook]":
         ...
 
     def create_webhook(
-        self, org: str, *, data: MISSING[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
@@ -1441,13 +1441,13 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
-        events: MISSING[List[str]] = ["push"],
-        active: MISSING[bool] = True,
+        events: Missing[List[str]] = ["push"],
+        active: Missing[bool] = True,
     ) -> "Response[OrgHook]":
         ...
 
     async def async_create_webhook(
-        self, org: str, *, data: MISSING[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
+        self, org: str, *, data: Missing[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
@@ -1562,7 +1562,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1573,10 +1573,10 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        config: MISSING[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: MISSING[List[str]] = ["push"],
-        active: MISSING[bool] = True,
-        name: MISSING[str] = UNSET,
+        config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
+        events: Missing[List[str]] = ["push"],
+        active: Missing[bool] = True,
+        name: Missing[str] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1585,7 +1585,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
@@ -1619,7 +1619,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1630,10 +1630,10 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        config: MISSING[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: MISSING[List[str]] = ["push"],
-        active: MISSING[bool] = True,
-        name: MISSING[str] = UNSET,
+        config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
+        events: Missing[List[str]] = ["push"],
+        active: Missing[bool] = True,
+        name: Missing[str] = UNSET,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1642,7 +1642,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
@@ -1712,7 +1712,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1723,10 +1723,10 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        url: MISSING[str] = UNSET,
-        content_type: MISSING[str] = UNSET,
-        secret: MISSING[str] = UNSET,
-        insecure_ssl: MISSING[Union[str, float]] = UNSET,
+        url: Missing[str] = UNSET,
+        content_type: Missing[str] = UNSET,
+        secret: Missing[str] = UNSET,
+        insecure_ssl: Missing[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1735,7 +1735,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
@@ -1765,7 +1765,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1776,10 +1776,10 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
-        url: MISSING[str] = UNSET,
-        content_type: MISSING[str] = UNSET,
-        secret: MISSING[str] = UNSET,
-        insecure_ssl: MISSING[Union[str, float]] = UNSET,
+        url: Missing[str] = UNSET,
+        content_type: Missing[str] = UNSET,
+        secret: Missing[str] = UNSET,
+        insecure_ssl: Missing[Union[str, float]] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -1788,7 +1788,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        data: MISSING[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
+        data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
@@ -1816,9 +1816,9 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
-        per_page: MISSING[int] = 30,
-        cursor: MISSING[str] = UNSET,
-        redelivery: MISSING[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        cursor: Missing[str] = UNSET,
+        redelivery: Missing[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -1848,9 +1848,9 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
-        per_page: MISSING[int] = 30,
-        cursor: MISSING[str] = UNSET,
-        redelivery: MISSING[bool] = UNSET,
+        per_page: Missing[int] = 30,
+        cursor: Missing[str] = UNSET,
+        redelivery: Missing[bool] = UNSET,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -2011,8 +2011,8 @@ class OrgsClient:
     def list_app_installations(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgInstallationsGetResponse200]":
         url = f"/orgs/{org}/installations"
 
@@ -2036,8 +2036,8 @@ class OrgsClient:
     async def async_list_app_installations(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgInstallationsGetResponse200]":
         url = f"/orgs/{org}/installations"
 
@@ -2061,14 +2061,14 @@ class OrgsClient:
     def list_pending_invitations(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        role: MISSING[
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        role: Missing[
             Literal[
                 "all", "admin", "direct_member", "billing_manager", "hiring_manager"
             ]
         ] = "all",
-        invitation_source: MISSING[Literal["all", "member", "scim"]] = "all",
+        invitation_source: Missing[Literal["all", "member", "scim"]] = "all",
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
@@ -2097,14 +2097,14 @@ class OrgsClient:
     async def async_list_pending_invitations(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        role: MISSING[
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        role: Missing[
             Literal[
                 "all", "admin", "direct_member", "billing_manager", "hiring_manager"
             ]
         ] = "all",
-        invitation_source: MISSING[Literal["all", "member", "scim"]] = "all",
+        invitation_source: Missing[Literal["all", "member", "scim"]] = "all",
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
@@ -2132,7 +2132,7 @@ class OrgsClient:
 
     @overload
     def create_invitation(
-        self, org: str, *, data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET
+        self, org: str, *, data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2142,12 +2142,12 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
-        invitee_id: MISSING[int] = UNSET,
-        email: MISSING[str] = UNSET,
-        role: MISSING[
+        invitee_id: Missing[int] = UNSET,
+        email: Missing[str] = UNSET,
+        role: Missing[
             Literal["admin", "direct_member", "billing_manager"]
         ] = "direct_member",
-        team_ids: MISSING[List[int]] = UNSET,
+        team_ids: Missing[List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2155,7 +2155,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET,
+        data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
@@ -2185,7 +2185,7 @@ class OrgsClient:
 
     @overload
     async def async_create_invitation(
-        self, org: str, *, data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET
+        self, org: str, *, data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2195,12 +2195,12 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
-        invitee_id: MISSING[int] = UNSET,
-        email: MISSING[str] = UNSET,
-        role: MISSING[
+        invitee_id: Missing[int] = UNSET,
+        email: Missing[str] = UNSET,
+        role: Missing[
             Literal["admin", "direct_member", "billing_manager"]
         ] = "direct_member",
-        team_ids: MISSING[List[int]] = UNSET,
+        team_ids: Missing[List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2208,7 +2208,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgInvitationsPostBodyType] = UNSET,
+        data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
@@ -2282,8 +2282,8 @@ class OrgsClient:
         self,
         org: str,
         invitation_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -2311,8 +2311,8 @@ class OrgsClient:
         self,
         org: str,
         invitation_id: int,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -2339,10 +2339,10 @@ class OrgsClient:
     def list_members(
         self,
         org: str,
-        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
-        role: MISSING[Literal["all", "admin", "member"]] = "all",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        filter_: Missing[Literal["2fa_disabled", "all"]] = "all",
+        role: Missing[Literal["all", "admin", "member"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/members"
 
@@ -2371,10 +2371,10 @@ class OrgsClient:
     async def async_list_members(
         self,
         org: str,
-        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
-        role: MISSING[Literal["all", "admin", "member"]] = "all",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        filter_: Missing[Literal["2fa_disabled", "all"]] = "all",
+        role: Missing[Literal["all", "admin", "member"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/members"
 
@@ -2526,7 +2526,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2537,7 +2537,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
-        role: MISSING[Literal["admin", "member"]] = "member",
+        role: Missing[Literal["admin", "member"]] = "member",
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2546,7 +2546,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
@@ -2580,7 +2580,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2591,7 +2591,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
-        role: MISSING[Literal["admin", "member"]] = "member",
+        role: Missing[Literal["admin", "member"]] = "member",
     ) -> "Response[OrgMembership]":
         ...
 
@@ -2600,7 +2600,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
@@ -2673,9 +2673,9 @@ class OrgsClient:
     def list_outside_collaborators(
         self,
         org: str,
-        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        filter_: Missing[Literal["2fa_disabled", "all"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/outside_collaborators"
 
@@ -2700,9 +2700,9 @@ class OrgsClient:
     async def async_list_outside_collaborators(
         self,
         org: str,
-        filter_: MISSING[Literal["2fa_disabled", "all"]] = "all",
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        filter_: Missing[Literal["2fa_disabled", "all"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/outside_collaborators"
 
@@ -2730,7 +2730,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2741,7 +2741,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
-        async_: MISSING[bool] = False,
+        async_: Missing[bool] = False,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2750,7 +2750,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
@@ -2783,7 +2783,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2794,7 +2794,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
-        async_: MISSING[bool] = False,
+        async_: Missing[bool] = False,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
 
@@ -2803,7 +2803,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        data: MISSING[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
@@ -2873,8 +2873,8 @@ class OrgsClient:
     def list_public_members(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/public_members"
 
@@ -2898,8 +2898,8 @@ class OrgsClient:
     async def async_list_public_members(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/public_members"
 
@@ -3190,9 +3190,9 @@ class OrgsClient:
 
     def list_memberships_for_authenticated_user(
         self,
-        state: MISSING[Literal["active", "pending"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        state: Missing[Literal["active", "pending"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrgMembership]]":
         url = "/user/memberships/orgs"
 
@@ -3221,9 +3221,9 @@ class OrgsClient:
 
     async def async_list_memberships_for_authenticated_user(
         self,
-        state: MISSING[Literal["active", "pending"]] = UNSET,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        state: Missing[Literal["active", "pending"]] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrgMembership]]":
         url = "/user/memberships/orgs"
 
@@ -3312,7 +3312,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
+        data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
@@ -3361,7 +3361,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        data: MISSING[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
+        data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
@@ -3392,8 +3392,8 @@ class OrgsClient:
 
     def list_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/user/orgs"
 
@@ -3420,8 +3420,8 @@ class OrgsClient:
 
     async def async_list_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/user/orgs"
 
@@ -3449,8 +3449,8 @@ class OrgsClient:
     def list_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = f"/users/{username}/orgs"
 
@@ -3474,8 +3474,8 @@ class OrgsClient:
     async def async_list_for_user(
         self,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[List[OrganizationSimple]]":
         url = f"/users/{username}/orgs"
 

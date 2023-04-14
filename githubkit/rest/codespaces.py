@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Union, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     UserCodespacesPostBodyOneof0Type,
@@ -88,8 +88,8 @@ class CodespacesClient:
     def list_in_organization(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgCodespacesGetResponse200]":
         url = f"/orgs/{org}/codespaces"
 
@@ -119,8 +119,8 @@ class CodespacesClient:
     async def async_list_in_organization(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgCodespacesGetResponse200]":
         url = f"/orgs/{org}/codespaces"
 
@@ -165,7 +165,7 @@ class CodespacesClient:
             "all_members",
             "all_members_and_outside_collaborators",
         ],
-        selected_usernames: MISSING[List[str]] = UNSET,
+        selected_usernames: Missing[List[str]] = UNSET,
     ) -> "Response":
         ...
 
@@ -173,7 +173,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing"
@@ -219,7 +219,7 @@ class CodespacesClient:
             "all_members",
             "all_members_and_outside_collaborators",
         ],
-        selected_usernames: MISSING[List[str]] = UNSET,
+        selected_usernames: Missing[List[str]] = UNSET,
     ) -> "Response":
         ...
 
@@ -227,7 +227,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing"
@@ -275,7 +275,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
@@ -323,7 +323,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
@@ -371,7 +371,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
@@ -419,7 +419,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: MISSING[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
@@ -450,8 +450,8 @@ class CodespacesClient:
     def list_org_secrets(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgCodespacesSecretsGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets"
 
@@ -475,8 +475,8 @@ class CodespacesClient:
     async def async_list_org_secrets(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgCodespacesSecretsGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets"
 
@@ -584,10 +584,10 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: MISSING[List[int]] = UNSET,
+        selected_repository_ids: Missing[List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -596,7 +596,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
@@ -641,10 +641,10 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: MISSING[List[int]] = UNSET,
+        selected_repository_ids: Missing[List[int]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -653,7 +653,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
@@ -725,8 +725,8 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
@@ -754,8 +754,8 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
@@ -805,7 +805,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
         **kwargs,
@@ -859,7 +859,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
         **kwargs,
@@ -987,8 +987,8 @@ class CodespacesClient:
         self,
         org: str,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgMembersUsernameCodespacesGetResponse200]":
         url = f"/orgs/{org}/members/{username}/codespaces"
 
@@ -1019,8 +1019,8 @@ class CodespacesClient:
         self,
         org: str,
         username: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgMembersUsernameCodespacesGetResponse200]":
         url = f"/orgs/{org}/members/{username}/codespaces"
 
@@ -1151,8 +1151,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoCodespacesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
@@ -1183,8 +1183,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoCodespacesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
@@ -1228,16 +1228,16 @@ class CodespacesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        ref: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        multi_repo_permissions_opt_out: MISSING[bool] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        retention_period_minutes: MISSING[int] = UNSET,
+        ref: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        multi_repo_permissions_opt_out: Missing[bool] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
+        display_name: Missing[str] = UNSET,
+        retention_period_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -1246,7 +1246,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
@@ -1294,16 +1294,16 @@ class CodespacesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
-        ref: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        multi_repo_permissions_opt_out: MISSING[bool] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        retention_period_minutes: MISSING[int] = UNSET,
+        ref: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        multi_repo_permissions_opt_out: Missing[bool] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
+        display_name: Missing[str] = UNSET,
+        retention_period_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -1312,7 +1312,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        data: MISSING[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
+        data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
@@ -1347,8 +1347,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/devcontainers"
 
@@ -1380,8 +1380,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/devcontainers"
 
@@ -1413,8 +1413,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/machines"
 
@@ -1445,8 +1445,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/machines"
 
@@ -1477,8 +1477,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        ref: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
     ) -> "Response[ReposOwnerRepoCodespacesNewGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/new"
 
@@ -1508,8 +1508,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        ref: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
+        ref: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
     ) -> "Response[ReposOwnerRepoCodespacesNewGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/new"
 
@@ -1539,8 +1539,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoCodespacesSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets"
 
@@ -1565,8 +1565,8 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoCodespacesSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets"
 
@@ -1680,8 +1680,8 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -1691,7 +1691,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        data: MISSING[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
@@ -1734,8 +1734,8 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -1745,7 +1745,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        data: MISSING[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
@@ -1824,15 +1824,15 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        multi_repo_permissions_opt_out: MISSING[bool] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        retention_period_minutes: MISSING[int] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        multi_repo_permissions_opt_out: Missing[bool] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
+        display_name: Missing[str] = UNSET,
+        retention_period_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -1842,7 +1842,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
         **kwargs,
@@ -1895,15 +1895,15 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        multi_repo_permissions_opt_out: MISSING[bool] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        retention_period_minutes: MISSING[int] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        multi_repo_permissions_opt_out: Missing[bool] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
+        display_name: Missing[str] = UNSET,
+        retention_period_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -1913,7 +1913,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        data: MISSING[
+        data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
         **kwargs,
@@ -1949,9 +1949,9 @@ class CodespacesClient:
 
     def list_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        repository_id: MISSING[int] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        repository_id: Missing[int] = UNSET,
     ) -> "Response[UserCodespacesGetResponse200]":
         url = "/user/codespaces"
 
@@ -1981,9 +1981,9 @@ class CodespacesClient:
 
     async def async_list_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
-        repository_id: MISSING[int] = UNSET,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        repository_id: Missing[int] = UNSET,
     ) -> "Response[UserCodespacesGetResponse200]":
         url = "/user/codespaces"
 
@@ -2025,16 +2025,16 @@ class CodespacesClient:
         *,
         data: Literal[UNSET] = UNSET,
         repository_id: int,
-        ref: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        multi_repo_permissions_opt_out: MISSING[bool] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        retention_period_minutes: MISSING[int] = UNSET,
+        ref: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        multi_repo_permissions_opt_out: Missing[bool] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
+        display_name: Missing[str] = UNSET,
+        retention_period_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -2044,18 +2044,18 @@ class CodespacesClient:
         *,
         data: Literal[UNSET] = UNSET,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
-        location: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
+        location: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
     def create_for_authenticated_user(
         self,
         *,
-        data: MISSING[
+        data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
         **kwargs,
@@ -2103,16 +2103,16 @@ class CodespacesClient:
         *,
         data: Literal[UNSET] = UNSET,
         repository_id: int,
-        ref: MISSING[str] = UNSET,
-        location: MISSING[str] = UNSET,
-        client_ip: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        multi_repo_permissions_opt_out: MISSING[bool] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        retention_period_minutes: MISSING[int] = UNSET,
+        ref: Missing[str] = UNSET,
+        location: Missing[str] = UNSET,
+        client_ip: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        multi_repo_permissions_opt_out: Missing[bool] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
+        display_name: Missing[str] = UNSET,
+        retention_period_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -2122,18 +2122,18 @@ class CodespacesClient:
         *,
         data: Literal[UNSET] = UNSET,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
-        location: MISSING[str] = UNSET,
-        machine: MISSING[str] = UNSET,
-        devcontainer_path: MISSING[str] = UNSET,
-        working_directory: MISSING[str] = UNSET,
-        idle_timeout_minutes: MISSING[int] = UNSET,
+        location: Missing[str] = UNSET,
+        machine: Missing[str] = UNSET,
+        devcontainer_path: Missing[str] = UNSET,
+        working_directory: Missing[str] = UNSET,
+        idle_timeout_minutes: Missing[int] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
     async def async_create_for_authenticated_user(
         self,
         *,
-        data: MISSING[
+        data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
         **kwargs,
@@ -2169,8 +2169,8 @@ class CodespacesClient:
 
     def list_secrets_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[UserCodespacesSecretsGetResponse200]":
         url = "/user/codespaces/secrets"
 
@@ -2193,8 +2193,8 @@ class CodespacesClient:
 
     async def async_list_secrets_for_authenticated_user(
         self,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[UserCodespacesSecretsGetResponse200]":
         url = "/user/codespaces/secrets"
 
@@ -2293,9 +2293,9 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
         key_id: str,
-        selected_repository_ids: MISSING[List[Union[int, str]]] = UNSET,
+        selected_repository_ids: Missing[List[Union[int, str]]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2303,7 +2303,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: MISSING[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
@@ -2343,9 +2343,9 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
         key_id: str,
-        selected_repository_ids: MISSING[List[Union[int, str]]] = UNSET,
+        selected_repository_ids: Missing[List[Union[int, str]]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2353,7 +2353,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: MISSING[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
@@ -2482,7 +2482,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: MISSING[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
+        data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
@@ -2534,7 +2534,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: MISSING[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
+        data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
@@ -2752,7 +2752,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: MISSING[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+        data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -2762,9 +2762,9 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        machine: MISSING[str] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        recent_folders: MISSING[List[str]] = UNSET,
+        machine: Missing[str] = UNSET,
+        display_name: Missing[str] = UNSET,
+        recent_folders: Missing[List[str]] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -2772,7 +2772,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: MISSING[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+        data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
@@ -2806,7 +2806,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: MISSING[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+        data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -2816,9 +2816,9 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        machine: MISSING[str] = UNSET,
-        display_name: MISSING[str] = UNSET,
-        recent_folders: MISSING[List[str]] = UNSET,
+        machine: Missing[str] = UNSET,
+        display_name: Missing[str] = UNSET,
+        recent_folders: Missing[List[str]] = UNSET,
     ) -> "Response[Codespace]":
         ...
 
@@ -2826,7 +2826,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: MISSING[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
+        data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
@@ -3006,8 +3006,8 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
+        name: Missing[str] = UNSET,
+        private: Missing[bool] = False,
     ) -> "Response[CodespaceWithFullRepository]":
         ...
 
@@ -3015,7 +3015,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: MISSING[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
+        data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodespaceWithFullRepository]":
         url = f"/user/codespaces/{codespace_name}/publish"
@@ -3060,8 +3060,8 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        name: MISSING[str] = UNSET,
-        private: MISSING[bool] = False,
+        name: Missing[str] = UNSET,
+        private: Missing[bool] = False,
     ) -> "Response[CodespaceWithFullRepository]":
         ...
 
@@ -3069,7 +3069,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: MISSING[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
+        data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodespaceWithFullRepository]":
         url = f"/user/codespaces/{codespace_name}/publish"

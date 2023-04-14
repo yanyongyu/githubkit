@@ -56,19 +56,19 @@ class Property(BaseModel):
     def get_type_string(self) -> str:
         """Get schema typing string in any place"""
         type_string = self.schema_data.get_type_string()
-        return type_string if self.required else f"MISSING[{type_string}]"
+        return type_string if self.required else f"Missing[{type_string}]"
 
     def get_param_type_string(self) -> str:
         """Get type string used by client codegen"""
         type_string = self.schema_data.get_param_type_string()
-        return type_string if self.required else f"MISSING[{type_string}]"
+        return type_string if self.required else f"Missing[{type_string}]"
 
     def get_model_imports(self) -> Set[str]:
         """Get schema needed imports for model codegen"""
         imports = self.schema_data.get_model_imports()
         imports.add("from pydantic import Field")
         if not self.required:
-            imports.add("from githubkit.utils import UNSET, MISSING")
+            imports.add("from githubkit.utils import UNSET, Missing")
         return imports
 
     def get_type_imports(self) -> Set[str]:
@@ -82,7 +82,7 @@ class Property(BaseModel):
         """Get schema needed imports for typing params"""
         imports = self.schema_data.get_param_imports()
         if not self.required:
-            imports.add("from githubkit.utils import UNSET, MISSING")
+            imports.add("from githubkit.utils import UNSET, Missing")
         return imports
 
     def _get_default_string(self) -> str:

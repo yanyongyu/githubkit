@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, List, Literal, overload
 
 from pydantic import BaseModel, parse_obj_as
 
-from githubkit.utils import UNSET, MISSING, exclude_unset
+from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     OrgsOrgDependabotSecretsSecretNamePutBodyType,
@@ -52,18 +52,18 @@ class DependabotClient:
     def list_alerts_for_enterprise(
         self,
         enterprise: str,
-        state: MISSING[str] = UNSET,
-        severity: MISSING[str] = UNSET,
-        ecosystem: MISSING[str] = UNSET,
-        package: MISSING[str] = UNSET,
-        scope: MISSING[Literal["development", "runtime"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        first: MISSING[int] = 30,
-        last: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        state: Missing[str] = UNSET,
+        severity: Missing[str] = UNSET,
+        ecosystem: Missing[str] = UNSET,
+        package: Missing[str] = UNSET,
+        scope: Missing[Literal["development", "runtime"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        first: Missing[int] = 30,
+        last: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
@@ -102,18 +102,18 @@ class DependabotClient:
     async def async_list_alerts_for_enterprise(
         self,
         enterprise: str,
-        state: MISSING[str] = UNSET,
-        severity: MISSING[str] = UNSET,
-        ecosystem: MISSING[str] = UNSET,
-        package: MISSING[str] = UNSET,
-        scope: MISSING[Literal["development", "runtime"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        first: MISSING[int] = 30,
-        last: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        state: Missing[str] = UNSET,
+        severity: Missing[str] = UNSET,
+        ecosystem: Missing[str] = UNSET,
+        package: Missing[str] = UNSET,
+        scope: Missing[Literal["development", "runtime"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        first: Missing[int] = 30,
+        last: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
@@ -152,18 +152,18 @@ class DependabotClient:
     def list_alerts_for_org(
         self,
         org: str,
-        state: MISSING[str] = UNSET,
-        severity: MISSING[str] = UNSET,
-        ecosystem: MISSING[str] = UNSET,
-        package: MISSING[str] = UNSET,
-        scope: MISSING[Literal["development", "runtime"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        first: MISSING[int] = 30,
-        last: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        state: Missing[str] = UNSET,
+        severity: Missing[str] = UNSET,
+        ecosystem: Missing[str] = UNSET,
+        package: Missing[str] = UNSET,
+        scope: Missing[Literal["development", "runtime"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        first: Missing[int] = 30,
+        last: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/orgs/{org}/dependabot/alerts"
 
@@ -203,18 +203,18 @@ class DependabotClient:
     async def async_list_alerts_for_org(
         self,
         org: str,
-        state: MISSING[str] = UNSET,
-        severity: MISSING[str] = UNSET,
-        ecosystem: MISSING[str] = UNSET,
-        package: MISSING[str] = UNSET,
-        scope: MISSING[Literal["development", "runtime"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        first: MISSING[int] = 30,
-        last: MISSING[int] = UNSET,
-        per_page: MISSING[int] = 30,
+        state: Missing[str] = UNSET,
+        severity: Missing[str] = UNSET,
+        ecosystem: Missing[str] = UNSET,
+        package: Missing[str] = UNSET,
+        scope: Missing[Literal["development", "runtime"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        first: Missing[int] = 30,
+        last: Missing[int] = UNSET,
+        per_page: Missing[int] = 30,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/orgs/{org}/dependabot/alerts"
 
@@ -254,8 +254,8 @@ class DependabotClient:
     def list_org_secrets(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgDependabotSecretsGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets"
 
@@ -279,8 +279,8 @@ class DependabotClient:
     async def async_list_org_secrets(
         self,
         org: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[OrgsOrgDependabotSecretsGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets"
 
@@ -388,10 +388,10 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: MISSING[List[str]] = UNSET,
+        selected_repository_ids: Missing[List[str]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -400,7 +400,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -441,10 +441,10 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: MISSING[List[str]] = UNSET,
+        selected_repository_ids: Missing[List[str]] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -453,7 +453,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -515,8 +515,8 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
@@ -541,8 +541,8 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
     ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
@@ -589,7 +589,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
         **kwargs,
@@ -640,7 +640,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: MISSING[
+        data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
         **kwargs,
@@ -753,20 +753,20 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
-        state: MISSING[str] = UNSET,
-        severity: MISSING[str] = UNSET,
-        ecosystem: MISSING[str] = UNSET,
-        package: MISSING[str] = UNSET,
-        manifest: MISSING[str] = UNSET,
-        scope: MISSING[Literal["development", "runtime"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        first: MISSING[int] = 30,
-        last: MISSING[int] = UNSET,
+        state: Missing[str] = UNSET,
+        severity: Missing[str] = UNSET,
+        ecosystem: Missing[str] = UNSET,
+        package: Missing[str] = UNSET,
+        manifest: Missing[str] = UNSET,
+        scope: Missing[Literal["development", "runtime"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        first: Missing[int] = 30,
+        last: Missing[int] = UNSET,
     ) -> "Response[List[DependabotAlert]]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
@@ -809,20 +809,20 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
-        state: MISSING[str] = UNSET,
-        severity: MISSING[str] = UNSET,
-        ecosystem: MISSING[str] = UNSET,
-        package: MISSING[str] = UNSET,
-        manifest: MISSING[str] = UNSET,
-        scope: MISSING[Literal["development", "runtime"]] = UNSET,
-        sort: MISSING[Literal["created", "updated"]] = "created",
-        direction: MISSING[Literal["asc", "desc"]] = "desc",
-        page: MISSING[int] = 1,
-        per_page: MISSING[int] = 30,
-        before: MISSING[str] = UNSET,
-        after: MISSING[str] = UNSET,
-        first: MISSING[int] = 30,
-        last: MISSING[int] = UNSET,
+        state: Missing[str] = UNSET,
+        severity: Missing[str] = UNSET,
+        ecosystem: Missing[str] = UNSET,
+        package: Missing[str] = UNSET,
+        manifest: Missing[str] = UNSET,
+        scope: Missing[Literal["development", "runtime"]] = UNSET,
+        sort: Missing[Literal["created", "updated"]] = "created",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        first: Missing[int] = 30,
+        last: Missing[int] = UNSET,
     ) -> "Response[List[DependabotAlert]]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
@@ -927,7 +927,7 @@ class DependabotClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["dismissed", "open"],
-        dismissed_reason: MISSING[
+        dismissed_reason: Missing[
             Literal[
                 "fix_started",
                 "inaccurate",
@@ -936,7 +936,7 @@ class DependabotClient:
                 "tolerable_risk",
             ]
         ] = UNSET,
-        dismissed_comment: MISSING[str] = UNSET,
+        dismissed_comment: Missing[str] = UNSET,
     ) -> "Response[DependabotAlert]":
         ...
 
@@ -946,7 +946,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        data: MISSING[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
@@ -997,7 +997,7 @@ class DependabotClient:
         *,
         data: Literal[UNSET] = UNSET,
         state: Literal["dismissed", "open"],
-        dismissed_reason: MISSING[
+        dismissed_reason: Missing[
             Literal[
                 "fix_started",
                 "inaccurate",
@@ -1006,7 +1006,7 @@ class DependabotClient:
                 "tolerable_risk",
             ]
         ] = UNSET,
-        dismissed_comment: MISSING[str] = UNSET,
+        dismissed_comment: Missing[str] = UNSET,
     ) -> "Response[DependabotAlert]":
         ...
 
@@ -1016,7 +1016,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        data: MISSING[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
@@ -1051,8 +1051,8 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoDependabotSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets"
 
@@ -1077,8 +1077,8 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
-        per_page: MISSING[int] = 30,
-        page: MISSING[int] = 1,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
     ) -> "Response[ReposOwnerRepoDependabotSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets"
 
@@ -1192,8 +1192,8 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -1203,7 +1203,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        data: MISSING[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
@@ -1246,8 +1246,8 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
-        encrypted_value: MISSING[str] = UNSET,
-        key_id: MISSING[str] = UNSET,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -1257,7 +1257,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        data: MISSING[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
