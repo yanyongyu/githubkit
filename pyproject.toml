@@ -110,6 +110,10 @@ output_dir = "githubkit/rest/"
 "/components/schemas/pull-request/properties/base/properties/repo/properties/temp_clone_token" = { type = ["string", "null"] }
 "/components/schemas/repo-search-result-item/properties/temp_clone_token" = { type = ["string", "null"] }
 
+# https://github.com/github/rest-api-description/issues/2491
+"/components/schemas/auto-merge/properties/commit_title"  = { type = ["string", "null"] }
+"/components/schemas/auto-merge/properties/commit_message"  = { type = ["string", "null"] }
+
 [tool.codegen.webhook]
 schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
 output = "githubkit/webhooks/models.py"
@@ -123,6 +127,10 @@ types_output = "githubkit/webhooks/types.py"
   { type = "null" },
   { "$ref" = "#/definitions/user" }
 ], "$ref" = {} }
+
+# https://github.com/github/rest-api-description/issues/2491
+"/definitions/auto-merge/properties/commit_title" = { type = ["string", "null"] }
+"/definitions/auto-merge/properties/commit_message" = { type = ["string", "null"] }
 
 [tool.codegen.field_overrides]
 "+1" = "plus_one"
