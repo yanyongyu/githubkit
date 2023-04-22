@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -55,6 +55,8 @@ class MigrationsClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Migration]]":
         url = f"/orgs/{org}/migrations"
 
@@ -64,9 +66,7 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -82,6 +82,8 @@ class MigrationsClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Migration]]":
         url = f"/orgs/{org}/migrations"
 
@@ -91,9 +93,7 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -105,7 +105,11 @@ class MigrationsClient:
 
     @overload
     def start_for_org(
-        self, org: str, *, data: OrgsOrgMigrationsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgMigrationsPostBodyType,
     ) -> "Response[Migration]":
         ...
 
@@ -115,6 +119,7 @@ class MigrationsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         repositories: List[str],
         lock_repositories: Missing[bool] = False,
         exclude_metadata: Missing[bool] = False,
@@ -131,14 +136,13 @@ class MigrationsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -161,7 +165,11 @@ class MigrationsClient:
 
     @overload
     async def async_start_for_org(
-        self, org: str, *, data: OrgsOrgMigrationsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgMigrationsPostBodyType,
     ) -> "Response[Migration]":
         ...
 
@@ -171,6 +179,7 @@ class MigrationsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         repositories: List[str],
         lock_repositories: Missing[bool] = False,
         exclude_metadata: Missing[bool] = False,
@@ -187,14 +196,13 @@ class MigrationsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -220,6 +228,8 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations/{migration_id}"
 
@@ -227,9 +237,7 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -247,6 +255,8 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Migration]":
         url = f"/orgs/{org}/migrations/{migration_id}"
 
@@ -254,9 +264,7 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -273,12 +281,12 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -293,12 +301,12 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -313,12 +321,12 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -333,12 +341,12 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -354,12 +362,12 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         repo_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -375,12 +383,12 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         repo_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -397,6 +405,8 @@ class MigrationsClient:
         migration_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/migrations/{migration_id}/repositories"
 
@@ -405,9 +415,7 @@ class MigrationsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -426,6 +434,8 @@ class MigrationsClient:
         migration_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/migrations/{migration_id}/repositories"
 
@@ -434,9 +444,7 @@ class MigrationsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -453,12 +461,12 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -475,12 +483,12 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -495,7 +503,12 @@ class MigrationsClient:
 
     @overload
     def start_import(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoImportPutBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoImportPutBodyType,
     ) -> "Response[Import]":
         ...
 
@@ -506,6 +519,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -519,14 +533,13 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -550,7 +563,12 @@ class MigrationsClient:
 
     @overload
     async def async_start_import(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoImportPutBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoImportPutBodyType,
     ) -> "Response[Import]":
         ...
 
@@ -561,6 +579,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -574,14 +593,13 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -607,12 +625,12 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -627,12 +645,12 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -649,6 +667,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> "Response[Import]":
         ...
@@ -660,6 +679,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -672,14 +692,13 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -705,6 +724,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> "Response[Import]":
         ...
@@ -716,6 +736,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -728,14 +749,13 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -760,6 +780,8 @@ class MigrationsClient:
         owner: str,
         repo: str,
         since: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PorterAuthor]]":
         url = f"/repos/{owner}/{repo}/import/authors"
 
@@ -767,9 +789,7 @@ class MigrationsClient:
             "since": since,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -788,6 +808,8 @@ class MigrationsClient:
         owner: str,
         repo: str,
         since: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PorterAuthor]]":
         url = f"/repos/{owner}/{repo}/import/authors"
 
@@ -795,9 +817,7 @@ class MigrationsClient:
             "since": since,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -818,6 +838,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> "Response[PorterAuthor]":
         ...
@@ -830,6 +851,7 @@ class MigrationsClient:
         author_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> "Response[PorterAuthor]":
@@ -841,14 +863,13 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -877,6 +898,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> "Response[PorterAuthor]":
         ...
@@ -889,6 +911,7 @@ class MigrationsClient:
         author_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> "Response[PorterAuthor]":
@@ -900,14 +923,13 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PorterAuthor]":
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -933,12 +955,12 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PorterLargeFile]]":
         url = f"/repos/{owner}/{repo}/import/large_files"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -954,12 +976,12 @@ class MigrationsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PorterLargeFile]]":
         url = f"/repos/{owner}/{repo}/import/large_files"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -973,7 +995,12 @@ class MigrationsClient:
 
     @overload
     def set_lfs_preference(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoImportLfsPatchBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> "Response[Import]":
         ...
 
@@ -984,6 +1011,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> "Response[Import]":
         ...
@@ -993,14 +1021,13 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1023,7 +1050,12 @@ class MigrationsClient:
 
     @overload
     async def async_set_lfs_preference(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoImportLfsPatchBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> "Response[Import]":
         ...
 
@@ -1034,6 +1066,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> "Response[Import]":
         ...
@@ -1043,14 +1076,13 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Import]":
         url = f"/repos/{owner}/{repo}/import/lfs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1075,6 +1107,8 @@ class MigrationsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Migration]]":
         url = "/user/migrations"
 
@@ -1083,9 +1117,7 @@ class MigrationsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1103,6 +1135,8 @@ class MigrationsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Migration]]":
         url = "/user/migrations"
 
@@ -1111,9 +1145,7 @@ class MigrationsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1129,7 +1161,10 @@ class MigrationsClient:
 
     @overload
     def start_for_authenticated_user(
-        self, *, data: UserMigrationsPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserMigrationsPostBodyType,
     ) -> "Response[Migration]":
         ...
 
@@ -1138,6 +1173,7 @@ class MigrationsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1151,13 +1187,15 @@ class MigrationsClient:
         ...
 
     def start_for_authenticated_user(
-        self, *, data: Missing[UserMigrationsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserMigrationsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Migration]":
         url = "/user/migrations"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1181,7 +1219,10 @@ class MigrationsClient:
 
     @overload
     async def async_start_for_authenticated_user(
-        self, *, data: UserMigrationsPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserMigrationsPostBodyType,
     ) -> "Response[Migration]":
         ...
 
@@ -1190,6 +1231,7 @@ class MigrationsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1203,13 +1245,15 @@ class MigrationsClient:
         ...
 
     async def async_start_for_authenticated_user(
-        self, *, data: Missing[UserMigrationsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserMigrationsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Migration]":
         url = "/user/migrations"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1235,6 +1279,8 @@ class MigrationsClient:
         self,
         migration_id: int,
         exclude: Missing[List[str]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Migration]":
         url = f"/user/migrations/{migration_id}"
 
@@ -1242,9 +1288,7 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1263,6 +1307,8 @@ class MigrationsClient:
         self,
         migration_id: int,
         exclude: Missing[List[str]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Migration]":
         url = f"/user/migrations/{migration_id}"
 
@@ -1270,9 +1316,7 @@ class MigrationsClient:
             "exclude": exclude,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1290,12 +1334,12 @@ class MigrationsClient:
     def get_archive_for_authenticated_user(
         self,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1310,12 +1354,12 @@ class MigrationsClient:
     async def async_get_archive_for_authenticated_user(
         self,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1330,12 +1374,12 @@ class MigrationsClient:
     def delete_archive_for_authenticated_user(
         self,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1351,12 +1395,12 @@ class MigrationsClient:
     async def async_delete_archive_for_authenticated_user(
         self,
         migration_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/archive"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1373,12 +1417,12 @@ class MigrationsClient:
         self,
         migration_id: int,
         repo_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/repos/{repo_name}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1395,12 +1439,12 @@ class MigrationsClient:
         self,
         migration_id: int,
         repo_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/migrations/{migration_id}/repos/{repo_name}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1418,6 +1462,8 @@ class MigrationsClient:
         migration_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/user/migrations/{migration_id}/repositories"
 
@@ -1426,9 +1472,7 @@ class MigrationsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1446,6 +1490,8 @@ class MigrationsClient:
         migration_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/user/migrations/{migration_id}/repositories"
 
@@ -1454,9 +1500,7 @@ class MigrationsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

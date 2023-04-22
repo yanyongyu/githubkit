@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import date
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -30,12 +30,12 @@ class MetaClient:
 
     def root(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Root]":
         url = "/"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -46,12 +46,12 @@ class MetaClient:
 
     async def async_root(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Root]":
         url = "/"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -62,12 +62,12 @@ class MetaClient:
 
     def get(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ApiOverview]":
         url = "/meta"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -78,12 +78,12 @@ class MetaClient:
 
     async def async_get(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ApiOverview]":
         url = "/meta"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -95,6 +95,8 @@ class MetaClient:
     def get_octocat(
         self,
         s: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[str]":
         url = "/octocat"
 
@@ -102,9 +104,7 @@ class MetaClient:
             "s": s,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -117,6 +117,8 @@ class MetaClient:
     async def async_get_octocat(
         self,
         s: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[str]":
         url = "/octocat"
 
@@ -124,9 +126,7 @@ class MetaClient:
             "s": s,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -138,12 +138,12 @@ class MetaClient:
 
     def get_all_versions(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[date]]":
         url = "/versions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -157,12 +157,12 @@ class MetaClient:
 
     async def async_get_all_versions(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[date]]":
         url = "/versions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -176,12 +176,12 @@ class MetaClient:
 
     def get_zen(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[str]":
         url = "/zen"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -192,12 +192,12 @@ class MetaClient:
 
     async def async_get_zen(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[str]":
         url = "/zen"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -64,6 +64,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -73,9 +75,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -98,6 +98,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -107,9 +109,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -127,6 +127,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -140,6 +141,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -153,6 +155,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -160,9 +163,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -190,6 +191,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -203,6 +205,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -216,6 +219,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -223,9 +227,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -252,12 +254,12 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -272,12 +274,12 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -297,6 +299,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
@@ -306,9 +310,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -330,6 +332,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
@@ -339,9 +343,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -358,6 +360,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -370,6 +373,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -382,6 +386,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -389,9 +394,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -417,6 +420,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -429,6 +433,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -441,6 +446,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -448,9 +454,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -475,12 +479,12 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -494,12 +498,12 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -519,6 +523,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
@@ -528,9 +534,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -555,6 +559,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
@@ -564,9 +570,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -586,6 +590,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -598,6 +603,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -610,14 +616,13 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -644,6 +649,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -656,6 +662,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -668,14 +675,13 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -701,12 +707,12 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -720,12 +726,12 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -745,6 +751,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
@@ -754,9 +762,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -781,6 +787,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
@@ -790,9 +798,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -812,6 +818,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -824,6 +831,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -836,6 +844,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -843,9 +852,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -874,6 +881,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -886,6 +894,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -898,6 +907,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -905,9 +915,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -935,12 +943,12 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -954,12 +962,12 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -979,6 +987,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
@@ -988,9 +998,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1016,6 +1024,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
@@ -1025,9 +1035,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1048,6 +1056,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1060,6 +1069,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1072,14 +1082,13 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1106,6 +1115,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1118,6 +1128,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1130,14 +1141,13 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1163,12 +1173,12 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1182,12 +1192,12 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1207,6 +1217,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
@@ -1216,9 +1228,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1243,6 +1253,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
@@ -1252,9 +1264,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1274,6 +1284,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1286,6 +1297,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1298,6 +1310,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1305,9 +1318,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1334,6 +1345,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1346,6 +1358,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1358,6 +1371,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1365,9 +1379,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1393,14 +1405,14 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1414,14 +1426,14 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1439,6 +1451,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
@@ -1448,9 +1462,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1473,6 +1485,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
@@ -1482,9 +1496,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1504,6 +1516,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1516,6 +1529,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> "Response[Reaction]":
         ...
@@ -1526,14 +1540,13 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1560,6 +1573,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1572,6 +1586,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> "Response[Reaction]":
         ...
@@ -1582,14 +1597,13 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Reaction]":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1615,12 +1629,12 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1634,12 +1648,12 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         reaction_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1659,6 +1673,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -1668,9 +1684,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1692,6 +1706,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
@@ -1701,9 +1717,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1720,6 +1734,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1732,6 +1747,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1744,6 +1760,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -1751,9 +1768,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1780,6 +1795,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1792,6 +1808,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1804,6 +1821,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -1811,9 +1829,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1844,6 +1860,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
@@ -1853,9 +1871,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1876,6 +1892,8 @@ class ReactionsClient:
         ] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Reaction]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
@@ -1885,9 +1903,7 @@ class ReactionsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1903,6 +1919,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1914,6 +1931,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1925,6 +1943,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -1932,9 +1951,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1959,6 +1976,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> "Response[Reaction]":
         ...
@@ -1970,6 +1988,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1981,6 +2000,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -1988,9 +2008,7 @@ class ReactionsClient:
     ) -> "Response[Reaction]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET

@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -64,6 +64,8 @@ class DependabotClient:
         first: Missing[int] = 30,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
@@ -82,9 +84,7 @@ class DependabotClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -114,6 +114,8 @@ class DependabotClient:
         first: Missing[int] = 30,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
@@ -132,9 +134,7 @@ class DependabotClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -164,6 +164,8 @@ class DependabotClient:
         first: Missing[int] = 30,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/orgs/{org}/dependabot/alerts"
 
@@ -182,9 +184,7 @@ class DependabotClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -215,6 +215,8 @@ class DependabotClient:
         first: Missing[int] = 30,
         last: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependabotAlertWithRepository]]":
         url = f"/orgs/{org}/dependabot/alerts"
 
@@ -233,9 +235,7 @@ class DependabotClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -256,6 +256,8 @@ class DependabotClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgDependabotSecretsGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets"
 
@@ -264,9 +266,7 @@ class DependabotClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -281,6 +281,8 @@ class DependabotClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgDependabotSecretsGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets"
 
@@ -289,9 +291,7 @@ class DependabotClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -304,12 +304,12 @@ class DependabotClient:
     def get_org_public_key(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotPublicKey]":
         url = f"/orgs/{org}/dependabot/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -321,12 +321,12 @@ class DependabotClient:
     async def async_get_org_public_key(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotPublicKey]":
         url = f"/orgs/{org}/dependabot/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -339,12 +339,12 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrganizationDependabotSecret]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -357,12 +357,12 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrganizationDependabotSecret]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -377,6 +377,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -388,6 +389,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -400,14 +402,13 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -430,6 +431,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -441,6 +443,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -453,14 +456,13 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -481,12 +483,12 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -498,12 +500,12 @@ class DependabotClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -517,6 +519,8 @@ class DependabotClient:
         secret_name: str,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
@@ -525,9 +529,7 @@ class DependabotClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -543,6 +545,8 @@ class DependabotClient:
         secret_name: str,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
@@ -551,9 +555,7 @@ class DependabotClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -569,6 +571,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> "Response":
         ...
@@ -580,6 +583,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -589,6 +593,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -596,9 +601,7 @@ class DependabotClient:
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -620,6 +623,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     ) -> "Response":
         ...
@@ -631,6 +635,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -640,6 +645,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -647,9 +653,7 @@ class DependabotClient:
     ) -> "Response":
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -670,14 +674,14 @@ class DependabotClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -691,14 +695,14 @@ class DependabotClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -712,14 +716,14 @@ class DependabotClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -733,14 +737,14 @@ class DependabotClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -767,6 +771,8 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         first: Missing[int] = 30,
         last: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependabotAlert]]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
@@ -787,9 +793,7 @@ class DependabotClient:
             "last": last,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -823,6 +827,8 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         first: Missing[int] = 30,
         last: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependabotAlert]]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
@@ -843,9 +849,7 @@ class DependabotClient:
             "last": last,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -866,12 +870,12 @@ class DependabotClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -889,12 +893,12 @@ class DependabotClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -914,6 +918,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     ) -> "Response[DependabotAlert]":
         ...
@@ -926,6 +931,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
             Literal[
@@ -946,14 +952,13 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -984,6 +989,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     ) -> "Response[DependabotAlert]":
         ...
@@ -996,6 +1002,7 @@ class DependabotClient:
         alert_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
             Literal[
@@ -1016,14 +1023,13 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[DependabotAlert]":
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1053,6 +1059,8 @@ class DependabotClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoDependabotSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets"
 
@@ -1061,9 +1069,7 @@ class DependabotClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1079,6 +1085,8 @@ class DependabotClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoDependabotSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets"
 
@@ -1087,9 +1095,7 @@ class DependabotClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1103,12 +1109,12 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotPublicKey]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1121,12 +1127,12 @@ class DependabotClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotPublicKey]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1140,12 +1146,12 @@ class DependabotClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotSecret]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1159,12 +1165,12 @@ class DependabotClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependabotSecret]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1180,6 +1186,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -1192,6 +1199,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
@@ -1203,14 +1211,13 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1234,6 +1241,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -1246,6 +1254,7 @@ class DependabotClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
@@ -1257,14 +1266,13 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1286,12 +1294,12 @@ class DependabotClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1304,12 +1312,12 @@ class DependabotClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -118,6 +118,8 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = "/issues"
 
@@ -136,9 +138,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -168,6 +168,8 @@ class IssuesClient:
         pulls: Missing[bool] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = "/issues"
 
@@ -186,9 +188,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -215,6 +215,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = f"/orgs/{org}/issues"
 
@@ -229,9 +231,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -257,6 +257,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = f"/orgs/{org}/issues"
 
@@ -271,9 +273,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -292,6 +292,8 @@ class IssuesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/assignees"
 
@@ -300,9 +302,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -321,6 +321,8 @@ class IssuesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/assignees"
 
@@ -329,9 +331,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -349,12 +349,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         assignee: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/assignees/{assignee}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -370,12 +370,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         assignee: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/assignees/{assignee}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -401,6 +401,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = f"/repos/{owner}/{repo}/issues"
 
@@ -418,9 +420,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -449,6 +449,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = f"/repos/{owner}/{repo}/issues"
 
@@ -466,9 +468,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -484,7 +484,12 @@ class IssuesClient:
 
     @overload
     def create(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoIssuesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesPostBodyType,
     ) -> "Response[Issue]":
         ...
 
@@ -495,6 +500,7 @@ class IssuesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -511,14 +517,13 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -544,7 +549,12 @@ class IssuesClient:
 
     @overload
     async def async_create(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoIssuesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoIssuesPostBodyType,
     ) -> "Response[Issue]":
         ...
 
@@ -555,6 +565,7 @@ class IssuesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -571,14 +582,13 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -611,6 +621,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/comments"
 
@@ -622,9 +634,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -647,6 +657,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/comments"
 
@@ -658,9 +670,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -679,12 +689,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -701,12 +711,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -723,12 +733,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -741,12 +751,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -761,6 +771,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> "Response[IssueComment]":
         ...
@@ -773,6 +784,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -783,14 +795,13 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -817,6 +828,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> "Response[IssueComment]":
         ...
@@ -829,6 +841,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -839,14 +852,13 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -872,6 +884,8 @@ class IssuesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IssueEvent]]":
         url = f"/repos/{owner}/{repo}/issues/events"
 
@@ -880,9 +894,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -901,6 +913,8 @@ class IssuesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IssueEvent]]":
         url = f"/repos/{owner}/{repo}/issues/events"
 
@@ -909,9 +923,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -929,12 +941,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         event_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[IssueEvent]":
         url = f"/repos/{owner}/{repo}/issues/events/{event_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -953,12 +965,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         event_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[IssueEvent]":
         url = f"/repos/{owner}/{repo}/issues/events/{event_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -977,12 +989,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1000,12 +1012,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1025,6 +1037,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1037,6 +1050,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1063,14 +1077,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1101,6 +1114,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1113,6 +1127,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1139,14 +1154,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1177,6 +1191,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1189,6 +1204,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1199,14 +1215,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1230,6 +1245,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1242,6 +1258,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1252,14 +1269,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1283,6 +1299,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1295,6 +1312,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1305,14 +1323,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1336,6 +1353,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1348,6 +1366,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> "Response[Issue]":
         ...
@@ -1358,14 +1377,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Issue]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1388,12 +1406,12 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         assignee: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1410,12 +1428,12 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         assignee: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1434,6 +1452,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
 
@@ -1443,9 +1463,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1467,6 +1485,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IssueComment]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
 
@@ -1476,9 +1496,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1499,6 +1517,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> "Response[IssueComment]":
         ...
@@ -1511,6 +1530,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -1521,14 +1541,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1558,6 +1577,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> "Response[IssueComment]":
         ...
@@ -1570,6 +1590,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[IssueComment]":
         ...
@@ -1580,14 +1601,13 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[IssueComment]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1617,6 +1637,8 @@ class IssuesClient:
         issue_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, AssignedIssueEvent, UnassignedIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/events"
 
@@ -1625,9 +1647,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1665,6 +1685,8 @@ class IssuesClient:
         issue_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, AssignedIssueEvent, UnassignedIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/events"
 
@@ -1673,9 +1695,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1713,6 +1733,8 @@ class IssuesClient:
         issue_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
@@ -1721,9 +1743,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1744,6 +1764,8 @@ class IssuesClient:
         issue_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
@@ -1752,9 +1774,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1775,6 +1795,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -1795,6 +1816,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -1807,6 +1829,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -1819,6 +1842,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -1832,9 +1856,7 @@ class IssuesClient:
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1872,6 +1894,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -1892,6 +1915,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -1904,6 +1928,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -1916,6 +1941,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -1929,9 +1955,7 @@ class IssuesClient:
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1969,6 +1993,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -1989,6 +2014,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -2001,6 +2027,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2013,6 +2040,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2026,9 +2054,7 @@ class IssuesClient:
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2066,6 +2092,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2086,6 +2113,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> "Response[List[Label]]":
         ...
@@ -2098,6 +2126,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
@@ -2110,6 +2139,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
@@ -2123,9 +2153,7 @@ class IssuesClient:
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2161,12 +2189,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2183,12 +2211,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2206,12 +2234,12 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2230,12 +2258,12 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2255,6 +2283,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2269,6 +2298,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -2281,6 +2311,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2288,9 +2319,7 @@ class IssuesClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2321,6 +2350,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2335,6 +2365,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -2347,6 +2378,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2354,9 +2386,7 @@ class IssuesClient:
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2385,12 +2415,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2407,12 +2437,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         issue_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2431,6 +2461,8 @@ class IssuesClient:
         issue_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent, TimelineCommentEvent, TimelineCrossReferencedEvent, TimelineCommittedEvent, TimelineReviewedEvent, TimelineLineCommentedEvent, TimelineCommitCommentedEvent, TimelineAssignedIssueEvent, TimelineUnassignedIssueEvent, StateChangeIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/timeline"
 
@@ -2439,9 +2471,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2487,6 +2517,8 @@ class IssuesClient:
         issue_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Union[LabeledIssueEvent, UnlabeledIssueEvent, MilestonedIssueEvent, DemilestonedIssueEvent, RenamedIssueEvent, ReviewRequestedIssueEvent, ReviewRequestRemovedIssueEvent, ReviewDismissedIssueEvent, LockedIssueEvent, AddedToProjectIssueEvent, MovedColumnInProjectIssueEvent, RemovedFromProjectIssueEvent, ConvertedNoteToIssueIssueEvent, TimelineCommentEvent, TimelineCrossReferencedEvent, TimelineCommittedEvent, TimelineReviewedEvent, TimelineLineCommentedEvent, TimelineCommitCommentedEvent, TimelineAssignedIssueEvent, TimelineUnassignedIssueEvent, StateChangeIssueEvent]]]":
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/timeline"
 
@@ -2495,9 +2527,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2542,6 +2572,8 @@ class IssuesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/labels"
 
@@ -2550,9 +2582,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2571,6 +2601,8 @@ class IssuesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/labels"
 
@@ -2579,9 +2611,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2596,7 +2626,12 @@ class IssuesClient:
 
     @overload
     def create_label(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoLabelsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoLabelsPostBodyType,
     ) -> "Response[Label]":
         ...
 
@@ -2607,6 +2642,7 @@ class IssuesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2618,14 +2654,13 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2648,7 +2683,12 @@ class IssuesClient:
 
     @overload
     async def async_create_label(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoLabelsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoLabelsPostBodyType,
     ) -> "Response[Label]":
         ...
 
@@ -2659,6 +2699,7 @@ class IssuesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2670,14 +2711,13 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2703,12 +2743,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2725,12 +2765,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2747,12 +2787,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2765,12 +2805,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2785,6 +2825,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> "Response[Label]":
         ...
@@ -2797,6 +2838,7 @@ class IssuesClient:
         name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2809,14 +2851,13 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2840,6 +2881,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> "Response[Label]":
         ...
@@ -2852,6 +2894,7 @@ class IssuesClient:
         name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -2864,14 +2907,13 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Label]":
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2897,6 +2939,8 @@ class IssuesClient:
         direction: Missing[Literal["asc", "desc"]] = "asc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Milestone]]":
         url = f"/repos/{owner}/{repo}/milestones"
 
@@ -2908,9 +2952,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2932,6 +2974,8 @@ class IssuesClient:
         direction: Missing[Literal["asc", "desc"]] = "asc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Milestone]]":
         url = f"/repos/{owner}/{repo}/milestones"
 
@@ -2943,9 +2987,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2960,7 +3002,12 @@ class IssuesClient:
 
     @overload
     def create_milestone(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoMilestonesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> "Response[Milestone]":
         ...
 
@@ -2971,6 +3018,7 @@ class IssuesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = "open",
         description: Missing[str] = UNSET,
@@ -2983,14 +3031,13 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3013,7 +3060,12 @@ class IssuesClient:
 
     @overload
     async def async_create_milestone(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoMilestonesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> "Response[Milestone]":
         ...
 
@@ -3024,6 +3076,7 @@ class IssuesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = "open",
         description: Missing[str] = UNSET,
@@ -3036,14 +3089,13 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3069,12 +3121,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3091,12 +3143,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3113,12 +3165,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -3134,12 +3186,12 @@ class IssuesClient:
         owner: str,
         repo: str,
         milestone_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -3157,6 +3209,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> "Response[Milestone]":
         ...
@@ -3169,6 +3222,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = "open",
         description: Missing[str] = UNSET,
@@ -3182,14 +3236,13 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3213,6 +3266,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> "Response[Milestone]":
         ...
@@ -3225,6 +3279,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = "open",
         description: Missing[str] = UNSET,
@@ -3238,14 +3293,13 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Milestone]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3269,6 +3323,8 @@ class IssuesClient:
         milestone_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}/labels"
 
@@ -3277,9 +3333,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3296,6 +3350,8 @@ class IssuesClient:
         milestone_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Label]]":
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}/labels"
 
@@ -3304,9 +3360,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3328,6 +3382,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = "/user/issues"
 
@@ -3342,9 +3398,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3369,6 +3423,8 @@ class IssuesClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Issue]]":
         url = "/user/issues"
 
@@ -3383,9 +3439,7 @@ class IssuesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

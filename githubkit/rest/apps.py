@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -67,12 +67,12 @@ class AppsClient:
 
     def get_authenticated(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Integration]":
         url = "/app"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -83,12 +83,12 @@ class AppsClient:
 
     async def async_get_authenticated(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Integration]":
         url = "/app"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -100,12 +100,12 @@ class AppsClient:
     def create_from_manifest(
         self,
         code: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppManifestsCodeConversionsPostResponse201]":
         url = f"/app-manifests/{code}/conversions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -121,12 +121,12 @@ class AppsClient:
     async def async_create_from_manifest(
         self,
         code: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppManifestsCodeConversionsPostResponse201]":
         url = f"/app-manifests/{code}/conversions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -141,12 +141,12 @@ class AppsClient:
 
     def get_webhook_config_for_app(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -157,12 +157,12 @@ class AppsClient:
 
     async def async_get_webhook_config_for_app(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -173,7 +173,10 @@ class AppsClient:
 
     @overload
     def update_webhook_config_for_app(
-        self, *, data: AppHookConfigPatchBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: AppHookConfigPatchBodyType,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -182,6 +185,7 @@ class AppsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -190,13 +194,15 @@ class AppsClient:
         ...
 
     def update_webhook_config_for_app(
-        self, *, data: Missing[AppHookConfigPatchBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[AppHookConfigPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -215,7 +221,10 @@ class AppsClient:
 
     @overload
     async def async_update_webhook_config_for_app(
-        self, *, data: AppHookConfigPatchBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: AppHookConfigPatchBodyType,
     ) -> "Response[WebhookConfig]":
         ...
 
@@ -224,6 +233,7 @@ class AppsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -232,13 +242,15 @@ class AppsClient:
         ...
 
     async def async_update_webhook_config_for_app(
-        self, *, data: Missing[AppHookConfigPatchBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[AppHookConfigPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[WebhookConfig]":
         url = "/app/hook/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -260,6 +272,8 @@ class AppsClient:
         per_page: Missing[int] = 30,
         cursor: Missing[str] = UNSET,
         redelivery: Missing[bool] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[HookDeliveryItem]]":
         url = "/app/hook/deliveries"
 
@@ -269,9 +283,7 @@ class AppsClient:
             "redelivery": redelivery,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -290,6 +302,8 @@ class AppsClient:
         per_page: Missing[int] = 30,
         cursor: Missing[str] = UNSET,
         redelivery: Missing[bool] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[HookDeliveryItem]]":
         url = "/app/hook/deliveries"
 
@@ -299,9 +313,7 @@ class AppsClient:
             "redelivery": redelivery,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -318,12 +330,12 @@ class AppsClient:
     def get_webhook_delivery(
         self,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[HookDelivery]":
         url = f"/app/hook/deliveries/{delivery_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -339,12 +351,12 @@ class AppsClient:
     async def async_get_webhook_delivery(
         self,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[HookDelivery]":
         url = f"/app/hook/deliveries/{delivery_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -360,12 +372,12 @@ class AppsClient:
     def redeliver_webhook_delivery(
         self,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/app/hook/deliveries/{delivery_id}/attempts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -381,12 +393,12 @@ class AppsClient:
     async def async_redeliver_webhook_delivery(
         self,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/app/hook/deliveries/{delivery_id}/attempts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -403,6 +415,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IntegrationInstallationRequest]]":
         url = "/app/installation-requests"
 
@@ -411,9 +425,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -430,6 +442,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[IntegrationInstallationRequest]]":
         url = "/app/installation-requests"
 
@@ -438,9 +452,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -459,6 +471,8 @@ class AppsClient:
         page: Missing[int] = 1,
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Installation]]":
         url = "/app/installations"
 
@@ -469,9 +483,7 @@ class AppsClient:
             "outdated": outdated,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -487,6 +499,8 @@ class AppsClient:
         page: Missing[int] = 1,
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Installation]]":
         url = "/app/installations"
 
@@ -497,9 +511,7 @@ class AppsClient:
             "outdated": outdated,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -512,12 +524,12 @@ class AppsClient:
     def get_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/app/installations/{installation_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -532,12 +544,12 @@ class AppsClient:
     async def async_get_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/app/installations/{installation_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -552,12 +564,12 @@ class AppsClient:
     def delete_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/app/installations/{installation_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -571,12 +583,12 @@ class AppsClient:
     async def async_delete_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/app/installations/{installation_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -592,6 +604,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> "Response[InstallationToken]":
         ...
@@ -602,6 +615,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
@@ -612,14 +626,13 @@ class AppsClient:
         self,
         installation_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -647,6 +660,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> "Response[InstallationToken]":
         ...
@@ -657,6 +671,7 @@ class AppsClient:
         installation_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
@@ -667,14 +682,13 @@ class AppsClient:
         self,
         installation_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[InstallationToken]":
         url = f"/app/installations/{installation_id}/access_tokens"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -700,12 +714,12 @@ class AppsClient:
     def suspend_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -719,12 +733,12 @@ class AppsClient:
     async def async_suspend_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -738,12 +752,12 @@ class AppsClient:
     def unsuspend_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -757,12 +771,12 @@ class AppsClient:
     async def async_unsuspend_installation(
         self,
         installation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/app/installations/{installation_id}/suspended"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -775,7 +789,11 @@ class AppsClient:
 
     @overload
     def delete_authorization(
-        self, client_id: str, *, data: ApplicationsClientIdGrantDeleteBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -785,6 +803,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response":
         ...
@@ -793,14 +812,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -821,7 +839,11 @@ class AppsClient:
 
     @overload
     async def async_delete_authorization(
-        self, client_id: str, *, data: ApplicationsClientIdGrantDeleteBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -831,6 +853,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response":
         ...
@@ -839,14 +862,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/grant"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -867,7 +889,11 @@ class AppsClient:
 
     @overload
     def check_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenPostBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenPostBodyType,
     ) -> "Response[Authorization]":
         ...
 
@@ -877,6 +903,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -885,14 +912,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -915,7 +941,11 @@ class AppsClient:
 
     @overload
     async def async_check_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenPostBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenPostBodyType,
     ) -> "Response[Authorization]":
         ...
 
@@ -925,6 +955,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -933,14 +964,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -963,7 +993,11 @@ class AppsClient:
 
     @overload
     def delete_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenDeleteBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -973,6 +1007,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response":
         ...
@@ -981,14 +1016,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1009,7 +1043,11 @@ class AppsClient:
 
     @overload
     async def async_delete_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenDeleteBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -1019,6 +1057,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response":
         ...
@@ -1027,14 +1066,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/applications/{client_id}/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1055,7 +1093,11 @@ class AppsClient:
 
     @overload
     def reset_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenPatchBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenPatchBodyType,
     ) -> "Response[Authorization]":
         ...
 
@@ -1065,6 +1107,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -1073,14 +1116,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1102,7 +1144,11 @@ class AppsClient:
 
     @overload
     async def async_reset_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenPatchBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenPatchBodyType,
     ) -> "Response[Authorization]":
         ...
 
@@ -1112,6 +1158,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> "Response[Authorization]":
         ...
@@ -1120,14 +1167,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1149,7 +1195,11 @@ class AppsClient:
 
     @overload
     def scope_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenScopedPostBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> "Response[Authorization]":
         ...
 
@@ -1159,6 +1209,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
@@ -1172,14 +1223,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1204,7 +1254,11 @@ class AppsClient:
 
     @overload
     async def async_scope_token(
-        self, client_id: str, *, data: ApplicationsClientIdTokenScopedPostBodyType
+        self,
+        client_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> "Response[Authorization]":
         ...
 
@@ -1214,6 +1268,7 @@ class AppsClient:
         client_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
@@ -1227,14 +1282,13 @@ class AppsClient:
         self,
         client_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Authorization]":
         url = f"/applications/{client_id}/token/scoped"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1260,12 +1314,12 @@ class AppsClient:
     def get_by_slug(
         self,
         app_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Integration]":
         url = f"/apps/{app_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1281,12 +1335,12 @@ class AppsClient:
     async def async_get_by_slug(
         self,
         app_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Integration]":
         url = f"/apps/{app_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1303,6 +1357,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[InstallationRepositoriesGetResponse200]":
         url = "/installation/repositories"
 
@@ -1311,9 +1367,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1331,6 +1385,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[InstallationRepositoriesGetResponse200]":
         url = "/installation/repositories"
 
@@ -1339,9 +1395,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1357,12 +1411,12 @@ class AppsClient:
 
     def revoke_installation_access_token(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = "/installation/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1372,12 +1426,12 @@ class AppsClient:
 
     async def async_revoke_installation_access_token(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = "/installation/token"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1388,12 +1442,12 @@ class AppsClient:
     def get_subscription_plan_for_account(
         self,
         account_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/accounts/{account_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1409,12 +1463,12 @@ class AppsClient:
     async def async_get_subscription_plan_for_account(
         self,
         account_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/accounts/{account_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1431,6 +1485,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/plans"
 
@@ -1439,9 +1495,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1459,6 +1513,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/plans"
 
@@ -1467,9 +1523,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1490,6 +1544,8 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/plans/{plan_id}/accounts"
 
@@ -1500,9 +1556,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1524,6 +1578,8 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/plans/{plan_id}/accounts"
 
@@ -1534,9 +1590,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1554,12 +1608,12 @@ class AppsClient:
     def get_subscription_plan_for_account_stubbed(
         self,
         account_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/stubbed/accounts/{account_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1574,12 +1628,12 @@ class AppsClient:
     async def async_get_subscription_plan_for_account_stubbed(
         self,
         account_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[MarketplacePurchase]":
         url = f"/marketplace_listing/stubbed/accounts/{account_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1595,6 +1649,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/stubbed/plans"
 
@@ -1603,9 +1659,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1622,6 +1676,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplaceListingPlan]]":
         url = "/marketplace_listing/stubbed/plans"
 
@@ -1630,9 +1686,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1652,6 +1706,8 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/stubbed/plans/{plan_id}/accounts"
 
@@ -1662,9 +1718,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1684,6 +1738,8 @@ class AppsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MarketplacePurchase]]":
         url = f"/marketplace_listing/stubbed/plans/{plan_id}/accounts"
 
@@ -1694,9 +1750,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1712,12 +1766,12 @@ class AppsClient:
     def get_org_installation(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/orgs/{org}/installation"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1729,12 +1783,12 @@ class AppsClient:
     async def async_get_org_installation(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/orgs/{org}/installation"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1747,12 +1801,12 @@ class AppsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/repos/{owner}/{repo}/installation"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1768,12 +1822,12 @@ class AppsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/repos/{owner}/{repo}/installation"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1789,6 +1843,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserInstallationsGetResponse200]":
         url = "/user/installations"
 
@@ -1797,9 +1853,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1817,6 +1871,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserInstallationsGetResponse200]":
         url = "/user/installations"
 
@@ -1825,9 +1881,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1846,6 +1900,8 @@ class AppsClient:
         installation_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserInstallationsInstallationIdRepositoriesGetResponse200]":
         url = f"/user/installations/{installation_id}/repositories"
 
@@ -1854,9 +1910,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1875,6 +1929,8 @@ class AppsClient:
         installation_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserInstallationsInstallationIdRepositoriesGetResponse200]":
         url = f"/user/installations/{installation_id}/repositories"
 
@@ -1883,9 +1939,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1903,12 +1957,12 @@ class AppsClient:
         self,
         installation_id: int,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -1924,12 +1978,12 @@ class AppsClient:
         self,
         installation_id: int,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -1945,12 +1999,12 @@ class AppsClient:
         self,
         installation_id: int,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1966,12 +2020,12 @@ class AppsClient:
         self,
         installation_id: int,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1987,6 +2041,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases"
 
@@ -1995,9 +2051,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2015,6 +2069,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases"
 
@@ -2023,9 +2079,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2043,6 +2097,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases/stubbed"
 
@@ -2051,9 +2107,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2070,6 +2124,8 @@ class AppsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[UserMarketplacePurchase]]":
         url = "/user/marketplace_purchases/stubbed"
 
@@ -2078,9 +2134,7 @@ class AppsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2096,12 +2150,12 @@ class AppsClient:
     def get_user_installation(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/users/{username}/installation"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2113,12 +2167,12 @@ class AppsClient:
     async def async_get_user_installation(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Installation]":
         url = f"/users/{username}/installation"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

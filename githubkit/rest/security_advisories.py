@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -54,6 +54,8 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[RepositoryAdvisory]]":
         url = f"/repos/{owner}/{repo}/security-advisories"
 
@@ -66,9 +68,7 @@ class SecurityAdvisoriesClient:
             "state": state,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -92,6 +92,8 @@ class SecurityAdvisoriesClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[RepositoryAdvisory]]":
         url = f"/repos/{owner}/{repo}/security-advisories"
 
@@ -104,9 +106,7 @@ class SecurityAdvisoriesClient:
             "state": state,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -122,7 +122,12 @@ class SecurityAdvisoriesClient:
 
     @overload
     def create_repository_advisory(
-        self, owner: str, repo: str, *, data: RepositoryAdvisoryCreateType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: RepositoryAdvisoryCreateType,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -133,6 +138,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -153,14 +159,13 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -184,7 +189,12 @@ class SecurityAdvisoriesClient:
 
     @overload
     async def async_create_repository_advisory(
-        self, owner: str, repo: str, *, data: RepositoryAdvisoryCreateType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: RepositoryAdvisoryCreateType,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -195,6 +205,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -215,14 +226,13 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -246,7 +256,12 @@ class SecurityAdvisoriesClient:
 
     @overload
     def create_private_vulnerability_report(
-        self, owner: str, repo: str, *, data: PrivateVulnerabilityReportCreateType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: PrivateVulnerabilityReportCreateType,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -257,6 +272,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
         vulnerabilities: Missing[
@@ -277,14 +293,13 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/reports"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -308,7 +323,12 @@ class SecurityAdvisoriesClient:
 
     @overload
     async def async_create_private_vulnerability_report(
-        self, owner: str, repo: str, *, data: PrivateVulnerabilityReportCreateType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: PrivateVulnerabilityReportCreateType,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -319,6 +339,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
         vulnerabilities: Missing[
@@ -339,14 +360,13 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/reports"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -373,12 +393,12 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -396,12 +416,12 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -416,7 +436,13 @@ class SecurityAdvisoriesClient:
 
     @overload
     def update_repository_advisory(
-        self, owner: str, repo: str, ghsa_id: str, *, data: RepositoryAdvisoryUpdateType
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: RepositoryAdvisoryUpdateType,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -428,6 +454,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -452,14 +479,13 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -483,7 +509,13 @@ class SecurityAdvisoriesClient:
 
     @overload
     async def async_update_repository_advisory(
-        self, owner: str, repo: str, ghsa_id: str, *, data: RepositoryAdvisoryUpdateType
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: RepositoryAdvisoryUpdateType,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -495,6 +527,7 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
@@ -519,14 +552,13 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[RepositoryAdvisory]":
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET

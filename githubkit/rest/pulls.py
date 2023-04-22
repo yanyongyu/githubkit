@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -89,6 +89,8 @@ class PullsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestSimple]]":
         url = f"/repos/{owner}/{repo}/pulls"
 
@@ -102,9 +104,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -130,6 +130,8 @@ class PullsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestSimple]]":
         url = f"/repos/{owner}/{repo}/pulls"
 
@@ -143,9 +145,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -160,7 +160,12 @@ class PullsClient:
 
     @overload
     def create(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoPullsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoPullsPostBodyType,
     ) -> "Response[PullRequest]":
         ...
 
@@ -171,6 +176,7 @@ class PullsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         head: str,
         head_repo: Missing[str] = UNSET,
@@ -187,14 +193,13 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -217,7 +222,12 @@ class PullsClient:
 
     @overload
     async def async_create(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoPullsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoPullsPostBodyType,
     ) -> "Response[PullRequest]":
         ...
 
@@ -228,6 +238,7 @@ class PullsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         head: str,
         head_repo: Missing[str] = UNSET,
@@ -244,14 +255,13 @@ class PullsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -281,6 +291,8 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/comments"
 
@@ -292,9 +304,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -313,6 +323,8 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/comments"
 
@@ -324,9 +336,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -341,12 +351,12 @@ class PullsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -363,12 +373,12 @@ class PullsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -385,12 +395,12 @@ class PullsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -406,12 +416,12 @@ class PullsClient:
         owner: str,
         repo: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -429,6 +439,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -441,6 +452,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -451,14 +463,13 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -482,6 +493,7 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -494,6 +506,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -504,14 +517,13 @@ class PullsClient:
         repo: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -533,12 +545,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -557,12 +569,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -583,6 +595,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> "Response[PullRequest]":
         ...
@@ -595,6 +608,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -609,14 +623,13 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -644,6 +657,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
     ) -> "Response[PullRequest]":
         ...
@@ -656,6 +670,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -670,14 +685,13 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -708,6 +722,8 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
@@ -719,9 +735,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -741,6 +755,8 @@ class PullsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
@@ -752,9 +768,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -771,6 +785,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -783,6 +798,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
         commit_id: str,
         path: str,
@@ -802,14 +818,13 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -837,6 +852,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -849,6 +865,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
         commit_id: str,
         path: str,
@@ -868,14 +885,13 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -904,6 +920,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -917,6 +934,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -928,6 +946,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
@@ -935,9 +954,7 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -967,6 +984,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -980,6 +998,7 @@ class PullsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[PullRequestReviewComment]":
         ...
@@ -991,6 +1010,7 @@ class PullsClient:
         pull_number: int,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
@@ -998,9 +1018,7 @@ class PullsClient:
     ) -> "Response[PullRequestReviewComment]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1029,6 +1047,8 @@ class PullsClient:
         pull_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Commit]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/commits"
 
@@ -1037,9 +1057,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1056,6 +1074,8 @@ class PullsClient:
         pull_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Commit]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/commits"
 
@@ -1064,9 +1084,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1083,6 +1101,8 @@ class PullsClient:
         pull_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DiffEntry]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/files"
 
@@ -1091,9 +1111,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1115,6 +1133,8 @@ class PullsClient:
         pull_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DiffEntry]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/files"
 
@@ -1123,9 +1143,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1145,12 +1163,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1164,12 +1182,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1185,6 +1203,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1199,6 +1218,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         commit_title: Missing[str] = UNSET,
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
@@ -1212,6 +1232,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1219,9 +1240,7 @@ class PullsClient:
     ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1254,6 +1273,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1268,6 +1288,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         commit_title: Missing[str] = UNSET,
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
@@ -1281,6 +1302,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
@@ -1288,9 +1310,7 @@ class PullsClient:
     ) -> "Response[PullRequestMergeResult]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1321,12 +1341,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReviewRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1340,12 +1360,12 @@ class PullsClient:
         owner: str,
         repo: str,
         pull_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReviewRequest]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1361,6 +1381,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1378,6 +1399,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
@@ -1391,6 +1413,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         reviewers: Missing[List[str]] = UNSET,
         team_reviewers: List[str],
     ) -> "Response[PullRequestSimple]":
@@ -1402,6 +1425,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1412,9 +1436,7 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1447,6 +1469,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1464,6 +1487,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
@@ -1477,6 +1501,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         reviewers: Missing[List[str]] = UNSET,
         team_reviewers: List[str],
     ) -> "Response[PullRequestSimple]":
@@ -1488,6 +1513,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
@@ -1498,9 +1524,7 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1533,6 +1557,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     ) -> "Response[PullRequestSimple]":
         ...
@@ -1545,6 +1570,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
@@ -1556,6 +1582,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
@@ -1563,9 +1590,7 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1594,6 +1619,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     ) -> "Response[PullRequestSimple]":
         ...
@@ -1606,6 +1632,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
     ) -> "Response[PullRequestSimple]":
@@ -1617,6 +1644,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
@@ -1624,9 +1652,7 @@ class PullsClient:
     ) -> "Response[PullRequestSimple]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1655,6 +1681,8 @@ class PullsClient:
         pull_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestReview]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
@@ -1663,9 +1691,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1682,6 +1708,8 @@ class PullsClient:
         pull_number: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PullRequestReview]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
@@ -1690,9 +1718,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1709,6 +1735,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1721,6 +1748,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         commit_id: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -1736,14 +1764,13 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1771,6 +1798,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1783,6 +1811,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         commit_id: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
         event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = UNSET,
@@ -1798,14 +1827,13 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1832,12 +1860,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1855,12 +1883,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1880,6 +1908,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1893,6 +1922,7 @@ class PullsClient:
         review_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1904,14 +1934,13 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1939,6 +1968,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1952,6 +1982,7 @@ class PullsClient:
         review_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[PullRequestReview]":
         ...
@@ -1963,14 +1994,13 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1996,12 +2026,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2020,12 +2050,12 @@ class PullsClient:
         repo: str,
         pull_number: int,
         review_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2046,6 +2076,8 @@ class PullsClient:
         review_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[ReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"
 
@@ -2054,9 +2086,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2077,6 +2107,8 @@ class PullsClient:
         review_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[ReviewComment]]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"
 
@@ -2085,9 +2117,7 @@ class PullsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2108,6 +2138,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
     ) -> "Response[PullRequestReview]":
         ...
@@ -2121,6 +2152,7 @@ class PullsClient:
         review_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
     ) -> "Response[PullRequestReview]":
@@ -2133,6 +2165,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
@@ -2142,9 +2175,7 @@ class PullsClient:
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2175,6 +2206,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
     ) -> "Response[PullRequestReview]":
         ...
@@ -2188,6 +2220,7 @@ class PullsClient:
         review_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
     ) -> "Response[PullRequestReview]":
@@ -2200,6 +2233,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
@@ -2209,9 +2243,7 @@ class PullsClient:
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2242,6 +2274,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     ) -> "Response[PullRequestReview]":
         ...
@@ -2255,6 +2288,7 @@ class PullsClient:
         review_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> "Response[PullRequestReview]":
@@ -2267,6 +2301,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
@@ -2274,9 +2309,7 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2308,6 +2341,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     ) -> "Response[PullRequestReview]":
         ...
@@ -2321,6 +2355,7 @@ class PullsClient:
         review_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
     ) -> "Response[PullRequestReview]":
@@ -2333,6 +2368,7 @@ class PullsClient:
         pull_number: int,
         review_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
@@ -2340,9 +2376,7 @@ class PullsClient:
     ) -> "Response[PullRequestReview]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2373,6 +2407,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -2387,6 +2422,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         ...
@@ -2397,6 +2433,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -2404,9 +2441,7 @@ class PullsClient:
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2436,6 +2471,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -2450,6 +2486,7 @@ class PullsClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         ...
@@ -2460,6 +2497,7 @@ class PullsClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
@@ -2467,9 +2505,7 @@ class PullsClient:
     ) -> "Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET

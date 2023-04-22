@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -62,12 +62,12 @@ class UsersClient:
 
     def get_authenticated(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = "/user"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -82,12 +82,12 @@ class UsersClient:
 
     async def async_get_authenticated(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = "/user"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -102,7 +102,10 @@ class UsersClient:
 
     @overload
     def update_authenticated(
-        self, *, data: Missing[UserPatchBodyType] = UNSET
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserPatchBodyType] = UNSET,
     ) -> "Response[PrivateUser]":
         ...
 
@@ -111,6 +114,7 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
         blog: Missing[str] = UNSET,
@@ -123,13 +127,15 @@ class UsersClient:
         ...
 
     def update_authenticated(
-        self, *, data: Missing[UserPatchBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[PrivateUser]":
         url = "/user"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -154,7 +160,10 @@ class UsersClient:
 
     @overload
     async def async_update_authenticated(
-        self, *, data: Missing[UserPatchBodyType] = UNSET
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserPatchBodyType] = UNSET,
     ) -> "Response[PrivateUser]":
         ...
 
@@ -163,6 +172,7 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
         blog: Missing[str] = UNSET,
@@ -175,13 +185,15 @@ class UsersClient:
         ...
 
     async def async_update_authenticated(
-        self, *, data: Missing[UserPatchBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[PrivateUser]":
         url = "/user"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -208,6 +220,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/blocks"
 
@@ -216,9 +230,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -237,6 +249,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/blocks"
 
@@ -245,9 +259,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -265,12 +277,12 @@ class UsersClient:
     def check_blocked(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -286,12 +298,12 @@ class UsersClient:
     async def async_check_blocked(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -307,12 +319,12 @@ class UsersClient:
     def block(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -329,12 +341,12 @@ class UsersClient:
     async def async_block(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -351,12 +363,12 @@ class UsersClient:
     def unblock(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -372,12 +384,12 @@ class UsersClient:
     async def async_unblock(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -392,7 +404,10 @@ class UsersClient:
 
     @overload
     def set_primary_email_visibility_for_authenticated_user(
-        self, *, data: UserEmailVisibilityPatchBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserEmailVisibilityPatchBodyType,
     ) -> "Response[List[Email]]":
         ...
 
@@ -401,18 +416,21 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         visibility: Literal["public", "private"],
     ) -> "Response[List[Email]]":
         ...
 
     def set_primary_email_visibility_for_authenticated_user(
-        self, *, data: Missing[UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -437,7 +455,10 @@ class UsersClient:
 
     @overload
     async def async_set_primary_email_visibility_for_authenticated_user(
-        self, *, data: UserEmailVisibilityPatchBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserEmailVisibilityPatchBodyType,
     ) -> "Response[List[Email]]":
         ...
 
@@ -446,18 +467,21 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         visibility: Literal["public", "private"],
     ) -> "Response[List[Email]]":
         ...
 
     async def async_set_primary_email_visibility_for_authenticated_user(
-        self, *, data: Missing[UserEmailVisibilityPatchBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/email/visibility"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -484,6 +508,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
@@ -492,9 +518,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -513,6 +537,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
@@ -521,9 +547,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -542,6 +566,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response[List[Email]]":
         ...
@@ -551,6 +576,7 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> "Response[List[Email]]":
         ...
@@ -558,14 +584,13 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -592,6 +617,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response[List[Email]]":
         ...
@@ -601,6 +627,7 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> "Response[List[Email]]":
         ...
@@ -608,14 +635,13 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response[List[Email]]":
         url = "/user/emails"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -642,6 +668,7 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response":
         ...
@@ -651,6 +678,7 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> "Response":
         ...
@@ -658,14 +686,13 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response":
         url = "/user/emails"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -691,6 +718,7 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
     ) -> "Response":
         ...
@@ -700,6 +728,7 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> "Response":
         ...
@@ -707,14 +736,13 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> "Response":
         url = "/user/emails"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -740,6 +768,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/followers"
 
@@ -748,9 +778,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -768,6 +796,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/followers"
 
@@ -776,9 +806,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -796,6 +824,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/following"
 
@@ -804,9 +834,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -824,6 +852,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/user/following"
 
@@ -832,9 +862,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -851,12 +879,12 @@ class UsersClient:
     def check_person_is_followed_by_authenticated(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/following/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -872,12 +900,12 @@ class UsersClient:
     async def async_check_person_is_followed_by_authenticated(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/following/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -893,12 +921,12 @@ class UsersClient:
     def follow(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/following/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -914,12 +942,12 @@ class UsersClient:
     async def async_follow(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/following/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -935,12 +963,12 @@ class UsersClient:
     def unfollow(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/following/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -956,12 +984,12 @@ class UsersClient:
     async def async_unfollow(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/following/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -978,6 +1006,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GpgKey]]":
         url = "/user/gpg_keys"
 
@@ -986,9 +1016,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1007,6 +1035,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GpgKey]]":
         url = "/user/gpg_keys"
 
@@ -1015,9 +1045,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1034,7 +1062,7 @@ class UsersClient:
 
     @overload
     def create_gpg_key_for_authenticated_user(
-        self, *, data: UserGpgKeysPostBodyType
+        self, *, headers: Optional[Dict[str, str]] = None, data: UserGpgKeysPostBodyType
     ) -> "Response[GpgKey]":
         ...
 
@@ -1043,19 +1071,22 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
     ) -> "Response[GpgKey]":
         ...
 
     def create_gpg_key_for_authenticated_user(
-        self, *, data: Missing[UserGpgKeysPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserGpgKeysPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1080,7 +1111,7 @@ class UsersClient:
 
     @overload
     async def async_create_gpg_key_for_authenticated_user(
-        self, *, data: UserGpgKeysPostBodyType
+        self, *, headers: Optional[Dict[str, str]] = None, data: UserGpgKeysPostBodyType
     ) -> "Response[GpgKey]":
         ...
 
@@ -1089,19 +1120,22 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
     ) -> "Response[GpgKey]":
         ...
 
     async def async_create_gpg_key_for_authenticated_user(
-        self, *, data: Missing[UserGpgKeysPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserGpgKeysPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GpgKey]":
         url = "/user/gpg_keys"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1127,12 +1161,12 @@ class UsersClient:
     def get_gpg_key_for_authenticated_user(
         self,
         gpg_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GpgKey]":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1149,12 +1183,12 @@ class UsersClient:
     async def async_get_gpg_key_for_authenticated_user(
         self,
         gpg_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GpgKey]":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1171,12 +1205,12 @@ class UsersClient:
     def delete_gpg_key_for_authenticated_user(
         self,
         gpg_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1193,12 +1227,12 @@ class UsersClient:
     async def async_delete_gpg_key_for_authenticated_user(
         self,
         gpg_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/gpg_keys/{gpg_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1216,6 +1250,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Key]]":
         url = "/user/keys"
 
@@ -1224,9 +1260,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1245,6 +1279,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Key]]":
         url = "/user/keys"
 
@@ -1253,9 +1289,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1272,7 +1306,7 @@ class UsersClient:
 
     @overload
     def create_public_ssh_key_for_authenticated_user(
-        self, *, data: UserKeysPostBodyType
+        self, *, headers: Optional[Dict[str, str]] = None, data: UserKeysPostBodyType
     ) -> "Response[Key]":
         ...
 
@@ -1281,19 +1315,22 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[Key]":
         ...
 
     def create_public_ssh_key_for_authenticated_user(
-        self, *, data: Missing[UserKeysPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserKeysPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Key]":
         url = "/user/keys"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1318,7 +1355,7 @@ class UsersClient:
 
     @overload
     async def async_create_public_ssh_key_for_authenticated_user(
-        self, *, data: UserKeysPostBodyType
+        self, *, headers: Optional[Dict[str, str]] = None, data: UserKeysPostBodyType
     ) -> "Response[Key]":
         ...
 
@@ -1327,19 +1364,22 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[Key]":
         ...
 
     async def async_create_public_ssh_key_for_authenticated_user(
-        self, *, data: Missing[UserKeysPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserKeysPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Key]":
         url = "/user/keys"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1365,12 +1405,12 @@ class UsersClient:
     def get_public_ssh_key_for_authenticated_user(
         self,
         key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Key]":
         url = f"/user/keys/{key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1387,12 +1427,12 @@ class UsersClient:
     async def async_get_public_ssh_key_for_authenticated_user(
         self,
         key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Key]":
         url = f"/user/keys/{key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1409,12 +1449,12 @@ class UsersClient:
     def delete_public_ssh_key_for_authenticated_user(
         self,
         key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/keys/{key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1430,12 +1470,12 @@ class UsersClient:
     async def async_delete_public_ssh_key_for_authenticated_user(
         self,
         key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/keys/{key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1452,6 +1492,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Email]]":
         url = "/user/public_emails"
 
@@ -1460,9 +1502,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1481,6 +1521,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Email]]":
         url = "/user/public_emails"
 
@@ -1489,9 +1531,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1510,6 +1550,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
@@ -1518,9 +1560,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1539,6 +1579,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
@@ -1547,9 +1589,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1566,7 +1606,10 @@ class UsersClient:
 
     @overload
     def add_social_account_for_authenticated_user(
-        self, *, data: UserSocialAccountsPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserSocialAccountsPostBodyType,
     ) -> "Response[List[SocialAccount]]":
         ...
 
@@ -1575,18 +1618,21 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> "Response[List[SocialAccount]]":
         ...
 
     def add_social_account_for_authenticated_user(
-        self, *, data: Missing[UserSocialAccountsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserSocialAccountsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1611,7 +1657,10 @@ class UsersClient:
 
     @overload
     async def async_add_social_account_for_authenticated_user(
-        self, *, data: UserSocialAccountsPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserSocialAccountsPostBodyType,
     ) -> "Response[List[SocialAccount]]":
         ...
 
@@ -1620,18 +1669,21 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> "Response[List[SocialAccount]]":
         ...
 
     async def async_add_social_account_for_authenticated_user(
-        self, *, data: Missing[UserSocialAccountsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserSocialAccountsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[List[SocialAccount]]":
         url = "/user/social_accounts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1656,7 +1708,10 @@ class UsersClient:
 
     @overload
     def delete_social_account_for_authenticated_user(
-        self, *, data: UserSocialAccountsDeleteBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserSocialAccountsDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -1665,18 +1720,21 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> "Response":
         ...
 
     def delete_social_account_for_authenticated_user(
-        self, *, data: Missing[UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = "/user/social_accounts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1700,7 +1758,10 @@ class UsersClient:
 
     @overload
     async def async_delete_social_account_for_authenticated_user(
-        self, *, data: UserSocialAccountsDeleteBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserSocialAccountsDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -1709,18 +1770,21 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> "Response":
         ...
 
     async def async_delete_social_account_for_authenticated_user(
-        self, *, data: Missing[UserSocialAccountsDeleteBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = "/user/social_accounts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1746,6 +1810,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SshSigningKey]]":
         url = "/user/ssh_signing_keys"
 
@@ -1754,9 +1820,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1775,6 +1839,8 @@ class UsersClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SshSigningKey]]":
         url = "/user/ssh_signing_keys"
 
@@ -1783,9 +1849,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1802,7 +1866,10 @@ class UsersClient:
 
     @overload
     def create_ssh_signing_key_for_authenticated_user(
-        self, *, data: UserSshSigningKeysPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserSshSigningKeysPostBodyType,
     ) -> "Response[SshSigningKey]":
         ...
 
@@ -1811,19 +1878,22 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[SshSigningKey]":
         ...
 
     def create_ssh_signing_key_for_authenticated_user(
-        self, *, data: Missing[UserSshSigningKeysPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[SshSigningKey]":
         url = "/user/ssh_signing_keys"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1848,7 +1918,10 @@ class UsersClient:
 
     @overload
     async def async_create_ssh_signing_key_for_authenticated_user(
-        self, *, data: UserSshSigningKeysPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserSshSigningKeysPostBodyType,
     ) -> "Response[SshSigningKey]":
         ...
 
@@ -1857,19 +1930,22 @@ class UsersClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
     ) -> "Response[SshSigningKey]":
         ...
 
     async def async_create_ssh_signing_key_for_authenticated_user(
-        self, *, data: Missing[UserSshSigningKeysPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[SshSigningKey]":
         url = "/user/ssh_signing_keys"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1895,12 +1971,12 @@ class UsersClient:
     def get_ssh_signing_key_for_authenticated_user(
         self,
         ssh_signing_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SshSigningKey]":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1917,12 +1993,12 @@ class UsersClient:
     async def async_get_ssh_signing_key_for_authenticated_user(
         self,
         ssh_signing_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SshSigningKey]":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1939,12 +2015,12 @@ class UsersClient:
     def delete_ssh_signing_key_for_authenticated_user(
         self,
         ssh_signing_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1960,12 +2036,12 @@ class UsersClient:
     async def async_delete_ssh_signing_key_for_authenticated_user(
         self,
         ssh_signing_key_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1982,6 +2058,8 @@ class UsersClient:
         self,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/users"
 
@@ -1990,9 +2068,7 @@ class UsersClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2006,6 +2082,8 @@ class UsersClient:
         self,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = "/users"
 
@@ -2014,9 +2092,7 @@ class UsersClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2029,12 +2105,12 @@ class UsersClient:
     def get_by_username(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = f"/users/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2049,12 +2125,12 @@ class UsersClient:
     async def async_get_by_username(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[PrivateUser, PublicUser]]":
         url = f"/users/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2071,6 +2147,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/followers"
 
@@ -2079,9 +2157,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2096,6 +2172,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/followers"
 
@@ -2104,9 +2182,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2121,6 +2197,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/following"
 
@@ -2129,9 +2207,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2146,6 +2222,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/users/{username}/following"
 
@@ -2154,9 +2232,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2170,12 +2246,12 @@ class UsersClient:
         self,
         username: str,
         target_user: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/following/{target_user}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2188,12 +2264,12 @@ class UsersClient:
         self,
         username: str,
         target_user: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/following/{target_user}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2207,6 +2283,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GpgKey]]":
         url = f"/users/{username}/gpg_keys"
 
@@ -2215,9 +2293,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2232,6 +2308,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GpgKey]]":
         url = f"/users/{username}/gpg_keys"
 
@@ -2240,9 +2318,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2259,6 +2335,8 @@ class UsersClient:
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Hovercard]":
         url = f"/users/{username}/hovercard"
 
@@ -2267,9 +2345,7 @@ class UsersClient:
             "subject_id": subject_id,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2290,6 +2366,8 @@ class UsersClient:
             Literal["organization", "repository", "issue", "pull_request"]
         ] = UNSET,
         subject_id: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Hovercard]":
         url = f"/users/{username}/hovercard"
 
@@ -2298,9 +2376,7 @@ class UsersClient:
             "subject_id": subject_id,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2319,6 +2395,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[KeySimple]]":
         url = f"/users/{username}/keys"
 
@@ -2327,9 +2405,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2344,6 +2420,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[KeySimple]]":
         url = f"/users/{username}/keys"
 
@@ -2352,9 +2430,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2369,6 +2445,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SocialAccount]]":
         url = f"/users/{username}/social_accounts"
 
@@ -2377,9 +2455,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2394,6 +2470,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SocialAccount]]":
         url = f"/users/{username}/social_accounts"
 
@@ -2402,9 +2480,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2419,6 +2495,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SshSigningKey]]":
         url = f"/users/{username}/ssh_signing_keys"
 
@@ -2427,9 +2505,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2444,6 +2520,8 @@ class UsersClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SshSigningKey]]":
         url = f"/users/{username}/ssh_signing_keys"
 
@@ -2452,9 +2530,7 @@ class UsersClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

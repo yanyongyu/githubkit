@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -76,6 +76,8 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = "open",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Project]]":
         url = f"/orgs/{org}/projects"
 
@@ -85,9 +87,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -106,6 +106,8 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = "open",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Project]]":
         url = f"/orgs/{org}/projects"
 
@@ -115,9 +117,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -132,7 +132,11 @@ class ProjectsClient:
 
     @overload
     def create_for_org(
-        self, org: str, *, data: OrgsOrgProjectsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgProjectsPostBodyType,
     ) -> "Response[Project]":
         ...
 
@@ -142,19 +146,23 @@ class ProjectsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> "Response[Project]":
         ...
 
     def create_for_org(
-        self, org: str, *, data: Missing[OrgsOrgProjectsPostBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -180,7 +188,11 @@ class ProjectsClient:
 
     @overload
     async def async_create_for_org(
-        self, org: str, *, data: OrgsOrgProjectsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgProjectsPostBodyType,
     ) -> "Response[Project]":
         ...
 
@@ -190,19 +202,23 @@ class ProjectsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> "Response[Project]":
         ...
 
     async def async_create_for_org(
-        self, org: str, *, data: Missing[OrgsOrgProjectsPostBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Project]":
         url = f"/orgs/{org}/projects"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -229,12 +245,12 @@ class ProjectsClient:
     def get_card(
         self,
         card_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -251,12 +267,12 @@ class ProjectsClient:
     async def async_get_card(
         self,
         card_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -273,12 +289,12 @@ class ProjectsClient:
     def delete_card(
         self,
         card_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/columns/cards/{card_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -294,12 +310,12 @@ class ProjectsClient:
     async def async_delete_card(
         self,
         card_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/columns/cards/{card_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -317,6 +333,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> "Response[ProjectCard]":
         ...
@@ -327,6 +344,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> "Response[ProjectCard]":
@@ -336,14 +354,13 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -371,6 +388,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> "Response[ProjectCard]":
         ...
@@ -381,6 +399,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> "Response[ProjectCard]":
@@ -390,14 +409,13 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/cards/{card_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -422,7 +440,11 @@ class ProjectsClient:
 
     @overload
     def move_card(
-        self, card_id: int, *, data: ProjectsColumnsCardsCardIdMovesPostBodyType
+        self,
+        card_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         ...
 
@@ -432,6 +454,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
@@ -441,14 +464,13 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -473,7 +495,11 @@ class ProjectsClient:
 
     @overload
     async def async_move_card(
-        self, card_id: int, *, data: ProjectsColumnsCardsCardIdMovesPostBodyType
+        self,
+        card_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         ...
 
@@ -483,6 +509,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
@@ -492,14 +519,13 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsCardsCardIdMovesPostResponse201]":
         url = f"/projects/columns/cards/{card_id}/moves"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -525,12 +551,12 @@ class ProjectsClient:
     def get_column(
         self,
         column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -547,12 +573,12 @@ class ProjectsClient:
     async def async_get_column(
         self,
         column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -569,12 +595,12 @@ class ProjectsClient:
     def delete_column(
         self,
         column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/columns/{column_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -589,12 +615,12 @@ class ProjectsClient:
     async def async_delete_column(
         self,
         column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/columns/{column_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -608,7 +634,11 @@ class ProjectsClient:
 
     @overload
     def update_column(
-        self, column_id: int, *, data: ProjectsColumnsColumnIdPatchBodyType
+        self,
+        column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> "Response[ProjectColumn]":
         ...
 
@@ -618,6 +648,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -626,14 +657,13 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -656,7 +686,11 @@ class ProjectsClient:
 
     @overload
     async def async_update_column(
-        self, column_id: int, *, data: ProjectsColumnsColumnIdPatchBodyType
+        self,
+        column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> "Response[ProjectColumn]":
         ...
 
@@ -666,6 +700,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -674,14 +709,13 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/columns/{column_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -710,6 +744,8 @@ class ProjectsClient:
         ] = "not_archived",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[ProjectCard]]":
         url = f"/projects/columns/{column_id}/cards"
 
@@ -719,9 +755,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -743,6 +777,8 @@ class ProjectsClient:
         ] = "not_archived",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[ProjectCard]]":
         url = f"/projects/columns/{column_id}/cards"
 
@@ -752,9 +788,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -773,6 +807,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -786,6 +821,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         note: Union[str, None],
     ) -> "Response[ProjectCard]":
         ...
@@ -796,6 +832,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content_id: int,
         content_type: str,
     ) -> "Response[ProjectCard]":
@@ -805,6 +842,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -815,9 +853,7 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -851,6 +887,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -864,6 +901,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         note: Union[str, None],
     ) -> "Response[ProjectCard]":
         ...
@@ -874,6 +912,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content_id: int,
         content_type: str,
     ) -> "Response[ProjectCard]":
@@ -883,6 +922,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -893,9 +933,7 @@ class ProjectsClient:
     ) -> "Response[ProjectCard]":
         url = f"/projects/columns/{column_id}/cards"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -926,7 +964,11 @@ class ProjectsClient:
 
     @overload
     def move_column(
-        self, column_id: int, *, data: ProjectsColumnsColumnIdMovesPostBodyType
+        self,
+        column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         ...
 
@@ -936,6 +978,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         position: str,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         ...
@@ -944,14 +987,13 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -975,7 +1017,11 @@ class ProjectsClient:
 
     @overload
     async def async_move_column(
-        self, column_id: int, *, data: ProjectsColumnsColumnIdMovesPostBodyType
+        self,
+        column_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         ...
 
@@ -985,6 +1031,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         position: str,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         ...
@@ -993,14 +1040,13 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectsColumnsColumnIdMovesPostResponse201]":
         url = f"/projects/columns/{column_id}/moves"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1025,12 +1071,12 @@ class ProjectsClient:
     def get(
         self,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1046,12 +1092,12 @@ class ProjectsClient:
     async def async_get(
         self,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1067,12 +1113,12 @@ class ProjectsClient:
     def delete(
         self,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1089,12 +1135,12 @@ class ProjectsClient:
     async def async_delete(
         self,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1110,7 +1156,11 @@ class ProjectsClient:
 
     @overload
     def update(
-        self, project_id: int, *, data: Missing[ProjectsProjectIdPatchBodyType] = UNSET
+        self,
+        project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> "Response[Project]":
         ...
 
@@ -1120,6 +1170,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1134,14 +1185,13 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1166,7 +1216,11 @@ class ProjectsClient:
 
     @overload
     async def async_update(
-        self, project_id: int, *, data: Missing[ProjectsProjectIdPatchBodyType] = UNSET
+        self,
+        project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> "Response[Project]":
         ...
 
@@ -1176,6 +1230,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1190,14 +1245,13 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1226,6 +1280,8 @@ class ProjectsClient:
         affiliation: Missing[Literal["outside", "direct", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/projects/{project_id}/collaborators"
 
@@ -1235,9 +1291,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1259,6 +1313,8 @@ class ProjectsClient:
         affiliation: Missing[Literal["outside", "direct", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/projects/{project_id}/collaborators"
 
@@ -1268,9 +1324,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1292,6 +1346,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1305,6 +1360,7 @@ class ProjectsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = "write",
     ) -> "Response":
         ...
@@ -1314,6 +1370,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1321,9 +1378,7 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1353,6 +1408,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1366,6 +1422,7 @@ class ProjectsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = "write",
     ) -> "Response":
         ...
@@ -1375,6 +1432,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1382,9 +1440,7 @@ class ProjectsClient:
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1412,12 +1468,12 @@ class ProjectsClient:
         self,
         project_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1435,12 +1491,12 @@ class ProjectsClient:
         self,
         project_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/projects/{project_id}/collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1458,12 +1514,12 @@ class ProjectsClient:
         self,
         project_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ProjectCollaboratorPermission]":
         url = f"/projects/{project_id}/collaborators/{username}/permission"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1482,12 +1538,12 @@ class ProjectsClient:
         self,
         project_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ProjectCollaboratorPermission]":
         url = f"/projects/{project_id}/collaborators/{username}/permission"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1507,6 +1563,8 @@ class ProjectsClient:
         project_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[ProjectColumn]]":
         url = f"/projects/{project_id}/columns"
 
@@ -1515,9 +1573,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1536,6 +1592,8 @@ class ProjectsClient:
         project_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[ProjectColumn]]":
         url = f"/projects/{project_id}/columns"
 
@@ -1544,9 +1602,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1562,7 +1618,11 @@ class ProjectsClient:
 
     @overload
     def create_column(
-        self, project_id: int, *, data: ProjectsProjectIdColumnsPostBodyType
+        self,
+        project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsProjectIdColumnsPostBodyType,
     ) -> "Response[ProjectColumn]":
         ...
 
@@ -1572,6 +1632,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -1580,14 +1641,13 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1611,7 +1671,11 @@ class ProjectsClient:
 
     @overload
     async def async_create_column(
-        self, project_id: int, *, data: ProjectsProjectIdColumnsPostBodyType
+        self,
+        project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ProjectsProjectIdColumnsPostBodyType,
     ) -> "Response[ProjectColumn]":
         ...
 
@@ -1621,6 +1685,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> "Response[ProjectColumn]":
         ...
@@ -1629,14 +1694,13 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ProjectColumn]":
         url = f"/projects/{project_id}/columns"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1665,6 +1729,8 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = "open",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Project]]":
         url = f"/repos/{owner}/{repo}/projects"
 
@@ -1674,9 +1740,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1700,6 +1764,8 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = "open",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Project]]":
         url = f"/repos/{owner}/{repo}/projects"
 
@@ -1709,9 +1775,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1730,7 +1794,12 @@ class ProjectsClient:
 
     @overload
     def create_for_repo(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoProjectsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoProjectsPostBodyType,
     ) -> "Response[Project]":
         ...
 
@@ -1741,6 +1810,7 @@ class ProjectsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> "Response[Project]":
@@ -1751,14 +1821,13 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1784,7 +1853,12 @@ class ProjectsClient:
 
     @overload
     async def async_create_for_repo(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoProjectsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoProjectsPostBodyType,
     ) -> "Response[Project]":
         ...
 
@@ -1795,6 +1869,7 @@ class ProjectsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> "Response[Project]":
@@ -1805,14 +1880,13 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Project]":
         url = f"/repos/{owner}/{repo}/projects"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1838,7 +1912,10 @@ class ProjectsClient:
 
     @overload
     def create_for_authenticated_user(
-        self, *, data: UserProjectsPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserProjectsPostBodyType,
     ) -> "Response[Project]":
         ...
 
@@ -1847,19 +1924,22 @@ class ProjectsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> "Response[Project]":
         ...
 
     def create_for_authenticated_user(
-        self, *, data: Missing[UserProjectsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserProjectsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Project]":
         url = "/user/projects"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1883,7 +1963,10 @@ class ProjectsClient:
 
     @overload
     async def async_create_for_authenticated_user(
-        self, *, data: UserProjectsPostBodyType
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserProjectsPostBodyType,
     ) -> "Response[Project]":
         ...
 
@@ -1892,19 +1975,22 @@ class ProjectsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> "Response[Project]":
         ...
 
     async def async_create_for_authenticated_user(
-        self, *, data: Missing[UserProjectsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[UserProjectsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[Project]":
         url = "/user/projects"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1932,6 +2018,8 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = "open",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Project]]":
         url = f"/users/{username}/projects"
 
@@ -1941,9 +2029,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1962,6 +2048,8 @@ class ProjectsClient:
         state: Missing[Literal["open", "closed", "all"]] = "open",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Project]]":
         url = f"/users/{username}/projects"
 
@@ -1971,9 +2059,7 @@ class ProjectsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

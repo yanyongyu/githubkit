@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -56,6 +56,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = "/gists"
 
@@ -65,9 +67,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -85,6 +85,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = "/gists"
 
@@ -94,9 +96,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -110,7 +110,9 @@ class GistsClient:
         )
 
     @overload
-    def create(self, *, data: GistsPostBodyType) -> "Response[GistSimple]":
+    def create(
+        self, *, headers: Optional[Dict[str, str]] = None, data: GistsPostBodyType
+    ) -> "Response[GistSimple]":
         ...
 
     @overload
@@ -118,6 +120,7 @@ class GistsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -125,13 +128,15 @@ class GistsClient:
         ...
 
     def create(
-        self, *, data: Missing[GistsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[GistsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GistSimple]":
         url = "/gists"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -154,7 +159,9 @@ class GistsClient:
         )
 
     @overload
-    async def async_create(self, *, data: GistsPostBodyType) -> "Response[GistSimple]":
+    async def async_create(
+        self, *, headers: Optional[Dict[str, str]] = None, data: GistsPostBodyType
+    ) -> "Response[GistSimple]":
         ...
 
     @overload
@@ -162,6 +169,7 @@ class GistsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -169,13 +177,15 @@ class GistsClient:
         ...
 
     async def async_create(
-        self, *, data: Missing[GistsPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[GistsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[GistSimple]":
         url = "/gists"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -202,6 +212,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/public"
 
@@ -211,9 +223,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -232,6 +242,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/public"
 
@@ -241,9 +253,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -262,6 +272,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/starred"
 
@@ -271,9 +283,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -292,6 +302,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = "/gists/starred"
 
@@ -301,9 +313,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -320,12 +330,12 @@ class GistsClient:
     def get(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -341,12 +351,12 @@ class GistsClient:
     async def async_get(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -362,12 +372,12 @@ class GistsClient:
     def delete(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -382,12 +392,12 @@ class GistsClient:
     async def async_delete(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -404,6 +414,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             GistsGistIdPatchBodyAnyof0Type, None, GistsGistIdPatchBodyAnyof1Type, None
         ],
@@ -416,6 +427,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         description: str,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
@@ -427,6 +439,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsGistIdPatchBodyPropFilesType,
     ) -> "Response[GistSimple]":
@@ -436,6 +449,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 GistsGistIdPatchBodyAnyof0Type,
@@ -448,9 +462,7 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -479,6 +491,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             GistsGistIdPatchBodyAnyof0Type, None, GistsGistIdPatchBodyAnyof1Type, None
         ],
@@ -491,6 +504,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         description: str,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
@@ -502,6 +516,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsGistIdPatchBodyPropFilesType,
     ) -> "Response[GistSimple]":
@@ -511,6 +526,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 GistsGistIdPatchBodyAnyof0Type,
@@ -523,9 +539,7 @@ class GistsClient:
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -554,6 +568,8 @@ class GistsClient:
         gist_id: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GistComment]]":
         url = f"/gists/{gist_id}/comments"
 
@@ -562,9 +578,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -583,6 +597,8 @@ class GistsClient:
         gist_id: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GistComment]]":
         url = f"/gists/{gist_id}/comments"
 
@@ -591,9 +607,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -609,7 +623,11 @@ class GistsClient:
 
     @overload
     def create_comment(
-        self, gist_id: str, *, data: GistsGistIdCommentsPostBodyType
+        self,
+        gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: GistsGistIdCommentsPostBodyType,
     ) -> "Response[GistComment]":
         ...
 
@@ -619,6 +637,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[GistComment]":
         ...
@@ -627,14 +646,13 @@ class GistsClient:
         self,
         gist_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -657,7 +675,11 @@ class GistsClient:
 
     @overload
     async def async_create_comment(
-        self, gist_id: str, *, data: GistsGistIdCommentsPostBodyType
+        self,
+        gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: GistsGistIdCommentsPostBodyType,
     ) -> "Response[GistComment]":
         ...
 
@@ -667,6 +689,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[GistComment]":
         ...
@@ -675,14 +698,13 @@ class GistsClient:
         self,
         gist_id: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -707,12 +729,12 @@ class GistsClient:
         self,
         gist_id: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -729,12 +751,12 @@ class GistsClient:
         self,
         gist_id: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -751,12 +773,12 @@ class GistsClient:
         self,
         gist_id: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -772,12 +794,12 @@ class GistsClient:
         self,
         gist_id: str,
         comment_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -795,6 +817,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> "Response[GistComment]":
         ...
@@ -806,6 +829,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[GistComment]":
         ...
@@ -815,14 +839,13 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -848,6 +871,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> "Response[GistComment]":
         ...
@@ -859,6 +883,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[GistComment]":
         ...
@@ -868,14 +893,13 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GistComment]":
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -900,6 +924,8 @@ class GistsClient:
         gist_id: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GistCommit]]":
         url = f"/gists/{gist_id}/commits"
 
@@ -908,9 +934,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -929,6 +953,8 @@ class GistsClient:
         gist_id: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GistCommit]]":
         url = f"/gists/{gist_id}/commits"
 
@@ -937,9 +963,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -958,6 +982,8 @@ class GistsClient:
         gist_id: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GistSimple]]":
         url = f"/gists/{gist_id}/forks"
 
@@ -966,9 +992,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -987,6 +1011,8 @@ class GistsClient:
         gist_id: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GistSimple]]":
         url = f"/gists/{gist_id}/forks"
 
@@ -995,9 +1021,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1014,12 +1038,12 @@ class GistsClient:
     def fork(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[BaseGist]":
         url = f"/gists/{gist_id}/forks"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -1036,12 +1060,12 @@ class GistsClient:
     async def async_fork(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[BaseGist]":
         url = f"/gists/{gist_id}/forks"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -1058,12 +1082,12 @@ class GistsClient:
     def check_is_starred(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1078,12 +1102,12 @@ class GistsClient:
     async def async_check_is_starred(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1098,12 +1122,12 @@ class GistsClient:
     def star(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -1118,12 +1142,12 @@ class GistsClient:
     async def async_star(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -1138,12 +1162,12 @@ class GistsClient:
     def unstar(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1158,12 +1182,12 @@ class GistsClient:
     async def async_unstar(
         self,
         gist_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/gists/{gist_id}/star"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1179,12 +1203,12 @@ class GistsClient:
         self,
         gist_id: str,
         sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}/{sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1202,12 +1226,12 @@ class GistsClient:
         self,
         gist_id: str,
         sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}/{sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1227,6 +1251,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = f"/users/{username}/gists"
 
@@ -1236,9 +1262,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1257,6 +1281,8 @@ class GistsClient:
         since: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[BaseGist]]":
         url = f"/users/{username}/gists"
 
@@ -1266,9 +1292,7 @@ class GistsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

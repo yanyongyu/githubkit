@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -82,6 +82,8 @@ class OrgsClient:
         self,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/organizations"
 
@@ -90,9 +92,7 @@ class OrgsClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -106,6 +106,8 @@ class OrgsClient:
         self,
         since: Missing[int] = UNSET,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/organizations"
 
@@ -114,9 +116,7 @@ class OrgsClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -138,6 +138,8 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
@@ -153,9 +155,7 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -183,6 +183,8 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
@@ -198,9 +200,7 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -218,7 +218,11 @@ class OrgsClient:
 
     @overload
     def review_pat_grant_requests_in_bulk(
-        self, org: str, *, data: OrganizationsOrgPersonalAccessTokenRequestsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrganizationsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -228,6 +232,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         pat_request_ids: Missing[List[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -238,14 +243,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -270,7 +274,11 @@ class OrgsClient:
 
     @overload
     async def async_review_pat_grant_requests_in_bulk(
-        self, org: str, *, data: OrganizationsOrgPersonalAccessTokenRequestsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrganizationsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -280,6 +288,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         pat_request_ids: Missing[List[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
@@ -290,14 +299,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-token-requests"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -326,6 +334,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> "Response":
         ...
@@ -337,6 +346,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> "Response":
@@ -347,6 +357,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -354,9 +365,7 @@ class OrgsClient:
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -386,6 +395,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> "Response":
         ...
@@ -397,6 +407,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> "Response":
@@ -407,6 +418,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -414,9 +426,7 @@ class OrgsClient:
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -446,6 +456,8 @@ class OrgsClient:
         pat_request_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
 
@@ -454,9 +466,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -477,6 +487,8 @@ class OrgsClient:
         pat_request_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
 
@@ -485,9 +497,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -514,6 +524,8 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
         url = f"/organizations/{org}/personal-access-tokens"
 
@@ -529,9 +541,7 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -559,6 +569,8 @@ class OrgsClient:
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
         url = f"/organizations/{org}/personal-access-tokens"
 
@@ -574,9 +586,7 @@ class OrgsClient:
             "last_used_after": last_used_after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -594,7 +604,11 @@ class OrgsClient:
 
     @overload
     def update_pat_accesses(
-        self, org: str, *, data: OrganizationsOrgPersonalAccessTokensPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrganizationsOrgPersonalAccessTokensPostBodyType,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -604,6 +618,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: List[int],
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
@@ -613,14 +628,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -645,7 +659,11 @@ class OrgsClient:
 
     @overload
     async def async_update_pat_accesses(
-        self, org: str, *, data: OrganizationsOrgPersonalAccessTokensPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrganizationsOrgPersonalAccessTokensPostBodyType,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         ...
 
@@ -655,6 +673,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: List[int],
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
@@ -664,14 +683,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/organizations/{org}/personal-access-tokens"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -700,6 +718,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrganizationsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> "Response":
         ...
@@ -711,6 +730,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
     ) -> "Response":
         ...
@@ -720,14 +740,13 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -755,6 +774,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrganizationsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> "Response":
         ...
@@ -766,6 +786,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
     ) -> "Response":
         ...
@@ -775,14 +796,13 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -810,6 +830,8 @@ class OrgsClient:
         pat_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
 
@@ -818,9 +840,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -841,6 +861,8 @@ class OrgsClient:
         pat_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
 
@@ -849,9 +871,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -869,12 +889,12 @@ class OrgsClient:
     def get(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -889,12 +909,12 @@ class OrgsClient:
     async def async_get(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -909,12 +929,12 @@ class OrgsClient:
     def delete(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -930,12 +950,12 @@ class OrgsClient:
     async def async_delete(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -950,7 +970,11 @@ class OrgsClient:
 
     @overload
     def update(
-        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -960,6 +984,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -999,13 +1024,16 @@ class OrgsClient:
         ...
 
     def update(
-        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1028,7 +1056,11 @@ class OrgsClient:
 
     @overload
     async def async_update(
-        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> "Response[OrganizationFull]":
         ...
 
@@ -1038,6 +1070,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -1077,13 +1110,16 @@ class OrgsClient:
         ...
 
     async def async_update(
-        self, org: str, *, data: Missing[OrgsOrgPatchBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrganizationFull]":
         url = f"/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1109,6 +1145,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
 
@@ -1117,9 +1155,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1134,6 +1170,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/blocks"
 
@@ -1142,9 +1180,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1158,12 +1194,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1178,12 +1214,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1198,12 +1234,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -1218,12 +1254,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -1238,12 +1274,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1255,12 +1291,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/blocks/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1273,6 +1309,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/failed_invitations"
 
@@ -1281,9 +1319,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1301,6 +1337,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/failed_invitations"
 
@@ -1309,9 +1347,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1329,6 +1365,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrgHook]]":
         url = f"/orgs/{org}/hooks"
 
@@ -1337,9 +1375,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1357,6 +1393,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrgHook]]":
         url = f"/orgs/{org}/hooks"
 
@@ -1365,9 +1403,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1382,7 +1418,11 @@ class OrgsClient:
 
     @overload
     def create_webhook(
-        self, org: str, *, data: OrgsOrgHooksPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgHooksPostBodyType,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1392,6 +1432,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[List[str]] = ["push"],
@@ -1400,13 +1441,16 @@ class OrgsClient:
         ...
 
     def create_webhook(
-        self, org: str, *, data: Missing[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1429,7 +1473,11 @@ class OrgsClient:
 
     @overload
     async def async_create_webhook(
-        self, org: str, *, data: OrgsOrgHooksPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgHooksPostBodyType,
     ) -> "Response[OrgHook]":
         ...
 
@@ -1439,6 +1487,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[List[str]] = ["push"],
@@ -1447,13 +1496,16 @@ class OrgsClient:
         ...
 
     async def async_create_webhook(
-        self, org: str, *, data: Missing[OrgsOrgHooksPostBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1478,12 +1530,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1499,12 +1551,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1520,12 +1572,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1540,12 +1592,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1562,6 +1614,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> "Response[OrgHook]":
         ...
@@ -1573,6 +1626,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[List[str]] = ["push"],
         active: Missing[bool] = True,
@@ -1585,14 +1639,13 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1619,6 +1672,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> "Response[OrgHook]":
         ...
@@ -1630,6 +1684,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
         events: Missing[List[str]] = ["push"],
         active: Missing[bool] = True,
@@ -1642,14 +1697,13 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgHook]":
         url = f"/orgs/{org}/hooks/{hook_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1674,12 +1728,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1692,12 +1746,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1712,6 +1766,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
@@ -1723,6 +1778,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -1735,14 +1791,13 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1765,6 +1820,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> "Response[WebhookConfig]":
         ...
@@ -1776,6 +1832,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -1788,14 +1845,13 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[WebhookConfig]":
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1819,6 +1875,8 @@ class OrgsClient:
         per_page: Missing[int] = 30,
         cursor: Missing[str] = UNSET,
         redelivery: Missing[bool] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -1828,9 +1886,7 @@ class OrgsClient:
             "redelivery": redelivery,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1851,6 +1907,8 @@ class OrgsClient:
         per_page: Missing[int] = 30,
         cursor: Missing[str] = UNSET,
         redelivery: Missing[bool] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[HookDeliveryItem]]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries"
 
@@ -1860,9 +1918,7 @@ class OrgsClient:
             "redelivery": redelivery,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1881,12 +1937,12 @@ class OrgsClient:
         org: str,
         hook_id: int,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[HookDelivery]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1904,12 +1960,12 @@ class OrgsClient:
         org: str,
         hook_id: int,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[HookDelivery]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1927,12 +1983,12 @@ class OrgsClient:
         org: str,
         hook_id: int,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -1950,12 +2006,12 @@ class OrgsClient:
         org: str,
         hook_id: int,
         delivery_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -1972,12 +2028,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}/pings"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -1992,12 +2048,12 @@ class OrgsClient:
         self,
         org: str,
         hook_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/hooks/{hook_id}/pings"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -2013,6 +2069,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgInstallationsGetResponse200]":
         url = f"/orgs/{org}/installations"
 
@@ -2021,9 +2079,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2038,6 +2094,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgInstallationsGetResponse200]":
         url = f"/orgs/{org}/installations"
 
@@ -2046,9 +2104,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2069,6 +2125,8 @@ class OrgsClient:
             ]
         ] = "all",
         invitation_source: Missing[Literal["all", "member", "scim"]] = "all",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
@@ -2079,9 +2137,7 @@ class OrgsClient:
             "invitation_source": invitation_source,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2105,6 +2161,8 @@ class OrgsClient:
             ]
         ] = "all",
         invitation_source: Missing[Literal["all", "member", "scim"]] = "all",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/invitations"
 
@@ -2115,9 +2173,7 @@ class OrgsClient:
             "invitation_source": invitation_source,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2132,7 +2188,11 @@ class OrgsClient:
 
     @overload
     def create_invitation(
-        self, org: str, *, data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2142,6 +2202,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
@@ -2155,14 +2216,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2185,7 +2245,11 @@ class OrgsClient:
 
     @overload
     async def async_create_invitation(
-        self, org: str, *, data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> "Response[OrganizationInvitation]":
         ...
 
@@ -2195,6 +2259,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
@@ -2208,14 +2273,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrganizationInvitation]":
         url = f"/orgs/{org}/invitations"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2240,12 +2304,12 @@ class OrgsClient:
         self,
         org: str,
         invitation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/invitations/{invitation_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2261,12 +2325,12 @@ class OrgsClient:
         self,
         org: str,
         invitation_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/invitations/{invitation_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2284,6 +2348,8 @@ class OrgsClient:
         invitation_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -2292,9 +2358,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2313,6 +2377,8 @@ class OrgsClient:
         invitation_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/invitations/{invitation_id}/teams"
 
@@ -2321,9 +2387,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2343,6 +2407,8 @@ class OrgsClient:
         role: Missing[Literal["all", "admin", "member"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/members"
 
@@ -2353,9 +2419,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2375,6 +2439,8 @@ class OrgsClient:
         role: Missing[Literal["all", "admin", "member"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/members"
 
@@ -2385,9 +2451,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2404,12 +2468,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2422,12 +2486,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2440,12 +2504,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2460,12 +2524,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2480,12 +2544,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2502,12 +2566,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2526,6 +2590,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgMembership]":
         ...
@@ -2537,6 +2602,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = "member",
     ) -> "Response[OrgMembership]":
         ...
@@ -2546,14 +2612,13 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2580,6 +2645,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgMembership]":
         ...
@@ -2591,6 +2657,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = "member",
     ) -> "Response[OrgMembership]":
         ...
@@ -2600,14 +2667,13 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/orgs/{org}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2632,12 +2698,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2653,12 +2719,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2676,6 +2742,8 @@ class OrgsClient:
         filter_: Missing[Literal["2fa_disabled", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/outside_collaborators"
 
@@ -2685,9 +2753,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2703,6 +2769,8 @@ class OrgsClient:
         filter_: Missing[Literal["2fa_disabled", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/outside_collaborators"
 
@@ -2712,9 +2780,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2730,6 +2796,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
@@ -2741,6 +2808,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         async_: Missing[bool] = False,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
@@ -2750,14 +2818,13 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2783,6 +2850,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
@@ -2794,6 +2862,7 @@ class OrgsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         async_: Missing[bool] = False,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         ...
@@ -2803,14 +2872,13 @@ class OrgsClient:
         org: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2834,12 +2902,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2854,12 +2922,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2875,6 +2943,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/public_members"
 
@@ -2883,9 +2953,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2900,6 +2968,8 @@ class OrgsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/public_members"
 
@@ -2908,9 +2978,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2924,12 +2992,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2942,12 +3010,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2960,12 +3028,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -2980,12 +3048,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -3000,12 +3068,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -3017,12 +3085,12 @@ class OrgsClient:
         self,
         org: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/public_members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -3033,12 +3101,12 @@ class OrgsClient:
     def list_security_manager_teams(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamSimple]]":
         url = f"/orgs/{org}/security-managers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3050,12 +3118,12 @@ class OrgsClient:
     async def async_list_security_manager_teams(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamSimple]]":
         url = f"/orgs/{org}/security-managers"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3068,12 +3136,12 @@ class OrgsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -3086,12 +3154,12 @@ class OrgsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -3104,12 +3172,12 @@ class OrgsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -3121,12 +3189,12 @@ class OrgsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -3147,12 +3215,12 @@ class OrgsClient:
             "secret_scanning_push_protection",
         ],
         enablement: Literal["enable_all", "disable_all"],
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/{security_product}/{enablement}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -3174,12 +3242,12 @@ class OrgsClient:
             "secret_scanning_push_protection",
         ],
         enablement: Literal["enable_all", "disable_all"],
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/{security_product}/{enablement}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -3193,6 +3261,8 @@ class OrgsClient:
         state: Missing[Literal["active", "pending"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrgMembership]]":
         url = "/user/memberships/orgs"
 
@@ -3202,9 +3272,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3224,6 +3292,8 @@ class OrgsClient:
         state: Missing[Literal["active", "pending"]] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrgMembership]]":
         url = "/user/memberships/orgs"
 
@@ -3233,9 +3303,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3253,12 +3321,12 @@ class OrgsClient:
     def get_membership_for_authenticated_user(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3274,12 +3342,12 @@ class OrgsClient:
     async def async_get_membership_for_authenticated_user(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3294,7 +3362,11 @@ class OrgsClient:
 
     @overload
     def update_membership_for_authenticated_user(
-        self, org: str, *, data: UserMembershipsOrgsOrgPatchBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> "Response[OrgMembership]":
         ...
 
@@ -3304,6 +3376,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["active"],
     ) -> "Response[OrgMembership]":
         ...
@@ -3312,14 +3385,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3343,7 +3415,11 @@ class OrgsClient:
 
     @overload
     async def async_update_membership_for_authenticated_user(
-        self, org: str, *, data: UserMembershipsOrgsOrgPatchBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> "Response[OrgMembership]":
         ...
 
@@ -3353,6 +3429,7 @@ class OrgsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["active"],
     ) -> "Response[OrgMembership]":
         ...
@@ -3361,14 +3438,13 @@ class OrgsClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[OrgMembership]":
         url = f"/user/memberships/orgs/{org}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3394,6 +3470,8 @@ class OrgsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/user/orgs"
 
@@ -3402,9 +3480,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3422,6 +3498,8 @@ class OrgsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSimple]]":
         url = "/user/orgs"
 
@@ -3430,9 +3508,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3451,6 +3527,8 @@ class OrgsClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSimple]]":
         url = f"/users/{username}/orgs"
 
@@ -3459,9 +3537,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3476,6 +3552,8 @@ class OrgsClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSimple]]":
         url = f"/users/{username}/orgs"
 
@@ -3484,9 +3562,7 @@ class OrgsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

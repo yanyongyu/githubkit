@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Literal, overload
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -29,12 +29,12 @@ class EmojisClient:
 
     def get(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[EmojisGetResponse200]":
         url = "/emojis"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -45,12 +45,12 @@ class EmojisClient:
 
     async def async_get(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[EmojisGetResponse200]":
         url = "/emojis"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

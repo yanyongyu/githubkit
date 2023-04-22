@@ -36,6 +36,7 @@
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
 *,
+headers: Optional[Dict[str, str]] = None,
 {{ endpoint.request_body.get_raw_definition() }}
 {% endmacro %}
 
@@ -46,6 +47,7 @@
 {{ cookie_params(endpoint) }}
 *,
 data: Literal[UNSET] = UNSET,
+headers: Optional[Dict[str, str]] = None,
 {{ body_params(model, endpoint.param_names) }}
 {% endmacro %}
 
@@ -54,8 +56,9 @@ data: Literal[UNSET] = UNSET,
 {{ query_params(endpoint) }}
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
-{%- if endpoint.request_body %}
 *,
+headers: Optional[Dict[str, str]] = None,
+{%- if endpoint.request_body %}
 {{ endpoint.request_body.get_endpoint_definition() }},
 **kwargs
 {%- endif %}

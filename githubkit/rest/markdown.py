@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Literal, overload
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -29,7 +29,9 @@ class MarkdownClient:
         self._github = github
 
     @overload
-    def render(self, *, data: MarkdownPostBodyType) -> "Response[str]":
+    def render(
+        self, *, headers: Optional[Dict[str, str]] = None, data: MarkdownPostBodyType
+    ) -> "Response[str]":
         ...
 
     @overload
@@ -37,6 +39,7 @@ class MarkdownClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = "markdown",
         context: Missing[str] = UNSET,
@@ -44,13 +47,15 @@ class MarkdownClient:
         ...
 
     def render(
-        self, *, data: Missing[MarkdownPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[MarkdownPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[str]":
         url = "/markdown"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -68,7 +73,9 @@ class MarkdownClient:
         )
 
     @overload
-    async def async_render(self, *, data: MarkdownPostBodyType) -> "Response[str]":
+    async def async_render(
+        self, *, headers: Optional[Dict[str, str]] = None, data: MarkdownPostBodyType
+    ) -> "Response[str]":
         ...
 
     @overload
@@ -76,6 +83,7 @@ class MarkdownClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = "markdown",
         context: Missing[str] = UNSET,
@@ -83,13 +91,15 @@ class MarkdownClient:
         ...
 
     async def async_render(
-        self, *, data: Missing[MarkdownPostBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[MarkdownPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[str]":
         url = "/markdown"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -106,12 +116,12 @@ class MarkdownClient:
             response_model=str,
         )
 
-    def render_raw(self, *, data: str, **kwargs) -> "Response[str]":
+    def render_raw(
+        self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
+    ) -> "Response[str]":
         url = "/markdown/raw"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -130,12 +140,12 @@ class MarkdownClient:
             response_model=str,
         )
 
-    async def async_render_raw(self, *, data: str, **kwargs) -> "Response[str]":
+    async def async_render_raw(
+        self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
+    ) -> "Response[str]":
         url = "/markdown/raw"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -63,6 +63,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
@@ -77,6 +78,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -108,6 +110,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -139,6 +142,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -149,9 +153,7 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -180,6 +182,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
@@ -194,6 +197,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -225,6 +229,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
         details_url: Missing[str] = UNSET,
@@ -256,6 +261,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -266,9 +272,7 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -296,12 +300,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -315,12 +319,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -336,6 +340,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
@@ -351,6 +356,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -384,6 +390,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -417,6 +424,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
@@ -427,9 +435,7 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -459,6 +465,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
@@ -474,6 +481,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -507,6 +515,7 @@ class ChecksClient:
         check_run_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
@@ -540,6 +549,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
@@ -550,9 +560,7 @@ class ChecksClient:
     ) -> "Response[CheckRun]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -582,6 +590,8 @@ class ChecksClient:
         check_run_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CheckAnnotation]]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
 
@@ -590,9 +600,7 @@ class ChecksClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -609,6 +617,8 @@ class ChecksClient:
         check_run_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CheckAnnotation]]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
 
@@ -617,9 +627,7 @@ class ChecksClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -634,12 +642,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -658,12 +666,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_run_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -679,7 +687,12 @@ class ChecksClient:
 
     @overload
     def create_suite(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoCheckSuitesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoCheckSuitesPostBodyType,
     ) -> "Response[CheckSuite]":
         ...
 
@@ -690,6 +703,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         head_sha: str,
     ) -> "Response[CheckSuite]":
         ...
@@ -699,14 +713,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -725,7 +738,12 @@ class ChecksClient:
 
     @overload
     async def async_create_suite(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoCheckSuitesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoCheckSuitesPostBodyType,
     ) -> "Response[CheckSuite]":
         ...
 
@@ -736,6 +754,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         head_sha: str,
     ) -> "Response[CheckSuite]":
         ...
@@ -745,14 +764,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -775,6 +793,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     ) -> "Response[CheckSuitePreference]":
         ...
@@ -786,6 +805,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         auto_trigger_checks: Missing[
             List[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
@@ -799,14 +819,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -829,6 +848,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     ) -> "Response[CheckSuitePreference]":
         ...
@@ -840,6 +860,7 @@ class ChecksClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         auto_trigger_checks: Missing[
             List[
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
@@ -853,14 +874,13 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CheckSuitePreference]":
         url = f"/repos/{owner}/{repo}/check-suites/preferences"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -882,12 +902,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -901,12 +921,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CheckSuite]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -925,6 +945,8 @@ class ChecksClient:
         filter_: Missing[Literal["latest", "all"]] = "latest",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"
 
@@ -936,9 +958,7 @@ class ChecksClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -958,6 +978,8 @@ class ChecksClient:
         filter_: Missing[Literal["latest", "all"]] = "latest",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"
 
@@ -969,9 +991,7 @@ class ChecksClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -986,12 +1006,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -1005,12 +1025,12 @@ class ChecksClient:
         owner: str,
         repo: str,
         check_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -1030,6 +1050,8 @@ class ChecksClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         app_id: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-runs"
 
@@ -1042,9 +1064,7 @@ class ChecksClient:
             "app_id": app_id,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1065,6 +1085,8 @@ class ChecksClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         app_id: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-runs"
 
@@ -1077,9 +1099,7 @@ class ChecksClient:
             "app_id": app_id,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1098,6 +1118,8 @@ class ChecksClient:
         check_name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-suites"
 
@@ -1108,9 +1130,7 @@ class ChecksClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1129,6 +1149,8 @@ class ChecksClient:
         check_name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]":
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-suites"
 
@@ -1139,9 +1161,7 @@ class ChecksClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

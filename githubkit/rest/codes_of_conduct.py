@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -29,12 +29,12 @@ class CodesOfConductClient:
 
     def get_all_codes_of_conduct(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeOfConduct]]":
         url = "/codes_of_conduct"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -45,12 +45,12 @@ class CodesOfConductClient:
 
     async def async_get_all_codes_of_conduct(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeOfConduct]]":
         url = "/codes_of_conduct"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -62,12 +62,12 @@ class CodesOfConductClient:
     def get_conduct_code(
         self,
         key: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeOfConduct]":
         url = f"/codes_of_conduct/{key}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -82,12 +82,12 @@ class CodesOfConductClient:
     async def async_get_conduct_code(
         self,
         key: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeOfConduct]":
         url = f"/codes_of_conduct/{key}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -83,6 +83,8 @@ class TeamsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams"
 
@@ -91,9 +93,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -111,6 +111,8 @@ class TeamsClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams"
 
@@ -119,9 +121,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -136,7 +136,11 @@ class TeamsClient:
 
     @overload
     def create(
-        self, org: str, *, data: OrgsOrgTeamsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgTeamsPostBodyType,
     ) -> "Response[TeamFull]":
         ...
 
@@ -146,6 +150,7 @@ class TeamsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         maintainers: Missing[List[str]] = UNSET,
@@ -160,13 +165,16 @@ class TeamsClient:
         ...
 
     def create(
-        self, org: str, *, data: Missing[OrgsOrgTeamsPostBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -189,7 +197,11 @@ class TeamsClient:
 
     @overload
     async def async_create(
-        self, org: str, *, data: OrgsOrgTeamsPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgTeamsPostBodyType,
     ) -> "Response[TeamFull]":
         ...
 
@@ -199,6 +211,7 @@ class TeamsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         maintainers: Missing[List[str]] = UNSET,
@@ -213,13 +226,16 @@ class TeamsClient:
         ...
 
     async def async_create(
-        self, org: str, *, data: Missing[OrgsOrgTeamsPostBodyType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -244,12 +260,12 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -265,12 +281,12 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -286,12 +302,12 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -303,12 +319,12 @@ class TeamsClient:
         self,
         org: str,
         team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -322,6 +338,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> "Response[TeamFull]":
         ...
@@ -333,6 +350,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -349,14 +367,13 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -384,6 +401,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> "Response[TeamFull]":
         ...
@@ -395,6 +413,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -411,14 +430,13 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/orgs/{org}/teams/{team_slug}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -448,6 +466,8 @@ class TeamsClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         pinned: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
@@ -458,9 +478,7 @@ class TeamsClient:
             "pinned": pinned,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -478,6 +496,8 @@ class TeamsClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         pinned: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
@@ -488,9 +508,7 @@ class TeamsClient:
             "pinned": pinned,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -506,6 +524,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
     ) -> "Response[TeamDiscussion]":
         ...
@@ -517,6 +536,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = False,
@@ -528,14 +548,13 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -558,6 +577,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
     ) -> "Response[TeamDiscussion]":
         ...
@@ -569,6 +589,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = False,
@@ -580,14 +601,13 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -609,12 +629,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -628,12 +648,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -647,12 +667,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -665,12 +685,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -685,6 +705,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -699,6 +720,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
@@ -710,6 +732,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -717,9 +740,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -745,6 +766,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -759,6 +781,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
@@ -770,6 +793,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -777,9 +801,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussion]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -806,6 +828,8 @@ class TeamsClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
@@ -815,9 +839,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -835,6 +857,8 @@ class TeamsClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
@@ -844,9 +868,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -863,6 +885,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -875,6 +898,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -885,6 +909,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -892,9 +917,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -920,6 +943,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -932,6 +956,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -942,6 +967,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -949,9 +975,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -976,12 +1000,12 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -996,12 +1020,12 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1016,12 +1040,12 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1035,12 +1059,12 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1056,6 +1080,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -1069,6 +1094,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -1080,6 +1106,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -1087,9 +1114,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1117,6 +1142,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -1130,6 +1156,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -1141,6 +1168,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -1148,9 +1176,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1176,6 +1202,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/teams/{team_slug}/invitations"
 
@@ -1184,9 +1212,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1202,6 +1228,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/orgs/{org}/teams/{team_slug}/invitations"
 
@@ -1210,9 +1238,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1229,6 +1255,8 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/teams/{team_slug}/members"
 
@@ -1238,9 +1266,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1257,6 +1283,8 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/orgs/{org}/teams/{team_slug}/members"
 
@@ -1266,9 +1294,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1283,12 +1309,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1303,12 +1329,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1325,6 +1351,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
@@ -1337,6 +1364,7 @@ class TeamsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
@@ -1347,14 +1375,13 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1379,6 +1406,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
@@ -1391,6 +1419,7 @@ class TeamsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
@@ -1401,14 +1430,13 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1431,12 +1459,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1450,12 +1478,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1470,6 +1498,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamProject]]":
         url = f"/orgs/{org}/teams/{team_slug}/projects"
 
@@ -1478,9 +1508,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1496,6 +1524,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamProject]]":
         url = f"/orgs/{org}/teams/{team_slug}/projects"
 
@@ -1504,9 +1534,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1521,12 +1549,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamProject]":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1541,12 +1569,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamProject]":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1563,6 +1591,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1577,6 +1606,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
@@ -1587,6 +1617,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1594,9 +1625,7 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1624,6 +1653,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1638,6 +1668,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
@@ -1648,6 +1679,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1655,9 +1687,7 @@ class TeamsClient:
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1683,12 +1713,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1701,12 +1731,12 @@ class TeamsClient:
         org: str,
         team_slug: str,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1720,6 +1750,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/teams/{team_slug}/repos"
 
@@ -1728,9 +1760,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1746,6 +1776,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/orgs/{org}/teams/{team_slug}/repos"
 
@@ -1754,9 +1786,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1772,12 +1802,12 @@ class TeamsClient:
         team_slug: str,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamRepository]":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1793,12 +1823,12 @@ class TeamsClient:
         team_slug: str,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamRepository]":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1816,6 +1846,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
@@ -1829,6 +1860,7 @@ class TeamsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = "push",
     ) -> "Response":
         ...
@@ -1840,14 +1872,13 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1871,6 +1902,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
@@ -1884,6 +1916,7 @@ class TeamsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = "push",
     ) -> "Response":
         ...
@@ -1895,14 +1928,13 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1924,12 +1956,12 @@ class TeamsClient:
         team_slug: str,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1943,12 +1975,12 @@ class TeamsClient:
         team_slug: str,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1962,6 +1994,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams/{team_slug}/teams"
 
@@ -1970,9 +2004,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1988,6 +2020,8 @@ class TeamsClient:
         team_slug: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/orgs/{org}/teams/{team_slug}/teams"
 
@@ -1996,9 +2030,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2011,12 +2043,12 @@ class TeamsClient:
     def get_legacy(
         self,
         team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2031,12 +2063,12 @@ class TeamsClient:
     async def async_get_legacy(
         self,
         team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2051,12 +2083,12 @@ class TeamsClient:
     def delete_legacy(
         self,
         team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2071,12 +2103,12 @@ class TeamsClient:
     async def async_delete_legacy(
         self,
         team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2090,7 +2122,11 @@ class TeamsClient:
 
     @overload
     def update_legacy(
-        self, team_id: int, *, data: TeamsTeamIdPatchBodyType
+        self,
+        team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: TeamsTeamIdPatchBodyType,
     ) -> "Response[TeamFull]":
         ...
 
@@ -2100,6 +2136,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -2112,13 +2149,16 @@ class TeamsClient:
         ...
 
     def update_legacy(
-        self, team_id: int, *, data: Missing[TeamsTeamIdPatchBodyType] = UNSET, **kwargs
+        self,
+        team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2142,7 +2182,11 @@ class TeamsClient:
 
     @overload
     async def async_update_legacy(
-        self, team_id: int, *, data: TeamsTeamIdPatchBodyType
+        self,
+        team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: TeamsTeamIdPatchBodyType,
     ) -> "Response[TeamFull]":
         ...
 
@@ -2152,6 +2196,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -2164,13 +2209,16 @@ class TeamsClient:
         ...
 
     async def async_update_legacy(
-        self, team_id: int, *, data: Missing[TeamsTeamIdPatchBodyType] = UNSET, **kwargs
+        self,
+        team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[TeamFull]":
         url = f"/teams/{team_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2198,6 +2246,8 @@ class TeamsClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/teams/{team_id}/discussions"
 
@@ -2207,9 +2257,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2225,6 +2273,8 @@ class TeamsClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussion]]":
         url = f"/teams/{team_id}/discussions"
 
@@ -2234,9 +2284,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2248,7 +2296,11 @@ class TeamsClient:
 
     @overload
     def create_discussion_legacy(
-        self, team_id: int, *, data: TeamsTeamIdDiscussionsPostBodyType
+        self,
+        team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: TeamsTeamIdDiscussionsPostBodyType,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2258,6 +2310,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = False,
@@ -2268,14 +2321,13 @@ class TeamsClient:
         self,
         team_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2294,7 +2346,11 @@ class TeamsClient:
 
     @overload
     async def async_create_discussion_legacy(
-        self, team_id: int, *, data: TeamsTeamIdDiscussionsPostBodyType
+        self,
+        team_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: TeamsTeamIdDiscussionsPostBodyType,
     ) -> "Response[TeamDiscussion]":
         ...
 
@@ -2304,6 +2360,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = False,
@@ -2314,14 +2371,13 @@ class TeamsClient:
         self,
         team_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2342,12 +2398,12 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2360,12 +2416,12 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2378,12 +2434,12 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2395,12 +2451,12 @@ class TeamsClient:
         self,
         team_id: int,
         discussion_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2414,6 +2470,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
@@ -2425,6 +2482,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
@@ -2435,14 +2493,13 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2465,6 +2522,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
     ) -> "Response[TeamDiscussion]":
         ...
@@ -2476,6 +2534,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> "Response[TeamDiscussion]":
@@ -2486,14 +2545,13 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamDiscussion]":
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2517,6 +2575,8 @@ class TeamsClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
@@ -2526,9 +2586,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2545,6 +2603,8 @@ class TeamsClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamDiscussionComment]]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
@@ -2554,9 +2614,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2572,6 +2630,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2583,6 +2642,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2592,6 +2652,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -2599,9 +2660,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2626,6 +2685,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2637,6 +2697,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2646,6 +2707,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -2653,9 +2715,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2679,12 +2739,12 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2698,12 +2758,12 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2717,12 +2777,12 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2735,12 +2795,12 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         comment_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2755,6 +2815,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2767,6 +2828,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2777,6 +2839,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -2784,9 +2847,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2812,6 +2873,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2824,6 +2886,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> "Response[TeamDiscussionComment]":
         ...
@@ -2834,6 +2897,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -2841,9 +2905,7 @@ class TeamsClient:
     ) -> "Response[TeamDiscussionComment]":
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2867,6 +2929,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/teams/{team_id}/invitations"
 
@@ -2875,9 +2939,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2892,6 +2954,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationInvitation]]":
         url = f"/teams/{team_id}/invitations"
 
@@ -2900,9 +2964,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2918,6 +2980,8 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/teams/{team_id}/members"
 
@@ -2927,9 +2991,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2948,6 +3010,8 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer", "all"]] = "all",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/teams/{team_id}/members"
 
@@ -2957,9 +3021,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2976,12 +3038,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2994,12 +3056,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3012,12 +3074,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -3032,12 +3094,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -3052,12 +3114,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -3070,12 +3132,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/members/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -3088,12 +3150,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3109,12 +3171,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3132,6 +3194,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
@@ -3143,6 +3206,7 @@ class TeamsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
@@ -3152,14 +3216,13 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3185,6 +3248,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> "Response[TeamMembership]":
         ...
@@ -3196,6 +3260,7 @@ class TeamsClient:
         username: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = "member",
     ) -> "Response[TeamMembership]":
         ...
@@ -3205,14 +3270,13 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[TeamMembership]":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3236,12 +3300,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -3254,12 +3318,12 @@ class TeamsClient:
         self,
         team_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/memberships/{username}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -3273,6 +3337,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamProject]]":
         url = f"/teams/{team_id}/projects"
 
@@ -3281,9 +3347,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3301,6 +3365,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamProject]]":
         url = f"/teams/{team_id}/projects"
 
@@ -3309,9 +3375,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3328,12 +3392,12 @@ class TeamsClient:
         self,
         team_id: int,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamProject]":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3347,12 +3411,12 @@ class TeamsClient:
         self,
         team_id: int,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamProject]":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3368,6 +3432,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
     ) -> "Response":
         ...
@@ -3379,6 +3444,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
@@ -3388,14 +3454,13 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3422,6 +3487,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
     ) -> "Response":
         ...
@@ -3433,6 +3499,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> "Response":
         ...
@@ -3442,14 +3509,13 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3474,12 +3540,12 @@ class TeamsClient:
         self,
         team_id: int,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -3495,12 +3561,12 @@ class TeamsClient:
         self,
         team_id: int,
         project_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/projects/{project_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -3517,6 +3583,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/teams/{team_id}/repos"
 
@@ -3525,9 +3593,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3545,6 +3611,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/teams/{team_id}/repos"
 
@@ -3553,9 +3621,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3573,12 +3639,12 @@ class TeamsClient:
         team_id: int,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamRepository]":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3593,12 +3659,12 @@ class TeamsClient:
         team_id: int,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[TeamRepository]":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3615,6 +3681,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
@@ -3627,6 +3694,7 @@ class TeamsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> "Response":
         ...
@@ -3637,14 +3705,13 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3671,6 +3738,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> "Response":
         ...
@@ -3683,6 +3751,7 @@ class TeamsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> "Response":
         ...
@@ -3693,14 +3762,13 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3725,12 +3793,12 @@ class TeamsClient:
         team_id: int,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -3743,12 +3811,12 @@ class TeamsClient:
         team_id: int,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -3761,6 +3829,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/teams/{team_id}/teams"
 
@@ -3769,9 +3839,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3791,6 +3859,8 @@ class TeamsClient:
         team_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Team]]":
         url = f"/teams/{team_id}/teams"
 
@@ -3799,9 +3869,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -3820,6 +3888,8 @@ class TeamsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamFull]]":
         url = "/user/teams"
 
@@ -3828,9 +3898,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -3848,6 +3916,8 @@ class TeamsClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[TeamFull]]":
         url = "/user/teams"
 
@@ -3856,9 +3926,7 @@ class TeamsClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Literal, overload
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -45,6 +45,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchCodeGetResponse200]":
         url = "/search/code"
 
@@ -56,9 +58,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -80,6 +80,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchCodeGetResponse200]":
         url = "/search/code"
 
@@ -91,9 +93,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -115,6 +115,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchCommitsGetResponse200]":
         url = "/search/commits"
 
@@ -126,9 +128,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -145,6 +145,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchCommitsGetResponse200]":
         url = "/search/commits"
 
@@ -156,9 +158,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -189,6 +189,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchIssuesGetResponse200]":
         url = "/search/issues"
 
@@ -200,9 +202,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -238,6 +238,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchIssuesGetResponse200]":
         url = "/search/issues"
 
@@ -249,9 +251,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -274,6 +274,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchLabelsGetResponse200]":
         url = "/search/labels"
 
@@ -286,9 +288,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -311,6 +311,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchLabelsGetResponse200]":
         url = "/search/labels"
 
@@ -323,9 +325,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -349,6 +349,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchRepositoriesGetResponse200]":
         url = "/search/repositories"
 
@@ -360,9 +362,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -385,6 +385,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchRepositoriesGetResponse200]":
         url = "/search/repositories"
 
@@ -396,9 +398,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -417,6 +417,8 @@ class SearchClient:
         q: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchTopicsGetResponse200]":
         url = "/search/topics"
 
@@ -426,9 +428,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -443,6 +443,8 @@ class SearchClient:
         q: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchTopicsGetResponse200]":
         url = "/search/topics"
 
@@ -452,9 +454,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -471,6 +471,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchUsersGetResponse200]":
         url = "/search/users"
 
@@ -482,9 +484,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -505,6 +505,8 @@ class SearchClient:
         order: Missing[Literal["desc", "asc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SearchUsersGetResponse200]":
         url = "/search/users"
 
@@ -516,9 +518,7 @@ class SearchClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

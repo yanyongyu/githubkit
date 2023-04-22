@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -90,6 +90,8 @@ class CodespacesClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgCodespacesGetResponse200]":
         url = f"/orgs/{org}/codespaces"
 
@@ -98,9 +100,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -121,6 +121,8 @@ class CodespacesClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgCodespacesGetResponse200]":
         url = f"/orgs/{org}/codespaces"
 
@@ -129,9 +131,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -149,7 +149,11 @@ class CodespacesClient:
 
     @overload
     def set_codespaces_billing(
-        self, org: str, *, data: OrgsOrgCodespacesBillingPutBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodespacesBillingPutBodyType,
     ) -> "Response":
         ...
 
@@ -159,6 +163,7 @@ class CodespacesClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         visibility: Literal[
             "disabled",
             "selected_members",
@@ -173,14 +178,13 @@ class CodespacesClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -203,7 +207,11 @@ class CodespacesClient:
 
     @overload
     async def async_set_codespaces_billing(
-        self, org: str, *, data: OrgsOrgCodespacesBillingPutBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodespacesBillingPutBodyType,
     ) -> "Response":
         ...
 
@@ -213,6 +221,7 @@ class CodespacesClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         visibility: Literal[
             "disabled",
             "selected_members",
@@ -227,14 +236,13 @@ class CodespacesClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -257,7 +265,11 @@ class CodespacesClient:
 
     @overload
     def set_codespaces_billing_users(
-        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType,
     ) -> "Response":
         ...
 
@@ -267,6 +279,7 @@ class CodespacesClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> "Response":
         ...
@@ -275,14 +288,13 @@ class CodespacesClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -305,7 +317,11 @@ class CodespacesClient:
 
     @overload
     async def async_set_codespaces_billing_users(
-        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType,
     ) -> "Response":
         ...
 
@@ -315,6 +331,7 @@ class CodespacesClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> "Response":
         ...
@@ -323,14 +340,13 @@ class CodespacesClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -353,7 +369,11 @@ class CodespacesClient:
 
     @overload
     def delete_codespaces_billing_users(
-        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -363,6 +383,7 @@ class CodespacesClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> "Response":
         ...
@@ -371,14 +392,13 @@ class CodespacesClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -401,7 +421,11 @@ class CodespacesClient:
 
     @overload
     async def async_delete_codespaces_billing_users(
-        self, org: str, *, data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType,
     ) -> "Response":
         ...
 
@@ -411,6 +435,7 @@ class CodespacesClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> "Response":
         ...
@@ -419,14 +444,13 @@ class CodespacesClient:
         self,
         org: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/billing/selected_users"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -452,6 +476,8 @@ class CodespacesClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgCodespacesSecretsGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets"
 
@@ -460,9 +486,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -477,6 +501,8 @@ class CodespacesClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgCodespacesSecretsGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets"
 
@@ -485,9 +511,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -500,12 +524,12 @@ class CodespacesClient:
     def get_org_public_key(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesPublicKey]":
         url = f"/orgs/{org}/codespaces/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -517,12 +541,12 @@ class CodespacesClient:
     async def async_get_org_public_key(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesPublicKey]":
         url = f"/orgs/{org}/codespaces/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -535,12 +559,12 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesOrgSecret]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -553,12 +577,12 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesOrgSecret]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -573,6 +597,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -584,6 +609,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -596,14 +622,13 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -630,6 +655,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -641,6 +667,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
@@ -653,14 +680,13 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -685,12 +711,12 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -705,12 +731,12 @@ class CodespacesClient:
         self,
         org: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -727,6 +753,8 @@ class CodespacesClient:
         secret_name: str,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
@@ -735,9 +763,7 @@ class CodespacesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -756,6 +782,8 @@ class CodespacesClient:
         secret_name: str,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
@@ -764,9 +792,7 @@ class CodespacesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -785,6 +811,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> "Response":
         ...
@@ -796,6 +823,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -805,6 +833,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -812,9 +841,7 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -839,6 +866,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> "Response":
         ...
@@ -850,6 +878,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -859,6 +888,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType
         ] = UNSET,
@@ -866,9 +896,7 @@ class CodespacesClient:
     ) -> "Response":
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -892,14 +920,14 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -916,14 +944,14 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -940,14 +968,14 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -964,14 +992,14 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = (
             f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories/{repository_id}"
         )
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -989,6 +1017,8 @@ class CodespacesClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgMembersUsernameCodespacesGetResponse200]":
         url = f"/orgs/{org}/members/{username}/codespaces"
 
@@ -997,9 +1027,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1021,6 +1049,8 @@ class CodespacesClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OrgsOrgMembersUsernameCodespacesGetResponse200]":
         url = f"/orgs/{org}/members/{username}/codespaces"
 
@@ -1029,9 +1059,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1052,12 +1080,12 @@ class CodespacesClient:
         org: str,
         username: str,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1077,12 +1105,12 @@ class CodespacesClient:
         org: str,
         username: str,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1102,12 +1130,12 @@ class CodespacesClient:
         org: str,
         username: str,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}/stop"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -1127,12 +1155,12 @@ class CodespacesClient:
         org: str,
         username: str,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/orgs/{org}/members/{username}/codespaces/{codespace_name}/stop"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -1153,6 +1181,8 @@ class CodespacesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
@@ -1161,9 +1191,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1185,6 +1213,8 @@ class CodespacesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
@@ -1193,9 +1223,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1217,6 +1245,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         ...
@@ -1228,6 +1257,7 @@ class CodespacesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
@@ -1246,14 +1276,13 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1283,6 +1312,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         ...
@@ -1294,6 +1324,7 @@ class CodespacesClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
@@ -1312,14 +1343,13 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/codespaces"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1349,6 +1379,8 @@ class CodespacesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/devcontainers"
 
@@ -1357,9 +1389,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1382,6 +1412,8 @@ class CodespacesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/devcontainers"
 
@@ -1390,9 +1422,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1415,6 +1445,8 @@ class CodespacesClient:
         repo: str,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/machines"
 
@@ -1423,9 +1455,7 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1447,6 +1477,8 @@ class CodespacesClient:
         repo: str,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/machines"
 
@@ -1455,9 +1487,7 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1479,6 +1509,8 @@ class CodespacesClient:
         repo: str,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesNewGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/new"
 
@@ -1487,9 +1519,7 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1510,6 +1540,8 @@ class CodespacesClient:
         repo: str,
         ref: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesNewGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/new"
 
@@ -1518,9 +1550,7 @@ class CodespacesClient:
             "client_ip": client_ip,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1541,6 +1571,8 @@ class CodespacesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets"
 
@@ -1549,9 +1581,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1567,6 +1597,8 @@ class CodespacesClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesSecretsGetResponse200]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets"
 
@@ -1575,9 +1607,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1591,12 +1621,12 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesPublicKey]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1609,12 +1639,12 @@ class CodespacesClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesPublicKey]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1628,12 +1658,12 @@ class CodespacesClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepoCodespacesSecret]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1647,12 +1677,12 @@ class CodespacesClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepoCodespacesSecret]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1668,6 +1698,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -1680,6 +1711,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
@@ -1691,14 +1723,13 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1722,6 +1753,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
@@ -1734,6 +1766,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> "Response[EmptyObject]":
@@ -1745,14 +1778,13 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1774,12 +1806,12 @@ class CodespacesClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1792,12 +1824,12 @@ class CodespacesClient:
         owner: str,
         repo: str,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1812,6 +1844,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         ...
@@ -1824,6 +1857,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
@@ -1842,6 +1876,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
@@ -1849,9 +1884,7 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1883,6 +1916,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
     ) -> "Response[Codespace]":
         ...
@@ -1895,6 +1929,7 @@ class CodespacesClient:
         pull_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
@@ -1913,6 +1948,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None]
         ] = UNSET,
@@ -1920,9 +1956,7 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1952,6 +1986,8 @@ class CodespacesClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         repository_id: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesGetResponse200]":
         url = "/user/codespaces"
 
@@ -1961,9 +1997,7 @@ class CodespacesClient:
             "repository_id": repository_id,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1984,6 +2018,8 @@ class CodespacesClient:
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         repository_id: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesGetResponse200]":
         url = "/user/codespaces"
 
@@ -1993,9 +2029,7 @@ class CodespacesClient:
             "repository_id": repository_id,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2015,6 +2049,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> "Response[Codespace]":
         ...
@@ -2024,6 +2059,7 @@ class CodespacesClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -2043,6 +2079,7 @@ class CodespacesClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
@@ -2055,6 +2092,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
@@ -2062,9 +2100,7 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2093,6 +2129,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
     ) -> "Response[Codespace]":
         ...
@@ -2102,6 +2139,7 @@ class CodespacesClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -2121,6 +2159,7 @@ class CodespacesClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
@@ -2133,6 +2172,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type]
         ] = UNSET,
@@ -2140,9 +2180,7 @@ class CodespacesClient:
     ) -> "Response[Codespace]":
         url = "/user/codespaces"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2171,6 +2209,8 @@ class CodespacesClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesSecretsGetResponse200]":
         url = "/user/codespaces/secrets"
 
@@ -2179,9 +2219,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2195,6 +2233,8 @@ class CodespacesClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesSecretsGetResponse200]":
         url = "/user/codespaces/secrets"
 
@@ -2203,9 +2243,7 @@ class CodespacesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2217,12 +2255,12 @@ class CodespacesClient:
 
     def get_public_key_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesUserPublicKey]":
         url = "/user/codespaces/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2233,12 +2271,12 @@ class CodespacesClient:
 
     async def async_get_public_key_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesUserPublicKey]":
         url = "/user/codespaces/secrets/public-key"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2250,12 +2288,12 @@ class CodespacesClient:
     def get_secret_for_authenticated_user(
         self,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesSecret]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2267,12 +2305,12 @@ class CodespacesClient:
     async def async_get_secret_for_authenticated_user(
         self,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespacesSecret]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2283,7 +2321,11 @@ class CodespacesClient:
 
     @overload
     def create_or_update_secret_for_authenticated_user(
-        self, secret_name: str, *, data: UserCodespacesSecretsSecretNamePutBodyType
+        self,
+        secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2293,6 +2335,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[List[Union[int, str]]] = UNSET,
@@ -2303,14 +2346,13 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2333,7 +2375,11 @@ class CodespacesClient:
 
     @overload
     async def async_create_or_update_secret_for_authenticated_user(
-        self, secret_name: str, *, data: UserCodespacesSecretsSecretNamePutBodyType
+        self,
+        secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserCodespacesSecretsSecretNamePutBodyType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -2343,6 +2389,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[List[Union[int, str]]] = UNSET,
@@ -2353,14 +2400,13 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2384,12 +2430,12 @@ class CodespacesClient:
     def delete_secret_for_authenticated_user(
         self,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2400,12 +2446,12 @@ class CodespacesClient:
     async def async_delete_secret_for_authenticated_user(
         self,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2416,12 +2462,12 @@ class CodespacesClient:
     def list_repositories_for_secret_for_authenticated_user(
         self,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2439,12 +2485,12 @@ class CodespacesClient:
     async def async_list_repositories_for_secret_for_authenticated_user(
         self,
         secret_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2464,6 +2510,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> "Response":
         ...
@@ -2474,6 +2521,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -2482,14 +2530,13 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2516,6 +2563,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     ) -> "Response":
         ...
@@ -2526,6 +2574,7 @@ class CodespacesClient:
         secret_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> "Response":
         ...
@@ -2534,14 +2583,13 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2567,12 +2615,12 @@ class CodespacesClient:
         self,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -2590,12 +2638,12 @@ class CodespacesClient:
         self,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -2613,12 +2661,12 @@ class CodespacesClient:
         self,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2636,12 +2684,12 @@ class CodespacesClient:
         self,
         secret_name: str,
         repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/codespaces/secrets/{secret_name}/repositories/{repository_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2658,12 +2706,12 @@ class CodespacesClient:
     def get_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2681,12 +2729,12 @@ class CodespacesClient:
     async def async_get_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2704,12 +2752,12 @@ class CodespacesClient:
     def delete_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/user/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -2727,12 +2775,12 @@ class CodespacesClient:
     async def async_delete_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
         url = f"/user/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -2752,6 +2800,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> "Response[Codespace]":
         ...
@@ -2762,6 +2811,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[List[str]] = UNSET,
@@ -2772,14 +2822,13 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2806,6 +2855,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
     ) -> "Response[Codespace]":
         ...
@@ -2816,6 +2866,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[List[str]] = UNSET,
@@ -2826,14 +2877,13 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -2858,12 +2908,12 @@ class CodespacesClient:
     def export_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -2882,12 +2932,12 @@ class CodespacesClient:
     async def async_export_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -2907,12 +2957,12 @@ class CodespacesClient:
         self,
         codespace_name: str,
         export_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports/{export_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2928,12 +2978,12 @@ class CodespacesClient:
         self,
         codespace_name: str,
         export_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodespaceExportDetails]":
         url = f"/user/codespaces/{codespace_name}/exports/{export_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2948,12 +2998,12 @@ class CodespacesClient:
     def codespace_machines_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesCodespaceNameMachinesGetResponse200]":
         url = f"/user/codespaces/{codespace_name}/machines"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -2971,12 +3021,12 @@ class CodespacesClient:
     async def async_codespace_machines_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[UserCodespacesCodespaceNameMachinesGetResponse200]":
         url = f"/user/codespaces/{codespace_name}/machines"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -2996,6 +3046,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> "Response[CodespaceWithFullRepository]":
         ...
@@ -3006,6 +3057,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = False,
     ) -> "Response[CodespaceWithFullRepository]":
@@ -3015,14 +3067,13 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodespaceWithFullRepository]":
         url = f"/user/codespaces/{codespace_name}/publish"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3050,6 +3101,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
     ) -> "Response[CodespaceWithFullRepository]":
         ...
@@ -3060,6 +3112,7 @@ class CodespacesClient:
         codespace_name: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = False,
     ) -> "Response[CodespaceWithFullRepository]":
@@ -3069,14 +3122,13 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodespaceWithFullRepository]":
         url = f"/user/codespaces/{codespace_name}/publish"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -3102,12 +3154,12 @@ class CodespacesClient:
     def start_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/start"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -3128,12 +3180,12 @@ class CodespacesClient:
     async def async_start_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/start"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -3154,12 +3206,12 @@ class CodespacesClient:
     def stop_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/stop"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -3177,12 +3229,12 @@ class CodespacesClient:
     async def async_stop_for_authenticated_user(
         self,
         codespace_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Codespace]":
         url = f"/user/codespaces/{codespace_name}/stop"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",

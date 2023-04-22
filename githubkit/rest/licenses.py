@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -32,6 +32,8 @@ class LicensesClient:
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[LicenseSimple]]":
         url = "/licenses"
 
@@ -41,9 +43,7 @@ class LicensesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -58,6 +58,8 @@ class LicensesClient:
         featured: Missing[bool] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[LicenseSimple]]":
         url = "/licenses"
 
@@ -67,9 +69,7 @@ class LicensesClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -82,12 +82,12 @@ class LicensesClient:
     def get(
         self,
         license_: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[License]":
         url = f"/licenses/{license}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -103,12 +103,12 @@ class LicensesClient:
     async def async_get(
         self,
         license_: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[License]":
         url = f"/licenses/{license}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -125,12 +125,12 @@ class LicensesClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[LicenseContent]":
         url = f"/repos/{owner}/{repo}/license"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -143,12 +143,12 @@ class LicensesClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[LicenseContent]":
         url = f"/repos/{owner}/{repo}/license"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

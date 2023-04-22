@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -31,12 +31,12 @@ class OidcClient:
     def get_oidc_custom_sub_template_for_org(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OidcCustomSub]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -48,12 +48,12 @@ class OidcClient:
     async def async_get_oidc_custom_sub_template_for_org(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[OidcCustomSub]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -64,7 +64,11 @@ class OidcClient:
 
     @overload
     def update_oidc_custom_sub_template_for_org(
-        self, org: str, *, data: OidcCustomSubType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OidcCustomSubType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -74,18 +78,22 @@ class OidcClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         include_claim_keys: List[str],
     ) -> "Response[EmptyObject]":
         ...
 
     def update_oidc_custom_sub_template_for_org(
-        self, org: str, *, data: Missing[OidcCustomSubType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OidcCustomSubType] = UNSET,
+        **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -108,7 +116,11 @@ class OidcClient:
 
     @overload
     async def async_update_oidc_custom_sub_template_for_org(
-        self, org: str, *, data: OidcCustomSubType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OidcCustomSubType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -118,18 +130,22 @@ class OidcClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         include_claim_keys: List[str],
     ) -> "Response[EmptyObject]":
         ...
 
     async def async_update_oidc_custom_sub_template_for_org(
-        self, org: str, *, data: Missing[OidcCustomSubType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OidcCustomSubType] = UNSET,
+        **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET

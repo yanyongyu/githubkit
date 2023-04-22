@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -65,6 +65,8 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
         url = f"/orgs/{org}/code-scanning/alerts"
 
@@ -81,9 +83,7 @@ class CodeScanningClient:
             "severity": severity,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -112,6 +112,8 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningOrganizationAlertItems]]":
         url = f"/orgs/{org}/code-scanning/alerts"
 
@@ -128,9 +130,7 @@ class CodeScanningClient:
             "severity": severity,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -159,6 +159,8 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningAlertItems]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts"
 
@@ -174,9 +176,7 @@ class CodeScanningClient:
             "severity": severity,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -206,6 +206,8 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningAlertItems]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts"
 
@@ -221,9 +223,7 @@ class CodeScanningClient:
             "severity": severity,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -243,12 +243,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -267,12 +267,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -293,6 +293,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> "Response[CodeScanningAlert]":
         ...
@@ -305,6 +306,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -319,14 +321,13 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -355,6 +356,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> "Response[CodeScanningAlert]":
         ...
@@ -367,6 +369,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -381,14 +384,13 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningAlert]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -418,6 +420,8 @@ class CodeScanningClient:
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
         ref: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningAlertInstance]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"
 
@@ -427,9 +431,7 @@ class CodeScanningClient:
             "ref": ref,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -452,6 +454,8 @@ class CodeScanningClient:
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
         ref: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningAlertInstance]]":
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"
 
@@ -461,9 +465,7 @@ class CodeScanningClient:
             "ref": ref,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -490,6 +492,8 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = "desc",
         sort: Missing[Literal["created"]] = "created",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningAnalysis]]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -504,9 +508,7 @@ class CodeScanningClient:
             "sort": sort,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -533,6 +535,8 @@ class CodeScanningClient:
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = "desc",
         sort: Missing[Literal["created"]] = "created",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningAnalysis]]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -547,9 +551,7 @@ class CodeScanningClient:
             "sort": sort,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -569,12 +571,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         analysis_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningAnalysis]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -593,12 +595,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         analysis_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningAnalysis]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -618,6 +620,8 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         confirm_delete: Missing[Union[str, None]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningAnalysisDeletion]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
@@ -625,9 +629,7 @@ class CodeScanningClient:
             "confirm_delete": confirm_delete,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -649,6 +651,8 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         confirm_delete: Missing[Union[str, None]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningAnalysisDeletion]":
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
@@ -656,9 +660,7 @@ class CodeScanningClient:
             "confirm_delete": confirm_delete,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -678,12 +680,12 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningCodeqlDatabase]]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -701,12 +703,12 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[CodeScanningCodeqlDatabase]]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -725,12 +727,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         language: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningCodeqlDatabase]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -749,12 +751,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         language: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningCodeqlDatabase]":
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -772,12 +774,12 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningDefaultSetup]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -795,12 +797,12 @@ class CodeScanningClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningDefaultSetup]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -816,7 +818,12 @@ class CodeScanningClient:
 
     @overload
     def update_default_setup(
-        self, owner: str, repo: str, *, data: CodeScanningDefaultSetupUpdateType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: CodeScanningDefaultSetupUpdateType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -827,6 +834,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["configured", "not-configured"],
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> "Response[EmptyObject]":
@@ -837,14 +845,13 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -869,7 +876,12 @@ class CodeScanningClient:
 
     @overload
     async def async_update_default_setup(
-        self, owner: str, repo: str, *, data: CodeScanningDefaultSetupUpdateType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: CodeScanningDefaultSetupUpdateType,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -880,6 +892,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["configured", "not-configured"],
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> "Response[EmptyObject]":
@@ -890,14 +903,13 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> "Response[EmptyObject]":
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -926,6 +938,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> "Response[CodeScanningSarifsReceipt]":
         ...
@@ -937,6 +950,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -952,14 +966,13 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -987,6 +1000,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> "Response[CodeScanningSarifsReceipt]":
         ...
@@ -998,6 +1012,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -1013,14 +1028,13 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[CodeScanningSarifsReceipt]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1047,12 +1061,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         sarif_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningSarifsStatus]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1070,12 +1084,12 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         sarif_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CodeScanningSarifsStatus]":
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

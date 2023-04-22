@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -30,12 +30,12 @@ class PackagesClient:
     def list_docker_migration_conflicting_packages_for_organization(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/docker/conflicts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -51,12 +51,12 @@ class PackagesClient:
     async def async_list_docker_migration_conflicting_packages_for_organization(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/docker/conflicts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -78,6 +78,8 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/packages"
 
@@ -88,9 +90,7 @@ class PackagesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -113,6 +113,8 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/orgs/{org}/packages"
 
@@ -123,9 +125,7 @@ class PackagesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -146,12 +146,12 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Package]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -167,12 +167,12 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Package]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -188,12 +188,12 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -213,12 +213,12 @@ class PackagesClient:
         ],
         package_name: str,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -239,6 +239,8 @@ class PackagesClient:
         package_name: str,
         org: str,
         token: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/restore"
 
@@ -246,9 +248,7 @@ class PackagesClient:
             "token": token,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -270,6 +270,8 @@ class PackagesClient:
         package_name: str,
         org: str,
         token: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/restore"
 
@@ -277,9 +279,7 @@ class PackagesClient:
             "token": token,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -303,6 +303,8 @@ class PackagesClient:
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
         state: Missing[Literal["active", "deleted"]] = "active",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PackageVersion]]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions"
 
@@ -312,9 +314,7 @@ class PackagesClient:
             "state": state,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -339,6 +339,8 @@ class PackagesClient:
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
         state: Missing[Literal["active", "deleted"]] = "active",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PackageVersion]]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions"
 
@@ -348,9 +350,7 @@ class PackagesClient:
             "state": state,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -373,12 +373,12 @@ class PackagesClient:
         package_name: str,
         org: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PackageVersion]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -395,12 +395,12 @@ class PackagesClient:
         package_name: str,
         org: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PackageVersion]":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -417,12 +417,12 @@ class PackagesClient:
         package_name: str,
         org: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -443,12 +443,12 @@ class PackagesClient:
         package_name: str,
         org: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -469,12 +469,12 @@ class PackagesClient:
         package_name: str,
         org: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -495,12 +495,12 @@ class PackagesClient:
         package_name: str,
         org: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -515,12 +515,12 @@ class PackagesClient:
 
     def list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = "/user/docker/conflicts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -531,12 +531,12 @@ class PackagesClient:
 
     async def async_list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = "/user/docker/conflicts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -553,6 +553,8 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = "/user/packages"
 
@@ -563,9 +565,7 @@ class PackagesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -584,6 +584,8 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = "/user/packages"
 
@@ -594,9 +596,7 @@ class PackagesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -613,12 +613,12 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Package]":
         url = f"/user/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -633,12 +633,12 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Package]":
         url = f"/user/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -653,12 +653,12 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -677,12 +677,12 @@ class PackagesClient:
             "npm", "maven", "rubygems", "docker", "nuget", "container"
         ],
         package_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -702,6 +702,8 @@ class PackagesClient:
         ],
         package_name: str,
         token: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/restore"
 
@@ -709,9 +711,7 @@ class PackagesClient:
             "token": token,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -732,6 +732,8 @@ class PackagesClient:
         ],
         package_name: str,
         token: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/restore"
 
@@ -739,9 +741,7 @@ class PackagesClient:
             "token": token,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -764,6 +764,8 @@ class PackagesClient:
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
         state: Missing[Literal["active", "deleted"]] = "active",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PackageVersion]]":
         url = f"/user/packages/{package_type}/{package_name}/versions"
 
@@ -773,9 +775,7 @@ class PackagesClient:
             "state": state,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -799,6 +799,8 @@ class PackagesClient:
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
         state: Missing[Literal["active", "deleted"]] = "active",
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PackageVersion]]":
         url = f"/user/packages/{package_type}/{package_name}/versions"
 
@@ -808,9 +810,7 @@ class PackagesClient:
             "state": state,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -832,12 +832,12 @@ class PackagesClient:
         ],
         package_name: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PackageVersion]":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -853,12 +853,12 @@ class PackagesClient:
         ],
         package_name: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PackageVersion]":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -874,12 +874,12 @@ class PackagesClient:
         ],
         package_name: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -899,12 +899,12 @@ class PackagesClient:
         ],
         package_name: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -924,12 +924,12 @@ class PackagesClient:
         ],
         package_name: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -949,12 +949,12 @@ class PackagesClient:
         ],
         package_name: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -970,12 +970,12 @@ class PackagesClient:
     def list_docker_migration_conflicting_packages_for_user(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/docker/conflicts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -991,12 +991,12 @@ class PackagesClient:
     async def async_list_docker_migration_conflicting_packages_for_user(
         self,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/docker/conflicts"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1018,6 +1018,8 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/packages"
 
@@ -1028,9 +1030,7 @@ class PackagesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1053,6 +1053,8 @@ class PackagesClient:
         visibility: Missing[Literal["public", "private", "internal"]] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Package]]":
         url = f"/users/{username}/packages"
 
@@ -1063,9 +1065,7 @@ class PackagesClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1086,12 +1086,12 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Package]":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1107,12 +1107,12 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Package]":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1128,12 +1128,12 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1153,12 +1153,12 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1179,6 +1179,8 @@ class PackagesClient:
         package_name: str,
         username: str,
         token: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/restore"
 
@@ -1186,9 +1188,7 @@ class PackagesClient:
             "token": token,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -1210,6 +1210,8 @@ class PackagesClient:
         package_name: str,
         username: str,
         token: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/restore"
 
@@ -1217,9 +1219,7 @@ class PackagesClient:
             "token": token,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",
@@ -1240,12 +1240,12 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PackageVersion]]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1266,12 +1266,12 @@ class PackagesClient:
         ],
         package_name: str,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[PackageVersion]]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1293,12 +1293,12 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PackageVersion]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1315,12 +1315,12 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[PackageVersion]":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1337,12 +1337,12 @@ class PackagesClient:
         package_name: str,
         username: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1363,12 +1363,12 @@ class PackagesClient:
         package_name: str,
         username: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1389,12 +1389,12 @@ class PackagesClient:
         package_name: str,
         username: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "POST",
@@ -1415,12 +1415,12 @@ class PackagesClient:
         package_name: str,
         username: str,
         package_version_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "POST",

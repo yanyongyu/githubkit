@@ -26,6 +26,7 @@ headers = {
     "{{ param.name }}": {{ param.prop_name }},
     {% endfor %}
     "X-GitHub-Api-Version": self._REST_API_VERSION,
+    **(headers or {})
 }
 {% endmacro %}
 

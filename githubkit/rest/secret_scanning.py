@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -46,6 +46,8 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/enterprises/{enterprise}/secret-scanning/alerts"
 
@@ -60,9 +62,7 @@ class SecretScanningClient:
             "after": after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -87,6 +87,8 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/enterprises/{enterprise}/secret-scanning/alerts"
 
@@ -101,9 +103,7 @@ class SecretScanningClient:
             "after": after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -129,6 +129,8 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/orgs/{org}/secret-scanning/alerts"
 
@@ -144,9 +146,7 @@ class SecretScanningClient:
             "after": after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -172,6 +172,8 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
         url = f"/orgs/{org}/secret-scanning/alerts"
 
@@ -187,9 +189,7 @@ class SecretScanningClient:
             "after": after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -216,6 +216,8 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SecretScanningAlert]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
 
@@ -231,9 +233,7 @@ class SecretScanningClient:
             "after": after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -259,6 +259,8 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SecretScanningAlert]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
 
@@ -274,9 +276,7 @@ class SecretScanningClient:
             "after": after,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -294,12 +294,12 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -316,12 +316,12 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         alert_number: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -340,6 +340,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> "Response[SecretScanningAlert]":
         ...
@@ -352,6 +353,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -368,6 +370,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -375,9 +378,7 @@ class SecretScanningClient:
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -406,6 +407,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> "Response[SecretScanningAlert]":
         ...
@@ -418,6 +420,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -434,6 +437,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -441,9 +445,7 @@ class SecretScanningClient:
     ) -> "Response[SecretScanningAlert]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -472,6 +474,8 @@ class SecretScanningClient:
         alert_number: int,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SecretScanningLocation]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
 
@@ -480,9 +484,7 @@ class SecretScanningClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -502,6 +504,8 @@ class SecretScanningClient:
         alert_number: int,
         page: Missing[int] = 1,
         per_page: Missing[int] = 30,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SecretScanningLocation]]":
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
 
@@ -510,9 +514,7 @@ class SecretScanningClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -58,6 +58,8 @@ class ActivityClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = "/events"
 
@@ -66,9 +68,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -86,6 +86,8 @@ class ActivityClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = "/events"
 
@@ -94,9 +96,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -112,12 +112,12 @@ class ActivityClient:
 
     def get_feeds(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Feed]":
         url = "/feeds"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -128,12 +128,12 @@ class ActivityClient:
 
     async def async_get_feeds(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Feed]":
         url = "/feeds"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -148,6 +148,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/networks/{owner}/{repo}/events"
 
@@ -156,9 +158,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -178,6 +178,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/networks/{owner}/{repo}/events"
 
@@ -186,9 +188,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -210,6 +210,8 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 50,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Thread]]":
         url = "/notifications"
 
@@ -222,9 +224,7 @@ class ActivityClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -247,6 +247,8 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         page: Missing[int] = 1,
         per_page: Missing[int] = 50,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Thread]]":
         url = "/notifications"
 
@@ -259,9 +261,7 @@ class ActivityClient:
             "per_page": per_page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -278,7 +278,10 @@ class ActivityClient:
 
     @overload
     def mark_notifications_as_read(
-        self, *, data: Missing[NotificationsPutBodyType] = UNSET
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
@@ -287,19 +290,22 @@ class ActivityClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
     def mark_notifications_as_read(
-        self, *, data: Missing[NotificationsPutBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[NotificationsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -322,7 +328,10 @@ class ActivityClient:
 
     @overload
     async def async_mark_notifications_as_read(
-        self, *, data: Missing[NotificationsPutBodyType] = UNSET
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
@@ -331,19 +340,22 @@ class ActivityClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> "Response[NotificationsPutResponse202]":
         ...
 
     async def async_mark_notifications_as_read(
-        self, *, data: Missing[NotificationsPutBodyType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[NotificationsPutBodyType] = UNSET,
+        **kwargs,
     ) -> "Response[NotificationsPutResponse202]":
         url = "/notifications"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -367,12 +379,12 @@ class ActivityClient:
     def get_thread(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Thread]":
         url = f"/notifications/threads/{thread_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -388,12 +400,12 @@ class ActivityClient:
     async def async_get_thread(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Thread]":
         url = f"/notifications/threads/{thread_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -409,12 +421,12 @@ class ActivityClient:
     def mark_thread_as_read(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PATCH",
@@ -428,12 +440,12 @@ class ActivityClient:
     async def async_mark_thread_as_read(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PATCH",
@@ -447,12 +459,12 @@ class ActivityClient:
     def get_thread_subscription_for_authenticated_user(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -468,12 +480,12 @@ class ActivityClient:
     async def async_get_thread_subscription_for_authenticated_user(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -491,6 +503,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> "Response[ThreadSubscription]":
         ...
@@ -501,6 +514,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         ignored: Missing[bool] = False,
     ) -> "Response[ThreadSubscription]":
         ...
@@ -509,14 +523,13 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -542,6 +555,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> "Response[ThreadSubscription]":
         ...
@@ -552,6 +566,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         ignored: Missing[bool] = False,
     ) -> "Response[ThreadSubscription]":
         ...
@@ -560,14 +575,13 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ThreadSubscription]":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -591,12 +605,12 @@ class ActivityClient:
     def delete_thread_subscription(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -611,12 +625,12 @@ class ActivityClient:
     async def async_delete_thread_subscription(
         self,
         thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -633,6 +647,8 @@ class ActivityClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/orgs/{org}/events"
 
@@ -641,9 +657,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -658,6 +672,8 @@ class ActivityClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/orgs/{org}/events"
 
@@ -666,9 +682,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -684,6 +698,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/repos/{owner}/{repo}/events"
 
@@ -692,9 +708,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -710,6 +724,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/repos/{owner}/{repo}/events"
 
@@ -718,9 +734,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -740,6 +754,8 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Thread]]":
         url = f"/repos/{owner}/{repo}/notifications"
 
@@ -752,9 +768,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -774,6 +788,8 @@ class ActivityClient:
         before: Missing[datetime] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Thread]]":
         url = f"/repos/{owner}/{repo}/notifications"
 
@@ -786,9 +802,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -804,6 +818,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
@@ -815,6 +830,7 @@ class ActivityClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
@@ -824,14 +840,13 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -854,6 +869,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
@@ -865,6 +881,7 @@ class ActivityClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         ...
@@ -874,14 +891,13 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ReposOwnerRepoNotificationsPutResponse202]":
         url = f"/repos/{owner}/{repo}/notifications"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -904,6 +920,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[List[SimpleUser], List[Stargazer]]]":
         url = f"/repos/{owner}/{repo}/stargazers"
 
@@ -912,9 +930,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -933,6 +949,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[List[SimpleUser], List[Stargazer]]]":
         url = f"/repos/{owner}/{repo}/stargazers"
 
@@ -941,9 +959,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -962,6 +978,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/subscribers"
 
@@ -970,9 +988,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -988,6 +1004,8 @@ class ActivityClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SimpleUser]]":
         url = f"/repos/{owner}/{repo}/subscribers"
 
@@ -996,9 +1014,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1012,12 +1028,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1033,12 +1049,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1056,6 +1072,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> "Response[RepositorySubscription]":
         ...
@@ -1067,6 +1084,7 @@ class ActivityClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> "Response[RepositorySubscription]":
@@ -1077,14 +1095,13 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1107,6 +1124,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> "Response[RepositorySubscription]":
         ...
@@ -1118,6 +1136,7 @@ class ActivityClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> "Response[RepositorySubscription]":
@@ -1128,14 +1147,13 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response[RepositorySubscription]":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -1156,12 +1174,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1173,12 +1191,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1192,6 +1210,8 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Repository]]":
         url = "/user/starred"
 
@@ -1202,9 +1222,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1224,6 +1242,8 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Repository]]":
         url = "/user/starred"
 
@@ -1234,9 +1254,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1254,12 +1272,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1276,12 +1294,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1298,12 +1316,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "PUT",
@@ -1320,12 +1338,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "PUT",
@@ -1342,12 +1360,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -1364,12 +1382,12 @@ class ActivityClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/user/starred/{owner}/{repo}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -1386,6 +1404,8 @@ class ActivityClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = "/user/subscriptions"
 
@@ -1394,9 +1414,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1414,6 +1432,8 @@ class ActivityClient:
         self,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = "/user/subscriptions"
 
@@ -1422,9 +1442,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1443,6 +1461,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events"
 
@@ -1451,9 +1471,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1468,6 +1486,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events"
 
@@ -1476,9 +1496,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1494,6 +1512,8 @@ class ActivityClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/orgs/{org}"
 
@@ -1502,9 +1522,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1520,6 +1538,8 @@ class ActivityClient:
         org: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/orgs/{org}"
 
@@ -1528,9 +1548,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1545,6 +1563,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/public"
 
@@ -1553,9 +1573,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1570,6 +1588,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/events/public"
 
@@ -1578,9 +1598,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1595,6 +1613,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events"
 
@@ -1603,9 +1623,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1620,6 +1638,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events"
 
@@ -1628,9 +1648,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1645,6 +1663,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events/public"
 
@@ -1653,9 +1673,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1670,6 +1688,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Event]]":
         url = f"/users/{username}/received_events/public"
 
@@ -1678,9 +1698,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1697,6 +1715,8 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[List[StarredRepository], List[Repository]]]":
         url = f"/users/{username}/starred"
 
@@ -1707,9 +1727,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1726,6 +1744,8 @@ class ActivityClient:
         direction: Missing[Literal["asc", "desc"]] = "desc",
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[List[StarredRepository], List[Repository]]]":
         url = f"/users/{username}/starred"
 
@@ -1736,9 +1756,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -1753,6 +1771,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/users/{username}/subscriptions"
 
@@ -1761,9 +1781,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -1778,6 +1796,8 @@ class ActivityClient:
         username: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[MinimalRepository]]":
         url = f"/users/{username}/subscriptions"
 
@@ -1786,9 +1806,7 @@ class ActivityClient:
             "page": page,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

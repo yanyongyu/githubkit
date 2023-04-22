@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, Union, Literal, overload
+from typing import TYPE_CHECKING, Dict, Union, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -38,12 +38,12 @@ class InteractionsClient:
     def get_restrictions_for_org(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
         url = f"/orgs/{org}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -57,12 +57,12 @@ class InteractionsClient:
     async def async_get_restrictions_for_org(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]]":
         url = f"/orgs/{org}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -75,7 +75,11 @@ class InteractionsClient:
 
     @overload
     def set_restrictions_for_org(
-        self, org: str, *, data: InteractionLimitType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: InteractionLimitType,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
@@ -85,6 +89,7 @@ class InteractionsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -93,13 +98,16 @@ class InteractionsClient:
         ...
 
     def set_restrictions_for_org(
-        self, org: str, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[InteractionLimitType] = UNSET,
+        **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -121,7 +129,11 @@ class InteractionsClient:
 
     @overload
     async def async_set_restrictions_for_org(
-        self, org: str, *, data: InteractionLimitType
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: InteractionLimitType,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
@@ -131,6 +143,7 @@ class InteractionsClient:
         org: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -139,13 +152,16 @@ class InteractionsClient:
         ...
 
     async def async_set_restrictions_for_org(
-        self, org: str, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[InteractionLimitType] = UNSET,
+        **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = f"/orgs/{org}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -168,12 +184,12 @@ class InteractionsClient:
     def remove_restrictions_for_org(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -184,12 +200,12 @@ class InteractionsClient:
     async def async_remove_restrictions_for_org(
         self,
         org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/orgs/{org}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -201,12 +217,12 @@ class InteractionsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -222,12 +238,12 @@ class InteractionsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[InteractionLimitResponse, ReposOwnerRepoInteractionLimitsGetResponse200Anyof1]]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -241,7 +257,12 @@ class InteractionsClient:
 
     @overload
     def set_restrictions_for_repo(
-        self, owner: str, repo: str, *, data: InteractionLimitType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: InteractionLimitType,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
@@ -252,6 +273,7 @@ class InteractionsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -264,14 +286,13 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -291,7 +312,12 @@ class InteractionsClient:
 
     @overload
     async def async_set_restrictions_for_repo(
-        self, owner: str, repo: str, *, data: InteractionLimitType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: InteractionLimitType,
     ) -> "Response[InteractionLimitResponse]":
         ...
 
@@ -302,6 +328,7 @@ class InteractionsClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -314,14 +341,13 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -343,12 +369,12 @@ class InteractionsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -361,12 +387,12 @@ class InteractionsClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -377,12 +403,12 @@ class InteractionsClient:
 
     def get_restrictions_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
         url = "/user/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -395,12 +421,12 @@ class InteractionsClient:
 
     async def async_get_restrictions_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]]":
         url = "/user/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -413,7 +439,7 @@ class InteractionsClient:
 
     @overload
     def set_restrictions_for_authenticated_user(
-        self, *, data: InteractionLimitType
+        self, *, headers: Optional[Dict[str, str]] = None, data: InteractionLimitType
     ) -> "Response[InteractionLimitResponse]":
         ...
 
@@ -422,6 +448,7 @@ class InteractionsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -430,13 +457,15 @@ class InteractionsClient:
         ...
 
     def set_restrictions_for_authenticated_user(
-        self, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[InteractionLimitType] = UNSET,
+        **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -458,7 +487,7 @@ class InteractionsClient:
 
     @overload
     async def async_set_restrictions_for_authenticated_user(
-        self, *, data: InteractionLimitType
+        self, *, headers: Optional[Dict[str, str]] = None, data: InteractionLimitType
     ) -> "Response[InteractionLimitResponse]":
         ...
 
@@ -467,6 +496,7 @@ class InteractionsClient:
         self,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
@@ -475,13 +505,15 @@ class InteractionsClient:
         ...
 
     async def async_set_restrictions_for_authenticated_user(
-        self, *, data: Missing[InteractionLimitType] = UNSET, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[InteractionLimitType] = UNSET,
+        **kwargs,
     ) -> "Response[InteractionLimitResponse]":
         url = "/user/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -503,12 +535,12 @@ class InteractionsClient:
 
     def remove_restrictions_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = "/user/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -518,12 +550,12 @@ class InteractionsClient:
 
     async def async_remove_restrictions_for_authenticated_user(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = "/user/interaction-limits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",

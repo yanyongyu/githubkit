@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -56,7 +56,12 @@ class GitClient:
 
     @overload
     def create_blob(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitBlobsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> "Response[ShortBlob]":
         ...
 
@@ -67,6 +72,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: str,
         encoding: Missing[str] = "utf-8",
     ) -> "Response[ShortBlob]":
@@ -77,14 +83,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -109,7 +114,12 @@ class GitClient:
 
     @overload
     async def async_create_blob(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitBlobsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitBlobsPostBodyType,
     ) -> "Response[ShortBlob]":
         ...
 
@@ -120,6 +130,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         content: str,
         encoding: Missing[str] = "utf-8",
     ) -> "Response[ShortBlob]":
@@ -130,14 +141,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[ShortBlob]":
         url = f"/repos/{owner}/{repo}/git/blobs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -165,12 +175,12 @@ class GitClient:
         owner: str,
         repo: str,
         file_sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Blob]":
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -189,12 +199,12 @@ class GitClient:
         owner: str,
         repo: str,
         file_sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[Blob]":
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -210,7 +220,12 @@ class GitClient:
 
     @overload
     def create_commit(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitCommitsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> "Response[GitCommit]":
         ...
 
@@ -221,6 +236,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         message: str,
         tree: str,
         parents: Missing[List[str]] = UNSET,
@@ -235,14 +251,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -265,7 +280,12 @@ class GitClient:
 
     @overload
     async def async_create_commit(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitCommitsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitCommitsPostBodyType,
     ) -> "Response[GitCommit]":
         ...
 
@@ -276,6 +296,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         message: str,
         tree: str,
         parents: Missing[List[str]] = UNSET,
@@ -290,14 +311,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -323,12 +343,12 @@ class GitClient:
         owner: str,
         repo: str,
         commit_sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -345,12 +365,12 @@ class GitClient:
         owner: str,
         repo: str,
         commit_sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitCommit]":
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -367,12 +387,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GitRef]]":
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -386,12 +406,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[GitRef]]":
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -405,12 +425,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -427,12 +447,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -446,7 +466,12 @@ class GitClient:
 
     @overload
     def create_ref(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitRefsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> "Response[GitRef]":
         ...
 
@@ -457,6 +482,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         ref: str,
         sha: str,
         key: Missing[str] = UNSET,
@@ -468,14 +494,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -497,7 +522,12 @@ class GitClient:
 
     @overload
     async def async_create_ref(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitRefsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitRefsPostBodyType,
     ) -> "Response[GitRef]":
         ...
 
@@ -508,6 +538,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         ref: str,
         sha: str,
         key: Missing[str] = UNSET,
@@ -519,14 +550,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -551,12 +581,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "DELETE",
@@ -572,12 +602,12 @@ class GitClient:
         owner: str,
         repo: str,
         ref: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "DELETE",
@@ -595,6 +625,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> "Response[GitRef]":
         ...
@@ -607,6 +638,7 @@ class GitClient:
         ref: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         sha: str,
         force: Missing[bool] = False,
     ) -> "Response[GitRef]":
@@ -618,14 +650,13 @@ class GitClient:
         repo: str,
         ref: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -652,6 +683,7 @@ class GitClient:
         repo: str,
         ref: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
     ) -> "Response[GitRef]":
         ...
@@ -664,6 +696,7 @@ class GitClient:
         ref: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         sha: str,
         force: Missing[bool] = False,
     ) -> "Response[GitRef]":
@@ -675,14 +708,13 @@ class GitClient:
         repo: str,
         ref: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitRef]":
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -704,7 +736,12 @@ class GitClient:
 
     @overload
     def create_tag(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTagsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> "Response[GitTag]":
         ...
 
@@ -715,6 +752,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         tag: str,
         message: str,
         object_: str,
@@ -728,14 +766,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -757,7 +794,12 @@ class GitClient:
 
     @overload
     async def async_create_tag(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTagsPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitTagsPostBodyType,
     ) -> "Response[GitTag]":
         ...
 
@@ -768,6 +810,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         tag: str,
         message: str,
         object_: str,
@@ -781,14 +824,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -813,12 +855,12 @@ class GitClient:
         owner: str,
         repo: str,
         tag_sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -835,12 +877,12 @@ class GitClient:
         owner: str,
         repo: str,
         tag_sha: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitTag]":
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -854,7 +896,12 @@ class GitClient:
 
     @overload
     def create_tree(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTreesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> "Response[GitTree]":
         ...
 
@@ -865,6 +912,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
     ) -> "Response[GitTree]":
@@ -875,14 +923,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -906,7 +953,12 @@ class GitClient:
 
     @overload
     async def async_create_tree(
-        self, owner: str, repo: str, *, data: ReposOwnerRepoGitTreesPostBodyType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoGitTreesPostBodyType,
     ) -> "Response[GitTree]":
         ...
 
@@ -917,6 +969,7 @@ class GitClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
     ) -> "Response[GitTree]":
@@ -927,14 +980,13 @@ class GitClient:
         owner: str,
         repo: str,
         *,
+        headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -962,6 +1014,8 @@ class GitClient:
         repo: str,
         tree_sha: str,
         recursive: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"
 
@@ -969,9 +1023,7 @@ class GitClient:
             "recursive": recursive,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -991,6 +1043,8 @@ class GitClient:
         repo: str,
         tree_sha: str,
         recursive: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitTree]":
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"
 
@@ -998,9 +1052,7 @@ class GitClient:
             "recursive": recursive,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

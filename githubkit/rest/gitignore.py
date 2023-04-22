@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -29,12 +29,12 @@ class GitignoreClient:
 
     def get_all_templates(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[str]]":
         url = "/gitignore/templates"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -45,12 +45,12 @@ class GitignoreClient:
 
     async def async_get_all_templates(
         self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[str]]":
         url = "/gitignore/templates"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -62,12 +62,12 @@ class GitignoreClient:
     def get_template(
         self,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitignoreTemplate]":
         url = f"/gitignore/templates/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -79,12 +79,12 @@ class GitignoreClient:
     async def async_get_template(
         self,
         name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[GitignoreTemplate]":
         url = f"/gitignore/templates/{name}"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",

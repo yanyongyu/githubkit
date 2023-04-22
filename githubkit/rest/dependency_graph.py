@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 
 from datetime import datetime
-from typing import TYPE_CHECKING, List, Literal, overload
+from typing import TYPE_CHECKING, Dict, List, Literal, Optional, overload
 
 from pydantic import BaseModel, parse_obj_as
 
@@ -47,6 +47,8 @@ class DependencyGraphClient:
         repo: str,
         basehead: str,
         name: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependencyGraphDiffItems]]":
         url = f"/repos/{owner}/{repo}/dependency-graph/compare/{basehead}"
 
@@ -54,9 +56,7 @@ class DependencyGraphClient:
             "name": name,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -76,6 +76,8 @@ class DependencyGraphClient:
         repo: str,
         basehead: str,
         name: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[DependencyGraphDiffItems]]":
         url = f"/repos/{owner}/{repo}/dependency-graph/compare/{basehead}"
 
@@ -83,9 +85,7 @@ class DependencyGraphClient:
             "name": name,
         }
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -103,12 +103,12 @@ class DependencyGraphClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependencyGraphSpdxSbom]":
         url = f"/repos/{owner}/{repo}/dependency-graph/sbom"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
@@ -125,12 +125,12 @@ class DependencyGraphClient:
         self,
         owner: str,
         repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
     ) -> "Response[DependencyGraphSpdxSbom]":
         url = f"/repos/{owner}/{repo}/dependency-graph/sbom"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
@@ -145,7 +145,12 @@ class DependencyGraphClient:
 
     @overload
     def create_repository_snapshot(
-        self, owner: str, repo: str, *, data: SnapshotType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: SnapshotType,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         ...
 
@@ -156,6 +161,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -168,13 +174,17 @@ class DependencyGraphClient:
         ...
 
     def create_repository_snapshot(
-        self, owner: str, repo: str, *, data: Missing[SnapshotType] = UNSET, **kwargs
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[SnapshotType] = UNSET,
+        **kwargs,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
@@ -193,7 +203,12 @@ class DependencyGraphClient:
 
     @overload
     async def async_create_repository_snapshot(
-        self, owner: str, repo: str, *, data: SnapshotType
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: SnapshotType,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         ...
 
@@ -204,6 +219,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -216,13 +232,17 @@ class DependencyGraphClient:
         ...
 
     async def async_create_repository_snapshot(
-        self, owner: str, repo: str, *, data: Missing[SnapshotType] = UNSET, **kwargs
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[SnapshotType] = UNSET,
+        **kwargs,
     ) -> "Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]":
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
-        headers = {
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-        }
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         if not kwargs:
             kwargs = UNSET
