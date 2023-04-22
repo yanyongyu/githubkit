@@ -10749,7 +10749,7 @@ class ReposClient:
         prerelease: Missing[bool] = False,
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = False,
-        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = "true",
     ) -> "Response[Release]":
         ...
 
@@ -10812,7 +10812,7 @@ class ReposClient:
         prerelease: Missing[bool] = False,
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = False,
-        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = "true",
     ) -> "Response[Release]":
         ...
 
@@ -11341,7 +11341,7 @@ class ReposClient:
         body: Missing[str] = UNSET,
         draft: Missing[bool] = UNSET,
         prerelease: Missing[bool] = UNSET,
-        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = "true",
         discussion_category_name: Missing[str] = UNSET,
     ) -> "Response[Release]":
         ...
@@ -11405,7 +11405,7 @@ class ReposClient:
         body: Missing[str] = UNSET,
         draft: Missing[bool] = UNSET,
         prerelease: Missing[bool] = UNSET,
-        make_latest: Missing[Literal["true", "false", "legacy"]] = True,
+        make_latest: Missing[Literal["true", "false", "legacy"]] = "true",
         discussion_category_name: Missing[str] = UNSET,
     ) -> "Response[Release]":
         ...
