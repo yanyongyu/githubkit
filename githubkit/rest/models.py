@@ -1364,7 +1364,7 @@ class DependabotAlertWithRepository(GitHubRestModel):
     """
 
     number: int = Field(description="The security alert number.", default=...)
-    state: Literal["dismissed", "fixed", "open"] = Field(
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
         description="The state of the Dependabot alert.", default=...
     )
     dependency: DependabotAlertWithRepositoryPropDependency = Field(
@@ -3227,7 +3227,7 @@ class Codespace(GitHubRestModel):
         description="Details about the codespace's git repository.", default=...
     )
     location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The Azure region where this codespace is located.", default=...
+        description="The initally assigned location of a new codespace.", default=...
     )
     idle_timeout_minutes: Union[int, None] = Field(
         description="The number of minutes of inactivity after which this codespace will be automatically stopped.",
@@ -3700,6 +3700,451 @@ class Project(GitHubRestModel):
         description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
         default=UNSET,
     )
+
+
+class RepositoryRulesetBypassActor(GitHubRestModel):
+    """Repository Ruleset Bypass Actor
+
+    An actor that can bypass rules in a ruleset
+    """
+
+    actor_id: Missing[int] = Field(
+        description="The ID of the actor that can bypass a ruleset", default=UNSET
+    )
+    actor_type: Missing[Literal["Team", "Integration"]] = Field(
+        description="The type of actor that can bypass a ruleset", default=UNSET
+    )
+
+
+class RepositoryRulesetConditions(GitHubRestModel):
+    """Repository ruleset conditions for ref names
+
+    Parameters for a repository ruleset ref name condition
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+
+
+class RepositoryRulesetConditionsPropRefName(GitHubRestModel):
+    """RepositoryRulesetConditionsPropRefName"""
+
+    include: Missing[List[str]] = Field(
+        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
+        default=UNSET,
+    )
+    exclude: Missing[List[str]] = Field(
+        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
+        default=UNSET,
+    )
+
+
+class RepositoryRulesetConditionsRepositoryNameTarget(GitHubRestModel):
+    """Repository ruleset conditions for repository names
+
+    Parameters for a repository name condition
+    """
+
+    repository_name: Missing[
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName
+    ] = Field(default=UNSET)
+
+
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(
+    GitHubRestModel
+):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+
+    include: Missing[List[str]] = Field(
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
+        default=UNSET,
+    )
+    exclude: Missing[List[str]] = Field(
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+        default=UNSET,
+    )
+    protected: Missing[bool] = Field(
+        description="Whether renaming of target repositories is prevented.",
+        default=UNSET,
+    )
+
+
+class OrgRulesetConditions(GitHubRestModel):
+    """Organization ruleset conditions
+
+    Conditions for a organization ruleset
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: Missing[
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleCreation(GitHubRestModel):
+    """creation
+
+    Parameters to be used for the creation rule
+    """
+
+    type: Literal["creation"] = Field(default=...)
+
+
+class RepositoryRuleUpdate(GitHubRestModel):
+    """update
+
+    Parameters to be used for the update rule
+    """
+
+    type: Literal["update"] = Field(default=...)
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleUpdatePropParameters(GitHubRestModel):
+    """RepositoryRuleUpdatePropParameters"""
+
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository", default=...
+    )
+
+
+class RepositoryRuleDeletion(GitHubRestModel):
+    """deletion
+
+    Parameters to be used for the deletion rule
+    """
+
+    type: Literal["deletion"] = Field(default=...)
+
+
+class RepositoryRuleRequiredLinearHistory(GitHubRestModel):
+    """required_linear_history
+
+    Parameters to be used for the required_linear_history rule
+    """
+
+    type: Literal["required_linear_history"] = Field(default=...)
+
+
+class RepositoryRuleRequiredDeployments(GitHubRestModel):
+    """required_deployments
+
+    Parameters to be used for the required_deployments rule
+    """
+
+    type: Literal["required_deployments"] = Field(default=...)
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
+        default=UNSET
+    )
+
+
+class RepositoryRuleRequiredDeploymentsPropParameters(GitHubRestModel):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
+
+    required_deployment_environments: List[str] = Field(
+        description="The environments that must be successfully deployed to before branches can be merged.",
+        default=...,
+    )
+
+
+class RepositoryRuleRequiredSignatures(GitHubRestModel):
+    """required_signatures
+
+    Parameters to be used for the required_signatures rule
+    """
+
+    type: Literal["required_signatures"] = Field(default=...)
+
+
+class RepositoryRulePullRequest(GitHubRestModel):
+    """pull_request
+
+    Parameters to be used for the pull_request rule
+    """
+
+    type: Literal["pull_request"] = Field(default=...)
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+
+
+class RepositoryRulePullRequestPropParameters(GitHubRestModel):
+    """RepositoryRulePullRequestPropParameters"""
+
+    dismiss_stale_reviews_on_push: bool = Field(
+        description="New, reviewable commits pushed will dismiss previous pull request review approvals.",
+        default=...,
+    )
+    require_code_owner_review: bool = Field(
+        description="Require an approving review in pull requests that modify files that have a designated code owner.",
+        default=...,
+    )
+    require_last_push_approval: bool = Field(
+        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it.",
+        default=...,
+    )
+    required_approving_review_count: int = Field(
+        description="The number of approving reviews that are required before a pull request can be merged.",
+        le=10.0,
+        default=...,
+    )
+    required_review_thread_resolution: bool = Field(
+        description="All conversations on code must be resolved before a pull request can be merged.",
+        default=...,
+    )
+
+
+class RepositoryRuleParamsStatusCheckConfiguration(GitHubRestModel):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str = Field(
+        description="The status check context name that must be present on the commit.",
+        default=...,
+    )
+    integration_id: Missing[int] = Field(
+        description="The optional integration ID that this status check must originate from.",
+        default=UNSET,
+    )
+
+
+class RepositoryRuleRequiredStatusChecks(GitHubRestModel):
+    """required_status_checks
+
+    Parameters to be used for the required_status_checks rule
+    """
+
+    type: Literal["required_status_checks"] = Field(default=...)
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
+    )
+
+
+class RepositoryRuleRequiredStatusChecksPropParameters(GitHubRestModel):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    required_status_checks: List[RepositoryRuleParamsStatusCheckConfiguration] = Field(
+        description="Status checks that are required.", default=...
+    )
+    strict_required_status_checks_policy: bool = Field(
+        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled.",
+        default=...,
+    )
+
+
+class RepositoryRuleNonFastForward(GitHubRestModel):
+    """non_fast_forward
+
+    Parameters to be used for the non_fast_forward rule
+    """
+
+    type: Literal["non_fast_forward"] = Field(default=...)
+
+
+class RepositoryRuleCommitMessagePattern(GitHubRestModel):
+    """commit_message_pattern
+
+    Parameters to be used for the commit_message_pattern rule
+    """
+
+    type: Literal["commit_message_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+        default=UNSET
+    )
+
+
+class RepositoryRuleCommitMessagePatternPropParameters(GitHubRestModel):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
+
+    name: Missing[str] = Field(
+        description="How this rule will appear to users.", default=UNSET
+    )
+    negate: Missing[bool] = Field(
+        description="If true, the rule will fail if the pattern matches.", default=UNSET
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching.", default=...
+    )
+    pattern: str = Field(description="The pattern to match with.", default=...)
+
+
+class RepositoryRuleCommitAuthorEmailPattern(GitHubRestModel):
+    """commit_author_email_pattern
+
+    Parameters to be used for the commit_author_email_pattern rule
+    """
+
+    type: Literal["commit_author_email_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
+
+
+class RepositoryRuleCommitAuthorEmailPatternPropParameters(GitHubRestModel):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
+
+    name: Missing[str] = Field(
+        description="How this rule will appear to users.", default=UNSET
+    )
+    negate: Missing[bool] = Field(
+        description="If true, the rule will fail if the pattern matches.", default=UNSET
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching.", default=...
+    )
+    pattern: str = Field(description="The pattern to match with.", default=...)
+
+
+class RepositoryRuleCommitterEmailPattern(GitHubRestModel):
+    """committer_email_pattern
+
+    Parameters to be used for the committer_email_pattern rule
+    """
+
+    type: Literal["committer_email_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
+
+
+class RepositoryRuleCommitterEmailPatternPropParameters(GitHubRestModel):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
+
+    name: Missing[str] = Field(
+        description="How this rule will appear to users.", default=UNSET
+    )
+    negate: Missing[bool] = Field(
+        description="If true, the rule will fail if the pattern matches.", default=UNSET
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching.", default=...
+    )
+    pattern: str = Field(description="The pattern to match with.", default=...)
+
+
+class RepositoryRuleBranchNamePattern(GitHubRestModel):
+    """branch_name_pattern
+
+    Parameters to be used for the branch_name_pattern rule
+    """
+
+    type: Literal["branch_name_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
+        default=UNSET
+    )
+
+
+class RepositoryRuleBranchNamePatternPropParameters(GitHubRestModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
+
+    name: Missing[str] = Field(
+        description="How this rule will appear to users.", default=UNSET
+    )
+    negate: Missing[bool] = Field(
+        description="If true, the rule will fail if the pattern matches.", default=UNSET
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching.", default=...
+    )
+    pattern: str = Field(description="The pattern to match with.", default=...)
+
+
+class RepositoryRuleTagNamePattern(GitHubRestModel):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
+    """
+
+    type: Literal["tag_name_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+        default=UNSET
+    )
+
+
+class RepositoryRuleTagNamePatternPropParameters(GitHubRestModel):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: Missing[str] = Field(
+        description="How this rule will appear to users.", default=UNSET
+    )
+    negate: Missing[bool] = Field(
+        description="If true, the rule will fail if the pattern matches.", default=UNSET
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching.", default=...
+    )
+    pattern: str = Field(description="The pattern to match with.", default=...)
+
+
+class RepositoryRuleset(GitHubRestModel):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
+    """
+
+    id: int = Field(description="The ID of the ruleset", default=...)
+    name: str = Field(description="The name of the ruleset", default=...)
+    target: Missing[Literal["branch", "tag"]] = Field(
+        description="The target of the ruleset", default=UNSET
+    )
+    source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of the source of the ruleset", default=UNSET
+    )
+    source: str = Field(description="The name of the source", default=...)
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        default=...,
+    )
+    bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
+        description='The permission level required to bypass this ruleset. "repository" allows those with bypass permission at the repository level to bypass. "organization" allows those with bypass permission at the organization level to bypass. "none" prevents anyone from bypassing.',
+        default=UNSET,
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        description="The actors that can bypass the rules in this ruleset",
+        default=UNSET,
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[RepositoryRulesetConditions, OrgRulesetConditions]
+    ] = Field(
+        title="Organization ruleset conditions",
+        description="Conditions for a organization ruleset",
+        default=UNSET,
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+            ]
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRulesetPropLinks(GitHubRestModel):
+    """RepositoryRulesetPropLinks"""
+
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
+    )
+
+
+class RepositoryRulesetPropLinksPropSelf(GitHubRestModel):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: Missing[str] = Field(description="The URL of the ruleset", default=UNSET)
 
 
 class ActionsBillingUsage(GitHubRestModel):
@@ -4990,6 +5435,33 @@ class EnvironmentApprovalsPropEnvironmentsItems(GitHubRestModel):
     )
 
 
+class ReviewCustomGatesCommentRequired(GitHubRestModel):
+    """ReviewCustomGatesCommentRequired"""
+
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject.", default=...
+    )
+    comment: str = Field(
+        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**",
+        default=...,
+    )
+
+
+class ReviewCustomGatesStateRequired(GitHubRestModel):
+    """ReviewCustomGatesStateRequired"""
+
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject.", default=...
+    )
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments.",
+        default=...,
+    )
+    comment: Missing[str] = Field(
+        description="Optional comment to include with the review.", default=UNSET
+    )
+
+
 class PendingDeployment(GitHubRestModel):
     """Pending Deployment
 
@@ -6268,7 +6740,20 @@ class CodeScanningDefaultSetup(GitHubRestModel):
         default=UNSET,
     )
     languages: Missing[
-        List[Literal["go", "javascript", "python", "ruby", "typescript"]]
+        List[
+            Literal[
+                "c",
+                "cpp",
+                "csharp",
+                "go",
+                "java",
+                "javascript",
+                "kotlin",
+                "python",
+                "ruby",
+                "typescript",
+            ]
+        ]
     ] = Field(description="Languages to be analysed.", default=UNSET)
     query_suite: Missing[Literal["default", "extended"]] = Field(
         description="CodeQL query suite to be used.", default=UNSET
@@ -6541,10 +7026,10 @@ class AutoMerge(GitHubRestModel):
     merge_method: Literal["merge", "squash", "rebase"] = Field(
         description="The merge method to use.", default=...
     )
-    commit_title: str = Field(
+    commit_title: Union[str, None] = Field(
         description="Title for the merge commit message.", default=...
     )
-    commit_message: str = Field(
+    commit_message: Union[str, None] = Field(
         description="Commit message for the merge commit.", default=...
     )
 
@@ -7626,6 +8111,54 @@ class DeploymentBranchPolicyNamePattern(GitHubRestModel):
 
     name: str = Field(
         description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch).",
+        default=...,
+    )
+
+
+class CustomDeploymentRuleApp(GitHubRestModel):
+    """Custom deployment protection rule app
+
+    A GitHub App that is providing a custom deployment protection rule.
+    """
+
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration.",
+        default=...,
+    )
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration.",
+        default=...,
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app.",
+        default=...,
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration.",
+        default=...,
+    )
+
+
+class DeploymentProtectionRule(GitHubRestModel):
+    """Deployment protection rule
+
+    Deployment protection rule
+    """
+
+    id: int = Field(
+        description="The unique identifier for the deployment protection rule.",
+        default=...,
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule.", default=...
+    )
+    enabled: bool = Field(
+        description="Whether the deployment protection rule is enabled for the environment.",
+        default=...,
+    )
+    app: CustomDeploymentRuleApp = Field(
+        title="Custom deployment protection rule app",
+        description="A GitHub App that is providing a custom deployment protection rule.",
         default=...,
     )
 
@@ -10471,6 +11004,90 @@ class RepositoryAdvisoryCreatePropCreditsItems(GitHubRestModel):
     ] = Field(description="The type of credit the user is receiving.", default=...)
 
 
+class PrivateVulnerabilityReportCreate(GitHubRestModel):
+    """PrivateVulnerabilityReportCreate"""
+
+    summary: str = Field(
+        description="A short summary of the advisory.", max_length=1024, default=...
+    )
+    description: str = Field(
+        description="A detailed description of what the advisory impacts.",
+        max_length=65535,
+        default=...,
+    )
+    vulnerabilities: Missing[
+        Union[List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItems], None]
+    ] = Field(
+        description="An array of products affected by the vulnerability detailed in a repository security advisory.",
+        default=UNSET,
+    )
+    cwe_ids: Missing[Union[List[str], None]] = Field(
+        description="A list of Common Weakness Enumeration (CWE) IDs.", default=UNSET
+    )
+    severity: Missing[
+        Union[None, Literal["critical", "high", "medium", "low"]]
+    ] = Field(
+        description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        default=UNSET,
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+        default=UNSET,
+    )
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItems(GitHubRestModel):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage = (
+        Field(
+            description="The name of the package affected by the vulnerability.",
+            default=...,
+        )
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        description="The range of the package versions affected by the vulnerability.",
+        default=UNSET,
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        description="The package version(s) that resolve the vulnerability.",
+        default=UNSET,
+    )
+    vulnerable_functions: Missing[Union[List[str], None]] = Field(
+        description="The functions in the package that are affected.", default=UNSET
+    )
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(
+    GitHubRestModel
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+    ] = Field(
+        description="The package's language or package management ecosystem.",
+        default=...,
+    )
+    name: Missing[Union[str, None]] = Field(
+        description="The unique package name within its ecosystem.", default=UNSET
+    )
+
+
 class RepositoryAdvisoryUpdate(GitHubRestModel):
     """RepositoryAdvisoryUpdate"""
 
@@ -11392,7 +12009,7 @@ class CodespaceWithFullRepository(GitHubRestModel):
         description="Details about the codespace's git repository.", default=...
     )
     location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The Azure region where this codespace is located.", default=...
+        description="The initally assigned location of a new codespace.", default=...
     )
     idle_timeout_minutes: Union[int, None] = Field(
         description="The number of minutes of inactivity after which this codespace will be automatically stopped.",
@@ -13306,6 +13923,90 @@ class OrgsOrgReposPostBody(GitHubRestModel):
     )
 
 
+class OrgsOrgRulesetsPostBody(GitHubRestModel):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.", default=...)
+    target: Missing[Literal["branch", "tag"]] = Field(
+        description="The target of the ruleset.", default=UNSET
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        default=...,
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        description="The actors that can bypass the rules in this ruleset",
+        default=UNSET,
+    )
+    conditions: Missing[OrgRulesetConditions] = Field(
+        title="Organization ruleset conditions",
+        description="Conditions for a organization ruleset",
+        default=UNSET,
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+            ]
+        ]
+    ] = Field(description="An array of rules within the ruleset.", default=UNSET)
+
+
+class OrgsOrgRulesetsRulesetIdPutBody(GitHubRestModel):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(description="The name of the ruleset.", default=UNSET)
+    target: Missing[Literal["branch", "tag"]] = Field(
+        description="The target of the ruleset.", default=UNSET
+    )
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        default=UNSET,
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        description="The actors that can bypass the rules in this ruleset",
+        default=UNSET,
+    )
+    conditions: Missing[OrgRulesetConditions] = Field(
+        title="Organization ruleset conditions",
+        description="Conditions for a organization ruleset",
+        default=UNSET,
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+            ]
+        ]
+    ] = Field(description="An array of rules within the ruleset.", default=UNSET)
+
+
 class OrgsOrgTeamsPostBody(GitHubRestModel):
     """OrgsOrgTeamsPostBody"""
 
@@ -15085,7 +15786,7 @@ class ReposOwnerRepoCodespacesPostBody(GitHubRestModel):
         default=UNSET,
     )
     location: Missing[str] = Field(
-        description="Location for this codespace. Assigned by IP if not provided",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
         default=UNSET,
     )
     client_ip: Missing[str] = Field(
@@ -15575,6 +16276,51 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetRespon
         default=...,
     )
     branch_policies: List[DeploymentBranchPolicy] = Field(default=...)
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+    GitHubRestModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        ../../components/examples/deployment_protection_rules.yaml
+    """
+
+    total_count: Missing[int] = Field(
+        description="The number of enabled custom deployment protection rules for this environment",
+        default=UNSET,
+    )
+    custom_deployment_protection_rules: Missing[List[DeploymentProtectionRule]] = Field(
+        default=UNSET
+    )
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
+    GitHubRestModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+
+    integration_id: Missing[int] = Field(
+        description="The ID of the custom app that will be enabled on the environment.",
+        default=UNSET,
+    )
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
+    GitHubRestModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
+
+    total_count: Missing[int] = Field(
+        description="The total number of custom deployment protection rule integrations available for this environment.",
+        default=UNSET,
+    )
+    available_custom_deployment_protection_rule_integrations: Missing[
+        List[CustomDeploymentRuleApp]
+    ] = Field(default=UNSET)
 
 
 class ReposOwnerRepoForksPostBody(GitHubRestModel):
@@ -16590,7 +17336,7 @@ class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
     location: Missing[str] = Field(
-        description="Location for this codespace. Assigned by IP if not provided",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
         default=UNSET,
     )
     client_ip: Missing[str] = Field(
@@ -16925,6 +17671,98 @@ class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubRestModel):
         description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the release.",
         default=...,
     )
+
+
+class ReposOwnerRepoRulesetsPostBody(GitHubRestModel):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.", default=...)
+    target: Missing[Literal["branch", "tag"]] = Field(
+        description="The target of the ruleset.", default=UNSET
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        default=...,
+    )
+    bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
+        description='The permission level required to bypass this ruleset. "repository" allows those with bypass permission at the repository level to bypass. "organization" allows those with bypass permission at the organization level to bypass. "none" prevents anyone from bypassing.',
+        default=UNSET,
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        description="The actors that can bypass the rules in this ruleset",
+        default=UNSET,
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+        default=UNSET,
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+            ]
+        ]
+    ] = Field(description="An array of rules within the ruleset.", default=UNSET)
+
+
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubRestModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(description="The name of the ruleset.", default=UNSET)
+    target: Missing[Literal["branch", "tag"]] = Field(
+        description="The target of the ruleset.", default=UNSET
+    )
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        default=UNSET,
+    )
+    bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
+        description='The permission level required to bypass this ruleset. "repository" allows those with bypass permission at the repository level to bypass. "organization" allows those with bypass permission at the organization level to bypass. "none" prevents anyone from bypassing.',
+        default=UNSET,
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        description="The actors that can bypass the rules in this ruleset",
+        default=UNSET,
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+        default=UNSET,
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+            ]
+        ]
+    ] = Field(description="An array of rules within the ruleset.", default=UNSET)
 
 
 class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubRestModel):
@@ -17304,7 +18142,7 @@ class UserCodespacesPostBodyOneof0(GitHubRestModel):
         default=UNSET,
     )
     location: Missing[str] = Field(
-        description="Location for this codespace. Assigned by IP if not provided",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
         default=UNSET,
     )
     client_ip: Missing[str] = Field(
@@ -17345,7 +18183,7 @@ class UserCodespacesPostBodyOneof1(GitHubRestModel):
         description="Pull request number for this codespace", default=...
     )
     location: Missing[str] = Field(
-        description="Location for this codespace. Assigned by IP if not provided",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
         default=UNSET,
     )
     machine: Missing[str] = Field(
@@ -17862,6 +18700,39 @@ PackageVersionPropMetadata.update_forward_refs()
 PackageVersionPropMetadataPropContainer.update_forward_refs()
 PackageVersionPropMetadataPropDocker.update_forward_refs()
 Project.update_forward_refs()
+RepositoryRulesetBypassActor.update_forward_refs()
+RepositoryRulesetConditions.update_forward_refs()
+RepositoryRulesetConditionsPropRefName.update_forward_refs()
+RepositoryRulesetConditionsRepositoryNameTarget.update_forward_refs()
+RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName.update_forward_refs()
+OrgRulesetConditions.update_forward_refs()
+RepositoryRuleCreation.update_forward_refs()
+RepositoryRuleUpdate.update_forward_refs()
+RepositoryRuleUpdatePropParameters.update_forward_refs()
+RepositoryRuleDeletion.update_forward_refs()
+RepositoryRuleRequiredLinearHistory.update_forward_refs()
+RepositoryRuleRequiredDeployments.update_forward_refs()
+RepositoryRuleRequiredDeploymentsPropParameters.update_forward_refs()
+RepositoryRuleRequiredSignatures.update_forward_refs()
+RepositoryRulePullRequest.update_forward_refs()
+RepositoryRulePullRequestPropParameters.update_forward_refs()
+RepositoryRuleParamsStatusCheckConfiguration.update_forward_refs()
+RepositoryRuleRequiredStatusChecks.update_forward_refs()
+RepositoryRuleRequiredStatusChecksPropParameters.update_forward_refs()
+RepositoryRuleNonFastForward.update_forward_refs()
+RepositoryRuleCommitMessagePattern.update_forward_refs()
+RepositoryRuleCommitMessagePatternPropParameters.update_forward_refs()
+RepositoryRuleCommitAuthorEmailPattern.update_forward_refs()
+RepositoryRuleCommitAuthorEmailPatternPropParameters.update_forward_refs()
+RepositoryRuleCommitterEmailPattern.update_forward_refs()
+RepositoryRuleCommitterEmailPatternPropParameters.update_forward_refs()
+RepositoryRuleBranchNamePattern.update_forward_refs()
+RepositoryRuleBranchNamePatternPropParameters.update_forward_refs()
+RepositoryRuleTagNamePattern.update_forward_refs()
+RepositoryRuleTagNamePatternPropParameters.update_forward_refs()
+RepositoryRuleset.update_forward_refs()
+RepositoryRulesetPropLinks.update_forward_refs()
+RepositoryRulesetPropLinksPropSelf.update_forward_refs()
 ActionsBillingUsage.update_forward_refs()
 ActionsBillingUsagePropMinutesUsedBreakdown.update_forward_refs()
 PackagesBillingUsage.update_forward_refs()
@@ -17915,6 +18786,8 @@ SimpleCommitPropCommitter.update_forward_refs()
 WorkflowRun.update_forward_refs()
 EnvironmentApprovals.update_forward_refs()
 EnvironmentApprovalsPropEnvironmentsItems.update_forward_refs()
+ReviewCustomGatesCommentRequired.update_forward_refs()
+ReviewCustomGatesStateRequired.update_forward_refs()
 PendingDeployment.update_forward_refs()
 PendingDeploymentPropEnvironment.update_forward_refs()
 PendingDeploymentPropReviewersItems.update_forward_refs()
@@ -18072,6 +18945,8 @@ EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems.update_forward_refs(
 EnvironmentPropProtectionRulesItemsAnyof2.update_forward_refs()
 DeploymentBranchPolicy.update_forward_refs()
 DeploymentBranchPolicyNamePattern.update_forward_refs()
+CustomDeploymentRuleApp.update_forward_refs()
+DeploymentProtectionRule.update_forward_refs()
 ShortBlob.update_forward_refs()
 Blob.update_forward_refs()
 GitCommit.update_forward_refs()
@@ -18208,6 +19083,9 @@ RepositoryAdvisoryCreate.update_forward_refs()
 RepositoryAdvisoryCreatePropVulnerabilitiesItems.update_forward_refs()
 RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage.update_forward_refs()
 RepositoryAdvisoryCreatePropCreditsItems.update_forward_refs()
+PrivateVulnerabilityReportCreate.update_forward_refs()
+PrivateVulnerabilityReportCreatePropVulnerabilitiesItems.update_forward_refs()
+PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage.update_forward_refs()
 RepositoryAdvisoryUpdate.update_forward_refs()
 RepositoryAdvisoryUpdatePropVulnerabilitiesItems.update_forward_refs()
 RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage.update_forward_refs()
@@ -18377,6 +19255,8 @@ OrgsOrgOutsideCollaboratorsUsernamePutResponse202.update_forward_refs()
 OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422.update_forward_refs()
 OrgsOrgProjectsPostBody.update_forward_refs()
 OrgsOrgReposPostBody.update_forward_refs()
+OrgsOrgRulesetsPostBody.update_forward_refs()
+OrgsOrgRulesetsRulesetIdPutBody.update_forward_refs()
 OrgsOrgTeamsPostBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugPatchBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugDiscussionsPostBody.update_forward_refs()
@@ -18521,6 +19401,9 @@ ReposOwnerRepoEnvironmentsGetResponse200.update_forward_refs()
 ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems.update_forward_refs()
 ReposOwnerRepoEnvironmentsEnvironmentNamePutBody.update_forward_refs()
 ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200.update_forward_refs()
+ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200.update_forward_refs()
+ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody.update_forward_refs()
+ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200.update_forward_refs()
 ReposOwnerRepoForksPostBody.update_forward_refs()
 ReposOwnerRepoGitBlobsPostBody.update_forward_refs()
 ReposOwnerRepoGitCommitsPostBody.update_forward_refs()
@@ -18607,6 +19490,8 @@ ReposOwnerRepoReleasesAssetsAssetIdPatchBody.update_forward_refs()
 ReposOwnerRepoReleasesGenerateNotesPostBody.update_forward_refs()
 ReposOwnerRepoReleasesReleaseIdPatchBody.update_forward_refs()
 ReposOwnerRepoReleasesReleaseIdReactionsPostBody.update_forward_refs()
+ReposOwnerRepoRulesetsPostBody.update_forward_refs()
+ReposOwnerRepoRulesetsRulesetIdPutBody.update_forward_refs()
 ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody.update_forward_refs()
 ReposOwnerRepoStatusesShaPostBody.update_forward_refs()
 ReposOwnerRepoSubscriptionPutBody.update_forward_refs()
@@ -18818,6 +19703,39 @@ __all__ = [
     "PackageVersionPropMetadataPropContainer",
     "PackageVersionPropMetadataPropDocker",
     "Project",
+    "RepositoryRulesetBypassActor",
+    "RepositoryRulesetConditions",
+    "RepositoryRulesetConditionsPropRefName",
+    "RepositoryRulesetConditionsRepositoryNameTarget",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",
+    "OrgRulesetConditions",
+    "RepositoryRuleCreation",
+    "RepositoryRuleUpdate",
+    "RepositoryRuleUpdatePropParameters",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleRequiredLinearHistory",
+    "RepositoryRuleRequiredDeployments",
+    "RepositoryRuleRequiredDeploymentsPropParameters",
+    "RepositoryRuleRequiredSignatures",
+    "RepositoryRulePullRequest",
+    "RepositoryRulePullRequestPropParameters",
+    "RepositoryRuleParamsStatusCheckConfiguration",
+    "RepositoryRuleRequiredStatusChecks",
+    "RepositoryRuleRequiredStatusChecksPropParameters",
+    "RepositoryRuleNonFastForward",
+    "RepositoryRuleCommitMessagePattern",
+    "RepositoryRuleCommitMessagePatternPropParameters",
+    "RepositoryRuleCommitAuthorEmailPattern",
+    "RepositoryRuleCommitAuthorEmailPatternPropParameters",
+    "RepositoryRuleCommitterEmailPattern",
+    "RepositoryRuleCommitterEmailPatternPropParameters",
+    "RepositoryRuleBranchNamePattern",
+    "RepositoryRuleBranchNamePatternPropParameters",
+    "RepositoryRuleTagNamePattern",
+    "RepositoryRuleTagNamePatternPropParameters",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropSelf",
     "ActionsBillingUsage",
     "ActionsBillingUsagePropMinutesUsedBreakdown",
     "PackagesBillingUsage",
@@ -18871,6 +19789,8 @@ __all__ = [
     "WorkflowRun",
     "EnvironmentApprovals",
     "EnvironmentApprovalsPropEnvironmentsItems",
+    "ReviewCustomGatesCommentRequired",
+    "ReviewCustomGatesStateRequired",
     "PendingDeployment",
     "PendingDeploymentPropEnvironment",
     "PendingDeploymentPropReviewersItems",
@@ -19028,6 +19948,8 @@ __all__ = [
     "EnvironmentPropProtectionRulesItemsAnyof2",
     "DeploymentBranchPolicy",
     "DeploymentBranchPolicyNamePattern",
+    "CustomDeploymentRuleApp",
+    "DeploymentProtectionRule",
     "ShortBlob",
     "Blob",
     "GitCommit",
@@ -19164,6 +20086,9 @@ __all__ = [
     "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
     "RepositoryAdvisoryCreatePropCreditsItems",
+    "PrivateVulnerabilityReportCreate",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
     "RepositoryAdvisoryUpdate",
     "RepositoryAdvisoryUpdatePropVulnerabilitiesItems",
     "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage",
@@ -19333,6 +20258,8 @@ __all__ = [
     "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",
     "OrgsOrgProjectsPostBody",
     "OrgsOrgReposPostBody",
+    "OrgsOrgRulesetsPostBody",
+    "OrgsOrgRulesetsRulesetIdPutBody",
     "OrgsOrgTeamsPostBody",
     "OrgsOrgTeamsTeamSlugPatchBody",
     "OrgsOrgTeamsTeamSlugDiscussionsPostBody",
@@ -19477,6 +20404,9 @@ __all__ = [
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
     "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
     "ReposOwnerRepoForksPostBody",
     "ReposOwnerRepoGitBlobsPostBody",
     "ReposOwnerRepoGitCommitsPostBody",
@@ -19563,6 +20493,8 @@ __all__ = [
     "ReposOwnerRepoReleasesGenerateNotesPostBody",
     "ReposOwnerRepoReleasesReleaseIdPatchBody",
     "ReposOwnerRepoReleasesReleaseIdReactionsPostBody",
+    "ReposOwnerRepoRulesetsPostBody",
+    "ReposOwnerRepoRulesetsRulesetIdPutBody",
     "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",
     "ReposOwnerRepoStatusesShaPostBody",
     "ReposOwnerRepoSubscriptionPutBody",

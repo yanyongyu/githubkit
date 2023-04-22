@@ -864,7 +864,7 @@ class DependabotAlertWithRepositoryType(TypedDict):
     """
 
     number: int
-    state: Literal["dismissed", "fixed", "open"]
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
     dependency: DependabotAlertWithRepositoryPropDependencyType
     security_advisory: DependabotAlertSecurityAdvisoryType
     security_vulnerability: DependabotAlertSecurityVulnerabilityType
@@ -2557,6 +2557,335 @@ class ProjectType(TypedDict):
     private: NotRequired[bool]
 
 
+class RepositoryRulesetBypassActorType(TypedDict):
+    """Repository Ruleset Bypass Actor
+
+    An actor that can bypass rules in a ruleset
+    """
+
+    actor_id: NotRequired[int]
+    actor_type: NotRequired[Literal["Team", "Integration"]]
+
+
+class RepositoryRulesetConditionsType(TypedDict):
+    """Repository ruleset conditions for ref names
+
+    Parameters for a repository ruleset ref name condition
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+
+
+class RepositoryRulesetConditionsPropRefNameType(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
+
+    include: NotRequired[List[str]]
+    exclude: NotRequired[List[str]]
+
+
+class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
+    """Repository ruleset conditions for repository names
+
+    Parameters for a repository name condition
+    """
+
+    repository_name: NotRequired[
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    ]
+
+
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+
+    include: NotRequired[List[str]]
+    exclude: NotRequired[List[str]]
+    protected: NotRequired[bool]
+
+
+class OrgRulesetConditionsType(TypedDict):
+    """Organization ruleset conditions
+
+    Conditions for a organization ruleset
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: NotRequired[
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    ]
+
+
+class RepositoryRuleCreationType(TypedDict):
+    """creation
+
+    Parameters to be used for the creation rule
+    """
+
+    type: Literal["creation"]
+
+
+class RepositoryRuleUpdateType(TypedDict):
+    """update
+
+    Parameters to be used for the update rule
+    """
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+
+
+class RepositoryRuleUpdatePropParametersType(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
+
+    update_allows_fetch_and_merge: bool
+
+
+class RepositoryRuleDeletionType(TypedDict):
+    """deletion
+
+    Parameters to be used for the deletion rule
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
+
+    Parameters to be used for the required_linear_history rule
+    """
+
+    type: Literal["required_linear_history"]
+
+
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
+
+    Parameters to be used for the required_deployments rule
+    """
+
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+
+
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
+
+    required_deployment_environments: List[str]
+
+
+class RepositoryRuleRequiredSignaturesType(TypedDict):
+    """required_signatures
+
+    Parameters to be used for the required_signatures rule
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
+
+    Parameters to be used for the pull_request rule
+    """
+
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+
+
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
+
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+
+
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str
+    integration_id: NotRequired[int]
+
+
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
+
+    Parameters to be used for the required_status_checks rule
+    """
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+
+
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    required_status_checks: List[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Parameters to be used for the non_fast_forward rule
+    """
+
+    type: Literal["non_fast_forward"]
+
+
+class RepositoryRuleCommitMessagePatternType(TypedDict):
+    """commit_message_pattern
+
+    Parameters to be used for the commit_message_pattern rule
+    """
+
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+
+
+class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
+
+    Parameters to be used for the commit_author_email_pattern rule
+    """
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+
+
+class RepositoryRuleCommitAuthorEmailPatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+class RepositoryRuleCommitterEmailPatternType(TypedDict):
+    """committer_email_pattern
+
+    Parameters to be used for the committer_email_pattern rule
+    """
+
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+
+
+class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
+
+    Parameters to be used for the branch_name_pattern rule
+    """
+
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+
+
+class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleBranchNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
+    """
+
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+
+
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+class RepositoryRulesetType(TypedDict):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
+    """
+
+    id: int
+    name: str
+    target: NotRequired[Literal["branch", "tag"]]
+    source_type: NotRequired[Literal["Repository", "Organization"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_mode: NotRequired[Literal["none", "repository", "organization"]]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksType]
+    conditions: NotRequired[
+        Union[RepositoryRulesetConditionsType, OrgRulesetConditionsType]
+    ]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+            ]
+        ]
+    ]
+
+
+class RepositoryRulesetPropLinksType(TypedDict):
+    """RepositoryRulesetPropLinks"""
+
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
+
+
+class RepositoryRulesetPropLinksPropSelfType(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
 class ActionsBillingUsageType(TypedDict):
     """ActionsBillingUsage"""
 
@@ -3475,6 +3804,21 @@ class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
     html_url: NotRequired[str]
     created_at: NotRequired[datetime]
     updated_at: NotRequired[datetime]
+
+
+class ReviewCustomGatesCommentRequiredType(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
+
+    environment_name: str
+    comment: str
+
+
+class ReviewCustomGatesStateRequiredType(TypedDict):
+    """ReviewCustomGatesStateRequired"""
+
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
 class PendingDeploymentType(TypedDict):
@@ -4457,7 +4801,20 @@ class CodeScanningDefaultSetupType(TypedDict):
 
     state: NotRequired[Literal["configured", "not-configured"]]
     languages: NotRequired[
-        List[Literal["go", "javascript", "python", "ruby", "typescript"]]
+        List[
+            Literal[
+                "c",
+                "cpp",
+                "csharp",
+                "go",
+                "java",
+                "javascript",
+                "kotlin",
+                "python",
+                "ruby",
+                "typescript",
+            ]
+        ]
     ]
     query_suite: NotRequired[Literal["default", "extended"]]
     updated_at: NotRequired[Union[datetime, None]]
@@ -4667,8 +5024,8 @@ class AutoMergeType(TypedDict):
 
     enabled_by: SimpleUserType
     merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: str
-    commit_message: str
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 class PullRequestSimpleType(TypedDict):
@@ -5474,6 +5831,30 @@ class DeploymentBranchPolicyNamePatternType(TypedDict):
     """Deployment branch policy name pattern"""
 
     name: str
+
+
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
+
+    A GitHub App that is providing a custom deployment protection rule.
+    """
+
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
+
+
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
+
+    Deployment protection rule
+    """
+
+    id: int
+    node_id: str
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
 class ShortBlobType(TypedDict):
@@ -7675,6 +8056,53 @@ class RepositoryAdvisoryCreatePropCreditsItemsType(TypedDict):
     ]
 
 
+class PrivateVulnerabilityReportCreateType(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
+
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
+    ]
+    cwe_ids: NotRequired[Union[List[str], None]]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[List[str], None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
 class RepositoryAdvisoryUpdateType(TypedDict):
     """RepositoryAdvisoryUpdate"""
 
@@ -9702,6 +10130,66 @@ class OrgsOrgReposPostBodyType(TypedDict):
     merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
 
 
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[OrgRulesetConditionsType]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+            ]
+        ]
+    ]
+
+
+class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[OrgRulesetConditionsType]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+            ]
+        ]
+    ]
+
+
 class OrgsOrgTeamsPostBodyType(TypedDict):
     """OrgsOrgTeamsPostBody"""
 
@@ -11182,6 +11670,40 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetRespon
     branch_policies: List[DeploymentBranchPolicyType]
 
 
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        ../../components/examples/deployment_protection_rules.yaml
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[List[DeploymentProtectionRuleType]]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+
+    integration_id: NotRequired[int]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
+
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        List[CustomDeploymentRuleAppType]
+    ]
+
+
 class ReposOwnerRepoForksPostBodyType(TypedDict):
     """ReposOwnerRepoForksPostBody"""
 
@@ -11949,6 +12471,68 @@ class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
     content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_mode: NotRequired[Literal["none", "repository", "organization"]]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+            ]
+        ]
+    ]
+
+
+class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_mode: NotRequired[Literal["none", "repository", "organization"]]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+            ]
+        ]
+    ]
+
+
 class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
     """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
@@ -12600,6 +13184,39 @@ __all__ = [
     "PackageVersionPropMetadataPropContainerType",
     "PackageVersionPropMetadataPropDockerType",
     "ProjectType",
+    "RepositoryRulesetBypassActorType",
+    "RepositoryRulesetConditionsType",
+    "RepositoryRulesetConditionsPropRefNameType",
+    "RepositoryRulesetConditionsRepositoryNameTargetType",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
+    "OrgRulesetConditionsType",
+    "RepositoryRuleCreationType",
+    "RepositoryRuleUpdateType",
+    "RepositoryRuleUpdatePropParametersType",
+    "RepositoryRuleDeletionType",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsPropParametersType",
+    "RepositoryRuleRequiredSignaturesType",
+    "RepositoryRulePullRequestType",
+    "RepositoryRulePullRequestPropParametersType",
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleRequiredStatusChecksType",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleNonFastForwardType",
+    "RepositoryRuleCommitMessagePatternType",
+    "RepositoryRuleCommitMessagePatternPropParametersType",
+    "RepositoryRuleCommitAuthorEmailPatternType",
+    "RepositoryRuleCommitAuthorEmailPatternPropParametersType",
+    "RepositoryRuleCommitterEmailPatternType",
+    "RepositoryRuleCommitterEmailPatternPropParametersType",
+    "RepositoryRuleBranchNamePatternType",
+    "RepositoryRuleBranchNamePatternPropParametersType",
+    "RepositoryRuleTagNamePatternType",
+    "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRulesetType",
+    "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetPropLinksPropSelfType",
     "ActionsBillingUsageType",
     "ActionsBillingUsagePropMinutesUsedBreakdownType",
     "PackagesBillingUsageType",
@@ -12653,6 +13270,8 @@ __all__ = [
     "WorkflowRunType",
     "EnvironmentApprovalsType",
     "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "ReviewCustomGatesCommentRequiredType",
+    "ReviewCustomGatesStateRequiredType",
     "PendingDeploymentType",
     "PendingDeploymentPropEnvironmentType",
     "PendingDeploymentPropReviewersItemsType",
@@ -12810,6 +13429,8 @@ __all__ = [
     "EnvironmentPropProtectionRulesItemsAnyof2Type",
     "DeploymentBranchPolicyType",
     "DeploymentBranchPolicyNamePatternType",
+    "CustomDeploymentRuleAppType",
+    "DeploymentProtectionRuleType",
     "ShortBlobType",
     "BlobType",
     "GitCommitType",
@@ -12946,6 +13567,9 @@ __all__ = [
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
     "RepositoryAdvisoryCreatePropCreditsItemsType",
+    "PrivateVulnerabilityReportCreateType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
     "RepositoryAdvisoryUpdateType",
     "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
     "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
@@ -13115,6 +13739,8 @@ __all__ = [
     "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
     "OrgsOrgProjectsPostBodyType",
     "OrgsOrgReposPostBodyType",
+    "OrgsOrgRulesetsPostBodyType",
+    "OrgsOrgRulesetsRulesetIdPutBodyType",
     "OrgsOrgTeamsPostBodyType",
     "OrgsOrgTeamsTeamSlugPatchBodyType",
     "OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",
@@ -13259,6 +13885,9 @@ __all__ = [
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
     "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
     "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
     "ReposOwnerRepoForksPostBodyType",
     "ReposOwnerRepoGitBlobsPostBodyType",
     "ReposOwnerRepoGitCommitsPostBodyType",
@@ -13345,6 +13974,8 @@ __all__ = [
     "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
     "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
     "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoRulesetsPostBodyType",
+    "ReposOwnerRepoRulesetsRulesetIdPutBodyType",
     "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",
     "ReposOwnerRepoStatusesShaPostBodyType",
     "ReposOwnerRepoSubscriptionPutBodyType",

@@ -18,17 +18,31 @@ from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     UserReposPostBodyType,
+    OrgRulesetConditionsType,
     OrgsOrgReposPostBodyType,
+    RepositoryRuleUpdateType,
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    OrgsOrgRulesetsPostBodyType,
     ReposOwnerRepoPatchBodyType,
+    RepositoryRulePullRequestType,
     ReposOwnerRepoKeysPostBodyType,
+    RepositoryRulesetConditionsType,
     ReposOwnerRepoForksPostBodyType,
     ReposOwnerRepoHooksPostBodyType,
     ReposOwnerRepoTopicsPutBodyType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRulesetBypassActorType,
+    RepositoryRuleTagNamePatternType,
     ReposOwnerRepoMergesPostBodyType,
     DeploymentBranchPolicySettingsType,
     ReposOwnerRepoReleasesPostBodyType,
+    ReposOwnerRepoRulesetsPostBodyType,
     ReposOwnerRepoTransferPostBodyType,
+    OrgsOrgRulesetsRulesetIdPutBodyType,
+    RepositoryRuleBranchNamePatternType,
     ReposOwnerRepoAutolinksPostBodyType,
+    RepositoryRuleRequiredSignaturesType,
     ReposOwnerRepoDispatchesPostBodyType,
     ReposOwnerRepoPagesPutBodyAnyof0Type,
     ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -36,18 +50,25 @@ from .types import (
     ReposOwnerRepoPagesPutBodyAnyof3Type,
     ReposOwnerRepoPagesPutBodyAnyof4Type,
     DeploymentBranchPolicyNamePatternType,
+    RepositoryRuleRequiredDeploymentsType,
     ReposOwnerRepoContentsPathPutBodyType,
     ReposOwnerRepoDeploymentsPostBodyType,
     ReposOwnerRepoPagesPostBodyAnyof0Type,
     ReposOwnerRepoPagesPostBodyAnyof1Type,
     ReposOwnerRepoStatusesShaPostBodyType,
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleRequiredStatusChecksType,
     ReposOwnerRepoHooksHookIdPatchBodyType,
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleRequiredLinearHistoryType,
     ReposOwnerRepoMergeUpstreamPostBodyType,
     ReposOwnerRepoContentsPathDeleteBodyType,
     ReposOwnerRepoTagsProtectionPostBodyType,
     ReposOwnerRepoHooksPostBodyPropConfigType,
     ReposOwnerRepoPagesDeploymentPostBodyType,
     ReposOwnerRepoPagesPostBodyPropSourceType,
+    RepositoryRuleCommitAuthorEmailPatternType,
+    ReposOwnerRepoRulesetsRulesetIdPutBodyType,
     ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ReposOwnerRepoHooksHookIdConfigPatchBodyType,
     ReposOwnerRepoReleasesReleaseIdPatchBodyType,
@@ -84,6 +105,7 @@ from .types import (
     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
     ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
@@ -144,6 +166,7 @@ from .models import (
     PagesHealthCheck,
     MinimalRepository,
     PullRequestSimple,
+    RepositoryRuleset,
     StatusCheckPolicy,
     UserReposPostBody,
     ParticipationStats,
@@ -153,23 +176,35 @@ from .models import (
     CombinedCommitStatus,
     OrgsOrgReposPostBody,
     RepositoryInvitation,
+    RepositoryRuleUpdate,
     ContentDirectoryItems,
     ValidationErrorSimple,
     DeploymentBranchPolicy,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
     BranchRestrictionPolicy,
+    OrgsOrgRulesetsPostBody,
     ReposOwnerRepoPatchBody,
+    DeploymentProtectionRule,
+    RepositoryRulePullRequest,
     ReposOwnerRepoKeysPostBody,
     ReposOwnerRepoForksPostBody,
     ReposOwnerRepoHooksPostBody,
     ReposOwnerRepoTopicsPutBody,
     ProtectedBranchAdminEnforced,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleTagNamePattern,
     ReposOwnerRepoMergesPostBody,
     ReposOwnerRepoReleasesPostBody,
+    ReposOwnerRepoRulesetsPostBody,
     ReposOwnerRepoTransferPostBody,
+    OrgsOrgRulesetsRulesetIdPutBody,
+    RepositoryRuleBranchNamePattern,
     ReposOwnerRepoAutolinksPostBody,
     ReposOwnerRepoDeleteResponse403,
     ProtectedBranchPullRequestReview,
     RepositoryCollaboratorPermission,
+    RepositoryRuleRequiredSignatures,
     ReposOwnerRepoDispatchesPostBody,
     ReposOwnerRepoPagesPutBodyAnyof0,
     ReposOwnerRepoPagesPutBodyAnyof1,
@@ -177,16 +212,23 @@ from .models import (
     ReposOwnerRepoPagesPutBodyAnyof3,
     ReposOwnerRepoPagesPutBodyAnyof4,
     DeploymentBranchPolicyNamePattern,
+    RepositoryRuleRequiredDeployments,
     ReposOwnerRepoContentsPathPutBody,
     ReposOwnerRepoDeploymentsPostBody,
     ReposOwnerRepoPagesPostBodyAnyof0,
     ReposOwnerRepoPagesPostBodyAnyof1,
     ReposOwnerRepoStatusesShaPostBody,
+    RepositoryRuleCommitMessagePattern,
+    RepositoryRuleRequiredStatusChecks,
     ReposOwnerRepoHooksHookIdPatchBody,
+    RepositoryRuleCommitterEmailPattern,
+    RepositoryRuleRequiredLinearHistory,
     ReposOwnerRepoMergeUpstreamPostBody,
     ReposOwnerRepoContentsPathDeleteBody,
     ReposOwnerRepoTagsProtectionPostBody,
     ReposOwnerRepoPagesDeploymentPostBody,
+    RepositoryRuleCommitAuthorEmailPattern,
+    ReposOwnerRepoRulesetsRulesetIdPutBody,
     ReposOwnerRepoCommentsCommentIdPatchBody,
     ReposOwnerRepoEnvironmentsGetResponse200,
     ReposOwnerRepoHooksHookIdConfigPatchBody,
@@ -214,10 +256,13 @@ from .models import (
     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
     ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
     ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
 )
 
 if TYPE_CHECKING:
@@ -436,6 +481,426 @@ class ReposClient:
             error_models={
                 "403": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def get_org_rulesets(
+        self,
+        org: str,
+    ) -> "Response[List[RepositoryRuleset]]":
+        url = f"/orgs/{org}/rulesets"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[RepositoryRuleset],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_rulesets(
+        self,
+        org: str,
+    ) -> "Response[List[RepositoryRuleset]]":
+        url = f"/orgs/{org}/rulesets"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[RepositoryRuleset],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def create_org_ruleset(
+        self, org: str, *, data: OrgsOrgRulesetsPostBodyType
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    def create_org_ruleset(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: str,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    def create_org_ruleset(
+        self, org: str, *, data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/orgs/{org}/rulesets"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgRulesetsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_org_ruleset(
+        self, org: str, *, data: OrgsOrgRulesetsPostBodyType
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    async def async_create_org_ruleset(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: str,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    async def async_create_org_ruleset(
+        self, org: str, *, data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET, **kwargs
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/orgs/{org}/rulesets"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgRulesetsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/orgs/{org}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/orgs/{org}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def update_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    def update_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: Missing[str] = UNSET,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    def update_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/orgs/{org}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgRulesetsRulesetIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    async def async_update_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: Missing[str] = UNSET,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    async def async_update_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+        *,
+        data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/orgs/{org}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgRulesetsRulesetIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def delete_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_delete_org_ruleset(
+        self,
+        org: str,
+        ruleset_id: int,
+    ) -> "Response":
+        url = f"/orgs/{org}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
             },
         )
 
@@ -7033,6 +7498,292 @@ class ReposClient:
             headers=exclude_unset(headers),
         )
 
+    def get_all_deployment_protection_rules(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+    ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
+        )
+
+    async def async_get_all_deployment_protection_rules(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+    ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
+        )
+
+    @overload
+    def create_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        *,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
+    ) -> "Response[DeploymentProtectionRule]":
+        ...
+
+    @overload
+    def create_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        integration_id: Missing[int] = UNSET,
+    ) -> "Response[DeploymentProtectionRule]":
+        ...
+
+    def create_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        *,
+        data: Missing[
+            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentProtectionRule]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=DeploymentProtectionRule,
+        )
+
+    @overload
+    async def async_create_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        *,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
+    ) -> "Response[DeploymentProtectionRule]":
+        ...
+
+    @overload
+    async def async_create_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        integration_id: Missing[int] = UNSET,
+    ) -> "Response[DeploymentProtectionRule]":
+        ...
+
+    async def async_create_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        *,
+        data: Missing[
+            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[DeploymentProtectionRule]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=DeploymentProtectionRule,
+        )
+
+    def list_custom_deployment_rule_integrations(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+    ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/apps"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
+        )
+
+    async def async_list_custom_deployment_rule_integrations(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        page: Missing[int] = 1,
+        per_page: Missing[int] = 30,
+    ) -> "Response[ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/apps"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
+        )
+
+    def get_custom_deployment_protection_rule(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        protection_rule_id: int,
+    ) -> "Response[DeploymentProtectionRule]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=DeploymentProtectionRule,
+        )
+
+    async def async_get_custom_deployment_protection_rule(
+        self,
+        owner: str,
+        repo: str,
+        environment_name: str,
+        protection_rule_id: int,
+    ) -> "Response[DeploymentProtectionRule]":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=DeploymentProtectionRule,
+        )
+
+    def disable_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        protection_rule_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_disable_deployment_protection_rule(
+        self,
+        environment_name: str,
+        repo: str,
+        owner: str,
+        protection_rule_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
     def list_forks(
         self,
         owner: str,
@@ -10627,6 +11378,550 @@ class ReposClient:
             headers=exclude_unset(headers),
             response_model=ReleaseAsset,
             error_models={},
+        )
+
+    def get_branch_rules(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[List[Union[RepositoryRuleCreation, RepositoryRuleUpdate, RepositoryRuleDeletion, RepositoryRuleRequiredLinearHistory, RepositoryRuleRequiredDeployments, RepositoryRuleRequiredSignatures, RepositoryRulePullRequest, RepositoryRuleRequiredStatusChecks, RepositoryRuleNonFastForward, RepositoryRuleCommitMessagePattern, RepositoryRuleCommitAuthorEmailPattern, RepositoryRuleCommitterEmailPattern, RepositoryRuleBranchNamePattern, RepositoryRuleTagNamePattern]]]":
+        url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[
+                Union[
+                    RepositoryRuleCreation,
+                    RepositoryRuleUpdate,
+                    RepositoryRuleDeletion,
+                    RepositoryRuleRequiredLinearHistory,
+                    RepositoryRuleRequiredDeployments,
+                    RepositoryRuleRequiredSignatures,
+                    RepositoryRulePullRequest,
+                    RepositoryRuleRequiredStatusChecks,
+                    RepositoryRuleNonFastForward,
+                    RepositoryRuleCommitMessagePattern,
+                    RepositoryRuleCommitAuthorEmailPattern,
+                    RepositoryRuleCommitterEmailPattern,
+                    RepositoryRuleBranchNamePattern,
+                    RepositoryRuleTagNamePattern,
+                ]
+            ],
+        )
+
+    async def async_get_branch_rules(
+        self,
+        owner: str,
+        repo: str,
+        branch: str,
+    ) -> "Response[List[Union[RepositoryRuleCreation, RepositoryRuleUpdate, RepositoryRuleDeletion, RepositoryRuleRequiredLinearHistory, RepositoryRuleRequiredDeployments, RepositoryRuleRequiredSignatures, RepositoryRulePullRequest, RepositoryRuleRequiredStatusChecks, RepositoryRuleNonFastForward, RepositoryRuleCommitMessagePattern, RepositoryRuleCommitAuthorEmailPattern, RepositoryRuleCommitterEmailPattern, RepositoryRuleBranchNamePattern, RepositoryRuleTagNamePattern]]]":
+        url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[
+                Union[
+                    RepositoryRuleCreation,
+                    RepositoryRuleUpdate,
+                    RepositoryRuleDeletion,
+                    RepositoryRuleRequiredLinearHistory,
+                    RepositoryRuleRequiredDeployments,
+                    RepositoryRuleRequiredSignatures,
+                    RepositoryRulePullRequest,
+                    RepositoryRuleRequiredStatusChecks,
+                    RepositoryRuleNonFastForward,
+                    RepositoryRuleCommitMessagePattern,
+                    RepositoryRuleCommitAuthorEmailPattern,
+                    RepositoryRuleCommitterEmailPattern,
+                    RepositoryRuleBranchNamePattern,
+                    RepositoryRuleTagNamePattern,
+                ]
+            ],
+        )
+
+    def get_repo_rulesets(
+        self,
+        owner: str,
+        repo: str,
+        includes_parents: Missing[bool] = UNSET,
+    ) -> "Response[List[RepositoryRuleset]]":
+        url = f"/repos/{owner}/{repo}/rulesets"
+
+        params = {
+            "includes_parents": includes_parents,
+        }
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RepositoryRuleset],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_rulesets(
+        self,
+        owner: str,
+        repo: str,
+        includes_parents: Missing[bool] = UNSET,
+    ) -> "Response[List[RepositoryRuleset]]":
+        url = f"/repos/{owner}/{repo}/rulesets"
+
+        params = {
+            "includes_parents": includes_parents,
+        }
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RepositoryRuleset],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def create_repo_ruleset(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoRulesetsPostBodyType
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    def create_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: str,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    def create_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/repos/{owner}/{repo}/rulesets"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoRulesetsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_repo_ruleset(
+        self, owner: str, repo: str, *, data: ReposOwnerRepoRulesetsPostBodyType
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    async def async_create_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: str,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    async def async_create_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/repos/{owner}/{repo}/rulesets"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoRulesetsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        includes_parents: Missing[bool] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
+
+        params = {
+            "includes_parents": includes_parents,
+        }
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        includes_parents: Missing[bool] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
+
+        params = {
+            "includes_parents": includes_parents,
+        }
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def update_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    def update_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: Missing[str] = UNSET,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    def update_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    @overload
+    async def async_update_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        name: Missing[str] = UNSET,
+        target: Missing[Literal["branch", "tag"]] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
+        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
+        rules: Missing[
+            List[
+                Union[
+                    RepositoryRuleCreationType,
+                    RepositoryRuleUpdateType,
+                    RepositoryRuleDeletionType,
+                    RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleRequiredDeploymentsType,
+                    RepositoryRuleRequiredSignaturesType,
+                    RepositoryRulePullRequestType,
+                    RepositoryRuleRequiredStatusChecksType,
+                    RepositoryRuleNonFastForwardType,
+                    RepositoryRuleCommitMessagePatternType,
+                    RepositoryRuleCommitAuthorEmailPatternType,
+                    RepositoryRuleCommitterEmailPatternType,
+                    RepositoryRuleBranchNamePatternType,
+                    RepositoryRuleTagNamePatternType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> "Response[RepositoryRuleset]":
+        ...
+
+    async def async_update_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+        *,
+        data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[RepositoryRuleset]":
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def delete_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_delete_repo_ruleset(
+        self,
+        owner: str,
+        repo: str,
+        ruleset_id: int,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def get_code_frequency_stats(

@@ -17,8 +17,10 @@ from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     SelectedActionsType,
+    ReviewCustomGatesStateRequiredType,
     OrgsOrgActionsVariablesPostBodyType,
     OrgsOrgActionsPermissionsPutBodyType,
+    ReviewCustomGatesCommentRequiredType,
     ActionsWorkflowAccessToRepositoryType,
     ActionsSetDefaultWorkflowPermissionsType,
     OrgsOrgActionsVariablesNamePatchBodyType,
@@ -78,8 +80,10 @@ from .models import (
     ActionsCacheUsageByRepository,
     ActionsCacheUsageOrgEnterprise,
     ActionsOrganizationPermissions,
+    ReviewCustomGatesStateRequired,
     OrgsOrgActionsVariablesPostBody,
     OrgsOrgActionsPermissionsPutBody,
+    ReviewCustomGatesCommentRequired,
     ActionsWorkflowAccessToRepository,
     OrgsOrgActionsRunnersGetResponse200,
     OrgsOrgActionsSecretsGetResponse200,
@@ -5704,6 +5708,158 @@ class ActionsClient:
             error_models={
                 "409": BasicError,
             },
+        )
+
+    @overload
+    def review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Union[
+            ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
+        ],
+    ) -> "Response":
+        ...
+
+    @overload
+    def review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        environment_name: str,
+        comment: str,
+    ) -> "Response":
+        ...
+
+    @overload
+    def review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        environment_name: str,
+        state: Literal["approved", "rejected"],
+        comment: Missing[str] = UNSET,
+    ) -> "Response":
+        ...
+
+    def review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Missing[
+            Union[
+                ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+        )
+
+    @overload
+    async def async_review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Union[
+            ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
+        ],
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        environment_name: str,
+        comment: str,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        environment_name: str,
+        state: Literal["approved", "rejected"],
+        comment: Missing[str] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_review_custom_gates_for_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        data: Missing[
+            Union[
+                ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule"
+
+        headers = {
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+        }
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired],
+            json,
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
         )
 
     def list_jobs_for_workflow_run(

@@ -9643,10 +9643,10 @@ class AutoMerge(GitHubWebhookModel):
     merge_method: Literal["merge", "squash", "rebase"] = Field(
         description="The merge method to use.", default=...
     )
-    commit_title: str = Field(
+    commit_title: Union[str, None] = Field(
         description="Title for the merge commit message.", default=...
     )
-    commit_message: str = Field(
+    commit_message: Union[str, None] = Field(
         description="Commit message for the merge commit.", default=...
     )
 
