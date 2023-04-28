@@ -1842,10 +1842,10 @@ class OrganizationFullType(TypedDict):
     avatar_url: str
     description: Union[str, None]
     name: NotRequired[str]
-    company: NotRequired[str]
+    company: NotRequired[Union[str, None]]
     blog: NotRequired[str]
     location: NotRequired[str]
-    email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
     twitter_username: NotRequired[Union[str, None]]
     is_verified: NotRequired[bool]
     has_organization_projects: bool
@@ -2950,10 +2950,10 @@ class TeamOrganizationType(TypedDict):
     avatar_url: str
     description: Union[str, None]
     name: NotRequired[str]
-    company: NotRequired[str]
+    company: NotRequired[Union[str, None]]
     blog: NotRequired[str]
     location: NotRequired[str]
-    email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
     twitter_username: NotRequired[Union[str, None]]
     is_verified: NotRequired[bool]
     has_organization_projects: bool
