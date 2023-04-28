@@ -118,6 +118,12 @@ output_dir = "githubkit/rest/"
 "/paths/~1repos~1{owner}~1{repo}~1releases/post/requestBody/content/application~1json/schema/properties/make_latest" = { default = "true" }
 "/paths/~1repos~1{owner}~1{repo}~1releases~1{release_id}/patch/requestBody/content/application~1json/schema/properties/make_latest" = { default = "true" }
 
+# https://github.com/github/rest-api-description/issues/2507
+"/components/schemas/organization-full/properties/company" = { type = ["string", "null"] }
+"/components/schemas/organization-full/properties/email" = { type = ["string", "null"] }
+"/components/schemas/team-organization/properties/company" = { type = ["string", "null"] }
+"/components/schemas/team-organization/properties/email" = { type = ["string", "null"] }
+
 [tool.codegen.webhook]
 schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
 output = "githubkit/webhooks/models.py"
