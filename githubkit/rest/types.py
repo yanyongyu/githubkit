@@ -3725,14 +3725,20 @@ class SimpleCommitType(TypedDict):
 
 
 class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor"""
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
 
     name: str
     email: str
 
 
 class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter"""
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
 
     name: str
     email: str
@@ -9285,6 +9291,19 @@ class DiscussionPropUserType(TypedDict):
     url: NotRequired[str]
 
 
+class MergeGroupType(TypedDict):
+    """Merge Group
+
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitType
+
+
 class PersonalAccessTokenRequestType(TypedDict):
     """Personal Access Token Request
 
@@ -11369,6 +11388,7 @@ class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
 
     ref: NotRequired[str]
     location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
     client_ip: NotRequired[str]
     machine: NotRequired[str]
     devcontainer_path: NotRequired[str]
@@ -11761,7 +11781,6 @@ class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
 
     ref: str
     sha: str
-    key: NotRequired[str]
 
 
 class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
@@ -12290,6 +12309,7 @@ class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
     """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
     location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
     client_ip: NotRequired[str]
     machine: NotRequired[str]
     devcontainer_path: NotRequired[str]
@@ -12308,7 +12328,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
     path: str
     position: NotRequired[int]
     side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: int
+    line: NotRequired[int]
     start_line: NotRequired[int]
     start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
     in_reply_to: NotRequired[int]
@@ -12801,6 +12821,7 @@ class UserCodespacesPostBodyOneof0Type(TypedDict):
     repository_id: int
     ref: NotRequired[str]
     location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
     client_ip: NotRequired[str]
     machine: NotRequired[str]
     devcontainer_path: NotRequired[str]
@@ -12816,6 +12837,7 @@ class UserCodespacesPostBodyOneof1Type(TypedDict):
 
     pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
     location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
     machine: NotRequired[str]
     devcontainer_path: NotRequired[str]
     working_directory: NotRequired[str]
@@ -13640,6 +13662,7 @@ __all__ = [
     "DiscussionPropCategoryType",
     "DiscussionPropReactionsType",
     "DiscussionPropUserType",
+    "MergeGroupType",
     "PersonalAccessTokenRequestType",
     "PersonalAccessTokenRequestPropPermissionsAddedType",
     "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",

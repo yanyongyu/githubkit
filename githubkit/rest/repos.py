@@ -281,7 +281,7 @@ class ReposClient:
         org: str,
         type: Missing[
             Literal["all", "public", "private", "forks", "sources", "member"]
-        ] = UNSET,
+        ] = "all",
         sort: Missing[Literal["created", "updated", "pushed", "full_name"]] = "created",
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,
@@ -314,7 +314,7 @@ class ReposClient:
         org: str,
         type: Missing[
             Literal["all", "public", "private", "forks", "sources", "member"]
-        ] = UNSET,
+        ] = "all",
         sort: Missing[Literal["created", "updated", "pushed", "full_name"]] = "created",
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = 30,

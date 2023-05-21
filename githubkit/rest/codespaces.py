@@ -1260,6 +1260,9 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
@@ -1327,6 +1330,9 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
@@ -1859,6 +1865,9 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
@@ -1931,6 +1940,9 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
@@ -2063,6 +2075,9 @@ class CodespacesClient:
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
@@ -2082,6 +2097,9 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,
@@ -2143,6 +2161,9 @@ class CodespacesClient:
         repository_id: int,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         client_ip: Missing[str] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
@@ -2162,6 +2183,9 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
+        geo: Missing[
+            Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]
+        ] = UNSET,
         machine: Missing[str] = UNSET,
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,

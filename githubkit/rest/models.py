@@ -5280,26 +5280,42 @@ class SimpleCommit(GitHubRestModel):
     A commit.
     """
 
-    id: str = Field(default=...)
-    tree_id: str = Field(default=...)
-    message: str = Field(default=...)
-    timestamp: datetime = Field(default=...)
-    author: Union[SimpleCommitPropAuthor, None] = Field(default=...)
-    committer: Union[SimpleCommitPropCommitter, None] = Field(default=...)
+    id: str = Field(description="SHA for the commit", default=...)
+    tree_id: str = Field(description="SHA for the commit's tree", default=...)
+    message: str = Field(
+        description="Message describing the purpose of the commit", default=...
+    )
+    timestamp: datetime = Field(description="Timestamp of the commit", default=...)
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author", default=...
+    )
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer", default=...
+    )
 
 
 class SimpleCommitPropAuthor(GitHubRestModel):
-    """SimpleCommitPropAuthor"""
+    """SimpleCommitPropAuthor
 
-    name: str = Field(default=...)
-    email: str = Field(default=...)
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author", default=...)
+    email: str = Field(
+        description="Git email address of the commit's author", default=...
+    )
 
 
 class SimpleCommitPropCommitter(GitHubRestModel):
-    """SimpleCommitPropCommitter"""
+    """SimpleCommitPropCommitter
 
-    name: str = Field(default=...)
-    email: str = Field(default=...)
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer", default=...)
+    email: str = Field(
+        description="Git email address of the commit's committer", default=...
+    )
 
 
 class WorkflowRun(GitHubRestModel):
@@ -12529,6 +12545,26 @@ class DiscussionPropUser(GitHubRestModel):
     url: Missing[str] = Field(default=UNSET)
 
 
+class MergeGroup(GitHubRestModel):
+    """Merge Group
+
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str = Field(description="The SHA of the merge group.", default=...)
+    head_ref: str = Field(description="The full ref of the merge group.", default=...)
+    base_sha: str = Field(
+        description="The SHA of the merge group's parent commit.", default=...
+    )
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into.",
+        default=...,
+    )
+    head_commit: SimpleCommit = Field(
+        title="Simple Commit", description="A commit.", default=...
+    )
+
+
 class PersonalAccessTokenRequest(GitHubRestModel):
     """Personal Access Token Request
 
@@ -15789,6 +15825,10 @@ class ReposOwnerRepoCodespacesPostBody(GitHubRestModel):
         description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
         default=UNSET,
     )
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
+        default=UNSET,
+    )
     client_ip: Missing[str] = Field(
         description="IP for location auto-detection when proxying a request",
         default=UNSET,
@@ -16424,7 +16464,6 @@ class ReposOwnerRepoGitRefsPostBody(GitHubRestModel):
         default=...,
     )
     sha: str = Field(description="The SHA1 value for this reference.", default=...)
-    key: Missing[str] = Field(default=UNSET)
 
 
 class ReposOwnerRepoGitRefsRefPatchBody(GitHubRestModel):
@@ -17339,6 +17378,10 @@ class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubRestModel):
         description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
         default=UNSET,
     )
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
+        default=UNSET,
+    )
     client_ip: Missing[str] = Field(
         description="IP for location auto-detection when proxying a request",
         default=UNSET,
@@ -17390,9 +17433,9 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubRestModel):
         description='In a split diff view, the side of the diff that the pull request\'s changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.',
         default=UNSET,
     )
-    line: int = Field(
-        description="The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
-        default=...,
+    line: Missing[int] = Field(
+        description="**Required unless using `subject_type:file`**. The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
+        default=UNSET,
     )
     start_line: Missing[int] = Field(
         description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_line` is the first line in the pull request diff that your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation.',
@@ -18145,6 +18188,10 @@ class UserCodespacesPostBodyOneof0(GitHubRestModel):
         description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
         default=UNSET,
     )
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
+        default=UNSET,
+    )
     client_ip: Missing[str] = Field(
         description="IP for location auto-detection when proxying a request",
         default=UNSET,
@@ -18184,6 +18231,10 @@ class UserCodespacesPostBodyOneof1(GitHubRestModel):
     )
     location: Missing[str] = Field(
         description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        default=UNSET,
+    )
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
         default=UNSET,
     )
     machine: Missing[str] = Field(
@@ -19156,6 +19207,7 @@ DiscussionPropAnswerChosenBy.update_forward_refs()
 DiscussionPropCategory.update_forward_refs()
 DiscussionPropReactions.update_forward_refs()
 DiscussionPropUser.update_forward_refs()
+MergeGroup.update_forward_refs()
 PersonalAccessTokenRequest.update_forward_refs()
 PersonalAccessTokenRequestPropPermissionsAdded.update_forward_refs()
 PersonalAccessTokenRequestPropPermissionsAddedPropOrganization.update_forward_refs()
@@ -20159,6 +20211,7 @@ __all__ = [
     "DiscussionPropCategory",
     "DiscussionPropReactions",
     "DiscussionPropUser",
+    "MergeGroup",
     "PersonalAccessTokenRequest",
     "PersonalAccessTokenRequestPropPermissionsAdded",
     "PersonalAccessTokenRequestPropPermissionsAddedPropOrganization",

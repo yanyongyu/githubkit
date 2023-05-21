@@ -485,7 +485,6 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         ref: str,
         sha: str,
-        key: Missing[str] = UNSET,
     ) -> "Response[GitRef]":
         ...
 
@@ -541,7 +540,6 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         ref: str,
         sha: str,
-        key: Missing[str] = UNSET,
     ) -> "Response[GitRef]":
         ...
 
