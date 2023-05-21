@@ -10,7 +10,7 @@ T = TypeVar("T")
 
 @final
 class Unset(Enum):
-    _UNSET = object()
+    _UNSET = "<UNSET>"
 
     def __repr__(self) -> str:
         return "<UNSET>"
