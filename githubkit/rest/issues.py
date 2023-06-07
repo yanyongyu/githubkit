@@ -539,6 +539,7 @@ class IssuesClient:
             headers=exclude_unset(headers),
             response_model=Issue,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "422": ValidationError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -604,6 +605,7 @@ class IssuesClient:
             headers=exclude_unset(headers),
             response_model=Issue,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "422": ValidationError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,

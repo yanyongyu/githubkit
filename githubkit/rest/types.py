@@ -1511,6 +1511,7 @@ class ApiOverviewType(TypedDict):
     importer: NotRequired[List[str]]
     actions: NotRequired[List[str]]
     dependabot: NotRequired[List[str]]
+    domains: NotRequired[ApiOverviewPropDomainsType]
 
 
 class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
@@ -1520,6 +1521,15 @@ class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
     sha256_dsa: NotRequired[str]
     sha256_ecdsa: NotRequired[str]
     sha256_ed25519: NotRequired[str]
+
+
+class ApiOverviewPropDomainsType(TypedDict):
+    """ApiOverviewPropDomains"""
+
+    website: NotRequired[List[str]]
+    codespaces: NotRequired[List[str]]
+    copilot: NotRequired[List[str]]
+    packages: NotRequired[List[str]]
 
 
 class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
@@ -2617,7 +2627,7 @@ class OrgRulesetConditionsType(TypedDict):
 class RepositoryRuleCreationType(TypedDict):
     """creation
 
-    Parameters to be used for the creation rule
+    Only allow users with bypass permission to create matching refs.
     """
 
     type: Literal["creation"]
@@ -2626,7 +2636,7 @@ class RepositoryRuleCreationType(TypedDict):
 class RepositoryRuleUpdateType(TypedDict):
     """update
 
-    Parameters to be used for the update rule
+    Only allow users with bypass permission to update matching refs.
     """
 
     type: Literal["update"]
@@ -2642,7 +2652,7 @@ class RepositoryRuleUpdatePropParametersType(TypedDict):
 class RepositoryRuleDeletionType(TypedDict):
     """deletion
 
-    Parameters to be used for the deletion rule
+    Only allow users with bypass permissions to delete matching refs.
     """
 
     type: Literal["deletion"]
@@ -2651,7 +2661,7 @@ class RepositoryRuleDeletionType(TypedDict):
 class RepositoryRuleRequiredLinearHistoryType(TypedDict):
     """required_linear_history
 
-    Parameters to be used for the required_linear_history rule
+    Prevent merge commits from being pushed to matching branches.
     """
 
     type: Literal["required_linear_history"]
@@ -2660,7 +2670,8 @@ class RepositoryRuleRequiredLinearHistoryType(TypedDict):
 class RepositoryRuleRequiredDeploymentsType(TypedDict):
     """required_deployments
 
-    Parameters to be used for the required_deployments rule
+    Choose which environments must be successfully deployed to before branches can
+    be merged into a branch that matches this rule.
     """
 
     type: Literal["required_deployments"]
@@ -2676,7 +2687,7 @@ class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
 class RepositoryRuleRequiredSignaturesType(TypedDict):
     """required_signatures
 
-    Parameters to be used for the required_signatures rule
+    Commits pushed to matching branches must have verified signatures.
     """
 
     type: Literal["required_signatures"]
@@ -2685,7 +2696,8 @@ class RepositoryRuleRequiredSignaturesType(TypedDict):
 class RepositoryRulePullRequestType(TypedDict):
     """pull_request
 
-    Parameters to be used for the pull_request rule
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
     type: Literal["pull_request"]
@@ -2715,7 +2727,10 @@ class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
 class RepositoryRuleRequiredStatusChecksType(TypedDict):
     """required_status_checks
 
-    Parameters to be used for the required_status_checks rule
+    Choose which status checks must pass before branches can be merged into a branch
+    that matches this rule. When enabled, commits must first be pushed to another
+    branch, then merged or pushed directly to a branch that matches this rule after
+    status checks have passed.
     """
 
     type: Literal["required_status_checks"]
@@ -2732,7 +2747,7 @@ class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
 class RepositoryRuleNonFastForwardType(TypedDict):
     """non_fast_forward
 
-    Parameters to be used for the non_fast_forward rule
+    Prevent users with push access from force pushing to branches.
     """
 
     type: Literal["non_fast_forward"]
@@ -2872,6 +2887,8 @@ class RepositoryRulesetType(TypedDict):
             ]
         ]
     ]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
 class RepositoryRulesetPropLinksType(TypedDict):
@@ -9810,6 +9827,22 @@ class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
     runners: List[RunnerType]
 
 
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: List[str]
+    work_folder: NotRequired[str]
+
+
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+
+    runner: RunnerType
+    encoded_jit_config: str
+
+
 class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
     """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
 
@@ -10635,6 +10668,15 @@ class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
 
     total_count: int
     runners: List[RunnerType]
+
+
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: List[str]
+    work_folder: NotRequired[str]
 
 
 class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
@@ -13135,6 +13177,7 @@ __all__ = [
     "MarketplacePurchasePropMarketplacePurchaseType",
     "ApiOverviewType",
     "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewPropDomainsType",
     "SecurityAndAnalysisPropAdvancedSecurityType",
     "SecurityAndAnalysisPropSecretScanningType",
     "SecurityAndAnalysisPropSecretScanningPushProtectionType",
@@ -13721,6 +13764,8 @@ __all__ = [
     "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200Type",
     "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType",
     "OrgsOrgActionsRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
     "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",
     "OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",
     "OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType",
@@ -13811,6 +13856,7 @@ __all__ = [
     "ReposOwnerRepoActionsPermissionsPutBodyType",
     "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200Type",
     "ReposOwnerRepoActionsRunnersGetResponse200Type",
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",
     "ReposOwnerRepoActionsRunsGetResponse200Type",

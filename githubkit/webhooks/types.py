@@ -90,7 +90,6 @@ from .models import (
     PullRequestEdited,
     PullRequestLocked,
     PullRequestOpened,
-    PullRequestQueued,
     RepositoryCreated,
     RepositoryDeleted,
     RepositoryRenamed,
@@ -109,6 +108,7 @@ from .models import (
     ReleaseUnpublished,
     RepositoryArchived,
     SponsorshipCreated,
+    WorkflowJobWaiting,
     CheckRunRerequested,
     CheckSuiteCompleted,
     CheckSuiteRequested,
@@ -123,6 +123,7 @@ from .models import (
     ProjectColumnEdited,
     PullRequestAssigned,
     PullRequestDequeued,
+    PullRequestEnqueued,
     PullRequestReopened,
     PullRequestUnlocked,
     CommitCommentCreated,
@@ -192,6 +193,7 @@ from .models import (
     PullRequestReviewDismissed,
     PullRequestReviewSubmitted,
     SecretScanningAlertCreated,
+    SecretScanningAlertRevoked,
     BranchProtectionRuleCreated,
     BranchProtectionRuleDeleted,
     DependabotAlertReintroduced,
@@ -217,10 +219,12 @@ from .models import (
     PullRequestReviewRequestedOneof0,
     PullRequestReviewRequestedOneof1,
     CodeScanningAlertAppearedInBranch,
+    DeploymentProtectionRuleRequested,
     PullRequestReviewThreadUnresolved,
     InstallationNewPermissionsAccepted,
     RepositoryVulnerabilityAlertCreate,
     RepositoryVulnerabilityAlertReopen,
+    SecretScanningAlertLocationCreated,
     RepositoryVulnerabilityAlertDismiss,
     RepositoryVulnerabilityAlertResolve,
     PullRequestReviewRequestRemovedOneof0,
@@ -283,6 +287,7 @@ DeployKeyEvent = Annotated[
     Field(discriminator="action"),
 ]
 DeploymentEvent = DeploymentCreated
+DeploymentProtectionRuleEvent = DeploymentProtectionRuleRequested
 DeploymentStatusEvent = DeploymentStatusCreated
 DiscussionEvent = Annotated[
     Union[
@@ -478,11 +483,11 @@ PullRequestEvent = Annotated[
         PullRequestDemilestoned,
         PullRequestDequeued,
         PullRequestEdited,
+        PullRequestEnqueued,
         PullRequestLabeled,
         PullRequestLocked,
         PullRequestMilestoned,
         PullRequestOpened,
-        PullRequestQueued,
         PullRequestReadyForReview,
         PullRequestReopened,
         Union[
@@ -566,9 +571,11 @@ SecretScanningAlertEvent = Annotated[
         SecretScanningAlertCreated,
         SecretScanningAlertReopened,
         SecretScanningAlertResolved,
+        SecretScanningAlertRevoked,
     ],
     Field(discriminator="action"),
 ]
+SecretScanningAlertLocationEvent = SecretScanningAlertLocationCreated
 SecurityAdvisoryEvent = Annotated[
     Union[
         SecurityAdvisoryPerformed,
@@ -612,6 +619,7 @@ WorkflowJobEvent = Annotated[
         WorkflowJobCompleted,
         WorkflowJobInProgress,
         WorkflowJobQueued,
+        WorkflowJobWaiting,
     ],
     Field(discriminator="action"),
 ]
@@ -635,6 +643,7 @@ WebhookEvent = Union[
     DependabotAlertEvent,
     DeployKeyEvent,
     DeploymentEvent,
+    DeploymentProtectionRuleEvent,
     DeploymentStatusEvent,
     DiscussionEvent,
     DiscussionCommentEvent,
@@ -675,6 +684,7 @@ WebhookEvent = Union[
     RepositoryImportEvent,
     RepositoryVulnerabilityAlertEvent,
     SecretScanningAlertEvent,
+    SecretScanningAlertLocationEvent,
     SecurityAdvisoryEvent,
     SponsorshipEvent,
     StarEvent,
@@ -742,6 +752,9 @@ webhook_action_types = {
     },
     "deployment": {
         "created": DeploymentCreated,
+    },
+    "deployment_protection_rule": {
+        "requested": DeploymentProtectionRuleRequested,
     },
     "deployment_status": {
         "created": DeploymentStatusCreated,
@@ -893,11 +906,11 @@ webhook_action_types = {
         "demilestoned": PullRequestDemilestoned,
         "dequeued": PullRequestDequeued,
         "edited": PullRequestEdited,
+        "enqueued": PullRequestEnqueued,
         "labeled": PullRequestLabeled,
         "locked": PullRequestLocked,
         "milestoned": PullRequestMilestoned,
         "opened": PullRequestOpened,
-        "queued": PullRequestQueued,
         "ready_for_review": PullRequestReadyForReview,
         "reopened": PullRequestReopened,
         "review_request_removed": Union[
@@ -959,6 +972,10 @@ webhook_action_types = {
         "created": SecretScanningAlertCreated,
         "reopened": SecretScanningAlertReopened,
         "resolved": SecretScanningAlertResolved,
+        "revoked": SecretScanningAlertRevoked,
+    },
+    "secret_scanning_alert_location": {
+        "created": SecretScanningAlertLocationCreated,
     },
     "security_advisory": {
         "performed": SecurityAdvisoryPerformed,
@@ -992,6 +1009,7 @@ webhook_action_types = {
         "completed": WorkflowJobCompleted,
         "in_progress": WorkflowJobInProgress,
         "queued": WorkflowJobQueued,
+        "waiting": WorkflowJobWaiting,
     },
     "workflow_run": {
         "completed": WorkflowRunCompleted,
@@ -1011,6 +1029,7 @@ webhook_event_types = {
     "dependabot_alert": DependabotAlertEvent,
     "deploy_key": DeployKeyEvent,
     "deployment": DeploymentEvent,
+    "deployment_protection_rule": DeploymentProtectionRuleEvent,
     "deployment_status": DeploymentStatusEvent,
     "discussion": DiscussionEvent,
     "discussion_comment": DiscussionCommentEvent,
@@ -1051,6 +1070,7 @@ webhook_event_types = {
     "repository_import": RepositoryImportEvent,
     "repository_vulnerability_alert": RepositoryVulnerabilityAlertEvent,
     "secret_scanning_alert": SecretScanningAlertEvent,
+    "secret_scanning_alert_location": SecretScanningAlertLocationEvent,
     "security_advisory": SecurityAdvisoryEvent,
     "sponsorship": SponsorshipEvent,
     "star": StarEvent,
@@ -1074,6 +1094,7 @@ __all__ = [
     "DependabotAlertEvent",
     "DeployKeyEvent",
     "DeploymentEvent",
+    "DeploymentProtectionRuleEvent",
     "DeploymentStatusEvent",
     "DiscussionEvent",
     "DiscussionCommentEvent",
@@ -1114,6 +1135,7 @@ __all__ = [
     "RepositoryImportEvent",
     "RepositoryVulnerabilityAlertEvent",
     "SecretScanningAlertEvent",
+    "SecretScanningAlertLocationEvent",
     "SecurityAdvisoryEvent",
     "SponsorshipEvent",
     "StarEvent",

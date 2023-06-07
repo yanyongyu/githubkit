@@ -81,6 +81,9 @@ class BranchProtectionRule(GitHubWebhookModel):
     ignore_approvals_from_contributors: bool = Field(
         title="Branch protection rule boolean", default=...
     )
+    require_last_push_approval: Missing[bool] = Field(
+        title="Branch protection rule boolean", default=UNSET
+    )
     required_status_checks: List[str] = Field(
         title="Branch Protection Rule Array", default=...
     )
@@ -3371,6 +3374,272 @@ class ReferencedWorkflow(GitHubWebhookModel):
     ref: Missing[str] = Field(default=UNSET)
 
 
+class DeploymentProtectionRuleRequested(GitHubWebhookModel):
+    """deployment protection rule requested event"""
+
+    action: Literal["requested"] = Field(default=...)
+    environment: Missing[str] = Field(
+        description="The name of the environment that has the deployment protection rule.",
+        default=UNSET,
+    )
+    event: Missing[str] = Field(
+        description="The event that triggered the deployment protection rule.",
+        default=UNSET,
+    )
+    deployment_callback_url: Missing[str] = Field(
+        description="The URL to review the deployment protection rule.", default=UNSET
+    )
+    deployment: Missing[Deployment] = Field(
+        title="Deployment",
+        description="The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
+        default=UNSET,
+    )
+    pull_requests: Missing[List[PullRequest]] = Field(default=UNSET)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+    organization: Missing[Organization] = Field(title="Organization", default=UNSET)
+
+
+class PullRequest(GitHubWebhookModel):
+    """Pull Request"""
+
+    url: str = Field(default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    html_url: str = Field(default=...)
+    diff_url: str = Field(default=...)
+    patch_url: str = Field(default=...)
+    issue_url: str = Field(default=...)
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository.",
+        default=...,
+    )
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`.",
+        default=...,
+    )
+    locked: bool = Field(default=...)
+    title: str = Field(description="The title of the pull request.", default=...)
+    user: User = Field(title="User", default=...)
+    body: Union[str, None] = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    closed_at: Union[datetime, None] = Field(default=...)
+    merged_at: Union[datetime, None] = Field(default=...)
+    merge_commit_sha: Union[str, None] = Field(default=...)
+    assignee: Union[User, None] = Field(title="User", default=...)
+    assignees: List[User] = Field(default=...)
+    requested_reviewers: List[Union[User, Team]] = Field(default=...)
+    requested_teams: List[Team] = Field(default=...)
+    labels: List[Label] = Field(default=...)
+    milestone: Union[Milestone, None] = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+        default=...,
+    )
+    commits_url: str = Field(default=...)
+    review_comments_url: str = Field(default=...)
+    review_comment_url: str = Field(default=...)
+    comments_url: str = Field(default=...)
+    statuses_url: str = Field(default=...)
+    head: PullRequestPropHead = Field(default=...)
+    base: PullRequestPropBase = Field(default=...)
+    links: PullRequestPropLinks = Field(default=..., alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+        default=...,
+    )
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="PullRequestAutoMerge",
+        description="The status of auto merging a pull request.",
+        default=...,
+    )
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ] = Field(default=...)
+    draft: bool = Field(
+        description="Indicates whether or not the pull request is a draft.", default=...
+    )
+    merged: Union[bool, None] = Field(default=...)
+    mergeable: Union[bool, None] = Field(default=...)
+    rebaseable: Union[bool, None] = Field(default=...)
+    mergeable_state: str = Field(default=...)
+    merged_by: Union[User, None] = Field(title="User", default=...)
+    comments: int = Field(default=...)
+    review_comments: int = Field(default=...)
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request.",
+        default=...,
+    )
+    commits: int = Field(default=...)
+    additions: int = Field(default=...)
+    deletions: int = Field(default=...)
+    changed_files: int = Field(default=...)
+
+
+class Team(GitHubWebhookModel):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    name: str = Field(description="Name of the team", default=...)
+    id: int = Field(description="Unique identifier of the team", default=...)
+    node_id: str = Field(default=...)
+    slug: str = Field(default=...)
+    description: Union[str, None] = Field(
+        description="Description of the team", default=...
+    )
+    privacy: Literal["open", "closed", "secret"] = Field(default=...)
+    url: str = Field(description="URL for the team", default=...)
+    html_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    repositories_url: str = Field(default=...)
+    permission: str = Field(
+        description="Permission that the team will have for its repositories",
+        default=...,
+    )
+    parent: Missing[Union[TeamPropParent, None]] = Field(default=UNSET)
+
+
+class TeamPropParent(GitHubWebhookModel):
+    """TeamPropParent"""
+
+    name: str = Field(description="Name of the team", default=...)
+    id: int = Field(description="Unique identifier of the team", default=...)
+    node_id: str = Field(default=...)
+    slug: str = Field(default=...)
+    description: Union[str, None] = Field(
+        description="Description of the team", default=...
+    )
+    privacy: Literal["open", "closed", "secret"] = Field(default=...)
+    url: str = Field(description="URL for the team", default=...)
+    html_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    repositories_url: str = Field(default=...)
+    permission: str = Field(
+        description="Permission that the team will have for its repositories",
+        default=...,
+    )
+
+
+class Label(GitHubWebhookModel):
+    """Label"""
+
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    url: str = Field(description="URL for the label", default=...)
+    name: str = Field(description="The name of the label.", default=...)
+    description: Union[str, None] = Field(default=...)
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color",
+        default=...,
+    )
+    default: bool = Field(default=...)
+
+
+class Milestone(GitHubWebhookModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    labels_url: str = Field(default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    number: int = Field(description="The number of the milestone.", default=...)
+    title: str = Field(description="The title of the milestone.", default=...)
+    description: Union[str, None] = Field(default=...)
+    creator: User = Field(title="User", default=...)
+    open_issues: int = Field(default=...)
+    closed_issues: int = Field(default=...)
+    state: Literal["open", "closed"] = Field(
+        description="The state of the milestone.", default=...
+    )
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    due_on: Union[datetime, None] = Field(default=...)
+    closed_at: Union[datetime, None] = Field(default=...)
+
+
+class PullRequestPropHead(GitHubWebhookModel):
+    """PullRequestPropHead"""
+
+    label: str = Field(default=...)
+    ref: str = Field(default=...)
+    sha: str = Field(default=...)
+    user: User = Field(title="User", default=...)
+    repo: Union[Repository, None] = Field(
+        title="Repository", description="A git repository", default=...
+    )
+
+
+class PullRequestPropBase(GitHubWebhookModel):
+    """PullRequestPropBase"""
+
+    label: str = Field(default=...)
+    ref: str = Field(default=...)
+    sha: str = Field(default=...)
+    user: User = Field(title="User", default=...)
+    repo: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+
+
+class PullRequestPropLinks(GitHubWebhookModel):
+    """PullRequestPropLinks"""
+
+    self_: Link = Field(title="Link", default=..., alias="self")
+    html: Link = Field(title="Link", default=...)
+    issue: Link = Field(title="Link", default=...)
+    comments: Link = Field(title="Link", default=...)
+    review_comments: Link = Field(title="Link", default=...)
+    review_comment: Link = Field(title="Link", default=...)
+    commits: Link = Field(title="Link", default=...)
+    statuses: Link = Field(title="Link", default=...)
+
+
+class Link(GitHubWebhookModel):
+    """Link"""
+
+    href: str = Field(default=...)
+
+
+class AutoMerge(GitHubWebhookModel):
+    """PullRequestAutoMerge
+
+    The status of auto merging a pull request.
+    """
+
+    enabled_by: User = Field(title="User", default=...)
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use.", default=...
+    )
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message.", default=...
+    )
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit.", default=...
+    )
+
+
 class DeploymentStatusCreated(GitHubWebhookModel):
     """deployment_status created event"""
 
@@ -3410,7 +3679,9 @@ class DeploymentStatusCreatedPropDeploymentStatus(GitHubWebhookModel):
     url: str = Field(default=...)
     id: int = Field(default=...)
     node_id: str = Field(default=...)
-    state: str = Field(
+    state: Literal[
+        "pending", "in_progress", "success", "failure", "error", "waiting", "queued"
+    ] = Field(
         description="The new state. Can be `pending`, `success`, `failure`, or `error`.",
         default=...,
     )
@@ -3824,21 +4095,6 @@ class DiscussionLabeled(GitHubWebhookModel):
         title="InstallationLite", description="Installation", default=UNSET
     )
     organization: Missing[Organization] = Field(title="Organization", default=UNSET)
-
-
-class Label(GitHubWebhookModel):
-    """Label"""
-
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    url: str = Field(description="URL for the label", default=...)
-    name: str = Field(description="The name of the label.", default=...)
-    description: Union[str, None] = Field(default=...)
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color",
-        default=...,
-    )
-    default: bool = Field(default=...)
 
 
 class DiscussionLocked(GitHubWebhookModel):
@@ -5483,32 +5739,6 @@ class Issue(GitHubWebhookModel):
     state_reason: Missing[Union[str, None]] = Field(
         description="The reason for the current state", default=UNSET
     )
-
-
-class Milestone(GitHubWebhookModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    url: str = Field(default=...)
-    html_url: str = Field(default=...)
-    labels_url: str = Field(default=...)
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    number: int = Field(description="The number of the milestone.", default=...)
-    title: str = Field(description="The title of the milestone.", default=...)
-    description: Union[str, None] = Field(default=...)
-    creator: User = Field(title="User", default=...)
-    open_issues: int = Field(default=...)
-    closed_issues: int = Field(default=...)
-    state: Literal["open", "closed"] = Field(
-        description="The state of the milestone.", default=...
-    )
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    due_on: Union[datetime, None] = Field(default=...)
-    closed_at: Union[datetime, None] = Field(default=...)
 
 
 class IssuePropPullRequest(GitHubWebhookModel):
@@ -7169,52 +7399,6 @@ class MembershipAdded(GitHubWebhookModel):
     organization: Organization = Field(title="Organization", default=...)
     installation: Missing[InstallationLite] = Field(
         title="InstallationLite", description="Installation", default=UNSET
-    )
-
-
-class Team(GitHubWebhookModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    name: str = Field(description="Name of the team", default=...)
-    id: int = Field(description="Unique identifier of the team", default=...)
-    node_id: str = Field(default=...)
-    slug: str = Field(default=...)
-    description: Union[str, None] = Field(
-        description="Description of the team", default=...
-    )
-    privacy: Literal["open", "closed", "secret"] = Field(default=...)
-    url: str = Field(description="URL for the team", default=...)
-    html_url: str = Field(default=...)
-    members_url: str = Field(default=...)
-    repositories_url: str = Field(default=...)
-    permission: str = Field(
-        description="Permission that the team will have for its repositories",
-        default=...,
-    )
-    parent: Missing[Union[TeamPropParent, None]] = Field(default=UNSET)
-
-
-class TeamPropParent(GitHubWebhookModel):
-    """TeamPropParent"""
-
-    name: str = Field(description="Name of the team", default=...)
-    id: int = Field(description="Unique identifier of the team", default=...)
-    node_id: str = Field(default=...)
-    slug: str = Field(default=...)
-    description: Union[str, None] = Field(
-        description="Description of the team", default=...
-    )
-    privacy: Literal["open", "closed", "secret"] = Field(default=...)
-    url: str = Field(description="URL for the team", default=...)
-    html_url: str = Field(default=...)
-    members_url: str = Field(default=...)
-    repositories_url: str = Field(default=...)
-    permission: str = Field(
-        description="Permission that the team will have for its repositories",
-        default=...,
     )
 
 
@@ -9503,154 +9687,6 @@ class PullRequestAssigned(GitHubWebhookModel):
     sender: User = Field(title="User", default=...)
 
 
-class PullRequest(GitHubWebhookModel):
-    """Pull Request"""
-
-    url: str = Field(default=...)
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    html_url: str = Field(default=...)
-    diff_url: str = Field(default=...)
-    patch_url: str = Field(default=...)
-    issue_url: str = Field(default=...)
-    number: int = Field(
-        description="Number uniquely identifying the pull request within its repository.",
-        default=...,
-    )
-    state: Literal["open", "closed"] = Field(
-        description="State of this Pull Request. Either `open` or `closed`.",
-        default=...,
-    )
-    locked: bool = Field(default=...)
-    title: str = Field(description="The title of the pull request.", default=...)
-    user: User = Field(title="User", default=...)
-    body: Union[str, None] = Field(default=...)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    closed_at: Union[datetime, None] = Field(default=...)
-    merged_at: Union[datetime, None] = Field(default=...)
-    merge_commit_sha: Union[str, None] = Field(default=...)
-    assignee: Union[User, None] = Field(title="User", default=...)
-    assignees: List[User] = Field(default=...)
-    requested_reviewers: List[Union[User, Team]] = Field(default=...)
-    requested_teams: List[Team] = Field(default=...)
-    labels: List[Label] = Field(default=...)
-    milestone: Union[Milestone, None] = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-        default=...,
-    )
-    commits_url: str = Field(default=...)
-    review_comments_url: str = Field(default=...)
-    review_comment_url: str = Field(default=...)
-    comments_url: str = Field(default=...)
-    statuses_url: str = Field(default=...)
-    head: PullRequestPropHead = Field(default=...)
-    base: PullRequestPropBase = Field(default=...)
-    links: PullRequestPropLinks = Field(default=..., alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-        default=...,
-    )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="PullRequestAutoMerge",
-        description="The status of auto merging a pull request.",
-        default=...,
-    )
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ] = Field(default=...)
-    draft: bool = Field(
-        description="Indicates whether or not the pull request is a draft.", default=...
-    )
-    merged: Union[bool, None] = Field(default=...)
-    mergeable: Union[bool, None] = Field(default=...)
-    rebaseable: Union[bool, None] = Field(default=...)
-    mergeable_state: str = Field(default=...)
-    merged_by: Union[User, None] = Field(title="User", default=...)
-    comments: int = Field(default=...)
-    review_comments: int = Field(default=...)
-    maintainer_can_modify: bool = Field(
-        description="Indicates whether maintainers can modify the pull request.",
-        default=...,
-    )
-    commits: int = Field(default=...)
-    additions: int = Field(default=...)
-    deletions: int = Field(default=...)
-    changed_files: int = Field(default=...)
-
-
-class PullRequestPropHead(GitHubWebhookModel):
-    """PullRequestPropHead"""
-
-    label: str = Field(default=...)
-    ref: str = Field(default=...)
-    sha: str = Field(default=...)
-    user: User = Field(title="User", default=...)
-    repo: Union[Repository, None] = Field(
-        title="Repository", description="A git repository", default=...
-    )
-
-
-class PullRequestPropBase(GitHubWebhookModel):
-    """PullRequestPropBase"""
-
-    label: str = Field(default=...)
-    ref: str = Field(default=...)
-    sha: str = Field(default=...)
-    user: User = Field(title="User", default=...)
-    repo: Repository = Field(
-        title="Repository", description="A git repository", default=...
-    )
-
-
-class PullRequestPropLinks(GitHubWebhookModel):
-    """PullRequestPropLinks"""
-
-    self_: Link = Field(title="Link", default=..., alias="self")
-    html: Link = Field(title="Link", default=...)
-    issue: Link = Field(title="Link", default=...)
-    comments: Link = Field(title="Link", default=...)
-    review_comments: Link = Field(title="Link", default=...)
-    review_comment: Link = Field(title="Link", default=...)
-    commits: Link = Field(title="Link", default=...)
-    statuses: Link = Field(title="Link", default=...)
-
-
-class Link(GitHubWebhookModel):
-    """Link"""
-
-    href: str = Field(default=...)
-
-
-class AutoMerge(GitHubWebhookModel):
-    """PullRequestAutoMerge
-
-    The status of auto merging a pull request.
-    """
-
-    enabled_by: User = Field(title="User", default=...)
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use.", default=...
-    )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message.", default=...
-    )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit.", default=...
-    )
-
-
 class PullRequestAutoMergeDisabled(GitHubWebhookModel):
     """pull_request auto_merge_disabled event"""
 
@@ -10122,6 +10158,22 @@ class PullRequestEditedPropChangesPropBasePropSha(GitHubWebhookModel):
     from_: str = Field(default=..., alias="from")
 
 
+class PullRequestEnqueued(GitHubWebhookModel):
+    """pull_request enqueued event"""
+
+    action: Literal["enqueued"] = Field(default=...)
+    number: int = Field(description="The pull request number.", default=...)
+    pull_request: PullRequest = Field(title="Pull Request", default=...)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+    organization: Missing[Organization] = Field(title="Organization", default=UNSET)
+    sender: User = Field(title="User", default=...)
+
+
 class PullRequestLabeled(GitHubWebhookModel):
     """pull_request labeled event"""
 
@@ -10379,22 +10431,6 @@ class PullRequestOpenedPropPullRequestAllof1(GitHubWebhookModel):
     merged_at: None = Field(default=...)
     active_lock_reason: None = Field(default=...)
     merged_by: None = Field(default=...)
-
-
-class PullRequestQueued(GitHubWebhookModel):
-    """pull_request queued event"""
-
-    action: Literal["queued"] = Field(default=...)
-    number: int = Field(description="The pull request number.", default=...)
-    pull_request: PullRequest = Field(title="Pull Request", default=...)
-    repository: Repository = Field(
-        title="Repository", description="A git repository", default=...
-    )
-    installation: Missing[InstallationLite] = Field(
-        title="InstallationLite", description="Installation", default=UNSET
-    )
-    organization: Missing[Organization] = Field(title="Organization", default=UNSET)
-    sender: User = Field(title="User", default=...)
 
 
 class PullRequestReadyForReview(GitHubWebhookModel):
@@ -14051,9 +14087,7 @@ class SecretScanningAlertCreated(GitHubWebhookModel):
     """secret_scanning_alert created event"""
 
     action: Literal["created"] = Field(default=...)
-    alert: SecretScanningAlertCreatedPropAlert = Field(
-        description="The secret scanning alert involved in the event.", default=...
-    )
+    alert: SecretScanningAlertCreatedPropAlert = Field(default=...)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
@@ -14064,13 +14098,116 @@ class SecretScanningAlertCreated(GitHubWebhookModel):
 
 
 class SecretScanningAlertCreatedPropAlert(GitHubWebhookModel):
-    """SecretScanningAlertCreatedPropAlert
+    """SecretScanningAlertCreatedPropAlert"""
 
-    The secret scanning alert involved in the event.
-    """
+    number: int = Field(description="The security alert number.", default=...)
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: Union[datetime, None] = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    url: str = Field(description="The REST API URL of the alert resource.", default=...)
+    html_url: str = Field(
+        description="The GitHub URL of the alert resource.", default=...
+    )
+    locations_url: Missing[str] = Field(
+        description="The REST API URL of the code locations for this alert.",
+        default=UNSET,
+    )
+    state: Literal["open", "resolved"] = Field(default=...)
+    resolution: Union[None, None] = Field(default=...)
+    resolved_at: Union[None, None] = Field(default=...)
+    resolved_by: Union[None, None] = Field(default=...)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        description="An optional comment to resolve an alert.", default=UNSET
+    )
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected.", default=...
+    )
+    secret_type_display_name: Missing[str] = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."',
+        default=UNSET,
+    )
+    secret: Missing[str] = Field(
+        description="The secret that was detected.", default=UNSET
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        description="Whether push protection was bypassed for the detected secret.",
+        default=UNSET,
+    )
+    push_protection_bypassed_by: Missing[Union[User, None]] = Field(
+        title="User", default=UNSET
+    )
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
 
-    number: int = Field(default=...)
-    secret_type: str = Field(default=...)
+
+class SecretScanningAlert(GitHubWebhookModel):
+    """Secret scanning alert"""
+
+    number: int = Field(description="The security alert number.", default=...)
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: Union[datetime, None] = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    url: str = Field(description="The REST API URL of the alert resource.", default=...)
+    html_url: str = Field(
+        description="The GitHub URL of the alert resource.", default=...
+    )
+    locations_url: Missing[str] = Field(
+        description="The REST API URL of the code locations for this alert.",
+        default=UNSET,
+    )
+    state: Literal["open", "resolved"] = Field(default=...)
+    resolution: Union[
+        None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+    ] = Field(
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+        default=...,
+    )
+    resolved_at: Union[datetime, None] = Field(
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    resolved_by: Union[User, None] = Field(title="User", default=...)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        description="An optional comment to resolve an alert.", default=UNSET
+    )
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected.", default=...
+    )
+    secret_type_display_name: Missing[str] = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."',
+        default=UNSET,
+    )
+    secret: Missing[str] = Field(
+        description="The secret that was detected.", default=UNSET
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        description="Whether push protection was bypassed for the detected secret.",
+        default=UNSET,
+    )
+    push_protection_bypassed_by: Missing[Union[User, None]] = Field(
+        title="User", default=UNSET
+    )
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+
+
+class SecretScanningAlertCreatedPropAlertAllof1(GitHubWebhookModel):
+    """SecretScanningAlertCreatedPropAlertAllof1"""
+
     resolution: None = Field(default=...)
     resolved_by: None = Field(default=...)
     resolved_at: None = Field(default=...)
@@ -14110,9 +14247,7 @@ class SecretScanningAlertResolved(GitHubWebhookModel):
     """secret_scanning_alert resolved event"""
 
     action: Literal["resolved"] = Field(default=...)
-    alert: SecretScanningAlertResolvedPropAlert = Field(
-        description="The secret scanning alert involved in the event.", default=...
-    )
+    alert: SecretScanningAlertResolvedPropAlert = Field(default=...)
     repository: Repository = Field(
         title="Repository", description="A git repository", default=...
     )
@@ -14124,18 +14259,290 @@ class SecretScanningAlertResolved(GitHubWebhookModel):
 
 
 class SecretScanningAlertResolvedPropAlert(GitHubWebhookModel):
-    """SecretScanningAlertResolvedPropAlert
+    """SecretScanningAlertResolvedPropAlert"""
 
-    The secret scanning alert involved in the event.
-    """
-
-    number: int = Field(default=...)
-    secret_type: str = Field(default=...)
+    number: int = Field(description="The security alert number.", default=...)
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: Union[datetime, None] = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    url: str = Field(description="The REST API URL of the alert resource.", default=...)
+    html_url: str = Field(
+        description="The GitHub URL of the alert resource.", default=...
+    )
+    locations_url: Missing[str] = Field(
+        description="The REST API URL of the code locations for this alert.",
+        default=UNSET,
+    )
+    state: Literal["open", "resolved"] = Field(default=...)
     resolution: Literal[
-        "false_positive", "wontfix", "revoked", "used_in_tests"
+        "false_positive", "wont_fix", "revoked", "used_in_tests"
+    ] = Field(default=...)
+    resolved_at: datetime = Field(default=...)
+    resolved_by: User = Field(title="User", default=...)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        description="An optional comment to resolve an alert.", default=UNSET
+    )
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected.", default=...
+    )
+    secret_type_display_name: Missing[str] = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."',
+        default=UNSET,
+    )
+    secret: Missing[str] = Field(
+        description="The secret that was detected.", default=UNSET
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        description="Whether push protection was bypassed for the detected secret.",
+        default=UNSET,
+    )
+    push_protection_bypassed_by: Missing[Union[User, None]] = Field(
+        title="User", default=UNSET
+    )
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+
+
+class SecretScanningAlertResolvedPropAlertAllof1(GitHubWebhookModel):
+    """SecretScanningAlertResolvedPropAlertAllof1"""
+
+    resolution: Literal[
+        "false_positive", "wont_fix", "revoked", "used_in_tests"
     ] = Field(default=...)
     resolved_by: User = Field(title="User", default=...)
     resolved_at: datetime = Field(default=...)
+
+
+class SecretScanningAlertRevoked(GitHubWebhookModel):
+    """secret_scanning_alert revoked event"""
+
+    action: Literal["revoked"] = Field(default=...)
+    alert: SecretScanningAlertRevokedPropAlert = Field(default=...)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    organization: Missing[Organization] = Field(title="Organization", default=UNSET)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+    sender: User = Field(title="User", default=...)
+
+
+class SecretScanningAlertRevokedPropAlert(GitHubWebhookModel):
+    """SecretScanningAlertRevokedPropAlert"""
+
+    number: int = Field(description="The security alert number.", default=...)
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    updated_at: Union[datetime, None] = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=...,
+    )
+    url: str = Field(description="The REST API URL of the alert resource.", default=...)
+    html_url: str = Field(
+        description="The GitHub URL of the alert resource.", default=...
+    )
+    locations_url: Missing[str] = Field(
+        description="The REST API URL of the code locations for this alert.",
+        default=UNSET,
+    )
+    state: Literal["open", "resolved"] = Field(default=...)
+    resolution: Literal["revoked"] = Field(default=...)
+    resolved_at: datetime = Field(default=...)
+    resolved_by: User = Field(title="User", default=...)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        description="An optional comment to resolve an alert.", default=UNSET
+    )
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected.", default=...
+    )
+    secret_type_display_name: Missing[str] = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."',
+        default=UNSET,
+    )
+    secret: Missing[str] = Field(
+        description="The secret that was detected.", default=UNSET
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        description="Whether push protection was bypassed for the detected secret.",
+        default=UNSET,
+    )
+    push_protection_bypassed_by: Missing[Union[User, None]] = Field(
+        title="User", default=UNSET
+    )
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+
+
+class SecretScanningAlertRevokedPropAlertAllof1(GitHubWebhookModel):
+    """SecretScanningAlertRevokedPropAlertAllof1"""
+
+    resolution: Literal["revoked"] = Field(default=...)
+    resolved_by: User = Field(title="User", default=...)
+    resolved_at: datetime = Field(default=...)
+
+
+class SecretScanningAlertLocationCreated(GitHubWebhookModel):
+    """secret_scanning_alert_location created event"""
+
+    action: Literal["created"] = Field(default=...)
+    alert: SecretScanningAlert = Field(title="Secret scanning alert", default=...)
+    location: Union[
+        SecretScanningLocationOneof0,
+        SecretScanningLocationOneof1,
+        SecretScanningLocationOneof2,
+        SecretScanningLocationOneof3,
+    ] = Field(title="Secret Scanning Location", default=...)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    sender: User = Field(title="User", default=...)
+    organization: Missing[Organization] = Field(title="Organization", default=UNSET)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+
+
+class SecretScanningLocationOneof0(GitHubWebhookModel):
+    """SecretScanningLocationOneof0"""
+
+    type: Literal["commit"] = Field(
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
+        default=...,
+    )
+    details: SecretScanningLocationOneof0PropDetails = Field(
+        title="Secret Scanning Location Commit",
+        description="Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.",
+        default=...,
+    )
+
+
+class SecretScanningLocationOneof0PropDetails(GitHubWebhookModel):
+    """Secret Scanning Location Commit
+
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
+    """
+
+    path: str = Field(description="The file path in the repository", default=...)
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file", default=...
+    )
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file", default=...
+    )
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII",
+        default=...,
+    )
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII",
+        default=...,
+    )
+    blob_sha: str = Field(
+        description="SHA-1 hash ID of the associated blob", default=...
+    )
+    blob_url: str = Field(
+        description="The API URL to get the associated blob resource", default=...
+    )
+    commit_sha: str = Field(
+        description="SHA-1 hash ID of the associated commit", default=...
+    )
+    commit_url: str = Field(
+        description="The API URL to get the associated commit resource", default=...
+    )
+
+
+class SecretScanningLocationOneof1(GitHubWebhookModel):
+    """SecretScanningLocationOneof1"""
+
+    type: Literal["issue_title"] = Field(
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
+        default=...,
+    )
+    details: SecretScanningLocationOneof1PropDetails = Field(
+        title="Secret Scanning Location Issue Title",
+        description="Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.",
+        default=...,
+    )
+
+
+class SecretScanningLocationOneof1PropDetails(GitHubWebhookModel):
+    """Secret Scanning Location Issue Title
+
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
+    """
+
+    issue_title_url: str = Field(
+        description="The API URL to get the issue where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationOneof2(GitHubWebhookModel):
+    """SecretScanningLocationOneof2"""
+
+    type: Literal["issue_body"] = Field(
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
+        default=...,
+    )
+    details: SecretScanningLocationOneof2PropDetails = Field(
+        title="Secret Scanning Location Issue Body",
+        description="Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.",
+        default=...,
+    )
+
+
+class SecretScanningLocationOneof2PropDetails(GitHubWebhookModel):
+    """Secret Scanning Location Issue Body
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str = Field(
+        description="The API URL to get the issue where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationOneof3(GitHubWebhookModel):
+    """SecretScanningLocationOneof3"""
+
+    type: Literal["issue_comment"] = Field(
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
+        default=...,
+    )
+    details: SecretScanningLocationOneof3PropDetails = Field(
+        title="Secret Scanning Location Issue Comment",
+        description="Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.",
+        default=...,
+    )
+
+
+class SecretScanningLocationOneof3PropDetails(GitHubWebhookModel):
+    """Secret Scanning Location Issue Comment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str = Field(
+        description="The API URL to get the issue comment where the secret was detected.",
+        default=...,
+    )
 
 
 class SecurityAdvisoryPerformed(GitHubWebhookModel):
@@ -15209,6 +15616,11 @@ class WorkflowJobCompleted(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
+    deployment: Missing[Deployment] = Field(
+        title="Deployment",
+        description="The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
+        default=UNSET,
+    )
     workflow_job: WorkflowJobCompletedPropWorkflowJob = Field(default=...)
 
 
@@ -15225,7 +15637,7 @@ class WorkflowJobCompletedPropWorkflowJob(GitHubWebhookModel):
     check_run_url: str = Field(default=...)
     html_url: str = Field(default=...)
     url: str = Field(default=...)
-    status: Literal["queued", "in_progress", "completed"] = Field(
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
         description="The current status of the job. Can be `queued`, `in_progress`, or `completed`.",
         default=...,
     )
@@ -15283,7 +15695,7 @@ class WorkflowJob(GitHubWebhookModel):
     check_run_url: str = Field(default=...)
     html_url: str = Field(default=...)
     url: str = Field(default=...)
-    status: Literal["queued", "in_progress", "completed"] = Field(
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
         description="The current status of the job. Can be `queued`, `in_progress`, or `completed`.",
         default=...,
     )
@@ -15366,6 +15778,11 @@ class WorkflowJobInProgress(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
+    deployment: Missing[Deployment] = Field(
+        title="Deployment",
+        description="The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
+        default=UNSET,
+    )
     workflow_job: WorkflowJobInProgressPropWorkflowJob = Field(default=...)
 
 
@@ -15382,7 +15799,7 @@ class WorkflowJobInProgressPropWorkflowJob(GitHubWebhookModel):
     check_run_url: str = Field(default=...)
     html_url: str = Field(default=...)
     url: str = Field(default=...)
-    status: Literal["in_progress"] = Field(default=...)
+    status: Literal["queued", "in_progress"] = Field(default=...)
     steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
         default=...
     )
@@ -15423,7 +15840,7 @@ class WorkflowJobInProgressPropWorkflowJob(GitHubWebhookModel):
 class WorkflowJobInProgressPropWorkflowJobAllof1(GitHubWebhookModel):
     """WorkflowJobInProgressPropWorkflowJobAllof1"""
 
-    status: Literal["in_progress"] = Field(default=...)
+    status: Literal["queued", "in_progress"] = Field(default=...)
 
 
 class WorkflowJobQueued(GitHubWebhookModel):
@@ -15438,6 +15855,11 @@ class WorkflowJobQueued(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
+    deployment: Missing[Deployment] = Field(
+        title="Deployment",
+        description="The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
+        default=UNSET,
+    )
     workflow_job: WorkflowJobQueuedPropWorkflowJob = Field(default=...)
 
 
@@ -15454,7 +15876,7 @@ class WorkflowJobQueuedPropWorkflowJob(GitHubWebhookModel):
     check_run_url: str = Field(default=...)
     html_url: str = Field(default=...)
     url: str = Field(default=...)
-    status: Literal["queued"] = Field(default=...)
+    status: Literal["queued", "waiting"] = Field(default=...)
     steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
         default=...
     )
@@ -15495,7 +15917,84 @@ class WorkflowJobQueuedPropWorkflowJob(GitHubWebhookModel):
 class WorkflowJobQueuedPropWorkflowJobAllof1(GitHubWebhookModel):
     """WorkflowJobQueuedPropWorkflowJobAllof1"""
 
-    status: Literal["queued"] = Field(default=...)
+    status: Literal["queued", "waiting"] = Field(default=...)
+
+
+class WorkflowJobWaiting(GitHubWebhookModel):
+    """workflow_job waiting event"""
+
+    action: Literal["waiting"] = Field(default=...)
+    organization: Missing[Organization] = Field(title="Organization", default=UNSET)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    sender: User = Field(title="User", default=...)
+    deployment: Missing[Deployment] = Field(
+        title="Deployment",
+        description="The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
+        default=UNSET,
+    )
+    workflow_job: WorkflowJobWaitingPropWorkflowJob = Field(default=...)
+
+
+class WorkflowJobWaitingPropWorkflowJob(GitHubWebhookModel):
+    """WorkflowJobWaitingPropWorkflowJob"""
+
+    id: int = Field(default=...)
+    run_id: float = Field(default=...)
+    run_attempt: int = Field(default=...)
+    run_url: str = Field(default=...)
+    head_sha: str = Field(default=...)
+    node_id: str = Field(default=...)
+    name: str = Field(default=...)
+    check_run_url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    url: str = Field(default=...)
+    status: Literal["waiting"] = Field(default=...)
+    steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
+        default=...
+    )
+    conclusion: Union[
+        None, Literal["success", "failure", "cancelled", "skipped"]
+    ] = Field(default=...)
+    labels: List[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.',
+        default=...,
+    )
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.",
+        default=...,
+    )
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.",
+        default=...,
+    )
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.",
+        default=...,
+    )
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.",
+        default=...,
+    )
+    started_at: datetime = Field(default=...)
+    completed_at: Union[datetime, None] = Field(default=...)
+    workflow_name: Union[str, None] = Field(
+        description="The name of the workflow.", default=...
+    )
+    head_branch: Union[str, None] = Field(
+        description="The name of the current branch.", default=...
+    )
+    created_at: datetime = Field(default=...)
+
+
+class WorkflowJobWaitingPropWorkflowJobAllof1(GitHubWebhookModel):
+    """WorkflowJobWaitingPropWorkflowJobAllof1"""
+
+    status: Literal["waiting"] = Field(default=...)
 
 
 class WorkflowRunCompleted(GitHubWebhookModel):
@@ -16054,6 +16553,17 @@ DeploymentPropPayload.update_forward_refs()
 Workflow.update_forward_refs()
 DeploymentWorkflowRun.update_forward_refs()
 ReferencedWorkflow.update_forward_refs()
+DeploymentProtectionRuleRequested.update_forward_refs()
+PullRequest.update_forward_refs()
+Team.update_forward_refs()
+TeamPropParent.update_forward_refs()
+Label.update_forward_refs()
+Milestone.update_forward_refs()
+PullRequestPropHead.update_forward_refs()
+PullRequestPropBase.update_forward_refs()
+PullRequestPropLinks.update_forward_refs()
+Link.update_forward_refs()
+AutoMerge.update_forward_refs()
 DeploymentStatusCreated.update_forward_refs()
 DeploymentStatusCreatedPropDeploymentStatus.update_forward_refs()
 DeploymentStatusCreatedPropCheckRun.update_forward_refs()
@@ -16079,7 +16589,6 @@ DiscussionEditedPropChanges.update_forward_refs()
 DiscussionEditedPropChangesPropTitle.update_forward_refs()
 DiscussionEditedPropChangesPropBody.update_forward_refs()
 DiscussionLabeled.update_forward_refs()
-Label.update_forward_refs()
 DiscussionLocked.update_forward_refs()
 DiscussionLockedPropDiscussion.update_forward_refs()
 DiscussionLockedPropDiscussionAllof1.update_forward_refs()
@@ -16141,7 +16650,6 @@ InstallationTargetRenamedPropAccount.update_forward_refs()
 IssueCommentCreated.update_forward_refs()
 IssueCommentCreatedPropIssue.update_forward_refs()
 Issue.update_forward_refs()
-Milestone.update_forward_refs()
 IssuePropPullRequest.update_forward_refs()
 IssueCommentCreatedPropIssueAllof1.update_forward_refs()
 IssueComment.update_forward_refs()
@@ -16226,8 +16734,6 @@ MemberEditedPropChanges.update_forward_refs()
 MemberEditedPropChangesPropOldPermission.update_forward_refs()
 MemberRemoved.update_forward_refs()
 MembershipAdded.update_forward_refs()
-Team.update_forward_refs()
-TeamPropParent.update_forward_refs()
 MembershipRemoved.update_forward_refs()
 MembershipRemovedPropTeamOneof1.update_forward_refs()
 MergeGroupChecksRequested.update_forward_refs()
@@ -16378,12 +16884,6 @@ PublicEvent.update_forward_refs()
 PublicEventPropRepository.update_forward_refs()
 PublicEventPropRepositoryAllof1.update_forward_refs()
 PullRequestAssigned.update_forward_refs()
-PullRequest.update_forward_refs()
-PullRequestPropHead.update_forward_refs()
-PullRequestPropBase.update_forward_refs()
-PullRequestPropLinks.update_forward_refs()
-Link.update_forward_refs()
-AutoMerge.update_forward_refs()
 PullRequestAutoMergeDisabled.update_forward_refs()
 PullRequestAutoMergeEnabled.update_forward_refs()
 PullRequestClosed.update_forward_refs()
@@ -16403,6 +16903,7 @@ PullRequestEditedPropChangesPropTitle.update_forward_refs()
 PullRequestEditedPropChangesPropBase.update_forward_refs()
 PullRequestEditedPropChangesPropBasePropRef.update_forward_refs()
 PullRequestEditedPropChangesPropBasePropSha.update_forward_refs()
+PullRequestEnqueued.update_forward_refs()
 PullRequestLabeled.update_forward_refs()
 PullRequestLocked.update_forward_refs()
 PullRequestMilestoned.update_forward_refs()
@@ -16411,7 +16912,6 @@ PullRequestMilestonedPropPullRequestAllof1.update_forward_refs()
 PullRequestOpened.update_forward_refs()
 PullRequestOpenedPropPullRequest.update_forward_refs()
 PullRequestOpenedPropPullRequestAllof1.update_forward_refs()
-PullRequestQueued.update_forward_refs()
 PullRequestReadyForReview.update_forward_refs()
 PullRequestReadyForReviewPropPullRequest.update_forward_refs()
 PullRequestReadyForReviewPropPullRequestAllof1.update_forward_refs()
@@ -16563,10 +17063,25 @@ RepositoryVulnerabilityAlertResolvePropAlert.update_forward_refs()
 RepositoryVulnerabilityAlertResolvePropAlertAllof1.update_forward_refs()
 SecretScanningAlertCreated.update_forward_refs()
 SecretScanningAlertCreatedPropAlert.update_forward_refs()
+SecretScanningAlert.update_forward_refs()
+SecretScanningAlertCreatedPropAlertAllof1.update_forward_refs()
 SecretScanningAlertReopened.update_forward_refs()
 SecretScanningAlertReopenedPropAlert.update_forward_refs()
 SecretScanningAlertResolved.update_forward_refs()
 SecretScanningAlertResolvedPropAlert.update_forward_refs()
+SecretScanningAlertResolvedPropAlertAllof1.update_forward_refs()
+SecretScanningAlertRevoked.update_forward_refs()
+SecretScanningAlertRevokedPropAlert.update_forward_refs()
+SecretScanningAlertRevokedPropAlertAllof1.update_forward_refs()
+SecretScanningAlertLocationCreated.update_forward_refs()
+SecretScanningLocationOneof0.update_forward_refs()
+SecretScanningLocationOneof0PropDetails.update_forward_refs()
+SecretScanningLocationOneof1.update_forward_refs()
+SecretScanningLocationOneof1PropDetails.update_forward_refs()
+SecretScanningLocationOneof2.update_forward_refs()
+SecretScanningLocationOneof2PropDetails.update_forward_refs()
+SecretScanningLocationOneof3.update_forward_refs()
+SecretScanningLocationOneof3PropDetails.update_forward_refs()
 SecurityAdvisoryPerformed.update_forward_refs()
 SecurityAdvisoryPerformedPropSecurityAdvisory.update_forward_refs()
 SecurityAdvisoryPerformedPropSecurityAdvisoryPropCvss.update_forward_refs()
@@ -16664,6 +17179,9 @@ WorkflowJobInProgressPropWorkflowJobAllof1.update_forward_refs()
 WorkflowJobQueued.update_forward_refs()
 WorkflowJobQueuedPropWorkflowJob.update_forward_refs()
 WorkflowJobQueuedPropWorkflowJobAllof1.update_forward_refs()
+WorkflowJobWaiting.update_forward_refs()
+WorkflowJobWaitingPropWorkflowJob.update_forward_refs()
+WorkflowJobWaitingPropWorkflowJobAllof1.update_forward_refs()
 WorkflowRunCompleted.update_forward_refs()
 WorkflowRunCompletedPropWorkflowRun.update_forward_refs()
 WorkflowRun.update_forward_refs()
@@ -16814,6 +17332,17 @@ __all__ = [
     "Workflow",
     "DeploymentWorkflowRun",
     "ReferencedWorkflow",
+    "DeploymentProtectionRuleRequested",
+    "PullRequest",
+    "Team",
+    "TeamPropParent",
+    "Label",
+    "Milestone",
+    "PullRequestPropHead",
+    "PullRequestPropBase",
+    "PullRequestPropLinks",
+    "Link",
+    "AutoMerge",
     "DeploymentStatusCreated",
     "DeploymentStatusCreatedPropDeploymentStatus",
     "DeploymentStatusCreatedPropCheckRun",
@@ -16839,7 +17368,6 @@ __all__ = [
     "DiscussionEditedPropChangesPropTitle",
     "DiscussionEditedPropChangesPropBody",
     "DiscussionLabeled",
-    "Label",
     "DiscussionLocked",
     "DiscussionLockedPropDiscussion",
     "DiscussionLockedPropDiscussionAllof1",
@@ -16901,7 +17429,6 @@ __all__ = [
     "IssueCommentCreated",
     "IssueCommentCreatedPropIssue",
     "Issue",
-    "Milestone",
     "IssuePropPullRequest",
     "IssueCommentCreatedPropIssueAllof1",
     "IssueComment",
@@ -16986,8 +17513,6 @@ __all__ = [
     "MemberEditedPropChangesPropOldPermission",
     "MemberRemoved",
     "MembershipAdded",
-    "Team",
-    "TeamPropParent",
     "MembershipRemoved",
     "MembershipRemovedPropTeamOneof1",
     "MergeGroupChecksRequested",
@@ -17138,12 +17663,6 @@ __all__ = [
     "PublicEventPropRepository",
     "PublicEventPropRepositoryAllof1",
     "PullRequestAssigned",
-    "PullRequest",
-    "PullRequestPropHead",
-    "PullRequestPropBase",
-    "PullRequestPropLinks",
-    "Link",
-    "AutoMerge",
     "PullRequestAutoMergeDisabled",
     "PullRequestAutoMergeEnabled",
     "PullRequestClosed",
@@ -17163,6 +17682,7 @@ __all__ = [
     "PullRequestEditedPropChangesPropBase",
     "PullRequestEditedPropChangesPropBasePropRef",
     "PullRequestEditedPropChangesPropBasePropSha",
+    "PullRequestEnqueued",
     "PullRequestLabeled",
     "PullRequestLocked",
     "PullRequestMilestoned",
@@ -17171,7 +17691,6 @@ __all__ = [
     "PullRequestOpened",
     "PullRequestOpenedPropPullRequest",
     "PullRequestOpenedPropPullRequestAllof1",
-    "PullRequestQueued",
     "PullRequestReadyForReview",
     "PullRequestReadyForReviewPropPullRequest",
     "PullRequestReadyForReviewPropPullRequestAllof1",
@@ -17323,10 +17842,25 @@ __all__ = [
     "RepositoryVulnerabilityAlertResolvePropAlertAllof1",
     "SecretScanningAlertCreated",
     "SecretScanningAlertCreatedPropAlert",
+    "SecretScanningAlert",
+    "SecretScanningAlertCreatedPropAlertAllof1",
     "SecretScanningAlertReopened",
     "SecretScanningAlertReopenedPropAlert",
     "SecretScanningAlertResolved",
     "SecretScanningAlertResolvedPropAlert",
+    "SecretScanningAlertResolvedPropAlertAllof1",
+    "SecretScanningAlertRevoked",
+    "SecretScanningAlertRevokedPropAlert",
+    "SecretScanningAlertRevokedPropAlertAllof1",
+    "SecretScanningAlertLocationCreated",
+    "SecretScanningLocationOneof0",
+    "SecretScanningLocationOneof0PropDetails",
+    "SecretScanningLocationOneof1",
+    "SecretScanningLocationOneof1PropDetails",
+    "SecretScanningLocationOneof2",
+    "SecretScanningLocationOneof2PropDetails",
+    "SecretScanningLocationOneof3",
+    "SecretScanningLocationOneof3PropDetails",
     "SecurityAdvisoryPerformed",
     "SecurityAdvisoryPerformedPropSecurityAdvisory",
     "SecurityAdvisoryPerformedPropSecurityAdvisoryPropCvss",
@@ -17424,6 +17958,9 @@ __all__ = [
     "WorkflowJobQueued",
     "WorkflowJobQueuedPropWorkflowJob",
     "WorkflowJobQueuedPropWorkflowJobAllof1",
+    "WorkflowJobWaiting",
+    "WorkflowJobWaitingPropWorkflowJob",
+    "WorkflowJobWaitingPropWorkflowJobAllof1",
     "WorkflowRunCompleted",
     "WorkflowRunCompletedPropWorkflowRun",
     "WorkflowRun",
