@@ -2895,10 +2895,17 @@ class RepositoryRulesetPropLinksType(TypedDict):
     """RepositoryRulesetPropLinks"""
 
     self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
+    html: NotRequired[RepositoryRulesetPropLinksPropHtmlType]
 
 
 class RepositoryRulesetPropLinksPropSelfType(TypedDict):
     """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
 
     href: NotRequired[str]
 
@@ -13282,6 +13289,7 @@ __all__ = [
     "RepositoryRulesetType",
     "RepositoryRulesetPropLinksType",
     "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksPropHtmlType",
     "ActionsBillingUsageType",
     "ActionsBillingUsagePropMinutesUsedBreakdownType",
     "PackagesBillingUsageType",

@@ -4156,12 +4156,19 @@ class RepositoryRulesetPropLinks(GitHubRestModel):
     self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
         default=UNSET, alias="self"
     )
+    html: Missing[RepositoryRulesetPropLinksPropHtml] = Field(default=UNSET)
 
 
 class RepositoryRulesetPropLinksPropSelf(GitHubRestModel):
     """RepositoryRulesetPropLinksPropSelf"""
 
     href: Missing[str] = Field(description="The URL of the ruleset", default=UNSET)
+
+
+class RepositoryRulesetPropLinksPropHtml(GitHubRestModel):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: Missing[str] = Field(description="The html URL of the ruleset", default=UNSET)
 
 
 class ActionsBillingUsage(GitHubRestModel):
@@ -18851,6 +18858,7 @@ RepositoryRuleTagNamePatternPropParameters.update_forward_refs()
 RepositoryRuleset.update_forward_refs()
 RepositoryRulesetPropLinks.update_forward_refs()
 RepositoryRulesetPropLinksPropSelf.update_forward_refs()
+RepositoryRulesetPropLinksPropHtml.update_forward_refs()
 ActionsBillingUsage.update_forward_refs()
 ActionsBillingUsagePropMinutesUsedBreakdown.update_forward_refs()
 PackagesBillingUsage.update_forward_refs()
@@ -19859,6 +19867,7 @@ __all__ = [
     "RepositoryRuleset",
     "RepositoryRulesetPropLinks",
     "RepositoryRulesetPropLinksPropSelf",
+    "RepositoryRulesetPropLinksPropHtml",
     "ActionsBillingUsage",
     "ActionsBillingUsagePropMinutesUsedBreakdown",
     "PackagesBillingUsage",

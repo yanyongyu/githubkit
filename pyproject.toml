@@ -142,8 +142,8 @@ types_output = "githubkit/webhooks/types.py"
 "/definitions/auto-merge/properties/commit_title" = { type = ["string", "null"] }
 "/definitions/auto-merge/properties/commit_message" = { type = ["string", "null"] }
 
-# https://github.com/octokit/webhooks/issues/806
-"/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive","wont_fix","revoked","used_in_tests"] }
+# [FIXED] https://github.com/octokit/webhooks/issues/806
+# "/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive", "wont_fix", "revoked", "used_in_tests"] }
 
 [tool.codegen.field_overrides]
 "+1" = "plus_one"
