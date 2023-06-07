@@ -503,16 +503,24 @@ class ReposClient:
     def get_org_rulesets(
         self,
         org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[RepositoryRuleset]]":
         url = f"/orgs/{org}/rulesets"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[RepositoryRuleset],
             error_models={
@@ -524,16 +532,24 @@ class ReposClient:
     async def async_get_org_rulesets(
         self,
         org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[RepositoryRuleset]]":
         url = f"/orgs/{org}/rulesets"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[RepositoryRuleset],
             error_models={
@@ -11581,16 +11597,24 @@ class ReposClient:
         owner: str,
         repo: str,
         branch: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Union[RepositoryRuleCreation, RepositoryRuleUpdate, RepositoryRuleDeletion, RepositoryRuleRequiredLinearHistory, RepositoryRuleRequiredDeployments, RepositoryRuleRequiredSignatures, RepositoryRulePullRequest, RepositoryRuleRequiredStatusChecks, RepositoryRuleNonFastForward, RepositoryRuleCommitMessagePattern, RepositoryRuleCommitAuthorEmailPattern, RepositoryRuleCommitterEmailPattern, RepositoryRuleBranchNamePattern, RepositoryRuleTagNamePattern]]]":
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[
                 Union[
@@ -11617,16 +11641,24 @@ class ReposClient:
         owner: str,
         repo: str,
         branch: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[Union[RepositoryRuleCreation, RepositoryRuleUpdate, RepositoryRuleDeletion, RepositoryRuleRequiredLinearHistory, RepositoryRuleRequiredDeployments, RepositoryRuleRequiredSignatures, RepositoryRulePullRequest, RepositoryRuleRequiredStatusChecks, RepositoryRuleNonFastForward, RepositoryRuleCommitMessagePattern, RepositoryRuleCommitAuthorEmailPattern, RepositoryRuleCommitterEmailPattern, RepositoryRuleBranchNamePattern, RepositoryRuleTagNamePattern]]]":
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[
                 Union[
@@ -11652,6 +11684,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
         includes_parents: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
@@ -11659,6 +11693,8 @@ class ReposClient:
         url = f"/repos/{owner}/{repo}/rulesets"
 
         params = {
+            "per_page": per_page,
+            "page": page,
             "includes_parents": includes_parents,
         }
 
@@ -11680,6 +11716,8 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
         includes_parents: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
@@ -11687,6 +11725,8 @@ class ReposClient:
         url = f"/repos/{owner}/{repo}/rulesets"
 
         params = {
+            "per_page": per_page,
+            "page": page,
             "includes_parents": includes_parents,
         }
 
@@ -12742,6 +12782,9 @@ class ReposClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[Team],
+            error_models={
+                "404": BasicError,
+            },
         )
 
     async def async_list_teams(
@@ -12768,6 +12811,9 @@ class ReposClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[Team],
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def get_all_topics(

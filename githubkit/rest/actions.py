@@ -35,11 +35,13 @@ from .types import (
     ReposOwnerRepoActionsVariablesNamePatchBodyType,
     OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
+    OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
+    ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
     ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
     OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType,
@@ -109,6 +111,7 @@ from .models import (
     ReposOwnerRepoActionsWorkflowsGetResponse200,
     OrgsOrgActionsRequiredWorkflowsGetResponse200,
     ReposOwnerRepoActionsSecretsSecretNamePutBody,
+    OrgsOrgActionsRunnersGenerateJitconfigPostBody,
     OrgsOrgActionsVariablesNameRepositoriesPutBody,
     ReposOwnerRepoActionsOidcCustomizationSubPutBody,
     ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
@@ -120,7 +123,9 @@ from .models import (
     ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody,
     OrgsOrgActionsPermissionsRepositoriesGetResponse200,
     OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
+    OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
     OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
+    ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody,
     ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
     ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
     ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
@@ -1494,6 +1499,116 @@ class ActionsClient:
             url,
             headers=exclude_unset(headers),
             response_model=List[RunnerApplication],
+        )
+
+    @overload
+    def generate_runner_jitconfig_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    @overload
+    def generate_runner_jitconfig_for_org(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        runner_group_id: int,
+        labels: List[str],
+        work_folder: Missing[str] = "_work",
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    def generate_runner_jitconfig_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        url = f"/orgs/{org}/actions/runners/generate-jitconfig"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnersGenerateJitconfigPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_generate_runner_jitconfig_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    @overload
+    async def async_generate_runner_jitconfig_for_org(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        runner_group_id: int,
+        labels: List[str],
+        work_folder: Missing[str] = "_work",
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    async def async_generate_runner_jitconfig_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        url = f"/orgs/{org}/actions/runners/generate-jitconfig"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgActionsRunnersGenerateJitconfigPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
         )
 
     def create_registration_token_for_org(
@@ -4770,6 +4885,126 @@ class ActionsClient:
             url,
             headers=exclude_unset(headers),
             response_model=List[RunnerApplication],
+        )
+
+    @overload
+    def generate_runner_jitconfig_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    @overload
+    def generate_runner_jitconfig_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        runner_group_id: int,
+        labels: List[str],
+        work_folder: Missing[str] = "_work",
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    def generate_runner_jitconfig_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        url = f"/repos/{owner}/{repo}/actions/runners/generate-jitconfig"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_generate_runner_jitconfig_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    @overload
+    async def async_generate_runner_jitconfig_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        runner_group_id: int,
+        labels: List[str],
+        work_folder: Missing[str] = "_work",
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        ...
+
+    async def async_generate_runner_jitconfig_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]":
+        url = f"/repos/{owner}/{repo}/actions/runners/generate-jitconfig"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
         )
 
     def create_registration_token_for_repo(

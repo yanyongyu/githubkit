@@ -2211,6 +2211,7 @@ class ApiOverview(GitHubRestModel):
     importer: Missing[List[str]] = Field(default=UNSET)
     actions: Missing[List[str]] = Field(default=UNSET)
     dependabot: Missing[List[str]] = Field(default=UNSET)
+    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
 
 
 class ApiOverviewPropSshKeyFingerprints(GitHubRestModel):
@@ -2220,6 +2221,15 @@ class ApiOverviewPropSshKeyFingerprints(GitHubRestModel):
     sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
     sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
     sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
+
+
+class ApiOverviewPropDomains(GitHubRestModel):
+    """ApiOverviewPropDomains"""
+
+    website: Missing[List[str]] = Field(default=UNSET)
+    codespaces: Missing[List[str]] = Field(default=UNSET)
+    copilot: Missing[List[str]] = Field(default=UNSET)
+    packages: Missing[List[str]] = Field(default=UNSET)
 
 
 class SecurityAndAnalysisPropAdvancedSecurity(GitHubRestModel):
@@ -3783,7 +3793,7 @@ class OrgRulesetConditions(GitHubRestModel):
 class RepositoryRuleCreation(GitHubRestModel):
     """creation
 
-    Parameters to be used for the creation rule
+    Only allow users with bypass permission to create matching refs.
     """
 
     type: Literal["creation"] = Field(default=...)
@@ -3792,7 +3802,7 @@ class RepositoryRuleCreation(GitHubRestModel):
 class RepositoryRuleUpdate(GitHubRestModel):
     """update
 
-    Parameters to be used for the update rule
+    Only allow users with bypass permission to update matching refs.
     """
 
     type: Literal["update"] = Field(default=...)
@@ -3810,7 +3820,7 @@ class RepositoryRuleUpdatePropParameters(GitHubRestModel):
 class RepositoryRuleDeletion(GitHubRestModel):
     """deletion
 
-    Parameters to be used for the deletion rule
+    Only allow users with bypass permissions to delete matching refs.
     """
 
     type: Literal["deletion"] = Field(default=...)
@@ -3819,7 +3829,7 @@ class RepositoryRuleDeletion(GitHubRestModel):
 class RepositoryRuleRequiredLinearHistory(GitHubRestModel):
     """required_linear_history
 
-    Parameters to be used for the required_linear_history rule
+    Prevent merge commits from being pushed to matching branches.
     """
 
     type: Literal["required_linear_history"] = Field(default=...)
@@ -3828,7 +3838,8 @@ class RepositoryRuleRequiredLinearHistory(GitHubRestModel):
 class RepositoryRuleRequiredDeployments(GitHubRestModel):
     """required_deployments
 
-    Parameters to be used for the required_deployments rule
+    Choose which environments must be successfully deployed to before branches can
+    be merged into a branch that matches this rule.
     """
 
     type: Literal["required_deployments"] = Field(default=...)
@@ -3849,7 +3860,7 @@ class RepositoryRuleRequiredDeploymentsPropParameters(GitHubRestModel):
 class RepositoryRuleRequiredSignatures(GitHubRestModel):
     """required_signatures
 
-    Parameters to be used for the required_signatures rule
+    Commits pushed to matching branches must have verified signatures.
     """
 
     type: Literal["required_signatures"] = Field(default=...)
@@ -3858,7 +3869,8 @@ class RepositoryRuleRequiredSignatures(GitHubRestModel):
 class RepositoryRulePullRequest(GitHubRestModel):
     """pull_request
 
-    Parameters to be used for the pull_request rule
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
     type: Literal["pull_request"] = Field(default=...)
@@ -3910,7 +3922,10 @@ class RepositoryRuleParamsStatusCheckConfiguration(GitHubRestModel):
 class RepositoryRuleRequiredStatusChecks(GitHubRestModel):
     """required_status_checks
 
-    Parameters to be used for the required_status_checks rule
+    Choose which status checks must pass before branches can be merged into a branch
+    that matches this rule. When enabled, commits must first be pushed to another
+    branch, then merged or pushed directly to a branch that matches this rule after
+    status checks have passed.
     """
 
     type: Literal["required_status_checks"] = Field(default=...)
@@ -3934,7 +3949,7 @@ class RepositoryRuleRequiredStatusChecksPropParameters(GitHubRestModel):
 class RepositoryRuleNonFastForward(GitHubRestModel):
     """non_fast_forward
 
-    Parameters to be used for the non_fast_forward rule
+    Prevent users with push access from force pushing to branches.
     """
 
     type: Literal["non_fast_forward"] = Field(default=...)
@@ -4131,6 +4146,8 @@ class RepositoryRuleset(GitHubRestModel):
             ]
         ]
     ] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
 
 
 class RepositoryRulesetPropLinks(GitHubRestModel):
@@ -13371,6 +13388,36 @@ class OrgsOrgActionsRunnersGetResponse200(GitHubRestModel):
     runners: List[Runner] = Field(default=...)
 
 
+class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubRestModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str = Field(description="The name of the new runner.", default=...)
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to.", default=...
+    )
+    labels: List[str] = Field(
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+        max_items=100,
+        min_items=1,
+        default=...,
+    )
+    work_folder: Missing[str] = Field(
+        description="The working directory to be used for job execution, relative to the runner install directory.",
+        default="_work",
+    )
+
+
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubRestModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+
+    runner: Runner = Field(
+        title="Self hosted runners", description="A self hosted runner", default=...
+    )
+    encoded_jit_config: str = Field(
+        description="The base64 encoded runner configuration.", default=...
+    )
+
+
 class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200(GitHubRestModel):
     """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
 
@@ -14654,6 +14701,25 @@ class ReposOwnerRepoActionsRunnersGetResponse200(GitHubRestModel):
 
     total_count: int = Field(default=...)
     runners: List[Runner] = Field(default=...)
+
+
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubRestModel):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str = Field(description="The name of the new runner.", default=...)
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to.", default=...
+    )
+    labels: List[str] = Field(
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+        max_items=100,
+        min_items=1,
+        default=...,
+    )
+    work_folder: Missing[str] = Field(
+        description="The working directory to be used for job execution, relative to the runner install directory.",
+        default="_work",
+    )
 
 
 class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
@@ -18680,6 +18746,7 @@ MarketplacePurchasePropMarketplacePendingChange.update_forward_refs()
 MarketplacePurchasePropMarketplacePurchase.update_forward_refs()
 ApiOverview.update_forward_refs()
 ApiOverviewPropSshKeyFingerprints.update_forward_refs()
+ApiOverviewPropDomains.update_forward_refs()
 SecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
 SecurityAndAnalysisPropSecretScanning.update_forward_refs()
 SecurityAndAnalysisPropSecretScanningPushProtection.update_forward_refs()
@@ -19266,6 +19333,8 @@ OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody.update_forward_refs()
 OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody.update_forward_refs()
 OrgsOrgActionsRunnersGetResponse200.update_forward_refs()
+OrgsOrgActionsRunnersGenerateJitconfigPostBody.update_forward_refs()
+OrgsOrgActionsRunnersGenerateJitconfigPostResponse201.update_forward_refs()
 OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200.update_forward_refs()
 OrgsOrgActionsRunnersRunnerIdLabelsPutBody.update_forward_refs()
 OrgsOrgActionsRunnersRunnerIdLabelsPostBody.update_forward_refs()
@@ -19356,6 +19425,7 @@ ReposOwnerRepoActionsOrganizationVariablesGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsPermissionsPutBody.update_forward_refs()
 ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunnersGetResponse200.update_forward_refs()
+ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody.update_forward_refs()
 ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody.update_forward_refs()
 ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody.update_forward_refs()
 ReposOwnerRepoActionsRunsGetResponse200.update_forward_refs()
@@ -19684,6 +19754,7 @@ __all__ = [
     "MarketplacePurchasePropMarketplacePurchase",
     "ApiOverview",
     "ApiOverviewPropSshKeyFingerprints",
+    "ApiOverviewPropDomains",
     "SecurityAndAnalysisPropAdvancedSecurity",
     "SecurityAndAnalysisPropSecretScanning",
     "SecurityAndAnalysisPropSecretScanningPushProtection",
@@ -20270,6 +20341,8 @@ __all__ = [
     "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200",
     "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody",
     "OrgsOrgActionsRunnersGetResponse200",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBody",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",
     "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",
     "OrgsOrgActionsRunnersRunnerIdLabelsPutBody",
     "OrgsOrgActionsRunnersRunnerIdLabelsPostBody",
@@ -20360,6 +20433,7 @@ __all__ = [
     "ReposOwnerRepoActionsPermissionsPutBody",
     "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200",
     "ReposOwnerRepoActionsRunnersGetResponse200",
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",
     "ReposOwnerRepoActionsRunsGetResponse200",
