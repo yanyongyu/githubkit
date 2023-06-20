@@ -837,6 +837,19 @@ class CodeScanningClient:
         headers: Optional[Dict[str, str]] = None,
         state: Literal["configured", "not-configured"],
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
+        languages: Missing[
+            List[
+                Literal[
+                    "c-cpp",
+                    "csharp",
+                    "go",
+                    "java-kotlin",
+                    "javascript-typescript",
+                    "python",
+                    "ruby",
+                ]
+            ]
+        ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 
@@ -895,6 +908,19 @@ class CodeScanningClient:
         headers: Optional[Dict[str, str]] = None,
         state: Literal["configured", "not-configured"],
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
+        languages: Missing[
+            List[
+                Literal[
+                    "c-cpp",
+                    "csharp",
+                    "go",
+                    "java-kotlin",
+                    "javascript-typescript",
+                    "python",
+                    "ruby",
+                ]
+            ]
+        ] = UNSET,
     ) -> "Response[EmptyObject]":
         ...
 

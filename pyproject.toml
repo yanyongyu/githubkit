@@ -121,8 +121,10 @@ output_dir = "githubkit/rest/"
 # https://github.com/github/rest-api-description/issues/2507
 "/components/schemas/organization-full/properties/company" = { type = ["string", "null"] }
 "/components/schemas/organization-full/properties/email" = { type = ["string", "null"] }
+"/components/schemas/organization-full/properties/location" = { type = ["string", "null"] }
 "/components/schemas/team-organization/properties/company" = { type = ["string", "null"] }
 "/components/schemas/team-organization/properties/email" = { type = ["string", "null"] }
+"/components/schemas/team-organization/properties/location" = { type = ["string", "null"] }
 
 [tool.codegen.webhook]
 schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"

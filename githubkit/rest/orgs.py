@@ -24,12 +24,12 @@ from .types import (
     UserMembershipsOrgsOrgPatchBodyType,
     OrgsOrgHooksHookIdConfigPatchBodyType,
     OrgsOrgMembershipsUsernamePutBodyType,
+    OrgsOrgPersonalAccessTokensPostBodyType,
     OrgsOrgHooksHookIdPatchBodyPropConfigType,
+    OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
-    OrganizationsOrgPersonalAccessTokensPostBodyType,
-    OrganizationsOrgPersonalAccessTokensPatIdPostBodyType,
-    OrganizationsOrgPersonalAccessTokenRequestsPostBodyType,
-    OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
+    OrgsOrgPersonalAccessTokenRequestsPostBodyType,
+    OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
 )
 from .models import (
     Team,
@@ -56,15 +56,15 @@ from .models import (
     OrgsOrgMembershipsUsernamePutBody,
     OrgsOrgInstallationsGetResponse200,
     OrganizationProgrammaticAccessGrant,
+    OrgsOrgPersonalAccessTokensPostBody,
+    OrgsOrgPersonalAccessTokensPatIdPostBody,
     OrganizationProgrammaticAccessGrantRequest,
     OrgsOrgOutsideCollaboratorsUsernamePutBody,
-    OrganizationsOrgPersonalAccessTokensPostBody,
-    OrganizationsOrgPersonalAccessTokensPatIdPostBody,
+    OrgsOrgPersonalAccessTokenRequestsPostBody,
     OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-    OrganizationsOrgPersonalAccessTokenRequestsPostBody,
     OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
-    OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
+    OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
 )
 
 if TYPE_CHECKING:
@@ -124,766 +124,6 @@ class OrgsClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[OrganizationSimple],
-        )
-
-    def list_pat_grant_requests(
-        self,
-        org: str,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        sort: Missing[Literal["created_at"]] = "created_at",
-        direction: Missing[Literal["asc", "desc"]] = "desc",
-        owner: Missing[List[str]] = UNSET,
-        repository: Missing[str] = UNSET,
-        permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
-        url = f"/organizations/{org}/personal-access-token-requests"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "sort": sort,
-            "direction": direction,
-            "owner": owner,
-            "repository": repository,
-            "permission": permission,
-            "last_used_before": last_used_before,
-            "last_used_after": last_used_after,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrantRequest],
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_list_pat_grant_requests(
-        self,
-        org: str,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        sort: Missing[Literal["created_at"]] = "created_at",
-        direction: Missing[Literal["asc", "desc"]] = "desc",
-        owner: Missing[List[str]] = UNSET,
-        repository: Missing[str] = UNSET,
-        permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
-        url = f"/organizations/{org}/personal-access-token-requests"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "sort": sort,
-            "direction": direction,
-            "owner": owner,
-            "repository": repository,
-            "permission": permission,
-            "last_used_before": last_used_before,
-            "last_used_after": last_used_after,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrantRequest],
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    @overload
-    def review_pat_grant_requests_in_bulk(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokenRequestsPostBodyType,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    @overload
-    def review_pat_grant_requests_in_bulk(
-        self,
-        org: str,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        pat_request_ids: Missing[List[int]] = UNSET,
-        action: Literal["approve", "deny"],
-        reason: Missing[Union[str, None]] = UNSET,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    def review_pat_grant_requests_in_bulk(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/organizations/{org}/personal-access-token-requests"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrganizationsOrgPersonalAccessTokenRequestsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    @overload
-    async def async_review_pat_grant_requests_in_bulk(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokenRequestsPostBodyType,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    @overload
-    async def async_review_pat_grant_requests_in_bulk(
-        self,
-        org: str,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        pat_request_ids: Missing[List[int]] = UNSET,
-        action: Literal["approve", "deny"],
-        reason: Missing[Union[str, None]] = UNSET,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    async def async_review_pat_grant_requests_in_bulk(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrganizationsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/organizations/{org}/personal-access-token-requests"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrganizationsOrgPersonalAccessTokenRequestsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    @overload
-    def review_pat_grant_request(
-        self,
-        org: str,
-        pat_request_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
-    ) -> "Response":
-        ...
-
-    @overload
-    def review_pat_grant_request(
-        self,
-        org: str,
-        pat_request_id: int,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        action: Literal["approve", "deny"],
-        reason: Missing[Union[str, None]] = UNSET,
-    ) -> "Response":
-        ...
-
-    def review_pat_grant_request(
-        self,
-        org: str,
-        pat_request_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    @overload
-    async def async_review_pat_grant_request(
-        self,
-        org: str,
-        pat_request_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
-    ) -> "Response":
-        ...
-
-    @overload
-    async def async_review_pat_grant_request(
-        self,
-        org: str,
-        pat_request_id: int,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        action: Literal["approve", "deny"],
-        reason: Missing[Union[str, None]] = UNSET,
-    ) -> "Response":
-        ...
-
-    async def async_review_pat_grant_request(
-        self,
-        org: str,
-        pat_request_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    def list_pat_grant_request_repositories(
-        self,
-        org: str,
-        pat_request_id: int,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[MinimalRepository]]":
-        url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_list_pat_grant_request_repositories(
-        self,
-        org: str,
-        pat_request_id: int,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[MinimalRepository]]":
-        url = f"/organizations/{org}/personal-access-token-requests/{pat_request_id}/repositories"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    def list_pat_grants(
-        self,
-        org: str,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        sort: Missing[Literal["created_at"]] = "created_at",
-        direction: Missing[Literal["asc", "desc"]] = "desc",
-        owner: Missing[List[str]] = UNSET,
-        repository: Missing[str] = UNSET,
-        permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
-        url = f"/organizations/{org}/personal-access-tokens"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "sort": sort,
-            "direction": direction,
-            "owner": owner,
-            "repository": repository,
-            "permission": permission,
-            "last_used_before": last_used_before,
-            "last_used_after": last_used_after,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrant],
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_list_pat_grants(
-        self,
-        org: str,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        sort: Missing[Literal["created_at"]] = "created_at",
-        direction: Missing[Literal["asc", "desc"]] = "desc",
-        owner: Missing[List[str]] = UNSET,
-        repository: Missing[str] = UNSET,
-        permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
-        url = f"/organizations/{org}/personal-access-tokens"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "sort": sort,
-            "direction": direction,
-            "owner": owner,
-            "repository": repository,
-            "permission": permission,
-            "last_used_before": last_used_before,
-            "last_used_after": last_used_after,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrant],
-            error_models={
-                "500": BasicError,
-                "422": ValidationError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    @overload
-    def update_pat_accesses(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokensPostBodyType,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    @overload
-    def update_pat_accesses(
-        self,
-        org: str,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        action: Literal["revoke"],
-        pat_ids: List[int],
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    def update_pat_accesses(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/organizations/{org}/personal-access-tokens"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrganizationsOrgPersonalAccessTokensPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    @overload
-    async def async_update_pat_accesses(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokensPostBodyType,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    @overload
-    async def async_update_pat_accesses(
-        self,
-        org: str,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        action: Literal["revoke"],
-        pat_ids: List[int],
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        ...
-
-    async def async_update_pat_accesses(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrganizationsOrgPersonalAccessTokensPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/organizations/{org}/personal-access-tokens"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrganizationsOrgPersonalAccessTokensPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    @overload
-    def update_pat_access(
-        self,
-        org: str,
-        pat_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokensPatIdPostBodyType,
-    ) -> "Response":
-        ...
-
-    @overload
-    def update_pat_access(
-        self,
-        org: str,
-        pat_id: int,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        action: Literal["revoke"],
-    ) -> "Response":
-        ...
-
-    def update_pat_access(
-        self,
-        org: str,
-        pat_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrganizationsOrgPersonalAccessTokensPatIdPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    @overload
-    async def async_update_pat_access(
-        self,
-        org: str,
-        pat_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrganizationsOrgPersonalAccessTokensPatIdPostBodyType,
-    ) -> "Response":
-        ...
-
-    @overload
-    async def async_update_pat_access(
-        self,
-        org: str,
-        pat_id: int,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        action: Literal["revoke"],
-    ) -> "Response":
-        ...
-
-    async def async_update_pat_access(
-        self,
-        org: str,
-        pat_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrganizationsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
-        **kwargs,
-    ) -> "Response":
-        url = f"/organizations/{org}/personal-access-tokens/{pat_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrganizationsOrgPersonalAccessTokensPatIdPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    def list_pat_grant_repositories(
-        self,
-        org: str,
-        pat_id: int,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[MinimalRepository]]":
-        url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-            },
-        )
-
-    async def async_list_pat_grant_repositories(
-        self,
-        org: str,
-        pat_id: int,
-        per_page: Missing[int] = 30,
-        page: Missing[int] = 1,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[MinimalRepository]]":
-        url = f"/organizations/{org}/personal-access-tokens/{pat_id}/repositories"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
-            error_models={
-                "500": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-            },
         )
 
     def get(
@@ -2935,6 +2175,770 @@ class OrgsClient:
             headers=exclude_unset(headers),
             error_models={
                 "422": OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
+            },
+        )
+
+    def list_pat_grant_requests(
+        self,
+        org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
+        url = f"/orgs/{org}/personal-access-token-requests"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "sort": sort,
+            "direction": direction,
+            "owner": owner,
+            "repository": repository,
+            "permission": permission,
+            "last_used_before": last_used_before,
+            "last_used_after": last_used_after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[OrganizationProgrammaticAccessGrantRequest],
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_list_pat_grant_requests(
+        self,
+        org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrganizationProgrammaticAccessGrantRequest]]":
+        url = f"/orgs/{org}/personal-access-token-requests"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "sort": sort,
+            "direction": direction,
+            "owner": owner,
+            "repository": repository,
+            "permission": permission,
+            "last_used_before": last_used_before,
+            "last_used_after": last_used_after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[OrganizationProgrammaticAccessGrantRequest],
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    def review_pat_grant_requests_in_bulk(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    @overload
+    def review_pat_grant_requests_in_bulk(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        pat_request_ids: Missing[List[int]] = UNSET,
+        action: Literal["approve", "deny"],
+        reason: Missing[Union[str, None]] = UNSET,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    def review_pat_grant_requests_in_bulk(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/orgs/{org}/personal-access-token-requests"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPersonalAccessTokenRequestsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    async def async_review_pat_grant_requests_in_bulk(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    @overload
+    async def async_review_pat_grant_requests_in_bulk(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        pat_request_ids: Missing[List[int]] = UNSET,
+        action: Literal["approve", "deny"],
+        reason: Missing[Union[str, None]] = UNSET,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    async def async_review_pat_grant_requests_in_bulk(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/orgs/{org}/personal-access-token-requests"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPersonalAccessTokenRequestsPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    def review_pat_grant_request(
+        self,
+        org: str,
+        pat_request_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def review_pat_grant_request(
+        self,
+        org: str,
+        pat_request_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        action: Literal["approve", "deny"],
+        reason: Missing[Union[str, None]] = UNSET,
+    ) -> "Response":
+        ...
+
+    def review_pat_grant_request(
+        self,
+        org: str,
+        pat_request_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/personal-access-token-requests/{pat_request_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    async def async_review_pat_grant_request(
+        self,
+        org: str,
+        pat_request_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_review_pat_grant_request(
+        self,
+        org: str,
+        pat_request_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        action: Literal["approve", "deny"],
+        reason: Missing[Union[str, None]] = UNSET,
+    ) -> "Response":
+        ...
+
+    async def async_review_pat_grant_request(
+        self,
+        org: str,
+        pat_request_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/personal-access-token-requests/{pat_request_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(
+            OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
+        )
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    def list_pat_grant_request_repositories(
+        self,
+        org: str,
+        pat_request_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[MinimalRepository]]":
+        url = (
+            f"/orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories"
+        )
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[MinimalRepository],
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_list_pat_grant_request_repositories(
+        self,
+        org: str,
+        pat_request_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[MinimalRepository]]":
+        url = (
+            f"/orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories"
+        )
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[MinimalRepository],
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    def list_pat_grants(
+        self,
+        org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
+        url = f"/orgs/{org}/personal-access-tokens"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "sort": sort,
+            "direction": direction,
+            "owner": owner,
+            "repository": repository,
+            "permission": permission,
+            "last_used_before": last_used_before,
+            "last_used_after": last_used_after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[OrganizationProgrammaticAccessGrant],
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_list_pat_grants(
+        self,
+        org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        sort: Missing[Literal["created_at"]] = "created_at",
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        owner: Missing[List[str]] = UNSET,
+        repository: Missing[str] = UNSET,
+        permission: Missing[str] = UNSET,
+        last_used_before: Missing[datetime] = UNSET,
+        last_used_after: Missing[datetime] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrganizationProgrammaticAccessGrant]]":
+        url = f"/orgs/{org}/personal-access-tokens"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "sort": sort,
+            "direction": direction,
+            "owner": owner,
+            "repository": repository,
+            "permission": permission,
+            "last_used_before": last_used_before,
+            "last_used_after": last_used_after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[OrganizationProgrammaticAccessGrant],
+            error_models={
+                "500": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    def update_pat_accesses(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokensPostBodyType,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    @overload
+    def update_pat_accesses(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        action: Literal["revoke"],
+        pat_ids: List[int],
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    def update_pat_accesses(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/orgs/{org}/personal-access-tokens"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPersonalAccessTokensPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_pat_accesses(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokensPostBodyType,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    @overload
+    async def async_update_pat_accesses(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        action: Literal["revoke"],
+        pat_ids: List[int],
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        ...
+
+    async def async_update_pat_accesses(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/orgs/{org}/personal-access-tokens"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPersonalAccessTokensPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    def update_pat_access(
+        self,
+        org: str,
+        pat_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def update_pat_access(
+        self,
+        org: str,
+        pat_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        action: Literal["revoke"],
+    ) -> "Response":
+        ...
+
+    def update_pat_access(
+        self,
+        org: str,
+        pat_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/personal-access-tokens/{pat_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_pat_access(
+        self,
+        org: str,
+        pat_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_update_pat_access(
+        self,
+        org: str,
+        pat_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        action: Literal["revoke"],
+    ) -> "Response":
+        ...
+
+    async def async_update_pat_access(
+        self,
+        org: str,
+        pat_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/personal-access-tokens/{pat_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def list_pat_grant_repositories(
+        self,
+        org: str,
+        pat_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[MinimalRepository]]":
+        url = f"/orgs/{org}/personal-access-tokens/{pat_id}/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[MinimalRepository],
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_list_pat_grant_repositories(
+        self,
+        org: str,
+        pat_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[MinimalRepository]]":
+        url = f"/orgs/{org}/personal-access-tokens/{pat_id}/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[MinimalRepository],
+            error_models={
+                "500": BasicError,
+                "404": BasicError,
+                "403": BasicError,
             },
         )
 

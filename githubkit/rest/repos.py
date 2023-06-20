@@ -5002,6 +5002,10 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationError,
+                "403": BasicError,
+            },
         )
 
     async def async_remove_collaborator(
@@ -5020,6 +5024,10 @@ class ReposClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
+            error_models={
+                "422": ValidationError,
+                "403": BasicError,
+            },
         )
 
     def get_collaborator_permission_level(
@@ -11267,9 +11275,7 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             response_model=Release,
-            error_models={
-                "404": BasicError,
-            },
+            error_models={},
         )
 
     async def async_get_release(
@@ -11289,9 +11295,7 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             response_model=Release,
-            error_models={
-                "404": BasicError,
-            },
+            error_models={},
         )
 
     def delete_release(
@@ -11686,7 +11690,7 @@ class ReposClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
-        includes_parents: Missing[bool] = UNSET,
+        includes_parents: Missing[bool] = True,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[RepositoryRuleset]]":
@@ -11718,7 +11722,7 @@ class ReposClient:
         repo: str,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
-        includes_parents: Missing[bool] = UNSET,
+        includes_parents: Missing[bool] = True,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[RepositoryRuleset]]":
@@ -11909,7 +11913,7 @@ class ReposClient:
         owner: str,
         repo: str,
         ruleset_id: int,
-        includes_parents: Missing[bool] = UNSET,
+        includes_parents: Missing[bool] = True,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepositoryRuleset]":
@@ -11938,7 +11942,7 @@ class ReposClient:
         owner: str,
         repo: str,
         ruleset_id: int,
-        includes_parents: Missing[bool] = UNSET,
+        includes_parents: Missing[bool] = True,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[RepositoryRuleset]":

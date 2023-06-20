@@ -2453,165 +2453,6 @@ class OrganizationSimple(GitHubRestModel):
     description: Union[str, None] = Field(default=...)
 
 
-class OrganizationProgrammaticAccessGrantRequest(GitHubRestModel):
-    """Simple Organization Programmatic Access Grant Request
-
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
-    """
-
-    id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests.",
-        default=...,
-    )
-    reason: Union[str, None] = Field(
-        description="Reason for requesting access.", default=...
-    )
-    owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user.", default=...
-    )
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested.", default=...
-    )
-    repositories_url: str = Field(
-        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`.",
-        default=...,
-    )
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission.",
-        default=...,
-    )
-    created_at: str = Field(
-        description="Date and time when the request for access was created.",
-        default=...,
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired.",
-        default=...,
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires.",
-        default=...,
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication.",
-        default=...,
-    )
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubRestModel):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-    ] = Field(default=UNSET)
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
-    GitHubRestModel, extra=Extra.allow
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
-    GitHubRestModel, extra=Extra.allow
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
-    GitHubRestModel, extra=Extra.allow
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
-
-
-class OrganizationProgrammaticAccessGrant(GitHubRestModel):
-    """Organization Programmatic Access Grant
-
-    Minimal representation of an organization programmatic access grant for
-    enumerations
-    """
-
-    id: int = Field(
-        description="Unique identifier of the fine-grained personal access token. The `pat_id` used to get details about an approved fine-grained personal access token.",
-        default=...,
-    )
-    owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user.", default=...
-    )
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested.", default=...
-    )
-    repositories_url: str = Field(
-        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`.",
-        default=...,
-    )
-    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission.",
-        default=...,
-    )
-    access_granted_at: str = Field(
-        description="Date and time when the fine-grained personal access token was approved to access the organization.",
-        default=...,
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired.",
-        default=...,
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires.",
-        default=...,
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication.",
-        default=...,
-    )
-
-
-class OrganizationProgrammaticAccessGrantPropPermissions(GitHubRestModel):
-    """OrganizationProgrammaticAccessGrantPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
-        default=UNSET
-    )
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
-    GitHubRestModel, extra=Extra.allow
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
-    GitHubRestModel, extra=Extra.allow
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(
-    GitHubRestModel, extra=Extra.allow
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
-
-
 class OrganizationFull(GitHubRestModel):
     """Organization Full
 
@@ -2633,7 +2474,7 @@ class OrganizationFull(GitHubRestModel):
     name: Missing[str] = Field(default=UNSET)
     company: Missing[Union[str, None]] = Field(default=UNSET)
     blog: Missing[str] = Field(default=UNSET)
-    location: Missing[str] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
     twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
     is_verified: Missing[bool] = Field(default=UNSET)
@@ -3679,6 +3520,165 @@ class PackageVersionPropMetadataPropDocker(GitHubRestModel):
     tag: Missing[List[str]] = Field(default=UNSET)
 
 
+class OrganizationProgrammaticAccessGrantRequest(GitHubRestModel):
+    """Simple Organization Programmatic Access Grant Request
+
+    Minimal representation of an organization programmatic access grant request for
+    enumerations
+    """
+
+    id: int = Field(
+        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests.",
+        default=...,
+    )
+    reason: Union[str, None] = Field(
+        description="Reason for requesting access.", default=...
+    )
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested.", default=...
+    )
+    repositories_url: str = Field(
+        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`.",
+        default=...,
+    )
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission.",
+        default=...,
+    )
+    created_at: str = Field(
+        description="Date and time when the request for access was created.",
+        default=...,
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired.",
+        default=...,
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires.",
+        default=...,
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication.",
+        default=...,
+    )
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubRestModel):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: Missing[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
+    ] = Field(default=UNSET)
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
+
+
+class OrganizationProgrammaticAccessGrant(GitHubRestModel):
+    """Organization Programmatic Access Grant
+
+    Minimal representation of an organization programmatic access grant for
+    enumerations
+    """
+
+    id: int = Field(
+        description="Unique identifier of the fine-grained personal access token. The `pat_id` used to get details about an approved fine-grained personal access token.",
+        default=...,
+    )
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested.", default=...
+    )
+    repositories_url: str = Field(
+        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`.",
+        default=...,
+    )
+    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission.",
+        default=...,
+    )
+    access_granted_at: str = Field(
+        description="Date and time when the fine-grained personal access token was approved to access the organization.",
+        default=...,
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired.",
+        default=...,
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires.",
+        default=...,
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication.",
+        default=...,
+    )
+
+
+class OrganizationProgrammaticAccessGrantPropPermissions(GitHubRestModel):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
+        default=UNSET
+    )
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(
+    GitHubRestModel, extra=Extra.allow
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
+
+
 class Project(GitHubRestModel):
     """Project
 
@@ -4307,7 +4307,7 @@ class TeamOrganization(GitHubRestModel):
     name: Missing[str] = Field(default=UNSET)
     company: Missing[Union[str, None]] = Field(default=UNSET)
     blog: Missing[str] = Field(default=UNSET)
-    location: Missing[str] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
     twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
     is_verified: Missing[bool] = Field(default=UNSET)
@@ -4771,6 +4771,7 @@ class RateLimitOverviewPropResources(GitHubRestModel):
     core: RateLimit = Field(title="Rate Limit", default=...)
     graphql: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
     search: RateLimit = Field(title="Rate Limit", default=...)
+    code_search: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
     source_import: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
     integration_manifest: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
     code_scanning_upload: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
@@ -6782,13 +6783,12 @@ class CodeScanningDefaultSetup(GitHubRestModel):
     languages: Missing[
         List[
             Literal[
-                "c",
-                "cpp",
+                "c-cpp",
                 "csharp",
                 "go",
-                "java",
+                "java-kotlin",
+                "javascript-typescript",
                 "javascript",
-                "kotlin",
                 "python",
                 "ruby",
                 "typescript",
@@ -6815,6 +6815,22 @@ class CodeScanningDefaultSetupUpdate(GitHubRestModel):
     )
     query_suite: Missing[Literal["default", "extended"]] = Field(
         description="CodeQL query suite to be used.", default=UNSET
+    )
+    languages: Missing[
+        List[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+            ]
+        ]
+    ] = Field(
+        description="CodeQL languages to be analyzed. Supported values are: `c-cpp`, `csharp`, `go`, `java-kotlin`, `javascript-typescript`, `python`, and `ruby`.",
+        default=UNSET,
     )
 
 
@@ -13116,62 +13132,6 @@ class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubRestModel):
     )
 
 
-class OrganizationsOrgPersonalAccessTokenRequestsPostBody(GitHubRestModel):
-    """OrganizationsOrgPersonalAccessTokenRequestsPostBody"""
-
-    pat_request_ids: Missing[List[int]] = Field(
-        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
-        max_items=100,
-        min_items=1,
-        default=UNSET,
-    )
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the requests.", default=...
-    )
-    reason: Missing[Union[str, None]] = Field(
-        description="Reason for approving or denying the requests. Max 1024 characters.",
-        max_length=1024,
-        default=UNSET,
-    )
-
-
-class OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubRestModel):
-    """OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
-
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request.", default=...
-    )
-    reason: Missing[Union[str, None]] = Field(
-        description="Reason for approving or denying the request. Max 1024 characters.",
-        max_length=1024,
-        default=UNSET,
-    )
-
-
-class OrganizationsOrgPersonalAccessTokensPostBody(GitHubRestModel):
-    """OrganizationsOrgPersonalAccessTokensPostBody"""
-
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token.",
-        default=...,
-    )
-    pat_ids: List[int] = Field(
-        description="The IDs of the fine-grained personal access tokens.",
-        max_items=100,
-        min_items=1,
-        default=...,
-    )
-
-
-class OrganizationsOrgPersonalAccessTokensPatIdPostBody(GitHubRestModel):
-    """OrganizationsOrgPersonalAccessTokensPatIdPostBody"""
-
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token.",
-        default=...,
-    )
-
-
 class OrgsOrgPatchBody(GitHubRestModel):
     """OrgsOrgPatchBody"""
 
@@ -13905,6 +13865,62 @@ class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubRestModel):
 
     message: Missing[str] = Field(default=UNSET)
     documentation_url: Missing[str] = Field(default=UNSET)
+
+
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubRestModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: Missing[List[int]] = Field(
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
+        max_items=100,
+        min_items=1,
+        default=UNSET,
+    )
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests.", default=...
+    )
+    reason: Missing[Union[str, None]] = Field(
+        description="Reason for approving or denying the requests. Max 1024 characters.",
+        max_length=1024,
+        default=UNSET,
+    )
+
+
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubRestModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request.", default=...
+    )
+    reason: Missing[Union[str, None]] = Field(
+        description="Reason for approving or denying the request. Max 1024 characters.",
+        max_length=1024,
+        default=UNSET,
+    )
+
+
+class OrgsOrgPersonalAccessTokensPostBody(GitHubRestModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
+
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token.",
+        default=...,
+    )
+    pat_ids: List[int] = Field(
+        description="The IDs of the fine-grained personal access tokens.",
+        max_items=100,
+        min_items=1,
+        default=...,
+    )
+
+
+class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubRestModel):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token.",
+        default=...,
+    )
 
 
 class OrgsOrgProjectsPostBody(GitHubRestModel):
@@ -18765,16 +18781,6 @@ Thread.update_forward_refs()
 ThreadPropSubject.update_forward_refs()
 ThreadSubscription.update_forward_refs()
 OrganizationSimple.update_forward_refs()
-OrganizationProgrammaticAccessGrantRequest.update_forward_refs()
-OrganizationProgrammaticAccessGrantRequestPropPermissions.update_forward_refs()
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization.update_forward_refs()
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository.update_forward_refs()
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther.update_forward_refs()
-OrganizationProgrammaticAccessGrant.update_forward_refs()
-OrganizationProgrammaticAccessGrantPropPermissions.update_forward_refs()
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization.update_forward_refs()
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepository.update_forward_refs()
-OrganizationProgrammaticAccessGrantPropPermissionsPropOther.update_forward_refs()
 OrganizationFull.update_forward_refs()
 OrganizationFullPropPlan.update_forward_refs()
 ActionsCacheUsageOrgEnterprise.update_forward_refs()
@@ -18824,6 +18830,16 @@ PackageVersion.update_forward_refs()
 PackageVersionPropMetadata.update_forward_refs()
 PackageVersionPropMetadataPropContainer.update_forward_refs()
 PackageVersionPropMetadataPropDocker.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequest.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissions.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository.update_forward_refs()
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther.update_forward_refs()
+OrganizationProgrammaticAccessGrant.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissions.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepository.update_forward_refs()
+OrganizationProgrammaticAccessGrantPropPermissionsPropOther.update_forward_refs()
 Project.update_forward_refs()
 RepositoryRulesetBypassActor.update_forward_refs()
 RepositoryRulesetConditions.update_forward_refs()
@@ -19326,10 +19342,6 @@ MarkdownPostBody.update_forward_refs()
 NotificationsPutBody.update_forward_refs()
 NotificationsPutResponse202.update_forward_refs()
 NotificationsThreadsThreadIdSubscriptionPutBody.update_forward_refs()
-OrganizationsOrgPersonalAccessTokenRequestsPostBody.update_forward_refs()
-OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody.update_forward_refs()
-OrganizationsOrgPersonalAccessTokensPostBody.update_forward_refs()
-OrganizationsOrgPersonalAccessTokensPatIdPostBody.update_forward_refs()
 OrgsOrgPatchBody.update_forward_refs()
 OrgsOrgActionsCacheUsageByRepositoryGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsPutBody.update_forward_refs()
@@ -19382,6 +19394,10 @@ OrgsOrgMigrationsPostBody.update_forward_refs()
 OrgsOrgOutsideCollaboratorsUsernamePutBody.update_forward_refs()
 OrgsOrgOutsideCollaboratorsUsernamePutResponse202.update_forward_refs()
 OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422.update_forward_refs()
+OrgsOrgPersonalAccessTokenRequestsPostBody.update_forward_refs()
+OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody.update_forward_refs()
+OrgsOrgPersonalAccessTokensPostBody.update_forward_refs()
+OrgsOrgPersonalAccessTokensPatIdPostBody.update_forward_refs()
 OrgsOrgProjectsPostBody.update_forward_refs()
 OrgsOrgReposPostBody.update_forward_refs()
 OrgsOrgRulesetsPostBody.update_forward_refs()
@@ -19774,16 +19790,6 @@ __all__ = [
     "ThreadPropSubject",
     "ThreadSubscription",
     "OrganizationSimple",
-    "OrganizationProgrammaticAccessGrantRequest",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrant",
-    "OrganizationProgrammaticAccessGrantPropPermissions",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
     "OrganizationFull",
     "OrganizationFullPropPlan",
     "ActionsCacheUsageOrgEnterprise",
@@ -19833,6 +19839,16 @@ __all__ = [
     "PackageVersionPropMetadata",
     "PackageVersionPropMetadataPropContainer",
     "PackageVersionPropMetadataPropDocker",
+    "OrganizationProgrammaticAccessGrantRequest",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
+    "OrganizationProgrammaticAccessGrant",
+    "OrganizationProgrammaticAccessGrantPropPermissions",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
     "Project",
     "RepositoryRulesetBypassActor",
     "RepositoryRulesetConditions",
@@ -20335,10 +20351,6 @@ __all__ = [
     "NotificationsPutBody",
     "NotificationsPutResponse202",
     "NotificationsThreadsThreadIdSubscriptionPutBody",
-    "OrganizationsOrgPersonalAccessTokenRequestsPostBody",
-    "OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",
-    "OrganizationsOrgPersonalAccessTokensPostBody",
-    "OrganizationsOrgPersonalAccessTokensPatIdPostBody",
     "OrgsOrgPatchBody",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
     "OrgsOrgActionsPermissionsPutBody",
@@ -20391,6 +20403,10 @@ __all__ = [
     "OrgsOrgOutsideCollaboratorsUsernamePutBody",
     "OrgsOrgOutsideCollaboratorsUsernamePutResponse202",
     "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",
+    "OrgsOrgPersonalAccessTokenRequestsPostBody",
+    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",
+    "OrgsOrgPersonalAccessTokensPostBody",
+    "OrgsOrgPersonalAccessTokensPatIdPostBody",
     "OrgsOrgProjectsPostBody",
     "OrgsOrgReposPostBody",
     "OrgsOrgRulesetsPostBody",

@@ -1736,103 +1736,6 @@ class OrganizationSimpleType(TypedDict):
     description: Union[str, None]
 
 
-class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
-
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
-    """
-
-    id: int
-    reason: Union[str, None]
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
-    created_at: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
-    ]
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType(
-    TypedDict
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType(
-    TypedDict
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
-
-
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
-
-    Minimal representation of an organization programmatic access grant for
-    enumerations
-    """
-
-    id: int
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
-
-
 class OrganizationFullType(TypedDict):
     """Organization Full
 
@@ -1854,7 +1757,7 @@ class OrganizationFullType(TypedDict):
     name: NotRequired[str]
     company: NotRequired[Union[str, None]]
     blog: NotRequired[str]
-    location: NotRequired[str]
+    location: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
     twitter_username: NotRequired[Union[str, None]]
     is_verified: NotRequired[bool]
@@ -2544,6 +2447,103 @@ class PackageVersionPropMetadataPropDockerType(TypedDict):
     tag: NotRequired[List[str]]
 
 
+class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
+    """Simple Organization Programmatic Access Grant Request
+
+    Minimal representation of an organization programmatic access grant request for
+    enumerations
+    """
+
+    id: int
+    reason: Union[str, None]
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
+    created_at: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
+    ]
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
+
+
+class OrganizationProgrammaticAccessGrantType(TypedDict):
+    """Organization Programmatic Access Grant
+
+    Minimal representation of an organization programmatic access grant for
+    enumerations
+    """
+
+    id: int
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
+    access_granted_at: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
+
+
 class ProjectType(TypedDict):
     """Project
 
@@ -2976,7 +2976,7 @@ class TeamOrganizationType(TypedDict):
     name: NotRequired[str]
     company: NotRequired[Union[str, None]]
     blog: NotRequired[str]
-    location: NotRequired[str]
+    location: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
     twitter_username: NotRequired[Union[str, None]]
     is_verified: NotRequired[bool]
@@ -3337,6 +3337,7 @@ class RateLimitOverviewPropResourcesType(TypedDict):
     core: RateLimitType
     graphql: NotRequired[RateLimitType]
     search: RateLimitType
+    code_search: NotRequired[RateLimitType]
     source_import: NotRequired[RateLimitType]
     integration_manifest: NotRequired[RateLimitType]
     code_scanning_upload: NotRequired[RateLimitType]
@@ -4833,13 +4834,12 @@ class CodeScanningDefaultSetupType(TypedDict):
     languages: NotRequired[
         List[
             Literal[
-                "c",
-                "cpp",
+                "c-cpp",
                 "csharp",
                 "go",
-                "java",
+                "java-kotlin",
+                "javascript-typescript",
                 "javascript",
-                "kotlin",
                 "python",
                 "ruby",
                 "typescript",
@@ -4858,6 +4858,19 @@ class CodeScanningDefaultSetupUpdateType(TypedDict):
 
     state: Literal["configured", "not-configured"]
     query_suite: NotRequired[Literal["default", "extended"]]
+    languages: NotRequired[
+        List[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+            ]
+        ]
+    ]
 
 
 class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
@@ -9692,34 +9705,6 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
     ignored: NotRequired[bool]
 
 
-class OrganizationsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
-    """OrganizationsOrgPersonalAccessTokenRequestsPostBody"""
-
-    pat_request_ids: NotRequired[List[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
-
-
-class OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
-    """OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
-
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
-
-
-class OrganizationsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrganizationsOrgPersonalAccessTokensPostBody"""
-
-    action: Literal["revoke"]
-    pat_ids: List[int]
-
-
-class OrganizationsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
-    """OrganizationsOrgPersonalAccessTokensPatIdPostBody"""
-
-    action: Literal["revoke"]
-
-
 class OrgsOrgPatchBodyType(TypedDict):
     """OrgsOrgPatchBody"""
 
@@ -10149,6 +10134,34 @@ class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
 
     message: NotRequired[str]
     documentation_url: NotRequired[str]
+
+
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: NotRequired[List[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
+
+
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
+
+
+class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
+
+    action: Literal["revoke"]
+    pat_ids: List[int]
+
+
+class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+
+    action: Literal["revoke"]
 
 
 class OrgsOrgProjectsPostBodyType(TypedDict):
@@ -13196,16 +13209,6 @@ __all__ = [
     "ThreadPropSubjectType",
     "ThreadSubscriptionType",
     "OrganizationSimpleType",
-    "OrganizationProgrammaticAccessGrantRequestType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
     "OrganizationFullType",
     "OrganizationFullPropPlanType",
     "ActionsCacheUsageOrgEnterpriseType",
@@ -13255,6 +13258,16 @@ __all__ = [
     "PackageVersionPropMetadataType",
     "PackageVersionPropMetadataPropContainerType",
     "PackageVersionPropMetadataPropDockerType",
+    "OrganizationProgrammaticAccessGrantRequestType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
     "ProjectType",
     "RepositoryRulesetBypassActorType",
     "RepositoryRulesetConditionsType",
@@ -13757,10 +13770,6 @@ __all__ = [
     "NotificationsPutBodyType",
     "NotificationsPutResponse202Type",
     "NotificationsThreadsThreadIdSubscriptionPutBodyType",
-    "OrganizationsOrgPersonalAccessTokenRequestsPostBodyType",
-    "OrganizationsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",
-    "OrganizationsOrgPersonalAccessTokensPostBodyType",
-    "OrganizationsOrgPersonalAccessTokensPatIdPostBodyType",
     "OrgsOrgPatchBodyType",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
     "OrgsOrgActionsPermissionsPutBodyType",
@@ -13813,6 +13822,10 @@ __all__ = [
     "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
     "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
     "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
+    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",
+    "OrgsOrgPersonalAccessTokensPostBodyType",
+    "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
     "OrgsOrgProjectsPostBodyType",
     "OrgsOrgReposPostBodyType",
     "OrgsOrgRulesetsPostBodyType",
