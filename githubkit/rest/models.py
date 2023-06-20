@@ -406,7 +406,7 @@ class IntegrationInstallationRequest(GitHubRestModel):
 class AppPermissions(GitHubRestModel):
     """App Permissions
 
-    The permissions granted to the user-to-server access token.
+    The permissions granted to the user access token.
 
     Examples:
         {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':
@@ -578,7 +578,7 @@ class Installation(GitHubRestModel):
     target_type: str = Field(default=...)
     permissions: AppPermissions = Field(
         title="App Permissions",
-        description="The permissions granted to the user-to-server access token.",
+        description="The permissions granted to the user access token.",
         default=...,
     )
     events: List[str] = Field(default=...)
@@ -955,7 +955,7 @@ class InstallationToken(GitHubRestModel):
     expires_at: str = Field(default=...)
     permissions: Missing[AppPermissions] = Field(
         title="App Permissions",
-        description="The permissions granted to the user-to-server access token.",
+        description="The permissions granted to the user access token.",
         default=UNSET,
     )
     repository_selection: Missing[Literal["all", "selected"]] = Field(default=UNSET)
@@ -970,7 +970,7 @@ class ScopedInstallation(GitHubRestModel):
 
     permissions: AppPermissions = Field(
         title="App Permissions",
-        description="The permissions granted to the user-to-server access token.",
+        description="The permissions granted to the user access token.",
         default=...,
     )
     repository_selection: Literal["all", "selected"] = Field(
@@ -3718,11 +3718,11 @@ class RepositoryRulesetBypassActor(GitHubRestModel):
     An actor that can bypass rules in a ruleset
     """
 
-    actor_id: Missing[int] = Field(
-        description="The ID of the actor that can bypass a ruleset", default=UNSET
+    actor_id: int = Field(
+        description="The ID of the actor that can bypass a ruleset", default=...
     )
-    actor_type: Missing[Literal["Team", "Integration"]] = Field(
-        description="The type of actor that can bypass a ruleset", default=UNSET
+    actor_type: Literal["Role", "Team", "Integration"] = Field(
+        description="The type of actor that can bypass a ruleset", default=...
     )
 
 
@@ -4110,7 +4110,7 @@ class RepositoryRuleset(GitHubRestModel):
         default=...,
     )
     bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
-        description='The permission level required to bypass this ruleset. "repository" allows those with bypass permission at the repository level to bypass. "organization" allows those with bypass permission at the organization level to bypass. "none" prevents anyone from bypassing.',
+        description="The permission level required to bypass this ruleset.\n\n**Deprecation Notice:** The `bypass_mode` field is being deprecated. To add a bypass option to this ruleset, use `bypass_actors`. The `bypass_mode` field will no longer be included in the response.",
         default=UNSET,
     )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
@@ -12912,7 +12912,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody(GitHubRestModel):
     )
     permissions: Missing[AppPermissions] = Field(
         title="App Permissions",
-        description="The permissions granted to the user-to-server access token.",
+        description="The permissions granted to the user access token.",
         default=UNSET,
     )
 
@@ -12959,24 +12959,24 @@ class ApplicationsClientIdTokenScopedPostBody(GitHubRestModel):
         default=...,
     )
     target: Missing[str] = Field(
-        description="The name of the user or organization to scope the user-to-server access token to. **Required** unless `target_id` is specified.",
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
         default=UNSET,
     )
     target_id: Missing[int] = Field(
-        description="The ID of the user or organization to scope the user-to-server access token to. **Required** unless `target` is specified.",
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
         default=UNSET,
     )
     repositories: Missing[List[str]] = Field(
-        description="The list of repository names to scope the user-to-server access token to. `repositories` may not be specified if `repository_ids` is specified.",
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
         default=UNSET,
     )
     repository_ids: Missing[List[int]] = Field(
-        description="The list of repository IDs to scope the user-to-server access token to. `repository_ids` may not be specified if `repositories` is specified.",
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
         default=UNSET,
     )
     permissions: Missing[AppPermissions] = Field(
         title="App Permissions",
-        description="The permissions granted to the user-to-server access token.",
+        description="The permissions granted to the user access token.",
         default=UNSET,
     )
 
@@ -17817,7 +17817,7 @@ class ReposOwnerRepoRulesetsPostBody(GitHubRestModel):
         default=...,
     )
     bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
-        description='The permission level required to bypass this ruleset. "repository" allows those with bypass permission at the repository level to bypass. "organization" allows those with bypass permission at the organization level to bypass. "none" prevents anyone from bypassing.',
+        description="The permission level required to bypass this ruleset.\n\n**Deprecation Notice:** The bypass_mode field is being deprecated. To add a bypass option to this ruleset, use bypass_actors. The bypass_mode field will no longer be included in the respnse.",
         default=UNSET,
     )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
@@ -17863,7 +17863,7 @@ class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubRestModel):
         default=UNSET,
     )
     bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
-        description='The permission level required to bypass this ruleset. "repository" allows those with bypass permission at the repository level to bypass. "organization" allows those with bypass permission at the organization level to bypass. "none" prevents anyone from bypassing.',
+        description="The permission level required to bypass this ruleset.\n\n**Deprecation Notice:** The bypass_mode field is being deprecated. To add a bypass option to this ruleset, use bypass_actors. The bypass_mode field will no longer be included in the respnse.",
         default=UNSET,
     )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(

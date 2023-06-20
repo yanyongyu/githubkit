@@ -307,7 +307,7 @@ class IntegrationInstallationRequestType(TypedDict):
 class AppPermissionsType(TypedDict):
     """App Permissions
 
-    The permissions granted to the user-to-server access token.
+    The permissions granted to the user access token.
 
     Examples:
         {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':
@@ -2573,8 +2573,8 @@ class RepositoryRulesetBypassActorType(TypedDict):
     An actor that can bypass rules in a ruleset
     """
 
-    actor_id: NotRequired[int]
-    actor_type: NotRequired[Literal["Team", "Integration"]]
+    actor_id: int
+    actor_type: Literal["Role", "Team", "Integration"]
 
 
 class RepositoryRulesetConditionsType(TypedDict):
