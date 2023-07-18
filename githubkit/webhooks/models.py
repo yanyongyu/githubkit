@@ -929,10 +929,11 @@ class App(GitHubWebhookModel):
                 "check_suite",
                 "code_scanning_alert",
                 "commit_comment",
-                "content_reference",
                 "create",
                 "delete",
+                "dependabot_alert",
                 "deployment",
+                "deployment_protection_rule",
                 "deployment_review",
                 "deployment_status",
                 "deploy_key",
@@ -965,6 +966,7 @@ class App(GitHubWebhookModel):
                 "release",
                 "repository",
                 "repository_dispatch",
+                "repository_ruleset",
                 "secret_scanning_alert",
                 "secret_scanning_alert_location",
                 "security_and_analysis",
@@ -974,8 +976,8 @@ class App(GitHubWebhookModel):
                 "team_add",
                 "watch",
                 "workflow_dispatch",
-                "workflow_run",
                 "workflow_job",
+                "workflow_run",
             ]
         ]
     ] = Field(description="The list of events for the GitHub app", default=UNSET)
@@ -2721,6 +2723,10 @@ class DependabotAlertCreatedPropAlert(GitHubWebhookModel):
         default=...,
     )
     dismissed_at: Union[None, None] = Field(default=...)
+    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
     dismissed_by: Union[None, None] = Field(default=...)
     dismissed_reason: Union[None, None] = Field(default=...)
     dismissed_comment: Union[None, None] = Field(default=...)
@@ -2734,7 +2740,7 @@ class DependabotAlert(GitHubWebhookModel):
     """
 
     number: int = Field(description="The security alert number.", default=...)
-    state: Literal["dismissed", "fixed", "open"] = Field(
+    state: Literal["dismissed", "fixed", "open", "auto_dismissed"] = Field(
         description="The state of the Dependabot alert.", default=...
     )
     dependency: DependabotAlertPropDependency = Field(
@@ -2762,6 +2768,10 @@ class DependabotAlert(GitHubWebhookModel):
     dismissed_at: Union[datetime, None] = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=...,
+    )
+    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
     )
     dismissed_by: Union[User, None] = Field(title="User", default=...)
     dismissed_reason: Union[
@@ -3044,6 +3054,10 @@ class DependabotAlertDismissedPropAlert(GitHubWebhookModel):
         default=...,
     )
     dismissed_at: datetime = Field(default=...)
+    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
     dismissed_by: User = Field(title="User", default=...)
     dismissed_reason: Literal[
         "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
@@ -3114,6 +3128,10 @@ class DependabotAlertFixedPropAlert(GitHubWebhookModel):
     dismissed_at: Union[datetime, None] = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=...,
+    )
+    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
     )
     dismissed_by: Union[User, None] = Field(title="User", default=...)
     dismissed_reason: Union[
@@ -3515,6 +3533,12 @@ class Team(GitHubWebhookModel):
         default=...,
     )
     parent: Missing[Union[TeamPropParent, None]] = Field(default=UNSET)
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        description="Whether team members will receive notifications when their team is @mentioned",
+        default=UNSET,
+    )
 
 
 class TeamPropParent(GitHubWebhookModel):
@@ -3535,6 +3559,12 @@ class TeamPropParent(GitHubWebhookModel):
     permission: str = Field(
         description="Permission that the team will have for its repositories",
         default=...,
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        description="Whether team members will receive notifications when their team is @mentioned",
+        default=UNSET,
     )
 
 
@@ -4911,7 +4941,6 @@ class Installation(GitHubWebhookModel):
             "check_suite",
             "code_scanning_alert",
             "commit_comment",
-            "content_reference",
             "create",
             "delete",
             "deployment",
@@ -4927,6 +4956,7 @@ class Installation(GitHubWebhookModel):
             "label",
             "member",
             "membership",
+            "merge_group",
             "merge_queue_entry",
             "milestone",
             "organization",
@@ -4948,6 +4978,7 @@ class Installation(GitHubWebhookModel):
             "repository_dispatch",
             "secret_scanning_alert",
             "secret_scanning_alert_location",
+            "security_and_analysis",
             "star",
             "status",
             "team",
@@ -5207,7 +5238,6 @@ class InstallationSuspendPropInstallation(GitHubWebhookModel):
             "check_suite",
             "code_scanning_alert",
             "commit_comment",
-            "content_reference",
             "create",
             "delete",
             "deployment",
@@ -5223,6 +5253,7 @@ class InstallationSuspendPropInstallation(GitHubWebhookModel):
             "label",
             "member",
             "membership",
+            "merge_group",
             "merge_queue_entry",
             "milestone",
             "organization",
@@ -5244,6 +5275,7 @@ class InstallationSuspendPropInstallation(GitHubWebhookModel):
             "repository_dispatch",
             "secret_scanning_alert",
             "secret_scanning_alert_location",
+            "security_and_analysis",
             "star",
             "status",
             "team",
@@ -5322,7 +5354,6 @@ class InstallationUnsuspendPropInstallation(GitHubWebhookModel):
             "check_suite",
             "code_scanning_alert",
             "commit_comment",
-            "content_reference",
             "create",
             "delete",
             "deployment",
@@ -5338,6 +5369,7 @@ class InstallationUnsuspendPropInstallation(GitHubWebhookModel):
             "label",
             "member",
             "membership",
+            "merge_group",
             "merge_queue_entry",
             "milestone",
             "organization",
@@ -5359,6 +5391,7 @@ class InstallationUnsuspendPropInstallation(GitHubWebhookModel):
             "repository_dispatch",
             "secret_scanning_alert",
             "secret_scanning_alert_location",
+            "security_and_analysis",
             "star",
             "status",
             "team",
@@ -7989,6 +8022,9 @@ class PackagePublished(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
     organization: Missing[Organization] = Field(title="Organization", default=UNSET)
 
 
@@ -8304,17 +8340,11 @@ class PackageNpmMetadataPropDirectoriesOneof0(GitHubWebhookModel, extra=Extra.al
 class PackageNugetMetadata(GitHubWebhookModel):
     """Package Nuget Metadata"""
 
-    id: Missing[Union[str, PackageNugetMetadataPropIdOneof1, int]] = Field(
-        default=UNSET
-    )
+    id: Missing[Union[str, int]] = Field(default=UNSET)
     name: Missing[str] = Field(default=UNSET)
     value: Missing[Union[bool, str, int, PackageNugetMetadataPropValueOneof3]] = Field(
         default=UNSET
     )
-
-
-class PackageNugetMetadataPropIdOneof1(GitHubWebhookModel):
-    """PackageNugetMetadataPropIdOneof1"""
 
 
 class PackageNugetMetadataPropValueOneof3(GitHubWebhookModel):
@@ -8365,6 +8395,9 @@ class PackageUpdated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
     organization: Missing[Organization] = Field(title="Organization", default=UNSET)
 
 
@@ -11696,6 +11729,9 @@ class RegistryPackagePublished(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
     organization: Missing[Organization] = Field(title="Organization", default=UNSET)
 
 
@@ -12026,6 +12062,9 @@ class RegistryPackageUpdated(GitHubWebhookModel):
         title="Repository", description="A git repository", default=...
     )
     sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
     organization: Missing[Organization] = Field(title="Organization", default=UNSET)
 
 
@@ -12988,6 +13027,7 @@ class RepositoryEditedPropChanges(GitHubWebhookModel):
         default=UNSET
     )
     homepage: Missing[RepositoryEditedPropChangesPropHomepage] = Field(default=UNSET)
+    topics: Missing[RepositoryEditedPropChangesPropTopics] = Field(default=UNSET)
 
 
 class RepositoryEditedPropChangesPropDescription(GitHubWebhookModel):
@@ -13006,6 +13046,12 @@ class RepositoryEditedPropChangesPropHomepage(GitHubWebhookModel):
     """RepositoryEditedPropChangesPropHomepage"""
 
     from_: Union[str, None] = Field(default=..., alias="from")
+
+
+class RepositoryEditedPropChangesPropTopics(GitHubWebhookModel):
+    """RepositoryEditedPropChangesPropTopics"""
+
+    from_: List[str] = Field(default=..., alias="from")
 
 
 class RepositoryPrivatized(GitHubWebhookModel):
@@ -13921,7 +13967,7 @@ class RepositoryVulnerabilityAlertCreatePropAlert(GitHubWebhookModel):
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
-    fixed_in: str = Field(default=...)
+    fixed_in: Missing[str] = Field(default=UNSET)
     fixed_at: Missing[datetime] = Field(default=UNSET)
     fix_reason: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
@@ -13946,7 +13992,7 @@ class RepositoryVulnerabilityAlertAlert(GitHubWebhookModel):
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
-    fixed_in: str = Field(default=...)
+    fixed_in: Missing[str] = Field(default=UNSET)
     fixed_at: Missing[datetime] = Field(default=UNSET)
     fix_reason: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
@@ -13986,7 +14032,7 @@ class RepositoryVulnerabilityAlertDismissPropAlert(GitHubWebhookModel):
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
-    fixed_in: str = Field(default=...)
+    fixed_in: Missing[str] = Field(default=UNSET)
     fixed_at: Missing[datetime] = Field(default=UNSET)
     fix_reason: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
@@ -14029,7 +14075,7 @@ class RepositoryVulnerabilityAlertReopenPropAlert(GitHubWebhookModel):
     ghsa_id: str = Field(default=...)
     external_reference: str = Field(default=...)
     external_identifier: str = Field(default=...)
-    fixed_in: str = Field(default=...)
+    fixed_in: Missing[str] = Field(default=UNSET)
     fixed_at: Missing[datetime] = Field(default=UNSET)
     fix_reason: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field(default=...)
@@ -14081,6 +14127,7 @@ class RepositoryVulnerabilityAlertResolvePropAlertAllof1(GitHubWebhookModel):
     state: Literal["fixed"] = Field(default=...)
     fixed_at: datetime = Field(default=...)
     fix_reason: str = Field(default=...)
+    fixed_in: str = Field(default=...)
 
 
 class SecretScanningAlertCreated(GitHubWebhookModel):
@@ -15641,9 +15688,9 @@ class WorkflowJobCompletedPropWorkflowJob(GitHubWebhookModel):
         description="The current status of the job. Can be `queued`, `in_progress`, or `completed`.",
         default=...,
     )
-    steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
-        default=...
-    )
+    steps: List[
+        Union[WorkflowStepInProgress, WorkflowStepQueued, WorkflowStepCompleted]
+    ] = Field(default=...)
     conclusion: Literal["success", "failure", "cancelled", "skipped"] = Field(
         default=...
     )
@@ -15699,9 +15746,9 @@ class WorkflowJob(GitHubWebhookModel):
         description="The current status of the job. Can be `queued`, `in_progress`, or `completed`.",
         default=...,
     )
-    steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
-        default=...
-    )
+    steps: List[
+        Union[WorkflowStepInProgress, WorkflowStepQueued, WorkflowStepCompleted]
+    ] = Field(default=...)
     conclusion: Union[
         None, Literal["success", "failure", "cancelled", "skipped"]
     ] = Field(default=...)
@@ -15744,6 +15791,17 @@ class WorkflowStepInProgress(GitHubWebhookModel):
     conclusion: None = Field(default=...)
     number: int = Field(default=...)
     started_at: datetime = Field(default=...)
+    completed_at: None = Field(default=...)
+
+
+class WorkflowStepQueued(GitHubWebhookModel):
+    """Workflow Step (Queued)"""
+
+    name: str = Field(default=...)
+    status: Literal["queued"] = Field(default=...)
+    conclusion: None = Field(default=...)
+    number: int = Field(default=...)
+    started_at: None = Field(default=...)
     completed_at: None = Field(default=...)
 
 
@@ -15800,9 +15858,9 @@ class WorkflowJobInProgressPropWorkflowJob(GitHubWebhookModel):
     html_url: str = Field(default=...)
     url: str = Field(default=...)
     status: Literal["queued", "in_progress"] = Field(default=...)
-    steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
-        default=...
-    )
+    steps: List[
+        Union[WorkflowStepInProgress, WorkflowStepQueued, WorkflowStepCompleted]
+    ] = Field(default=...)
     conclusion: Union[
         None, Literal["success", "failure", "cancelled", "skipped"]
     ] = Field(default=...)
@@ -15877,9 +15935,9 @@ class WorkflowJobQueuedPropWorkflowJob(GitHubWebhookModel):
     html_url: str = Field(default=...)
     url: str = Field(default=...)
     status: Literal["queued", "waiting"] = Field(default=...)
-    steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
-        default=...
-    )
+    steps: List[
+        Union[WorkflowStepInProgress, WorkflowStepQueued, WorkflowStepCompleted]
+    ] = Field(default=...)
     conclusion: Union[
         None, Literal["success", "failure", "cancelled", "skipped"]
     ] = Field(default=...)
@@ -15954,9 +16012,9 @@ class WorkflowJobWaitingPropWorkflowJob(GitHubWebhookModel):
     html_url: str = Field(default=...)
     url: str = Field(default=...)
     status: Literal["waiting"] = Field(default=...)
-    steps: List[Union[WorkflowStepInProgress, WorkflowStepCompleted]] = Field(
-        default=...
-    )
+    steps: List[
+        Union[WorkflowStepInProgress, WorkflowStepQueued, WorkflowStepCompleted]
+    ] = Field(default=...)
     conclusion: Union[
         None, Literal["success", "failure", "cancelled", "skipped"]
     ] = Field(default=...)
@@ -16799,7 +16857,6 @@ PackageNpmMetadataPropBin.update_forward_refs()
 PackageNpmMetadataPropMan.update_forward_refs()
 PackageNpmMetadataPropDirectoriesOneof0.update_forward_refs()
 PackageNugetMetadata.update_forward_refs()
-PackageNugetMetadataPropIdOneof1.update_forward_refs()
 PackageNugetMetadataPropValueOneof3.update_forward_refs()
 PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems.update_forward_refs()
 PackagePublishedPropPackagePropRegistry.update_forward_refs()
@@ -17028,6 +17085,7 @@ RepositoryEditedPropChanges.update_forward_refs()
 RepositoryEditedPropChangesPropDescription.update_forward_refs()
 RepositoryEditedPropChangesPropDefaultBranch.update_forward_refs()
 RepositoryEditedPropChangesPropHomepage.update_forward_refs()
+RepositoryEditedPropChangesPropTopics.update_forward_refs()
 RepositoryPrivatized.update_forward_refs()
 RepositoryPrivatizedPropRepository.update_forward_refs()
 RepositoryPrivatizedPropRepositoryAllof1.update_forward_refs()
@@ -17171,6 +17229,7 @@ WorkflowJobCompleted.update_forward_refs()
 WorkflowJobCompletedPropWorkflowJob.update_forward_refs()
 WorkflowJob.update_forward_refs()
 WorkflowStepInProgress.update_forward_refs()
+WorkflowStepQueued.update_forward_refs()
 WorkflowStepCompleted.update_forward_refs()
 WorkflowJobCompletedPropWorkflowJobAllof1.update_forward_refs()
 WorkflowJobInProgress.update_forward_refs()
@@ -17578,7 +17637,6 @@ __all__ = [
     "PackageNpmMetadataPropMan",
     "PackageNpmMetadataPropDirectoriesOneof0",
     "PackageNugetMetadata",
-    "PackageNugetMetadataPropIdOneof1",
     "PackageNugetMetadataPropValueOneof3",
     "PackagePublishedPropPackagePropPackageVersionOneof0PropPackageFilesItems",
     "PackagePublishedPropPackagePropRegistry",
@@ -17807,6 +17865,7 @@ __all__ = [
     "RepositoryEditedPropChangesPropDescription",
     "RepositoryEditedPropChangesPropDefaultBranch",
     "RepositoryEditedPropChangesPropHomepage",
+    "RepositoryEditedPropChangesPropTopics",
     "RepositoryPrivatized",
     "RepositoryPrivatizedPropRepository",
     "RepositoryPrivatizedPropRepositoryAllof1",
@@ -17950,6 +18009,7 @@ __all__ = [
     "WorkflowJobCompletedPropWorkflowJob",
     "WorkflowJob",
     "WorkflowStepInProgress",
+    "WorkflowStepQueued",
     "WorkflowStepCompleted",
     "WorkflowJobCompletedPropWorkflowJobAllof1",
     "WorkflowJobInProgress",

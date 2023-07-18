@@ -27,6 +27,7 @@ from .issues import IssuesClient
 from .search import SearchClient
 from .actions import ActionsClient
 from .billing import BillingClient
+from .copilot import CopilotClient
 from .activity import ActivityClient
 from .licenses import LicensesClient
 from .markdown import MarkdownClient
@@ -104,6 +105,10 @@ class RestNamespace:
     @cached_property
     def orgs(self) -> OrgsClient:
         return OrgsClient(self._github)
+
+    @cached_property
+    def copilot(self) -> CopilotClient:
+        return CopilotClient(self._github)
 
     @cached_property
     def actions(self) -> ActionsClient:

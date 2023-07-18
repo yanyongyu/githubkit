@@ -1538,6 +1538,15 @@ class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
     status: NotRequired[Literal["enabled", "disabled"]]
 
 
+class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
 class SecurityAndAnalysisPropSecretScanningType(TypedDict):
     """SecurityAndAnalysisPropSecretScanning"""
 
@@ -1554,6 +1563,9 @@ class SecurityAndAnalysisType(TypedDict):
     """SecurityAndAnalysis"""
 
     advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesType
+    ]
     secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
     secret_scanning_push_protection: NotRequired[
         SecurityAndAnalysisPropSecretScanningPushProtectionType
@@ -1736,6 +1748,148 @@ class OrganizationSimpleType(TypedDict):
     description: Union[str, None]
 
 
+class CopilotSeatBreakdownType(TypedDict):
+    """Copilot for Business Seat Breakdown
+
+    The breakdown of Copilot for Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
+
+
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot for Business Organization Details
+
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot for Business subscription.
+    """
+
+    seat_breakdown: CopilotSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
+    seat_management_setting: Literal["assign_all", "assign_selected", "disabled"]
+
+
+class TeamSimpleType(TypedDict):
+    """Team Simple
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+
+
+class TeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class OrganizationType(TypedDict):
+    """Organization
+
+    GitHub account for managing multiple users, teams, and repositories
+    """
+
+    login: str
+    url: str
+    id: int
+    node_id: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    blog: NotRequired[str]
+    html_url: str
+    name: NotRequired[str]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    email: NotRequired[str]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    is_verified: NotRequired[bool]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    type: str
+    created_at: datetime
+    updated_at: datetime
+    plan: NotRequired[OrganizationPropPlanType]
+
+
+class OrganizationPropPlanType(TypedDict):
+    """OrganizationPropPlan"""
+
+    name: NotRequired[str]
+    space: NotRequired[int]
+    private_repos: NotRequired[int]
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
+
+
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot for Business Seat Detail
+
+    Information about a Copilot for Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: Union[SimpleUserType, TeamType, OrganizationType]
+    assigning_team: NotRequired[Union[TeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+
+
 class OrganizationFullType(TypedDict):
     """Organization Full
 
@@ -1768,7 +1922,6 @@ class OrganizationFullType(TypedDict):
     followers: int
     following: int
     html_url: str
-    created_at: datetime
     type: str
     total_private_repos: NotRequired[int]
     owned_private_repos: NotRequired[int]
@@ -1789,7 +1942,6 @@ class OrganizationFullType(TypedDict):
     members_can_create_private_pages: NotRequired[bool]
     members_can_fork_private_repositories: NotRequired[Union[bool, None]]
     web_commit_signoff_required: NotRequired[bool]
-    updated_at: datetime
     advanced_security_enabled_for_new_repositories: NotRequired[bool]
     dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
     dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
@@ -1798,6 +1950,9 @@ class OrganizationFullType(TypedDict):
     secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
     secret_scanning_push_protection_custom_link_enabled: NotRequired[bool]
     secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: datetime
+    archived_at: Union[datetime, None]
 
 
 class OrganizationFullPropPlanType(TypedDict):
@@ -1873,21 +2028,6 @@ class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
 
     default_workflow_permissions: NotRequired[Literal["read", "write"]]
     can_approve_pull_request_reviews: NotRequired[bool]
-
-
-class RequiredWorkflowType(TypedDict):
-    """RequiredWorkflow"""
-
-    id: float
-    name: str
-    path: str
-    scope: Literal["all", "selected"]
-    ref: str
-    state: Literal["active", "deleted"]
-    selected_repositories_url: NotRequired[str]
-    created_at: datetime
-    updated_at: datetime
-    repository: MinimalRepositoryType
 
 
 class RunnerLabelType(TypedDict):
@@ -2037,7 +2177,7 @@ class CodeScanningAlertInstanceType(TypedDict):
     analysis_key: NotRequired[str]
     environment: NotRequired[str]
     category: NotRequired[str]
-    state: NotRequired[Literal["open", "closed", "dismissed", "fixed"]]
+    state: NotRequired[Literal["open", "dismissed", "fixed"]]
     commit_sha: NotRequired[str]
     message: NotRequired[CodeScanningAlertInstancePropMessageType]
     location: NotRequired[CodeScanningAlertLocationType]
@@ -2062,7 +2202,7 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Literal["open", "closed", "dismissed", "fixed"]
+    state: Literal["open", "dismissed", "fixed"]
     fixed_at: NotRequired[Union[datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
     dismissed_at: Union[datetime, None]
@@ -2308,59 +2448,6 @@ class InteractionLimitType(TypedDict):
     ]
 
 
-class TeamSimpleType(TypedDict):
-    """Team Simple
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    members_url: str
-    name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
-
-
-class TeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
-
-
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
 class OrgMembershipType(TypedDict):
     """Org Membership
 
@@ -2574,7 +2661,8 @@ class RepositoryRulesetBypassActorType(TypedDict):
     """
 
     actor_id: int
-    actor_type: Literal["Role", "Team", "Integration"]
+    actor_type: Literal["RepositoryRole", "Team", "Integration", "OrganizationAdmin"]
+    bypass_mode: Literal["always", "pull_request"]
 
 
 class RepositoryRulesetConditionsType(TypedDict):
@@ -2599,9 +2687,7 @@ class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
     Parameters for a repository name condition
     """
 
-    repository_name: NotRequired[
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    ]
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
 
 
 class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
@@ -2612,16 +2698,33 @@ class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(Type
     protected: NotRequired[bool]
 
 
-class OrgRulesetConditionsType(TypedDict):
-    """Organization ruleset conditions
+class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
+    """Repository ruleset conditions for repository IDs
 
-    Conditions for a organization ruleset
+    Parameters for a repository ID condition
     """
 
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+
+
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+
+    repository_ids: NotRequired[List[int]]
+
+
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """OrgRulesetConditionsOneof0"""
+
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: NotRequired[
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    ]
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+
+
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """OrgRulesetConditionsOneof1"""
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
 class RepositoryRuleCreationType(TypedDict):
@@ -2860,12 +2963,16 @@ class RepositoryRulesetType(TypedDict):
     source_type: NotRequired[Literal["Repository", "Organization"]]
     source: str
     enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_mode: NotRequired[Literal["none", "repository", "organization"]]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    current_user_can_bypass: NotRequired[bool]
     node_id: NotRequired[str]
     links: NotRequired[RepositoryRulesetPropLinksType]
     conditions: NotRequired[
-        Union[RepositoryRulesetConditionsType, OrgRulesetConditionsType]
+        Union[
+            RepositoryRulesetConditionsType,
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+        ]
     ]
     rules: NotRequired[
         List[
@@ -3009,6 +3116,7 @@ class TeamOrganizationType(TypedDict):
     members_can_fork_private_repositories: NotRequired[Union[bool, None]]
     web_commit_signoff_required: NotRequired[bool]
     updated_at: datetime
+    archived_at: Union[datetime, None]
 
 
 class TeamOrganizationPropPlanType(TypedDict):
@@ -3344,60 +3452,6 @@ class RateLimitOverviewPropResourcesType(TypedDict):
     actions_runner_registration: NotRequired[RateLimitType]
     scim: NotRequired[RateLimitType]
     dependency_snapshots: NotRequired[RateLimitType]
-
-
-class RepoRequiredWorkflowType(TypedDict):
-    """Required workflow
-
-    A GitHub Actions required workflow
-    """
-
-    id: int
-    node_id: str
-    name: str
-    path: str
-    state: Literal["active", "deleted"]
-    source_repository: MinimalRepositoryType
-    created_at: datetime
-    updated_at: datetime
-    url: str
-    html_url: str
-    badge_url: str
-
-
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
-
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillableType
-
-
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
 
 
 class CodeOfConductSimpleType(TypedDict):
@@ -4000,6 +4054,41 @@ class WorkflowType(TypedDict):
     html_url: str
     badge_url: str
     deleted_at: NotRequired[datetime]
+
+
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
+
+    Workflow Usage
+    """
+
+    billable: WorkflowUsagePropBillableType
+
+
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+
+
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
 
 
 class AutolinkType(TypedDict):
@@ -4742,7 +4831,7 @@ class CodeScanningAlertItemsType(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Literal["open", "closed", "dismissed", "fixed"]
+    state: Literal["open", "dismissed", "fixed"]
     fixed_at: NotRequired[Union[datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
     dismissed_at: Union[datetime, None]
@@ -4764,7 +4853,7 @@ class CodeScanningAlertType(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Literal["open", "closed", "dismissed", "fixed"]
+    state: Literal["open", "dismissed", "fixed"]
     fixed_at: NotRequired[Union[datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
     dismissed_at: Union[datetime, None]
@@ -4843,6 +4932,7 @@ class CodeScanningDefaultSetupType(TypedDict):
                 "python",
                 "ruby",
                 "typescript",
+                "swift",
             ]
         ]
     ]
@@ -4868,6 +4958,7 @@ class CodeScanningDefaultSetupUpdateType(TypedDict):
                 "javascript-typescript",
                 "python",
                 "ruby",
+                "swift",
             ]
         ]
     ]
@@ -7814,6 +7905,153 @@ class ReleaseNotesContentType(TypedDict):
     body: str
 
 
+class RepositoryRuleRulesetInfoType(TypedDict):
+    """repository ruleset data for rule
+
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof0Type(TypedDict):
+    """RepositoryRuleDetailedOneof0"""
+
+    type: Literal["creation"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof1Type(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof2Type(TypedDict):
+    """RepositoryRuleDetailedOneof2"""
+
+    type: Literal["deletion"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof3Type(TypedDict):
+    """RepositoryRuleDetailedOneof3"""
+
+    type: Literal["required_linear_history"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof4Type(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
+
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof5Type(TypedDict):
+    """RepositoryRuleDetailedOneof5"""
+
+    type: Literal["required_signatures"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof6Type(TypedDict):
+    """RepositoryRuleDetailedOneof6"""
+
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof7Type(TypedDict):
+    """RepositoryRuleDetailedOneof7"""
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof8Type(TypedDict):
+    """RepositoryRuleDetailedOneof8"""
+
+    type: Literal["non_fast_forward"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof9Type(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
+
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof10Type(TypedDict):
+    """RepositoryRuleDetailedOneof10"""
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof11Type(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
+
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof12Type(TypedDict):
+    """RepositoryRuleDetailedOneof12"""
+
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof13Type(TypedDict):
+    """RepositoryRuleDetailedOneof13"""
+
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
 class SecretScanningAlertType(TypedDict):
     """SecretScanningAlert"""
 
@@ -7930,6 +8168,7 @@ class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
         "actions",
         "pub",
         "other",
+        "swift",
     ]
     name: Union[str, None]
 
@@ -7985,6 +8224,9 @@ class RepositoryAdvisoryType(TypedDict):
     cwe_ids: Union[List[str], None]
     credits_: Union[List[RepositoryAdvisoryPropCreditsItemsType], None]
     credits_detailed: Union[List[RepositoryAdvisoryCreditType], None]
+    collaborating_users: Union[List[SimpleUserType], None]
+    collaborating_teams: Union[List[TeamType], None]
+    private_fork: None
 
 
 class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
@@ -8077,6 +8319,7 @@ class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType(TypedDict)
         "actions",
         "pub",
         "other",
+        "swift",
     ]
     name: NotRequired[Union[str, None]]
 
@@ -8142,6 +8385,7 @@ class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
         "actions",
         "pub",
         "other",
+        "swift",
     ]
     name: NotRequired[Union[str, None]]
 
@@ -8192,6 +8436,7 @@ class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType(TypedDict)
         "actions",
         "pub",
         "other",
+        "swift",
     ]
     name: NotRequired[Union[str, None]]
 
@@ -9705,6 +9950,13 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
     ignored: NotRequired[bool]
 
 
+class OrganizationsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrganizationsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[List[CopilotSeatDetailsType]]
+
+
 class OrgsOrgPatchBodyType(TypedDict):
     """OrgsOrgPatchBody"""
 
@@ -9766,48 +10018,6 @@ class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
 
 class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
     """OrgsOrgActionsPermissionsRepositoriesPutBody"""
-
-    selected_repository_ids: List[int]
-
-
-class OrgsOrgActionsRequiredWorkflowsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRequiredWorkflowsGetResponse200"""
-
-    total_count: int
-    required_workflows: List[RequiredWorkflowType]
-
-
-class OrgsOrgActionsRequiredWorkflowsPostBodyType(TypedDict):
-    """OrgsOrgActionsRequiredWorkflowsPostBody"""
-
-    workflow_file_path: str
-    repository_id: str
-    scope: NotRequired[Literal["selected", "all"]]
-    selected_repository_ids: NotRequired[List[int]]
-
-
-class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody"""
-
-    workflow_file_path: NotRequired[str]
-    repository_id: NotRequired[str]
-    scope: NotRequired[Literal["selected", "all"]]
-    selected_repository_ids: NotRequired[List[int]]
-
-
-class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: List[RepositoryType]
-
-
-class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType(
-    TypedDict
-):
-    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody"""
 
     selected_repository_ids: List[int]
 
@@ -9986,6 +10196,66 @@ class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
     """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int]
+
+
+class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+
+    selected_teams: List[str]
+
+
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+
+    The total number of seat assignments created.
+    """
+
+    seats_created: int
+
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+
+    selected_teams: List[str]
+
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+
+    The total number of seat assignments cancelled.
+    """
+
+    seats_cancelled: int
+
+
+class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+
+    selected_usernames: List[str]
+
+
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seat assignments created.
+    """
+
+    seats_created: int
+
+
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: List[str]
+
+
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+
+    The total number of seat assignments cancelled.
+    """
+
+    seats_cancelled: int
 
 
 class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
@@ -10209,7 +10479,9 @@ class OrgsOrgRulesetsPostBodyType(TypedDict):
     target: NotRequired[Literal["branch", "tag"]]
     enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[OrgRulesetConditionsType]
+    conditions: NotRequired[
+        Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+    ]
     rules: NotRequired[
         List[
             Union[
@@ -10239,7 +10511,9 @@ class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
     target: NotRequired[Literal["branch", "tag"]]
     enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[OrgRulesetConditionsType]
+    conditions: NotRequired[
+        Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+    ]
     rules: NotRequired[
         List[
             Union[
@@ -10512,13 +10786,6 @@ class ProjectsProjectIdColumnsPostBodyType(TypedDict):
     name: str
 
 
-class ReposOrgRepoActionsRequiredWorkflowsGetResponse200Type(TypedDict):
-    """ReposOrgRepoActionsRequiredWorkflowsGetResponse200"""
-
-    total_count: int
-    required_workflows: List[RepoRequiredWorkflowType]
-
-
 class ReposOwnerRepoDeleteResponse403Type(TypedDict):
     """ReposOwnerRepoDeleteResponse403"""
 
@@ -10670,17 +10937,6 @@ class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
 
     enabled: bool
     allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-
-
-class ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse20
-    0
-    """
-
-    total_count: int
-    workflow_runs: List[WorkflowRunType]
 
 
 class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
@@ -12559,7 +12815,6 @@ class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
     name: str
     target: NotRequired[Literal["branch", "tag"]]
     enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_mode: NotRequired[Literal["none", "repository", "organization"]]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[RepositoryRulesetConditionsType]
     rules: NotRequired[
@@ -12590,7 +12845,6 @@ class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
     name: NotRequired[str]
     target: NotRequired[Literal["branch", "tag"]]
     enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_mode: NotRequired[Literal["none", "repository", "organization"]]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[RepositoryRulesetConditionsType]
     rules: NotRequired[
@@ -13199,6 +13453,7 @@ __all__ = [
     "ApiOverviewPropSshKeyFingerprintsType",
     "ApiOverviewPropDomainsType",
     "SecurityAndAnalysisPropAdvancedSecurityType",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
     "SecurityAndAnalysisPropSecretScanningType",
     "SecurityAndAnalysisPropSecretScanningPushProtectionType",
     "SecurityAndAnalysisType",
@@ -13209,6 +13464,14 @@ __all__ = [
     "ThreadPropSubjectType",
     "ThreadSubscriptionType",
     "OrganizationSimpleType",
+    "CopilotSeatBreakdownType",
+    "CopilotOrganizationDetailsType",
+    "TeamSimpleType",
+    "TeamType",
+    "TeamPropPermissionsType",
+    "OrganizationType",
+    "OrganizationPropPlanType",
+    "CopilotSeatDetailsType",
     "OrganizationFullType",
     "OrganizationFullPropPlanType",
     "ActionsCacheUsageOrgEnterpriseType",
@@ -13219,7 +13482,6 @@ __all__ = [
     "SelectedActionsType",
     "ActionsGetDefaultWorkflowPermissionsType",
     "ActionsSetDefaultWorkflowPermissionsType",
-    "RequiredWorkflowType",
     "RunnerLabelType",
     "RunnerType",
     "RunnerApplicationType",
@@ -13248,9 +13510,6 @@ __all__ = [
     "OrgHookPropConfigType",
     "InteractionLimitResponseType",
     "InteractionLimitType",
-    "TeamSimpleType",
-    "TeamType",
-    "TeamPropPermissionsType",
     "OrgMembershipType",
     "OrgMembershipPropPermissionsType",
     "MigrationType",
@@ -13274,7 +13533,10 @@ __all__ = [
     "RepositoryRulesetConditionsPropRefNameType",
     "RepositoryRulesetConditionsRepositoryNameTargetType",
     "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
-    "OrgRulesetConditionsType",
+    "RepositoryRulesetConditionsRepositoryIdTargetType",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+    "OrgRulesetConditionsOneof0Type",
+    "OrgRulesetConditionsOneof1Type",
     "RepositoryRuleCreationType",
     "RepositoryRuleUpdateType",
     "RepositoryRuleUpdatePropParametersType",
@@ -13324,12 +13586,6 @@ __all__ = [
     "RateLimitType",
     "RateLimitOverviewType",
     "RateLimitOverviewPropResourcesType",
-    "RepoRequiredWorkflowType",
-    "WorkflowUsageType",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropWindowsType",
     "CodeOfConductSimpleType",
     "FullRepositoryType",
     "FullRepositoryPropPermissionsType",
@@ -13372,6 +13628,11 @@ __all__ = [
     "WorkflowRunUsagePropBillablePropWindowsType",
     "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
     "WorkflowType",
+    "WorkflowUsageType",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropWindowsType",
     "AutolinkType",
     "ProtectedBranchRequiredStatusCheckType",
     "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
@@ -13634,6 +13895,21 @@ __all__ = [
     "ReleaseAssetType",
     "ReleaseType",
     "ReleaseNotesContentType",
+    "RepositoryRuleRulesetInfoType",
+    "RepositoryRuleDetailedOneof0Type",
+    "RepositoryRuleDetailedOneof1Type",
+    "RepositoryRuleDetailedOneof2Type",
+    "RepositoryRuleDetailedOneof3Type",
+    "RepositoryRuleDetailedOneof4Type",
+    "RepositoryRuleDetailedOneof5Type",
+    "RepositoryRuleDetailedOneof6Type",
+    "RepositoryRuleDetailedOneof7Type",
+    "RepositoryRuleDetailedOneof8Type",
+    "RepositoryRuleDetailedOneof9Type",
+    "RepositoryRuleDetailedOneof10Type",
+    "RepositoryRuleDetailedOneof11Type",
+    "RepositoryRuleDetailedOneof12Type",
+    "RepositoryRuleDetailedOneof13Type",
     "SecretScanningAlertType",
     "SecretScanningLocationCommitType",
     "SecretScanningLocationIssueTitleType",
@@ -13770,16 +14046,12 @@ __all__ = [
     "NotificationsPutBodyType",
     "NotificationsPutResponse202Type",
     "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+    "OrganizationsOrgCopilotBillingSeatsGetResponse200Type",
     "OrgsOrgPatchBodyType",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
     "OrgsOrgActionsPermissionsPutBodyType",
     "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
     "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
-    "OrgsOrgActionsRequiredWorkflowsGetResponse200Type",
-    "OrgsOrgActionsRequiredWorkflowsPostBodyType",
-    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBodyType",
-    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200Type",
-    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBodyType",
     "OrgsOrgActionsRunnersGetResponse200Type",
     "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
     "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
@@ -13804,6 +14076,14 @@ __all__ = [
     "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
     "OrgsOrgDependabotSecretsGetResponse200Type",
     "OrgsOrgDependabotSecretsSecretNamePutBodyType",
     "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
@@ -13862,7 +14142,6 @@ __all__ = [
     "ProjectsProjectIdPatchResponse403Type",
     "ProjectsProjectIdCollaboratorsUsernamePutBodyType",
     "ProjectsProjectIdColumnsPostBodyType",
-    "ReposOrgRepoActionsRequiredWorkflowsGetResponse200Type",
     "ReposOwnerRepoDeleteResponse403Type",
     "ReposOwnerRepoPatchBodyType",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
@@ -13875,7 +14154,6 @@ __all__ = [
     "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
     "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
     "ReposOwnerRepoActionsPermissionsPutBodyType",
-    "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200Type",
     "ReposOwnerRepoActionsRunnersGetResponse200Type",
     "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",

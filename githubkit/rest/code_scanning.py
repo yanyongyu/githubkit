@@ -847,6 +847,7 @@ class CodeScanningClient:
                     "javascript-typescript",
                     "python",
                     "ruby",
+                    "swift",
                 ]
             ]
         ] = UNSET,
@@ -918,6 +919,7 @@ class CodeScanningClient:
                     "javascript-typescript",
                     "python",
                     "ruby",
+                    "swift",
                 ]
             ]
         ] = UNSET,

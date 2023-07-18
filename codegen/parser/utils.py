@@ -1,8 +1,7 @@
 import re
 import builtins
-from copy import deepcopy
 from keyword import iskeyword
-from typing import Any, Dict, List, Union, Optional
+from typing import List, Union
 
 from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
@@ -11,6 +10,15 @@ from ..source import Source
 from . import get_override_config
 
 DELIMITERS = r"\. _-"
+
+RESERVED_WORDS = (
+    set(dir(builtins)) | {"self", "true", "false", "datetime", "validate"}
+) - {
+    "type",
+    "id",
+}
+
+UNSET_KEY = "<unset>"
 
 
 def sanitize(value: str) -> str:
@@ -24,14 +32,6 @@ def split_words(value: str) -> List[str]:
     if any(c.isupper() for c in value):
         value = " ".join(re.split("([A-Z]?[a-z]+)", value))
     return re.findall(rf"[^{DELIMITERS}]+", value)
-
-
-RESERVED_WORDS = (
-    set(dir(builtins)) | {"self", "true", "false", "datetime", "validate"}
-) - {
-    "type",
-    "id",
-}
 
 
 def fix_reserved_words(value: str) -> str:
@@ -97,30 +97,23 @@ def build_prop_name(name: str) -> str:
     return fix_reserved_words(snake_case(name))
 
 
-def get_schema_override(source: Source) -> Optional[Dict[str, Any]]:
-    sources = get_override_config()
-    for override_source in sources:
-        if schema := override_source.schema_overrides.get(source.pointer.path):
-            return schema
-    return None
-
-
 def merge_dict(old: dict, new: dict):
     # make change inplace to make json point correct
     for key, value in new.items():
-        old[key] = (
-            merge_dict(old[key], value)
-            if isinstance(value, dict) and isinstance(old[key], dict)
-            else value
-        )
+        if value == UNSET_KEY:
+            del old[key]
+        else:
+            old[key] = (
+                merge_dict(old[key], value)
+                if isinstance(value, dict) and isinstance(old[key], dict)
+                else value
+            )
 
 
 def schema_from_source(source: Source) -> oas.Schema:
     data = source.data
     try:
         assert isinstance(data, dict)
-        if overrides := get_schema_override(source):
-            merge_dict(data, overrides)
         return parse_obj_as(oas.Schema, data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e

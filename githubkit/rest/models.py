@@ -2238,6 +2238,18 @@ class SecurityAndAnalysisPropAdvancedSecurity(GitHubRestModel):
     status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
 
 
+class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubRestModel):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(
+        description="The enablement status of Dependabot security updates for the repository.",
+        default=UNSET,
+    )
+
+
 class SecurityAndAnalysisPropSecretScanning(GitHubRestModel):
     """SecurityAndAnalysisPropSecretScanning"""
 
@@ -2255,6 +2267,12 @@ class SecurityAndAnalysis(GitHubRestModel):
 
     advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
         default=UNSET
+    )
+    dependabot_security_updates: Missing[
+        SecurityAndAnalysisPropDependabotSecurityUpdates
+    ] = Field(
+        description="Enable or disable Dependabot security updates for the repository.",
+        default=UNSET,
     )
     secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
         default=UNSET
@@ -2453,6 +2471,231 @@ class OrganizationSimple(GitHubRestModel):
     description: Union[str, None] = Field(default=...)
 
 
+class CopilotSeatBreakdown(GitHubRestModel):
+    """Copilot for Business Seat Breakdown
+
+    The breakdown of Copilot for Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+        default=UNSET,
+    )
+    added_this_cycle: Missing[int] = Field(
+        description="Seats added during the current billing cycle.", default=UNSET
+    )
+    pending_cancellation: Missing[int] = Field(
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+        default=UNSET,
+    )
+    pending_invitation: Missing[int] = Field(
+        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
+        default=UNSET,
+    )
+    active_this_cycle: Missing[int] = Field(
+        description="The number of seats that have used Copilot during the current billing cycle.",
+        default=UNSET,
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+        default=UNSET,
+    )
+
+
+class CopilotOrganizationDetails(GitHubRestModel, extra=Extra.allow):
+    """Copilot for Business Organization Details
+
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot for Business subscription.
+    """
+
+    seat_breakdown: CopilotSeatBreakdown = Field(
+        title="Copilot for Business Seat Breakdown",
+        description="The breakdown of Copilot for Business seats for the organization.",
+        default=...,
+    )
+    public_code_suggestions: Literal[
+        "allow", "block", "unconfigured", "unknown"
+    ] = Field(
+        description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code.",
+        default=...,
+    )
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled"
+    ] = Field(description="The mode of assigning new seats.", default=...)
+
+
+class TeamSimple(GitHubRestModel):
+    """Team Simple
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int = Field(description="Unique identifier of the team", default=...)
+    node_id: str = Field(default=...)
+    url: str = Field(description="URL for the team", default=...)
+    members_url: str = Field(default=...)
+    name: str = Field(description="Name of the team", default=...)
+    description: Union[str, None] = Field(
+        description="Description of the team", default=...
+    )
+    permission: str = Field(
+        description="Permission that the team will have for its repositories",
+        default=...,
+    )
+    privacy: Missing[str] = Field(
+        description="The level of privacy this team should have", default=UNSET
+    )
+    notification_setting: Missing[str] = Field(
+        description="The notification setting the team has set", default=UNSET
+    )
+    html_url: str = Field(default=...)
+    repositories_url: str = Field(default=...)
+    slug: str = Field(default=...)
+    ldap_dn: Missing[str] = Field(
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
+        default=UNSET,
+    )
+
+
+class Team(GitHubRestModel):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    name: str = Field(default=...)
+    slug: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field(default=...)
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    repositories_url: str = Field(default=...)
+    parent: Union[None, TeamSimple] = Field(
+        title="Team Simple",
+        description="Groups of organization members that gives permissions on specified repositories.",
+        default=...,
+    )
+
+
+class TeamPropPermissions(GitHubRestModel):
+    """TeamPropPermissions"""
+
+    pull: bool = Field(default=...)
+    triage: bool = Field(default=...)
+    push: bool = Field(default=...)
+    maintain: bool = Field(default=...)
+    admin: bool = Field(default=...)
+
+
+class Organization(GitHubRestModel):
+    """Organization
+
+    GitHub account for managing multiple users, teams, and repositories
+    """
+
+    login: str = Field(description="Unique login name of the organization", default=...)
+    url: str = Field(description="URL for the organization", default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    hooks_url: str = Field(default=...)
+    issues_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    public_members_url: str = Field(default=...)
+    avatar_url: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    blog: Missing[str] = Field(
+        description="Display blog url for the organization", default=UNSET
+    )
+    html_url: str = Field(default=...)
+    name: Missing[str] = Field(
+        description="Display name for the organization", default=UNSET
+    )
+    company: Missing[str] = Field(
+        description="Display company name for the organization", default=UNSET
+    )
+    location: Missing[str] = Field(
+        description="Display location for the organization", default=UNSET
+    )
+    email: Missing[str] = Field(
+        description="Display email for the organization", default=UNSET
+    )
+    has_organization_projects: bool = Field(
+        description="Specifies if organization projects are enabled for this org",
+        default=...,
+    )
+    has_repository_projects: bool = Field(
+        description="Specifies if repository projects are enabled for repositories that belong to this org",
+        default=...,
+    )
+    is_verified: Missing[bool] = Field(default=UNSET)
+    public_repos: int = Field(default=...)
+    public_gists: int = Field(default=...)
+    followers: int = Field(default=...)
+    following: int = Field(default=...)
+    type: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    plan: Missing[OrganizationPropPlan] = Field(default=UNSET)
+
+
+class OrganizationPropPlan(GitHubRestModel):
+    """OrganizationPropPlan"""
+
+    name: Missing[str] = Field(default=UNSET)
+    space: Missing[int] = Field(default=UNSET)
+    private_repos: Missing[int] = Field(default=UNSET)
+    filled_seats: Missing[int] = Field(default=UNSET)
+    seats: Missing[int] = Field(default=UNSET)
+
+
+class CopilotSeatDetails(GitHubRestModel):
+    """Copilot for Business Seat Detail
+
+    Information about a Copilot for Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: Union[SimpleUser, Team, Organization] = Field(
+        title="Organization",
+        description="The assignee that has been granted access to GitHub Copilot.",
+        default=...,
+    )
+    assigning_team: Missing[Union[Team, None]] = Field(
+        title="Team",
+        description="The team that granted access to GitHub Copilot to the assignee. This will be null if the user was assigned a seat individually.",
+        default=UNSET,
+    )
+    pending_cancellation_date: Missing[Union[date, None]] = Field(
+        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
+        default=UNSET,
+    )
+    last_activity_at: Missing[Union[datetime, None]] = Field(
+        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
+        default=UNSET,
+    )
+    last_activity_editor: Missing[Union[str, None]] = Field(
+        description="Last editor that was used by the user for a GitHub Copilot completion.",
+        default=UNSET,
+    )
+    created_at: datetime = Field(
+        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format.",
+        default=...,
+    )
+    updated_at: Missing[datetime] = Field(
+        description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
+        default=UNSET,
+    )
+
+
 class OrganizationFull(GitHubRestModel):
     """Organization Full
 
@@ -2485,7 +2728,6 @@ class OrganizationFull(GitHubRestModel):
     followers: int = Field(default=...)
     following: int = Field(default=...)
     html_url: str = Field(default=...)
-    created_at: datetime = Field(default=...)
     type: str = Field(default=...)
     total_private_repos: Missing[int] = Field(default=UNSET)
     owned_private_repos: Missing[int] = Field(default=UNSET)
@@ -2508,7 +2750,6 @@ class OrganizationFull(GitHubRestModel):
         default=UNSET
     )
     web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    updated_at: datetime = Field(default=...)
     advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         description="Whether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
         default=UNSET,
@@ -2541,6 +2782,9 @@ class OrganizationFull(GitHubRestModel):
         description="An optional URL string to display to contributors who are blocked from pushing a secret.",
         default=UNSET,
     )
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    archived_at: Union[datetime, None] = Field(default=...)
 
 
 class OrganizationFullPropPlan(GitHubRestModel):
@@ -2665,31 +2909,6 @@ class ActionsSetDefaultWorkflowPermissions(GitHubRestModel):
     can_approve_pull_request_reviews: Missing[bool] = Field(
         description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
         default=UNSET,
-    )
-
-
-class RequiredWorkflow(GitHubRestModel):
-    """RequiredWorkflow"""
-
-    id: float = Field(
-        description="Unique identifier for a required workflow", default=...
-    )
-    name: str = Field(description="Name present in the workflow file", default=...)
-    path: str = Field(description="Path of the workflow file", default=...)
-    scope: Literal["all", "selected"] = Field(
-        description="Scope of the required workflow", default=...
-    )
-    ref: str = Field(
-        description="Ref at which the workflow file will be selected", default=...
-    )
-    state: Literal["active", "deleted"] = Field(
-        description="State of the required workflow", default=...
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository", default=...
     )
 
 
@@ -2907,7 +3126,7 @@ class CodeScanningAlertInstance(GitHubRestModel):
         description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
         default=UNSET,
     )
-    state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = Field(
+    state: Missing[Literal["open", "dismissed", "fixed"]] = Field(
         description="State of a code scanning alert.", default=UNSET
     )
     commit_sha: Missing[str] = Field(default=UNSET)
@@ -2950,7 +3169,7 @@ class CodeScanningOrganizationAlertItems(GitHubRestModel):
         description="The REST API URL for fetching the list of instances for an alert.",
         default=...,
     )
-    state: Literal["open", "closed", "dismissed", "fixed"] = Field(
+    state: Literal["open", "dismissed", "fixed"] = Field(
         description="State of a code scanning alert.", default=...
     )
     fixed_at: Missing[Union[datetime, None]] = Field(
@@ -3338,75 +3557,6 @@ class InteractionLimit(GitHubRestModel):
     )
 
 
-class TeamSimple(GitHubRestModel):
-    """Team Simple
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int = Field(description="Unique identifier of the team", default=...)
-    node_id: str = Field(default=...)
-    url: str = Field(description="URL for the team", default=...)
-    members_url: str = Field(default=...)
-    name: str = Field(description="Name of the team", default=...)
-    description: Union[str, None] = Field(
-        description="Description of the team", default=...
-    )
-    permission: str = Field(
-        description="Permission that the team will have for its repositories",
-        default=...,
-    )
-    privacy: Missing[str] = Field(
-        description="The level of privacy this team should have", default=UNSET
-    )
-    notification_setting: Missing[str] = Field(
-        description="The notification setting the team has set", default=UNSET
-    )
-    html_url: str = Field(default=...)
-    repositories_url: str = Field(default=...)
-    slug: str = Field(default=...)
-    ldap_dn: Missing[str] = Field(
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
-        default=UNSET,
-    )
-
-
-class Team(GitHubRestModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    name: str = Field(default=...)
-    slug: str = Field(default=...)
-    description: Union[str, None] = Field(default=...)
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field(default=...)
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field(default=...)
-    html_url: str = Field(default=...)
-    members_url: str = Field(default=...)
-    repositories_url: str = Field(default=...)
-    parent: Union[None, TeamSimple] = Field(
-        title="Team Simple",
-        description="Groups of organization members that gives permissions on specified repositories.",
-        default=...,
-    )
-
-
-class TeamPropPermissions(GitHubRestModel):
-    """TeamPropPermissions"""
-
-    pull: bool = Field(default=...)
-    triage: bool = Field(default=...)
-    push: bool = Field(default=...)
-    maintain: bool = Field(default=...)
-    admin: bool = Field(default=...)
-
-
 class OrgMembership(GitHubRestModel):
     """Org Membership
 
@@ -3721,8 +3871,12 @@ class RepositoryRulesetBypassActor(GitHubRestModel):
     actor_id: int = Field(
         description="The ID of the actor that can bypass a ruleset", default=...
     )
-    actor_type: Literal["Role", "Team", "Integration"] = Field(
-        description="The type of actor that can bypass a ruleset", default=...
+    actor_type: Literal[
+        "RepositoryRole", "Team", "Integration", "OrganizationAdmin"
+    ] = Field(description="The type of actor that can bypass a ruleset", default=...)
+    bypass_mode: Literal["always", "pull_request"] = Field(
+        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.",
+        default=...,
     )
 
 
@@ -3754,9 +3908,9 @@ class RepositoryRulesetConditionsRepositoryNameTarget(GitHubRestModel):
     Parameters for a repository name condition
     """
 
-    repository_name: Missing[
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName
-    ] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field(
+        default=...
+    )
 
 
 class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(
@@ -3778,16 +3932,42 @@ class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(
     )
 
 
-class OrgRulesetConditions(GitHubRestModel):
-    """Organization ruleset conditions
+class RepositoryRulesetConditionsRepositoryIdTarget(GitHubRestModel):
+    """Repository ruleset conditions for repository IDs
 
-    Conditions for a organization ruleset
+    Parameters for a repository ID condition
     """
 
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field(default=...)
+    )
+
+
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubRestModel):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+
+    repository_ids: Missing[List[int]] = Field(
+        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+        default=UNSET,
+    )
+
+
+class OrgRulesetConditionsOneof0(GitHubRestModel):
+    """OrgRulesetConditionsOneof0"""
+
     ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_name: Missing[
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName
-    ] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field(
+        default=...
+    )
+
+
+class OrgRulesetConditionsOneof1(GitHubRestModel):
+    """OrgRulesetConditionsOneof1"""
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field(default=...)
+    )
 
 
 class RepositoryRuleCreation(GitHubRestModel):
@@ -4109,21 +4289,25 @@ class RepositoryRuleset(GitHubRestModel):
         description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
         default=...,
     )
-    bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
-        description="The permission level required to bypass this ruleset.\n\n**Deprecation Notice:** The `bypass_mode` field is being deprecated. To add a bypass option to this ruleset, use `bypass_actors`. The `bypass_mode` field will no longer be included in the response.",
-        default=UNSET,
-    )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         description="The actors that can bypass the rules in this ruleset",
+        default=UNSET,
+    )
+    current_user_can_bypass: Missing[bool] = Field(
+        description="Whether the user making this API request is able to bypass the ruleset. This field is only returned when\nquerying the repository-level endpoint.",
         default=UNSET,
     )
     node_id: Missing[str] = Field(default=UNSET)
     links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
     conditions: Missing[
-        Union[RepositoryRulesetConditions, OrgRulesetConditions]
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+        ]
     ] = Field(
-        title="Organization ruleset conditions",
-        description="Conditions for a organization ruleset",
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
         default=UNSET,
     )
     rules: Missing[
@@ -4342,6 +4526,7 @@ class TeamOrganization(GitHubRestModel):
     )
     web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
     updated_at: datetime = Field(default=...)
+    archived_at: Union[datetime, None] = Field(default=...)
 
 
 class TeamOrganizationPropPlan(GitHubRestModel):
@@ -4780,68 +4965,6 @@ class RateLimitOverviewPropResources(GitHubRestModel):
     )
     scim: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
     dependency_snapshots: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
-
-
-class RepoRequiredWorkflow(GitHubRestModel):
-    """Required workflow
-
-    A GitHub Actions required workflow
-    """
-
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    name: str = Field(default=...)
-    path: str = Field(default=...)
-    state: Literal["active", "deleted"] = Field(default=...)
-    source_repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository", default=...
-    )
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    url: str = Field(default=...)
-    html_url: str = Field(default=...)
-    badge_url: str = Field(default=...)
-
-
-class WorkflowUsage(GitHubRestModel):
-    """Workflow Usage
-
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillable = Field(default=...)
-
-
-class WorkflowUsagePropBillable(GitHubRestModel):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
-    )
-    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
-    )
-
-
-class WorkflowUsagePropBillablePropUbuntu(GitHubRestModel):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropMacos(GitHubRestModel):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropWindows(GitHubRestModel):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
 
 
 class CodeOfConductSimple(GitHubRestModel):
@@ -5383,7 +5506,10 @@ class WorkflowRun(GitHubRestModel):
     workflow_id: int = Field(description="The ID of the parent workflow.", default=...)
     url: str = Field(description="The URL to the workflow run.", default=...)
     html_url: str = Field(default=...)
-    pull_requests: Union[List[PullRequestMinimal], None] = Field(default=...)
+    pull_requests: Union[List[PullRequestMinimal], None] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run.",
+        default=...,
+    )
     created_at: datetime = Field(default=...)
     updated_at: datetime = Field(default=...)
     actor: Missing[SimpleUser] = Field(
@@ -5691,6 +5817,47 @@ class Workflow(GitHubRestModel):
     html_url: str = Field(default=...)
     badge_url: str = Field(default=...)
     deleted_at: Missing[datetime] = Field(default=UNSET)
+
+
+class WorkflowUsage(GitHubRestModel):
+    """Workflow Usage
+
+    Workflow Usage
+    """
+
+    billable: WorkflowUsagePropBillable = Field(default=...)
+
+
+class WorkflowUsagePropBillable(GitHubRestModel):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
+    )
+    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
+    )
+
+
+class WorkflowUsagePropBillablePropUbuntu(GitHubRestModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropMacos(GitHubRestModel):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropWindows(GitHubRestModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
 
 
 class Autolink(GitHubRestModel):
@@ -6428,7 +6595,10 @@ class CheckRun(GitHubRestModel):
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
         default=...,
     )
-    pull_requests: List[PullRequestMinimal] = Field(default=...)
+    pull_requests: List[PullRequestMinimal] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check.",
+        default=...,
+    )
     deployment: Missing[DeploymentSimple] = Field(
         title="Deployment",
         description="A deployment created as the result of an Actions check run from a workflow that references an environment",
@@ -6591,7 +6761,7 @@ class CodeScanningAlertItems(GitHubRestModel):
         description="The REST API URL for fetching the list of instances for an alert.",
         default=...,
     )
-    state: Literal["open", "closed", "dismissed", "fixed"] = Field(
+    state: Literal["open", "dismissed", "fixed"] = Field(
         description="State of a code scanning alert.", default=...
     )
     fixed_at: Missing[Union[datetime, None]] = Field(
@@ -6641,7 +6811,7 @@ class CodeScanningAlert(GitHubRestModel):
         description="The REST API URL for fetching the list of instances for an alert.",
         default=...,
     )
-    state: Literal["open", "closed", "dismissed", "fixed"] = Field(
+    state: Literal["open", "dismissed", "fixed"] = Field(
         description="State of a code scanning alert.", default=...
     )
     fixed_at: Missing[Union[datetime, None]] = Field(
@@ -6792,6 +6962,7 @@ class CodeScanningDefaultSetup(GitHubRestModel):
                 "python",
                 "ruby",
                 "typescript",
+                "swift",
             ]
         ]
     ] = Field(description="Languages to be analysed.", default=UNSET)
@@ -6814,7 +6985,7 @@ class CodeScanningDefaultSetupUpdate(GitHubRestModel):
         default=...,
     )
     query_suite: Missing[Literal["default", "extended"]] = Field(
-        description="CodeQL query suite to be used.", default=UNSET
+        description="The CodeQL query suite to use.", default=UNSET
     )
     languages: Missing[
         List[
@@ -6826,6 +6997,7 @@ class CodeScanningDefaultSetupUpdate(GitHubRestModel):
                 "javascript-typescript",
                 "python",
                 "ruby",
+                "swift",
             ]
         ]
     ] = Field(
@@ -10594,6 +10766,287 @@ class ReleaseNotesContent(GitHubRestModel):
     )
 
 
+class RepositoryRuleRulesetInfo(GitHubRestModel):
+    """repository ruleset data for rule
+
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof0(GitHubRestModel):
+    """RepositoryRuleDetailedOneof0"""
+
+    type: Literal["creation"] = Field(default=...)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof1(GitHubRestModel):
+    """RepositoryRuleDetailedOneof1"""
+
+    type: Literal["update"] = Field(default=...)
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof2(GitHubRestModel):
+    """RepositoryRuleDetailedOneof2"""
+
+    type: Literal["deletion"] = Field(default=...)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof3(GitHubRestModel):
+    """RepositoryRuleDetailedOneof3"""
+
+    type: Literal["required_linear_history"] = Field(default=...)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof4(GitHubRestModel):
+    """RepositoryRuleDetailedOneof4"""
+
+    type: Literal["required_deployments"] = Field(default=...)
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof5(GitHubRestModel):
+    """RepositoryRuleDetailedOneof5"""
+
+    type: Literal["required_signatures"] = Field(default=...)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof6(GitHubRestModel):
+    """RepositoryRuleDetailedOneof6"""
+
+    type: Literal["pull_request"] = Field(default=...)
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof7(GitHubRestModel):
+    """RepositoryRuleDetailedOneof7"""
+
+    type: Literal["required_status_checks"] = Field(default=...)
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof8(GitHubRestModel):
+    """RepositoryRuleDetailedOneof8"""
+
+    type: Literal["non_fast_forward"] = Field(default=...)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof9(GitHubRestModel):
+    """RepositoryRuleDetailedOneof9"""
+
+    type: Literal["commit_message_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof10(GitHubRestModel):
+    """RepositoryRuleDetailedOneof10"""
+
+    type: Literal["commit_author_email_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof11(GitHubRestModel):
+    """RepositoryRuleDetailedOneof11"""
+
+    type: Literal["committer_email_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof12(GitHubRestModel):
+    """RepositoryRuleDetailedOneof12"""
+
+    type: Literal["branch_name_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
+class RepositoryRuleDetailedOneof13(GitHubRestModel):
+    """RepositoryRuleDetailedOneof13"""
+
+    type: Literal["tag_name_pattern"] = Field(default=...)
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
 class SecretScanningAlert(GitHubRestModel):
     """SecretScanningAlert"""
 
@@ -10797,6 +11250,7 @@ class RepositoryAdvisoryVulnerabilityPropPackage(GitHubRestModel):
         "actions",
         "pub",
         "other",
+        "swift",
     ] = Field(
         description="The package's language or package management ecosystem.",
         default=...,
@@ -10894,6 +11348,16 @@ class RepositoryAdvisory(GitHubRestModel):
         default=..., alias="credits"
     )
     credits_detailed: Union[List[RepositoryAdvisoryCredit], None] = Field(default=...)
+    collaborating_users: Union[List[SimpleUser], None] = Field(
+        description="A list of users that collaborate on the advisory.", default=...
+    )
+    collaborating_teams: Union[List[Team], None] = Field(
+        description="A list of teams that collaborate on the advisory.", default=...
+    )
+    private_fork: None = Field(
+        description="A temporary private fork of the advisory's repository for collaborating on a fix.",
+        default=...,
+    )
 
 
 class RepositoryAdvisoryPropIdentifiersItems(GitHubRestModel):
@@ -11033,6 +11497,7 @@ class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubRestMode
         "actions",
         "pub",
         "other",
+        "swift",
     ] = Field(
         description="The package's language or package management ecosystem.",
         default=...,
@@ -11135,6 +11600,7 @@ class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(
         "actions",
         "pub",
         "other",
+        "swift",
     ] = Field(
         description="The package's language or package management ecosystem.",
         default=...,
@@ -11228,6 +11694,7 @@ class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage(GitHubRestMode
         "actions",
         "pub",
         "other",
+        "swift",
     ] = Field(
         description="The package's language or package management ecosystem.",
         default=...,
@@ -13132,6 +13599,16 @@ class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubRestModel):
     )
 
 
+class OrganizationsOrgCopilotBillingSeatsGetResponse200(GitHubRestModel):
+    """OrganizationsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
+        description="Total number of Copilot For Business seats for the organization currently being billed.",
+        default=UNSET,
+    )
+    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
+
+
 class OrgsOrgPatchBody(GitHubRestModel):
     """OrgsOrgPatchBody"""
 
@@ -13276,75 +13753,6 @@ class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubRestModel):
 
     selected_repository_ids: List[int] = Field(
         description="List of repository IDs to enable for GitHub Actions.", default=...
-    )
-
-
-class OrgsOrgActionsRequiredWorkflowsGetResponse200(GitHubRestModel):
-    """OrgsOrgActionsRequiredWorkflowsGetResponse200"""
-
-    total_count: int = Field(default=...)
-    required_workflows: List[RequiredWorkflow] = Field(default=...)
-
-
-class OrgsOrgActionsRequiredWorkflowsPostBody(GitHubRestModel):
-    """OrgsOrgActionsRequiredWorkflowsPostBody"""
-
-    workflow_file_path: str = Field(
-        description="Path of the workflow file to be configured as a required workflow.",
-        default=...,
-    )
-    repository_id: str = Field(
-        description="The ID of the repository that contains the workflow file.",
-        default=...,
-    )
-    scope: Missing[Literal["selected", "all"]] = Field(
-        description="Enable the required workflow for all repositories or selected repositories in the organization.",
-        default="all",
-    )
-    selected_repository_ids: Missing[List[int]] = Field(
-        description="A list of repository IDs where you want to enable the required workflow. You can only provide a list of repository ids when the `scope` is set to `selected`.",
-        default=UNSET,
-    )
-
-
-class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody(GitHubRestModel):
-    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody"""
-
-    workflow_file_path: Missing[str] = Field(
-        description="Path of the workflow file to be configured as a required workflow.",
-        default=UNSET,
-    )
-    repository_id: Missing[str] = Field(
-        description="The ID of the repository that contains the workflow file.",
-        default=UNSET,
-    )
-    scope: Missing[Literal["selected", "all"]] = Field(
-        description="Enable the required workflow for all repositories or selected repositories in the organization.",
-        default="all",
-    )
-    selected_repository_ids: Missing[List[int]] = Field(
-        description="A list of repository IDs where you want to enable the required workflow. A list of repository IDs where you want to enable the required workflow. You can only provide a list of repository ids when the `scope` is set to `selected`.",
-        default=UNSET,
-    )
-
-
-class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200(
-    GitHubRestModel
-):
-    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200"""
-
-    total_count: float = Field(default=...)
-    repositories: List[Repository] = Field(default=...)
-
-
-class OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody(
-    GitHubRestModel
-):
-    """OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody"""
-
-    selected_repository_ids: List[int] = Field(
-        description="The IDs of the repositories for which the workflow should be required.",
-        default=...,
     )
 
 
@@ -13574,7 +13982,7 @@ class OrgsOrgCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
     encrypted_value: Missing[str] = Field(
-        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/reference/codespaces#get-an-organization-public-key) endpoint.",
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
@@ -13586,7 +13994,7 @@ class OrgsOrgCodespacesSecretsSecretNamePutBody(GitHubRestModel):
         default=...,
     )
     selected_repository_ids: Missing[List[int]] = Field(
-        description="An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/reference/codespaces#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/codespaces#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=UNSET,
     )
 
@@ -13602,9 +14010,85 @@ class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/codespaces#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=...,
     )
+
+
+class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+
+    selected_teams: List[str] = Field(
+        description="List of team names within the organization to which to grant access to GitHub Copilot.",
+        min_items=1,
+        default=...,
+    )
+
+
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+
+    The total number of seat assignments created.
+    """
+
+    seats_created: int = Field(default=...)
+
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+
+    selected_teams: List[str] = Field(
+        description="The names of teams from which to revoke access to GitHub Copilot.",
+        min_items=1,
+        default=...,
+    )
+
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+
+    The total number of seat assignments cancelled.
+    """
+
+    seats_cancelled: int = Field(default=...)
+
+
+class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+
+    selected_usernames: List[str] = Field(
+        description="The usernames of the organization members to be granted access to GitHub Copilot.",
+        min_items=1,
+        default=...,
+    )
+
+
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seat assignments created.
+    """
+
+    seats_created: int = Field(default=...)
+
+
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: List[str] = Field(
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
+        min_items=1,
+        default=...,
+    )
+
+
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubRestModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+
+    The total number of seat assignments cancelled.
+    """
+
+    seats_cancelled: int = Field(default=...)
 
 
 class OrgsOrgDependabotSecretsGetResponse200(GitHubRestModel):
@@ -13618,7 +14102,7 @@ class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
     encrypted_value: Missing[str] = Field(
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/reference/dependabot#get-an-organization-public-key) endpoint.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
@@ -13630,7 +14114,7 @@ class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubRestModel):
         default=...,
     )
     selected_repository_ids: Missing[List[str]] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/reference/dependabot#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/dependabot#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/dependabot#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=UNSET,
     )
 
@@ -13646,7 +14130,7 @@ class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/dependabot#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/dependabot#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=...,
     )
 
@@ -14044,7 +14528,9 @@ class OrgsOrgRulesetsPostBody(GitHubRestModel):
         description="The actors that can bypass the rules in this ruleset",
         default=UNSET,
     )
-    conditions: Missing[OrgRulesetConditions] = Field(
+    conditions: Missing[
+        Union[OrgRulesetConditionsOneof0, OrgRulesetConditionsOneof1]
+    ] = Field(
         title="Organization ruleset conditions",
         description="Conditions for a organization ruleset",
         default=UNSET,
@@ -14086,7 +14572,9 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubRestModel):
         description="The actors that can bypass the rules in this ruleset",
         default=UNSET,
     )
-    conditions: Missing[OrgRulesetConditions] = Field(
+    conditions: Missing[
+        Union[OrgRulesetConditionsOneof0, OrgRulesetConditionsOneof1]
+    ] = Field(
         title="Organization ruleset conditions",
         description="Conditions for a organization ruleset",
         default=UNSET,
@@ -14448,13 +14936,6 @@ class ProjectsProjectIdColumnsPostBody(GitHubRestModel):
     name: str = Field(description="Name of the project column", default=...)
 
 
-class ReposOrgRepoActionsRequiredWorkflowsGetResponse200(GitHubRestModel):
-    """ReposOrgRepoActionsRequiredWorkflowsGetResponse200"""
-
-    total_count: int = Field(default=...)
-    required_workflows: List[RepoRequiredWorkflow] = Field(default=...)
-
-
 class ReposOwnerRepoDeleteResponse403(GitHubRestModel):
     """ReposOwnerRepoDeleteResponse403"""
 
@@ -14706,17 +15187,6 @@ class ReposOwnerRepoActionsPermissionsPutBody(GitHubRestModel):
         description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
         default=UNSET,
     )
-
-
-class ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200(
-    GitHubRestModel
-):
-    """ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse20
-    0
-    """
-
-    total_count: int = Field(default=...)
-    workflow_runs: List[WorkflowRun] = Field(default=...)
 
 
 class ReposOwnerRepoActionsRunnersGetResponse200(GitHubRestModel):
@@ -15429,7 +15899,7 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubRestModel):
     annotations: Missing[
         List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
     ] = Field(
-        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)".',
+        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)".',
         default=UNSET,
     )
     images: Missing[
@@ -15619,7 +16089,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubRestModel):
     annotations: Missing[
         List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems]
     ] = Field(
-        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/reference/checks#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/articles/about-status-checks#checks)\".",
+        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/articles/about-status-checks#checks)\".",
         default=UNSET,
     )
     images: Missing[
@@ -16004,7 +16474,7 @@ class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
     encrypted_value: Missing[str] = Field(
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/reference/codespaces#get-a-repository-public-key) endpoint.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
@@ -16209,7 +16679,7 @@ class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
     encrypted_value: Missing[str] = Field(
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/reference/dependabot#get-a-repository-public-key) endpoint.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
@@ -16958,7 +17428,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
     labels: Missing[List[str]] = Field(
-        description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/reference/issues#add-labels-to-an-issue)."',
+        description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)."',
         min_items=1,
         default=UNSET,
     )
@@ -16990,7 +17460,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
     labels: Missing[List[str]] = Field(
-        description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/rest/reference/issues#set-labels-for-an-issue)."',
+        description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)."',
         min_items=1,
         default=UNSET,
     )
@@ -17816,10 +18286,6 @@ class ReposOwnerRepoRulesetsPostBody(GitHubRestModel):
         description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
         default=...,
     )
-    bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
-        description="The permission level required to bypass this ruleset.\n\n**Deprecation Notice:** The bypass_mode field is being deprecated. To add a bypass option to this ruleset, use bypass_actors. The bypass_mode field will no longer be included in the respnse.",
-        default=UNSET,
-    )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         description="The actors that can bypass the rules in this ruleset",
         default=UNSET,
@@ -17860,10 +18326,6 @@ class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubRestModel):
     )
     enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
-        default=UNSET,
-    )
-    bypass_mode: Missing[Literal["none", "repository", "organization"]] = Field(
-        description="The permission level required to bypass this ruleset.\n\n**Deprecation Notice:** The bypass_mode field is being deprecated. To add a bypass option to this ruleset, use bypass_actors. The bypass_mode field will no longer be included in the respnse.",
         default=UNSET,
     )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
@@ -18373,7 +18835,7 @@ class UserCodespacesSecretsSecretNamePutBody(GitHubRestModel):
         description="ID of the key you used to encrypt the secret.", default=...
     )
     selected_repository_ids: Missing[List[Union[int, str]]] = Field(
-        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/reference/codespaces#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/reference/codespaces#remove-a-selected-repository-from-a-user-secret) endpoints.",
+        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
         default=UNSET,
     )
 
@@ -18389,7 +18851,7 @@ class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
-        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/reference/codespaces#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/reference/codespaces#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/reference/codespaces#remove-a-selected-repository-from-a-user-secret) endpoints.",
+        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
         default=...,
     )
 
@@ -18771,6 +19233,7 @@ ApiOverview.update_forward_refs()
 ApiOverviewPropSshKeyFingerprints.update_forward_refs()
 ApiOverviewPropDomains.update_forward_refs()
 SecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
+SecurityAndAnalysisPropDependabotSecurityUpdates.update_forward_refs()
 SecurityAndAnalysisPropSecretScanning.update_forward_refs()
 SecurityAndAnalysisPropSecretScanningPushProtection.update_forward_refs()
 SecurityAndAnalysis.update_forward_refs()
@@ -18781,6 +19244,14 @@ Thread.update_forward_refs()
 ThreadPropSubject.update_forward_refs()
 ThreadSubscription.update_forward_refs()
 OrganizationSimple.update_forward_refs()
+CopilotSeatBreakdown.update_forward_refs()
+CopilotOrganizationDetails.update_forward_refs()
+TeamSimple.update_forward_refs()
+Team.update_forward_refs()
+TeamPropPermissions.update_forward_refs()
+Organization.update_forward_refs()
+OrganizationPropPlan.update_forward_refs()
+CopilotSeatDetails.update_forward_refs()
 OrganizationFull.update_forward_refs()
 OrganizationFullPropPlan.update_forward_refs()
 ActionsCacheUsageOrgEnterprise.update_forward_refs()
@@ -18791,7 +19262,6 @@ ActionsOrganizationPermissions.update_forward_refs()
 SelectedActions.update_forward_refs()
 ActionsGetDefaultWorkflowPermissions.update_forward_refs()
 ActionsSetDefaultWorkflowPermissions.update_forward_refs()
-RequiredWorkflow.update_forward_refs()
 RunnerLabel.update_forward_refs()
 Runner.update_forward_refs()
 RunnerApplication.update_forward_refs()
@@ -18820,9 +19290,6 @@ OrgHook.update_forward_refs()
 OrgHookPropConfig.update_forward_refs()
 InteractionLimitResponse.update_forward_refs()
 InteractionLimit.update_forward_refs()
-TeamSimple.update_forward_refs()
-Team.update_forward_refs()
-TeamPropPermissions.update_forward_refs()
 OrgMembership.update_forward_refs()
 OrgMembershipPropPermissions.update_forward_refs()
 Migration.update_forward_refs()
@@ -18846,7 +19313,10 @@ RepositoryRulesetConditions.update_forward_refs()
 RepositoryRulesetConditionsPropRefName.update_forward_refs()
 RepositoryRulesetConditionsRepositoryNameTarget.update_forward_refs()
 RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName.update_forward_refs()
-OrgRulesetConditions.update_forward_refs()
+RepositoryRulesetConditionsRepositoryIdTarget.update_forward_refs()
+RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId.update_forward_refs()
+OrgRulesetConditionsOneof0.update_forward_refs()
+OrgRulesetConditionsOneof1.update_forward_refs()
 RepositoryRuleCreation.update_forward_refs()
 RepositoryRuleUpdate.update_forward_refs()
 RepositoryRuleUpdatePropParameters.update_forward_refs()
@@ -18896,12 +19366,6 @@ ProjectCollaboratorPermission.update_forward_refs()
 RateLimit.update_forward_refs()
 RateLimitOverview.update_forward_refs()
 RateLimitOverviewPropResources.update_forward_refs()
-RepoRequiredWorkflow.update_forward_refs()
-WorkflowUsage.update_forward_refs()
-WorkflowUsagePropBillable.update_forward_refs()
-WorkflowUsagePropBillablePropUbuntu.update_forward_refs()
-WorkflowUsagePropBillablePropMacos.update_forward_refs()
-WorkflowUsagePropBillablePropWindows.update_forward_refs()
 CodeOfConductSimple.update_forward_refs()
 FullRepository.update_forward_refs()
 FullRepositoryPropPermissions.update_forward_refs()
@@ -18944,6 +19408,11 @@ WorkflowRunUsagePropBillablePropMacosPropJobRunsItems.update_forward_refs()
 WorkflowRunUsagePropBillablePropWindows.update_forward_refs()
 WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems.update_forward_refs()
 Workflow.update_forward_refs()
+WorkflowUsage.update_forward_refs()
+WorkflowUsagePropBillable.update_forward_refs()
+WorkflowUsagePropBillablePropUbuntu.update_forward_refs()
+WorkflowUsagePropBillablePropMacos.update_forward_refs()
+WorkflowUsagePropBillablePropWindows.update_forward_refs()
 Autolink.update_forward_refs()
 ProtectedBranchRequiredStatusCheck.update_forward_refs()
 ProtectedBranchRequiredStatusCheckPropChecksItems.update_forward_refs()
@@ -19206,6 +19675,21 @@ ReviewCommentPropLinks.update_forward_refs()
 ReleaseAsset.update_forward_refs()
 Release.update_forward_refs()
 ReleaseNotesContent.update_forward_refs()
+RepositoryRuleRulesetInfo.update_forward_refs()
+RepositoryRuleDetailedOneof0.update_forward_refs()
+RepositoryRuleDetailedOneof1.update_forward_refs()
+RepositoryRuleDetailedOneof2.update_forward_refs()
+RepositoryRuleDetailedOneof3.update_forward_refs()
+RepositoryRuleDetailedOneof4.update_forward_refs()
+RepositoryRuleDetailedOneof5.update_forward_refs()
+RepositoryRuleDetailedOneof6.update_forward_refs()
+RepositoryRuleDetailedOneof7.update_forward_refs()
+RepositoryRuleDetailedOneof8.update_forward_refs()
+RepositoryRuleDetailedOneof9.update_forward_refs()
+RepositoryRuleDetailedOneof10.update_forward_refs()
+RepositoryRuleDetailedOneof11.update_forward_refs()
+RepositoryRuleDetailedOneof12.update_forward_refs()
+RepositoryRuleDetailedOneof13.update_forward_refs()
 SecretScanningAlert.update_forward_refs()
 SecretScanningLocationCommit.update_forward_refs()
 SecretScanningLocationIssueTitle.update_forward_refs()
@@ -19342,16 +19826,12 @@ MarkdownPostBody.update_forward_refs()
 NotificationsPutBody.update_forward_refs()
 NotificationsPutResponse202.update_forward_refs()
 NotificationsThreadsThreadIdSubscriptionPutBody.update_forward_refs()
+OrganizationsOrgCopilotBillingSeatsGetResponse200.update_forward_refs()
 OrgsOrgPatchBody.update_forward_refs()
 OrgsOrgActionsCacheUsageByRepositoryGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsPutBody.update_forward_refs()
 OrgsOrgActionsPermissionsRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsRepositoriesPutBody.update_forward_refs()
-OrgsOrgActionsRequiredWorkflowsGetResponse200.update_forward_refs()
-OrgsOrgActionsRequiredWorkflowsPostBody.update_forward_refs()
-OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody.update_forward_refs()
-OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200.update_forward_refs()
-OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody.update_forward_refs()
 OrgsOrgActionsRunnersGetResponse200.update_forward_refs()
 OrgsOrgActionsRunnersGenerateJitconfigPostBody.update_forward_refs()
 OrgsOrgActionsRunnersGenerateJitconfigPostResponse201.update_forward_refs()
@@ -19376,6 +19856,14 @@ OrgsOrgCodespacesSecretsGetResponse200.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody.update_forward_refs()
+OrgsOrgCopilotBillingSelectedTeamsPostBody.update_forward_refs()
+OrgsOrgCopilotBillingSelectedTeamsPostResponse201.update_forward_refs()
+OrgsOrgCopilotBillingSelectedTeamsDeleteBody.update_forward_refs()
+OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200.update_forward_refs()
+OrgsOrgCopilotBillingSelectedUsersPostBody.update_forward_refs()
+OrgsOrgCopilotBillingSelectedUsersPostResponse201.update_forward_refs()
+OrgsOrgCopilotBillingSelectedUsersDeleteBody.update_forward_refs()
+OrgsOrgCopilotBillingSelectedUsersDeleteResponse200.update_forward_refs()
 OrgsOrgDependabotSecretsGetResponse200.update_forward_refs()
 OrgsOrgDependabotSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
@@ -19434,7 +19922,6 @@ ProjectsProjectIdPatchBody.update_forward_refs()
 ProjectsProjectIdPatchResponse403.update_forward_refs()
 ProjectsProjectIdCollaboratorsUsernamePutBody.update_forward_refs()
 ProjectsProjectIdColumnsPostBody.update_forward_refs()
-ReposOrgRepoActionsRequiredWorkflowsGetResponse200.update_forward_refs()
 ReposOwnerRepoDeleteResponse403.update_forward_refs()
 ReposOwnerRepoPatchBody.update_forward_refs()
 ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity.update_forward_refs()
@@ -19447,7 +19934,6 @@ ReposOwnerRepoActionsOidcCustomizationSubPutBody.update_forward_refs()
 ReposOwnerRepoActionsOrganizationSecretsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsOrganizationVariablesGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsPermissionsPutBody.update_forward_refs()
-ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunnersGetResponse200.update_forward_refs()
 ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody.update_forward_refs()
 ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody.update_forward_refs()
@@ -19780,6 +20266,7 @@ __all__ = [
     "ApiOverviewPropSshKeyFingerprints",
     "ApiOverviewPropDomains",
     "SecurityAndAnalysisPropAdvancedSecurity",
+    "SecurityAndAnalysisPropDependabotSecurityUpdates",
     "SecurityAndAnalysisPropSecretScanning",
     "SecurityAndAnalysisPropSecretScanningPushProtection",
     "SecurityAndAnalysis",
@@ -19790,6 +20277,14 @@ __all__ = [
     "ThreadPropSubject",
     "ThreadSubscription",
     "OrganizationSimple",
+    "CopilotSeatBreakdown",
+    "CopilotOrganizationDetails",
+    "TeamSimple",
+    "Team",
+    "TeamPropPermissions",
+    "Organization",
+    "OrganizationPropPlan",
+    "CopilotSeatDetails",
     "OrganizationFull",
     "OrganizationFullPropPlan",
     "ActionsCacheUsageOrgEnterprise",
@@ -19800,7 +20295,6 @@ __all__ = [
     "SelectedActions",
     "ActionsGetDefaultWorkflowPermissions",
     "ActionsSetDefaultWorkflowPermissions",
-    "RequiredWorkflow",
     "RunnerLabel",
     "Runner",
     "RunnerApplication",
@@ -19829,9 +20323,6 @@ __all__ = [
     "OrgHookPropConfig",
     "InteractionLimitResponse",
     "InteractionLimit",
-    "TeamSimple",
-    "Team",
-    "TeamPropPermissions",
     "OrgMembership",
     "OrgMembershipPropPermissions",
     "Migration",
@@ -19855,7 +20346,10 @@ __all__ = [
     "RepositoryRulesetConditionsPropRefName",
     "RepositoryRulesetConditionsRepositoryNameTarget",
     "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",
-    "OrgRulesetConditions",
+    "RepositoryRulesetConditionsRepositoryIdTarget",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",
+    "OrgRulesetConditionsOneof0",
+    "OrgRulesetConditionsOneof1",
     "RepositoryRuleCreation",
     "RepositoryRuleUpdate",
     "RepositoryRuleUpdatePropParameters",
@@ -19905,12 +20399,6 @@ __all__ = [
     "RateLimit",
     "RateLimitOverview",
     "RateLimitOverviewPropResources",
-    "RepoRequiredWorkflow",
-    "WorkflowUsage",
-    "WorkflowUsagePropBillable",
-    "WorkflowUsagePropBillablePropUbuntu",
-    "WorkflowUsagePropBillablePropMacos",
-    "WorkflowUsagePropBillablePropWindows",
     "CodeOfConductSimple",
     "FullRepository",
     "FullRepositoryPropPermissions",
@@ -19953,6 +20441,11 @@ __all__ = [
     "WorkflowRunUsagePropBillablePropWindows",
     "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
     "Workflow",
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropWindows",
     "Autolink",
     "ProtectedBranchRequiredStatusCheck",
     "ProtectedBranchRequiredStatusCheckPropChecksItems",
@@ -20215,6 +20708,21 @@ __all__ = [
     "ReleaseAsset",
     "Release",
     "ReleaseNotesContent",
+    "RepositoryRuleRulesetInfo",
+    "RepositoryRuleDetailedOneof0",
+    "RepositoryRuleDetailedOneof1",
+    "RepositoryRuleDetailedOneof2",
+    "RepositoryRuleDetailedOneof3",
+    "RepositoryRuleDetailedOneof4",
+    "RepositoryRuleDetailedOneof5",
+    "RepositoryRuleDetailedOneof6",
+    "RepositoryRuleDetailedOneof7",
+    "RepositoryRuleDetailedOneof8",
+    "RepositoryRuleDetailedOneof9",
+    "RepositoryRuleDetailedOneof10",
+    "RepositoryRuleDetailedOneof11",
+    "RepositoryRuleDetailedOneof12",
+    "RepositoryRuleDetailedOneof13",
     "SecretScanningAlert",
     "SecretScanningLocationCommit",
     "SecretScanningLocationIssueTitle",
@@ -20351,16 +20859,12 @@ __all__ = [
     "NotificationsPutBody",
     "NotificationsPutResponse202",
     "NotificationsThreadsThreadIdSubscriptionPutBody",
+    "OrganizationsOrgCopilotBillingSeatsGetResponse200",
     "OrgsOrgPatchBody",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
     "OrgsOrgActionsPermissionsPutBody",
     "OrgsOrgActionsPermissionsRepositoriesGetResponse200",
     "OrgsOrgActionsPermissionsRepositoriesPutBody",
-    "OrgsOrgActionsRequiredWorkflowsGetResponse200",
-    "OrgsOrgActionsRequiredWorkflowsPostBody",
-    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdPatchBody",
-    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesGetResponse200",
-    "OrgsOrgActionsRequiredWorkflowsRequiredWorkflowIdRepositoriesPutBody",
     "OrgsOrgActionsRunnersGetResponse200",
     "OrgsOrgActionsRunnersGenerateJitconfigPostBody",
     "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",
@@ -20385,6 +20889,14 @@ __all__ = [
     "OrgsOrgCodespacesSecretsSecretNamePutBody",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",
+    "OrgsOrgCopilotBillingSelectedTeamsPostBody",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteBody",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",
+    "OrgsOrgCopilotBillingSelectedUsersPostBody",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBody",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",
     "OrgsOrgDependabotSecretsGetResponse200",
     "OrgsOrgDependabotSecretsSecretNamePutBody",
     "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",
@@ -20443,7 +20955,6 @@ __all__ = [
     "ProjectsProjectIdPatchResponse403",
     "ProjectsProjectIdCollaboratorsUsernamePutBody",
     "ProjectsProjectIdColumnsPostBody",
-    "ReposOrgRepoActionsRequiredWorkflowsGetResponse200",
     "ReposOwnerRepoDeleteResponse403",
     "ReposOwnerRepoPatchBody",
     "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
@@ -20456,7 +20967,6 @@ __all__ = [
     "ReposOwnerRepoActionsOrganizationSecretsGetResponse200",
     "ReposOwnerRepoActionsOrganizationVariablesGetResponse200",
     "ReposOwnerRepoActionsPermissionsPutBody",
-    "ReposOwnerRepoActionsRequiredWorkflowsRequiredWorkflowIdForRepoRunsGetResponse200",
     "ReposOwnerRepoActionsRunnersGetResponse200",
     "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",
     "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",

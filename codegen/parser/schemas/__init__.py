@@ -4,6 +4,7 @@ from pydantic import parse_obj_as
 import openapi_schema_pydantic as oas
 
 from ...source import Source
+from ..utils import schema_from_source
 from .schema import Property as Property
 from .schema import AnySchema as AnySchema
 from .schema import IntSchema as IntSchema
@@ -20,7 +21,6 @@ from .schema import UnionSchema as UnionSchema
 from .schema import StringSchema as StringSchema
 from .. import add_schema, get_schema, get_schemas
 from .schema import DateTimeSchema as DateTimeSchema
-from ..utils import merge_dict, schema_from_source, get_schema_override
 
 
 def parse_schema(
@@ -28,8 +28,6 @@ def parse_schema(
 ) -> SchemaData:
     data = source.data
     try:
-        if overrides := get_schema_override(source):
-            merge_dict(data, overrides)
         data = parse_obj_as(Union[oas.Reference, oas.Schema], data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
@@ -66,7 +64,7 @@ def parse_schema(
         schema = build_bool_schema(source)
     elif schema_type == "array":
         schema = build_list_schema(source, class_name, base_source)
-    elif schema_type == "object" or data.allOf:
+    elif schema_type == "object" or data.properties or data.allOf:
         schema = build_model_schema(source, class_name, base_source)
     else:
         schema = build_any_schema(source)

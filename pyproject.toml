@@ -96,7 +96,7 @@ output_dir = "githubkit/rest/"
 "/components/schemas/pull-request-simple/properties/head/properties/repo" = { anyOf = [
     { type = "null" },
     { "$ref" = "#/components/schemas/repository" }
-], "$ref" = {} }
+], "$ref" = "<unset>" }
 
 # https://github.com/github/rest-api-description/issues/1812
 "/components/schemas/pull-request-simple/properties/labels/items/properties/description" = { type = ["string", "null"] }
@@ -125,6 +125,13 @@ output_dir = "githubkit/rest/"
 "/components/schemas/team-organization/properties/company" = { type = ["string", "null"] }
 "/components/schemas/team-organization/properties/email" = { type = ["string", "null"] }
 "/components/schemas/team-organization/properties/location" = { type = ["string", "null"] }
+
+# copilot-seat-details/assignee is not valid
+"/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
+  { "$ref" = "#/components/schemas/simple-user" },
+  { "$ref" = "#/components/schemas/team" },
+  { "$ref" = "#/components/schemas/organization" }
+] }
 
 [tool.codegen.webhook]
 schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"

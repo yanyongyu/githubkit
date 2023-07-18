@@ -18,7 +18,6 @@ from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     UserReposPostBodyType,
-    OrgRulesetConditionsType,
     OrgsOrgReposPostBodyType,
     RepositoryRuleUpdateType,
     RepositoryRuleCreationType,
@@ -26,6 +25,8 @@ from .types import (
     OrgsOrgRulesetsPostBodyType,
     ReposOwnerRepoPatchBodyType,
     RepositoryRulePullRequestType,
+    OrgRulesetConditionsOneof0Type,
+    OrgRulesetConditionsOneof1Type,
     ReposOwnerRepoKeysPostBodyType,
     RepositoryRulesetConditionsType,
     ReposOwnerRepoForksPostBodyType,
@@ -176,35 +177,41 @@ from .models import (
     CombinedCommitStatus,
     OrgsOrgReposPostBody,
     RepositoryInvitation,
-    RepositoryRuleUpdate,
     ContentDirectoryItems,
     ValidationErrorSimple,
     DeploymentBranchPolicy,
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
     BranchRestrictionPolicy,
     OrgsOrgRulesetsPostBody,
     ReposOwnerRepoPatchBody,
     DeploymentProtectionRule,
-    RepositoryRulePullRequest,
     ReposOwnerRepoKeysPostBody,
     ReposOwnerRepoForksPostBody,
     ReposOwnerRepoHooksPostBody,
     ReposOwnerRepoTopicsPutBody,
     ProtectedBranchAdminEnforced,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleTagNamePattern,
+    RepositoryRuleDetailedOneof0,
+    RepositoryRuleDetailedOneof1,
+    RepositoryRuleDetailedOneof2,
+    RepositoryRuleDetailedOneof3,
+    RepositoryRuleDetailedOneof4,
+    RepositoryRuleDetailedOneof5,
+    RepositoryRuleDetailedOneof6,
+    RepositoryRuleDetailedOneof7,
+    RepositoryRuleDetailedOneof8,
+    RepositoryRuleDetailedOneof9,
     ReposOwnerRepoMergesPostBody,
+    RepositoryRuleDetailedOneof10,
+    RepositoryRuleDetailedOneof11,
+    RepositoryRuleDetailedOneof12,
+    RepositoryRuleDetailedOneof13,
     ReposOwnerRepoReleasesPostBody,
     ReposOwnerRepoRulesetsPostBody,
     ReposOwnerRepoTransferPostBody,
     OrgsOrgRulesetsRulesetIdPutBody,
-    RepositoryRuleBranchNamePattern,
     ReposOwnerRepoAutolinksPostBody,
     ReposOwnerRepoDeleteResponse403,
     ProtectedBranchPullRequestReview,
     RepositoryCollaboratorPermission,
-    RepositoryRuleRequiredSignatures,
     ReposOwnerRepoDispatchesPostBody,
     ReposOwnerRepoPagesPutBodyAnyof0,
     ReposOwnerRepoPagesPutBodyAnyof1,
@@ -212,22 +219,16 @@ from .models import (
     ReposOwnerRepoPagesPutBodyAnyof3,
     ReposOwnerRepoPagesPutBodyAnyof4,
     DeploymentBranchPolicyNamePattern,
-    RepositoryRuleRequiredDeployments,
     ReposOwnerRepoContentsPathPutBody,
     ReposOwnerRepoDeploymentsPostBody,
     ReposOwnerRepoPagesPostBodyAnyof0,
     ReposOwnerRepoPagesPostBodyAnyof1,
     ReposOwnerRepoStatusesShaPostBody,
-    RepositoryRuleCommitMessagePattern,
-    RepositoryRuleRequiredStatusChecks,
     ReposOwnerRepoHooksHookIdPatchBody,
-    RepositoryRuleCommitterEmailPattern,
-    RepositoryRuleRequiredLinearHistory,
     ReposOwnerRepoMergeUpstreamPostBody,
     ReposOwnerRepoContentsPathDeleteBody,
     ReposOwnerRepoTagsProtectionPostBody,
     ReposOwnerRepoPagesDeploymentPostBody,
-    RepositoryRuleCommitAuthorEmailPattern,
     ReposOwnerRepoRulesetsRulesetIdPutBody,
     ReposOwnerRepoCommentsCommentIdPatchBody,
     ReposOwnerRepoEnvironmentsGetResponse200,
@@ -579,7 +580,9 @@ class ReposClient:
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
-        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        conditions: Missing[
+            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+        ] = UNSET,
         rules: Missing[
             List[
                 Union[
@@ -655,7 +658,9 @@ class ReposClient:
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
-        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        conditions: Missing[
+            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+        ] = UNSET,
         rules: Missing[
             List[
                 Union[
@@ -777,7 +782,9 @@ class ReposClient:
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
-        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        conditions: Missing[
+            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+        ] = UNSET,
         rules: Missing[
             List[
                 Union[
@@ -856,7 +863,9 @@ class ReposClient:
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
-        conditions: Missing[OrgRulesetConditionsType] = UNSET,
+        conditions: Missing[
+            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+        ] = UNSET,
         rules: Missing[
             List[
                 Union[
@@ -11605,7 +11614,7 @@ class ReposClient:
         page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[Union[RepositoryRuleCreation, RepositoryRuleUpdate, RepositoryRuleDeletion, RepositoryRuleRequiredLinearHistory, RepositoryRuleRequiredDeployments, RepositoryRuleRequiredSignatures, RepositoryRulePullRequest, RepositoryRuleRequiredStatusChecks, RepositoryRuleNonFastForward, RepositoryRuleCommitMessagePattern, RepositoryRuleCommitAuthorEmailPattern, RepositoryRuleCommitterEmailPattern, RepositoryRuleBranchNamePattern, RepositoryRuleTagNamePattern]]]":
+    ) -> "Response[List[Union[RepositoryRuleDetailedOneof0, RepositoryRuleDetailedOneof1, RepositoryRuleDetailedOneof2, RepositoryRuleDetailedOneof3, RepositoryRuleDetailedOneof4, RepositoryRuleDetailedOneof5, RepositoryRuleDetailedOneof6, RepositoryRuleDetailedOneof7, RepositoryRuleDetailedOneof8, RepositoryRuleDetailedOneof9, RepositoryRuleDetailedOneof10, RepositoryRuleDetailedOneof11, RepositoryRuleDetailedOneof12, RepositoryRuleDetailedOneof13]]]":
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
 
         params = {
@@ -11622,20 +11631,20 @@ class ReposClient:
             headers=exclude_unset(headers),
             response_model=List[
                 Union[
-                    RepositoryRuleCreation,
-                    RepositoryRuleUpdate,
-                    RepositoryRuleDeletion,
-                    RepositoryRuleRequiredLinearHistory,
-                    RepositoryRuleRequiredDeployments,
-                    RepositoryRuleRequiredSignatures,
-                    RepositoryRulePullRequest,
-                    RepositoryRuleRequiredStatusChecks,
-                    RepositoryRuleNonFastForward,
-                    RepositoryRuleCommitMessagePattern,
-                    RepositoryRuleCommitAuthorEmailPattern,
-                    RepositoryRuleCommitterEmailPattern,
-                    RepositoryRuleBranchNamePattern,
-                    RepositoryRuleTagNamePattern,
+                    RepositoryRuleDetailedOneof0,
+                    RepositoryRuleDetailedOneof1,
+                    RepositoryRuleDetailedOneof2,
+                    RepositoryRuleDetailedOneof3,
+                    RepositoryRuleDetailedOneof4,
+                    RepositoryRuleDetailedOneof5,
+                    RepositoryRuleDetailedOneof6,
+                    RepositoryRuleDetailedOneof7,
+                    RepositoryRuleDetailedOneof8,
+                    RepositoryRuleDetailedOneof9,
+                    RepositoryRuleDetailedOneof10,
+                    RepositoryRuleDetailedOneof11,
+                    RepositoryRuleDetailedOneof12,
+                    RepositoryRuleDetailedOneof13,
                 ]
             ],
         )
@@ -11649,7 +11658,7 @@ class ReposClient:
         page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[Union[RepositoryRuleCreation, RepositoryRuleUpdate, RepositoryRuleDeletion, RepositoryRuleRequiredLinearHistory, RepositoryRuleRequiredDeployments, RepositoryRuleRequiredSignatures, RepositoryRulePullRequest, RepositoryRuleRequiredStatusChecks, RepositoryRuleNonFastForward, RepositoryRuleCommitMessagePattern, RepositoryRuleCommitAuthorEmailPattern, RepositoryRuleCommitterEmailPattern, RepositoryRuleBranchNamePattern, RepositoryRuleTagNamePattern]]]":
+    ) -> "Response[List[Union[RepositoryRuleDetailedOneof0, RepositoryRuleDetailedOneof1, RepositoryRuleDetailedOneof2, RepositoryRuleDetailedOneof3, RepositoryRuleDetailedOneof4, RepositoryRuleDetailedOneof5, RepositoryRuleDetailedOneof6, RepositoryRuleDetailedOneof7, RepositoryRuleDetailedOneof8, RepositoryRuleDetailedOneof9, RepositoryRuleDetailedOneof10, RepositoryRuleDetailedOneof11, RepositoryRuleDetailedOneof12, RepositoryRuleDetailedOneof13]]]":
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
 
         params = {
@@ -11666,20 +11675,20 @@ class ReposClient:
             headers=exclude_unset(headers),
             response_model=List[
                 Union[
-                    RepositoryRuleCreation,
-                    RepositoryRuleUpdate,
-                    RepositoryRuleDeletion,
-                    RepositoryRuleRequiredLinearHistory,
-                    RepositoryRuleRequiredDeployments,
-                    RepositoryRuleRequiredSignatures,
-                    RepositoryRulePullRequest,
-                    RepositoryRuleRequiredStatusChecks,
-                    RepositoryRuleNonFastForward,
-                    RepositoryRuleCommitMessagePattern,
-                    RepositoryRuleCommitAuthorEmailPattern,
-                    RepositoryRuleCommitterEmailPattern,
-                    RepositoryRuleBranchNamePattern,
-                    RepositoryRuleTagNamePattern,
+                    RepositoryRuleDetailedOneof0,
+                    RepositoryRuleDetailedOneof1,
+                    RepositoryRuleDetailedOneof2,
+                    RepositoryRuleDetailedOneof3,
+                    RepositoryRuleDetailedOneof4,
+                    RepositoryRuleDetailedOneof5,
+                    RepositoryRuleDetailedOneof6,
+                    RepositoryRuleDetailedOneof7,
+                    RepositoryRuleDetailedOneof8,
+                    RepositoryRuleDetailedOneof9,
+                    RepositoryRuleDetailedOneof10,
+                    RepositoryRuleDetailedOneof11,
+                    RepositoryRuleDetailedOneof12,
+                    RepositoryRuleDetailedOneof13,
                 ]
             ],
         )
@@ -11770,7 +11779,6 @@ class ReposClient:
         name: str,
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
-        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[
@@ -11850,7 +11858,6 @@ class ReposClient:
         name: str,
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
-        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[
@@ -11990,7 +11997,6 @@ class ReposClient:
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
-        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[
@@ -12073,7 +12079,6 @@ class ReposClient:
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
-        bypass_mode: Missing[Literal["none", "repository", "organization"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[

@@ -28,6 +28,7 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
 
 
 from ..source import Source
+from .utils import merge_dict
 from .endpoints import parse_endpoint
 from .utils import sanitize as sanitize
 from .utils import kebab_case as kebab_case
@@ -43,6 +44,14 @@ from ..config import Config, RestConfig, Overridable, WebhookConfig
 
 def parse_openapi_spec(source: Source, rest: RestConfig, config: Config) -> OpenAPIData:
     source = source.get_root()
+
+    # apply schema overrides first
+    for path, new_schema in {
+        **config.schema_overrides,
+        **rest.schema_overrides,
+    }.items():
+        ref = str(httpx.URL(fragment=path))
+        merge_dict(source.resolve_ref(ref).data, new_schema)
 
     _ot = _override_config.set((rest, config))
     _st = _schemas.set({})
@@ -78,6 +87,14 @@ def parse_webhook_schema(
     source: Source, webhook: WebhookConfig, config: Config
 ) -> WebhookData:
     source = source.get_root()
+
+    # apply schema overrides first
+    for path, new_schema in {
+        **config.schema_overrides,
+        **webhook.schema_overrides,
+    }.items():
+        ref = str(httpx.URL(fragment=path))
+        merge_dict(source.resolve_ref(ref).data, new_schema)
 
     _ot = _override_config.set((webhook, config))
     _st = _schemas.set({})

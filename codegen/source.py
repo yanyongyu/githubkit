@@ -6,7 +6,6 @@ from typing import Any, Union, Optional
 
 import httpx
 from jsonpointer import JsonPointer
-from openapi_schema_pydantic import OpenAPI
 
 
 @dataclass(frozen=True)
