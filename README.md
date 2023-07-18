@@ -10,9 +10,15 @@
     <img src="https://img.shields.io/github/license/yanyongyu/githubkit" alt="license">
   </a>
   <a href="https://pypi.python.org/pypi/githubkit">
-    <img src="https://img.shields.io/pypi/v/githubkit" alt="pypi">
+    <img src="https://img.shields.io/pypi/v/githubkit?logo=python&logoColor=edb641" alt="pypi">
   </a>
-  <img src="https://img.shields.io/badge/python-3.8+-blue" alt="python">
+  <img src="https://img.shields.io/badge/python-3.8+-blue?logo=python&logoColor=edb641" alt="python">
+  <a href="https://github.com/psf/black">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg?logo=python&logoColor=edb641" alt="black">
+  </a>
+  <a href="https://github.com/Microsoft/pyright">
+    <img src="https://img.shields.io/badge/types-pyright-797952.svg?logo=python&logoColor=edb641" alt="pyright">
+  </a>
   <a href="https://results.pre-commit.ci/latest/github/yanyongyu/githubkit/master">
     <img src="https://results.pre-commit.ci/badge/github/yanyongyu/githubkit/master.svg" alt="pre-commit" />
   </a>
