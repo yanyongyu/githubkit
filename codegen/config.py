@@ -1,6 +1,6 @@
 from typing import Any, Dict, List
 
-import openapi_schema_pydantic as oas
+import openapi_pydantic as oas
 from pydantic import Field, BaseModel
 
 

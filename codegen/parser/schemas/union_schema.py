@@ -1,7 +1,7 @@
 from typing import List, Union, Optional
 
+import openapi_pydantic as oas
 from pydantic import parse_obj_as
-import openapi_schema_pydantic as oas
 
 from .. import add_schema
 from . import parse_schema

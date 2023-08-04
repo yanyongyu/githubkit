@@ -2,7 +2,7 @@ from contextvars import ContextVar
 from typing import Dict, List, Tuple, Union, Optional
 
 import httpx
-from openapi_schema_pydantic import OpenAPI
+from openapi_pydantic import OpenAPI
 
 # parser context
 _override_config: ContextVar[Tuple["Overridable", ...]] = ContextVar("override_config")

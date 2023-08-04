@@ -1,6 +1,6 @@
 from typing import Dict, List, Type, Tuple, Union, TypeVar, Optional
 
-import openapi_schema_pydantic as oas
+import openapi_pydantic as oas
 
 from .. import add_schema
 from . import parse_schema
