@@ -3,8 +3,8 @@ import builtins
 from keyword import iskeyword
 from typing import List, Union
 
+import openapi_pydantic as oas
 from pydantic import parse_obj_as
-import openapi_schema_pydantic as oas
 
 from ..source import Source
 from . import get_override_config

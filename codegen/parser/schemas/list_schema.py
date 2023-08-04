@@ -1,6 +1,6 @@
 from typing import Optional
 
-import openapi_schema_pydantic as oas
+import openapi_pydantic as oas
 
 from . import parse_schema
 from ...source import Source

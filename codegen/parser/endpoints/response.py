@@ -1,6 +1,6 @@
 from typing import Set, Union, Optional
 
-import openapi_schema_pydantic as oas
+import openapi_pydantic as oas
 from pydantic import BaseModel, parse_obj_as
 
 from ...source import Source

@@ -1,4 +1,4 @@
-import openapi_schema_pydantic as oas
+import openapi_pydantic as oas
 
 from ...source import Source
 from .schema import AnySchema

@@ -27,7 +27,7 @@ Jinja2 = "^3.1.2"
 nonemoji = "^0.1.2"
 jsonpointer = "^2.3"
 pre-commit = "^3.0.0"
-openapi-schema-pydantic = "^1.2.4"
+openapi-pydantic = "^0.3.2"
 
 [tool.poetry.extras]
 jwt = ["PyJWT"]

@@ -1,7 +1,7 @@
 from typing import Union, Literal
 
+import openapi_pydantic as oas
 from pydantic import parse_obj_as
-import openapi_schema_pydantic as oas
 
 from ...source import Source
 from ..utils import build_prop_name, concat_snake_name
