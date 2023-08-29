@@ -124,6 +124,7 @@ from .models import (
     Commit,
     Status,
     Release,
+    Activity,
     Autolink,
     Language,
     DeployKey,
@@ -185,6 +186,7 @@ from .models import (
     ReposOwnerRepoPatchBody,
     DeploymentProtectionRule,
     ReposOwnerRepoKeysPostBody,
+    CheckAutomatedSecurityFixes,
     ReposOwnerRepoForksPostBody,
     ReposOwnerRepoHooksPostBody,
     ReposOwnerRepoTopicsPutBody,
@@ -1221,6 +1223,110 @@ class ReposClient:
             },
         )
 
+    def list_activities(
+        self,
+        owner: str,
+        repo: str,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        per_page: Missing[int] = 30,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        ref: Missing[str] = UNSET,
+        actor: Missing[str] = UNSET,
+        time_period: Missing[
+            Literal["day", "week", "month", "quarter", "year"]
+        ] = UNSET,
+        activity_type: Missing[
+            Literal[
+                "push",
+                "force_push",
+                "branch_creation",
+                "branch_deletion",
+                "pr_merge",
+                "merge_queue_merge",
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[Activity]]":
+        url = f"/repos/{owner}/{repo}/activity"
+
+        params = {
+            "direction": direction,
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "ref": ref,
+            "actor": actor,
+            "time_period": time_period,
+            "activity_type": activity_type,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[Activity],
+            error_models={
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_list_activities(
+        self,
+        owner: str,
+        repo: str,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        per_page: Missing[int] = 30,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        ref: Missing[str] = UNSET,
+        actor: Missing[str] = UNSET,
+        time_period: Missing[
+            Literal["day", "week", "month", "quarter", "year"]
+        ] = UNSET,
+        activity_type: Missing[
+            Literal[
+                "push",
+                "force_push",
+                "branch_creation",
+                "branch_deletion",
+                "pr_merge",
+                "merge_queue_merge",
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[Activity]]":
+        url = f"/repos/{owner}/{repo}/activity"
+
+        params = {
+            "direction": direction,
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "ref": ref,
+            "actor": actor,
+            "time_period": time_period,
+            "activity_type": activity_type,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[Activity],
+            error_models={
+                "422": ValidationErrorSimple,
+            },
+        )
+
     def list_autolinks(
         self,
         owner: str,
@@ -1465,6 +1571,44 @@ class ReposClient:
             error_models={
                 "404": BasicError,
             },
+        )
+
+    def check_automated_security_fixes(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[CheckAutomatedSecurityFixes]":
+        url = f"/repos/{owner}/{repo}/automated-security-fixes"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CheckAutomatedSecurityFixes,
+            error_models={},
+        )
+
+    async def async_check_automated_security_fixes(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[CheckAutomatedSecurityFixes]":
+        url = f"/repos/{owner}/{repo}/automated-security-fixes"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CheckAutomatedSecurityFixes,
+            error_models={},
         )
 
     def enable_automated_security_fixes(
@@ -9379,78 +9523,6 @@ class ReposClient:
             response_model=Language,
         )
 
-    def enable_lfs_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/repos/{owner}/{repo}/lfs"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "PUT",
-            url,
-            headers=exclude_unset(headers),
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={},
-        )
-
-    async def async_enable_lfs_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
-        url = f"/repos/{owner}/{repo}/lfs"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            headers=exclude_unset(headers),
-            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-            error_models={},
-        )
-
-    def disable_lfs_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/lfs"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-        )
-
-    async def async_disable_lfs_for_repo(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> "Response":
-        url = f"/repos/{owner}/{repo}/lfs"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-        )
-
     @overload
     def merge_upstream(
         self,
@@ -10580,6 +10652,86 @@ class ReposClient:
             response_model=PagesHealthCheck,
             error_models={
                 "404": BasicError,
+            },
+        )
+
+    def enable_private_vulnerability_reporting(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/private-vulnerability-reporting"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "422": BasicError,
+            },
+        )
+
+    async def async_enable_private_vulnerability_reporting(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/private-vulnerability-reporting"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "422": BasicError,
+            },
+        )
+
+    def disable_private_vulnerability_reporting(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/private-vulnerability-reporting"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "422": BasicError,
+            },
+        )
+
+    async def async_disable_private_vulnerability_reporting(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/repos/{owner}/{repo}/private-vulnerability-reporting"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "422": BasicError,
             },
         )
 

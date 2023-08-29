@@ -3670,6 +3670,509 @@ class AutoMerge(GitHubWebhookModel):
     )
 
 
+class DeploymentReviewApproved(GitHubWebhookModel):
+    """deployment_review approved event"""
+
+    action: Literal["approved"] = Field(default=...)
+    workflow_run: WorkflowRun = Field(title="Workflow Run", default=...)
+    since: datetime = Field(default=...)
+    workflow_job_run: Missing[DeploymentReviewApprovedPropWorkflowJobRun] = Field(
+        default=UNSET
+    )
+    workflow_job_runs: Missing[
+        List[DeploymentReviewApprovedPropWorkflowJobRunsItems]
+    ] = Field(default=UNSET)
+    reviewers: Missing[
+        List[
+            Union[
+                DeploymentReviewApprovedPropReviewersItemsOneof0,
+                DeploymentReviewApprovedPropReviewersItemsOneof1,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    approver: Missing[User] = Field(title="User", default=UNSET)
+    comment: Missing[str] = Field(default=UNSET)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    organization: Organization = Field(title="Organization", default=...)
+    sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+
+
+class WorkflowRun(GitHubWebhookModel):
+    """Workflow Run"""
+
+    artifacts_url: str = Field(
+        description="The URL to the artifacts for the workflow run.", default=...
+    )
+    cancel_url: str = Field(
+        description="The URL to cancel the workflow run.", default=...
+    )
+    check_suite_url: str = Field(
+        description="The URL to the associated check suite.", default=...
+    )
+    check_suite_id: int = Field(
+        description="The ID of the associated check suite.", default=...
+    )
+    check_suite_node_id: str = Field(
+        description="The node ID of the associated check suite.", default=...
+    )
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+        ],
+    ] = Field(default=...)
+    created_at: datetime = Field(default=...)
+    event: str = Field(default=...)
+    head_branch: str = Field(default=...)
+    head_commit: CommitSimple = Field(title="SimpleCommit", default=...)
+    head_repository: RepositoryLite = Field(title="Repository Lite", default=...)
+    head_sha: str = Field(
+        description="The SHA of the head commit that points to the version of the workflow being run.",
+        default=...,
+    )
+    path: str = Field(description="The full path of the workflow", default=...)
+    display_title: str = Field(default=...)
+    html_url: str = Field(default=...)
+    id: int = Field(description="The ID of the workflow run.", default=...)
+    jobs_url: str = Field(
+        description="The URL to the jobs for the workflow run.", default=...
+    )
+    logs_url: str = Field(
+        description="The URL to download the logs for the workflow run.", default=...
+    )
+    node_id: str = Field(default=...)
+    name: str = Field(description="The name of the workflow run.", default=...)
+    pull_requests: List[WorkflowRunPropPullRequestsItems] = Field(default=...)
+    repository: RepositoryLite = Field(title="Repository Lite", default=...)
+    rerun_url: str = Field(
+        description="The URL to rerun the workflow run.", default=...
+    )
+    run_number: int = Field(
+        description="The auto incrementing run number for the workflow run.",
+        default=...,
+    )
+    status: Literal[
+        "requested", "in_progress", "completed", "queued", "waiting"
+    ] = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    url: str = Field(description="The URL to the workflow run.", default=...)
+    workflow_id: int = Field(description="The ID of the parent workflow.", default=...)
+    workflow_url: str = Field(description="The URL to the workflow.", default=...)
+    run_attempt: int = Field(
+        description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
+        default=...,
+    )
+    referenced_workflows: Missing[List[ReferencedWorkflow]] = Field(default=UNSET)
+    run_started_at: datetime = Field(
+        description="The start time of the latest run. Resets on re-run.", default=...
+    )
+    previous_attempt_url: Union[str, None] = Field(
+        description="The URL to the previous attempted run of this workflow, if one exists.",
+        default=...,
+    )
+    actor: User = Field(title="User", default=...)
+    triggering_actor: User = Field(title="User", default=...)
+
+
+class RepositoryLite(GitHubWebhookModel):
+    """Repository Lite"""
+
+    archive_url: str = Field(
+        description="A template for the API URL to download the repository as an archive.",
+        default=...,
+    )
+    assignees_url: str = Field(
+        description="A template for the API URL to list the available assignees for issues in the repository.",
+        default=...,
+    )
+    blobs_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git blob in the repository.",
+        default=...,
+    )
+    branches_url: str = Field(
+        description="A template for the API URL to get information about branches in the repository.",
+        default=...,
+    )
+    collaborators_url: str = Field(
+        description="A template for the API URL to get information about collaborators of the repository.",
+        default=...,
+    )
+    comments_url: str = Field(
+        description="A template for the API URL to get information about comments on the repository.",
+        default=...,
+    )
+    commits_url: str = Field(
+        description="A template for the API URL to get information about commits on the repository.",
+        default=...,
+    )
+    compare_url: str = Field(
+        description="A template for the API URL to compare two commits or refs.",
+        default=...,
+    )
+    contents_url: str = Field(
+        description="A template for the API URL to get the contents of the repository.",
+        default=...,
+    )
+    contributors_url: str = Field(
+        description="A template for the API URL to list the contributors to the repository.",
+        default=...,
+    )
+    deployments_url: str = Field(
+        description="The API URL to list the deployments of the repository.",
+        default=...,
+    )
+    description: Union[str, None] = Field(
+        description="The repository description.", default=...
+    )
+    downloads_url: str = Field(
+        description="The API URL to list the downloads on the repository.", default=...
+    )
+    events_url: str = Field(
+        description="The API URL to list the events of the repository.", default=...
+    )
+    fork: bool = Field(description="Whether the repository is a fork.", default=...)
+    forks_url: str = Field(
+        description="The API URL to list the forks of the repository.", default=...
+    )
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository.", default=...
+    )
+    git_commits_url: str = Field(
+        description="A template for the API URL to get information about Git commits of the repository.",
+        default=...,
+    )
+    git_refs_url: str = Field(
+        description="A template for the API URL to get information about Git refs of the repository.",
+        default=...,
+    )
+    git_tags_url: str = Field(
+        description="A template for the API URL to get information about Git tags of the repository.",
+        default=...,
+    )
+    hooks_url: str = Field(
+        description="The API URL to list the hooks on the repository.", default=...
+    )
+    html_url: str = Field(
+        description="The URL to view the repository on GitHub.com.", default=...
+    )
+    id: int = Field(description="Unique identifier of the repository", default=...)
+    issue_comment_url: str = Field(
+        description="A template for the API URL to get information about issue comments on the repository.",
+        default=...,
+    )
+    issue_events_url: str = Field(
+        description="A template for the API URL to get information about issue events on the repository.",
+        default=...,
+    )
+    issues_url: str = Field(
+        description="A template for the API URL to get information about issues on the repository.",
+        default=...,
+    )
+    keys_url: str = Field(
+        description="A template for the API URL to get information about deploy keys on the repository.",
+        default=...,
+    )
+    labels_url: str = Field(
+        description="A template for the API URL to get information about labels of the repository.",
+        default=...,
+    )
+    languages_url: str = Field(
+        description="The API URL to get information about the languages of the repository.",
+        default=...,
+    )
+    merges_url: str = Field(
+        description="The API URL to merge branches in the repository.", default=...
+    )
+    milestones_url: str = Field(
+        description="A template for the API URL to get information about milestones of the repository.",
+        default=...,
+    )
+    name: str = Field(description="The name of the repository.", default=...)
+    node_id: str = Field(
+        description="The GraphQL identifier of the repository.", default=...
+    )
+    notifications_url: str = Field(
+        description="A template for the API URL to get information about notifications on the repository.",
+        default=...,
+    )
+    owner: User = Field(title="User", default=...)
+    private: bool = Field(
+        description="Whether the repository is private or public.", default=...
+    )
+    pulls_url: str = Field(
+        description="A template for the API URL to get information about pull requests on the repository.",
+        default=...,
+    )
+    releases_url: str = Field(
+        description="A template for the API URL to get information about releases on the repository.",
+        default=...,
+    )
+    stargazers_url: str = Field(
+        description="The API URL to list the stargazers on the repository.", default=...
+    )
+    statuses_url: str = Field(
+        description="A template for the API URL to get information about statuses of a commit.",
+        default=...,
+    )
+    subscribers_url: str = Field(
+        description="The API URL to list the subscribers on the repository.",
+        default=...,
+    )
+    subscription_url: str = Field(
+        description="The API URL to subscribe to notifications for this repository.",
+        default=...,
+    )
+    tags_url: str = Field(
+        description="The API URL to get information about tags on the repository.",
+        default=...,
+    )
+    teams_url: str = Field(
+        description="The API URL to list the teams on the repository.", default=...
+    )
+    trees_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git tree of the repository.",
+        default=...,
+    )
+    url: str = Field(
+        description="The URL to get more information about the repository from the GitHub API.",
+        default=...,
+    )
+
+
+class WorkflowRunPropPullRequestsItems(GitHubWebhookModel):
+    """WorkflowRunPropPullRequestsItems"""
+
+    url: str = Field(default=...)
+    id: float = Field(default=...)
+    number: float = Field(default=...)
+    head: WorkflowRunPropPullRequestsItemsPropHead = Field(default=...)
+    base: WorkflowRunPropPullRequestsItemsPropBase = Field(default=...)
+
+
+class WorkflowRunPropPullRequestsItemsPropHead(GitHubWebhookModel):
+    """WorkflowRunPropPullRequestsItemsPropHead"""
+
+    ref: str = Field(default=...)
+    sha: str = Field(default=...)
+    repo: RepoRef = Field(title="Repo Ref", default=...)
+
+
+class WorkflowRunPropPullRequestsItemsPropBase(GitHubWebhookModel):
+    """WorkflowRunPropPullRequestsItemsPropBase"""
+
+    ref: str = Field(default=...)
+    sha: str = Field(default=...)
+    repo: RepoRef = Field(title="Repo Ref", default=...)
+
+
+class DeploymentReviewApprovedPropWorkflowJobRun(GitHubWebhookModel):
+    """DeploymentReviewApprovedPropWorkflowJobRun"""
+
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        default=...
+    )
+    conclusion: Union[
+        None, Literal["success", "failure", "cancelled", "skipped"]
+    ] = Field(default=...)
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    environment: str = Field(default=...)
+
+
+class DeploymentReviewApprovedPropWorkflowJobRunsItems(GitHubWebhookModel):
+    """DeploymentReviewApprovedPropWorkflowJobRunsItems"""
+
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        default=...
+    )
+    conclusion: Union[
+        None, Literal["success", "failure", "cancelled", "skipped"]
+    ] = Field(default=...)
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    environment: str = Field(default=...)
+
+
+class DeploymentReviewApprovedPropReviewersItemsOneof0(GitHubWebhookModel):
+    """DeploymentReviewApprovedPropReviewersItemsOneof0"""
+
+    type: Literal["User"] = Field(default=...)
+    reviewer: User = Field(title="User", default=...)
+
+
+class DeploymentReviewApprovedPropReviewersItemsOneof1(GitHubWebhookModel):
+    """DeploymentReviewApprovedPropReviewersItemsOneof1"""
+
+    type: Literal["Team"] = Field(default=...)
+    reviewer: Team = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+        default=...,
+    )
+
+
+class DeploymentReviewRejected(GitHubWebhookModel):
+    """deployment_review rejected event"""
+
+    action: Literal["rejected"] = Field(default=...)
+    workflow_run: WorkflowRun = Field(title="Workflow Run", default=...)
+    since: datetime = Field(default=...)
+    workflow_job_run: Missing[DeploymentReviewRejectedPropWorkflowJobRun] = Field(
+        default=UNSET
+    )
+    workflow_job_runs: Missing[
+        List[DeploymentReviewRejectedPropWorkflowJobRunsItems]
+    ] = Field(default=UNSET)
+    reviewers: Missing[
+        List[
+            Union[
+                DeploymentReviewRejectedPropReviewersItemsOneof0,
+                DeploymentReviewRejectedPropReviewersItemsOneof1,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    approver: Missing[User] = Field(title="User", default=UNSET)
+    comment: Missing[str] = Field(default=UNSET)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    organization: Organization = Field(title="Organization", default=...)
+    sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+
+
+class DeploymentReviewRejectedPropWorkflowJobRun(GitHubWebhookModel):
+    """DeploymentReviewRejectedPropWorkflowJobRun"""
+
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        default=...
+    )
+    conclusion: Union[
+        None, Literal["success", "failure", "cancelled", "skipped"]
+    ] = Field(default=...)
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    environment: str = Field(default=...)
+
+
+class DeploymentReviewRejectedPropWorkflowJobRunsItems(GitHubWebhookModel):
+    """DeploymentReviewRejectedPropWorkflowJobRunsItems"""
+
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        default=...
+    )
+    conclusion: Union[
+        None, Literal["success", "failure", "cancelled", "skipped"]
+    ] = Field(default=...)
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    environment: str = Field(default=...)
+
+
+class DeploymentReviewRejectedPropReviewersItemsOneof0(GitHubWebhookModel):
+    """DeploymentReviewRejectedPropReviewersItemsOneof0"""
+
+    type: Literal["User"] = Field(default=...)
+    reviewer: User = Field(title="User", default=...)
+
+
+class DeploymentReviewRejectedPropReviewersItemsOneof1(GitHubWebhookModel):
+    """DeploymentReviewRejectedPropReviewersItemsOneof1"""
+
+    type: Literal["Team"] = Field(default=...)
+    reviewer: Team = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+        default=...,
+    )
+
+
+class DeploymentReviewRequested(GitHubWebhookModel):
+    """deployment_review requested event"""
+
+    action: Literal["requested"] = Field(default=...)
+    workflow_run: Union[WorkflowRun, None] = Field(title="Workflow Run", default=...)
+    since: datetime = Field(default=...)
+    workflow_job_run: DeploymentReviewRequestedPropWorkflowJobRun = Field(default=...)
+    environment: str = Field(default=...)
+    reviewers: List[
+        Union[
+            DeploymentReviewRequestedPropReviewersItemsOneof0,
+            DeploymentReviewRequestedPropReviewersItemsOneof1,
+        ]
+    ] = Field(default=...)
+    requestor: User = Field(title="User", default=...)
+    repository: Repository = Field(
+        title="Repository", description="A git repository", default=...
+    )
+    organization: Organization = Field(title="Organization", default=...)
+    sender: User = Field(title="User", default=...)
+    installation: Missing[InstallationLite] = Field(
+        title="InstallationLite", description="Installation", default=UNSET
+    )
+
+
+class DeploymentReviewRequestedPropWorkflowJobRun(GitHubWebhookModel):
+    """DeploymentReviewRequestedPropWorkflowJobRun"""
+
+    id: int = Field(default=...)
+    name: str = Field(default=...)
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        default=...
+    )
+    conclusion: Union[
+        None, Literal["success", "failure", "cancelled", "skipped"]
+    ] = Field(default=...)
+    html_url: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    environment: str = Field(default=...)
+
+
+class DeploymentReviewRequestedPropReviewersItemsOneof0(GitHubWebhookModel):
+    """DeploymentReviewRequestedPropReviewersItemsOneof0"""
+
+    type: Literal["User"] = Field(default=...)
+    reviewer: User = Field(title="User", default=...)
+
+
+class DeploymentReviewRequestedPropReviewersItemsOneof1(GitHubWebhookModel):
+    """DeploymentReviewRequestedPropReviewersItemsOneof1"""
+
+    type: Literal["Team"] = Field(default=...)
+    reviewer: Team = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+        default=...,
+    )
+
+
 class DeploymentStatusCreated(GitHubWebhookModel):
     """deployment_status created event"""
 
@@ -16152,281 +16655,6 @@ class WorkflowRunCompletedPropWorkflowRun(GitHubWebhookModel):
     triggering_actor: User = Field(title="User", default=...)
 
 
-class WorkflowRun(GitHubWebhookModel):
-    """Workflow Run"""
-
-    artifacts_url: str = Field(
-        description="The URL to the artifacts for the workflow run.", default=...
-    )
-    cancel_url: str = Field(
-        description="The URL to cancel the workflow run.", default=...
-    )
-    check_suite_url: str = Field(
-        description="The URL to the associated check suite.", default=...
-    )
-    check_suite_id: int = Field(
-        description="The ID of the associated check suite.", default=...
-    )
-    check_suite_node_id: str = Field(
-        description="The node ID of the associated check suite.", default=...
-    )
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-            "skipped",
-        ],
-    ] = Field(default=...)
-    created_at: datetime = Field(default=...)
-    event: str = Field(default=...)
-    head_branch: str = Field(default=...)
-    head_commit: CommitSimple = Field(title="SimpleCommit", default=...)
-    head_repository: RepositoryLite = Field(title="Repository Lite", default=...)
-    head_sha: str = Field(
-        description="The SHA of the head commit that points to the version of the workflow being run.",
-        default=...,
-    )
-    path: str = Field(description="The full path of the workflow", default=...)
-    display_title: str = Field(default=...)
-    html_url: str = Field(default=...)
-    id: int = Field(description="The ID of the workflow run.", default=...)
-    jobs_url: str = Field(
-        description="The URL to the jobs for the workflow run.", default=...
-    )
-    logs_url: str = Field(
-        description="The URL to download the logs for the workflow run.", default=...
-    )
-    node_id: str = Field(default=...)
-    name: str = Field(description="The name of the workflow run.", default=...)
-    pull_requests: List[WorkflowRunPropPullRequestsItems] = Field(default=...)
-    repository: RepositoryLite = Field(title="Repository Lite", default=...)
-    rerun_url: str = Field(
-        description="The URL to rerun the workflow run.", default=...
-    )
-    run_number: int = Field(
-        description="The auto incrementing run number for the workflow run.",
-        default=...,
-    )
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "waiting"
-    ] = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    url: str = Field(description="The URL to the workflow run.", default=...)
-    workflow_id: int = Field(description="The ID of the parent workflow.", default=...)
-    workflow_url: str = Field(description="The URL to the workflow.", default=...)
-    run_attempt: int = Field(
-        description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
-        default=...,
-    )
-    referenced_workflows: Missing[List[ReferencedWorkflow]] = Field(default=UNSET)
-    run_started_at: datetime = Field(
-        description="The start time of the latest run. Resets on re-run.", default=...
-    )
-    previous_attempt_url: Union[str, None] = Field(
-        description="The URL to the previous attempted run of this workflow, if one exists.",
-        default=...,
-    )
-    actor: User = Field(title="User", default=...)
-    triggering_actor: User = Field(title="User", default=...)
-
-
-class RepositoryLite(GitHubWebhookModel):
-    """Repository Lite"""
-
-    archive_url: str = Field(
-        description="A template for the API URL to download the repository as an archive.",
-        default=...,
-    )
-    assignees_url: str = Field(
-        description="A template for the API URL to list the available assignees for issues in the repository.",
-        default=...,
-    )
-    blobs_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git blob in the repository.",
-        default=...,
-    )
-    branches_url: str = Field(
-        description="A template for the API URL to get information about branches in the repository.",
-        default=...,
-    )
-    collaborators_url: str = Field(
-        description="A template for the API URL to get information about collaborators of the repository.",
-        default=...,
-    )
-    comments_url: str = Field(
-        description="A template for the API URL to get information about comments on the repository.",
-        default=...,
-    )
-    commits_url: str = Field(
-        description="A template for the API URL to get information about commits on the repository.",
-        default=...,
-    )
-    compare_url: str = Field(
-        description="A template for the API URL to compare two commits or refs.",
-        default=...,
-    )
-    contents_url: str = Field(
-        description="A template for the API URL to get the contents of the repository.",
-        default=...,
-    )
-    contributors_url: str = Field(
-        description="A template for the API URL to list the contributors to the repository.",
-        default=...,
-    )
-    deployments_url: str = Field(
-        description="The API URL to list the deployments of the repository.",
-        default=...,
-    )
-    description: Union[str, None] = Field(
-        description="The repository description.", default=...
-    )
-    downloads_url: str = Field(
-        description="The API URL to list the downloads on the repository.", default=...
-    )
-    events_url: str = Field(
-        description="The API URL to list the events of the repository.", default=...
-    )
-    fork: bool = Field(description="Whether the repository is a fork.", default=...)
-    forks_url: str = Field(
-        description="The API URL to list the forks of the repository.", default=...
-    )
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository.", default=...
-    )
-    git_commits_url: str = Field(
-        description="A template for the API URL to get information about Git commits of the repository.",
-        default=...,
-    )
-    git_refs_url: str = Field(
-        description="A template for the API URL to get information about Git refs of the repository.",
-        default=...,
-    )
-    git_tags_url: str = Field(
-        description="A template for the API URL to get information about Git tags of the repository.",
-        default=...,
-    )
-    hooks_url: str = Field(
-        description="The API URL to list the hooks on the repository.", default=...
-    )
-    html_url: str = Field(
-        description="The URL to view the repository on GitHub.com.", default=...
-    )
-    id: int = Field(description="Unique identifier of the repository", default=...)
-    issue_comment_url: str = Field(
-        description="A template for the API URL to get information about issue comments on the repository.",
-        default=...,
-    )
-    issue_events_url: str = Field(
-        description="A template for the API URL to get information about issue events on the repository.",
-        default=...,
-    )
-    issues_url: str = Field(
-        description="A template for the API URL to get information about issues on the repository.",
-        default=...,
-    )
-    keys_url: str = Field(
-        description="A template for the API URL to get information about deploy keys on the repository.",
-        default=...,
-    )
-    labels_url: str = Field(
-        description="A template for the API URL to get information about labels of the repository.",
-        default=...,
-    )
-    languages_url: str = Field(
-        description="The API URL to get information about the languages of the repository.",
-        default=...,
-    )
-    merges_url: str = Field(
-        description="The API URL to merge branches in the repository.", default=...
-    )
-    milestones_url: str = Field(
-        description="A template for the API URL to get information about milestones of the repository.",
-        default=...,
-    )
-    name: str = Field(description="The name of the repository.", default=...)
-    node_id: str = Field(
-        description="The GraphQL identifier of the repository.", default=...
-    )
-    notifications_url: str = Field(
-        description="A template for the API URL to get information about notifications on the repository.",
-        default=...,
-    )
-    owner: User = Field(title="User", default=...)
-    private: bool = Field(
-        description="Whether the repository is private or public.", default=...
-    )
-    pulls_url: str = Field(
-        description="A template for the API URL to get information about pull requests on the repository.",
-        default=...,
-    )
-    releases_url: str = Field(
-        description="A template for the API URL to get information about releases on the repository.",
-        default=...,
-    )
-    stargazers_url: str = Field(
-        description="The API URL to list the stargazers on the repository.", default=...
-    )
-    statuses_url: str = Field(
-        description="A template for the API URL to get information about statuses of a commit.",
-        default=...,
-    )
-    subscribers_url: str = Field(
-        description="The API URL to list the subscribers on the repository.",
-        default=...,
-    )
-    subscription_url: str = Field(
-        description="The API URL to subscribe to notifications for this repository.",
-        default=...,
-    )
-    tags_url: str = Field(
-        description="The API URL to get information about tags on the repository.",
-        default=...,
-    )
-    teams_url: str = Field(
-        description="The API URL to list the teams on the repository.", default=...
-    )
-    trees_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git tree of the repository.",
-        default=...,
-    )
-    url: str = Field(
-        description="The URL to get more information about the repository from the GitHub API.",
-        default=...,
-    )
-
-
-class WorkflowRunPropPullRequestsItems(GitHubWebhookModel):
-    """WorkflowRunPropPullRequestsItems"""
-
-    url: str = Field(default=...)
-    id: float = Field(default=...)
-    number: float = Field(default=...)
-    head: WorkflowRunPropPullRequestsItemsPropHead = Field(default=...)
-    base: WorkflowRunPropPullRequestsItemsPropBase = Field(default=...)
-
-
-class WorkflowRunPropPullRequestsItemsPropHead(GitHubWebhookModel):
-    """WorkflowRunPropPullRequestsItemsPropHead"""
-
-    ref: str = Field(default=...)
-    sha: str = Field(default=...)
-    repo: RepoRef = Field(title="Repo Ref", default=...)
-
-
-class WorkflowRunPropPullRequestsItemsPropBase(GitHubWebhookModel):
-    """WorkflowRunPropPullRequestsItemsPropBase"""
-
-    ref: str = Field(default=...)
-    sha: str = Field(default=...)
-    repo: RepoRef = Field(title="Repo Ref", default=...)
-
-
 class WorkflowRunCompletedPropWorkflowRunAllof1(GitHubWebhookModel):
     """WorkflowRunCompletedPropWorkflowRunAllof1"""
 
@@ -16622,6 +16850,25 @@ PullRequestPropBase.update_forward_refs()
 PullRequestPropLinks.update_forward_refs()
 Link.update_forward_refs()
 AutoMerge.update_forward_refs()
+DeploymentReviewApproved.update_forward_refs()
+WorkflowRun.update_forward_refs()
+RepositoryLite.update_forward_refs()
+WorkflowRunPropPullRequestsItems.update_forward_refs()
+WorkflowRunPropPullRequestsItemsPropHead.update_forward_refs()
+WorkflowRunPropPullRequestsItemsPropBase.update_forward_refs()
+DeploymentReviewApprovedPropWorkflowJobRun.update_forward_refs()
+DeploymentReviewApprovedPropWorkflowJobRunsItems.update_forward_refs()
+DeploymentReviewApprovedPropReviewersItemsOneof0.update_forward_refs()
+DeploymentReviewApprovedPropReviewersItemsOneof1.update_forward_refs()
+DeploymentReviewRejected.update_forward_refs()
+DeploymentReviewRejectedPropWorkflowJobRun.update_forward_refs()
+DeploymentReviewRejectedPropWorkflowJobRunsItems.update_forward_refs()
+DeploymentReviewRejectedPropReviewersItemsOneof0.update_forward_refs()
+DeploymentReviewRejectedPropReviewersItemsOneof1.update_forward_refs()
+DeploymentReviewRequested.update_forward_refs()
+DeploymentReviewRequestedPropWorkflowJobRun.update_forward_refs()
+DeploymentReviewRequestedPropReviewersItemsOneof0.update_forward_refs()
+DeploymentReviewRequestedPropReviewersItemsOneof1.update_forward_refs()
 DeploymentStatusCreated.update_forward_refs()
 DeploymentStatusCreatedPropDeploymentStatus.update_forward_refs()
 DeploymentStatusCreatedPropCheckRun.update_forward_refs()
@@ -17243,11 +17490,6 @@ WorkflowJobWaitingPropWorkflowJob.update_forward_refs()
 WorkflowJobWaitingPropWorkflowJobAllof1.update_forward_refs()
 WorkflowRunCompleted.update_forward_refs()
 WorkflowRunCompletedPropWorkflowRun.update_forward_refs()
-WorkflowRun.update_forward_refs()
-RepositoryLite.update_forward_refs()
-WorkflowRunPropPullRequestsItems.update_forward_refs()
-WorkflowRunPropPullRequestsItemsPropHead.update_forward_refs()
-WorkflowRunPropPullRequestsItemsPropBase.update_forward_refs()
 WorkflowRunCompletedPropWorkflowRunAllof1.update_forward_refs()
 WorkflowRunInProgress.update_forward_refs()
 WorkflowRunRequested.update_forward_refs()
@@ -17402,6 +17644,25 @@ __all__ = [
     "PullRequestPropLinks",
     "Link",
     "AutoMerge",
+    "DeploymentReviewApproved",
+    "WorkflowRun",
+    "RepositoryLite",
+    "WorkflowRunPropPullRequestsItems",
+    "WorkflowRunPropPullRequestsItemsPropHead",
+    "WorkflowRunPropPullRequestsItemsPropBase",
+    "DeploymentReviewApprovedPropWorkflowJobRun",
+    "DeploymentReviewApprovedPropWorkflowJobRunsItems",
+    "DeploymentReviewApprovedPropReviewersItemsOneof0",
+    "DeploymentReviewApprovedPropReviewersItemsOneof1",
+    "DeploymentReviewRejected",
+    "DeploymentReviewRejectedPropWorkflowJobRun",
+    "DeploymentReviewRejectedPropWorkflowJobRunsItems",
+    "DeploymentReviewRejectedPropReviewersItemsOneof0",
+    "DeploymentReviewRejectedPropReviewersItemsOneof1",
+    "DeploymentReviewRequested",
+    "DeploymentReviewRequestedPropWorkflowJobRun",
+    "DeploymentReviewRequestedPropReviewersItemsOneof0",
+    "DeploymentReviewRequestedPropReviewersItemsOneof1",
     "DeploymentStatusCreated",
     "DeploymentStatusCreatedPropDeploymentStatus",
     "DeploymentStatusCreatedPropCheckRun",
@@ -18023,11 +18284,6 @@ __all__ = [
     "WorkflowJobWaitingPropWorkflowJobAllof1",
     "WorkflowRunCompleted",
     "WorkflowRunCompletedPropWorkflowRun",
-    "WorkflowRun",
-    "RepositoryLite",
-    "WorkflowRunPropPullRequestsItems",
-    "WorkflowRunPropPullRequestsItemsPropHead",
-    "WorkflowRunPropPullRequestsItemsPropBase",
     "WorkflowRunCompletedPropWorkflowRunAllof1",
     "WorkflowRunInProgress",
     "WorkflowRunRequested",

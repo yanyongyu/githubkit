@@ -174,10 +174,13 @@ from .models import (
     SecurityAdvisoryUpdated,
     CodeScanningAlertCreated,
     DependabotAlertDismissed,
+    DeploymentReviewApproved,
+    DeploymentReviewRejected,
     DiscussionCommentCreated,
     DiscussionCommentDeleted,
     RegistryPackagePublished,
     CodeScanningAlertReopened,
+    DeploymentReviewRequested,
     DiscussionCategoryChanged,
     InstallationTargetRenamed,
     MergeGroupChecksRequested,
@@ -288,6 +291,14 @@ DeployKeyEvent = Annotated[
 ]
 DeploymentEvent = DeploymentCreated
 DeploymentProtectionRuleEvent = DeploymentProtectionRuleRequested
+DeploymentReviewEvent = Annotated[
+    Union[
+        DeploymentReviewApproved,
+        DeploymentReviewRejected,
+        DeploymentReviewRequested,
+    ],
+    Field(discriminator="action"),
+]
 DeploymentStatusEvent = DeploymentStatusCreated
 DiscussionEvent = Annotated[
     Union[
@@ -644,6 +655,7 @@ WebhookEvent = Union[
     DeployKeyEvent,
     DeploymentEvent,
     DeploymentProtectionRuleEvent,
+    DeploymentReviewEvent,
     DeploymentStatusEvent,
     DiscussionEvent,
     DiscussionCommentEvent,
@@ -755,6 +767,11 @@ webhook_action_types = {
     },
     "deployment_protection_rule": {
         "requested": DeploymentProtectionRuleRequested,
+    },
+    "deployment_review": {
+        "approved": DeploymentReviewApproved,
+        "rejected": DeploymentReviewRejected,
+        "requested": DeploymentReviewRequested,
     },
     "deployment_status": {
         "created": DeploymentStatusCreated,
@@ -1030,6 +1047,7 @@ webhook_event_types = {
     "deploy_key": DeployKeyEvent,
     "deployment": DeploymentEvent,
     "deployment_protection_rule": DeploymentProtectionRuleEvent,
+    "deployment_review": DeploymentReviewEvent,
     "deployment_status": DeploymentStatusEvent,
     "discussion": DiscussionEvent,
     "discussion_comment": DiscussionCommentEvent,
@@ -1095,6 +1113,7 @@ __all__ = [
     "DeployKeyEvent",
     "DeploymentEvent",
     "DeploymentProtectionRuleEvent",
+    "DeploymentReviewEvent",
     "DeploymentStatusEvent",
     "DiscussionEvent",
     "DiscussionCommentEvent",

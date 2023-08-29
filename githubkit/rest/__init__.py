@@ -59,6 +59,10 @@ class RestNamespace:
         return MetaClient(self._github)
 
     @cached_property
+    def security_advisories(self) -> SecurityAdvisoriesClient:
+        return SecurityAdvisoriesClient(self._github)
+
+    @cached_property
     def apps(self) -> AppsClient:
         return AppsClient(self._github)
 
@@ -107,10 +111,6 @@ class RestNamespace:
         return OrgsClient(self._github)
 
     @cached_property
-    def copilot(self) -> CopilotClient:
-        return CopilotClient(self._github)
-
-    @cached_property
     def actions(self) -> ActionsClient:
         return ActionsClient(self._github)
 
@@ -125,6 +125,10 @@ class RestNamespace:
     @cached_property
     def codespaces(self) -> CodespacesClient:
         return CodespacesClient(self._github)
+
+    @cached_property
+    def copilot(self) -> CopilotClient:
+        return CopilotClient(self._github)
 
     @cached_property
     def packages(self) -> PackagesClient:
@@ -177,10 +181,6 @@ class RestNamespace:
     @cached_property
     def pulls(self) -> PullsClient:
         return PullsClient(self._github)
-
-    @cached_property
-    def security_advisories(self) -> SecurityAdvisoriesClient:
-        return SecurityAdvisoriesClient(self._github)
 
     @cached_property
     def search(self) -> SearchClient:

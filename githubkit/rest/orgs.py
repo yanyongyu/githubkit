@@ -27,6 +27,7 @@ from .types import (
     OrgsOrgPersonalAccessTokensPostBodyType,
     OrgsOrgHooksHookIdPatchBodyPropConfigType,
     OrgsOrgPersonalAccessTokensPatIdPostBodyType,
+    OrgsOrgSecurityProductEnablementPostBodyType,
     OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
     OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
@@ -58,6 +59,7 @@ from .models import (
     OrganizationProgrammaticAccessGrant,
     OrgsOrgPersonalAccessTokensPostBody,
     OrgsOrgPersonalAccessTokensPatIdPostBody,
+    OrgsOrgSecurityProductEnablementPostBody,
     OrganizationProgrammaticAccessGrantRequest,
     OrgsOrgOutsideCollaboratorsUsernamePutBody,
     OrgsOrgPersonalAccessTokenRequestsPostBody,
@@ -3206,6 +3208,7 @@ class OrgsClient:
             headers=exclude_unset(headers),
         )
 
+    @overload
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -3221,17 +3224,108 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    def enable_or_disable_security_product_on_all_org_repos(
+        self,
+        org: str,
+        security_product: Literal[
+            "dependency_graph",
+            "dependabot_alerts",
+            "dependabot_security_updates",
+            "advanced_security",
+            "code_scanning_default_setup",
+            "secret_scanning",
+            "secret_scanning_push_protection",
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        query_suite: Missing[Literal["default", "extended"]] = UNSET,
+    ) -> "Response":
+        ...
+
+    def enable_or_disable_security_product_on_all_org_repos(
+        self,
+        org: str,
+        security_product: Literal[
+            "dependency_graph",
+            "dependabot_alerts",
+            "dependabot_security_updates",
+            "advanced_security",
+            "code_scanning_default_setup",
+            "secret_scanning",
+            "secret_scanning_push_protection",
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/{security_product}/{enablement}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgSecurityProductEnablementPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
         return self._github.request(
             "POST",
             url,
+            json=exclude_unset(json),
             headers=exclude_unset(headers),
             error_models={},
         )
+
+    @overload
+    async def async_enable_or_disable_security_product_on_all_org_repos(
+        self,
+        org: str,
+        security_product: Literal[
+            "dependency_graph",
+            "dependabot_alerts",
+            "dependabot_security_updates",
+            "advanced_security",
+            "code_scanning_default_setup",
+            "secret_scanning",
+            "secret_scanning_push_protection",
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_enable_or_disable_security_product_on_all_org_repos(
+        self,
+        org: str,
+        security_product: Literal[
+            "dependency_graph",
+            "dependabot_alerts",
+            "dependabot_security_updates",
+            "advanced_security",
+            "code_scanning_default_setup",
+            "secret_scanning",
+            "secret_scanning_push_protection",
+        ],
+        enablement: Literal["enable_all", "disable_all"],
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        query_suite: Missing[Literal["default", "extended"]] = UNSET,
+    ) -> "Response":
+        ...
 
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
@@ -3248,14 +3342,24 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
+        **kwargs,
     ) -> "Response":
         url = f"/orgs/{org}/{security_product}/{enablement}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = parse_obj_as(OrgsOrgSecurityProductEnablementPostBody, json)
+        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+
         return await self._github.arequest(
             "POST",
             url,
+            json=exclude_unset(json),
             headers=exclude_unset(headers),
             error_models={},
         )

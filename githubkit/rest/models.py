@@ -91,6 +91,192 @@ class SimpleUser(GitHubRestModel):
     starred_at: Missing[str] = Field(default=UNSET)
 
 
+class GlobalAdvisory(GitHubRestModel):
+    """GlobalAdvisory
+
+    A GitHub Security Advisory.
+    """
+
+    ghsa_id: str = Field(description="The GitHub Security Advisory ID.", default=...)
+    cve_id: Union[str, None] = Field(
+        description="The Common Vulnerabilities and Exposures (CVE) ID.", default=...
+    )
+    url: str = Field(description="The API URL for the advisory.", default=...)
+    html_url: str = Field(description="The URL for the advisory.", default=...)
+    repository_advisory_url: Union[str, None] = Field(
+        description="The API URL for the repository advisory.", default=...
+    )
+    summary: str = Field(
+        description="A short summary of the advisory.", max_length=1024, default=...
+    )
+    description: Union[str, None] = Field(
+        description="A detailed description of what the advisory entails.",
+        max_length=65535,
+        default=...,
+    )
+    type: Literal["reviewed", "unreviewed", "malware"] = Field(
+        description="The type of advisory.", default=...
+    )
+    severity: Literal["critical", "high", "medium", "low", "unknown"] = Field(
+        description="The severity of the advisory.", default=...
+    )
+    source_code_location: Union[str, None] = Field(
+        description="The URL of the advisory's source code.", default=...
+    )
+    identifiers: Union[List[GlobalAdvisoryPropIdentifiersItems], None] = Field(
+        default=...
+    )
+    references: Union[List[str], None] = Field(default=...)
+    published_at: datetime = Field(
+        description="The date and time of when the advisory was published, in ISO 8601 format.",
+        default=...,
+    )
+    updated_at: datetime = Field(
+        description="The date and time of when the advisory was last updated, in ISO 8601 format.",
+        default=...,
+    )
+    github_reviewed_at: Union[datetime, None] = Field(
+        description="The date and time of when the advisory was reviewed by GitHub, in ISO 8601 format.",
+        default=...,
+    )
+    nvd_published_at: Union[datetime, None] = Field(
+        description="The date and time when the advisory was published in the National Vulnerability Database, in ISO 8601 format.\nThis field is only populated when the advisory is imported from the National Vulnerability Database.",
+        default=...,
+    )
+    withdrawn_at: Union[datetime, None] = Field(
+        description="The date and time of when the advisory was withdrawn, in ISO 8601 format.",
+        default=...,
+    )
+    vulnerabilities: Union[List[GlobalAdvisoryPropVulnerabilitiesItems], None] = Field(
+        description="The products and respective version ranges affected by the advisory.",
+        default=...,
+    )
+    cvss: Union[GlobalAdvisoryPropCvss, None] = Field(default=...)
+    cwes: Union[List[GlobalAdvisoryPropCwesItems], None] = Field(default=...)
+    credits_: Union[List[GlobalAdvisoryPropCreditsItems], None] = Field(
+        default=..., alias="credits"
+    )
+
+
+class GlobalAdvisoryPropIdentifiersItems(GitHubRestModel):
+    """GlobalAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"] = Field(
+        description="The type of identifier.", default=...
+    )
+    value: str = Field(description="The identifier value.", default=...)
+
+
+class GlobalAdvisoryPropVulnerabilitiesItems(GitHubRestModel):
+    """GlobalAdvisoryPropVulnerabilitiesItems"""
+
+    package: Union[GlobalAdvisoryPropVulnerabilitiesItemsPropPackage, None] = Field(
+        description="The name of the package affected by the vulnerability.",
+        default=...,
+    )
+    vulnerable_version_range: Union[str, None] = Field(
+        description="The range of the package versions affected by the vulnerability.",
+        default=...,
+    )
+    first_patched_version: Union[str, None] = Field(
+        description="The package version that resolve the vulnerability.", default=...
+    )
+    vulnerable_functions: Union[List[str], None] = Field(
+        description="The functions in the package that are affected by the vulnerability.",
+        default=...,
+    )
+
+
+class GlobalAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubRestModel):
+    """GlobalAdvisoryPropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(
+        description="The package's language or package management ecosystem.",
+        default=...,
+    )
+    name: Union[str, None] = Field(
+        description="The unique package name within its ecosystem.", default=...
+    )
+
+
+class GlobalAdvisoryPropCvss(GitHubRestModel):
+    """GlobalAdvisoryPropCvss"""
+
+    vector_string: Union[str, None] = Field(description="The CVSS vector.", default=...)
+    score: Union[float, None] = Field(
+        description="The CVSS score.", le=10.0, default=...
+    )
+
+
+class GlobalAdvisoryPropCwesItems(GitHubRestModel):
+    """GlobalAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field(
+        description="The Common Weakness Enumeration (CWE) identifier.", default=...
+    )
+    name: str = Field(description="The name of the CWE.", default=...)
+
+
+class GlobalAdvisoryPropCreditsItems(GitHubRestModel):
+    """GlobalAdvisoryPropCreditsItems"""
+
+    user: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.", default=...)
+
+
+class BasicError(GitHubRestModel):
+    """Basic Error
+
+    Basic Error
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+
+
+class ValidationErrorSimple(GitHubRestModel):
+    """Validation Error Simple
+
+    Validation Error Simple
+    """
+
+    message: str = Field(default=...)
+    documentation_url: str = Field(default=...)
+    errors: Missing[List[str]] = Field(default=UNSET)
+
+
 class Integration(GitHubRestModel):
     """GitHub app
 
@@ -144,29 +330,6 @@ class IntegrationPropPermissions(GitHubRestModel, extra=Extra.allow):
     metadata: Missing[str] = Field(default=UNSET)
     contents: Missing[str] = Field(default=UNSET)
     deployments: Missing[str] = Field(default=UNSET)
-
-
-class BasicError(GitHubRestModel):
-    """Basic Error
-
-    Basic Error
-    """
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-
-
-class ValidationErrorSimple(GitHubRestModel):
-    """Validation Error Simple
-
-    Validation Error Simple
-    """
-
-    message: str = Field(default=...)
-    documentation_url: str = Field(default=...)
-    errors: Missing[List[str]] = Field(default=UNSET)
 
 
 class WebhookConfig(GitHubRestModel):
@@ -2203,6 +2366,7 @@ class ApiOverview(GitHubRestModel):
     )
     ssh_keys: Missing[List[str]] = Field(default=UNSET)
     hooks: Missing[List[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[List[str]] = Field(default=UNSET)
     web: Missing[List[str]] = Field(default=UNSET)
     api: Missing[List[str]] = Field(default=UNSET)
     git: Missing[List[str]] = Field(default=UNSET)
@@ -2469,231 +2633,6 @@ class OrganizationSimple(GitHubRestModel):
     public_members_url: str = Field(default=...)
     avatar_url: str = Field(default=...)
     description: Union[str, None] = Field(default=...)
-
-
-class CopilotSeatBreakdown(GitHubRestModel):
-    """Copilot for Business Seat Breakdown
-
-    The breakdown of Copilot for Business seats for the organization.
-    """
-
-    total: Missing[int] = Field(
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
-        default=UNSET,
-    )
-    added_this_cycle: Missing[int] = Field(
-        description="Seats added during the current billing cycle.", default=UNSET
-    )
-    pending_cancellation: Missing[int] = Field(
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
-        default=UNSET,
-    )
-    pending_invitation: Missing[int] = Field(
-        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
-        default=UNSET,
-    )
-    active_this_cycle: Missing[int] = Field(
-        description="The number of seats that have used Copilot during the current billing cycle.",
-        default=UNSET,
-    )
-    inactive_this_cycle: Missing[int] = Field(
-        description="The number of seats that have not used Copilot during the current billing cycle.",
-        default=UNSET,
-    )
-
-
-class CopilotOrganizationDetails(GitHubRestModel, extra=Extra.allow):
-    """Copilot for Business Organization Details
-
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot for Business subscription.
-    """
-
-    seat_breakdown: CopilotSeatBreakdown = Field(
-        title="Copilot for Business Seat Breakdown",
-        description="The breakdown of Copilot for Business seats for the organization.",
-        default=...,
-    )
-    public_code_suggestions: Literal[
-        "allow", "block", "unconfigured", "unknown"
-    ] = Field(
-        description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code.",
-        default=...,
-    )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled"
-    ] = Field(description="The mode of assigning new seats.", default=...)
-
-
-class TeamSimple(GitHubRestModel):
-    """Team Simple
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int = Field(description="Unique identifier of the team", default=...)
-    node_id: str = Field(default=...)
-    url: str = Field(description="URL for the team", default=...)
-    members_url: str = Field(default=...)
-    name: str = Field(description="Name of the team", default=...)
-    description: Union[str, None] = Field(
-        description="Description of the team", default=...
-    )
-    permission: str = Field(
-        description="Permission that the team will have for its repositories",
-        default=...,
-    )
-    privacy: Missing[str] = Field(
-        description="The level of privacy this team should have", default=UNSET
-    )
-    notification_setting: Missing[str] = Field(
-        description="The notification setting the team has set", default=UNSET
-    )
-    html_url: str = Field(default=...)
-    repositories_url: str = Field(default=...)
-    slug: str = Field(default=...)
-    ldap_dn: Missing[str] = Field(
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
-        default=UNSET,
-    )
-
-
-class Team(GitHubRestModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    name: str = Field(default=...)
-    slug: str = Field(default=...)
-    description: Union[str, None] = Field(default=...)
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field(default=...)
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field(default=...)
-    html_url: str = Field(default=...)
-    members_url: str = Field(default=...)
-    repositories_url: str = Field(default=...)
-    parent: Union[None, TeamSimple] = Field(
-        title="Team Simple",
-        description="Groups of organization members that gives permissions on specified repositories.",
-        default=...,
-    )
-
-
-class TeamPropPermissions(GitHubRestModel):
-    """TeamPropPermissions"""
-
-    pull: bool = Field(default=...)
-    triage: bool = Field(default=...)
-    push: bool = Field(default=...)
-    maintain: bool = Field(default=...)
-    admin: bool = Field(default=...)
-
-
-class Organization(GitHubRestModel):
-    """Organization
-
-    GitHub account for managing multiple users, teams, and repositories
-    """
-
-    login: str = Field(description="Unique login name of the organization", default=...)
-    url: str = Field(description="URL for the organization", default=...)
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    repos_url: str = Field(default=...)
-    events_url: str = Field(default=...)
-    hooks_url: str = Field(default=...)
-    issues_url: str = Field(default=...)
-    members_url: str = Field(default=...)
-    public_members_url: str = Field(default=...)
-    avatar_url: str = Field(default=...)
-    description: Union[str, None] = Field(default=...)
-    blog: Missing[str] = Field(
-        description="Display blog url for the organization", default=UNSET
-    )
-    html_url: str = Field(default=...)
-    name: Missing[str] = Field(
-        description="Display name for the organization", default=UNSET
-    )
-    company: Missing[str] = Field(
-        description="Display company name for the organization", default=UNSET
-    )
-    location: Missing[str] = Field(
-        description="Display location for the organization", default=UNSET
-    )
-    email: Missing[str] = Field(
-        description="Display email for the organization", default=UNSET
-    )
-    has_organization_projects: bool = Field(
-        description="Specifies if organization projects are enabled for this org",
-        default=...,
-    )
-    has_repository_projects: bool = Field(
-        description="Specifies if repository projects are enabled for repositories that belong to this org",
-        default=...,
-    )
-    is_verified: Missing[bool] = Field(default=UNSET)
-    public_repos: int = Field(default=...)
-    public_gists: int = Field(default=...)
-    followers: int = Field(default=...)
-    following: int = Field(default=...)
-    type: str = Field(default=...)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    plan: Missing[OrganizationPropPlan] = Field(default=UNSET)
-
-
-class OrganizationPropPlan(GitHubRestModel):
-    """OrganizationPropPlan"""
-
-    name: Missing[str] = Field(default=UNSET)
-    space: Missing[int] = Field(default=UNSET)
-    private_repos: Missing[int] = Field(default=UNSET)
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
-
-
-class CopilotSeatDetails(GitHubRestModel):
-    """Copilot for Business Seat Detail
-
-    Information about a Copilot for Business seat assignment for a user, team, or
-    organization.
-    """
-
-    assignee: Union[SimpleUser, Team, Organization] = Field(
-        title="Organization",
-        description="The assignee that has been granted access to GitHub Copilot.",
-        default=...,
-    )
-    assigning_team: Missing[Union[Team, None]] = Field(
-        title="Team",
-        description="The team that granted access to GitHub Copilot to the assignee. This will be null if the user was assigned a seat individually.",
-        default=UNSET,
-    )
-    pending_cancellation_date: Missing[Union[date, None]] = Field(
-        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
-        default=UNSET,
-    )
-    last_activity_at: Missing[Union[datetime, None]] = Field(
-        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
-        default=UNSET,
-    )
-    last_activity_editor: Missing[Union[str, None]] = Field(
-        description="Last editor that was used by the user for a GitHub Copilot completion.",
-        default=UNSET,
-    )
-    created_at: datetime = Field(
-        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format.",
-        default=...,
-    )
-    updated_at: Missing[datetime] = Field(
-        description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
-        default=UNSET,
-    )
 
 
 class OrganizationFull(GitHubRestModel):
@@ -3423,6 +3362,231 @@ class CodespacesPublicKey(GitHubRestModel):
     created_at: Missing[str] = Field(default=UNSET)
 
 
+class CopilotSeatBreakdown(GitHubRestModel):
+    """Copilot for Business Seat Breakdown
+
+    The breakdown of Copilot for Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+        default=UNSET,
+    )
+    added_this_cycle: Missing[int] = Field(
+        description="Seats added during the current billing cycle.", default=UNSET
+    )
+    pending_cancellation: Missing[int] = Field(
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+        default=UNSET,
+    )
+    pending_invitation: Missing[int] = Field(
+        description="The number of seats that have been assigned to users that have not yet accepted an invitation to this organization.",
+        default=UNSET,
+    )
+    active_this_cycle: Missing[int] = Field(
+        description="The number of seats that have used Copilot during the current billing cycle.",
+        default=UNSET,
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+        default=UNSET,
+    )
+
+
+class CopilotOrganizationDetails(GitHubRestModel, extra=Extra.allow):
+    """Copilot for Business Organization Details
+
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot for Business subscription.
+    """
+
+    seat_breakdown: CopilotSeatBreakdown = Field(
+        title="Copilot for Business Seat Breakdown",
+        description="The breakdown of Copilot for Business seats for the organization.",
+        default=...,
+    )
+    public_code_suggestions: Literal[
+        "allow", "block", "unconfigured", "unknown"
+    ] = Field(
+        description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code.",
+        default=...,
+    )
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled"
+    ] = Field(description="The mode of assigning new seats.", default=...)
+
+
+class TeamSimple(GitHubRestModel):
+    """Team Simple
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int = Field(description="Unique identifier of the team", default=...)
+    node_id: str = Field(default=...)
+    url: str = Field(description="URL for the team", default=...)
+    members_url: str = Field(default=...)
+    name: str = Field(description="Name of the team", default=...)
+    description: Union[str, None] = Field(
+        description="Description of the team", default=...
+    )
+    permission: str = Field(
+        description="Permission that the team will have for its repositories",
+        default=...,
+    )
+    privacy: Missing[str] = Field(
+        description="The level of privacy this team should have", default=UNSET
+    )
+    notification_setting: Missing[str] = Field(
+        description="The notification setting the team has set", default=UNSET
+    )
+    html_url: str = Field(default=...)
+    repositories_url: str = Field(default=...)
+    slug: str = Field(default=...)
+    ldap_dn: Missing[str] = Field(
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
+        default=UNSET,
+    )
+
+
+class Team(GitHubRestModel):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    name: str = Field(default=...)
+    slug: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field(default=...)
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    repositories_url: str = Field(default=...)
+    parent: Union[None, TeamSimple] = Field(
+        title="Team Simple",
+        description="Groups of organization members that gives permissions on specified repositories.",
+        default=...,
+    )
+
+
+class TeamPropPermissions(GitHubRestModel):
+    """TeamPropPermissions"""
+
+    pull: bool = Field(default=...)
+    triage: bool = Field(default=...)
+    push: bool = Field(default=...)
+    maintain: bool = Field(default=...)
+    admin: bool = Field(default=...)
+
+
+class Organization(GitHubRestModel):
+    """Organization
+
+    GitHub account for managing multiple users, teams, and repositories
+    """
+
+    login: str = Field(description="Unique login name of the organization", default=...)
+    url: str = Field(description="URL for the organization", default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    hooks_url: str = Field(default=...)
+    issues_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    public_members_url: str = Field(default=...)
+    avatar_url: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    blog: Missing[str] = Field(
+        description="Display blog url for the organization", default=UNSET
+    )
+    html_url: str = Field(default=...)
+    name: Missing[str] = Field(
+        description="Display name for the organization", default=UNSET
+    )
+    company: Missing[str] = Field(
+        description="Display company name for the organization", default=UNSET
+    )
+    location: Missing[str] = Field(
+        description="Display location for the organization", default=UNSET
+    )
+    email: Missing[str] = Field(
+        description="Display email for the organization", default=UNSET
+    )
+    has_organization_projects: bool = Field(
+        description="Specifies if organization projects are enabled for this org",
+        default=...,
+    )
+    has_repository_projects: bool = Field(
+        description="Specifies if repository projects are enabled for repositories that belong to this org",
+        default=...,
+    )
+    is_verified: Missing[bool] = Field(default=UNSET)
+    public_repos: int = Field(default=...)
+    public_gists: int = Field(default=...)
+    followers: int = Field(default=...)
+    following: int = Field(default=...)
+    type: str = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    plan: Missing[OrganizationPropPlan] = Field(default=UNSET)
+
+
+class OrganizationPropPlan(GitHubRestModel):
+    """OrganizationPropPlan"""
+
+    name: Missing[str] = Field(default=UNSET)
+    space: Missing[int] = Field(default=UNSET)
+    private_repos: Missing[int] = Field(default=UNSET)
+    filled_seats: Missing[int] = Field(default=UNSET)
+    seats: Missing[int] = Field(default=UNSET)
+
+
+class CopilotSeatDetails(GitHubRestModel):
+    """Copilot for Business Seat Detail
+
+    Information about a Copilot for Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: Union[SimpleUser, Team, Organization] = Field(
+        title="Organization",
+        description="The assignee that has been granted access to GitHub Copilot.",
+        default=...,
+    )
+    assigning_team: Missing[Union[Team, None]] = Field(
+        title="Team",
+        description="The team that granted access to GitHub Copilot to the assignee. This will be null if the user was assigned a seat individually.",
+        default=UNSET,
+    )
+    pending_cancellation_date: Missing[Union[date, None]] = Field(
+        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
+        default=UNSET,
+    )
+    last_activity_at: Missing[Union[datetime, None]] = Field(
+        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
+        default=UNSET,
+    )
+    last_activity_editor: Missing[Union[str, None]] = Field(
+        description="Last editor that was used by the user for a GitHub Copilot completion.",
+        default=UNSET,
+    )
+    created_at: datetime = Field(
+        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format.",
+        default=...,
+    )
+    updated_at: Missing[datetime] = Field(
+        description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
+        default=UNSET,
+    )
+
+
 class OrganizationDependabotSecret(GitHubRestModel):
     """Dependabot Secret for an Organization
 
@@ -3953,7 +4117,10 @@ class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubRestMo
 
 
 class OrgRulesetConditionsOneof0(GitHubRestModel):
-    """OrgRulesetConditionsOneof0"""
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
+    """
 
     ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
     repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field(
@@ -3962,7 +4129,10 @@ class OrgRulesetConditionsOneof0(GitHubRestModel):
 
 
 class OrgRulesetConditionsOneof1(GitHubRestModel):
-    """OrgRulesetConditionsOneof1"""
+    """repository_id_and_ref_name
+
+    Conditions to target repositories by id and refs by name
+    """
 
     ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
     repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
@@ -4293,8 +4463,10 @@ class RepositoryRuleset(GitHubRestModel):
         description="The actors that can bypass the rules in this ruleset",
         default=UNSET,
     )
-    current_user_can_bypass: Missing[bool] = Field(
-        description="Whether the user making this API request is able to bypass the ruleset. This field is only returned when\nquerying the repository-level endpoint.",
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never"]
+    ] = Field(
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
         default=UNSET,
     )
     node_id: Missing[str] = Field(default=UNSET)
@@ -4306,8 +4478,8 @@ class RepositoryRuleset(GitHubRestModel):
             OrgRulesetConditionsOneof1,
         ]
     ] = Field(
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        title="repository_id_and_ref_name",
+        description="Conditions to target repositories by id and refs by name",
         default=UNSET,
     )
     rules: Missing[
@@ -4353,6 +4525,217 @@ class RepositoryRulesetPropLinksPropHtml(GitHubRestModel):
     """RepositoryRulesetPropLinksPropHtml"""
 
     href: Missing[str] = Field(description="The html URL of the ruleset", default=UNSET)
+
+
+class RepositoryAdvisoryVulnerability(GitHubRestModel):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
+        description="The name of the package affected by the vulnerability.",
+        default=...,
+    )
+    vulnerable_version_range: Union[str, None] = Field(
+        description="The range of the package versions affected by the vulnerability.",
+        default=...,
+    )
+    patched_versions: Union[str, None] = Field(
+        description="The package version(s) that resolve the vulnerability.",
+        default=...,
+    )
+    vulnerable_functions: Union[List[str], None] = Field(
+        description="The functions in the package that are affected.", default=...
+    )
+
+
+class RepositoryAdvisoryVulnerabilityPropPackage(GitHubRestModel):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(
+        description="The package's language or package management ecosystem.",
+        default=...,
+    )
+    name: Union[str, None] = Field(
+        description="The unique package name within its ecosystem.", default=...
+    )
+
+
+class RepositoryAdvisoryCredit(GitHubRestModel):
+    """RepositoryAdvisoryCredit
+
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.", default=...)
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit.", default=...
+    )
+
+
+class RepositoryAdvisory(GitHubRestModel):
+    """RepositoryAdvisory
+
+    A repository security advisory.
+    """
+
+    ghsa_id: str = Field(description="The GitHub Security Advisory ID.", default=...)
+    cve_id: Union[str, None] = Field(
+        description="The Common Vulnerabilities and Exposures (CVE) ID.", default=...
+    )
+    url: str = Field(description="The API URL for the advisory.", default=...)
+    html_url: str = Field(description="The URL for the advisory.", default=...)
+    summary: str = Field(
+        description="A short summary of the advisory.", max_length=1024, default=...
+    )
+    description: Union[str, None] = Field(
+        description="A detailed description of what the advisory entails.",
+        max_length=65535,
+        default=...,
+    )
+    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
+        description="The severity of the advisory.", default=...
+    )
+    author: None = Field(description="The author of the advisory.", default=...)
+    publisher: None = Field(description="The publisher of the advisory.", default=...)
+    identifiers: List[RepositoryAdvisoryPropIdentifiersItems] = Field(default=...)
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
+        description="The state of the advisory.", default=...
+    )
+    created_at: Union[datetime, None] = Field(
+        description="The date and time of when the advisory was created, in ISO 8601 format.",
+        default=...,
+    )
+    updated_at: Union[datetime, None] = Field(
+        description="The date and time of when the advisory was last updated, in ISO 8601 format.",
+        default=...,
+    )
+    published_at: Union[datetime, None] = Field(
+        description="The date and time of when the advisory was published, in ISO 8601 format.",
+        default=...,
+    )
+    closed_at: Union[datetime, None] = Field(
+        description="The date and time of when the advisory was closed, in ISO 8601 format.",
+        default=...,
+    )
+    withdrawn_at: Union[datetime, None] = Field(
+        description="The date and time of when the advisory was withdrawn, in ISO 8601 format.",
+        default=...,
+    )
+    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field(default=...)
+    vulnerabilities: Union[List[RepositoryAdvisoryVulnerability], None] = Field(
+        default=...
+    )
+    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field(default=...)
+    cwes: Union[List[RepositoryAdvisoryPropCwesItems], None] = Field(default=...)
+    cwe_ids: Union[List[str], None] = Field(
+        description="A list of only the CWE IDs.", default=...
+    )
+    credits_: Union[List[RepositoryAdvisoryPropCreditsItems], None] = Field(
+        default=..., alias="credits"
+    )
+    credits_detailed: Union[List[RepositoryAdvisoryCredit], None] = Field(default=...)
+    collaborating_users: Union[List[SimpleUser], None] = Field(
+        description="A list of users that collaborate on the advisory.", default=...
+    )
+    collaborating_teams: Union[List[Team], None] = Field(
+        description="A list of teams that collaborate on the advisory.", default=...
+    )
+    private_fork: None = Field(
+        description="A temporary private fork of the advisory's repository for collaborating on a fix.",
+        default=...,
+    )
+
+
+class RepositoryAdvisoryPropIdentifiersItems(GitHubRestModel):
+    """RepositoryAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"] = Field(
+        description="The type of identifier.", default=...
+    )
+    value: str = Field(description="The identifier value.", default=...)
+
+
+class RepositoryAdvisoryPropSubmission(GitHubRestModel):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool = Field(
+        description="Whether a private vulnerability report was accepted by the repository's administrators.",
+        default=...,
+    )
+
+
+class RepositoryAdvisoryPropCvss(GitHubRestModel):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None] = Field(description="The CVSS vector.", default=...)
+    score: Union[float, None] = Field(
+        description="The CVSS score.", le=10.0, default=...
+    )
+
+
+class RepositoryAdvisoryPropCwesItems(GitHubRestModel):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field(
+        description="The Common Weakness Enumeration (CWE) identifier.", default=...
+    )
+    name: str = Field(description="The name of the CWE.", default=...)
+
+
+class RepositoryAdvisoryPropCreditsItems(GitHubRestModel):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: Missing[str] = Field(
+        description="The username of the user credited.", default=UNSET
+    )
+    type: Missing[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ] = Field(description="The type of credit the user is receiving.", default=UNSET)
 
 
 class ActionsBillingUsage(GitHubRestModel):
@@ -5860,6 +6243,40 @@ class WorkflowUsagePropBillablePropWindows(GitHubRestModel):
     total_ms: Missing[int] = Field(default=UNSET)
 
 
+class Activity(GitHubRestModel):
+    """Activity
+
+    Activity
+    """
+
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    before: str = Field(
+        description="The SHA of the commit before the activity.", default=...
+    )
+    after: str = Field(
+        description="The SHA of the commit after the activity.", default=...
+    )
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`.",
+        default=...,
+    )
+    timestamp: datetime = Field(
+        description="The time when the activity occurred.", default=...
+    )
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ] = Field(description="The type of the activity that was performed.", default=...)
+    actor: Union[None, SimpleUser] = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+
+
 class Autolink(GitHubRestModel):
     """Autolink reference
 
@@ -5876,6 +6293,22 @@ class Autolink(GitHubRestModel):
     )
     is_alphanumeric: bool = Field(
         description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters.",
+        default=...,
+    )
+
+
+class CheckAutomatedSecurityFixes(GitHubRestModel):
+    """Check Automated Security Fixes
+
+    Check Automated Security Fixes
+    """
+
+    enabled: bool = Field(
+        description="Whether automated security fixes are enabled for the repository.",
+        default=...,
+    )
+    paused: bool = Field(
+        description="Whether automated security fixes are paused for the repository.",
         default=...,
     )
 
@@ -6972,6 +7405,9 @@ class CodeScanningDefaultSetup(GitHubRestModel):
     updated_at: Missing[Union[datetime, None]] = Field(
         description="Timestamp of latest configuration update.", default=UNSET
     )
+    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
+        description="The frequency of the periodic analysis.", default=UNSET
+    )
 
 
 class CodeScanningDefaultSetupUpdate(GitHubRestModel):
@@ -6985,7 +7421,7 @@ class CodeScanningDefaultSetupUpdate(GitHubRestModel):
         default=...,
     )
     query_suite: Missing[Literal["default", "extended"]] = Field(
-        description="The CodeQL query suite to use.", default=UNSET
+        description="CodeQL query suite to be used.", default=UNSET
     )
     languages: Missing[
         List[
@@ -7001,7 +7437,7 @@ class CodeScanningDefaultSetupUpdate(GitHubRestModel):
             ]
         ]
     ] = Field(
-        description="CodeQL languages to be analyzed. Supported values are: `c-cpp`, `csharp`, `go`, `java-kotlin`, `javascript-typescript`, `python`, and `ruby`.",
+        description="CodeQL languages to be analyzed. Supported values are: `c-cpp`, `csharp`, `go`, `java-kotlin`, `javascript-typescript`, `python`, `ruby`, and `swift`.",
         default=UNSET,
     )
 
@@ -11207,217 +11643,6 @@ class SecretScanningLocation(GitHubRestModel):
     )
 
 
-class RepositoryAdvisoryVulnerability(GitHubRestModel):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
-        description="The name of the package affected by the vulnerability.",
-        default=...,
-    )
-    vulnerable_version_range: Union[str, None] = Field(
-        description="The range of the package versions affected by the vulnerability.",
-        default=...,
-    )
-    patched_versions: Union[str, None] = Field(
-        description="The package version(s) that resolve the vulnerability.",
-        default=...,
-    )
-    vulnerable_functions: Union[List[str], None] = Field(
-        description="The functions in the package that are affected.", default=...
-    )
-
-
-class RepositoryAdvisoryVulnerabilityPropPackage(GitHubRestModel):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(
-        description="The package's language or package management ecosystem.",
-        default=...,
-    )
-    name: Union[str, None] = Field(
-        description="The unique package name within its ecosystem.", default=...
-    )
-
-
-class RepositoryAdvisoryCredit(GitHubRestModel):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
-    """
-
-    user: SimpleUser = Field(
-        title="Simple User", description="A GitHub user.", default=...
-    )
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.", default=...)
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit.", default=...
-    )
-
-
-class RepositoryAdvisory(GitHubRestModel):
-    """RepositoryAdvisory
-
-    A repository security advisory.
-    """
-
-    ghsa_id: str = Field(description="The GitHub Security Advisory ID.", default=...)
-    cve_id: Union[str, None] = Field(
-        description="The Common Vulnerabilities and Exposures (CVE) ID.", default=...
-    )
-    url: str = Field(description="The API URL for the advisory.", default=...)
-    html_url: str = Field(description="The URL for the advisory.", default=...)
-    summary: str = Field(
-        description="A short summary of the advisory.", max_length=1024, default=...
-    )
-    description: Union[str, None] = Field(
-        description="A detailed description of what the advisory entails.",
-        max_length=65535,
-        default=...,
-    )
-    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
-        description="The severity of the advisory.", default=...
-    )
-    author: None = Field(description="The author of the advisory.", default=...)
-    publisher: None = Field(description="The publisher of the advisory.", default=...)
-    identifiers: List[RepositoryAdvisoryPropIdentifiersItems] = Field(default=...)
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
-        description="The state of the advisory.", default=...
-    )
-    created_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was created, in ISO 8601 format.",
-        default=...,
-    )
-    updated_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was last updated, in ISO 8601 format.",
-        default=...,
-    )
-    published_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was published, in ISO 8601 format.",
-        default=...,
-    )
-    closed_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was closed, in ISO 8601 format.",
-        default=...,
-    )
-    withdrawn_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was withdrawn, in ISO 8601 format.",
-        default=...,
-    )
-    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field(default=...)
-    vulnerabilities: Union[List[RepositoryAdvisoryVulnerability], None] = Field(
-        default=...
-    )
-    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field(default=...)
-    cwes: Union[List[RepositoryAdvisoryPropCwesItems], None] = Field(default=...)
-    cwe_ids: Union[List[str], None] = Field(
-        description="A list of only the CWE IDs.", default=...
-    )
-    credits_: Union[List[RepositoryAdvisoryPropCreditsItems], None] = Field(
-        default=..., alias="credits"
-    )
-    credits_detailed: Union[List[RepositoryAdvisoryCredit], None] = Field(default=...)
-    collaborating_users: Union[List[SimpleUser], None] = Field(
-        description="A list of users that collaborate on the advisory.", default=...
-    )
-    collaborating_teams: Union[List[Team], None] = Field(
-        description="A list of teams that collaborate on the advisory.", default=...
-    )
-    private_fork: None = Field(
-        description="A temporary private fork of the advisory's repository for collaborating on a fix.",
-        default=...,
-    )
-
-
-class RepositoryAdvisoryPropIdentifiersItems(GitHubRestModel):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"] = Field(
-        description="The type of identifier.", default=...
-    )
-    value: str = Field(description="The identifier value.", default=...)
-
-
-class RepositoryAdvisoryPropSubmission(GitHubRestModel):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool = Field(
-        description="Whether a private vulnerability report was accepted by the repository's administrators.",
-        default=...,
-    )
-
-
-class RepositoryAdvisoryPropCvss(GitHubRestModel):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None] = Field(description="The CVSS vector.", default=...)
-    score: Union[float, None] = Field(
-        description="The CVSS score.", le=10.0, default=...
-    )
-
-
-class RepositoryAdvisoryPropCwesItems(GitHubRestModel):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field(
-        description="The Common Weakness Enumeration (CWE) identifier.", default=...
-    )
-    name: str = Field(description="The name of the CWE.", default=...)
-
-
-class RepositoryAdvisoryPropCreditsItems(GitHubRestModel):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: Missing[str] = Field(
-        description="The username of the user credited.", default=UNSET
-    )
-    type: Missing[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ] = Field(description="The type of credit the user is receiving.", default=UNSET)
-
-
 class RepositoryAdvisoryCreate(GitHubRestModel):
     """RepositoryAdvisoryCreate"""
 
@@ -11652,6 +11877,14 @@ class RepositoryAdvisoryUpdate(GitHubRestModel):
     )
     state: Missing[Literal["published", "closed", "draft"]] = Field(
         description="The state of the advisory.", default=UNSET
+    )
+    collaborating_users: Missing[Union[List[str], None]] = Field(
+        description="A list of usernames who have been granted write access to the advisory.",
+        default=UNSET,
+    )
+    collaborating_teams: Missing[Union[List[str], None]] = Field(
+        description="A list of team slugs which have been granted write access to the advisory.",
+        default=UNSET,
     )
 
 
@@ -13298,6 +13531,69 @@ class ProjectsV2Item(GitHubRestModel):
     archived_at: Union[datetime, None] = Field(default=...)
 
 
+class SecretScanningAlertWebhook(GitHubRestModel):
+    """SecretScanningAlertWebhook"""
+
+    number: Missing[int] = Field(
+        description="The security alert number.", default=UNSET
+    )
+    created_at: Missing[datetime] = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    updated_at: Missing[Union[None, datetime]] = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    url: Missing[str] = Field(
+        description="The REST API URL of the alert resource.", default=UNSET
+    )
+    html_url: Missing[str] = Field(
+        description="The GitHub URL of the alert resource.", default=UNSET
+    )
+    locations_url: Missing[str] = Field(
+        description="The REST API URL of the code locations for this alert.",
+        default=UNSET,
+    )
+    resolution: Missing[
+        Union[
+            None,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+        ]
+    ] = Field(description="The reason for resolving the alert.", default=UNSET)
+    resolved_at: Missing[Union[datetime, None]] = Field(
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(
+        title="Simple User", description="A GitHub user.", default=UNSET
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        description="An optional comment to resolve an alert.", default=UNSET
+    )
+    secret_type: Missing[str] = Field(
+        description="The type of secret that secret scanning detected.", default=UNSET
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        description="Whether push protection was bypassed for the detected secret.",
+        default=UNSET,
+    )
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(
+        title="Simple User", description="A GitHub user.", default=UNSET
+    )
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        default=UNSET,
+    )
+
+
 class AppManifestsCodeConversionsPostResponse201(GitHubRestModel):
     """AppManifestsCodeConversionsPostResponse201"""
 
@@ -13599,16 +13895,6 @@ class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubRestModel):
     )
 
 
-class OrganizationsOrgCopilotBillingSeatsGetResponse200(GitHubRestModel):
-    """OrganizationsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: Missing[int] = Field(
-        description="Total number of Copilot For Business seats for the organization currently being billed.",
-        default=UNSET,
-    )
-    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
-
-
 class OrgsOrgPatchBody(GitHubRestModel):
     """OrgsOrgPatchBody"""
 
@@ -13839,7 +14125,7 @@ class OrgsOrgActionsSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgActionsSecretsSecretNamePutBody"""
 
     encrypted_value: Missing[str] = Field(
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/reference/actions#get-an-organization-public-key) endpoint.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
@@ -13851,7 +14137,7 @@ class OrgsOrgActionsSecretsSecretNamePutBody(GitHubRestModel):
         default=...,
     )
     selected_repository_ids: Missing[List[int]] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/reference/actions#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/reference/actions#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/actions#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=UNSET,
     )
 
@@ -13867,7 +14153,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
     """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/reference/actions#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=...,
     )
 
@@ -13932,8 +14218,8 @@ class OrgsOrgCodespacesGetResponse200(GitHubRestModel):
     codespaces: List[Codespace] = Field(default=...)
 
 
-class OrgsOrgCodespacesBillingPutBody(GitHubRestModel):
-    """OrgsOrgCodespacesBillingPutBody"""
+class OrgsOrgCodespacesAccessPutBody(GitHubRestModel):
+    """OrgsOrgCodespacesAccessPutBody"""
 
     visibility: Literal[
         "disabled",
@@ -13951,8 +14237,8 @@ class OrgsOrgCodespacesBillingPutBody(GitHubRestModel):
     )
 
 
-class OrgsOrgCodespacesBillingSelectedUsersPostBody(GitHubRestModel):
-    """OrgsOrgCodespacesBillingSelectedUsersPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubRestModel):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members whose codespaces be billed to the organization.",
@@ -13961,8 +14247,8 @@ class OrgsOrgCodespacesBillingSelectedUsersPostBody(GitHubRestModel):
     )
 
 
-class OrgsOrgCodespacesBillingSelectedUsersDeleteBody(GitHubRestModel):
-    """OrgsOrgCodespacesBillingSelectedUsersDeleteBody"""
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubRestModel):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members whose codespaces should not be billed to the organization.",
@@ -14013,6 +14299,16 @@ class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubRestModel):
         description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
         default=...,
     )
+
+
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubRestModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
+        description="Total number of Copilot For Business seats for the organization currently being billed.",
+        default=UNSET,
+    )
+    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
 
 
 class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubRestModel):
@@ -14140,8 +14436,7 @@ class OrgsOrgHooksPostBody(GitHubRestModel):
 
     name: str = Field(description='Must be passed as "web".', default=...)
     config: OrgsOrgHooksPostBodyPropConfig = Field(
-        description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/orgs#create-hook-config-params).",
-        default=...,
+        description="Key/value pairs to provide settings for this webhook.", default=...
     )
     events: Missing[List[str]] = Field(
         description='Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
@@ -14156,8 +14451,7 @@ class OrgsOrgHooksPostBody(GitHubRestModel):
 class OrgsOrgHooksPostBodyPropConfig(GitHubRestModel):
     """OrgsOrgHooksPostBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/orgs#create-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: str = Field(
@@ -14183,7 +14477,7 @@ class OrgsOrgHooksHookIdPatchBody(GitHubRestModel):
     """OrgsOrgHooksHookIdPatchBody"""
 
     config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
-        description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/orgs#update-hook-config-params).",
+        description="Key/value pairs to provide settings for this webhook.",
         default=UNSET,
     )
     events: Missing[List[str]] = Field(
@@ -14200,8 +14494,7 @@ class OrgsOrgHooksHookIdPatchBody(GitHubRestModel):
 class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubRestModel):
     """OrgsOrgHooksHookIdPatchBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/orgs#update-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: str = Field(
@@ -14532,7 +14825,7 @@ class OrgsOrgRulesetsPostBody(GitHubRestModel):
         Union[OrgRulesetConditionsOneof0, OrgRulesetConditionsOneof1]
     ] = Field(
         title="Organization ruleset conditions",
-        description="Conditions for a organization ruleset",
+        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.\n",
         default=UNSET,
     )
     rules: Missing[
@@ -14576,7 +14869,7 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubRestModel):
         Union[OrgRulesetConditionsOneof0, OrgRulesetConditionsOneof1]
     ] = Field(
         title="Organization ruleset conditions",
-        description="Conditions for a organization ruleset",
+        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.\n",
         default=UNSET,
     )
     rules: Missing[
@@ -14707,7 +15000,7 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReacti
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the team discussion comment.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.",
         default=...,
     )
 
@@ -14718,7 +15011,7 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubRes
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the team discussion.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.",
         default=...,
     )
 
@@ -14753,6 +15046,15 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubRestModel):
     permission: Missing[str] = Field(
         description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
         default="push",
+    )
+
+
+class OrgsOrgSecurityProductEnablementPostBody(GitHubRestModel):
+    """OrgsOrgSecurityProductEnablementPostBody"""
+
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+        default=UNSET,
     )
 
 
@@ -15308,7 +15610,7 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
 
     encrypted_value: Missing[str] = Field(
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/reference/actions#get-a-repository-public-key) endpoint.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
@@ -16018,7 +16320,7 @@ class ReposOwnerRepoCheckRunsPostBodyOneof0(GitHubRestModel, extra=Extra.allow):
         default=UNSET,
     )
     actions: Missing[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]] = Field(
-        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
         default=UNSET,
     )
 
@@ -16066,7 +16368,7 @@ class ReposOwnerRepoCheckRunsPostBodyOneof1(GitHubRestModel, extra=Extra.allow):
         default=UNSET,
     )
     actions: Missing[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]] = Field(
-        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
         default=UNSET,
     )
 
@@ -16216,7 +16518,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(
     actions: Missing[
         List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
     ] = Field(
-        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
         default=UNSET,
     )
 
@@ -16268,7 +16570,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(
     actions: Missing[
         List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
     ] = Field(
-        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://docs.github.com/rest/reference/checks#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/reference/checks#check-runs-and-requested-actions)."',
+        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
         default=UNSET,
     )
 
@@ -16504,7 +16806,7 @@ class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubRestModel):
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the commit comment.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment.",
         default=...,
     )
 
@@ -17111,8 +17413,7 @@ class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubRestModel):
 class ReposOwnerRepoHooksPostBodyPropConfig(GitHubRestModel):
     """ReposOwnerRepoHooksPostBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/repos#create-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: Missing[str] = Field(
@@ -17142,7 +17443,7 @@ class ReposOwnerRepoHooksPostBody(GitHubRestModel):
         default=UNSET,
     )
     config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
-        description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/repos#create-hook-config-params).",
+        description="Key/value pairs to provide settings for this webhook.",
         default=UNSET,
     )
     events: Missing[List[str]] = Field(
@@ -17159,7 +17460,7 @@ class ReposOwnerRepoHooksHookIdPatchBody(GitHubRestModel):
     """ReposOwnerRepoHooksHookIdPatchBody"""
 
     config: Missing[ReposOwnerRepoHooksHookIdPatchBodyPropConfig] = Field(
-        description="Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.github.com/rest/reference/repos#create-hook-config-params).",
+        description="Key/value pairs to provide settings for this webhook.",
         default=UNSET,
     )
     events: Missing[List[str]] = Field(
@@ -17183,8 +17484,7 @@ class ReposOwnerRepoHooksHookIdPatchBody(GitHubRestModel):
 class ReposOwnerRepoHooksHookIdPatchBodyPropConfig(GitHubRestModel):
     """ReposOwnerRepoHooksHookIdPatchBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/repos#create-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: str = Field(
@@ -17348,7 +17648,7 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubRestModel):
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the issue comment.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment.",
         default=...,
     )
 
@@ -17505,7 +17805,7 @@ class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubRestModel):
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the issue.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue.",
         default=...,
     )
 
@@ -17902,7 +18202,7 @@ class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubRestModel):
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the pull request review comment.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment.",
         default=...,
     )
 
@@ -18008,7 +18308,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubRestModel):
         description='The ID of the review comment to reply to. To find the ID of a review comment with ["List review comments on a pull request"](#list-review-comments-on-a-pull-request). When specified, all parameters other than `body` in the request body are ignored.',
         default=UNSET,
     )
-    subject_type: Missing[Literal["LINE", "FILE"]] = Field(
+    subject_type: Missing[Literal["line", "file"]] = Field(
         description="The level at which the comment is targeted.", default=UNSET
     )
 
@@ -18096,7 +18396,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubRestModel):
         default=UNSET,
     )
     event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls#submit-a-review-for-a-pull-request) when you are ready.",
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
         default=UNSET,
     )
     comments: Missing[
@@ -18158,7 +18458,7 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubRestModel):
     """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
     expected_head_sha: Missing[str] = Field(
-        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/rest/reference/repos#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
+        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
         default=UNSET,
     )
 
@@ -18270,7 +18570,7 @@ class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubRestModel):
     """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
     content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the release.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release.",
         default=...,
     )
 
@@ -18480,7 +18780,7 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
     """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
     encrypted_value: str = Field(
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/reference/actions#get-an-environment-public-key) endpoint.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=...,
     )
@@ -18642,7 +18942,7 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBo
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the team discussion comment.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.",
         default=...,
     )
 
@@ -18653,7 +18953,7 @@ class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubRestModel):
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types) to add to the team discussion.",
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.",
         default=...,
     )
 
@@ -18827,7 +19127,7 @@ class UserCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """UserCodespacesSecretsSecretNamePutBody"""
 
     encrypted_value: Missing[str] = Field(
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/reference/codespaces#get-the-public-key-for-the-authenticated-user) endpoint.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
         regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
@@ -19153,10 +19453,17 @@ class UserSshSigningKeysPostBody(GitHubRestModel):
 
 Root.update_forward_refs()
 SimpleUser.update_forward_refs()
-Integration.update_forward_refs()
-IntegrationPropPermissions.update_forward_refs()
+GlobalAdvisory.update_forward_refs()
+GlobalAdvisoryPropIdentifiersItems.update_forward_refs()
+GlobalAdvisoryPropVulnerabilitiesItems.update_forward_refs()
+GlobalAdvisoryPropVulnerabilitiesItemsPropPackage.update_forward_refs()
+GlobalAdvisoryPropCvss.update_forward_refs()
+GlobalAdvisoryPropCwesItems.update_forward_refs()
+GlobalAdvisoryPropCreditsItems.update_forward_refs()
 BasicError.update_forward_refs()
 ValidationErrorSimple.update_forward_refs()
+Integration.update_forward_refs()
+IntegrationPropPermissions.update_forward_refs()
 WebhookConfig.update_forward_refs()
 HookDeliveryItem.update_forward_refs()
 ScimError.update_forward_refs()
@@ -19244,14 +19551,6 @@ Thread.update_forward_refs()
 ThreadPropSubject.update_forward_refs()
 ThreadSubscription.update_forward_refs()
 OrganizationSimple.update_forward_refs()
-CopilotSeatBreakdown.update_forward_refs()
-CopilotOrganizationDetails.update_forward_refs()
-TeamSimple.update_forward_refs()
-Team.update_forward_refs()
-TeamPropPermissions.update_forward_refs()
-Organization.update_forward_refs()
-OrganizationPropPlan.update_forward_refs()
-CopilotSeatDetails.update_forward_refs()
 OrganizationFull.update_forward_refs()
 OrganizationFullPropPlan.update_forward_refs()
 ActionsCacheUsageOrgEnterprise.update_forward_refs()
@@ -19282,6 +19581,14 @@ CodespacePropGitStatus.update_forward_refs()
 CodespacePropRuntimeConstraints.update_forward_refs()
 CodespacesOrgSecret.update_forward_refs()
 CodespacesPublicKey.update_forward_refs()
+CopilotSeatBreakdown.update_forward_refs()
+CopilotOrganizationDetails.update_forward_refs()
+TeamSimple.update_forward_refs()
+Team.update_forward_refs()
+TeamPropPermissions.update_forward_refs()
+Organization.update_forward_refs()
+OrganizationPropPlan.update_forward_refs()
+CopilotSeatDetails.update_forward_refs()
 OrganizationDependabotSecret.update_forward_refs()
 DependabotPublicKey.update_forward_refs()
 Package.update_forward_refs()
@@ -19345,6 +19652,15 @@ RepositoryRuleset.update_forward_refs()
 RepositoryRulesetPropLinks.update_forward_refs()
 RepositoryRulesetPropLinksPropSelf.update_forward_refs()
 RepositoryRulesetPropLinksPropHtml.update_forward_refs()
+RepositoryAdvisoryVulnerability.update_forward_refs()
+RepositoryAdvisoryVulnerabilityPropPackage.update_forward_refs()
+RepositoryAdvisoryCredit.update_forward_refs()
+RepositoryAdvisory.update_forward_refs()
+RepositoryAdvisoryPropIdentifiersItems.update_forward_refs()
+RepositoryAdvisoryPropSubmission.update_forward_refs()
+RepositoryAdvisoryPropCvss.update_forward_refs()
+RepositoryAdvisoryPropCwesItems.update_forward_refs()
+RepositoryAdvisoryPropCreditsItems.update_forward_refs()
 ActionsBillingUsage.update_forward_refs()
 ActionsBillingUsagePropMinutesUsedBreakdown.update_forward_refs()
 PackagesBillingUsage.update_forward_refs()
@@ -19413,7 +19729,9 @@ WorkflowUsagePropBillable.update_forward_refs()
 WorkflowUsagePropBillablePropUbuntu.update_forward_refs()
 WorkflowUsagePropBillablePropMacos.update_forward_refs()
 WorkflowUsagePropBillablePropWindows.update_forward_refs()
+Activity.update_forward_refs()
 Autolink.update_forward_refs()
+CheckAutomatedSecurityFixes.update_forward_refs()
 ProtectedBranchRequiredStatusCheck.update_forward_refs()
 ProtectedBranchRequiredStatusCheckPropChecksItems.update_forward_refs()
 ProtectedBranchAdminEnforced.update_forward_refs()
@@ -19696,15 +20014,6 @@ SecretScanningLocationIssueTitle.update_forward_refs()
 SecretScanningLocationIssueBody.update_forward_refs()
 SecretScanningLocationIssueComment.update_forward_refs()
 SecretScanningLocation.update_forward_refs()
-RepositoryAdvisoryVulnerability.update_forward_refs()
-RepositoryAdvisoryVulnerabilityPropPackage.update_forward_refs()
-RepositoryAdvisoryCredit.update_forward_refs()
-RepositoryAdvisory.update_forward_refs()
-RepositoryAdvisoryPropIdentifiersItems.update_forward_refs()
-RepositoryAdvisoryPropSubmission.update_forward_refs()
-RepositoryAdvisoryPropCvss.update_forward_refs()
-RepositoryAdvisoryPropCwesItems.update_forward_refs()
-RepositoryAdvisoryPropCreditsItems.update_forward_refs()
 RepositoryAdvisoryCreate.update_forward_refs()
 RepositoryAdvisoryCreatePropVulnerabilitiesItems.update_forward_refs()
 RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage.update_forward_refs()
@@ -19799,6 +20108,7 @@ PersonalAccessTokenRequestPropPermissionsResultPropOther.update_forward_refs()
 PersonalAccessTokenRequestPropRepositoriesItems.update_forward_refs()
 ProjectsV2.update_forward_refs()
 ProjectsV2Item.update_forward_refs()
+SecretScanningAlertWebhook.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201.update_forward_refs()
 AppManifestsCodeConversionsPostResponse201Allof1.update_forward_refs()
 AppHookConfigPatchBody.update_forward_refs()
@@ -19826,7 +20136,6 @@ MarkdownPostBody.update_forward_refs()
 NotificationsPutBody.update_forward_refs()
 NotificationsPutResponse202.update_forward_refs()
 NotificationsThreadsThreadIdSubscriptionPutBody.update_forward_refs()
-OrganizationsOrgCopilotBillingSeatsGetResponse200.update_forward_refs()
 OrgsOrgPatchBody.update_forward_refs()
 OrgsOrgActionsCacheUsageByRepositoryGetResponse200.update_forward_refs()
 OrgsOrgActionsPermissionsPutBody.update_forward_refs()
@@ -19849,13 +20158,14 @@ OrgsOrgActionsVariablesNamePatchBody.update_forward_refs()
 OrgsOrgActionsVariablesNameRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgActionsVariablesNameRepositoriesPutBody.update_forward_refs()
 OrgsOrgCodespacesGetResponse200.update_forward_refs()
-OrgsOrgCodespacesBillingPutBody.update_forward_refs()
-OrgsOrgCodespacesBillingSelectedUsersPostBody.update_forward_refs()
-OrgsOrgCodespacesBillingSelectedUsersDeleteBody.update_forward_refs()
+OrgsOrgCodespacesAccessPutBody.update_forward_refs()
+OrgsOrgCodespacesAccessSelectedUsersPostBody.update_forward_refs()
+OrgsOrgCodespacesAccessSelectedUsersDeleteBody.update_forward_refs()
 OrgsOrgCodespacesSecretsGetResponse200.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNamePutBody.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200.update_forward_refs()
 OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody.update_forward_refs()
+OrgsOrgCopilotBillingSeatsGetResponse200.update_forward_refs()
 OrgsOrgCopilotBillingSelectedTeamsPostBody.update_forward_refs()
 OrgsOrgCopilotBillingSelectedTeamsPostResponse201.update_forward_refs()
 OrgsOrgCopilotBillingSelectedTeamsDeleteBody.update_forward_refs()
@@ -19902,6 +20212,7 @@ OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody.update_forward_refs()
 OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403.update_forward_refs()
 OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody.update_forward_refs()
+OrgsOrgSecurityProductEnablementPostBody.update_forward_refs()
 ProjectsColumnsCardsCardIdDeleteResponse403.update_forward_refs()
 ProjectsColumnsCardsCardIdPatchBody.update_forward_refs()
 ProjectsColumnsCardsCardIdMovesPostBody.update_forward_refs()
@@ -20186,10 +20497,17 @@ __all__ = [
     "GitHubRestModel",
     "Root",
     "SimpleUser",
-    "Integration",
-    "IntegrationPropPermissions",
+    "GlobalAdvisory",
+    "GlobalAdvisoryPropIdentifiersItems",
+    "GlobalAdvisoryPropVulnerabilitiesItems",
+    "GlobalAdvisoryPropVulnerabilitiesItemsPropPackage",
+    "GlobalAdvisoryPropCvss",
+    "GlobalAdvisoryPropCwesItems",
+    "GlobalAdvisoryPropCreditsItems",
     "BasicError",
     "ValidationErrorSimple",
+    "Integration",
+    "IntegrationPropPermissions",
     "WebhookConfig",
     "HookDeliveryItem",
     "ScimError",
@@ -20277,14 +20595,6 @@ __all__ = [
     "ThreadPropSubject",
     "ThreadSubscription",
     "OrganizationSimple",
-    "CopilotSeatBreakdown",
-    "CopilotOrganizationDetails",
-    "TeamSimple",
-    "Team",
-    "TeamPropPermissions",
-    "Organization",
-    "OrganizationPropPlan",
-    "CopilotSeatDetails",
     "OrganizationFull",
     "OrganizationFullPropPlan",
     "ActionsCacheUsageOrgEnterprise",
@@ -20315,6 +20625,14 @@ __all__ = [
     "CodespacePropRuntimeConstraints",
     "CodespacesOrgSecret",
     "CodespacesPublicKey",
+    "CopilotSeatBreakdown",
+    "CopilotOrganizationDetails",
+    "TeamSimple",
+    "Team",
+    "TeamPropPermissions",
+    "Organization",
+    "OrganizationPropPlan",
+    "CopilotSeatDetails",
     "OrganizationDependabotSecret",
     "DependabotPublicKey",
     "Package",
@@ -20378,6 +20696,15 @@ __all__ = [
     "RepositoryRulesetPropLinks",
     "RepositoryRulesetPropLinksPropSelf",
     "RepositoryRulesetPropLinksPropHtml",
+    "RepositoryAdvisoryVulnerability",
+    "RepositoryAdvisoryVulnerabilityPropPackage",
+    "RepositoryAdvisoryCredit",
+    "RepositoryAdvisory",
+    "RepositoryAdvisoryPropIdentifiersItems",
+    "RepositoryAdvisoryPropSubmission",
+    "RepositoryAdvisoryPropCvss",
+    "RepositoryAdvisoryPropCwesItems",
+    "RepositoryAdvisoryPropCreditsItems",
     "ActionsBillingUsage",
     "ActionsBillingUsagePropMinutesUsedBreakdown",
     "PackagesBillingUsage",
@@ -20446,7 +20773,9 @@ __all__ = [
     "WorkflowUsagePropBillablePropUbuntu",
     "WorkflowUsagePropBillablePropMacos",
     "WorkflowUsagePropBillablePropWindows",
+    "Activity",
     "Autolink",
+    "CheckAutomatedSecurityFixes",
     "ProtectedBranchRequiredStatusCheck",
     "ProtectedBranchRequiredStatusCheckPropChecksItems",
     "ProtectedBranchAdminEnforced",
@@ -20729,15 +21058,6 @@ __all__ = [
     "SecretScanningLocationIssueBody",
     "SecretScanningLocationIssueComment",
     "SecretScanningLocation",
-    "RepositoryAdvisoryVulnerability",
-    "RepositoryAdvisoryVulnerabilityPropPackage",
-    "RepositoryAdvisoryCredit",
-    "RepositoryAdvisory",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropSubmission",
-    "RepositoryAdvisoryPropCvss",
-    "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropCreditsItems",
     "RepositoryAdvisoryCreate",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
@@ -20832,6 +21152,7 @@ __all__ = [
     "PersonalAccessTokenRequestPropRepositoriesItems",
     "ProjectsV2",
     "ProjectsV2Item",
+    "SecretScanningAlertWebhook",
     "AppManifestsCodeConversionsPostResponse201",
     "AppManifestsCodeConversionsPostResponse201Allof1",
     "AppHookConfigPatchBody",
@@ -20859,7 +21180,6 @@ __all__ = [
     "NotificationsPutBody",
     "NotificationsPutResponse202",
     "NotificationsThreadsThreadIdSubscriptionPutBody",
-    "OrganizationsOrgCopilotBillingSeatsGetResponse200",
     "OrgsOrgPatchBody",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
     "OrgsOrgActionsPermissionsPutBody",
@@ -20882,13 +21202,14 @@ __all__ = [
     "OrgsOrgActionsVariablesNameRepositoriesGetResponse200",
     "OrgsOrgActionsVariablesNameRepositoriesPutBody",
     "OrgsOrgCodespacesGetResponse200",
-    "OrgsOrgCodespacesBillingPutBody",
-    "OrgsOrgCodespacesBillingSelectedUsersPostBody",
-    "OrgsOrgCodespacesBillingSelectedUsersDeleteBody",
+    "OrgsOrgCodespacesAccessPutBody",
+    "OrgsOrgCodespacesAccessSelectedUsersPostBody",
+    "OrgsOrgCodespacesAccessSelectedUsersDeleteBody",
     "OrgsOrgCodespacesSecretsGetResponse200",
     "OrgsOrgCodespacesSecretsSecretNamePutBody",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",
+    "OrgsOrgCopilotBillingSeatsGetResponse200",
     "OrgsOrgCopilotBillingSelectedTeamsPostBody",
     "OrgsOrgCopilotBillingSelectedTeamsPostResponse201",
     "OrgsOrgCopilotBillingSelectedTeamsDeleteBody",
@@ -20935,6 +21256,7 @@ __all__ = [
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",
     "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",
+    "OrgsOrgSecurityProductEnablementPostBody",
     "ProjectsColumnsCardsCardIdDeleteResponse403",
     "ProjectsColumnsCardsCardIdPatchBody",
     "ProjectsColumnsCardsCardIdMovesPostBody",
