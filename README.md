@@ -19,6 +19,9 @@
   <a href="https://github.com/Microsoft/pyright">
     <img src="https://img.shields.io/badge/types-pyright-797952.svg?logo=python&logoColor=edb641" alt="pyright">
   </a>
+  <a href="https://github.com/astral-sh/ruff">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json" alt="ruff">
+  </a>
   <a href="https://results.pre-commit.ci/latest/github/yanyongyu/githubkit/master">
     <img src="https://results.pre-commit.ci/badge/github/yanyongyu/githubkit/master.svg" alt="pre-commit" />
   </a>
