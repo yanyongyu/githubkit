@@ -351,7 +351,8 @@ class UnionSchema(SchemaData):
     def get_param_type_string(self) -> str:
         if len(self.schemas) == 1:
             return self.schemas[0].get_param_type_string()
-        return f"Union[{', '.join(schema.get_param_type_string() for schema in self.schemas)}]"
+        types = ", ".join(schema.get_param_type_string() for schema in self.schemas)
+        return f"Union[{types}]"
 
     def get_model_imports(self) -> Set[str]:
         imports = super().get_model_imports()

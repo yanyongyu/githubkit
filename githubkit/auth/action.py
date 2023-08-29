@@ -18,7 +18,8 @@ class ActionAuth(httpx.Auth):
         token = os.environ.get("GITHUB_TOKEN", os.environ.get("INPUT_GITHUB_TOKEN"))
         if not token:
             raise AuthCredentialError(
-                "`GITHUB_TOKEN` is not provided. Use `env:` or `with:` to input a token."
+                "`GITHUB_TOKEN` is not provided. "
+                "Use `env:` or `with:` to input a token."
             )
         request.headers["Authorization"] = f"token {token}"
         yield request

@@ -239,7 +239,8 @@ def _process_properties(
                 model = model.schemas[assertion.index(True)]
         if not isinstance(model, ModelSchema):
             raise ValueError(
-                f"Invalid schema {model!r} in allOf: {prop_source.uri} from {source.uri}"
+                f"Invalid schema {model!r} in allOf: "
+                f"{prop_source.uri} from {source.uri}"
             )
         for prop in model.properties:
             _add_if_no_conflict(prop)

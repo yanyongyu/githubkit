@@ -184,4 +184,6 @@ class GitHub(GitHubCore[A]):
         *args: CP.args,
         **kwargs: CP.kwargs,
     ) -> Paginator[RT]:
-        return Paginator(request, page, per_page, map_func, *args, **kwargs)  # type: ignore
+        return Paginator(
+            request, page, per_page, map_func, *args, **kwargs  # type: ignore
+        )

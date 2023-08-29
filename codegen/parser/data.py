@@ -3,8 +3,6 @@ from collections import defaultdict
 from functools import cached_property
 from typing import Dict, List, Union, Optional
 
-from pydantic import BaseModel
-
 from .endpoints import EndpointData
 from .schemas import SchemaData, ModelSchema
 

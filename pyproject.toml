@@ -17,10 +17,11 @@ pydantic = "^1.9.1"
 httpx = ">=0.23.0, <1.0.0"
 typing-extensions = "^4.3.0"
 anyio = { version = "^3.6.1", optional = true }
-PyJWT = { version = "^2.4.0", extras=["crypto"], optional = true }
+PyJWT = { version = "^2.4.0", extras = ["crypto"], optional = true }
 
 [tool.poetry.group.dev.dependencies]
 tomli = "^2.0.1"
+ruff = "^0.0.286"
 isort = "^5.10.1"
 black = "^23.1.0"
 Jinja2 = "^3.1.2"
@@ -51,9 +52,26 @@ skip_gitignore = true
 force_sort_within_sections = true
 extra_standard_library = ["typing_extensions"]
 
+[tool.ruff]
+select = ["E", "W", "F", "UP", "C", "T", "PYI", "PT", "Q"]
+ignore = ["E402", "C901", "UP037"]
+extend-exclude = ["githubkit/rest/", "githubkit/webhooks/"]
+
+line-length = 88
+target-version = "py38"
+
 [tool.pyright]
 reportPrivateImportUsage = false
 reportShadowedImports = false
+
+pythonPlatform = "All"
+executionEnvironments = [
+  { root = "./codegen", pythonVersion = "3.10" },
+  { root = "./", pythonVersion = "3.8", extraPaths = [
+    "./",
+  ] },
+]
+
 
 [[tool.codegen.rest]]
 version = "2022-11-28"
@@ -87,50 +105,110 @@ output_dir = "githubkit/rest/"
 # https://github.com/github/rest-api-description/issues/1639
 "/components/schemas/issue/properties/body_text" = { type = ["string", "null"] }
 "/components/schemas/issue/properties/body_html" = { type = ["string", "null"] }
-"/components/schemas/timeline-reviewed-event/properties/body_text" = { type = ["string", "null"] }
-"/components/schemas/timeline-reviewed-event/properties/body_html" = { type = ["string", "null"] }
-"/components/schemas/release/properties/body_text" = { type = ["string", "null"] }
-"/components/schemas/release/properties/body_html" = { type = ["string", "null"] }
+"/components/schemas/timeline-reviewed-event/properties/body_text" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/timeline-reviewed-event/properties/body_html" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/release/properties/body_text" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/release/properties/body_html" = { type = [
+  "string",
+  "null",
+] }
 
 # https://github.com/github/rest-api-description/issues/1811
 "/components/schemas/pull-request-simple/properties/head/properties/repo" = { anyOf = [
-    { type = "null" },
-    { "$ref" = "#/components/schemas/repository" }
+  { type = "null" },
+  { "$ref" = "#/components/schemas/repository" },
 ], "$ref" = "<unset>" }
 
 # https://github.com/github/rest-api-description/issues/1812
-"/components/schemas/pull-request-simple/properties/labels/items/properties/description" = { type = ["string", "null"] }
+"/components/schemas/pull-request-simple/properties/labels/items/properties/description" = { type = [
+  "string",
+  "null",
+] }
 
 # https://github.com/github/rest-api-description/issues/621
-"/components/schemas/repository/properties/temp_clone_token" = { type = ["string", "null"] }
-"/components/schemas/repository/properties/template_repository/properties/temp_clone_token" = { type = ["string", "null"] }
-"/components/schemas/minimal-repository/properties/temp_clone_token" = { type = ["string", "null"] }
-"/components/schemas/team-repository/properties/temp_clone_token" = { type = ["string", "null"] }
-"/components/schemas/pull-request/properties/head/properties/repo/properties/temp_clone_token" = { type = ["string", "null"] }
-"/components/schemas/pull-request/properties/base/properties/repo/properties/temp_clone_token" = { type = ["string", "null"] }
-"/components/schemas/repo-search-result-item/properties/temp_clone_token" = { type = ["string", "null"] }
+"/components/schemas/repository/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/repository/properties/template_repository/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/minimal-repository/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/team-repository/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/pull-request/properties/head/properties/repo/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/pull-request/properties/base/properties/repo/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/repo-search-result-item/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
 
 # https://github.com/github/rest-api-description/issues/2491
-"/components/schemas/auto-merge/properties/commit_title" = { type = ["string", "null"] }
-"/components/schemas/auto-merge/properties/commit_message" = { type = ["string", "null"] }
+"/components/schemas/auto-merge/properties/commit_title" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/auto-merge/properties/commit_message" = { type = [
+  "string",
+  "null",
+] }
 
 # https://github.com/github/rest-api-description/issues/2496
 "/paths/~1repos~1{owner}~1{repo}~1releases/post/requestBody/content/application~1json/schema/properties/make_latest" = { default = "true" }
 "/paths/~1repos~1{owner}~1{repo}~1releases~1{release_id}/patch/requestBody/content/application~1json/schema/properties/make_latest" = { default = "true" }
 
 # https://github.com/github/rest-api-description/issues/2507
-"/components/schemas/organization-full/properties/company" = { type = ["string", "null"] }
-"/components/schemas/organization-full/properties/email" = { type = ["string", "null"] }
-"/components/schemas/organization-full/properties/location" = { type = ["string", "null"] }
-"/components/schemas/team-organization/properties/company" = { type = ["string", "null"] }
-"/components/schemas/team-organization/properties/email" = { type = ["string", "null"] }
-"/components/schemas/team-organization/properties/location" = { type = ["string", "null"] }
+"/components/schemas/organization-full/properties/company" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/organization-full/properties/email" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/organization-full/properties/location" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/team-organization/properties/company" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/team-organization/properties/email" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/team-organization/properties/location" = { type = [
+  "string",
+  "null",
+] }
 
 # copilot-seat-details/assignee is not valid
 "/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
   { "$ref" = "#/components/schemas/simple-user" },
   { "$ref" = "#/components/schemas/team" },
-  { "$ref" = "#/components/schemas/organization" }
+  { "$ref" = "#/components/schemas/organization" },
 ] }
 
 [tool.codegen.webhook]
@@ -144,12 +222,18 @@ types_output = "githubkit/webhooks/types.py"
 # https://docs.github.com/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#installation
 "/definitions/installation$created/properties/requester" = { anyOf = [
   { type = "null" },
-  { "$ref" = "#/definitions/user" }
+  { "$ref" = "#/definitions/user" },
 ], "$ref" = {} }
 
 # https://github.com/github/rest-api-description/issues/2491
-"/definitions/auto-merge/properties/commit_title" = { type = ["string", "null"] }
-"/definitions/auto-merge/properties/commit_message" = { type = ["string", "null"] }
+"/definitions/auto-merge/properties/commit_title" = { type = [
+  "string",
+  "null",
+] }
+"/definitions/auto-merge/properties/commit_message" = { type = [
+  "string",
+  "null",
+] }
 
 # [FIXED] https://github.com/octokit/webhooks/issues/806
 # "/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive", "wont_fix", "revoked", "used_in_tests"] }

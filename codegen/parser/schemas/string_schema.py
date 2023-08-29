@@ -1,7 +1,5 @@
 from typing import Union, Optional
 
-import openapi_pydantic as oas
-
 from ...source import Source
 from ..utils import schema_from_source
 from .schema import DateSchema, FileSchema, StringSchema, DateTimeSchema

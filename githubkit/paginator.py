@@ -1,4 +1,3 @@
-import inspect
 from typing_extensions import Self, ParamSpec
 from typing import (
     List,

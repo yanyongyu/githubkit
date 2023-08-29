@@ -1,7 +1,5 @@
 from typing import Optional
 
-import openapi_pydantic as oas
-
 from . import parse_schema
 from ...source import Source
 from .schema import ListSchema

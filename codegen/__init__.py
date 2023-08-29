@@ -141,7 +141,8 @@ def build():
         parsed_data = parse_openapi_spec(source, versioned_rest, config)
         logger.info(
             f"Successfully parsed OpenAPI spec {versioned_rest.version}: "
-            f"{len(parsed_data.schemas)} schemas, {len(parsed_data.endpoints)} endpoints"
+            f"{len(parsed_data.schemas)} schemas, "
+            f"{len(parsed_data.endpoints)} endpoints"
         )
 
         build_rest_api(parsed_data, versioned_rest)

@@ -1,7 +1,5 @@
 from typing import Optional
 
-import openapi_pydantic as oas
-
 from ...source import Source
 from .schema import FloatSchema
 from ..utils import schema_from_source

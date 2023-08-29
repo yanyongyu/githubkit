@@ -36,7 +36,8 @@ def split_words(value: str) -> List[str]:
 
 def fix_reserved_words(value: str) -> str:
     """
-    Using reserved Python words as identifiers in generated code causes problems, so this function renames them.
+    Using reserved Python words as identifiers in generated code causes problems,
+    so this function renames them.
 
     Args:
         value: The identifier to-be that should be renamed if it's a reserved word.
@@ -56,7 +57,7 @@ def snake_case(value: str) -> str:
 def pascal_case(value: str) -> str:
     """Converts to PascalCase"""
     words = split_words(sanitize(value))
-    return "".join((word if word.isupper() else word.capitalize() for word in words))
+    return "".join(word if word.isupper() else word.capitalize() for word in words)
 
 
 def kebab_case(value: str) -> str:

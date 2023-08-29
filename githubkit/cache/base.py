@@ -1,6 +1,6 @@
 import abc
-from typing import Union, Optional
-from datetime import datetime, timedelta
+from typing import Optional
+from datetime import timedelta
 
 
 class BaseCache(abc.ABC):

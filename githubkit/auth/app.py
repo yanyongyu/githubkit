@@ -44,7 +44,10 @@ class AppAuth(httpx.Auth):
     cache: "BaseCache" = DEFAULT_CACHE
 
     JWT_CACHE_KEY = "githubkit:auth:app:jwt"
-    INSTALLATION_CACHE_KEY = "githubkit:auth:app:installation:{installation_id}:{permissions}:{repositories}:{repository_ids}"
+    INSTALLATION_CACHE_KEY = (
+        "githubkit:auth:app:installation:"
+        "{installation_id}:{permissions}:{repositories}:{repository_ids}"
+    )
 
     def _create_jwt(self) -> str:
         """Create a JWT authenticating as GitHub APP.
