@@ -808,7 +808,7 @@ class PullsClient:
         start_line: Missing[int] = UNSET,
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
-        subject_type: Missing[Literal["LINE", "FILE"]] = UNSET,
+        subject_type: Missing[Literal["line", "file"]] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
         ...
 
@@ -875,7 +875,7 @@ class PullsClient:
         start_line: Missing[int] = UNSET,
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
-        subject_type: Missing[Literal["LINE", "FILE"]] = UNSET,
+        subject_type: Missing[Literal["line", "file"]] = UNSET,
     ) -> "Response[PullRequestReviewComment]":
         ...
 

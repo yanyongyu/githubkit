@@ -82,6 +82,130 @@ class SimpleUserType(TypedDict):
     starred_at: NotRequired[str]
 
 
+class GlobalAdvisoryType(TypedDict):
+    """GlobalAdvisory
+
+    A GitHub Security Advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+    url: str
+    html_url: str
+    repository_advisory_url: Union[str, None]
+    summary: str
+    description: Union[str, None]
+    type: Literal["reviewed", "unreviewed", "malware"]
+    severity: Literal["critical", "high", "medium", "low", "unknown"]
+    source_code_location: Union[str, None]
+    identifiers: Union[List[GlobalAdvisoryPropIdentifiersItemsType], None]
+    references: Union[List[str], None]
+    published_at: datetime
+    updated_at: datetime
+    github_reviewed_at: Union[datetime, None]
+    nvd_published_at: Union[datetime, None]
+    withdrawn_at: Union[datetime, None]
+    vulnerabilities: Union[List[GlobalAdvisoryPropVulnerabilitiesItemsType], None]
+    cvss: Union[GlobalAdvisoryPropCvssType, None]
+    cwes: Union[List[GlobalAdvisoryPropCwesItemsType], None]
+    credits_: Union[List[GlobalAdvisoryPropCreditsItemsType], None]
+
+
+class GlobalAdvisoryPropIdentifiersItemsType(TypedDict):
+    """GlobalAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class GlobalAdvisoryPropVulnerabilitiesItemsType(TypedDict):
+    """GlobalAdvisoryPropVulnerabilitiesItems"""
+
+    package: Union[GlobalAdvisoryPropVulnerabilitiesItemsPropPackageType, None]
+    vulnerable_version_range: Union[str, None]
+    first_patched_version: Union[str, None]
+    vulnerable_functions: Union[List[str], None]
+
+
+class GlobalAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """GlobalAdvisoryPropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
+
+
+class GlobalAdvisoryPropCvssType(TypedDict):
+    """GlobalAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class GlobalAdvisoryPropCwesItemsType(TypedDict):
+    """GlobalAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class GlobalAdvisoryPropCreditsItemsType(TypedDict):
+    """GlobalAdvisoryPropCreditsItems"""
+
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class BasicErrorType(TypedDict):
+    """Basic Error
+
+    Basic Error
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    status: NotRequired[str]
+
+
+class ValidationErrorSimpleType(TypedDict):
+    """Validation Error Simple
+
+    Validation Error Simple
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[List[str]]
+
+
 class IntegrationType(TypedDict):
     """GitHub app
 
@@ -124,29 +248,6 @@ class IntegrationPropPermissionsType(TypedDict):
     metadata: NotRequired[str]
     contents: NotRequired[str]
     deployments: NotRequired[str]
-
-
-class BasicErrorType(TypedDict):
-    """Basic Error
-
-    Basic Error
-    """
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    url: NotRequired[str]
-    status: NotRequired[str]
-
-
-class ValidationErrorSimpleType(TypedDict):
-    """Validation Error Simple
-
-    Validation Error Simple
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[List[str]]
 
 
 class WebhookConfigType(TypedDict):
@@ -1503,6 +1604,7 @@ class ApiOverviewType(TypedDict):
     ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
     ssh_keys: NotRequired[List[str]]
     hooks: NotRequired[List[str]]
+    github_enterprise_importer: NotRequired[List[str]]
     web: NotRequired[List[str]]
     api: NotRequired[List[str]]
     git: NotRequired[List[str]]
@@ -1746,148 +1848,6 @@ class OrganizationSimpleType(TypedDict):
     public_members_url: str
     avatar_url: str
     description: Union[str, None]
-
-
-class CopilotSeatBreakdownType(TypedDict):
-    """Copilot for Business Seat Breakdown
-
-    The breakdown of Copilot for Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
-
-
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot for Business Organization Details
-
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot for Business subscription.
-    """
-
-    seat_breakdown: CopilotSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    seat_management_setting: Literal["assign_all", "assign_selected", "disabled"]
-
-
-class TeamSimpleType(TypedDict):
-    """Team Simple
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    members_url: str
-    name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
-
-
-class TeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
-
-
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class OrganizationType(TypedDict):
-    """Organization
-
-    GitHub account for managing multiple users, teams, and repositories
-    """
-
-    login: str
-    url: str
-    id: int
-    node_id: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    blog: NotRequired[str]
-    html_url: str
-    name: NotRequired[str]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    email: NotRequired[str]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    is_verified: NotRequired[bool]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    type: str
-    created_at: datetime
-    updated_at: datetime
-    plan: NotRequired[OrganizationPropPlanType]
-
-
-class OrganizationPropPlanType(TypedDict):
-    """OrganizationPropPlan"""
-
-    name: NotRequired[str]
-    space: NotRequired[int]
-    private_repos: NotRequired[int]
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
-
-
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot for Business Seat Detail
-
-    Information about a Copilot for Business seat assignment for a user, team, or
-    organization.
-    """
-
-    assignee: Union[SimpleUserType, TeamType, OrganizationType]
-    assigning_team: NotRequired[Union[TeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
 
 
 class OrganizationFullType(TypedDict):
@@ -2335,6 +2295,148 @@ class CodespacesPublicKeyType(TypedDict):
     created_at: NotRequired[str]
 
 
+class CopilotSeatBreakdownType(TypedDict):
+    """Copilot for Business Seat Breakdown
+
+    The breakdown of Copilot for Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
+
+
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot for Business Organization Details
+
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot for Business subscription.
+    """
+
+    seat_breakdown: CopilotSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
+    seat_management_setting: Literal["assign_all", "assign_selected", "disabled"]
+
+
+class TeamSimpleType(TypedDict):
+    """Team Simple
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+
+
+class TeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class OrganizationType(TypedDict):
+    """Organization
+
+    GitHub account for managing multiple users, teams, and repositories
+    """
+
+    login: str
+    url: str
+    id: int
+    node_id: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    blog: NotRequired[str]
+    html_url: str
+    name: NotRequired[str]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    email: NotRequired[str]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    is_verified: NotRequired[bool]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    type: str
+    created_at: datetime
+    updated_at: datetime
+    plan: NotRequired[OrganizationPropPlanType]
+
+
+class OrganizationPropPlanType(TypedDict):
+    """OrganizationPropPlan"""
+
+    name: NotRequired[str]
+    space: NotRequired[int]
+    private_repos: NotRequired[int]
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
+
+
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot for Business Seat Detail
+
+    Information about a Copilot for Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: Union[SimpleUserType, TeamType, OrganizationType]
+    assigning_team: NotRequired[Union[TeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+
+
 class OrganizationDependabotSecretType(TypedDict):
     """Dependabot Secret for an Organization
 
@@ -2714,14 +2816,20 @@ class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDic
 
 
 class OrgRulesetConditionsOneof0Type(TypedDict):
-    """OrgRulesetConditionsOneof0"""
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
+    """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
     repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
 
 
 class OrgRulesetConditionsOneof1Type(TypedDict):
-    """OrgRulesetConditionsOneof1"""
+    """repository_id_and_ref_name
+
+    Conditions to target repositories by id and refs by name
+    """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
     repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
@@ -2964,7 +3072,9 @@ class RepositoryRulesetType(TypedDict):
     source: str
     enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    current_user_can_bypass: NotRequired[bool]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never"]
+    ]
     node_id: NotRequired[str]
     links: NotRequired[RepositoryRulesetPropLinksType]
     conditions: NotRequired[
@@ -3015,6 +3125,146 @@ class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
     """RepositoryRulesetPropLinksPropHtml"""
 
     href: NotRequired[str]
+
+
+class RepositoryAdvisoryVulnerabilityType(TypedDict):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[List[str], None]
+
+
+class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
+
+
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
+
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
+
+
+class RepositoryAdvisoryType(TypedDict):
+    """RepositoryAdvisory
+
+    A repository security advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+    url: str
+    html_url: str
+    summary: str
+    description: Union[str, None]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: List[RepositoryAdvisoryPropIdentifiersItemsType]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    published_at: Union[datetime, None]
+    closed_at: Union[datetime, None]
+    withdrawn_at: Union[datetime, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
+    vulnerabilities: Union[List[RepositoryAdvisoryVulnerabilityType], None]
+    cvss: Union[RepositoryAdvisoryPropCvssType, None]
+    cwes: Union[List[RepositoryAdvisoryPropCwesItemsType], None]
+    cwe_ids: Union[List[str], None]
+    credits_: Union[List[RepositoryAdvisoryPropCreditsItemsType], None]
+    credits_detailed: Union[List[RepositoryAdvisoryCreditType], None]
+    collaborating_users: Union[List[SimpleUserType], None]
+    collaborating_teams: Union[List[TeamType], None]
+    private_fork: None
+
+
+class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class RepositoryAdvisoryPropSubmissionType(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropCvssType(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCwesItemsType(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ]
 
 
 class ActionsBillingUsageType(TypedDict):
@@ -4091,6 +4341,29 @@ class WorkflowUsagePropBillablePropWindowsType(TypedDict):
     total_ms: NotRequired[int]
 
 
+class ActivityType(TypedDict):
+    """Activity
+
+    Activity
+    """
+
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: datetime
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[None, SimpleUserType]
+
+
 class AutolinkType(TypedDict):
     """Autolink reference
 
@@ -4101,6 +4374,16 @@ class AutolinkType(TypedDict):
     key_prefix: str
     url_template: str
     is_alphanumeric: bool
+
+
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Automated Security Fixes
+
+    Check Automated Security Fixes
+    """
+
+    enabled: bool
+    paused: bool
 
 
 class ProtectedBranchRequiredStatusCheckType(TypedDict):
@@ -4938,6 +5221,7 @@ class CodeScanningDefaultSetupType(TypedDict):
     ]
     query_suite: NotRequired[Literal["default", "extended"]]
     updated_at: NotRequired[Union[datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
 class CodeScanningDefaultSetupUpdateType(TypedDict):
@@ -8136,146 +8420,6 @@ class SecretScanningLocationType(TypedDict):
     ]
 
 
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[List[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
-
-
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
-    """
-
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
-
-
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
-
-    A repository security advisory.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: List[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    published_at: Union[datetime, None]
-    closed_at: Union[datetime, None]
-    withdrawn_at: Union[datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[List[RepositoryAdvisoryVulnerabilityType], None]
-    cvss: Union[RepositoryAdvisoryPropCvssType, None]
-    cwes: Union[List[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[List[str], None]
-    credits_: Union[List[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[List[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[List[SimpleUserType], None]
-    collaborating_teams: Union[List[TeamType], None]
-    private_fork: None
-
-
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropCvssType(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
 class RepositoryAdvisoryCreateType(TypedDict):
     """RepositoryAdvisoryCreate"""
 
@@ -8406,6 +8550,8 @@ class RepositoryAdvisoryUpdateType(TypedDict):
     severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
     cvss_vector_string: NotRequired[Union[str, None]]
     state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[List[str], None]]
+    collaborating_teams: NotRequired[Union[List[str], None]]
 
 
 class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType(TypedDict):
@@ -9738,6 +9884,37 @@ class ProjectsV2ItemType(TypedDict):
     archived_at: Union[datetime, None]
 
 
+class SecretScanningAlertWebhookType(TypedDict):
+    """SecretScanningAlertWebhook"""
+
+    number: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[None, datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    resolution: NotRequired[
+        Union[
+            None,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+        ]
+    ]
+    resolved_at: NotRequired[Union[datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+
+
 class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
     """AppManifestsCodeConversionsPostResponse201"""
 
@@ -9950,13 +10127,6 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
     ignored: NotRequired[bool]
 
 
-class OrganizationsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrganizationsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
-
-
 class OrgsOrgPatchBodyType(TypedDict):
     """OrgsOrgPatchBody"""
 
@@ -10145,8 +10315,8 @@ class OrgsOrgCodespacesGetResponse200Type(TypedDict):
     codespaces: List[CodespaceType]
 
 
-class OrgsOrgCodespacesBillingPutBodyType(TypedDict):
-    """OrgsOrgCodespacesBillingPutBody"""
+class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
 
     visibility: Literal[
         "disabled",
@@ -10157,14 +10327,14 @@ class OrgsOrgCodespacesBillingPutBodyType(TypedDict):
     selected_usernames: NotRequired[List[str]]
 
 
-class OrgsOrgCodespacesBillingSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesBillingSelectedUsersPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
     selected_usernames: List[str]
 
 
-class OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType(TypedDict):
-    """OrgsOrgCodespacesBillingSelectedUsersDeleteBody"""
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
     selected_usernames: List[str]
 
@@ -10196,6 +10366,13 @@ class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
     """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
     selected_repository_ids: List[int]
+
+
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[List[CopilotSeatDetailsType]]
 
 
 class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
@@ -10299,8 +10476,7 @@ class OrgsOrgHooksPostBodyType(TypedDict):
 class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
     """OrgsOrgHooksPostBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/orgs#create-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: str
@@ -10323,8 +10499,7 @@ class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
 class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
     """OrgsOrgHooksHookIdPatchBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/orgs#update-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: str
@@ -10636,6 +10811,12 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
     """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
     permission: NotRequired[str]
+
+
+class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
+
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
 class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
@@ -12149,8 +12330,7 @@ class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
 class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
     """ReposOwnerRepoHooksPostBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/repos#create-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: NotRequired[str]
@@ -12183,8 +12363,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
 class ReposOwnerRepoHooksHookIdPatchBodyPropConfigType(TypedDict):
     """ReposOwnerRepoHooksHookIdPatchBodyPropConfig
 
-    Key/value pairs to provide settings for this webhook. [These are defined
-    below](https://docs.github.com/rest/reference/repos#create-hook-config-params).
+    Key/value pairs to provide settings for this webhook.
     """
 
     url: str
@@ -12650,7 +12829,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
     start_line: NotRequired[int]
     start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
     in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["LINE", "FILE"]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
@@ -13373,10 +13552,17 @@ class UserSshSigningKeysPostBodyType(TypedDict):
 __all__ = [
     "RootType",
     "SimpleUserType",
-    "IntegrationType",
-    "IntegrationPropPermissionsType",
+    "GlobalAdvisoryType",
+    "GlobalAdvisoryPropIdentifiersItemsType",
+    "GlobalAdvisoryPropVulnerabilitiesItemsType",
+    "GlobalAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "GlobalAdvisoryPropCvssType",
+    "GlobalAdvisoryPropCwesItemsType",
+    "GlobalAdvisoryPropCreditsItemsType",
     "BasicErrorType",
     "ValidationErrorSimpleType",
+    "IntegrationType",
+    "IntegrationPropPermissionsType",
     "WebhookConfigType",
     "HookDeliveryItemType",
     "ScimErrorType",
@@ -13464,14 +13650,6 @@ __all__ = [
     "ThreadPropSubjectType",
     "ThreadSubscriptionType",
     "OrganizationSimpleType",
-    "CopilotSeatBreakdownType",
-    "CopilotOrganizationDetailsType",
-    "TeamSimpleType",
-    "TeamType",
-    "TeamPropPermissionsType",
-    "OrganizationType",
-    "OrganizationPropPlanType",
-    "CopilotSeatDetailsType",
     "OrganizationFullType",
     "OrganizationFullPropPlanType",
     "ActionsCacheUsageOrgEnterpriseType",
@@ -13502,6 +13680,14 @@ __all__ = [
     "CodespacePropRuntimeConstraintsType",
     "CodespacesOrgSecretType",
     "CodespacesPublicKeyType",
+    "CopilotSeatBreakdownType",
+    "CopilotOrganizationDetailsType",
+    "TeamSimpleType",
+    "TeamType",
+    "TeamPropPermissionsType",
+    "OrganizationType",
+    "OrganizationPropPlanType",
+    "CopilotSeatDetailsType",
     "OrganizationDependabotSecretType",
     "DependabotPublicKeyType",
     "PackageType",
@@ -13565,6 +13751,15 @@ __all__ = [
     "RepositoryRulesetPropLinksType",
     "RepositoryRulesetPropLinksPropSelfType",
     "RepositoryRulesetPropLinksPropHtmlType",
+    "RepositoryAdvisoryVulnerabilityType",
+    "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryAdvisoryCreditType",
+    "RepositoryAdvisoryType",
+    "RepositoryAdvisoryPropIdentifiersItemsType",
+    "RepositoryAdvisoryPropSubmissionType",
+    "RepositoryAdvisoryPropCvssType",
+    "RepositoryAdvisoryPropCwesItemsType",
+    "RepositoryAdvisoryPropCreditsItemsType",
     "ActionsBillingUsageType",
     "ActionsBillingUsagePropMinutesUsedBreakdownType",
     "PackagesBillingUsageType",
@@ -13633,7 +13828,9 @@ __all__ = [
     "WorkflowUsagePropBillablePropUbuntuType",
     "WorkflowUsagePropBillablePropMacosType",
     "WorkflowUsagePropBillablePropWindowsType",
+    "ActivityType",
     "AutolinkType",
+    "CheckAutomatedSecurityFixesType",
     "ProtectedBranchRequiredStatusCheckType",
     "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
     "ProtectedBranchAdminEnforcedType",
@@ -13916,15 +14113,6 @@ __all__ = [
     "SecretScanningLocationIssueBodyType",
     "SecretScanningLocationIssueCommentType",
     "SecretScanningLocationType",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
-    "RepositoryAdvisoryCreditType",
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropCvssType",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCreditsItemsType",
     "RepositoryAdvisoryCreateType",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
@@ -14019,6 +14207,7 @@ __all__ = [
     "PersonalAccessTokenRequestPropRepositoriesItemsType",
     "ProjectsV2Type",
     "ProjectsV2ItemType",
+    "SecretScanningAlertWebhookType",
     "AppManifestsCodeConversionsPostResponse201Type",
     "AppManifestsCodeConversionsPostResponse201Allof1Type",
     "AppHookConfigPatchBodyType",
@@ -14046,7 +14235,6 @@ __all__ = [
     "NotificationsPutBodyType",
     "NotificationsPutResponse202Type",
     "NotificationsThreadsThreadIdSubscriptionPutBodyType",
-    "OrganizationsOrgCopilotBillingSeatsGetResponse200Type",
     "OrgsOrgPatchBodyType",
     "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
     "OrgsOrgActionsPermissionsPutBodyType",
@@ -14069,13 +14257,14 @@ __all__ = [
     "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
     "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
     "OrgsOrgCodespacesGetResponse200Type",
-    "OrgsOrgCodespacesBillingPutBodyType",
-    "OrgsOrgCodespacesBillingSelectedUsersPostBodyType",
-    "OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCodespacesAccessPutBodyType",
+    "OrgsOrgCodespacesAccessSelectedUsersPostBodyType",
+    "OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",
     "OrgsOrgCodespacesSecretsGetResponse200Type",
     "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
     "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
     "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
     "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
     "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
@@ -14122,6 +14311,7 @@ __all__ = [
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",
     "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",
     "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
+    "OrgsOrgSecurityProductEnablementPostBodyType",
     "ProjectsColumnsCardsCardIdDeleteResponse403Type",
     "ProjectsColumnsCardsCardIdPatchBodyType",
     "ProjectsColumnsCardsCardIdMovesPostBodyType",

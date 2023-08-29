@@ -24,11 +24,11 @@ from .models import (
     BasicError,
     CopilotSeatDetails,
     CopilotOrganizationDetails,
+    OrgsOrgCopilotBillingSeatsGetResponse200,
     OrgsOrgCopilotBillingSelectedTeamsPostBody,
     OrgsOrgCopilotBillingSelectedUsersPostBody,
     OrgsOrgCopilotBillingSelectedTeamsDeleteBody,
     OrgsOrgCopilotBillingSelectedUsersDeleteBody,
-    OrganizationsOrgCopilotBillingSeatsGetResponse200,
     OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
     OrgsOrgCopilotBillingSelectedUsersPostResponse201,
     OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -52,7 +52,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CopilotOrganizationDetails]":
-        url = f"/organizations/{org}/copilot/billing"
+        url = f"/orgs/{org}/copilot/billing"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -75,7 +75,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[CopilotOrganizationDetails]":
-        url = f"/organizations/{org}/copilot/billing"
+        url = f"/orgs/{org}/copilot/billing"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -99,8 +99,8 @@ class CopilotClient:
         per_page: Missing[int] = 50,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[OrganizationsOrgCopilotBillingSeatsGetResponse200]":
-        url = f"/organizations/{org}/copilot/billing/seats"
+    ) -> "Response[OrgsOrgCopilotBillingSeatsGetResponse200]":
+        url = f"/orgs/{org}/copilot/billing/seats"
 
         params = {
             "page": page,
@@ -114,7 +114,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=OrganizationsOrgCopilotBillingSeatsGetResponse200,
+            response_model=OrgsOrgCopilotBillingSeatsGetResponse200,
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -130,8 +130,8 @@ class CopilotClient:
         per_page: Missing[int] = 50,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[OrganizationsOrgCopilotBillingSeatsGetResponse200]":
-        url = f"/organizations/{org}/copilot/billing/seats"
+    ) -> "Response[OrgsOrgCopilotBillingSeatsGetResponse200]":
+        url = f"/orgs/{org}/copilot/billing/seats"
 
         params = {
             "page": page,
@@ -145,7 +145,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=OrganizationsOrgCopilotBillingSeatsGetResponse200,
+            response_model=OrgsOrgCopilotBillingSeatsGetResponse200,
             error_models={
                 "500": BasicError,
                 "401": BasicError,

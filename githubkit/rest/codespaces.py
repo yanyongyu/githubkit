@@ -17,15 +17,15 @@ from githubkit.utils import UNSET, Missing, exclude_unset
 from .types import (
     UserCodespacesPostBodyOneof0Type,
     UserCodespacesPostBodyOneof1Type,
-    OrgsOrgCodespacesBillingPutBodyType,
+    OrgsOrgCodespacesAccessPutBodyType,
     ReposOwnerRepoCodespacesPostBodyType,
     UserCodespacesCodespaceNamePatchBodyType,
     UserCodespacesSecretsSecretNamePutBodyType,
     OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     UserCodespacesCodespaceNamePublishPostBodyType,
     UserCodespacesPostBodyOneof1PropPullRequestType,
-    OrgsOrgCodespacesBillingSelectedUsersPostBodyType,
-    OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType,
+    OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
+    OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
     ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
@@ -46,7 +46,7 @@ from .models import (
     UserCodespacesGetResponse200,
     UserCodespacesPostBodyOneof0,
     UserCodespacesPostBodyOneof1,
-    OrgsOrgCodespacesBillingPutBody,
+    OrgsOrgCodespacesAccessPutBody,
     OrgsOrgCodespacesGetResponse200,
     ReposOwnerRepoCodespacesPostBody,
     UserCodespacesSecretsGetResponse200,
@@ -57,11 +57,11 @@ from .models import (
     OrgsOrgCodespacesSecretsSecretNamePutBody,
     ReposOwnerRepoCodespacesNewGetResponse200,
     UserCodespacesCodespaceNamePublishPostBody,
-    OrgsOrgCodespacesBillingSelectedUsersPostBody,
+    OrgsOrgCodespacesAccessSelectedUsersPostBody,
     ReposOwnerRepoCodespacesSecretsGetResponse200,
+    OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
     OrgsOrgMembersUsernameCodespacesGetResponse200,
     ReposOwnerRepoCodespacesMachinesGetResponse200,
-    OrgsOrgCodespacesBillingSelectedUsersDeleteBody,
     ReposOwnerRepoPullsPullNumberCodespacesPostBody,
     ReposOwnerRepoCodespacesSecretsSecretNamePutBody,
     UserCodespacesCodespaceNameMachinesGetResponse200,
@@ -148,17 +148,17 @@ class CodespacesClient:
         )
 
     @overload
-    def set_codespaces_billing(
+    def set_codespaces_access(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgCodespacesBillingPutBodyType,
+        data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> "Response":
         ...
 
     @overload
-    def set_codespaces_billing(
+    def set_codespaces_access(
         self,
         org: str,
         *,
@@ -174,15 +174,15 @@ class CodespacesClient:
     ) -> "Response":
         ...
 
-    def set_codespaces_billing(
+    def set_codespaces_access(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/codespaces/billing"
+        url = f"/orgs/{org}/codespaces/access"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -190,7 +190,7 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesBillingPutBody, json)
+        json = parse_obj_as(OrgsOrgCodespacesAccessPutBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -206,17 +206,17 @@ class CodespacesClient:
         )
 
     @overload
-    async def async_set_codespaces_billing(
+    async def async_set_codespaces_access(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgCodespacesBillingPutBodyType,
+        data: OrgsOrgCodespacesAccessPutBodyType,
     ) -> "Response":
         ...
 
     @overload
-    async def async_set_codespaces_billing(
+    async def async_set_codespaces_access(
         self,
         org: str,
         *,
@@ -232,15 +232,15 @@ class CodespacesClient:
     ) -> "Response":
         ...
 
-    async def async_set_codespaces_billing(
+    async def async_set_codespaces_access(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgCodespacesBillingPutBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/codespaces/billing"
+        url = f"/orgs/{org}/codespaces/access"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -248,7 +248,7 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesBillingPutBody, json)
+        json = parse_obj_as(OrgsOrgCodespacesAccessPutBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -264,17 +264,17 @@ class CodespacesClient:
         )
 
     @overload
-    def set_codespaces_billing_users(
+    def set_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType,
+        data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> "Response":
         ...
 
     @overload
-    def set_codespaces_billing_users(
+    def set_codespaces_access_users(
         self,
         org: str,
         *,
@@ -284,15 +284,15 @@ class CodespacesClient:
     ) -> "Response":
         ...
 
-    def set_codespaces_billing_users(
+    def set_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/codespaces/billing/selected_users"
+        url = f"/orgs/{org}/codespaces/access/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -300,7 +300,7 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersPostBody, json)
+        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersPostBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -316,17 +316,17 @@ class CodespacesClient:
         )
 
     @overload
-    async def async_set_codespaces_billing_users(
+    async def async_set_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgCodespacesBillingSelectedUsersPostBodyType,
+        data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     ) -> "Response":
         ...
 
     @overload
-    async def async_set_codespaces_billing_users(
+    async def async_set_codespaces_access_users(
         self,
         org: str,
         *,
@@ -336,15 +336,15 @@ class CodespacesClient:
     ) -> "Response":
         ...
 
-    async def async_set_codespaces_billing_users(
+    async def async_set_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgCodespacesBillingSelectedUsersPostBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/codespaces/billing/selected_users"
+        url = f"/orgs/{org}/codespaces/access/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -352,7 +352,7 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersPostBody, json)
+        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersPostBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -368,17 +368,17 @@ class CodespacesClient:
         )
 
     @overload
-    def delete_codespaces_billing_users(
+    def delete_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType,
+        data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> "Response":
         ...
 
     @overload
-    def delete_codespaces_billing_users(
+    def delete_codespaces_access_users(
         self,
         org: str,
         *,
@@ -388,15 +388,15 @@ class CodespacesClient:
     ) -> "Response":
         ...
 
-    def delete_codespaces_billing_users(
+    def delete_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/codespaces/billing/selected_users"
+        url = f"/orgs/{org}/codespaces/access/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -404,7 +404,7 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersDeleteBody, json)
+        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersDeleteBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -420,17 +420,17 @@ class CodespacesClient:
         )
 
     @overload
-    async def async_delete_codespaces_billing_users(
+    async def async_delete_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType,
+        data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     ) -> "Response":
         ...
 
     @overload
-    async def async_delete_codespaces_billing_users(
+    async def async_delete_codespaces_access_users(
         self,
         org: str,
         *,
@@ -440,15 +440,15 @@ class CodespacesClient:
     ) -> "Response":
         ...
 
-    async def async_delete_codespaces_billing_users(
+    async def async_delete_codespaces_access_users(
         self,
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgCodespacesBillingSelectedUsersDeleteBodyType] = UNSET,
+        data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> "Response":
-        url = f"/orgs/{org}/codespaces/billing/selected_users"
+        url = f"/orgs/{org}/codespaces/access/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -456,7 +456,7 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesBillingSelectedUsersDeleteBody, json)
+        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersDeleteBody, json)
         json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

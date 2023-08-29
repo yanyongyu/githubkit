@@ -16,11 +16,14 @@ from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .models import (
     BasicError,
+    GlobalAdvisory,
     ValidationError,
     RepositoryAdvisory,
+    ValidationErrorSimple,
     RepositoryAdvisoryCreate,
     RepositoryAdvisoryUpdate,
     PrivateVulnerabilityReportCreate,
+    AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
 )
 from .types import (
     RepositoryAdvisoryCreateType,
@@ -43,6 +46,266 @@ class SecurityAdvisoriesClient:
 
     def __init__(self, github: "GitHubCore"):
         self._github = github
+
+    def list_global_advisories(
+        self,
+        ghsa_id: Missing[str] = UNSET,
+        type: Missing[Literal["reviewed", "malware", "unreviewed"]] = "reviewed",
+        cve_id: Missing[str] = UNSET,
+        ecosystem: Missing[
+            Literal[
+                "actions",
+                "composer",
+                "erlang",
+                "go",
+                "maven",
+                "npm",
+                "nuget",
+                "other",
+                "pip",
+                "pub",
+                "rubygems",
+                "rust",
+            ]
+        ] = UNSET,
+        severity: Missing[
+            Literal["unknown", "low", "medium", "high", "critical"]
+        ] = UNSET,
+        cwes: Missing[Union[str, List[str]]] = UNSET,
+        is_withdrawn: Missing[bool] = UNSET,
+        affects: Missing[Union[str, List[str]]] = UNSET,
+        published: Missing[str] = UNSET,
+        updated: Missing[str] = UNSET,
+        modified: Missing[str] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        per_page: Missing[int] = 30,
+        sort: Missing[Literal["updated", "published"]] = "published",
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[GlobalAdvisory]]":
+        url = "/advisories"
+
+        params = {
+            "ghsa_id": ghsa_id,
+            "type": type,
+            "cve_id": cve_id,
+            "ecosystem": ecosystem,
+            "severity": severity,
+            "cwes": cwes,
+            "is_withdrawn": is_withdrawn,
+            "affects": affects,
+            "published": published,
+            "updated": updated,
+            "modified": modified,
+            "before": before,
+            "after": after,
+            "direction": direction,
+            "per_page": per_page,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[GlobalAdvisory],
+            error_models={
+                "429": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_list_global_advisories(
+        self,
+        ghsa_id: Missing[str] = UNSET,
+        type: Missing[Literal["reviewed", "malware", "unreviewed"]] = "reviewed",
+        cve_id: Missing[str] = UNSET,
+        ecosystem: Missing[
+            Literal[
+                "actions",
+                "composer",
+                "erlang",
+                "go",
+                "maven",
+                "npm",
+                "nuget",
+                "other",
+                "pip",
+                "pub",
+                "rubygems",
+                "rust",
+            ]
+        ] = UNSET,
+        severity: Missing[
+            Literal["unknown", "low", "medium", "high", "critical"]
+        ] = UNSET,
+        cwes: Missing[Union[str, List[str]]] = UNSET,
+        is_withdrawn: Missing[bool] = UNSET,
+        affects: Missing[Union[str, List[str]]] = UNSET,
+        published: Missing[str] = UNSET,
+        updated: Missing[str] = UNSET,
+        modified: Missing[str] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        per_page: Missing[int] = 30,
+        sort: Missing[Literal["updated", "published"]] = "published",
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[GlobalAdvisory]]":
+        url = "/advisories"
+
+        params = {
+            "ghsa_id": ghsa_id,
+            "type": type,
+            "cve_id": cve_id,
+            "ecosystem": ecosystem,
+            "severity": severity,
+            "cwes": cwes,
+            "is_withdrawn": is_withdrawn,
+            "affects": affects,
+            "published": published,
+            "updated": updated,
+            "modified": modified,
+            "before": before,
+            "after": after,
+            "direction": direction,
+            "per_page": per_page,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[GlobalAdvisory],
+            error_models={
+                "429": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_global_advisory(
+        self,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[GlobalAdvisory]":
+        url = f"/advisories/{ghsa_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=GlobalAdvisory,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_global_advisory(
+        self,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[GlobalAdvisory]":
+        url = f"/advisories/{ghsa_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=GlobalAdvisory,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def list_org_repository_advisories(
+        self,
+        org: str,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created", "updated", "published"]] = "created",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[RepositoryAdvisory]]":
+        url = f"/orgs/{org}/security-advisories"
+
+        params = {
+            "direction": direction,
+            "sort": sort,
+            "before": before,
+            "after": after,
+            "per_page": per_page,
+            "state": state,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RepositoryAdvisory],
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_org_repository_advisories(
+        self,
+        org: str,
+        direction: Missing[Literal["asc", "desc"]] = "desc",
+        sort: Missing[Literal["created", "updated", "published"]] = "created",
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = 30,
+        state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[RepositoryAdvisory]]":
+        url = f"/orgs/{org}/security-advisories"
+
+        params = {
+            "direction": direction,
+            "sort": sort,
+            "before": before,
+            "after": after,
+            "per_page": per_page,
+            "state": state,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RepositoryAdvisory],
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+            },
+        )
 
     def list_repository_advisories(
         self,
@@ -470,6 +733,8 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
+        collaborating_users: Missing[Union[List[str], None]] = UNSET,
+        collaborating_teams: Missing[Union[List[str], None]] = UNSET,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -543,6 +808,8 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
+        collaborating_users: Missing[Union[List[str], None]] = UNSET,
+        collaborating_teams: Missing[Union[List[str], None]] = UNSET,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -574,6 +841,56 @@ class SecurityAdvisoriesClient:
             headers=exclude_unset(headers),
             response_model=RepositoryAdvisory,
             error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def create_repository_advisory_cve_request(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_create_repository_advisory_cve_request(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]":
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
