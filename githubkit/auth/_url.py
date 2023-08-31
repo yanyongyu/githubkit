@@ -3,7 +3,7 @@ import re
 import httpx
 
 APP_ROUTES = {
-    r"/app",
+    r"^/app",
     r"/app/hook/config",
     r"/app/hook/deliveries",
     r"/app/hook/deliveries/(?:.+?)",
