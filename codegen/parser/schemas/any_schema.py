@@ -6,7 +6,7 @@ from .schema import AnySchema
 
 def build_any_schema(source: Source) -> AnySchema:
     try:
-        data = oas.Schema.parse_obj(source.data)
+        data = oas.Schema.model_validate(source.data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
 

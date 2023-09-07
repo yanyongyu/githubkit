@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Union, Optional
 
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, model_validator
 
 
 class SourceLocation(BaseModel):
@@ -20,8 +20,9 @@ class GraphQLResponse(BaseModel):
     errors: Optional[List[GraphQLError]] = None
     extensions: Optional[Dict[str, Any]] = None
 
-    @root_validator
-    def validate_data_and_errors(cls, values: Dict[str, Any]):
+    @model_validator(mode="after")
+    @classmethod
+    def validate_data_and_errors(cls, values):
         if values.get("data") is None and not values.get("errors"):
             raise ValueError("No data or errors found in response")
         return values

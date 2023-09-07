@@ -4,7 +4,7 @@ from keyword import iskeyword
 from typing import List, Union
 
 import openapi_pydantic as oas
-from pydantic import parse_obj_as
+from pydantic import TypeAdapter
 
 from ..source import Source
 from . import get_override_config
@@ -115,6 +115,6 @@ def schema_from_source(source: Source) -> oas.Schema:
     data = source.data
     try:
         assert isinstance(data, dict)
-        return parse_obj_as(oas.Schema, data)
+        return TypeAdapter(oas.Schema).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e

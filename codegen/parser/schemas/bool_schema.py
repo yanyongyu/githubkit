@@ -7,7 +7,7 @@ from ..utils import build_boolean
 
 def build_bool_schema(source: Source) -> BoolSchema:
     try:
-        data = oas.Schema.parse_obj(source.data)
+        data = oas.Schema.model_validate(source.data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
 

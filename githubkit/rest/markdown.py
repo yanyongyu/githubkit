@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.utils import UNSET, Missing, exclude_unset
 
@@ -61,8 +61,8 @@ class MarkdownClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(MarkdownPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(MarkdownPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -105,8 +105,8 @@ class MarkdownClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(MarkdownPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(MarkdownPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -127,9 +127,11 @@ class MarkdownClient:
             kwargs = UNSET
 
         content = kwargs if data is UNSET else data
-        content = parse_obj_as(str, content)
+        content = TypeAdapter(str).validate_python(content)
         content = (
-            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+            content.model_dump(by_alias=True)
+            if isinstance(content, BaseModel)
+            else content
         )
 
         return self._github.request(
@@ -151,9 +153,11 @@ class MarkdownClient:
             kwargs = UNSET
 
         content = kwargs if data is UNSET else data
-        content = parse_obj_as(str, content)
+        content = TypeAdapter(str).validate_python(content)
         content = (
-            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+            content.model_dump(by_alias=True)
+            if isinstance(content, BaseModel)
+            else content
         )
 
         return await self._github.arequest(

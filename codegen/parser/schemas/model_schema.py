@@ -14,6 +14,7 @@ from ..utils import (
 from .schema import (
     Property,
     IntSchema,
+    SetSchema,
     BoolSchema,
     DateSchema,
     EnumSchema,
@@ -61,7 +62,7 @@ def _is_union_subset(first: SchemaData, second: SchemaData) -> Optional[SchemaDa
         second_schemas if len(first_schemas) <= len(second_schemas) else first_schemas
     )
     for schema in one_schemas:
-        if schema.dict() not in [schema.dict() for schema in another_schemas]:
+        if schema.model_dump() not in [s.model_dump() for s in another_schemas]:
             return
     return first if len(first_schemas) <= len(second_schemas) else second
 
@@ -157,6 +158,25 @@ def _is_list_merge(
         )
 
 
+def _is_set_merge(
+    source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
+) -> Optional[SetSchema]:
+    if (
+        (isinstance(first, SetSchema) and isinstance(second, ListSchema))
+        or (isinstance(first, ListSchema) and isinstance(second, SetSchema))
+        or (isinstance(first, SetSchema) and isinstance(second, SetSchema))
+    ):
+        return SetSchema(
+            title=first.title,
+            description=first.description,
+            default=first.default,
+            examples=first.examples,
+            item_schema=_merge_schema(
+                source, name, prefix, first.item_schema, second.item_schema
+            ),
+        )
+
+
 def _merge_schema(
     source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
 ):
@@ -167,6 +187,7 @@ def _merge_schema(
         or _is_enum_subset(first, second)
         or _is_model_merge(source, name, prefix, first, second)
         or _is_list_merge(source, name, prefix, first, second)
+        or _is_set_merge(source, name, prefix, first, second)
     ):
         return schema
     raise RuntimeError(f"Cannot merge schema for {name}: {first!r}; {second!r}")

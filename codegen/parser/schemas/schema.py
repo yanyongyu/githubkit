@@ -199,7 +199,7 @@ class StringSchema(SchemaData):
         if self.max_length is not None:
             args["max_length"] = str(self.max_length)
         if self.pattern is not None:
-            args["regex"] = repr(self.pattern)
+            args["pattern"] = repr(self.pattern)
         return args
 
 
@@ -232,9 +232,8 @@ class FileSchema(SchemaData):
 
 class ListSchema(SchemaData):
     item_schema: SchemaData
-    min_items: Optional[int] = Field(default=None, ge=0)
-    max_items: Optional[int] = Field(default=None, ge=0)
-    unique_items: Optional[bool] = None
+    min_length: Optional[int] = Field(default=None, ge=0)
+    max_length: Optional[int] = Field(default=None, ge=0)
 
     def get_type_string(self) -> str:
         return f"List[{self.item_schema.get_type_string()}]"
@@ -269,12 +268,55 @@ class ListSchema(SchemaData):
         # See https://github.com/samuelcolvin/pydantic/issues/3745
         if isinstance(self.item_schema, (ModelSchema, UnionSchema)):
             return args
-        if self.max_items is not None:
-            args["max_items"] = repr(self.max_items)
-        if self.min_items is not None:
-            args["min_items"] = repr(self.min_items)
-        if self.unique_items is not None:
-            args["unique_items"] = repr(self.unique_items)
+        if self.max_length is not None:
+            args["max_length"] = repr(self.max_length)
+        if self.min_length is not None:
+            args["min_length"] = repr(self.min_length)
+        return args
+
+
+class SetSchema(SchemaData):
+    item_schema: SchemaData
+    min_length: Optional[int] = Field(default=None, ge=0)
+    max_length: Optional[int] = Field(default=None, ge=0)
+
+    def get_type_string(self) -> str:
+        return f"Set[{self.item_schema.get_type_string()}]"
+
+    def get_param_type_string(self) -> str:
+        return f"Set[{self.item_schema.get_param_type_string()}]"
+
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
+        imports.add("from typing import Set")
+        imports.update(self.item_schema.get_model_imports())
+        return imports
+
+    def get_type_imports(self) -> Set[str]:
+        imports = {"from typing import Set"}
+        imports.update(self.item_schema.get_type_imports())
+        return imports
+
+    def get_param_imports(self) -> Set[str]:
+        imports = {"from typing import Set"}
+        imports.update(self.item_schema.get_param_imports())
+        return imports
+
+    def get_using_imports(self) -> Set[str]:
+        imports = {"from typing import Set"}
+        imports.update(self.item_schema.get_using_imports())
+        return imports
+
+    def _get_default_args(self) -> Dict[str, str]:
+        args = super()._get_default_args()
+        # FIXME: remove list constraints due to forwardref not supported
+        # See https://github.com/samuelcolvin/pydantic/issues/3745
+        if isinstance(self.item_schema, (ModelSchema, UnionSchema)):
+            return args
+        if self.max_length is not None:
+            args["max_length"] = repr(self.max_length)
+        if self.min_length is not None:
+            args["min_length"] = repr(self.min_length)
         return args
 
 

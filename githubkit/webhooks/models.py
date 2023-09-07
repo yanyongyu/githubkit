@@ -18,8 +18,8 @@ from pydantic import Extra, Field, BaseModel
 from githubkit.utils import UNSET, Missing
 
 
-class GitHubWebhookModel(BaseModel, allow_population_by_field_name=True):
-    ...
+class GitHubWebhookModel(BaseModel):
+    model_config = {"populate_by_name": True}
 
 
 class BranchProtectionRuleCreated(GitHubWebhookModel):
@@ -8122,7 +8122,7 @@ class MetaDeletedPropHook(GitHubWebhookModel):
             ]
         ],
         List[Literal["*"]],
-    ] = Field(max_items=1, min_items=1, title="Webhook Events", default=...)
+    ] = Field(max_length=1, min_length=1, title="Webhook Events", default=...)
     config: MetaDeletedPropHookPropConfig = Field(
         description="Configuration object of the webhook", default=...
     )
@@ -9252,7 +9252,7 @@ class PingEventPropHook(GitHubWebhookModel):
             ]
         ],
         List[Literal["*"]],
-    ] = Field(max_items=1, min_items=1, title="Webhook Events", default=...)
+    ] = Field(max_length=1, min_length=1, title="Webhook Events", default=...)
     config: PingEventPropHookPropConfig = Field(
         description="Configuration object of the webhook", default=...
     )

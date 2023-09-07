@@ -1,13 +1,14 @@
 from typing import Union, Optional
 
 import openapi_pydantic as oas
-from pydantic import parse_obj_as
+from pydantic import TypeAdapter
 
 from ...source import Source
 from ..utils import schema_from_source
 from .schema import Property as Property
 from .schema import AnySchema as AnySchema
 from .schema import IntSchema as IntSchema
+from .schema import SetSchema as SetSchema
 from .schema import BoolSchema as BoolSchema
 from .schema import DateSchema as DateSchema
 from .schema import EnumSchema as EnumSchema
@@ -28,7 +29,7 @@ def parse_schema(
 ) -> SchemaData:
     data = source.data
     try:
-        data = parse_obj_as(Union[oas.Reference, oas.Schema], data)
+        data = TypeAdapter(Union[oas.Reference, oas.Schema]).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
 

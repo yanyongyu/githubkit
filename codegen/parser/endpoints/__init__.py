@@ -14,7 +14,7 @@ METHODS = ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
 
 def parse_endpoint(source: Source, path: str) -> List[EndpointData]:
     data = source.data
-    data = oas.PathItem.parse_obj(data)
+    data = oas.PathItem.model_validate(data)
 
     endpoints: List[EndpointData] = []
 

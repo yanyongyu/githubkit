@@ -18,10 +18,8 @@ from pydantic import Extra, Field, BaseModel
 from githubkit.utils import UNSET, Missing
 
 
-class GitHubRestModel(
-    BaseModel, extra=Extra.allow, allow_population_by_field_name=True
-):
-    ...
+class GitHubRestModel(BaseModel):
+    model_config = {"extra": Extra.allow, "populate_by_name": True}
 
 
 class Root(GitHubRestModel):
@@ -7287,7 +7285,7 @@ class CodeScanningAnalysis(GitHubRestModel):
         description="The SHA of the commit to which the analysis you are uploading relates.",
         min_length=40,
         max_length=40,
-        regex="^[0-9a-fA-F]+$",
+        pattern="^[0-9a-fA-F]+$",
         default=...,
     )
     analysis_key: str = Field(
@@ -8490,7 +8488,7 @@ class Dependency(GitHubRestModel):
 
     package_url: Missing[str] = Field(
         description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
-        regex="^pkg",
+        pattern="^pkg",
         default=UNSET,
     )
     metadata: Missing[Metadata] = Field(
@@ -8561,7 +8559,7 @@ class Snapshot(GitHubRestModel):
     )
     ref: str = Field(
         description="The repository branch that triggered this snapshot.",
-        regex="^refs/",
+        pattern="^refs/",
         default=...,
     )
     detector: SnapshotPropDetector = Field(
@@ -14053,8 +14051,8 @@ class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubRestModel):
     )
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
     work_folder: Missing[str] = Field(
@@ -14086,7 +14084,7 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -14096,8 +14094,8 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
 
@@ -14121,7 +14119,7 @@ class OrgsOrgActionsSecretsSecretNamePutBody(GitHubRestModel):
 
     encrypted_value: Missing[str] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -14227,7 +14225,7 @@ class OrgsOrgCodespacesAccessPutBody(GitHubRestModel):
     )
     selected_usernames: Missing[List[str]] = Field(
         description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
-        max_items=100,
+        max_length=100,
         default=UNSET,
     )
 
@@ -14237,7 +14235,7 @@ class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members whose codespaces be billed to the organization.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -14247,7 +14245,7 @@ class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members whose codespaces should not be billed to the organization.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -14264,7 +14262,7 @@ class OrgsOrgCodespacesSecretsSecretNamePutBody(GitHubRestModel):
 
     encrypted_value: Missing[str] = Field(
         description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -14311,7 +14309,7 @@ class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubRestModel):
 
     selected_teams: List[str] = Field(
         description="List of team names within the organization to which to grant access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14330,7 +14328,7 @@ class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubRestModel):
 
     selected_teams: List[str] = Field(
         description="The names of teams from which to revoke access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14349,7 +14347,7 @@ class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members to be granted access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14368,7 +14366,7 @@ class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14394,7 +14392,7 @@ class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubRestModel):
 
     encrypted_value: Missing[str] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -14644,8 +14642,8 @@ class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubRestModel):
 
     pat_request_ids: Missing[List[int]] = Field(
         description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=UNSET,
     )
     action: Literal["approve", "deny"] = Field(
@@ -14680,8 +14678,8 @@ class OrgsOrgPersonalAccessTokensPostBody(GitHubRestModel):
     )
     pat_ids: List[int] = Field(
         description="The IDs of the fine-grained personal access tokens.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
 
@@ -15077,7 +15075,7 @@ class ProjectsColumnsCardsCardIdMovesPostBody(GitHubRestModel):
 
     position: str = Field(
         description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
-        regex="^(?:top|bottom|after:\\d+)$",
+        pattern="^(?:top|bottom|after:\\d+)$",
         default=...,
     )
     column_id: Missing[int] = Field(
@@ -15174,7 +15172,7 @@ class ProjectsColumnsColumnIdMovesPostBody(GitHubRestModel):
 
     position: str = Field(
         description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
-        regex="^(?:first|last|after:\\d+)$",
+        pattern="^(?:first|last|after:\\d+)$",
         default=...,
     )
 
@@ -15502,8 +15500,8 @@ class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubRestModel):
     )
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
     work_folder: Missing[str] = Field(
@@ -15517,7 +15515,7 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -15527,8 +15525,8 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
 
@@ -15606,7 +15604,7 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubRestModel):
 
     encrypted_value: Missing[str] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -16633,7 +16631,7 @@ class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubRestModel):
         description="The SHA of the commit to which the analysis you are uploading relates.",
         min_length=40,
         max_length=40,
-        regex="^[0-9a-fA-F]+$",
+        pattern="^[0-9a-fA-F]+$",
         default=...,
     )
     ref: str = Field(
@@ -16772,7 +16770,7 @@ class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubRestModel):
 
     encrypted_value: Missing[str] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -16977,7 +16975,7 @@ class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubRestModel):
 
     encrypted_value: Missing[str] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -17724,7 +17722,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubRestModel):
 
     labels: Missing[List[str]] = Field(
         description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)."',
-        min_items=1,
+        min_length=1,
         default=UNSET,
     )
 
@@ -17756,7 +17754,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubRestModel):
 
     labels: Missing[List[str]] = Field(
         description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)."',
-        min_items=1,
+        min_length=1,
         default=UNSET,
     )
 
@@ -18776,7 +18774,7 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
 
     encrypted_value: str = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=...,
     )
     key_id: str = Field(
@@ -19123,7 +19121,7 @@ class UserCodespacesSecretsSecretNamePutBody(GitHubRestModel):
 
     encrypted_value: Missing[str] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: str = Field(
@@ -19261,7 +19259,7 @@ class UserKeysPostBody(GitHubRestModel):
     )
     key: str = Field(
         description="The public SSH key to add to your GitHub account.",
-        regex="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
         default=...,
     )
 
@@ -19441,7 +19439,7 @@ class UserSshSigningKeysPostBody(GitHubRestModel):
     )
     key: str = Field(
         description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
-        regex="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
         default=...,
     )
 

@@ -20,7 +20,7 @@ def normalize_payload(payload: Union[GitHubWebhookModel, Dict[str, Any]]) -> str
         str: normalized payload string.
     """
     payload = (
-        payload.dict(by_alias=True)
+        payload.model_dump(by_alias=True)
         if isinstance(payload, GitHubWebhookModel)
         else payload
     )

@@ -1,7 +1,7 @@
 from typing import List, Union, Optional
 
 import openapi_pydantic as oas
-from pydantic import parse_obj_as
+from pydantic import TypeAdapter
 
 from .. import add_schema
 from . import parse_schema
@@ -17,6 +17,7 @@ from ..utils import concat_snake_name, schema_from_source
 from .schema import (
     AnySchema,
     IntSchema,
+    SetSchema,
     BoolSchema,
     DateSchema,
     FileSchema,
@@ -36,7 +37,7 @@ TYPES_MAP = {
     "number": (FloatSchema,),
     "integer": (IntSchema,),
     "boolean": (BoolSchema,),
-    "array": (ListSchema,),
+    "array": (ListSchema, SetSchema),
     "object": (ModelSchema,),
 }
 
@@ -44,7 +45,9 @@ TYPES_MAP = {
 def _build_sub_schema(
     source: Source, class_name: str, base_source: Source
 ) -> List[SchemaData]:
-    data = parse_obj_as(List[Union[oas.Reference, oas.Schema]], source.data)
+    data = TypeAdapter(List[Union[oas.Reference, oas.Schema]]).validate_python(
+        source.data
+    )
 
     schemas: List[SchemaData] = []
     for index in range(len(data)):

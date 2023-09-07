@@ -1,7 +1,7 @@
 from typing import Set, List, Union, Literal
 
 import openapi_pydantic as oas
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from ...source import Source
 from ..utils import concat_snake_name
@@ -58,14 +58,14 @@ class RequestBodyData(BaseModel):
 def build_request_body(source: Source, prefix: str) -> RequestBodyData:
     data = source.data
     try:
-        data = parse_obj_as(Union[oas.Reference, oas.RequestBody], data)
+        data = TypeAdapter(Union[oas.Reference, oas.RequestBody]).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid RequestBody from {source.uri}") from e
 
     if isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
         try:
-            data = oas.RequestBody.parse_obj(source.data)
+            data = oas.RequestBody.model_validate(source.data)
         except Exception as e:
             raise TypeError(f"Invalid RequestBody from {source.uri}") from e
 
