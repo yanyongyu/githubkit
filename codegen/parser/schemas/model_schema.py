@@ -61,7 +61,7 @@ def _is_union_subset(first: SchemaData, second: SchemaData) -> Optional[SchemaDa
         second_schemas if len(first_schemas) <= len(second_schemas) else first_schemas
     )
     for schema in one_schemas:
-        if schema not in another_schemas:
+        if schema.dict() not in [schema.dict() for schema in another_schemas]:
             return
     return first if len(first_schemas) <= len(second_schemas) else second
 

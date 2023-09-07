@@ -38,5 +38,5 @@ def build_param(source: Source, prefix: str) -> Parameter:
         prop_name=build_prop_name(data.name),
         required=data.required,
         schema_data=schema,
-        param_in=data.param_in,  # type: ignore
+        param_in=data.param_in.value,
     )
