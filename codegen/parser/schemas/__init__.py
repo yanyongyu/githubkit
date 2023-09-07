@@ -8,7 +8,6 @@ from ..utils import schema_from_source
 from .schema import Property as Property
 from .schema import AnySchema as AnySchema
 from .schema import IntSchema as IntSchema
-from .schema import SetSchema as SetSchema
 from .schema import BoolSchema as BoolSchema
 from .schema import DateSchema as DateSchema
 from .schema import EnumSchema as EnumSchema
@@ -22,6 +21,7 @@ from .schema import UnionSchema as UnionSchema
 from .schema import StringSchema as StringSchema
 from .. import add_schema, get_schema, get_schemas
 from .schema import DateTimeSchema as DateTimeSchema
+from .schema import UniqueListSchema as UniqueListSchema
 
 
 def parse_schema(

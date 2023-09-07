@@ -14,7 +14,6 @@ from ..utils import (
 from .schema import (
     Property,
     IntSchema,
-    SetSchema,
     BoolSchema,
     DateSchema,
     EnumSchema,
@@ -27,6 +26,7 @@ from .schema import (
     UnionSchema,
     StringSchema,
     DateTimeSchema,
+    UniqueListSchema,
 )
 
 ST = TypeVar("ST", bound=SchemaData)
@@ -158,15 +158,17 @@ def _is_list_merge(
         )
 
 
-def _is_set_merge(
+def _is_unique_list_merge(
     source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
-) -> Optional[SetSchema]:
+) -> Optional[UniqueListSchema]:
     if (
-        (isinstance(first, SetSchema) and isinstance(second, ListSchema))
-        or (isinstance(first, ListSchema) and isinstance(second, SetSchema))
-        or (isinstance(first, SetSchema) and isinstance(second, SetSchema))
+        (isinstance(first, UniqueListSchema) and isinstance(second, ListSchema))
+        or (isinstance(first, ListSchema) and isinstance(second, UniqueListSchema))
+        or (
+            isinstance(first, UniqueListSchema) and isinstance(second, UniqueListSchema)
+        )
     ):
-        return SetSchema(
+        return UniqueListSchema(
             title=first.title,
             description=first.description,
             default=first.default,
@@ -187,7 +189,7 @@ def _merge_schema(
         or _is_enum_subset(first, second)
         or _is_model_merge(source, name, prefix, first, second)
         or _is_list_merge(source, name, prefix, first, second)
-        or _is_set_merge(source, name, prefix, first, second)
+        or _is_unique_list_merge(source, name, prefix, first, second)
     ):
         return schema
     raise RuntimeError(f"Cannot merge schema for {name}: {first!r}; {second!r}")

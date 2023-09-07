@@ -2,18 +2,18 @@ from typing import Union, Optional
 
 from . import parse_schema
 from ...source import Source
-from .schema import SetSchema, ListSchema
+from .schema import ListSchema, UniqueListSchema
 from ..utils import concat_snake_name, schema_from_source
 
 
 def build_list_schema(
     source: Source, class_name: str, base_source: Optional[Source] = None
-) -> Union[ListSchema, SetSchema]:
+) -> Union[ListSchema, UniqueListSchema]:
     data = schema_from_source(source)
     base_schema = schema_from_source(base_source) if base_source else None
 
     if data.uniqueItems or (base_schema and base_schema.uniqueItems):
-        schema_class = SetSchema
+        schema_class = UniqueListSchema
     else:
         schema_class = ListSchema
 

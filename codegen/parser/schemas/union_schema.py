@@ -17,7 +17,6 @@ from ..utils import concat_snake_name, schema_from_source
 from .schema import (
     AnySchema,
     IntSchema,
-    SetSchema,
     BoolSchema,
     DateSchema,
     FileSchema,
@@ -29,6 +28,7 @@ from .schema import (
     UnionSchema,
     StringSchema,
     DateTimeSchema,
+    UniqueListSchema,
 )
 
 TYPES_MAP = {
@@ -37,7 +37,7 @@ TYPES_MAP = {
     "number": (FloatSchema,),
     "integer": (IntSchema,),
     "boolean": (BoolSchema,),
-    "array": (ListSchema, SetSchema),
+    "array": (ListSchema, UniqueListSchema),
     "object": (ModelSchema,),
 }
 

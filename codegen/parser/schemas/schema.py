@@ -300,35 +300,35 @@ class ListSchema(SchemaData):
         return args
 
 
-class SetSchema(SchemaData):
+class UniqueListSchema(SchemaData):
     item_schema: SchemaData
     min_length: Optional[int] = Field(default=None, ge=0)
     max_length: Optional[int] = Field(default=None, ge=0)
 
     def get_type_string(self) -> str:
-        return f"Set[{self.item_schema.get_type_string()}]"
+        return f"UniqueList[{self.item_schema.get_type_string()}]"
 
     def get_param_type_string(self) -> str:
-        return f"Set[{self.item_schema.get_param_type_string()}]"
+        return f"UniqueList[{self.item_schema.get_param_type_string()}]"
 
     def get_model_imports(self) -> Set[str]:
         imports = super().get_model_imports()
-        imports.add("from typing import Set")
+        imports.add("from githubkit.typing import UniqueList")
         imports.update(self.item_schema.get_model_imports())
         return imports
 
     def get_type_imports(self) -> Set[str]:
-        imports = {"from typing import Set"}
+        imports = {"from githubkit.typing import UniqueList"}
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     def get_param_imports(self) -> Set[str]:
-        imports = {"from typing import Set"}
+        imports = {"from githubkit.typing import UniqueList"}
         imports.update(self.item_schema.get_param_imports())
         return imports
 
     def get_using_imports(self) -> Set[str]:
-        imports = {"from typing import Set"}
+        imports = {"from githubkit.typing import UniqueList"}
         imports.update(self.item_schema.get_using_imports())
         return imports
 
