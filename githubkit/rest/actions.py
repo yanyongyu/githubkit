@@ -840,6 +840,7 @@ class ActionsClient:
     def list_self_hosted_runners_for_org(
         self,
         org: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -848,6 +849,7 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }
@@ -865,6 +867,7 @@ class ActionsClient:
     async def async_list_self_hosted_runners_for_org(
         self,
         org: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -873,6 +876,7 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }
@@ -3985,6 +3989,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -3993,6 +3998,7 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }
@@ -4011,6 +4017,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -4019,6 +4026,7 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }

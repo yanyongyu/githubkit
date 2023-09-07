@@ -11,7 +11,7 @@ See https://github.com/octokit/webhooks for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union, Literal
+from typing import Any, List, Union, Literal, Annotated
 
 from pydantic import Extra, Field, BaseModel
 
@@ -8122,7 +8122,7 @@ class MetaDeletedPropHook(GitHubWebhookModel):
             ]
         ],
         List[Literal["*"]],
-    ] = Field(max_length=1, min_length=1, title="Webhook Events", default=...)
+    ] = Field(title="Webhook Events", default=...)
     config: MetaDeletedPropHookPropConfig = Field(
         description="Configuration object of the webhook", default=...
     )
@@ -9252,7 +9252,7 @@ class PingEventPropHook(GitHubWebhookModel):
             ]
         ],
         List[Literal["*"]],
-    ] = Field(max_length=1, min_length=1, title="Webhook Events", default=...)
+    ] = Field(title="Webhook Events", default=...)
     config: PingEventPropHookPropConfig = Field(
         description="Configuration object of the webhook", default=...
     )
