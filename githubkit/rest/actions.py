@@ -4966,6 +4966,7 @@ class ActionsClient:
         run_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        name: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]":
@@ -4974,6 +4975,7 @@ class ActionsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "name": name,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -4993,6 +4995,7 @@ class ActionsClient:
         run_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        name: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]":
@@ -5001,6 +5004,7 @@ class ActionsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "name": name,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

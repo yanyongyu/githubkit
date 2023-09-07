@@ -1451,6 +1451,7 @@ class CodespacesClient:
         repo: str,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        ref: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
@@ -1459,6 +1460,7 @@ class CodespacesClient:
         params = {
             "location": location,
             "client_ip": client_ip,
+            "ref": ref,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1483,6 +1485,7 @@ class CodespacesClient:
         repo: str,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        ref: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
@@ -1491,6 +1494,7 @@ class CodespacesClient:
         params = {
             "location": location,
             "client_ip": client_ip,
+            "ref": ref,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

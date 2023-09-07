@@ -154,7 +154,9 @@ class GlobalAdvisory(GitHubRestModel):
     cvss: Union[GlobalAdvisoryPropCvss, None] = Field(default=...)
     cwes: Union[List[GlobalAdvisoryPropCwesItems], None] = Field(default=...)
     credits_: Union[List[GlobalAdvisoryPropCreditsItems], None] = Field(
-        default=..., alias="credits"
+        description="The users who contributed to the advisory.",
+        default=...,
+        alias="credits",
     )
 
 
@@ -3412,7 +3414,7 @@ class CopilotOrganizationDetails(GitHubRestModel, extra=Extra.allow):
         default=...,
     )
     seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled"
+        "assign_all", "assign_selected", "disabled", "unconfigured"
     ] = Field(description="The mode of assigning new seats.", default=...)
 
 
@@ -13804,31 +13806,24 @@ class GistsGistIdPatchBodyPropFiles(GitHubRestModel, extra=Extra.allow):
     (including extension) of the targeted gist file. For example: `hello.py`.
 
     To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
 
     Examples:
         {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
 
 
-class GistsGistIdPatchBodyAnyof0(GitHubRestModel):
-    """GistsGistIdPatchBodyAnyof0"""
-
-    description: str = Field(description="The description of the gist.", default=...)
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`.",
-        default=UNSET,
-    )
-
-
-class GistsGistIdPatchBodyAnyof1(GitHubRestModel):
-    """GistsGistIdPatchBodyAnyof1"""
+class GistsGistIdPatchBody(GitHubRestModel):
+    """GistsGistIdPatchBody"""
 
     description: Missing[str] = Field(
         description="The description of the gist.", default=UNSET
     )
-    files: GistsGistIdPatchBodyPropFiles = Field(
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`.",
-        default=...,
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+        default=UNSET,
     )
 
 
@@ -20126,8 +20121,7 @@ GistsPostBodyPropFiles.update_forward_refs()
 GistsGistIdGetResponse403.update_forward_refs()
 GistsGistIdGetResponse403PropBlock.update_forward_refs()
 GistsGistIdPatchBodyPropFiles.update_forward_refs()
-GistsGistIdPatchBodyAnyof0.update_forward_refs()
-GistsGistIdPatchBodyAnyof1.update_forward_refs()
+GistsGistIdPatchBody.update_forward_refs()
 GistsGistIdCommentsPostBody.update_forward_refs()
 GistsGistIdCommentsCommentIdPatchBody.update_forward_refs()
 GistsGistIdStarGetResponse404.update_forward_refs()
@@ -21170,8 +21164,7 @@ __all__ = [
     "GistsGistIdGetResponse403",
     "GistsGistIdGetResponse403PropBlock",
     "GistsGistIdPatchBodyPropFiles",
-    "GistsGistIdPatchBodyAnyof0",
-    "GistsGistIdPatchBodyAnyof1",
+    "GistsGistIdPatchBody",
     "GistsGistIdCommentsPostBody",
     "GistsGistIdCommentsCommentIdPatchBody",
     "GistsGistIdStarGetResponse404",
