@@ -1,7 +1,7 @@
 from typing import Any, Type, Generic, TypeVar
 
 import httpx
-from pydantic import parse_raw_as
+from pydantic import TypeAdapter
 
 RT = TypeVar("RT")
 
@@ -47,4 +47,4 @@ class Response(Generic[RT]):
 
     @property
     def parsed_data(self) -> RT:
-        return parse_raw_as(self._data_model, self._response.content)
+        return TypeAdapter(self._data_model).validate_json(self.content)

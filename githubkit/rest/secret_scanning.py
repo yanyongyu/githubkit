@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.utils import UNSET, Missing, exclude_unset
 
@@ -384,10 +384,10 @@ class SecretScanningClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -451,10 +451,10 @@ class SecretScanningClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

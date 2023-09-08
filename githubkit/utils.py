@@ -3,7 +3,7 @@ from enum import Enum
 from typing_extensions import TypeAlias
 from typing import Any, Dict, Union, Literal, TypeVar, final
 
-from pydantic.json import pydantic_encoder
+from pydantic_core import to_jsonable_python
 
 T = TypeVar("T")
 
@@ -73,4 +73,4 @@ def obj_to_jsonable(obj: Any) -> Any:
     if obj is None or isinstance(obj, (int, float, str, bool)):
         return obj
 
-    return pydantic_encoder(obj)
+    return to_jsonable_python(obj)

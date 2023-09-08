@@ -40,7 +40,7 @@ def load_config() -> Config:
     pyproject = tomli.loads(Path("./pyproject.toml").read_text())
     config_dict: Dict[str, Any] = pyproject.get("tool", {}).get("codegen", {})
 
-    return Config.parse_obj(config_dict)
+    return Config.model_validate(config_dict)
 
 
 def build_rest_api(data: OpenAPIData, rest: RestConfig):

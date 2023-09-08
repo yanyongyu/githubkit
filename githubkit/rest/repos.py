@@ -11,7 +11,7 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.typing import FileTypes
 from githubkit.utils import UNSET, Missing, exclude_unset
@@ -409,8 +409,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgReposPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgReposPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -488,8 +488,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgReposPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgReposPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -624,8 +624,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgRulesetsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgRulesetsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -702,8 +702,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgRulesetsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgRulesetsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -827,8 +827,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgRulesetsRulesetIdPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgRulesetsRulesetIdPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -908,8 +908,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgRulesetsRulesetIdPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgRulesetsRulesetIdPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1121,8 +1121,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -1207,8 +1207,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -1417,8 +1417,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoAutolinksPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoAutolinksPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1473,8 +1473,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoAutolinksPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoAutolinksPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1890,8 +1890,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoBranchesBranchProtectionPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoBranchesBranchProtectionPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1967,8 +1969,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoBranchesBranchProtectionPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoBranchesBranchProtectionPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2279,11 +2283,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -2352,11 +2355,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -2642,10 +2644,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -2714,10 +2716,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -2828,14 +2830,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2902,14 +2903,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2976,14 +2976,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3051,14 +3050,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3126,14 +3124,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -3200,14 +3197,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -3398,14 +3394,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3471,14 +3466,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3544,14 +3538,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3617,14 +3610,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3690,14 +3682,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -3763,14 +3754,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -3880,14 +3870,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3953,14 +3942,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -4026,14 +4014,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4099,14 +4086,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4172,14 +4158,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -4245,14 +4230,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -4362,14 +4346,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -4435,14 +4418,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -4508,14 +4490,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4581,14 +4562,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4654,14 +4634,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -4727,14 +4706,13 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
                 List[str],
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -4790,8 +4768,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoBranchesBranchRenamePostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoBranchesBranchRenamePostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4849,8 +4829,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoBranchesBranchRenamePostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoBranchesBranchRenamePostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5066,8 +5048,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCollaboratorsUsernamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoCollaboratorsUsernamePutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -5124,8 +5108,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCollaboratorsUsernamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoCollaboratorsUsernamePutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -5408,8 +5394,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCommentsCommentIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoCommentsCommentIdPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -5465,8 +5453,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCommentsCommentIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoCommentsCommentIdPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -5711,8 +5701,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCommitsCommitShaCommentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoCommitsCommitShaCommentsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5772,8 +5764,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCommitsCommitShaCommentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoCommitsCommitShaCommentsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -6237,8 +6231,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoContentsPathPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoContentsPathPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -6301,8 +6295,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoContentsPathPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoContentsPathPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -6366,8 +6360,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoContentsPathDeleteBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoContentsPathDeleteBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -6432,8 +6426,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoContentsPathDeleteBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoContentsPathDeleteBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -6631,8 +6625,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoDeploymentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoDeploymentsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -6695,8 +6689,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoDeploymentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoDeploymentsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -6916,8 +6910,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -6989,8 +6985,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -7092,8 +7090,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoDispatchesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoDispatchesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -7148,8 +7146,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoDispatchesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoDispatchesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -7309,10 +7307,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -7383,10 +7381,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -7532,8 +7530,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(DeploymentBranchPolicyNamePattern).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -7587,8 +7585,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(DeploymentBranchPolicyNamePattern).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -7685,8 +7683,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(DeploymentBranchPolicyNamePattern).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -7742,8 +7740,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(DeploymentBranchPolicyNamePattern, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(DeploymentBranchPolicyNamePattern).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -7874,11 +7872,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -7933,11 +7930,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -8183,8 +8179,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoForksPostBody, None], json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(Union[ReposOwnerRepoForksPostBody, None]).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -8242,8 +8240,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoForksPostBody, None], json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(Union[ReposOwnerRepoForksPostBody, None]).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -8360,8 +8360,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoHooksPostBody, None], json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(Union[ReposOwnerRepoHooksPostBody, None]).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -8419,8 +8421,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoHooksPostBody, None], json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(Union[ReposOwnerRepoHooksPostBody, None]).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -8568,8 +8572,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoHooksHookIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoHooksHookIdPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -8630,8 +8634,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoHooksHookIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoHooksHookIdPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -8729,8 +8733,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoHooksHookIdConfigPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -8786,8 +8792,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoHooksHookIdConfigPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -9176,8 +9184,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoInvitationsInvitationIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoInvitationsInvitationIdPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -9232,8 +9242,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoInvitationsInvitationIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoInvitationsInvitationIdPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -9337,8 +9349,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoKeysPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoKeysPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -9393,8 +9405,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoKeysPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoKeysPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -9563,8 +9575,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoMergeUpstreamPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoMergeUpstreamPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -9615,8 +9627,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoMergeUpstreamPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoMergeUpstreamPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -9669,8 +9681,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoMergesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoMergesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -9726,8 +9738,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoMergesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoMergesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -9923,17 +9935,16 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0,
                 ReposOwnerRepoPagesPutBodyAnyof1,
                 ReposOwnerRepoPagesPutBodyAnyof2,
                 ReposOwnerRepoPagesPutBodyAnyof3,
                 ReposOwnerRepoPagesPutBodyAnyof4,
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -10087,17 +10098,16 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0,
                 ReposOwnerRepoPagesPutBodyAnyof1,
                 ReposOwnerRepoPagesPutBodyAnyof2,
                 ReposOwnerRepoPagesPutBodyAnyof3,
                 ReposOwnerRepoPagesPutBodyAnyof4,
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -10177,16 +10187,15 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0,
                 None,
                 ReposOwnerRepoPagesPostBodyAnyof1,
                 None,
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -10266,16 +10275,15 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0,
                 None,
                 ReposOwnerRepoPagesPostBodyAnyof1,
                 None,
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -10538,8 +10546,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPagesDeploymentPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPagesDeploymentPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -10597,8 +10605,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPagesDeploymentPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPagesDeploymentPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -10955,8 +10963,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoReleasesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -11018,8 +11026,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoReleasesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -11158,8 +11166,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoReleasesAssetsAssetIdPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -11214,8 +11224,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoReleasesAssetsAssetIdPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -11268,8 +11280,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesGenerateNotesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoReleasesGenerateNotesPostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -11325,8 +11339,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesGenerateNotesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoReleasesGenerateNotesPostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -11545,8 +11561,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoReleasesReleaseIdPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -11609,8 +11627,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoReleasesReleaseIdPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -11702,9 +11722,11 @@ class ReposClient:
             kwargs = UNSET
 
         content = kwargs if data is UNSET else data
-        content = parse_obj_as(FileTypes, content)
+        content = TypeAdapter(FileTypes).validate_python(content)
         content = (
-            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+            content.model_dump(by_alias=True)
+            if isinstance(content, BaseModel)
+            else content
         )
 
         return self._github.request(
@@ -11742,9 +11764,11 @@ class ReposClient:
             kwargs = UNSET
 
         content = kwargs if data is UNSET else data
-        content = parse_obj_as(FileTypes, content)
+        content = TypeAdapter(FileTypes).validate_python(content)
         content = (
-            content.dict(by_alias=True) if isinstance(content, BaseModel) else content
+            content.model_dump(by_alias=True)
+            if isinstance(content, BaseModel)
+            else content
         )
 
         return await self._github.arequest(
@@ -11973,8 +11997,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoRulesetsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoRulesetsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -12052,8 +12076,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoRulesetsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoRulesetsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -12192,8 +12216,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoRulesetsRulesetIdPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -12274,8 +12298,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoRulesetsRulesetIdPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -12565,8 +12589,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoStatusesShaPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoStatusesShaPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -12622,8 +12646,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoStatusesShaPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoStatusesShaPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -12769,8 +12793,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoTagsProtectionPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoTagsProtectionPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -12824,8 +12848,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoTagsProtectionPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoTagsProtectionPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -13075,8 +13099,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoTopicsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoTopicsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -13130,8 +13154,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoTopicsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoTopicsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -13379,8 +13403,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoTransferPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoTransferPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -13432,8 +13456,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoTransferPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoTransferPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -13627,8 +13651,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposTemplateOwnerTemplateRepoGeneratePostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposTemplateOwnerTemplateRepoGeneratePostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -13682,8 +13708,10 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposTemplateOwnerTemplateRepoGeneratePostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposTemplateOwnerTemplateRepoGeneratePostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -13890,8 +13918,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserReposPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserReposPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -13965,8 +13993,8 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserReposPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserReposPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

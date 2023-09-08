@@ -11,7 +11,7 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.utils import UNSET, Missing, exclude_unset
 
@@ -205,8 +205,8 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPullsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -267,8 +267,8 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPullsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -475,8 +475,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsCommentsCommentIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsCommentsCommentIdPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -529,8 +531,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsCommentsCommentIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsCommentsCommentIdPatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -635,8 +639,8 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPullsPullNumberPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -697,8 +701,8 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoPullsPullNumberPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -830,8 +834,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberCommentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberCommentsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -897,8 +903,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberCommentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberCommentsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -960,10 +968,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1024,10 +1032,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1246,10 +1254,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoPullsPullNumberMergePutBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoPullsPullNumberMergePutBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1316,10 +1324,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoPullsPullNumberMergePutBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoPullsPullNumberMergePutBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1442,14 +1450,13 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1530,14 +1537,13 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
+        json = TypeAdapter(
             Union[
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
-            ],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+            ]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1596,10 +1602,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -1658,10 +1664,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -1776,8 +1782,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1839,8 +1847,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1946,8 +1956,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2006,8 +2018,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2181,10 +2195,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2249,10 +2263,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2315,10 +2329,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2382,10 +2396,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2447,10 +2461,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2511,10 +2525,10 @@ class PullsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",

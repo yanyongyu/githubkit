@@ -11,7 +11,7 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.utils import UNSET, Missing, exclude_unset
 
@@ -311,8 +311,8 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(NotificationsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(NotificationsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -361,8 +361,8 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(NotificationsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(NotificationsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -535,8 +535,10 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(NotificationsThreadsThreadIdSubscriptionPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            NotificationsThreadsThreadIdSubscriptionPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -587,8 +589,10 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(NotificationsThreadsThreadIdSubscriptionPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            NotificationsThreadsThreadIdSubscriptionPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -852,8 +856,8 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoNotificationsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoNotificationsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -903,8 +907,8 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoNotificationsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoNotificationsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1107,8 +1111,8 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoSubscriptionPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoSubscriptionPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1159,8 +1163,8 @@ class ActivityClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoSubscriptionPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoSubscriptionPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.utils import UNSET, Missing, exclude_unset
 
@@ -190,8 +190,8 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesAccessPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgCodespacesAccessPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -248,8 +248,8 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesAccessPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgCodespacesAccessPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -300,8 +300,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgCodespacesAccessSelectedUsersPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -352,8 +354,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgCodespacesAccessSelectedUsersPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -404,8 +408,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersDeleteBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgCodespacesAccessSelectedUsersDeleteBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "DELETE",
@@ -456,8 +462,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesAccessSelectedUsersDeleteBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgCodespacesAccessSelectedUsersDeleteBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "DELETE",
@@ -634,8 +642,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgCodespacesSecretsSecretNamePutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -692,8 +702,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgCodespacesSecretsSecretNamePutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -847,8 +859,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -902,8 +916,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1291,8 +1307,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoCodespacesPostBody, None], json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoCodespacesPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1361,8 +1379,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(Union[ReposOwnerRepoCodespacesPostBody, None], json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoCodespacesPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1451,6 +1471,7 @@ class CodespacesClient:
         repo: str,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        ref: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
@@ -1459,6 +1480,7 @@ class CodespacesClient:
         params = {
             "location": location,
             "client_ip": client_ip,
+            "ref": ref,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1483,6 +1505,7 @@ class CodespacesClient:
         repo: str,
         location: Missing[str] = UNSET,
         client_ip: Missing[str] = UNSET,
+        ref: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoCodespacesMachinesGetResponse200]":
@@ -1491,6 +1514,7 @@ class CodespacesClient:
         params = {
             "location": location,
             "client_ip": client_ip,
+            "ref": ref,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1741,8 +1765,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCodespacesSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoCodespacesSecretsSecretNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1796,8 +1822,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoCodespacesSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoCodespacesSecretsSecretNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1899,10 +1927,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1974,10 +2002,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2124,10 +2152,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2210,10 +2238,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2382,8 +2410,8 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserCodespacesSecretsSecretNamePutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2436,8 +2464,8 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserCodespacesSecretsSecretNamePutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2566,8 +2594,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesSecretsSecretNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            UserCodespacesSecretsSecretNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2619,8 +2649,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesSecretsSecretNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            UserCodespacesSecretsSecretNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2858,8 +2890,8 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesCodespaceNamePatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserCodespacesCodespaceNamePatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -2913,8 +2945,8 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesCodespaceNamePatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserCodespacesCodespaceNamePatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -3103,8 +3135,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesCodespaceNamePublishPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserCodespacesCodespaceNamePublishPostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3158,8 +3192,10 @@ class CodespacesClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(UserCodespacesCodespaceNamePublishPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(UserCodespacesCodespaceNamePublishPostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",

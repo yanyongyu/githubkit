@@ -46,11 +46,8 @@ if not kwargs:
     kwargs = UNSET
 
 {{ name }} = kwargs if data is UNSET else data
-{{ name }} = parse_obj_as(
-    {{ request_body.body_schema.get_type_string() }},
-    {{ name }}
-)
-{{ name }} = {{ name }}.dict(by_alias=True) if isinstance({{ name }}, BaseModel) else {{ name }}
+{{ name }} = TypeAdapter({{ request_body.body_schema.get_type_string() }}).validate_python({{ name }})
+{{ name }} = {{ name }}.model_dump(by_alias=True) if isinstance({{ name }}, BaseModel) else {{ name }}
 {% endmacro %}
 
 {% macro build_request(endpoint) %}

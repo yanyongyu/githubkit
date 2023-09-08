@@ -11,15 +11,14 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     GistsPostBodyType,
+    GistsGistIdPatchBodyType,
     GistsPostBodyPropFilesType,
-    GistsGistIdPatchBodyAnyof0Type,
-    GistsGistIdPatchBodyAnyof1Type,
     GistsGistIdCommentsPostBodyType,
     GistsGistIdPatchBodyPropFilesType,
     GistsGistIdCommentsCommentIdPatchBodyType,
@@ -32,9 +31,8 @@ from .models import (
     GistComment,
     GistsPostBody,
     ValidationError,
+    GistsGistIdPatchBody,
     GistsGistIdGetResponse403,
-    GistsGistIdPatchBodyAnyof0,
-    GistsGistIdPatchBodyAnyof1,
     GistsGistIdCommentsPostBody,
     GistsGistIdStarGetResponse404,
     GistsGistIdCommentsCommentIdPatchBody,
@@ -142,8 +140,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(GistsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(GistsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -191,8 +189,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(GistsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(GistsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -415,21 +413,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Union[
-            GistsGistIdPatchBodyAnyof0Type, None, GistsGistIdPatchBodyAnyof1Type, None
-        ],
-    ) -> "Response[GistSimple]":
-        ...
-
-    @overload
-    def update(
-        self,
-        gist_id: str,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        description: str,
-        files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
+        data: Union[GistsGistIdPatchBodyType, None],
     ) -> "Response[GistSimple]":
         ...
 
@@ -441,7 +425,7 @@ class GistsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
-        files: GistsGistIdPatchBodyPropFilesType,
+        files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
@@ -450,14 +434,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                GistsGistIdPatchBodyAnyof0Type,
-                None,
-                GistsGistIdPatchBodyAnyof1Type,
-                None,
-            ]
-        ] = UNSET,
+        data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
@@ -468,11 +445,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[GistsGistIdPatchBodyAnyof0, None, GistsGistIdPatchBodyAnyof1, None],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(Union[GistsGistIdPatchBody, None]).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -492,21 +466,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Union[
-            GistsGistIdPatchBodyAnyof0Type, None, GistsGistIdPatchBodyAnyof1Type, None
-        ],
-    ) -> "Response[GistSimple]":
-        ...
-
-    @overload
-    async def async_update(
-        self,
-        gist_id: str,
-        *,
-        data: Literal[UNSET] = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        description: str,
-        files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
+        data: Union[GistsGistIdPatchBodyType, None],
     ) -> "Response[GistSimple]":
         ...
 
@@ -518,7 +478,7 @@ class GistsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
-        files: GistsGistIdPatchBodyPropFilesType,
+        files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> "Response[GistSimple]":
         ...
 
@@ -527,14 +487,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                GistsGistIdPatchBodyAnyof0Type,
-                None,
-                GistsGistIdPatchBodyAnyof1Type,
-                None,
-            ]
-        ] = UNSET,
+        data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> "Response[GistSimple]":
         url = f"/gists/{gist_id}"
@@ -545,11 +498,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[GistsGistIdPatchBodyAnyof0, None, GistsGistIdPatchBodyAnyof1, None],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(Union[GistsGistIdPatchBody, None]).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -658,8 +608,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(GistsGistIdCommentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(GistsGistIdCommentsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -710,8 +660,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(GistsGistIdCommentsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(GistsGistIdCommentsPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -851,8 +801,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(GistsGistIdCommentsCommentIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(GistsGistIdCommentsCommentIdPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -905,8 +855,8 @@ class GistsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(GistsGistIdCommentsCommentIdPatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(GistsGistIdCommentsCommentIdPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

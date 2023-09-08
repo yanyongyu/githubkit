@@ -1,7 +1,7 @@
 from typing import Set, Union, Optional
 
 import openapi_pydantic as oas
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from ...source import Source
 from ..schemas import SchemaData, parse_schema
@@ -20,14 +20,14 @@ class ResponseData(BaseModel):
 def build_response(source: Source, prefix: str) -> ResponseData:
     data = source.data
     try:
-        data = parse_obj_as(Union[oas.Reference, oas.Response], data)
+        data = TypeAdapter(Union[oas.Reference, oas.Response]).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid Response from {source.uri}") from e
 
     if isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
         try:
-            data = oas.Response.parse_obj(source.data)
+            data = oas.Response.model_validate(source.data)
         except Exception as e:
             raise TypeError(f"Invalid Response from {source.uri}") from e
 

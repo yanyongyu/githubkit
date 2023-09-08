@@ -1,8 +1,11 @@
-from typing import IO, Dict, List, Tuple, Union, TypeVar, Optional
+from typing import IO, Dict, List, Tuple, Union, TypeVar, Hashable, Optional, Annotated
 
 import httpx
+from pydantic import Field, AfterValidator
+from pydantic_core import PydanticCustomError
 
 T = TypeVar("T")
+H = TypeVar("H", bound=Hashable)
 
 URLTypes = Union[httpx.URL, str]
 
@@ -38,3 +41,16 @@ FileTypes = Union[
     Tuple[Optional[str], FileContent, Optional[str]],
 ]
 RequestFiles = Union[Dict[str, FileTypes], List[Tuple[str, FileTypes]]]
+
+
+def validate_unique_list(value: List[H]) -> List[H]:
+    if len(value) != len(set(value)):
+        raise PydanticCustomError("unique_list", "value is not a unique list")
+    return value
+
+
+UniqueList = Annotated[
+    List[H],
+    AfterValidator(validate_unique_list),
+    Field(json_schema_extra={"uniqueItems": True}),
+]

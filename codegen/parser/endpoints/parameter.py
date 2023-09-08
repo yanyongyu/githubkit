@@ -1,7 +1,7 @@
 from typing import Union, Literal
 
 import openapi_pydantic as oas
-from pydantic import parse_obj_as
+from pydantic import TypeAdapter
 
 from ...source import Source
 from ..utils import build_prop_name, concat_snake_name
@@ -15,14 +15,14 @@ class Parameter(Property):
 def build_param(source: Source, prefix: str) -> Parameter:
     data = source.data
     try:
-        data = parse_obj_as(Union[oas.Reference, oas.Parameter], data)
+        data = TypeAdapter(Union[oas.Reference, oas.Parameter]).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid Parameter from {source.uri}") from e
 
     if isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
         try:
-            data = oas.Parameter.parse_obj(source.data)
+            data = oas.Parameter.model_validate(source.data)
         except Exception as e:
             raise TypeError(f"Invalid Parameter from {source.uri}") from e
 
@@ -38,5 +38,5 @@ def build_param(source: Source, prefix: str) -> Parameter:
         prop_name=build_prop_name(data.name),
         required=data.required,
         schema_data=schema,
-        param_in=data.param_in,  # type: ignore
+        param_in=data.param_in.value,
     )

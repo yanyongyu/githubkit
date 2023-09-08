@@ -2318,7 +2318,9 @@ class CopilotOrganizationDetailsType(TypedDict):
 
     seat_breakdown: CopilotSeatBreakdownType
     public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    seat_management_setting: Literal["assign_all", "assign_selected", "disabled"]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
 
 
 class TeamSimpleType(TypedDict):
@@ -10056,24 +10058,20 @@ class GistsGistIdPatchBodyPropFilesType(TypedDict):
     (including extension) of the targeted gist file. For example: `hello.py`.
 
     To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
 
     Examples:
         {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
 
 
-class GistsGistIdPatchBodyAnyof0Type(TypedDict):
-    """GistsGistIdPatchBodyAnyof0"""
-
-    description: str
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
-
-
-class GistsGistIdPatchBodyAnyof1Type(TypedDict):
-    """GistsGistIdPatchBodyAnyof1"""
+class GistsGistIdPatchBodyType(TypedDict):
+    """GistsGistIdPatchBody"""
 
     description: NotRequired[str]
-    files: GistsGistIdPatchBodyPropFilesType
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
 
 
 class GistsGistIdCommentsPostBodyType(TypedDict):
@@ -14225,8 +14223,7 @@ __all__ = [
     "GistsGistIdGetResponse403Type",
     "GistsGistIdGetResponse403PropBlockType",
     "GistsGistIdPatchBodyPropFilesType",
-    "GistsGistIdPatchBodyAnyof0Type",
-    "GistsGistIdPatchBodyAnyof1Type",
+    "GistsGistIdPatchBodyType",
     "GistsGistIdCommentsPostBodyType",
     "GistsGistIdCommentsCommentIdPatchBodyType",
     "GistsGistIdStarGetResponse404Type",

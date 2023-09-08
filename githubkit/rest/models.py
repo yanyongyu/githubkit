@@ -11,17 +11,15 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import date, datetime
-from typing import Any, List, Union, Literal
+from typing import Any, List, Union, Literal, Annotated
 
 from pydantic import Extra, Field, BaseModel
 
 from githubkit.utils import UNSET, Missing
 
 
-class GitHubRestModel(
-    BaseModel, extra=Extra.allow, allow_population_by_field_name=True
-):
-    ...
+class GitHubRestModel(BaseModel):
+    model_config = {"extra": Extra.allow, "populate_by_name": True}
 
 
 class Root(GitHubRestModel):
@@ -110,9 +108,7 @@ class GlobalAdvisory(GitHubRestModel):
         description="A short summary of the advisory.", max_length=1024, default=...
     )
     description: Union[str, None] = Field(
-        description="A detailed description of what the advisory entails.",
-        max_length=65535,
-        default=...,
+        description="A detailed description of what the advisory entails.", default=...
     )
     type: Literal["reviewed", "unreviewed", "malware"] = Field(
         description="The type of advisory.", default=...
@@ -154,7 +150,9 @@ class GlobalAdvisory(GitHubRestModel):
     cvss: Union[GlobalAdvisoryPropCvss, None] = Field(default=...)
     cwes: Union[List[GlobalAdvisoryPropCwesItems], None] = Field(default=...)
     credits_: Union[List[GlobalAdvisoryPropCreditsItems], None] = Field(
-        default=..., alias="credits"
+        description="The users who contributed to the advisory.",
+        default=...,
+        alias="credits",
     )
 
 
@@ -220,9 +218,7 @@ class GlobalAdvisoryPropCvss(GitHubRestModel):
     """GlobalAdvisoryPropCvss"""
 
     vector_string: Union[str, None] = Field(description="The CVSS vector.", default=...)
-    score: Union[float, None] = Field(
-        description="The CVSS score.", le=10.0, default=...
-    )
+    score: Union[float, None] = Field(description="The CVSS score.", default=...)
 
 
 class GlobalAdvisoryPropCwesItems(GitHubRestModel):
@@ -1567,7 +1563,6 @@ class DependabotAlertWithRepository(GitHubRestModel):
     ] = Field(description="The reason that the alert was dismissed.", default=...)
     dismissed_comment: Union[str, None] = Field(
         description="An optional comment associated with the alert's dismissal.",
-        max_length=280,
         default=...,
     )
     fixed_at: Union[datetime, None] = Field(
@@ -3128,9 +3123,10 @@ class CodeScanningOrganizationAlertItems(GitHubRestModel):
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=...,
     )
-    dismissed_comment: Missing[Union[str, None]] = Field(
+    dismissed_comment: Missing[
+        Annotated[Union[str, None], Field(max_length=280)]
+    ] = Field(
         description="The dismissal comment associated with the dismissal of the alert.",
-        max_length=280,
         default=UNSET,
     )
     rule: CodeScanningAlertRule = Field(default=...)
@@ -3412,7 +3408,7 @@ class CopilotOrganizationDetails(GitHubRestModel, extra=Extra.allow):
         default=...,
     )
     seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled"
+        "assign_all", "assign_selected", "disabled", "unconfigured"
     ] = Field(description="The mode of assigning new seats.", default=...)
 
 
@@ -4622,9 +4618,7 @@ class RepositoryAdvisory(GitHubRestModel):
         description="A short summary of the advisory.", max_length=1024, default=...
     )
     description: Union[str, None] = Field(
-        description="A detailed description of what the advisory entails.",
-        max_length=65535,
-        default=...,
+        description="A detailed description of what the advisory entails.", default=...
     )
     severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
         description="The severity of the advisory.", default=...
@@ -4702,9 +4696,7 @@ class RepositoryAdvisoryPropCvss(GitHubRestModel):
     """RepositoryAdvisoryPropCvss"""
 
     vector_string: Union[str, None] = Field(description="The CVSS vector.", default=...)
-    score: Union[float, None] = Field(
-        description="The CVSS score.", le=10.0, default=...
-    )
+    score: Union[float, None] = Field(description="The CVSS score.", default=...)
 
 
 class RepositoryAdvisoryPropCwesItems(GitHubRestModel):
@@ -6362,7 +6354,9 @@ class ProtectedBranchPullRequestReview(GitHubRestModel):
     )
     dismiss_stale_reviews: bool = Field(default=...)
     require_code_owner_reviews: bool = Field(default=...)
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    required_approving_review_count: Missing[Annotated[int, Field(le=6.0)]] = Field(
+        default=UNSET
+    )
     require_last_push_approval: Missing[bool] = Field(
         description="Whether the most recent push must be approved by someone other than the person who pushed it.",
         default=False,
@@ -7214,9 +7208,10 @@ class CodeScanningAlertItems(GitHubRestModel):
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=...,
     )
-    dismissed_comment: Missing[Union[str, None]] = Field(
+    dismissed_comment: Missing[
+        Annotated[Union[str, None], Field(max_length=280)]
+    ] = Field(
         description="The dismissal comment associated with the dismissal of the alert.",
-        max_length=280,
         default=UNSET,
     )
     rule: CodeScanningAlertRuleSummary = Field(default=...)
@@ -7264,9 +7259,10 @@ class CodeScanningAlert(GitHubRestModel):
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=...,
     )
-    dismissed_comment: Missing[Union[str, None]] = Field(
+    dismissed_comment: Missing[
+        Annotated[Union[str, None], Field(max_length=280)]
+    ] = Field(
         description="The dismissal comment associated with the dismissal of the alert.",
-        max_length=280,
         default=UNSET,
     )
     rule: CodeScanningAlertRule = Field(default=...)
@@ -7285,7 +7281,7 @@ class CodeScanningAnalysis(GitHubRestModel):
         description="The SHA of the commit to which the analysis you are uploading relates.",
         min_length=40,
         max_length=40,
-        regex="^[0-9a-fA-F]+$",
+        pattern="^[0-9a-fA-F]+$",
         default=...,
     )
     analysis_key: str = Field(
@@ -8281,7 +8277,6 @@ class DependabotAlert(GitHubRestModel):
     ] = Field(description="The reason that the alert was dismissed.", default=...)
     dismissed_comment: Union[str, None] = Field(
         description="An optional comment associated with the alert's dismissal.",
-        max_length=280,
         default=...,
     )
     fixed_at: Union[datetime, None] = Field(
@@ -8486,9 +8481,8 @@ class Metadata(GitHubRestModel, extra=Extra.allow):
 class Dependency(GitHubRestModel):
     """Dependency"""
 
-    package_url: Missing[str] = Field(
+    package_url: Missing[Annotated[str, Field(pattern="^pkg")]] = Field(
         description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
-        regex="^pkg",
         default=UNSET,
     )
     metadata: Missing[Metadata] = Field(
@@ -8559,7 +8553,7 @@ class Snapshot(GitHubRestModel):
     )
     ref: str = Field(
         description="The repository branch that triggered this snapshot.",
-        regex="^refs/",
+        pattern="^refs/",
         default=...,
     )
     detector: SnapshotPropDetector = Field(
@@ -11838,12 +11832,11 @@ class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(
 class RepositoryAdvisoryUpdate(GitHubRestModel):
     """RepositoryAdvisoryUpdate"""
 
-    summary: Missing[str] = Field(
-        description="A short summary of the advisory.", max_length=1024, default=UNSET
+    summary: Missing[Annotated[str, Field(max_length=1024)]] = Field(
+        description="A short summary of the advisory.", default=UNSET
     )
-    description: Missing[str] = Field(
+    description: Missing[Annotated[str, Field(max_length=65535)]] = Field(
         description="A detailed description of what the advisory impacts.",
-        max_length=65535,
         default=UNSET,
     )
     cve_id: Missing[Union[str, None]] = Field(
@@ -13804,31 +13797,24 @@ class GistsGistIdPatchBodyPropFiles(GitHubRestModel, extra=Extra.allow):
     (including extension) of the targeted gist file. For example: `hello.py`.
 
     To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
 
     Examples:
         {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
 
 
-class GistsGistIdPatchBodyAnyof0(GitHubRestModel):
-    """GistsGistIdPatchBodyAnyof0"""
-
-    description: str = Field(description="The description of the gist.", default=...)
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`.",
-        default=UNSET,
-    )
-
-
-class GistsGistIdPatchBodyAnyof1(GitHubRestModel):
-    """GistsGistIdPatchBodyAnyof1"""
+class GistsGistIdPatchBody(GitHubRestModel):
+    """GistsGistIdPatchBody"""
 
     description: Missing[str] = Field(
         description="The description of the gist.", default=UNSET
     )
-    files: GistsGistIdPatchBodyPropFiles = Field(
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`.",
-        default=...,
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+        default=UNSET,
     )
 
 
@@ -14058,8 +14044,8 @@ class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubRestModel):
     )
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
     work_folder: Missing[str] = Field(
@@ -14091,7 +14077,7 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -14101,8 +14087,8 @@ class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
 
@@ -14124,9 +14110,15 @@ class OrgsOrgActionsSecretsGetResponse200(GitHubRestModel):
 class OrgsOrgActionsSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
+    encrypted_value: Missing[
+        Annotated[
+            str,
+            Field(
+                pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+            ),
+        ]
+    ] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -14230,9 +14222,8 @@ class OrgsOrgCodespacesAccessPutBody(GitHubRestModel):
         description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.",
         default=...,
     )
-    selected_usernames: Missing[List[str]] = Field(
+    selected_usernames: Missing[Annotated[List[str], Field(max_length=100)]] = Field(
         description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
-        max_items=100,
         default=UNSET,
     )
 
@@ -14242,7 +14233,7 @@ class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members whose codespaces be billed to the organization.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -14252,7 +14243,7 @@ class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members whose codespaces should not be billed to the organization.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -14267,9 +14258,15 @@ class OrgsOrgCodespacesSecretsGetResponse200(GitHubRestModel):
 class OrgsOrgCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
+    encrypted_value: Missing[
+        Annotated[
+            str,
+            Field(
+                pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+            ),
+        ]
+    ] = Field(
         description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -14316,7 +14313,7 @@ class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubRestModel):
 
     selected_teams: List[str] = Field(
         description="List of team names within the organization to which to grant access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14335,7 +14332,7 @@ class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubRestModel):
 
     selected_teams: List[str] = Field(
         description="The names of teams from which to revoke access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14354,7 +14351,7 @@ class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members to be granted access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14373,7 +14370,7 @@ class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubRestModel):
 
     selected_usernames: List[str] = Field(
         description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
-        min_items=1,
+        min_length=1,
         default=...,
     )
 
@@ -14397,9 +14394,15 @@ class OrgsOrgDependabotSecretsGetResponse200(GitHubRestModel):
 class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubRestModel):
     """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
+    encrypted_value: Missing[
+        Annotated[
+            str,
+            Field(
+                pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+            ),
+        ]
+    ] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -14647,18 +14650,17 @@ class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubRestModel):
 class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubRestModel):
     """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    pat_request_ids: Missing[List[int]] = Field(
+    pat_request_ids: Missing[
+        Annotated[List[int], Field(max_length=100, min_length=1)]
+    ] = Field(
         description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
-        max_items=100,
-        min_items=1,
         default=UNSET,
     )
     action: Literal["approve", "deny"] = Field(
         description="Action to apply to the requests.", default=...
     )
-    reason: Missing[Union[str, None]] = Field(
+    reason: Missing[Annotated[Union[str, None], Field(max_length=1024)]] = Field(
         description="Reason for approving or denying the requests. Max 1024 characters.",
-        max_length=1024,
         default=UNSET,
     )
 
@@ -14669,9 +14671,8 @@ class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubRestModel):
     action: Literal["approve", "deny"] = Field(
         description="Action to apply to the request.", default=...
     )
-    reason: Missing[Union[str, None]] = Field(
+    reason: Missing[Annotated[Union[str, None], Field(max_length=1024)]] = Field(
         description="Reason for approving or denying the request. Max 1024 characters.",
-        max_length=1024,
         default=UNSET,
     )
 
@@ -14685,8 +14686,8 @@ class OrgsOrgPersonalAccessTokensPostBody(GitHubRestModel):
     )
     pat_ids: List[int] = Field(
         description="The IDs of the fine-grained personal access tokens.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
 
@@ -15082,7 +15083,7 @@ class ProjectsColumnsCardsCardIdMovesPostBody(GitHubRestModel):
 
     position: str = Field(
         description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
-        regex="^(?:top|bottom|after:\\d+)$",
+        pattern="^(?:top|bottom|after:\\d+)$",
         default=...,
     )
     column_id: Missing[int] = Field(
@@ -15179,7 +15180,7 @@ class ProjectsColumnsColumnIdMovesPostBody(GitHubRestModel):
 
     position: str = Field(
         description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
-        regex="^(?:first|last|after:\\d+)$",
+        pattern="^(?:first|last|after:\\d+)$",
         default=...,
     )
 
@@ -15507,8 +15508,8 @@ class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubRestModel):
     )
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
     work_folder: Missing[str] = Field(
@@ -15522,7 +15523,7 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-        max_items=100,
+        max_length=100,
         default=...,
     )
 
@@ -15532,8 +15533,8 @@ class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubRestModel):
 
     labels: List[str] = Field(
         description="The names of the custom labels to add to the runner.",
-        max_items=100,
-        min_items=1,
+        max_length=100,
+        min_length=1,
         default=...,
     )
 
@@ -15609,9 +15610,15 @@ class ReposOwnerRepoActionsSecretsGetResponse200(GitHubRestModel):
 class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
+    encrypted_value: Missing[
+        Annotated[
+            str,
+            Field(
+                pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+            ),
+        ]
+    ] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -16193,9 +16200,8 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubRestModel):
         max_length=65535,
         default=...,
     )
-    text: Missing[str] = Field(
+    text: Missing[Annotated[str, Field(max_length=65535)]] = Field(
         description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
-        max_length=65535,
         default=UNSET,
     )
     annotations: Missing[
@@ -16385,8 +16391,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubRestModel):
     summary: str = Field(
         description="Can contain Markdown.", max_length=65535, default=...
     )
-    text: Missing[str] = Field(
-        description="Can contain Markdown.", max_length=65535, default=UNSET
+    text: Missing[Annotated[str, Field(max_length=65535)]] = Field(
+        description="Can contain Markdown.", default=UNSET
     )
     annotations: Missing[
         List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems]
@@ -16624,9 +16630,10 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubRestModel):
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
         default=UNSET,
     )
-    dismissed_comment: Missing[Union[str, None]] = Field(
+    dismissed_comment: Missing[
+        Annotated[Union[str, None], Field(max_length=280)]
+    ] = Field(
         description="The dismissal comment associated with the dismissal of the alert.",
-        max_length=280,
         default=UNSET,
     )
 
@@ -16638,7 +16645,7 @@ class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubRestModel):
         description="The SHA of the commit to which the analysis you are uploading relates.",
         min_length=40,
         max_length=40,
-        regex="^[0-9a-fA-F]+$",
+        pattern="^[0-9a-fA-F]+$",
         default=...,
     )
     ref: str = Field(
@@ -16775,9 +16782,15 @@ class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubRestModel):
 class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
+    encrypted_value: Missing[
+        Annotated[
+            str,
+            Field(
+                pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+            ),
+        ]
+    ] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -16963,9 +16976,8 @@ class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubRestModel):
         description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
         default=UNSET,
     )
-    dismissed_comment: Missing[str] = Field(
+    dismissed_comment: Missing[Annotated[str, Field(max_length=280)]] = Field(
         description="An optional comment associated with dismissing the alert.",
-        max_length=280,
         default=UNSET,
     )
 
@@ -16980,9 +16992,15 @@ class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubRestModel):
 class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubRestModel):
     """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
+    encrypted_value: Missing[
+        Annotated[
+            str,
+            Field(
+                pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+            ),
+        ]
+    ] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: Missing[str] = Field(
@@ -17727,9 +17745,8 @@ class ReposOwnerRepoIssuesIssueNumberCommentsPostBody(GitHubRestModel):
 class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    labels: Missing[List[str]] = Field(
+    labels: Missing[Annotated[List[str], Field(min_length=1)]] = Field(
         description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)."',
-        min_items=1,
         default=UNSET,
     )
 
@@ -17759,9 +17776,8 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items(GitHubRestModel):
 class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubRestModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    labels: Missing[List[str]] = Field(
+    labels: Missing[Annotated[List[str], Field(min_length=1)]] = Field(
         description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)."',
-        min_items=1,
         default=UNSET,
     )
 
@@ -18781,7 +18797,7 @@ class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBod
 
     encrypted_value: str = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=...,
     )
     key_id: str = Field(
@@ -19126,9 +19142,15 @@ class UserCodespacesSecretsGetResponse200(GitHubRestModel):
 class UserCodespacesSecretsSecretNamePutBody(GitHubRestModel):
     """UserCodespacesSecretsSecretNamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
+    encrypted_value: Missing[
+        Annotated[
+            str,
+            Field(
+                pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+            ),
+        ]
+    ] = Field(
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
-        regex="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
     )
     key_id: str = Field(
@@ -19266,7 +19288,7 @@ class UserKeysPostBody(GitHubRestModel):
     )
     key: str = Field(
         description="The public SSH key to add to your GitHub account.",
-        regex="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
         default=...,
     )
 
@@ -19446,7 +19468,7 @@ class UserSshSigningKeysPostBody(GitHubRestModel):
     )
     key: str = Field(
         description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
-        regex="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
         default=...,
     )
 
@@ -20126,8 +20148,7 @@ GistsPostBodyPropFiles.update_forward_refs()
 GistsGistIdGetResponse403.update_forward_refs()
 GistsGistIdGetResponse403PropBlock.update_forward_refs()
 GistsGistIdPatchBodyPropFiles.update_forward_refs()
-GistsGistIdPatchBodyAnyof0.update_forward_refs()
-GistsGistIdPatchBodyAnyof1.update_forward_refs()
+GistsGistIdPatchBody.update_forward_refs()
 GistsGistIdCommentsPostBody.update_forward_refs()
 GistsGistIdCommentsCommentIdPatchBody.update_forward_refs()
 GistsGistIdStarGetResponse404.update_forward_refs()
@@ -21170,8 +21191,7 @@ __all__ = [
     "GistsGistIdGetResponse403",
     "GistsGistIdGetResponse403PropBlock",
     "GistsGistIdPatchBodyPropFiles",
-    "GistsGistIdPatchBodyAnyof0",
-    "GistsGistIdPatchBodyAnyof1",
+    "GistsGistIdPatchBody",
     "GistsGistIdCommentsPostBody",
     "GistsGistIdCommentsCommentIdPatchBody",
     "GistsGistIdStarGetResponse404",

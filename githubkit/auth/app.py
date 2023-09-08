@@ -91,13 +91,13 @@ class AppAuth(httpx.Auth):
             raw_path=base_url.raw_path
             + f"app/installations/{self.installation_id}/access_tokens".encode("ascii")
         )
-        body = AppInstallationsInstallationIdAccessTokensPostBody.parse_obj(
+        body = AppInstallationsInstallationIdAccessTokensPostBody.model_validate(
             {
                 "repositories": self.repositories,
                 "repository_ids": self.repository_ids,
                 "permissions": self.permissions,
             }
-        ).dict(by_alias=True)
+        ).model_dump(by_alias=True)
         return httpx.Request(
             "POST",
             url,

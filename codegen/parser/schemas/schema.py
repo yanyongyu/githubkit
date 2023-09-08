@@ -2,6 +2,8 @@ from typing import Any, Set, Dict, List, ClassVar, Optional
 
 from pydantic import Field, BaseModel
 
+DEFAULT_KEYS = ("default", "default_factory", "title", "description", "alias")
+
 
 class SchemaData(BaseModel):
     title: Optional[str] = Field(default=None, exclude=True)
@@ -56,7 +58,14 @@ class Property(BaseModel):
     def get_type_string(self) -> str:
         """Get schema typing string in any place"""
         type_string = self.schema_data.get_type_string()
-        return type_string if self.required else f"Missing[{type_string}]"
+        if self.required:
+            return type_string
+
+        args = self._get_default_args_for_annotated()
+        if not args:
+            return f"Missing[{type_string}]"
+        default = self._get_default_string(args)
+        return f"Missing[Annotated[{type_string}, {default}]]"
 
     def get_param_type_string(self) -> str:
         """Get type string used by client codegen"""
@@ -68,6 +77,7 @@ class Property(BaseModel):
         imports = self.schema_data.get_model_imports()
         imports.add("from pydantic import Field")
         if not self.required:
+            imports.add("from typing import Annotated")
             imports.add("from githubkit.utils import UNSET, Missing")
         return imports
 
@@ -85,15 +95,30 @@ class Property(BaseModel):
             imports.add("from githubkit.utils import UNSET, Missing")
         return imports
 
-    def _get_default_string(self) -> str:
+    def is_annotated(self):
+        return not self.required or isinstance(self.schema_data, UnionSchema)
+
+    def _get_default_string(self, args: Dict[str, str]) -> str:
+        return f"Field({', '.join(f'{k}={v}' for k, v in args.items())})"
+
+    def _get_default_args(self) -> Dict[str, str]:
         args = self.schema_data._get_default_args()
         if "default" not in args and "default_factory" not in args:
             args["default"] = "..." if self.required else "UNSET"
         if self.prop_name != self.name:
             args["alias"] = repr(self.name)
+        return args
 
-        arg_string = [f"{k}={v}" for k, v in args.items()]
-        return f"Field({', '.join(arg_string)})"
+    def _get_default_args_for_annotated(self) -> Dict[str, str]:
+        assert self.is_annotated(), "Only annotated can use this method"
+        args = self._get_default_args()
+        return {k: v for k, v in args.items() if k not in DEFAULT_KEYS}
+
+    def _get_default_args_for_field(self) -> Dict[str, str]:
+        args = self._get_default_args()
+        if not self.is_annotated():
+            return args
+        return {k: v for k, v in args.items() if k in DEFAULT_KEYS}
 
     def get_param_defination(self) -> str:
         """Get defination used by client codegen"""
@@ -109,7 +134,7 @@ class Property(BaseModel):
     def get_model_defination(self) -> str:
         """Get defination used by model codegen"""
         type_ = self.get_type_string()
-        default = self._get_default_string()
+        default = self._get_default_string(self._get_default_args_for_field())
         return f"{self.prop_name}: {type_} = {default}"
 
     def get_type_defination(self) -> str:
@@ -199,7 +224,7 @@ class StringSchema(SchemaData):
         if self.max_length is not None:
             args["max_length"] = str(self.max_length)
         if self.pattern is not None:
-            args["regex"] = repr(self.pattern)
+            args["pattern"] = repr(self.pattern)
         return args
 
 
@@ -232,9 +257,8 @@ class FileSchema(SchemaData):
 
 class ListSchema(SchemaData):
     item_schema: SchemaData
-    min_items: Optional[int] = Field(default=None, ge=0)
-    max_items: Optional[int] = Field(default=None, ge=0)
-    unique_items: Optional[bool] = None
+    min_length: Optional[int] = Field(default=None, ge=0)
+    max_length: Optional[int] = Field(default=None, ge=0)
 
     def get_type_string(self) -> str:
         return f"List[{self.item_schema.get_type_string()}]"
@@ -269,12 +293,55 @@ class ListSchema(SchemaData):
         # See https://github.com/samuelcolvin/pydantic/issues/3745
         if isinstance(self.item_schema, (ModelSchema, UnionSchema)):
             return args
-        if self.max_items is not None:
-            args["max_items"] = repr(self.max_items)
-        if self.min_items is not None:
-            args["min_items"] = repr(self.min_items)
-        if self.unique_items is not None:
-            args["unique_items"] = repr(self.unique_items)
+        if self.max_length is not None:
+            args["max_length"] = repr(self.max_length)
+        if self.min_length is not None:
+            args["min_length"] = repr(self.min_length)
+        return args
+
+
+class UniqueListSchema(SchemaData):
+    item_schema: SchemaData
+    min_length: Optional[int] = Field(default=None, ge=0)
+    max_length: Optional[int] = Field(default=None, ge=0)
+
+    def get_type_string(self) -> str:
+        return f"UniqueList[{self.item_schema.get_type_string()}]"
+
+    def get_param_type_string(self) -> str:
+        return f"UniqueList[{self.item_schema.get_param_type_string()}]"
+
+    def get_model_imports(self) -> Set[str]:
+        imports = super().get_model_imports()
+        imports.add("from githubkit.typing import UniqueList")
+        imports.update(self.item_schema.get_model_imports())
+        return imports
+
+    def get_type_imports(self) -> Set[str]:
+        imports = {"from githubkit.typing import UniqueList"}
+        imports.update(self.item_schema.get_type_imports())
+        return imports
+
+    def get_param_imports(self) -> Set[str]:
+        imports = {"from githubkit.typing import UniqueList"}
+        imports.update(self.item_schema.get_param_imports())
+        return imports
+
+    def get_using_imports(self) -> Set[str]:
+        imports = {"from githubkit.typing import UniqueList"}
+        imports.update(self.item_schema.get_using_imports())
+        return imports
+
+    def _get_default_args(self) -> Dict[str, str]:
+        args = super()._get_default_args()
+        # FIXME: remove list constraints due to forwardref not supported
+        # See https://github.com/samuelcolvin/pydantic/issues/3745
+        if isinstance(self.item_schema, (ModelSchema, UnionSchema)):
+            return args
+        if self.max_length is not None:
+            args["max_length"] = repr(self.max_length)
+        if self.min_length is not None:
+            args["min_length"] = repr(self.min_length)
         return args
 
 

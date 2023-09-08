@@ -11,7 +11,7 @@ See https://github.com/github/rest-api-description for more information.
 from datetime import datetime
 from typing import TYPE_CHECKING, Dict, List, Union, Literal, Optional, overload
 
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel, TypeAdapter
 
 from githubkit.utils import UNSET, Missing, exclude_unset
 
@@ -301,8 +301,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsPermissionsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsPermissionsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -349,8 +349,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsPermissionsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsPermissionsPutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -446,8 +446,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsPermissionsRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsPermissionsRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -493,8 +495,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsPermissionsRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsPermissionsRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -644,8 +648,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(SelectedActions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(SelectedActions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -693,8 +697,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(SelectedActions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(SelectedActions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -775,8 +779,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ActionsSetDefaultWorkflowPermissions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -823,8 +827,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ActionsSetDefaultWorkflowPermissions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -836,6 +840,7 @@ class ActionsClient:
     def list_self_hosted_runners_for_org(
         self,
         org: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -844,6 +849,7 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }
@@ -861,6 +867,7 @@ class ActionsClient:
     async def async_list_self_hosted_runners_for_org(
         self,
         org: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -869,6 +876,7 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }
@@ -957,8 +965,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnersGenerateJitconfigPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsRunnersGenerateJitconfigPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1012,8 +1022,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnersGenerateJitconfigPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsRunnersGenerateJitconfigPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1247,8 +1259,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsRunnersRunnerIdLabelsPutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1302,8 +1316,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsRunnersRunnerIdLabelsPutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1357,8 +1373,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsRunnersRunnerIdLabelsPostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -1412,8 +1430,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsRunnersRunnerIdLabelsPostBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -1678,8 +1698,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsSecretsSecretNamePutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1732,8 +1752,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsSecretsSecretNamePutBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -1869,8 +1889,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -1919,8 +1941,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -2095,8 +2119,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsVariablesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsVariablesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -2146,8 +2170,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsVariablesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsVariablesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -2269,8 +2293,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsVariablesNamePatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsVariablesNamePatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -2321,8 +2345,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsVariablesNamePatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(OrgsOrgActionsVariablesNamePatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -2425,8 +2449,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsVariablesNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsVariablesNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -2476,8 +2502,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(OrgsOrgActionsVariablesNameRepositoriesPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            OrgsOrgActionsVariablesNameRepositoriesPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3054,10 +3082,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -3117,10 +3145,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -3218,8 +3246,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsOidcCustomizationSubPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsOidcCustomizationSubPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3275,8 +3305,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsOidcCustomizationSubPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsOidcCustomizationSubPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3472,8 +3504,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsPermissionsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoActionsPermissionsPutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3523,8 +3557,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsPermissionsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoActionsPermissionsPutBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3609,8 +3645,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsWorkflowAccessToRepository, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ActionsWorkflowAccessToRepository).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3659,8 +3695,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsWorkflowAccessToRepository, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ActionsWorkflowAccessToRepository).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3747,8 +3783,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(SelectedActions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(SelectedActions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3799,8 +3835,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(SelectedActions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(SelectedActions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3886,8 +3922,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ActionsSetDefaultWorkflowPermissions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -3938,8 +3974,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ActionsSetDefaultWorkflowPermissions, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ActionsSetDefaultWorkflowPermissions).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -3953,6 +3989,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -3961,6 +3998,7 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }
@@ -3979,6 +4017,7 @@ class ActionsClient:
         self,
         owner: str,
         repo: str,
+        name: Missing[str] = UNSET,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
         *,
@@ -3987,6 +4026,7 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runners"
 
         params = {
+            "name": name,
             "per_page": per_page,
             "page": page,
         }
@@ -4082,8 +4122,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4142,8 +4184,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4390,8 +4434,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -4448,8 +4494,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -4506,8 +4554,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -4564,8 +4614,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -4966,6 +5018,7 @@ class ActionsClient:
         run_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        name: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]":
@@ -4974,6 +5027,7 @@ class ActionsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "name": name,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -4993,6 +5047,7 @@ class ActionsClient:
         run_id: int,
         per_page: Missing[int] = 30,
         page: Missing[int] = 1,
+        name: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]":
@@ -5001,6 +5056,7 @@ class ActionsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "name": name,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -5274,11 +5330,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5352,11 +5407,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired],
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5588,10 +5642,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5648,10 +5702,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5708,10 +5762,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5768,10 +5822,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -5828,10 +5882,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -5888,10 +5942,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None]
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -6109,8 +6163,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsSecretsSecretNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -6164,8 +6220,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsSecretsSecretNamePutBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsSecretsSecretNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -6304,8 +6362,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsVariablesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoActionsVariablesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -6356,8 +6414,8 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsVariablesPostBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoActionsVariablesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -6484,8 +6542,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsVariablesNamePatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoActionsVariablesNamePatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -6537,8 +6597,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(ReposOwnerRepoActionsVariablesNamePatchBody, json)
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(ReposOwnerRepoActionsVariablesNamePatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",
@@ -6721,10 +6783,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -6781,10 +6843,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -7159,11 +7221,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PUT",
@@ -7219,11 +7280,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PUT",
@@ -7364,10 +7424,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "POST",
@@ -7420,10 +7480,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody, json
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "POST",
@@ -7552,11 +7612,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
             "PATCH",
@@ -7610,11 +7669,10 @@ class ActionsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = parse_obj_as(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
-            json,
-        )
-        json = json.dict(by_alias=True) if isinstance(json, BaseModel) else json
+        json = TypeAdapter(
+            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
             "PATCH",

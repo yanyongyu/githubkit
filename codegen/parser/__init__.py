@@ -57,7 +57,7 @@ def parse_openapi_spec(source: Source, rest: RestConfig, config: Config) -> Open
     _st = _schemas.set({})
 
     try:
-        openapi = OpenAPI.parse_obj(source.root)
+        openapi = OpenAPI.model_validate(source.root)
 
         # cache /components/schemas first
         if openapi.components and openapi.components.schemas:
