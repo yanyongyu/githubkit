@@ -798,6 +798,159 @@ class AuthorizationPropAppType(TypedDict):
     url: str
 
 
+class SimpleClassroomRepositoryType(TypedDict):
+    """Simple Classroom Repository
+
+    A GitHub repository view for Classroom
+    """
+
+    id: int
+    full_name: str
+    html_url: str
+    node_id: str
+    private: bool
+    default_branch: str
+
+
+class SimpleClassroomOrganizationType(TypedDict):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int
+    login: str
+    node_id: str
+    html_url: str
+    name: Union[str, None]
+    avatar_url: str
+
+
+class ClassroomType(TypedDict):
+    """Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    organization: SimpleClassroomOrganizationType
+    url: str
+
+
+class ClassroomAssignmentType(TypedDict):
+    """Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int
+    public_repo: bool
+    title: str
+    type: Literal["individual", "group"]
+    invite_link: str
+    invitations_enabled: bool
+    slug: str
+    students_are_repo_admins: bool
+    feedback_pull_requests_enabled: bool
+    max_teams: Union[int, None]
+    max_members: Union[int, None]
+    editor: str
+    accepted: int
+    submitted: int
+    passing: int
+    language: str
+    deadline: Union[datetime, None]
+    starter_code_repository: SimpleClassroomRepositoryType
+    classroom: ClassroomType
+
+
+class SimpleClassroomUserType(TypedDict):
+    """Simple Classroom User
+
+    A GitHub user simplified for Classroom.
+    """
+
+    id: int
+    login: str
+    avatar_url: str
+    html_url: str
+
+
+class SimpleClassroomType(TypedDict):
+    """Simple Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    url: str
+
+
+class SimpleClassroomAssignmentType(TypedDict):
+    """Simple Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int
+    public_repo: bool
+    title: str
+    type: Literal["individual", "group"]
+    invite_link: str
+    invitations_enabled: bool
+    slug: str
+    students_are_repo_admins: bool
+    feedback_pull_requests_enabled: bool
+    max_teams: NotRequired[Union[int, None]]
+    max_members: NotRequired[Union[int, None]]
+    editor: str
+    accepted: int
+    submitted: int
+    passing: int
+    language: str
+    deadline: Union[datetime, None]
+    classroom: SimpleClassroomType
+
+
+class ClassroomAcceptedAssignmentType(TypedDict):
+    """Classroom Accepted Assignment
+
+    A GitHub Classroom accepted assignment
+    """
+
+    id: int
+    submitted: bool
+    passing: bool
+    commit_count: int
+    grade: str
+    students: List[SimpleClassroomUserType]
+    repository: SimpleClassroomRepositoryType
+    assignment: SimpleClassroomAssignmentType
+
+
+class ClassroomAssignmentGradeType(TypedDict):
+    """Classroom Assignment Grade
+
+    Grade for a student or groups GitHub Classroom assignment
+    """
+
+    assignment_name: str
+    assignment_url: str
+    starter_code_url: str
+    github_username: str
+    roster_identifier: str
+    student_repository_name: str
+    student_repository_url: str
+    submission_timestamp: str
+    points_awarded: int
+    points_available: int
+    group_name: NotRequired[str]
+
+
 class CodeOfConductType(TypedDict):
     """Code Of Conduct
 
@@ -9503,12 +9656,320 @@ class KeySimpleType(TypedDict):
 class SimpleInstallationType(TypedDict):
     """Simple Installation
 
-    The GitHub App installation. This property is included when the event is
-    configured for and sent to a GitHub App.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
     id: int
     node_id: str
+
+
+class OrganizationSimpleWebhooksType(TypedDict):
+    """Organization Simple
+
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
+    """
+
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+
+
+class RepositoryWebhooksType(TypedDict):
+    """Repository
+
+    The repository on GitHub where the event occurred. Webhook payloads contain the
+    `repository` property
+    when the event occurs from activity in a repository.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    license_: Union[None, LicenseSimpleType]
+    organization: NotRequired[Union[None, SimpleUserType]]
+    forks: int
+    permissions: NotRequired[RepositoryWebhooksPropPermissionsType]
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[List[str]]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: Union[datetime, None]
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    allow_rebase_merge: NotRequired[bool]
+    template_repository: NotRequired[
+        Union[RepositoryWebhooksPropTemplateRepositoryType, None]
+    ]
+    temp_clone_token: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    open_issues: int
+    watchers: int
+    master_branch: NotRequired[str]
+    starred_at: NotRequired[str]
+    anonymous_access_enabled: NotRequired[bool]
+
+
+class RepositoryWebhooksPropPermissionsType(TypedDict):
+    """RepositoryWebhooksPropPermissions"""
+
+    admin: bool
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropOwnerType(TypedDict):
+    """RepositoryWebhooksPropTemplateRepositoryPropOwner"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropPermissionsType(TypedDict):
+    """RepositoryWebhooksPropTemplateRepositoryPropPermissions"""
+
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
+
+
+class RepositoryWebhooksPropTemplateRepositoryType(TypedDict):
+    """RepositoryWebhooksPropTemplateRepository"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+    owner: NotRequired[RepositoryWebhooksPropTemplateRepositoryPropOwnerType]
+    private: NotRequired[bool]
+    html_url: NotRequired[str]
+    description: NotRequired[str]
+    fork: NotRequired[bool]
+    url: NotRequired[str]
+    archive_url: NotRequired[str]
+    assignees_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    contributors_url: NotRequired[str]
+    deployments_url: NotRequired[str]
+    downloads_url: NotRequired[str]
+    events_url: NotRequired[str]
+    forks_url: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_url: NotRequired[str]
+    issue_comment_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    languages_url: NotRequired[str]
+    merges_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    notifications_url: NotRequired[str]
+    pulls_url: NotRequired[str]
+    releases_url: NotRequired[str]
+    ssh_url: NotRequired[str]
+    stargazers_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    trees_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    homepage: NotRequired[str]
+    language: NotRequired[str]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[List[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    permissions: NotRequired[
+        RepositoryWebhooksPropTemplateRepositoryPropPermissionsType
+    ]
+    allow_rebase_merge: NotRequired[bool]
+    temp_clone_token: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+
+
+class SimpleUserWebhooksType(TypedDict):
+    """Simple User
+
+    The GitHub user that triggered the event. This property is included in every
+    webhook payload.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
 
 
 class SimpleCheckSuiteType(TypedDict):
@@ -12127,7 +12588,7 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
     target_url: NotRequired[str]
     log_url: NotRequired[str]
     description: NotRequired[str]
-    environment: NotRequired[Literal["production", "staging", "qa"]]
+    environment: NotRequired[str]
     environment_url: NotRequired[str]
     auto_inactive: NotRequired[bool]
 
@@ -12193,7 +12654,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetRespo
     """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
     Examples:
-        ../../components/examples/deployment_protection_rules.yaml
+        {'$ref': '#/components/examples/deployment-protection-rules'}
     """
 
     total_count: NotRequired[int]
@@ -13586,6 +14047,15 @@ __all__ = [
     "ScopedInstallationType",
     "AuthorizationType",
     "AuthorizationPropAppType",
+    "SimpleClassroomRepositoryType",
+    "SimpleClassroomOrganizationType",
+    "ClassroomType",
+    "ClassroomAssignmentType",
+    "SimpleClassroomUserType",
+    "SimpleClassroomType",
+    "SimpleClassroomAssignmentType",
+    "ClassroomAcceptedAssignmentType",
+    "ClassroomAssignmentGradeType",
     "CodeOfConductType",
     "DependabotAlertPackageType",
     "DependabotAlertSecurityVulnerabilityType",
@@ -14180,6 +14650,13 @@ __all__ = [
     "HovercardPropContextsItemsType",
     "KeySimpleType",
     "SimpleInstallationType",
+    "OrganizationSimpleWebhooksType",
+    "RepositoryWebhooksType",
+    "RepositoryWebhooksPropPermissionsType",
+    "RepositoryWebhooksPropTemplateRepositoryPropOwnerType",
+    "RepositoryWebhooksPropTemplateRepositoryPropPermissionsType",
+    "RepositoryWebhooksPropTemplateRepositoryType",
+    "SimpleUserWebhooksType",
     "SimpleCheckSuiteType",
     "CheckRunWithSimpleCheckSuiteType",
     "CheckRunWithSimpleCheckSuitePropOutputType",

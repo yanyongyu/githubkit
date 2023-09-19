@@ -3658,7 +3658,7 @@ class AutoMerge(GitHubWebhookModel):
     The status of auto merging a pull request.
     """
 
-    enabled_by: User = Field(title="User", default=...)
+    enabled_by: Union[User, None] = Field(title="User", default=...)
     merge_method: Literal["merge", "squash", "rebase"] = Field(
         description="The merge method to use.", default=...
     )

@@ -6884,7 +6884,7 @@ class ReposClient:
         target_url: Missing[str] = "",
         log_url: Missing[str] = "",
         description: Missing[str] = "",
-        environment: Missing[Literal["production", "staging", "qa"]] = UNSET,
+        environment: Missing[str] = UNSET,
         environment_url: Missing[str] = "",
         auto_inactive: Missing[bool] = UNSET,
     ) -> "Response[DeploymentStatus]":
@@ -6959,7 +6959,7 @@ class ReposClient:
         target_url: Missing[str] = "",
         log_url: Missing[str] = "",
         description: Missing[str] = "",
-        environment: Missing[Literal["production", "staging", "qa"]] = UNSET,
+        environment: Missing[str] = UNSET,
         environment_url: Missing[str] = "",
         auto_inactive: Missing[bool] = UNSET,
     ) -> "Response[DeploymentStatus]":

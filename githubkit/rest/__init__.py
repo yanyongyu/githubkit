@@ -33,6 +33,7 @@ from .licenses import LicensesClient
 from .markdown import MarkdownClient
 from .packages import PackagesClient
 from .projects import ProjectsClient
+from .classroom import ClassroomClient
 from .gitignore import GitignoreClient
 from .reactions import ReactionsClient
 from .rate_limit import RateLimitClient
@@ -65,6 +66,10 @@ class RestNamespace:
     @cached_property
     def apps(self) -> AppsClient:
         return AppsClient(self._github)
+
+    @cached_property
+    def classroom(self) -> ClassroomClient:
+        return ClassroomClient(self._github)
 
     @cached_property
     def codes_of_conduct(self) -> CodesOfConductClient:

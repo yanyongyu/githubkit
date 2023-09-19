@@ -1182,6 +1182,290 @@ class AuthorizationPropApp(GitHubRestModel):
     url: str = Field(default=...)
 
 
+class SimpleClassroomRepository(GitHubRestModel):
+    """Simple Classroom Repository
+
+    A GitHub repository view for Classroom
+    """
+
+    id: int = Field(description="A unique identifier of the repository.", default=...)
+    full_name: str = Field(
+        description="The full, globally unique name of the repository.", default=...
+    )
+    html_url: str = Field(
+        description="The URL to view the repository on GitHub.com.", default=...
+    )
+    node_id: str = Field(
+        description="The GraphQL identifier of the repository.", default=...
+    )
+    private: bool = Field(description="Whether the repository is private.", default=...)
+    default_branch: str = Field(
+        description="The default branch for the repository.", default=...
+    )
+
+
+class SimpleClassroomOrganization(GitHubRestModel):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int = Field(default=...)
+    login: str = Field(default=...)
+    node_id: str = Field(default=...)
+    html_url: str = Field(default=...)
+    name: Union[str, None] = Field(default=...)
+    avatar_url: str = Field(default=...)
+
+
+class Classroom(GitHubRestModel):
+    """Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int = Field(description="Unique identifier of the classroom.", default=...)
+    name: str = Field(description="The name of the classroom.", default=...)
+    archived: bool = Field(description="Whether classroom is archived.", default=...)
+    organization: SimpleClassroomOrganization = Field(
+        title="Organization Simple for Classroom",
+        description="A GitHub organization.",
+        default=...,
+    )
+    url: str = Field(
+        description="The URL of the classroom on GitHub Classroom.", default=...
+    )
+
+
+class ClassroomAssignment(GitHubRestModel):
+    """Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int = Field(description="Unique identifier of the repository.", default=...)
+    public_repo: bool = Field(
+        description="Whether an accepted assignment creates a public repository.",
+        default=...,
+    )
+    title: str = Field(description="Assignment title.", default=...)
+    type: Literal["individual", "group"] = Field(
+        description="Whether it's a group assignment or individual assignment.",
+        default=...,
+    )
+    invite_link: str = Field(
+        description="The link that a student can use to accept the assignment.",
+        default=...,
+    )
+    invitations_enabled: bool = Field(
+        description="Whether the invitation link is enabled. Visiting an enabled invitation link will accept the assignment.",
+        default=...,
+    )
+    slug: str = Field(description="Sluggified name of the assignment.", default=...)
+    students_are_repo_admins: bool = Field(
+        description="Whether students are admins on created repository when a student accepts the assignment.",
+        default=...,
+    )
+    feedback_pull_requests_enabled: bool = Field(
+        description="Whether feedback pull request will be created when a student accepts the assignment.",
+        default=...,
+    )
+    max_teams: Union[int, None] = Field(
+        description="The maximum allowable teams for the assignment.", default=...
+    )
+    max_members: Union[int, None] = Field(
+        description="The maximum allowable members per team.", default=...
+    )
+    editor: str = Field(
+        description="The selected editor for the assignment.", default=...
+    )
+    accepted: int = Field(
+        description="The number of students that have accepted the assignment.",
+        default=...,
+    )
+    submitted: int = Field(
+        description="The number of students that have submitted the assignment.",
+        default=...,
+    )
+    passing: int = Field(
+        description="The number of students that have passed the assignment.",
+        default=...,
+    )
+    language: str = Field(
+        description="The programming language used in the assignment.", default=...
+    )
+    deadline: Union[datetime, None] = Field(
+        description="The time at which the assignment is due.", default=...
+    )
+    starter_code_repository: SimpleClassroomRepository = Field(
+        title="Simple Classroom Repository",
+        description="A GitHub repository view for Classroom",
+        default=...,
+    )
+    classroom: Classroom = Field(
+        title="Classroom", description="A GitHub Classroom classroom", default=...
+    )
+
+
+class SimpleClassroomUser(GitHubRestModel):
+    """Simple Classroom User
+
+    A GitHub user simplified for Classroom.
+    """
+
+    id: int = Field(default=...)
+    login: str = Field(default=...)
+    avatar_url: str = Field(default=...)
+    html_url: str = Field(default=...)
+
+
+class SimpleClassroom(GitHubRestModel):
+    """Simple Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int = Field(description="Unique identifier of the classroom.", default=...)
+    name: str = Field(description="The name of the classroom.", default=...)
+    archived: bool = Field(
+        description="Returns whether classroom is archived or not.", default=...
+    )
+    url: str = Field(
+        description="The url of the classroom on GitHub Classroom.", default=...
+    )
+
+
+class SimpleClassroomAssignment(GitHubRestModel):
+    """Simple Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int = Field(description="Unique identifier of the repository.", default=...)
+    public_repo: bool = Field(
+        description="Whether an accepted assignment creates a public repository.",
+        default=...,
+    )
+    title: str = Field(description="Assignment title.", default=...)
+    type: Literal["individual", "group"] = Field(
+        description="Whether it's a Group Assignment or Individual Assignment.",
+        default=...,
+    )
+    invite_link: str = Field(
+        description="The link that a student can use to accept the assignment.",
+        default=...,
+    )
+    invitations_enabled: bool = Field(
+        description="Whether the invitation link is enabled. Visiting an enabled invitation link will accept the assignment.",
+        default=...,
+    )
+    slug: str = Field(description="Sluggified name of the assignment.", default=...)
+    students_are_repo_admins: bool = Field(
+        description="Whether students are admins on created repository on accepted assignment.",
+        default=...,
+    )
+    feedback_pull_requests_enabled: bool = Field(
+        description="Whether feedback pull request will be created on assignment acceptance.",
+        default=...,
+    )
+    max_teams: Missing[Union[int, None]] = Field(
+        description="The maximum allowable teams for the assignment.", default=UNSET
+    )
+    max_members: Missing[Union[int, None]] = Field(
+        description="The maximum allowable members per team.", default=UNSET
+    )
+    editor: str = Field(
+        description="The selected editor for the assignment.", default=...
+    )
+    accepted: int = Field(
+        description="The number of students that have accepted the assignment.",
+        default=...,
+    )
+    submitted: int = Field(
+        description="The number of students that have submitted the assignment.",
+        default=...,
+    )
+    passing: int = Field(
+        description="The number of students that have passed the assignment.",
+        default=...,
+    )
+    language: str = Field(
+        description="The programming language used in the assignment.", default=...
+    )
+    deadline: Union[datetime, None] = Field(
+        description="The time at which the assignment is due.", default=...
+    )
+    classroom: SimpleClassroom = Field(
+        title="Simple Classroom",
+        description="A GitHub Classroom classroom",
+        default=...,
+    )
+
+
+class ClassroomAcceptedAssignment(GitHubRestModel):
+    """Classroom Accepted Assignment
+
+    A GitHub Classroom accepted assignment
+    """
+
+    id: int = Field(description="Unique identifier of the repository.", default=...)
+    submitted: bool = Field(
+        description="Whether an accepted assignment has been submitted.", default=...
+    )
+    passing: bool = Field(description="Whether a submission passed.", default=...)
+    commit_count: int = Field(description="Count of student commits.", default=...)
+    grade: str = Field(description="Most recent grade.", default=...)
+    students: List[SimpleClassroomUser] = Field(default=...)
+    repository: SimpleClassroomRepository = Field(
+        title="Simple Classroom Repository",
+        description="A GitHub repository view for Classroom",
+        default=...,
+    )
+    assignment: SimpleClassroomAssignment = Field(
+        title="Simple Classroom Assignment",
+        description="A GitHub Classroom assignment",
+        default=...,
+    )
+
+
+class ClassroomAssignmentGrade(GitHubRestModel):
+    """Classroom Assignment Grade
+
+    Grade for a student or groups GitHub Classroom assignment
+    """
+
+    assignment_name: str = Field(description="Name of the assignment", default=...)
+    assignment_url: str = Field(description="URL of the assignment", default=...)
+    starter_code_url: str = Field(
+        description="URL of the starter code for the assignment", default=...
+    )
+    github_username: str = Field(
+        description="GitHub username of the student", default=...
+    )
+    roster_identifier: str = Field(
+        description="Roster identifier of the student", default=...
+    )
+    student_repository_name: str = Field(
+        description="Name of the student's assignment repository", default=...
+    )
+    student_repository_url: str = Field(
+        description="URL of the student's assignment repository", default=...
+    )
+    submission_timestamp: str = Field(
+        description="Timestamp of the student's assignment submission", default=...
+    )
+    points_awarded: int = Field(
+        description="Number of points awarded to the student", default=...
+    )
+    points_available: int = Field(
+        description="Number of points available for the assignment", default=...
+    )
+    group_name: Missing[str] = Field(
+        description="If a group assignment, name of the group the student is in",
+        default=UNSET,
+    )
+
+
 class CodeOfConduct(GitHubRestModel):
     """Code Of Conduct
 
@@ -13021,14 +13305,410 @@ class KeySimple(GitHubRestModel):
 class SimpleInstallation(GitHubRestModel):
     """Simple Installation
 
-    The GitHub App installation. This property is included when the event is
-    configured for and sent to a GitHub App.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
     id: int = Field(description="The ID of the installation.", default=...)
     node_id: str = Field(
         description="The global node ID of the installation.", default=...
     )
+
+
+class OrganizationSimpleWebhooks(GitHubRestModel):
+    """Organization Simple
+
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
+    """
+
+    login: str = Field(default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    url: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    hooks_url: str = Field(default=...)
+    issues_url: str = Field(default=...)
+    members_url: str = Field(default=...)
+    public_members_url: str = Field(default=...)
+    avatar_url: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+
+
+class RepositoryWebhooks(GitHubRestModel):
+    """Repository
+
+    The repository on GitHub where the event occurred. Webhook payloads contain the
+    `repository` property
+    when the event occurs from activity in a repository.
+    """
+
+    id: int = Field(description="Unique identifier of the repository", default=...)
+    node_id: str = Field(default=...)
+    name: str = Field(description="The name of the repository.", default=...)
+    full_name: str = Field(default=...)
+    license_: Union[None, LicenseSimple] = Field(
+        title="License Simple",
+        description="License Simple",
+        default=...,
+        alias="license",
+    )
+    organization: Missing[Union[None, SimpleUser]] = Field(
+        title="Simple User", description="A GitHub user.", default=UNSET
+    )
+    forks: int = Field(default=...)
+    permissions: Missing[RepositoryWebhooksPropPermissions] = Field(default=UNSET)
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    private: bool = Field(
+        description="Whether the repository is private or public.", default=False
+    )
+    html_url: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    fork: bool = Field(default=...)
+    url: str = Field(default=...)
+    archive_url: str = Field(default=...)
+    assignees_url: str = Field(default=...)
+    blobs_url: str = Field(default=...)
+    branches_url: str = Field(default=...)
+    collaborators_url: str = Field(default=...)
+    comments_url: str = Field(default=...)
+    commits_url: str = Field(default=...)
+    compare_url: str = Field(default=...)
+    contents_url: str = Field(default=...)
+    contributors_url: str = Field(default=...)
+    deployments_url: str = Field(default=...)
+    downloads_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    forks_url: str = Field(default=...)
+    git_commits_url: str = Field(default=...)
+    git_refs_url: str = Field(default=...)
+    git_tags_url: str = Field(default=...)
+    git_url: str = Field(default=...)
+    issue_comment_url: str = Field(default=...)
+    issue_events_url: str = Field(default=...)
+    issues_url: str = Field(default=...)
+    keys_url: str = Field(default=...)
+    labels_url: str = Field(default=...)
+    languages_url: str = Field(default=...)
+    merges_url: str = Field(default=...)
+    milestones_url: str = Field(default=...)
+    notifications_url: str = Field(default=...)
+    pulls_url: str = Field(default=...)
+    releases_url: str = Field(default=...)
+    ssh_url: str = Field(default=...)
+    stargazers_url: str = Field(default=...)
+    statuses_url: str = Field(default=...)
+    subscribers_url: str = Field(default=...)
+    subscription_url: str = Field(default=...)
+    tags_url: str = Field(default=...)
+    teams_url: str = Field(default=...)
+    trees_url: str = Field(default=...)
+    clone_url: str = Field(default=...)
+    mirror_url: Union[str, None] = Field(default=...)
+    hooks_url: str = Field(default=...)
+    svn_url: str = Field(default=...)
+    homepage: Union[str, None] = Field(default=...)
+    language: Union[str, None] = Field(default=...)
+    forks_count: int = Field(default=...)
+    stargazers_count: int = Field(default=...)
+    watchers_count: int = Field(default=...)
+    size: int = Field(
+        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        default=...,
+    )
+    default_branch: str = Field(
+        description="The default branch of the repository.", default=...
+    )
+    open_issues_count: int = Field(default=...)
+    is_template: Missing[bool] = Field(
+        description="Whether this repository acts as a template that can be used to generate new repositories.",
+        default=False,
+    )
+    topics: Missing[List[str]] = Field(default=UNSET)
+    has_issues: bool = Field(description="Whether issues are enabled.", default=True)
+    has_projects: bool = Field(
+        description="Whether projects are enabled.", default=True
+    )
+    has_wiki: bool = Field(description="Whether the wiki is enabled.", default=True)
+    has_pages: bool = Field(default=...)
+    has_downloads: bool = Field(
+        description="Whether downloads are enabled.", default=True
+    )
+    has_discussions: Missing[bool] = Field(
+        description="Whether discussions are enabled.", default=False
+    )
+    archived: bool = Field(
+        description="Whether the repository is archived.", default=False
+    )
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled.", default=...
+    )
+    visibility: Missing[str] = Field(
+        description="The repository visibility: public, private, or internal.",
+        default="public",
+    )
+    pushed_at: Union[datetime, None] = Field(default=...)
+    created_at: Union[datetime, None] = Field(default=...)
+    updated_at: Union[datetime, None] = Field(default=...)
+    allow_rebase_merge: Missing[bool] = Field(
+        description="Whether to allow rebase merges for pull requests.", default=True
+    )
+    template_repository: Missing[
+        Union[RepositoryWebhooksPropTemplateRepository, None]
+    ] = Field(default=UNSET)
+    temp_clone_token: Missing[str] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(
+        description="Whether to allow squash merges for pull requests.", default=True
+    )
+    allow_auto_merge: Missing[bool] = Field(
+        description="Whether to allow Auto-merge to be used on pull requests.",
+        default=False,
+    )
+    delete_branch_on_merge: Missing[bool] = Field(
+        description="Whether to delete head branches when pull requests are merged",
+        default=False,
+    )
+    allow_update_branch: Missing[bool] = Field(
+        description="Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging.",
+        default=False,
+    )
+    use_squash_pr_title_as_default: Missing[bool] = Field(
+        description="Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.",
+        default=False,
+    )
+    squash_merge_commit_title: Missing[
+        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        description="Whether to allow merge commits for pull requests.", default=True
+    )
+    allow_forking: Missing[bool] = Field(
+        description="Whether to allow forking this repo", default=UNSET
+    )
+    web_commit_signoff_required: Missing[bool] = Field(
+        description="Whether to require contributors to sign off on web-based commits",
+        default=False,
+    )
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+    open_issues: int = Field(default=...)
+    watchers: int = Field(default=...)
+    master_branch: Missing[str] = Field(default=UNSET)
+    starred_at: Missing[str] = Field(default=UNSET)
+    anonymous_access_enabled: Missing[bool] = Field(
+        description="Whether anonymous git access is enabled for this repository",
+        default=UNSET,
+    )
+
+
+class RepositoryWebhooksPropPermissions(GitHubRestModel):
+    """RepositoryWebhooksPropPermissions"""
+
+    admin: bool = Field(default=...)
+    pull: bool = Field(default=...)
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field(default=...)
+    maintain: Missing[bool] = Field(default=UNSET)
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropOwner(GitHubRestModel):
+    """RepositoryWebhooksPropTemplateRepositoryPropOwner"""
+
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropPermissions(GitHubRestModel):
+    """RepositoryWebhooksPropTemplateRepositoryPropPermissions"""
+
+    admin: Missing[bool] = Field(default=UNSET)
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: Missing[bool] = Field(default=UNSET)
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: Missing[bool] = Field(default=UNSET)
+
+
+class RepositoryWebhooksPropTemplateRepository(GitHubRestModel):
+    """RepositoryWebhooksPropTemplateRepository"""
+
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    full_name: Missing[str] = Field(default=UNSET)
+    owner: Missing[RepositoryWebhooksPropTemplateRepositoryPropOwner] = Field(
+        default=UNSET
+    )
+    private: Missing[bool] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    fork: Missing[bool] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    archive_url: Missing[str] = Field(default=UNSET)
+    assignees_url: Missing[str] = Field(default=UNSET)
+    blobs_url: Missing[str] = Field(default=UNSET)
+    branches_url: Missing[str] = Field(default=UNSET)
+    collaborators_url: Missing[str] = Field(default=UNSET)
+    comments_url: Missing[str] = Field(default=UNSET)
+    commits_url: Missing[str] = Field(default=UNSET)
+    compare_url: Missing[str] = Field(default=UNSET)
+    contents_url: Missing[str] = Field(default=UNSET)
+    contributors_url: Missing[str] = Field(default=UNSET)
+    deployments_url: Missing[str] = Field(default=UNSET)
+    downloads_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    forks_url: Missing[str] = Field(default=UNSET)
+    git_commits_url: Missing[str] = Field(default=UNSET)
+    git_refs_url: Missing[str] = Field(default=UNSET)
+    git_tags_url: Missing[str] = Field(default=UNSET)
+    git_url: Missing[str] = Field(default=UNSET)
+    issue_comment_url: Missing[str] = Field(default=UNSET)
+    issue_events_url: Missing[str] = Field(default=UNSET)
+    issues_url: Missing[str] = Field(default=UNSET)
+    keys_url: Missing[str] = Field(default=UNSET)
+    labels_url: Missing[str] = Field(default=UNSET)
+    languages_url: Missing[str] = Field(default=UNSET)
+    merges_url: Missing[str] = Field(default=UNSET)
+    milestones_url: Missing[str] = Field(default=UNSET)
+    notifications_url: Missing[str] = Field(default=UNSET)
+    pulls_url: Missing[str] = Field(default=UNSET)
+    releases_url: Missing[str] = Field(default=UNSET)
+    ssh_url: Missing[str] = Field(default=UNSET)
+    stargazers_url: Missing[str] = Field(default=UNSET)
+    statuses_url: Missing[str] = Field(default=UNSET)
+    subscribers_url: Missing[str] = Field(default=UNSET)
+    subscription_url: Missing[str] = Field(default=UNSET)
+    tags_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+    trees_url: Missing[str] = Field(default=UNSET)
+    clone_url: Missing[str] = Field(default=UNSET)
+    mirror_url: Missing[str] = Field(default=UNSET)
+    hooks_url: Missing[str] = Field(default=UNSET)
+    svn_url: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    language: Missing[str] = Field(default=UNSET)
+    forks_count: Missing[int] = Field(default=UNSET)
+    stargazers_count: Missing[int] = Field(default=UNSET)
+    watchers_count: Missing[int] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    default_branch: Missing[str] = Field(default=UNSET)
+    open_issues_count: Missing[int] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[List[str]] = Field(default=UNSET)
+    has_issues: Missing[bool] = Field(default=UNSET)
+    has_projects: Missing[bool] = Field(default=UNSET)
+    has_wiki: Missing[bool] = Field(default=UNSET)
+    has_pages: Missing[bool] = Field(default=UNSET)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    archived: Missing[bool] = Field(default=UNSET)
+    disabled: Missing[bool] = Field(default=UNSET)
+    visibility: Missing[str] = Field(default=UNSET)
+    pushed_at: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    permissions: Missing[
+        RepositoryWebhooksPropTemplateRepositoryPropPermissions
+    ] = Field(default=UNSET)
+    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
+    temp_clone_token: Missing[str] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(default=UNSET)
+    allow_auto_merge: Missing[bool] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: Missing[bool] = Field(default=UNSET)
+    squash_merge_commit_title: Missing[
+        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    allow_merge_commit: Missing[bool] = Field(default=UNSET)
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+
+
+class SimpleUserWebhooks(GitHubRestModel):
+    """Simple User
+
+    The GitHub user that triggered the event. This property is included in every
+    webhook payload.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field(default=...)
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    avatar_url: str = Field(default=...)
+    gravatar_id: Union[str, None] = Field(default=...)
+    url: str = Field(default=...)
+    html_url: str = Field(default=...)
+    followers_url: str = Field(default=...)
+    following_url: str = Field(default=...)
+    gists_url: str = Field(default=...)
+    starred_url: str = Field(default=...)
+    subscriptions_url: str = Field(default=...)
+    organizations_url: str = Field(default=...)
+    repos_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    received_events_url: str = Field(default=...)
+    type: str = Field(default=...)
+    site_admin: bool = Field(default=...)
+    starred_at: Missing[str] = Field(default=UNSET)
 
 
 class SimpleCheckSuite(GitHubRestModel):
@@ -17099,8 +17779,8 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubRestModel):
         description="A short description of the status. The maximum description length is 140 characters.",
         default="",
     )
-    environment: Missing[Literal["production", "staging", "qa"]] = Field(
-        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`.",
+    environment: Missing[str] = Field(
+        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
         default=UNSET,
     )
     environment_url: Missing[str] = Field(
@@ -17203,7 +17883,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetRespo
     """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
     Examples:
-        ../../components/examples/deployment_protection_rules.yaml
+        {'$ref': '#/components/examples/deployment-protection-rules'}
     """
 
     total_count: Missing[int] = Field(
@@ -19511,6 +20191,15 @@ InstallationToken.update_forward_refs()
 ScopedInstallation.update_forward_refs()
 Authorization.update_forward_refs()
 AuthorizationPropApp.update_forward_refs()
+SimpleClassroomRepository.update_forward_refs()
+SimpleClassroomOrganization.update_forward_refs()
+Classroom.update_forward_refs()
+ClassroomAssignment.update_forward_refs()
+SimpleClassroomUser.update_forward_refs()
+SimpleClassroom.update_forward_refs()
+SimpleClassroomAssignment.update_forward_refs()
+ClassroomAcceptedAssignment.update_forward_refs()
+ClassroomAssignmentGrade.update_forward_refs()
 CodeOfConduct.update_forward_refs()
 DependabotAlertPackage.update_forward_refs()
 DependabotAlertSecurityVulnerability.update_forward_refs()
@@ -20105,6 +20794,13 @@ Hovercard.update_forward_refs()
 HovercardPropContextsItems.update_forward_refs()
 KeySimple.update_forward_refs()
 SimpleInstallation.update_forward_refs()
+OrganizationSimpleWebhooks.update_forward_refs()
+RepositoryWebhooks.update_forward_refs()
+RepositoryWebhooksPropPermissions.update_forward_refs()
+RepositoryWebhooksPropTemplateRepositoryPropOwner.update_forward_refs()
+RepositoryWebhooksPropTemplateRepositoryPropPermissions.update_forward_refs()
+RepositoryWebhooksPropTemplateRepository.update_forward_refs()
+SimpleUserWebhooks.update_forward_refs()
 SimpleCheckSuite.update_forward_refs()
 CheckRunWithSimpleCheckSuite.update_forward_refs()
 CheckRunWithSimpleCheckSuitePropOutput.update_forward_refs()
@@ -20554,6 +21250,15 @@ __all__ = [
     "ScopedInstallation",
     "Authorization",
     "AuthorizationPropApp",
+    "SimpleClassroomRepository",
+    "SimpleClassroomOrganization",
+    "Classroom",
+    "ClassroomAssignment",
+    "SimpleClassroomUser",
+    "SimpleClassroom",
+    "SimpleClassroomAssignment",
+    "ClassroomAcceptedAssignment",
+    "ClassroomAssignmentGrade",
     "CodeOfConduct",
     "DependabotAlertPackage",
     "DependabotAlertSecurityVulnerability",
@@ -21148,6 +21853,13 @@ __all__ = [
     "HovercardPropContextsItems",
     "KeySimple",
     "SimpleInstallation",
+    "OrganizationSimpleWebhooks",
+    "RepositoryWebhooks",
+    "RepositoryWebhooksPropPermissions",
+    "RepositoryWebhooksPropTemplateRepositoryPropOwner",
+    "RepositoryWebhooksPropTemplateRepositoryPropPermissions",
+    "RepositoryWebhooksPropTemplateRepository",
+    "SimpleUserWebhooks",
     "SimpleCheckSuite",
     "CheckRunWithSimpleCheckSuite",
     "CheckRunWithSimpleCheckSuitePropOutput",
