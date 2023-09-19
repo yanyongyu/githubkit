@@ -20,7 +20,7 @@ class GraphQLResponse(BaseModel):
     errors: Optional[List[GraphQLError]] = None
     extensions: Optional[Dict[str, Any]] = None
 
-    @model_validator(mode="after")
+    @model_validator(mode="before")
     @classmethod
     def validate_data_and_errors(cls, values: Dict[str, Any]):
         if values.get("data") is None and not values.get("errors"):
