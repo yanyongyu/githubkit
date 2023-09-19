@@ -3,7 +3,7 @@ import re
 import httpx
 
 APP_ROUTES = {
-    r"^/app",
+    r"/app",
     r"/app/hook/config",
     r"/app/hook/deliveries",
     r"/app/hook/deliveries/(?:.+?)",
@@ -26,7 +26,7 @@ APP_ROUTES = {
 }
 
 BYPASS_REGEX = re.compile(r"/login/(oauth/access_token|device/code)$")
-APP_AUTH_REGEX = re.compile(rf"(?:{'|'.join(APP_ROUTES)})[^/]*$", re.I)
+APP_AUTH_REGEX = re.compile(rf"^(?:{'|'.join(APP_ROUTES)})$", re.I)
 BASIC_AUTH_REGEX = re.compile(r"/applications/[^/]+/(token|grant)s?")
 OAUTH_BASE_REGEX = re.compile(r"^https://(api\.)?github\.com/?$")
 
