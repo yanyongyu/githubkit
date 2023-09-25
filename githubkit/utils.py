@@ -39,7 +39,7 @@ class Unset(Enum):
 
 
 UNSET = Unset._UNSET
-Missing: TypeAlias = Union[Literal[UNSET], T]
+Missing: TypeAlias = Union[Literal[UNSET], T, None]
 
 
 def exclude_unset(data: Any) -> Any:
