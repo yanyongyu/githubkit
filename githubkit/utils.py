@@ -39,7 +39,9 @@ class Unset(Enum):
 
 
 UNSET = Unset._UNSET
-Missing: TypeAlias = Union[Literal[UNSET], T]
+# if the property is not required, we allow it to have the value null.
+# See https://github.com/yanyongyu/githubkit/issues/47
+Missing: TypeAlias = Union[Literal[UNSET], T, None]
 
 
 def exclude_unset(data: Any) -> Any:
