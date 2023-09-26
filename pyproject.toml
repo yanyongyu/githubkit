@@ -191,6 +191,14 @@ output_dir = "githubkit/rest/"
   "string",
   "null",
 ] }
+"/components/schemas/organization-full/properties/name" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/organization-full/properties/blog" = { type = [
+  "string",
+  "null",
+] }
 "/components/schemas/team-organization/properties/company" = { type = [
   "string",
   "null",
@@ -200,6 +208,14 @@ output_dir = "githubkit/rest/"
   "null",
 ] }
 "/components/schemas/team-organization/properties/location" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/team-organization/properties/name" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/team-organization/properties/blog" = { type = [
   "string",
   "null",
 ] }

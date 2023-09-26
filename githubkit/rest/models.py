@@ -2932,9 +2932,9 @@ class OrganizationFull(GitHubRestModel):
     public_members_url: str = Field(default=...)
     avatar_url: str = Field(default=...)
     description: Union[str, None] = Field(default=...)
-    name: Missing[str] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
     company: Missing[Union[str, None]] = Field(default=UNSET)
-    blog: Missing[str] = Field(default=UNSET)
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
     location: Missing[Union[str, None]] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
     twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
@@ -4459,7 +4459,7 @@ class RepositoryRuleDeletion(GitHubRestModel):
 class RepositoryRuleRequiredLinearHistory(GitHubRestModel):
     """required_linear_history
 
-    Prevent merge commits from being pushed to matching branches.
+    Prevent merge commits from being pushed to matching refs.
     """
 
     type: Literal["required_linear_history"] = Field(default=...)
@@ -4468,8 +4468,8 @@ class RepositoryRuleRequiredLinearHistory(GitHubRestModel):
 class RepositoryRuleRequiredDeployments(GitHubRestModel):
     """required_deployments
 
-    Choose which environments must be successfully deployed to before branches can
-    be merged into a branch that matches this rule.
+    Choose which environments must be successfully deployed to before refs can be
+    merged into a branch that matches this rule.
     """
 
     type: Literal["required_deployments"] = Field(default=...)
@@ -4490,7 +4490,7 @@ class RepositoryRuleRequiredDeploymentsPropParameters(GitHubRestModel):
 class RepositoryRuleRequiredSignatures(GitHubRestModel):
     """required_signatures
 
-    Commits pushed to matching branches must have verified signatures.
+    Commits pushed to matching refs must have verified signatures.
     """
 
     type: Literal["required_signatures"] = Field(default=...)
@@ -4554,7 +4554,7 @@ class RepositoryRuleRequiredStatusChecks(GitHubRestModel):
 
     Choose which status checks must pass before branches can be merged into a branch
     that matches this rule. When enabled, commits must first be pushed to another
-    branch, then merged or pushed directly to a branch that matches this rule after
+    branch, then merged or pushed directly to a ref that matches this rule after
     status checks have passed.
     """
 
@@ -4579,7 +4579,7 @@ class RepositoryRuleRequiredStatusChecksPropParameters(GitHubRestModel):
 class RepositoryRuleNonFastForward(GitHubRestModel):
     """non_fast_forward
 
-    Prevent users with push access from force pushing to branches.
+    Prevent users with push access from force pushing to refs.
     """
 
     type: Literal["non_fast_forward"] = Field(default=...)
@@ -5147,9 +5147,9 @@ class TeamOrganization(GitHubRestModel):
     public_members_url: str = Field(default=...)
     avatar_url: str = Field(default=...)
     description: Union[str, None] = Field(default=...)
-    name: Missing[str] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
     company: Missing[Union[str, None]] = Field(default=UNSET)
-    blog: Missing[str] = Field(default=UNSET)
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
     location: Missing[Union[str, None]] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
     twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
@@ -9002,6 +9002,10 @@ class EnvironmentPropProtectionRulesItemsAnyof1(GitHubRestModel):
 
     id: int = Field(default=...)
     node_id: str = Field(default=...)
+    prevent_self_review: Missing[bool] = Field(
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+        default=UNSET,
+    )
     type: str = Field(default=...)
     reviewers: Missing[
         List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
@@ -13300,6 +13304,35 @@ class KeySimple(GitHubRestModel):
 
     id: int = Field(default=...)
     key: str = Field(default=...)
+
+
+class EnterpriseWebhooks(GitHubRestModel):
+    """Enterprise
+
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
+    """
+
+    description: Missing[Union[str, None]] = Field(
+        description="A short description of the enterprise.", default=UNSET
+    )
+    html_url: str = Field(default=...)
+    website_url: Missing[Union[str, None]] = Field(
+        description="The enterprise's website URL.", default=UNSET
+    )
+    id: int = Field(description="Unique identifier of the enterprise", default=...)
+    node_id: str = Field(default=...)
+    name: str = Field(description="The name of the enterprise.", default=...)
+    slug: str = Field(
+        description="The slug url identifier for the enterprise.", default=...
+    )
+    created_at: Union[datetime, None] = Field(default=...)
+    updated_at: Union[datetime, None] = Field(default=...)
+    avatar_url: str = Field(default=...)
 
 
 class SimpleInstallation(GitHubRestModel):
@@ -20793,6 +20826,7 @@ StarredRepository.update_forward_refs()
 Hovercard.update_forward_refs()
 HovercardPropContextsItems.update_forward_refs()
 KeySimple.update_forward_refs()
+EnterpriseWebhooks.update_forward_refs()
 SimpleInstallation.update_forward_refs()
 OrganizationSimpleWebhooks.update_forward_refs()
 RepositoryWebhooks.update_forward_refs()
@@ -21852,6 +21886,7 @@ __all__ = [
     "Hovercard",
     "HovercardPropContextsItems",
     "KeySimple",
+    "EnterpriseWebhooks",
     "SimpleInstallation",
     "OrganizationSimpleWebhooks",
     "RepositoryWebhooks",

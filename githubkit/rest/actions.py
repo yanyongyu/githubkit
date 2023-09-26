@@ -5419,6 +5419,50 @@ class ActionsClient:
             headers=exclude_unset(headers),
         )
 
+    def force_cancel_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EmptyObject,
+            error_models={
+                "409": BasicError,
+            },
+        )
+
+    async def async_force_cancel_workflow_run(
+        self,
+        owner: str,
+        repo: str,
+        run_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[EmptyObject]":
+        url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=EmptyObject,
+            error_models={
+                "409": BasicError,
+            },
+        )
+
     def list_jobs_for_workflow_run(
         self,
         owner: str,

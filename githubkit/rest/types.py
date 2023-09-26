@@ -2021,9 +2021,9 @@ class OrganizationFullType(TypedDict):
     public_members_url: str
     avatar_url: str
     description: Union[str, None]
-    name: NotRequired[str]
+    name: NotRequired[Union[str, None]]
     company: NotRequired[Union[str, None]]
-    blog: NotRequired[str]
+    blog: NotRequired[Union[str, None]]
     location: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
     twitter_username: NotRequired[Union[str, None]]
@@ -3027,7 +3027,7 @@ class RepositoryRuleDeletionType(TypedDict):
 class RepositoryRuleRequiredLinearHistoryType(TypedDict):
     """required_linear_history
 
-    Prevent merge commits from being pushed to matching branches.
+    Prevent merge commits from being pushed to matching refs.
     """
 
     type: Literal["required_linear_history"]
@@ -3036,8 +3036,8 @@ class RepositoryRuleRequiredLinearHistoryType(TypedDict):
 class RepositoryRuleRequiredDeploymentsType(TypedDict):
     """required_deployments
 
-    Choose which environments must be successfully deployed to before branches can
-    be merged into a branch that matches this rule.
+    Choose which environments must be successfully deployed to before refs can be
+    merged into a branch that matches this rule.
     """
 
     type: Literal["required_deployments"]
@@ -3053,7 +3053,7 @@ class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
 class RepositoryRuleRequiredSignaturesType(TypedDict):
     """required_signatures
 
-    Commits pushed to matching branches must have verified signatures.
+    Commits pushed to matching refs must have verified signatures.
     """
 
     type: Literal["required_signatures"]
@@ -3095,7 +3095,7 @@ class RepositoryRuleRequiredStatusChecksType(TypedDict):
 
     Choose which status checks must pass before branches can be merged into a branch
     that matches this rule. When enabled, commits must first be pushed to another
-    branch, then merged or pushed directly to a branch that matches this rule after
+    branch, then merged or pushed directly to a ref that matches this rule after
     status checks have passed.
     """
 
@@ -3113,7 +3113,7 @@ class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
 class RepositoryRuleNonFastForwardType(TypedDict):
     """non_fast_forward
 
-    Prevent users with push access from force pushing to branches.
+    Prevent users with push access from force pushing to refs.
     """
 
     type: Literal["non_fast_forward"]
@@ -3485,9 +3485,9 @@ class TeamOrganizationType(TypedDict):
     public_members_url: str
     avatar_url: str
     description: Union[str, None]
-    name: NotRequired[str]
+    name: NotRequired[Union[str, None]]
     company: NotRequired[Union[str, None]]
-    blog: NotRequired[str]
+    blog: NotRequired[Union[str, None]]
     location: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
     twitter_username: NotRequired[Union[str, None]]
@@ -6368,6 +6368,7 @@ class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
 
     id: int
     node_id: str
+    prevent_self_review: NotRequired[bool]
     type: str
     reviewers: NotRequired[
         List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
@@ -9651,6 +9652,29 @@ class KeySimpleType(TypedDict):
 
     id: int
     key: str
+
+
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
+
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
+    """
+
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    avatar_url: str
 
 
 class SimpleInstallationType(TypedDict):
@@ -14649,6 +14673,7 @@ __all__ = [
     "HovercardType",
     "HovercardPropContextsItemsType",
     "KeySimpleType",
+    "EnterpriseWebhooksType",
     "SimpleInstallationType",
     "OrganizationSimpleWebhooksType",
     "RepositoryWebhooksType",
