@@ -26,21 +26,38 @@ APP_ROUTES = {
 }
 
 BYPASS_REGEX = re.compile(r"/login/(oauth/access_token|device/code)$")
+"""Regex to match routes that should bypass auth.
+
+See: https://github.com/octokit/auth-oauth-user.js/blob/b8b1141b21f285027e36a4a1670163e4db51d30f/src/hook.ts#L44
+"""
 APP_AUTH_REGEX = re.compile(rf"^(?:{'|'.join(APP_ROUTES)})$", re.I)
+"""Regex to match app authentication routes.
+
+See: https://github.com/octokit/auth-app.js/blob/c0068e06081a5d930799285a7c79c9c948b676b6/src/requires-app-auth.ts#L45
+"""
 BASIC_AUTH_REGEX = re.compile(r"/applications/[^/]+/(token|grant)s?")
+"""Regex to match basic authentication routes.
+
+See: https://github.com/octokit/auth-oauth-user.js/blob/b8b1141b21f285027e36a4a1670163e4db51d30f/src/requires-basic-auth.ts#L17
+"""
 OAUTH_BASE_REGEX = re.compile(r"^https://(api\.)?github\.com/?$")
 
 
 def require_bypass(url: httpx.URL) -> bool:
-    # bypass oauth web flow and device flow
+    """Check if the request should bypass auth."""
     return bool(BYPASS_REGEX.search(url.path))
 
 
 def require_app_auth(url: httpx.URL) -> bool:
+    """Check if the request should use app authentication.
+
+    Note: the input url must remove the base url first.
+    """
     return bool(APP_AUTH_REGEX.search(url.path))
 
 
 def require_basic_auth(url: httpx.URL) -> bool:
+    """Check if the request should use basic authentication."""
     return bool(BASIC_AUTH_REGEX.search(url.path))
 
 

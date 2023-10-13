@@ -49,6 +49,16 @@ class AppAuth(httpx.Auth):
         "{installation_id}:{permissions}:{repositories}:{repository_ids}"
     )
 
+    def _get_api_route(self, url: httpx.URL) -> httpx.URL:
+        """Get the api route (path only) for the given url."""
+        base_url_path = self.github.config.base_url.path
+        if (path := url.path).startswith(base_url_path):
+            path = path[len(base_url_path) :]
+            # add leading slash
+            if not path.startswith("/"):
+                path = "/" + path
+        return httpx.URL(path=path)
+
     def _create_jwt(self) -> str:
         """Create a JWT authenticating as GitHub APP.
 
@@ -150,7 +160,7 @@ class AppAuth(httpx.Auth):
         if require_bypass(request.url):
             yield request
             return
-        if require_app_auth(request.url):
+        if require_app_auth(self._get_api_route(request.url)):
             request.headers["Authorization"] = f"Bearer {self.get_jwt()}"
             yield request
             return
@@ -186,7 +196,7 @@ class AppAuth(httpx.Auth):
         if require_bypass(request.url):
             yield request
             return
-        if require_app_auth(request.url):
+        if require_app_auth(self._get_api_route(request.url)):
             request.headers["Authorization"] = f"Bearer {await self.aget_jwt()}"
             yield request
             return

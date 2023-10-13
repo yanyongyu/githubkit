@@ -22,7 +22,11 @@ class Config:
 
 def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:
     base_url = base_url or httpx.URL("https://api.github.com/")
-    return base_url if isinstance(base_url, httpx.URL) else httpx.URL(base_url)
+    base_url = base_url if isinstance(base_url, httpx.URL) else httpx.URL(base_url)
+    # enforce trailing slash
+    if not base_url.raw_path.endswith(b"/"):
+        base_url = base_url.copy_with(raw_path=base_url.raw_path + b"/")
+    return base_url
 
 
 def build_accept(
