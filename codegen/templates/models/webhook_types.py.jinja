@@ -7,7 +7,9 @@ See https://github.com/octokit/webhooks for more information.
 from typing import Any, Dict, Union
 from typing_extensions import Annotated
 
-from pydantic import Field
+from pydantic import Tag, Field
+
+from githubkit.webhooks.discriminator import SchemaDiscriminator
 
 {% for schemas in union_definitions.values() %}
 {% for schema in schemas.values() %}
@@ -28,7 +30,21 @@ from pydantic import Field
 {% if schemas | length > 1 %}
 {{ pascal_case(name) }} = Annotated[Union[
     {% for schema in schemas.values() %}
+    {% if schema.__class__.__name__ == "UnionSchema" %}
+    Annotated[
+      Union[
+      {% for sub_schema in schema.schemas %}
+        Annotated[{{ sub_schema.get_type_string() }}, Tag("{{ sub_schema.get_type_string() }}")],
+      {% endfor %}
+      ]
+    , SchemaDiscriminator(
+      {% for sub_schema in schema.schemas %}
+        {{ sub_schema.get_type_string() }},
+      {% endfor %}
+    )],
+    {%- else %}
     {{ schema.get_type_string() }},
+    {%- endif %}
     {% endfor %}
 ], Field(discriminator="action")]
 {% else %}

@@ -10,7 +10,9 @@ See https://github.com/octokit/webhooks for more information.
 from typing import Any, Dict, Union
 from typing_extensions import Annotated
 
-from pydantic import Field
+from pydantic import Tag, Field
+
+from githubkit.webhooks.discriminator import SchemaDiscriminator
 
 from .models import (
     ForkEvent,
@@ -501,10 +503,38 @@ PullRequestEvent = Annotated[
         PullRequestOpened,
         PullRequestReadyForReview,
         PullRequestReopened,
-        Union[
-            PullRequestReviewRequestRemovedOneof0, PullRequestReviewRequestRemovedOneof1
+        Annotated[
+            Union[
+                Annotated[
+                    PullRequestReviewRequestRemovedOneof0,
+                    Tag("PullRequestReviewRequestRemovedOneof0"),
+                ],
+                Annotated[
+                    PullRequestReviewRequestRemovedOneof1,
+                    Tag("PullRequestReviewRequestRemovedOneof1"),
+                ],
+            ],
+            SchemaDiscriminator(
+                PullRequestReviewRequestRemovedOneof0,
+                PullRequestReviewRequestRemovedOneof1,
+            ),
         ],
-        Union[PullRequestReviewRequestedOneof0, PullRequestReviewRequestedOneof1],
+        Annotated[
+            Union[
+                Annotated[
+                    PullRequestReviewRequestedOneof0,
+                    Tag("PullRequestReviewRequestedOneof0"),
+                ],
+                Annotated[
+                    PullRequestReviewRequestedOneof1,
+                    Tag("PullRequestReviewRequestedOneof1"),
+                ],
+            ],
+            SchemaDiscriminator(
+                PullRequestReviewRequestedOneof0,
+                PullRequestReviewRequestedOneof1,
+            ),
+        ],
         PullRequestSynchronize,
         PullRequestUnassigned,
         PullRequestUnlabeled,
