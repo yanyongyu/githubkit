@@ -13,7 +13,7 @@ include = ["githubkit/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pydantic = "^2.0.0"
+pydantic = ">=2.0.0, <3.0.0, !=2.5.0, !=2.5.1"
 httpx = ">=0.23.0, <1.0.0"
 typing-extensions = "^4.3.0"
 anyio = { version = "^3.6.1", optional = true }
@@ -21,7 +21,7 @@ PyJWT = { version = "^2.4.0", extras = ["crypto"], optional = true }
 
 [tool.poetry.group.dev.dependencies]
 tomli = "^2.0.1"
-ruff = "^0.0.286"
+ruff = "^0.1.0"
 isort = "^5.10.1"
 black = "^23.1.0"
 Jinja2 = "^3.1.2"
