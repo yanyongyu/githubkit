@@ -17,6 +17,7 @@ from typing import (
 )
 
 import httpx
+import hishel
 
 from .response import Response
 from .utils import obj_to_jsonable
@@ -187,7 +188,10 @@ class GitHubCore(Generic[A]):
 
     # create sync client
     def _create_sync_client(self) -> httpx.Client:
-        return httpx.Client(**self._get_client_defaults())
+        return httpx.Client(
+            **self._get_client_defaults(),
+            transport=hishel.CacheTransport(httpx.HTTPTransport()),
+        )
 
     # get or create sync client
     @contextmanager
@@ -203,7 +207,10 @@ class GitHubCore(Generic[A]):
 
     # create async client
     def _create_async_client(self) -> httpx.AsyncClient:
-        return httpx.AsyncClient(**self._get_client_defaults())
+        return httpx.AsyncClient(
+            **self._get_client_defaults(),
+            transport=hishel.AsyncCacheTransport(httpx.AsyncHTTPTransport()),
+        )
 
     # get or create async client
     @asynccontextmanager
