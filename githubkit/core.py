@@ -231,10 +231,7 @@ class GitHubCore(Generic[A]):
         else:
             transport = httpx.AsyncHTTPTransport()
 
-        return httpx.AsyncClient(
-            **self._get_client_defaults(),
-            transport=transport
-        )
+        return httpx.AsyncClient(**self._get_client_defaults(), transport=transport)
 
     # get or create async client
     @asynccontextmanager
