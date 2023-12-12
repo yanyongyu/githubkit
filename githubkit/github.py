@@ -84,6 +84,7 @@ class GitHub(GitHubCore[A]):
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
+            http_cache: bool = True,
         ):
             ...
 
@@ -99,6 +100,7 @@ class GitHub(GitHubCore[A]):
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
+            http_cache: bool = True,
         ):
             ...
 
@@ -114,6 +116,7 @@ class GitHub(GitHubCore[A]):
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
+            http_cache: bool = True,
         ):
             ...
 

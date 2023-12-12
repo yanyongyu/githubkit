@@ -12,6 +12,7 @@ class Config:
     user_agent: str
     follow_redirects: bool
     timeout: httpx.Timeout
+    http_cache: bool
 
     def dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -65,6 +66,7 @@ def get_config(
     user_agent: Optional[str] = None,
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,
+    http_cache: bool = True,
 ) -> Config:
     return Config(
         build_base_url(base_url),
@@ -72,4 +74,5 @@ def get_config(
         build_user_agent(user_agent),
         follow_redirects,
         build_timeout(timeout),
+        http_cache,
     )

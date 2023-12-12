@@ -15,7 +15,7 @@ include = ["githubkit/py.typed"]
 python = "^3.8"
 pydantic = ">=2.0.0, <3.0.0, !=2.5.0, !=2.5.1"
 httpx = ">=0.23.0, <1.0.0"
-hishel = ">=0.0.19"
+hishel = ">=0.0.20"
 typing-extensions = "^4.3.0"
 anyio = { version = "^3.6.1", optional = true }
 PyJWT = { version = "^2.4.0", extras = ["crypto"], optional = true }

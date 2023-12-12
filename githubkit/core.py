@@ -80,6 +80,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         ...
 
@@ -95,6 +96,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         ...
 
@@ -110,6 +112,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         ...
 
@@ -124,6 +127,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -140,6 +144,7 @@ class GitHubCore(Generic[A]):
         self.__async_client: ContextVar[Optional[httpx.AsyncClient]] = ContextVar(
             "async_client", default=None
         )
+        self._http_cache = http_cache
 
     # sync context
     def __enter__(self):
@@ -190,7 +195,7 @@ class GitHubCore(Generic[A]):
     def _create_sync_client(self) -> httpx.Client:
         return httpx.Client(
             **self._get_client_defaults(),
-            transport=hishel.CacheTransport(httpx.HTTPTransport()),
+            transport=hishel.CacheTransport(httpx.HTTPTransport(), storage=hishel.InMemoryStorage()),
         )
 
     # get or create sync client
@@ -209,7 +214,7 @@ class GitHubCore(Generic[A]):
     def _create_async_client(self) -> httpx.AsyncClient:
         return httpx.AsyncClient(
             **self._get_client_defaults(),
-            transport=hishel.AsyncCacheTransport(httpx.AsyncHTTPTransport()),
+            transport=hishel.AsyncCacheTransport(httpx.AsyncHTTPTransport(), storage=hishel.AsyncInMemoryStorage()),
         )
 
     # get or create async client
