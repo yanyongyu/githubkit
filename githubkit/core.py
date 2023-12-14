@@ -17,6 +17,7 @@ from typing import (
 )
 
 import httpx
+import hishel
 
 from .response import Response
 from .utils import obj_to_jsonable
@@ -79,6 +80,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         ...
 
@@ -94,6 +96,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         ...
 
@@ -109,6 +112,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         ...
 
@@ -123,6 +127,7 @@ class GitHubCore(Generic[A]):
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
+        http_cache: bool = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -130,7 +135,13 @@ class GitHubCore(Generic[A]):
         )
 
         self.config = config or get_config(
-            base_url, accept_format, previews, user_agent, follow_redirects, timeout
+            base_url,
+            accept_format,
+            previews,
+            user_agent,
+            follow_redirects,
+            timeout,
+            http_cache,
         )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
@@ -187,7 +198,14 @@ class GitHubCore(Generic[A]):
 
     # create sync client
     def _create_sync_client(self) -> httpx.Client:
-        return httpx.Client(**self._get_client_defaults())
+        if self.config.http_cache:
+            transport = hishel.CacheTransport(
+                httpx.HTTPTransport(), storage=hishel.InMemoryStorage()
+            )
+        else:
+            transport = httpx.HTTPTransport()
+
+        return httpx.Client(**self._get_client_defaults(), transport=transport)
 
     # get or create sync client
     @contextmanager
@@ -203,7 +221,14 @@ class GitHubCore(Generic[A]):
 
     # create async client
     def _create_async_client(self) -> httpx.AsyncClient:
-        return httpx.AsyncClient(**self._get_client_defaults())
+        if self.config.http_cache:
+            transport = hishel.AsyncCacheTransport(
+                httpx.AsyncHTTPTransport(), storage=hishel.AsyncInMemoryStorage()
+            )
+        else:
+            transport = httpx.AsyncHTTPTransport()
+
+        return httpx.AsyncClient(**self._get_client_defaults(), transport=transport)
 
     # get or create async client
     @asynccontextmanager
