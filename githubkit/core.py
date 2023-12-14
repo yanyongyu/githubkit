@@ -205,10 +205,7 @@ class GitHubCore(Generic[A]):
         else:
             transport = httpx.HTTPTransport()
 
-        return httpx.Client(
-            **self._get_client_defaults(),
-            transport=transport,
-        )
+        return httpx.Client(**self._get_client_defaults(), transport=transport)
 
     # get or create sync client
     @contextmanager
