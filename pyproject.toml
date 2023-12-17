@@ -123,6 +123,12 @@ output_dir = "githubkit/rest/"
   "null",
 ] }
 
+# https://github.com/yanyongyu/githubkit/issues/64
+"/components/schemas/pull-request-simple/properties/head/properties/label" = { anyOf = [
+  { type = "null" },
+  { "$ref" = "#/components/schemas/label" },
+], "$ref" = "<unset>" }
+
 # https://github.com/github/rest-api-description/issues/1811
 "/components/schemas/pull-request-simple/properties/head/properties/repo" = { anyOf = [
   { type = "null" },
