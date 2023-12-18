@@ -102,7 +102,8 @@ def merge_dict(old: dict, new: dict):
     # make change inplace to make json point correct
     for key, value in new.items():
         if value == UNSET_KEY:
-            del old[key]
+            if key in old:
+                del old[key]
         else:
             old[key] = (
                 merge_dict(old[key], value)
