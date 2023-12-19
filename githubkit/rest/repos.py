@@ -23,6 +23,7 @@ from .types import (
     RepositoryRuleCreationType,
     RepositoryRuleDeletionType,
     OrgsOrgRulesetsPostBodyType,
+    RepositoryRuleWorkflowsType,
     ReposOwnerRepoPatchBodyType,
     RepositoryRulePullRequestType,
     OrgRulesetConditionsOneof0Type,
@@ -70,9 +71,11 @@ from .types import (
     ReposOwnerRepoPagesPostBodyPropSourceType,
     RepositoryRuleCommitAuthorEmailPatternType,
     ReposOwnerRepoRulesetsRulesetIdPutBodyType,
+    OrgsOrgReposPostBodyPropCustomPropertiesType,
     ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ReposOwnerRepoHooksHookIdConfigPatchBodyType,
     ReposOwnerRepoReleasesReleaseIdPatchBodyType,
+    DeploymentBranchPolicyNamePatternWithTypeType,
     ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ReposOwnerRepoCollaboratorsUsernamePutBodyType,
     ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -129,6 +132,7 @@ from .models import (
     Language,
     DeployKey,
     PageBuild,
+    RuleSuite,
     BasicError,
     Deployment,
     FileCommit,
@@ -157,6 +161,7 @@ from .models import (
     PageBuildStatus,
     ProtectedBranch,
     ReferrerTraffic,
+    RuleSuitesItems,
     ValidationError,
     BranchProtection,
     CodeownersErrors,
@@ -173,6 +178,7 @@ from .models import (
     UserReposPostBody,
     ParticipationStats,
     ContributorActivity,
+    CustomPropertyValue,
     ReleaseNotesContent,
     BranchWithProtection,
     CombinedCommitStatus,
@@ -206,6 +212,7 @@ from .models import (
     RepositoryRuleDetailedOneof11,
     RepositoryRuleDetailedOneof12,
     RepositoryRuleDetailedOneof13,
+    RepositoryRuleDetailedOneof14,
     ReposOwnerRepoReleasesPostBody,
     ReposOwnerRepoRulesetsPostBody,
     ReposOwnerRepoTransferPostBody,
@@ -236,6 +243,7 @@ from .models import (
     ReposOwnerRepoEnvironmentsGetResponse200,
     ReposOwnerRepoHooksHookIdConfigPatchBody,
     ReposOwnerRepoReleasesReleaseIdPatchBody,
+    DeploymentBranchPolicyNamePatternWithType,
     ReposOwnerRepoBranchesBranchRenamePostBody,
     ReposOwnerRepoCollaboratorsUsernamePutBody,
     ReposOwnerRepoReleasesGenerateNotesPostBody,
@@ -352,7 +360,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     @overload
@@ -390,7 +398,10 @@ class ReposClient:
         ] = UNSET,
         merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
-    ) -> "Response[Repository]":
+        custom_properties: Missing[
+            OrgsOrgReposPostBodyPropCustomPropertiesType
+        ] = UNSET,
+    ) -> "Response[FullRepository]":
         ...
 
     def create_in_org(
@@ -400,7 +411,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         url = f"/orgs/{org}/repos"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -417,7 +428,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=Repository,
+            response_model=FullRepository,
             error_models={
                 "403": BasicError,
                 "422": ValidationError,
@@ -431,7 +442,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     @overload
@@ -469,7 +480,10 @@ class ReposClient:
         ] = UNSET,
         merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = UNSET,
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
-    ) -> "Response[Repository]":
+        custom_properties: Missing[
+            OrgsOrgReposPostBodyPropCustomPropertiesType
+        ] = UNSET,
+    ) -> "Response[FullRepository]":
         ...
 
     async def async_create_in_org(
@@ -479,7 +493,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         url = f"/orgs/{org}/repos"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -496,7 +510,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=Repository,
+            response_model=FullRepository,
             error_models={
                 "403": BasicError,
                 "422": ValidationError,
@@ -602,6 +616,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -680,6 +695,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -711,6 +727,124 @@ class ReposClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_org_rule_suites(
+        self,
+        org: str,
+        repository_name: Missing[int] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = "day",
+        actor_name: Missing[str] = UNSET,
+        rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[RuleSuitesItems]]":
+        url = f"/orgs/{org}/rulesets/rule-suites"
+
+        params = {
+            "repository_name": repository_name,
+            "time_period": time_period,
+            "actor_name": actor_name,
+            "rule_suite_result": rule_suite_result,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RuleSuitesItems],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_rule_suites(
+        self,
+        org: str,
+        repository_name: Missing[int] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = "day",
+        actor_name: Missing[str] = UNSET,
+        rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[RuleSuitesItems]]":
+        url = f"/orgs/{org}/rulesets/rule-suites"
+
+        params = {
+            "repository_name": repository_name,
+            "time_period": time_period,
+            "actor_name": actor_name,
+            "rule_suite_result": rule_suite_result,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RuleSuitesItems],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_org_rule_suite(
+        self,
+        org: str,
+        rule_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[RuleSuite]":
+        url = f"/orgs/{org}/rulesets/rule-suites/{rule_suite_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RuleSuite,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_rule_suite(
+        self,
+        org: str,
+        rule_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[RuleSuite]":
+        url = f"/orgs/{org}/rulesets/rule-suites/{rule_suite_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RuleSuite,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -804,6 +938,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -885,6 +1020,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -7273,6 +7409,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         wait_timer: Missing[int] = UNSET,
+        prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
             Union[
                 List[
@@ -7347,6 +7484,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         wait_timer: Missing[int] = UNSET,
+        prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
             Union[
                 List[
@@ -7495,7 +7633,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: DeploymentBranchPolicyNamePatternType,
+        data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> "Response[DeploymentBranchPolicy]":
         ...
 
@@ -7509,6 +7647,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
+        type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> "Response[DeploymentBranchPolicy]":
         ...
 
@@ -7519,7 +7658,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
+        data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
@@ -7530,7 +7669,9 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = TypeAdapter(DeploymentBranchPolicyNamePattern).validate_python(json)
+        json = TypeAdapter(DeploymentBranchPolicyNamePatternWithType).validate_python(
+            json
+        )
         json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -7550,7 +7691,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: DeploymentBranchPolicyNamePatternType,
+        data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> "Response[DeploymentBranchPolicy]":
         ...
 
@@ -7564,6 +7705,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
+        type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> "Response[DeploymentBranchPolicy]":
         ...
 
@@ -7574,7 +7716,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
+        data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> "Response[DeploymentBranchPolicy]":
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies"
@@ -7585,7 +7727,9 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = TypeAdapter(DeploymentBranchPolicyNamePattern).validate_python(json)
+        json = TypeAdapter(DeploymentBranchPolicyNamePatternWithType).validate_python(
+            json
+        )
         json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -10743,6 +10887,50 @@ class ReposClient:
             },
         )
 
+    def get_custom_properties_values(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[CustomPropertyValue]]":
+        url = f"/repos/{owner}/{repo}/properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[CustomPropertyValue],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_custom_properties_values(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[CustomPropertyValue]]":
+        url = f"/repos/{owner}/{repo}/properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[CustomPropertyValue],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def get_readme(
         self,
         owner: str,
@@ -11790,7 +11978,7 @@ class ReposClient:
         page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[Union[RepositoryRuleDetailedOneof0, RepositoryRuleDetailedOneof1, RepositoryRuleDetailedOneof2, RepositoryRuleDetailedOneof3, RepositoryRuleDetailedOneof4, RepositoryRuleDetailedOneof5, RepositoryRuleDetailedOneof6, RepositoryRuleDetailedOneof7, RepositoryRuleDetailedOneof8, RepositoryRuleDetailedOneof9, RepositoryRuleDetailedOneof10, RepositoryRuleDetailedOneof11, RepositoryRuleDetailedOneof12, RepositoryRuleDetailedOneof13]]]":
+    ) -> "Response[List[Union[RepositoryRuleDetailedOneof0, RepositoryRuleDetailedOneof1, RepositoryRuleDetailedOneof2, RepositoryRuleDetailedOneof3, RepositoryRuleDetailedOneof4, RepositoryRuleDetailedOneof5, RepositoryRuleDetailedOneof6, RepositoryRuleDetailedOneof7, RepositoryRuleDetailedOneof8, RepositoryRuleDetailedOneof9, RepositoryRuleDetailedOneof10, RepositoryRuleDetailedOneof11, RepositoryRuleDetailedOneof12, RepositoryRuleDetailedOneof13, RepositoryRuleDetailedOneof14]]]":
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
 
         params = {
@@ -11821,6 +12009,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof11,
                     RepositoryRuleDetailedOneof12,
                     RepositoryRuleDetailedOneof13,
+                    RepositoryRuleDetailedOneof14,
                 ]
             ],
         )
@@ -11834,7 +12023,7 @@ class ReposClient:
         page: Missing[int] = 1,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> "Response[List[Union[RepositoryRuleDetailedOneof0, RepositoryRuleDetailedOneof1, RepositoryRuleDetailedOneof2, RepositoryRuleDetailedOneof3, RepositoryRuleDetailedOneof4, RepositoryRuleDetailedOneof5, RepositoryRuleDetailedOneof6, RepositoryRuleDetailedOneof7, RepositoryRuleDetailedOneof8, RepositoryRuleDetailedOneof9, RepositoryRuleDetailedOneof10, RepositoryRuleDetailedOneof11, RepositoryRuleDetailedOneof12, RepositoryRuleDetailedOneof13]]]":
+    ) -> "Response[List[Union[RepositoryRuleDetailedOneof0, RepositoryRuleDetailedOneof1, RepositoryRuleDetailedOneof2, RepositoryRuleDetailedOneof3, RepositoryRuleDetailedOneof4, RepositoryRuleDetailedOneof5, RepositoryRuleDetailedOneof6, RepositoryRuleDetailedOneof7, RepositoryRuleDetailedOneof8, RepositoryRuleDetailedOneof9, RepositoryRuleDetailedOneof10, RepositoryRuleDetailedOneof11, RepositoryRuleDetailedOneof12, RepositoryRuleDetailedOneof13, RepositoryRuleDetailedOneof14]]]":
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
 
         params = {
@@ -11865,6 +12054,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof11,
                     RepositoryRuleDetailedOneof12,
                     RepositoryRuleDetailedOneof13,
+                    RepositoryRuleDetailedOneof14,
                 ]
             ],
         )
@@ -11974,6 +12164,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -12053,6 +12244,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -12085,6 +12277,128 @@ class ReposClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             response_model=RepositoryRuleset,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_repo_rule_suites(
+        self,
+        owner: str,
+        repo: str,
+        ref: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = "day",
+        actor_name: Missing[str] = UNSET,
+        rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[RuleSuitesItems]]":
+        url = f"/repos/{owner}/{repo}/rulesets/rule-suites"
+
+        params = {
+            "ref": ref,
+            "time_period": time_period,
+            "actor_name": actor_name,
+            "rule_suite_result": rule_suite_result,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RuleSuitesItems],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_rule_suites(
+        self,
+        owner: str,
+        repo: str,
+        ref: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = "day",
+        actor_name: Missing[str] = UNSET,
+        rule_suite_result: Missing[Literal["pass", "fail", "bypass", "all"]] = "all",
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[RuleSuitesItems]]":
+        url = f"/repos/{owner}/{repo}/rulesets/rule-suites"
+
+        params = {
+            "ref": ref,
+            "time_period": time_period,
+            "actor_name": actor_name,
+            "rule_suite_result": rule_suite_result,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[RuleSuitesItems],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_repo_rule_suite(
+        self,
+        owner: str,
+        repo: str,
+        rule_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[RuleSuite]":
+        url = f"/repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RuleSuite,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_rule_suite(
+        self,
+        owner: str,
+        repo: str,
+        rule_suite_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[RuleSuite]":
+        url = f"/repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RuleSuite,
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -12192,6 +12506,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -12274,6 +12589,7 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleWorkflowsType,
                 ]
             ]
         ] = UNSET,
@@ -13615,7 +13931,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     @overload
@@ -13631,7 +13947,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = False,
         private: Missing[bool] = False,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     def create_using_template(
@@ -13642,7 +13958,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -13661,7 +13977,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=Repository,
+            response_model=FullRepository,
         )
 
     @overload
@@ -13672,7 +13988,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     @overload
@@ -13688,7 +14004,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = False,
         private: Missing[bool] = False,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     async def async_create_using_template(
@@ -13699,7 +14015,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         url = f"/repos/{template_owner}/{template_repo}/generate"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -13718,7 +14034,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=Repository,
+            response_model=FullRepository,
         )
 
     def list_public(
@@ -13864,7 +14180,7 @@ class ReposClient:
     @overload
     def create_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserReposPostBodyType
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     @overload
@@ -13900,7 +14216,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = True,
         is_template: Missing[bool] = False,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     def create_for_authenticated_user(
@@ -13909,7 +14225,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         url = "/user/repos"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -13926,7 +14242,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=Repository,
+            response_model=FullRepository,
             error_models={
                 "401": BasicError,
                 "404": BasicError,
@@ -13939,7 +14255,7 @@ class ReposClient:
     @overload
     async def async_create_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserReposPostBodyType
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     @overload
@@ -13975,7 +14291,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = True,
         is_template: Missing[bool] = False,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         ...
 
     async def async_create_for_authenticated_user(
@@ -13984,7 +14300,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> "Response[Repository]":
+    ) -> "Response[FullRepository]":
         url = "/user/repos"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -14001,7 +14317,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=Repository,
+            response_model=FullRepository,
             error_models={
                 "401": BasicError,
                 "404": BasicError,

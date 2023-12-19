@@ -54,6 +54,7 @@ from .models import (
     OrgsOrgCodespacesSecretsGetResponse200,
     ReposOwnerRepoCodespacesGetResponse200,
     UserCodespacesSecretsSecretNamePutBody,
+    CodespacesPermissionsCheckForDevcontainer,
     OrgsOrgCodespacesSecretsSecretNamePutBody,
     ReposOwnerRepoCodespacesNewGetResponse200,
     UserCodespacesCodespaceNamePublishPostBody,
@@ -1592,6 +1593,72 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def check_permissions_for_devcontainer(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+        devcontainer_path: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[CodespacesPermissionsCheckForDevcontainer]":
+        url = f"/repos/{owner}/{repo}/codespaces/permissions_check"
+
+        params = {
+            "ref": ref,
+            "devcontainer_path": devcontainer_path,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=CodespacesPermissionsCheckForDevcontainer,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_check_permissions_for_devcontainer(
+        self,
+        owner: str,
+        repo: str,
+        ref: str,
+        devcontainer_path: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[CodespacesPermissionsCheckForDevcontainer]":
+        url = f"/repos/{owner}/{repo}/codespaces/permissions_check"
+
+        params = {
+            "ref": ref,
+            "devcontainer_path": devcontainer_path,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=CodespacesPermissionsCheckForDevcontainer,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
 

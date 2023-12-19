@@ -584,8 +584,16 @@ class AppPermissions(GitHubRestModel):
         description="The level of permission to grant the access token for checks on code.",
         default=UNSET,
     )
+    codespaces: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to create, edit, delete, and list Codespaces.",
+        default=UNSET,
+    )
     contents: Missing[Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges.",
+        default=UNSET,
+    )
+    dependabot_secrets: Missing[Literal["read", "write"]] = Field(
+        description="The leve of permission to grant the access token to manage Dependabot secrets.",
         default=UNSET,
     )
     deployments: Missing[Literal["read", "write"]] = Field(
@@ -614,6 +622,10 @@ class AppPermissions(GitHubRestModel):
     )
     pull_requests: Missing[Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges.",
+        default=UNSET,
+    )
+    repository_custom_properties: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property.",
         default=UNSET,
     )
     repository_hooks: Missing[Literal["read", "write"]] = Field(
@@ -661,11 +673,27 @@ class AppPermissions(GitHubRestModel):
         default=UNSET,
     )
     organization_custom_roles: Missing[Literal["read", "write"]] = Field(
-        description="The level of permission to grant the access token for custom repository roles management. This property is in beta and is subject to change.",
+        description="The level of permission to grant the access token for custom repository roles management.",
+        default=UNSET,
+    )
+    organization_custom_org_roles: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token for custom organization roles management.",
+        default=UNSET,
+    )
+    organization_custom_properties: Missing[Literal["read", "write", "admin"]] = Field(
+        description="The level of permission to grant the access token for custom property management.",
+        default=UNSET,
+    )
+    organization_copilot_seat_management: Missing[Literal["write"]] = Field(
+        description="The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in beta and is subject to change.",
         default=UNSET,
     )
     organization_announcement_banners: Missing[Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token to view and manage announcement banners for an organization.",
+        default=UNSET,
+    )
+    organization_events: Missing[Literal["read"]] = Field(
+        description="The level of permission to grant the access token to view events triggered by an activity in an organization.",
         default=UNSET,
     )
     organization_hooks: Missing[Literal["read", "write"]] = Field(
@@ -708,6 +736,34 @@ class AppPermissions(GitHubRestModel):
     )
     team_discussions: Missing[Literal["read", "write"]] = Field(
         description="The level of permission to grant the access token to manage team discussions and related comments.",
+        default=UNSET,
+    )
+    email_addresses: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to manage the email addresses belonging to a user.",
+        default=UNSET,
+    )
+    followers: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to manage the followers belonging to a user.",
+        default=UNSET,
+    )
+    git_ssh_keys: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to manage git SSH keys.",
+        default=UNSET,
+    )
+    gpg_keys: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to view and manage GPG keys belonging to a user.",
+        default=UNSET,
+    )
+    interaction_limits: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to view and manage interaction limits on a repository.",
+        default=UNSET,
+    )
+    profile: Missing[Literal["write"]] = Field(
+        description="The level of permission to grant the access token to manage the profile settings belonging to a user.",
+        default=UNSET,
+    )
+    starring: Missing[Literal["read", "write"]] = Field(
+        description="The level of permission to grant the access token to list and manage repositories a user is starring.",
         default=UNSET,
     )
 
@@ -846,7 +902,7 @@ class Repository(GitHubRestModel):
     stargazers_count: int = Field(default=...)
     watchers_count: int = Field(default=...)
     size: int = Field(
-        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
         default=...,
     )
     default_branch: str = Field(
@@ -1949,6 +2005,9 @@ class OrganizationSecretScanningAlert(GitHubRestModel):
         description="The comment that was optionally added when this alert was closed",
         default=UNSET,
     )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        description="The token status as of the latest validity check.", default=UNSET
+    )
 
 
 class Actor(GitHubRestModel):
@@ -2673,6 +2732,7 @@ class ApiOverviewPropDomains(GitHubRestModel):
     codespaces: Missing[List[str]] = Field(default=UNSET)
     copilot: Missing[List[str]] = Field(default=UNSET)
     packages: Missing[List[str]] = Field(default=UNSET)
+    actions: Missing[List[str]] = Field(default=UNSET)
 
 
 class SecurityAndAnalysisPropAdvancedSecurity(GitHubRestModel):
@@ -2790,7 +2850,7 @@ class MinimalRepository(GitHubRestModel):
     stargazers_count: Missing[int] = Field(default=UNSET)
     watchers_count: Missing[int] = Field(default=UNSET)
     size: Missing[int] = Field(
-        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
         default=UNSET,
     )
     default_branch: Missing[str] = Field(default=UNSET)
@@ -3258,8 +3318,8 @@ class OrganizationActionsVariable(GitHubRestModel):
     selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-class CodeScanningAlertRule(GitHubRestModel):
-    """CodeScanningAlertRule"""
+class CodeScanningAlertRuleSummary(GitHubRestModel):
+    """CodeScanningAlertRuleSummary"""
 
     id: Missing[Union[str, None]] = Field(
         description="A unique identifier for the rule used to detect the alert.",
@@ -3267,6 +3327,9 @@ class CodeScanningAlertRule(GitHubRestModel):
     )
     name: Missing[str] = Field(
         description="The name of the rule used to detect the alert.", default=UNSET
+    )
+    tags: Missing[Union[List[str], None]] = Field(
+        description="A set of tags applicable for the rule.", default=UNSET
     )
     severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
         description="The severity of the alert.", default=UNSET
@@ -3276,21 +3339,6 @@ class CodeScanningAlertRule(GitHubRestModel):
     ] = Field(description="The security severity of the alert.", default=UNSET)
     description: Missing[str] = Field(
         description="A short description of the rule used to detect the alert.",
-        default=UNSET,
-    )
-    full_description: Missing[str] = Field(
-        description="description of the rule used to detect the alert.", default=UNSET
-    )
-    tags: Missing[Union[List[str], None]] = Field(
-        description="A set of tags applicable for the rule.", default=UNSET
-    )
-    help_: Missing[Union[str, None]] = Field(
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
-        default=UNSET,
-        alias="help",
-    )
-    help_uri: Missing[Union[str, None]] = Field(
-        description="A link to the documentation for the rule used to detect the alert.",
         default=UNSET,
     )
 
@@ -3329,7 +3377,7 @@ class CodeScanningAlertInstance(GitHubRestModel):
     """CodeScanningAlertInstance"""
 
     ref: Missing[str] = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
         default=UNSET,
     )
     analysis_key: Missing[str] = Field(
@@ -3413,7 +3461,7 @@ class CodeScanningOrganizationAlertItems(GitHubRestModel):
         description="The dismissal comment associated with the dismissal of the alert.",
         default=UNSET,
     )
-    rule: CodeScanningAlertRule = Field(default=...)
+    rule: CodeScanningAlertRuleSummary = Field(default=...)
     tool: CodeScanningAnalysisTool = Field(default=...)
     most_recent_instance: CodeScanningAlertInstance = Field(default=...)
     repository: SimpleRepository = Field(
@@ -3643,9 +3691,9 @@ class CodespacesPublicKey(GitHubRestModel):
 
 
 class CopilotSeatBreakdown(GitHubRestModel):
-    """Copilot for Business Seat Breakdown
+    """Copilot Business Seat Breakdown
 
-    The breakdown of Copilot for Business seats for the organization.
+    The breakdown of Copilot Business seats for the organization.
     """
 
     total: Missing[int] = Field(
@@ -3674,15 +3722,15 @@ class CopilotSeatBreakdown(GitHubRestModel):
 
 
 class CopilotOrganizationDetails(GitHubRestModel, extra=Extra.allow):
-    """Copilot for Business Organization Details
+    """Copilot Business Organization Details
 
     Information about the seat breakdown and policies set for an organization with a
-    Copilot for Business subscription.
+    Copilot Business subscription.
     """
 
     seat_breakdown: CopilotSeatBreakdown = Field(
-        title="Copilot for Business Seat Breakdown",
-        description="The breakdown of Copilot for Business seats for the organization.",
+        title="Copilot Business Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
         default=...,
     )
     public_code_suggestions: Literal[
@@ -3690,6 +3738,10 @@ class CopilotOrganizationDetails(GitHubRestModel, extra=Extra.allow):
     ] = Field(
         description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code.",
         default=...,
+    )
+    copilot_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
+        default=UNSET,
     )
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
@@ -3829,9 +3881,9 @@ class OrganizationPropPlan(GitHubRestModel):
 
 
 class CopilotSeatDetails(GitHubRestModel):
-    """Copilot for Business Seat Detail
+    """Copilot Business Seat Detail
 
-    Information about a Copilot for Business seat assignment for a user, team, or
+    Information about a Copilot Business seat assignment for a user, team, or
     organization.
     """
 
@@ -4062,6 +4114,42 @@ class Migration(GitHubRestModel):
     exclude: Missing[List[str]] = Field(
         description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
         default=UNSET,
+    )
+
+
+class OrganizationFineGrainedPermission(GitHubRestModel):
+    """Organization Fine-Grained Permission
+
+    A fine-grained permission that protects organization resources.
+    """
+
+    name: str = Field(default=...)
+    description: str = Field(default=...)
+
+
+class OrganizationRole(GitHubRestModel):
+    """Organization Role
+
+    Organization roles
+    """
+
+    id: int = Field(description="The unique identifier of the role.", default=...)
+    name: str = Field(description="The name of the role.", default=...)
+    description: Missing[Union[str, None]] = Field(
+        description="A short description about who this role is for or what permissions it grants.",
+        default=UNSET,
+    )
+    permissions: List[str] = Field(
+        description="A list of permissions included in this role.", default=...
+    )
+    organization: Union[None, SimpleUser] = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    created_at: datetime = Field(
+        description="The date and time the role was created.", default=...
+    )
+    updated_at: datetime = Field(
+        description="The date and time the role was last updated.", default=...
     )
 
 
@@ -4306,6 +4394,235 @@ class Project(GitHubRestModel):
     )
 
 
+class OrgCustomProperty(GitHubRestModel):
+    """Organization Custom Property
+
+    Custom property defined on an organization
+    """
+
+    property_name: str = Field(description="The name of the property", default=...)
+    value_type: Literal["string", "single_select"] = Field(
+        description="The type of the value for the property", default=...
+    )
+    required: Missing[bool] = Field(
+        description="Whether the property is required.", default=UNSET
+    )
+    default_value: Missing[Union[str, None]] = Field(
+        description="Default value of the property", default=UNSET
+    )
+    description: Missing[Union[str, None]] = Field(
+        description="Short description of the property", default=UNSET
+    )
+    allowed_values: Missing[Union[List[str], None]] = Field(
+        description="Ordered list of allowed values of the property", default=UNSET
+    )
+
+
+class CustomPropertyValue(GitHubRestModel):
+    """Custom Property Value
+
+    Custom property name and associated value
+    """
+
+    property_name: str = Field(description="The name of the property", default=...)
+    value: Union[str, None] = Field(
+        description="The value assigned to the property", default=...
+    )
+
+
+class OrgRepoCustomPropertyValues(GitHubRestModel):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
+    """
+
+    repository_id: int = Field(default=...)
+    repository_name: str = Field(default=...)
+    repository_full_name: str = Field(default=...)
+    properties: List[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values", default=...
+    )
+
+
+class CodeOfConductSimple(GitHubRestModel):
+    """Code Of Conduct Simple
+
+    Code of Conduct Simple
+    """
+
+    url: str = Field(default=...)
+    key: str = Field(default=...)
+    name: str = Field(default=...)
+    html_url: Union[str, None] = Field(default=...)
+
+
+class FullRepository(GitHubRestModel):
+    """Full Repository
+
+    Full Repository
+    """
+
+    id: int = Field(default=...)
+    node_id: str = Field(default=...)
+    name: str = Field(default=...)
+    full_name: str = Field(default=...)
+    owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user.", default=...
+    )
+    private: bool = Field(default=...)
+    html_url: str = Field(default=...)
+    description: Union[str, None] = Field(default=...)
+    fork: bool = Field(default=...)
+    url: str = Field(default=...)
+    archive_url: str = Field(default=...)
+    assignees_url: str = Field(default=...)
+    blobs_url: str = Field(default=...)
+    branches_url: str = Field(default=...)
+    collaborators_url: str = Field(default=...)
+    comments_url: str = Field(default=...)
+    commits_url: str = Field(default=...)
+    compare_url: str = Field(default=...)
+    contents_url: str = Field(default=...)
+    contributors_url: str = Field(default=...)
+    deployments_url: str = Field(default=...)
+    downloads_url: str = Field(default=...)
+    events_url: str = Field(default=...)
+    forks_url: str = Field(default=...)
+    git_commits_url: str = Field(default=...)
+    git_refs_url: str = Field(default=...)
+    git_tags_url: str = Field(default=...)
+    git_url: str = Field(default=...)
+    issue_comment_url: str = Field(default=...)
+    issue_events_url: str = Field(default=...)
+    issues_url: str = Field(default=...)
+    keys_url: str = Field(default=...)
+    labels_url: str = Field(default=...)
+    languages_url: str = Field(default=...)
+    merges_url: str = Field(default=...)
+    milestones_url: str = Field(default=...)
+    notifications_url: str = Field(default=...)
+    pulls_url: str = Field(default=...)
+    releases_url: str = Field(default=...)
+    ssh_url: str = Field(default=...)
+    stargazers_url: str = Field(default=...)
+    statuses_url: str = Field(default=...)
+    subscribers_url: str = Field(default=...)
+    subscription_url: str = Field(default=...)
+    tags_url: str = Field(default=...)
+    teams_url: str = Field(default=...)
+    trees_url: str = Field(default=...)
+    clone_url: str = Field(default=...)
+    mirror_url: Union[str, None] = Field(default=...)
+    hooks_url: str = Field(default=...)
+    svn_url: str = Field(default=...)
+    homepage: Union[str, None] = Field(default=...)
+    language: Union[str, None] = Field(default=...)
+    forks_count: int = Field(default=...)
+    stargazers_count: int = Field(default=...)
+    watchers_count: int = Field(default=...)
+    size: int = Field(
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        default=...,
+    )
+    default_branch: str = Field(default=...)
+    open_issues_count: int = Field(default=...)
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[List[str]] = Field(default=UNSET)
+    has_issues: bool = Field(default=...)
+    has_projects: bool = Field(default=...)
+    has_wiki: bool = Field(default=...)
+    has_pages: bool = Field(default=...)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    has_discussions: bool = Field(default=...)
+    archived: bool = Field(default=...)
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled.", default=...
+    )
+    visibility: Missing[str] = Field(
+        description="The repository visibility: public, private, or internal.",
+        default=UNSET,
+    )
+    pushed_at: datetime = Field(default=...)
+    created_at: datetime = Field(default=...)
+    updated_at: datetime = Field(default=...)
+    permissions: Missing[FullRepositoryPropPermissions] = Field(default=UNSET)
+    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
+    template_repository: Missing[Union[None, Repository]] = Field(
+        title="Repository", description="A repository on GitHub.", default=UNSET
+    )
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(default=UNSET)
+    allow_auto_merge: Missing[bool] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    allow_merge_commit: Missing[bool] = Field(default=UNSET)
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: Missing[bool] = Field(default=UNSET)
+    squash_merge_commit_title: Missing[
+        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
+    ] = Field(
+        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        default=UNSET,
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        description="The default value for a merge commit title.\n\n  - `PR_TITLE` - default to the pull request's title.\n  - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+        default=UNSET,
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        default=UNSET,
+    )
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    subscribers_count: int = Field(default=...)
+    network_count: int = Field(default=...)
+    license_: Union[None, LicenseSimple] = Field(
+        title="License Simple",
+        description="License Simple",
+        default=...,
+        alias="license",
+    )
+    organization: Missing[Union[None, SimpleUser]] = Field(
+        title="Simple User", description="A GitHub user.", default=UNSET
+    )
+    parent: Missing[Repository] = Field(
+        title="Repository", description="A repository on GitHub.", default=UNSET
+    )
+    source: Missing[Repository] = Field(
+        title="Repository", description="A repository on GitHub.", default=UNSET
+    )
+    forks: int = Field(default=...)
+    master_branch: Missing[str] = Field(default=UNSET)
+    open_issues: int = Field(default=...)
+    watchers: int = Field(default=...)
+    anonymous_access_enabled: Missing[bool] = Field(
+        description="Whether anonymous git access is allowed.", default=True
+    )
+    code_of_conduct: Missing[CodeOfConductSimple] = Field(
+        title="Code Of Conduct Simple",
+        description="Code of Conduct Simple",
+        default=UNSET,
+    )
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
+    )
+
+
+class FullRepositoryPropPermissions(GitHubRestModel):
+    """FullRepositoryPropPermissions"""
+
+    admin: bool = Field(default=...)
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: bool = Field(default=...)
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field(default=...)
+
+
 class RepositoryRulesetBypassActor(GitHubRestModel):
     """Repository Ruleset Bypass Actor
 
@@ -4313,7 +4630,8 @@ class RepositoryRulesetBypassActor(GitHubRestModel):
     """
 
     actor_id: int = Field(
-        description="The ID of the actor that can bypass a ruleset", default=...
+        description="The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`.",
+        default=...,
     )
     actor_type: Literal[
         "RepositoryRole", "Team", "Integration", "OrganizationAdmin"
@@ -4469,7 +4787,7 @@ class RepositoryRuleRequiredDeployments(GitHubRestModel):
     """required_deployments
 
     Choose which environments must be successfully deployed to before refs can be
-    merged into a branch that matches this rule.
+    pushed into a ref that matches this rule.
     """
 
     type: Literal["required_deployments"] = Field(default=...)
@@ -4552,10 +4870,8 @@ class RepositoryRuleParamsStatusCheckConfiguration(GitHubRestModel):
 class RepositoryRuleRequiredStatusChecks(GitHubRestModel):
     """required_status_checks
 
-    Choose which status checks must pass before branches can be merged into a branch
-    that matches this rule. When enabled, commits must first be pushed to another
-    branch, then merged or pushed directly to a ref that matches this rule after
-    status checks have passed.
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
     type: Literal["required_status_checks"] = Field(default=...)
@@ -4720,6 +5036,44 @@ class RepositoryRuleTagNamePatternPropParameters(GitHubRestModel):
     pattern: str = Field(description="The pattern to match with.", default=...)
 
 
+class RepositoryRuleParamsWorkflowFileReference(GitHubRestModel):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
+    """
+
+    path: str = Field(description="The path to the workflow file", default=...)
+    ref: Missing[str] = Field(
+        description="The ref (branch or tag) of the workflow file to use", default=UNSET
+    )
+    repository_id: int = Field(
+        description="The ID of the repository where the workflow is defined",
+        default=...,
+    )
+    sha: Missing[str] = Field(
+        description="The commit SHA of the workflow file to use", default=UNSET
+    )
+
+
+class RepositoryRuleWorkflows(GitHubRestModel):
+    """workflows
+
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
+    """
+
+    type: Literal["workflows"] = Field(default=...)
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleWorkflowsPropParameters(GitHubRestModel):
+    """RepositoryRuleWorkflowsPropParameters"""
+
+    workflows: List[RepositoryRuleParamsWorkflowFileReference] = Field(
+        description="Workflows that must pass for this rule to pass.", default=...
+    )
+
+
 class RepositoryRuleset(GitHubRestModel):
     """Repository ruleset
 
@@ -4779,6 +5133,7 @@ class RepositoryRuleset(GitHubRestModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
             ]
         ]
     ] = Field(default=UNSET)
@@ -4805,6 +5160,123 @@ class RepositoryRulesetPropLinksPropHtml(GitHubRestModel):
     """RepositoryRulesetPropLinksPropHtml"""
 
     href: Missing[str] = Field(description="The html URL of the ruleset", default=UNSET)
+
+
+class RuleSuitesItems(GitHubRestModel):
+    """RuleSuitesItems"""
+
+    id: Missing[int] = Field(
+        description="The unique identifier of the rule insight.", default=UNSET
+    )
+    actor_id: Missing[int] = Field(
+        description="The number that identifies the user.", default=UNSET
+    )
+    actor_name: Missing[str] = Field(
+        description="The handle for the GitHub user account.", default=UNSET
+    )
+    before_sha: Missing[str] = Field(
+        description="The first commit sha before the push evaluation.", default=UNSET
+    )
+    after_sha: Missing[str] = Field(
+        description="The last commit sha in the push evaluation.", default=UNSET
+    )
+    ref: Missing[str] = Field(
+        description="The ref name that the evaluation ran on.", default=UNSET
+    )
+    repository_id: Missing[int] = Field(
+        description="The ID of the repository associated with the rule evaluation.",
+        default=UNSET,
+    )
+    repository_name: Missing[str] = Field(
+        description="The name of the repository without the `.git` extension.",
+        default=UNSET,
+    )
+    pushed_at: Missing[datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+        default=UNSET,
+    )
+    evaluation_result: Missing[Literal["pass", "fail"]] = Field(
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
+        default=UNSET,
+    )
+
+
+class RuleSuite(GitHubRestModel):
+    """Rule Suite
+
+    Response
+    """
+
+    id: Missing[int] = Field(
+        description="The unique identifier of the rule insight.", default=UNSET
+    )
+    actor_id: Missing[int] = Field(
+        description="The number that identifies the user.", default=UNSET
+    )
+    actor_name: Missing[str] = Field(
+        description="The handle for the GitHub user account.", default=UNSET
+    )
+    before_sha: Missing[str] = Field(
+        description="The first commit sha before the push evaluation.", default=UNSET
+    )
+    after_sha: Missing[str] = Field(
+        description="The last commit sha in the push evaluation.", default=UNSET
+    )
+    ref: Missing[str] = Field(
+        description="The ref name that the evaluation ran on.", default=UNSET
+    )
+    repository_id: Missing[int] = Field(
+        description="The ID of the repository associated with the rule evaluation.",
+        default=UNSET,
+    )
+    repository_name: Missing[str] = Field(
+        description="The name of the repository without the `.git` extension.",
+        default=UNSET,
+    )
+    pushed_at: Missing[datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+        default=UNSET,
+    )
+    evaluation_result: Missing[Literal["pass", "fail"]] = Field(
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
+        default=UNSET,
+    )
+    rule_evaluations: Missing[List[RuleSuitePropRuleEvaluationsItems]] = Field(
+        description="Details on the evaluated rules.", default=UNSET
+    )
+
+
+class RuleSuitePropRuleEvaluationsItems(GitHubRestModel):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
+        description="The enforcement level of this rule source.", default=UNSET
+    )
+    result: Missing[Literal["pass", "fail"]] = Field(
+        description="The result of the evaluation of the individual rule.",
+        default=UNSET,
+    )
+    rule_type: Missing[str] = Field(description="The type of rule.", default=UNSET)
+    details: Missing[str] = Field(
+        description="Any associated details with the rule evaluation.", default=UNSET
+    )
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubRestModel):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: Missing[str] = Field(description="The type of rule source.", default=UNSET)
+    id: Missing[Union[int, None]] = Field(
+        description="The ID of the rule source.", default=UNSET
+    )
+    name: Missing[Union[str, None]] = Field(
+        description="The name of the rule source.", default=UNSET
+    )
 
 
 class RepositoryAdvisoryVulnerability(GitHubRestModel):
@@ -5271,7 +5743,7 @@ class TeamDiscussion(GitHubRestModel):
         default=...,
     )
     private: bool = Field(
-        description="Whether or not this discussion should be restricted to team members and organization administrators.",
+        description="Whether or not this discussion should be restricted to team members and organization owners.",
         default=...,
     )
     team_url: str = Field(default=...)
@@ -5493,9 +5965,6 @@ class TeamRepository(GitHubRestModel):
     allow_rebase_merge: Missing[bool] = Field(
         description="Whether to allow rebase merges for pull requests.", default=True
     )
-    template_repository: Missing[Union[None, Repository]] = Field(
-        title="Repository", description="A repository on GitHub.", default=UNSET
-    )
     temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
     allow_squash_merge: Missing[bool] = Field(
         description="Whether to allow squash merges for pull requests.", default=True
@@ -5626,185 +6095,6 @@ class RateLimitOverviewPropResources(GitHubRestModel):
     dependency_snapshots: Missing[RateLimit] = Field(title="Rate Limit", default=UNSET)
 
 
-class CodeOfConductSimple(GitHubRestModel):
-    """Code Of Conduct Simple
-
-    Code of Conduct Simple
-    """
-
-    url: str = Field(default=...)
-    key: str = Field(default=...)
-    name: str = Field(default=...)
-    html_url: Union[str, None] = Field(default=...)
-
-
-class FullRepository(GitHubRestModel):
-    """Full Repository
-
-    Full Repository
-    """
-
-    id: int = Field(default=...)
-    node_id: str = Field(default=...)
-    name: str = Field(default=...)
-    full_name: str = Field(default=...)
-    owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user.", default=...
-    )
-    private: bool = Field(default=...)
-    html_url: str = Field(default=...)
-    description: Union[str, None] = Field(default=...)
-    fork: bool = Field(default=...)
-    url: str = Field(default=...)
-    archive_url: str = Field(default=...)
-    assignees_url: str = Field(default=...)
-    blobs_url: str = Field(default=...)
-    branches_url: str = Field(default=...)
-    collaborators_url: str = Field(default=...)
-    comments_url: str = Field(default=...)
-    commits_url: str = Field(default=...)
-    compare_url: str = Field(default=...)
-    contents_url: str = Field(default=...)
-    contributors_url: str = Field(default=...)
-    deployments_url: str = Field(default=...)
-    downloads_url: str = Field(default=...)
-    events_url: str = Field(default=...)
-    forks_url: str = Field(default=...)
-    git_commits_url: str = Field(default=...)
-    git_refs_url: str = Field(default=...)
-    git_tags_url: str = Field(default=...)
-    git_url: str = Field(default=...)
-    issue_comment_url: str = Field(default=...)
-    issue_events_url: str = Field(default=...)
-    issues_url: str = Field(default=...)
-    keys_url: str = Field(default=...)
-    labels_url: str = Field(default=...)
-    languages_url: str = Field(default=...)
-    merges_url: str = Field(default=...)
-    milestones_url: str = Field(default=...)
-    notifications_url: str = Field(default=...)
-    pulls_url: str = Field(default=...)
-    releases_url: str = Field(default=...)
-    ssh_url: str = Field(default=...)
-    stargazers_url: str = Field(default=...)
-    statuses_url: str = Field(default=...)
-    subscribers_url: str = Field(default=...)
-    subscription_url: str = Field(default=...)
-    tags_url: str = Field(default=...)
-    teams_url: str = Field(default=...)
-    trees_url: str = Field(default=...)
-    clone_url: str = Field(default=...)
-    mirror_url: Union[str, None] = Field(default=...)
-    hooks_url: str = Field(default=...)
-    svn_url: str = Field(default=...)
-    homepage: Union[str, None] = Field(default=...)
-    language: Union[str, None] = Field(default=...)
-    forks_count: int = Field(default=...)
-    stargazers_count: int = Field(default=...)
-    watchers_count: int = Field(default=...)
-    size: int = Field(
-        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
-        default=...,
-    )
-    default_branch: str = Field(default=...)
-    open_issues_count: int = Field(default=...)
-    is_template: Missing[bool] = Field(default=UNSET)
-    topics: Missing[List[str]] = Field(default=UNSET)
-    has_issues: bool = Field(default=...)
-    has_projects: bool = Field(default=...)
-    has_wiki: bool = Field(default=...)
-    has_pages: bool = Field(default=...)
-    has_downloads: bool = Field(default=...)
-    has_discussions: bool = Field(default=...)
-    archived: bool = Field(default=...)
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled.", default=...
-    )
-    visibility: Missing[str] = Field(
-        description="The repository visibility: public, private, or internal.",
-        default=UNSET,
-    )
-    pushed_at: datetime = Field(default=...)
-    created_at: datetime = Field(default=...)
-    updated_at: datetime = Field(default=...)
-    permissions: Missing[FullRepositoryPropPermissions] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    template_repository: Missing[Union[None, Repository]] = Field(
-        title="Repository", description="A repository on GitHub.", default=UNSET
-    )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_auto_merge: Missing[bool] = Field(default=UNSET)
-    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_update_branch: Missing[bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Missing[bool] = Field(default=UNSET)
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        default=UNSET,
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-        default=UNSET,
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        description="The default value for a merge commit title.\n\n  - `PR_TITLE` - default to the pull request's title.\n  - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
-        default=UNSET,
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-        default=UNSET,
-    )
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    subscribers_count: int = Field(default=...)
-    network_count: int = Field(default=...)
-    license_: Union[None, LicenseSimple] = Field(
-        title="License Simple",
-        description="License Simple",
-        default=...,
-        alias="license",
-    )
-    organization: Missing[Union[None, SimpleUser]] = Field(
-        title="Simple User", description="A GitHub user.", default=UNSET
-    )
-    parent: Missing[Repository] = Field(
-        title="Repository", description="A repository on GitHub.", default=UNSET
-    )
-    source: Missing[Repository] = Field(
-        title="Repository", description="A repository on GitHub.", default=UNSET
-    )
-    forks: int = Field(default=...)
-    master_branch: Missing[str] = Field(default=UNSET)
-    open_issues: int = Field(default=...)
-    watchers: int = Field(default=...)
-    anonymous_access_enabled: Missing[bool] = Field(
-        description="Whether anonymous git access is allowed.", default=True
-    )
-    code_of_conduct: Missing[CodeOfConductSimple] = Field(
-        title="Code Of Conduct Simple",
-        description="Code of Conduct Simple",
-        default=UNSET,
-    )
-    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
-        default=UNSET
-    )
-
-
-class FullRepositoryPropPermissions(GitHubRestModel):
-    """FullRepositoryPropPermissions"""
-
-    admin: bool = Field(default=...)
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field(default=...)
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field(default=...)
-
-
 class Artifact(GitHubRestModel):
     """Artifact
 
@@ -5883,7 +6173,7 @@ class Job(GitHubRestModel):
     )
     url: str = Field(default=...)
     html_url: Union[str, None] = Field(default=...)
-    status: Literal["queued", "in_progress", "completed"] = Field(
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
         description="The phase of the lifecycle that the job is currently in.",
         default=...,
     )
@@ -6023,7 +6313,7 @@ class ActionsWorkflowAccessToRepository(GitHubRestModel):
     """ActionsWorkflowAccessToRepository"""
 
     access_level: Literal["none", "user", "organization"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repos only. `organization` level access allows sharing across the organization.",
+        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization.",
         default=...,
     )
 
@@ -7430,28 +7720,6 @@ class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubRestMo
     setting: bool = Field(default=...)
 
 
-class CodeScanningAlertRuleSummary(GitHubRestModel):
-    """CodeScanningAlertRuleSummary"""
-
-    id: Missing[Union[str, None]] = Field(
-        description="A unique identifier for the rule used to detect the alert.",
-        default=UNSET,
-    )
-    name: Missing[str] = Field(
-        description="The name of the rule used to detect the alert.", default=UNSET
-    )
-    tags: Missing[Union[List[str], None]] = Field(
-        description="A set of tags applicable for the rule.", default=UNSET
-    )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
-        description="The severity of the alert.", default=UNSET
-    )
-    description: Missing[str] = Field(
-        description="A short description of the rule used to detect the alert.",
-        default=UNSET,
-    )
-
-
 class CodeScanningAlertItems(GitHubRestModel):
     """CodeScanningAlertItems"""
 
@@ -7501,6 +7769,43 @@ class CodeScanningAlertItems(GitHubRestModel):
     rule: CodeScanningAlertRuleSummary = Field(default=...)
     tool: CodeScanningAnalysisTool = Field(default=...)
     most_recent_instance: CodeScanningAlertInstance = Field(default=...)
+
+
+class CodeScanningAlertRule(GitHubRestModel):
+    """CodeScanningAlertRule"""
+
+    id: Missing[Union[str, None]] = Field(
+        description="A unique identifier for the rule used to detect the alert.",
+        default=UNSET,
+    )
+    name: Missing[str] = Field(
+        description="The name of the rule used to detect the alert.", default=UNSET
+    )
+    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+        description="The severity of the alert.", default=UNSET
+    )
+    security_severity_level: Missing[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(description="The security severity of the alert.", default=UNSET)
+    description: Missing[str] = Field(
+        description="A short description of the rule used to detect the alert.",
+        default=UNSET,
+    )
+    full_description: Missing[str] = Field(
+        description="description of the rule used to detect the alert.", default=UNSET
+    )
+    tags: Missing[Union[List[str], None]] = Field(
+        description="A set of tags applicable for the rule.", default=UNSET
+    )
+    help_: Missing[Union[str, None]] = Field(
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+        default=UNSET,
+        alias="help",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        description="A link to the documentation for the rule used to detect the alert.",
+        default=UNSET,
+    )
 
 
 class CodeScanningAlert(GitHubRestModel):
@@ -7558,7 +7863,7 @@ class CodeScanningAnalysis(GitHubRestModel):
     """CodeScanningAnalysis"""
 
     ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
         default=...,
     )
     commit_sha: str = Field(
@@ -7651,6 +7956,10 @@ class CodeScanningCodeqlDatabase(GitHubRestModel):
         description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property.",
         default=...,
     )
+    commit_oid: Missing[Union[str, None]] = Field(
+        description="The commit SHA of the repository at the time the CodeQL database was created.",
+        default=UNSET,
+    )
 
 
 class CodeScanningDefaultSetup(GitHubRestModel):
@@ -7678,7 +7987,7 @@ class CodeScanningDefaultSetup(GitHubRestModel):
                 "swift",
             ]
         ]
-    ] = Field(description="Languages to be analysed.", default=UNSET)
+    ] = Field(description="Languages to be analyzed.", default=UNSET)
     query_suite: Missing[Literal["default", "extended"]] = Field(
         description="CodeQL query suite to be used.", default=UNSET
     )
@@ -7696,9 +8005,8 @@ class CodeScanningDefaultSetupUpdate(GitHubRestModel):
     Configuration for code scanning default setup.
     """
 
-    state: Literal["configured", "not-configured"] = Field(
-        description="Whether code scanning default setup has been configured or not.",
-        default=...,
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        description="The desired state of code scanning default setup.", default=UNSET
     )
     query_suite: Missing[Literal["default", "extended"]] = Field(
         description="CodeQL query suite to be used.", default=UNSET
@@ -7716,10 +8024,7 @@ class CodeScanningDefaultSetupUpdate(GitHubRestModel):
                 "swift",
             ]
         ]
-    ] = Field(
-        description="CodeQL languages to be analyzed. Supported values are: `c-cpp`, `csharp`, `go`, `java-kotlin`, `javascript-typescript`, `python`, `ruby`, and `swift`.",
-        default=UNSET,
-    )
+    ] = Field(description="CodeQL languages to be analyzed.", default=UNSET)
 
 
 class CodeScanningDefaultSetupUpdateResponse(GitHubRestModel):
@@ -7797,6 +8102,18 @@ class CodeownersErrorsPropErrorsItems(GitHubRestModel):
     )
     path: str = Field(
         description="The path of the file where the error occured.", default=...
+    )
+
+
+class CodespacesPermissionsCheckForDevcontainer(GitHubRestModel):
+    """Codespaces Permissions Check
+
+    Permission check result for a given devcontainer config.
+    """
+
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config",
+        default=...,
     )
 
 
@@ -8065,7 +8382,7 @@ class PullRequestSimplePropLabelsItems(GitHubRestModel):
 class PullRequestSimplePropHead(GitHubRestModel):
     """PullRequestSimplePropHead"""
 
-    label: str = Field(default=...)
+    label: Union[str, None] = Field(default=...)
     ref: str = Field(default=...)
     repo: Union[None, Repository] = Field(
         title="Repository", description="A repository on GitHub.", default=...
@@ -9039,16 +9356,31 @@ class EnvironmentPropProtectionRulesItemsAnyof2(GitHubRestModel):
 class DeploymentBranchPolicy(GitHubRestModel):
     """Deployment branch policy
 
-    Details of a deployment branch policy.
+    Details of a deployment branch or tag policy.
     """
 
     id: Missing[int] = Field(
-        description="The unique identifier of the branch policy.", default=UNSET
+        description="The unique identifier of the branch or tag policy.", default=UNSET
     )
     node_id: Missing[str] = Field(default=UNSET)
     name: Missing[str] = Field(
-        description="The name pattern that branches must match in order to deploy to the environment.",
+        description="The name pattern that branches or tags must match in order to deploy to the environment.",
         default=UNSET,
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        description="Whether this rule targets a branch or tag.", default=UNSET
+    )
+
+
+class DeploymentBranchPolicyNamePatternWithType(GitHubRestModel):
+    """Deployment branch and tag policy name pattern"""
+
+    name: str = Field(
+        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch).",
+        default=...,
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        description="Whether this rule targets a branch or tag", default=UNSET
     )
 
 
@@ -11765,6 +12097,24 @@ class RepositoryRuleDetailedOneof13(GitHubRestModel):
     )
 
 
+class RepositoryRuleDetailedOneof14(GitHubRestModel):
+    """RepositoryRuleDetailedOneof14"""
+
+    type: Literal["workflows"] = Field(default=...)
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        description="The type of source for the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_source: Missing[str] = Field(
+        description="The name of the source of the ruleset that includes this rule.",
+        default=UNSET,
+    )
+    ruleset_id: Missing[int] = Field(
+        description="The ID of the ruleset that includes this rule.", default=UNSET
+    )
+
+
 class SecretScanningAlert(GitHubRestModel):
     """SecretScanningAlert"""
 
@@ -11829,6 +12179,9 @@ class SecretScanningAlert(GitHubRestModel):
     push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
         description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
         default=UNSET,
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        description="The token status as of the latest validity check.", default=UNSET
     )
 
 
@@ -11907,11 +12260,129 @@ class SecretScanningLocationIssueComment(GitHubRestModel):
     )
 
 
+class SecretScanningLocationDiscussionTitle(GitHubRestModel):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str = Field(
+        description="The URL to the discussion where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationDiscussionBody(GitHubRestModel):
+    """SecretScanningLocationDiscussionBody
+
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
+
+    discussion_body_url: str = Field(
+        description="The URL to the discussion where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationDiscussionComment(GitHubRestModel):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str = Field(
+        description="The API URL to get the discussion comment where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationPullRequestTitle(GitHubRestModel):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationPullRequestBody(GitHubRestModel):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationPullRequestComment(GitHubRestModel):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str = Field(
+        description="The API URL to get the pull request comment where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationPullRequestReview(GitHubRestModel):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str = Field(
+        description="The API URL to get the pull request review where the secret was detected.",
+        default=...,
+    )
+
+
+class SecretScanningLocationPullRequestReviewComment(GitHubRestModel):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str = Field(
+        description="The API URL to get the pull request review comment where the secret was detected.",
+        default=...,
+    )
+
+
 class SecretScanningLocation(GitHubRestModel):
     """SecretScanningLocation"""
 
-    type: Literal["commit", "issue_title", "issue_body", "issue_comment"] = Field(
-        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.",
+    type: Literal[
+        "commit",
+        "issue_title",
+        "issue_body",
+        "issue_comment",
+        "discussion_title",
+        "discussion_body",
+        "discussion_comment",
+        "pull_request_title",
+        "pull_request_body",
+        "pull_request_comment",
+        "pull_request_review",
+        "pull_request_review_comment",
+    ] = Field(
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
         default=...,
     )
     details: Union[
@@ -11919,8 +12390,16 @@ class SecretScanningLocation(GitHubRestModel):
         SecretScanningLocationIssueTitle,
         SecretScanningLocationIssueBody,
         SecretScanningLocationIssueComment,
+        SecretScanningLocationDiscussionTitle,
+        SecretScanningLocationDiscussionBody,
+        SecretScanningLocationDiscussionComment,
+        SecretScanningLocationPullRequestTitle,
+        SecretScanningLocationPullRequestBody,
+        SecretScanningLocationPullRequestComment,
+        SecretScanningLocationPullRequestReview,
+        SecretScanningLocationPullRequestReviewComment,
     ] = Field(
-        description="Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.",
+        description="Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.",
         default=...,
     )
 
@@ -11962,6 +12441,10 @@ class RepositoryAdvisoryCreate(GitHubRestModel):
     cvss_vector_string: Missing[Union[str, None]] = Field(
         description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
         default=UNSET,
+    )
+    start_private_fork: Missing[bool] = Field(
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+        default=False,
     )
 
 
@@ -12061,6 +12544,10 @@ class PrivateVulnerabilityReportCreate(GitHubRestModel):
     cvss_vector_string: Missing[Union[str, None]] = Field(
         description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
         default=UNSET,
+    )
+    start_private_fork: Missing[bool] = Field(
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+        default=False,
     )
 
 
@@ -13454,7 +13941,7 @@ class RepositoryWebhooks(GitHubRestModel):
     stargazers_count: int = Field(default=...)
     watchers_count: int = Field(default=...)
     size: int = Field(
-        description="The size of the repository. Size is calculated hourly. When a repository is initially created, the size is 0.",
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
         default=...,
     )
     default_branch: str = Field(
@@ -13466,6 +13953,10 @@ class RepositoryWebhooks(GitHubRestModel):
         default=False,
     )
     topics: Missing[List[str]] = Field(default=UNSET)
+    custom_properties: Missing[RepositoryWebhooksPropCustomProperties] = Field(
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+        default=UNSET,
+    )
     has_issues: bool = Field(description="Whether issues are enabled.", default=True)
     has_projects: bool = Field(
         description="Whether projects are enabled.", default=True
@@ -13567,6 +14058,15 @@ class RepositoryWebhooksPropPermissions(GitHubRestModel):
     triage: Missing[bool] = Field(default=UNSET)
     push: bool = Field(default=...)
     maintain: Missing[bool] = Field(default=UNSET)
+
+
+class RepositoryWebhooksPropCustomProperties(GitHubRestModel, extra=Extra.allow):
+    """RepositoryWebhooksPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
 
 
 class RepositoryWebhooksPropTemplateRepositoryPropOwner(GitHubRestModel):
@@ -15272,8 +15772,10 @@ class OrgsOrgInvitationsPostBody(GitHubRestModel):
         description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
         default=UNSET,
     )
-    role: Missing[Literal["admin", "direct_member", "billing_manager"]] = Field(
-        description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.",
+    role: Missing[
+        Literal["admin", "direct_member", "billing_manager", "reinstate"]
+    ] = Field(
+        description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
         default="direct_member",
     )
     team_ids: Missing[List[int]] = Field(
@@ -15334,7 +15836,50 @@ class OrgsOrgMigrationsPostBody(GitHubRestModel):
         default=False,
     )
     exclude: Missing[List[Literal["repositories"]]] = Field(
-        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
+        default=UNSET,
+    )
+
+
+class OrgsOrgOrganizationRolesGetResponse200(GitHubRestModel):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        description="The total number of organization roles available to the organization.",
+        default=UNSET,
+    )
+    roles: Missing[List[OrganizationRole]] = Field(
+        description="The list of organization roles available to the organization.",
+        default=UNSET,
+    )
+
+
+class OrgsOrgOrganizationRolesPostBody(GitHubRestModel):
+    """OrgsOrgOrganizationRolesPostBody"""
+
+    name: str = Field(description="The name of the custom role.", default=...)
+    description: Missing[str] = Field(
+        description="A short description about the intended usage of this role or what permissions it grants.",
+        default=UNSET,
+    )
+    permissions: List[str] = Field(
+        description="A list of additional permissions included in this role.",
+        default=...,
+    )
+
+
+class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubRestModel):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+
+    name: Missing[str] = Field(
+        description="The name of the custom role.", default=UNSET
+    )
+    description: Missing[str] = Field(
+        description="A short description about the intended usage of this role or what permissions it grants.",
+        default=UNSET,
+    )
+    permissions: Missing[List[str]] = Field(
+        description="A list of additional permissions included in this role.",
         default=UNSET,
     )
 
@@ -15420,6 +15965,49 @@ class OrgsOrgProjectsPostBody(GitHubRestModel):
     name: str = Field(description="The name of the project.", default=...)
     body: Missing[str] = Field(
         description="The description of the project.", default=UNSET
+    )
+
+
+class OrgsOrgPropertiesSchemaPatchBody(GitHubRestModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: List[OrgCustomProperty] = Field(
+        description="The array of custom properties to create or update.", default=...
+    )
+
+
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubRestModel):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+
+    value_type: Literal["string", "single_select"] = Field(
+        description="The type of the value for the property", default=...
+    )
+    required: Missing[bool] = Field(
+        description="Whether the property is required.", default=UNSET
+    )
+    default_value: Missing[Union[str, None]] = Field(
+        description="Default value of the property", default=UNSET
+    )
+    description: Missing[Union[str, None]] = Field(
+        description="Short description of the property", default=UNSET
+    )
+    allowed_values: Missing[Union[List[str], None]] = Field(
+        description="Ordered list of allowed values of the property", default=UNSET
+    )
+
+
+class OrgsOrgPropertiesValuesPatchBody(GitHubRestModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: List[str] = Field(
+        description="The names of repositories that the custom property values will be applied to.",
+        max_length=30,
+        min_length=1,
+        default=...,
+    )
+    properties: List[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories.",
+        default=...,
     )
 
 
@@ -15518,6 +16106,18 @@ class OrgsOrgReposPostBody(GitHubRestModel):
         description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
         default=UNSET,
     )
+    custom_properties: Missing[OrgsOrgReposPostBodyPropCustomProperties] = Field(
+        description="The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+        default=UNSET,
+    )
+
+
+class OrgsOrgReposPostBodyPropCustomProperties(GitHubRestModel, extra=Extra.allow):
+    """OrgsOrgReposPostBodyPropCustomProperties
+
+    The custom properties for the new repository. The keys are the custom property
+    names, and the values are the corresponding custom property values.
+    """
 
 
 class OrgsOrgRulesetsPostBody(GitHubRestModel):
@@ -15559,6 +16159,7 @@ class OrgsOrgRulesetsPostBody(GitHubRestModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
             ]
         ]
     ] = Field(description="An array of rules within the ruleset.", default=UNSET)
@@ -15603,6 +16204,7 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubRestModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
             ]
         ]
     ] = Field(description="An array of rules within the ruleset.", default=UNSET)
@@ -15742,7 +16344,7 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubRestModel):
     """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
     permission: Missing[Literal["read", "write", "admin"]] = Field(
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).\"",
+        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
         default=UNSET,
     )
 
@@ -17362,7 +17964,8 @@ class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubRestModel):
         default=...,
     )
     ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
+        pattern="^refs/(heads|tags|pull)/.*$",
         default=...,
     )
     sarif: str = Field(
@@ -17879,6 +18482,10 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubRestModel):
 
     wait_timer: Missing[int] = Field(
         description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
+        default=UNSET,
+    )
+    prevent_self_review: Missing[bool] = Field(
+        description="Whether or not a user who created the job is prevented from approving their own job.",
         default=UNSET,
     )
     reviewers: Missing[
@@ -19341,6 +19948,7 @@ class ReposOwnerRepoRulesetsPostBody(GitHubRestModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
             ]
         ]
     ] = Field(description="An array of rules within the ruleset.", default=UNSET)
@@ -19383,6 +19991,7 @@ class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubRestModel):
                 RepositoryRuleCommitterEmailPattern,
                 RepositoryRuleBranchNamePattern,
                 RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
             ]
         ]
     ] = Field(description="An array of rules within the ruleset.", default=UNSET)
@@ -19699,7 +20308,7 @@ class TeamsTeamIdProjectsProjectIdPutBody(GitHubRestModel):
     """TeamsTeamIdProjectsProjectIdPutBody"""
 
     permission: Missing[Literal["read", "write", "admin"]] = Field(
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).\"",
+        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
         default=UNSET,
     )
 
@@ -20313,7 +20922,7 @@ AuthenticationTokenPropPermissions.update_forward_refs()
 OrganizationActionsSecret.update_forward_refs()
 ActionsPublicKey.update_forward_refs()
 OrganizationActionsVariable.update_forward_refs()
-CodeScanningAlertRule.update_forward_refs()
+CodeScanningAlertRuleSummary.update_forward_refs()
 CodeScanningAnalysisTool.update_forward_refs()
 CodeScanningAlertLocation.update_forward_refs()
 CodeScanningAlertInstance.update_forward_refs()
@@ -20344,6 +20953,8 @@ InteractionLimit.update_forward_refs()
 OrgMembership.update_forward_refs()
 OrgMembershipPropPermissions.update_forward_refs()
 Migration.update_forward_refs()
+OrganizationFineGrainedPermission.update_forward_refs()
+OrganizationRole.update_forward_refs()
 PackageVersion.update_forward_refs()
 PackageVersionPropMetadata.update_forward_refs()
 PackageVersionPropMetadataPropContainer.update_forward_refs()
@@ -20359,6 +20970,12 @@ OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization.update_forwar
 OrganizationProgrammaticAccessGrantPropPermissionsPropRepository.update_forward_refs()
 OrganizationProgrammaticAccessGrantPropPermissionsPropOther.update_forward_refs()
 Project.update_forward_refs()
+OrgCustomProperty.update_forward_refs()
+CustomPropertyValue.update_forward_refs()
+OrgRepoCustomPropertyValues.update_forward_refs()
+CodeOfConductSimple.update_forward_refs()
+FullRepository.update_forward_refs()
+FullRepositoryPropPermissions.update_forward_refs()
 RepositoryRulesetBypassActor.update_forward_refs()
 RepositoryRulesetConditions.update_forward_refs()
 RepositoryRulesetConditionsPropRefName.update_forward_refs()
@@ -20392,10 +21009,17 @@ RepositoryRuleBranchNamePattern.update_forward_refs()
 RepositoryRuleBranchNamePatternPropParameters.update_forward_refs()
 RepositoryRuleTagNamePattern.update_forward_refs()
 RepositoryRuleTagNamePatternPropParameters.update_forward_refs()
+RepositoryRuleParamsWorkflowFileReference.update_forward_refs()
+RepositoryRuleWorkflows.update_forward_refs()
+RepositoryRuleWorkflowsPropParameters.update_forward_refs()
 RepositoryRuleset.update_forward_refs()
 RepositoryRulesetPropLinks.update_forward_refs()
 RepositoryRulesetPropLinksPropSelf.update_forward_refs()
 RepositoryRulesetPropLinksPropHtml.update_forward_refs()
+RuleSuitesItems.update_forward_refs()
+RuleSuite.update_forward_refs()
+RuleSuitePropRuleEvaluationsItems.update_forward_refs()
+RuleSuitePropRuleEvaluationsItemsPropRuleSource.update_forward_refs()
 RepositoryAdvisoryVulnerability.update_forward_refs()
 RepositoryAdvisoryVulnerabilityPropPackage.update_forward_refs()
 RepositoryAdvisoryCredit.update_forward_refs()
@@ -20426,9 +21050,6 @@ ProjectCollaboratorPermission.update_forward_refs()
 RateLimit.update_forward_refs()
 RateLimitOverview.update_forward_refs()
 RateLimitOverviewPropResources.update_forward_refs()
-CodeOfConductSimple.update_forward_refs()
-FullRepository.update_forward_refs()
-FullRepositoryPropPermissions.update_forward_refs()
 Artifact.update_forward_refs()
 ArtifactPropWorkflowRun.update_forward_refs()
 ActionsCacheList.update_forward_refs()
@@ -20533,8 +21154,8 @@ CheckSuite.update_forward_refs()
 CheckSuitePreference.update_forward_refs()
 CheckSuitePreferencePropPreferences.update_forward_refs()
 CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems.update_forward_refs()
-CodeScanningAlertRuleSummary.update_forward_refs()
 CodeScanningAlertItems.update_forward_refs()
+CodeScanningAlertRule.update_forward_refs()
 CodeScanningAlert.update_forward_refs()
 CodeScanningAnalysis.update_forward_refs()
 CodeScanningAnalysisDeletion.update_forward_refs()
@@ -20546,6 +21167,7 @@ CodeScanningSarifsReceipt.update_forward_refs()
 CodeScanningSarifsStatus.update_forward_refs()
 CodeownersErrors.update_forward_refs()
 CodeownersErrorsPropErrorsItems.update_forward_refs()
+CodespacesPermissionsCheckForDevcontainer.update_forward_refs()
 RepoCodespacesSecret.update_forward_refs()
 Collaborator.update_forward_refs()
 CollaboratorPropPermissions.update_forward_refs()
@@ -20617,6 +21239,7 @@ EnvironmentPropProtectionRulesItemsAnyof1.update_forward_refs()
 EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems.update_forward_refs()
 EnvironmentPropProtectionRulesItemsAnyof2.update_forward_refs()
 DeploymentBranchPolicy.update_forward_refs()
+DeploymentBranchPolicyNamePatternWithType.update_forward_refs()
 DeploymentBranchPolicyNamePattern.update_forward_refs()
 CustomDeploymentRuleApp.update_forward_refs()
 DeploymentProtectionRule.update_forward_refs()
@@ -20752,11 +21375,20 @@ RepositoryRuleDetailedOneof10.update_forward_refs()
 RepositoryRuleDetailedOneof11.update_forward_refs()
 RepositoryRuleDetailedOneof12.update_forward_refs()
 RepositoryRuleDetailedOneof13.update_forward_refs()
+RepositoryRuleDetailedOneof14.update_forward_refs()
 SecretScanningAlert.update_forward_refs()
 SecretScanningLocationCommit.update_forward_refs()
 SecretScanningLocationIssueTitle.update_forward_refs()
 SecretScanningLocationIssueBody.update_forward_refs()
 SecretScanningLocationIssueComment.update_forward_refs()
+SecretScanningLocationDiscussionTitle.update_forward_refs()
+SecretScanningLocationDiscussionBody.update_forward_refs()
+SecretScanningLocationDiscussionComment.update_forward_refs()
+SecretScanningLocationPullRequestTitle.update_forward_refs()
+SecretScanningLocationPullRequestBody.update_forward_refs()
+SecretScanningLocationPullRequestComment.update_forward_refs()
+SecretScanningLocationPullRequestReview.update_forward_refs()
+SecretScanningLocationPullRequestReviewComment.update_forward_refs()
 SecretScanningLocation.update_forward_refs()
 RepositoryAdvisoryCreate.update_forward_refs()
 RepositoryAdvisoryCreatePropVulnerabilitiesItems.update_forward_refs()
@@ -20831,6 +21463,7 @@ SimpleInstallation.update_forward_refs()
 OrganizationSimpleWebhooks.update_forward_refs()
 RepositoryWebhooks.update_forward_refs()
 RepositoryWebhooksPropPermissions.update_forward_refs()
+RepositoryWebhooksPropCustomProperties.update_forward_refs()
 RepositoryWebhooksPropTemplateRepositoryPropOwner.update_forward_refs()
 RepositoryWebhooksPropTemplateRepositoryPropPermissions.update_forward_refs()
 RepositoryWebhooksPropTemplateRepository.update_forward_refs()
@@ -20940,6 +21573,9 @@ OrgsOrgInvitationsPostBody.update_forward_refs()
 OrgsOrgMembersUsernameCodespacesGetResponse200.update_forward_refs()
 OrgsOrgMembershipsUsernamePutBody.update_forward_refs()
 OrgsOrgMigrationsPostBody.update_forward_refs()
+OrgsOrgOrganizationRolesGetResponse200.update_forward_refs()
+OrgsOrgOrganizationRolesPostBody.update_forward_refs()
+OrgsOrgOrganizationRolesRoleIdPatchBody.update_forward_refs()
 OrgsOrgOutsideCollaboratorsUsernamePutBody.update_forward_refs()
 OrgsOrgOutsideCollaboratorsUsernamePutResponse202.update_forward_refs()
 OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422.update_forward_refs()
@@ -20948,7 +21584,11 @@ OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody.update_forward_refs()
 OrgsOrgPersonalAccessTokensPostBody.update_forward_refs()
 OrgsOrgPersonalAccessTokensPatIdPostBody.update_forward_refs()
 OrgsOrgProjectsPostBody.update_forward_refs()
+OrgsOrgPropertiesSchemaPatchBody.update_forward_refs()
+OrgsOrgPropertiesSchemaCustomPropertyNamePutBody.update_forward_refs()
+OrgsOrgPropertiesValuesPatchBody.update_forward_refs()
 OrgsOrgReposPostBody.update_forward_refs()
+OrgsOrgReposPostBodyPropCustomProperties.update_forward_refs()
 OrgsOrgRulesetsPostBody.update_forward_refs()
 OrgsOrgRulesetsRulesetIdPutBody.update_forward_refs()
 OrgsOrgTeamsPostBody.update_forward_refs()
@@ -21373,7 +22013,7 @@ __all__ = [
     "OrganizationActionsSecret",
     "ActionsPublicKey",
     "OrganizationActionsVariable",
-    "CodeScanningAlertRule",
+    "CodeScanningAlertRuleSummary",
     "CodeScanningAnalysisTool",
     "CodeScanningAlertLocation",
     "CodeScanningAlertInstance",
@@ -21404,6 +22044,8 @@ __all__ = [
     "OrgMembership",
     "OrgMembershipPropPermissions",
     "Migration",
+    "OrganizationFineGrainedPermission",
+    "OrganizationRole",
     "PackageVersion",
     "PackageVersionPropMetadata",
     "PackageVersionPropMetadataPropContainer",
@@ -21419,6 +22061,12 @@ __all__ = [
     "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
     "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
     "Project",
+    "OrgCustomProperty",
+    "CustomPropertyValue",
+    "OrgRepoCustomPropertyValues",
+    "CodeOfConductSimple",
+    "FullRepository",
+    "FullRepositoryPropPermissions",
     "RepositoryRulesetBypassActor",
     "RepositoryRulesetConditions",
     "RepositoryRulesetConditionsPropRefName",
@@ -21452,10 +22100,17 @@ __all__ = [
     "RepositoryRuleBranchNamePatternPropParameters",
     "RepositoryRuleTagNamePattern",
     "RepositoryRuleTagNamePatternPropParameters",
+    "RepositoryRuleParamsWorkflowFileReference",
+    "RepositoryRuleWorkflows",
+    "RepositoryRuleWorkflowsPropParameters",
     "RepositoryRuleset",
     "RepositoryRulesetPropLinks",
     "RepositoryRulesetPropLinksPropSelf",
     "RepositoryRulesetPropLinksPropHtml",
+    "RuleSuitesItems",
+    "RuleSuite",
+    "RuleSuitePropRuleEvaluationsItems",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
     "RepositoryAdvisoryVulnerability",
     "RepositoryAdvisoryVulnerabilityPropPackage",
     "RepositoryAdvisoryCredit",
@@ -21486,9 +22141,6 @@ __all__ = [
     "RateLimit",
     "RateLimitOverview",
     "RateLimitOverviewPropResources",
-    "CodeOfConductSimple",
-    "FullRepository",
-    "FullRepositoryPropPermissions",
     "Artifact",
     "ArtifactPropWorkflowRun",
     "ActionsCacheList",
@@ -21593,8 +22245,8 @@ __all__ = [
     "CheckSuitePreference",
     "CheckSuitePreferencePropPreferences",
     "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
-    "CodeScanningAlertRuleSummary",
     "CodeScanningAlertItems",
+    "CodeScanningAlertRule",
     "CodeScanningAlert",
     "CodeScanningAnalysis",
     "CodeScanningAnalysisDeletion",
@@ -21606,6 +22258,7 @@ __all__ = [
     "CodeScanningSarifsStatus",
     "CodeownersErrors",
     "CodeownersErrorsPropErrorsItems",
+    "CodespacesPermissionsCheckForDevcontainer",
     "RepoCodespacesSecret",
     "Collaborator",
     "CollaboratorPropPermissions",
@@ -21677,6 +22330,7 @@ __all__ = [
     "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",
     "EnvironmentPropProtectionRulesItemsAnyof2",
     "DeploymentBranchPolicy",
+    "DeploymentBranchPolicyNamePatternWithType",
     "DeploymentBranchPolicyNamePattern",
     "CustomDeploymentRuleApp",
     "DeploymentProtectionRule",
@@ -21812,11 +22466,20 @@ __all__ = [
     "RepositoryRuleDetailedOneof11",
     "RepositoryRuleDetailedOneof12",
     "RepositoryRuleDetailedOneof13",
+    "RepositoryRuleDetailedOneof14",
     "SecretScanningAlert",
     "SecretScanningLocationCommit",
     "SecretScanningLocationIssueTitle",
     "SecretScanningLocationIssueBody",
     "SecretScanningLocationIssueComment",
+    "SecretScanningLocationDiscussionTitle",
+    "SecretScanningLocationDiscussionBody",
+    "SecretScanningLocationDiscussionComment",
+    "SecretScanningLocationPullRequestTitle",
+    "SecretScanningLocationPullRequestBody",
+    "SecretScanningLocationPullRequestComment",
+    "SecretScanningLocationPullRequestReview",
+    "SecretScanningLocationPullRequestReviewComment",
     "SecretScanningLocation",
     "RepositoryAdvisoryCreate",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
@@ -21891,6 +22554,7 @@ __all__ = [
     "OrganizationSimpleWebhooks",
     "RepositoryWebhooks",
     "RepositoryWebhooksPropPermissions",
+    "RepositoryWebhooksPropCustomProperties",
     "RepositoryWebhooksPropTemplateRepositoryPropOwner",
     "RepositoryWebhooksPropTemplateRepositoryPropPermissions",
     "RepositoryWebhooksPropTemplateRepository",
@@ -22000,6 +22664,9 @@ __all__ = [
     "OrgsOrgMembersUsernameCodespacesGetResponse200",
     "OrgsOrgMembershipsUsernamePutBody",
     "OrgsOrgMigrationsPostBody",
+    "OrgsOrgOrganizationRolesGetResponse200",
+    "OrgsOrgOrganizationRolesPostBody",
+    "OrgsOrgOrganizationRolesRoleIdPatchBody",
     "OrgsOrgOutsideCollaboratorsUsernamePutBody",
     "OrgsOrgOutsideCollaboratorsUsernamePutResponse202",
     "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",
@@ -22008,7 +22675,11 @@ __all__ = [
     "OrgsOrgPersonalAccessTokensPostBody",
     "OrgsOrgPersonalAccessTokensPatIdPostBody",
     "OrgsOrgProjectsPostBody",
+    "OrgsOrgPropertiesSchemaPatchBody",
+    "OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",
+    "OrgsOrgPropertiesValuesPatchBody",
     "OrgsOrgReposPostBody",
+    "OrgsOrgReposPostBodyPropCustomProperties",
     "OrgsOrgRulesetsPostBody",
     "OrgsOrgRulesetsRulesetIdPutBody",
     "OrgsOrgTeamsPostBody",

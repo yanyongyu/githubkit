@@ -46,6 +46,7 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        validity: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
@@ -60,6 +61,7 @@ class SecretScanningClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "validity": validity,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -87,6 +89,7 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        validity: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
@@ -101,6 +104,7 @@ class SecretScanningClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "validity": validity,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -129,6 +133,7 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        validity: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
@@ -144,6 +149,7 @@ class SecretScanningClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "validity": validity,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -172,6 +178,7 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        validity: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[OrganizationSecretScanningAlert]]":
@@ -187,6 +194,7 @@ class SecretScanningClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "validity": validity,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -216,6 +224,7 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        validity: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SecretScanningAlert]]":
@@ -231,6 +240,7 @@ class SecretScanningClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "validity": validity,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -259,6 +269,7 @@ class SecretScanningClient:
         per_page: Missing[int] = 30,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        validity: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> "Response[List[SecretScanningAlert]]":
@@ -274,6 +285,7 @@ class SecretScanningClient:
             "per_page": per_page,
             "before": before,
             "after": after,
+            "validity": validity,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

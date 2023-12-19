@@ -137,6 +137,9 @@ class LicensesClient:
             url,
             headers=exclude_unset(headers),
             response_model=LicenseContent,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     async def async_get_for_repo(
@@ -155,4 +158,7 @@ class LicensesClient:
             url,
             headers=exclude_unset(headers),
             response_model=LicenseContent,
+            error_models={
+                "404": BasicError,
+            },
         )
