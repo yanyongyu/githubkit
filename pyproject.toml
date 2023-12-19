@@ -264,8 +264,8 @@ types_output = "githubkit/webhooks/types.py"
 # [FIXED] https://github.com/octokit/webhooks/issues/806
 # "/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive", "wont_fix", "revoked", "used_in_tests"] }
 
-# project v2 item edit event can contain labels
-"/definitions/projects_v2_item$edited/properties/changes/properties/field_value/properties/field_type" = { enum = [ "single-select", "date", "number", "text", "iteration", "labels" ] }
+# https://github.com/yanyongyu/githubkit/pull/69
+"/definitions/projects_v2_item$edited/properties/changes/properties/field_value/properties/field_type" = { enum = [ "single_select", "date", "number", "text", "iteration", "labels" ] }
 
 [tool.codegen.field_overrides]
 "+1" = "plus_one"

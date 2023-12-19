@@ -9862,7 +9862,7 @@ class ProjectsV2ItemEditedPropChangesPropFieldValue(GitHubWebhookModel):
     """ProjectsV2ItemEditedPropChangesPropFieldValue"""
 
     field_type: Literal[
-        "single-select", "date", "number", "text", "iteration", "labels"
+        "single_select", "date", "number", "text", "iteration", "labels"
     ] = Field(default=...)
     field_node_id: str = Field(default=...)
 
