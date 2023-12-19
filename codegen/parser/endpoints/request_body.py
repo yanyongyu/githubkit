@@ -1,58 +1,12 @@
-from typing import Set, List, Union, Literal
+from typing import Union
 
 import openapi_pydantic as oas
-from pydantic import BaseModel, TypeAdapter
+from pydantic import TypeAdapter
 
 from ...source import Source
+from ..data import RequestBodyData
+from ..schemas import parse_schema
 from ..utils import concat_snake_name
-from ..schemas import Property, SchemaData, ModelSchema, UnionSchema, parse_schema
-
-
-class RequestBodyData(BaseModel):
-    type: Literal["form", "json", "file", "raw"]
-    body_schema: SchemaData
-    required: bool = False
-
-    @property
-    def allowed_models(self) -> List[ModelSchema]:
-        if isinstance(self.body_schema, ModelSchema):
-            return [self.body_schema]
-        elif isinstance(self.body_schema, UnionSchema):
-            return [
-                schema
-                for schema in self.body_schema.schemas
-                if isinstance(schema, ModelSchema)
-            ]
-        return []
-
-    def get_raw_definition(self) -> str:
-        prop = Property(
-            name="data",
-            prop_name="data",
-            required=self.required,
-            schema_data=self.body_schema,
-        )
-        return prop.get_param_defination()
-
-    def get_endpoint_definition(self) -> str:
-        prop = Property(
-            name="data",
-            prop_name="data",
-            required=not bool(self.allowed_models),
-            schema_data=self.body_schema,
-        )
-        return prop.get_param_defination()
-
-    def get_param_imports(self) -> Set[str]:
-        imports = set()
-        imports.update(self.body_schema.get_param_imports())
-        for model in self.allowed_models:
-            for prop in model.properties:
-                imports.update(prop.get_param_imports())
-        return imports
-
-    def get_using_imports(self) -> Set[str]:
-        return self.body_schema.get_using_imports()
 
 
 def build_request_body(source: Source, prefix: str) -> RequestBodyData:

@@ -1,5 +1,3 @@
-from typing import List
-
 import openapi_pydantic as oas
 
 from ...source import Source
@@ -7,16 +5,16 @@ from .parameter import build_param
 from .response import build_response
 from ..utils import concat_snake_name
 from .request_body import build_request_body
-from .endpoint import EndpointData as EndpointData
+from ..data import EndpointData as EndpointData
 
 METHODS = ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
 
 
-def parse_endpoint(source: Source, path: str) -> List[EndpointData]:
+def parse_endpoint(source: Source, path: str) -> list[EndpointData]:
     data = source.data
     data = oas.PathItem.model_validate(data)
 
-    endpoints: List[EndpointData] = []
+    endpoints: list[EndpointData] = []
 
     sanitized_path = path.replace("{", "").replace("}", "").replace("/", "_")
 

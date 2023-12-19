@@ -1,7 +1,6 @@
 import re
 import builtins
 from keyword import iskeyword
-from typing import List, Union
 
 import openapi_pydantic as oas
 from pydantic import TypeAdapter
@@ -26,7 +25,7 @@ def sanitize(value: str) -> str:
     return re.sub(rf"[^\w{DELIMITERS}]+", "_", value)
 
 
-def split_words(value: str) -> List[str]:
+def split_words(value: str) -> list[str]:
     """Split a string on words and known delimiters"""
     # We can't guess words if there is no capital letter
     if any(c.isupper() for c in value):
@@ -74,27 +73,24 @@ def concat_snake_name(*names: str) -> str:
     return "_".join(snake_case(name) for name in names)
 
 
-def build_boolean(value: Union[bool, str]) -> bool:
+def build_boolean(value: bool | str) -> bool:
     if isinstance(value, bool):
         return value
     return value.lower() not in {"false", "f", "no", "n", "0"}
 
 
 def build_class_name(name: str) -> str:
-    sources = get_override_config()
+    override = get_override_config()
     class_name = fix_reserved_words(pascal_case(name))
-    for override_source in sources:
-        if override := override_source.class_overrides.get(class_name):
-            return override
+    if override := override.class_overrides.get(class_name):
+        return override
     return class_name
 
 
 def build_prop_name(name: str) -> str:
-    sources = get_override_config()
-    for override_source in sources:
-        if override := override_source.field_overrides.get(name):
-            name = override
-            break
+    override = get_override_config()
+    if override := override.field_overrides.get(name):
+        name = override
     return fix_reserved_words(snake_case(name))
 
 
@@ -113,8 +109,29 @@ def merge_dict(old: dict, new: dict):
 
 def schema_from_source(source: Source) -> oas.Schema:
     data = source.data
+
+    assert isinstance(data, dict), f"Invalid Schema from {source.uri}"
+
+    # apply schema override
+    override = get_override_config()
+    if source.uri.fragment in override.schema_overrides:
+        merge_dict(data, override.schema_overrides[source.uri.fragment])
+
     try:
-        assert isinstance(data, dict)
         return TypeAdapter(oas.Schema).validate_python(data)
+    except Exception as e:
+        raise TypeError(f"Invalid Schema from {source.uri}") from e
+
+
+def schema_ref_from_source(source: Source) -> oas.Reference | oas.Schema:
+    data = source.data
+
+    # apply schema override
+    override = get_override_config()
+    if source.uri.fragment in override.schema_overrides:
+        merge_dict(data, override.schema_overrides[source.uri.fragment])
+
+    try:
+        return TypeAdapter(oas.Reference | oas.Schema).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e

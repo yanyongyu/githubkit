@@ -1,14 +1,16 @@
-from typing import Union, Optional
+from typing import TYPE_CHECKING
 
 from . import parse_schema
-from ...source import Source
 from .schema import ListSchema, UniqueListSchema
 from ..utils import concat_snake_name, schema_from_source
 
+if TYPE_CHECKING:
+    from ...source import Source
+
 
 def build_list_schema(
-    source: Source, class_name: str, base_source: Optional[Source] = None
-) -> Union[ListSchema, UniqueListSchema]:
+    source: "Source", class_name: str, base_source: "Source | None" = None
+) -> ListSchema | UniqueListSchema:
     data = schema_from_source(source)
     base_schema = schema_from_source(base_source) if base_source else None
 

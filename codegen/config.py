@@ -1,26 +1,51 @@
-from typing import Any, Dict, List
+from typing import Any
+from pathlib import Path
 
 from pydantic import Field, BaseModel
 
 
-class Overridable(BaseModel):
-    class_overrides: Dict[str, str] = Field(default_factory=dict)
-    field_overrides: Dict[str, str] = Field(default_factory=dict)
-    schema_overrides: Dict[str, Dict[str, Any]] = Field(default_factory=dict)
+class Override(BaseModel):
+    class_overrides: dict[str, str] = Field(default_factory=dict)
+    field_overrides: dict[str, str] = Field(default_factory=dict)
+    schema_overrides: dict[str, dict[str, Any]] = Field(default_factory=dict)
 
 
-class RestConfig(Overridable):
+class VersionedOverride(Override):
+    target_versions: list[str] = Field(default_factory=list)
+
+
+class DescriptionConfig:
     version: str
-    description_source: str
-    output_dir: str
+    is_latest: bool = False
+    """If true, the description will be used as the default description."""
+    source: str
+    output_dir: Path
 
 
-class WebhookConfig(Overridable):
-    schema_source: str
-    output: str
-    types_output: str
+class Config(BaseModel):
+    descriptions: list[DescriptionConfig]
+    overrides: list[VersionedOverride] = Field(default_factory=list)
 
-
-class Config(Overridable):
-    rest: List[RestConfig]
-    webhook: WebhookConfig
+    def get_override_config_for_version(self, version: str) -> Override:
+        selected_overrides = [
+            override
+            for override in self.overrides
+            if version in override.target_versions or not override.target_versions
+        ]
+        return Override(
+            class_overrides={
+                key: value
+                for override in selected_overrides
+                for key, value in override.class_overrides.items()
+            },
+            field_overrides={
+                key: value
+                for override in selected_overrides
+                for key, value in override.field_overrides.items()
+            },
+            schema_overrides={
+                key: value
+                for override in selected_overrides
+                for key, value in override.schema_overrides.items()
+            },
+        )

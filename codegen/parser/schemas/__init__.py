@@ -1,10 +1,7 @@
-from typing import Union, Optional
+from typing import TYPE_CHECKING
 
 import openapi_pydantic as oas
-from pydantic import TypeAdapter
 
-from ...source import Source
-from ..utils import schema_from_source
 from .schema import Property as Property
 from .schema import AnySchema as AnySchema
 from .schema import IntSchema as IntSchema
@@ -22,20 +19,20 @@ from .schema import StringSchema as StringSchema
 from .. import add_schema, get_schema, get_schemas
 from .schema import DateTimeSchema as DateTimeSchema
 from .schema import UniqueListSchema as UniqueListSchema
+from ..utils import schema_from_source, schema_ref_from_source
+
+if TYPE_CHECKING:
+    from ...source import Source
 
 
 def parse_schema(
-    source: Source, class_name: str, base_source: Optional[Source] = None
+    source: "Source", class_name: str, base_source: "Source | None" = None
 ) -> SchemaData:
-    data = source.data
-    try:
-        data = TypeAdapter(Union[oas.Reference, oas.Schema]).validate_python(data)
-    except Exception as e:
-        raise TypeError(f"Invalid Schema from {source.uri}") from e
+    data = schema_ref_from_source(source)
 
-    if isinstance(data, oas.Reference):
+    while isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        data = schema_from_source(source)
+        data = schema_ref_from_source(source)
         class_name = source.pointer.parts[-1]
         base_source = None
 

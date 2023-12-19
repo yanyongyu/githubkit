@@ -1,15 +1,12 @@
-from typing import Union, Literal
+from typing import Union
 
 import openapi_pydantic as oas
 from pydantic import TypeAdapter
 
 from ...source import Source
+from ..data import Parameter
+from ..schemas import parse_schema, build_any_schema
 from ..utils import build_prop_name, concat_snake_name
-from ..schemas import Property, parse_schema, build_any_schema
-
-
-class Parameter(Property):
-    param_in: Literal["query", "header", "path", "cookie"]
 
 
 def build_param(source: Source, prefix: str) -> Parameter:

@@ -1,20 +1,11 @@
-from typing import Set, Union, Optional
+from typing import Union
 
 import openapi_pydantic as oas
-from pydantic import BaseModel, TypeAdapter
+from pydantic import TypeAdapter
 
 from ...source import Source
-from ..schemas import SchemaData, parse_schema
-
-
-class ResponseData(BaseModel):
-    description: str
-    response_schema: Optional[SchemaData] = None
-
-    def get_using_imports(self) -> Set[str]:
-        return (
-            self.response_schema.get_using_imports() if self.response_schema else set()
-        )
+from ..data import ResponseData
+from ..schemas import parse_schema
 
 
 def build_response(source: Source, prefix: str) -> ResponseData:

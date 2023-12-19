@@ -1,8 +1,8 @@
 import json
+from typing import Any
 from pathlib import Path
 from functools import cache
 from dataclasses import dataclass
-from typing import Any, Union, Optional
 
 import httpx
 from jsonpointer import JsonPointer
@@ -21,7 +21,7 @@ class Source:
     def data(self) -> Any:
         return self.pointer.resolve(self.root)
 
-    def get_root(self) -> "Source":
+    def get_root(self: "Source") -> "Source":
         return Source(uri=self.uri.copy_with(fragment=""), root=self.root)
 
     def resolve_ref(self, ref: str) -> "Source":
@@ -30,14 +30,14 @@ class Source:
             return get_source(uri_ref)
         return Source(uri=self.uri.copy_with(fragment=uri_ref.fragment), root=self.root)
 
-    def __truediv__(self, other: Union[str, int]) -> "Source":
+    def __truediv__(self, other: str | int) -> "Source":
         parts = self.pointer.get_parts() + [other]
         fragment = JsonPointer.from_parts(parts).path
         return self.resolve_ref(str(httpx.URL(fragment=fragment)))
 
 
 @cache
-def get_content(source: Union[httpx.URL, Path]) -> dict:
+def get_content(source: httpx.URL | Path) -> dict:
     return (
         json.loads(source.read_text())
         if isinstance(source, Path)
@@ -47,7 +47,7 @@ def get_content(source: Union[httpx.URL, Path]) -> dict:
     )
 
 
-def get_source(source: Union[httpx.URL, Path], path: Optional[str] = None) -> Source:
+def get_source(source: httpx.URL | Path, path: str | None = None) -> Source:
     if isinstance(source, Path):
         uri = httpx.URL(source.resolve().as_uri(), fragment=path)
     else:
