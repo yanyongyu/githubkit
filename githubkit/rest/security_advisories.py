@@ -16,6 +16,7 @@ from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .models import (
     BasicError,
+    FullRepository,
     GlobalAdvisory,
     ValidationError,
     RepositoryAdvisory,
@@ -414,6 +415,7 @@ class SecurityAdvisoriesClient:
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
+        start_private_fork: Missing[bool] = False,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -481,6 +483,7 @@ class SecurityAdvisoriesClient:
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
+        start_private_fork: Missing[bool] = False,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -548,6 +551,7 @@ class SecurityAdvisoriesClient:
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
+        start_private_fork: Missing[bool] = False,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -615,6 +619,7 @@ class SecurityAdvisoriesClient:
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
+        start_private_fork: Missing[bool] = False,
     ) -> "Response[RepositoryAdvisory]":
         ...
 
@@ -894,5 +899,55 @@ class SecurityAdvisoriesClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def create_fork(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[FullRepository]":
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=FullRepository,
+            error_models={
+                "400": BasicError,
+                "422": ValidationError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_create_fork(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[FullRepository]":
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            response_model=FullRepository,
+            error_models={
+                "400": BasicError,
+                "422": ValidationError,
+                "403": BasicError,
+                "404": BasicError,
             },
         )

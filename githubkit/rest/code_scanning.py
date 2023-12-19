@@ -839,7 +839,7 @@ class CodeScanningClient:
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        state: Literal["configured", "not-configured"],
+        state: Missing[Literal["configured", "not-configured"]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
         languages: Missing[
             List[
@@ -911,7 +911,7 @@ class CodeScanningClient:
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        state: Literal["configured", "not-configured"],
+        state: Missing[Literal["configured", "not-configured"]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
         languages: Missing[
             List[

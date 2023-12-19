@@ -418,7 +418,9 @@ class AppPermissionsType(TypedDict):
     actions: NotRequired[Literal["read", "write"]]
     administration: NotRequired[Literal["read", "write"]]
     checks: NotRequired[Literal["read", "write"]]
+    codespaces: NotRequired[Literal["read", "write"]]
     contents: NotRequired[Literal["read", "write"]]
+    dependabot_secrets: NotRequired[Literal["read", "write"]]
     deployments: NotRequired[Literal["read", "write"]]
     environments: NotRequired[Literal["read", "write"]]
     issues: NotRequired[Literal["read", "write"]]
@@ -426,6 +428,7 @@ class AppPermissionsType(TypedDict):
     packages: NotRequired[Literal["read", "write"]]
     pages: NotRequired[Literal["read", "write"]]
     pull_requests: NotRequired[Literal["read", "write"]]
+    repository_custom_properties: NotRequired[Literal["read", "write"]]
     repository_hooks: NotRequired[Literal["read", "write"]]
     repository_projects: NotRequired[Literal["read", "write", "admin"]]
     secret_scanning_alerts: NotRequired[Literal["read", "write"]]
@@ -438,7 +441,11 @@ class AppPermissionsType(TypedDict):
     members: NotRequired[Literal["read", "write"]]
     organization_administration: NotRequired[Literal["read", "write"]]
     organization_custom_roles: NotRequired[Literal["read", "write"]]
+    organization_custom_org_roles: NotRequired[Literal["read", "write"]]
+    organization_custom_properties: NotRequired[Literal["read", "write", "admin"]]
+    organization_copilot_seat_management: NotRequired[Literal["write"]]
     organization_announcement_banners: NotRequired[Literal["read", "write"]]
+    organization_events: NotRequired[Literal["read"]]
     organization_hooks: NotRequired[Literal["read", "write"]]
     organization_personal_access_tokens: NotRequired[Literal["read", "write"]]
     organization_personal_access_token_requests: NotRequired[Literal["read", "write"]]
@@ -449,6 +456,13 @@ class AppPermissionsType(TypedDict):
     organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
     organization_user_blocking: NotRequired[Literal["read", "write"]]
     team_discussions: NotRequired[Literal["read", "write"]]
+    email_addresses: NotRequired[Literal["read", "write"]]
+    followers: NotRequired[Literal["read", "write"]]
+    git_ssh_keys: NotRequired[Literal["read", "write"]]
+    gpg_keys: NotRequired[Literal["read", "write"]]
+    interaction_limits: NotRequired[Literal["read", "write"]]
+    profile: NotRequired[Literal["write"]]
+    starring: NotRequired[Literal["read", "write"]]
 
 
 class InstallationType(TypedDict):
@@ -1174,6 +1188,7 @@ class OrganizationSecretScanningAlertType(TypedDict):
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
     push_protection_bypassed_at: NotRequired[Union[datetime, None]]
     resolution_comment: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
 
 
 class ActorType(TypedDict):
@@ -1785,6 +1800,7 @@ class ApiOverviewPropDomainsType(TypedDict):
     codespaces: NotRequired[List[str]]
     copilot: NotRequired[List[str]]
     packages: NotRequired[List[str]]
+    actions: NotRequired[List[str]]
 
 
 class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
@@ -2246,20 +2262,17 @@ class OrganizationActionsVariableType(TypedDict):
     selected_repositories_url: NotRequired[str]
 
 
-class CodeScanningAlertRuleType(TypedDict):
-    """CodeScanningAlertRule"""
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
+    tags: NotRequired[Union[List[str], None]]
     severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
     security_severity_level: NotRequired[
         Union[None, Literal["low", "medium", "high", "critical"]]
     ]
     description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[List[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
 
 
 class CodeScanningAnalysisToolType(TypedDict):
@@ -2323,7 +2336,7 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
         None, Literal["false positive", "won't fix", "used in tests"]
     ]
     dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleType
+    rule: CodeScanningAlertRuleSummaryType
     tool: CodeScanningAnalysisToolType
     most_recent_instance: CodeScanningAlertInstanceType
     repository: SimpleRepositoryType
@@ -2449,9 +2462,9 @@ class CodespacesPublicKeyType(TypedDict):
 
 
 class CopilotSeatBreakdownType(TypedDict):
-    """Copilot for Business Seat Breakdown
+    """Copilot Business Seat Breakdown
 
-    The breakdown of Copilot for Business seats for the organization.
+    The breakdown of Copilot Business seats for the organization.
     """
 
     total: NotRequired[int]
@@ -2463,14 +2476,15 @@ class CopilotSeatBreakdownType(TypedDict):
 
 
 class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot for Business Organization Details
+    """Copilot Business Organization Details
 
     Information about the seat breakdown and policies set for an organization with a
-    Copilot for Business subscription.
+    Copilot Business subscription.
     """
 
     seat_breakdown: CopilotSeatBreakdownType
     public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
+    copilot_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
@@ -2577,9 +2591,9 @@ class OrganizationPropPlanType(TypedDict):
 
 
 class CopilotSeatDetailsType(TypedDict):
-    """Copilot for Business Seat Detail
+    """Copilot Business Seat Detail
 
-    Information about a Copilot for Business seat assignment for a user, team, or
+    Information about a Copilot Business seat assignment for a user, team, or
     organization.
     """
 
@@ -2752,6 +2766,31 @@ class MigrationType(TypedDict):
     exclude: NotRequired[List[str]]
 
 
+class OrganizationFineGrainedPermissionType(TypedDict):
+    """Organization Fine-Grained Permission
+
+    A fine-grained permission that protects organization resources.
+    """
+
+    name: str
+    description: str
+
+
+class OrganizationRoleType(TypedDict):
+    """Organization Role
+
+    Organization roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    permissions: List[str]
+    organization: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+
+
 class PackageVersionType(TypedDict):
     """Package Version
 
@@ -2911,6 +2950,176 @@ class ProjectType(TypedDict):
     private: NotRequired[bool]
 
 
+class OrgCustomPropertyType(TypedDict):
+    """Organization Custom Property
+
+    Custom property defined on an organization
+    """
+
+    property_name: str
+    value_type: Literal["string", "single_select"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[List[str], None]]
+
+
+class CustomPropertyValueType(TypedDict):
+    """Custom Property Value
+
+    Custom property name and associated value
+    """
+
+    property_name: str
+    value: Union[str, None]
+
+
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
+    """
+
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: List[CustomPropertyValueType]
+
+
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
+
+    Code of Conduct Simple
+    """
+
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
+
+
+class FullRepositoryType(TypedDict):
+    """Full Repository
+
+    Full Repository
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[List[str]]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_downloads: NotRequired[bool]
+    has_discussions: bool
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: datetime
+    created_at: datetime
+    updated_at: datetime
+    permissions: NotRequired[FullRepositoryPropPermissionsType]
+    allow_rebase_merge: NotRequired[bool]
+    template_repository: NotRequired[Union[None, RepositoryType]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    subscribers_count: int
+    network_count: int
+    license_: Union[None, LicenseSimpleType]
+    organization: NotRequired[Union[None, SimpleUserType]]
+    parent: NotRequired[RepositoryType]
+    source: NotRequired[RepositoryType]
+    forks: int
+    master_branch: NotRequired[str]
+    open_issues: int
+    watchers: int
+    anonymous_access_enabled: NotRequired[bool]
+    code_of_conduct: NotRequired[CodeOfConductSimpleType]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+
+
+class FullRepositoryPropPermissionsType(TypedDict):
+    """FullRepositoryPropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
+
+
 class RepositoryRulesetBypassActorType(TypedDict):
     """Repository Ruleset Bypass Actor
 
@@ -3037,7 +3246,7 @@ class RepositoryRuleRequiredDeploymentsType(TypedDict):
     """required_deployments
 
     Choose which environments must be successfully deployed to before refs can be
-    merged into a branch that matches this rule.
+    pushed into a ref that matches this rule.
     """
 
     type: Literal["required_deployments"]
@@ -3093,10 +3302,8 @@ class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
 class RepositoryRuleRequiredStatusChecksType(TypedDict):
     """required_status_checks
 
-    Choose which status checks must pass before branches can be merged into a branch
-    that matches this rule. When enabled, commits must first be pushed to another
-    branch, then merged or pushed directly to a ref that matches this rule after
-    status checks have passed.
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
     type: Literal["required_status_checks"]
@@ -3214,6 +3421,35 @@ class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
     pattern: str
 
 
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
+    """
+
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
+
+
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
+
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
+    """
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+
+
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
+
+    workflows: List[RepositoryRuleParamsWorkflowFileReferenceType]
+
+
 class RepositoryRulesetType(TypedDict):
     """Repository ruleset
 
@@ -3256,6 +3492,7 @@ class RepositoryRulesetType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
             ]
         ]
     ]
@@ -3280,6 +3517,60 @@ class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
     """RepositoryRulesetPropLinksPropHtml"""
 
     href: NotRequired[str]
+
+
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
+
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail"]]
+
+
+class RuleSuiteType(TypedDict):
+    """Rule Suite
+
+    Response
+    """
+
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail"]]
+    rule_evaluations: NotRequired[List[RuleSuitePropRuleEvaluationsItemsType]]
+
+
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[str]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 class RepositoryAdvisoryVulnerabilityType(TypedDict):
@@ -3753,7 +4044,6 @@ class TeamRepositoryType(TypedDict):
     created_at: Union[datetime, None]
     updated_at: Union[datetime, None]
     allow_rebase_merge: NotRequired[bool]
-    template_repository: NotRequired[Union[None, RepositoryType]]
     temp_clone_token: NotRequired[Union[str, None]]
     allow_squash_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
@@ -3859,140 +4149,6 @@ class RateLimitOverviewPropResourcesType(TypedDict):
     dependency_snapshots: NotRequired[RateLimitType]
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
-
-    Code of Conduct Simple
-    """
-
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
-
-
-class FullRepositoryType(TypedDict):
-    """Full Repository
-
-    Full Repository
-    """
-
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: str
-    mirror_url: Union[str, None]
-    hooks_url: str
-    svn_url: str
-    homepage: Union[str, None]
-    language: Union[str, None]
-    forks_count: int
-    stargazers_count: int
-    watchers_count: int
-    size: int
-    default_branch: str
-    open_issues_count: int
-    is_template: NotRequired[bool]
-    topics: NotRequired[List[str]]
-    has_issues: bool
-    has_projects: bool
-    has_wiki: bool
-    has_pages: bool
-    has_downloads: bool
-    has_discussions: bool
-    archived: bool
-    disabled: bool
-    visibility: NotRequired[str]
-    pushed_at: datetime
-    created_at: datetime
-    updated_at: datetime
-    permissions: NotRequired[FullRepositoryPropPermissionsType]
-    allow_rebase_merge: NotRequired[bool]
-    template_repository: NotRequired[Union[None, RepositoryType]]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_squash_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    subscribers_count: int
-    network_count: int
-    license_: Union[None, LicenseSimpleType]
-    organization: NotRequired[Union[None, SimpleUserType]]
-    parent: NotRequired[RepositoryType]
-    source: NotRequired[RepositoryType]
-    forks: int
-    master_branch: NotRequired[str]
-    open_issues: int
-    watchers: int
-    anonymous_access_enabled: NotRequired[bool]
-    code_of_conduct: NotRequired[CodeOfConductSimpleType]
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
-
-
-class FullRepositoryPropPermissionsType(TypedDict):
-    """FullRepositoryPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    push: bool
-    triage: NotRequired[bool]
-    pull: bool
-
-
 class ArtifactType(TypedDict):
     """Artifact
 
@@ -4058,7 +4214,7 @@ class JobType(TypedDict):
     head_sha: str
     url: str
     html_url: Union[str, None]
-    status: Literal["queued", "in_progress", "completed"]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
     conclusion: Union[
         None,
         Literal[
@@ -5250,16 +5406,6 @@ class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDic
     setting: bool
 
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
-
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    tags: NotRequired[Union[List[str], None]]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    description: NotRequired[str]
-
-
 class CodeScanningAlertItemsType(TypedDict):
     """CodeScanningAlertItems"""
 
@@ -5280,6 +5426,22 @@ class CodeScanningAlertItemsType(TypedDict):
     rule: CodeScanningAlertRuleSummaryType
     tool: CodeScanningAnalysisToolType
     most_recent_instance: CodeScanningAlertInstanceType
+
+
+class CodeScanningAlertRuleType(TypedDict):
+    """CodeScanningAlertRule"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[List[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 class CodeScanningAlertType(TypedDict):
@@ -5349,6 +5511,7 @@ class CodeScanningCodeqlDatabaseType(TypedDict):
     created_at: datetime
     updated_at: datetime
     url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 class CodeScanningDefaultSetupType(TypedDict):
@@ -5385,7 +5548,7 @@ class CodeScanningDefaultSetupUpdateType(TypedDict):
     Configuration for code scanning default setup.
     """
 
-    state: Literal["configured", "not-configured"]
+    state: NotRequired[Literal["configured", "not-configured"]]
     query_suite: NotRequired[Literal["default", "extended"]]
     languages: NotRequired[
         List[
@@ -5449,6 +5612,15 @@ class CodeownersErrorsPropErrorsItemsType(TypedDict):
     suggestion: NotRequired[Union[str, None]]
     message: str
     path: str
+
+
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
+
+    Permission check result for a given devcontainer config.
+    """
+
+    accepted: bool
 
 
 class RepoCodespacesSecretType(TypedDict):
@@ -6393,12 +6565,20 @@ class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
 class DeploymentBranchPolicyType(TypedDict):
     """Deployment branch policy
 
-    Details of a deployment branch policy.
+    Details of a deployment branch or tag policy.
     """
 
     id: NotRequired[int]
     node_id: NotRequired[str]
     name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
+    """Deployment branch and tag policy name pattern"""
+
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 class DeploymentBranchPolicyNamePatternType(TypedDict):
@@ -8492,6 +8672,16 @@ class RepositoryRuleDetailedOneof13Type(TypedDict):
     ruleset_id: NotRequired[int]
 
 
+class RepositoryRuleDetailedOneof14Type(TypedDict):
+    """RepositoryRuleDetailedOneof14"""
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
 class SecretScanningAlertType(TypedDict):
     """SecretScanningAlert"""
 
@@ -8514,6 +8704,7 @@ class SecretScanningAlertType(TypedDict):
     push_protection_bypassed: NotRequired[Union[bool, None]]
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
     push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
 
 
 class SecretScanningLocationCommitType(TypedDict):
@@ -8564,15 +8755,117 @@ class SecretScanningLocationIssueCommentType(TypedDict):
     issue_comment_url: str
 
 
+class SecretScanningLocationDiscussionTitleType(TypedDict):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str
+
+
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
+
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
+
+    discussion_body_url: str
+
+
+class SecretScanningLocationDiscussionCommentType(TypedDict):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str
+
+
+class SecretScanningLocationPullRequestTitleType(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+
+
+class SecretScanningLocationPullRequestBodyType(TypedDict):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str
+
+
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+
+
+class SecretScanningLocationPullRequestReviewType(TypedDict):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str
+
+
+class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+
+
 class SecretScanningLocationType(TypedDict):
     """SecretScanningLocation"""
 
-    type: Literal["commit", "issue_title", "issue_body", "issue_comment"]
+    type: Literal[
+        "commit",
+        "issue_title",
+        "issue_body",
+        "issue_comment",
+        "discussion_title",
+        "discussion_body",
+        "discussion_comment",
+        "pull_request_title",
+        "pull_request_body",
+        "pull_request_comment",
+        "pull_request_review",
+        "pull_request_review_comment",
+    ]
     details: Union[
         SecretScanningLocationCommitType,
         SecretScanningLocationIssueTitleType,
         SecretScanningLocationIssueBodyType,
         SecretScanningLocationIssueCommentType,
+        SecretScanningLocationDiscussionTitleType,
+        SecretScanningLocationDiscussionBodyType,
+        SecretScanningLocationDiscussionCommentType,
+        SecretScanningLocationPullRequestTitleType,
+        SecretScanningLocationPullRequestBodyType,
+        SecretScanningLocationPullRequestCommentType,
+        SecretScanningLocationPullRequestReviewType,
+        SecretScanningLocationPullRequestReviewCommentType,
     ]
 
 
@@ -8589,6 +8882,7 @@ class RepositoryAdvisoryCreateType(TypedDict):
     ]
     severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
     cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
 class RepositoryAdvisoryCreatePropVulnerabilitiesItemsType(TypedDict):
@@ -8653,6 +8947,7 @@ class PrivateVulnerabilityReportCreateType(TypedDict):
     cwe_ids: NotRequired[Union[List[str], None]]
     severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
     cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
 class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
@@ -9787,6 +10082,7 @@ class RepositoryWebhooksType(TypedDict):
     open_issues_count: int
     is_template: NotRequired[bool]
     topics: NotRequired[List[str]]
+    custom_properties: NotRequired[RepositoryWebhooksPropCustomPropertiesType]
     has_issues: bool
     has_projects: bool
     has_wiki: bool
@@ -9835,6 +10131,15 @@ class RepositoryWebhooksPropPermissionsType(TypedDict):
     triage: NotRequired[bool]
     push: bool
     maintain: NotRequired[bool]
+
+
+class RepositoryWebhooksPropCustomPropertiesType(TypedDict):
+    """RepositoryWebhooksPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
 
 
 class RepositoryWebhooksPropTemplateRepositoryPropOwnerType(TypedDict):
@@ -11016,7 +11321,7 @@ class OrgsOrgInvitationsPostBodyType(TypedDict):
 
     invitee_id: NotRequired[int]
     email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager"]]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
     team_ids: NotRequired[List[int]]
 
 
@@ -11045,6 +11350,29 @@ class OrgsOrgMigrationsPostBodyType(TypedDict):
     exclude_owner_projects: NotRequired[bool]
     org_metadata_only: NotRequired[bool]
     exclude: NotRequired[List[Literal["repositories"]]]
+
+
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[List[OrganizationRoleType]]
+
+
+class OrgsOrgOrganizationRolesPostBodyType(TypedDict):
+    """OrgsOrgOrganizationRolesPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    permissions: List[str]
+
+
+class OrgsOrgOrganizationRolesRoleIdPatchBodyType(TypedDict):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    permissions: NotRequired[List[str]]
 
 
 class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
@@ -11099,6 +11427,29 @@ class OrgsOrgProjectsPostBodyType(TypedDict):
     body: NotRequired[str]
 
 
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: List[OrgCustomPropertyType]
+
+
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+
+    value_type: Literal["string", "single_select"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[List[str], None]]
+
+
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: List[str]
+    properties: List[CustomPropertyValueType]
+
+
 class OrgsOrgReposPostBodyType(TypedDict):
     """OrgsOrgReposPostBody"""
 
@@ -11128,6 +11479,15 @@ class OrgsOrgReposPostBodyType(TypedDict):
     ]
     merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
     merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
+
+
+class OrgsOrgReposPostBodyPropCustomPropertiesType(TypedDict):
+    """OrgsOrgReposPostBodyPropCustomProperties
+
+    The custom properties for the new repository. The keys are the custom property
+    names, and the values are the corresponding custom property values.
+    """
 
 
 class OrgsOrgRulesetsPostBodyType(TypedDict):
@@ -11157,6 +11517,7 @@ class OrgsOrgRulesetsPostBodyType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
             ]
         ]
     ]
@@ -11189,6 +11550,7 @@ class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
             ]
         ]
     ]
@@ -12650,6 +13012,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
     """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
     wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
     reviewers: NotRequired[
         Union[
             List[
@@ -13496,6 +13859,7 @@ class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
             ]
         ]
     ]
@@ -13526,6 +13890,7 @@ class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
                 RepositoryRuleCommitterEmailPatternType,
                 RepositoryRuleBranchNamePatternType,
                 RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
             ]
         ]
     ]
@@ -14160,7 +14525,7 @@ __all__ = [
     "OrganizationActionsSecretType",
     "ActionsPublicKeyType",
     "OrganizationActionsVariableType",
-    "CodeScanningAlertRuleType",
+    "CodeScanningAlertRuleSummaryType",
     "CodeScanningAnalysisToolType",
     "CodeScanningAlertLocationType",
     "CodeScanningAlertInstanceType",
@@ -14191,6 +14556,8 @@ __all__ = [
     "OrgMembershipType",
     "OrgMembershipPropPermissionsType",
     "MigrationType",
+    "OrganizationFineGrainedPermissionType",
+    "OrganizationRoleType",
     "PackageVersionType",
     "PackageVersionPropMetadataType",
     "PackageVersionPropMetadataPropContainerType",
@@ -14206,6 +14573,12 @@ __all__ = [
     "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
     "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
     "ProjectType",
+    "OrgCustomPropertyType",
+    "CustomPropertyValueType",
+    "OrgRepoCustomPropertyValuesType",
+    "CodeOfConductSimpleType",
+    "FullRepositoryType",
+    "FullRepositoryPropPermissionsType",
     "RepositoryRulesetBypassActorType",
     "RepositoryRulesetConditionsType",
     "RepositoryRulesetConditionsPropRefNameType",
@@ -14239,10 +14612,17 @@ __all__ = [
     "RepositoryRuleBranchNamePatternPropParametersType",
     "RepositoryRuleTagNamePatternType",
     "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsPropParametersType",
     "RepositoryRulesetType",
     "RepositoryRulesetPropLinksType",
     "RepositoryRulesetPropLinksPropSelfType",
     "RepositoryRulesetPropLinksPropHtmlType",
+    "RuleSuitesItemsType",
+    "RuleSuiteType",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
     "RepositoryAdvisoryVulnerabilityType",
     "RepositoryAdvisoryVulnerabilityPropPackageType",
     "RepositoryAdvisoryCreditType",
@@ -14273,9 +14653,6 @@ __all__ = [
     "RateLimitType",
     "RateLimitOverviewType",
     "RateLimitOverviewPropResourcesType",
-    "CodeOfConductSimpleType",
-    "FullRepositoryType",
-    "FullRepositoryPropPermissionsType",
     "ArtifactType",
     "ArtifactPropWorkflowRunType",
     "ActionsCacheListType",
@@ -14380,8 +14757,8 @@ __all__ = [
     "CheckSuitePreferenceType",
     "CheckSuitePreferencePropPreferencesType",
     "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CodeScanningAlertRuleSummaryType",
     "CodeScanningAlertItemsType",
+    "CodeScanningAlertRuleType",
     "CodeScanningAlertType",
     "CodeScanningAnalysisType",
     "CodeScanningAnalysisDeletionType",
@@ -14393,6 +14770,7 @@ __all__ = [
     "CodeScanningSarifsStatusType",
     "CodeownersErrorsType",
     "CodeownersErrorsPropErrorsItemsType",
+    "CodespacesPermissionsCheckForDevcontainerType",
     "RepoCodespacesSecretType",
     "CollaboratorType",
     "CollaboratorPropPermissionsType",
@@ -14464,6 +14842,7 @@ __all__ = [
     "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
     "EnvironmentPropProtectionRulesItemsAnyof2Type",
     "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicyNamePatternWithTypeType",
     "DeploymentBranchPolicyNamePatternType",
     "CustomDeploymentRuleAppType",
     "DeploymentProtectionRuleType",
@@ -14599,11 +14978,20 @@ __all__ = [
     "RepositoryRuleDetailedOneof11Type",
     "RepositoryRuleDetailedOneof12Type",
     "RepositoryRuleDetailedOneof13Type",
+    "RepositoryRuleDetailedOneof14Type",
     "SecretScanningAlertType",
     "SecretScanningLocationCommitType",
     "SecretScanningLocationIssueTitleType",
     "SecretScanningLocationIssueBodyType",
     "SecretScanningLocationIssueCommentType",
+    "SecretScanningLocationDiscussionTitleType",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationDiscussionCommentType",
+    "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationPullRequestBodyType",
+    "SecretScanningLocationPullRequestCommentType",
+    "SecretScanningLocationPullRequestReviewType",
+    "SecretScanningLocationPullRequestReviewCommentType",
     "SecretScanningLocationType",
     "RepositoryAdvisoryCreateType",
     "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
@@ -14678,6 +15066,7 @@ __all__ = [
     "OrganizationSimpleWebhooksType",
     "RepositoryWebhooksType",
     "RepositoryWebhooksPropPermissionsType",
+    "RepositoryWebhooksPropCustomPropertiesType",
     "RepositoryWebhooksPropTemplateRepositoryPropOwnerType",
     "RepositoryWebhooksPropTemplateRepositoryPropPermissionsType",
     "RepositoryWebhooksPropTemplateRepositoryType",
@@ -14787,6 +15176,9 @@ __all__ = [
     "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
     "OrgsOrgMembershipsUsernamePutBodyType",
     "OrgsOrgMigrationsPostBodyType",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesPostBodyType",
+    "OrgsOrgOrganizationRolesRoleIdPatchBodyType",
     "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
     "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
     "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
@@ -14795,7 +15187,11 @@ __all__ = [
     "OrgsOrgPersonalAccessTokensPostBodyType",
     "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
     "OrgsOrgProjectsPostBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",
+    "OrgsOrgPropertiesValuesPatchBodyType",
     "OrgsOrgReposPostBodyType",
+    "OrgsOrgReposPostBodyPropCustomPropertiesType",
     "OrgsOrgRulesetsPostBodyType",
     "OrgsOrgRulesetsRulesetIdPutBodyType",
     "OrgsOrgTeamsPostBodyType",
