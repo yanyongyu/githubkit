@@ -602,7 +602,7 @@ class CopilotClient:
             },
         )
 
-    def get_copilot_seat_assignment_details_for_user(
+    def get_copilot_seat_details_for_user(
         self,
         org: str,
         username: str,
@@ -626,7 +626,7 @@ class CopilotClient:
             },
         )
 
-    async def async_get_copilot_seat_assignment_details_for_user(
+    async def async_get_copilot_seat_details_for_user(
         self,
         org: str,
         username: str,

@@ -17,19 +17,26 @@ from githubkit.utils import UNSET, Missing, exclude_unset
 
 from .types import (
     OrgsOrgPatchBodyType,
+    OrgCustomPropertyType,
+    CustomPropertyValueType,
     OrgsOrgHooksPostBodyType,
     OrgsOrgInvitationsPostBodyType,
     OrgsOrgHooksHookIdPatchBodyType,
     OrgsOrgHooksPostBodyPropConfigType,
     UserMembershipsOrgsOrgPatchBodyType,
+    OrgsOrgOrganizationRolesPostBodyType,
+    OrgsOrgPropertiesSchemaPatchBodyType,
+    OrgsOrgPropertiesValuesPatchBodyType,
     OrgsOrgHooksHookIdConfigPatchBodyType,
     OrgsOrgMembershipsUsernamePutBodyType,
     OrgsOrgPersonalAccessTokensPostBodyType,
     OrgsOrgHooksHookIdPatchBodyPropConfigType,
+    OrgsOrgOrganizationRolesRoleIdPatchBodyType,
     OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     OrgsOrgSecurityProductEnablementPostBodyType,
     OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
     OrgsOrgPersonalAccessTokenRequestsPostBodyType,
+    OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
     OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
 )
 from .models import (
@@ -44,25 +51,35 @@ from .models import (
     ValidationError,
     HookDeliveryItem,
     OrganizationFull,
+    OrganizationRole,
     OrgsOrgPatchBody,
     MinimalRepository,
+    OrgCustomProperty,
     OrganizationSimple,
     OrgsOrgHooksPostBody,
     ValidationErrorSimple,
     OrganizationInvitation,
     OrgsOrgInvitationsPostBody,
+    OrgRepoCustomPropertyValues,
     OrgsOrgHooksHookIdPatchBody,
     UserMembershipsOrgsOrgPatchBody,
+    OrgsOrgOrganizationRolesPostBody,
+    OrgsOrgPropertiesSchemaPatchBody,
+    OrgsOrgPropertiesValuesPatchBody,
+    OrganizationFineGrainedPermission,
     OrgsOrgHooksHookIdConfigPatchBody,
     OrgsOrgMembershipsUsernamePutBody,
     OrgsOrgInstallationsGetResponse200,
     OrganizationProgrammaticAccessGrant,
     OrgsOrgPersonalAccessTokensPostBody,
+    OrgsOrgOrganizationRolesGetResponse200,
+    OrgsOrgOrganizationRolesRoleIdPatchBody,
     OrgsOrgPersonalAccessTokensPatIdPostBody,
     OrgsOrgSecurityProductEnablementPostBody,
     OrganizationProgrammaticAccessGrantRequest,
     OrgsOrgOutsideCollaboratorsUsernamePutBody,
     OrgsOrgPersonalAccessTokenRequestsPostBody,
+    OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
     OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
     AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
@@ -1448,7 +1465,7 @@ class OrgsClient:
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
-            Literal["admin", "direct_member", "billing_manager"]
+            Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = "direct_member",
         team_ids: Missing[List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
@@ -1505,7 +1522,7 @@ class OrgsClient:
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
-            Literal["admin", "direct_member", "billing_manager"]
+            Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = "direct_member",
         team_ids: Missing[List[int]] = UNSET,
     ) -> "Response[OrganizationInvitation]":
@@ -1976,6 +1993,722 @@ class OrgsClient:
                 "403": BasicError,
                 "404": BasicError,
             },
+        )
+
+    def list_organization_fine_grained_permissions(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrganizationFineGrainedPermission]]":
+        url = f"/orgs/{org}/organization-fine-grained-permissions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[OrganizationFineGrainedPermission],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_list_organization_fine_grained_permissions(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrganizationFineGrainedPermission]]":
+        url = f"/orgs/{org}/organization-fine-grained-permissions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[OrganizationFineGrainedPermission],
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def list_org_roles(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[OrgsOrgOrganizationRolesGetResponse200]":
+        url = f"/orgs/{org}/organization-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgOrganizationRolesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_list_org_roles(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[OrgsOrgOrganizationRolesGetResponse200]":
+        url = f"/orgs/{org}/organization-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgOrganizationRolesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    def create_custom_organization_role(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgOrganizationRolesPostBodyType,
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    @overload
+    def create_custom_organization_role(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        description: Missing[str] = UNSET,
+        permissions: List[str],
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    def create_custom_organization_role(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrganizationRole]":
+        url = f"/orgs/{org}/organization-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgOrganizationRolesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrganizationRole,
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_custom_organization_role(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgOrganizationRolesPostBodyType,
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    @overload
+    async def async_create_custom_organization_role(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        description: Missing[str] = UNSET,
+        permissions: List[str],
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    async def async_create_custom_organization_role(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrganizationRole]":
+        url = f"/orgs/{org}/organization-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgOrganizationRolesPostBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrganizationRole,
+            error_models={
+                "422": ValidationError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    def revoke_all_org_roles_team(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/teams/{team_slug}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_revoke_all_org_roles_team(
+        self,
+        org: str,
+        team_slug: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/teams/{team_slug}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    def assign_team_to_org_role(
+        self,
+        org: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            error_models={},
+        )
+
+    async def async_assign_team_to_org_role(
+        self,
+        org: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            error_models={},
+        )
+
+    def revoke_org_role_team(
+        self,
+        org: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_revoke_org_role_team(
+        self,
+        org: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    def revoke_all_org_roles_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/users/{username}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_revoke_all_org_roles_user(
+        self,
+        org: str,
+        username: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/users/{username}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    def assign_user_to_org_role(
+        self,
+        org: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            error_models={},
+        )
+
+    async def async_assign_user_to_org_role(
+        self,
+        org: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            error_models={},
+        )
+
+    def revoke_org_role_user(
+        self,
+        org: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_revoke_org_role_user(
+        self,
+        org: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    def get_org_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[OrganizationRole]":
+        url = f"/orgs/{org}/organization-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrganizationRole,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_get_org_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[OrganizationRole]":
+        url = f"/orgs/{org}/organization-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrganizationRole,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def delete_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_delete_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/organization-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    @overload
+    def patch_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    @overload
+    def patch_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        permissions: Missing[List[str]] = UNSET,
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    def patch_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrganizationRole]":
+        url = f"/orgs/{org}/organization-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgOrganizationRolesRoleIdPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrganizationRole,
+            error_models={
+                "422": ValidationError,
+                "409": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_patch_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    @overload
+    async def async_patch_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: Missing[str] = UNSET,
+        description: Missing[str] = UNSET,
+        permissions: Missing[List[str]] = UNSET,
+    ) -> "Response[OrganizationRole]":
+        ...
+
+    async def async_patch_custom_organization_role(
+        self,
+        org: str,
+        role_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrganizationRole]":
+        url = f"/orgs/{org}/organization-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgOrganizationRolesRoleIdPatchBody).validate_python(
+            json
+        )
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrganizationRole,
+            error_models={
+                "422": ValidationError,
+                "409": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_org_role_teams(
+        self,
+        org: str,
+        role_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[Team]]":
+        url = f"/orgs/{org}/organization-roles/{role_id}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[Team],
+            error_models={},
+        )
+
+    async def async_list_org_role_teams(
+        self,
+        org: str,
+        role_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[Team]]":
+        url = f"/orgs/{org}/organization-roles/{role_id}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[Team],
+            error_models={},
+        )
+
+    def list_org_role_users(
+        self,
+        org: str,
+        role_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[SimpleUser]]":
+        url = f"/orgs/{org}/organization-roles/{role_id}/users"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[SimpleUser],
+            error_models={},
+        )
+
+    async def async_list_org_role_users(
+        self,
+        org: str,
+        role_id: int,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[SimpleUser]]":
+        url = f"/orgs/{org}/organization-roles/{role_id}/users"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[SimpleUser],
+            error_models={},
         )
 
     def list_outside_collaborators(
@@ -2953,6 +3686,526 @@ class OrgsClient:
                 "500": BasicError,
                 "404": BasicError,
                 "403": BasicError,
+            },
+        )
+
+    def get_all_custom_properties(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrgCustomProperty]]":
+        url = f"/orgs/{org}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[OrgCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_all_custom_properties(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrgCustomProperty]]":
+        url = f"/orgs/{org}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=List[OrgCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_or_update_custom_properties(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPropertiesSchemaPatchBodyType,
+    ) -> "Response[List[OrgCustomProperty]]":
+        ...
+
+    @overload
+    def create_or_update_custom_properties(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        properties: List[OrgCustomPropertyType],
+    ) -> "Response[List[OrgCustomProperty]]":
+        ...
+
+    def create_or_update_custom_properties(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[List[OrgCustomProperty]]":
+        url = f"/orgs/{org}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgPropertiesSchemaPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=List[OrgCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_or_update_custom_properties(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPropertiesSchemaPatchBodyType,
+    ) -> "Response[List[OrgCustomProperty]]":
+        ...
+
+    @overload
+    async def async_create_or_update_custom_properties(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        properties: List[OrgCustomPropertyType],
+    ) -> "Response[List[OrgCustomProperty]]":
+        ...
+
+    async def async_create_or_update_custom_properties(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[List[OrgCustomProperty]]":
+        url = f"/orgs/{org}/properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgPropertiesSchemaPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=List[OrgCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[OrgCustomProperty]":
+        url = f"/orgs/{org}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[OrgCustomProperty]":
+        url = f"/orgs/{org}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=OrgCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_or_update_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
+    ) -> "Response[OrgCustomProperty]":
+        ...
+
+    @overload
+    def create_or_update_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        value_type: Literal["string", "single_select"],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[List[str], None]] = UNSET,
+    ) -> "Response[OrgCustomProperty]":
+        ...
+
+    def create_or_update_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgCustomProperty]":
+        url = f"/orgs/{org}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(
+            OrgsOrgPropertiesSchemaCustomPropertyNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_or_update_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
+    ) -> "Response[OrgCustomProperty]":
+        ...
+
+    @overload
+    async def async_create_or_update_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        value_type: Literal["string", "single_select"],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[List[str], None]] = UNSET,
+    ) -> "Response[OrgCustomProperty]":
+        ...
+
+    async def async_create_or_update_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response[OrgCustomProperty]":
+        url = f"/orgs/{org}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(
+            OrgsOrgPropertiesSchemaCustomPropertyNamePutBody
+        ).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=OrgCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def remove_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_remove_custom_property(
+        self,
+        org: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/orgs/{org}/properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_custom_properties_values_for_repos(
+        self,
+        org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        repository_query: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrgRepoCustomPropertyValues]]":
+        url = f"/orgs/{org}/properties/values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "repository_query": repository_query,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[OrgRepoCustomPropertyValues],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_custom_properties_values_for_repos(
+        self,
+        org: str,
+        per_page: Missing[int] = 30,
+        page: Missing[int] = 1,
+        repository_query: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response[List[OrgRepoCustomPropertyValues]]":
+        url = f"/orgs/{org}/properties/values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "repository_query": repository_query,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[OrgRepoCustomPropertyValues],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_or_update_custom_properties_values_for_repos(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPropertiesValuesPatchBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    def create_or_update_custom_properties_values_for_repos(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        repository_names: List[str],
+        properties: List[CustomPropertyValueType],
+    ) -> "Response":
+        ...
+
+    def create_or_update_custom_properties_values_for_repos(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgPropertiesValuesPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_or_update_custom_properties_values_for_repos(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgPropertiesValuesPatchBodyType,
+    ) -> "Response":
+        ...
+
+    @overload
+    async def async_create_or_update_custom_properties_values_for_repos(
+        self,
+        org: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        repository_names: List[str],
+        properties: List[CustomPropertyValueType],
+    ) -> "Response":
+        ...
+
+    async def async_create_or_update_custom_properties_values_for_repos(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> "Response":
+        url = f"/orgs/{org}/properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = TypeAdapter(OrgsOrgPropertiesValuesPatchBody).validate_python(json)
+        json = json.model_dump(by_alias=True) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
             },
         )
 
