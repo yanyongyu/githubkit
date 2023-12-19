@@ -8382,7 +8382,7 @@ class PullRequestSimplePropLabelsItems(GitHubRestModel):
 class PullRequestSimplePropHead(GitHubRestModel):
     """PullRequestSimplePropHead"""
 
-    label: str = Field(default=...)
+    label: Union[str, None] = Field(default=...)
     ref: str = Field(default=...)
     repo: Union[None, Repository] = Field(
         title="Repository", description="A repository on GitHub.", default=...

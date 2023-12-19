@@ -5841,7 +5841,7 @@ class PullRequestSimplePropLabelsItemsType(TypedDict):
 class PullRequestSimplePropHeadType(TypedDict):
     """PullRequestSimplePropHead"""
 
-    label: str
+    label: Union[str, None]
     ref: str
     repo: Union[None, RepositoryType]
     sha: str

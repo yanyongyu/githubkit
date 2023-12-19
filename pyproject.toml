@@ -125,7 +125,14 @@ output_dir = "githubkit/rest/"
   "null",
 ] }
 
+
 # https://github.com/github/rest-api-description/issues/1811
+# https://github.com/yanyongyu/githubkit/issues/56
+# https://github.com/yanyongyu/githubkit/issues/64
+"/components/schemas/pull-request-simple/properties/head/properties/label" = { type = [
+  "string",
+  "null",
+] }
 "/components/schemas/pull-request-simple/properties/head/properties/repo" = { anyOf = [
   { type = "null" },
   { "$ref" = "#/components/schemas/repository" },
