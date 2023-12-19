@@ -223,12 +223,12 @@ output_dir = "githubkit/rest/"
   "null",
 ] }
 
-# copilot-seat-details/assignee is not valid
-"/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
-  { "$ref" = "#/components/schemas/simple-user" },
-  { "$ref" = "#/components/schemas/team" },
-  { "$ref" = "#/components/schemas/organization" },
-] }
+# [FIXED] copilot-seat-details/assignee is not valid
+# "/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
+#   { "$ref" = "#/components/schemas/simple-user" },
+#   { "$ref" = "#/components/schemas/team" },
+#   { "$ref" = "#/components/schemas/organization" },
+# ] }
 
 [tool.codegen.webhook]
 schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
