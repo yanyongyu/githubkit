@@ -13,10 +13,10 @@ include = ["githubkit/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pydantic = ">=2.0.0, <3.0.0, !=2.5.0, !=2.5.1"
+hishel = "^0.0.20"
 httpx = ">=0.23.0, <1.0.0"
-hishel = ">=0.0.20"
 typing-extensions = "^4.3.0"
+pydantic = ">=2.0.0, <3.0.0, !=2.5.0, !=2.5.1"
 anyio = { version = "^3.6.1", optional = true }
 PyJWT = { version = "^2.4.0", extras = ["crypto"], optional = true }
 
@@ -62,8 +62,10 @@ line-length = 88
 target-version = "py38"
 
 [tool.pyright]
+typeCheckingMode = "basic"
 reportPrivateImportUsage = false
 reportShadowedImports = false
+disableBytesTypePromotions = true
 
 pythonPlatform = "All"
 executionEnvironments = [
@@ -227,12 +229,12 @@ output_dir = "githubkit/rest/"
   "null",
 ] }
 
-# copilot-seat-details/assignee is not valid
-"/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
-  { "$ref" = "#/components/schemas/simple-user" },
-  { "$ref" = "#/components/schemas/team" },
-  { "$ref" = "#/components/schemas/organization" },
-] }
+# [FIXED] copilot-seat-details/assignee is not valid
+# "/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
+#   { "$ref" = "#/components/schemas/simple-user" },
+#   { "$ref" = "#/components/schemas/team" },
+#   { "$ref" = "#/components/schemas/organization" },
+# ] }
 
 [tool.codegen.webhook]
 schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
