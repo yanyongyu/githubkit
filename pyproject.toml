@@ -127,7 +127,6 @@ output_dir = "githubkit/rest/"
 
 
 # https://github.com/github/rest-api-description/issues/1811
-# https://github.com/yanyongyu/githubkit/issues/56
 # https://github.com/yanyongyu/githubkit/issues/64
 "/components/schemas/pull-request-simple/properties/head/properties/label" = { type = [
   "string",
@@ -137,6 +136,15 @@ output_dir = "githubkit/rest/"
   { type = "null" },
   { "$ref" = "#/components/schemas/repository" },
 ], "$ref" = "<unset>" }
+# https://github.com/yanyongyu/githubkit/issues/56
+"/components/schemas/pull-request/properties/head/properties/label" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/pull-request/properties/head/properties/user" = { type = [
+  "object",
+  "null",
+] }
 
 # https://github.com/github/rest-api-description/issues/1812
 "/components/schemas/pull-request-simple/properties/labels/items/properties/description" = { type = [
@@ -265,7 +273,14 @@ types_output = "githubkit/webhooks/types.py"
 # "/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive", "wont_fix", "revoked", "used_in_tests"] }
 
 # https://github.com/yanyongyu/githubkit/pull/69
-"/definitions/projects_v2_item$edited/properties/changes/properties/field_value/properties/field_type" = { enum = [ "single_select", "date", "number", "text", "iteration", "labels" ] }
+"/definitions/projects_v2_item$edited/properties/changes/properties/field_value/properties/field_type" = { enum = [
+  "single_select",
+  "date",
+  "number",
+  "text",
+  "iteration",
+  "labels",
+] }
 
 [tool.codegen.field_overrides]
 "+1" = "plus_one"

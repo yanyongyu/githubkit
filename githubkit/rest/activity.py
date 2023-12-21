@@ -418,6 +418,38 @@ class ActivityClient:
             },
         )
 
+    def mark_thread_as_done(
+        self,
+        thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/notifications/threads/{thread_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_mark_thread_as_done(
+        self,
+        thread_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> "Response":
+        url = f"/notifications/threads/{thread_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
     def mark_thread_as_read(
         self,
         thread_id: int,
