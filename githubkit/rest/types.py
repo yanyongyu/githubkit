@@ -8008,11 +8008,11 @@ class PullRequestPropLabelsItemsType(TypedDict):
 class PullRequestPropHeadType(TypedDict):
     """PullRequestPropHead"""
 
-    label: str
+    label: Union[str, None]
     ref: str
     repo: Union[PullRequestPropHeadPropRepoType, None]
     sha: str
-    user: PullRequestPropHeadPropUserType
+    user: Union[PullRequestPropHeadPropUserType, None]
 
 
 class PullRequestPropHeadPropRepoPropOwnerType(TypedDict):
