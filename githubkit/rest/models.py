@@ -11221,11 +11221,11 @@ class PullRequestPropLabelsItems(GitHubRestModel):
 class PullRequestPropHead(GitHubRestModel):
     """PullRequestPropHead"""
 
-    label: str = Field(default=...)
+    label: Union[str, None] = Field(default=...)
     ref: str = Field(default=...)
     repo: Union[PullRequestPropHeadPropRepo, None] = Field(default=...)
     sha: str = Field(default=...)
-    user: PullRequestPropHeadPropUser = Field(default=...)
+    user: Union[PullRequestPropHeadPropUser, None] = Field(default=...)
 
 
 class PullRequestPropHeadPropRepoPropOwner(GitHubRestModel):
