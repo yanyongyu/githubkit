@@ -324,3 +324,11 @@ Generate latest models and apis:
 ```bash
 python -m codegen && isort . && black .
 ```
+
+## Contributors
+
+Thanks to the following people who have contributed to this project:
+
+<a href="https://github.com/yanyongyu/githubkit/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=yanyongyu/githubkit&max=1000" alt="contributors" />
+</a>
