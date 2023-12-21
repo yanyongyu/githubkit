@@ -1,27 +1,21 @@
-from typing import Union
+from typing import TYPE_CHECKING
 
 import openapi_pydantic as oas
-from pydantic import TypeAdapter
 
-from ...source import Source
 from ..data import RequestBodyData
 from ..schemas import parse_schema
-from ..utils import concat_snake_name
+from ..utils import concat_snake_name, type_ref_from_source
+
+if TYPE_CHECKING:
+    from ...source import Source
 
 
-def build_request_body(source: Source, prefix: str) -> RequestBodyData:
-    data = source.data
-    try:
-        data = TypeAdapter(Union[oas.Reference, oas.RequestBody]).validate_python(data)
-    except Exception as e:
-        raise TypeError(f"Invalid RequestBody from {source.uri}") from e
+def build_request_body(source: "Source", prefix: str) -> RequestBodyData:
+    data = type_ref_from_source(source, oas.RequestBody)
 
-    if isinstance(data, oas.Reference):
+    while isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        try:
-            data = oas.RequestBody.model_validate(source.data)
-        except Exception as e:
-            raise TypeError(f"Invalid RequestBody from {source.uri}") from e
+        data = type_ref_from_source(source, oas.RequestBody)
 
     media_types = list(data.content.keys())
     if json_types := [type for type in media_types if "json" in type]:

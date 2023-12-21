@@ -155,7 +155,9 @@ class EndpointData(BaseModel):
 
 @dataclass
 class WebhookData:
-    definitions: dict[str, SchemaData | dict[str, SchemaData]]
+    event: str
+    action: str | None
+    event_schema: SchemaData
 
     # @cached_property
     # def model_definitions(self) -> dict[str, SchemaData]:

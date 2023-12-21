@@ -1,12 +1,18 @@
 import re
 import builtins
 from keyword import iskeyword
+from typing import TYPE_CHECKING, TypeVar
 
 import openapi_pydantic as oas
 from pydantic import TypeAdapter
 
-from ..source import Source
 from . import get_override_config
+
+if TYPE_CHECKING:
+    from ..source import Source
+
+
+T = TypeVar("T")
 
 DELIMITERS = r"\. _-"
 
@@ -107,7 +113,7 @@ def merge_dict(old: dict, new: dict):
             )
 
 
-def schema_from_source(source: Source) -> oas.Schema:
+def schema_from_source(source: "Source") -> oas.Schema:
     data = source.data
 
     assert isinstance(data, dict), f"Invalid Schema from {source.uri}"
@@ -123,7 +129,7 @@ def schema_from_source(source: Source) -> oas.Schema:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
 
 
-def schema_ref_from_source(source: Source) -> oas.Reference | oas.Schema:
+def schema_ref_from_source(source: "Source") -> oas.Reference | oas.Schema:
     data = source.data
 
     # apply schema override
@@ -135,3 +141,12 @@ def schema_ref_from_source(source: Source) -> oas.Reference | oas.Schema:
         return TypeAdapter(oas.Reference | oas.Schema).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
+
+
+def type_ref_from_source(source: "Source", type_: type[T]) -> oas.Reference | T:
+    data = source.data
+
+    try:
+        return TypeAdapter(oas.Reference | type_).validate_python(data)
+    except Exception as e:
+        raise TypeError(f"Invalid {type_} from {source.uri}") from e

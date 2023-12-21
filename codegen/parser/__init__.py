@@ -70,7 +70,8 @@ def parse_openapi_spec(source: "Source", override: "Override") -> OpenAPIData:
         webhooks: list[WebhookData] = []
         if openapi.webhooks:
             for webhook in openapi.webhooks:
-                webhooks.append(parse_webhook(source / "webhooks" / webhook))
+                if webhook_data := parse_webhook(source / "webhooks" / webhook):
+                    webhooks.append(webhook_data)
 
         return OpenAPIData(
             schemas=list(get_schemas().values()), endpoints=endpoints, webhooks=webhooks

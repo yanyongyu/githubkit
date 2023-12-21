@@ -14,15 +14,16 @@ class VersionedOverride(Override):
     target_versions: list[str] = Field(default_factory=list)
 
 
-class DescriptionConfig:
+class DescriptionConfig(BaseModel):
     version: str
     is_latest: bool = False
     """If true, the description will be used as the default description."""
     source: str
-    output_dir: Path
 
 
 class Config(BaseModel):
+    output_dir: Path
+    version_prefix: str = "v"
     descriptions: list[DescriptionConfig]
     overrides: list[VersionedOverride] = Field(default_factory=list)
 

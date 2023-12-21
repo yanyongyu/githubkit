@@ -75,12 +75,14 @@ executionEnvironments = [
   ] },
 ]
 
+[tool.codegen]
+output_dir = "githubkit/versions/"
+version_prefix = "v"
 
 [[tool.codegen.descriptions]]
 version = "2022-11-28"
 is_latest = true
 source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
-output_dir = "githubkit/versions/v2022_11_28"
 
 
 [[tool.codegen.overrides]]

@@ -124,6 +124,12 @@ def build():
     config = load_config()
     logger.info(f"Loaded config: {config!r}")
 
+    # clean output dir
+    if config.output_dir.exists():
+        logger.warning(f"Output dir {config.output_dir} already exists, deleting...")
+        shutil.rmtree(config.output_dir)
+        config.output_dir.mkdir(parents=True, exist_ok=True)
+
     for description in config.descriptions:
         logger.info(
             f"Start getting OpenAPI source for version {description.version}..."
@@ -135,16 +141,18 @@ def build():
         override = config.get_override_config_for_version(description.version)
         # _patch_openapi_spec(source.root)
         parsed_data = parse_openapi_spec(source, override)
-        # logger.info(
-        #     f"Successfully parsed OpenAPI spec {description.version}: "
-        #     f"{len(parsed_data.schemas)} schemas, "
-        #     f"{len(parsed_data.endpoints)} endpoints"
-        # )
+        logger.info(
+            f"Successfully parsed OpenAPI spec {description.version}: "
+            f"{len(parsed_data.schemas)} schemas, "
+            f"{len(parsed_data.endpoints)} endpoints, "
+            f"{len(parsed_data.webhooks)} webhooks"
+        )
 
         logger.info(f"Start generating codes for {description.version}...")
-        # clean output dir
-        version_path = Path(description.output_dir)
-        shutil.rmtree(version_path)
+        version_path = (
+            config.output_dir
+            / f"{config.version_prefix}{snake_case(description.version)}"
+        )
         version_path.mkdir(parents=True, exist_ok=True)
         # generate models
         # build_models(description)
