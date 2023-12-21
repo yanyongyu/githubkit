@@ -31,6 +31,7 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
     _schemas.get()[ref] = schema
 
 
+from .utils import merge_dict
 from .webhooks import parse_webhook
 from .endpoints import parse_endpoint
 from .utils import sanitize as sanitize
@@ -46,6 +47,11 @@ from .utils import fix_reserved_words as fix_reserved_words
 
 def parse_openapi_spec(source: "Source", override: "Override") -> OpenAPIData:
     source = source.get_root()
+
+    # apply schema overrides first to make sure json pointer is correct
+    for path, new_schema in override.schema_overrides.items():
+        ref = str(httpx.URL(fragment=path))
+        merge_dict(source.resolve_ref(ref).data, new_schema)
 
     _ot = _override_config.set(override)
     _st = _schemas.set({})

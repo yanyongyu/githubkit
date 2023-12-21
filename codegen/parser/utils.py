@@ -104,6 +104,8 @@ def merge_dict(old: dict, new: dict):
     # make change inplace to make json point correct
     for key, value in new.items():
         if value == UNSET_KEY:
+            if key not in old:
+                raise ValueError(f"Key {key} not found in {old}")
             del old[key]
         else:
             old[key] = (
@@ -116,29 +118,8 @@ def merge_dict(old: dict, new: dict):
 def schema_from_source(source: "Source") -> oas.Schema:
     data = source.data
 
-    assert isinstance(data, dict), f"Invalid Schema from {source.uri}"
-
-    # apply schema override
-    override = get_override_config()
-    if source.uri.fragment in override.schema_overrides:
-        merge_dict(data, override.schema_overrides[source.uri.fragment])
-
     try:
         return TypeAdapter(oas.Schema).validate_python(data)
-    except Exception as e:
-        raise TypeError(f"Invalid Schema from {source.uri}") from e
-
-
-def schema_ref_from_source(source: "Source") -> oas.Reference | oas.Schema:
-    data = source.data
-
-    # apply schema override
-    override = get_override_config()
-    if source.uri.fragment in override.schema_overrides:
-        merge_dict(data, override.schema_overrides[source.uri.fragment])
-
-    try:
-        return TypeAdapter(oas.Reference | oas.Schema).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid Schema from {source.uri}") from e
 

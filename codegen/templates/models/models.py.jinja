@@ -1,7 +1,6 @@
 {% from "header.jinja" import header %}
 
 """{{ header() }}
-See https://github.com/github/rest-api-description for more information.
 """
 
 {% from "models/_model.py.jinja" import build_model %}
@@ -10,28 +9,26 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Extra
 
+from githubkit.compat import model_rebuild
+
 {% for model in models %}
 {% for import_ in model.get_model_imports() %}
 {{ import_ }}
 {% endfor %}
 {% endfor %}
 
-class GitHubRestModel(BaseModel):
-    model_config = {"extra": Extra.allow, "populate_by_name": True}
-
 {# model #}
 {% for model in models %}
 
-{{ build_model(model, "GitHubRestModel") }}
+{{ build_model(model) }}
 
 {% endfor %}
 
 {% for model in models %}
-{{ model.class_name }}.update_forward_refs()
+model_rebuild({{ model.class_name }})
 {% endfor %}
 
 __all__ = [
-    "GitHubRestModel",
     {% for model in models %}
     "{{ model.class_name }}",
     {% endfor %}

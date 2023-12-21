@@ -19,7 +19,7 @@ from .schema import StringSchema as StringSchema
 from .. import add_schema, get_schema, get_schemas
 from .schema import DateTimeSchema as DateTimeSchema
 from .schema import UniqueListSchema as UniqueListSchema
-from ..utils import schema_from_source, schema_ref_from_source
+from ..utils import schema_from_source, type_ref_from_source
 
 if TYPE_CHECKING:
     from ...source import Source
@@ -28,11 +28,11 @@ if TYPE_CHECKING:
 def parse_schema(
     source: "Source", class_name: str, base_source: "Source | None" = None
 ) -> SchemaData:
-    data = schema_ref_from_source(source)
+    data = type_ref_from_source(source, oas.Schema)
 
     while isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        data = schema_ref_from_source(source)
+        data = type_ref_from_source(source, oas.Schema)
         class_name = source.pointer.parts[-1]
         base_source = None
 

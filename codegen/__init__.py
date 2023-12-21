@@ -6,9 +6,10 @@ import httpx
 import tomli
 from jinja2 import Environment, PackageLoader
 
+from .config import Config
 from .source import get_source
 from .log import logger as logger
-from .config import Config, DescriptionConfig
+from .parser.schemas import ModelSchema
 from .parser import sanitize, kebab_case, snake_case, pascal_case, parse_openapi_spec
 
 env = Environment(
@@ -34,10 +35,20 @@ def load_config() -> Config:
     return Config.model_validate(config_dict)
 
 
-def build_models(description: DescriptionConfig):
+def build_models(dir: Path, models: list[ModelSchema]):
     logger.info("Start generating models...")
-    # TODO
+    models_template = env.get_template("models/models.py.jinja")
+    models_path = dir / "__init__.py"
+    models_path.write_text(models_template.render(models=models))
     logger.info("Successfully generated models!")
+
+
+def build_types(dir: Path, models: list[ModelSchema]):
+    logger.info("Start generating types...")
+    types_template = env.get_template("models/types.py.jinja")
+    types_path = dir / "__init__.py"
+    types_path.write_text(types_template.render(models=models))
+    logger.info("Successfully generated types!")
 
 
 # def build_rest_api(description: DescriptionConfig, data: ...):
@@ -155,7 +166,10 @@ def build():
         )
         version_path.mkdir(parents=True, exist_ok=True)
         # generate models
-        # build_models(description)
+        model_path = version_path / "models"
+        build_models(model_path, parsed_data.models)
+        type_path = version_path / "types"
+        build_types(type_path, parsed_data.models)
         # generate rest api codes
         # build_rest_api(description, parsed_data)
         # generate webhook codes
