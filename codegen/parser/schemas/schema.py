@@ -1,14 +1,14 @@
 from typing import Any, ClassVar
 from typing_extensions import override
+from dataclasses import field, dataclass
 
-from pydantic import Field, BaseModel
 
-
-class SchemaData(BaseModel):
-    title: str | None = Field(default=None, exclude=True)
-    description: str | None = Field(default=None, exclude=True)
-    default: Any | None = Field(default=None, exclude=True)
-    examples: list[Any] | None = Field(default=None, exclude=True)
+@dataclass(kw_only=True)
+class SchemaData:
+    title: str | None = field(default=None, compare=False)
+    description: str | None = field(default=None, compare=False)
+    default: Any | None = field(default=None, compare=False)
+    examples: list[Any] | None = field(default=None, compare=False)
 
     _type_string: ClassVar[str] = "Any"
 
@@ -51,7 +51,8 @@ class SchemaData(BaseModel):
         return {}
 
 
-class Property(BaseModel):
+@dataclass(kw_only=True)
+class Property:
     """Property data
 
     This indicates a property with its name and schema.
@@ -89,7 +90,11 @@ class Property(BaseModel):
         """Get defination used by client codegen"""
         type_ = self.get_param_type_string()
         return (
-            f"{self.prop_name}: {type_}"
+            (
+                f"{self.prop_name}: {type_}"
+                if self.schema_data.default is None
+                else f"{self.prop_name}: {type_} = {self.schema_data.default!r}"
+            )
             if self.required
             else f"{self.prop_name}: {type_} = UNSET"
         )
@@ -125,11 +130,18 @@ class Property(BaseModel):
         args = {}
         if not self.required:
             args["default"] = "UNSET"
+        elif self.required and self.schema_data.default is not None:
+            args["default"] = repr(self.schema_data.default)
         if self.prop_name != self.name:
             args["alias"] = repr(self.name)
+        if self.schema_data.title is not None:
+            args["title"] = repr(self.schema_data.title)
+        if self.schema_data.description is not None:
+            args["description"] = repr(self.schema_data.description)
         return args
 
 
+@dataclass(kw_only=True)
 class AnySchema(SchemaData):
     _type_string: ClassVar[str] = "Any"
 
@@ -158,14 +170,17 @@ class AnySchema(SchemaData):
         return imports
 
 
+@dataclass(kw_only=True)
 class NoneSchema(SchemaData):
     _type_string: ClassVar[str] = "None"
 
 
+@dataclass(kw_only=True)
 class BoolSchema(SchemaData):
     _type_string: ClassVar[str] = "bool"
 
 
+@dataclass(kw_only=True)
 class IntSchema(SchemaData):
     multiple_of: float | None = None
     maximum: float | None = None
@@ -191,6 +206,7 @@ class IntSchema(SchemaData):
         return args
 
 
+@dataclass(kw_only=True)
 class FloatSchema(SchemaData):
     multiple_of: float | None = None
     maximum: float | None = None
@@ -216,9 +232,10 @@ class FloatSchema(SchemaData):
         return args
 
 
+@dataclass(kw_only=True)
 class StringSchema(SchemaData):
-    min_length: int | None = Field(default=None, ge=0)
-    max_length: int | None = Field(default=None, ge=0)
+    min_length: int | None = None
+    max_length: int | None = None
     pattern: str | None = None
 
     _type_string: ClassVar[str] = "str"
@@ -235,6 +252,7 @@ class StringSchema(SchemaData):
         return args
 
 
+@dataclass(kw_only=True)
 class DateTimeSchema(SchemaData):
     _type_string: ClassVar[str] = "datetime"
 
@@ -263,6 +281,7 @@ class DateTimeSchema(SchemaData):
         return imports
 
 
+@dataclass(kw_only=True)
 class DateSchema(SchemaData):
     _type_string: ClassVar[str] = "date"
 
@@ -291,6 +310,7 @@ class DateSchema(SchemaData):
         return imports
 
 
+@dataclass(kw_only=True)
 class FileSchema(SchemaData):
     _type_string: ClassVar[str] = "FileTypes"
 
@@ -319,10 +339,11 @@ class FileSchema(SchemaData):
         return imports
 
 
+@dataclass(kw_only=True)
 class ListSchema(SchemaData):
     item_schema: SchemaData
-    min_length: int | None = Field(default=None, ge=0)
-    max_length: int | None = Field(default=None, ge=0)
+    min_length: int | None = None
+    max_length: int | None = None
 
     _type_string: ClassVar[str] = "List"
 
@@ -380,10 +401,11 @@ class ListSchema(SchemaData):
         return args
 
 
+@dataclass(kw_only=True)
 class UniqueListSchema(SchemaData):
     item_schema: SchemaData
-    min_length: int | None = Field(default=None, ge=0)
-    max_length: int | None = Field(default=None, ge=0)
+    min_length: int | None = None
+    max_length: int | None = None
 
     _type_string: ClassVar[str] = "UniqueList"
 
@@ -441,6 +463,7 @@ class UniqueListSchema(SchemaData):
         return args
 
 
+@dataclass(kw_only=True)
 class EnumSchema(SchemaData):
     values: list[Any]
 
@@ -492,9 +515,10 @@ class EnumSchema(SchemaData):
         return imports
 
 
+@dataclass(kw_only=True)
 class ModelSchema(SchemaData):
-    class_name: str = Field(..., exclude=True)
-    properties: list[Property] = Field(default_factory=list)
+    class_name: str = field(compare=False)
+    properties: list[Property] = field(default_factory=list)
     allow_extra: bool = True
 
     _type_string: ClassVar[str] = "dict"
@@ -537,6 +561,7 @@ class ModelSchema(SchemaData):
         return {f"from .models import {self.class_name}"}
 
 
+@dataclass(kw_only=True)
 class UnionSchema(SchemaData):
     schemas: list[SchemaData]
     discriminator: str | None = None

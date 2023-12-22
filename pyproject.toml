@@ -259,6 +259,18 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 #   { "$ref" = "#/components/schemas/organization" },
 # ] }
 
+# Webhook schema overrides
+# webhook fork topics can be null
+"/components/schemas/webhook-fork/properties/forkee/allOf/1/properties/topics/items" = { type = [
+  "string",
+  "null",
+] }
+# webhook project card after_id should be integer
+"/components/schemas/webhook-project-card-moved/properties/project_card/allOf/1/properties/after_id" = { type = [
+  "integer",
+  "null",
+] }
+
 # [tool.codegen.webhook]
 # schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
 # output = "githubkit/webhooks/models.py"

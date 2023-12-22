@@ -1,14 +1,13 @@
 from typing import Literal
-from dataclasses import dataclass
 from collections import defaultdict
 from functools import cached_property
-
-from pydantic import Field, BaseModel
+from dataclasses import field, dataclass
 
 from .utils import snake_case, fix_reserved_words
 from .schemas import Property, SchemaData, ModelSchema
 
 
+@dataclass(kw_only=True)
 class Parameter(Property):
     """Parameter data
 
@@ -19,7 +18,8 @@ class Parameter(Property):
     param_in: Literal["query", "header", "path", "cookie"]
 
 
-class RequestBodyData(BaseModel):
+@dataclass(kw_only=True)
+class RequestBodyData:
     """Request body data
 
     This indicates the request body in the endpoint definition
@@ -72,7 +72,8 @@ class RequestBodyData(BaseModel):
     #     return self.body_schema.get_using_imports()
 
 
-class ResponseData(BaseModel):
+@dataclass(kw_only=True)
+class ResponseData:
     """Response data
 
     This indicates the response data in the endpoint definition
@@ -88,7 +89,8 @@ class ResponseData(BaseModel):
     #     )
 
 
-class EndpointData(BaseModel):
+@dataclass(kw_only=True)
+class EndpointData:
     path: str
     method: str
     tags: list[str] | None = None
@@ -96,11 +98,11 @@ class EndpointData(BaseModel):
     operation_id: str | None = None
     deprecated: bool = False
 
-    parameters: list[Parameter] = Field(default_factory=list)
+    parameters: list[Parameter] = field(default_factory=list)
     request_body: RequestBodyData | None = None
 
     success_response: ResponseData | None = None
-    error_responses: dict[str, ResponseData] = Field(default_factory=dict)
+    error_responses: dict[str, ResponseData] = field(default_factory=dict)
 
     @property
     def category(self) -> str:
@@ -180,7 +182,7 @@ class WebhookData:
 class OpenAPIData:
     """All the data needed to generate a client"""
 
-    schemas: list[SchemaData]
+    models: list[ModelSchema]
     endpoints: list[EndpointData]
     webhooks: list[WebhookData]
 
@@ -190,7 +192,3 @@ class OpenAPIData:
         for endpoint in self.endpoints:
             data[endpoint.category].append(endpoint)
         return data
-
-    @cached_property
-    def models(self) -> list[ModelSchema]:
-        return [schema for schema in self.schemas if isinstance(schema, ModelSchema)]

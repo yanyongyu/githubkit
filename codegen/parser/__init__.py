@@ -39,9 +39,9 @@ from .utils import kebab_case as kebab_case
 from .utils import snake_case as snake_case
 from .data import OpenAPIData as OpenAPIData
 from .data import WebhookData as WebhookData
-from .schemas import SchemaData, parse_schema
 from .utils import pascal_case as pascal_case
 from .data import EndpointData as EndpointData
+from .schemas import SchemaData, ModelSchema, parse_schema
 from .utils import fix_reserved_words as fix_reserved_words
 
 
@@ -80,7 +80,13 @@ def parse_openapi_spec(source: "Source", override: "Override") -> OpenAPIData:
                     webhooks.append(webhook_data)
 
         return OpenAPIData(
-            schemas=list(get_schemas().values()), endpoints=endpoints, webhooks=webhooks
+            models=[
+                schema
+                for schema in get_schemas().values()
+                if isinstance(schema, ModelSchema)
+            ],
+            endpoints=endpoints,
+            webhooks=webhooks,
         )
     finally:
         _override_config.reset(_ot)

@@ -154,7 +154,7 @@ def build():
         parsed_data = parse_openapi_spec(source, override)
         logger.info(
             f"Successfully parsed OpenAPI spec {description.version}: "
-            f"{len(parsed_data.schemas)} schemas, "
+            f"{len(parsed_data.models)} models, "
             f"{len(parsed_data.endpoints)} endpoints, "
             f"{len(parsed_data.webhooks)} webhooks"
         )
