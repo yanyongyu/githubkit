@@ -1,6 +1,5 @@
 from typing import Literal
 from collections import defaultdict
-from functools import cached_property
 from dataclasses import field, dataclass
 
 from .utils import snake_case, fix_reserved_words
@@ -186,9 +185,16 @@ class OpenAPIData:
     endpoints: list[EndpointData]
     webhooks: list[WebhookData]
 
-    @cached_property
+    @property
     def endpoints_by_tag(self) -> dict[str, list[EndpointData]]:
         data: dict[str, list[EndpointData]] = defaultdict(list)
         for endpoint in self.endpoints:
             data[endpoint.category].append(endpoint)
+        return data
+
+    @property
+    def webhooks_by_event(self) -> dict[str, list[WebhookData]]:
+        data: dict[str, list[WebhookData]] = defaultdict(list)
+        for webhook in self.webhooks:
+            data[webhook.event].append(webhook)
         return data

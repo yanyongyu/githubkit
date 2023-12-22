@@ -1,0 +1,109 @@
+import re
+import sys
+import importlib
+from itertools import chain
+from types import ModuleType
+from collections.abc import Sequence
+from importlib.abc import MetaPathFinder
+from typing import Any, Dict, List, Tuple, Optional
+from importlib.machinery import ModuleSpec, SourceFileLoader
+
+LAZY_MODULES = r"githubkit\.versions\.[^.]+\.webhooks"
+
+
+class LazyModule(ModuleType):
+    __lazy_vars__: Dict[str, List[str]]
+    __lazy_vars_validated__: Optional[Dict[str, List[str]]]
+    __lazy_vars_mapping__: Dict[str, str]
+
+    @property
+    def __all__(self) -> Tuple[str, ...]:
+        lazy_vars = self.__lazy_vars_validated__
+        if lazy_vars is None:
+            return ()
+        return (*lazy_vars.keys(), *chain.from_iterable(lazy_vars.values()))
+
+    def __dir__(self):
+        result = list(super().__dir__())
+        for attr in self.__all__:
+            if attr not in result:
+                result.append(attr)
+        return result
+
+    def __getattr__(self, name: str) -> Any:
+        lazy_vars = self.__lazy_vars_validated__
+        if lazy_vars is None:
+            return super().__getattr__(name)
+
+        # check if the attribute is a lazy variable
+        if name in self.__lazy_vars_mapping__:
+            module = self._get_module(self.__lazy_vars_mapping__[name])
+            value = getattr(module, name)
+        # check if the attribute is a submodule
+        elif name in lazy_vars:
+            value = self._get_module(name)
+        else:
+            return super().__getattr__(name)
+
+        # cache the value
+        setattr(self, name, value)
+        return value
+
+    def _get_module(self, module_name: str) -> ModuleType:
+        try:
+            return importlib.import_module("." + module_name, self.__name__)
+        except Exception as e:
+            raise RuntimeError(f"Failed to import {self.__name__}.{module_name}") from e
+
+    def __reduce__(self):
+        return (
+            self.__class__,
+            (self.__name__, self.__file__, getattr(self, "__lazy_vars__", None)),
+        )
+
+
+class LazyModuleLoader(SourceFileLoader):
+    def create_module(self, spec: ModuleSpec) -> Optional[ModuleType]:
+        if self.name in sys.modules:
+            return sys.modules[self.name]
+        return LazyModule(spec.name)
+
+    def exec_module(self, module: LazyModule) -> None:
+        super().exec_module(module)
+
+        if not hasattr(module, "__lazy_vars_validated__"):
+            structure = getattr(module, "__lazy_vars__", None)
+            if isinstance(structure, dict) and all(
+                isinstance(key, str) and isinstance(value, list)
+                for key, value in structure.items()
+            ):
+                module.__lazy_vars_validated__ = structure
+                module.__lazy_vars_mapping__ = {
+                    var: module
+                    for module, vars in module.__lazy_vars_validated__.items()
+                    for var in vars
+                }
+            else:
+                module.__lazy_vars_validated__ = None
+                module.__lazy_vars_mapping__ = {}
+
+
+class LazyModuleFinder(MetaPathFinder):
+    def find_spec(
+        self,
+        fullname: str,
+        path: Optional[Sequence[str]],
+        target: Optional[ModuleType] = None,
+    ) -> Optional[ModuleSpec]:
+        module_spec = super().find_spec(fullname, path, target)
+        if not module_spec or not module_spec.origin:
+            return module_spec
+
+        if module_spec and any(
+            re.match(pattern, module_spec.name) for pattern in LAZY_MODULES
+        ):
+            module_spec.loader = LazyModuleLoader(module_spec.name, module_spec.origin)
+        return module_spec
+
+
+sys.meta_path.insert(0, LazyModuleFinder())

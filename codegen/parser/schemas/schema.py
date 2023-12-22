@@ -554,11 +554,11 @@ class ModelSchema(SchemaData):
     @override
     def get_param_imports(self) -> set[str]:
         # TODO: import only when TYPE_CHECKING
-        return {f"from .types import {self.get_param_type_string()}"}
+        return {f"from ..types import {self.get_param_type_string()}"}
 
     @override
     def get_using_imports(self) -> set[str]:
-        return {f"from .models import {self.class_name}"}
+        return {f"from ..models import {self.class_name}"}
 
 
 @dataclass(kw_only=True)

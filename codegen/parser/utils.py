@@ -88,15 +88,15 @@ def build_boolean(value: bool | str) -> bool:
 def build_class_name(name: str) -> str:
     override = get_override_config()
     class_name = fix_reserved_words(pascal_case(name))
-    if override := override.class_overrides.get(class_name):
-        return override
+    if overrided_name := override.class_overrides.get(class_name):
+        return overrided_name
     return class_name
 
 
 def build_prop_name(name: str) -> str:
     override = get_override_config()
-    if override := override.field_overrides.get(name):
-        name = override
+    if overrided_name := override.field_overrides.get(name):
+        name = overrided_name
     return fix_reserved_words(snake_case(name))
 
 

@@ -10,7 +10,14 @@ from .config import Config
 from .source import get_source
 from .log import logger as logger
 from .parser.schemas import ModelSchema
-from .parser import sanitize, kebab_case, snake_case, pascal_case, parse_openapi_spec
+from .parser import (
+    WebhookData,
+    sanitize,
+    kebab_case,
+    snake_case,
+    pascal_case,
+    parse_openapi_spec,
+)
 
 env = Environment(
     loader=PackageLoader("codegen"),
@@ -94,32 +101,31 @@ def build_types(dir: Path, models: list[ModelSchema]):
 #     logger.info("Successfully generated rest api codes!")
 
 
-# def build_webhook(data: WebhookData, webhook: WebhookConfig):
-#     logger.info("Start generating webhook codes...")
+def build_webhooks(dir: Path, all_webhooks: dict[str, list[WebhookData]]):
+    logger.info("Start generating webhooks...")
 
-#     # build models
-#     logger.info("Building webhook models...")
-#     models_template = env.get_template("models/webhooks.py.jinja")
-#     models_path = Path(webhook.output)
-#     models_path.parent.mkdir(parents=True, exist_ok=True)
-#     models_path.write_text(models_template.render(models=data.models))
-#     logger.info("Successfully built webhook models!")
+    # build events
+    for name, webhooks in all_webhooks.items():
+        logger.info(f"Building webhooks for event {name}...")
+        event_template = env.get_template("webhooks/event.py.jinja")
+        event_path = dir / f"{name}.py"
+        event_path.write_text(event_template.render(name=name, webhooks=webhooks))
+        logger.info(f"Successfully built webhooks for event {name}!")
 
-#     # build types
-#     logger.info("Building webhook types...")
-#     types_template = env.get_template("models/webhook_types.py.jinja")
-#     types_path = Path(webhook.types_output)
-#     types_path.parent.mkdir(parents=True, exist_ok=True)
-#     types_path.write_text(
-#         types_template.render(
-#             definitions=data.definitions,
-#             model_definitions=data.model_definitions,
-#             union_definitions=data.union_definitions,
-#         )
-#     )
-#     logger.info("Successfully built webhook models!")
+    # build types
+    logger.info("Building webhook types...")
+    types_template = env.get_template("webhooks/types.py.jinja")
+    types_path = dir / "types.py"
+    types_path.write_text(types_template.render(event_names=list(all_webhooks.keys())))
+    logger.info("Successfully built webhook types!")
 
-#     logger.info("Successfully generated webhook codes!")
+    # build __init__.py
+    logger.info("Building webhooks __init__.py...")
+    init_template = env.get_template("webhooks/__init__.py.jinja")
+    init_path = dir / "__init__.py"
+    init_path.write_text(init_template.render(event_names=list(all_webhooks.keys())))
+
+    logger.info("Successfully generated webhooks!")
 
 
 # def _patch_openapi_spec(spec: dict[str, Any]):
@@ -167,14 +173,18 @@ def build():
         version_path.mkdir(parents=True, exist_ok=True)
         # generate models
         model_path = version_path / "models"
+        model_path.mkdir(parents=True, exist_ok=True)
         build_models(model_path, parsed_data.models)
         type_path = version_path / "types"
+        type_path.mkdir(parents=True, exist_ok=True)
         build_types(type_path, parsed_data.models)
         # generate rest api codes
+        # TODO
         # build_rest_api(description, parsed_data)
         # generate webhook codes
-        # build_webhook()
-        # TODO
+        webhook_path = version_path / "webhooks"
+        webhook_path.mkdir(parents=True, exist_ok=True)
+        build_webhooks(webhook_path, parsed_data.webhooks_by_event)
         logger.info(f"Successfully generated codes for {description.version}!")
 
         del source, override, parsed_data

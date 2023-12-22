@@ -1,0 +1,21 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}
+"""
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    {% for name in event_names %}
+    from .{{ name }} import {{ pascal_case(name) }}Event as {{ pascal_case(name) }}Event
+    from .{{ name }} import {{ name }}_action_types as {{ name }}_action_types
+    {% endfor %}
+else:
+    __lazy_vars__ = {
+        {% for name in event_names %}
+        "{{ name }}": [
+            "{{ pascal_case(name) }}Event",
+            "{{ name }}_action_types"
+        ],
+        {% endfor %}
+    }
