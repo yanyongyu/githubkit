@@ -114,10 +114,18 @@ def build_webhooks(dir: Path, all_webhooks: dict[str, list[WebhookData]]):
 
     # build types
     logger.info("Building webhook types...")
-    types_template = env.get_template("webhooks/types.py.jinja")
-    types_path = dir / "types.py"
+    types_template = env.get_template("webhooks/_types.py.jinja")
+    types_path = dir / "_types.py"
     types_path.write_text(types_template.render(event_names=list(all_webhooks.keys())))
     logger.info("Successfully built webhook types!")
+
+    # build namespace
+    logger.info("Building webhooks namespace...")
+    namespace_template = env.get_template("webhooks/_namespace.py.jinja")
+    namespace_path = dir / "_namespace.py"
+    namespace_path.write_text(
+        namespace_template.render(event_names=list(all_webhooks.keys()))
+    )
 
     # build __init__.py
     logger.info("Building webhooks __init__.py...")

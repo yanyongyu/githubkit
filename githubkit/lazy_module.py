@@ -51,7 +51,7 @@ class LazyModule(ModuleType):
 
     def _get_module(self, module_name: str) -> ModuleType:
         try:
-            return importlib.import_module("." + module_name, self.__name__)
+            return importlib.import_module(f".{module_name}", self.__name__)
         except Exception as e:
             raise RuntimeError(f"Failed to import {self.__name__}.{module_name}") from e
 
@@ -74,7 +74,7 @@ class LazyModuleLoader(SourceFileLoader):
         if not hasattr(module, "__lazy_vars_validated__"):
             structure = getattr(module, "__lazy_vars__", None)
             if isinstance(structure, dict) and all(
-                isinstance(key, str) and isinstance(value, list)
+                isinstance(key, str) and isinstance(value, (list, tuple, set))
                 for key, value in structure.items()
             ):
                 module.__lazy_vars_validated__ = structure

@@ -1,0 +1,51 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}
+"""
+
+import importlib
+from typing import TYPE_CHECKING, Any, Dict, Union
+
+from githubkit.exception import WebhookTypeNotFound
+from githubkit.compat import type_validate_python, type_validate_strings
+
+
+if TYPE_CHECKING:
+    from ._types import WebhookEvent
+
+
+VALID_EVENT_NAMES = {
+    {% for name in event_names %}
+    "{{ name }}",
+    {% endfor %}
+}
+
+
+class WebhookNamespace:
+    @staticmethod
+    def parse_without_name(payload: Union[str, bytes]) -> "WebhookEvent":
+        from ._types import WebhookEvent
+
+        return type_validate_strings(WebhookEvent, payload)
+
+    @staticmethod
+    def parse(name: str, payload: Union[str, bytes]) -> "WebhookEvent":
+        if name not in VALID_EVENT_NAMES:
+            raise WebhookTypeNotFound(name)
+        module = importlib.import_module(f".{name}", __name__)
+        Event = getattr(module, "Event")
+        return type_validate_strings(Event, payload)
+
+    @staticmethod
+    def parse_obj_without_name(payload: Dict[str, Any]) -> "WebhookEvent":
+        from ._types import WebhookEvent
+
+        return type_validate_python(WebhookEvent, payload)
+
+    @staticmethod
+    def parse_obj(name: str, payload: Dict[str, Any]) -> "WebhookEvent":
+        if name not in VALID_EVENT_NAMES:
+            raise WebhookTypeNotFound(name)
+        module = importlib.import_module(f".{name}", __name__)
+        Event = getattr(module, "Event")
+        return type_validate_python(Event, payload)

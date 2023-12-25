@@ -3,7 +3,7 @@
 """{{ header() }}
 """
 
-from typing import Dict, Union
+from typing import Dict, Type, Union
 from typing_extensions import TypeAlias, Annotated
 
 from pydantic import Field
@@ -17,26 +17,32 @@ from githubkit.compat import GitHubModel
 {% endfor %}
 
 {% if webhooks | length > 1 %}
-{{ pascal_case(name) }}Event: TypeAlias = Annotated[Union[
+Event: TypeAlias = Annotated[Union[
     {% for webhook in webhooks %}
     {{ webhook.event_schema.get_type_string() }},
     {% endfor %}
 ], Field(discriminator="action")]
 {% else %}
-{{ pascal_case(name) }}Event: TypeAlias = {{ (webhooks | first).event_schema.get_type_string() }}
+Event: TypeAlias = {{ (webhooks | first).event_schema.get_type_string() }}
 {% endif %}
 
+{{ pascal_case(name) }}Event: TypeAlias = Event
+
 {% if webhooks | length > 1 %}
-{{ name }}_action_types: Dict[str, GitHubModel] = {
+action_types: Dict[str, Type[GitHubModel]] = {
     {% for webhook in webhooks %}
     "{{ webhook.action }}": {{ webhook.event_schema.get_type_string() }},
     {% endfor %}
 }
 {% else %}
-{{ name }}_action_types = {{ (webhooks | first).event_schema.get_type_string() }}
+action_types = {{ (webhooks | first).event_schema.get_type_string() }}
 {% endif %}
 
+{{ name }}_action_types = action_types
+
 __all__ = (
+    "Event",
     "{{ pascal_case(name) }}Event",
+    "action_types",
     "{{ name }}_action_types"
 )

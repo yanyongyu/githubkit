@@ -10,7 +10,8 @@ from pydantic import Field
 
 
 {% for name in event_names %}
-from .{{ name }} import {{ pascal_case(name) }}Event, {{ name }}_action_types
+from .{{ name }} import Event as {{ pascal_case(name) }}Event
+from .{{ name }} import action_types as {{ name }}_action_types
 {% endfor %}
 
 WebhookEvent = Union[
