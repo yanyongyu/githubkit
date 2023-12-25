@@ -27,6 +27,7 @@ env = Environment(
 )
 env.globals.update(
     {
+        "repr": repr,
         "sanitize": sanitize,
         "snake_case": snake_case,
         "pascal_case": pascal_case,
@@ -136,6 +137,20 @@ def build_webhooks(dir: Path, all_webhooks: dict[str, list[WebhookData]]):
     logger.info("Successfully generated webhooks!")
 
 
+def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
+    logger.info("Start generating versions...")
+
+    # build __init__.py
+    logger.info("Building versions __init__.py...")
+    init_template = env.get_template("versions.py.jinja")
+    init_path = dir / "__init__.py"
+    init_path.write_text(
+        init_template.render(versions=versions, latest_version=latest_version)
+    )
+
+    logger.info("Successfully generated versions!")
+
+
 # def _patch_openapi_spec(spec: dict[str, Any]):
 #     spec.pop("webhooks", None)
 #     for name in list(spec["components"]["schemas"].keys()):
@@ -154,6 +169,9 @@ def build():
         logger.warning(f"Output dir {config.output_dir} already exists, deleting...")
         shutil.rmtree(config.output_dir)
         config.output_dir.mkdir(parents=True, exist_ok=True)
+
+    versions: dict[str, str] = {}
+    latest_version: str | None = None
 
     for description in config.descriptions:
         logger.info(
@@ -174,10 +192,17 @@ def build():
         )
 
         logger.info(f"Start generating codes for {description.version}...")
-        version_path = (
-            config.output_dir
-            / f"{config.version_prefix}{snake_case(description.version)}"
-        )
+        version_module = f"{config.version_prefix}{snake_case(description.version)}"
+        versions[description.version] = version_module
+        if description.is_latest:
+            if latest_version is not None:
+                raise RuntimeError(
+                    "Found multiple latest versions: "
+                    f"{latest_version}, {description.version}"
+                )
+            latest_version = description.version
+
+        version_path = config.output_dir / version_module
         version_path.mkdir(parents=True, exist_ok=True)
         # generate models
         model_path = version_path / "models"
@@ -196,3 +221,8 @@ def build():
         logger.info(f"Successfully generated codes for {description.version}!")
 
         del source, override, parsed_data
+
+    # generate versions
+    if latest_version is None:
+        raise RuntimeError("No latest version found!")
+    build_versions(config.output_dir, versions, latest_version)

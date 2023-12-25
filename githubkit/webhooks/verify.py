@@ -2,10 +2,10 @@ import hmac
 import json
 from typing import Any, Dict, Union, Literal
 
-from .models import GitHubWebhookModel
+from githubkit.compat import GitHubModel, model_dump
 
 
-def normalize_payload(payload: Union[GitHubWebhookModel, Dict[str, Any]]) -> str:
+def normalize_payload(payload: Union[GitHubModel, Dict[str, Any]]) -> str:
     """Normalize the webhook payload to string.
 
     Note:
@@ -14,29 +14,25 @@ def normalize_payload(payload: Union[GitHubWebhookModel, Dict[str, Any]]) -> str
         Always use raw data posted by GitHub Webhooks.
 
     Args:
-        payload (Union[GitHubWebhookModel, Dict[str, Any]]): webhook payload.
+        payload (Union[GitHubModel, Dict[str, Any]]): webhook payload.
 
     Returns:
         str: normalized payload string.
     """
-    payload = (
-        payload.model_dump(by_alias=True)
-        if isinstance(payload, GitHubWebhookModel)
-        else payload
-    )
+    payload = model_dump(payload) if isinstance(payload, GitHubModel) else payload
     return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
 
 
 def sign(
     secret: str,
-    payload: Union[GitHubWebhookModel, Dict[str, Any], str, bytes],
+    payload: Union[GitHubModel, Dict[str, Any], str, bytes],
     method: Literal["sha256", "sha1"] = "sha256",
 ) -> str:
     """Sign the webhook payload.
 
     Args:
         secret (str): webhook secret.
-        payload (Union[GitHubWebhookModel, Dict[str, Any], str, bytes]): webhook payload.
+        payload (Union[GitHubModel, Dict[str, Any], str, bytes]): webhook payload.
         method (str): sha256 or sha1. Defaults to sha256.
 
     Returns:
@@ -55,7 +51,7 @@ def sign(
 
 def verify(
     secret: str,
-    payload: Union[GitHubWebhookModel, Dict[str, Any], str, bytes],
+    payload: Union[GitHubModel, Dict[str, Any], str, bytes],
     signature: str,
 ) -> bool:
     """Verify the webhook payload.
@@ -67,7 +63,7 @@ def verify(
 
     Args:
         secret (str): webhook secret.
-        payload (Union[GitHubWebhookModel, Dict[str, Any], str, bytes]): webhook payload.
+        payload (Union[GitHubModel, Dict[str, Any], str, bytes]): webhook payload.
         signature (str): webhook signature.
 
     Returns:
