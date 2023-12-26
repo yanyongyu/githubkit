@@ -34,6 +34,15 @@ env.globals.update(
         "kebab_case": kebab_case,
     }
 )
+env.filters.update(
+    {
+        "repr": repr,
+        "sanitize": sanitize,
+        "snake_case": snake_case,
+        "pascal_case": pascal_case,
+        "kebab_case": kebab_case,
+    }
+)
 
 
 def load_config() -> Config:
@@ -137,15 +146,77 @@ def build_webhooks(dir: Path, all_webhooks: dict[str, list[WebhookData]]):
     logger.info("Successfully generated webhooks!")
 
 
+def build_latest_version(
+    dir: Path,
+    latest_version_module: str,
+    model_names: list[str],
+    event_names: list[str],
+):
+    logger.info("Start generating latest version...")
+
+    # build models
+    logger.info("Building latest models...")
+    latest_template = env.get_template("latest/models.py.jinja")
+    latest_path = dir / "models.py"
+    latest_path.write_text(
+        latest_template.render(
+            latest_version_module=latest_version_module, model_names=model_names
+        )
+    )
+
+    # build types
+    logger.info("Building latest types...")
+    latest_template = env.get_template("latest/types.py.jinja")
+    latest_path = dir / "types.py"
+    latest_path.write_text(
+        latest_template.render(
+            latest_version_module=latest_version_module, model_names=model_names
+        )
+    )
+
+    # build webhooks
+    logger.info("Building latest webhooks...")
+    latest_template = env.get_template("latest/webhooks.py.jinja")
+    latest_path = dir / "webhooks.py"
+    latest_path.write_text(
+        latest_template.render(
+            latest_version_module=latest_version_module, event_names=event_names
+        )
+    )
+
+    logger.info("Successfully generated latest version!")
+
+
+def build_legacy_rest_models(
+    file: Path, latest_version_module: str, model_names: list[str]
+):
+    logger.info("Start generating legacy rest models...")
+    models_template = env.get_template("latest/models.py.jinja")
+    file.write_text(
+        models_template.render(
+            latest_version_module=latest_version_module, model_names=model_names
+        )
+    )
+    logger.info("Successfully generated legacy rest models!")
+
+
 def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
     logger.info("Start generating versions...")
 
     # build __init__.py
     logger.info("Building versions __init__.py...")
-    init_template = env.get_template("versions.py.jinja")
+    init_template = env.get_template("versions/__init__.py.jinja")
     init_path = dir / "__init__.py"
     init_path.write_text(
         init_template.render(versions=versions, latest_version=latest_version)
+    )
+
+    # build webhooks.py
+    logger.info("Building versions webhooks.py...")
+    webhooks_template = env.get_template("versions/webhooks.py.jinja")
+    webhooks_path = dir / "webhooks.py"
+    webhooks_path.write_text(
+        webhooks_template.render(versions=versions, latest_version=latest_version)
     )
 
     logger.info("Successfully generated versions!")
@@ -172,6 +243,8 @@ def build():
 
     versions: dict[str, str] = {}
     latest_version: str | None = None
+    latest_model_names: list[str] = []
+    latest_event_names: list[str] = []
 
     for description in config.descriptions:
         logger.info(
@@ -201,9 +274,12 @@ def build():
                     f"{latest_version}, {description.version}"
                 )
             latest_version = description.version
+            latest_model_names = [model.class_name for model in parsed_data.models]
+            latest_event_names = list(parsed_data.webhooks_by_event.keys())
 
         version_path = config.output_dir / version_module
         version_path.mkdir(parents=True, exist_ok=True)
+
         # generate models
         model_path = version_path / "models"
         model_path.mkdir(parents=True, exist_ok=True)
@@ -211,13 +287,16 @@ def build():
         type_path = version_path / "types"
         type_path.mkdir(parents=True, exist_ok=True)
         build_types(type_path, parsed_data.models)
+
         # generate rest api codes
         # TODO
         # build_rest_api(description, parsed_data)
+
         # generate webhook codes
         webhook_path = version_path / "webhooks"
         webhook_path.mkdir(parents=True, exist_ok=True)
         build_webhooks(webhook_path, parsed_data.webhooks_by_event)
+
         logger.info(f"Successfully generated codes for {description.version}!")
 
         del source, override, parsed_data
@@ -225,4 +304,13 @@ def build():
     # generate versions
     if latest_version is None:
         raise RuntimeError("No latest version found!")
+
+    latest_path = config.output_dir / "latest"
+    latest_path.mkdir(parents=True, exist_ok=True)
+    build_latest_version(
+        latest_path, versions[latest_version], latest_model_names, latest_event_names
+    )
     build_versions(config.output_dir, versions, latest_version)
+    build_legacy_rest_models(
+        config.legacy_rest_models, versions[latest_version], latest_model_names
+    )

@@ -7,7 +7,7 @@ import httpx
 from githubkit.exception import AuthCredentialError
 from githubkit.cache import DEFAULT_CACHE, BaseCache
 from githubkit.utils import UNSET, Unset, exclude_unset
-from githubkit.rest import (
+from githubkit.versions.latest.models import (
     BasicError,
     ValidationError,
     InstallationToken,
@@ -25,7 +25,7 @@ except ImportError:
 
 if TYPE_CHECKING:
     from githubkit import Response, GitHubCore
-    from githubkit.rest.types import AppPermissionsType
+    from githubkit.versions.latest.types import AppPermissionsType
 
 
 @dataclass

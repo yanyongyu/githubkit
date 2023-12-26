@@ -3,11 +3,13 @@
 """{{ header() }}
 """
 
+import hmac
+import json
 import importlib
-from typing import TYPE_CHECKING, Any, Dict, Union
+from typing import TYPE_CHECKING, Any, Dict, Union, Literal
 
 from githubkit.exception import WebhookTypeNotFound
-from githubkit.compat import type_validate_python, type_validate_strings
+from githubkit.compat import GitHubModel, model_dump, type_validate_python, type_validate_strings
 
 
 if TYPE_CHECKING:
@@ -24,12 +26,29 @@ VALID_EVENT_NAMES = {
 class WebhookNamespace:
     @staticmethod
     def parse_without_name(payload: Union[str, bytes]) -> "WebhookEvent":
+        """Parse the webhook payload without event name.
+
+        Note:
+            Parse the payload without event name is not recommended.
+
+            The parser may take more time to parse the payload and
+            the result may not be the correct type as expected.
+
+        Args:
+            payload (Union[str, bytes]): webhook payload.
+        """
         from ._types import WebhookEvent
 
         return type_validate_strings(WebhookEvent, payload)
 
     @staticmethod
     def parse(name: str, payload: Union[str, bytes]) -> "WebhookEvent":
+        """Parse the webhook payload with event name.
+
+        Args:
+            name (str): event name.
+            payload (Union[str, bytes]): webhook payload.
+        """
         if name not in VALID_EVENT_NAMES:
             raise WebhookTypeNotFound(name)
         module = importlib.import_module(f".{name}", __name__)
@@ -38,14 +57,105 @@ class WebhookNamespace:
 
     @staticmethod
     def parse_obj_without_name(payload: Dict[str, Any]) -> "WebhookEvent":
+        """Parse the webhook payload dict without event name.
+
+        Note:
+            Parse the payload without event name is not recommended.
+
+            The parser may take more time to parse the payload and
+            the result may not be the correct type as expected.
+
+        Args:
+            payload (Dict[str, Any]): webhook payload dict.
+        """
+
         from ._types import WebhookEvent
 
         return type_validate_python(WebhookEvent, payload)
 
     @staticmethod
     def parse_obj(name: str, payload: Dict[str, Any]) -> "WebhookEvent":
+        """Parse the webhook payload dict with event name.
+
+        Args:
+            name (str): event name.
+            payload (Dict[str, Any]): webhook payload dict.
+        """
+
         if name not in VALID_EVENT_NAMES:
             raise WebhookTypeNotFound(name)
         module = importlib.import_module(f".{name}", __name__)
         Event = getattr(module, "Event")
         return type_validate_python(Event, payload)
+
+    @staticmethod
+    def normalize_payload(payload: Union[GitHubModel, Dict[str, Any]]) -> str:
+        """Normalize the webhook payload to string.
+
+        Note:
+            This function may not behave the same way as GitHub Webhooks.
+
+            Always use raw data posted by GitHub Webhooks.
+
+        Args:
+            payload (Union[GitHubModel, Dict[str, Any]]): webhook payload.
+
+        Returns:
+            str: normalized payload string.
+        """
+        payload = model_dump(payload) if isinstance(payload, GitHubModel) else payload
+        return json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+
+    @staticmethod
+    def sign(
+        secret: str,
+        payload: Union[GitHubModel, Dict[str, Any], str, bytes],
+        method: Literal["sha256", "sha1"] = "sha256",
+    ) -> str:
+        """Sign the webhook payload.
+
+        Args:
+            secret (str): webhook secret.
+            payload (Union[GitHubModel, Dict[str, Any], str, bytes]): webhook payload.
+            method (str): sha256 or sha1. Defaults to sha256.
+
+        Returns:
+            str: signed payload string.
+        """
+        norm_payload = (
+            payload if isinstance(payload, (str, bytes)) else WebhookNamespace.normalize_payload(payload)
+        )
+        hmac_hex = hmac.new(
+            secret.encode("utf-8"),
+            norm_payload.encode("utf-8") if isinstance(norm_payload, str) else norm_payload,
+            method,
+        ).hexdigest()
+        return f"{method}={hmac_hex}"
+
+    @staticmethod
+    def verify(
+        secret: str,
+        payload: Union[GitHubModel, Dict[str, Any], str, bytes],
+        signature: str,
+    ) -> bool:
+        """Verify the webhook payload.
+
+        See: https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks#validating-payloads-from-github
+
+        Note:
+            Always use raw data posted by GitHub Webhooks.
+
+        Args:
+            secret (str): webhook secret.
+            payload (Union[GitHubModel, Dict[str, Any], str, bytes]): webhook payload.
+            signature (str): webhook signature.
+
+        Returns:
+            bool: True if verified, False otherwise.
+        """
+        signed = WebhookNamespace.sign(
+            secret, payload, "sha256" if signature.startswith("sha256=") else "sha1"
+        )
+
+        # use time safe comparison
+        return hmac.compare_digest(signed, signature)

@@ -26,8 +26,8 @@ from githubkit.compat import model_rebuild
 model_rebuild({{ model.class_name }})
 {% endfor %}
 
-__all__ = [
+__all__ = (
     {% for model in models %}
     "{{ model.class_name }}",
     {% endfor %}
-]
+)

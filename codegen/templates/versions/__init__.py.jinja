@@ -11,4 +11,6 @@ VERSIONS = {
     {% endfor %}
 }
 LATEST_VERSION = "{{ latest_version }}"
-VERSION_TYPE = Literal[{{ versions.keys()|map(repr)|join(", ")}}]
+VERSION_TYPE = Literal[{{ versions.keys()|map("repr")|join(", ")}}]
+
+from .webhooks import WebhooksVersionSwitcher as WebhooksVersionSwitcher

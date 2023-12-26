@@ -21,7 +21,7 @@ class LazyModule(ModuleType):
         lazy_vars = self.__lazy_vars_validated__
         if lazy_vars is None:
             return ()
-        return (*lazy_vars.keys(), *chain.from_iterable(lazy_vars.values()))
+        return tuple(chain.from_iterable(lazy_vars.values()))
 
     def __dir__(self):
         result = list(super().__dir__())
@@ -39,9 +39,6 @@ class LazyModule(ModuleType):
         if name in self.__lazy_vars_mapping__:
             module = self._get_module(self.__lazy_vars_mapping__[name])
             value = getattr(module, name)
-        # check if the attribute is a submodule
-        elif name in lazy_vars:
-            value = self._get_module(name)
         else:
             return super().__getattr__(name)
 
@@ -51,9 +48,11 @@ class LazyModule(ModuleType):
 
     def _get_module(self, module_name: str) -> ModuleType:
         try:
-            return importlib.import_module(f".{module_name}", self.__name__)
+            return importlib.import_module(module_name, self.__name__)
         except Exception as e:
-            raise RuntimeError(f"Failed to import {self.__name__}.{module_name}") from e
+            raise RuntimeError(
+                f"Failed to import {module_name} from {self.__name__}"
+            ) from e
 
     def __reduce__(self):
         return (

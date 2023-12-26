@@ -23,6 +23,7 @@ class DescriptionConfig(BaseModel):
 
 class Config(BaseModel):
     output_dir: Path
+    legacy_rest_models: Path
     version_prefix: str = "v"
     descriptions: list[DescriptionConfig]
     overrides: list[VersionedOverride] = Field(default_factory=list)

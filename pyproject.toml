@@ -81,6 +81,7 @@ executionEnvironments = [
 
 [tool.codegen]
 output_dir = "githubkit/versions/"
+legacy_rest_models = "githubkit/rest/__init__.py"
 version_prefix = "v"
 
 [[tool.codegen.descriptions]]
