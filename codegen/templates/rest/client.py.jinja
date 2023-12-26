@@ -1,33 +1,61 @@
 {% from "header.jinja" import header %}
 
-"""{{ header() }}
-See https://github.com/github/rest-api-description for more information.
-"""
+"""{{ header() }}"""
 
-{% from "client/_param.py.jinja" import endpoint_params, endpoint_raw_params, endpoint_model_params %}
-{% from "client/_response.py.jinja" import build_response_type %}
-{% from "client/_request.py.jinja" import build_request, build_request_params %}
+{% from "rest/_param.py.jinja" import endpoint_params, endpoint_raw_params, endpoint_model_params %}
+{% from "rest/_response.py.jinja" import build_response_type %}
+{% from "rest/_request.py.jinja" import build_request, build_request_params %}
 
-{% for endpoint in endpoints %}
-{% for import_ in endpoint.get_imports() %}
-{{ import_ }}
-{% endfor %}
-{% endfor %}
+from __future__ import annotations
 
+from typing_extensions import Annotated
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
-from pydantic import BaseModel, TypeAdapter
+from pydantic import BaseModel, Field
 
-from githubkit.utils import exclude_unset
+from githubkit.typing import Missing
+from githubkit.utils import exclude_unset, UNSET
+from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
+    {% for endpoint in endpoints %}
+
+    {# param types #}
+    {% for param in endpoint.parameters %}
+    {% for import_ in param.get_param_imports() %}
+    {{ import_ }}
+    {% endfor %}
+    {% endfor %}
+
+    {# request body type #}
+    {% if endpoint.request_body %}
+    {% for import_ in endpoint.request_body.body_schema.get_param_imports() %}
+    {{ import_ }}
+    {% endfor %}
+    {# request body property types #}
+    {% for model in endpoint.request_body.allowed_models %}
+    {% for prop in model.properties %}
+    {% for import_ in prop.get_param_imports() %}
+    {{ import_ }}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+
+    {# response model #}
+    {% if endpoint.success_response and endpoint.success_response.response_schema %}
+    {% for import_ in endpoint.success_response.response_schema.get_using_imports() %}
+    {{ import_ }}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
 
 class {{ pascal_case(tag) }}Client:
     _REST_API_VERSION = "{{ rest_api_version }}"
 
-    def __init__(self, github: "GitHubCore"):
+    def __init__(self, github: GitHubCore):
         self._github = github
 
     {% for endpoint in endpoints %}
@@ -37,7 +65,7 @@ class {{ pascal_case(tag) }}Client:
     def {{ endpoint.name }}(
         self,
         {{ endpoint_raw_params(endpoint) | indent(8) }}
-    ) -> "{{ build_response_type(endpoint.success_response) }}":
+    ) -> {{ build_response_type(endpoint.success_response) }}:
         ...
 
     {# generate model data overload #}
@@ -46,7 +74,7 @@ class {{ pascal_case(tag) }}Client:
     def {{ endpoint.name }}(
         self,
         {{ endpoint_model_params(endpoint, model) | indent(8) }}
-    ) -> "{{ build_response_type(endpoint.success_response) }}":
+    ) -> {{ build_response_type(endpoint.success_response) }}:
         ...
 
     {% endfor %}
@@ -54,7 +82,7 @@ class {{ pascal_case(tag) }}Client:
     def {{ endpoint.name }}(
         self,
         {{ endpoint_params(endpoint) | indent(8) }}
-    ) -> "{{ build_response_type(endpoint.success_response) }}":
+    ) -> {{ build_response_type(endpoint.success_response) }}:
         {{ build_request(endpoint) | indent(8) }}
         return self._github.request(
             {{ build_request_params(endpoint) | indent(12) }}
@@ -66,7 +94,7 @@ class {{ pascal_case(tag) }}Client:
     async def async_{{ endpoint.name }}(
         self,
         {{ endpoint_raw_params(endpoint) | indent(8) }}
-    ) -> "{{ build_response_type(endpoint.success_response) }}":
+    ) -> {{ build_response_type(endpoint.success_response) }}:
         ...
 
     {# generate model data overload #}
@@ -75,7 +103,7 @@ class {{ pascal_case(tag) }}Client:
     async def async_{{ endpoint.name }}(
         self,
         {{ endpoint_model_params(endpoint, model) | indent(8) }}
-    ) -> "{{ build_response_type(endpoint.success_response) }}":
+    ) -> {{ build_response_type(endpoint.success_response) }}:
         ...
 
     {% endfor %}
@@ -83,7 +111,7 @@ class {{ pascal_case(tag) }}Client:
     async def async_{{ endpoint.name }}(
         self,
         {{ endpoint_params(endpoint) | indent(8) }}
-    ) -> "{{ build_response_type(endpoint.success_response) }}":
+    ) -> {{ build_response_type(endpoint.success_response) }}:
         {{ build_request(endpoint) | indent(8) }}
         return await self._github.arequest(
             {{ build_request_params(endpoint) | indent(12) }}

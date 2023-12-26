@@ -2,8 +2,8 @@ from typing import Literal
 from collections import defaultdict
 from dataclasses import field, dataclass
 
-from .utils import snake_case, fix_reserved_words
-from .schemas import Property, SchemaData, ModelSchema
+from .schemas import Property, SchemaData, ModelSchema, UnionSchema
+from .utils import snake_case, concat_snake_name, fix_reserved_words
 
 
 @dataclass(kw_only=True)
@@ -29,46 +29,35 @@ class RequestBodyData:
     body_schema: SchemaData
     required: bool = False
 
-    # @property
-    # def allowed_models(self) -> list[ModelSchema]:
-    #     if isinstance(self.body_schema, ModelSchema):
-    #         return [self.body_schema]
-    #     elif isinstance(self.body_schema, UnionSchema):
-    #         return [
-    #             schema
-    #             for schema in self.body_schema.schemas
-    #             if isinstance(schema, ModelSchema)
-    #         ]
-    #     return []
+    @property
+    def allowed_models(self) -> list[ModelSchema]:
+        if isinstance(self.body_schema, ModelSchema):
+            return [self.body_schema]
+        elif isinstance(self.body_schema, UnionSchema):
+            return [
+                schema
+                for schema in self.body_schema.schemas
+                if isinstance(schema, ModelSchema)
+            ]
+        return []
 
-    # def get_raw_definition(self) -> str:
-    #     prop = Property(
-    #         name="data",
-    #         prop_name="data",
-    #         required=self.required,
-    #         schema_data=self.body_schema,
-    #     )
-    #     return prop.get_param_defination()
+    def get_raw_definition(self) -> str:
+        prop = Property(
+            name="data",
+            prop_name="data",
+            required=self.required,
+            schema_data=self.body_schema,
+        )
+        return prop.get_param_defination()
 
-    # def get_endpoint_definition(self) -> str:
-    #     prop = Property(
-    #         name="data",
-    #         prop_name="data",
-    #         required=not bool(self.allowed_models),
-    #         schema_data=self.body_schema,
-    #     )
-    #     return prop.get_param_defination()
-
-    # def get_param_imports(self) -> set[str]:
-    #     imports = set()
-    #     imports.update(self.body_schema.get_param_imports())
-    #     for model in self.allowed_models:
-    #         for prop in model.properties:
-    #             imports.update(prop.get_param_imports())
-    #     return imports
-
-    # def get_using_imports(self) -> set[str]:
-    #     return self.body_schema.get_using_imports()
+    def get_endpoint_definition(self) -> str:
+        prop = Property(
+            name="data",
+            prop_name="data",
+            required=not bool(self.allowed_models),
+            schema_data=self.body_schema,
+        )
+        return prop.get_param_defination()
 
 
 @dataclass(kw_only=True)
@@ -108,35 +97,35 @@ class EndpointData:
         """Separate endpoints by tags"""
         return fix_reserved_words(snake_case(self.tags[0])) if self.tags else "default"
 
-    # @property
-    # def name(self) -> str:
-    #     if self.operation_id:
-    #         if "/" in self.operation_id:
-    #             return snake_case(self.operation_id.split("/")[-1])
-    #         return snake_case(self.operation_id)
-    #     return concat_snake_name(
-    #         self.method, self.path.replace("{", "").replace("}", "").replace("/", "_")
-    #     )
+    @property
+    def name(self) -> str:
+        if self.operation_id:
+            if "/" in self.operation_id:
+                return snake_case(self.operation_id.split("/")[-1])
+            return snake_case(self.operation_id)
+        return concat_snake_name(
+            self.method, self.path.replace("{", "").replace("}", "").replace("/", "_")
+        )
 
-    # @property
-    # def path_params(self) -> list[Parameter]:
-    #     return [param for param in self.parameters if param.param_in == "path"]
+    @property
+    def path_params(self) -> list[Parameter]:
+        return [param for param in self.parameters if param.param_in == "path"]
 
-    # @property
-    # def query_params(self) -> list[Parameter]:
-    #     return [param for param in self.parameters if param.param_in == "query"]
+    @property
+    def query_params(self) -> list[Parameter]:
+        return [param for param in self.parameters if param.param_in == "query"]
 
-    # @property
-    # def header_params(self) -> list[Parameter]:
-    #     return [param for param in self.parameters if param.param_in == "header"]
+    @property
+    def header_params(self) -> list[Parameter]:
+        return [param for param in self.parameters if param.param_in == "header"]
 
-    # @property
-    # def cookie_params(self) -> list[Parameter]:
-    #     return [param for param in self.parameters if param.param_in == "cookie"]
+    @property
+    def cookie_params(self) -> list[Parameter]:
+        return [param for param in self.parameters if param.param_in == "cookie"]
 
-    # @property
-    # def param_names(self) -> list[str]:
-    #     return [param.prop_name for param in self.parameters]
+    @property
+    def param_names(self) -> list[str]:
+        return [param.prop_name for param in self.parameters]
 
     # def get_imports(self) -> set[str]:
     #     imports = set()

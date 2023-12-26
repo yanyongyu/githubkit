@@ -1,4 +1,4 @@
-{% from "client/_response.py.jinja" import build_response_model, build_error_models %}
+{% from "rest/_response.py.jinja" import build_response_model, build_error_models %}
 
 {% set TYPE_MAPPING = {"json": "json", "form": "data", "file": "files", "raw": "content"} %}
 
@@ -46,11 +46,33 @@ if not kwargs:
     kwargs = UNSET
 
 {{ name }} = kwargs if data is UNSET else data
-{{ name }} = TypeAdapter({{ request_body.body_schema.get_type_string() }}).validate_python({{ name }})
-{{ name }} = {{ name }}.model_dump(by_alias=True) if isinstance({{ name }}, BaseModel) else {{ name }}
+{{ name }} = type_validate_python({{ request_body.body_schema.get_type_string() }}, {{ name }})
+{{ name }} = model_dump({{ name }}) if isinstance({{ name }}, BaseModel) else {{ name }}
 {% endmacro %}
 
 {% macro build_request(endpoint) %}
+{# import request body model #}
+{% if endpoint.request_body %}
+{% for import_ in endpoint.request_body.body_schema.get_using_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endif %}
+{# import response models #}
+{% if endpoint.success_response and endpoint.success_response.response_schema %}
+{% for import_ in endpoint.success_response.response_schema.get_using_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endif %}
+{% if endpoint.error_responses %}
+{% for response in endpoint.error_responses.values() %}
+{% if response.response_schema %}
+{% for import_ in response.response_schema.get_using_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
 {{ build_path(endpoint) }}
 {{ build_query(endpoint.query_params) }}
 {{ build_header(endpoint.header_params) }}

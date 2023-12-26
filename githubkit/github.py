@@ -15,9 +15,9 @@ from typing import (
 
 from .core import GitHubCore
 from .response import Response
-from .rest import RestNamespace
 from .paginator import Paginator
 from .auth import BaseAuthStrategy
+from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
 if TYPE_CHECKING:
@@ -129,8 +129,13 @@ class GitHub(GitHubCore[A]):
 
     # rest api
     @cached_property
-    def rest(self) -> RestNamespace:
-        return RestNamespace(self)
+    def rest(self) -> RestVersionSwitcher:
+        return RestVersionSwitcher(self)
+
+    # webhooks
+    @cached_property
+    def webhooks(self) -> WebhooksVersionSwitcher:
+        return WebhooksVersionSwitcher()
 
     # graphql
     def graphql(

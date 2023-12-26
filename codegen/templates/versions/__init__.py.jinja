@@ -1,7 +1,6 @@
 {% from "header.jinja" import header %}
 
-"""{{ header() }}
-"""
+"""{{ header() }}"""
 
 from typing import Literal
 
@@ -13,4 +12,5 @@ VERSIONS = {
 LATEST_VERSION = "{{ latest_version }}"
 VERSION_TYPE = Literal[{{ versions.keys()|map("repr")|join(", ")}}]
 
+from .rest import RestVersionSwitcher as RestVersionSwitcher
 from .webhooks import WebhooksVersionSwitcher as WebhooksVersionSwitcher

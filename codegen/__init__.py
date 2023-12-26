@@ -12,6 +12,7 @@ from .log import logger as logger
 from .parser.schemas import ModelSchema
 from .parser import (
     WebhookData,
+    EndpointData,
     sanitize,
     kebab_case,
     snake_case,
@@ -68,47 +69,35 @@ def build_types(dir: Path, models: list[ModelSchema]):
     logger.info("Successfully generated types!")
 
 
-# def build_rest_api(description: DescriptionConfig, data: ...):
-#     logger.info("Start generating rest api codes...")
+def build_rest_api(
+    dir: Path, version: str, all_endpoints: dict[str, list[EndpointData]]
+):
+    logger.info("Start generating rest api codes...")
 
-#     # build models
-#     logger.info("Building models...")
-#     models_template = env.get_template("models/models.py.jinja")
-#     models_path = version_path / "models.py"
-#     models_path.write_text(models_template.render(models=data.models))
-#     logger.info("Successfully built models!")
+    # build endpoints
+    logger.info("Building rest endpoints...")
+    client_template = env.get_template("rest/client.py.jinja")
+    for tag, endpoints in all_endpoints.items():
+        logger.info(f"Building rest endpoints for tag {tag}...")
+        tag_path = dir / f"{tag}.py"
+        tag_path.write_text(
+            client_template.render(
+                tag=tag, endpoints=endpoints, rest_api_version=version
+            )
+        )
+        logger.info(f"Successfully built rest endpoints for tag {tag}!")
+    logger.info("Successfully built rest endpoints!")
 
-#     # build types
-#     logger.info("Building types...")
-#     types_template = env.get_template("models/types.py.jinja")
-#     types_path = version_path / "types.py"
-#     types_path.write_text(types_template.render(models=data.models))
-#     logger.info("Successfully built types!")
+    # build namespace
+    logger.info("Building rest namespace...")
+    namespace_template = env.get_template("rest/__init__.py.jinja")
+    namespace_path = dir / "__init__.py"
+    namespace_path.write_text(
+        namespace_template.render(tags=list(all_endpoints.keys()))
+    )
+    logger.info("Successfully built rest namespace!")
 
-#     # build endpoints
-#     logger.info("Building endpoints...")
-#     client_template = env.get_template("client/client.py.jinja")
-#     for tag, endpoints in data.endpoints_by_tag.items():
-#         logger.info(f"Building endpoints for tag {tag}...")
-#         tag_path = version_path / f"{tag}.py"
-#         tag_path.write_text(
-#             client_template.render(
-#                 tag=tag, endpoints=endpoints, rest_api_version=rest.version
-#             )
-#         )
-#         logger.info(f"Successfully built endpoints for tag {tag}!")
-#     logger.info("Successfully built endpoints!")
-
-#     # build namespace
-#     logger.info("Building namespace...")
-#     namespace_template = env.get_template("namespace/namespace.py.jinja")
-#     namespace_path = version_path / "__init__.py"
-#     namespace_path.write_text(
-#         namespace_template.render(tags=data.endpoints_by_tag.keys())
-#     )
-#     logger.info("Successfully built namespace!")
-
-#     logger.info("Successfully generated rest api codes!")
+    logger.info("Successfully generated rest api codes!")
 
 
 def build_webhooks(dir: Path, all_webhooks: dict[str, list[WebhookData]]):
@@ -211,6 +200,14 @@ def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
         init_template.render(versions=versions, latest_version=latest_version)
     )
 
+    # build rest.py
+    logger.info("Building versions rest.py...")
+    rest_template = env.get_template("versions/rest.py.jinja")
+    rest_path = dir / "rest.py"
+    rest_path.write_text(
+        rest_template.render(versions=versions, latest_version=latest_version)
+    )
+
     # build webhooks.py
     logger.info("Building versions webhooks.py...")
     webhooks_template = env.get_template("versions/webhooks.py.jinja")
@@ -289,8 +286,9 @@ def build():
         build_types(type_path, parsed_data.models)
 
         # generate rest api codes
-        # TODO
-        # build_rest_api(description, parsed_data)
+        rest_path = version_path / "rest"
+        rest_path.mkdir(parents=True, exist_ok=True)
+        build_rest_api(rest_path, description.version, parsed_data.endpoints_by_tag)
 
         # generate webhook codes
         webhook_path = version_path / "webhooks"
