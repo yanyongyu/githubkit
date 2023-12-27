@@ -2,10 +2,15 @@ from typing_extensions import Annotated, TypeAlias
 from typing import IO, Dict, List, Tuple, Union, Literal, TypeVar, Hashable, Optional
 
 import httpx
-from pydantic import Field, AfterValidator
-from pydantic_core import PydanticCustomError
+from pydantic import Field
 
 from .utils import UNSET
+from .compat import PYDANTIC_V2
+
+if PYDANTIC_V2:
+    from pydantic import AfterValidator
+    from pydantic_core import PydanticCustomError
+
 
 T = TypeVar("T")
 H = TypeVar("H", bound=Hashable)
@@ -45,18 +50,20 @@ FileTypes: TypeAlias = Union[
 ]
 RequestFiles: TypeAlias = Union[Dict[str, FileTypes], List[Tuple[str, FileTypes]]]
 
+if PYDANTIC_V2:
 
-def _validate_unique_list(value: List[H]) -> List[H]:
-    if len(value) != len(set(value)):
-        raise PydanticCustomError("unique_list", "value is not a unique list")
-    return value
+    def _validate_unique_list(value: List[H]) -> List[H]:
+        if len(value) != len(set(value)):
+            raise PydanticCustomError("unique_list", "value is not a unique list")
+        return value
 
-
-UniqueList: TypeAlias = Annotated[
-    List[H],
-    AfterValidator(_validate_unique_list),
-    Field(json_schema_extra={"uniqueItems": True}),
-]
+    UniqueList: TypeAlias = Annotated[
+        List[H],
+        AfterValidator(_validate_unique_list),
+        Field(json_schema_extra={"uniqueItems": True}),
+    ]
+else:
+    UniqueList: TypeAlias = Annotated[List[H], Field(unique_items=True)]
 
 # if the property is not required, we allow it to have the value null.
 # See https://github.com/yanyongyu/githubkit/issues/47
