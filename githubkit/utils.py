@@ -4,16 +4,13 @@ from typing import Any, Dict, Literal, TypeVar, final
 
 from pydantic_core import to_jsonable_python
 
-from .compat import PYDANTIC_V2
-
-if PYDANTIC_V2:
-    from pydantic import GetCoreSchemaHandler
-    from pydantic_core import CoreSchema, core_schema
+from .compat import custom_validation
 
 T = TypeVar("T")
 
 
 @final
+@custom_validation
 class Unset(Enum):
     _UNSET = "<UNSET>"
 
@@ -32,21 +29,9 @@ class Unset(Enum):
     def __deepcopy__(self, memo: Dict[int, Any]):
         return self._UNSET
 
-    if PYDANTIC_V2:
-
-        @classmethod
-        def __get_pydantic_core_schema__(
-            cls, source_type: Any, handler: GetCoreSchemaHandler
-        ) -> CoreSchema:
-            return core_schema.no_info_before_validator_function(
-                cls._validate, handler(source_type)
-            )
-
-    else:
-
-        @classmethod
-        def __get_validators__(cls):
-            yield cls._validate
+    @classmethod
+    def __get_validators__(cls):
+        yield cls._validate
 
     @classmethod
     def _validate(cls, value: Any):

@@ -1,4 +1,13 @@
-from typing import Any, Dict, Type, TypeVar
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    Type,
+    TypeVar,
+    Callable,
+    Protocol,
+    Generator,
+)
 
 from pydantic import VERSION
 
@@ -6,8 +15,27 @@ T = TypeVar("T")
 
 PYDANTIC_V2 = int(VERSION.split(".", 1)[0]) == 2
 
+if TYPE_CHECKING:
+
+    class ModelBeforeValidator(Protocol):
+        def __call__(self, cls: Any, __value: Any) -> Any:
+            ...
+
+    class CustomValidationClass(Protocol):
+        @classmethod
+        def __get_validators__(cls) -> Generator[Callable[..., Any], None, None]:
+            ...
+
+
 if PYDANTIC_V2:
-    from pydantic import BaseModel, ConfigDict, TypeAdapter
+    from pydantic_core import CoreSchema, core_schema
+    from pydantic import (
+        BaseModel,
+        ConfigDict,
+        TypeAdapter,
+        GetCoreSchemaHandler,
+        model_validator,
+    )
 
     class GitHubModel(BaseModel):
         model_config = ConfigDict(populate_by_name=True)
@@ -27,8 +55,31 @@ if PYDANTIC_V2:
     def model_rebuild(model: BaseModel):
         model.model_rebuild()
 
+    def model_before_validator(func: "ModelBeforeValidator"):
+        return model_validator(mode="before")(func)
+
+    def __get_pydantic_core_schema__(
+        cls: Type["CustomValidationClass"],
+        source_type: Any,
+        handler: GetCoreSchemaHandler,
+    ) -> CoreSchema:
+        validators = list(cls.__get_validators__())
+        if len(validators) == 1:
+            return core_schema.no_info_plain_validator_function(validators[0])
+        return core_schema.chain_schema(
+            [core_schema.no_info_plain_validator_function(func) for func in validators]
+        )
+
+    def custom_validation(class_: Type["CustomValidationClass"]):
+        setattr(
+            class_,
+            "__get_pydantic_core_schema__",
+            classmethod(__get_pydantic_core_schema__),
+        )
+        return class_
+
 else:
-    from pydantic import Extra, BaseModel, parse_obj_as, parse_raw_as
+    from pydantic import Extra, BaseModel, parse_obj_as, parse_raw_as, root_validator
 
     class GitHubModel(BaseModel):
         class Config:
@@ -49,3 +100,9 @@ else:
 
     def model_rebuild(model: BaseModel):
         return model.update_forward_refs()
+
+    def model_before_validator(func: "ModelBeforeValidator"):
+        return root_validator(pre=True)(func)
+
+    def custom_validation(class_: Type[CustomValidationClass]):
+        return class_

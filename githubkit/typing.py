@@ -7,11 +7,6 @@ from pydantic import Field
 from .utils import UNSET
 from .compat import PYDANTIC_V2
 
-if PYDANTIC_V2:
-    from pydantic import AfterValidator
-    from pydantic_core import PydanticCustomError
-
-
 T = TypeVar("T")
 H = TypeVar("H", bound=Hashable)
 
@@ -51,6 +46,8 @@ FileTypes: TypeAlias = Union[
 RequestFiles: TypeAlias = Union[Dict[str, FileTypes], List[Tuple[str, FileTypes]]]
 
 if PYDANTIC_V2:
+    from pydantic import AfterValidator
+    from pydantic_core import PydanticCustomError
 
     def _validate_unique_list(value: List[H]) -> List[H]:
         if len(value) != len(set(value)):
