@@ -17,12 +17,12 @@ def type_validate_python(type_: Type[T], data: Any) -> T:
     return TypeAdapter(type_).validate_python(data)
 
 
-def type_validate_strings(type_: Type[T], data: Any) -> T:
-    return TypeAdapter(type_).validate_strings(data)
+def type_validate_json(type_: Type[T], data: Any) -> T:
+    return TypeAdapter(type_).validate_json(data)
 
 
-def model_dump(model: BaseModel) -> Dict[str, Any]:
-    return model.model_dump(by_alias=True)
+def model_dump(model: BaseModel, by_alias: bool = True) -> Dict[str, Any]:
+    return model.model_dump(by_alias=by_alias)
 
 
 def model_rebuild(model: BaseModel):

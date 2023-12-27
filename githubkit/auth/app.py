@@ -7,12 +7,7 @@ import httpx
 from githubkit.exception import AuthCredentialError
 from githubkit.cache import DEFAULT_CACHE, BaseCache
 from githubkit.utils import UNSET, Unset, exclude_unset
-from githubkit.versions.latest.models import (
-    BasicError,
-    ValidationError,
-    InstallationToken,
-    AppInstallationsInstallationIdAccessTokensPostBody,
-)
+from githubkit.compat import model_dump, type_validate_python
 
 from .base import BaseAuthStrategy
 from .oauth import OAuthAppAuthStrategy
@@ -25,6 +20,7 @@ except ImportError:
 
 if TYPE_CHECKING:
     from githubkit import Response, GitHubCore
+    from githubkit.versions.latest.models import InstallationToken
     from githubkit.versions.latest.types import AppPermissionsType
 
 
@@ -90,6 +86,10 @@ class AppAuth(httpx.Auth):
         return token
 
     def _build_installation_auth_request(self) -> httpx.Request:
+        from githubkit.versions.latest.models import (
+            AppInstallationsInstallationIdAccessTokensPostBody,
+        )
+
         if self.installation_id is UNSET:
             raise AuthCredentialError(
                 "GitHub APP installation_id must be provided "
@@ -101,13 +101,16 @@ class AppAuth(httpx.Auth):
             raw_path=base_url.raw_path
             + f"app/installations/{self.installation_id}/access_tokens".encode("ascii")
         )
-        body = AppInstallationsInstallationIdAccessTokensPostBody.model_validate(
-            {
-                "repositories": self.repositories,
-                "repository_ids": self.repository_ids,
-                "permissions": self.permissions,
-            }
-        ).model_dump(by_alias=True)
+        body = model_dump(
+            type_validate_python(
+                AppInstallationsInstallationIdAccessTokensPostBody,
+                {
+                    "repositories": self.repositories,
+                    "repository_ids": self.repository_ids,
+                    "permissions": self.permissions,
+                },
+            )
+        )
         return httpx.Request(
             "POST",
             url,
@@ -121,6 +124,12 @@ class AppAuth(httpx.Auth):
     def _parse_installation_auth_response(
         self, response: httpx.Response
     ) -> "Response[InstallationToken]":
+        from githubkit.versions.latest.models import (
+            BasicError,
+            ValidationError,
+            InstallationToken,
+        )
+
         return self.github._check(
             response,
             response_model=InstallationToken,

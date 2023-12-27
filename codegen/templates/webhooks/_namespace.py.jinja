@@ -9,7 +9,7 @@ from typing_extensions import TypeAlias
 from typing import TYPE_CHECKING, Any, Set, Dict, Union, Literal, overload
 
 from githubkit.exception import WebhookTypeNotFound
-from githubkit.compat import GitHubModel, model_dump, type_validate_python, type_validate_strings
+from githubkit.compat import GitHubModel, model_dump, type_validate_python, type_validate_json
 
 
 if TYPE_CHECKING:
@@ -47,7 +47,7 @@ class WebhookNamespace:
         """
         from ._types import WebhookEvent
 
-        return type_validate_strings(WebhookEvent, payload)
+        return type_validate_json(WebhookEvent, payload)
 
     {% for name in event_names %}
     @overload
@@ -68,7 +68,7 @@ class WebhookNamespace:
             raise WebhookTypeNotFound(name)
         module = importlib.import_module(f".{name}", __name__)
         Event = getattr(module, "Event")
-        return type_validate_strings(Event, payload)
+        return type_validate_json(Event, payload)
 
     @staticmethod
     def parse_obj_without_name(payload: Dict[str, Any]) -> "WebhookEvent":

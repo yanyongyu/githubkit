@@ -6,9 +6,15 @@ from types import ModuleType
 from collections.abc import Sequence
 from importlib.abc import MetaPathFinder
 from typing import Any, Dict, List, Tuple, Optional
-from importlib.machinery import ModuleSpec, SourceFileLoader
+from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 
-LAZY_MODULES = r"githubkit\.versions\.[^.]+\.webhooks"
+LAZY_MODULES = (
+    r"githubkit\.rest",
+    r"githubkit\.versions\.v[^.]+\.webhooks",
+    r"githubkit\.versions\.latest\.models",
+    r"githubkit\.versions\.latest\.types",
+    r"githubkit\.versions\.latest\.webhooks",
+)
 
 
 class LazyModule(ModuleType):
@@ -32,6 +38,7 @@ class LazyModule(ModuleType):
 
     def __getattr__(self, name: str) -> Any:
         lazy_vars = self.__lazy_vars_validated__
+        # module may not initialized or not valid
         if lazy_vars is None:
             return super().__getattr__(name)
 
@@ -65,12 +72,16 @@ class LazyModuleLoader(SourceFileLoader):
     def create_module(self, spec: ModuleSpec) -> Optional[ModuleType]:
         if self.name in sys.modules:
             return sys.modules[self.name]
-        return LazyModule(spec.name)
+        module = LazyModule(spec.name)
+        # pre-initialize the module to avoid infinite recursion
+        module.__lazy_vars_validated__ = None
+        module.__lazy_vars_mapping__ = {}
+        return module
 
     def exec_module(self, module: LazyModule) -> None:
         super().exec_module(module)
 
-        if not hasattr(module, "__lazy_vars_validated__"):
+        if getattr(module, "__lazy_vars_validated__", None) is None:
             structure = getattr(module, "__lazy_vars__", None)
             if isinstance(structure, dict) and all(
                 isinstance(key, str) and isinstance(value, (list, tuple, set))
@@ -83,8 +94,9 @@ class LazyModuleLoader(SourceFileLoader):
                     for var in vars
                 }
             else:
-                module.__lazy_vars_validated__ = None
-                module.__lazy_vars_mapping__ = {}
+                raise RuntimeError(
+                    f"Invalid lazy module structure for {module.__name__}"
+                )
 
 
 class LazyModuleFinder(MetaPathFinder):
@@ -94,7 +106,7 @@ class LazyModuleFinder(MetaPathFinder):
         path: Optional[Sequence[str]],
         target: Optional[ModuleType] = None,
     ) -> Optional[ModuleSpec]:
-        module_spec = super().find_spec(fullname, path, target)
+        module_spec = PathFinder.find_spec(fullname, path, target)
         if not module_spec or not module_spec.origin:
             return module_spec
 
@@ -105,4 +117,5 @@ class LazyModuleFinder(MetaPathFinder):
         return module_spec
 
 
-sys.meta_path.insert(0, LazyModuleFinder())
+def apply():
+    sys.meta_path.insert(0, LazyModuleFinder())

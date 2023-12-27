@@ -1,7 +1,8 @@
 from typing import Any, Type, Generic, TypeVar
 
 import httpx
-from pydantic import TypeAdapter
+
+from .compat import type_validate_json
 
 RT = TypeVar("RT")
 
@@ -47,4 +48,4 @@ class Response(Generic[RT]):
 
     @property
     def parsed_data(self) -> RT:
-        return TypeAdapter(self._data_model).validate_json(self.content)
+        return type_validate_json(self._data_model, self.content)

@@ -17,8 +17,8 @@ from githubkit.exception import WebhookTypeNotFound
 from githubkit.compat import (
     GitHubModel,
     model_dump,
+    type_validate_json,
     type_validate_python,
-    type_validate_strings,
 )
 
 if TYPE_CHECKING:
@@ -260,7 +260,7 @@ class WebhookNamespace:
         """
         from ._types import WebhookEvent
 
-        return type_validate_strings(WebhookEvent, payload)
+        return type_validate_json(WebhookEvent, payload)
 
     @overload
     @staticmethod
@@ -733,7 +733,7 @@ class WebhookNamespace:
             raise WebhookTypeNotFound(name)
         module = importlib.import_module(f".{name}", __name__)
         Event = getattr(module, "Event")
-        return type_validate_strings(Event, payload)
+        return type_validate_json(Event, payload)
 
     @staticmethod
     def parse_obj_without_name(payload: Dict[str, Any]) -> "WebhookEvent":
