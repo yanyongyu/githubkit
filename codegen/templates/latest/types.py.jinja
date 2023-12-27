@@ -6,11 +6,11 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     {% for name in model_names %}
-    from githubkit.versions.{{ latest_version_module }}.types import {{ name }}Type as {{ name }}Type
+    from {{ output_module }}.{{ latest_version_module }}.types import {{ name }}Type as {{ name }}Type
     {% endfor %}
 else:
     __lazy_vars__ = {
-        "githubkit.versions.{{ latest_version_module }}.types": (
+        "{{ output_module }}.{{ latest_version_module }}.types": (
             {% for name in model_names %}
             "{{ name }}Type",
             {% endfor %}

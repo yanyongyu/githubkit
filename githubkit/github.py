@@ -133,9 +133,7 @@ class GitHub(GitHubCore[A]):
         return RestVersionSwitcher(self)
 
     # webhooks
-    @cached_property
-    def webhooks(self) -> WebhooksVersionSwitcher:
-        return WebhooksVersionSwitcher()
+    webhooks = WebhooksVersionSwitcher()
 
     # graphql
     def graphql(

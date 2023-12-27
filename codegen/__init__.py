@@ -137,6 +137,7 @@ def build_webhooks(dir: Path, all_webhooks: dict[str, list[WebhookData]]):
 
 def build_latest_version(
     dir: Path,
+    output_module: str,
     latest_version_module: str,
     model_names: list[str],
     event_names: list[str],
@@ -149,7 +150,9 @@ def build_latest_version(
     latest_path = dir / "models.py"
     latest_path.write_text(
         latest_template.render(
-            latest_version_module=latest_version_module, model_names=model_names
+            output_module=output_module,
+            latest_version_module=latest_version_module,
+            model_names=model_names,
         )
     )
 
@@ -159,7 +162,9 @@ def build_latest_version(
     latest_path = dir / "types.py"
     latest_path.write_text(
         latest_template.render(
-            latest_version_module=latest_version_module, model_names=model_names
+            output_module=output_module,
+            latest_version_module=latest_version_module,
+            model_names=model_names,
         )
     )
 
@@ -169,7 +174,9 @@ def build_latest_version(
     latest_path = dir / "webhooks.py"
     latest_path.write_text(
         latest_template.render(
-            latest_version_module=latest_version_module, event_names=event_names
+            output_module=output_module,
+            latest_version_module=latest_version_module,
+            event_names=event_names,
         )
     )
 
@@ -177,19 +184,23 @@ def build_latest_version(
 
 
 def build_legacy_rest_models(
-    file: Path, latest_version_module: str, model_names: list[str]
+    file: Path, output_module: str, latest_version_module: str, model_names: list[str]
 ):
     logger.info("Start generating legacy rest models...")
     models_template = env.get_template("latest/models.py.jinja")
     file.write_text(
         models_template.render(
-            latest_version_module=latest_version_module, model_names=model_names
+            output_module=output_module,
+            latest_version_module=latest_version_module,
+            model_names=model_names,
         )
     )
     logger.info("Successfully generated legacy rest models!")
 
 
-def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
+def build_versions(
+    dir: Path, output_module: str, versions: dict[str, str], latest_version: str
+):
     logger.info("Start generating versions...")
 
     # build __init__.py
@@ -205,7 +216,11 @@ def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
     rest_template = env.get_template("versions/rest.py.jinja")
     rest_path = dir / "rest.py"
     rest_path.write_text(
-        rest_template.render(versions=versions, latest_version=latest_version)
+        rest_template.render(
+            output_module=output_module,
+            versions=versions,
+            latest_version=latest_version,
+        )
     )
 
     # build webhooks.py
@@ -213,7 +228,11 @@ def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
     webhooks_template = env.get_template("versions/webhooks.py.jinja")
     webhooks_path = dir / "webhooks.py"
     webhooks_path.write_text(
-        webhooks_template.render(versions=versions, latest_version=latest_version)
+        webhooks_template.render(
+            output_module=output_module,
+            versions=versions,
+            latest_version=latest_version,
+        )
     )
 
     logger.info("Successfully generated versions!")
@@ -238,6 +257,7 @@ def build():
         shutil.rmtree(config.output_dir)
         config.output_dir.mkdir(parents=True, exist_ok=True)
 
+    output_module = ".".join(config.output_dir.parts)
     versions: dict[str, str] = {}
     latest_version: str | None = None
     latest_model_names: list[str] = []
@@ -306,9 +326,16 @@ def build():
     latest_path = config.output_dir / "latest"
     latest_path.mkdir(parents=True, exist_ok=True)
     build_latest_version(
-        latest_path, versions[latest_version], latest_model_names, latest_event_names
+        latest_path,
+        output_module,
+        versions[latest_version],
+        latest_model_names,
+        latest_event_names,
     )
-    build_versions(config.output_dir, versions, latest_version)
+    build_versions(config.output_dir, output_module, versions, latest_version)
     build_legacy_rest_models(
-        config.legacy_rest_models, versions[latest_version], latest_model_names
+        config.legacy_rest_models,
+        output_module,
+        versions[latest_version],
+        latest_model_names,
     )

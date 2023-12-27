@@ -44,7 +44,9 @@ class WebhooksVersionSwitcher(_VersionProxy):
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
         if version in self._cached_namespaces:
             return self._cached_namespaces[version]
-        module = importlib.import_module(f".{VERSIONS[version]}.webhooks", __name__)
+        module = importlib.import_module(
+            f"githubkit.versions.{VERSIONS[version]}.webhooks", __name__
+        )
         namespace = module.WebhookNamespace()
         self._cached_namespaces[version] = namespace
         return namespace

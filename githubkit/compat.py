@@ -26,6 +26,8 @@ if TYPE_CHECKING:
         def __get_validators__(cls) -> Generator[Callable[..., Any], None, None]:
             ...
 
+    CVC = TypeVar("CVC", bound=CustomValidationClass)
+
 
 if PYDANTIC_V2:
     from pydantic_core import CoreSchema, core_schema
@@ -70,7 +72,7 @@ if PYDANTIC_V2:
             [core_schema.no_info_plain_validator_function(func) for func in validators]
         )
 
-    def custom_validation(class_: Type["CustomValidationClass"]):
+    def custom_validation(class_: Type["CVC"]) -> Type["CVC"]:
         setattr(
             class_,
             "__get_pydantic_core_schema__",
@@ -104,5 +106,5 @@ else:
     def model_before_validator(func: "ModelBeforeValidator"):
         return root_validator(pre=True)(func)
 
-    def custom_validation(class_: Type[CustomValidationClass]):
+    def custom_validation(class_: Type["CVC"]) -> Type["CVC"]:
         return class_
