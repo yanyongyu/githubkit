@@ -71,11 +71,6 @@ class ResponseData:
     description: str
     response_schema: SchemaData | None = None
 
-    # def get_using_imports(self) -> set[str]:
-    #     return (
-    #         self.response_schema.get_using_imports() if self.response_schema else set()
-    #     )
-
 
 @dataclass(kw_only=True)
 class EndpointData:
@@ -127,43 +122,12 @@ class EndpointData:
     def param_names(self) -> list[str]:
         return [param.prop_name for param in self.parameters]
 
-    # def get_imports(self) -> set[str]:
-    #     imports = set()
-    #     for param in self.parameters:
-    #         imports.update(param.get_param_imports())
-    #     if self.request_body:
-    #         imports.update(self.request_body.get_param_imports())
-    #         imports.update(self.request_body.get_using_imports())
-    #         if self.request_body.allowed_models:
-    #             imports.add("from githubkit.utils import UNSET, Missing")
-    #     if self.success_response:
-    #         imports.update(self.success_response.get_using_imports())
-    #     for resp in self.error_responses.values():
-    #         imports.update(resp.get_using_imports())
-    #     return imports
-
 
 @dataclass
 class WebhookData:
     event: str
     action: str | None
     event_schema: SchemaData
-
-    # @cached_property
-    # def model_definitions(self) -> dict[str, SchemaData]:
-    #     return {
-    #         name: schema
-    #         for name, schema in self.definitions.items()
-    #         if isinstance(schema, SchemaData)
-    #     }
-
-    # @cached_property
-    # def union_definitions(self) -> dict[str, dict[str, SchemaData]]:
-    #     return {
-    #         name: schema
-    #         for name, schema in self.definitions.items()
-    #         if isinstance(schema, dict)
-    #     }
 
 
 @dataclass
