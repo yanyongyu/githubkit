@@ -40,14 +40,14 @@ class LazyModule(ModuleType):
         lazy_vars = self.__lazy_vars_validated__
         # module may not initialized or not valid
         if lazy_vars is None:
-            return super().__getattr__(name)
+            raise AttributeError(f"module '{self.__name__}' has no attribute '{name}'")
 
         # check if the attribute is a lazy variable
         if name in self.__lazy_vars_mapping__:
             module = self._get_module(self.__lazy_vars_mapping__[name])
             value = getattr(module, name)
         else:
-            return super().__getattr__(name)
+            raise AttributeError(f"module '{self.__name__}' has no attribute '{name}'")
 
         # cache the value
         setattr(self, name, value)

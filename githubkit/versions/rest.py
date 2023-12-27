@@ -50,7 +50,7 @@ class RestVersionSwitcher(_VersionProxy):
         if version in self._cached_namespaces:
             return self._cached_namespaces[version]
         module = importlib.import_module(
-            f"githubkit.versions.{VERSIONS[version]}.webhooks", __name__
+            f"githubkit.versions.{VERSIONS[version]}.rest", __name__
         )
         namespace = module.RestNamespace(self._github)
         self._cached_namespaces[version] = namespace
