@@ -5,7 +5,8 @@
 import hmac
 import json
 import importlib
-from typing import TYPE_CHECKING, Any, Dict, Union, Literal
+from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, Any, Set, Dict, Union, Literal, overload
 
 from githubkit.exception import WebhookTypeNotFound
 from githubkit.compat import GitHubModel, model_dump, type_validate_python, type_validate_strings
@@ -13,9 +14,17 @@ from githubkit.compat import GitHubModel, model_dump, type_validate_python, type
 
 if TYPE_CHECKING:
     from ._types import WebhookEvent
+    {% for name in event_names %}
+    from .{{ name }} import {{ pascal_case(name) }}Event
+    {% endfor %}
 
 
-VALID_EVENT_NAMES = {
+EventNameType: TypeAlias = Literal[
+    {% for name in event_names %}
+    "{{ name }}",
+    {% endfor %}
+]
+VALID_EVENT_NAMES: Set[EventNameType] = {
     {% for name in event_names %}
     "{{ name }}",
     {% endfor %}
@@ -40,12 +49,19 @@ class WebhookNamespace:
 
         return type_validate_strings(WebhookEvent, payload)
 
+    {% for name in event_names %}
+    @overload
     @staticmethod
-    def parse(name: str, payload: Union[str, bytes]) -> "WebhookEvent":
+    def parse(name: Literal["{{ name }}"], payload: Union[str, bytes]) -> "{{ pascal_case(name) }}Event":
+        ...
+    {% endfor %}
+
+    @staticmethod
+    def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent":
         """Parse the webhook payload with event name.
 
         Args:
-            name (str): event name.
+            name (EventNameType): event name.
             payload (Union[str, bytes]): webhook payload.
         """
         if name not in VALID_EVENT_NAMES:
@@ -72,12 +88,19 @@ class WebhookNamespace:
 
         return type_validate_python(WebhookEvent, payload)
 
+    {% for name in event_names %}
+    @overload
     @staticmethod
-    def parse_obj(name: str, payload: Dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: Literal["{{ name }}"], payload: Dict[str, Any]) -> "{{ pascal_case(name) }}Event":
+        ...
+    {% endfor %}
+
+    @staticmethod
+    def parse_obj(name: EventNameType, payload: Dict[str, Any]) -> "WebhookEvent":
         """Parse the webhook payload dict with event name.
 
         Args:
-            name (str): event name.
+            name (EventNameType): event name.
             payload (Dict[str, Any]): webhook payload dict.
         """
 
