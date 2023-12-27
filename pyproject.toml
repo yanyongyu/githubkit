@@ -56,11 +56,7 @@ extra_standard_library = ["typing_extensions"]
 [tool.ruff]
 select = ["E", "W", "F", "UP", "C", "T", "PYI", "PT", "Q"]
 ignore = ["E402", "C901", "UP037"]
-extend-exclude = [
-  "githubkit/rest/",
-  "githubkit/webhooks/",
-  "githubkit/versions/",
-]
+extend-exclude = ["githubkit/rest/", "githubkit/versions/"]
 
 line-length = 88
 target-version = "py38"
