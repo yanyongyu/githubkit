@@ -1,0 +1,47 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+import importlib
+from typing import TYPE_CHECKING, Any, Dict, Literal, overload
+
+from . import VERSIONS, LATEST_VERSION, VERSION_TYPE
+
+if TYPE_CHECKING:
+    {% for version, module in versions.items() %}
+    from .{{ module }}.webhooks import WebhookNamespace as {{ pascal_case(module) }}WebhookNamespace
+    {% endfor %}
+
+if TYPE_CHECKING:
+
+    class _VersionProxy({{ pascal_case(versions[latest_version]) }}WebhookNamespace):
+        ...
+
+else:
+    _VersionProxy = object
+
+class WebhooksVersionSwitcher(_VersionProxy):
+    _cached_namespaces: Dict[VERSION_TYPE, Any] = {}
+
+    if not TYPE_CHECKING:
+        def __getattr__(self, name: str) -> Any:
+            namespace = self()
+            return getattr(namespace, name)
+
+    {% for version, module in versions.items() %}
+    @overload
+    def __call__(self, version: Literal["{{ version }}"]) -> "{{ pascal_case(module) }}WebhookNamespace":
+        ...
+    {% endfor %}
+
+    @overload
+    def __call__(self) -> "{{ pascal_case(versions[latest_version]) }}WebhookNamespace":
+        ...
+
+    def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
+        if version in self._cached_namespaces:
+            return self._cached_namespaces[version]
+        module = importlib.import_module(f"{{ output_module }}.{VERSIONS[version]}.webhooks", __name__)
+        namespace = module.WebhookNamespace()
+        self._cached_namespaces[version] = namespace
+        return namespace

@@ -1,0 +1,35 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+from typing import Union
+
+
+{% for name in event_names %}
+from .{{ name }} import Event as {{ pascal_case(name) }}Event
+from .{{ name }} import action_types as {{ name }}_action_types
+{% endfor %}
+
+WebhookEvent = Union[
+    {% for name in event_names %}
+    {{ pascal_case(name) }}Event,
+    {% endfor %}
+]
+
+webhook_action_types = {
+    {% for name in event_names %}
+    "{{ name }}": {{ name }}_action_types,
+    {% endfor %}
+}
+
+webhook_event_types = {
+    {% for name in event_names %}
+    "{{ name }}": {{ pascal_case(name) }}Event,
+    {% endfor %}
+}
+
+__all__ = [
+    "WebhookEvent",
+    "webhook_action_types",
+    "webhook_event_types"
+]

@@ -1,3 +1,7 @@
+from . import lazy_module
+
+lazy_module.apply()
+
 from .config import Config as Config
 from .github import GitHub as GitHub
 from .core import GitHubCore as GitHubCore

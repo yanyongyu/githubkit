@@ -1,16 +1,19 @@
-from typing import IO, Dict, List, Tuple, Union, TypeVar, Hashable, Optional, Annotated
+from typing_extensions import Annotated, TypeAlias
+from typing import IO, Dict, List, Tuple, Union, Literal, TypeVar, Hashable, Optional
 
 import httpx
-from pydantic import Field, AfterValidator
-from pydantic_core import PydanticCustomError
+from pydantic import Field
+
+from .utils import UNSET
+from .compat import PYDANTIC_V2
 
 T = TypeVar("T")
 H = TypeVar("H", bound=Hashable)
 
-URLTypes = Union[httpx.URL, str]
+URLTypes: TypeAlias = Union[httpx.URL, str]
 
-PrimitiveData = Optional[Union[str, int, float, bool]]
-QueryParamTypes = Union[
+PrimitiveData: TypeAlias = Optional[Union[str, int, float, bool]]
+QueryParamTypes: TypeAlias = Union[
     httpx.QueryParams,
     Dict[str, Union[PrimitiveData, List[PrimitiveData]]],
     List[Tuple[str, PrimitiveData]],
@@ -19,7 +22,7 @@ QueryParamTypes = Union[
     bytes,
 ]
 
-HeaderTypes = Union[
+HeaderTypes: TypeAlias = Union[
     httpx.Headers,
     Dict[str, str],
     Dict[bytes, bytes],
@@ -27,12 +30,12 @@ HeaderTypes = Union[
     List[Tuple[bytes, bytes]],
 ]
 
-CookieTypes = Union[httpx.Cookies, Dict[str, str], List[Tuple[str, str]]]
+CookieTypes: TypeAlias = Union[httpx.Cookies, Dict[str, str], List[Tuple[str, str]]]
 
-ContentTypes = Union[str, bytes]
+ContentTypes: TypeAlias = Union[str, bytes]
 
-FileContent = Union[IO[bytes], bytes]
-FileTypes = Union[
+FileContent: TypeAlias = Union[IO[bytes], bytes]
+FileTypes: TypeAlias = Union[
     # file (or bytes)
     FileContent,
     # (filename, file (or bytes))
@@ -40,17 +43,25 @@ FileTypes = Union[
     # (filename, file (or bytes), content_type)
     Tuple[Optional[str], FileContent, Optional[str]],
 ]
-RequestFiles = Union[Dict[str, FileTypes], List[Tuple[str, FileTypes]]]
+RequestFiles: TypeAlias = Union[Dict[str, FileTypes], List[Tuple[str, FileTypes]]]
 
+if PYDANTIC_V2:
+    from pydantic import AfterValidator
+    from pydantic_core import PydanticCustomError
 
-def validate_unique_list(value: List[H]) -> List[H]:
-    if len(value) != len(set(value)):
-        raise PydanticCustomError("unique_list", "value is not a unique list")
-    return value
+    def _validate_unique_list(value: List[H]) -> List[H]:
+        if len(value) != len(set(value)):
+            raise PydanticCustomError("unique_list", "value is not a unique list")
+        return value
 
+    UniqueList: TypeAlias = Annotated[
+        List[H],
+        AfterValidator(_validate_unique_list),
+        Field(json_schema_extra={"uniqueItems": True}),
+    ]
+else:
+    UniqueList: TypeAlias = Annotated[List[H], Field(unique_items=True)]
 
-UniqueList = Annotated[
-    List[H],
-    AfterValidator(validate_unique_list),
-    Field(json_schema_extra={"uniqueItems": True}),
-]
+# if the property is not required, we allow it to have the value null.
+# See https://github.com/yanyongyu/githubkit/issues/47
+Missing: TypeAlias = Annotated[Union[Literal[UNSET], T, None], Field(default=UNSET)]

@@ -56,7 +56,7 @@ extra_standard_library = ["typing_extensions"]
 [tool.ruff]
 select = ["E", "W", "F", "UP", "C", "T", "PYI", "PT", "Q"]
 ignore = ["E402", "C901", "UP037"]
-extend-exclude = ["githubkit/rest/", "githubkit/webhooks/"]
+extend-exclude = ["githubkit/rest/", "githubkit/versions/"]
 
 line-length = 88
 target-version = "py38"
@@ -75,13 +75,28 @@ executionEnvironments = [
   ] },
 ]
 
+[tool.codegen]
+output_dir = "githubkit/versions/"
+legacy_rest_models = "githubkit/rest/__init__.py"
+version_prefix = "v"
 
-[[tool.codegen.rest]]
+[[tool.codegen.descriptions]]
 version = "2022-11-28"
-description_source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
-output_dir = "githubkit/rest/"
+is_latest = true
+source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
-[tool.codegen.rest.schema_overrides]
+
+[[tool.codegen.overrides]]
+# replace invalid key name with valid var name globally
+[tool.codegen.overrides.field_overrides]
+"+1" = "plus_one"
+"-1" = "minus_one"
+
+[[tool.codegen.overrides]]
+# override invalid schemas for 2022-11-28 (current globally)
+# target_versions = ["2022-11-28"]
+
+[tool.codegen.overrides.schema_overrides]
 # enhancement: issue timeline discriminator
 "/components/schemas/labeled-issue-event/properties/event" = { const = "labeled" }
 "/components/schemas/unlabeled-issue-event/properties/event" = { const = "unlabeled" }
@@ -245,46 +260,77 @@ output_dir = "githubkit/rest/"
 #   { "$ref" = "#/components/schemas/organization" },
 # ] }
 
-[tool.codegen.webhook]
-schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
-output = "githubkit/webhooks/models.py"
-types_output = "githubkit/webhooks/types.py"
-
-[tool.codegen.webhook.schema_overrides]
-# webhook installation created requester can be null
-# https://github.com/yanyongyu/githubkit/issues/14
-# https://docs.github.com/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#installation
-"/definitions/installation$created/properties/requester" = { anyOf = [
-  { type = "null" },
-  { "$ref" = "#/definitions/user" },
-], "$ref" = {} }
-
-# https://github.com/github/rest-api-description/issues/2491
-"/definitions/auto-merge/properties/commit_title" = { type = [
+# Webhook schema overrides
+# webhook fork topics can be null
+"/components/schemas/webhook-fork/properties/forkee/allOf/1/properties/topics/items" = { type = [
   "string",
   "null",
 ] }
-"/definitions/auto-merge/properties/commit_message" = { type = [
-  "string",
+# webhook project card after_id should be integer
+"/components/schemas/webhook-project-card-moved/properties/project_card/allOf/1/properties/after_id" = { type = [
+  "integer",
+  "null",
+] }
+# webhook workflow job run_id should be integer
+"/components/schemas/webhook-workflow-job-completed/properties/workflow_job/allOf/0/properties/run_id" = { type = "integer" }
+"/components/schemas/webhook-workflow-job-in-progress/properties/workflow_job/allOf/0/properties/run_id" = { type = "integer" }
+"/components/schemas/webhook-workflow-job-queued/properties/workflow_job/properties/run_id" = { type = "integer" }
+"/components/schemas/webhook-workflow-job-waiting/properties/workflow_job/properties/run_id" = { type = "integer" }
+# webhook workflow job runner_id should be integer
+"/components/schemas/webhook-workflow-job-completed/properties/workflow_job/allOf/1/properties/runner_id" = { type = [
+  "integer",
+  "null",
+] }
+"/components/schemas/webhook-workflow-job-in-progress/properties/workflow_job/allOf/1/properties/runner_id" = { type = [
+  "integer",
+  "null",
+] }
+# webhook workflow job runner_group_id should be integer
+"/components/schemas/webhook-workflow-job-completed/properties/workflow_job/allOf/1/properties/runner_group_id" = { type = [
+  "integer",
+  "null",
+] }
+"/components/schemas/webhook-workflow-job-in-progress/properties/workflow_job/allOf/1/properties/runner_group_id" = { type = [
+  "integer",
   "null",
 ] }
 
-# [FIXED] https://github.com/octokit/webhooks/issues/806
-# "/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive", "wont_fix", "revoked", "used_in_tests"] }
+# [tool.codegen.webhook]
+# schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
+# output = "githubkit/webhooks/models.py"
+# types_output = "githubkit/webhooks/types.py"
+#
+# [tool.codegen.webhook.schema_overrides]
+# # webhook installation created requester can be null
+# # https://github.com/yanyongyu/githubkit/issues/14
+# # https://docs.github.com/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#installation
+# "/definitions/installation$created/properties/requester" = { anyOf = [
+#   { type = "null" },
+#   { "$ref" = "#/definitions/user" },
+# ], "$ref" = {} }
+#
+# # https://github.com/github/rest-api-description/issues/2491
+# "/definitions/auto-merge/properties/commit_title" = { type = [
+#   "string",
+#   "null",
+# ] }
+# "/definitions/auto-merge/properties/commit_message" = { type = [
+#   "string",
+#   "null",
+# ] }
+#
+# # [FIXED] https://github.com/octokit/webhooks/issues/806
+# # "/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive", "wont_fix", "revoked", "used_in_tests"] }
 
-# https://github.com/yanyongyu/githubkit/pull/69
-"/definitions/projects_v2_item$edited/properties/changes/properties/field_value/properties/field_type" = { enum = [
-  "single_select",
-  "date",
-  "number",
-  "text",
-  "iteration",
-  "labels",
-] }
-
-[tool.codegen.field_overrides]
-"+1" = "plus_one"
-"-1" = "minus_one"
+# # https://github.com/yanyongyu/githubkit/pull/69
+# "/definitions/projects_v2_item$edited/properties/changes/properties/field_value/properties/field_type" = { enum = [
+#   "single_select",
+#   "date",
+#   "number",
+#   "text",
+#   "iteration",
+#   "labels",
+# ] }
 
 
 [build-system]

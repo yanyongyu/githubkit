@@ -1,0 +1,107 @@
+{% from "rest/_response.py.jinja" import build_response_model, build_error_models %}
+
+{% set TYPE_MAPPING = {"json": "json", "form": "data", "file": "files", "raw": "content"} %}
+
+{% macro build_path(endpoint) %}
+{% if endpoint.path_params %}
+url = f"{{ endpoint.path }}"
+{% else %}
+url = "{{ endpoint.path }}"
+{% endif %}
+{% endmacro %}
+
+{% macro build_query(params) %}
+{% if params %}
+params = {
+    {% for param in params %}
+    "{{ param.name }}": {{ param.prop_name }},
+    {% endfor %}
+}
+{% endif %}
+{% endmacro %}
+
+{% macro build_header(params) %}
+headers = {
+    {% for param in params %}
+    "{{ param.name }}": {{ param.prop_name }},
+    {% endfor %}
+    "X-GitHub-Api-Version": self._REST_API_VERSION,
+    **(headers or {})
+}
+{% endmacro %}
+
+{% macro build_cookie(params) %}
+{% if params %}
+cookies = {
+    {% for param in params %}
+    "{{ param.name }}": {{ param.prop_name }},
+    {% endfor %}
+}
+{% endif %}
+{% endmacro %}
+
+{% macro build_body(request_body) %}
+{% set name = TYPE_MAPPING[request_body.type] %}
+if not kwargs:
+    kwargs = UNSET
+
+{{ name }} = kwargs if data is UNSET else data
+{{ name }} = type_validate_python({{ request_body.body_schema.get_type_string() }}, {{ name }})
+{{ name }} = model_dump({{ name }}) if isinstance({{ name }}, BaseModel) else {{ name }}
+{% endmacro %}
+
+{% macro build_request(endpoint) %}
+{# import request body model #}
+{% if endpoint.request_body %}
+{% for import_ in endpoint.request_body.body_schema.get_using_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endif %}
+{# import response models #}
+{% if endpoint.success_response and endpoint.success_response.response_schema %}
+{% for import_ in endpoint.success_response.response_schema.get_using_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endif %}
+{% if endpoint.error_responses %}
+{% for response in endpoint.error_responses.values() %}
+{% if response.response_schema %}
+{% for import_ in response.response_schema.get_using_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{{ build_path(endpoint) }}
+{{ build_query(endpoint.query_params) }}
+{{ build_header(endpoint.header_params) }}
+{{ build_cookie(endpoint.cookie_params) }}
+{% if endpoint.request_body %}
+{{ build_body(endpoint.request_body) }}
+{% endif %}
+{% endmacro %}
+
+{% macro build_request_params(endpoint) %}
+"{{ endpoint.method | upper }}",
+url,
+{% if endpoint.query_params %}
+params=exclude_unset(params),
+{% endif %}
+{% if endpoint.request_body %}
+{% set name = TYPE_MAPPING[endpoint.request_body.type] %}
+{{ name }}=exclude_unset({{ name }}),
+{% endif %}
+headers=exclude_unset(headers),
+{% if endpoint.cookie_params %}
+cookies=exclude_unset(cookies),
+{% endif %}
+{% if endpoint.success_response and endpoint.success_response.response_schema %}
+response_model={{ build_response_model(endpoint.success_response) }},
+{% endif %}
+{% if endpoint.error_responses %}
+error_models={
+    {{ build_error_models(endpoint.error_responses) | indent(4) }}
+},
+{% endif %}
+{% endmacro %}

@@ -1,11 +1,7 @@
-from typing import List, Union, Optional
-
-import openapi_pydantic as oas
-from pydantic import TypeAdapter
+from typing import TYPE_CHECKING
 
 from .. import add_schema
 from . import parse_schema
-from ...source import Source
 from .int_schema import build_int_schema
 from .bool_schema import build_bool_schema
 from .list_schema import build_list_schema
@@ -31,6 +27,10 @@ from .schema import (
     UniqueListSchema,
 )
 
+if TYPE_CHECKING:
+    from ...source import Source
+
+
 TYPES_MAP = {
     "null": (NoneSchema,),
     "string": (StringSchema, DateSchema, DateTimeSchema, FileSchema),
@@ -43,13 +43,12 @@ TYPES_MAP = {
 
 
 def _build_sub_schema(
-    source: Source, class_name: str, base_source: Source
-) -> List[SchemaData]:
-    data = TypeAdapter(List[Union[oas.Reference, oas.Schema]]).validate_python(
-        source.data
-    )
+    source: "Source", class_name: str, base_source: "Source"
+) -> list[SchemaData]:
+    data = source.data
+    assert isinstance(data, list), "UnionSchema sub schemas must be a list"
 
-    schemas: List[SchemaData] = []
+    schemas: list[SchemaData] = []
     for index in range(len(data)):
         schema_source = source / index
         schema = parse_schema(
@@ -63,12 +62,12 @@ def _build_sub_schema(
 
 
 def build_union_schema(
-    source: Source, class_name: str, base_source: Optional[Source] = None
-) -> Union[UnionSchema, AnySchema]:
+    source: "Source", class_name: str, base_source: "Source | None" = None
+) -> UnionSchema | AnySchema:
     data = schema_from_source(source)
     base_schema = schema_from_source(base_source) if base_source else None
 
-    schemas: List[SchemaData] = []
+    schemas: list[SchemaData] = []
 
     # preprocess for sub schemas
     if data.properties:
