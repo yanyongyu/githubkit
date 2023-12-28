@@ -12,6 +12,7 @@ from typing_extensions import Annotated, TypeAlias
 
 from pydantic import Field
 
+from githubkit.utils import TaggedUnion
 from githubkit.compat import GitHubModel
 
 from ..models import WebhookPageBuild

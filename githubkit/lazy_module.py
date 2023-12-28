@@ -9,11 +9,11 @@ from typing import Any, Dict, List, Tuple, Optional
 from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 
 LAZY_MODULES = (
-    r"githubkit\.rest",
-    r"githubkit\.versions\.v[^.]+\.webhooks",
-    r"githubkit\.versions\.latest\.models",
-    r"githubkit\.versions\.latest\.types",
-    r"githubkit\.versions\.latest\.webhooks",
+    r"^githubkit\.rest$",
+    r"^githubkit\.versions\.v[^.]+\.webhooks$",
+    r"^githubkit\.versions\.latest\.models$",
+    r"^githubkit\.versions\.latest\.types$",
+    r"^githubkit\.versions\.latest\.webhooks$",
 )
 
 

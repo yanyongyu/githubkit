@@ -7,6 +7,7 @@ from typing_extensions import TypeAlias, Annotated
 
 from pydantic import Field
 
+from githubkit.utils import TaggedUnion
 from githubkit.compat import GitHubModel
 
 {% for webhook in webhooks %}
@@ -18,7 +19,18 @@ from githubkit.compat import GitHubModel
 {% if webhooks | length > 1 %}
 Event: TypeAlias = Annotated[Union[
     {% for webhook in webhooks %}
+    {% if is_union_schema(webhook.event_schema) %}
+    Annotated[
+        {{ webhook.event_schema.get_type_string() }},
+        TaggedUnion(
+            {{ webhook.event_schema.get_type_string() }},
+            "action",
+            "{{ webhook.action }}"
+        )
+    ],
+    {% else %}
     {{ webhook.event_schema.get_type_string() }},
+    {% endif %}
     {% endfor %}
 ], Field(discriminator="action")]
 {% else %}

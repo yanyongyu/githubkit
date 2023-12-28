@@ -49,9 +49,7 @@ class RestVersionSwitcher(_VersionProxy):
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
         if version in self._cached_namespaces:
             return self._cached_namespaces[version]
-        module = importlib.import_module(
-            f"githubkit.versions.{VERSIONS[version]}.rest", __name__
-        )
+        module = importlib.import_module(f".{VERSIONS[version]}.rest", __package__)
         namespace = module.RestNamespace(self._github)
         self._cached_namespaces[version] = namespace
         return namespace

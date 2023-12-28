@@ -12,6 +12,7 @@ from typing_extensions import Annotated, TypeAlias
 
 from pydantic import Field
 
+from githubkit.utils import TaggedUnion
 from githubkit.compat import GitHubModel
 
 from ..models import (
@@ -57,13 +58,33 @@ Event: TypeAlias = Annotated[
         WebhookPullRequestOpened,
         WebhookPullRequestReadyForReview,
         WebhookPullRequestReopened,
-        Union[
-            WebhookPullRequestReviewRequestRemovedOneof0,
-            WebhookPullRequestReviewRequestRemovedOneof1,
+        Annotated[
+            Union[
+                WebhookPullRequestReviewRequestRemovedOneof0,
+                WebhookPullRequestReviewRequestRemovedOneof1,
+            ],
+            TaggedUnion(
+                Union[
+                    WebhookPullRequestReviewRequestRemovedOneof0,
+                    WebhookPullRequestReviewRequestRemovedOneof1,
+                ],
+                "action",
+                "review_request_removed",
+            ),
         ],
-        Union[
-            WebhookPullRequestReviewRequestedOneof0,
-            WebhookPullRequestReviewRequestedOneof1,
+        Annotated[
+            Union[
+                WebhookPullRequestReviewRequestedOneof0,
+                WebhookPullRequestReviewRequestedOneof1,
+            ],
+            TaggedUnion(
+                Union[
+                    WebhookPullRequestReviewRequestedOneof0,
+                    WebhookPullRequestReviewRequestedOneof1,
+                ],
+                "action",
+                "review_requested",
+            ),
         ],
         WebhookPullRequestSynchronize,
         WebhookPullRequestUnassigned,

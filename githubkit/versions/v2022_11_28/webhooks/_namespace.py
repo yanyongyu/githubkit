@@ -731,7 +731,7 @@ class WebhookNamespace:
         """
         if name not in VALID_EVENT_NAMES:
             raise WebhookTypeNotFound(name)
-        module = importlib.import_module(f".{name}", __name__)
+        module = importlib.import_module(f".{name}", __package__)
         Event = getattr(module, "Event")
         return type_validate_json(Event, payload)
 
@@ -1223,7 +1223,7 @@ class WebhookNamespace:
 
         if name not in VALID_EVENT_NAMES:
             raise WebhookTypeNotFound(name)
-        module = importlib.import_module(f".{name}", __name__)
+        module = importlib.import_module(f".{name}", __package__)
         Event = getattr(module, "Event")
         return type_validate_python(Event, payload)
 
