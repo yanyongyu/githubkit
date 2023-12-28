@@ -32,10 +32,10 @@ pre-commit = "^3.0.0"
 openapi-pydantic = "^0.4.0"
 
 [tool.poetry.group.test.dependencies]
+anyio = "*"
 pytest = "^7.4.3"
 pytest-cov = "^4.1.0"
 pytest-xdist = "^3.5.0"
-pytest-asyncio = "^0.23.2"
 
 [tool.poetry.extras]
 jwt = ["PyJWT"]
@@ -45,7 +45,6 @@ auth = ["PyJWT", "anyio"]
 all = ["PyJWT", "anyio"]
 
 [tool.pytest.ini_options]
-asyncio_mode = "strict"
 addopts = "--cov=githubkit --cov-append --cov-report=term-missing"
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
@@ -276,6 +275,38 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 # ] }
 
 # Webhook schema overrides
+# webhook check run action is required
+"/components/schemas/webhook-check-run-completed" = { required = [
+  "action",
+  "check_run",
+  "repository",
+  "sender",
+] }
+"/components/schemas/webhook-check-run-created" = { required = [
+  "action",
+  "check_run",
+  "repository",
+  "sender",
+] }
+"/components/schemas/webhook-check-run-rerequested" = { required = [
+  "action",
+  "check_run",
+  "repository",
+  "sender",
+] }
+# webhook deployment protection rule action is required
+"/components/schemas/webhook-deployment-protection-rule-requested" = { required = [
+  "action",
+] }
+# webhook secret scanning alert location action is required
+"/components/schemas/webhook-secret-scanning-alert-location-created" = { required = [
+  "action",
+  "location",
+  "alert",
+  "repository",
+  "sender",
+] }
+
 # webhook fork topics can be null
 "/components/schemas/webhook-fork/properties/forkee/allOf/1/properties/topics/items" = { type = [
   "string",

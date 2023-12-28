@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from {{ output_module }}.{{ latest_version_module }}.webhooks._types import WebhookEvent as WebhookEvent
     from {{ output_module }}.{{ latest_version_module }}.webhooks._types import webhook_action_types as webhook_action_types
     from {{ output_module }}.{{ latest_version_module }}.webhooks._types import webhook_event_types as webhook_event_types
+    from {{ output_module }}.{{ latest_version_module }}.webhooks._namespace import EventNameType as EventNameType
     from {{ output_module }}.{{ latest_version_module }}.webhooks._namespace import WebhookNamespace as WebhookNamespace
     from {{ output_module }}.{{ latest_version_module }}.webhooks._namespace import VALID_EVENT_NAMES as VALID_EVENT_NAMES
 else:
@@ -28,6 +29,6 @@ else:
             "webhook_event_types"
         ),
         "{{ output_module }}.{{ latest_version_module }}.webhooks._namespace": (
-            "VALID_EVENT_NAMES", "WebhookNamespace"
+            "EventNameType", "VALID_EVENT_NAMES", "WebhookNamespace"
         )
     }

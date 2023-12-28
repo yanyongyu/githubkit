@@ -32,6 +32,7 @@ if TYPE_CHECKING:
     from .team_add import TeamAddEvent as TeamAddEvent
     from .check_run import CheckRunEvent as CheckRunEvent
     from .org_block import OrgBlockEvent as OrgBlockEvent
+    from ._namespace import EventNameType as EventNameType
     from .milestone import MilestoneEvent as MilestoneEvent
     from .deploy_key import DeployKeyEvent as DeployKeyEvent
     from .fork import fork_action_types as fork_action_types
@@ -401,5 +402,5 @@ else:
         ".workflow_job": ("WorkflowJobEvent", "workflow_job_action_types"),
         ".workflow_run": ("WorkflowRunEvent", "workflow_run_action_types"),
         "._types": ("WebhookEvent", "webhook_action_types", "webhook_event_types"),
-        "._namespace": ("VALID_EVENT_NAMES", "WebhookNamespace"),
+        "._namespace": ("EventNameType", "VALID_EVENT_NAMES", "WebhookNamespace"),
     }

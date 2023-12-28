@@ -721,6 +721,11 @@ class WebhookNamespace:
     ) -> "WorkflowRunEvent":
         ...
 
+    @overload
+    @staticmethod
+    def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent":
+        ...
+
     @staticmethod
     def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent":
         """Parse the webhook payload with event name.
@@ -1210,6 +1215,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["workflow_run"], payload: Dict[str, Any]
     ) -> "WorkflowRunEvent":
+        ...
+
+    @overload
+    @staticmethod
+    def parse_obj(name: EventNameType, payload: Dict[str, Any]) -> "WebhookEvent":
         ...
 
     @staticmethod

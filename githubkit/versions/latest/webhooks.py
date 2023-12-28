@@ -112,6 +112,9 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.webhooks import (
         watch_action_types as watch_action_types,
     )
+    from githubkit.versions.v2022_11_28.webhooks._namespace import (
+        EventNameType as EventNameType,
+    )
     from githubkit.versions.v2022_11_28.webhooks import (
         CustomPropertyEvent as CustomPropertyEvent,
     )
@@ -695,6 +698,7 @@ else:
             "webhook_event_types",
         ),
         "githubkit.versions.v2022_11_28.webhooks._namespace": (
+            "EventNameType",
             "VALID_EVENT_NAMES",
             "WebhookNamespace",
         ),

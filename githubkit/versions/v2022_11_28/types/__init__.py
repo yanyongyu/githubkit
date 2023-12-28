@@ -10979,7 +10979,7 @@ class WebhookBranchProtectionRuleEditedPropRuleType(TypedDict):
 class WebhookCheckRunCompletedType(TypedDict):
     """Check Run Completed Event"""
 
-    action: NotRequired[Literal["completed"]]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -10999,7 +10999,7 @@ class WebhookCheckRunCompletedFormEncodedType(TypedDict):
 class WebhookCheckRunCreatedType(TypedDict):
     """Check Run Created Event"""
 
-    action: NotRequired[Literal["created"]]
+    action: Literal["created"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -11049,7 +11049,7 @@ class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
 class WebhookCheckRunRerequestedType(TypedDict):
     """Check Run Re-Requested Event"""
 
-    action: NotRequired[Literal["rerequested"]]
+    action: Literal["rerequested"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -13493,7 +13493,7 @@ class WebhookDeploymentCreatedPropWorkflowRunType(TypedDict):
 class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
     """deployment protection rule requested event"""
 
-    action: NotRequired[Literal["requested"]]
+    action: Literal["requested"]
     environment: NotRequired[str]
     event: NotRequired[str]
     deployment_callback_url: NotRequired[str]
@@ -61166,7 +61166,7 @@ class WebhookSecretScanningAlertCreatedType(TypedDict):
 class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
     """Secret Scanning Alert Location Created Event"""
 
-    action: NotRequired[Literal["created"]]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
     installation: NotRequired[SimpleInstallationType]
     location: SecretScanningLocationType

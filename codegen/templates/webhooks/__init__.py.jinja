@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ._types import WebhookEvent as WebhookEvent
     from ._types import webhook_action_types as webhook_action_types
     from ._types import webhook_event_types as webhook_event_types
+    from ._namespace import EventNameType as EventNameType
     from ._namespace import WebhookNamespace as WebhookNamespace
     from ._namespace import VALID_EVENT_NAMES as VALID_EVENT_NAMES
 else:
@@ -28,6 +29,6 @@ else:
             "webhook_event_types"
         ),
         "._namespace": (
-            "VALID_EVENT_NAMES", "WebhookNamespace"
+            "EventNameType", "VALID_EVENT_NAMES", "WebhookNamespace"
         )
     }

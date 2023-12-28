@@ -14071,7 +14071,7 @@ class WebhookBranchProtectionRuleEditedPropRule(GitHubModel):
 class WebhookCheckRunCompleted(GitHubModel):
     """Check Run Completed Event"""
 
-    action: Missing[Literal["completed"]] = Field(default=UNSET)
+    action: Literal["completed"] = Field()
     check_run: CheckRunWithSimpleCheckSuite = Field(
         title="CheckRun",
         description="A check performed on the code of a given code change",
@@ -14110,7 +14110,7 @@ class WebhookCheckRunCompletedFormEncoded(GitHubModel):
 class WebhookCheckRunCreated(GitHubModel):
     """Check Run Created Event"""
 
-    action: Missing[Literal["created"]] = Field(default=UNSET)
+    action: Literal["created"] = Field()
     check_run: CheckRunWithSimpleCheckSuite = Field(
         title="CheckRun",
         description="A check performed on the code of a given code change",
@@ -14203,7 +14203,7 @@ class WebhookCheckRunRequestedActionFormEncoded(GitHubModel):
 class WebhookCheckRunRerequested(GitHubModel):
     """Check Run Re-Requested Event"""
 
-    action: Missing[Literal["rerequested"]] = Field(default=UNSET)
+    action: Literal["rerequested"] = Field()
     check_run: CheckRunWithSimpleCheckSuite = Field(
         title="CheckRun",
         description="A check performed on the code of a given code change",
@@ -17544,7 +17544,7 @@ class WebhookDeploymentCreatedPropWorkflowRun(GitHubModel):
 class WebhookDeploymentProtectionRuleRequested(GitHubModel):
     """deployment protection rule requested event"""
 
-    action: Missing[Literal["requested"]] = Field(default=UNSET)
+    action: Literal["requested"] = Field()
     environment: Missing[str] = Field(
         default=UNSET,
         description="The name of the environment that has the deployment protection rule.",
@@ -74451,7 +74451,7 @@ class WebhookSecretScanningAlertCreated(GitHubModel):
 class WebhookSecretScanningAlertLocationCreated(GitHubModel):
     """Secret Scanning Alert Location Created Event"""
 
-    action: Missing[Literal["created"]] = Field(default=UNSET)
+    action: Literal["created"] = Field()
     alert: SecretScanningAlertWebhook = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,

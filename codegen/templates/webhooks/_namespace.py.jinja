@@ -56,6 +56,11 @@ class WebhookNamespace:
         ...
     {% endfor %}
 
+    @overload
+    @staticmethod
+    def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent":
+        ...
+
     @staticmethod
     def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent":
         """Parse the webhook payload with event name.
@@ -94,6 +99,11 @@ class WebhookNamespace:
     def parse_obj(name: Literal["{{ name }}"], payload: Dict[str, Any]) -> "{{ pascal_case(name) }}Event":
         ...
     {% endfor %}
+
+    @overload
+    @staticmethod
+    def parse_obj(name: EventNameType, payload: Dict[str, Any]) -> "WebhookEvent":
+        ...
 
     @staticmethod
     def parse_obj(name: EventNameType, payload: Dict[str, Any]) -> "WebhookEvent":

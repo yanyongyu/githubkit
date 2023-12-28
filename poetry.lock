@@ -922,24 +922,6 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
-name = "pytest-asyncio"
-version = "0.23.2"
-description = "Pytest support for asyncio"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "pytest-asyncio-0.23.2.tar.gz", hash = "sha256:c16052382554c7b22d48782ab3438d5b10f8cf7a4bdcae7f0f67f097d95beecc"},
-    {file = "pytest_asyncio-0.23.2-py3-none-any.whl", hash = "sha256:ea9021364e32d58f0be43b91c6233fb8d2224ccef2398d6837559e587682808f"},
-]
-
-[package.dependencies]
-pytest = ">=7.0.0"
-
-[package.extras]
-docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
-testing = ["coverage (>=6.2)", "hypothesis (>=5.7.1)"]
-
-[[package]]
 name = "pytest-cov"
 version = "4.1.0"
 description = "Pytest plugin for measuring coverage."
@@ -1152,4 +1134,4 @@ jwt = ["PyJWT"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "2cc41c29d336a5642723ab922c8b3df42f4fd5da21c2acdcc70acc915356521c"
+content-hash = "db3b25b5773cd5e66000eed95ea55535aaedafb046aa9eed15e4a81e8af7bad2"
