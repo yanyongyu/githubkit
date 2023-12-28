@@ -29,7 +29,13 @@ Jinja2 = "^3.1.2"
 nonemoji = "^0.1.2"
 jsonpointer = "^2.3"
 pre-commit = "^3.0.0"
-openapi-pydantic = "^0.3.2"
+openapi-pydantic = "^0.4.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+pytest-xdist = "^3.5.0"
+pytest-asyncio = "^0.23.2"
 
 [tool.poetry.extras]
 jwt = ["PyJWT"]
@@ -37,6 +43,11 @@ auth-app = ["PyJWT"]
 auth-oauth-device = ["anyio"]
 auth = ["PyJWT", "anyio"]
 all = ["PyJWT", "anyio"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
+addopts = "--cov=githubkit --cov-append --cov-report=term-missing"
+filterwarnings = ["error", "ignore::DeprecationWarning"]
 
 [tool.black]
 line-length = 88
@@ -60,6 +71,10 @@ extend-exclude = ["githubkit/rest/", "githubkit/versions/"]
 
 line-length = 88
 target-version = "py38"
+
+[tool.ruff.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
 
 [tool.pyright]
 typeCheckingMode = "basic"

@@ -20,5 +20,5 @@ runs:
         architecture: "x64"
         cache: "poetry"
 
-    - run: poetry install -E all
+    - run: poetry install --all-extras
       shell: bash
