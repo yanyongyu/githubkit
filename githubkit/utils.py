@@ -1,10 +1,15 @@
 import inspect
 from enum import Enum
-from typing import Any, Dict, Literal, TypeVar, final
+from typing import Any, Dict, Type, Generic, Literal, TypeVar, final
 
+from pydantic import BaseModel
 from pydantic_core import to_jsonable_python
 
-from .compat import custom_validation
+from .compat import PYDANTIC_V2, custom_validation, type_validate_python
+
+if PYDANTIC_V2:
+    from pydantic_core import core_schema
+    from pydantic import GetCoreSchemaHandler
 
 T = TypeVar("T")
 
@@ -75,3 +80,34 @@ def obj_to_jsonable(obj: Any) -> Any:
         return obj
 
     return to_jsonable_python(obj)
+
+
+class TaggedUnion(Generic[T]):
+    __slots__ = ("type_", "discriminator", "tag")
+
+    def __init__(self, type_: Type[T], discriminator: str, tag: str) -> None:
+        self.type_ = type_
+        self.discriminator = discriminator
+        self.tag = tag
+
+    def _validate(self, value: Any) -> T:
+        return type_validate_python(self.type_, value)
+
+    if PYDANTIC_V2:
+
+        def __get_pydantic_core_schema__(
+            self, _source_type: Any, _handler: "GetCoreSchemaHandler"
+        ) -> "core_schema.CoreSchema":
+            return core_schema.no_info_before_validator_function(
+                self._validate,
+                core_schema.model_schema(
+                    BaseModel,
+                    schema=core_schema.model_fields_schema(
+                        {
+                            self.discriminator: core_schema.model_field(
+                                core_schema.literal_schema([self.tag])
+                            )
+                        }
+                    ),
+                ),
+            )

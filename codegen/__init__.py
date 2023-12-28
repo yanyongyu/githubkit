@@ -9,7 +9,7 @@ from jinja2 import Environment, PackageLoader
 from .config import Config
 from .source import get_source
 from .log import logger as logger
-from .parser.schemas import ModelSchema
+from .parser.schemas import ModelSchema, UnionSchema
 from .parser import (
     WebhookData,
     EndpointData,
@@ -26,24 +26,17 @@ env = Environment(
     lstrip_blocks=True,
     extensions=["jinja2.ext.loopcontrols"],
 )
-env.globals.update(
-    {
-        "repr": repr,
-        "sanitize": sanitize,
-        "snake_case": snake_case,
-        "pascal_case": pascal_case,
-        "kebab_case": kebab_case,
-    }
-)
-env.filters.update(
-    {
-        "repr": repr,
-        "sanitize": sanitize,
-        "snake_case": snake_case,
-        "pascal_case": pascal_case,
-        "kebab_case": kebab_case,
-    }
-)
+
+_funcs = {
+    "repr": repr,
+    "sanitize": sanitize,
+    "snake_case": snake_case,
+    "pascal_case": pascal_case,
+    "kebab_case": kebab_case,
+    "is_union_schema": lambda x: isinstance(x, UnionSchema),
+}
+env.globals.update(_funcs)
+env.filters.update(_funcs)
 
 
 def load_config() -> Config:
@@ -198,9 +191,7 @@ def build_legacy_rest_models(
     logger.info("Successfully generated legacy rest models!")
 
 
-def build_versions(
-    dir: Path, output_module: str, versions: dict[str, str], latest_version: str
-):
+def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
     logger.info("Start generating versions...")
 
     # build __init__.py
@@ -216,11 +207,7 @@ def build_versions(
     rest_template = env.get_template("versions/rest.py.jinja")
     rest_path = dir / "rest.py"
     rest_path.write_text(
-        rest_template.render(
-            output_module=output_module,
-            versions=versions,
-            latest_version=latest_version,
-        )
+        rest_template.render(versions=versions, latest_version=latest_version)
     )
 
     # build webhooks.py
@@ -228,11 +215,7 @@ def build_versions(
     webhooks_template = env.get_template("versions/webhooks.py.jinja")
     webhooks_path = dir / "webhooks.py"
     webhooks_path.write_text(
-        webhooks_template.render(
-            output_module=output_module,
-            versions=versions,
-            latest_version=latest_version,
-        )
+        webhooks_template.render(versions=versions, latest_version=latest_version)
     )
 
     logger.info("Successfully generated versions!")
@@ -332,7 +315,7 @@ def build():
         latest_model_names,
         latest_event_names,
     )
-    build_versions(config.output_dir, output_module, versions, latest_version)
+    build_versions(config.output_dir, versions, latest_version)
     build_legacy_rest_models(
         config.legacy_rest_models,
         output_module,
