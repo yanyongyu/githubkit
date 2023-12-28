@@ -1,14 +1,16 @@
 import inspect
 from enum import Enum
-from typing_extensions import TypeAlias
-from typing import Any, Dict, Union, Literal, TypeVar, final
+from typing import Any, Dict, Literal, TypeVar, final
 
 from pydantic_core import to_jsonable_python
+
+from .compat import custom_validation
 
 T = TypeVar("T")
 
 
 @final
+@custom_validation
 class Unset(Enum):
     _UNSET = "<UNSET>"
 
@@ -39,9 +41,6 @@ class Unset(Enum):
 
 
 UNSET = Unset._UNSET
-# if the property is not required, we allow it to have the value null.
-# See https://github.com/yanyongyu/githubkit/issues/47
-Missing: TypeAlias = Union[Literal[UNSET], T, None]
 
 
 def exclude_unset(data: Any) -> Any:

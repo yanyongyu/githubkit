@@ -1,0 +1,18 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    {% for name in model_names %}
+    from {{ output_module }}.{{ latest_version_module }}.models import {{ name }} as {{ name }}
+    {% endfor %}
+else:
+    __lazy_vars__ = {
+        "{{ output_module }}.{{ latest_version_module }}.models": (
+            {% for name in model_names %}
+            "{{ name }}",
+            {% endfor %}
+        )
+    }

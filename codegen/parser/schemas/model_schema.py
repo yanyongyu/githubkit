@@ -1,10 +1,9 @@
-from typing import Dict, List, Type, Tuple, Union, TypeVar, Optional
+from typing import TYPE_CHECKING, TypeVar
 
 import openapi_pydantic as oas
 
 from .. import add_schema
 from . import parse_schema
-from ...source import Source
 from ..utils import (
     build_prop_name,
     build_class_name,
@@ -29,6 +28,9 @@ from .schema import (
     UniqueListSchema,
 )
 
+if TYPE_CHECKING:
+    from ...source import Source
+
 ST = TypeVar("ST", bound=SchemaData)
 
 
@@ -41,8 +43,8 @@ def _is_nullable(schema: SchemaData) -> bool:
 
 
 def _find_schema(
-    schema: SchemaData, type: Union[Type[ST], Tuple[Type[ST], ...]]
-) -> Optional[ST]:
+    schema: SchemaData, type: type[ST] | tuple[type[ST], ...]
+) -> ST | None:
     if isinstance(schema, type):
         return schema
     if isinstance(schema, UnionSchema):
@@ -52,7 +54,7 @@ def _find_schema(
                 return schema
 
 
-def _is_union_subset(first: SchemaData, second: SchemaData) -> Optional[SchemaData]:
+def _is_union_subset(first: SchemaData, second: SchemaData) -> SchemaData | None:
     first_schemas = first.schemas if isinstance(first, UnionSchema) else [first]
     second_schemas = second.schemas if isinstance(second, UnionSchema) else [second]
     one_schemas = (
@@ -62,12 +64,12 @@ def _is_union_subset(first: SchemaData, second: SchemaData) -> Optional[SchemaDa
         second_schemas if len(first_schemas) <= len(second_schemas) else first_schemas
     )
     for schema in one_schemas:
-        if schema.model_dump() not in [s.model_dump() for s in another_schemas]:
+        if all(schema != another_schema for another_schema in another_schemas):
             return
     return first if len(first_schemas) <= len(second_schemas) else second
 
 
-def _is_type_subset(enum: EnumSchema, schema: SchemaData) -> Optional[EnumSchema]:
+def _is_type_subset(enum: EnumSchema, schema: SchemaData) -> EnumSchema | None:
     if enum.is_str_enum and _find_schema(schema, StringSchema):
         return enum
     elif enum.is_bool_enum and _find_schema(schema, BoolSchema):
@@ -78,7 +80,7 @@ def _is_type_subset(enum: EnumSchema, schema: SchemaData) -> Optional[EnumSchema
         return enum
 
 
-def _is_enum_subset(first: SchemaData, second: SchemaData) -> Optional[EnumSchema]:
+def _is_enum_subset(first: SchemaData, second: SchemaData) -> EnumSchema | None:
     first_schema = _find_schema(first, EnumSchema)
     second_schema = _find_schema(second, EnumSchema)
 
@@ -102,15 +104,15 @@ def _is_enum_subset(first: SchemaData, second: SchemaData) -> Optional[EnumSchem
 
 def _is_string_subset(
     first: SchemaData, second: SchemaData
-) -> Optional[Union[DateSchema, DateTimeSchema, FileSchema]]:
+) -> DateSchema | DateTimeSchema | FileSchema | None:
     first_schema = _find_schema(first, StringSchema)
     second_schema = _find_schema(second, (DateSchema, DateTimeSchema, FileSchema))
     return first_schema and second_schema
 
 
 def _is_model_merge(
-    source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
-) -> Optional[ModelSchema]:
+    source: "Source", name: str, prefix: str, first: SchemaData, second: SchemaData
+) -> ModelSchema | None:
     if (first_model := _find_schema(first, ModelSchema)) and (
         second_model := _find_schema(second, ModelSchema)
     ):
@@ -144,8 +146,8 @@ def _is_model_merge(
 
 
 def _is_list_merge(
-    source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
-) -> Optional[ListSchema]:
+    source: "Source", name: str, prefix: str, first: SchemaData, second: SchemaData
+) -> ListSchema | None:
     if isinstance(first, ListSchema) and isinstance(second, ListSchema):
         return ListSchema(
             title=first.title,
@@ -159,8 +161,8 @@ def _is_list_merge(
 
 
 def _is_unique_list_merge(
-    source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
-) -> Optional[UniqueListSchema]:
+    source: "Source", name: str, prefix: str, first: SchemaData, second: SchemaData
+) -> UniqueListSchema | None:
     if (
         (isinstance(first, UniqueListSchema) and isinstance(second, ListSchema))
         or (isinstance(first, ListSchema) and isinstance(second, UniqueListSchema))
@@ -180,7 +182,7 @@ def _is_unique_list_merge(
 
 
 def _merge_schema(
-    source: Source, name: str, prefix: str, first: SchemaData, second: SchemaData
+    source: "Source", name: str, prefix: str, first: SchemaData, second: SchemaData
 ):
     if schema := (
         _is_union_subset(first, second)
@@ -196,7 +198,7 @@ def _merge_schema(
 
 
 def _merge_property(
-    source: Source, first: Property, second: Property, prefix: str
+    source: "Source", first: Property, second: Property, prefix: str
 ) -> Property:
     if first.name != second.name:
         raise ValueError(f"Property with different name: {first.name} != {second.name}")
@@ -224,12 +226,12 @@ def _merge_property(
 
 
 def _process_properties(
-    source: Source, class_name: str, base_source: Optional[Source] = None
-) -> List[Property]:
+    source: "Source", class_name: str, base_source: "Source | None" = None
+) -> list[Property]:
     data = schema_from_source(source)
     base_schema = schema_from_source(base_source) if base_source else None
 
-    properties: Dict[str, Property] = {}
+    properties: dict[str, Property] = {}
     required_set = set(data.required or [])
     if base_schema and base_schema.required:
         required_set.update(base_schema.required)
@@ -300,9 +302,9 @@ def _process_properties(
 
 
 def build_model_schema(
-    source: Source,
+    source: "Source",
     class_name: str,
-    base_source: Optional[Source] = None,
+    base_source: "Source | None" = None,
     prestore_schema: bool = True,
 ) -> ModelSchema:
     data = schema_from_source(source)

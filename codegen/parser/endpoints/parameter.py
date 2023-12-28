@@ -1,30 +1,21 @@
-from typing import Union, Literal
+from typing import TYPE_CHECKING
 
 import openapi_pydantic as oas
-from pydantic import TypeAdapter
 
-from ...source import Source
-from ..utils import build_prop_name, concat_snake_name
-from ..schemas import Property, parse_schema, build_any_schema
+from ..data import Parameter
+from ..schemas import parse_schema, build_any_schema
+from ..utils import build_prop_name, concat_snake_name, type_ref_from_source
 
-
-class Parameter(Property):
-    param_in: Literal["query", "header", "path", "cookie"]
+if TYPE_CHECKING:
+    from ...source import Source
 
 
-def build_param(source: Source, prefix: str) -> Parameter:
-    data = source.data
-    try:
-        data = TypeAdapter(Union[oas.Reference, oas.Parameter]).validate_python(data)
-    except Exception as e:
-        raise TypeError(f"Invalid Parameter from {source.uri}") from e
+def build_param(source: "Source", prefix: str) -> Parameter:
+    data = type_ref_from_source(source, oas.Parameter)
 
-    if isinstance(data, oas.Reference):
+    while isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        try:
-            data = oas.Parameter.model_validate(source.data)
-        except Exception as e:
-            raise TypeError(f"Invalid Parameter from {source.uri}") from e
+        data = type_ref_from_source(source, oas.Parameter)
 
     if data.param_schema:
         schema = parse_schema(

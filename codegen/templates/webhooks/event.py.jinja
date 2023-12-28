@@ -1,0 +1,47 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+from typing import Dict, Type, Union
+from typing_extensions import TypeAlias, Annotated
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel
+
+{% for webhook in webhooks %}
+{% for import_ in webhook.event_schema.get_using_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endfor %}
+
+{% if webhooks | length > 1 %}
+Event: TypeAlias = Annotated[Union[
+    {% for webhook in webhooks %}
+    {{ webhook.event_schema.get_type_string() }},
+    {% endfor %}
+], Field(discriminator="action")]
+{% else %}
+Event: TypeAlias = {{ (webhooks | first).event_schema.get_type_string() }}
+{% endif %}
+
+{{ pascal_case(name) }}Event: TypeAlias = Event
+
+{% if webhooks | length > 1 %}
+action_types: Dict[str, Type[GitHubModel]] = {
+    {% for webhook in webhooks %}
+    "{{ webhook.action }}": {{ webhook.event_schema.get_type_string() }},
+    {% endfor %}
+}
+{% else %}
+action_types = {{ (webhooks | first).event_schema.get_type_string() }}
+{% endif %}
+
+{{ name }}_action_types = action_types
+
+__all__ = (
+    "Event",
+    "{{ pascal_case(name) }}Event",
+    "action_types",
+    "{{ name }}_action_types"
+)

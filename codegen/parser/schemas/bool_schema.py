@@ -1,21 +1,14 @@
-import openapi_pydantic as oas
-
 from ...source import Source
 from .schema import BoolSchema
-from ..utils import build_boolean
+from ..utils import build_boolean, schema_from_source
 
 
 def build_bool_schema(source: Source) -> BoolSchema:
-    try:
-        data = oas.Schema.model_validate(source.data)
-    except Exception as e:
-        raise TypeError(f"Invalid Schema from {source.uri}") from e
+    data = schema_from_source(source)
 
     return BoolSchema(
         title=data.title,
         description=data.description,
-        default=build_boolean(data.default)
-        if data.default is not None
-        else data.default,
+        default=build_boolean(data.default) if data.default is not None else None,
         examples=data.examples or (data.example and [data.example]),
     )

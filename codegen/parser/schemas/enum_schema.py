@@ -1,13 +1,15 @@
-from typing import Union, Optional
+from typing import TYPE_CHECKING
 
-from ...source import Source
 from ..utils import schema_from_source
 from .schema import EnumSchema, NoneSchema, UnionSchema
 
+if TYPE_CHECKING:
+    from ...source import Source
+
 
 def build_enum_schema(
-    source: Source, base_source: Optional[Source] = None
-) -> Union[EnumSchema, UnionSchema, NoneSchema]:
+    source: "Source", base_source: "Source | None" = None
+) -> EnumSchema | UnionSchema | NoneSchema:
     data = schema_from_source(source)
     base_schema = schema_from_source(base_source) if base_source else None
 

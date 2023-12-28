@@ -1,14 +1,14 @@
-import openapi_pydantic as oas
+from typing import TYPE_CHECKING
 
-from ...source import Source
 from .schema import NoneSchema
+from ..utils import schema_from_source
+
+if TYPE_CHECKING:
+    from ...source import Source
 
 
-def build_none_schema(source: Source) -> NoneSchema:
-    try:
-        data = oas.Schema.model_validate(source.data)
-    except Exception as e:
-        raise TypeError(f"Invalid Schema from {source.uri}") from e
+def build_none_schema(source: "Source") -> NoneSchema:
+    data = schema_from_source(source)
 
     return NoneSchema(
         title=data.title,

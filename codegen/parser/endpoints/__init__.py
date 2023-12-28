@@ -1,22 +1,25 @@
-from typing import List
+from typing import TYPE_CHECKING
 
 import openapi_pydantic as oas
 
-from ...source import Source
 from .parameter import build_param
 from .response import build_response
 from ..utils import concat_snake_name
 from .request_body import build_request_body
-from .endpoint import EndpointData as EndpointData
+from ..data import EndpointData as EndpointData
+
+if TYPE_CHECKING:
+    from ...source import Source
+
 
 METHODS = ["get", "put", "post", "delete", "options", "head", "patch", "trace"]
 
 
-def parse_endpoint(source: Source, path: str) -> List[EndpointData]:
+def parse_endpoint(source: "Source", path: str) -> list[EndpointData]:
     data = source.data
     data = oas.PathItem.model_validate(data)
 
-    endpoints: List[EndpointData] = []
+    endpoints: list[EndpointData] = []
 
     sanitized_path = path.replace("{", "").replace("}", "").replace("/", "_")
 
@@ -30,7 +33,7 @@ def parse_endpoint(source: Source, path: str) -> List[EndpointData]:
 
     for method in METHODS:
         operation_source = source / method
-        operation = getattr(data, method)
+        operation = getattr(data, method, None)
         if not isinstance(operation, oas.Operation):
             continue
 

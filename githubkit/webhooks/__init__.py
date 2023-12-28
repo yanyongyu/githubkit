@@ -1,8 +1,21 @@
-from .models import *
-from .verify import sign as sign
-from .parse import parse as parse
-from .verify import verify as verify
-from .parse import parse_obj as parse_obj
-from .verify import normalize_payload as normalize_payload
-from .parse import parse_without_name as parse_without_name
-from .parse import parse_obj_without_name as parse_obj_without_name
+from githubkit.versions.latest.webhooks import WebhookNamespace
+
+parse_without_name = WebhookNamespace.parse_without_name
+
+
+parse = WebhookNamespace.parse
+
+
+parse_obj_without_name = WebhookNamespace.parse_obj_without_name
+
+
+parse_obj = WebhookNamespace.parse_obj
+
+
+normalize_payload = WebhookNamespace.normalize_payload
+
+
+sign = WebhookNamespace.sign
+
+
+verify = WebhookNamespace.verify

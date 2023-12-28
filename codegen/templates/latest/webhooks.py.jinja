@@ -1,0 +1,33 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    {% for name in event_names %}
+    from {{ output_module }}.{{ latest_version_module }}.webhooks import {{ pascal_case(name) }}Event as {{ pascal_case(name) }}Event
+    from {{ output_module }}.{{ latest_version_module }}.webhooks import {{ name }}_action_types as {{ name }}_action_types
+    {% endfor %}
+    from {{ output_module }}.{{ latest_version_module }}.webhooks._types import WebhookEvent as WebhookEvent
+    from {{ output_module }}.{{ latest_version_module }}.webhooks._types import webhook_action_types as webhook_action_types
+    from {{ output_module }}.{{ latest_version_module }}.webhooks._types import webhook_event_types as webhook_event_types
+    from {{ output_module }}.{{ latest_version_module }}.webhooks._namespace import WebhookNamespace as WebhookNamespace
+    from {{ output_module }}.{{ latest_version_module }}.webhooks._namespace import VALID_EVENT_NAMES as VALID_EVENT_NAMES
+else:
+    __lazy_vars__ = {
+        {% for name in event_names %}
+        "{{ output_module }}.{{ latest_version_module }}.webhooks.{{ name }}": (
+            "{{ pascal_case(name) }}Event",
+            "{{ name }}_action_types"
+        ),
+        {% endfor %}
+        "{{ output_module }}.{{ latest_version_module }}.webhooks._types": (
+            "WebhookEvent",
+            "webhook_action_types",
+            "webhook_event_types"
+        ),
+        "{{ output_module }}.{{ latest_version_module }}.webhooks._namespace": (
+            "VALID_EVENT_NAMES", "WebhookNamespace"
+        )
+    }

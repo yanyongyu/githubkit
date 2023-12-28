@@ -1,35 +1,21 @@
-from typing import Set, Union, Optional
+from typing import TYPE_CHECKING
 
 import openapi_pydantic as oas
-from pydantic import BaseModel, TypeAdapter
 
-from ...source import Source
-from ..schemas import SchemaData, parse_schema
+from ..data import ResponseData
+from ..schemas import parse_schema
+from ..utils import type_ref_from_source
 
-
-class ResponseData(BaseModel):
-    description: str
-    response_schema: Optional[SchemaData] = None
-
-    def get_using_imports(self) -> Set[str]:
-        return (
-            self.response_schema.get_using_imports() if self.response_schema else set()
-        )
+if TYPE_CHECKING:
+    from ...source import Source
 
 
-def build_response(source: Source, prefix: str) -> ResponseData:
-    data = source.data
-    try:
-        data = TypeAdapter(Union[oas.Reference, oas.Response]).validate_python(data)
-    except Exception as e:
-        raise TypeError(f"Invalid Response from {source.uri}") from e
+def build_response(source: "Source", prefix: str) -> ResponseData:
+    data = type_ref_from_source(source, oas.Response)
 
-    if isinstance(data, oas.Reference):
+    while isinstance(data, oas.Reference):
         source = source.resolve_ref(data.ref)
-        try:
-            data = oas.Response.model_validate(source.data)
-        except Exception as e:
-            raise TypeError(f"Invalid Response from {source.uri}") from e
+        data = type_ref_from_source(source, oas.Response)
 
     response_schema = None
     if data.content:
