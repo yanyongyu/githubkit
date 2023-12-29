@@ -9,5 +9,5 @@ def anyio_backend():
 
 
 @pytest.fixture
-def g() -> GitHub:
-    return GitHub(ActionAuthStrategy())
+def g() -> GitHub[ActionAuthStrategy]:
+    return GitHub(ActionAuthStrategy(), http_cache=False)
