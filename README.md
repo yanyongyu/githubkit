@@ -148,6 +148,28 @@ from githubkit import GitHub, ActionAuthStrategy
 github = GitHub(ActionAuthStrategy())
 ```
 
+### Config
+
+githubkit is highly configurable, you can change the default config by passing config options to `GitHub`:
+
+```python
+from githubkit import GitHub
+
+github = GitHub(
+    base_url="https://api.github.com/",
+    accept_format="full+json",
+    previews=["starfox"],
+    user_agent="GitHubKit/Python",
+    follow_redirects=True,
+    timeout=None,
+    http_cache=True
+)
+```
+
+The `accept_format` and `previews` are used to set the default `Accept` header, you can find more details in [GitHub API docs](https://docs.github.com/en/rest/overview/media-types).
+
+The `http_cache` option enables the http caching feature powered by [Hishel](https://hishel.com/) for HTTPX. GitHub API limits the number of requests that you can make within a specific amount of time. This feature is useful to reduce the number of requests to GitHub API and avoid hitting the rate limit.
+
 ### Calling Rest API
 
 > APIs are fully typed. Typing in the following examples is just for reference only.
@@ -156,7 +178,7 @@ Simple sync call:
 
 ```python
 from githubkit import Response
-from githubkit.rest import FullRepository
+from githubkit.versions.latest.models import FullRepository
 
 resp: Response[FullRepository] = github.rest.repos.get(owner="owner", repo="repo")
 repo: FullRepository = resp.parsed_data
@@ -166,7 +188,7 @@ Simple async call:
 
 ```python
 from githubkit import Response
-from githubkit.rest import FullRepository
+from githubkit.versions.latest.models import FullRepository
 
 resp: Response[FullRepository] = await github.rest.repos.async_get(owner="owner", repo="repo")
 repo: FullRepository = resp.parsed_data
@@ -176,7 +198,7 @@ Call API with context (reusing client):
 
 ```python
 from githubkit import Response
-from githubkit.rest import FullRepository
+from githubkit.versions.latest.models import FullRepository
 
 with GitHub("<your_token_here>") as github:
     resp: Response[FullRepository] = github.rest.repos.get(owner="owner", repo="repo")
@@ -185,11 +207,58 @@ with GitHub("<your_token_here>") as github:
 
 ```python
 from githubkit import Response
-from githubkit.rest import FullRepository
+from githubkit.versions.latest.models import FullRepository
 
 async with GitHub("<your_token_here>") as github:
     resp: Response[FullRepository] = await github.rest.repos.async_get(owner="owner", repo="repo")
     repo: FullRepository = resp.parsed_data
+```
+
+### Data Validation
+
+As shown above, the response data is parsed and validated by accessing the `response.parsed_data` property. This ensures that the data type returned by the API is as expected and your code is safe to use it (with static type checking). But sometimes you may want to get the raw data returned by the API, such as when the schema is not correct. You can use the `response.text` property or `response.json()` method to get the raw data:
+
+```python
+from typing import Any, Dict
+from githubkit import Response
+
+resp: Response[FullRepository] = github.rest.repos.get(owner="owner", repo="repo")
+repo: Dict[str, Any] = resp.json()
+```
+
+### Rest API Versioning
+
+> APIs are fully typed. Different versions of APIs are typed separately.
+
+githubkit supports all versions of GitHub API, you can switch between versions as follows:
+
+```python
+github.rest("2022-11-28").repos.get(owner="owner", repo="repo")
+```
+
+The models of versions can be imported from `githubkit.versions.<version>.models`, for example:
+
+```python
+from githubkit.versions.v2022_11_28.models import FullRepository
+```
+
+Specially, the `latest` version is always linked to the latest version of GitHub API:
+
+```python
+from githubkit.versions.latest.models import FullRepository
+```
+
+> [!NOTE]
+> For backward compatibility, the `githubkit.rest` module is linked to the models of `latest` version by default.
+>
+> ```python
+> from githubkit.rest import FullRepository
+> ```
+
+You can also get the latest version name of GitHub API and all versions mapping of GitHub API:
+
+```python
+from githubkit.versions import LATEST_VERSION, VERSIONS
 ```
 
 ### Pagination
@@ -199,7 +268,7 @@ Pagination type checking is also supported:
 > Typing is tested with Pylance (Pyright).
 
 ```python
-from githubkit.rest import Issue
+from githubkit.versions.latest.models import Issue
 
 for issue in github.paginate(
     github.rest.issues.list_for_repo, owner="owner", repo="repo", state="open"
@@ -209,7 +278,7 @@ for issue in github.paginate(
 ```
 
 ```python
-from githubkit.rest import Issue
+from githubkit.versions.latest.models import Issue
 
 async for issue in github.paginate(
     github.rest.issues.async_list_for_repo, owner="owner", repo="repo", state="open"
@@ -241,10 +310,12 @@ data: Dict[str, Any] = github.graphql(query, variables={"foo": "bar"})
 Simple async call:
 
 ```python
-data: Dict[str, Any] = github.async_graphql(query, variables={"foo": "bar"})
+data: Dict[str, Any] = await github.async_graphql(query, variables={"foo": "bar"})
 ```
 
 ### Webhook Verification
+
+> `githubkit.webhooks` module contains some shortcut functions to help you verify and parse webhook payload.
 
 Simple webhook payload verification:
 
@@ -264,29 +335,41 @@ signature: str = sign(secret, payload, method="sha256")
 
 ### Webhook Parsing
 
+> `githubkit.webhooks` module contains some shortcut functions to help you verify and parse webhook payload.
+
 Parse the payload with event name:
 
 ```python
-from githubkit.webhooks import parse, WebhookEvent
+from githubkit.webhooks import parse
 
-event: WebhookEvent = parse(request.headers["X-GitHub-Event"], request.body)
+event = parse(request.headers["X-GitHub-Event"], request.body)
 ```
 
-Parse the payload without event name (may cost longer time):
+(NOT RECOMMENDED) Parse the payload without event name (may cost longer time and more memory):
 
 ```python
-from githubkit.webhooks import parse_without_name, WebhookEvent
+from githubkit.webhooks import parse_without_name
 
-event: WebhookEvent = parse_without_name(request.body)
+event = parse_without_name(request.body)
 ```
 
 Parse dict like payload:
 
 ```python
-from githubkit.webhooks import parse_obj, parse_obj_without_name, WebhookEvent
+from githubkit.webhooks import parse_obj, parse_obj_without_name
 
-event: WebhookEvent = parse_obj(request.headers["X-GitHub-Event"], request.json())
-event: WebhookEvent = parse_obj_without_name(request.json())
+event = parse_obj(request.headers["X-GitHub-Event"], request.json())
+event = parse_obj_without_name(request.json())  # NOT RECOMMENDED
+```
+
+The `parse` and `parse_obj` function supports type overload, if you provide static value for the `event_name` parameter, the return type will be inferred automatically.
+
+Webhook also supports versioning, you can switch between versions as follows:
+
+```python
+from githubkit import GitHub
+
+event = GitHub.webhooks("2022-11-28").parse(request.headers["X-GitHub-Event"], request.body)
 ```
 
 ### Switch between AuthStrategy
@@ -321,8 +404,17 @@ Open in Codespaces (Dev Container):
 
 Generate latest models and apis:
 
+> [!WARNING]
+> This may use a lot of memory (**16G+** RAM) and take a long time.
+
 ```bash
 python -m codegen && isort . && black .
+```
+
+Run tests:
+
+```bash
+pytest -n auto tests
 ```
 
 ## Contributors
