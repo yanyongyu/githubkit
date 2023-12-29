@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "GitHubKit"
-version = "0.11.0a0"
+version = "0.11.0a1"
 description = "GitHub SDK for Python"
 authors = ["yanyongyu <yyy@yyydl.top>"]
 license = "MIT"
@@ -13,7 +13,7 @@ include = ["githubkit/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-hishel = "^0.0.20"
+hishel = "^0.0.21"
 httpx = ">=0.23.0, <1.0.0"
 typing-extensions = "^4.3.0"
 pydantic = ">=2.0.0, <3.0.0, !=2.5.0, !=2.5.1"
