@@ -1,23 +1,21 @@
 from typing import Any, Dict, List, Union, Optional
 
-from pydantic import BaseModel
-
-from githubkit.compat import model_before_validator
+from githubkit.compat import GitHubModel, model_before_validator
 
 
-class SourceLocation(BaseModel):
+class SourceLocation(GitHubModel):
     line: int
     column: int
 
 
-class GraphQLError(BaseModel):
+class GraphQLError(GitHubModel):
     message: str
     locations: Optional[List[SourceLocation]] = None
     path: Optional[List[Union[int, str]]] = None
     extensions: Optional[Dict[str, Any]] = None
 
 
-class GraphQLResponse(BaseModel):
+class GraphQLResponse(GitHubModel):
     data: Optional[Dict[str, Any]] = None
     errors: Optional[List[GraphQLError]] = None
     extensions: Optional[Dict[str, Any]] = None
