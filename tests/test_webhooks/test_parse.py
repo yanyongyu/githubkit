@@ -16,10 +16,16 @@ from githubkit.webhooks import (
 )
 
 TEST_CASES: List[Tuple[EventNameType, str, Type[GitHubModel]]] = [
-    ("push", (Path(__file__).parent / "assets/push.json").read_text(), WebhookPush),
+    (
+        "push",
+        (Path(__file__).parent / "assets/push.json").read_text(encoding="utf-8"),
+        WebhookPush,
+    ),
     (
         "pull_request",
-        (Path(__file__).parent / "assets/pull_request_opened.json").read_text(),
+        (Path(__file__).parent / "assets/pull_request_opened.json").read_text(
+            encoding="utf-8"
+        ),
         WebhookPullRequestOpened,
     ),
 ]

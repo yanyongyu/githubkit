@@ -39,6 +39,8 @@ jobs:
 
       - name: Run Pytest
         run: poetry run pytest -n auto --cov-report xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v3

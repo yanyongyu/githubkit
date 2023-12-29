@@ -3,9 +3,8 @@ import sys
 import importlib
 from itertools import chain
 from types import ModuleType
-from collections.abc import Sequence
 from importlib.abc import MetaPathFinder
-from typing import Any, Dict, List, Tuple, Optional
+from typing import Any, Dict, List, Tuple, Optional, Sequence
 from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 
 LAZY_MODULES = (

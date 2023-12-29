@@ -39,7 +39,7 @@ class Source:
 @cache
 def get_content(source: httpx.URL | Path) -> dict:
     return (
-        json.loads(source.read_text())
+        json.loads(source.read_text(encoding="utf-8"))
         if isinstance(source, Path)
         else httpx.get(
             source, headers={"User-Agent": "GitHubKit Codegen"}, follow_redirects=True

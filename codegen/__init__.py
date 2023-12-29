@@ -40,7 +40,7 @@ env.filters.update(_funcs)
 
 
 def load_config() -> Config:
-    pyproject = tomli.loads(Path("./pyproject.toml").read_text())
+    pyproject = tomli.loads(Path("./pyproject.toml").read_text(encoding="utf-8"))
     config_dict: dict[str, Any] = pyproject.get("tool", {}).get("codegen", {})
 
     return Config.model_validate(config_dict)
