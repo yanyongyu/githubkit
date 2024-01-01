@@ -148,6 +148,18 @@ from githubkit import GitHub, ActionAuthStrategy
 github = GitHub(ActionAuthStrategy())
 ```
 
+and add env or input to the step:
+
+```yaml
+- name: Some step use githubkit
+  with:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+- name: Some step use githubkit
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
 ### Config
 
 githubkit is highly configurable, you can change the default config by passing config options to `GitHub`:
