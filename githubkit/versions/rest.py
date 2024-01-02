@@ -32,6 +32,10 @@ class RestVersionSwitcher(_VersionProxy):
     if not TYPE_CHECKING:
 
         def __getattr__(self, name: str) -> Any:
+            if name.startswith("_"):
+                raise AttributeError(
+                    f"'{self.__class__.__name__}' object has no attribute '{name}'"
+                )
             namespace = self()
             return getattr(namespace, name)
 

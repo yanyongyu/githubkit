@@ -69,6 +69,7 @@ def is_async(obj: Any) -> bool:
     return inspect.iscoroutinefunction(func_)
 
 
+# FIXME: remove pydantic-core dependency
 def obj_to_jsonable(obj: Any) -> Any:
     if isinstance(obj, dict):
         return {k: obj_to_jsonable(v) for k, v in obj.items()}
