@@ -54,13 +54,13 @@ if PYDANTIC_V2:
             raise PydanticCustomError("unique_list", "value is not a unique list")
         return value
 
-    UniqueList: TypeAlias = Annotated[
+    UniqueList: TypeAlias = Annotated[  # type: ignore
         List[H],
         AfterValidator(_validate_unique_list),
         Field(json_schema_extra={"uniqueItems": True}),
     ]
 else:
-    UniqueList: TypeAlias = Annotated[List[H], Field(unique_items=True)]
+    UniqueList: TypeAlias = Annotated[List[H], Field(unique_items=True)]  # type: ignore
 
 # if the property is not required, we allow it to have the value null.
 # See https://github.com/yanyongyu/githubkit/issues/47

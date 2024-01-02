@@ -39,25 +39,25 @@ if PYDANTIC_V2:
         model_validator,
     )
 
-    class GitHubModel(BaseModel):
+    class GitHubModel(BaseModel):  # type: ignore
         model_config = ConfigDict(populate_by_name=True)
 
-    class ExtraGitHubModel(GitHubModel):
+    class ExtraGitHubModel(GitHubModel):  # type: ignore
         model_config = ConfigDict(extra="allow")
 
-    def type_validate_python(type_: Type[T], data: Any) -> T:
+    def type_validate_python(type_: Type[T], data: Any) -> T:  # type: ignore
         return TypeAdapter(type_).validate_python(data)
 
-    def type_validate_json(type_: Type[T], data: Any) -> T:
+    def type_validate_json(type_: Type[T], data: Any) -> T:  # type: ignore
         return TypeAdapter(type_).validate_json(data)
 
     def model_dump(model: BaseModel, by_alias: bool = True) -> Dict[str, Any]:
         return model.model_dump(by_alias=by_alias)
 
-    def model_rebuild(model: BaseModel):
+    def model_rebuild(model: Type[BaseModel]):
         model.model_rebuild()
 
-    def model_before_validator(func: "ModelBeforeValidator"):
+    def model_before_validator(func: "ModelBeforeValidator"):  # type: ignore
         return model_validator(mode="before")(func)
 
     def __get_pydantic_core_schema__(
@@ -72,7 +72,7 @@ if PYDANTIC_V2:
             [core_schema.no_info_plain_validator_function(func) for func in validators]
         )
 
-    def custom_validation(class_: Type["CVC"]) -> Type["CVC"]:
+    def custom_validation(class_: Type["CVC"]) -> Type["CVC"]:  # type: ignore
         setattr(
             class_,
             "__get_pydantic_core_schema__",
@@ -95,12 +95,12 @@ else:
         return parse_obj_as(type_, data)
 
     def type_validate_json(type_: Type[T], data: Any) -> T:
-        return parse_raw_as(type_, data)
+        return parse_raw_as(type_, data)  # type: ignore
 
     def model_dump(model: BaseModel, by_alias: bool = True) -> Dict[str, Any]:
         return model.dict(by_alias=by_alias)
 
-    def model_rebuild(model: BaseModel):
+    def model_rebuild(model: Type[BaseModel]):
         return model.update_forward_refs()
 
     def model_before_validator(func: "ModelBeforeValidator"):
