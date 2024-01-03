@@ -82,6 +82,7 @@ reportShadowedImports = false
 disableBytesTypePromotions = true
 
 pythonPlatform = "All"
+defineConstant = { PYDANTIC_V2 = true }
 executionEnvironments = [
   { root = "./codegen", pythonVersion = "3.10" },
   { root = "./", pythonVersion = "3.8", extraPaths = [
