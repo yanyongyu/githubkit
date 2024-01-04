@@ -1,9 +1,9 @@
+import sys
 import shutil
 from typing import Any
 from pathlib import Path
 
 import httpx
-import tomli
 from jinja2 import Environment, PackageLoader
 
 from .config import Config
@@ -20,6 +20,11 @@ from .parser import (
     pascal_case,
     parse_openapi_spec,
 )
+
+if sys.version_info >= (3, 11):
+    import tomllib
+else:
+    import tomli as tomllib
 
 env = Environment(
     loader=PackageLoader("codegen"),
@@ -41,7 +46,7 @@ env.filters.update(_funcs)
 
 
 def load_config() -> Config:
-    pyproject = tomli.loads(Path("./pyproject.toml").read_text(encoding="utf-8"))
+    pyproject = tomllib.loads(Path("./pyproject.toml").read_text(encoding="utf-8"))
     config_dict: dict[str, Any] = pyproject.get("tool", {}).get("codegen", {})
 
     return Config.model_validate(config_dict)
