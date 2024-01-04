@@ -32,9 +32,11 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
 
 
 from .utils import merge_dict
+from .models import parse_models
 from .webhooks import parse_webhook
 from .endpoints import parse_endpoint
 from .utils import sanitize as sanitize
+from .data import ModelGroup as ModelGroup
 from .utils import kebab_case as kebab_case
 from .utils import snake_case as snake_case
 from .data import OpenAPIData as OpenAPIData
@@ -79,15 +81,15 @@ def parse_openapi_spec(source: "Source", override: "Override") -> OpenAPIData:
                 if webhook_data := parse_webhook(source / "webhooks" / webhook):
                     webhooks.append(webhook_data)
 
-        return OpenAPIData(
-            models=[
-                schema
-                for schema in get_schemas().values()
-                if isinstance(schema, ModelSchema)
-            ],
-            endpoints=endpoints,
-            webhooks=webhooks,
-        )
+        # load models
+        models = [
+            schema
+            for schema in get_schemas().values()
+            if isinstance(schema, ModelSchema)
+        ]
+        groups = parse_models(models)
+
+        return OpenAPIData(model_groups=groups, endpoints=endpoints, webhooks=webhooks)
     finally:
         _override_config.reset(_ot)
         _schemas.reset(_st)

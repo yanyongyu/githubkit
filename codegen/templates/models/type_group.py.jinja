@@ -1,0 +1,35 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+{% from "models/_docstring.py.jinja" import build_model_docstring %}
+
+from __future__ import annotations
+
+{% for model in group.models %}
+{% for import_ in model.get_type_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endfor %}
+
+{% for model in group.model_dependencies %}
+from .{{ group_name(group.get_dependency_by_model(model), groups) }} import {{ model.class_name }}Type
+{% endfor %}
+
+{# model #}
+{% for model in group.models %}
+
+class {{ model.class_name }}Type(TypedDict):
+    {{ build_model_docstring(model) | indent(4) }}
+
+    {% for prop in model.properties %}
+    {{ prop.get_type_defination() }}
+    {% endfor %}
+
+{% endfor %}
+
+__all__ = (
+  {% for model in group.models %}
+  "{{ model.class_name }}Type",
+  {% endfor %}
+)

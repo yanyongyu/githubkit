@@ -1,0 +1,41 @@
+{% from "header.jinja" import header %}
+
+"""{{ header() }}"""
+
+{% from "models/_docstring.py.jinja" import build_model_docstring %}
+
+from __future__ import annotations
+
+from githubkit.compat import model_rebuild
+
+{% for model in group.models %}
+{% for import_ in model.get_model_imports() %}
+{{ import_ }}
+{% endfor %}
+{% endfor %}
+
+{% for model in group.model_dependencies %}
+from .{{ group_name(group.get_dependency_by_model(model), groups) }} import {{ model.class_name }}
+{% endfor %}
+
+{# model #}
+{% for model in group.models %}
+
+class {{ model.class_name }}({{ "ExtraGitHubModel" if model.allow_extra else "GitHubModel" }}):
+    {{ build_model_docstring(model) | indent(4) }}
+
+    {% for prop in model.properties %}
+    {{ prop.get_model_defination() }}
+    {% endfor %}
+
+{% endfor %}
+
+{% for model in group.models %}
+model_rebuild({{ model.class_name }})
+{% endfor %}
+
+__all__ = (
+    {% for model in group.models %}
+    "{{ model.class_name }}",
+    {% endfor %}
+)

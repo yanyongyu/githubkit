@@ -2,31 +2,21 @@
 
 """{{ header() }}"""
 
-{% from "models/_model.py.jinja" import build_model %}
+from typing import TYPE_CHECKING
 
-from __future__ import annotations
-
-from githubkit.compat import model_rebuild
-
-{% for model in models %}
-{% for import_ in model.get_model_imports() %}
-{{ import_ }}
-{% endfor %}
-{% endfor %}
-
-{# model #}
-{% for model in models %}
-
-{{ build_model(model) }}
-
-{% endfor %}
-
-{% for model in models %}
-model_rebuild({{ model.class_name }})
-{% endfor %}
-
-__all__ = (
-    {% for model in models %}
-    "{{ model.class_name }}",
+if TYPE_CHECKING:
+    {% for group in groups %}
+    {% for model in group.models %}
+    from .{{ group_name(group, groups) }} import {{ model.class_name }} as {{ model.class_name }}
     {% endfor %}
-)
+    {% endfor %}
+else:
+    __lazy_vars__ = {
+        {% for group in groups %}
+        ".{{ group_name(group, groups) }}": (
+            {% for model in group.models %}
+            "{{ model.class_name }}",
+            {% endfor %}
+        ),
+        {% endfor %}
+    }

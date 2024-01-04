@@ -50,6 +50,9 @@ class SchemaData:
         """Get pydantic field constraints"""
         return {}
 
+    def get_model_dependencies(self) -> list["ModelSchema"]:
+        return []
+
 
 @dataclass(kw_only=True)
 class Property:
@@ -400,6 +403,12 @@ class ListSchema(SchemaData):
             args["min_length"] = repr(self.min_length)
         return args
 
+    @override
+    def get_model_dependencies(self) -> list["ModelSchema"]:
+        if isinstance(self.item_schema, ModelSchema):
+            return [self.item_schema]
+        return self.item_schema.get_model_dependencies()
+
 
 @dataclass(kw_only=True)
 class UniqueListSchema(SchemaData):
@@ -461,6 +470,12 @@ class UniqueListSchema(SchemaData):
         if self.min_length is not None:
             args["min_length"] = repr(self.min_length)
         return args
+
+    @override
+    def get_model_dependencies(self) -> list["ModelSchema"]:
+        if isinstance(self.item_schema, ModelSchema):
+            return [self.item_schema]
+        return self.item_schema.get_model_dependencies()
 
 
 @dataclass(kw_only=True)
@@ -560,6 +575,19 @@ class ModelSchema(SchemaData):
     def get_using_imports(self) -> set[str]:
         return {f"from ..models import {self.class_name}"}
 
+    @override
+    def get_model_dependencies(self) -> list["ModelSchema"]:
+        result: list[ModelSchema] = []
+        for prop in self.properties:
+            if isinstance(prop.schema_data, ModelSchema):
+                if id(prop.schema_data) not in set(map(id, result)):
+                    result.append(prop.schema_data)
+            else:
+                for model in prop.schema_data.get_model_dependencies():
+                    if id(model) not in set(map(id, result)):
+                        result.append(model)
+        return result
+
 
 @dataclass(kw_only=True)
 class UnionSchema(SchemaData):
@@ -625,3 +653,16 @@ class UnionSchema(SchemaData):
         if self.discriminator:
             args["discriminator"] = self.discriminator
         return args
+
+    @override
+    def get_model_dependencies(self) -> list[ModelSchema]:
+        result: list[ModelSchema] = []
+        for schema in self.schemas:
+            if isinstance(schema, ModelSchema):
+                if id(schema) not in set(map(id, result)):
+                    result.append(schema)
+            else:
+                for model in schema.get_model_dependencies():
+                    if id(model) not in set(map(id, result)):
+                        result.append(model)
+        return result
