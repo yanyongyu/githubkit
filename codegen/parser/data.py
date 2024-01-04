@@ -6,6 +6,40 @@ from .schemas import Property, SchemaData, ModelSchema, UnionSchema
 from .utils import snake_case, concat_snake_name, fix_reserved_words
 
 
+@dataclass(eq=False)
+class ModelGroup:
+    """A group of models that are dependent on each other."""
+
+    models: list[ModelSchema]
+    group_dependencies: list["ModelGroup"] = field(default_factory=list)
+
+    @property
+    def model_dependencies(self) -> list[ModelSchema]:
+        result: list[ModelSchema] = []
+        model_ids = {id(model) for model in self.models}
+        for model in self.models:
+            for dep in model.get_model_dependencies():
+                if id(dep) not in model_ids and id(dep) not in set(map(id, result)):
+                    result.append(dep)
+        return result
+
+    def get_dependency_by_model(self, model: ModelSchema) -> "ModelGroup":
+        """Get the group that contains the model."""
+        for group in self.group_dependencies:
+            if model in group.models:
+                return group
+        raise ValueError(f"Model {model.class_name} not found in any group dependency.")
+
+    def merge_group(self, other: "ModelGroup") -> None:
+        """Merge another group into this group."""
+        if other in self.group_dependencies:
+            self.group_dependencies.remove(other)
+        self.models.extend(other.models)
+        for group in other.group_dependencies:
+            if group not in self.group_dependencies:
+                self.group_dependencies.append(group)
+
+
 @dataclass(kw_only=True)
 class Parameter(Property):
     """Parameter data
@@ -134,9 +168,13 @@ class WebhookData:
 class OpenAPIData:
     """All the data needed to generate a client"""
 
-    models: list[ModelSchema]
+    model_groups: list[ModelGroup]
     endpoints: list[EndpointData]
     webhooks: list[WebhookData]
+
+    @property
+    def models(self) -> list[ModelSchema]:
+        return [m for g in self.model_groups for m in g.models]
 
     @property
     def endpoints_by_tag(self) -> dict[str, list[EndpointData]]:

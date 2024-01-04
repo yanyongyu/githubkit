@@ -9,8 +9,9 @@ from jinja2 import Environment, PackageLoader
 from .config import Config
 from .source import get_source
 from .log import logger as logger
-from .parser.schemas import ModelSchema, UnionSchema
+from .parser.schemas import UnionSchema
 from .parser import (
+    ModelGroup,
     WebhookData,
     EndpointData,
     sanitize,
@@ -46,19 +47,38 @@ def load_config() -> Config:
     return Config.model_validate(config_dict)
 
 
-def build_models(dir: Path, models: list[ModelSchema]):
+def group_name(group: ModelGroup, groups: list[ModelGroup]) -> str:
+    count = len(str(len(groups)))
+    return f"group_{groups.index(group):0{count}d}"
+
+
+def build_models(dir: Path, groups: list[ModelGroup]):
     logger.info("Start generating models...")
     models_template = env.get_template("models/models.py.jinja")
     models_path = dir / "__init__.py"
-    models_path.write_text(models_template.render(models=models))
+    models_path.write_text(models_template.render(groups=groups, group_name=group_name))
+
+    group_template = env.get_template("models/group.py.jinja")
+    for group in groups:
+        group_path = dir / f"{group_name(group, groups)}.py"
+        group_path.write_text(
+            group_template.render(group=group, groups=groups, group_name=group_name)
+        )
     logger.info("Successfully generated models!")
 
 
-def build_types(dir: Path, models: list[ModelSchema]):
+def build_types(dir: Path, groups: list[ModelGroup]):
     logger.info("Start generating types...")
     types_template = env.get_template("models/types.py.jinja")
     types_path = dir / "__init__.py"
-    types_path.write_text(types_template.render(models=models))
+    types_path.write_text(types_template.render(groups=groups, group_name=group_name))
+
+    group_template = env.get_template("models/type_group.py.jinja")
+    for group in groups:
+        group_path = dir / f"{group_name(group, groups)}.py"
+        group_path.write_text(
+            group_template.render(group=group, groups=groups, group_name=group_name)
+        )
     logger.info("Successfully generated types!")
 
 
@@ -221,15 +241,6 @@ def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
     logger.info("Successfully generated versions!")
 
 
-# def _patch_openapi_spec(spec: dict[str, Any]):
-#     spec.pop("webhooks", None)
-#     for name in list(spec["components"]["schemas"].keys()):
-#         if name.startswith("webhook-config"):
-#             continue
-#         elif name.startswith("webhook"):
-#             del spec["components"]["schemas"][name]
-
-
 def build():
     config = load_config()
     logger.info(f"Loaded config: {config!r}")
@@ -255,10 +266,10 @@ def build():
 
         logger.info(f"Start parsing OpenAPI spec for {description.version}...")
         override = config.get_override_config_for_version(description.version)
-        # _patch_openapi_spec(source.root)
         parsed_data = parse_openapi_spec(source, override)
         logger.info(
             f"Successfully parsed OpenAPI spec {description.version}: "
+            f"{len(parsed_data.model_groups)} model groups, "
             f"{len(parsed_data.models)} models, "
             f"{len(parsed_data.endpoints)} endpoints, "
             f"{len(parsed_data.webhooks)} webhooks"
@@ -283,10 +294,10 @@ def build():
         # generate models
         model_path = version_path / "models"
         model_path.mkdir(parents=True, exist_ok=True)
-        build_models(model_path, parsed_data.models)
+        build_models(model_path, parsed_data.model_groups)
         type_path = version_path / "types"
         type_path.mkdir(parents=True, exist_ok=True)
-        build_types(type_path, parsed_data.models)
+        build_types(type_path, parsed_data.model_groups)
 
         # generate rest api codes
         rest_path = version_path / "rest"
