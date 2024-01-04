@@ -417,7 +417,7 @@ Open in Codespaces (Dev Container):
 Generate latest models and apis:
 
 > [!WARNING]
-> This may use a lot of memory (**16G+** RAM) and take a long time.
+> This may use about **400M** memory and take a long time.
 
 ```bash
 python -m codegen && isort . && black .
