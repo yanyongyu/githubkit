@@ -1,3 +1,4 @@
+from datetime import timedelta
 from typing import TYPE_CHECKING
 
 import httpx
@@ -21,6 +22,20 @@ class AuthExpiredError(GitHubException):
 
 class RequestError(GitHubException):
     """Simple API request failed with unknown error"""
+
+
+class RateLimitExceededError(GitHubException):
+    """Rate Limit Exceeded"""
+
+    def __init__(self, retry_after: timedelta, original_message=""):
+        self.retry_after = retry_after
+        self.original_message = original_message
+
+    def __str__(self) -> str:
+        error_message = f"You have exceeded a Github API rate limit. Retry after: {self.retry_after}"
+        if self.original_message:
+            error_message += f"\nResponse message from Github:\n{self.original_message}"
+        return error_message
 
 
 class RequestTimeout(GitHubException):
