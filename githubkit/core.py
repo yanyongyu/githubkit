@@ -1,6 +1,6 @@
-from datetime import timedelta, datetime, timezone
 from types import TracebackType
 from contextvars import ContextVar
+from datetime import datetime, timezone, timedelta
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
@@ -23,8 +23,13 @@ import hishel
 from .response import Response
 from .utils import obj_to_jsonable
 from .config import Config, get_config
-from .exception import RequestError, RequestFailed, RequestTimeout, RateLimitExceededError
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
+from .exception import (
+    RequestError,
+    RequestFailed,
+    RequestTimeout,
+    RateLimitExceededError,
+)
 from .typing import (
     URLTypes,
     CookieTypes,
@@ -319,7 +324,10 @@ class GitHubCore(Generic[A]):
             status_code = str(response.status_code)
 
             if response.status_code == 403 and "retry-after" in response.headers:
-                raise RateLimitExceededError(timedelta(seconds=int(response.headers["retry-after"])), original_message=response.content)
+                raise RateLimitExceededError(
+                    timedelta(seconds=int(response.headers["retry-after"])),
+                    original_message=response.content,
+                )
 
             if (
                 response.status_code in [403, 429]
@@ -330,7 +338,9 @@ class GitHubCore(Generic[A]):
                     int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
                 ) - datetime.now(tz=timezone.utc)
                 retry_after = max(retry_after, timedelta())
-                raise RateLimitExceededError(retry_after, original_message=response.content)
+                raise RateLimitExceededError(
+                    retry_after, original_message=response.content
+                )
 
             error_model = error_models.get(
                 status_code,
