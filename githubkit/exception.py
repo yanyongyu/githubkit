@@ -27,13 +27,13 @@ class RequestError(GitHubException):
 class RateLimitExceededError(GitHubException):
     """Rate Limit Exceeded"""
 
-    def __init__(self, retry_after: timedelta, original_message=""):
+    def __init__(self, retry_after: timedelta, original_message=None):
         self.retry_after = retry_after
         self.original_message = original_message
 
     def __str__(self) -> str:
         error_message = f"You have exceeded a Github API rate limit. Retry after: {self.retry_after}"
-        if self.original_message:
+        if self.original_message is not None:
             error_message += f"\nResponse message from Github:\n{self.original_message}"
         return error_message
 
