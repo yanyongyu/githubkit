@@ -45,7 +45,7 @@ FileTypes: TypeAlias = Union[
 ]
 RequestFiles: TypeAlias = Union[Dict[str, FileTypes], List[Tuple[str, FileTypes]]]
 
-if PYDANTIC_V2:
+if PYDANTIC_V2:  # pragma: pydantic-v2
     from pydantic import AfterValidator
     from pydantic_core import PydanticCustomError
 
@@ -59,7 +59,7 @@ if PYDANTIC_V2:
         AfterValidator(_validate_unique_list),
         Field(json_schema_extra={"uniqueItems": True}),
     ]
-else:
+else:  # pragma: pydantic-v1
     UniqueList: TypeAlias = Annotated[List[H], Field(unique_items=True)]  # type: ignore
 
 # if the property is not required, we allow it to have the value null.
