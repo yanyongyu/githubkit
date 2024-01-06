@@ -28,9 +28,9 @@ else:
 
 
 class RestVersionSwitcher(_VersionProxy):
-    _cached_namespaces: WeakKeyDictionary[
-        "GitHubCore", Dict[VERSION_TYPE, Any]
-    ] = WeakKeyDictionary()
+    _cached_namespaces: "WeakKeyDictionary[GitHubCore, Dict[VERSION_TYPE, Any]]" = (
+        WeakKeyDictionary()
+    )
 
     if not TYPE_CHECKING:
 
