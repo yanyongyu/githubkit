@@ -2,6 +2,7 @@
 
 """{{ header() }}"""
 
+from weakref import ref
 from typing import TYPE_CHECKING
 from functools import cached_property
 
@@ -14,7 +15,16 @@ if TYPE_CHECKING:
 
 class RestNamespace:
     def __init__(self, github: "GitHubCore"):
-        self._github = github
+        self._github_ref = ref(github)
+
+    @property
+    def _github(self) -> "GitHubCore":
+        if g := self._github_ref():
+            return g
+        raise RuntimeError(
+            "GitHub client has already been collected. "
+            "Do not use this namespace after the client has been collected."
+        )
 
     {% for tag in tags %}
     @cached_property

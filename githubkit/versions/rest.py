@@ -8,6 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 import importlib
+from weakref import WeakKeyDictionary, ref
 from typing import TYPE_CHECKING, Any, Dict, Literal, overload
 
 from . import VERSIONS, VERSION_TYPE, LATEST_VERSION
@@ -27,7 +28,9 @@ else:
 
 
 class RestVersionSwitcher(_VersionProxy):
-    _cached_namespaces: Dict[VERSION_TYPE, Any] = {}
+    _cached_namespaces: "WeakKeyDictionary[GitHubCore, Dict[VERSION_TYPE, Any]]" = (
+        WeakKeyDictionary()
+    )
 
     if not TYPE_CHECKING:
 
@@ -40,7 +43,16 @@ class RestVersionSwitcher(_VersionProxy):
             return getattr(namespace, name)
 
     def __init__(self, github: "GitHubCore"):
-        self._github = github
+        self._github_ref = ref(github)
+
+    @property
+    def _github(self) -> "GitHubCore":
+        if g := self._github_ref():
+            return g
+        raise RuntimeError(
+            "GitHub client has already been collected. "
+            "Do not use the namespace after the client has been collected."
+        )
 
     @overload
     def __call__(self, version: Literal["2022-11-28"]) -> "V20221128RestNamespace":
@@ -51,9 +63,11 @@ class RestVersionSwitcher(_VersionProxy):
         ...
 
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
-        if version in self._cached_namespaces:
-            return self._cached_namespaces[version]
+        g = self._github
+        cache = self._cached_namespaces.setdefault(g, {})
+        if version in cache:
+            return cache[version]
         module = importlib.import_module(f".{VERSIONS[version]}.rest", __package__)
-        namespace = module.RestNamespace(self._github)
-        self._cached_namespaces[version] = namespace
+        namespace = module.RestNamespace(g)
+        cache[version] = namespace
         return namespace

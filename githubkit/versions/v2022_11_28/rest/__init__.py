@@ -7,6 +7,7 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
+from weakref import ref
 from typing import TYPE_CHECKING
 from functools import cached_property
 
@@ -52,7 +53,16 @@ if TYPE_CHECKING:
 
 class RestNamespace:
     def __init__(self, github: "GitHubCore"):
-        self._github = github
+        self._github_ref = ref(github)
+
+    @property
+    def _github(self) -> "GitHubCore":
+        if g := self._github_ref():
+            return g
+        raise RuntimeError(
+            "GitHub client has already been collected. "
+            "Do not use this namespace after the client has been collected."
+        )
 
     @cached_property
     def meta(self) -> "MetaClient":
