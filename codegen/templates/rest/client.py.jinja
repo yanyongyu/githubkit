@@ -8,6 +8,7 @@
 
 from __future__ import annotations
 
+from weakref import ref
 from typing_extensions import Annotated
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
@@ -56,7 +57,16 @@ class {{ pascal_case(tag) }}Client:
     _REST_API_VERSION = "{{ rest_api_version }}"
 
     def __init__(self, github: GitHubCore):
-        self._github = github
+        self._github_ref = ref(github)
+
+    @property
+    def _github(self) -> GitHubCore:
+        if g := self._github_ref():
+            return g
+        raise RuntimeError(
+            "GitHub client has already been collected. "
+            "Do not use this client after the client has been collected."
+        )
 
     {% for endpoint in endpoints %}
     {% if endpoint.request_body and endpoint.request_body.allowed_models %}

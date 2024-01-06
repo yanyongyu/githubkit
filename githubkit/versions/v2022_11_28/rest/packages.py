@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from weakref import ref
 from typing_extensions import Annotated
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
@@ -34,7 +35,16 @@ class PackagesClient:
     _REST_API_VERSION = "2022-11-28"
 
     def __init__(self, github: GitHubCore):
-        self._github = github
+        self._github_ref = ref(github)
+
+    @property
+    def _github(self) -> GitHubCore:
+        if g := self._github_ref():
+            return g
+        raise RuntimeError(
+            "GitHub client has already been collected. "
+            "Do not use this client after the client has been collected."
+        )
 
     def list_docker_migration_conflicting_packages_for_organization(
         self,
