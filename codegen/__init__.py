@@ -162,6 +162,12 @@ def build_latest_version(
 ):
     logger.info("Start generating latest version...")
 
+    # build pkg
+    logger.info("Building latest __init__.py...")
+    init_template = env.get_template("__init__.py.jinja")
+    init_path = dir / "__init__.py"
+    init_path.write_text(init_template.render())
+
     # build models
     logger.info("Building latest models...")
     latest_template = env.get_template("latest/models.py.jinja")
@@ -295,6 +301,11 @@ def build():
 
         version_path = config.output_dir / version_module
         version_path.mkdir(parents=True, exist_ok=True)
+
+        # generate __init__.py
+        init_template = env.get_template("__init__.py.jinja")
+        init_path = version_path / "__init__.py"
+        init_path.write_text(init_template.render())
 
         # generate models
         model_path = version_path / "models"

@@ -7,7 +7,7 @@ from pydantic_core import to_jsonable_python
 
 from .compat import PYDANTIC_V2, custom_validation, type_validate_python
 
-if PYDANTIC_V2:
+if PYDANTIC_V2:  # pragma: pydantic-v2
     from pydantic_core import core_schema
     from pydantic import GetCoreSchemaHandler
 
@@ -94,7 +94,7 @@ class TaggedUnion(Generic[T]):
     def _validate(self, value: Any) -> T:
         return type_validate_python(self.type_, value)
 
-    if PYDANTIC_V2:
+    if PYDANTIC_V2:  # pragma: pydantic-v2
 
         def __get_pydantic_core_schema__(
             self, _source_type: Any, _handler: "GetCoreSchemaHandler"

@@ -29,7 +29,7 @@ if TYPE_CHECKING:
     CVC = TypeVar("CVC", bound=CustomValidationClass)
 
 
-if PYDANTIC_V2:
+if PYDANTIC_V2:  # pragma: pydantic-v2
     from pydantic_core import CoreSchema, core_schema
     from pydantic import (
         BaseModel,
@@ -80,7 +80,7 @@ if PYDANTIC_V2:
         )
         return class_
 
-else:
+else:  # pragma: pydantic-v1
     from pydantic import Extra, BaseModel, parse_obj_as, parse_raw_as, root_validator
 
     class GitHubModel(BaseModel):

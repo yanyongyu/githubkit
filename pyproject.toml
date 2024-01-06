@@ -36,6 +36,7 @@ anyio = "*"
 pytest = "^7.4.3"
 pytest-cov = "^4.1.0"
 pytest-xdist = "^3.5.0"
+coverage-conditional-plugin = "^0.9.0"
 
 [tool.poetry.extras]
 jwt = ["PyJWT"]
@@ -47,6 +48,28 @@ all = ["PyJWT", "anyio"]
 [tool.pytest.ini_options]
 addopts = "--cov=githubkit --cov-append --cov-report=term-missing"
 filterwarnings = ["error", "ignore::DeprecationWarning"]
+
+[tool.coverage.run]
+plugins = ["coverage_conditional_plugin"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "def __repr__",
+  "def __str__",
+  "@(typing\\.)?overload",
+  "if (typing\\.)?TYPE_CHECKING( is True)?:",
+  "@(abc\\.)?abstractmethod",
+  "raise NotImplementedError",
+  "warnings\\.warn",
+  "^\\.\\.\\.$",
+  "pass",
+  "if __name__ == .__main__.:",
+]
+
+[tool.coverage.coverage_conditional_plugin.rules]
+pydantic-v2 = "package_version('pydantic') < (2,)"
+pydantic-v1 = "package_version('pydantic') >= (2,)"
 
 [tool.black]
 line-length = 88
