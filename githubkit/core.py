@@ -24,12 +24,6 @@ from .response import Response
 from .utils import obj_to_jsonable
 from .config import Config, get_config
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
-from .exception import (
-    RequestError,
-    RequestFailed,
-    RequestTimeout,
-    RateLimitExceededError,
-)
 from .typing import (
     URLTypes,
     CookieTypes,
@@ -37,6 +31,13 @@ from .typing import (
     ContentTypes,
     RequestFiles,
     QueryParamTypes,
+)
+from .exception import (
+    RequestError,
+    RequestFailed,
+    RequestTimeout,
+    PrimaryRateLimitExceeded,
+    SecondaryRateLimitExceeded,
 )
 
 T = TypeVar("T")
@@ -323,14 +324,54 @@ class GitHubCore(Generic[A]):
             error_models = error_models or {}
             status_code = str(response.status_code)
 
-            if response.status_code == 403 and "retry-after" in response.headers:
-                raise RateLimitExceededError(
-                    timedelta(seconds=int(response.headers["retry-after"])),
-                    original_message=response.content,
-                )
+            error_model = error_models.get(
+                status_code,
+                error_models.get(
+                    f"{status_code[:-2]}XX", error_models.get("default", Any)
+                ),
+            )
+            resp = Response(response, error_model)
 
+            # handle rate limit exceeded
+            # https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#exceeding-the-rate-limit
+            # https://github.com/octokit/plugin-throttling.js/blob/135a0f556752a6c4c0ed3b2798bb58e228cd179a/src/index.ts#L134-L179
+
+            # Secondary rate limits
+            if response.status_code in (403, 429):
+                try:
+                    error = resp.json()
+                except Exception:
+                    error = None
+
+                # error message indicates that you exceeded a secondary rate limit
+                if (
+                    error
+                    and "message" in error
+                    and "secondary rate" in error["message"]
+                ):
+                    # the `retry-after` response header is present
+                    if "retry-after" in response.headers:
+                        raise SecondaryRateLimitExceeded(
+                            resp,
+                            timedelta(seconds=int(response.headers["retry-after"])),
+                        )
+
+                    if (
+                        "x-ratelimit-remaining" in response.headers
+                        and response.headers["x-ratelimit-remaining"] == "0"
+                    ):
+                        retry_after = datetime.fromtimestamp(
+                            int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
+                        ) - datetime.now(tz=timezone.utc)
+                        retry_after = max(retry_after, timedelta())
+                        raise SecondaryRateLimitExceeded(resp, retry_after)
+
+                    # wait for at least one minute before retrying
+                    raise SecondaryRateLimitExceeded(resp, timedelta(seconds=60))
+
+            # Primary rate limits
             if (
-                response.status_code in [403, 429]
+                response.status_code in (403, 429)
                 and "x-ratelimit-remaining" in response.headers
                 and response.headers["x-ratelimit-remaining"] == "0"
             ):
@@ -338,18 +379,9 @@ class GitHubCore(Generic[A]):
                     int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
                 ) - datetime.now(tz=timezone.utc)
                 retry_after = max(retry_after, timedelta())
-                raise RateLimitExceededError(
-                    retry_after, original_message=response.content
-                )
+                raise PrimaryRateLimitExceeded(resp, retry_after)
 
-            error_model = error_models.get(
-                status_code,
-                error_models.get(
-                    f"{status_code[:-2]}XX", error_models.get("default", Any)
-                ),
-            )
-            rep = Response(response, error_model)
-            raise RequestFailed(rep)
+            raise RequestFailed(resp)
         return Response(response, response_model)
 
     # sync request and check
