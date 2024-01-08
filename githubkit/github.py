@@ -142,7 +142,8 @@ class GitHub(GitHubCore[A]):
         json = build_graphql_request(query, variables)
 
         return parse_graphql_response(
-            self.request("POST", "/graphql", json=json, response_model=GraphQLResponse)
+            self,
+            self.request("POST", "/graphql", json=json, response_model=GraphQLResponse),
         )
 
     async def async_graphql(
@@ -151,9 +152,10 @@ class GitHub(GitHubCore[A]):
         json = build_graphql_request(query, variables)
 
         return parse_graphql_response(
+            self,
             await self.arequest(
                 "POST", "/graphql", json=json, response_model=GraphQLResponse
-            )
+            ),
         )
 
     # rest pagination

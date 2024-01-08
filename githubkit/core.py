@@ -331,58 +331,57 @@ class GitHubCore(Generic[A]):
                 ),
             )
             resp = Response(response, error_model)
+        else:
+            resp = Response(response, response_model)
 
-            # handle rate limit exceeded
-            # https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#exceeding-the-rate-limit
-            # https://github.com/octokit/plugin-throttling.js/blob/135a0f556752a6c4c0ed3b2798bb58e228cd179a/src/index.ts#L134-L179
+        # only check rate limit when response is 403 or 429
+        if response.status_code in (403, 429):
+            self._check_rate_limit(resp)
+
+        if response.is_error:
+            raise RequestFailed(resp)
+        return resp
+
+    # check rate limit
+    def _check_rate_limit(self, response: Response) -> None:
+        # check rate limit exceeded
+        # https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#exceeding-the-rate-limit
+        # https://docs.github.com/en/graphql/overview/rate-limits-and-node-limits-for-the-graphql-api#exceeding-the-rate-limit
+        # https://github.com/octokit/plugin-throttling.js/blob/135a0f556752a6c4c0ed3b2798bb58e228cd179a/src/index.ts#L134-L179
+
+        # Secondary rate limits
+        # the `retry-after` response header is present
+        if "retry-after" in response.headers:
+            raise SecondaryRateLimitExceeded(
+                response,
+                timedelta(seconds=int(response.headers["retry-after"])),
+            )
+
+        if (
+            "x-ratelimit-remaining" in response.headers
+            and response.headers["x-ratelimit-remaining"] == "0"
+        ):
+            retry_after = datetime.fromtimestamp(
+                int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
+            ) - datetime.now(tz=timezone.utc)
+            retry_after = max(retry_after, timedelta())
+
+            try:
+                error = response.json()
+            except Exception:
+                error = None
 
             # Secondary rate limits
-            if response.status_code in (403, 429):
-                try:
-                    error = resp.json()
-                except Exception:
-                    error = None
-
-                # error message indicates that you exceeded a secondary rate limit
-                if (
-                    error
-                    and "message" in error
-                    and "secondary rate" in error["message"]
-                ):
-                    # the `retry-after` response header is present
-                    if "retry-after" in response.headers:
-                        raise SecondaryRateLimitExceeded(
-                            resp,
-                            timedelta(seconds=int(response.headers["retry-after"])),
-                        )
-
-                    if (
-                        "x-ratelimit-remaining" in response.headers
-                        and response.headers["x-ratelimit-remaining"] == "0"
-                    ):
-                        retry_after = datetime.fromtimestamp(
-                            int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
-                        ) - datetime.now(tz=timezone.utc)
-                        retry_after = max(retry_after, timedelta())
-                        raise SecondaryRateLimitExceeded(resp, retry_after)
-
-                    # wait for at least one minute before retrying
-                    raise SecondaryRateLimitExceeded(resp, timedelta(seconds=60))
+            # error message indicates that you exceeded a secondary rate limit
+            if (
+                isinstance(error, dict)
+                and "message" in error
+                and "secondary rate" in error["message"]
+            ):
+                raise SecondaryRateLimitExceeded(response, retry_after)
 
             # Primary rate limits
-            if (
-                response.status_code in (403, 429)
-                and "x-ratelimit-remaining" in response.headers
-                and response.headers["x-ratelimit-remaining"] == "0"
-            ):
-                retry_after = datetime.fromtimestamp(
-                    int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
-                ) - datetime.now(tz=timezone.utc)
-                retry_after = max(retry_after, timedelta())
-                raise PrimaryRateLimitExceeded(resp, retry_after)
-
-            raise RequestFailed(resp)
-        return Response(response, response_model)
+            raise PrimaryRateLimitExceeded(response, retry_after)
 
     # sync request and check
     def request(
