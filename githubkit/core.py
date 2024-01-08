@@ -353,18 +353,14 @@ class GitHubCore(Generic[A]):
         # the `retry-after` response header is present
         if "retry-after" in response.headers:
             raise SecondaryRateLimitExceeded(
-                response,
-                timedelta(seconds=int(response.headers["retry-after"])),
+                response, self._extract_retry_after(response)
             )
 
         if (
             "x-ratelimit-remaining" in response.headers
             and response.headers["x-ratelimit-remaining"] == "0"
         ):
-            retry_after = datetime.fromtimestamp(
-                int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
-            ) - datetime.now(tz=timezone.utc)
-            retry_after = max(retry_after, timedelta())
+            retry_after = self._extract_retry_after(response)
 
             try:
                 error = response.json()
@@ -382,6 +378,18 @@ class GitHubCore(Generic[A]):
 
             # Primary rate limits
             raise PrimaryRateLimitExceeded(response, retry_after)
+
+    def _extract_retry_after(self, response: Response) -> timedelta:
+        if "retry-after" in response.headers:
+            return timedelta(seconds=int(response.headers["retry-after"]))
+        elif "x-ratelimit-reset" in response.headers:
+            retry_after = datetime.fromtimestamp(
+                int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
+            ) - datetime.now(tz=timezone.utc)
+            return max(retry_after, timedelta())
+        else:
+            # wait for at least one minute before retrying
+            return timedelta(seconds=60)
 
     # sync request and check
     def request(

@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, Any, Dict, Optional, cast
 
-from githubkit.exception import GraphQLFailed
+from githubkit.exception import GraphQLFailed, PrimaryRateLimitExceeded
 
 from .models import GraphQLError as GraphQLError
 from .models import SourceLocation as SourceLocation
@@ -27,7 +27,11 @@ def parse_graphql_response(
     if response_data.errors:
         # check rate limit exceeded
         # https://docs.github.com/en/graphql/overview/rate-limits-and-node-limits-for-the-graphql-api#exceeding-the-rate-limit
+        # x-ratelimit-remaining may not be 0, ignore it
+        # https://github.com/octokit/plugin-throttling.js/pull/636
         if any(error.type == "RATE_LIMITED" for error in response_data.errors):
-            github._check_rate_limit(response)
+            raise PrimaryRateLimitExceeded(
+                response, github._extract_retry_after(response)
+            )
         raise GraphQLFailed(response_data)
     return cast(Dict[str, Any], response_data.data)
