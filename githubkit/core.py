@@ -1,5 +1,6 @@
 from types import TracebackType
 from contextvars import ContextVar
+from datetime import datetime, timezone, timedelta
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
@@ -22,7 +23,6 @@ import hishel
 from .response import Response
 from .utils import obj_to_jsonable
 from .config import Config, get_config
-from .exception import RequestError, RequestFailed, RequestTimeout
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .typing import (
     URLTypes,
@@ -31,6 +31,13 @@ from .typing import (
     ContentTypes,
     RequestFiles,
     QueryParamTypes,
+)
+from .exception import (
+    RequestError,
+    RequestFailed,
+    RequestTimeout,
+    PrimaryRateLimitExceeded,
+    SecondaryRateLimitExceeded,
 )
 
 T = TypeVar("T")
@@ -316,15 +323,73 @@ class GitHubCore(Generic[A]):
         if response.is_error:
             error_models = error_models or {}
             status_code = str(response.status_code)
+
             error_model = error_models.get(
                 status_code,
                 error_models.get(
                     f"{status_code[:-2]}XX", error_models.get("default", Any)
                 ),
             )
-            rep = Response(response, error_model)
-            raise RequestFailed(rep)
-        return Response(response, response_model)
+            resp = Response(response, error_model)
+        else:
+            resp = Response(response, response_model)
+
+        # only check rate limit when response is 403 or 429
+        if response.status_code in (403, 429):
+            self._check_rate_limit(resp)
+
+        if response.is_error:
+            raise RequestFailed(resp)
+        return resp
+
+    # check rate limit
+    def _check_rate_limit(self, response: Response) -> None:
+        # check rate limit exceeded
+        # https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#exceeding-the-rate-limit
+        # https://docs.github.com/en/graphql/overview/rate-limits-and-node-limits-for-the-graphql-api#exceeding-the-rate-limit
+        # https://github.com/octokit/plugin-throttling.js/blob/135a0f556752a6c4c0ed3b2798bb58e228cd179a/src/index.ts#L134-L179
+
+        # Secondary rate limits
+        # the `retry-after` response header is present
+        if "retry-after" in response.headers:
+            raise SecondaryRateLimitExceeded(
+                response, self._extract_retry_after(response)
+            )
+
+        if (
+            "x-ratelimit-remaining" in response.headers
+            and response.headers["x-ratelimit-remaining"] == "0"
+        ):
+            retry_after = self._extract_retry_after(response)
+
+            try:
+                error = response.json()
+            except Exception:
+                error = None
+
+            # Secondary rate limits
+            # error message indicates that you exceeded a secondary rate limit
+            if (
+                isinstance(error, dict)
+                and "message" in error
+                and "secondary rate" in error["message"]
+            ):
+                raise SecondaryRateLimitExceeded(response, retry_after)
+
+            # Primary rate limits
+            raise PrimaryRateLimitExceeded(response, retry_after)
+
+    def _extract_retry_after(self, response: Response) -> timedelta:
+        if "retry-after" in response.headers:
+            return timedelta(seconds=int(response.headers["retry-after"]))
+        elif "x-ratelimit-reset" in response.headers:
+            retry_after = datetime.fromtimestamp(
+                int(response.headers["x-ratelimit-reset"]), tz=timezone.utc
+            ) - datetime.now(tz=timezone.utc)
+            return max(retry_after, timedelta())
+        else:
+            # wait for at least one minute before retrying
+            return timedelta(seconds=60)
 
     # sync request and check
     def request(

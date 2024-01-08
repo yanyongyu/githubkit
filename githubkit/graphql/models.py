@@ -9,6 +9,7 @@ class SourceLocation(GitHubModel):
 
 
 class GraphQLError(GitHubModel):
+    type: str  # https://github.com/octokit/graphql.js/pull/314
     message: str
     locations: Optional[List[SourceLocation]] = None
     path: Optional[List[Union[int, str]]] = None
