@@ -44,6 +44,7 @@ jobs:
           no-root: true
 
       - name: Run Pytest
+        shell: bash
         run: |
           cd ./envs/${{ matrix.env }}
           poetry run ../../scripts/run-tests.sh
