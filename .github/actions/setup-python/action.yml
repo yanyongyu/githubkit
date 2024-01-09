@@ -25,18 +25,15 @@ runs:
         python-version: ${{ inputs.python-version }}
         architecture: "x64"
         cache: "poetry"
-        cache-dependency-path:
-          - "./poetry.lock"
-          - "${{ inputs.env-dir }}/poetry.lock"
+        cache-dependency-path: |
+          ./poetry.lock
+          ${{ inputs.env-dir }}/poetry.lock
 
-    - if: ${{ inputs.no-root == "true" }}
-      run: |
+    - run: |
         cd ${{ inputs.env-dir }}
-        poetry install --all-extras --no-root
-      shell: bash
-
-    - if: ${{ inputs.no-root == "false" }}
-      run: |
-        cd ${{ inputs.env-dir }}
-        poetry install --all-extras
+        if [ "${{ inputs.no-root }}" = "true" ]; then
+          poetry install --all-extras --no-root
+        else
+          poetry install --all-extras
+        fi
       shell: bash

@@ -6,8 +6,10 @@ on:
       - master
   pull_request:
     paths:
+      - "envs/**"
       - "githubkit/**"
       - "tests/**"
+      - ".github/actions/setup-poetry/**"
       - ".github/actions/setup-python/**"
       - ".github/workflows/codecov.yml"
       - "pyproject.toml"
