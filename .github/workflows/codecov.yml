@@ -44,10 +44,9 @@ jobs:
           no-root: true
 
       - name: Run Pytest
-        shell: bash
         run: |
           cd ./envs/${{ matrix.env }}
-          poetry run "../../scripts/run-tests.sh"
+          poetry run bash "../../scripts/run-tests.sh"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
