@@ -6,8 +6,10 @@ on:
       - master
   pull_request:
     paths:
+      - "envs/**"
       - "githubkit/**"
       - "tests/**"
+      - ".github/actions/setup-poetry/**"
       - ".github/actions/setup-python/**"
       - ".github/workflows/codecov.yml"
       - "pyproject.toml"
@@ -24,10 +26,12 @@ jobs:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
         os: [ubuntu-latest, windows-latest, macos-latest]
+        env: [pydantic-v2]
       fail-fast: false
     env:
       OS: ${{ matrix.os }}
       PYTHON_VERSION: ${{ matrix.python-version }}
+      PYDANTIC_VERSION: ${{ matrix.env }}
 
     steps:
       - uses: actions/checkout@v4
@@ -36,15 +40,19 @@ jobs:
         uses: ./.github/actions/setup-python
         with:
           python-version: ${{ matrix.python-version }}
+          env-dir: ./envs/${{ matrix.env }}
+          no-root: true
 
       - name: Run Pytest
-        run: poetry run pytest -n auto --cov-report xml
+        run: |
+          cd ./envs/${{ matrix.env }}
+          poetry run bash "../../scripts/run-tests.sh"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v3
         with:
-          env_vars: OS,PYTHON_VERSION
+          env_vars: OS,PYTHON_VERSION,PYDANTIC_VERSION
           files: ./coverage.xml
           flags: unittests

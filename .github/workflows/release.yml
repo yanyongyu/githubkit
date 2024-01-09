@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Python environment
-        uses: ./.github/actions/setup-python
+      - name: Setup Poetry
+        uses: ./.github/actions/setup-poetry
 
       - name: Get Version
         id: version
