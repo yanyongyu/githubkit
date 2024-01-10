@@ -1205,4 +1205,4 @@ jwt = ["PyJWT"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "0e1afc12444c0b9906c986705fb6475af37d94409c039874e575a7d3590d0aca"
+content-hash = "736f7a8bb0bfe4ac47b43cb3d590e76a2276b69bae83f6a2f6b8cc641f12c693"

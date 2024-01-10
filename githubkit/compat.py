@@ -31,6 +31,7 @@ if TYPE_CHECKING:
 
 if PYDANTIC_V2:  # pragma: pydantic-v2
     from pydantic_core import CoreSchema, core_schema
+    from pydantic_core import to_jsonable_python as to_jsonable_python
     from pydantic import (
         BaseModel,
         ConfigDict,
@@ -81,6 +82,7 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
         return class_
 
 else:  # pragma: pydantic-v1
+    from pydantic.json import pydantic_encoder
     from pydantic import Extra, BaseModel, parse_obj_as, parse_raw_as, root_validator
 
     class GitHubModel(BaseModel):
@@ -96,6 +98,18 @@ else:  # pragma: pydantic-v1
 
     def type_validate_json(type_: Type[T], data: Any) -> T:
         return parse_raw_as(type_, data)
+
+    def to_jsonable_python(obj: Any) -> Any:
+        if isinstance(obj, dict):
+            return {k: to_jsonable_python(v) for k, v in obj.items()}
+
+        if isinstance(obj, (list, tuple)):
+            return [to_jsonable_python(item) for item in obj]
+
+        if obj is None or isinstance(obj, (int, float, str, bool)):
+            return obj
+
+        return pydantic_encoder(obj)
 
     def model_dump(model: BaseModel, by_alias: bool = True) -> Dict[str, Any]:
         return model.dict(by_alias=by_alias)

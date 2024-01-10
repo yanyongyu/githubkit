@@ -21,7 +21,7 @@ import httpx
 import hishel
 
 from .response import Response
-from .utils import obj_to_jsonable
+from .compat import to_jsonable_python
 from .config import Config, get_config
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .typing import (
@@ -272,7 +272,7 @@ class GitHubCore(Generic[A]):
                     content=content,
                     data=data,
                     files=files,
-                    json=obj_to_jsonable(json),
+                    json=to_jsonable_python(json),
                     headers=headers,
                     cookies=cookies,
                 )
@@ -304,7 +304,7 @@ class GitHubCore(Generic[A]):
                     content=content,
                     data=data,
                     files=files,
-                    json=obj_to_jsonable(json),
+                    json=to_jsonable_python(json),
                     headers=headers,
                     cookies=cookies,
                 )
