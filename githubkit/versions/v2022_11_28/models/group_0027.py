@@ -33,8 +33,8 @@ class DependabotAlertSecurityAdvisory(GitHubModel):
     cve_id: Union[str, None] = Field(
         description="The unique CVE ID assigned to the advisory."
     )
-    summary: Annotated[str, Field(max_length=1024)] = Field(
-        description="A short, plain text summary of the advisory."
+    summary: str = Field(
+        max_length=1024, description="A short, plain text summary of the advisory."
     )
     description: str = Field(
         description="A long-form Markdown-supported description of the advisory."
@@ -74,9 +74,7 @@ class DependabotAlertSecurityAdvisoryPropCvss(GitHubModel):
     Details for the advisory pertaining to the Common Vulnerability Scoring System.
     """
 
-    score: Annotated[float, Field(le=10.0)] = Field(
-        description="The overall CVSS score of the advisory."
-    )
+    score: float = Field(le=10.0, description="The overall CVSS score of the advisory.")
     vector_string: Union[str, None] = Field(
         description="The full CVSS vector string for the advisory."
     )

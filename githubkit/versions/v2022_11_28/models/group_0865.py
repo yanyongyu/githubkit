@@ -21,8 +21,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
     """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    selected_usernames: Annotated[List[str], Field(min_length=1)] = Field(
-        description="The usernames of the organization members to be granted access to GitHub Copilot."
+    selected_usernames: List[str] = Field(
+        min_length=1,
+        description="The usernames of the organization members to be granted access to GitHub Copilot.",
     )
 
 

@@ -22,8 +22,10 @@ from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 class ReposOwnerRepoDispatchesPostBody(GitHubModel):
     """ReposOwnerRepoDispatchesPostBody"""
 
-    event_type: Annotated[str, Field(min_length=1, max_length=100)] = Field(
-        description="A custom webhook event name. Must be 100 characters or fewer."
+    event_type: str = Field(
+        min_length=1,
+        max_length=100,
+        description="A custom webhook event name. Must be 100 characters or fewer.",
     )
     client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
         default=UNSET,

@@ -29,20 +29,14 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubModel):
     """
 
     title: Missing[str] = Field(default=UNSET, description="**Required**.")
-    summary: Annotated[str, Field(max_length=65535)] = Field(
-        description="Can contain Markdown."
-    )
-    text: Missing[Annotated[str, Field(max_length=65535)]] = Field(
-        default=UNSET, description="Can contain Markdown."
+    summary: str = Field(max_length=65535, description="Can contain Markdown.")
+    text: Missing[str] = Field(
+        max_length=65535, default=UNSET, description="Can contain Markdown."
     )
     annotations: Missing[
-        Annotated[
-            List[
-                ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems
-            ],
-            Field(max_length=50),
-        ]
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems]
     ] = Field(
+        max_length=50,
         default=UNSET,
         description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/articles/about-status-checks#checks)\".",
     )
@@ -103,14 +97,17 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems(GitHub
 class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems(GitHubModel):
     """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
 
-    label: Annotated[str, Field(max_length=20)] = Field(
-        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters."
+    label: str = Field(
+        max_length=20,
+        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
     )
-    description: Annotated[str, Field(max_length=40)] = Field(
-        description="A short explanation of what this action would do. The maximum size is 40 characters."
+    description: str = Field(
+        max_length=40,
+        description="A short explanation of what this action would do. The maximum size is 40 characters.",
     )
-    identifier: Annotated[str, Field(max_length=20)] = Field(
-        description="A reference for the action on the integrator's system. The maximum size is 20 characters."
+    identifier: str = Field(
+        max_length=20,
+        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
     )
 
 

@@ -29,8 +29,9 @@ class RepositoryRulePullRequestPropParameters(GitHubModel):
     require_last_push_approval: bool = Field(
         description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
     )
-    required_approving_review_count: Annotated[int, Field(le=10.0)] = Field(
-        description="The number of approving reviews that are required before a pull request can be merged."
+    required_approving_review_count: int = Field(
+        le=10.0,
+        description="The number of approving reviews that are required before a pull request can be merged.",
     )
     required_review_thread_resolution: bool = Field(
         description="All conversations on code must be resolved before a pull request can be merged."

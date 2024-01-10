@@ -21,8 +21,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
     """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    labels: Annotated[List[str], Field(max_length=100)] = Field(
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels."
+    labels: List[str] = Field(
+        max_length=100,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
     )
 
 

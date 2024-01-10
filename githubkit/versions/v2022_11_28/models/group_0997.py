@@ -34,7 +34,8 @@ class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
         default=UNSET,
         description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
     )
-    dismissed_comment: Missing[Annotated[str, Field(max_length=280)]] = Field(
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
         default=UNSET,
         description="An optional comment associated with dismissing the alert.",
     )

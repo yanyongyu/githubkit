@@ -31,7 +31,8 @@ class OrgsOrgCodespacesAccessPutBody(GitHubModel):
     ] = Field(
         description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
     )
-    selected_usernames: Missing[Annotated[List[str], Field(max_length=100)]] = Field(
+    selected_usernames: Missing[List[str]] = Field(
+        max_length=100,
         default=UNSET,
         description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
     )

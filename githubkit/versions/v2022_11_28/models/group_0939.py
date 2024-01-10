@@ -21,8 +21,10 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
     """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    labels: Annotated[List[str], Field(max_length=100, min_length=1)] = Field(
-        description="The names of the custom labels to add to the runner."
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner.",
     )
 
 

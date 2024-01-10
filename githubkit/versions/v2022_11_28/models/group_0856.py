@@ -21,8 +21,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
     """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
-    selected_usernames: Annotated[List[str], Field(max_length=100)] = Field(
-        description="The usernames of the organization members whose codespaces should not be billed to the organization."
+    selected_usernames: List[str] = Field(
+        max_length=100,
+        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
     )
 
 

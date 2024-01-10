@@ -21,8 +21,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
     """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    selected_teams: Annotated[List[str], Field(min_length=1)] = Field(
-        description="The names of teams from which to revoke access to GitHub Copilot."
+    selected_teams: List[str] = Field(
+        min_length=1,
+        description="The names of teams from which to revoke access to GitHub Copilot.",
     )
 
 

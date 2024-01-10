@@ -23,10 +23,11 @@ from githubkit.compat import GitHubModel, model_rebuild
 class RepositoryAdvisoryUpdate(GitHubModel):
     """RepositoryAdvisoryUpdate"""
 
-    summary: Missing[Annotated[str, Field(max_length=1024)]] = Field(
-        default=UNSET, description="A short summary of the advisory."
+    summary: Missing[str] = Field(
+        max_length=1024, default=UNSET, description="A short summary of the advisory."
     )
-    description: Missing[Annotated[str, Field(max_length=65535)]] = Field(
+    description: Missing[str] = Field(
+        max_length=65535,
         default=UNSET,
         description="A detailed description of what the advisory impacts.",
     )

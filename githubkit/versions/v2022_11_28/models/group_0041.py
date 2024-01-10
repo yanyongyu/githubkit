@@ -32,9 +32,7 @@ class GistComment(GitHubModel):
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
-    body: Annotated[str, Field(max_length=65535)] = Field(
-        description="The comment text."
-    )
+    body: str = Field(max_length=65535, description="The comment text.")
     user: Union[None, SimpleUser] = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()

@@ -12,9 +12,9 @@ class SchemaData:
 
     _type_string: ClassVar[str] = "Any"
 
-    def get_type_string(self) -> str:
+    def get_type_string(self, include_constraints: bool = True) -> str:
         """Get schema typing string in any place"""
-        if args := self._get_field_args():
+        if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{self._type_string}, {self._get_field_string(args)}]"
         return self._type_string
 
@@ -66,9 +66,11 @@ class Property:
     required: bool
     schema_data: SchemaData
 
-    def get_type_string(self) -> str:
+    def get_type_string(self, include_constraints: bool = True) -> str:
         """Get schema typing string in any place"""
-        type_string = self.schema_data.get_type_string()
+        type_string = self.schema_data.get_type_string(
+            include_constraints=include_constraints
+        )
         return type_string if self.required else f"Missing[{type_string}]"
 
     def get_param_type_string(self) -> str:
@@ -78,8 +80,11 @@ class Property:
 
     def get_model_defination(self) -> str:
         """Get defination used by model codegen"""
-        type_ = self.get_type_string()
-        default = self._get_field_string(self._get_field_args())
+        # extract the outermost type constraints to the field
+        type_ = self.get_type_string(include_constraints=False)
+        args = self.schema_data._get_field_args()
+        args.update(self._get_field_args())
+        default = self._get_field_string(args)
         return f"{self.prop_name}: {type_} = {default}"
 
     def get_type_defination(self) -> str:
@@ -351,9 +356,9 @@ class ListSchema(SchemaData):
     _type_string: ClassVar[str] = "List"
 
     @override
-    def get_type_string(self) -> str:
+    def get_type_string(self, include_constraints: bool = True) -> str:
         type_string = f"List[{self.item_schema.get_type_string()}]"
-        if args := self._get_field_args():
+        if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{type_string}, {self._get_field_string(args)}]"
         return type_string
 
@@ -419,9 +424,9 @@ class UniqueListSchema(SchemaData):
     _type_string: ClassVar[str] = "UniqueList"
 
     @override
-    def get_type_string(self) -> str:
+    def get_type_string(self, include_constraints: bool = True) -> str:
         type_string = f"UniqueList[{self.item_schema.get_type_string()}]"
-        if args := self._get_field_args():
+        if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{type_string}, {self._get_field_string(args)}]"
         return type_string
 
@@ -495,9 +500,9 @@ class EnumSchema(SchemaData):
         return all(isinstance(value, int | float) for value in self.values)
 
     @override
-    def get_type_string(self) -> str:
+    def get_type_string(self, include_constraints: bool = True) -> str:
         type_string = f"Literal[{', '.join(repr(value) for value in self.values)}]"
-        if args := self._get_field_args():
+        if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{type_string}, {self._get_field_string(args)}]"
         return type_string
 
@@ -539,8 +544,8 @@ class ModelSchema(SchemaData):
     _type_string: ClassVar[str] = "dict"
 
     @override
-    def get_type_string(self) -> str:
-        if args := self._get_field_args():
+    def get_type_string(self, include_constraints: bool = True) -> str:
+        if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{self.class_name}, {self._get_field_string(args)}]"
         return self.class_name
 
@@ -595,7 +600,7 @@ class UnionSchema(SchemaData):
     discriminator: str | None = None
 
     @override
-    def get_type_string(self) -> str:
+    def get_type_string(self, include_constraints: bool = True) -> str:
         if len(self.schemas) == 0:
             return "Any"
         elif len(self.schemas) == 1:
@@ -603,7 +608,7 @@ class UnionSchema(SchemaData):
         type_string = (
             f"Union[{', '.join(schema.get_type_string() for schema in self.schemas)}]"
         )
-        if args := self._get_field_args():
+        if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{type_string}, {self._get_field_string(args)}]"
         return type_string
 
