@@ -13943,6 +13943,7 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             response_model=List[List[int]],
+            error_models={},
         )
 
     async def async_get_code_frequency_stats(
@@ -13963,6 +13964,7 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             response_model=List[List[int]],
+            error_models={},
         )
 
     def get_commit_activity_stats(

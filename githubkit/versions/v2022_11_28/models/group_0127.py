@@ -78,6 +78,7 @@ class RepositoryRuleset(GitHubModel):
             RepositoryRulesetConditions,
             OrgRulesetConditionsOneof0,
             OrgRulesetConditionsOneof1,
+            None,
         ]
     ] = Field(default=UNSET)
     rules: Missing[

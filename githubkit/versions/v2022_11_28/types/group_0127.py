@@ -60,6 +60,7 @@ class RepositoryRulesetType(TypedDict):
             RepositoryRulesetConditionsType,
             OrgRulesetConditionsOneof0Type,
             OrgRulesetConditionsOneof1Type,
+            None,
         ]
     ]
     rules: NotRequired[
