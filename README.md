@@ -368,10 +368,10 @@ event = parse_without_name(request.body)
 ```
 
 > [!WARNING]
-> The `parse_without_name` function will try to parse the payload with all supported event names.
-> The behavior of this function is not the same between pydantic v1 and v2.
-> When using pydantic v1, the function will return the first valid event model (known as `left-to-right` mode).
-> When using pydantic v2, the function will return the highest scored valid event model (known as `smart` mode).
+> The `parse_without_name` function will try to parse the payload with all supported event names.  
+> The behavior of this function is not the same between pydantic v1 and v2.  
+> When using pydantic v1, the function will return the first valid event model (known as `left-to-right` mode).  
+> When using pydantic v2, the function will return the highest scored valid event model (known as `smart` mode).  
 > See: [Union Modes](https://docs.pydantic.dev/latest/concepts/unions/#union-modes).
 
 Parse dict like payload:
