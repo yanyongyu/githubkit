@@ -420,13 +420,20 @@ Generate latest models and apis:
 > This may use about **400M** memory and take a long time.
 
 ```bash
-python -m codegen && isort . && black .
+./scripts/run-codegen.sh
 ```
 
-Run tests:
+Run tests in dev env:
 
 ```bash
-pytest -n auto tests
+./scripts/run-tests.sh
+```
+
+Run tests in test env:
+
+```bash
+cd ./envs/pydantic-v2/
+poetry run bash ../../scripts/run-tests.sh
 ```
 
 ## Contributors
