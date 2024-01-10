@@ -44,9 +44,7 @@ class ProtectedBranchPullRequestReview(GitHubModel):
     )
     dismiss_stale_reviews: bool = Field()
     require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[Annotated[int, Field(le=6.0)]] = Field(
-        default=UNSET
-    )
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
     require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
         description="Whether the most recent push must be approved by someone other than the person who pushed it.",

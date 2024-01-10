@@ -25,7 +25,8 @@ from .group_0224 import Metadata
 class Dependency(GitHubModel):
     """Dependency"""
 
-    package_url: Missing[Annotated[str, Field(pattern="^pkg")]] = Field(
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
         default=UNSET,
         description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
     )

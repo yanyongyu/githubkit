@@ -23,9 +23,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
     """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    pat_request_ids: Missing[
-        Annotated[List[int], Field(max_length=100, min_length=1)]
-    ] = Field(
+    pat_request_ids: Missing[List[int]] = Field(
+        max_length=100,
+        min_length=1,
         default=UNSET,
         description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
     )

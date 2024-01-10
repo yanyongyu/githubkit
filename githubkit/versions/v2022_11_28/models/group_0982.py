@@ -23,13 +23,15 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
     """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    commit_sha: Annotated[
-        str, Field(min_length=40, max_length=40, pattern="^[0-9a-fA-F]+$")
-    ] = Field(
-        description="The SHA of the commit to which the analysis you are uploading relates."
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=40,
+        pattern="^[0-9a-fA-F]+$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
     )
-    ref: Annotated[str, Field(pattern="^refs/(heads|tags|pull)/.*$")] = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`."
+    ref: str = Field(
+        pattern="^refs/(heads|tags|pull)/.*$",
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
     )
     sarif: str = Field(
         description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/code-security/secure-coding/sarif-support-for-code-scanning)."'

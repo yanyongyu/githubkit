@@ -27,8 +27,10 @@ class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
     runner_group_id: int = Field(
         description="The ID of the runner group to register the runner to."
     )
-    labels: Annotated[List[str], Field(max_length=100, min_length=1)] = Field(
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100."
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
     )
     work_folder: Missing[str] = Field(
         default=UNSET,

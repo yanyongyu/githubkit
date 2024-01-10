@@ -20,9 +20,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class GistsGistIdCommentsPostBody(GitHubModel):
     """GistsGistIdCommentsPostBody"""
 
-    body: Annotated[str, Field(max_length=65535)] = Field(
-        description="The comment text."
-    )
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
 model_rebuild(GistsGistIdCommentsPostBody)

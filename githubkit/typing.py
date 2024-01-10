@@ -64,4 +64,4 @@ else:  # pragma: pydantic-v1
 
 # if the property is not required, we allow it to have the value null.
 # See https://github.com/yanyongyu/githubkit/issues/47
-Missing: TypeAlias = Annotated[Union[Literal[UNSET], T, None], Field(default=UNSET)]
+Missing: TypeAlias = Union[Literal[UNSET], T, None]

@@ -22,8 +22,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
     """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    position: Annotated[str, Field(pattern="^(?:top|bottom|after:\\d+)$")] = Field(
-        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card."
+    position: str = Field(
+        pattern="^(?:top|bottom|after:\\d+)$",
+        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
     )
     column_id: Missing[int] = Field(
         default=UNSET,

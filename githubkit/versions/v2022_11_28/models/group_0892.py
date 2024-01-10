@@ -25,9 +25,11 @@ from .group_0091 import OrgCustomProperty
 class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
     """OrgsOrgPropertiesSchemaPatchBody"""
 
-    properties: Annotated[
-        List[OrgCustomProperty], Field(max_length=100, min_length=1)
-    ] = Field(description="The array of custom properties to create or update.")
+    properties: List[OrgCustomProperty] = Field(
+        max_length=100,
+        min_length=1,
+        description="The array of custom properties to create or update.",
+    )
 
 
 model_rebuild(OrgsOrgPropertiesSchemaPatchBody)

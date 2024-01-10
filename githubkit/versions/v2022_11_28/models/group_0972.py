@@ -29,19 +29,19 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubModel):
     """
 
     title: str = Field(description="The title of the check run.")
-    summary: Annotated[str, Field(max_length=65535)] = Field(
-        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters."
+    summary: str = Field(
+        max_length=65535,
+        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
     )
-    text: Missing[Annotated[str, Field(max_length=65535)]] = Field(
+    text: Missing[str] = Field(
+        max_length=65535,
         default=UNSET,
         description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
     )
     annotations: Missing[
-        Annotated[
-            List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems],
-            Field(max_length=50),
-        ]
+        List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
     ] = Field(
+        max_length=50,
         default=UNSET,
         description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)".',
     )
@@ -100,14 +100,17 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubModel):
 class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubModel):
     """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
 
-    label: Annotated[str, Field(max_length=20)] = Field(
-        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters."
+    label: str = Field(
+        max_length=20,
+        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
     )
-    description: Annotated[str, Field(max_length=40)] = Field(
-        description="A short explanation of what this action would do. The maximum size is 40 characters."
+    description: str = Field(
+        max_length=40,
+        description="A short explanation of what this action would do. The maximum size is 40 characters.",
     )
-    identifier: Annotated[str, Field(max_length=20)] = Field(
-        description="A reference for the action on the integrator's system. The maximum size is 20 characters."
+    identifier: str = Field(
+        max_length=20,
+        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
     )
 
 

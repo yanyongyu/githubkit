@@ -23,11 +23,12 @@ from githubkit.compat import GitHubModel, model_rebuild
 class PrivateVulnerabilityReportCreate(GitHubModel):
     """PrivateVulnerabilityReportCreate"""
 
-    summary: Annotated[str, Field(max_length=1024)] = Field(
-        description="A short summary of the advisory."
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
     )
-    description: Annotated[str, Field(max_length=65535)] = Field(
-        description="A detailed description of what the advisory impacts."
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
     )
     vulnerabilities: Missing[
         Union[List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItems], None]

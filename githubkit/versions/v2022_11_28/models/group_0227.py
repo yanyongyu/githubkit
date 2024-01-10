@@ -32,11 +32,14 @@ class Snapshot(GitHubModel):
         description="The version of the repository snapshot submission."
     )
     job: SnapshotPropJob = Field()
-    sha: Annotated[str, Field(min_length=40, max_length=40)] = Field(
-        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters."
+    sha: str = Field(
+        min_length=40,
+        max_length=40,
+        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters.",
     )
-    ref: Annotated[str, Field(pattern="^refs/")] = Field(
-        description="The repository branch that triggered this snapshot."
+    ref: str = Field(
+        pattern="^refs/",
+        description="The repository branch that triggered this snapshot.",
     )
     detector: SnapshotPropDetector = Field(
         description="A description of the detector used."

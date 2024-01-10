@@ -24,8 +24,10 @@ class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
     action: Literal["revoke"] = Field(
         description="Action to apply to the fine-grained personal access token."
     )
-    pat_ids: Annotated[List[int], Field(max_length=100, min_length=1)] = Field(
-        description="The IDs of the fine-grained personal access tokens."
+    pat_ids: List[int] = Field(
+        max_length=100,
+        min_length=1,
+        description="The IDs of the fine-grained personal access tokens.",
     )
 
 

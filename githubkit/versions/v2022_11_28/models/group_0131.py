@@ -37,8 +37,8 @@ class RepositoryAdvisory(GitHubModel):
     )
     url: str = Field(description="The API URL for the advisory.")
     html_url: str = Field(description="The URL for the advisory.")
-    summary: Annotated[str, Field(max_length=1024)] = Field(
-        description="A short summary of the advisory."
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
     )
     description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
         description="A detailed description of what the advisory entails."

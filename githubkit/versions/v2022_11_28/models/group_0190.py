@@ -29,10 +29,11 @@ class CodeScanningAnalysis(GitHubModel):
     ref: str = Field(
         description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`."
     )
-    commit_sha: Annotated[
-        str, Field(min_length=40, max_length=40, pattern="^[0-9a-fA-F]+$")
-    ] = Field(
-        description="The SHA of the commit to which the analysis you are uploading relates."
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=40,
+        pattern="^[0-9a-fA-F]+$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
     )
     analysis_key: str = Field(
         description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."

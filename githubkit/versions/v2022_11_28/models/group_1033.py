@@ -24,11 +24,8 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
     labels: Missing[
-        Annotated[
-            List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems],
-            Field(min_length=1),
-        ]
-    ] = Field(default=UNSET)
+        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1, default=UNSET)
 
 
 class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):

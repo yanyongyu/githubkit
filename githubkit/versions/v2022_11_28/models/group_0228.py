@@ -37,8 +37,8 @@ class DeploymentStatus(GitHubModel):
         "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
     ] = Field(description="The state of the status.")
     creator: Union[None, SimpleUser] = Field()
-    description: Annotated[str, Field(max_length=140)] = Field(
-        default="", description="A short description of the status."
+    description: str = Field(
+        max_length=140, default="", description="A short description of the status."
     )
     environment: Missing[str] = Field(
         default=UNSET,

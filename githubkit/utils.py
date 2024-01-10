@@ -3,7 +3,6 @@ from enum import Enum
 from typing import Any, Dict, Type, Generic, Literal, TypeVar, final
 
 from pydantic import BaseModel
-from pydantic_core import to_jsonable_python
 
 from .compat import PYDANTIC_V2, custom_validation, type_validate_python
 
@@ -67,20 +66,6 @@ def is_async(obj: Any) -> bool:
         return False
     func_ = getattr(obj, "__call__", None)
     return inspect.iscoroutinefunction(func_)
-
-
-# FIXME: remove pydantic-core dependency
-def obj_to_jsonable(obj: Any) -> Any:
-    if isinstance(obj, dict):
-        return {k: obj_to_jsonable(v) for k, v in obj.items()}
-
-    if isinstance(obj, (list, tuple)):
-        return [obj_to_jsonable(item) for item in obj]
-
-    if obj is None or isinstance(obj, (int, float, str, bool)):
-        return obj
-
-    return to_jsonable_python(obj)
 
 
 class TaggedUnion(Generic[T]):

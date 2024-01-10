@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "githubkit-pydantic-v1"
+version = "0.1.0"
+description = "Private pydantic v1 test env for githubkit"
+authors = ["yanyongyu <yyy@yyydl.top>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.group.dev.dependencies]
+pydantic = "^1.0.0"
+githubkit-test = { path = "../test/", develop = false }
+githubkit = { path = "../../", extras = ["all"], develop = true }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

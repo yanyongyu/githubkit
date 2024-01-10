@@ -33,9 +33,7 @@ class GitRefPropObject(GitHubModel):
     """GitRefPropObject"""
 
     type: str = Field()
-    sha: Annotated[str, Field(min_length=40, max_length=40)] = Field(
-        description="SHA for the reference"
-    )
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
     url: str = Field()
 
 

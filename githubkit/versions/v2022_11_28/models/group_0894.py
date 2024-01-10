@@ -23,8 +23,10 @@ from .group_0092 import CustomPropertyValue
 class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
     """OrgsOrgPropertiesValuesPatchBody"""
 
-    repository_names: Annotated[List[str], Field(max_length=30, min_length=1)] = Field(
-        description="The names of repositories that the custom property values will be applied to."
+    repository_names: List[str] = Field(
+        max_length=30,
+        min_length=1,
+        description="The names of repositories that the custom property values will be applied to.",
     )
     properties: List[CustomPropertyValue] = Field(
         description="List of custom property names and associated values to apply to the repositories."

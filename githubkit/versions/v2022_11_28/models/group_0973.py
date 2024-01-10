@@ -65,11 +65,8 @@ class ReposOwnerRepoCheckRunsPostBodyOneof0(ExtraGitHubModel):
         default=UNSET,
         description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
     )
-    actions: Missing[
-        Annotated[
-            List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems], Field(max_length=3)
-        ]
-    ] = Field(
+    actions: Missing[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]] = Field(
+        max_length=3,
         default=UNSET,
         description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
     )

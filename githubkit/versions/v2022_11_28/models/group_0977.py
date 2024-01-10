@@ -69,11 +69,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(ExtraGitHubModel):
         description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
     )
     actions: Missing[
-        Annotated[
-            List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems],
-            Field(max_length=3),
-        ]
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
     ] = Field(
+        max_length=3,
         default=UNSET,
         description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
     )
