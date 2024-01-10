@@ -72,6 +72,8 @@ poetry add githubkit[auth-oauth-device]
 pdm add githubkit[auth-oauth-device]
 ```
 
+githubkit supports **both pydantic v1 and v2**, but pydantic v2 is recommended. If you have encountered any problems with pydantic v1/v2, please file an issue.
+
 ## Usage
 
 ### Authentication
@@ -357,13 +359,20 @@ from githubkit.webhooks import parse
 event = parse(request.headers["X-GitHub-Event"], request.body)
 ```
 
-(NOT RECOMMENDED) Parse the payload without event name (may cost longer time and more memory):
+(**NOT RECOMMENDED**) Parse the payload without event name (may cost longer time and more memory):
 
 ```python
 from githubkit.webhooks import parse_without_name
 
 event = parse_without_name(request.body)
 ```
+
+> [!WARNING]
+> The `parse_without_name` function will try to parse the payload with all supported event names.
+> The behavior of this function is not the same between pydantic v1 and v2.
+> When using pydantic v1, the function will return the first valid event model (known as `left-to-right` mode).
+> When using pydantic v2, the function will return the highest scored valid event model (known as `smart` mode).
+> See: [Union Modes](https://docs.pydantic.dev/latest/concepts/unions/#union-modes).
 
 Parse dict like payload:
 
@@ -429,7 +438,7 @@ Run tests in dev env:
 ./scripts/run-tests.sh
 ```
 
-Run tests in test env:
+Run tests in test envs, for example:
 
 ```bash
 cd ./envs/pydantic-v2/
