@@ -1,3 +1,4 @@
+from asyncio import Event, BoundedSemaphore, sleep
 from types import TracebackType
 from contextvars import ContextVar
 from datetime import datetime, timezone, timedelta
@@ -33,6 +34,7 @@ from .typing import (
     QueryParamTypes,
 )
 from .exception import (
+    RateLimitExceeded,
     RequestError,
     RequestFailed,
     RequestTimeout,
@@ -135,6 +137,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
+        max_nr_concurrent_requests: int = 100,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -150,6 +153,11 @@ class GitHubCore(Generic[A]):
             timeout,
             http_cache,
         )
+
+        self.rate_limit_free = Event()
+        self.rate_limit_free.set()
+
+        self.concurrent_request_semaphore = BoundedSemaphore(max_nr_concurrent_requests)
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
             "sync_client", default=None
@@ -435,16 +443,51 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
+        retry_attempt_nr: int = 0,
     ) -> Response[T]:
-        raw_resp = await self._arequest(
-            method,
-            url,
-            params=params,
-            content=content,
-            data=data,
-            files=files,
-            json=json,
-            headers=headers,
-            cookies=cookies,
-        )
-        return self._check(raw_resp, response_model, error_models)
+        # limit the number of concurrent requests.
+        async with self.concurrent_request_semaphore:
+            # only continue if no rate limit active.
+            await self.rate_limit_free.wait()
+            try:
+                raw_resp = await self._arequest(
+                    method,
+                    url,
+                    params=params,
+                    content=content,
+                    data=data,
+                    files=files,
+                    json=json,
+                    headers=headers,
+                    cookies=cookies,
+                )
+                return self._check(raw_resp, response_model, error_models)
+            except RateLimitExceeded as error:
+                # block all new requests and try again.
+                if retry_attempt_nr > 3:
+                    raise error
+
+                start_time = datetime.now()
+                rate_limit_duration = error.retry_after
+
+                # print(f"retry request for {url} after {rate_limit_duration} seconds.")
+                print(f"Started rate limit timer  at {start_time} for {rate_limit_duration} seconds.")
+                self.rate_limit_free.clear()
+                await sleep(error.retry_after.seconds)
+                self.rate_limit_free.set()
+                print(f"rate limit that started at {start_time} stopped at {datetime.now()}")
+
+                return await self.arequest(
+                    method,
+                    url,
+                    params=params,
+                    content=content,
+                    data=data,
+                    files=files,
+                    json=json,
+                    headers=headers,
+                    cookies=cookies,
+                    response_model=response_model,
+                    error_models=error_models,
+                    retry_attempt_nr=retry_attempt_nr + 1,
+                )
