@@ -478,8 +478,8 @@ class GitHubCore(Generic[A]):
                 if retry_attempt_nr > self.config.max_nr_rate_limit_retry_attempts:
                     raise error
 
-                start_time = datetime.now()
-                rate_limit_duration = error.retry_after
+                # start_time = datetime.now()
+                # rate_limit_duration = error.retry_after
 
                 # print(f"retry request for {url} after {rate_limit_duration} seconds.")
                 # print(
