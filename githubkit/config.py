@@ -80,5 +80,5 @@ def get_config(
         build_timeout(timeout),
         http_cache,
         max_nr_concurrent_requests,
-        max_nr_rate_limit_retry_attempts
+        max_nr_rate_limit_retry_attempts,
     )

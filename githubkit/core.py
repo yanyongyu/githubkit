@@ -160,13 +160,15 @@ class GitHubCore(Generic[A]):
             timeout,
             http_cache,
             max_nr_concurrent_requests,
-            max_nr_rate_limit_retry_attempts
+            max_nr_rate_limit_retry_attempts,
         )
 
         self.rate_limit_free = Event()
         self.rate_limit_free.set()
 
-        self.concurrent_request_semaphore = BoundedSemaphore(self.config.max_nr_concurrent_requests)
+        self.concurrent_request_semaphore = BoundedSemaphore(
+            self.config.max_nr_concurrent_requests
+        )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
             "sync_client", default=None
