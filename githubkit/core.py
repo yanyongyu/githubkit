@@ -1,6 +1,6 @@
-from asyncio import Event, BoundedSemaphore, sleep
 from types import TracebackType
 from contextvars import ContextVar
+from asyncio import Event, BoundedSemaphore, sleep
 from datetime import datetime, timezone, timedelta
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
@@ -34,10 +34,10 @@ from .typing import (
     QueryParamTypes,
 )
 from .exception import (
-    RateLimitExceeded,
     RequestError,
     RequestFailed,
     RequestTimeout,
+    RateLimitExceeded,
     PrimaryRateLimitExceeded,
     SecondaryRateLimitExceeded,
 )
@@ -471,11 +471,15 @@ class GitHubCore(Generic[A]):
                 rate_limit_duration = error.retry_after
 
                 # print(f"retry request for {url} after {rate_limit_duration} seconds.")
-                print(f"Started rate limit timer  at {start_time} for {rate_limit_duration} seconds.")
+                print(
+                    f"Started rate limit timer  at {start_time} for {rate_limit_duration} seconds."
+                )
                 self.rate_limit_free.clear()
                 await sleep(error.retry_after.seconds)
                 self.rate_limit_free.set()
-                print(f"rate limit that started at {start_time} stopped at {datetime.now()}")
+                print(
+                    f"rate limit that started at {start_time} stopped at {datetime.now()}"
+                )
 
                 return await self.arequest(
                     method,
