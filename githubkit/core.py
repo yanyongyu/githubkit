@@ -2,8 +2,8 @@ import logging
 from time import sleep
 from types import TracebackType
 from contextvars import ContextVar
-from asyncio import Event, BoundedSemaphore
 from asyncio import sleep as asleep
+from asyncio import Event, BoundedSemaphore
 from datetime import datetime, timezone, timedelta
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
@@ -450,8 +450,10 @@ class GitHubCore(Generic[A]):
 
             start_time = datetime.now()
             rate_limit_duration = error.retry_after
-            logging.warning(f"Encountered a rate limit for request for {url} at {start_time}; "
-                         f"not sending new request for {rate_limit_duration} seconds.")
+            logging.warning(
+                f"Encountered a rate limit for request for {url} at {start_time}; "
+                f"not sending new request for {rate_limit_duration} seconds."
+            )
 
             sleep(error.retry_after.seconds)
 
@@ -467,7 +469,7 @@ class GitHubCore(Generic[A]):
                 cookies=cookies,
                 response_model=response_model,
                 error_models=error_models,
-                retry_attempt_nr=retry_attempt_nr + 1
+                retry_attempt_nr=retry_attempt_nr + 1,
             )
 
     # async request and check
