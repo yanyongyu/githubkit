@@ -1,3 +1,4 @@
+import logging
 from types import TracebackType
 from contextvars import ContextVar
 from asyncio import Event, BoundedSemaphore, sleep
@@ -478,21 +479,19 @@ class GitHubCore(Generic[A]):
                 if retry_attempt_nr > self.config.max_nr_rate_limit_retry_attempts:
                     raise error
 
-                # start_time = datetime.now()
-                # rate_limit_duration = error.retry_after
+                start_time = datetime.now()
+                rate_limit_duration = error.retry_after
 
-                # print(f"retry request for {url} after {rate_limit_duration} seconds.")
-                # print(
-                #     f"Started rate limit timer  at {start_time} for
-                #     {rate_limit_duration} seconds."
-                # )
+                logging.info(f"Encountered a rate limit for request for {url}.")
+                logging.info(
+                    f"Starting rate limit at {start_time}; not sending new request for {rate_limit_duration} seconds."
+                )
                 self.rate_limit_free.clear()
                 await sleep(error.retry_after.seconds)
                 self.rate_limit_free.set()
-                # print(
-                #     f"rate limit that started at {start_time} stopped
-                #     at {datetime.now()}"
-                # )
+                logging.info(
+                    f"Rate limit that started at {start_time} is stopped at {datetime.now()}."
+                )
 
                 return await self.arequest(
                     method,
