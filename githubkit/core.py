@@ -450,7 +450,7 @@ class GitHubCore(Generic[A]):
 
             start_time = datetime.now()
             rate_limit_duration = error.retry_after
-            logging.info(f"Encountered a rate limit for request for {url} at {start_time}; "
+            logging.warning(f"Encountered a rate limit for request for {url} at {start_time}; "
                          f"not sending new request for {rate_limit_duration} seconds.")
 
             sleep(error.retry_after.seconds)
@@ -512,14 +512,14 @@ class GitHubCore(Generic[A]):
                 start_time = datetime.now()
                 rate_limit_duration = error.retry_after
 
-                logging.info(f"Encountered a rate limit for request for {url}.")
-                logging.info(
+                logging.warning(f"Encountered a rate limit for request for {url}.")
+                logging.warning(
                     f"Starting rate limit at {start_time}; not sending new request for {rate_limit_duration} seconds."
                 )
                 self.rate_limit_free.clear()
                 await asleep(error.retry_after.seconds)
                 self.rate_limit_free.set()
-                logging.info(
+                logging.warning(
                     f"Rate limit that started at {start_time} is stopped at {datetime.now()}."
                 )
 
