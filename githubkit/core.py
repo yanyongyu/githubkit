@@ -1,7 +1,9 @@
 import logging
+from time import sleep
 from types import TracebackType
 from contextvars import ContextVar
-from asyncio import Event, BoundedSemaphore, sleep
+from asyncio import Event, BoundedSemaphore
+from asyncio import sleep as asleep
 from datetime import datetime, timezone, timedelta
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
@@ -426,19 +428,47 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
+        retry_attempt_nr: int = 0,
     ) -> Response[T]:
-        raw_resp = self._request(
-            method,
-            url,
-            params=params,
-            content=content,
-            data=data,
-            files=files,
-            json=json,
-            headers=headers,
-            cookies=cookies,
-        )
-        return self._check(raw_resp, response_model, error_models)
+        try:
+            raw_resp = self._request(
+                method,
+                url,
+                params=params,
+                content=content,
+                data=data,
+                files=files,
+                json=json,
+                headers=headers,
+                cookies=cookies,
+            )
+            return self._check(raw_resp, response_model, error_models)
+        except RateLimitExceeded as error:
+            # try again.
+            if retry_attempt_nr > self.config.max_nr_rate_limit_retry_attempts:
+                raise error
+
+            start_time = datetime.now()
+            rate_limit_duration = error.retry_after
+            logging.info(f"Encountered a rate limit for request for {url} at {start_time}; "
+                         f"not sending new request for {rate_limit_duration} seconds.")
+
+            sleep(error.retry_after.seconds)
+
+            return self.request(
+                method,
+                url,
+                params=params,
+                content=content,
+                data=data,
+                files=files,
+                json=json,
+                headers=headers,
+                cookies=cookies,
+                response_model=response_model,
+                error_models=error_models,
+                retry_attempt_nr=retry_attempt_nr + 1
+            )
 
     # async request and check
     async def arequest(
@@ -487,7 +517,7 @@ class GitHubCore(Generic[A]):
                     f"Starting rate limit at {start_time}; not sending new request for {rate_limit_duration} seconds."
                 )
                 self.rate_limit_free.clear()
-                await sleep(error.retry_after.seconds)
+                await asleep(error.retry_after.seconds)
                 self.rate_limit_free.set()
                 logging.info(
                     f"Rate limit that started at {start_time} is stopped at {datetime.now()}."
