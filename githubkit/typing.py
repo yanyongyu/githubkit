@@ -1,11 +1,25 @@
+from datetime import timedelta
 from typing_extensions import Annotated, TypeAlias
-from typing import IO, Dict, List, Tuple, Union, Literal, TypeVar, Hashable, Optional
+from typing import (
+    IO,
+    Dict,
+    List,
+    Tuple,
+    Union,
+    Literal,
+    TypeVar,
+    Callable,
+    Hashable,
+    Optional,
+    NamedTuple,
+)
 
 import httpx
 from pydantic import Field
 
 from .utils import UNSET
 from .compat import PYDANTIC_V2
+from .exception import GitHubException
 
 T = TypeVar("T")
 H = TypeVar("H", bound=Hashable)
@@ -65,3 +79,11 @@ else:  # pragma: pydantic-v1
 # if the property is not required, we allow it to have the value null.
 # See https://github.com/yanyongyu/githubkit/issues/47
 Missing: TypeAlias = Union[Literal[UNSET], T, None]
+
+
+class RetryOption(NamedTuple):
+    do_retry: bool
+    retry_after: Optional[timedelta] = None
+
+
+RetryHandler: TypeAlias = Callable[[GitHubException, int], RetryOption]

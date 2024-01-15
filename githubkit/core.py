@@ -1,9 +1,6 @@
-import logging
-from time import sleep
+import time
 from types import TracebackType
 from contextvars import ContextVar
-from asyncio import sleep as asleep
-from asyncio import Event, BoundedSemaphore
 from datetime import datetime, timezone, timedelta
 from contextlib import contextmanager, asynccontextmanager
 from typing import (
@@ -21,9 +18,11 @@ from typing import (
     overload,
 )
 
+import anyio
 import httpx
 import hishel
 
+from .log import logger
 from .response import Response
 from .compat import to_jsonable_python
 from .config import Config, get_config
@@ -32,14 +31,17 @@ from .typing import (
     URLTypes,
     CookieTypes,
     HeaderTypes,
+    RetryOption,
     ContentTypes,
     RequestFiles,
+    RetryHandler,
     QueryParamTypes,
 )
 from .exception import (
     RequestError,
     RequestFailed,
     RequestTimeout,
+    GitHubException,
     RateLimitExceeded,
     PrimaryRateLimitExceeded,
     SecondaryRateLimitExceeded,
@@ -93,8 +95,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        max_nr_concurrent_requests: int = 100,
-        max_nr_rate_limit_retry_attempts: int = 3,
+        auto_retry: Union[bool, RetryHandler] = True,
     ):
         ...
 
@@ -111,8 +112,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        max_nr_concurrent_requests: int = 100,
-        max_nr_rate_limit_retry_attempts: int = 3,
+        auto_retry: Union[bool, RetryHandler] = True,
     ):
         ...
 
@@ -129,8 +129,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        max_nr_concurrent_requests: int = 100,
-        max_nr_rate_limit_retry_attempts: int = 3,
+        auto_retry: Union[bool, RetryHandler] = True,
     ):
         ...
 
@@ -146,8 +145,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        max_nr_concurrent_requests: int = 100,
-        max_nr_rate_limit_retry_attempts: int = 3,
+        auto_retry: Union[bool, RetryHandler] = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -162,15 +160,7 @@ class GitHubCore(Generic[A]):
             follow_redirects,
             timeout,
             http_cache,
-            max_nr_concurrent_requests,
-            max_nr_rate_limit_retry_attempts,
-        )
-
-        self.rate_limit_free = Event()
-        self.rate_limit_free.set()
-
-        self.concurrent_request_semaphore = BoundedSemaphore(
-            self.config.max_nr_concurrent_requests
+            auto_retry,
         )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
@@ -413,6 +403,33 @@ class GitHubCore(Generic[A]):
             # wait for at least one minute before retrying
             return timedelta(seconds=60)
 
+    def _handle_retry(self, exc: GitHubException, retry_count: int) -> RetryOption:
+        # retry once for rate limit exceeded
+        # https://github.com/octokit/octokit.js/blob/450c662e4f29b63a6dbe7592ba5ef53d5fa01d88/src/octokit.ts#L34-L65
+        if retry_count < 1 and isinstance(exc, RateLimitExceeded):
+            logger.warning(
+                f"{exc.__class__.__name__} for request "
+                f"{exc.request.method} {exc.request.url}",
+                exc_info=exc,
+            )
+            return RetryOption(True, exc.retry_after)
+
+        # retry three times for server error
+        # https://github.com/octokit/plugin-retry.js/blob/3b9897a58d8b2c37cfba6a8df78e4619d346098a/src/error-request.ts#L11-L14
+        if (
+            retry_count < 3
+            and isinstance(exc, RequestFailed)
+            and exc.response.status_code >= 500
+        ):
+            logger.warning(
+                f"Server error encountered for request "
+                f"{exc.request.method} {exc.request.url}",
+                exc_info=exc,
+            )
+            return RetryOption(True, timedelta(seconds=(retry_count + 1) ** 2))
+
+        return RetryOption(False)
+
     # sync request and check
     def request(
         self,
@@ -428,49 +445,35 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
-        retry_attempt_nr: int = 0,
     ) -> Response[T]:
-        try:
-            raw_resp = self._request(
-                method,
-                url,
-                params=params,
-                content=content,
-                data=data,
-                files=files,
-                json=json,
-                headers=headers,
-                cookies=cookies,
-            )
-            return self._check(raw_resp, response_model, error_models)
-        except RateLimitExceeded as error:
-            # try again.
-            if retry_attempt_nr > self.config.max_nr_rate_limit_retry_attempts:
-                raise error
+        retry_count: int = 0
+        while True:
+            try:
+                raw_resp = self._request(
+                    method,
+                    url,
+                    params=params,
+                    content=content,
+                    data=data,
+                    files=files,
+                    json=json,
+                    headers=headers,
+                    cookies=cookies,
+                )
+                return self._check(raw_resp, response_model, error_models)
+            except GitHubException as e:
+                if self.config.auto_retry is False:
+                    raise
+                elif self.config.auto_retry is True:
+                    do_retry, retry_after = self._handle_retry(e, retry_count)
+                else:
+                    do_retry, retry_after = self.config.auto_retry(e, retry_count)
 
-            start_time = datetime.now()
-            rate_limit_duration = error.retry_after
-            logging.warning(
-                f"Encountered a rate limit for request for {url} at {start_time}; "
-                f"not sending new request for {rate_limit_duration} seconds."
-            )
+                if not do_retry:
+                    raise
 
-            sleep(error.retry_after.seconds)
-
-            return self.request(
-                method,
-                url,
-                params=params,
-                content=content,
-                data=data,
-                files=files,
-                json=json,
-                headers=headers,
-                cookies=cookies,
-                response_model=response_model,
-                error_models=error_models,
-                retry_attempt_nr=retry_attempt_nr + 1,
-            )
+                time.sleep(retry_after.total_seconds() if retry_after else 60)
+                retry_count += 1
 
     # async request and check
     async def arequest(
@@ -487,12 +490,9 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
-        retry_attempt_nr: int = 0,
     ) -> Response[T]:
-        # limit the number of concurrent requests.
-        async with self.concurrent_request_semaphore:
-            # only continue if no rate limit active.
-            await self.rate_limit_free.wait()
+        retry_count: int = 0
+        while True:
             try:
                 raw_resp = await self._arequest(
                     method,
@@ -506,36 +506,16 @@ class GitHubCore(Generic[A]):
                     cookies=cookies,
                 )
                 return self._check(raw_resp, response_model, error_models)
-            except RateLimitExceeded as error:
-                # block all new requests and try again.
-                if retry_attempt_nr > self.config.max_nr_rate_limit_retry_attempts:
-                    raise error
+            except GitHubException as e:
+                if self.config.auto_retry is False:
+                    raise
+                elif self.config.auto_retry is True:
+                    do_retry, retry_after = self._handle_retry(e, retry_count)
+                else:
+                    do_retry, retry_after = self.config.auto_retry(e, retry_count)
 
-                start_time = datetime.now()
-                rate_limit_duration = error.retry_after
+                if not do_retry:
+                    raise
 
-                logging.warning(f"Encountered a rate limit for request for {url}.")
-                logging.warning(
-                    f"Starting rate limit at {start_time}; not sending new request for {rate_limit_duration} seconds."
-                )
-                self.rate_limit_free.clear()
-                await asleep(error.retry_after.seconds)
-                self.rate_limit_free.set()
-                logging.warning(
-                    f"Rate limit that started at {start_time} is stopped at {datetime.now()}."
-                )
-
-                return await self.arequest(
-                    method,
-                    url,
-                    params=params,
-                    content=content,
-                    data=data,
-                    files=files,
-                    json=json,
-                    headers=headers,
-                    cookies=cookies,
-                    response_model=response_model,
-                    error_models=error_models,
-                    retry_attempt_nr=retry_attempt_nr + 1,
-                )
+                await anyio.sleep(retry_after.total_seconds() if retry_after else 60)
+                retry_count += 1

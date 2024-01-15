@@ -4,6 +4,8 @@ from typing import Any, Dict, List, Union, Optional
 
 import httpx
 
+from .typing import RetryHandler
+
 
 @dataclass(frozen=True)
 class Config:
@@ -13,8 +15,7 @@ class Config:
     follow_redirects: bool
     timeout: httpx.Timeout
     http_cache: bool
-    max_nr_concurrent_requests: int
-    max_nr_rate_limit_retry_attempts: int
+    auto_retry: Union[bool, RetryHandler]
 
     def dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -69,8 +70,7 @@ def get_config(
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,
     http_cache: bool = True,
-    max_nr_concurrent_requests: int = 100,
-    max_nr_rate_limit_retry_attempts: int = 3,
+    auto_retry: Union[bool, RetryHandler] = True,
 ) -> Config:
     return Config(
         build_base_url(base_url),
@@ -79,6 +79,5 @@ def get_config(
         follow_redirects,
         build_timeout(timeout),
         http_cache,
-        max_nr_concurrent_requests,
-        max_nr_rate_limit_retry_attempts,
+        auto_retry,
     )
