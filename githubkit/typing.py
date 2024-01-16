@@ -86,4 +86,4 @@ class RetryOption(NamedTuple):
     retry_after: Optional[timedelta] = None
 
 
-RetryHandler: TypeAlias = Callable[[GitHubException, int], RetryOption]
+RetryDecisionFunc: TypeAlias = Callable[[GitHubException, int], RetryOption]

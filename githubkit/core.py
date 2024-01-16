@@ -22,7 +22,6 @@ import anyio
 import httpx
 import hishel
 
-from .log import logger
 from .response import Response
 from .compat import to_jsonable_python
 from .config import Config, get_config
@@ -31,18 +30,16 @@ from .typing import (
     URLTypes,
     CookieTypes,
     HeaderTypes,
-    RetryOption,
     ContentTypes,
     RequestFiles,
-    RetryHandler,
     QueryParamTypes,
+    RetryDecisionFunc,
 )
 from .exception import (
     RequestError,
     RequestFailed,
     RequestTimeout,
     GitHubException,
-    RateLimitExceeded,
     PrimaryRateLimitExceeded,
     SecondaryRateLimitExceeded,
 )
@@ -95,7 +92,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        auto_retry: Union[bool, RetryHandler] = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         ...
 
@@ -112,7 +109,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        auto_retry: Union[bool, RetryHandler] = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         ...
 
@@ -129,7 +126,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        auto_retry: Union[bool, RetryHandler] = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         ...
 
@@ -145,7 +142,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
-        auto_retry: Union[bool, RetryHandler] = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -403,33 +400,6 @@ class GitHubCore(Generic[A]):
             # wait for at least one minute before retrying
             return timedelta(seconds=60)
 
-    def _handle_retry(self, exc: GitHubException, retry_count: int) -> RetryOption:
-        # retry once for rate limit exceeded
-        # https://github.com/octokit/octokit.js/blob/450c662e4f29b63a6dbe7592ba5ef53d5fa01d88/src/octokit.ts#L34-L65
-        if retry_count < 1 and isinstance(exc, RateLimitExceeded):
-            logger.warning(
-                f"{exc.__class__.__name__} for request "
-                f"{exc.request.method} {exc.request.url}",
-                exc_info=exc,
-            )
-            return RetryOption(True, exc.retry_after)
-
-        # retry three times for server error
-        # https://github.com/octokit/plugin-retry.js/blob/3b9897a58d8b2c37cfba6a8df78e4619d346098a/src/error-request.ts#L11-L14
-        if (
-            retry_count < 3
-            and isinstance(exc, RequestFailed)
-            and exc.response.status_code >= 500
-        ):
-            logger.warning(
-                f"Server error encountered for request "
-                f"{exc.request.method} {exc.request.url}",
-                exc_info=exc,
-            )
-            return RetryOption(True, timedelta(seconds=(retry_count + 1) ** 2))
-
-        return RetryOption(False)
-
     # sync request and check
     def request(
         self,
@@ -462,10 +432,8 @@ class GitHubCore(Generic[A]):
                 )
                 return self._check(raw_resp, response_model, error_models)
             except GitHubException as e:
-                if self.config.auto_retry is False:
+                if self.config.auto_retry is None:
                     raise
-                elif self.config.auto_retry is True:
-                    do_retry, retry_after = self._handle_retry(e, retry_count)
                 else:
                     do_retry, retry_after = self.config.auto_retry(e, retry_count)
 
@@ -507,10 +475,8 @@ class GitHubCore(Generic[A]):
                 )
                 return self._check(raw_resp, response_model, error_models)
             except GitHubException as e:
-                if self.config.auto_retry is False:
+                if self.config.auto_retry is None:
                     raise
-                elif self.config.auto_retry is True:
-                    do_retry, retry_after = self._handle_retry(e, retry_count)
                 else:
                     do_retry, retry_after = self.config.auto_retry(e, retry_count)
 

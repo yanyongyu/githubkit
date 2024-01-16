@@ -16,8 +16,8 @@ from typing import (
 from .core import GitHubCore
 from .response import Response
 from .paginator import Paginator
-from .typing import RetryHandler
 from .auth import BaseAuthStrategy
+from .typing import RetryDecisionFunc
 from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
@@ -86,7 +86,7 @@ class GitHub(GitHubCore[A]):
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
-            auto_retry: Union[bool, RetryHandler] = True,
+            auto_retry: Union[bool, RetryDecisionFunc] = True,
         ):
             ...
 
@@ -103,7 +103,7 @@ class GitHub(GitHubCore[A]):
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
-            auto_retry: Union[bool, RetryHandler] = True,
+            auto_retry: Union[bool, RetryDecisionFunc] = True,
         ):
             ...
 
@@ -120,7 +120,7 @@ class GitHub(GitHubCore[A]):
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
-            auto_retry: Union[bool, RetryHandler] = True,
+            auto_retry: Union[bool, RetryDecisionFunc] = True,
         ):
             ...
 
