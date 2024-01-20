@@ -52,6 +52,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -77,6 +79,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -108,6 +112,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-packages-for-an-organization`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -147,6 +153,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-packages-for-an-organization`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -184,6 +192,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Package]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization`"""
+
         from ..models import Package
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
@@ -207,6 +217,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Package]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization`"""
+
         from ..models import Package
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
@@ -230,6 +242,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
@@ -257,6 +271,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}"
@@ -285,6 +301,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/restore"
@@ -318,6 +336,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/restore"
@@ -353,6 +373,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PackageVersion]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization`"""
+
         from typing import List
 
         from ..models import BasicError, PackageVersion
@@ -393,6 +415,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PackageVersion]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization`"""
+
         from typing import List
 
         from ..models import BasicError, PackageVersion
@@ -431,6 +455,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackageVersion]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization`"""
+
         from ..models import PackageVersion
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -455,6 +481,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackageVersion]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization`"""
+
         from ..models import PackageVersion
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -479,6 +507,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -507,6 +537,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -535,6 +567,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
@@ -563,6 +597,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization`"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
@@ -585,6 +621,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user`"""
+
         from typing import List
 
         from ..models import Package
@@ -605,6 +643,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user`"""
+
         from typing import List
 
         from ..models import Package
@@ -631,6 +671,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace`"""
+
         from typing import List
 
         from ..models import Package
@@ -666,6 +708,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace`"""
+
         from typing import List
 
         from ..models import Package
@@ -699,6 +743,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Package]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user`"""
+
         from ..models import Package
 
         url = f"/user/packages/{package_type}/{package_name}"
@@ -721,6 +767,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Package]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user`"""
+
         from ..models import Package
 
         url = f"/user/packages/{package_type}/{package_name}"
@@ -743,6 +791,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}"
@@ -769,6 +819,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}"
@@ -796,6 +848,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}/restore"
@@ -828,6 +882,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}/restore"
@@ -862,6 +918,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PackageVersion]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, PackageVersion
@@ -901,6 +959,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PackageVersion]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, PackageVersion
@@ -938,6 +998,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackageVersion]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user`"""
+
         from ..models import PackageVersion
 
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -961,6 +1023,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackageVersion]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user`"""
+
         from ..models import PackageVersion
 
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -984,6 +1048,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -1011,6 +1077,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -1038,6 +1106,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
@@ -1065,6 +1135,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
@@ -1088,6 +1160,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -1113,6 +1187,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -1144,6 +1220,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-packages-for-a-user`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -1183,6 +1261,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Package]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-packages-for-a-user`"""
+
         from typing import List
 
         from ..models import Package, BasicError
@@ -1220,6 +1300,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Package]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-for-a-user`"""
+
         from ..models import Package
 
         url = f"/users/{username}/packages/{package_type}/{package_name}"
@@ -1243,6 +1325,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Package]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-for-a-user`"""
+
         from ..models import Package
 
         url = f"/users/{username}/packages/{package_type}/{package_name}"
@@ -1266,6 +1350,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}"
@@ -1293,6 +1379,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}"
@@ -1321,6 +1409,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/restore"
@@ -1354,6 +1444,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/restore"
@@ -1386,6 +1478,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PackageVersion]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user`"""
+
         from typing import List
 
         from ..models import BasicError, PackageVersion
@@ -1416,6 +1510,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PackageVersion]]:
+        """see more: `https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user`"""
+
         from typing import List
 
         from ..models import BasicError, PackageVersion
@@ -1447,6 +1543,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackageVersion]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user`"""
+
         from ..models import PackageVersion
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -1471,6 +1569,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackageVersion]:
+        """see more: `https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user`"""
+
         from ..models import PackageVersion
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -1495,6 +1595,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -1523,6 +1625,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
@@ -1551,6 +1655,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
@@ -1579,6 +1685,8 @@ class PackagesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user`"""
+
         from ..models import BasicError
 
         url = f"/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"

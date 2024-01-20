@@ -59,6 +59,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ClassroomAssignment]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#get-an-assignment`"""
+
         from ..models import BasicError, ClassroomAssignment
 
         url = f"/assignments/{assignment_id}"
@@ -81,6 +83,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ClassroomAssignment]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#get-an-assignment`"""
+
         from ..models import BasicError, ClassroomAssignment
 
         url = f"/assignments/{assignment_id}"
@@ -105,6 +109,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ClassroomAcceptedAssignment]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment`"""
+
         from typing import List
 
         from ..models import ClassroomAcceptedAssignment
@@ -134,6 +140,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ClassroomAcceptedAssignment]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment`"""
+
         from typing import List
 
         from ..models import ClassroomAcceptedAssignment
@@ -161,6 +169,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ClassroomAssignmentGrade]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#get-assignment-grades`"""
+
         from typing import List
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -185,6 +195,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ClassroomAssignmentGrade]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#get-assignment-grades`"""
+
         from typing import List
 
         from ..models import BasicError, ClassroomAssignmentGrade
@@ -210,6 +222,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleClassroom]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#list-classrooms`"""
+
         from typing import List
 
         from ..models import SimpleClassroom
@@ -238,6 +252,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleClassroom]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#list-classrooms`"""
+
         from typing import List
 
         from ..models import SimpleClassroom
@@ -265,6 +281,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Classroom]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#get-a-classroom`"""
+
         from ..models import Classroom, BasicError
 
         url = f"/classrooms/{classroom_id}"
@@ -287,6 +305,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Classroom]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#get-a-classroom`"""
+
         from ..models import Classroom, BasicError
 
         url = f"/classrooms/{classroom_id}"
@@ -311,6 +331,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleClassroomAssignment]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#list-assignments-for-a-classroom`"""
+
         from typing import List
 
         from ..models import SimpleClassroomAssignment
@@ -340,6 +362,8 @@ class ClassroomClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleClassroomAssignment]]:
+        """see more: `https://docs.github.com/rest/classroom/classroom#list-assignments-for-a-classroom`"""
+
         from typing import List
 
         from ..models import SimpleClassroomAssignment

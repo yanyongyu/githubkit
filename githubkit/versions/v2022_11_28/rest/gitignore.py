@@ -49,6 +49,8 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[str]]:
+        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates`"""
+
         from typing import List
 
         url = "/gitignore/templates"
@@ -67,6 +69,8 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[str]]:
+        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates`"""
+
         from typing import List
 
         url = "/gitignore/templates"
@@ -86,6 +90,8 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitignoreTemplate]:
+        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template`"""
+
         from ..models import GitignoreTemplate
 
         url = f"/gitignore/templates/{name}"
@@ -105,6 +111,8 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitignoreTemplate]:
+        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template`"""
+
         from ..models import GitignoreTemplate
 
         url = f"/gitignore/templates/{name}"

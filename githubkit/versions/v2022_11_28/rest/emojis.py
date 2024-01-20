@@ -47,6 +47,8 @@ class EmojisClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmojisGetResponse200]:
+        """see more: `https://docs.github.com/rest/emojis/emojis#get-emojis`"""
+
         from ..models import EmojisGetResponse200
 
         url = "/emojis"
@@ -65,6 +67,8 @@ class EmojisClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmojisGetResponse200]:
+        """see more: `https://docs.github.com/rest/emojis/emojis#get-emojis`"""
+
         from ..models import EmojisGetResponse200
 
         url = "/emojis"

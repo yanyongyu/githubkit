@@ -73,6 +73,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events`"""
+
         from typing import List
 
         from ..models import (
@@ -109,6 +111,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events`"""
+
         from typing import List
 
         from ..models import (
@@ -143,6 +147,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Feed]:
+        """see more: `https://docs.github.com/rest/activity/feeds#get-feeds`"""
+
         from ..models import Feed
 
         url = "/feeds"
@@ -161,6 +167,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Feed]:
+        """see more: `https://docs.github.com/rest/activity/feeds#get-feeds`"""
+
         from ..models import Feed
 
         url = "/feeds"
@@ -183,6 +191,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories`"""
+
         from typing import List
 
         from ..models import Event, BasicError
@@ -217,6 +227,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories`"""
+
         from typing import List
 
         from ..models import Event, BasicError
@@ -253,6 +265,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Thread]]:
+        """see more: `https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Thread, BasicError, ValidationError
@@ -294,6 +308,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Thread]]:
+        """see more: `https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Thread, BasicError, ValidationError
@@ -351,6 +367,8 @@ class ActivityClient:
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202]:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-notifications-as-read`"""
+
         from ..models import (
             BasicError,
             NotificationsPutBody,
@@ -407,6 +425,8 @@ class ActivityClient:
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202]:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-notifications-as-read`"""
+
         from ..models import (
             BasicError,
             NotificationsPutBody,
@@ -442,6 +462,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Thread]:
+        """see more: `https://docs.github.com/rest/activity/notifications#get-a-thread`"""
+
         from ..models import Thread, BasicError
 
         url = f"/notifications/threads/{thread_id}"
@@ -465,6 +487,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Thread]:
+        """see more: `https://docs.github.com/rest/activity/notifications#get-a-thread`"""
+
         from ..models import Thread, BasicError
 
         url = f"/notifications/threads/{thread_id}"
@@ -488,6 +512,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done`"""
+
         url = f"/notifications/threads/{thread_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -504,6 +530,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done`"""
+
         url = f"/notifications/threads/{thread_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -520,6 +548,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read`"""
+
         from ..models import BasicError
 
         url = f"/notifications/threads/{thread_id}"
@@ -541,6 +571,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read`"""
+
         from ..models import BasicError
 
         url = f"/notifications/threads/{thread_id}"
@@ -562,6 +594,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ThreadSubscription]:
+        """see more: `https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user`"""
+
         from ..models import BasicError, ThreadSubscription
 
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -585,6 +619,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ThreadSubscription]:
+        """see more: `https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user`"""
+
         from ..models import BasicError, ThreadSubscription
 
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -631,6 +667,8 @@ class ActivityClient:
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription]:
+        """see more: `https://docs.github.com/rest/activity/notifications#set-a-thread-subscription`"""
+
         from ..models import (
             BasicError,
             ThreadSubscription,
@@ -691,6 +729,8 @@ class ActivityClient:
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription]:
+        """see more: `https://docs.github.com/rest/activity/notifications#set-a-thread-subscription`"""
+
         from ..models import (
             BasicError,
             ThreadSubscription,
@@ -728,6 +768,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription`"""
+
         from ..models import BasicError
 
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -750,6 +792,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription`"""
+
         from ..models import BasicError
 
         url = f"/notifications/threads/{thread_id}/subscription"
@@ -774,6 +818,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-organization-events`"""
+
         from typing import List
 
         from ..models import Event
@@ -803,6 +849,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-organization-events`"""
+
         from typing import List
 
         from ..models import Event
@@ -833,6 +881,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-repository-events`"""
+
         from typing import List
 
         from ..models import Event
@@ -863,6 +913,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-repository-events`"""
+
         from typing import List
 
         from ..models import Event
@@ -897,6 +949,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Thread]]:
+        """see more: `https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Thread
@@ -935,6 +989,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Thread]]:
+        """see more: `https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Thread
@@ -992,6 +1048,8 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-repository-notifications-as-read`"""
+
         from ..models import (
             ReposOwnerRepoNotificationsPutBody,
             ReposOwnerRepoNotificationsPutResponse202,
@@ -1048,6 +1106,8 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
+        """see more: `https://docs.github.com/rest/activity/notifications#mark-repository-notifications-as-read`"""
+
         from ..models import (
             ReposOwnerRepoNotificationsPutBody,
             ReposOwnerRepoNotificationsPutResponse202,
@@ -1081,6 +1141,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[List[SimpleUser], List[Stargazer]]]:
+        """see more: `https://docs.github.com/rest/activity/starring#list-stargazers`"""
+
         from typing import List, Union
 
         from ..models import Stargazer, SimpleUser, ValidationError
@@ -1114,6 +1176,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[List[SimpleUser], List[Stargazer]]]:
+        """see more: `https://docs.github.com/rest/activity/starring#list-stargazers`"""
+
         from typing import List, Union
 
         from ..models import Stargazer, SimpleUser, ValidationError
@@ -1147,6 +1211,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """see more: `https://docs.github.com/rest/activity/watching#list-watchers`"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -1177,6 +1243,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """see more: `https://docs.github.com/rest/activity/watching#list-watchers`"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -1205,6 +1273,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositorySubscription]:
+        """see more: `https://docs.github.com/rest/activity/watching#get-a-repository-subscription`"""
+
         from ..models import BasicError, RepositorySubscription
 
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1228,6 +1298,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositorySubscription]:
+        """see more: `https://docs.github.com/rest/activity/watching#get-a-repository-subscription`"""
+
         from ..models import BasicError, RepositorySubscription
 
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1277,6 +1349,8 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription]:
+        """see more: `https://docs.github.com/rest/activity/watching#set-a-repository-subscription`"""
+
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
 
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1331,6 +1405,8 @@ class ActivityClient:
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription]:
+        """see more: `https://docs.github.com/rest/activity/watching#set-a-repository-subscription`"""
+
         from ..models import RepositorySubscription, ReposOwnerRepoSubscriptionPutBody
 
         url = f"/repos/{owner}/{repo}/subscription"
@@ -1359,6 +1435,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/watching#delete-a-repository-subscription`"""
+
         url = f"/repos/{owner}/{repo}/subscription"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1376,6 +1454,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/watching#delete-a-repository-subscription`"""
+
         url = f"/repos/{owner}/{repo}/subscription"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1395,6 +1475,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Repository]]:
+        """see more: `https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, Repository
@@ -1431,6 +1513,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Repository]]:
+        """see more: `https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, Repository
@@ -1465,6 +1549,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/starred/{owner}/{repo}"
@@ -1489,6 +1575,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/starred/{owner}/{repo}"
@@ -1513,6 +1601,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/starred/{owner}/{repo}"
@@ -1537,6 +1627,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/starred/{owner}/{repo}"
@@ -1561,6 +1653,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/starred/{owner}/{repo}"
@@ -1585,6 +1679,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user`"""
+
         from ..models import BasicError
 
         url = f"/user/starred/{owner}/{repo}"
@@ -1609,6 +1705,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """see more: `https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, MinimalRepository
@@ -1641,6 +1739,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """see more: `https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, MinimalRepository
@@ -1674,6 +1774,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1703,6 +1805,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1733,6 +1837,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1763,6 +1869,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1792,6 +1900,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events-for-a-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1821,6 +1931,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events-for-a-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1850,6 +1962,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1879,6 +1993,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1908,6 +2024,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1937,6 +2055,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Event]]:
+        """see more: `https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user`"""
+
         from typing import List
 
         from ..models import Event
@@ -1968,6 +2088,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[List[StarredRepository], List[Repository]]]:
+        """see more: `https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user`"""
+
         from typing import List, Union
 
         from ..models import Repository, StarredRepository
@@ -2001,6 +2123,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[List[StarredRepository], List[Repository]]]:
+        """see more: `https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user`"""
+
         from typing import List, Union
 
         from ..models import Repository, StarredRepository
@@ -2032,6 +2156,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """see more: `https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user`"""
+
         from typing import List
 
         from ..models import MinimalRepository
@@ -2061,6 +2187,8 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """see more: `https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user`"""
+
         from typing import List
 
         from ..models import MinimalRepository

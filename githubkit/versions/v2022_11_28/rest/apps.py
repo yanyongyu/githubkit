@@ -79,6 +79,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Integration]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-the-authenticated-app`"""
+
         from ..models import Integration
 
         url = "/app"
@@ -97,6 +99,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Integration]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-the-authenticated-app`"""
+
         from ..models import Integration
 
         url = "/app"
@@ -116,6 +120,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppManifestsCodeConversionsPostResponse201]:
+        """see more: `https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest`"""
+
         from ..models import (
             BasicError,
             ValidationErrorSimple,
@@ -143,6 +149,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppManifestsCodeConversionsPostResponse201]:
+        """see more: `https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest`"""
+
         from ..models import (
             BasicError,
             ValidationErrorSimple,
@@ -169,6 +177,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app`"""
+
         from ..models import WebhookConfig
 
         url = "/app/hook/config"
@@ -187,6 +197,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app`"""
+
         from ..models import WebhookConfig
 
         url = "/app/hook/config"
@@ -229,6 +241,8 @@ class AppsClient:
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app`"""
+
         from ..models import WebhookConfig, AppHookConfigPatchBody
 
         url = "/app/hook/config"
@@ -279,6 +293,8 @@ class AppsClient:
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app`"""
+
         from ..models import WebhookConfig, AppHookConfigPatchBody
 
         url = "/app/hook/config"
@@ -308,6 +324,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook`"""
+
         from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -342,6 +360,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook`"""
+
         from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -374,6 +394,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[HookDelivery]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook`"""
+
         from ..models import BasicError, HookDelivery, ValidationError
 
         url = f"/app/hook/deliveries/{delivery_id}"
@@ -397,6 +419,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[HookDelivery]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook`"""
+
         from ..models import BasicError, HookDelivery, ValidationError
 
         url = f"/app/hook/deliveries/{delivery_id}"
@@ -420,6 +444,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -447,6 +473,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+        """see more: `https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -475,6 +503,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IntegrationInstallationRequest]]:
+        """see more: `https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app`"""
+
         from typing import List
 
         from ..models import BasicError, IntegrationInstallationRequest
@@ -506,6 +536,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IntegrationInstallationRequest]]:
+        """see more: `https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app`"""
+
         from typing import List
 
         from ..models import BasicError, IntegrationInstallationRequest
@@ -539,6 +571,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Installation]]:
+        """see more: `https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app`"""
+
         from typing import List
 
         from ..models import Installation
@@ -571,6 +605,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Installation]]:
+        """see more: `https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app`"""
+
         from typing import List
 
         from ..models import Installation
@@ -600,6 +636,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app`"""
+
         from ..models import BasicError, Installation
 
         url = f"/app/installations/{installation_id}"
@@ -622,6 +660,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app`"""
+
         from ..models import BasicError, Installation
 
         url = f"/app/installations/{installation_id}"
@@ -644,6 +684,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app`"""
+
         from ..models import BasicError
 
         url = f"/app/installations/{installation_id}"
@@ -665,6 +707,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/apps#delete-an-installation-for-the-authenticated-app`"""
+
         from ..models import BasicError
 
         url = f"/app/installations/{installation_id}"
@@ -711,6 +755,8 @@ class AppsClient:
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken]:
+        """see more: `https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -776,6 +822,8 @@ class AppsClient:
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken]:
+        """see more: `https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -816,6 +864,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/apps#suspend-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/app/installations/{installation_id}/suspended"
@@ -837,6 +887,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/apps#suspend-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/app/installations/{installation_id}/suspended"
@@ -858,6 +910,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/app/installations/{installation_id}/suspended"
@@ -879,6 +933,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/apps#unsuspend-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/app/installations/{installation_id}/suspended"
@@ -923,6 +979,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization`"""
+
         from ..models import ValidationError, ApplicationsClientIdGrantDeleteBody
 
         url = f"/applications/{client_id}/grant"
@@ -975,6 +1033,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization`"""
+
         from ..models import ValidationError, ApplicationsClientIdGrantDeleteBody
 
         url = f"/applications/{client_id}/grant"
@@ -1027,6 +1087,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#check-a-token`"""
+
         from ..models import (
             BasicError,
             Authorization,
@@ -1086,6 +1148,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#check-a-token`"""
+
         from ..models import (
             BasicError,
             Authorization,
@@ -1145,6 +1209,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token`"""
+
         from ..models import ValidationError, ApplicationsClientIdTokenDeleteBody
 
         url = f"/applications/{client_id}/token"
@@ -1197,6 +1263,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#delete-an-app-token`"""
+
         from ..models import ValidationError, ApplicationsClientIdTokenDeleteBody
 
         url = f"/applications/{client_id}/token"
@@ -1249,6 +1317,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#reset-a-token`"""
+
         from ..models import (
             Authorization,
             ValidationError,
@@ -1306,6 +1376,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
+        """see more: `https://docs.github.com/rest/apps/oauth-applications#reset-a-token`"""
+
         from ..models import (
             Authorization,
             ValidationError,
@@ -1368,6 +1440,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
+        """see more: `https://docs.github.com/rest/apps/apps#create-a-scoped-access-token`"""
+
         from ..models import (
             BasicError,
             Authorization,
@@ -1434,6 +1508,8 @@ class AppsClient:
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
+        """see more: `https://docs.github.com/rest/apps/apps#create-a-scoped-access-token`"""
+
         from ..models import (
             BasicError,
             Authorization,
@@ -1472,6 +1548,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Integration]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-an-app`"""
+
         from ..models import BasicError, Integration
 
         url = f"/apps/{app_slug}"
@@ -1495,6 +1573,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Integration]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-an-app`"""
+
         from ..models import BasicError, Integration
 
         url = f"/apps/{app_slug}"
@@ -1519,6 +1599,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[InstallationRepositoriesGetResponse200]:
+        """see more: `https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation`"""
+
         from ..models import BasicError, InstallationRepositoriesGetResponse200
 
         url = "/installation/repositories"
@@ -1549,6 +1631,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[InstallationRepositoriesGetResponse200]:
+        """see more: `https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation`"""
+
         from ..models import BasicError, InstallationRepositoriesGetResponse200
 
         url = "/installation/repositories"
@@ -1577,6 +1661,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token`"""
+
         url = "/installation/token"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1592,6 +1678,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token`"""
+
         url = "/installation/token"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1608,6 +1696,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account`"""
+
         from ..models import BasicError, MarketplacePurchase
 
         url = f"/marketplace_listing/accounts/{account_id}"
@@ -1631,6 +1721,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account`"""
+
         from ..models import BasicError, MarketplacePurchase
 
         url = f"/marketplace_listing/accounts/{account_id}"
@@ -1655,6 +1747,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplaceListingPlan]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-plans`"""
+
         from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1687,6 +1781,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplaceListingPlan]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-plans`"""
+
         from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1722,6 +1818,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan`"""
+
         from typing import List
 
         from ..models import BasicError, ValidationError, MarketplacePurchase
@@ -1760,6 +1858,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan`"""
+
         from typing import List
 
         from ..models import BasicError, ValidationError, MarketplacePurchase
@@ -1794,6 +1894,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed`"""
+
         from ..models import BasicError, MarketplacePurchase
 
         url = f"/marketplace_listing/stubbed/accounts/{account_id}"
@@ -1816,6 +1918,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed`"""
+
         from ..models import BasicError, MarketplacePurchase
 
         url = f"/marketplace_listing/stubbed/accounts/{account_id}"
@@ -1839,6 +1943,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplaceListingPlan]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-plans-stubbed`"""
+
         from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1870,6 +1976,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplaceListingPlan]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-plans-stubbed`"""
+
         from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
@@ -1904,6 +2012,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed`"""
+
         from typing import List
 
         from ..models import BasicError, MarketplacePurchase
@@ -1940,6 +2050,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed`"""
+
         from typing import List
 
         from ..models import BasicError, MarketplacePurchase
@@ -1972,6 +2084,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app`"""
+
         from ..models import Installation
 
         url = f"/orgs/{org}/installation"
@@ -1991,6 +2105,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app`"""
+
         from ..models import Installation
 
         url = f"/orgs/{org}/installation"
@@ -2011,6 +2127,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app`"""
+
         from ..models import BasicError, Installation
 
         url = f"/repos/{owner}/{repo}/installation"
@@ -2034,6 +2152,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app`"""
+
         from ..models import BasicError, Installation
 
         url = f"/repos/{owner}/{repo}/installation"
@@ -2057,6 +2177,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200]:
+        """see more: `https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token`"""
+
         from ..models import BasicError, UserInstallationsGetResponse200
 
         url = "/user/installations"
@@ -2087,6 +2209,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200]:
+        """see more: `https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token`"""
+
         from ..models import BasicError, UserInstallationsGetResponse200
 
         url = "/user/installations"
@@ -2118,6 +2242,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserInstallationsInstallationIdRepositoriesGetResponse200]:
+        """see more: `https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token`"""
+
         from ..models import (
             BasicError,
             UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -2152,6 +2278,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserInstallationsInstallationIdRepositoriesGetResponse200]:
+        """see more: `https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-user-access-token`"""
+
         from ..models import (
             BasicError,
             UserInstallationsInstallationIdRepositoriesGetResponse200,
@@ -2185,6 +2313,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
@@ -2208,6 +2338,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
@@ -2231,6 +2363,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
@@ -2254,6 +2388,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation`"""
+
         from ..models import BasicError
 
         url = f"/user/installations/{installation_id}/repositories/{repository_id}"
@@ -2277,6 +2413,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[UserMarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2309,6 +2447,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[UserMarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user`"""
+
         from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2341,6 +2481,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[UserMarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed`"""
+
         from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2372,6 +2514,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[UserMarketplacePurchase]]:
+        """see more: `https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed`"""
+
         from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
@@ -2402,6 +2546,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app`"""
+
         from ..models import Installation
 
         url = f"/users/{username}/installation"
@@ -2421,6 +2567,8 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Installation]:
+        """see more: `https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app`"""
+
         from ..models import Installation
 
         url = f"/users/{username}/installation"

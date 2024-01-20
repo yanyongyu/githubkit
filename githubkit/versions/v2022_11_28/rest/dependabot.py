@@ -80,6 +80,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependabotAlertWithRepository]]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise`"""
+
         from typing import List
 
         from ..models import (
@@ -138,6 +140,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependabotAlertWithRepository]]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-enterprise`"""
+
         from typing import List
 
         from ..models import (
@@ -196,6 +200,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependabotAlertWithRepository]]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization`"""
+
         from typing import List
 
         from ..models import (
@@ -255,6 +261,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependabotAlertWithRepository]]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-an-organization`"""
+
         from typing import List
 
         from ..models import (
@@ -304,6 +312,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgDependabotSecretsGetResponse200]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#list-organization-secrets`"""
+
         from ..models import OrgsOrgDependabotSecretsGetResponse200
 
         url = f"/orgs/{org}/dependabot/secrets"
@@ -331,6 +341,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgDependabotSecretsGetResponse200]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#list-organization-secrets`"""
+
         from ..models import OrgsOrgDependabotSecretsGetResponse200
 
         url = f"/orgs/{org}/dependabot/secrets"
@@ -356,6 +368,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotPublicKey]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key`"""
+
         from ..models import DependabotPublicKey
 
         url = f"/orgs/{org}/dependabot/secrets/public-key"
@@ -375,6 +389,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotPublicKey]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key`"""
+
         from ..models import DependabotPublicKey
 
         url = f"/orgs/{org}/dependabot/secrets/public-key"
@@ -395,6 +411,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationDependabotSecret]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret`"""
+
         from ..models import OrganizationDependabotSecret
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -415,6 +433,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationDependabotSecret]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret`"""
+
         from ..models import OrganizationDependabotSecret
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -463,6 +483,8 @@ class DependabotClient:
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret`"""
+
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -519,6 +541,8 @@ class DependabotClient:
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret`"""
+
         from ..models import EmptyObject, OrgsOrgDependabotSecretsSecretNamePutBody
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
@@ -547,6 +571,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret`"""
+
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -564,6 +590,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret`"""
+
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -583,6 +611,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret`"""
+
         from ..models import (
             OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
@@ -613,6 +643,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret`"""
+
         from ..models import (
             OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         )
@@ -668,6 +700,8 @@ class DependabotClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret`"""
+
         from ..models import OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
@@ -724,6 +758,8 @@ class DependabotClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret`"""
+
         from ..models import OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
@@ -754,6 +790,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret`"""
+
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
@@ -775,6 +813,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret`"""
+
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
@@ -796,6 +836,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret`"""
+
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
@@ -817,6 +859,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret`"""
+
         url = (
             f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}"
         )
@@ -851,6 +895,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependabotAlert]]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository`"""
+
         from typing import List
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
@@ -911,6 +957,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependabotAlert]]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository`"""
+
         from typing import List
 
         from ..models import BasicError, DependabotAlert, ValidationErrorSimple
@@ -958,6 +1006,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotAlert]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#get-a-dependabot-alert`"""
+
         from ..models import BasicError, DependabotAlert
 
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
@@ -983,6 +1033,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotAlert]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#get-a-dependabot-alert`"""
+
         from ..models import BasicError, DependabotAlert
 
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
@@ -1045,6 +1097,8 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#update-a-dependabot-alert`"""
+
         from ..models import (
             BasicError,
             DependabotAlert,
@@ -1125,6 +1179,8 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert]:
+        """see more: `https://docs.github.com/rest/dependabot/alerts#update-a-dependabot-alert`"""
+
         from ..models import (
             BasicError,
             DependabotAlert,
@@ -1169,6 +1225,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoDependabotSecretsGetResponse200]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#list-repository-secrets`"""
+
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets"
@@ -1197,6 +1255,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoDependabotSecretsGetResponse200]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#list-repository-secrets`"""
+
         from ..models import ReposOwnerRepoDependabotSecretsGetResponse200
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets"
@@ -1223,6 +1283,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotPublicKey]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key`"""
+
         from ..models import DependabotPublicKey
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/public-key"
@@ -1243,6 +1305,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotPublicKey]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key`"""
+
         from ..models import DependabotPublicKey
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/public-key"
@@ -1264,6 +1328,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotSecret]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-a-repository-secret`"""
+
         from ..models import DependabotSecret
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
@@ -1285,6 +1351,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependabotSecret]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#get-a-repository-secret`"""
+
         from ..models import DependabotSecret
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
@@ -1334,6 +1402,8 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#create-or-update-a-repository-secret`"""
+
         from ..models import (
             EmptyObject,
             ReposOwnerRepoDependabotSecretsSecretNamePutBody,
@@ -1396,6 +1466,8 @@ class DependabotClient:
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#create-or-update-a-repository-secret`"""
+
         from ..models import (
             EmptyObject,
             ReposOwnerRepoDependabotSecretsSecretNamePutBody,
@@ -1430,6 +1502,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#delete-a-repository-secret`"""
+
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1448,6 +1522,8 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/dependabot/secrets#delete-a-repository-secret`"""
+
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

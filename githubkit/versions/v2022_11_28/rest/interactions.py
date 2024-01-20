@@ -60,6 +60,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]
     ]:
+        """see more: `https://docs.github.com/rest/interactions/orgs#get-interaction-restrictions-for-an-organization`"""
+
         from typing import Union
 
         from ..models import (
@@ -88,6 +90,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]
     ]:
+        """see more: `https://docs.github.com/rest/interactions/orgs#get-interaction-restrictions-for-an-organization`"""
+
         from typing import Union
 
         from ..models import (
@@ -140,6 +144,8 @@ class InteractionsClient:
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse]:
+        """see more: `https://docs.github.com/rest/interactions/orgs#set-interaction-restrictions-for-an-organization`"""
+
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
 
         url = f"/orgs/{org}/interaction-limits"
@@ -196,6 +202,8 @@ class InteractionsClient:
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse]:
+        """see more: `https://docs.github.com/rest/interactions/orgs#set-interaction-restrictions-for-an-organization`"""
+
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
 
         url = f"/orgs/{org}/interaction-limits"
@@ -226,6 +234,8 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/interactions/orgs#remove-interaction-restrictions-for-an-organization`"""
+
         url = f"/orgs/{org}/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -242,6 +252,8 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/interactions/orgs#remove-interaction-restrictions-for-an-organization`"""
+
         url = f"/orgs/{org}/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -264,6 +276,8 @@ class InteractionsClient:
             ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
         ]
     ]:
+        """see more: `https://docs.github.com/rest/interactions/repos#get-interaction-restrictions-for-a-repository`"""
+
         from typing import Union
 
         from ..models import (
@@ -297,6 +311,8 @@ class InteractionsClient:
             ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
         ]
     ]:
+        """see more: `https://docs.github.com/rest/interactions/repos#get-interaction-restrictions-for-a-repository`"""
+
         from typing import Union
 
         from ..models import (
@@ -353,6 +369,8 @@ class InteractionsClient:
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse]:
+        """see more: `https://docs.github.com/rest/interactions/repos#set-interaction-restrictions-for-a-repository`"""
+
         from ..models import InteractionLimit, InteractionLimitResponse
 
         url = f"/repos/{owner}/{repo}/interaction-limits"
@@ -410,6 +428,8 @@ class InteractionsClient:
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse]:
+        """see more: `https://docs.github.com/rest/interactions/repos#set-interaction-restrictions-for-a-repository`"""
+
         from ..models import InteractionLimit, InteractionLimitResponse
 
         url = f"/repos/{owner}/{repo}/interaction-limits"
@@ -439,6 +459,8 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/interactions/repos#remove-interaction-restrictions-for-a-repository`"""
+
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -457,6 +479,8 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/interactions/repos#remove-interaction-restrictions-for-a-repository`"""
+
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -475,6 +499,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]
     ]:
+        """see more: `https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories`"""
+
         from typing import Union
 
         from ..models import (
@@ -502,6 +528,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]
     ]:
+        """see more: `https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories`"""
+
         from typing import Union
 
         from ..models import (
@@ -548,6 +576,8 @@ class InteractionsClient:
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse]:
+        """see more: `https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories`"""
+
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
 
         url = "/user/interaction-limits"
@@ -598,6 +628,8 @@ class InteractionsClient:
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
     ) -> Response[InteractionLimitResponse]:
+        """see more: `https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories`"""
+
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
 
         url = "/user/interaction-limits"
@@ -627,6 +659,8 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories`"""
+
         url = "/user/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -642,6 +676,8 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories`"""
+
         url = "/user/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

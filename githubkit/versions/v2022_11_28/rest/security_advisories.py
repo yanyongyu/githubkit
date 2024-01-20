@@ -99,6 +99,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GlobalAdvisory]]:
+        """see more: `https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories`"""
+
         from typing import List
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
@@ -176,6 +178,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GlobalAdvisory]]:
+        """see more: `https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories`"""
+
         from typing import List
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
@@ -221,6 +225,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GlobalAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/global-advisories#get-a-global-security-advisory`"""
+
         from ..models import BasicError, GlobalAdvisory
 
         url = f"/advisories/{ghsa_id}"
@@ -243,6 +249,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GlobalAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/global-advisories#get-a-global-security-advisory`"""
+
         from ..models import BasicError, GlobalAdvisory
 
         url = f"/advisories/{ghsa_id}"
@@ -271,6 +279,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryAdvisory]]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization`"""
+
         from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
@@ -312,6 +322,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryAdvisory]]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization`"""
+
         from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
@@ -354,6 +366,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryAdvisory]]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories`"""
+
         from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
@@ -396,6 +410,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryAdvisory]]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#list-repository-security-advisories`"""
+
         from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
@@ -469,6 +485,8 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#create-a-repository-security-advisory`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -544,6 +562,8 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#create-a-repository-security-advisory`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -619,6 +639,8 @@ class SecurityAdvisoriesClient:
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -694,6 +716,8 @@ class SecurityAdvisoriesClient:
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#privately-report-a-security-vulnerability`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -733,6 +757,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#get-a-repository-security-advisory`"""
+
         from ..models import BasicError, RepositoryAdvisory
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
@@ -758,6 +784,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#get-a-repository-security-advisory`"""
+
         from ..models import BasicError, RepositoryAdvisory
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}"
@@ -826,6 +854,8 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#update-a-repository-security-advisory`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -908,6 +938,8 @@ class SecurityAdvisoriesClient:
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#update-a-repository-security-advisory`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -947,6 +979,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -978,6 +1012,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -1009,6 +1045,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[FullRepository]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#create-a-temporary-private-fork`"""
+
         from ..models import BasicError, FullRepository, ValidationError
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks"
@@ -1036,6 +1074,8 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[FullRepository]:
+        """see more: `https://docs.github.com/rest/security-advisories/repository-advisories#create-a-temporary-private-fork`"""
+
         from ..models import BasicError, FullRepository, ValidationError
 
         url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks"

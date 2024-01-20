@@ -77,6 +77,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Project]]:
+        """see more: `https://docs.github.com/rest/projects/projects#list-organization-projects`"""
+
         from typing import List
 
         from ..models import Project, ValidationErrorSimple
@@ -111,6 +113,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Project]]:
+        """see more: `https://docs.github.com/rest/projects/projects#list-organization-projects`"""
+
         from typing import List
 
         from ..models import Project, ValidationErrorSimple
@@ -166,6 +170,8 @@ class ProjectsClient:
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#create-an-organization-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -229,6 +235,8 @@ class ProjectsClient:
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#create-an-organization-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -268,6 +276,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProjectCard]:
+        """see more: `https://docs.github.com/rest/projects/cards#get-a-project-card`"""
+
         from ..models import BasicError, ProjectCard
 
         url = f"/projects/columns/cards/{card_id}"
@@ -292,6 +302,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProjectCard]:
+        """see more: `https://docs.github.com/rest/projects/cards#get-a-project-card`"""
+
         from ..models import BasicError, ProjectCard
 
         url = f"/projects/columns/cards/{card_id}"
@@ -316,6 +328,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/cards#delete-a-project-card`"""
+
         from ..models import BasicError, ProjectsColumnsCardsCardIdDeleteResponse403
 
         url = f"/projects/columns/cards/{card_id}"
@@ -339,6 +353,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/cards#delete-a-project-card`"""
+
         from ..models import BasicError, ProjectsColumnsCardsCardIdDeleteResponse403
 
         url = f"/projects/columns/cards/{card_id}"
@@ -386,6 +402,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard]:
+        """see more: `https://docs.github.com/rest/projects/cards#update-an-existing-project-card`"""
+
         from ..models import (
             BasicError,
             ProjectCard,
@@ -448,6 +466,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard]:
+        """see more: `https://docs.github.com/rest/projects/cards#update-an-existing-project-card`"""
+
         from ..models import (
             BasicError,
             ProjectCard,
@@ -510,6 +530,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
+        """see more: `https://docs.github.com/rest/projects/cards#move-a-project-card`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -574,6 +596,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
+        """see more: `https://docs.github.com/rest/projects/cards#move-a-project-card`"""
+
         from ..models import (
             BasicError,
             ValidationError,
@@ -614,6 +638,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProjectColumn]:
+        """see more: `https://docs.github.com/rest/projects/columns#get-a-project-column`"""
+
         from ..models import BasicError, ProjectColumn
 
         url = f"/projects/columns/{column_id}"
@@ -638,6 +664,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProjectColumn]:
+        """see more: `https://docs.github.com/rest/projects/columns#get-a-project-column`"""
+
         from ..models import BasicError, ProjectColumn
 
         url = f"/projects/columns/{column_id}"
@@ -662,6 +690,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/columns#delete-a-project-column`"""
+
         from ..models import BasicError
 
         url = f"/projects/columns/{column_id}"
@@ -684,6 +714,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/columns#delete-a-project-column`"""
+
         from ..models import BasicError
 
         url = f"/projects/columns/{column_id}"
@@ -729,6 +761,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
+        """see more: `https://docs.github.com/rest/projects/columns#update-an-existing-project-column`"""
+
         from ..models import BasicError, ProjectColumn, ProjectsColumnsColumnIdPatchBody
 
         url = f"/projects/columns/{column_id}"
@@ -783,6 +817,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
+        """see more: `https://docs.github.com/rest/projects/columns#update-an-existing-project-column`"""
+
         from ..models import BasicError, ProjectColumn, ProjectsColumnsColumnIdPatchBody
 
         url = f"/projects/columns/{column_id}"
@@ -817,6 +853,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ProjectCard]]:
+        """see more: `https://docs.github.com/rest/projects/cards#list-project-cards`"""
+
         from typing import List
 
         from ..models import BasicError, ProjectCard
@@ -852,6 +890,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ProjectCard]]:
+        """see more: `https://docs.github.com/rest/projects/cards#list-project-cards`"""
+
         from typing import List
 
         from ..models import BasicError, ProjectCard
@@ -927,6 +967,8 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard]:
+        """see more: `https://docs.github.com/rest/projects/cards#create-a-project-card`"""
+
         from typing import Union
 
         from ..models import (
@@ -1019,6 +1061,8 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard]:
+        """see more: `https://docs.github.com/rest/projects/cards#create-a-project-card`"""
+
         from typing import Union
 
         from ..models import (
@@ -1091,6 +1135,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
+        """see more: `https://docs.github.com/rest/projects/columns#move-a-project-column`"""
+
         from ..models import (
             BasicError,
             ValidationErrorSimple,
@@ -1151,6 +1197,8 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
+        """see more: `https://docs.github.com/rest/projects/columns#move-a-project-column`"""
+
         from ..models import (
             BasicError,
             ValidationErrorSimple,
@@ -1188,6 +1236,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#get-a-project`"""
+
         from ..models import Project, BasicError
 
         url = f"/projects/{project_id}"
@@ -1211,6 +1261,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#get-a-project`"""
+
         from ..models import Project, BasicError
 
         url = f"/projects/{project_id}"
@@ -1234,6 +1286,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/projects#delete-a-project`"""
+
         from ..models import BasicError, ProjectsProjectIdDeleteResponse403
 
         url = f"/projects/{project_id}"
@@ -1258,6 +1312,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/projects#delete-a-project`"""
+
         from ..models import BasicError, ProjectsProjectIdDeleteResponse403
 
         url = f"/projects/{project_id}"
@@ -1311,6 +1367,8 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#update-a-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -1379,6 +1437,8 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#update-a-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -1421,6 +1481,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """see more: `https://docs.github.com/rest/projects/collaborators#list-project-collaborators`"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser, ValidationError
@@ -1458,6 +1520,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """see more: `https://docs.github.com/rest/projects/collaborators#list-project-collaborators`"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser, ValidationError
@@ -1522,6 +1586,8 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/collaborators#add-project-collaborator`"""
+
         from typing import Union
 
         from ..models import (
@@ -1592,6 +1658,8 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/collaborators#add-project-collaborator`"""
+
         from typing import Union
 
         from ..models import (
@@ -1633,6 +1701,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/collaborators#remove-user-as-a-collaborator`"""
+
         from ..models import BasicError, ValidationError
 
         url = f"/projects/{project_id}/collaborators/{username}"
@@ -1658,6 +1728,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """see more: `https://docs.github.com/rest/projects/collaborators#remove-user-as-a-collaborator`"""
+
         from ..models import BasicError, ValidationError
 
         url = f"/projects/{project_id}/collaborators/{username}"
@@ -1683,6 +1755,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProjectCollaboratorPermission]:
+        """see more: `https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user`"""
+
         from ..models import BasicError, ValidationError, ProjectCollaboratorPermission
 
         url = f"/projects/{project_id}/collaborators/{username}/permission"
@@ -1709,6 +1783,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProjectCollaboratorPermission]:
+        """see more: `https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user`"""
+
         from ..models import BasicError, ValidationError, ProjectCollaboratorPermission
 
         url = f"/projects/{project_id}/collaborators/{username}/permission"
@@ -1736,6 +1812,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ProjectColumn]]:
+        """see more: `https://docs.github.com/rest/projects/columns#list-project-columns`"""
+
         from typing import List
 
         from ..models import BasicError, ProjectColumn
@@ -1769,6 +1847,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ProjectColumn]]:
+        """see more: `https://docs.github.com/rest/projects/columns#list-project-columns`"""
+
         from typing import List
 
         from ..models import BasicError, ProjectColumn
@@ -1823,6 +1903,8 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
+        """see more: `https://docs.github.com/rest/projects/columns#create-a-project-column`"""
+
         from ..models import (
             BasicError,
             ProjectColumn,
@@ -1883,6 +1965,8 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
+        """see more: `https://docs.github.com/rest/projects/columns#create-a-project-column`"""
+
         from ..models import (
             BasicError,
             ProjectColumn,
@@ -1924,6 +2008,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Project]]:
+        """see more: `https://docs.github.com/rest/projects/projects#list-repository-projects`"""
+
         from typing import List
 
         from ..models import Project, BasicError, ValidationErrorSimple
@@ -1963,6 +2049,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Project]]:
+        """see more: `https://docs.github.com/rest/projects/projects#list-repository-projects`"""
+
         from typing import List
 
         from ..models import Project, BasicError, ValidationErrorSimple
@@ -2025,6 +2113,8 @@ class ProjectsClient:
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#create-a-repository-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -2091,6 +2181,8 @@ class ProjectsClient:
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#create-a-repository-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -2151,6 +2243,8 @@ class ProjectsClient:
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#create-a-user-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -2209,6 +2303,8 @@ class ProjectsClient:
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
+        """see more: `https://docs.github.com/rest/projects/projects#create-a-user-project`"""
+
         from ..models import (
             Project,
             BasicError,
@@ -2249,6 +2345,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Project]]:
+        """see more: `https://docs.github.com/rest/projects/projects#list-user-projects`"""
+
         from typing import List
 
         from ..models import Project, ValidationError
@@ -2283,6 +2381,8 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Project]]:
+        """see more: `https://docs.github.com/rest/projects/projects#list-user-projects`"""
+
         from typing import List
 
         from ..models import Project, ValidationError

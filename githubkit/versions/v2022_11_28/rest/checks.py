@@ -163,6 +163,8 @@ class ChecksClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CheckRun]:
+        """see more: `https://docs.github.com/rest/checks/runs#create-a-check-run`"""
+
         from typing import Union
 
         from ..models import (
@@ -290,6 +292,8 @@ class ChecksClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CheckRun]:
+        """see more: `https://docs.github.com/rest/checks/runs#create-a-check-run`"""
+
         from typing import Union
 
         from ..models import (
@@ -331,6 +335,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CheckRun]:
+        """see more: `https://docs.github.com/rest/checks/runs#get-a-check-run`"""
+
         from ..models import CheckRun
 
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
@@ -352,6 +358,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CheckRun]:
+        """see more: `https://docs.github.com/rest/checks/runs#get-a-check-run`"""
+
         from ..models import CheckRun
 
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}"
@@ -465,6 +473,8 @@ class ChecksClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CheckRun]:
+        """see more: `https://docs.github.com/rest/checks/runs#update-a-check-run`"""
+
         from typing import Union
 
         from ..models import (
@@ -598,6 +608,8 @@ class ChecksClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[CheckRun]:
+        """see more: `https://docs.github.com/rest/checks/runs#update-a-check-run`"""
+
         from typing import Union
 
         from ..models import (
@@ -641,6 +653,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CheckAnnotation]]:
+        """see more: `https://docs.github.com/rest/checks/runs#list-check-run-annotations`"""
+
         from typing import List
 
         from ..models import CheckAnnotation
@@ -672,6 +686,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CheckAnnotation]]:
+        """see more: `https://docs.github.com/rest/checks/runs#list-check-run-annotations`"""
+
         from typing import List
 
         from ..models import CheckAnnotation
@@ -701,6 +717,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/checks/runs#rerequest-a-check-run`"""
+
         from ..models import BasicError, EmptyObject
 
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
@@ -727,6 +745,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/checks/runs#rerequest-a-check-run`"""
+
         from ..models import BasicError, EmptyObject
 
         url = f"/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest"
@@ -777,6 +797,8 @@ class ChecksClient:
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuite]:
+        """see more: `https://docs.github.com/rest/checks/suites#create-a-check-suite`"""
+
         from ..models import CheckSuite, ReposOwnerRepoCheckSuitesPostBody
 
         url = f"/repos/{owner}/{repo}/check-suites"
@@ -830,6 +852,8 @@ class ChecksClient:
         data: Missing[ReposOwnerRepoCheckSuitesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuite]:
+        """see more: `https://docs.github.com/rest/checks/suites#create-a-check-suite`"""
+
         from ..models import CheckSuite, ReposOwnerRepoCheckSuitesPostBody
 
         url = f"/repos/{owner}/{repo}/check-suites"
@@ -887,6 +911,8 @@ class ChecksClient:
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuitePreference]:
+        """see more: `https://docs.github.com/rest/checks/suites#update-repository-preferences-for-check-suites`"""
+
         from ..models import (
             CheckSuitePreference,
             ReposOwnerRepoCheckSuitesPreferencesPatchBody,
@@ -947,6 +973,8 @@ class ChecksClient:
         data: Missing[ReposOwnerRepoCheckSuitesPreferencesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CheckSuitePreference]:
+        """see more: `https://docs.github.com/rest/checks/suites#update-repository-preferences-for-check-suites`"""
+
         from ..models import (
             CheckSuitePreference,
             ReposOwnerRepoCheckSuitesPreferencesPatchBody,
@@ -979,6 +1007,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CheckSuite]:
+        """see more: `https://docs.github.com/rest/checks/suites#get-a-check-suite`"""
+
         from ..models import CheckSuite
 
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}"
@@ -1000,6 +1030,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CheckSuite]:
+        """see more: `https://docs.github.com/rest/checks/suites#get-a-check-suite`"""
+
         from ..models import CheckSuite
 
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}"
@@ -1026,6 +1058,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]:
+        """see more: `https://docs.github.com/rest/checks/runs#list-check-runs-in-a-check-suite`"""
+
         from ..models import (
             ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         )
@@ -1063,6 +1097,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200]:
+        """see more: `https://docs.github.com/rest/checks/runs#list-check-runs-in-a-check-suite`"""
+
         from ..models import (
             ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
         )
@@ -1095,6 +1131,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/checks/suites#rerequest-a-check-suite`"""
+
         from ..models import EmptyObject
 
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
@@ -1116,6 +1154,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
+        """see more: `https://docs.github.com/rest/checks/suites#rerequest-a-check-suite`"""
+
         from ..models import EmptyObject
 
         url = f"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
@@ -1143,6 +1183,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]:
+        """see more: `https://docs.github.com/rest/checks/runs#list-check-runs-for-a-git-reference`"""
+
         from ..models import ReposOwnerRepoCommitsRefCheckRunsGetResponse200
 
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-runs"
@@ -1180,6 +1222,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCommitsRefCheckRunsGetResponse200]:
+        """see more: `https://docs.github.com/rest/checks/runs#list-check-runs-for-a-git-reference`"""
+
         from ..models import ReposOwnerRepoCommitsRefCheckRunsGetResponse200
 
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-runs"
@@ -1215,6 +1259,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]:
+        """see more: `https://docs.github.com/rest/checks/suites#list-check-suites-for-a-git-reference`"""
+
         from ..models import ReposOwnerRepoCommitsRefCheckSuitesGetResponse200
 
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-suites"
@@ -1248,6 +1294,8 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCommitsRefCheckSuitesGetResponse200]:
+        """see more: `https://docs.github.com/rest/checks/suites#list-check-suites-for-a-git-reference`"""
+
         from ..models import ReposOwnerRepoCommitsRefCheckSuitesGetResponse200
 
         url = f"/repos/{owner}/{repo}/commits/{ref}/check-suites"

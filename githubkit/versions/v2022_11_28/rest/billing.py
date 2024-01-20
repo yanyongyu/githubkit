@@ -48,6 +48,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization`"""
+
         from ..models import ActionsBillingUsage
 
         url = f"/orgs/{org}/settings/billing/actions"
@@ -67,6 +69,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization`"""
+
         from ..models import ActionsBillingUsage
 
         url = f"/orgs/{org}/settings/billing/actions"
@@ -86,6 +90,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization`"""
+
         from ..models import PackagesBillingUsage
 
         url = f"/orgs/{org}/settings/billing/packages"
@@ -105,6 +111,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization`"""
+
         from ..models import PackagesBillingUsage
 
         url = f"/orgs/{org}/settings/billing/packages"
@@ -124,6 +132,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization`"""
+
         from ..models import CombinedBillingUsage
 
         url = f"/orgs/{org}/settings/billing/shared-storage"
@@ -143,6 +153,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization`"""
+
         from ..models import CombinedBillingUsage
 
         url = f"/orgs/{org}/settings/billing/shared-storage"
@@ -162,6 +174,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user`"""
+
         from ..models import ActionsBillingUsage
 
         url = f"/users/{username}/settings/billing/actions"
@@ -181,6 +195,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user`"""
+
         from ..models import ActionsBillingUsage
 
         url = f"/users/{username}/settings/billing/actions"
@@ -200,6 +216,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user`"""
+
         from ..models import PackagesBillingUsage
 
         url = f"/users/{username}/settings/billing/packages"
@@ -219,6 +237,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user`"""
+
         from ..models import PackagesBillingUsage
 
         url = f"/users/{username}/settings/billing/packages"
@@ -238,6 +258,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user`"""
+
         from ..models import CombinedBillingUsage
 
         url = f"/users/{username}/settings/billing/shared-storage"
@@ -257,6 +279,8 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
+        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user`"""
+
         from ..models import CombinedBillingUsage
 
         url = f"/users/{username}/settings/billing/shared-storage"
