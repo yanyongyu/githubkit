@@ -93,8 +93,10 @@ class {{ pascal_case(tag) }}Client:
         self,
         {{ endpoint_params(endpoint) | indent(8) }}
     ) -> {{ build_response_type(endpoint.success_response) }}:
+        {% if endpoint.external_docs %}
         """see more: `{{ endpoint.external_docs }}`"""
 
+        {% endif %}
         {{ build_request(endpoint) | indent(8) }}
         return self._github.request(
             {{ build_request_params(endpoint) | indent(12) }}
@@ -124,8 +126,10 @@ class {{ pascal_case(tag) }}Client:
         self,
         {{ endpoint_params(endpoint) | indent(8) }}
     ) -> {{ build_response_type(endpoint.success_response) }}:
+        {% if endpoint.external_docs %}
         """see more: `{{ endpoint.external_docs }}`"""
 
+        {% endif %}
         {{ build_request(endpoint) | indent(8) }}
         return await self._github.arequest(
             {{ build_request_params(endpoint) | indent(12) }}
