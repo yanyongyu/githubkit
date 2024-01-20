@@ -78,6 +78,7 @@ def parse_endpoint(source: "Source", path: str) -> list[EndpointData]:
                 tags=operation.tags,
                 description=operation.description,
                 operation_id=operation.operationId,
+                external_docs=operation.externalDocs.url,
                 deprecated=operation.deprecated,
                 parameters=global_params + op_params,
                 request_body=request_body,
