@@ -13,32 +13,17 @@ from __future__ import annotations
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0007 import WebhookConfigType
+
 
 class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
     """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    config: NotRequired[ReposOwnerRepoHooksHookIdPatchBodyPropConfigType]
+    config: NotRequired[WebhookConfigType]
     events: NotRequired[List[str]]
     add_events: NotRequired[List[str]]
     remove_events: NotRequired[List[str]]
     active: NotRequired[bool]
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    address: NotRequired[str]
-    room: NotRequired[str]
-
-
-__all__ = (
-    "ReposOwnerRepoHooksHookIdPatchBodyType",
-    "ReposOwnerRepoHooksHookIdPatchBodyPropConfigType",
-)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)

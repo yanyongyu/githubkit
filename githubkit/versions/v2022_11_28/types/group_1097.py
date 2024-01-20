@@ -10,18 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType(
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType(
     TypedDict
 ):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    name: str
+    value: str
 
 
-__all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
-)
+__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType",)

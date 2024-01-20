@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBodyType",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)

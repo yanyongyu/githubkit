@@ -149,7 +149,6 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import ContentTraffic as ContentTraffic
     from githubkit.versions.v2022_11_28.models import FullRepository as FullRepository
     from githubkit.versions.v2022_11_28.models import GlobalAdvisory as GlobalAdvisory
-    from githubkit.versions.v2022_11_28.models import HookPropConfig as HookPropConfig
     from githubkit.versions.v2022_11_28.models import LicenseContent as LicenseContent
     from githubkit.versions.v2022_11_28.models import MergedUpstream as MergedUpstream
     from githubkit.versions.v2022_11_28.models import PackageVersion as PackageVersion
@@ -2369,6 +2368,9 @@ if TYPE_CHECKING:
         CodeScanningOrganizationAlertItems as CodeScanningOrganizationAlertItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        FullRepositoryPropCustomProperties as FullRepositoryPropCustomProperties,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         GistsGistIdGetResponse403PropBlock as GistsGistIdGetResponse403PropBlock,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3075,6 +3077,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoGitTagsPostBodyPropTagger as ReposOwnerRepoGitTagsPostBodyPropTagger,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPropertiesValuesPatchBody as ReposOwnerRepoPropertiesValuesPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRulePullRequestPropParameters as RepositoryRulePullRequestPropParameters,
@@ -3948,9 +3953,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsWorkflowsGetResponse200 as ReposOwnerRepoActionsWorkflowsGetResponse200,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoHooksHookIdPatchBodyPropConfig as ReposOwnerRepoHooksHookIdPatchBodyPropConfig,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBody as ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
@@ -10706,6 +10708,7 @@ else:
             "CodeOfConductSimple",
             "FullRepository",
             "FullRepositoryPropPermissions",
+            "FullRepositoryPropCustomProperties",
             "RepositoryRulesetBypassActor",
             "RepositoryRulesetConditions",
             "RepositoryRulesetConditionsPropRefName",
@@ -10990,7 +10993,6 @@ else:
             "GitTreePropTreeItems",
             "HookResponse",
             "Hook",
-            "HookPropConfig",
             "Import",
             "ImportPropProjectChoicesItems",
             "PorterAuthor",
@@ -14018,7 +14020,6 @@ else:
             "ReposOwnerRepoHooksPostBody",
             "ReposOwnerRepoHooksPostBodyPropConfig",
             "ReposOwnerRepoHooksHookIdPatchBody",
-            "ReposOwnerRepoHooksHookIdPatchBodyPropConfig",
             "ReposOwnerRepoHooksHookIdConfigPatchBody",
             "ReposOwnerRepoImportPutBody",
             "ReposOwnerRepoImportPatchBody",
@@ -14065,6 +14066,7 @@ else:
             "ReposOwnerRepoPagesPostBodyAnyof1",
             "ReposOwnerRepoPagesDeploymentPostBody",
             "ReposOwnerRepoProjectsPostBody",
+            "ReposOwnerRepoPropertiesValuesPatchBody",
             "ReposOwnerRepoPullsPostBody",
             "ReposOwnerRepoPullsCommentsCommentIdPatchBody",
             "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",

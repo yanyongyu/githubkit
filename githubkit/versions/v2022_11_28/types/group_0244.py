@@ -15,6 +15,7 @@ from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0243 import HookResponseType
+from .group_0007 import WebhookConfigType
 
 
 class HookType(TypedDict):
@@ -28,7 +29,7 @@ class HookType(TypedDict):
     name: str
     active: bool
     events: List[str]
-    config: HookPropConfigType
+    config: WebhookConfigType
     updated_at: datetime
     created_at: datetime
     url: str
@@ -38,22 +39,4 @@ class HookType(TypedDict):
     last_response: HookResponseType
 
 
-class HookPropConfigType(TypedDict):
-    """HookPropConfig"""
-
-    email: NotRequired[str]
-    password: NotRequired[str]
-    room: NotRequired[str]
-    subdomain: NotRequired[str]
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    content_type: NotRequired[str]
-    digest: NotRequired[str]
-    secret: NotRequired[str]
-    token: NotRequired[str]
-
-
-__all__ = (
-    "HookType",
-    "HookPropConfigType",
-)
+__all__ = ("HookType",)

@@ -14,26 +14,17 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoTopicsPutBody(GitHubModel):
+    """ReposOwnerRepoTopicsPutBody"""
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
-    )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+    names: List[str] = Field(
+        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters."
     )
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+model_rebuild(ReposOwnerRepoTopicsPutBody)
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+__all__ = ("ReposOwnerRepoTopicsPutBody",)

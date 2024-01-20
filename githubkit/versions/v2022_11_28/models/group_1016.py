@@ -58,8 +58,6 @@ class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
         description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
     )
     insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    token: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
 
 
 model_rebuild(ReposOwnerRepoHooksPostBody)

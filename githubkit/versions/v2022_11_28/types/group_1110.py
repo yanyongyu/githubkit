@@ -10,18 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0071 import CodespaceType
+
+class UserPatchBodyType(TypedDict):
+    """UserPatchBody"""
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: List[CodespaceType]
-
-
-__all__ = ("UserCodespacesGetResponse200Type",)
+__all__ = ("UserPatchBodyType",)

@@ -12,15 +12,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
 
-    body: str = Field(description="The discussion comment's body text.")
+    title: Missing[str] = Field(
+        default=UNSET, description="The discussion post's title."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The discussion post's body text."
+    )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody)
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)

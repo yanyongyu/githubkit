@@ -10,14 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List, Union, Literal
+from typing_extensions import TypedDict
+
+from .group_0070 import CodespaceMachineType
 
 
-class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-    name: NotRequired[str]
-    private: NotRequired[bool]
+    total_count: int
+    machines: List[CodespaceMachineType]
 
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBodyType",)
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200Type",)

@@ -19,17 +19,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    reviewers: Missing[List[str]] = Field(
-        default=UNSET, description="An array of user `login`s that will be requested."
+    reviewers: List[str] = Field(
+        description="An array of user `login`s that will be requested."
     )
-    team_reviewers: List[str] = Field(
-        description="An array of team `slug`s that will be requested."
+    team_reviewers: Missing[List[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)

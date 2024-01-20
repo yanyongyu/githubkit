@@ -234,9 +234,6 @@ if TYPE_CHECKING:
         GlobalAdvisoryType as GlobalAdvisoryType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        HookPropConfigType as HookPropConfigType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         LicenseContentType as LicenseContentType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2505,6 +2502,9 @@ if TYPE_CHECKING:
         CodeScanningOrganizationAlertItemsType as CodeScanningOrganizationAlertItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        FullRepositoryPropCustomPropertiesType as FullRepositoryPropCustomPropertiesType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         GistsGistIdGetResponse403PropBlockType as GistsGistIdGetResponse403PropBlockType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3211,6 +3211,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoGitTagsPostBodyPropTaggerType as ReposOwnerRepoGitTagsPostBodyPropTaggerType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPropertiesValuesPatchBodyType as ReposOwnerRepoPropertiesValuesPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRulePullRequestPropParametersType as RepositoryRulePullRequestPropParametersType,
@@ -4084,9 +4087,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoActionsWorkflowsGetResponse200Type as ReposOwnerRepoActionsWorkflowsGetResponse200Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoHooksHookIdPatchBodyPropConfigType as ReposOwnerRepoHooksHookIdPatchBodyPropConfigType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType as ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
@@ -10842,6 +10842,7 @@ else:
             "CodeOfConductSimpleType",
             "FullRepositoryType",
             "FullRepositoryPropPermissionsType",
+            "FullRepositoryPropCustomPropertiesType",
             "RepositoryRulesetBypassActorType",
             "RepositoryRulesetConditionsType",
             "RepositoryRulesetConditionsPropRefNameType",
@@ -11126,7 +11127,6 @@ else:
             "GitTreePropTreeItemsType",
             "HookResponseType",
             "HookType",
-            "HookPropConfigType",
             "ImportType",
             "ImportPropProjectChoicesItemsType",
             "PorterAuthorType",
@@ -14154,7 +14154,6 @@ else:
             "ReposOwnerRepoHooksPostBodyType",
             "ReposOwnerRepoHooksPostBodyPropConfigType",
             "ReposOwnerRepoHooksHookIdPatchBodyType",
-            "ReposOwnerRepoHooksHookIdPatchBodyPropConfigType",
             "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
             "ReposOwnerRepoImportPutBodyType",
             "ReposOwnerRepoImportPatchBodyType",
@@ -14201,6 +14200,7 @@ else:
             "ReposOwnerRepoPagesPostBodyAnyof1Type",
             "ReposOwnerRepoPagesDeploymentPostBodyType",
             "ReposOwnerRepoProjectsPostBodyType",
+            "ReposOwnerRepoPropertiesValuesPatchBodyType",
             "ReposOwnerRepoPullsPostBodyType",
             "ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",
             "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",

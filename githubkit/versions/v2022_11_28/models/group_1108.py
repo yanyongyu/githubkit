@@ -10,8 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -19,15 +17,13 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
+model_rebuild(TeamsTeamIdProjectsProjectIdPutResponse403)
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403",)

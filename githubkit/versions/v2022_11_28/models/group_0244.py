@@ -20,6 +20,7 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0243 import HookResponse
+from .group_0007 import WebhookConfig
 
 
 class Hook(GitHubModel):
@@ -39,7 +40,9 @@ class Hook(GitHubModel):
     events: List[str] = Field(
         description="Determines what events the hook is triggered for. Default: ['push']."
     )
-    config: HookPropConfig = Field()
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
     updated_at: datetime = Field()
     created_at: datetime = Field()
     url: str = Field()
@@ -49,33 +52,6 @@ class Hook(GitHubModel):
     last_response: HookResponse = Field(title="Hook Response")
 
 
-class HookPropConfig(GitHubModel):
-    """HookPropConfig"""
-
-    email: Missing[str] = Field(default=UNSET)
-    password: Missing[str] = Field(default=UNSET)
-    room: Missing[str] = Field(default=UNSET)
-    subdomain: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    digest: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    token: Missing[str] = Field(default=UNSET)
-
-
 model_rebuild(Hook)
-model_rebuild(HookPropConfig)
 
-__all__ = (
-    "Hook",
-    "HookPropConfig",
-)
+__all__ = ("Hook",)
