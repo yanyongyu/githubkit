@@ -4,6 +4,9 @@ from typing import Any, Dict, List, Union, Optional
 
 import httpx
 
+from .retry import RETRY_DEFAULT
+from .typing import RetryDecisionFunc
+
 
 @dataclass(frozen=True)
 class Config:
@@ -13,6 +16,7 @@ class Config:
     follow_redirects: bool
     timeout: httpx.Timeout
     http_cache: bool
+    auto_retry: Optional[RetryDecisionFunc]
 
     def dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -59,6 +63,17 @@ def build_timeout(
     return timeout if isinstance(timeout, httpx.Timeout) else httpx.Timeout(timeout)
 
 
+def build_auto_retry(
+    auto_retry: Union[bool, RetryDecisionFunc] = True
+) -> Optional[RetryDecisionFunc]:
+    if auto_retry is True:
+        return RETRY_DEFAULT
+    elif auto_retry:
+        return auto_retry
+    else:
+        return None
+
+
 def get_config(
     base_url: Optional[Union[str, httpx.URL]] = None,
     accept_format: Optional[str] = None,
@@ -67,6 +82,7 @@ def get_config(
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,
     http_cache: bool = True,
+    auto_retry: Union[bool, RetryDecisionFunc] = True,
 ) -> Config:
     return Config(
         build_base_url(base_url),
@@ -75,4 +91,5 @@ def get_config(
         follow_redirects,
         build_timeout(timeout),
         http_cache,
+        build_auto_retry(auto_retry),
     )

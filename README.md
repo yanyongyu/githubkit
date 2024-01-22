@@ -176,13 +176,16 @@ github = GitHub(
     user_agent="GitHubKit/Python",
     follow_redirects=True,
     timeout=None,
-    http_cache=True
+    http_cache=True,
+    auto_retry=True
 )
 ```
 
 The `accept_format` and `previews` are used to set the default `Accept` header, you can find more details in [GitHub API docs](https://docs.github.com/en/rest/overview/media-types).
 
 The `http_cache` option enables the http caching feature powered by [Hishel](https://hishel.com/) for HTTPX. GitHub API limits the number of requests that you can make within a specific amount of time. This feature is useful to reduce the number of requests to GitHub API and avoid hitting the rate limit.
+
+The `auto_retry` option enables request retrying when rate limit exceeded and server error encountered. See [Auto Retry](#auto-retry) for more infomation.
 
 ### Calling Rest API
 
@@ -326,6 +329,85 @@ Simple async call:
 ```python
 data: Dict[str, Any] = await github.async_graphql(query, variables={"foo": "bar"})
 ```
+
+### Auto Retry
+
+By default, githubkit will retry the request when specific exception encountered. When rate limit exceeded, githubkit will retry once after GitHub suggested waiting time. When server error encountered (http status >= 500), githubkit will retry max three times.
+
+You can disable this feature by set the `auto_retry` config to `False`:
+
+```python
+github = GitHub(
+    ...
+    auto_retry=False
+)
+```
+
+You can also customize the retry decision function by passing a callable:
+
+```python
+from datetime import timedelta
+
+from githubkit.retry import RetryOption
+from githubkit.exception import GitHubException
+
+def retry_decision_func(exc: GitHubException, retry_count: int) -> RetryOption:
+    if retry_count < 1:
+        return RetryOption(True, timedelta(seconds=60))
+    return RetryOption(False)
+
+github = GitHub(
+    ...
+    auto_retry=retry_decision_func
+)
+```
+
+githubkit also provides some builtin retry decision function:
+
+1. Retry when rate limit exceeded:
+
+   ```python
+   from githubkit.retry import RETRY_RATE_LIMIT, RetryRateLimit
+
+   # default
+   github = GitHub(
+      ...
+      auto_retry=RETRY_RATE_LIMIT
+   )
+   # or, custom max retry count
+   github = GitHub(
+      ...
+      auto_retry=RetryRateLimit(max_retry=1)
+   )
+   ```
+
+2. Retry when server error encountered:
+
+   ```python
+   from githubkit.retry import RETRY_SERVER_ERROR, RetryServerError
+
+   # default
+   github = GitHub(
+      ...
+      auto_retry=RETRY_SERVER_ERROR
+   )
+   # or, custom max retry count
+   github = GitHub(
+      ...
+      auto_retry=RetryServerError(max_retry=1)
+   )
+   ```
+
+3. Chain retry decision functions:
+
+   ```python
+   from githubkit.retry import RETRY_RATE_LIMIT, RETRY_SERVER_ERROR, RetryChainDecision
+
+   github = GitHub(
+      ...
+      auto_retry=RetryChainDecision(RETRY_RATE_LIMIT, RETRY_SERVER_ERROR)
+   )
+   ```
 
 ### Webhook Verification
 

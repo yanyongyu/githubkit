@@ -1,3 +1,4 @@
+import time
 from types import TracebackType
 from contextvars import ContextVar
 from datetime import datetime, timezone, timedelta
@@ -17,6 +18,7 @@ from typing import (
     overload,
 )
 
+import anyio
 import httpx
 import hishel
 
@@ -31,11 +33,13 @@ from .typing import (
     ContentTypes,
     RequestFiles,
     QueryParamTypes,
+    RetryDecisionFunc,
 )
 from .exception import (
     RequestError,
     RequestFailed,
     RequestTimeout,
+    GitHubException,
     PrimaryRateLimitExceeded,
     SecondaryRateLimitExceeded,
 )
@@ -88,6 +92,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         ...
 
@@ -104,6 +109,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         ...
 
@@ -120,6 +126,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         ...
 
@@ -135,6 +142,7 @@ class GitHubCore(Generic[A]):
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
+        auto_retry: Union[bool, RetryDecisionFunc] = True,
     ):
         auth = auth or UnauthAuthStrategy()  # type: ignore
         self.auth: A = (  # type: ignore
@@ -149,6 +157,7 @@ class GitHubCore(Generic[A]):
             follow_redirects,
             timeout,
             http_cache,
+            auto_retry,
         )
 
         self.__sync_client: ContextVar[Optional[httpx.Client]] = ContextVar(
@@ -407,18 +416,32 @@ class GitHubCore(Generic[A]):
         response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[T]:
-        raw_resp = self._request(
-            method,
-            url,
-            params=params,
-            content=content,
-            data=data,
-            files=files,
-            json=json,
-            headers=headers,
-            cookies=cookies,
-        )
-        return self._check(raw_resp, response_model, error_models)
+        retry_count: int = 0
+        while True:
+            try:
+                raw_resp = self._request(
+                    method,
+                    url,
+                    params=params,
+                    content=content,
+                    data=data,
+                    files=files,
+                    json=json,
+                    headers=headers,
+                    cookies=cookies,
+                )
+                return self._check(raw_resp, response_model, error_models)
+            except GitHubException as e:
+                if self.config.auto_retry is None:
+                    raise
+                else:
+                    do_retry, retry_after = self.config.auto_retry(e, retry_count)
+
+                if not do_retry:
+                    raise
+
+                time.sleep(retry_after.total_seconds() if retry_after else 60)
+                retry_count += 1
 
     # async request and check
     async def arequest(
@@ -436,15 +459,29 @@ class GitHubCore(Generic[A]):
         response_model: Type[T] = Any,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[T]:
-        raw_resp = await self._arequest(
-            method,
-            url,
-            params=params,
-            content=content,
-            data=data,
-            files=files,
-            json=json,
-            headers=headers,
-            cookies=cookies,
-        )
-        return self._check(raw_resp, response_model, error_models)
+        retry_count: int = 0
+        while True:
+            try:
+                raw_resp = await self._arequest(
+                    method,
+                    url,
+                    params=params,
+                    content=content,
+                    data=data,
+                    files=files,
+                    json=json,
+                    headers=headers,
+                    cookies=cookies,
+                )
+                return self._check(raw_resp, response_model, error_models)
+            except GitHubException as e:
+                if self.config.auto_retry is None:
+                    raise
+                else:
+                    do_retry, retry_after = self.config.auto_retry(e, retry_count)
+
+                if not do_retry:
+                    raise
+
+                await anyio.sleep(retry_after.total_seconds() if retry_after else 60)
+                retry_count += 1
