@@ -71,7 +71,7 @@ class MarkdownClient:
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/markdown/markdown#render-a-markdown-document`"""
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
 
         from ..models import MarkdownPostBody
 
@@ -119,7 +119,7 @@ class MarkdownClient:
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/markdown/markdown#render-a-markdown-document`"""
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
 
         from ..models import MarkdownPostBody
 
@@ -145,7 +145,7 @@ class MarkdownClient:
     def render_raw(
         self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode`"""
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
 
         url = "/markdown/raw"
 
@@ -169,7 +169,7 @@ class MarkdownClient:
     async def async_render_raw(
         self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode`"""
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
 
         url = "/markdown/raw"
 

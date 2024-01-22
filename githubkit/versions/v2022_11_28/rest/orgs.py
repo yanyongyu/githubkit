@@ -101,7 +101,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-organizations`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-organizations"""
 
         from typing import List
 
@@ -131,7 +131,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-organizations`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-organizations"""
 
         from typing import List
 
@@ -160,7 +160,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationFull]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#get-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#get-an-organization"""
 
         from ..models import BasicError, OrganizationFull
 
@@ -184,7 +184,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationFull]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#get-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#get-an-organization"""
 
         from ..models import BasicError, OrganizationFull
 
@@ -208,7 +208,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#delete-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#delete-an-organization"""
 
         from ..models import (
             BasicError,
@@ -236,7 +236,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#delete-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#delete-an-organization"""
 
         from ..models import (
             BasicError,
@@ -321,7 +321,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#update-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#update-an-organization"""
 
         from typing import Union
 
@@ -419,7 +419,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#update-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#update-an-organization"""
 
         from typing import Union
 
@@ -462,7 +462,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization"""
 
         from typing import List
 
@@ -493,7 +493,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#list-users-blocked-by-an-organization"""
 
         from typing import List
 
@@ -523,7 +523,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization"""
 
         from ..models import BasicError
 
@@ -547,7 +547,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization"""
 
         from ..models import BasicError
 
@@ -571,7 +571,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/blocking#block-a-user-from-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#block-a-user-from-an-organization"""
 
         from ..models import ValidationError
 
@@ -595,7 +595,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/blocking#block-a-user-from-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#block-a-user-from-an-organization"""
 
         from ..models import ValidationError
 
@@ -619,7 +619,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/blocking#unblock-a-user-from-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#unblock-a-user-from-an-organization"""
 
         url = f"/orgs/{org}/blocks/{username}"
 
@@ -638,7 +638,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/blocking#unblock-a-user-from-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/blocking#unblock-a-user-from-an-organization"""
 
         url = f"/orgs/{org}/blocks/{username}"
 
@@ -658,7 +658,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-failed-organization-invitations`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-failed-organization-invitations"""
 
         from typing import List
 
@@ -692,7 +692,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-failed-organization-invitations`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-failed-organization-invitations"""
 
         from typing import List
 
@@ -726,7 +726,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgHook]]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks"""
 
         from typing import List
 
@@ -760,7 +760,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgHook]]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks"""
 
         from typing import List
 
@@ -818,7 +818,7 @@ class OrgsClient:
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError, ValidationError, OrgsOrgHooksPostBody
 
@@ -877,7 +877,7 @@ class OrgsClient:
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError, ValidationError, OrgsOrgHooksPostBody
 
@@ -911,7 +911,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgHook]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError
 
@@ -936,7 +936,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgHook]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook"""
 
         from ..models import OrgHook, BasicError
 
@@ -961,7 +961,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook"""
 
         from ..models import BasicError
 
@@ -985,7 +985,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook"""
 
         from ..models import BasicError
 
@@ -1037,7 +1037,7 @@ class OrgsClient:
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook"""
 
         from ..models import (
             OrgHook,
@@ -1104,7 +1104,7 @@ class OrgsClient:
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook"""
 
         from ..models import (
             OrgHook,
@@ -1143,7 +1143,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig
 
@@ -1165,7 +1165,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig
 
@@ -1215,7 +1215,7 @@ class OrgsClient:
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig, OrgsOrgHooksHookIdConfigPatchBody
 
@@ -1273,7 +1273,7 @@ class OrgsClient:
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization"""
 
         from ..models import WebhookConfig, OrgsOrgHooksHookIdConfigPatchBody
 
@@ -1306,7 +1306,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
         from typing import List
 
@@ -1344,7 +1344,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
 
         from typing import List
 
@@ -1380,7 +1380,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[HookDelivery]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
 
@@ -1407,7 +1407,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[HookDelivery]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
 
@@ -1434,7 +1434,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
         from ..models import (
             BasicError,
@@ -1465,7 +1465,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
         from ..models import (
             BasicError,
@@ -1495,7 +1495,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook"""
 
         from ..models import BasicError
 
@@ -1519,7 +1519,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook`"""
+        """See also: https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook"""
 
         from ..models import BasicError
 
@@ -1544,7 +1544,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgInstallationsGetResponse200]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization"""
 
         from ..models import OrgsOrgInstallationsGetResponse200
 
@@ -1573,7 +1573,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgInstallationsGetResponse200]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization"""
 
         from ..models import OrgsOrgInstallationsGetResponse200
 
@@ -1608,7 +1608,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-pending-organization-invitations`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-pending-organization-invitations"""
 
         from typing import List
 
@@ -1650,7 +1650,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-pending-organization-invitations`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-pending-organization-invitations"""
 
         from typing import List
 
@@ -1712,7 +1712,7 @@ class OrgsClient:
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation]:
-        """see more: `https://docs.github.com/rest/orgs/members#create-an-organization-invitation`"""
+        """See also: https://docs.github.com/rest/orgs/members#create-an-organization-invitation"""
 
         from ..models import (
             BasicError,
@@ -1778,7 +1778,7 @@ class OrgsClient:
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation]:
-        """see more: `https://docs.github.com/rest/orgs/members#create-an-organization-invitation`"""
+        """See also: https://docs.github.com/rest/orgs/members#create-an-organization-invitation"""
 
         from ..models import (
             BasicError,
@@ -1817,7 +1817,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation`"""
+        """See also: https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation"""
 
         from ..models import BasicError, ValidationError
 
@@ -1842,7 +1842,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation`"""
+        """See also: https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation"""
 
         from ..models import BasicError, ValidationError
 
@@ -1869,7 +1869,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-organization-invitation-teams`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-organization-invitation-teams"""
 
         from typing import List
 
@@ -1904,7 +1904,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-organization-invitation-teams`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-organization-invitation-teams"""
 
         from typing import List
 
@@ -1940,7 +1940,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-organization-members`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-organization-members"""
 
         from typing import List
 
@@ -1978,7 +1978,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-organization-members`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-organization-members"""
 
         from typing import List
 
@@ -2013,7 +2013,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#check-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#check-organization-membership-for-a-user"""
 
         url = f"/orgs/{org}/members/{username}"
 
@@ -2033,7 +2033,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#check-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#check-organization-membership-for-a-user"""
 
         url = f"/orgs/{org}/members/{username}"
 
@@ -2053,7 +2053,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#remove-an-organization-member`"""
+        """See also: https://docs.github.com/rest/orgs/members#remove-an-organization-member"""
 
         from ..models import BasicError
 
@@ -2077,7 +2077,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#remove-an-organization-member`"""
+        """See also: https://docs.github.com/rest/orgs/members#remove-an-organization-member"""
 
         from ..models import BasicError
 
@@ -2101,7 +2101,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user"""
 
         from ..models import BasicError, OrgMembership
 
@@ -2127,7 +2127,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user"""
 
         from ..models import BasicError, OrgMembership
 
@@ -2178,7 +2178,7 @@ class OrgsClient:
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user"""
 
         from ..models import (
             BasicError,
@@ -2242,7 +2242,7 @@ class OrgsClient:
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user"""
 
         from ..models import (
             BasicError,
@@ -2281,7 +2281,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user"""
 
         from ..models import BasicError
 
@@ -2306,7 +2306,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user"""
 
         from ..models import BasicError
 
@@ -2330,7 +2330,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationFineGrainedPermission]]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization"""
 
         from typing import List
 
@@ -2361,7 +2361,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationFineGrainedPermission]]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization"""
 
         from typing import List
 
@@ -2392,7 +2392,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgOrganizationRolesGetResponse200]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -2421,7 +2421,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgOrganizationRolesGetResponse200]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -2475,7 +2475,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role"""
 
         from ..models import (
             BasicError,
@@ -2539,7 +2539,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role"""
 
         from ..models import (
             BasicError,
@@ -2579,7 +2579,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team"""
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}"
 
@@ -2598,7 +2598,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team"""
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}"
 
@@ -2618,7 +2618,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team"""
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
 
@@ -2639,7 +2639,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team"""
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
 
@@ -2660,7 +2660,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team"""
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
 
@@ -2680,7 +2680,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team"""
 
         url = f"/orgs/{org}/organization-roles/teams/{team_slug}/{role_id}"
 
@@ -2699,7 +2699,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user"""
 
         url = f"/orgs/{org}/organization-roles/users/{username}"
 
@@ -2718,7 +2718,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user"""
 
         url = f"/orgs/{org}/organization-roles/users/{username}"
 
@@ -2738,7 +2738,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user"""
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
 
@@ -2759,7 +2759,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user"""
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
 
@@ -2780,7 +2780,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user"""
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
 
@@ -2800,7 +2800,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user"""
 
         url = f"/orgs/{org}/organization-roles/users/{username}/{role_id}"
 
@@ -2819,7 +2819,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationRole]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role"""
 
         from ..models import BasicError, ValidationError, OrganizationRole
 
@@ -2845,7 +2845,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationRole]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role"""
 
         from ..models import BasicError, ValidationError, OrganizationRole
 
@@ -2871,7 +2871,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role"""
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
 
@@ -2890,7 +2890,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role"""
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
 
@@ -2936,7 +2936,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role"""
 
         from ..models import (
             BasicError,
@@ -3003,7 +3003,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role"""
 
         from ..models import (
             BasicError,
@@ -3045,7 +3045,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
@@ -3078,7 +3078,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
@@ -3111,7 +3111,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
@@ -3144,7 +3144,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role`"""
+        """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
@@ -3177,7 +3177,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
 
         from typing import List
 
@@ -3210,7 +3210,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
 
         from typing import List
 
@@ -3266,7 +3266,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator`"""
+        """See also: https://docs.github.com/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator"""
 
         from ..models import (
             BasicError,
@@ -3328,7 +3328,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator`"""
+        """See also: https://docs.github.com/rest/orgs/outside-collaborators#convert-an-organization-member-to-outside-collaborator"""
 
         from ..models import (
             BasicError,
@@ -3365,7 +3365,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization"""
 
         from ..models import OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422
 
@@ -3389,7 +3389,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization"""
 
         from ..models import OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422
 
@@ -3421,7 +3421,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationProgrammaticAccessGrantRequest]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from typing import List
 
@@ -3476,7 +3476,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationProgrammaticAccessGrantRequest]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from typing import List
 
@@ -3547,7 +3547,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
             BasicError,
@@ -3612,7 +3612,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
 
         from ..models import (
             BasicError,
@@ -3681,7 +3681,7 @@ class OrgsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token"""
 
         from ..models import (
             BasicError,
@@ -3750,7 +3750,7 @@ class OrgsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token"""
 
         from ..models import (
             BasicError,
@@ -3793,7 +3793,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
 
         from typing import List
 
@@ -3832,7 +3832,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
 
         from typing import List
 
@@ -3877,7 +3877,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationProgrammaticAccessGrant]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources"""
 
         from typing import List
 
@@ -3932,7 +3932,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationProgrammaticAccessGrant]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources"""
 
         from typing import List
 
@@ -4002,7 +4002,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens"""
 
         from ..models import (
             BasicError,
@@ -4066,7 +4066,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens"""
 
         from ..models import (
             BasicError,
@@ -4132,7 +4132,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources"""
 
         from ..models import (
             BasicError,
@@ -4196,7 +4196,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources"""
 
         from ..models import (
             BasicError,
@@ -4237,7 +4237,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
 
         from typing import List
 
@@ -4274,7 +4274,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to`"""
+        """See also: https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
 
         from typing import List
 
@@ -4308,7 +4308,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgCustomProperty]]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from typing import List
 
@@ -4335,7 +4335,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgCustomProperty]]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from typing import List
 
@@ -4385,7 +4385,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[List[OrgCustomProperty]]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from typing import List
 
@@ -4447,7 +4447,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[List[OrgCustomProperty]]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from typing import List
 
@@ -4487,7 +4487,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgCustomProperty]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
         from ..models import BasicError, OrgCustomProperty
 
@@ -4513,7 +4513,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgCustomProperty]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
         from ..models import BasicError, OrgCustomProperty
 
@@ -4568,7 +4568,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgCustomProperty]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -4637,7 +4637,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgCustomProperty]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -4677,7 +4677,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization"""
 
         from ..models import BasicError
 
@@ -4702,7 +4702,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#remove-a-custom-property-for-an-organization"""
 
         from ..models import BasicError
 
@@ -4729,7 +4729,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgRepoCustomPropertyValues]]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories"""
 
         from typing import List
 
@@ -4766,7 +4766,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgRepoCustomPropertyValues]]:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories"""
 
         from typing import List
 
@@ -4824,7 +4824,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories"""
 
         from ..models import BasicError, OrgsOrgPropertiesValuesPatchBody
 
@@ -4880,7 +4880,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories`"""
+        """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories"""
 
         from ..models import BasicError, OrgsOrgPropertiesValuesPatchBody
 
@@ -4914,7 +4914,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-public-organization-members`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-public-organization-members"""
 
         from typing import List
 
@@ -4945,7 +4945,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-public-organization-members`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-public-organization-members"""
 
         from typing import List
 
@@ -4975,7 +4975,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#check-public-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#check-public-organization-membership-for-a-user"""
 
         url = f"/orgs/{org}/public_members/{username}"
 
@@ -4995,7 +4995,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#check-public-organization-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#check-public-organization-membership-for-a-user"""
 
         url = f"/orgs/{org}/public_members/{username}"
 
@@ -5015,7 +5015,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user"""
 
         from ..models import BasicError
 
@@ -5039,7 +5039,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user"""
 
         from ..models import BasicError
 
@@ -5063,7 +5063,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user"""
 
         url = f"/orgs/{org}/public_members/{username}"
 
@@ -5082,7 +5082,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user"""
 
         url = f"/orgs/{org}/public_members/{username}"
 
@@ -5100,7 +5100,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams`"""
+        """See also: https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams"""
 
         from typing import List
 
@@ -5123,7 +5123,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams`"""
+        """See also: https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams"""
 
         from typing import List
 
@@ -5147,7 +5147,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team`"""
+        """See also: https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team"""
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
@@ -5167,7 +5167,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team`"""
+        """See also: https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team"""
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
@@ -5187,7 +5187,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team`"""
+        """See also: https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team"""
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
@@ -5206,7 +5206,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team`"""
+        """See also: https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team"""
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
 
@@ -5277,7 +5277,7 @@ class OrgsClient:
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization"""
 
         from ..models import OrgsOrgSecurityProductEnablementPostBody
 
@@ -5359,7 +5359,7 @@ class OrgsClient:
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization"""
 
         from ..models import OrgsOrgSecurityProductEnablementPostBody
 
@@ -5390,7 +5390,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgMembership]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
 
         from typing import List
 
@@ -5427,7 +5427,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrgMembership]]:
-        """see more: `https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
 
         from typing import List
 
@@ -5462,7 +5462,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import BasicError, OrgMembership
 
@@ -5487,7 +5487,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import BasicError, OrgMembership
 
@@ -5535,7 +5535,7 @@ class OrgsClient:
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -5597,7 +5597,7 @@ class OrgsClient:
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
-        """see more: `https://docs.github.com/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/members#update-an-organization-membership-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -5637,7 +5637,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
 
         from typing import List
 
@@ -5671,7 +5671,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
 
         from typing import List
 
@@ -5706,7 +5706,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user"""
 
         from typing import List
 
@@ -5737,7 +5737,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSimple]]:
-        """see more: `https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user`"""
+        """See also: https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user"""
 
         from typing import List
 

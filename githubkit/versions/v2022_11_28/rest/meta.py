@@ -52,7 +52,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Root]:
-        """see more: `https://docs.github.com/rest/meta/meta#github-api-root`"""
+        """See also: https://docs.github.com/rest/meta/meta#github-api-root"""
 
         from ..models import Root
 
@@ -72,7 +72,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Root]:
-        """see more: `https://docs.github.com/rest/meta/meta#github-api-root`"""
+        """See also: https://docs.github.com/rest/meta/meta#github-api-root"""
 
         from ..models import Root
 
@@ -92,7 +92,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ApiOverview]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-apiname-meta-information`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-apiname-meta-information"""
 
         from ..models import ApiOverview
 
@@ -112,7 +112,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ApiOverview]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-apiname-meta-information`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-apiname-meta-information"""
 
         from ..models import ApiOverview
 
@@ -133,7 +133,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-octocat`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-octocat"""
 
         url = "/octocat"
 
@@ -157,7 +157,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-octocat`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-octocat"""
 
         url = "/octocat"
 
@@ -180,7 +180,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[date]]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-all-api-versions`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-all-api-versions"""
 
         from typing import List
         from datetime import date
@@ -206,7 +206,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[date]]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-all-api-versions`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-all-api-versions"""
 
         from typing import List
         from datetime import date
@@ -232,7 +232,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-the-zen-of-github`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-the-zen-of-github"""
 
         url = "/zen"
 
@@ -250,7 +250,7 @@ class MetaClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[str]:
-        """see more: `https://docs.github.com/rest/meta/meta#get-the-zen-of-github`"""
+        """See also: https://docs.github.com/rest/meta/meta#get-the-zen-of-github"""
 
         url = "/zen"
 

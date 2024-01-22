@@ -254,7 +254,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-organization-repositories`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-organization-repositories"""
 
         from typing import List
 
@@ -293,7 +293,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-organization-repositories`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-organization-repositories"""
 
         from typing import List
 
@@ -378,7 +378,7 @@ class ReposClient:
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#create-an-organization-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-an-organization-repository"""
 
         from ..models import (
             BasicError,
@@ -469,7 +469,7 @@ class ReposClient:
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#create-an-organization-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-an-organization-repository"""
 
         from ..models import (
             BasicError,
@@ -509,7 +509,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryRuleset]]:
-        """see more: `https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets`"""
+        """See also: https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets"""
 
         from typing import List
 
@@ -544,7 +544,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryRuleset]]:
-        """see more: `https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets`"""
+        """See also: https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets"""
 
         from typing import List
 
@@ -627,7 +627,7 @@ class ReposClient:
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset, OrgsOrgRulesetsPostBody
 
@@ -710,7 +710,7 @@ class ReposClient:
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset, OrgsOrgRulesetsPostBody
 
@@ -749,7 +749,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RuleSuitesItems]]:
-        """see more: `https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites`"""
+        """See also: https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites"""
 
         from typing import List
 
@@ -792,7 +792,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RuleSuitesItems]]:
-        """see more: `https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites`"""
+        """See also: https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites"""
 
         from typing import List
 
@@ -830,7 +830,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RuleSuite]:
-        """see more: `https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite`"""
+        """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
         from ..models import RuleSuite, BasicError
 
@@ -856,7 +856,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RuleSuite]:
-        """see more: `https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite`"""
+        """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
         from ..models import RuleSuite, BasicError
 
@@ -882,7 +882,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -908,7 +908,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -986,7 +986,7 @@ class ReposClient:
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset"""
 
         from ..models import (
             BasicError,
@@ -1076,7 +1076,7 @@ class ReposClient:
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset"""
 
         from ..models import (
             BasicError,
@@ -1114,7 +1114,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset"""
 
         from ..models import BasicError
 
@@ -1139,7 +1139,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset"""
 
         from ..models import BasicError
 
@@ -1164,7 +1164,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#get-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#get-a-repository"""
 
         from ..models import BasicError, FullRepository
 
@@ -1190,7 +1190,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#get-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#get-a-repository"""
 
         from ..models import BasicError, FullRepository
 
@@ -1216,7 +1216,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#delete-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#delete-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoDeleteResponse403
 
@@ -1241,7 +1241,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#delete-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#delete-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoDeleteResponse403
 
@@ -1321,7 +1321,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#update-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#update-a-repository"""
 
         from ..models import (
             BasicError,
@@ -1416,7 +1416,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#update-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#update-a-repository"""
 
         from ..models import (
             BasicError,
@@ -1475,7 +1475,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Activity]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-activities`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-activities"""
 
         from typing import List
 
@@ -1533,7 +1533,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Activity]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-activities`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-activities"""
 
         from typing import List
 
@@ -1573,7 +1573,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Autolink]]:
-        """see more: `https://docs.github.com/rest/repos/autolinks#list-all-autolinks-of-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#list-all-autolinks-of-a-repository"""
 
         from typing import List
 
@@ -1603,7 +1603,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Autolink]]:
-        """see more: `https://docs.github.com/rest/repos/autolinks#list-all-autolinks-of-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#list-all-autolinks-of-a-repository"""
 
         from typing import List
 
@@ -1659,7 +1659,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink]:
-        """see more: `https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository"""
 
         from ..models import Autolink, ValidationError, ReposOwnerRepoAutolinksPostBody
 
@@ -1719,7 +1719,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink]:
-        """see more: `https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository"""
 
         from ..models import Autolink, ValidationError, ReposOwnerRepoAutolinksPostBody
 
@@ -1753,7 +1753,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Autolink]:
-        """see more: `https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
         from ..models import Autolink, BasicError
 
@@ -1779,7 +1779,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Autolink]:
-        """see more: `https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
         from ..models import Autolink, BasicError
 
@@ -1805,7 +1805,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository"""
 
         from ..models import BasicError
 
@@ -1830,7 +1830,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository"""
 
         from ..models import BasicError
 
@@ -1854,7 +1854,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes]:
-        """see more: `https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
         from ..models import CheckAutomatedSecurityFixes
 
@@ -1877,7 +1877,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes]:
-        """see more: `https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
         from ..models import CheckAutomatedSecurityFixes
 
@@ -1900,7 +1900,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#enable-automated-security-fixes`"""
+        """See also: https://docs.github.com/rest/repos/repos#enable-automated-security-fixes"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
@@ -1919,7 +1919,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#enable-automated-security-fixes`"""
+        """See also: https://docs.github.com/rest/repos/repos#enable-automated-security-fixes"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
@@ -1938,7 +1938,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#disable-automated-security-fixes`"""
+        """See also: https://docs.github.com/rest/repos/repos#disable-automated-security-fixes"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
@@ -1957,7 +1957,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#disable-automated-security-fixes`"""
+        """See also: https://docs.github.com/rest/repos/repos#disable-automated-security-fixes"""
 
         url = f"/repos/{owner}/{repo}/automated-security-fixes"
 
@@ -1979,7 +1979,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ShortBranch]]:
-        """see more: `https://docs.github.com/rest/branches/branches#list-branches`"""
+        """See also: https://docs.github.com/rest/branches/branches#list-branches"""
 
         from typing import List
 
@@ -2016,7 +2016,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ShortBranch]]:
-        """see more: `https://docs.github.com/rest/branches/branches#list-branches`"""
+        """See also: https://docs.github.com/rest/branches/branches#list-branches"""
 
         from typing import List
 
@@ -2051,7 +2051,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BranchWithProtection]:
-        """see more: `https://docs.github.com/rest/branches/branches#get-a-branch`"""
+        """See also: https://docs.github.com/rest/branches/branches#get-a-branch"""
 
         from ..models import BasicError, BranchWithProtection
 
@@ -2077,7 +2077,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BranchWithProtection]:
-        """see more: `https://docs.github.com/rest/branches/branches#get-a-branch`"""
+        """See also: https://docs.github.com/rest/branches/branches#get-a-branch"""
 
         from ..models import BasicError, BranchWithProtection
 
@@ -2103,7 +2103,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BranchProtection]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-branch-protection"""
 
         from ..models import BasicError, BranchProtection
 
@@ -2129,7 +2129,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BranchProtection]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-branch-protection"""
 
         from ..models import BasicError, BranchProtection
 
@@ -2200,7 +2200,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#update-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#update-branch-protection"""
 
         from ..models import (
             BasicError,
@@ -2286,7 +2286,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#update-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#update-branch-protection"""
 
         from ..models import (
             BasicError,
@@ -2327,7 +2327,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-branch-protection"""
 
         from ..models import BasicError
 
@@ -2352,7 +2352,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-branch-protection"""
 
         from ..models import BasicError
 
@@ -2377,7 +2377,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
 
@@ -2400,7 +2400,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
 
@@ -2423,7 +2423,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
 
@@ -2446,7 +2446,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
 
@@ -2469,7 +2469,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection"""
 
         from ..models import BasicError
 
@@ -2494,7 +2494,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection"""
 
         from ..models import BasicError
 
@@ -2519,7 +2519,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchPullRequestReview]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-pull-request-review-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-pull-request-review-protection"""
 
         from ..models import ProtectedBranchPullRequestReview
 
@@ -2542,7 +2542,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchPullRequestReview]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-pull-request-review-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-pull-request-review-protection"""
 
         from ..models import ProtectedBranchPullRequestReview
 
@@ -2565,7 +2565,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-pull-request-review-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-pull-request-review-protection"""
 
         from ..models import BasicError
 
@@ -2590,7 +2590,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-pull-request-review-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-pull-request-review-protection"""
 
         from ..models import BasicError
 
@@ -2655,7 +2655,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranchPullRequestReview]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection"""
 
         from ..models import (
             ValidationError,
@@ -2736,7 +2736,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranchPullRequestReview]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection"""
 
         from ..models import (
             ValidationError,
@@ -2777,7 +2777,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
 
@@ -2803,7 +2803,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
 
@@ -2829,7 +2829,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
 
@@ -2855,7 +2855,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
 
@@ -2881,7 +2881,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection"""
 
         from ..models import BasicError
 
@@ -2906,7 +2906,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection"""
 
         from ..models import BasicError
 
@@ -2931,7 +2931,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[StatusCheckPolicy]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection"""
 
         from ..models import BasicError, StatusCheckPolicy
 
@@ -2959,7 +2959,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[StatusCheckPolicy]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection"""
 
         from ..models import BasicError, StatusCheckPolicy
 
@@ -2987,7 +2987,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-status-check-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-protection"""
 
         url = (
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
@@ -3009,7 +3009,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-status-check-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-protection"""
 
         url = (
             f"/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"
@@ -3068,7 +3068,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[StatusCheckPolicy]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#update-status-check-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#update-status-check-protection"""
 
         from ..models import (
             BasicError,
@@ -3149,7 +3149,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[StatusCheckPolicy]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#update-status-check-protection`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#update-status-check-protection"""
 
         from ..models import (
             BasicError,
@@ -3193,7 +3193,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts"""
 
         from typing import List
 
@@ -3221,7 +3221,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts"""
 
         from typing import List
 
@@ -3286,7 +3286,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts"""
 
         from typing import List, Union
 
@@ -3370,7 +3370,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts"""
 
         from typing import List, Union
 
@@ -3454,7 +3454,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts"""
 
         from typing import List, Union
 
@@ -3539,7 +3539,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts"""
 
         from typing import List, Union
 
@@ -3624,7 +3624,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts"""
 
         from typing import List, Union
 
@@ -3708,7 +3708,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts"""
 
         from typing import List, Union
 
@@ -3755,7 +3755,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BranchRestrictionPolicy]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-access-restrictions"""
 
         from ..models import BasicError, BranchRestrictionPolicy
 
@@ -3781,7 +3781,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BranchRestrictionPolicy]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-access-restrictions"""
 
         from ..models import BasicError, BranchRestrictionPolicy
 
@@ -3807,7 +3807,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions"""
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 
@@ -3827,7 +3827,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions"""
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"
 
@@ -3847,7 +3847,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
         from typing import List
 
@@ -3875,7 +3875,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
         from typing import List
 
@@ -3940,7 +3940,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions"""
 
         from typing import List, Union
 
@@ -4023,7 +4023,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions"""
 
         from typing import List, Union
 
@@ -4106,7 +4106,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions"""
 
         from typing import List, Union
 
@@ -4189,7 +4189,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions"""
 
         from typing import List, Union
 
@@ -4272,7 +4272,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions"""
 
         from typing import List, Union
 
@@ -4355,7 +4355,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Integration]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions"""
 
         from typing import List, Union
 
@@ -4401,7 +4401,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
         from typing import List
 
@@ -4429,7 +4429,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
         from typing import List
 
@@ -4494,7 +4494,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions"""
 
         from typing import List, Union
 
@@ -4577,7 +4577,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions"""
 
         from typing import List, Union
 
@@ -4660,7 +4660,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions"""
 
         from typing import List, Union
 
@@ -4743,7 +4743,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions"""
 
         from typing import List, Union
 
@@ -4826,7 +4826,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions"""
 
         from typing import List, Union
 
@@ -4909,7 +4909,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions"""
 
         from typing import List, Union
 
@@ -4955,7 +4955,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
 
         from typing import List
 
@@ -4983,7 +4983,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
 
         from typing import List
 
@@ -5048,7 +5048,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
         from typing import List, Union
 
@@ -5131,7 +5131,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
         from typing import List, Union
 
@@ -5214,7 +5214,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
         from typing import List, Union
 
@@ -5297,7 +5297,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
         from typing import List, Union
 
@@ -5380,7 +5380,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
         from typing import List, Union
 
@@ -5463,7 +5463,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions`"""
+        """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
         from typing import List, Union
 
@@ -5536,7 +5536,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection]:
-        """see more: `https://docs.github.com/rest/branches/branches#rename-a-branch`"""
+        """See also: https://docs.github.com/rest/branches/branches#rename-a-branch"""
 
         from ..models import (
             BasicError,
@@ -5604,7 +5604,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection]:
-        """see more: `https://docs.github.com/rest/branches/branches#rename-a-branch`"""
+        """See also: https://docs.github.com/rest/branches/branches#rename-a-branch"""
 
         from ..models import (
             BasicError,
@@ -5645,7 +5645,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeownersErrors]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-codeowners-errors`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-codeowners-errors"""
 
         from ..models import CodeownersErrors
 
@@ -5674,7 +5674,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeownersErrors]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-codeowners-errors`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-codeowners-errors"""
 
         from ..models import CodeownersErrors
 
@@ -5708,7 +5708,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Collaborator]]:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators"""
 
         from typing import List
 
@@ -5749,7 +5749,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Collaborator]]:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators"""
 
         from typing import List
 
@@ -5785,7 +5785,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator"""
 
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
@@ -5806,7 +5806,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator"""
 
         url = f"/repos/{owner}/{repo}/collaborators/{username}"
 
@@ -5854,7 +5854,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator"""
 
         from ..models import (
             BasicError,
@@ -5921,7 +5921,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator"""
 
         from ..models import (
             BasicError,
@@ -5961,7 +5961,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator"""
 
         from ..models import BasicError, ValidationError
 
@@ -5987,7 +5987,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator"""
 
         from ..models import BasicError, ValidationError
 
@@ -6013,7 +6013,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryCollaboratorPermission]:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user"""
 
         from ..models import BasicError, RepositoryCollaboratorPermission
 
@@ -6039,7 +6039,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryCollaboratorPermission]:
-        """see more: `https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user`"""
+        """See also: https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user"""
 
         from ..models import BasicError, RepositoryCollaboratorPermission
 
@@ -6066,7 +6066,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CommitComment]]:
-        """see more: `https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository`"""
+        """See also: https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository"""
 
         from typing import List
 
@@ -6098,7 +6098,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CommitComment]]:
-        """see more: `https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository`"""
+        """See also: https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository"""
 
         from typing import List
 
@@ -6129,7 +6129,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CommitComment]:
-        """see more: `https://docs.github.com/rest/commits/comments#get-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#get-a-commit-comment"""
 
         from ..models import BasicError, CommitComment
 
@@ -6155,7 +6155,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CommitComment]:
-        """see more: `https://docs.github.com/rest/commits/comments#get-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#get-a-commit-comment"""
 
         from ..models import BasicError, CommitComment
 
@@ -6181,7 +6181,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/commits/comments#delete-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#delete-a-commit-comment"""
 
         from ..models import BasicError
 
@@ -6206,7 +6206,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/commits/comments#delete-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#delete-a-commit-comment"""
 
         from ..models import BasicError
 
@@ -6258,7 +6258,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
-        """see more: `https://docs.github.com/rest/commits/comments#update-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#update-a-commit-comment"""
 
         from ..models import (
             BasicError,
@@ -6323,7 +6323,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
-        """see more: `https://docs.github.com/rest/commits/comments#update-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#update-a-commit-comment"""
 
         from ..models import (
             BasicError,
@@ -6368,7 +6368,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Commit]]:
-        """see more: `https://docs.github.com/rest/commits/commits#list-commits`"""
+        """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
         from typing import List
 
@@ -6418,7 +6418,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Commit]]:
-        """see more: `https://docs.github.com/rest/commits/commits#list-commits`"""
+        """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
         from typing import List
 
@@ -6461,7 +6461,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BranchShort]]:
-        """see more: `https://docs.github.com/rest/commits/commits#list-branches-for-head-commit`"""
+        """See also: https://docs.github.com/rest/commits/commits#list-branches-for-head-commit"""
 
         from typing import List
 
@@ -6489,7 +6489,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BranchShort]]:
-        """see more: `https://docs.github.com/rest/commits/commits#list-branches-for-head-commit`"""
+        """See also: https://docs.github.com/rest/commits/commits#list-branches-for-head-commit"""
 
         from typing import List
 
@@ -6519,7 +6519,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CommitComment]]:
-        """see more: `https://docs.github.com/rest/commits/comments#list-commit-comments`"""
+        """See also: https://docs.github.com/rest/commits/comments#list-commit-comments"""
 
         from typing import List
 
@@ -6552,7 +6552,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CommitComment]]:
-        """see more: `https://docs.github.com/rest/commits/comments#list-commit-comments`"""
+        """See also: https://docs.github.com/rest/commits/comments#list-commit-comments"""
 
         from typing import List
 
@@ -6613,7 +6613,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
-        """see more: `https://docs.github.com/rest/commits/comments#create-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#create-a-commit-comment"""
 
         from ..models import (
             BasicError,
@@ -6685,7 +6685,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
-        """see more: `https://docs.github.com/rest/commits/comments#create-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/commits/comments#create-a-commit-comment"""
 
         from ..models import (
             BasicError,
@@ -6729,7 +6729,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestSimple]]:
-        """see more: `https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit`"""
+        """See also: https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit"""
 
         from typing import List
 
@@ -6762,7 +6762,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestSimple]]:
-        """see more: `https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit`"""
+        """See also: https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit"""
 
         from typing import List
 
@@ -6795,7 +6795,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Commit]:
-        """see more: `https://docs.github.com/rest/commits/commits#get-a-commit`"""
+        """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
         from ..models import (
             Commit,
@@ -6837,7 +6837,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Commit]:
-        """see more: `https://docs.github.com/rest/commits/commits#get-a-commit`"""
+        """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
         from ..models import (
             Commit,
@@ -6879,7 +6879,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedCommitStatus]:
-        """see more: `https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference`"""
+        """See also: https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
         from ..models import BasicError, CombinedCommitStatus
 
@@ -6913,7 +6913,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedCommitStatus]:
-        """see more: `https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference`"""
+        """See also: https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
         from ..models import BasicError, CombinedCommitStatus
 
@@ -6947,7 +6947,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Status]]:
-        """see more: `https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference`"""
+        """See also: https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference"""
 
         from typing import List
 
@@ -6980,7 +6980,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Status]]:
-        """see more: `https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference`"""
+        """See also: https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference"""
 
         from typing import List
 
@@ -7010,7 +7010,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CommunityProfile]:
-        """see more: `https://docs.github.com/rest/metrics/community#get-community-profile-metrics`"""
+        """See also: https://docs.github.com/rest/metrics/community#get-community-profile-metrics"""
 
         from ..models import CommunityProfile
 
@@ -7032,7 +7032,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CommunityProfile]:
-        """see more: `https://docs.github.com/rest/metrics/community#get-community-profile-metrics`"""
+        """See also: https://docs.github.com/rest/metrics/community#get-community-profile-metrics"""
 
         from ..models import CommunityProfile
 
@@ -7057,7 +7057,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CommitComparison]:
-        """see more: `https://docs.github.com/rest/commits/commits#compare-two-commits`"""
+        """See also: https://docs.github.com/rest/commits/commits#compare-two-commits"""
 
         from ..models import (
             BasicError,
@@ -7097,7 +7097,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CommitComparison]:
-        """see more: `https://docs.github.com/rest/commits/commits#compare-two-commits`"""
+        """See also: https://docs.github.com/rest/commits/commits#compare-two-commits"""
 
         from ..models import (
             BasicError,
@@ -7140,7 +7140,7 @@ class ReposClient:
             List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ]
     ]:
-        """see more: `https://docs.github.com/rest/repos/contents#get-repository-content`"""
+        """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
 
         from typing import List, Union
 
@@ -7190,7 +7190,7 @@ class ReposClient:
             List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ]
     ]:
-        """see more: `https://docs.github.com/rest/repos/contents#get-repository-content`"""
+        """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
 
         from typing import List, Union
 
@@ -7267,7 +7267,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
-        """see more: `https://docs.github.com/rest/repos/contents#create-or-update-file-contents`"""
+        """See also: https://docs.github.com/rest/repos/contents#create-or-update-file-contents"""
 
         from ..models import (
             BasicError,
@@ -7340,7 +7340,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
-        """see more: `https://docs.github.com/rest/repos/contents#create-or-update-file-contents`"""
+        """See also: https://docs.github.com/rest/repos/contents#create-or-update-file-contents"""
 
         from ..models import (
             BasicError,
@@ -7414,7 +7414,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
-        """see more: `https://docs.github.com/rest/repos/contents#delete-a-file`"""
+        """See also: https://docs.github.com/rest/repos/contents#delete-a-file"""
 
         from ..models import (
             BasicError,
@@ -7490,7 +7490,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
-        """see more: `https://docs.github.com/rest/repos/contents#delete-a-file`"""
+        """See also: https://docs.github.com/rest/repos/contents#delete-a-file"""
 
         from ..models import (
             BasicError,
@@ -7535,7 +7535,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Contributor]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-contributors`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-contributors"""
 
         from typing import List
 
@@ -7573,7 +7573,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Contributor]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-contributors`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-contributors"""
 
         from typing import List
 
@@ -7614,7 +7614,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Deployment]]:
-        """see more: `https://docs.github.com/rest/deployments/deployments#list-deployments`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#list-deployments"""
 
         from typing import List
 
@@ -7654,7 +7654,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Deployment]]:
-        """see more: `https://docs.github.com/rest/deployments/deployments#list-deployments`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#list-deployments"""
 
         from typing import List
 
@@ -7723,7 +7723,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment]:
-        """see more: `https://docs.github.com/rest/deployments/deployments#create-a-deployment`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#create-a-deployment"""
 
         from ..models import (
             Deployment,
@@ -7795,7 +7795,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment]:
-        """see more: `https://docs.github.com/rest/deployments/deployments#create-a-deployment`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#create-a-deployment"""
 
         from ..models import (
             Deployment,
@@ -7833,7 +7833,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Deployment]:
-        """see more: `https://docs.github.com/rest/deployments/deployments#get-a-deployment`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#get-a-deployment"""
 
         from ..models import BasicError, Deployment
 
@@ -7859,7 +7859,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Deployment]:
-        """see more: `https://docs.github.com/rest/deployments/deployments#get-a-deployment`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#get-a-deployment"""
 
         from ..models import BasicError, Deployment
 
@@ -7885,7 +7885,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/deployments#delete-a-deployment`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#delete-a-deployment"""
 
         from ..models import BasicError, ValidationErrorSimple
 
@@ -7911,7 +7911,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/deployments#delete-a-deployment`"""
+        """See also: https://docs.github.com/rest/deployments/deployments#delete-a-deployment"""
 
         from ..models import BasicError, ValidationErrorSimple
 
@@ -7939,7 +7939,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DeploymentStatus]]:
-        """see more: `https://docs.github.com/rest/deployments/statuses#list-deployment-statuses`"""
+        """See also: https://docs.github.com/rest/deployments/statuses#list-deployment-statuses"""
 
         from typing import List
 
@@ -7975,7 +7975,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DeploymentStatus]]:
-        """see more: `https://docs.github.com/rest/deployments/statuses#list-deployment-statuses`"""
+        """See also: https://docs.github.com/rest/deployments/statuses#list-deployment-statuses"""
 
         from typing import List
 
@@ -8052,7 +8052,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[DeploymentStatus]:
-        """see more: `https://docs.github.com/rest/deployments/statuses#create-a-deployment-status`"""
+        """See also: https://docs.github.com/rest/deployments/statuses#create-a-deployment-status"""
 
         from ..models import (
             ValidationError,
@@ -8135,7 +8135,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[DeploymentStatus]:
-        """see more: `https://docs.github.com/rest/deployments/statuses#create-a-deployment-status`"""
+        """See also: https://docs.github.com/rest/deployments/statuses#create-a-deployment-status"""
 
         from ..models import (
             ValidationError,
@@ -8176,7 +8176,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeploymentStatus]:
-        """see more: `https://docs.github.com/rest/deployments/statuses#get-a-deployment-status`"""
+        """See also: https://docs.github.com/rest/deployments/statuses#get-a-deployment-status"""
 
         from ..models import BasicError, DeploymentStatus
 
@@ -8203,7 +8203,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeploymentStatus]:
-        """see more: `https://docs.github.com/rest/deployments/statuses#get-a-deployment-status`"""
+        """See also: https://docs.github.com/rest/deployments/statuses#get-a-deployment-status"""
 
         from ..models import BasicError, DeploymentStatus
 
@@ -8256,7 +8256,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event"""
 
         from ..models import ValidationError, ReposOwnerRepoDispatchesPostBody
 
@@ -8316,7 +8316,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event"""
 
         from ..models import ValidationError, ReposOwnerRepoDispatchesPostBody
 
@@ -8350,7 +8350,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsGetResponse200]:
-        """see more: `https://docs.github.com/rest/deployments/environments#list-environments`"""
+        """See also: https://docs.github.com/rest/deployments/environments#list-environments"""
 
         from ..models import ReposOwnerRepoEnvironmentsGetResponse200
 
@@ -8380,7 +8380,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsGetResponse200]:
-        """see more: `https://docs.github.com/rest/deployments/environments#list-environments`"""
+        """See also: https://docs.github.com/rest/deployments/environments#list-environments"""
 
         from ..models import ReposOwnerRepoEnvironmentsGetResponse200
 
@@ -8409,7 +8409,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Environment]:
-        """see more: `https://docs.github.com/rest/deployments/environments#get-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/environments#get-an-environment"""
 
         from ..models import Environment
 
@@ -8432,7 +8432,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Environment]:
-        """see more: `https://docs.github.com/rest/deployments/environments#get-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/environments#get-an-environment"""
 
         from ..models import Environment
 
@@ -8498,7 +8498,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Environment]:
-        """see more: `https://docs.github.com/rest/deployments/environments#create-or-update-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/environments#create-or-update-an-environment"""
 
         from typing import Union
 
@@ -8583,7 +8583,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Environment]:
-        """see more: `https://docs.github.com/rest/deployments/environments#create-or-update-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/environments#create-or-update-an-environment"""
 
         from typing import Union
 
@@ -8625,7 +8625,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/environments#delete-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/environments#delete-an-environment"""
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
@@ -8645,7 +8645,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/environments#delete-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/environments#delete-an-environment"""
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}"
 
@@ -8669,7 +8669,7 @@ class ReposClient:
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies"""
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
@@ -8704,7 +8704,7 @@ class ReposClient:
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies"""
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
@@ -8763,7 +8763,7 @@ class ReposClient:
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy"""
 
         from ..models import (
             DeploymentBranchPolicy,
@@ -8826,7 +8826,7 @@ class ReposClient:
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy"""
 
         from ..models import (
             DeploymentBranchPolicy,
@@ -8862,7 +8862,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeploymentBranchPolicy]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy
 
@@ -8886,7 +8886,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeploymentBranchPolicy]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy
 
@@ -8939,7 +8939,7 @@ class ReposClient:
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy, DeploymentBranchPolicyNamePattern
 
@@ -9000,7 +9000,7 @@ class ReposClient:
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy, DeploymentBranchPolicyNamePattern
 
@@ -9032,7 +9032,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy"""
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
@@ -9053,7 +9053,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy`"""
+        """See also: https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy"""
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}"
 
@@ -9075,7 +9075,7 @@ class ReposClient:
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment"""
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
@@ -9102,7 +9102,7 @@ class ReposClient:
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment"""
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
@@ -9156,7 +9156,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[DeploymentProtectionRule]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment"""
 
         from ..models import (
             DeploymentProtectionRule,
@@ -9222,7 +9222,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[DeploymentProtectionRule]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment"""
 
         from ..models import (
             DeploymentProtectionRule,
@@ -9263,7 +9263,7 @@ class ReposClient:
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment"""
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
@@ -9298,7 +9298,7 @@ class ReposClient:
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment"""
 
         from ..models import (
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
@@ -9330,7 +9330,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeploymentProtectionRule]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
         from ..models import DeploymentProtectionRule
 
@@ -9354,7 +9354,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeploymentProtectionRule]:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
         from ..models import DeploymentProtectionRule
 
@@ -9378,7 +9378,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment"""
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
 
@@ -9399,7 +9399,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment`"""
+        """See also: https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment"""
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}"
 
@@ -9421,7 +9421,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/forks#list-forks`"""
+        """See also: https://docs.github.com/rest/repos/forks#list-forks"""
 
         from typing import List
 
@@ -9458,7 +9458,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/forks#list-forks`"""
+        """See also: https://docs.github.com/rest/repos/forks#list-forks"""
 
         from typing import List
 
@@ -9519,7 +9519,7 @@ class ReposClient:
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/forks#create-a-fork`"""
+        """See also: https://docs.github.com/rest/repos/forks#create-a-fork"""
 
         from typing import Union
 
@@ -9589,7 +9589,7 @@ class ReposClient:
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/forks#create-a-fork`"""
+        """See also: https://docs.github.com/rest/repos/forks#create-a-fork"""
 
         from typing import Union
 
@@ -9634,7 +9634,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Hook]]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#list-repository-webhooks`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
         from typing import List
 
@@ -9669,7 +9669,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Hook]]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#list-repository-webhooks`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
         from typing import List
 
@@ -9730,7 +9730,7 @@ class ReposClient:
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook"""
 
         from typing import Union
 
@@ -9800,7 +9800,7 @@ class ReposClient:
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook"""
 
         from typing import Union
 
@@ -9843,7 +9843,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Hook]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
         from ..models import Hook, BasicError
 
@@ -9869,7 +9869,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Hook]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
         from ..models import Hook, BasicError
 
@@ -9895,7 +9895,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook"""
 
         from ..models import BasicError
 
@@ -9920,7 +9920,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook"""
 
         from ..models import BasicError
 
@@ -9976,7 +9976,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook"""
 
         from ..models import (
             Hook,
@@ -10047,7 +10047,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook"""
 
         from ..models import (
             Hook,
@@ -10087,7 +10087,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig
 
@@ -10110,7 +10110,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig
 
@@ -10163,7 +10163,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig, ReposOwnerRepoHooksHookIdConfigPatchBody
 
@@ -10224,7 +10224,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig, ReposOwnerRepoHooksHookIdConfigPatchBody
 
@@ -10258,7 +10258,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
         from typing import List
 
@@ -10297,7 +10297,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
         from typing import List
 
@@ -10334,7 +10334,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[HookDelivery]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
 
@@ -10362,7 +10362,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[HookDelivery]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
 
@@ -10390,7 +10390,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
         from ..models import (
             BasicError,
@@ -10422,7 +10422,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
         from ..models import (
             BasicError,
@@ -10453,7 +10453,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/webhooks#ping-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#ping-a-repository-webhook"""
 
         from ..models import BasicError
 
@@ -10478,7 +10478,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/webhooks#ping-a-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#ping-a-repository-webhook"""
 
         from ..models import BasicError
 
@@ -10503,7 +10503,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook"""
 
         from ..models import BasicError
 
@@ -10528,7 +10528,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook`"""
+        """See also: https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook"""
 
         from ..models import BasicError
 
@@ -10554,7 +10554,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryInvitation]]:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#list-repository-invitations`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations"""
 
         from typing import List
 
@@ -10586,7 +10586,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryInvitation]]:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#list-repository-invitations`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations"""
 
         from typing import List
 
@@ -10617,7 +10617,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation"""
 
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
@@ -10637,7 +10637,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation"""
 
         url = f"/repos/{owner}/{repo}/invitations/{invitation_id}"
 
@@ -10686,7 +10686,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation"""
 
         from ..models import (
             RepositoryInvitation,
@@ -10751,7 +10751,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation"""
 
         from ..models import (
             RepositoryInvitation,
@@ -10788,7 +10788,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DeployKey]]:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys"""
 
         from typing import List
 
@@ -10820,7 +10820,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DeployKey]]:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys"""
 
         from typing import List
 
@@ -10877,7 +10877,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey]:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key"""
 
         from ..models import DeployKey, ValidationError, ReposOwnerRepoKeysPostBody
 
@@ -10937,7 +10937,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey]:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key"""
 
         from ..models import DeployKey, ValidationError, ReposOwnerRepoKeysPostBody
 
@@ -10971,7 +10971,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeployKey]:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
         from ..models import DeployKey, BasicError
 
@@ -10997,7 +10997,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DeployKey]:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
         from ..models import DeployKey, BasicError
 
@@ -11023,7 +11023,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key"""
 
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
@@ -11043,7 +11043,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key`"""
+        """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key"""
 
         url = f"/repos/{owner}/{repo}/keys/{key_id}"
 
@@ -11062,7 +11062,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Language]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-languages`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-languages"""
 
         from ..models import Language
 
@@ -11084,7 +11084,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Language]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-languages`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-languages"""
 
         from ..models import Language
 
@@ -11131,7 +11131,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream]:
-        """see more: `https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository`"""
+        """See also: https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository"""
 
         from ..models import MergedUpstream, ReposOwnerRepoMergeUpstreamPostBody
 
@@ -11187,7 +11187,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream]:
-        """see more: `https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository`"""
+        """See also: https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository"""
 
         from ..models import MergedUpstream, ReposOwnerRepoMergeUpstreamPostBody
 
@@ -11245,7 +11245,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit]:
-        """see more: `https://docs.github.com/rest/branches/branches#merge-a-branch`"""
+        """See also: https://docs.github.com/rest/branches/branches#merge-a-branch"""
 
         from ..models import (
             Commit,
@@ -11311,7 +11311,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit]:
-        """see more: `https://docs.github.com/rest/branches/branches#merge-a-branch`"""
+        """See also: https://docs.github.com/rest/branches/branches#merge-a-branch"""
 
         from ..models import (
             Commit,
@@ -11350,7 +11350,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Page]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
         from ..models import Page, BasicError
 
@@ -11375,7 +11375,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Page]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
         from ..models import Page, BasicError
 
@@ -11525,7 +11525,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site"""
 
         from typing import Union
 
@@ -11703,7 +11703,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site"""
 
         from typing import Union
 
@@ -11807,7 +11807,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Page]:
-        """see more: `https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site"""
 
         from typing import Union
 
@@ -11908,7 +11908,7 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Page]:
-        """see more: `https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site"""
 
         from typing import Union
 
@@ -11958,7 +11958,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site"""
 
         from ..models import BasicError, ValidationError
 
@@ -11984,7 +11984,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site`"""
+        """See also: https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site"""
 
         from ..models import BasicError, ValidationError
 
@@ -12012,7 +12012,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PageBuild]]:
-        """see more: `https://docs.github.com/rest/pages/pages#list-apiname-pages-builds`"""
+        """See also: https://docs.github.com/rest/pages/pages#list-apiname-pages-builds"""
 
         from typing import List
 
@@ -12044,7 +12044,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PageBuild]]:
-        """see more: `https://docs.github.com/rest/pages/pages#list-apiname-pages-builds`"""
+        """See also: https://docs.github.com/rest/pages/pages#list-apiname-pages-builds"""
 
         from typing import List
 
@@ -12074,7 +12074,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PageBuildStatus]:
-        """see more: `https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build`"""
+        """See also: https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build"""
 
         from ..models import PageBuildStatus
 
@@ -12096,7 +12096,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PageBuildStatus]:
-        """see more: `https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build`"""
+        """See also: https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build"""
 
         from ..models import PageBuildStatus
 
@@ -12118,7 +12118,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PageBuild]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-latest-pages-build`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-latest-pages-build"""
 
         from ..models import PageBuild
 
@@ -12140,7 +12140,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PageBuild]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-latest-pages-build`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-latest-pages-build"""
 
         from ..models import PageBuild
 
@@ -12163,7 +12163,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PageBuild]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-apiname-pages-build`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-apiname-pages-build"""
 
         from ..models import PageBuild
 
@@ -12186,7 +12186,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PageBuild]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-apiname-pages-build`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-apiname-pages-build"""
 
         from ..models import PageBuild
 
@@ -12236,7 +12236,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment]:
-        """see more: `https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment`"""
+        """See also: https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment"""
 
         from ..models import (
             BasicError,
@@ -12304,7 +12304,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment]:
-        """see more: `https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment`"""
+        """See also: https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment"""
 
         from ..models import (
             BasicError,
@@ -12344,7 +12344,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PagesHealthCheck]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
         from ..models import BasicError, PagesHealthCheck
 
@@ -12369,7 +12369,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PagesHealthCheck]:
-        """see more: `https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages`"""
+        """See also: https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
         from ..models import BasicError, PagesHealthCheck
 
@@ -12394,7 +12394,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository"""
 
         from ..models import BasicError
 
@@ -12418,7 +12418,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository"""
 
         from ..models import BasicError
 
@@ -12442,7 +12442,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository"""
 
         from ..models import BasicError
 
@@ -12466,7 +12466,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository"""
 
         from ..models import BasicError
 
@@ -12490,7 +12490,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CustomPropertyValue]]:
-        """see more: `https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
 
         from typing import List
 
@@ -12518,7 +12518,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CustomPropertyValue]]:
-        """see more: `https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
 
         from typing import List
 
@@ -12571,7 +12571,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoPropertiesValuesPatchBody
 
@@ -12629,7 +12629,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoPropertiesValuesPatchBody
 
@@ -12663,7 +12663,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ContentFile]:
-        """see more: `https://docs.github.com/rest/repos/contents#get-a-repository-readme`"""
+        """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme"""
 
         from ..models import BasicError, ContentFile, ValidationError
 
@@ -12695,7 +12695,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ContentFile]:
-        """see more: `https://docs.github.com/rest/repos/contents#get-a-repository-readme`"""
+        """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme"""
 
         from ..models import BasicError, ContentFile, ValidationError
 
@@ -12728,7 +12728,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ContentFile]:
-        """see more: `https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory`"""
+        """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
         from ..models import BasicError, ContentFile, ValidationError
 
@@ -12761,7 +12761,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ContentFile]:
-        """see more: `https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory`"""
+        """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
         from ..models import BasicError, ContentFile, ValidationError
 
@@ -12794,7 +12794,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Release]]:
-        """see more: `https://docs.github.com/rest/releases/releases#list-releases`"""
+        """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
         from typing import List
 
@@ -12829,7 +12829,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Release]]:
-        """see more: `https://docs.github.com/rest/releases/releases#list-releases`"""
+        """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
         from typing import List
 
@@ -12895,7 +12895,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#create-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#create-a-release"""
 
         from ..models import (
             Release,
@@ -12967,7 +12967,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#create-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#create-a-release"""
 
         from ..models import (
             Release,
@@ -13007,7 +13007,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReleaseAsset]:
-        """see more: `https://docs.github.com/rest/releases/assets#get-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#get-a-release-asset"""
 
         from ..models import BasicError, ReleaseAsset
 
@@ -13033,7 +13033,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReleaseAsset]:
-        """see more: `https://docs.github.com/rest/releases/assets#get-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#get-a-release-asset"""
 
         from ..models import BasicError, ReleaseAsset
 
@@ -13059,7 +13059,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/releases/assets#delete-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#delete-a-release-asset"""
 
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
@@ -13079,7 +13079,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/releases/assets#delete-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#delete-a-release-asset"""
 
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
@@ -13128,7 +13128,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset]:
-        """see more: `https://docs.github.com/rest/releases/assets#update-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#update-a-release-asset"""
 
         from ..models import ReleaseAsset, ReposOwnerRepoReleasesAssetsAssetIdPatchBody
 
@@ -13188,7 +13188,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset]:
-        """see more: `https://docs.github.com/rest/releases/assets#update-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#update-a-release-asset"""
 
         from ..models import ReleaseAsset, ReposOwnerRepoReleasesAssetsAssetIdPatchBody
 
@@ -13246,7 +13246,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent]:
-        """see more: `https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release"""
 
         from ..models import (
             BasicError,
@@ -13311,7 +13311,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent]:
-        """see more: `https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release"""
 
         from ..models import (
             BasicError,
@@ -13348,7 +13348,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#get-the-latest-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#get-the-latest-release"""
 
         from ..models import Release
 
@@ -13370,7 +13370,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#get-the-latest-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#get-the-latest-release"""
 
         from ..models import Release
 
@@ -13393,7 +13393,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name`"""
+        """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
         from ..models import Release, BasicError
 
@@ -13419,7 +13419,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name`"""
+        """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
         from ..models import Release, BasicError
 
@@ -13445,7 +13445,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#get-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#get-a-release"""
 
         from ..models import Release
 
@@ -13469,7 +13469,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#get-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#get-a-release"""
 
         from ..models import Release
 
@@ -13493,7 +13493,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/releases/releases#delete-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#delete-a-release"""
 
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
@@ -13513,7 +13513,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/releases/releases#delete-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#delete-a-release"""
 
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
@@ -13567,7 +13567,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#update-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#update-a-release"""
 
         from ..models import (
             Release,
@@ -13639,7 +13639,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
-        """see more: `https://docs.github.com/rest/releases/releases#update-a-release`"""
+        """See also: https://docs.github.com/rest/releases/releases#update-a-release"""
 
         from ..models import (
             Release,
@@ -13679,7 +13679,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ReleaseAsset]]:
-        """see more: `https://docs.github.com/rest/releases/assets#list-release-assets`"""
+        """See also: https://docs.github.com/rest/releases/assets#list-release-assets"""
 
         from typing import List
 
@@ -13712,7 +13712,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ReleaseAsset]]:
-        """see more: `https://docs.github.com/rest/releases/assets#list-release-assets`"""
+        """See also: https://docs.github.com/rest/releases/assets#list-release-assets"""
 
         from typing import List
 
@@ -13747,7 +13747,7 @@ class ReposClient:
         data: FileTypes,
         **kwargs,
     ) -> Response[ReleaseAsset]:
-        """see more: `https://docs.github.com/rest/releases/assets#upload-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#upload-a-release-asset"""
 
         from githubkit.typing import FileTypes
 
@@ -13791,7 +13791,7 @@ class ReposClient:
         data: FileTypes,
         **kwargs,
     ) -> Response[ReleaseAsset]:
-        """see more: `https://docs.github.com/rest/releases/assets#upload-a-release-asset`"""
+        """See also: https://docs.github.com/rest/releases/assets#upload-a-release-asset"""
 
         from githubkit.typing import FileTypes
 
@@ -13853,7 +13853,7 @@ class ReposClient:
             ]
         ]
     ]:
-        """see more: `https://docs.github.com/rest/repos/rules#get-rules-for-a-branch`"""
+        """See also: https://docs.github.com/rest/repos/rules#get-rules-for-a-branch"""
 
         from typing import List, Union
 
@@ -13940,7 +13940,7 @@ class ReposClient:
             ]
         ]
     ]:
-        """see more: `https://docs.github.com/rest/repos/rules#get-rules-for-a-branch`"""
+        """See also: https://docs.github.com/rest/repos/rules#get-rules-for-a-branch"""
 
         from typing import List, Union
 
@@ -14007,7 +14007,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryRuleset]]:
-        """see more: `https://docs.github.com/rest/repos/rules#get-all-repository-rulesets`"""
+        """See also: https://docs.github.com/rest/repos/rules#get-all-repository-rulesets"""
 
         from typing import List
 
@@ -14045,7 +14045,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryRuleset]]:
-        """see more: `https://docs.github.com/rest/repos/rules#get-all-repository-rulesets`"""
+        """See also: https://docs.github.com/rest/repos/rules#get-all-repository-rulesets"""
 
         from typing import List
 
@@ -14130,7 +14130,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/repos/rules#create-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#create-a-repository-ruleset"""
 
         from ..models import (
             BasicError,
@@ -14218,7 +14218,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/repos/rules#create-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#create-a-repository-ruleset"""
 
         from ..models import (
             BasicError,
@@ -14262,7 +14262,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RuleSuitesItems]]:
-        """see more: `https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites`"""
+        """See also: https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites"""
 
         from typing import List
 
@@ -14306,7 +14306,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RuleSuitesItems]]:
-        """see more: `https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites`"""
+        """See also: https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites"""
 
         from typing import List
 
@@ -14345,7 +14345,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RuleSuite]:
-        """see more: `https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite`"""
+        """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
         from ..models import RuleSuite, BasicError
 
@@ -14372,7 +14372,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RuleSuite]:
-        """see more: `https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite`"""
+        """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
         from ..models import RuleSuite, BasicError
 
@@ -14400,7 +14400,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/repos/rules#get-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#get-a-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -14433,7 +14433,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/repos/rules#get-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#get-a-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -14517,7 +14517,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/repos/rules#update-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#update-a-repository-ruleset"""
 
         from ..models import (
             BasicError,
@@ -14608,7 +14608,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
-        """see more: `https://docs.github.com/rest/repos/rules#update-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#update-a-repository-ruleset"""
 
         from ..models import (
             BasicError,
@@ -14647,7 +14647,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset"""
 
         from ..models import BasicError
 
@@ -14673,7 +14673,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset`"""
+        """See also: https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset"""
 
         from ..models import BasicError
 
@@ -14698,7 +14698,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[List[int]]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity"""
 
         from typing import List
 
@@ -14721,7 +14721,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[List[int]]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity"""
 
         from typing import List
 
@@ -14744,7 +14744,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CommitActivity]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity"""
 
         from typing import List
 
@@ -14768,7 +14768,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CommitActivity]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity"""
 
         from typing import List
 
@@ -14792,7 +14792,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ContributorActivity]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity"""
 
         from typing import List
 
@@ -14816,7 +14816,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ContributorActivity]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity"""
 
         from typing import List
 
@@ -14840,7 +14840,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ParticipationStats]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count"""
 
         from ..models import BasicError, ParticipationStats
 
@@ -14865,7 +14865,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ParticipationStats]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count"""
 
         from ..models import BasicError, ParticipationStats
 
@@ -14890,7 +14890,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[List[int]]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
 
         from typing import List
 
@@ -14912,7 +14912,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[List[int]]]:
-        """see more: `https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day`"""
+        """See also: https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
 
         from typing import List
 
@@ -14965,7 +14965,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status]:
-        """see more: `https://docs.github.com/rest/commits/statuses#create-a-commit-status`"""
+        """See also: https://docs.github.com/rest/commits/statuses#create-a-commit-status"""
 
         from ..models import Status, ReposOwnerRepoStatusesShaPostBody
 
@@ -15026,7 +15026,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status]:
-        """see more: `https://docs.github.com/rest/commits/statuses#create-a-commit-status`"""
+        """See also: https://docs.github.com/rest/commits/statuses#create-a-commit-status"""
 
         from ..models import Status, ReposOwnerRepoStatusesShaPostBody
 
@@ -15058,7 +15058,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Tag]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-tags`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-tags"""
 
         from typing import List
 
@@ -15090,7 +15090,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Tag]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-tags`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-tags"""
 
         from typing import List
 
@@ -15120,7 +15120,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TagProtection]]:
-        """see more: `https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository"""
 
         from typing import List
 
@@ -15148,7 +15148,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TagProtection]]:
-        """see more: `https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository"""
 
         from typing import List
 
@@ -15201,7 +15201,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
-        """see more: `https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -15264,7 +15264,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
-        """see more: `https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -15303,7 +15303,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository"""
 
         from ..models import BasicError
 
@@ -15329,7 +15329,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository"""
 
         from ..models import BasicError
 
@@ -15355,7 +15355,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar`"""
+        """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar"""
 
         url = f"/repos/{owner}/{repo}/tarball/{ref}"
 
@@ -15375,7 +15375,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar`"""
+        """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar"""
 
         url = f"/repos/{owner}/{repo}/tarball/{ref}"
 
@@ -15396,7 +15396,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-teams`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
         from typing import List
 
@@ -15431,7 +15431,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repository-teams`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
         from typing import List
 
@@ -15466,7 +15466,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Topic]:
-        """see more: `https://docs.github.com/rest/repos/repos#get-all-repository-topics`"""
+        """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
         from ..models import Topic, BasicError
 
@@ -15499,7 +15499,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Topic]:
-        """see more: `https://docs.github.com/rest/repos/repos#get-all-repository-topics`"""
+        """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
         from ..models import Topic, BasicError
 
@@ -15555,7 +15555,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic]:
-        """see more: `https://docs.github.com/rest/repos/repos#replace-all-repository-topics`"""
+        """See also: https://docs.github.com/rest/repos/repos#replace-all-repository-topics"""
 
         from ..models import (
             Topic,
@@ -15619,7 +15619,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic]:
-        """see more: `https://docs.github.com/rest/repos/repos#replace-all-repository-topics`"""
+        """See also: https://docs.github.com/rest/repos/repos#replace-all-repository-topics"""
 
         from ..models import (
             Topic,
@@ -15659,7 +15659,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CloneTraffic]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-repository-clones`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-repository-clones"""
 
         from ..models import BasicError, CloneTraffic
 
@@ -15690,7 +15690,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CloneTraffic]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-repository-clones`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-repository-clones"""
 
         from ..models import BasicError, CloneTraffic
 
@@ -15720,7 +15720,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ContentTraffic]]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-top-referral-paths`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-paths"""
 
         from typing import List
 
@@ -15747,7 +15747,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ContentTraffic]]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-top-referral-paths`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-paths"""
 
         from typing import List
 
@@ -15774,7 +15774,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ReferrerTraffic]]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-top-referral-sources`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-sources"""
 
         from typing import List
 
@@ -15801,7 +15801,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ReferrerTraffic]]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-top-referral-sources`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-sources"""
 
         from typing import List
 
@@ -15829,7 +15829,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ViewTraffic]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-page-views`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-page-views"""
 
         from ..models import BasicError, ViewTraffic
 
@@ -15860,7 +15860,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ViewTraffic]:
-        """see more: `https://docs.github.com/rest/metrics/traffic#get-page-views`"""
+        """See also: https://docs.github.com/rest/metrics/traffic#get-page-views"""
 
         from ..models import BasicError, ViewTraffic
 
@@ -15917,7 +15917,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#transfer-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#transfer-a-repository"""
 
         from ..models import MinimalRepository, ReposOwnerRepoTransferPostBody
 
@@ -15974,7 +15974,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#transfer-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#transfer-a-repository"""
 
         from ..models import MinimalRepository, ReposOwnerRepoTransferPostBody
 
@@ -16004,7 +16004,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository"""
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
@@ -16024,7 +16024,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository`"""
+        """See also: https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository"""
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
@@ -16044,7 +16044,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts`"""
+        """See also: https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts"""
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
@@ -16063,7 +16063,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts`"""
+        """See also: https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts"""
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
@@ -16082,7 +16082,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts`"""
+        """See also: https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts"""
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
@@ -16101,7 +16101,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts`"""
+        """See also: https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts"""
 
         url = f"/repos/{owner}/{repo}/vulnerability-alerts"
 
@@ -16121,7 +16121,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip`"""
+        """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip"""
 
         url = f"/repos/{owner}/{repo}/zipball/{ref}"
 
@@ -16141,7 +16141,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip`"""
+        """See also: https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip"""
 
         url = f"/repos/{owner}/{repo}/zipball/{ref}"
 
@@ -16189,7 +16189,7 @@ class ReposClient:
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template"""
 
         from ..models import (
             FullRepository,
@@ -16253,7 +16253,7 @@ class ReposClient:
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template"""
 
         from ..models import (
             FullRepository,
@@ -16287,7 +16287,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-public-repositories`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
         from typing import List
 
@@ -16318,7 +16318,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-public-repositories`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
         from typing import List
 
@@ -16357,7 +16357,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Repository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user"""
 
         from typing import List
 
@@ -16406,7 +16406,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Repository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user"""
 
         from typing import List
 
@@ -16490,7 +16490,7 @@ class ReposClient:
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -16574,7 +16574,7 @@ class ReposClient:
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
-        """see more: `https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -16616,7 +16616,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryInvitation]]:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
 
         from typing import List
 
@@ -16651,7 +16651,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryInvitation]]:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
 
         from typing import List
 
@@ -16685,7 +16685,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#decline-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#decline-a-repository-invitation"""
 
         from ..models import BasicError
 
@@ -16710,7 +16710,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#decline-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#decline-a-repository-invitation"""
 
         from ..models import BasicError
 
@@ -16735,7 +16735,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#accept-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#accept-a-repository-invitation"""
 
         from ..models import BasicError
 
@@ -16760,7 +16760,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/collaborators/invitations#accept-a-repository-invitation`"""
+        """See also: https://docs.github.com/rest/collaborators/invitations#accept-a-repository-invitation"""
 
         from ..models import BasicError
 
@@ -16790,7 +16790,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repositories-for-a-user`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-a-user"""
 
         from typing import List
 
@@ -16827,7 +16827,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/repos/repos#list-repositories-for-a-user`"""
+        """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-a-user"""
 
         from typing import List
 

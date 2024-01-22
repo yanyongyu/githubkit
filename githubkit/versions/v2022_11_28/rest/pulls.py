@@ -91,7 +91,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestSimple]]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#list-pull-requests`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
 
         from typing import List
 
@@ -138,7 +138,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestSimple]]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#list-pull-requests`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
 
         from typing import List
 
@@ -208,7 +208,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#create-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#create-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -279,7 +279,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#create-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#create-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -323,7 +323,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestReviewComment]]:
-        """see more: `https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository`"""
+        """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
 
         from typing import List
 
@@ -361,7 +361,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestReviewComment]]:
-        """see more: `https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository`"""
+        """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
 
         from typing import List
 
@@ -395,7 +395,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReviewComment
 
@@ -421,7 +421,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReviewComment
 
@@ -447,7 +447,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request"""
 
         from ..models import BasicError
 
@@ -472,7 +472,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request"""
 
         from ..models import BasicError
 
@@ -524,7 +524,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request"""
 
         from ..models import (
             PullRequestReviewComment,
@@ -585,7 +585,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request"""
 
         from ..models import (
             PullRequestReviewComment,
@@ -619,7 +619,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequest]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#get-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -651,7 +651,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequest]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#get-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -714,7 +714,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#update-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -785,7 +785,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequest]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#update-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -830,7 +830,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestReviewComment]]:
-        """see more: `https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
 
         from typing import List
 
@@ -869,7 +869,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestReviewComment]]:
-        """see more: `https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
 
         from typing import List
 
@@ -939,7 +939,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -1015,7 +1015,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -1087,7 +1087,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment`"""
+        """See also: https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment"""
 
         from ..models import (
             BasicError,
@@ -1159,7 +1159,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReviewComment]:
-        """see more: `https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment`"""
+        """See also: https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment"""
 
         from ..models import (
             BasicError,
@@ -1201,7 +1201,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Commit]]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
 
         from typing import List
 
@@ -1234,7 +1234,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Commit]]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
 
         from typing import List
 
@@ -1267,7 +1267,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DiffEntry]]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#list-pull-requests-files`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
 
         from typing import List
 
@@ -1310,7 +1310,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DiffEntry]]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#list-pull-requests-files`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
 
         from typing import List
 
@@ -1351,7 +1351,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged"""
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
@@ -1372,7 +1372,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged"""
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
@@ -1427,7 +1427,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestMergeResult]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#merge-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#merge-a-pull-request"""
 
         from typing import Union
 
@@ -1510,7 +1510,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestMergeResult]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#merge-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#merge-a-pull-request"""
 
         from typing import Union
 
@@ -1559,7 +1559,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReviewRequest]:
-        """see more: `https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request"""
 
         from ..models import PullRequestReviewRequest
 
@@ -1582,7 +1582,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReviewRequest]:
-        """see more: `https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request"""
 
         from ..models import PullRequestReviewRequest
 
@@ -1657,7 +1657,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestSimple]:
-        """see more: `https://docs.github.com/rest/pulls/review-requests#request-reviewers-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/review-requests#request-reviewers-for-a-pull-request"""
 
         from typing import Union
 
@@ -1756,7 +1756,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestSimple]:
-        """see more: `https://docs.github.com/rest/pulls/review-requests#request-reviewers-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/review-requests#request-reviewers-for-a-pull-request"""
 
         from typing import Union
 
@@ -1833,7 +1833,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestSimple]:
-        """see more: `https://docs.github.com/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request"""
 
         from ..models import (
             ValidationError,
@@ -1903,7 +1903,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestSimple]:
-        """see more: `https://docs.github.com/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request"""
 
         from ..models import (
             ValidationError,
@@ -1945,7 +1945,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestReview]]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
 
         from typing import List
 
@@ -1978,7 +1978,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PullRequestReview]]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
 
         from typing import List
 
@@ -2041,7 +2041,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -2113,7 +2113,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -2154,7 +2154,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview
 
@@ -2181,7 +2181,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview
 
@@ -2237,7 +2237,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request"""
 
         from ..models import (
             PullRequestReview,
@@ -2307,7 +2307,7 @@ class PullsClient:
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request"""
 
         from ..models import (
             PullRequestReview,
@@ -2348,7 +2348,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview, ValidationErrorSimple
 
@@ -2376,7 +2376,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview, ValidationErrorSimple
 
@@ -2406,7 +2406,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ReviewComment]]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""
 
         from typing import List
 
@@ -2443,7 +2443,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[ReviewComment]]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""
 
         from typing import List
 
@@ -2510,7 +2510,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -2587,7 +2587,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -2664,7 +2664,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -2740,7 +2740,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[PullRequestReview]:
-        """see more: `https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request`"""
+        """See also: https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request"""
 
         from ..models import (
             BasicError,
@@ -2814,7 +2814,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch"""
 
         from typing import Union
 
@@ -2889,7 +2889,7 @@ class PullsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
-        """see more: `https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch`"""
+        """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch"""
 
         from typing import Union
 

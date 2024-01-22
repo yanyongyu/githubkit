@@ -49,7 +49,7 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates`"""
+        """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
 
         from typing import List
 
@@ -69,7 +69,7 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[str]]:
-        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates`"""
+        """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
 
         from typing import List
 
@@ -90,7 +90,7 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitignoreTemplate]:
-        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template`"""
+        """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 
         from ..models import GitignoreTemplate
 
@@ -111,7 +111,7 @@ class GitignoreClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitignoreTemplate]:
-        """see more: `https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template`"""
+        """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 
         from ..models import GitignoreTemplate
 

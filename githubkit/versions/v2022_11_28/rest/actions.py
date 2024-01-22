@@ -139,7 +139,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise]:
-        """see more: `https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
         from ..models import ActionsCacheUsageOrgEnterprise
 
@@ -160,7 +160,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise]:
-        """see more: `https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
         from ..models import ActionsCacheUsageOrgEnterprise
 
@@ -183,7 +183,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
 
@@ -212,7 +212,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
 
@@ -239,7 +239,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
         from ..models import ActionsOrganizationPermissions
 
@@ -260,7 +260,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
         from ..models import ActionsOrganizationPermissions
 
@@ -305,7 +305,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsPutBody
 
@@ -357,7 +357,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsPutBody
 
@@ -387,7 +387,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
 
@@ -416,7 +416,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
 
@@ -466,7 +466,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesPutBody
 
@@ -517,7 +517,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesPutBody
 
@@ -546,7 +546,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -565,7 +565,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -584,7 +584,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -603,7 +603,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
 
         url = f"/orgs/{org}/actions/permissions/repositories/{repository_id}"
 
@@ -621,7 +621,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SelectedActions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
         from ..models import SelectedActions
 
@@ -642,7 +642,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SelectedActions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
         from ..models import SelectedActions
 
@@ -688,7 +688,7 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization"""
 
         from ..models import SelectedActions
 
@@ -741,7 +741,7 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-an-organization"""
 
         from ..models import SelectedActions
 
@@ -769,7 +769,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -790,7 +790,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -835,7 +835,7 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization"""
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -887,7 +887,7 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-an-organization"""
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -918,7 +918,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
 
@@ -949,7 +949,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
 
@@ -977,7 +977,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RunnerApplication]]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
 
         from typing import List
 
@@ -1000,7 +1000,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RunnerApplication]]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
 
         from typing import List
 
@@ -1049,7 +1049,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1115,7 +1115,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1155,7 +1155,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
         from ..models import AuthenticationToken
 
@@ -1176,7 +1176,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
         from ..models import AuthenticationToken
 
@@ -1197,7 +1197,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
         from ..models import AuthenticationToken
 
@@ -1218,7 +1218,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
         from ..models import AuthenticationToken
 
@@ -1240,7 +1240,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Runner]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
         from ..models import Runner
 
@@ -1262,7 +1262,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Runner]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
         from ..models import Runner
 
@@ -1284,7 +1284,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
 
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
@@ -1303,7 +1303,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
 
         url = f"/orgs/{org}/actions/runners/{runner_id}"
 
@@ -1322,7 +1322,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1350,7 +1350,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1403,7 +1403,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1467,7 +1467,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1531,7 +1531,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1595,7 +1595,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1634,7 +1634,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1662,7 +1662,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1691,7 +1691,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1722,7 +1722,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -1753,7 +1753,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-organization-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
 
@@ -1782,7 +1782,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-organization-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
 
@@ -1809,7 +1809,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-organization-public-key`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key"""
 
         from ..models import ActionsPublicKey
 
@@ -1830,7 +1830,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-organization-public-key`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-public-key"""
 
         from ..models import ActionsPublicKey
 
@@ -1852,7 +1852,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationActionsSecret]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret"""
 
         from ..models import OrganizationActionsSecret
 
@@ -1874,7 +1874,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationActionsSecret]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-organization-secret"""
 
         from ..models import OrganizationActionsSecret
 
@@ -1924,7 +1924,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret"""
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
 
@@ -1982,7 +1982,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret"""
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
 
@@ -2012,7 +2012,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#delete-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret"""
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
@@ -2031,7 +2031,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#delete-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#delete-an-organization-secret"""
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
@@ -2052,7 +2052,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
 
@@ -2082,7 +2082,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
 
@@ -2135,7 +2135,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret"""
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
 
@@ -2191,7 +2191,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret"""
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesPutBody
 
@@ -2223,7 +2223,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -2244,7 +2244,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -2265,7 +2265,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -2286,7 +2286,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
 
@@ -2307,7 +2307,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-organization-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-organization-variables"""
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
 
@@ -2336,7 +2336,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-organization-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-organization-variables"""
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
 
@@ -2389,7 +2389,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/variables#create-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#create-an-organization-variable"""
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
 
@@ -2444,7 +2444,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/variables#create-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#create-an-organization-variable"""
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
 
@@ -2474,7 +2474,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationActionsVariable]:
-        """see more: `https://docs.github.com/rest/actions/variables#get-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable"""
 
         from ..models import OrganizationActionsVariable
 
@@ -2496,7 +2496,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationActionsVariable]:
-        """see more: `https://docs.github.com/rest/actions/variables#get-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#get-an-organization-variable"""
 
         from ..models import OrganizationActionsVariable
 
@@ -2518,7 +2518,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#delete-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable"""
 
         url = f"/orgs/{org}/actions/variables/{name}"
 
@@ -2537,7 +2537,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#delete-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#delete-an-organization-variable"""
 
         url = f"/orgs/{org}/actions/variables/{name}"
 
@@ -2583,7 +2583,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#update-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#update-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNamePatchBody
 
@@ -2639,7 +2639,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#update-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#update-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNamePatchBody
 
@@ -2670,7 +2670,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
 
@@ -2701,7 +2701,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
 
@@ -2755,7 +2755,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesPutBody
 
@@ -2812,7 +2812,7 @@ class ActionsClient:
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesPutBody
 
@@ -2845,7 +2845,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable"""
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -2866,7 +2866,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#add-selected-repository-to-an-organization-variable"""
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -2887,7 +2887,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -2908,7 +2908,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories/{repository_id}"
 
@@ -2931,7 +2931,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsArtifactsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
 
@@ -2963,7 +2963,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsArtifactsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#list-artifacts-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
 
@@ -2993,7 +2993,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Artifact]:
-        """see more: `https://docs.github.com/rest/actions/artifacts#get-an-artifact`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact"""
 
         from ..models import Artifact
 
@@ -3016,7 +3016,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Artifact]:
-        """see more: `https://docs.github.com/rest/actions/artifacts#get-an-artifact`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#get-an-artifact"""
 
         from ..models import Artifact
 
@@ -3039,7 +3039,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/artifacts#delete-an-artifact`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact"""
 
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
@@ -3059,7 +3059,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/artifacts#delete-an-artifact`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#delete-an-artifact"""
 
         url = f"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
 
@@ -3080,7 +3080,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/artifacts#download-an-artifact`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact"""
 
         from ..models import BasicError
 
@@ -3106,7 +3106,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/artifacts#download-an-artifact`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#download-an-artifact"""
 
         from ..models import BasicError
 
@@ -3130,7 +3130,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository]:
-        """see more: `https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
         from ..models import ActionsCacheUsageByRepository
 
@@ -3152,7 +3152,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository]:
-        """see more: `https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
         from ..models import ActionsCacheUsageByRepository
 
@@ -3182,7 +3182,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
-        """see more: `https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
         from ..models import ActionsCacheList
 
@@ -3222,7 +3222,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
-        """see more: `https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
         from ..models import ActionsCacheList
 
@@ -3256,7 +3256,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
-        """see more: `https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key`"""
+        """See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
         from ..models import ActionsCacheList
 
@@ -3286,7 +3286,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
-        """see more: `https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key`"""
+        """See also: https://docs.github.com/rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
         from ..models import ActionsCacheList
 
@@ -3315,7 +3315,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id`"""
+        """See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
 
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
 
@@ -3335,7 +3335,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id`"""
+        """See also: https://docs.github.com/rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
 
         url = f"/repos/{owner}/{repo}/actions/caches/{cache_id}"
 
@@ -3355,7 +3355,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Job]:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
         from ..models import Job
 
@@ -3378,7 +3378,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Job]:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
         from ..models import Job
 
@@ -3401,7 +3401,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
 
@@ -3421,7 +3421,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
 
@@ -3472,7 +3472,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run"""
 
         from typing import Union
 
@@ -3545,7 +3545,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run"""
 
         from typing import Union
 
@@ -3586,7 +3586,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OidcCustomSubRepo]:
-        """see more: `https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import BasicError, OidcCustomSubRepo
 
@@ -3612,7 +3612,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OidcCustomSubRepo]:
-        """see more: `https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import BasicError, OidcCustomSubRepo
 
@@ -3664,7 +3664,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -3732,7 +3732,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -3776,7 +3776,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets"""
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
 
@@ -3806,7 +3806,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-repository-organization-secrets"""
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
 
@@ -3836,7 +3836,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-repository-organization-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-repository-organization-variables"""
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
 
@@ -3866,7 +3866,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-repository-organization-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-repository-organization-variables"""
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
 
@@ -3894,7 +3894,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
         from ..models import ActionsRepositoryPermissions
 
@@ -3916,7 +3916,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
         from ..models import ActionsRepositoryPermissions
 
@@ -3964,7 +3964,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsPermissionsPutBody
 
@@ -4019,7 +4019,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-github-actions-permissions-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsPermissionsPutBody
 
@@ -4048,7 +4048,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsWorkflowAccessToRepository]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -4070,7 +4070,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsWorkflowAccessToRepository]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -4117,7 +4117,7 @@ class ActionsClient:
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository"""
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -4171,7 +4171,7 @@ class ActionsClient:
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-the-level-of-access-for-workflows-outside-of-the-repository"""
 
         from ..models import ActionsWorkflowAccessToRepository
 
@@ -4200,7 +4200,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SelectedActions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
         from ..models import SelectedActions
 
@@ -4222,7 +4222,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SelectedActions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
         from ..models import SelectedActions
 
@@ -4271,7 +4271,7 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository"""
 
         from ..models import SelectedActions
 
@@ -4327,7 +4327,7 @@ class ActionsClient:
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-allowed-actions-and-reusable-workflows-for-a-repository"""
 
         from ..models import SelectedActions
 
@@ -4356,7 +4356,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -4378,7 +4378,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
-        """see more: `https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
 
@@ -4426,7 +4426,7 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository"""
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -4482,7 +4482,7 @@ class ActionsClient:
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/permissions#set-default-workflow-permissions-for-a-repository"""
 
         from ..models import ActionsSetDefaultWorkflowPermissions
 
@@ -4515,7 +4515,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunnersGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
 
@@ -4547,7 +4547,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunnersGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
 
@@ -4576,7 +4576,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RunnerApplication]]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
 
         from typing import List
 
@@ -4600,7 +4600,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RunnerApplication]]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
 
         from typing import List
 
@@ -4654,7 +4654,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -4725,7 +4725,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersGenerateJitconfigPostResponse201]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -4766,7 +4766,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
         from ..models import AuthenticationToken
 
@@ -4788,7 +4788,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
         from ..models import AuthenticationToken
 
@@ -4810,7 +4810,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
         from ..models import AuthenticationToken
 
@@ -4832,7 +4832,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
         from ..models import AuthenticationToken
 
@@ -4855,7 +4855,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Runner]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
         from ..models import Runner
 
@@ -4878,7 +4878,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Runner]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
         from ..models import Runner
 
@@ -4901,7 +4901,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
@@ -4921,7 +4921,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}"
 
@@ -4941,7 +4941,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -4970,7 +4970,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5026,7 +5026,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5095,7 +5095,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5164,7 +5164,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5233,7 +5233,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5275,7 +5275,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5304,7 +5304,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5334,7 +5334,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5366,7 +5366,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -5423,7 +5423,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
 
@@ -5486,7 +5486,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
 
@@ -5524,7 +5524,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run"""
 
         from ..models import WorkflowRun
 
@@ -5553,7 +5553,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run"""
 
         from ..models import WorkflowRun
 
@@ -5581,7 +5581,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run"""
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
@@ -5601,7 +5601,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-a-workflow-run"""
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}"
 
@@ -5621,7 +5621,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[EnvironmentApprovals]]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
 
         from typing import List
 
@@ -5646,7 +5646,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[EnvironmentApprovals]]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
 
         from typing import List
 
@@ -5671,7 +5671,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
         from ..models import BasicError, EmptyObject
 
@@ -5698,7 +5698,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
         from ..models import BasicError, EmptyObject
 
@@ -5728,7 +5728,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
 
@@ -5761,7 +5761,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts`"""
+        """See also: https://docs.github.com/rest/actions/artifacts#list-workflow-run-artifacts"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
 
@@ -5793,7 +5793,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
         from ..models import WorkflowRun
 
@@ -5823,7 +5823,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
         from ..models import WorkflowRun
 
@@ -5856,7 +5856,7 @@ class ActionsClient:
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt"""
 
         from ..models import (
             BasicError,
@@ -5896,7 +5896,7 @@ class ActionsClient:
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt"""
 
         from ..models import (
             BasicError,
@@ -5932,7 +5932,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
 
@@ -5953,7 +5953,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs"
 
@@ -5973,7 +5973,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
 
@@ -5999,7 +5999,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
 
@@ -6074,7 +6074,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run"""
 
         from typing import Union
 
@@ -6161,7 +6161,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#review-custom-deployment-protection-rules-for-a-workflow-run"""
 
         from typing import Union
 
@@ -6199,7 +6199,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
 
@@ -6225,7 +6225,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
 
@@ -6254,7 +6254,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
 
@@ -6287,7 +6287,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
 
@@ -6317,7 +6317,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs"""
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
@@ -6337,7 +6337,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs"""
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
 
@@ -6357,7 +6357,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs"""
 
         from ..models import BasicError
 
@@ -6383,7 +6383,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#delete-workflow-run-logs"""
 
         from ..models import BasicError
 
@@ -6409,7 +6409,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PendingDeployment]]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
 
         from typing import List
 
@@ -6434,7 +6434,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PendingDeployment]]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
 
         from typing import List
 
@@ -6490,7 +6490,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Deployment]]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
 
         from typing import List
 
@@ -6559,7 +6559,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Deployment]]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
 
         from typing import List
 
@@ -6628,7 +6628,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow"""
 
         from typing import Union
 
@@ -6694,7 +6694,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-a-workflow"""
 
         from typing import Union
 
@@ -6760,7 +6760,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run"""
 
         from typing import Union
 
@@ -6829,7 +6829,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run"""
 
         from typing import Union
 
@@ -6867,7 +6867,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowRunUsage]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage"""
 
         from ..models import WorkflowRunUsage
 
@@ -6890,7 +6890,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowRunUsage]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#get-workflow-run-usage"""
 
         from ..models import WorkflowRunUsage
 
@@ -6914,7 +6914,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-repository-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
 
@@ -6944,7 +6944,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-repository-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
 
@@ -6972,7 +6972,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-a-repository-public-key`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"""
 
         from ..models import ActionsPublicKey
 
@@ -6994,7 +6994,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-a-repository-public-key`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-public-key"""
 
         from ..models import ActionsPublicKey
 
@@ -7017,7 +7017,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret"""
 
         from ..models import ActionsSecret
 
@@ -7040,7 +7040,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-a-repository-secret"""
 
         from ..models import ActionsSecret
 
@@ -7091,7 +7091,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
 
@@ -7150,7 +7150,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-a-repository-secret"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
 
@@ -7181,7 +7181,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#delete-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret"""
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
@@ -7201,7 +7201,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#delete-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#delete-a-repository-secret"""
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
@@ -7222,7 +7222,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsVariablesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-repository-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-repository-variables"""
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
 
@@ -7252,7 +7252,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsVariablesGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-repository-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-repository-variables"""
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
 
@@ -7306,7 +7306,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/variables#create-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#create-a-repository-variable"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
 
@@ -7362,7 +7362,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/variables#create-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#create-a-repository-variable"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
 
@@ -7393,7 +7393,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
-        """see more: `https://docs.github.com/rest/actions/variables#get-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable"""
 
         from ..models import ActionsVariable
 
@@ -7416,7 +7416,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
-        """see more: `https://docs.github.com/rest/actions/variables#get-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#get-a-repository-variable"""
 
         from ..models import ActionsVariable
 
@@ -7439,7 +7439,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#delete-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable"""
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
@@ -7459,7 +7459,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#delete-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#delete-a-repository-variable"""
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
@@ -7506,7 +7506,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#update-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#update-a-repository-variable"""
 
         from ..models import ReposOwnerRepoActionsVariablesNamePatchBody
 
@@ -7563,7 +7563,7 @@ class ActionsClient:
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#update-a-repository-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#update-a-repository-variable"""
 
         from ..models import ReposOwnerRepoActionsVariablesNamePatchBody
 
@@ -7594,7 +7594,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflows#list-repository-workflows`"""
+        """See also: https://docs.github.com/rest/actions/workflows#list-repository-workflows"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
 
@@ -7624,7 +7624,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflows#list-repository-workflows`"""
+        """See also: https://docs.github.com/rest/actions/workflows#list-repository-workflows"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
 
@@ -7653,7 +7653,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Workflow]:
-        """see more: `https://docs.github.com/rest/actions/workflows#get-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflows#get-a-workflow"""
 
         from ..models import Workflow
 
@@ -7676,7 +7676,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Workflow]:
-        """see more: `https://docs.github.com/rest/actions/workflows#get-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflows#get-a-workflow"""
 
         from ..models import Workflow
 
@@ -7699,7 +7699,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflows#disable-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow"""
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
 
@@ -7719,7 +7719,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflows#disable-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflows#disable-a-workflow"""
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
 
@@ -7771,7 +7771,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event`"""
+        """See also: https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
 
@@ -7835,7 +7835,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event`"""
+        """See also: https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
 
@@ -7867,7 +7867,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflows#enable-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow"""
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
 
@@ -7887,7 +7887,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/workflows#enable-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflows#enable-a-workflow"""
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
 
@@ -7934,7 +7934,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
 
@@ -7998,7 +7998,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]:
-        """see more: `https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow`"""
+        """See also: https://docs.github.com/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
 
@@ -8035,7 +8035,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowUsage]:
-        """see more: `https://docs.github.com/rest/actions/workflows#get-workflow-usage`"""
+        """See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage"""
 
         from ..models import WorkflowUsage
 
@@ -8058,7 +8058,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[WorkflowUsage]:
-        """see more: `https://docs.github.com/rest/actions/workflows#get-workflow-usage`"""
+        """See also: https://docs.github.com/rest/actions/workflows#get-workflow-usage"""
 
         from ..models import WorkflowUsage
 
@@ -8084,7 +8084,7 @@ class ActionsClient:
     ) -> Response[
         RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-environment-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets"""
 
         from ..models import (
             RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -8118,7 +8118,7 @@ class ActionsClient:
     ) -> Response[
         RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/actions/secrets#list-environment-secrets`"""
+        """See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets"""
 
         from ..models import (
             RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -8148,7 +8148,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-environment-public-key`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key"""
 
         from ..models import ActionsPublicKey
 
@@ -8170,7 +8170,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-environment-public-key`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-public-key"""
 
         from ..models import ActionsPublicKey
 
@@ -8193,7 +8193,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-environment-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret"""
 
         from ..models import ActionsSecret
 
@@ -8216,7 +8216,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
-        """see more: `https://docs.github.com/rest/actions/secrets#get-an-environment-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#get-an-environment-secret"""
 
         from ..models import ActionsSecret
 
@@ -8269,7 +8269,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret"""
 
         from ..models import (
             EmptyObject,
@@ -8336,7 +8336,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#create-or-update-an-environment-secret"""
 
         from ..models import (
             EmptyObject,
@@ -8373,7 +8373,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#delete-an-environment-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
 
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
@@ -8393,7 +8393,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/secrets#delete-an-environment-secret`"""
+        """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
 
         url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
 
@@ -8416,7 +8416,7 @@ class ActionsClient:
     ) -> Response[
         RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-environment-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-environment-variables"""
 
         from ..models import (
             RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
@@ -8450,7 +8450,7 @@ class ActionsClient:
     ) -> Response[
         RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200
     ]:
-        """see more: `https://docs.github.com/rest/actions/variables#list-environment-variables`"""
+        """See also: https://docs.github.com/rest/actions/variables#list-environment-variables"""
 
         from ..models import (
             RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
@@ -8508,7 +8508,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/variables#create-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#create-an-environment-variable"""
 
         from ..models import (
             EmptyObject,
@@ -8571,7 +8571,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/variables#create-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#create-an-environment-variable"""
 
         from ..models import (
             EmptyObject,
@@ -8607,7 +8607,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
-        """see more: `https://docs.github.com/rest/actions/variables#get-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable"""
 
         from ..models import ActionsVariable
 
@@ -8630,7 +8630,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
-        """see more: `https://docs.github.com/rest/actions/variables#get-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#get-an-environment-variable"""
 
         from ..models import ActionsVariable
 
@@ -8653,7 +8653,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#delete-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
 
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
 
@@ -8673,7 +8673,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#delete-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
 
         url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
 
@@ -8722,7 +8722,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#update-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable"""
 
         from ..models import (
             RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
@@ -8786,7 +8786,7 @@ class ActionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/actions/variables#update-an-environment-variable`"""
+        """See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable"""
 
         from ..models import (
             RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,

@@ -84,7 +84,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-teams`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-teams"""
 
         from typing import List
 
@@ -118,7 +118,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-teams`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-teams"""
 
         from typing import List
 
@@ -182,7 +182,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#create-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#create-a-team"""
 
         from ..models import TeamFull, BasicError, ValidationError, OrgsOrgTeamsPostBody
 
@@ -247,7 +247,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#create-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#create-a-team"""
 
         from ..models import TeamFull, BasicError, ValidationError, OrgsOrgTeamsPostBody
 
@@ -281,7 +281,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#get-a-team-by-name`"""
+        """See also: https://docs.github.com/rest/teams/teams#get-a-team-by-name"""
 
         from ..models import TeamFull, BasicError
 
@@ -306,7 +306,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#get-a-team-by-name`"""
+        """See also: https://docs.github.com/rest/teams/teams#get-a-team-by-name"""
 
         from ..models import TeamFull, BasicError
 
@@ -331,7 +331,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#delete-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#delete-a-team"""
 
         url = f"/orgs/{org}/teams/{team_slug}"
 
@@ -350,7 +350,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#delete-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#delete-a-team"""
 
         url = f"/orgs/{org}/teams/{team_slug}"
 
@@ -401,7 +401,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#update-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#update-a-team"""
 
         from ..models import (
             TeamFull,
@@ -473,7 +473,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#update-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#update-a-team"""
 
         from ..models import (
             TeamFull,
@@ -517,7 +517,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussion]]:
-        """see more: `https://docs.github.com/rest/teams/discussions#list-discussions`"""
+        """See also: https://docs.github.com/rest/teams/discussions#list-discussions"""
 
         from typing import List
 
@@ -553,7 +553,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussion]]:
-        """see more: `https://docs.github.com/rest/teams/discussions#list-discussions`"""
+        """See also: https://docs.github.com/rest/teams/discussions#list-discussions"""
 
         from typing import List
 
@@ -612,7 +612,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#create-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#create-a-discussion"""
 
         from ..models import TeamDiscussion, OrgsOrgTeamsTeamSlugDiscussionsPostBody
 
@@ -669,7 +669,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#create-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#create-a-discussion"""
 
         from ..models import TeamDiscussion, OrgsOrgTeamsTeamSlugDiscussionsPostBody
 
@@ -700,7 +700,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#get-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion"""
 
         from ..models import TeamDiscussion
 
@@ -723,7 +723,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#get-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion"""
 
         from ..models import TeamDiscussion
 
@@ -746,7 +746,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussions#delete-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
@@ -766,7 +766,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussions#delete-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
@@ -818,7 +818,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#update-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#update-a-discussion"""
 
         from ..models import (
             TeamDiscussion,
@@ -886,7 +886,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#update-a-discussion`"""
+        """See also: https://docs.github.com/rest/teams/discussions#update-a-discussion"""
 
         from ..models import (
             TeamDiscussion,
@@ -925,7 +925,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussionComment]]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments"""
 
         from typing import List
 
@@ -960,7 +960,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussionComment]]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments"""
 
         from typing import List
 
@@ -1021,7 +1021,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -1086,7 +1086,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -1123,7 +1123,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment"""
 
         from ..models import TeamDiscussionComment
 
@@ -1147,7 +1147,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment"""
 
         from ..models import TeamDiscussionComment
 
@@ -1171,7 +1171,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -1192,7 +1192,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -1244,7 +1244,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -1313,7 +1313,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -1351,7 +1351,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-pending-team-invitations`"""
+        """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations"""
 
         from typing import List
 
@@ -1383,7 +1383,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-pending-team-invitations`"""
+        """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations"""
 
         from typing import List
 
@@ -1416,7 +1416,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-team-members`"""
+        """See also: https://docs.github.com/rest/teams/members#list-team-members"""
 
         from typing import List
 
@@ -1450,7 +1450,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-team-members`"""
+        """See also: https://docs.github.com/rest/teams/members#list-team-members"""
 
         from typing import List
 
@@ -1482,7 +1482,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#get-team-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user"""
 
         from ..models import TeamMembership
 
@@ -1506,7 +1506,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#get-team-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user"""
 
         from ..models import TeamMembership
 
@@ -1557,7 +1557,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user"""
 
         from ..models import (
             TeamMembership,
@@ -1621,7 +1621,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user"""
 
         from ..models import (
             TeamMembership,
@@ -1658,7 +1658,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user"""
 
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
@@ -1679,7 +1679,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user`"""
+        """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user"""
 
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
@@ -1701,7 +1701,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamProject]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-projects`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-projects"""
 
         from typing import List
 
@@ -1733,7 +1733,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamProject]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-projects`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-projects"""
 
         from typing import List
 
@@ -1764,7 +1764,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamProject]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project"""
 
         from ..models import TeamProject
 
@@ -1788,7 +1788,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamProject]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project"""
 
         from ..models import TeamProject
 
@@ -1843,7 +1843,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions"""
 
         from typing import Union
 
@@ -1914,7 +1914,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions"""
 
         from typing import Union
 
@@ -1954,7 +1954,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team"""
 
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
@@ -1974,7 +1974,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team"""
 
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
@@ -1995,7 +1995,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-repositories`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-repositories"""
 
         from typing import List
 
@@ -2027,7 +2027,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-repositories`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-repositories"""
 
         from typing import List
 
@@ -2059,7 +2059,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamRepository]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository"""
 
         from ..models import TeamRepository
 
@@ -2084,7 +2084,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamRepository]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository"""
 
         from ..models import TeamRepository
 
@@ -2138,7 +2138,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions"""
 
         from ..models import OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody
 
@@ -2198,7 +2198,7 @@ class TeamsClient:
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions"""
 
         from ..models import OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody
 
@@ -2229,7 +2229,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team"""
 
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
@@ -2250,7 +2250,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team"""
 
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
@@ -2271,7 +2271,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-child-teams`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-child-teams"""
 
         from typing import List
 
@@ -2303,7 +2303,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-child-teams`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-child-teams"""
 
         from typing import List
 
@@ -2332,7 +2332,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#get-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#get-a-team-legacy"""
 
         from ..models import TeamFull, BasicError
 
@@ -2356,7 +2356,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#get-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#get-a-team-legacy"""
 
         from ..models import TeamFull, BasicError
 
@@ -2380,7 +2380,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#delete-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#delete-a-team-legacy"""
 
         from ..models import BasicError, ValidationError
 
@@ -2404,7 +2404,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#delete-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#delete-a-team-legacy"""
 
         from ..models import BasicError, ValidationError
 
@@ -2458,7 +2458,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#update-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#update-a-team-legacy"""
 
         from ..models import TeamFull, BasicError, ValidationError, TeamsTeamIdPatchBody
 
@@ -2522,7 +2522,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
-        """see more: `https://docs.github.com/rest/teams/teams#update-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#update-a-team-legacy"""
 
         from ..models import TeamFull, BasicError, ValidationError, TeamsTeamIdPatchBody
 
@@ -2559,7 +2559,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussion]]:
-        """see more: `https://docs.github.com/rest/teams/discussions#list-discussions-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#list-discussions-legacy"""
 
         from typing import List
 
@@ -2592,7 +2592,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussion]]:
-        """see more: `https://docs.github.com/rest/teams/discussions#list-discussions-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#list-discussions-legacy"""
 
         from typing import List
 
@@ -2647,7 +2647,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#create-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#create-a-discussion-legacy"""
 
         from ..models import TeamDiscussion, TeamsTeamIdDiscussionsPostBody
 
@@ -2701,7 +2701,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#create-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#create-a-discussion-legacy"""
 
         from ..models import TeamDiscussion, TeamsTeamIdDiscussionsPostBody
 
@@ -2731,7 +2731,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#get-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion-legacy"""
 
         from ..models import TeamDiscussion
 
@@ -2753,7 +2753,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#get-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion-legacy"""
 
         from ..models import TeamDiscussion
 
@@ -2775,7 +2775,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussions#delete-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion-legacy"""
 
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
@@ -2794,7 +2794,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussions#delete-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion-legacy"""
 
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
@@ -2839,7 +2839,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#update-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#update-a-discussion-legacy"""
 
         from ..models import (
             TeamDiscussion,
@@ -2900,7 +2900,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
-        """see more: `https://docs.github.com/rest/teams/discussions#update-a-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussions#update-a-discussion-legacy"""
 
         from ..models import (
             TeamDiscussion,
@@ -2938,7 +2938,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussionComment]]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments-legacy"""
 
         from typing import List
 
@@ -2972,7 +2972,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamDiscussionComment]]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments-legacy"""
 
         from typing import List
 
@@ -3030,7 +3030,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment-legacy"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -3092,7 +3092,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#create-a-discussion-comment-legacy"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -3128,7 +3128,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment-legacy"""
 
         from ..models import TeamDiscussionComment
 
@@ -3151,7 +3151,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment-legacy"""
 
         from ..models import TeamDiscussionComment
 
@@ -3174,7 +3174,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment-legacy"""
 
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -3194,7 +3194,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment-legacy"""
 
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
@@ -3243,7 +3243,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment-legacy"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -3308,7 +3308,7 @@ class TeamsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussionComment]:
-        """see more: `https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/teams/discussion-comments#update-a-discussion-comment-legacy"""
 
         from ..models import (
             TeamDiscussionComment,
@@ -3344,7 +3344,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-pending-team-invitations-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations-legacy"""
 
         from typing import List
 
@@ -3375,7 +3375,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationInvitation]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-pending-team-invitations-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations-legacy"""
 
         from typing import List
 
@@ -3407,7 +3407,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-team-members-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#list-team-members-legacy"""
 
         from typing import List
 
@@ -3443,7 +3443,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/teams/members#list-team-members-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#list-team-members-legacy"""
 
         from typing import List
 
@@ -3477,7 +3477,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#get-team-member-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#get-team-member-legacy"""
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -3497,7 +3497,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#get-team-member-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#get-team-member-legacy"""
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -3517,7 +3517,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#add-team-member-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#add-team-member-legacy"""
 
         from ..models import BasicError
 
@@ -3541,7 +3541,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#add-team-member-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#add-team-member-legacy"""
 
         from ..models import BasicError
 
@@ -3565,7 +3565,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#remove-team-member-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#remove-team-member-legacy"""
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -3585,7 +3585,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#remove-team-member-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#remove-team-member-legacy"""
 
         url = f"/teams/{team_id}/members/{username}"
 
@@ -3605,7 +3605,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#get-team-membership-for-a-user-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user-legacy"""
 
         from ..models import BasicError, TeamMembership
 
@@ -3630,7 +3630,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#get-team-membership-for-a-user-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user-legacy"""
 
         from ..models import BasicError, TeamMembership
 
@@ -3680,7 +3680,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user-legacy"""
 
         from ..models import (
             BasicError,
@@ -3742,7 +3742,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
-        """see more: `https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#add-or-update-team-membership-for-a-user-legacy"""
 
         from ..models import (
             BasicError,
@@ -3779,7 +3779,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user-legacy"""
 
         url = f"/teams/{team_id}/memberships/{username}"
 
@@ -3799,7 +3799,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user-legacy`"""
+        """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user-legacy"""
 
         url = f"/teams/{team_id}/memberships/{username}"
 
@@ -3820,7 +3820,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamProject]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-projects-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-projects-legacy"""
 
         from typing import List
 
@@ -3854,7 +3854,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamProject]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-projects-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-projects-legacy"""
 
         from typing import List
 
@@ -3887,7 +3887,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamProject]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project-legacy"""
 
         from ..models import TeamProject
 
@@ -3910,7 +3910,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamProject]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project-legacy"""
 
         from ..models import TeamProject
 
@@ -3958,7 +3958,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions-legacy"""
 
         from ..models import (
             BasicError,
@@ -4022,7 +4022,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-project-permissions-legacy"""
 
         from ..models import (
             BasicError,
@@ -4061,7 +4061,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team-legacy"""
 
         from ..models import BasicError, ValidationError
 
@@ -4086,7 +4086,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team-legacy"""
 
         from ..models import BasicError, ValidationError
 
@@ -4112,7 +4112,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-repositories-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-repositories-legacy"""
 
         from typing import List
 
@@ -4146,7 +4146,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-team-repositories-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-team-repositories-legacy"""
 
         from typing import List
 
@@ -4180,7 +4180,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamRepository]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository-legacy"""
 
         from ..models import TeamRepository
 
@@ -4204,7 +4204,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[TeamRepository]:
-        """see more: `https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository-legacy"""
 
         from ..models import TeamRepository
 
@@ -4255,7 +4255,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions-legacy"""
 
         from ..models import (
             BasicError,
@@ -4320,7 +4320,7 @@ class TeamsClient:
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#add-or-update-team-repository-permissions-legacy"""
 
         from ..models import (
             BasicError,
@@ -4358,7 +4358,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team-legacy"""
 
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
@@ -4378,7 +4378,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team-legacy"""
 
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
@@ -4398,7 +4398,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-child-teams-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-child-teams-legacy"""
 
         from typing import List
 
@@ -4434,7 +4434,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Team]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-child-teams-legacy`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-child-teams-legacy"""
 
         from typing import List
 
@@ -4469,7 +4469,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamFull]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user"""
 
         from typing import List
 
@@ -4503,7 +4503,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TeamFull]]:
-        """see more: `https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user"""
 
         from typing import List
 

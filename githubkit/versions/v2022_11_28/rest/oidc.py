@@ -51,7 +51,7 @@ class OidcClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OidcCustomSub]:
-        """see more: `https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import OidcCustomSub
 
@@ -72,7 +72,7 @@ class OidcClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OidcCustomSub]:
-        """see more: `https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import OidcCustomSub
 
@@ -116,7 +116,7 @@ class OidcClient:
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import BasicError, EmptyObject, OidcCustomSub
 
@@ -172,7 +172,7 @@ class OidcClient:
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization`"""
+        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import BasicError, EmptyObject, OidcCustomSub
 

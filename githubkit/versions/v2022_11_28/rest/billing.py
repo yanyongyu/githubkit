@@ -48,7 +48,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization"""
 
         from ..models import ActionsBillingUsage
 
@@ -69,7 +69,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization"""
 
         from ..models import ActionsBillingUsage
 
@@ -90,7 +90,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization"""
 
         from ..models import PackagesBillingUsage
 
@@ -111,7 +111,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization"""
 
         from ..models import PackagesBillingUsage
 
@@ -132,7 +132,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization"""
 
         from ..models import CombinedBillingUsage
 
@@ -153,7 +153,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization"""
 
         from ..models import CombinedBillingUsage
 
@@ -174,7 +174,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user"""
 
         from ..models import ActionsBillingUsage
 
@@ -195,7 +195,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user"""
 
         from ..models import ActionsBillingUsage
 
@@ -216,7 +216,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user"""
 
         from ..models import PackagesBillingUsage
 
@@ -237,7 +237,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user"""
 
         from ..models import PackagesBillingUsage
 
@@ -258,7 +258,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user"""
 
         from ..models import CombinedBillingUsage
 
@@ -279,7 +279,7 @@ class BillingClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
-        """see more: `https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user`"""
+        """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user"""
 
         from ..models import CombinedBillingUsage
 

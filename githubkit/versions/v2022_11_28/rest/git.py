@@ -91,7 +91,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob]:
-        """see more: `https://docs.github.com/rest/git/blobs#create-a-blob`"""
+        """See also: https://docs.github.com/rest/git/blobs#create-a-blob"""
 
         from ..models import (
             ShortBlob,
@@ -158,7 +158,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob]:
-        """see more: `https://docs.github.com/rest/git/blobs#create-a-blob`"""
+        """See also: https://docs.github.com/rest/git/blobs#create-a-blob"""
 
         from ..models import (
             ShortBlob,
@@ -200,7 +200,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Blob]:
-        """see more: `https://docs.github.com/rest/git/blobs#get-a-blob`"""
+        """See also: https://docs.github.com/rest/git/blobs#get-a-blob"""
 
         from ..models import Blob, BasicError, ValidationError
 
@@ -228,7 +228,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Blob]:
-        """see more: `https://docs.github.com/rest/git/blobs#get-a-blob`"""
+        """See also: https://docs.github.com/rest/git/blobs#get-a-blob"""
 
         from ..models import Blob, BasicError, ValidationError
 
@@ -285,7 +285,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit]:
-        """see more: `https://docs.github.com/rest/git/commits#create-a-commit`"""
+        """See also: https://docs.github.com/rest/git/commits#create-a-commit"""
 
         from ..models import (
             GitCommit,
@@ -354,7 +354,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit]:
-        """see more: `https://docs.github.com/rest/git/commits#create-a-commit`"""
+        """See also: https://docs.github.com/rest/git/commits#create-a-commit"""
 
         from ..models import (
             GitCommit,
@@ -394,7 +394,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitCommit]:
-        """see more: `https://docs.github.com/rest/git/commits#get-a-commit-object`"""
+        """See also: https://docs.github.com/rest/git/commits#get-a-commit-object"""
 
         from ..models import GitCommit, BasicError
 
@@ -420,7 +420,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitCommit]:
-        """see more: `https://docs.github.com/rest/git/commits#get-a-commit-object`"""
+        """See also: https://docs.github.com/rest/git/commits#get-a-commit-object"""
 
         from ..models import GitCommit, BasicError
 
@@ -446,7 +446,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GitRef]]:
-        """see more: `https://docs.github.com/rest/git/refs#list-matching-references`"""
+        """See also: https://docs.github.com/rest/git/refs#list-matching-references"""
 
         from typing import List
 
@@ -471,7 +471,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GitRef]]:
-        """see more: `https://docs.github.com/rest/git/refs#list-matching-references`"""
+        """See also: https://docs.github.com/rest/git/refs#list-matching-references"""
 
         from typing import List
 
@@ -496,7 +496,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitRef]:
-        """see more: `https://docs.github.com/rest/git/refs#get-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#get-a-reference"""
 
         from ..models import GitRef, BasicError
 
@@ -522,7 +522,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitRef]:
-        """see more: `https://docs.github.com/rest/git/refs#get-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#get-a-reference"""
 
         from ..models import GitRef, BasicError
 
@@ -573,7 +573,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
-        """see more: `https://docs.github.com/rest/git/refs#create-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#create-a-reference"""
 
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsPostBody
 
@@ -632,7 +632,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
-        """see more: `https://docs.github.com/rest/git/refs#create-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#create-a-reference"""
 
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsPostBody
 
@@ -666,7 +666,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/git/refs#delete-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#delete-a-reference"""
 
         from ..models import ValidationError
 
@@ -691,7 +691,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/git/refs#delete-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#delete-a-reference"""
 
         from ..models import ValidationError
 
@@ -744,7 +744,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
-        """see more: `https://docs.github.com/rest/git/refs#update-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#update-a-reference"""
 
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsRefPatchBody
 
@@ -806,7 +806,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
-        """see more: `https://docs.github.com/rest/git/refs#update-a-reference`"""
+        """See also: https://docs.github.com/rest/git/refs#update-a-reference"""
 
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsRefPatchBody
 
@@ -868,7 +868,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag]:
-        """see more: `https://docs.github.com/rest/git/tags#create-a-tag-object`"""
+        """See also: https://docs.github.com/rest/git/tags#create-a-tag-object"""
 
         from ..models import GitTag, ValidationError, ReposOwnerRepoGitTagsPostBody
 
@@ -930,7 +930,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag]:
-        """see more: `https://docs.github.com/rest/git/tags#create-a-tag-object`"""
+        """See also: https://docs.github.com/rest/git/tags#create-a-tag-object"""
 
         from ..models import GitTag, ValidationError, ReposOwnerRepoGitTagsPostBody
 
@@ -964,7 +964,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTag]:
-        """see more: `https://docs.github.com/rest/git/tags#get-a-tag`"""
+        """See also: https://docs.github.com/rest/git/tags#get-a-tag"""
 
         from ..models import GitTag, BasicError
 
@@ -990,7 +990,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTag]:
-        """see more: `https://docs.github.com/rest/git/tags#get-a-tag`"""
+        """See also: https://docs.github.com/rest/git/tags#get-a-tag"""
 
         from ..models import GitTag, BasicError
 
@@ -1041,7 +1041,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree]:
-        """see more: `https://docs.github.com/rest/git/trees#create-a-tree`"""
+        """See also: https://docs.github.com/rest/git/trees#create-a-tree"""
 
         from ..models import (
             GitTree,
@@ -1107,7 +1107,7 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree]:
-        """see more: `https://docs.github.com/rest/git/trees#create-a-tree`"""
+        """See also: https://docs.github.com/rest/git/trees#create-a-tree"""
 
         from ..models import (
             GitTree,
@@ -1149,7 +1149,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTree]:
-        """see more: `https://docs.github.com/rest/git/trees#get-a-tree`"""
+        """See also: https://docs.github.com/rest/git/trees#get-a-tree"""
 
         from ..models import GitTree, BasicError, ValidationError
 
@@ -1182,7 +1182,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTree]:
-        """see more: `https://docs.github.com/rest/git/trees#get-a-tree`"""
+        """See also: https://docs.github.com/rest/git/trees#get-a-tree"""
 
         from ..models import GitTree, BasicError, ValidationError
 

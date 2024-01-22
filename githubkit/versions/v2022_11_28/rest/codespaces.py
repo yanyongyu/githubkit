@@ -96,7 +96,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
 
@@ -131,7 +131,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-the-organization"""
 
         from ..models import BasicError, OrgsOrgCodespacesGetResponse200
 
@@ -193,7 +193,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces"""
 
         from ..models import BasicError, ValidationError, OrgsOrgCodespacesAccessPutBody
 
@@ -255,7 +255,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#manage-access-control-for-organization-codespaces"""
 
         from ..models import BasicError, ValidationError, OrgsOrgCodespacesAccessPutBody
 
@@ -311,7 +311,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -371,7 +371,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#add-users-to-codespaces-access-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -431,7 +431,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -493,7 +493,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#remove-users-from-codespaces-access-for-an-organization"""
 
         from ..models import (
             BasicError,
@@ -534,7 +534,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
 
@@ -563,7 +563,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgCodespacesSecretsGetResponse200
 
@@ -590,7 +590,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesPublicKey]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key"""
 
         from ..models import CodespacesPublicKey
 
@@ -611,7 +611,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesPublicKey]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key"""
 
         from ..models import CodespacesPublicKey
 
@@ -633,7 +633,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesOrgSecret]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret"""
 
         from ..models import CodespacesOrgSecret
 
@@ -655,7 +655,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesOrgSecret]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-secret"""
 
         from ..models import CodespacesOrgSecret
 
@@ -705,7 +705,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret"""
 
         from ..models import (
             BasicError,
@@ -772,7 +772,7 @@ class CodespacesClient:
         data: Missing[OrgsOrgCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#create-or-update-an-organization-secret"""
 
         from ..models import (
             BasicError,
@@ -811,7 +811,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret"""
 
         from ..models import BasicError
 
@@ -835,7 +835,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#delete-an-organization-secret"""
 
         from ..models import BasicError
 
@@ -861,7 +861,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
             BasicError,
@@ -897,7 +897,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
             BasicError,
@@ -958,7 +958,7 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
             BasicError,
@@ -1022,7 +1022,7 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret"""
 
         from ..models import (
             BasicError,
@@ -1060,7 +1060,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret"""
 
         from ..models import BasicError, ValidationError
 
@@ -1088,7 +1088,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#add-selected-repository-to-an-organization-secret"""
 
         from ..models import BasicError, ValidationError
 
@@ -1116,7 +1116,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret"""
 
         from ..models import BasicError, ValidationError
 
@@ -1144,7 +1144,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret"""
 
         from ..models import BasicError, ValidationError
 
@@ -1173,7 +1173,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgMembersUsernameCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization"""
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
 
@@ -1209,7 +1209,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgMembersUsernameCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#list-codespaces-for-a-user-in-organization"""
 
         from ..models import BasicError, OrgsOrgMembersUsernameCodespacesGetResponse200
 
@@ -1244,7 +1244,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
 
         from ..models import (
             BasicError,
@@ -1276,7 +1276,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#delete-a-codespace-from-the-organization"""
 
         from ..models import (
             BasicError,
@@ -1308,7 +1308,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
         from ..models import Codespace, BasicError
 
@@ -1337,7 +1337,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user`"""
+        """See also: https://docs.github.com/rest/codespaces/organizations#stop-a-codespace-for-an-organization-user"""
 
         from ..models import Codespace, BasicError
 
@@ -1367,7 +1367,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
 
@@ -1403,7 +1403,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesGetResponse200
 
@@ -1474,7 +1474,7 @@ class CodespacesClient:
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository"""
 
         from typing import Union
 
@@ -1555,7 +1555,7 @@ class CodespacesClient:
         data: Missing[Union[ReposOwnerRepoCodespacesPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-in-a-repository"""
 
         from typing import Union
 
@@ -1601,7 +1601,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -1641,7 +1641,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesDevcontainersGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#list-devcontainer-configurations-in-a-repository-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -1682,7 +1682,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesMachinesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository`"""
+        """See also: https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
 
@@ -1720,7 +1720,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesMachinesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository`"""
+        """See also: https://docs.github.com/rest/codespaces/machines#list-available-machine-types-for-a-repository"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesMachinesGetResponse200
 
@@ -1757,7 +1757,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesNewGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
 
@@ -1792,7 +1792,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesNewGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#get-default-attributes-for-a-codespace"""
 
         from ..models import BasicError, ReposOwnerRepoCodespacesNewGetResponse200
 
@@ -1827,7 +1827,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesPermissionsCheckForDevcontainer]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -1869,7 +1869,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesPermissionsCheckForDevcontainer]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#check-if-permissions-defined-by-a-devcontainer-have-been-accepted-by-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -1911,7 +1911,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
 
@@ -1941,7 +1941,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoCodespacesSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoCodespacesSecretsGetResponse200
 
@@ -1969,7 +1969,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesPublicKey]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key"""
 
         from ..models import CodespacesPublicKey
 
@@ -1991,7 +1991,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesPublicKey]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key"""
 
         from ..models import CodespacesPublicKey
 
@@ -2014,7 +2014,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepoCodespacesSecret]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret"""
 
         from ..models import RepoCodespacesSecret
 
@@ -2037,7 +2037,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RepoCodespacesSecret]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-secret"""
 
         from ..models import RepoCodespacesSecret
 
@@ -2088,7 +2088,7 @@ class CodespacesClient:
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret"""
 
         from ..models import (
             EmptyObject,
@@ -2152,7 +2152,7 @@ class CodespacesClient:
         data: Missing[ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#create-or-update-a-repository-secret"""
 
         from ..models import (
             EmptyObject,
@@ -2188,7 +2188,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret"""
 
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
@@ -2208,7 +2208,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/repository-secrets#delete-a-repository-secret"""
 
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
@@ -2268,7 +2268,7 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request"""
 
         from typing import Union
 
@@ -2354,7 +2354,7 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-from-a-pull-request"""
 
         from typing import Union
 
@@ -2400,7 +2400,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
 
         from ..models import BasicError, UserCodespacesGetResponse200
 
@@ -2436,7 +2436,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user"""
 
         from ..models import BasicError, UserCodespacesGetResponse200
 
@@ -2523,7 +2523,7 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user"""
 
         from typing import Union
 
@@ -2621,7 +2621,7 @@ class CodespacesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user"""
 
         from typing import Union
 
@@ -2667,7 +2667,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user"""
 
         from ..models import UserCodespacesSecretsGetResponse200
 
@@ -2695,7 +2695,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesSecretsGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#list-secrets-for-the-authenticated-user"""
 
         from ..models import UserCodespacesSecretsGetResponse200
 
@@ -2721,7 +2721,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesUserPublicKey]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
 
         from ..models import CodespacesUserPublicKey
 
@@ -2741,7 +2741,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesUserPublicKey]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user"""
 
         from ..models import CodespacesUserPublicKey
 
@@ -2762,7 +2762,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesSecret]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
 
         from ..models import CodespacesSecret
 
@@ -2783,7 +2783,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespacesSecret]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#get-a-secret-for-the-authenticated-user"""
 
         from ..models import CodespacesSecret
 
@@ -2829,7 +2829,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -2892,7 +2892,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#create-or-update-a-secret-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -2930,7 +2930,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user"""
 
         url = f"/user/codespaces/secrets/{secret_name}"
 
@@ -2948,7 +2948,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#delete-a-secret-for-the-authenticated-user"""
 
         url = f"/user/codespaces/secrets/{secret_name}"
 
@@ -2966,7 +2966,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret"""
 
         from ..models import (
             BasicError,
@@ -2996,7 +2996,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesSecretsSecretNameRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret"""
 
         from ..models import (
             BasicError,
@@ -3049,7 +3049,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret"""
 
         from ..models import (
             BasicError,
@@ -3111,7 +3111,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret"""
 
         from ..models import (
             BasicError,
@@ -3151,7 +3151,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret"""
 
         from ..models import BasicError
 
@@ -3178,7 +3178,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret"""
 
         from ..models import BasicError
 
@@ -3205,7 +3205,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret"""
 
         from ..models import BasicError
 
@@ -3232,7 +3232,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret`"""
+        """See also: https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret"""
 
         from ..models import BasicError
 
@@ -3258,7 +3258,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
 
@@ -3285,7 +3285,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#get-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
 
@@ -3312,7 +3312,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -3342,7 +3342,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#delete-a-codespace-for-the-authenticated-user"""
 
         from ..models import (
             BasicError,
@@ -3397,7 +3397,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError, UserCodespacesCodespaceNamePatchBody
 
@@ -3456,7 +3456,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#update-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError, UserCodespacesCodespaceNamePatchBody
 
@@ -3490,7 +3490,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespaceExportDetails]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
         from ..models import BasicError, ValidationError, CodespaceExportDetails
 
@@ -3518,7 +3518,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespaceExportDetails]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#export-a-codespace-for-the-authenticated-user"""
 
         from ..models import BasicError, ValidationError, CodespaceExportDetails
 
@@ -3547,7 +3547,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespaceExportDetails]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export"""
 
         from ..models import BasicError, CodespaceExportDetails
 
@@ -3572,7 +3572,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodespaceExportDetails]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#get-details-about-a-codespace-export"""
 
         from ..models import BasicError, CodespaceExportDetails
 
@@ -3596,7 +3596,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesCodespaceNameMachinesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace`"""
+        """See also: https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace"""
 
         from ..models import (
             BasicError,
@@ -3626,7 +3626,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[UserCodespacesCodespaceNameMachinesGetResponse200]:
-        """see more: `https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace`"""
+        """See also: https://docs.github.com/rest/codespaces/machines#list-machine-types-for-a-codespace"""
 
         from ..models import (
             BasicError,
@@ -3680,7 +3680,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace"""
 
         from ..models import (
             BasicError,
@@ -3744,7 +3744,7 @@ class CodespacesClient:
         data: Missing[UserCodespacesCodespaceNamePublishPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodespaceWithFullRepository]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#create-a-repository-from-an-unpublished-codespace"""
 
         from ..models import (
             BasicError,
@@ -3784,7 +3784,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
 
@@ -3814,7 +3814,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#start-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
 
@@ -3844,7 +3844,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
 
@@ -3871,7 +3871,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Codespace]:
-        """see more: `https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/codespaces/codespaces#stop-a-codespace-for-the-authenticated-user"""
 
         from ..models import Codespace, BasicError
 

@@ -47,7 +47,7 @@ class RateLimitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RateLimitOverview]:
-        """see more: `https://docs.github.com/rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user"""
 
         from ..models import BasicError, RateLimitOverview
 
@@ -70,7 +70,7 @@ class RateLimitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[RateLimitOverview]:
-        """see more: `https://docs.github.com/rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user"""
 
         from ..models import BasicError, RateLimitOverview
 

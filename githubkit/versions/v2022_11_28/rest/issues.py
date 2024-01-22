@@ -120,7 +120,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
         from typing import List
 
@@ -176,7 +176,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
 
         from typing import List
 
@@ -229,7 +229,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
         from typing import List
 
@@ -277,7 +277,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
 
         from typing import List
 
@@ -318,7 +318,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/issues/assignees#list-assignees`"""
+        """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
 
         from typing import List
 
@@ -353,7 +353,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
-        """see more: `https://docs.github.com/rest/issues/assignees#list-assignees`"""
+        """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
 
         from typing import List
 
@@ -387,7 +387,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned`"""
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
 
         from ..models import BasicError
 
@@ -412,7 +412,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned`"""
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
 
         from ..models import BasicError
 
@@ -447,7 +447,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-repository-issues`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
         from typing import List
 
@@ -501,7 +501,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-repository-issues`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
 
         from typing import List
 
@@ -576,7 +576,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/issues#create-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
 
         from ..models import (
             Issue,
@@ -652,7 +652,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/issues#create-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
 
         from ..models import (
             Issue,
@@ -701,7 +701,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
-        """see more: `https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository`"""
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
 
         from typing import List
 
@@ -743,7 +743,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
-        """see more: `https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository`"""
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
 
         from typing import List
 
@@ -781,7 +781,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueComment]:
-        """see more: `https://docs.github.com/rest/issues/comments#get-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
         from ..models import BasicError, IssueComment
 
@@ -807,7 +807,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueComment]:
-        """see more: `https://docs.github.com/rest/issues/comments#get-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
         from ..models import BasicError, IssueComment
 
@@ -833,7 +833,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/comments#delete-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
@@ -853,7 +853,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/comments#delete-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
@@ -900,7 +900,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
-        """see more: `https://docs.github.com/rest/issues/comments#update-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#update-an-issue-comment"""
 
         from ..models import (
             IssueComment,
@@ -967,7 +967,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
-        """see more: `https://docs.github.com/rest/issues/comments#update-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#update-an-issue-comment"""
 
         from ..models import (
             IssueComment,
@@ -1008,7 +1008,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueEvent]]:
-        """see more: `https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository`"""
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
 
         from typing import List
 
@@ -1043,7 +1043,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueEvent]]:
-        """see more: `https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository`"""
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
 
         from typing import List
 
@@ -1077,7 +1077,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueEvent]:
-        """see more: `https://docs.github.com/rest/issues/events#get-an-issue-event`"""
+        """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
         from ..models import BasicError, IssueEvent
 
@@ -1105,7 +1105,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueEvent]:
-        """see more: `https://docs.github.com/rest/issues/events#get-an-issue-event`"""
+        """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
         from ..models import BasicError, IssueEvent
 
@@ -1133,7 +1133,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/issues#get-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
         from ..models import Issue, BasicError
 
@@ -1160,7 +1160,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/issues#get-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
         from ..models import Issue, BasicError
 
@@ -1230,7 +1230,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/issues#update-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
 
         from ..models import (
             Issue,
@@ -1317,7 +1317,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/issues#update-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
 
         from ..models import (
             Issue,
@@ -1388,7 +1388,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
 
@@ -1448,7 +1448,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
 
@@ -1508,7 +1508,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
 
@@ -1568,7 +1568,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
-        """see more: `https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue"""
 
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
 
@@ -1602,7 +1602,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue`"""
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
 
         from ..models import BasicError
 
@@ -1628,7 +1628,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue`"""
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
 
         from ..models import BasicError
 
@@ -1656,7 +1656,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
-        """see more: `https://docs.github.com/rest/issues/comments#list-issue-comments`"""
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
 
         from typing import List
 
@@ -1695,7 +1695,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
-        """see more: `https://docs.github.com/rest/issues/comments#list-issue-comments`"""
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
 
         from typing import List
 
@@ -1758,7 +1758,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
-        """see more: `https://docs.github.com/rest/issues/comments#create-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#create-an-issue-comment"""
 
         from ..models import (
             BasicError,
@@ -1829,7 +1829,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
-        """see more: `https://docs.github.com/rest/issues/comments#create-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/issues/comments#create-an-issue-comment"""
 
         from ..models import (
             BasicError,
@@ -1895,7 +1895,7 @@ class IssuesClient:
             ]
         ]
     ]:
-        """see more: `https://docs.github.com/rest/issues/events#list-issue-events`"""
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
 
         from typing import List, Union
 
@@ -1986,7 +1986,7 @@ class IssuesClient:
             ]
         ]
     ]:
-        """see more: `https://docs.github.com/rest/issues/events#list-issue-events`"""
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
 
         from typing import List, Union
 
@@ -2057,7 +2057,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#list-labels-for-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
         from typing import List
 
@@ -2094,7 +2094,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#list-labels-for-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
 
         from typing import List
 
@@ -2187,7 +2187,7 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#set-labels-for-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
 
         from typing import List, Union
 
@@ -2302,7 +2302,7 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#set-labels-for-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
 
         from typing import List, Union
 
@@ -2417,7 +2417,7 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#add-labels-to-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
 
         from typing import List, Union
 
@@ -2532,7 +2532,7 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#add-labels-to-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
 
         from typing import List, Union
 
@@ -2589,7 +2589,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
 
         from ..models import BasicError
 
@@ -2615,7 +2615,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
 
         from ..models import BasicError
 
@@ -2642,7 +2642,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
         from typing import List
 
@@ -2672,7 +2672,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
 
         from typing import List
 
@@ -2734,7 +2734,7 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/issues#lock-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#lock-an-issue"""
 
         from typing import Union
 
@@ -2811,7 +2811,7 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/issues#lock-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#lock-an-issue"""
 
         from typing import Union
 
@@ -2855,7 +2855,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/issues#unlock-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
 
         from ..models import BasicError
 
@@ -2881,7 +2881,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/issues#unlock-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
 
         from ..models import BasicError
 
@@ -2936,7 +2936,7 @@ class IssuesClient:
             ]
         ]
     ]:
-        """see more: `https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
 
         from typing import List, Union
 
@@ -3049,7 +3049,7 @@ class IssuesClient:
             ]
         ]
     ]:
-        """see more: `https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue`"""
+        """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
 
         from typing import List, Union
 
@@ -3134,7 +3134,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#list-labels-for-a-repository`"""
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
         from typing import List
 
@@ -3169,7 +3169,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#list-labels-for-a-repository`"""
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
 
         from typing import List
 
@@ -3229,7 +3229,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
-        """see more: `https://docs.github.com/rest/issues/labels#create-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
 
         from ..models import (
             Label,
@@ -3295,7 +3295,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
-        """see more: `https://docs.github.com/rest/issues/labels#create-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
 
         from ..models import (
             Label,
@@ -3335,7 +3335,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Label]:
-        """see more: `https://docs.github.com/rest/issues/labels#get-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
         from ..models import Label, BasicError
 
@@ -3361,7 +3361,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Label]:
-        """see more: `https://docs.github.com/rest/issues/labels#get-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
         from ..models import Label, BasicError
 
@@ -3387,7 +3387,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/labels#delete-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
@@ -3407,7 +3407,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/labels#delete-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
@@ -3456,7 +3456,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
-        """see more: `https://docs.github.com/rest/issues/labels#update-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#update-a-label"""
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
 
@@ -3516,7 +3516,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
-        """see more: `https://docs.github.com/rest/issues/labels#update-a-label`"""
+        """See also: https://docs.github.com/rest/issues/labels#update-a-label"""
 
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
 
@@ -3551,7 +3551,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Milestone]]:
-        """see more: `https://docs.github.com/rest/issues/milestones#list-milestones`"""
+        """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
         from typing import List
 
@@ -3592,7 +3592,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Milestone]]:
-        """see more: `https://docs.github.com/rest/issues/milestones#list-milestones`"""
+        """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
 
         from typing import List
 
@@ -3656,7 +3656,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
-        """see more: `https://docs.github.com/rest/issues/milestones#create-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
 
         from ..models import (
             Milestone,
@@ -3723,7 +3723,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
-        """see more: `https://docs.github.com/rest/issues/milestones#create-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
 
         from ..models import (
             Milestone,
@@ -3763,7 +3763,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Milestone]:
-        """see more: `https://docs.github.com/rest/issues/milestones#get-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
         from ..models import Milestone, BasicError
 
@@ -3789,7 +3789,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Milestone]:
-        """see more: `https://docs.github.com/rest/issues/milestones#get-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
         from ..models import Milestone, BasicError
 
@@ -3815,7 +3815,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/milestones#delete-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
 
         from ..models import BasicError
 
@@ -3840,7 +3840,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/issues/milestones#delete-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
 
         from ..models import BasicError
 
@@ -3895,7 +3895,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
-        """see more: `https://docs.github.com/rest/issues/milestones#update-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#update-a-milestone"""
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
 
@@ -3958,7 +3958,7 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
-        """see more: `https://docs.github.com/rest/issues/milestones#update-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/milestones#update-a-milestone"""
 
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
 
@@ -3993,7 +3993,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
 
         from typing import List
 
@@ -4026,7 +4026,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
-        """see more: `https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone`"""
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
 
         from typing import List
 
@@ -4064,7 +4064,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 
         from typing import List
 
@@ -4111,7 +4111,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
-        """see more: `https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
 
         from typing import List
 

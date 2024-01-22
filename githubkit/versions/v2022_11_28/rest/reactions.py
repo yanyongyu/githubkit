@@ -73,7 +73,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
 
         from typing import List
 
@@ -113,7 +113,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
 
         from typing import List
 
@@ -179,7 +179,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment"""
 
         from ..models import (
             Reaction,
@@ -250,7 +250,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment"""
 
         from ..models import (
             Reaction,
@@ -289,7 +289,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
 
@@ -311,7 +311,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
 
@@ -338,7 +338,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion"""
 
         from typing import List
 
@@ -377,7 +377,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion"""
 
         from typing import List
 
@@ -440,7 +440,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion"""
 
         from ..models import (
             Reaction,
@@ -507,7 +507,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion"""
 
         from ..models import (
             Reaction,
@@ -544,7 +544,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-team-discussion-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-reaction"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
 
@@ -565,7 +565,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-team-discussion-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-reaction"""
 
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
 
@@ -592,7 +592,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment"""
 
         from typing import List
 
@@ -634,7 +634,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment"""
 
         from typing import List
 
@@ -698,7 +698,7 @@ class ReactionsClient:
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-commit-comment"""
 
         from ..models import (
             Reaction,
@@ -767,7 +767,7 @@ class ReactionsClient:
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-commit-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-commit-comment"""
 
         from ..models import (
             Reaction,
@@ -808,7 +808,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction"""
 
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
 
@@ -829,7 +829,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction"""
 
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
 
@@ -856,7 +856,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment"""
 
         from typing import List
 
@@ -898,7 +898,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment"""
 
         from typing import List
 
@@ -964,7 +964,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue-comment"""
 
         from ..models import (
             Reaction,
@@ -1035,7 +1035,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue-comment"""
 
         from ..models import (
             Reaction,
@@ -1076,7 +1076,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction"""
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
 
@@ -1097,7 +1097,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction"""
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
 
@@ -1124,7 +1124,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue"""
 
         from typing import List
 
@@ -1167,7 +1167,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue"""
 
         from typing import List
 
@@ -1232,7 +1232,7 @@ class ReactionsClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue"""
 
         from ..models import (
             Reaction,
@@ -1301,7 +1301,7 @@ class ReactionsClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue"""
 
         from ..models import (
             Reaction,
@@ -1342,7 +1342,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-an-issue-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-reaction"""
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
 
@@ -1363,7 +1363,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-an-issue-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-reaction"""
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
 
@@ -1390,7 +1390,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
 
         from typing import List
 
@@ -1432,7 +1432,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
 
         from typing import List
 
@@ -1498,7 +1498,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment"""
 
         from ..models import (
             Reaction,
@@ -1569,7 +1569,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment"""
 
         from ..models import (
             Reaction,
@@ -1610,7 +1610,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction"""
 
         url = (
             f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
@@ -1633,7 +1633,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction"""
 
         url = (
             f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
@@ -1660,7 +1660,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release"""
 
         from typing import List
 
@@ -1700,7 +1700,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release"""
 
         from typing import List
 
@@ -1762,7 +1762,7 @@ class ReactionsClient:
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-release`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-release"""
 
         from ..models import (
             Reaction,
@@ -1829,7 +1829,7 @@ class ReactionsClient:
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-release`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-release"""
 
         from ..models import (
             Reaction,
@@ -1870,7 +1870,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction"""
 
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"
 
@@ -1891,7 +1891,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction"""
 
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}"
 
@@ -1918,7 +1918,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
 
         from typing import List
 
@@ -1957,7 +1957,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
 
         from typing import List
 
@@ -2020,7 +2020,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy"""
 
         from ..models import (
             Reaction,
@@ -2088,7 +2088,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy"""
 
         from ..models import (
             Reaction,
@@ -2131,7 +2131,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
 
         from typing import List
 
@@ -2169,7 +2169,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Reaction]]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
 
         from typing import List
 
@@ -2229,7 +2229,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy"""
 
         from ..models import (
             Reaction,
@@ -2293,7 +2293,7 @@ class ReactionsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
-        """see more: `https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy`"""
+        """See also: https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy"""
 
         from ..models import (
             Reaction,

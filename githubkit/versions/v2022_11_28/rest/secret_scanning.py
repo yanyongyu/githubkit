@@ -66,7 +66,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
 
         from typing import List
 
@@ -119,7 +119,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
 
         from typing import List
 
@@ -173,7 +173,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
 
         from typing import List
 
@@ -228,7 +228,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
 
         from typing import List
 
@@ -284,7 +284,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SecretScanningAlert]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
         from typing import List
 
@@ -338,7 +338,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SecretScanningAlert]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
 
         from typing import List
 
@@ -383,7 +383,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SecretScanningAlert]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
         from ..models import (
             SecretScanningAlert,
@@ -412,7 +412,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SecretScanningAlert]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
         from ..models import (
             SecretScanningAlert,
@@ -476,7 +476,7 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
 
         from ..models import (
             SecretScanningAlert,
@@ -551,7 +551,7 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert"""
 
         from ..models import (
             SecretScanningAlert,
@@ -593,7 +593,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SecretScanningLocation]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
         from typing import List
 
@@ -632,7 +632,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SecretScanningLocation]]:
-        """see more: `https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert`"""
+        """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
 
         from typing import List
 

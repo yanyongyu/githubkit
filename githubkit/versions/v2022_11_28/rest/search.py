@@ -64,7 +64,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchCodeGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-code`"""
+        """See also: https://docs.github.com/rest/search/search#search-code"""
 
         from ..models import (
             BasicError,
@@ -108,7 +108,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchCodeGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-code`"""
+        """See also: https://docs.github.com/rest/search/search#search-code"""
 
         from ..models import (
             BasicError,
@@ -152,7 +152,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchCommitsGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-commits`"""
+        """See also: https://docs.github.com/rest/search/search#search-commits"""
 
         from ..models import SearchCommitsGetResponse200
 
@@ -186,7 +186,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchCommitsGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-commits`"""
+        """See also: https://docs.github.com/rest/search/search#search-commits"""
 
         from ..models import SearchCommitsGetResponse200
 
@@ -234,7 +234,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-issues-and-pull-requests`"""
+        """See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests"""
 
         from ..models import (
             BasicError,
@@ -292,7 +292,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-issues-and-pull-requests`"""
+        """See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests"""
 
         from ..models import (
             BasicError,
@@ -337,7 +337,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-labels`"""
+        """See also: https://docs.github.com/rest/search/search#search-labels"""
 
         from ..models import BasicError, ValidationError, SearchLabelsGetResponse200
 
@@ -378,7 +378,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchLabelsGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-labels`"""
+        """See also: https://docs.github.com/rest/search/search#search-labels"""
 
         from ..models import BasicError, ValidationError, SearchLabelsGetResponse200
 
@@ -420,7 +420,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-repositories`"""
+        """See also: https://docs.github.com/rest/search/search#search-repositories"""
 
         from ..models import (
             ValidationError,
@@ -464,7 +464,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchRepositoriesGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-repositories`"""
+        """See also: https://docs.github.com/rest/search/search#search-repositories"""
 
         from ..models import (
             ValidationError,
@@ -504,7 +504,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchTopicsGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-topics`"""
+        """See also: https://docs.github.com/rest/search/search#search-topics"""
 
         from ..models import SearchTopicsGetResponse200
 
@@ -534,7 +534,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchTopicsGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-topics`"""
+        """See also: https://docs.github.com/rest/search/search#search-topics"""
 
         from ..models import SearchTopicsGetResponse200
 
@@ -566,7 +566,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchUsersGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-users`"""
+        """See also: https://docs.github.com/rest/search/search#search-users"""
 
         from ..models import (
             ValidationError,
@@ -608,7 +608,7 @@ class SearchClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SearchUsersGetResponse200]:
-        """see more: `https://docs.github.com/rest/search/search#search-users`"""
+        """See also: https://docs.github.com/rest/search/search#search-users"""
 
         from ..models import (
             ValidationError,

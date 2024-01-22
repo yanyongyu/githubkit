@@ -94,7 +94,7 @@ class {{ pascal_case(tag) }}Client:
         {{ endpoint_params(endpoint) | indent(8) }}
     ) -> {{ build_response_type(endpoint.success_response) }}:
         {% if endpoint.external_docs %}
-        """see more: `{{ endpoint.external_docs }}`"""
+        """See also: {{ endpoint.external_docs }}"""
 
         {% endif %}
         {{ build_request(endpoint) | indent(8) }}
@@ -127,7 +127,7 @@ class {{ pascal_case(tag) }}Client:
         {{ endpoint_params(endpoint) | indent(8) }}
     ) -> {{ build_response_type(endpoint.success_response) }}:
         {% if endpoint.external_docs %}
-        """see more: `{{ endpoint.external_docs }}`"""
+        """See also: {{ endpoint.external_docs }}"""
 
         {% endif %}
         {{ build_request(endpoint) | indent(8) }}

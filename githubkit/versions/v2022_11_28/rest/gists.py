@@ -63,7 +63,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
 
         from typing import List
 
@@ -98,7 +98,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
 
         from typing import List
 
@@ -150,7 +150,7 @@ class GistsClient:
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#create-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#create-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
 
@@ -203,7 +203,7 @@ class GistsClient:
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#create-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#create-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
 
@@ -239,7 +239,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-public-gists`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
 
         from typing import List
 
@@ -275,7 +275,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-public-gists`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
 
         from typing import List
 
@@ -311,7 +311,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-starred-gists`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
 
         from typing import List
 
@@ -347,7 +347,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-starred-gists`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
 
         from typing import List
 
@@ -381,7 +381,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#get-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#get-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsGistIdGetResponse403
 
@@ -406,7 +406,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#get-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#get-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsGistIdGetResponse403
 
@@ -431,7 +431,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#delete-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#delete-a-gist"""
 
         from ..models import BasicError
 
@@ -455,7 +455,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#delete-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#delete-a-gist"""
 
         from ..models import BasicError
 
@@ -503,7 +503,7 @@ class GistsClient:
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#update-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#update-a-gist"""
 
         from typing import Union
 
@@ -567,7 +567,7 @@ class GistsClient:
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#update-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#update-a-gist"""
 
         from typing import Union
 
@@ -609,7 +609,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GistComment]]:
-        """see more: `https://docs.github.com/rest/gists/comments#list-gist-comments`"""
+        """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
 
         from typing import List
 
@@ -644,7 +644,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GistComment]]:
-        """see more: `https://docs.github.com/rest/gists/comments#list-gist-comments`"""
+        """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
 
         from typing import List
 
@@ -700,7 +700,7 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
-        """see more: `https://docs.github.com/rest/gists/comments#create-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#create-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
 
@@ -756,7 +756,7 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
-        """see more: `https://docs.github.com/rest/gists/comments#create-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#create-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
 
@@ -790,7 +790,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GistComment]:
-        """see more: `https://docs.github.com/rest/gists/comments#get-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
 
@@ -816,7 +816,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GistComment]:
-        """see more: `https://docs.github.com/rest/gists/comments#get-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
 
@@ -842,7 +842,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/comments#delete-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment"""
 
         from ..models import BasicError
 
@@ -867,7 +867,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/comments#delete-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment"""
 
         from ..models import BasicError
 
@@ -917,7 +917,7 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
-        """see more: `https://docs.github.com/rest/gists/comments#update-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#update-a-gist-comment"""
 
         from ..models import (
             BasicError,
@@ -979,7 +979,7 @@ class GistsClient:
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
-        """see more: `https://docs.github.com/rest/gists/comments#update-a-gist-comment`"""
+        """See also: https://docs.github.com/rest/gists/comments#update-a-gist-comment"""
 
         from ..models import (
             BasicError,
@@ -1017,7 +1017,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GistCommit]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gist-commits`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
 
         from typing import List
 
@@ -1052,7 +1052,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GistCommit]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gist-commits`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
 
         from typing import List
 
@@ -1087,7 +1087,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GistSimple]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gist-forks`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
 
         from typing import List
 
@@ -1122,7 +1122,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GistSimple]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gist-forks`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
 
         from typing import List
 
@@ -1155,7 +1155,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BaseGist]:
-        """see more: `https://docs.github.com/rest/gists/gists#fork-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#fork-a-gist"""
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -1181,7 +1181,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[BaseGist]:
-        """see more: `https://docs.github.com/rest/gists/gists#fork-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#fork-a-gist"""
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -1207,7 +1207,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred`"""
+        """See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred"""
 
         from ..models import BasicError, GistsGistIdStarGetResponse404
 
@@ -1231,7 +1231,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred`"""
+        """See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred"""
 
         from ..models import BasicError, GistsGistIdStarGetResponse404
 
@@ -1255,7 +1255,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#star-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#star-a-gist"""
 
         from ..models import BasicError
 
@@ -1279,7 +1279,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#star-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#star-a-gist"""
 
         from ..models import BasicError
 
@@ -1303,7 +1303,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#unstar-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#unstar-a-gist"""
 
         from ..models import BasicError
 
@@ -1327,7 +1327,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """see more: `https://docs.github.com/rest/gists/gists#unstar-a-gist`"""
+        """See also: https://docs.github.com/rest/gists/gists#unstar-a-gist"""
 
         from ..models import BasicError
 
@@ -1352,7 +1352,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#get-a-gist-revision`"""
+        """See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision"""
 
         from ..models import BasicError, GistSimple, ValidationError
 
@@ -1379,7 +1379,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GistSimple]:
-        """see more: `https://docs.github.com/rest/gists/gists#get-a-gist-revision`"""
+        """See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision"""
 
         from ..models import BasicError, GistSimple, ValidationError
 
@@ -1408,7 +1408,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gists-for-a-user`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""
 
         from typing import List
 
@@ -1444,7 +1444,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[BaseGist]]:
-        """see more: `https://docs.github.com/rest/gists/gists#list-gists-for-a-user`"""
+        """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""
 
         from typing import List
 
