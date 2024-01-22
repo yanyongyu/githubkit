@@ -10,18 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0106 import RepositoryRuleUpdateType
+from .group_0125 import RepositoryRuleWorkflowsType
+from .group_0111 import RepositoryRulePullRequestType
+from .group_0097 import RepositoryRulesetConditionsType
+from .group_0096 import RepositoryRulesetBypassActorType
+from .group_0123 import RepositoryRuleTagNamePatternType
+from .group_0121 import RepositoryRuleBranchNamePatternType
+from .group_0109 import RepositoryRuleRequiredDeploymentsType
+from .group_0113 import RepositoryRuleRequiredStatusChecksType
+from .group_0115 import RepositoryRuleCommitMessagePatternType
+from .group_0108 import RepositoryRuleRequiredLinearHistoryType
+from .group_0119 import RepositoryRuleCommitterEmailPatternType
+from .group_0117 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0105 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+            ]
+        ]
     ]
-    resolution_comment: NotRequired[Union[str, None]]
 
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)

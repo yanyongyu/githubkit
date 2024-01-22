@@ -91,6 +91,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob]:
+        """See also: https://docs.github.com/rest/git/blobs#create-a-blob"""
+
         from ..models import (
             ShortBlob,
             BasicError,
@@ -156,6 +158,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ShortBlob]:
+        """See also: https://docs.github.com/rest/git/blobs#create-a-blob"""
+
         from ..models import (
             ShortBlob,
             BasicError,
@@ -196,6 +200,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Blob]:
+        """See also: https://docs.github.com/rest/git/blobs#get-a-blob"""
+
         from ..models import Blob, BasicError, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
@@ -222,6 +228,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Blob]:
+        """See also: https://docs.github.com/rest/git/blobs#get-a-blob"""
+
         from ..models import Blob, BasicError, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/blobs/{file_sha}"
@@ -277,6 +285,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit]:
+        """See also: https://docs.github.com/rest/git/commits#create-a-commit"""
+
         from ..models import (
             GitCommit,
             BasicError,
@@ -344,6 +354,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitCommit]:
+        """See also: https://docs.github.com/rest/git/commits#create-a-commit"""
+
         from ..models import (
             GitCommit,
             BasicError,
@@ -382,6 +394,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitCommit]:
+        """See also: https://docs.github.com/rest/git/commits#get-a-commit-object"""
+
         from ..models import GitCommit, BasicError
 
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
@@ -406,6 +420,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitCommit]:
+        """See also: https://docs.github.com/rest/git/commits#get-a-commit-object"""
+
         from ..models import GitCommit, BasicError
 
         url = f"/repos/{owner}/{repo}/git/commits/{commit_sha}"
@@ -430,6 +446,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GitRef]]:
+        """See also: https://docs.github.com/rest/git/refs#list-matching-references"""
+
         from typing import List
 
         from ..models import GitRef
@@ -453,6 +471,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GitRef]]:
+        """See also: https://docs.github.com/rest/git/refs#list-matching-references"""
+
         from typing import List
 
         from ..models import GitRef
@@ -476,6 +496,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitRef]:
+        """See also: https://docs.github.com/rest/git/refs#get-a-reference"""
+
         from ..models import GitRef, BasicError
 
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
@@ -500,6 +522,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitRef]:
+        """See also: https://docs.github.com/rest/git/refs#get-a-reference"""
+
         from ..models import GitRef, BasicError
 
         url = f"/repos/{owner}/{repo}/git/ref/{ref}"
@@ -549,6 +573,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
+        """See also: https://docs.github.com/rest/git/refs#create-a-reference"""
+
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsPostBody
 
         url = f"/repos/{owner}/{repo}/git/refs"
@@ -606,6 +632,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
+        """See also: https://docs.github.com/rest/git/refs#create-a-reference"""
+
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsPostBody
 
         url = f"/repos/{owner}/{repo}/git/refs"
@@ -638,6 +666,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/git/refs#delete-a-reference"""
+
         from ..models import ValidationError
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -661,6 +691,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/git/refs#delete-a-reference"""
+
         from ..models import ValidationError
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -712,6 +744,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
+        """See also: https://docs.github.com/rest/git/refs#update-a-reference"""
+
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsRefPatchBody
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -772,6 +806,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitRef]:
+        """See also: https://docs.github.com/rest/git/refs#update-a-reference"""
+
         from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsRefPatchBody
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
@@ -832,6 +868,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag]:
+        """See also: https://docs.github.com/rest/git/tags#create-a-tag-object"""
+
         from ..models import GitTag, ValidationError, ReposOwnerRepoGitTagsPostBody
 
         url = f"/repos/{owner}/{repo}/git/tags"
@@ -892,6 +930,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTag]:
+        """See also: https://docs.github.com/rest/git/tags#create-a-tag-object"""
+
         from ..models import GitTag, ValidationError, ReposOwnerRepoGitTagsPostBody
 
         url = f"/repos/{owner}/{repo}/git/tags"
@@ -924,6 +964,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTag]:
+        """See also: https://docs.github.com/rest/git/tags#get-a-tag"""
+
         from ..models import GitTag, BasicError
 
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
@@ -948,6 +990,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTag]:
+        """See also: https://docs.github.com/rest/git/tags#get-a-tag"""
+
         from ..models import GitTag, BasicError
 
         url = f"/repos/{owner}/{repo}/git/tags/{tag_sha}"
@@ -997,6 +1041,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree]:
+        """See also: https://docs.github.com/rest/git/trees#create-a-tree"""
+
         from ..models import (
             GitTree,
             BasicError,
@@ -1061,6 +1107,8 @@ class GitClient:
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GitTree]:
+        """See also: https://docs.github.com/rest/git/trees#create-a-tree"""
+
         from ..models import (
             GitTree,
             BasicError,
@@ -1101,6 +1149,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTree]:
+        """See also: https://docs.github.com/rest/git/trees#get-a-tree"""
+
         from ..models import GitTree, BasicError, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"
@@ -1132,6 +1182,8 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GitTree]:
+        """See also: https://docs.github.com/rest/git/trees#get-a-tree"""
+
         from ..models import GitTree, BasicError, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/trees/{tree_sha}"

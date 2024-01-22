@@ -41,6 +41,9 @@ class OrgCustomProperty(GitHubModel):
     allowed_values: Missing[Union[List[str], None]] = Field(
         default=UNSET, description="Ordered list of allowed values of the property"
     )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
 model_rebuild(OrgCustomProperty)

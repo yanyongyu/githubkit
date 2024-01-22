@@ -17,7 +17,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
 from .group_0017 import Repository
@@ -169,6 +169,10 @@ class FullRepository(GitHubModel):
     security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
         default=UNSET
     )
+    custom_properties: Missing[FullRepositoryPropCustomProperties] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+    )
 
 
 class FullRepositoryPropPermissions(GitHubModel):
@@ -181,10 +185,21 @@ class FullRepositoryPropPermissions(GitHubModel):
     pull: bool = Field()
 
 
+class FullRepositoryPropCustomProperties(ExtraGitHubModel):
+    """FullRepositoryPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
+
+
 model_rebuild(FullRepository)
 model_rebuild(FullRepositoryPropPermissions)
+model_rebuild(FullRepositoryPropCustomProperties)
 
 __all__ = (
     "FullRepository",
     "FullRepositoryPropPermissions",
+    "FullRepositoryPropCustomProperties",
 )

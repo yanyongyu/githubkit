@@ -71,6 +71,8 @@ class MarkdownClient:
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str]:
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
+
         from ..models import MarkdownPostBody
 
         url = "/markdown"
@@ -117,6 +119,8 @@ class MarkdownClient:
         data: Missing[MarkdownPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[str]:
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document"""
+
         from ..models import MarkdownPostBody
 
         url = "/markdown"
@@ -141,6 +145,8 @@ class MarkdownClient:
     def render_raw(
         self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
     ) -> Response[str]:
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
+
         url = "/markdown/raw"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -163,6 +169,8 @@ class MarkdownClient:
     async def async_render_raw(
         self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
     ) -> Response[str]:
+        """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
+
         url = "/markdown/raw"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

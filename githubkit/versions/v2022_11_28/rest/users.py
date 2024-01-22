@@ -73,6 +73,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[PrivateUser, PublicUser]]:
+        """See also: https://docs.github.com/rest/users/users#get-the-authenticated-user"""
+
         from typing import Union
 
         from ..models import BasicError, PublicUser, PrivateUser
@@ -97,6 +99,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[PrivateUser, PublicUser]]:
+        """See also: https://docs.github.com/rest/users/users#get-the-authenticated-user"""
+
         from typing import Union
 
         from ..models import BasicError, PublicUser, PrivateUser
@@ -149,6 +153,8 @@ class UsersClient:
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PrivateUser]:
+        """See also: https://docs.github.com/rest/users/users#update-the-authenticated-user"""
+
         from ..models import BasicError, PrivateUser, UserPatchBody, ValidationError
 
         url = "/user"
@@ -209,6 +215,8 @@ class UsersClient:
         data: Missing[UserPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PrivateUser]:
+        """See also: https://docs.github.com/rest/users/users#update-the-authenticated-user"""
+
         from ..models import BasicError, PrivateUser, UserPatchBody, ValidationError
 
         url = "/user"
@@ -243,6 +251,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -276,6 +286,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -308,6 +320,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/blocks/{username}"
@@ -331,6 +345,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/blocking#check-if-a-user-is-blocked-by-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/blocks/{username}"
@@ -354,6 +370,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/blocking#block-a-user"""
+
         from ..models import BasicError, ValidationError
 
         url = f"/user/blocks/{username}"
@@ -378,6 +396,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/blocking#block-a-user"""
+
         from ..models import BasicError, ValidationError
 
         url = f"/user/blocks/{username}"
@@ -402,6 +422,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/blocking#unblock-a-user"""
+
         from ..models import BasicError
 
         url = f"/user/blocks/{username}"
@@ -425,6 +447,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/blocking#unblock-a-user"""
+
         from ..models import BasicError
 
         url = f"/user/blocks/{username}"
@@ -468,6 +492,8 @@ class UsersClient:
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import (
@@ -528,6 +554,8 @@ class UsersClient:
         data: Missing[UserEmailVisibilityPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import (
@@ -569,6 +597,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#list-email-addresses-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Email, BasicError
@@ -602,6 +632,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#list-email-addresses-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Email, BasicError
@@ -654,6 +686,8 @@ class UsersClient:
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#add-an-email-address-for-the-authenticated-user"""
+
         from typing import List, Union
 
         from ..models import (
@@ -716,6 +750,8 @@ class UsersClient:
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#add-an-email-address-for-the-authenticated-user"""
+
         from typing import List, Union
 
         from ..models import (
@@ -778,6 +814,8 @@ class UsersClient:
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/emails#delete-an-email-address-for-the-authenticated-user"""
+
         from typing import List, Union
 
         from ..models import BasicError, ValidationError, UserEmailsDeleteBodyOneof0
@@ -834,6 +872,8 @@ class UsersClient:
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
         **kwargs,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/emails#delete-an-email-address-for-the-authenticated-user"""
+
         from typing import List, Union
 
         from ..models import BasicError, ValidationError, UserEmailsDeleteBodyOneof0
@@ -871,6 +911,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-followers-of-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -903,6 +945,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-followers-of-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -935,6 +979,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -967,6 +1013,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -998,6 +1046,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/following/{username}"
@@ -1021,6 +1071,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#check-if-a-person-is-followed-by-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/following/{username}"
@@ -1044,6 +1096,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#follow-a-user"""
+
         from ..models import BasicError
 
         url = f"/user/following/{username}"
@@ -1067,6 +1121,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#follow-a-user"""
+
         from ..models import BasicError
 
         url = f"/user/following/{username}"
@@ -1090,6 +1146,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#unfollow-a-user"""
+
         from ..models import BasicError
 
         url = f"/user/following/{username}"
@@ -1113,6 +1171,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#unfollow-a-user"""
+
         from ..models import BasicError
 
         url = f"/user/following/{username}"
@@ -1137,6 +1197,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GpgKey]]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import GpgKey, BasicError
@@ -1170,6 +1232,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GpgKey]]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import GpgKey, BasicError
@@ -1220,6 +1284,8 @@ class UsersClient:
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GpgKey]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user"""
+
         from ..models import GpgKey, BasicError, ValidationError, UserGpgKeysPostBody
 
         url = "/user/gpg_keys"
@@ -1271,6 +1337,8 @@ class UsersClient:
         data: Missing[UserGpgKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GpgKey]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#create-a-gpg-key-for-the-authenticated-user"""
+
         from ..models import GpgKey, BasicError, ValidationError, UserGpgKeysPostBody
 
         url = "/user/gpg_keys"
@@ -1304,6 +1372,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GpgKey]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
+
         from ..models import GpgKey, BasicError
 
         url = f"/user/gpg_keys/{gpg_key_id}"
@@ -1328,6 +1398,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[GpgKey]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user"""
+
         from ..models import GpgKey, BasicError
 
         url = f"/user/gpg_keys/{gpg_key_id}"
@@ -1352,6 +1424,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user"""
+
         from ..models import BasicError, ValidationError
 
         url = f"/user/gpg_keys/{gpg_key_id}"
@@ -1376,6 +1450,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user"""
+
         from ..models import BasicError, ValidationError
 
         url = f"/user/gpg_keys/{gpg_key_id}"
@@ -1401,6 +1477,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Key]]:
+        """See also: https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Key, BasicError
@@ -1434,6 +1512,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Key]]:
+        """See also: https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Key, BasicError
@@ -1484,6 +1564,8 @@ class UsersClient:
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Key]:
+        """See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user"""
+
         from ..models import Key, BasicError, ValidationError, UserKeysPostBody
 
         url = "/user/keys"
@@ -1535,6 +1617,8 @@ class UsersClient:
         data: Missing[UserKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Key]:
+        """See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user"""
+
         from ..models import Key, BasicError, ValidationError, UserKeysPostBody
 
         url = "/user/keys"
@@ -1568,6 +1652,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Key]:
+        """See also: https://docs.github.com/rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
+
         from ..models import Key, BasicError
 
         url = f"/user/keys/{key_id}"
@@ -1592,6 +1678,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Key]:
+        """See also: https://docs.github.com/rest/users/keys#get-a-public-ssh-key-for-the-authenticated-user"""
+
         from ..models import Key, BasicError
 
         url = f"/user/keys/{key_id}"
@@ -1616,6 +1704,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/keys/{key_id}"
@@ -1639,6 +1729,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/keys/{key_id}"
@@ -1663,6 +1755,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Email, BasicError
@@ -1696,6 +1790,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Email]]:
+        """See also: https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Email, BasicError
@@ -1729,6 +1825,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SocialAccount]]:
+        """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SocialAccount
@@ -1762,6 +1860,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SocialAccount]]:
+        """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SocialAccount
@@ -1814,6 +1914,8 @@ class UsersClient:
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[List[SocialAccount]]:
+        """See also: https://docs.github.com/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import (
@@ -1874,6 +1976,8 @@ class UsersClient:
         data: Missing[UserSocialAccountsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[List[SocialAccount]]:
+        """See also: https://docs.github.com/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import (
@@ -1934,6 +2038,8 @@ class UsersClient:
         data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user"""
+
         from ..models import BasicError, ValidationError, UserSocialAccountsDeleteBody
 
         url = "/user/social_accounts"
@@ -1986,6 +2092,8 @@ class UsersClient:
         data: Missing[UserSocialAccountsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/social-accounts#delete-social-accounts-for-the-authenticated-user"""
+
         from ..models import BasicError, ValidationError, UserSocialAccountsDeleteBody
 
         url = "/user/social_accounts"
@@ -2019,6 +2127,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SshSigningKey]]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SshSigningKey
@@ -2052,6 +2162,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SshSigningKey]]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user"""
+
         from typing import List
 
         from ..models import BasicError, SshSigningKey
@@ -2105,6 +2217,8 @@ class UsersClient:
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[SshSigningKey]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user"""
+
         from ..models import (
             BasicError,
             SshSigningKey,
@@ -2164,6 +2278,8 @@ class UsersClient:
         data: Missing[UserSshSigningKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[SshSigningKey]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#create-a-ssh-signing-key-for-the-authenticated-user"""
+
         from ..models import (
             BasicError,
             SshSigningKey,
@@ -2202,6 +2318,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SshSigningKey]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user"""
+
         from ..models import BasicError, SshSigningKey
 
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
@@ -2226,6 +2344,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[SshSigningKey]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user"""
+
         from ..models import BasicError, SshSigningKey
 
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
@@ -2250,6 +2370,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
@@ -2273,6 +2395,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user"""
+
         from ..models import BasicError
 
         url = f"/user/ssh_signing_keys/{ssh_signing_key_id}"
@@ -2297,6 +2421,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/users#list-users"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -2325,6 +2451,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/users#list-users"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -2352,6 +2480,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[PrivateUser, PublicUser]]:
+        """See also: https://docs.github.com/rest/users/users#get-a-user"""
+
         from typing import Union
 
         from ..models import BasicError, PublicUser, PrivateUser
@@ -2376,6 +2506,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Union[PrivateUser, PublicUser]]:
+        """See also: https://docs.github.com/rest/users/users#get-a-user"""
+
         from typing import Union
 
         from ..models import BasicError, PublicUser, PrivateUser
@@ -2402,6 +2534,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-followers-of-a-user"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -2431,6 +2565,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-followers-of-a-user"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -2460,6 +2596,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-the-people-a-user-follows"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -2489,6 +2627,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/users/followers#list-the-people-a-user-follows"""
+
         from typing import List
 
         from ..models import SimpleUser
@@ -2517,6 +2657,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#check-if-a-user-follows-another-user"""
+
         url = f"/users/{username}/following/{target_user}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2535,6 +2677,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/users/followers#check-if-a-user-follows-another-user"""
+
         url = f"/users/{username}/following/{target_user}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2554,6 +2698,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GpgKey]]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user"""
+
         from typing import List
 
         from ..models import GpgKey
@@ -2583,6 +2729,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GpgKey]]:
+        """See also: https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user"""
+
         from typing import List
 
         from ..models import GpgKey
@@ -2614,6 +2762,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Hovercard]:
+        """See also: https://docs.github.com/rest/users/users#get-contextual-information-for-a-user"""
+
         from ..models import Hovercard, BasicError, ValidationError
 
         url = f"/users/{username}/hovercard"
@@ -2647,6 +2797,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Hovercard]:
+        """See also: https://docs.github.com/rest/users/users#get-contextual-information-for-a-user"""
+
         from ..models import Hovercard, BasicError, ValidationError
 
         url = f"/users/{username}/hovercard"
@@ -2678,6 +2830,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[KeySimple]]:
+        """See also: https://docs.github.com/rest/users/keys#list-public-keys-for-a-user"""
+
         from typing import List
 
         from ..models import KeySimple
@@ -2707,6 +2861,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[KeySimple]]:
+        """See also: https://docs.github.com/rest/users/keys#list-public-keys-for-a-user"""
+
         from typing import List
 
         from ..models import KeySimple
@@ -2736,6 +2892,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SocialAccount]]:
+        """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user"""
+
         from typing import List
 
         from ..models import SocialAccount
@@ -2765,6 +2923,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SocialAccount]]:
+        """See also: https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user"""
+
         from typing import List
 
         from ..models import SocialAccount
@@ -2794,6 +2954,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SshSigningKey]]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""
+
         from typing import List
 
         from ..models import SshSigningKey
@@ -2823,6 +2985,8 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SshSigningKey]]:
+        """See also: https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user"""
+
         from typing import List
 
         from ..models import SshSigningKey

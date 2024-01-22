@@ -49,6 +49,8 @@ class CodesOfConductClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeOfConduct]]:
+        """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
+
         from typing import List
 
         from ..models import CodeOfConduct
@@ -69,6 +71,8 @@ class CodesOfConductClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeOfConduct]]:
+        """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
+
         from typing import List
 
         from ..models import CodeOfConduct
@@ -90,6 +94,8 @@ class CodesOfConductClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeOfConduct]:
+        """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
+
         from ..models import BasicError, CodeOfConduct
 
         url = f"/codes_of_conduct/{key}"
@@ -112,6 +118,8 @@ class CodesOfConductClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeOfConduct]:
+        """See also: https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
+
         from ..models import BasicError, CodeOfConduct
 
         url = f"/codes_of_conduct/{key}"

@@ -120,6 +120,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Issue, BasicError, ValidationError
@@ -174,6 +176,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Issue, BasicError, ValidationError
@@ -225,6 +229,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Issue, BasicError
@@ -271,6 +277,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Issue, BasicError
@@ -310,6 +318,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -343,6 +353,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SimpleUser]]:
+        """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
+
         from typing import List
 
         from ..models import BasicError, SimpleUser
@@ -375,6 +387,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/assignees/{assignee}"
@@ -398,6 +412,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/assignees/{assignee}"
@@ -431,6 +447,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
+
         from typing import List
 
         from ..models import Issue, BasicError, ValidationError
@@ -483,6 +501,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
+
         from typing import List
 
         from ..models import Issue, BasicError, ValidationError
@@ -556,6 +576,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
+
         from ..models import (
             Issue,
             BasicError,
@@ -630,6 +652,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/issues#create-an-issue"""
+
         from ..models import (
             Issue,
             BasicError,
@@ -677,6 +701,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
+
         from typing import List
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -717,6 +743,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
+
         from typing import List
 
         from ..models import BasicError, IssueComment, ValidationError
@@ -753,6 +781,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueComment]:
+        """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
+
         from ..models import BasicError, IssueComment
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -777,6 +807,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueComment]:
+        """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
+
         from ..models import BasicError, IssueComment
 
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
@@ -801,6 +833,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
+
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -819,6 +853,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
+
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -864,6 +900,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
+        """See also: https://docs.github.com/rest/issues/comments#update-an-issue-comment"""
+
         from ..models import (
             IssueComment,
             ValidationError,
@@ -929,6 +967,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
+        """See also: https://docs.github.com/rest/issues/comments#update-an-issue-comment"""
+
         from ..models import (
             IssueComment,
             ValidationError,
@@ -968,6 +1008,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueEvent]]:
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
+
         from typing import List
 
         from ..models import IssueEvent, ValidationError
@@ -1001,6 +1043,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueEvent]]:
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
+
         from typing import List
 
         from ..models import IssueEvent, ValidationError
@@ -1033,6 +1077,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueEvent]:
+        """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
+
         from ..models import BasicError, IssueEvent
 
         url = f"/repos/{owner}/{repo}/issues/events/{event_id}"
@@ -1059,6 +1105,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[IssueEvent]:
+        """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
+
         from ..models import BasicError, IssueEvent
 
         url = f"/repos/{owner}/{repo}/issues/events/{event_id}"
@@ -1085,6 +1133,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
+
         from ..models import Issue, BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
@@ -1110,6 +1160,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
+
         from ..models import Issue, BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}"
@@ -1178,6 +1230,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
+
         from ..models import (
             Issue,
             BasicError,
@@ -1263,6 +1317,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/issues#update-an-issue"""
+
         from ..models import (
             Issue,
             BasicError,
@@ -1332,6 +1388,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue"""
+
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1390,6 +1448,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/assignees#add-assignees-to-an-issue"""
+
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesPostBody
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1448,6 +1508,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue"""
+
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1506,6 +1568,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
+        """See also: https://docs.github.com/rest/issues/assignees#remove-assignees-from-an-issue"""
+
         from ..models import Issue, ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
@@ -1538,6 +1602,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}"
@@ -1562,6 +1628,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees/{assignee}"
@@ -1588,6 +1656,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
+
         from typing import List
 
         from ..models import BasicError, IssueComment
@@ -1625,6 +1695,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[IssueComment]]:
+        """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
+
         from typing import List
 
         from ..models import BasicError, IssueComment
@@ -1686,6 +1758,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
+        """See also: https://docs.github.com/rest/issues/comments#create-an-issue-comment"""
+
         from ..models import (
             BasicError,
             IssueComment,
@@ -1755,6 +1829,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
+        """See also: https://docs.github.com/rest/issues/comments#create-an-issue-comment"""
+
         from ..models import (
             BasicError,
             IssueComment,
@@ -1819,6 +1895,8 @@ class IssuesClient:
             ]
         ]
     ]:
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
+
         from typing import List, Union
 
         from ..models import (
@@ -1908,6 +1986,8 @@ class IssuesClient:
             ]
         ]
     ]:
+        """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
+
         from typing import List, Union
 
         from ..models import (
@@ -1977,6 +2057,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
+
         from typing import List
 
         from ..models import Label, BasicError
@@ -2012,6 +2094,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
+
         from typing import List
 
         from ..models import Label, BasicError
@@ -2103,6 +2187,8 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
+
         from typing import List, Union
 
         from ..models import (
@@ -2216,6 +2302,8 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
+
         from typing import List, Union
 
         from ..models import (
@@ -2329,6 +2417,8 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
+
         from typing import List, Union
 
         from ..models import (
@@ -2442,6 +2532,8 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
+
         from typing import List, Union
 
         from ..models import (
@@ -2497,6 +2589,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
@@ -2521,6 +2615,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
@@ -2546,6 +2642,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
+
         from typing import List
 
         from ..models import Label, BasicError
@@ -2574,6 +2672,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
+
         from typing import List
 
         from ..models import Label, BasicError
@@ -2634,6 +2734,8 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/issues#lock-an-issue"""
+
         from typing import Union
 
         from ..models import (
@@ -2709,6 +2811,8 @@ class IssuesClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/issues#lock-an-issue"""
+
         from typing import Union
 
         from ..models import (
@@ -2751,6 +2855,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
@@ -2775,6 +2881,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
@@ -2828,6 +2936,8 @@ class IssuesClient:
             ]
         ]
     ]:
+        """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
+
         from typing import List, Union
 
         from ..models import (
@@ -2939,6 +3049,8 @@ class IssuesClient:
             ]
         ]
     ]:
+        """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
+
         from typing import List, Union
 
         from ..models import (
@@ -3022,6 +3134,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
+
         from typing import List
 
         from ..models import Label, BasicError
@@ -3055,6 +3169,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
+
         from typing import List
 
         from ..models import Label, BasicError
@@ -3113,6 +3229,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
+        """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
+
         from ..models import (
             Label,
             BasicError,
@@ -3177,6 +3295,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
+        """See also: https://docs.github.com/rest/issues/labels#create-a-label"""
+
         from ..models import (
             Label,
             BasicError,
@@ -3215,6 +3335,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Label]:
+        """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
+
         from ..models import Label, BasicError
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -3239,6 +3361,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Label]:
+        """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
+
         from ..models import Label, BasicError
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -3263,6 +3387,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
+
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3281,6 +3407,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
+
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3328,6 +3456,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
+        """See also: https://docs.github.com/rest/issues/labels#update-a-label"""
+
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -3386,6 +3516,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
+        """See also: https://docs.github.com/rest/issues/labels#update-a-label"""
+
         from ..models import Label, ReposOwnerRepoLabelsNamePatchBody
 
         url = f"/repos/{owner}/{repo}/labels/{name}"
@@ -3419,6 +3551,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Milestone]]:
+        """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
+
         from typing import List
 
         from ..models import Milestone, BasicError
@@ -3458,6 +3592,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Milestone]]:
+        """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
+
         from typing import List
 
         from ..models import Milestone, BasicError
@@ -3520,6 +3656,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
+        """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
+
         from ..models import (
             Milestone,
             BasicError,
@@ -3585,6 +3723,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
+        """See also: https://docs.github.com/rest/issues/milestones#create-a-milestone"""
+
         from ..models import (
             Milestone,
             BasicError,
@@ -3623,6 +3763,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Milestone]:
+        """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
+
         from ..models import Milestone, BasicError
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3647,6 +3789,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Milestone]:
+        """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
+
         from ..models import Milestone, BasicError
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3671,6 +3815,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3694,6 +3840,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3747,6 +3895,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
+        """See also: https://docs.github.com/rest/issues/milestones#update-a-milestone"""
+
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3808,6 +3958,8 @@ class IssuesClient:
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
+        """See also: https://docs.github.com/rest/issues/milestones#update-a-milestone"""
+
         from ..models import Milestone, ReposOwnerRepoMilestonesMilestoneNumberPatchBody
 
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
@@ -3841,6 +3993,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
+
         from typing import List
 
         from ..models import Label
@@ -3872,6 +4026,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Label]]:
+        """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
+
         from typing import List
 
         from ..models import Label
@@ -3908,6 +4064,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Issue, BasicError
@@ -3953,6 +4111,8 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Issue]]:
+        """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
+
         from typing import List
 
         from ..models import Issue, BasicError

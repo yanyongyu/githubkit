@@ -54,6 +54,8 @@ class LicensesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[LicenseSimple]]:
+        """See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses"""
+
         from typing import List
 
         from ..models import LicenseSimple
@@ -84,6 +86,8 @@ class LicensesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[LicenseSimple]]:
+        """See also: https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses"""
+
         from typing import List
 
         from ..models import LicenseSimple
@@ -112,6 +116,8 @@ class LicensesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[License]:
+        """See also: https://docs.github.com/rest/licenses/licenses#get-a-license"""
+
         from ..models import License, BasicError
 
         url = f"/licenses/{license}"
@@ -135,6 +141,8 @@ class LicensesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[License]:
+        """See also: https://docs.github.com/rest/licenses/licenses#get-a-license"""
+
         from ..models import License, BasicError
 
         url = f"/licenses/{license}"
@@ -159,6 +167,8 @@ class LicensesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[LicenseContent]:
+        """See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository"""
+
         from ..models import BasicError, LicenseContent
 
         url = f"/repos/{owner}/{repo}/license"
@@ -182,6 +192,8 @@ class LicensesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[LicenseContent]:
+        """See also: https://docs.github.com/rest/licenses/licenses#get-the-license-for-a-repository"""
+
         from ..models import BasicError, LicenseContent
 
         url = f"/repos/{owner}/{repo}/license"

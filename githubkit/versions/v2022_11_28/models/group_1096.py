@@ -10,18 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody(GitHubModel):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody"""
-
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+from .group_0153 import ActionsVariable
 
 
-model_rebuild(RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody)
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200(
+    GitHubModel
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody",)
+    total_count: int = Field()
+    variables: List[ActionsVariable] = Field()
+
+
+model_rebuild(
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200
+)
+
+__all__ = (
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200",
+)

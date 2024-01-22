@@ -18,13 +18,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0007 import WebhookConfig
+
 
 class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
     """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    config: Missing[ReposOwnerRepoHooksHookIdPatchBodyPropConfig] = Field(
+    config: Missing[WebhookConfig] = Field(
         default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
     events: Missing[List[str]] = Field(
         default=UNSET,
@@ -44,30 +47,6 @@ class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
     )
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyPropConfig(GitHubModel):
-    """ReposOwnerRepoHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    address: Missing[str] = Field(default=UNSET)
-    room: Missing[str] = Field(default=UNSET)
-
-
 model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
-model_rebuild(ReposOwnerRepoHooksHookIdPatchBodyPropConfig)
 
-__all__ = (
-    "ReposOwnerRepoHooksHookIdPatchBody",
-    "ReposOwnerRepoHooksHookIdPatchBodyPropConfig",
-)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

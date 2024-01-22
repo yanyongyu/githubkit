@@ -82,6 +82,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningOrganizationAlertItems]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization"""
+
         from typing import List
 
         from ..models import (
@@ -137,6 +139,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningOrganizationAlertItems]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization"""
+
         from typing import List
 
         from ..models import (
@@ -192,6 +196,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAlertItems]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
+
         from typing import List
 
         from ..models import (
@@ -247,6 +253,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAlertItems]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
+
         from typing import List
 
         from ..models import (
@@ -292,6 +300,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningAlert]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
+
         from ..models import (
             BasicError,
             CodeScanningAlert,
@@ -322,6 +332,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningAlert]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
+
         from ..models import (
             BasicError,
             CodeScanningAlert,
@@ -383,6 +395,8 @@ class CodeScanningClient:
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-alert"""
+
         from ..models import (
             BasicError,
             CodeScanningAlert,
@@ -455,6 +469,8 @@ class CodeScanningClient:
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-alert"""
+
         from ..models import (
             BasicError,
             CodeScanningAlert,
@@ -499,6 +515,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAlertInstance]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
+
         from typing import List
 
         from ..models import (
@@ -541,6 +559,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAlertInstance]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
+
         from typing import List
 
         from ..models import (
@@ -587,6 +607,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAnalysis]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
+
         from typing import List
 
         from ..models import (
@@ -638,6 +660,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAnalysis]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
+
         from typing import List
 
         from ..models import (
@@ -682,6 +706,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysis]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
+
         from ..models import (
             BasicError,
             CodeScanningAnalysis,
@@ -712,6 +738,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysis]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
+
         from ..models import (
             BasicError,
             CodeScanningAnalysis,
@@ -743,6 +771,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
+
         from ..models import (
             BasicError,
             CodeScanningAnalysisDeletion,
@@ -780,6 +810,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
+
         from ..models import (
             BasicError,
             CodeScanningAnalysisDeletion,
@@ -815,6 +847,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningCodeqlDatabase]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository"""
+
         from typing import List
 
         from ..models import (
@@ -846,6 +880,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningCodeqlDatabase]]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository"""
+
         from typing import List
 
         from ..models import (
@@ -878,6 +914,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningCodeqlDatabase]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
+
         from ..models import (
             BasicError,
             CodeScanningCodeqlDatabase,
@@ -908,6 +946,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningCodeqlDatabase]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
+
         from ..models import (
             BasicError,
             CodeScanningCodeqlDatabase,
@@ -937,6 +977,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningDefaultSetup]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
+
         from ..models import (
             BasicError,
             CodeScanningDefaultSetup,
@@ -966,6 +1008,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningDefaultSetup]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
+
         from ..models import (
             BasicError,
             CodeScanningDefaultSetup,
@@ -1035,6 +1079,8 @@ class CodeScanningClient:
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration"""
+
         from ..models import (
             BasicError,
             EmptyObject,
@@ -1114,6 +1160,8 @@ class CodeScanningClient:
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration"""
+
         from ..models import (
             BasicError,
             EmptyObject,
@@ -1184,6 +1232,8 @@ class CodeScanningClient:
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data"""
+
         from ..models import (
             BasicError,
             CodeScanningSarifsReceipt,
@@ -1253,6 +1303,8 @@ class CodeScanningClient:
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data"""
+
         from ..models import (
             BasicError,
             CodeScanningSarifsReceipt,
@@ -1292,6 +1344,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningSarifsStatus]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
+
         from ..models import (
             BasicError,
             CodeScanningSarifsStatus,
@@ -1321,6 +1375,8 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CodeScanningSarifsStatus]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
+
         from ..models import (
             BasicError,
             CodeScanningSarifsStatus,

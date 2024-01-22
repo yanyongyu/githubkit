@@ -10,13 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+from .group_0017 import Repository
 
 
-model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)
+    total_count: int = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: List[Repository] = Field()
+
+
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

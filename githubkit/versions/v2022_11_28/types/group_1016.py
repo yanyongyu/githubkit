@@ -33,8 +33,6 @@ class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
     content_type: NotRequired[str]
     secret: NotRequired[str]
     insecure_ssl: NotRequired[Union[str, float]]
-    token: NotRequired[str]
-    digest: NotRequired[str]
 
 
 __all__ = (

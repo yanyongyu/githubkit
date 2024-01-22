@@ -67,6 +67,8 @@ class DependencyGraphClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependencyGraphDiffItems]]:
+        """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
+
         from typing import List
 
         from ..models import BasicError, DependencyGraphDiffItems
@@ -100,6 +102,8 @@ class DependencyGraphClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[DependencyGraphDiffItems]]:
+        """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
+
         from typing import List
 
         from ..models import BasicError, DependencyGraphDiffItems
@@ -131,6 +135,8 @@ class DependencyGraphClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom]:
+        """See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
+
         from ..models import BasicError, DependencyGraphSpdxSbom
 
         url = f"/repos/{owner}/{repo}/dependency-graph/sbom"
@@ -155,6 +161,8 @@ class DependencyGraphClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom]:
+        """See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
+
         from ..models import BasicError, DependencyGraphSpdxSbom
 
         url = f"/repos/{owner}/{repo}/dependency-graph/sbom"
@@ -211,6 +219,8 @@ class DependencyGraphClient:
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
+        """See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
+
         from ..models import (
             Snapshot,
             ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
@@ -274,6 +284,8 @@ class DependencyGraphClient:
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
+        """See also: https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository"""
+
         from ..models import (
             Snapshot,
             ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,

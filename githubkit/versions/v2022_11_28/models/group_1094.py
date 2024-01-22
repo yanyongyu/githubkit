@@ -10,29 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import Annotated
+from typing import List
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0152 import ActionsSecret
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody(
+
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200(
     GitHubModel
 ):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.",
-    )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    total_count: int = Field()
+    secrets: List[ActionsSecret] = Field()
 
 
-model_rebuild(
-    RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody
-)
+model_rebuild(RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200)
 
-__all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
-)
+__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200",)

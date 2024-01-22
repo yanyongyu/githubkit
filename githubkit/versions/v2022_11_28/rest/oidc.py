@@ -51,6 +51,8 @@ class OidcClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OidcCustomSub]:
+        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+
         from ..models import OidcCustomSub
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"
@@ -70,6 +72,8 @@ class OidcClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OidcCustomSub]:
+        """See also: https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+
         from ..models import OidcCustomSub
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"
@@ -112,6 +116,8 @@ class OidcClient:
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+
         from ..models import BasicError, EmptyObject, OidcCustomSub
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"
@@ -166,6 +172,8 @@ class OidcClient:
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
+        """See also: https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
+
         from ..models import BasicError, EmptyObject, OidcCustomSub
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"

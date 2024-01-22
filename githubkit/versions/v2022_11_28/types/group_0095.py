@@ -131,6 +131,7 @@ class FullRepositoryType(TypedDict):
     anonymous_access_enabled: NotRequired[bool]
     code_of_conduct: NotRequired[CodeOfConductSimpleType]
     security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    custom_properties: NotRequired[FullRepositoryPropCustomPropertiesType]
 
 
 class FullRepositoryPropPermissionsType(TypedDict):
@@ -143,7 +144,17 @@ class FullRepositoryPropPermissionsType(TypedDict):
     pull: bool
 
 
+class FullRepositoryPropCustomPropertiesType(TypedDict):
+    """FullRepositoryPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
+
+
 __all__ = (
     "FullRepositoryType",
     "FullRepositoryPropPermissionsType",
+    "FullRepositoryPropCustomPropertiesType",
 )

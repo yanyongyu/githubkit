@@ -69,6 +69,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Migration]]:
+        """See also: https://docs.github.com/rest/migrations/orgs#list-organization-migrations"""
+
         from typing import List
 
         from ..models import Migration
@@ -100,6 +102,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Migration]]:
+        """See also: https://docs.github.com/rest/migrations/orgs#list-organization-migrations"""
+
         from typing import List
 
         from ..models import Migration
@@ -159,6 +163,8 @@ class MigrationsClient:
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/orgs#start-an-organization-migration"""
+
         from ..models import (
             Migration,
             BasicError,
@@ -226,6 +232,8 @@ class MigrationsClient:
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/orgs#start-an-organization-migration"""
+
         from ..models import (
             Migration,
             BasicError,
@@ -264,6 +272,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status"""
+
         from ..models import Migration, BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}"
@@ -293,6 +303,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status"""
+
         from ..models import Migration, BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}"
@@ -321,6 +333,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
@@ -343,6 +357,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
@@ -365,6 +381,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
@@ -387,6 +405,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}/archive"
@@ -410,6 +430,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
@@ -433,6 +455,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository"""
+
         from ..models import BasicError
 
         url = f"/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
@@ -457,6 +481,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """See also: https://docs.github.com/rest/migrations/orgs#list-repositories-in-an-organization-migration"""
+
         from typing import List
 
         from ..models import BasicError, MinimalRepository
@@ -490,6 +516,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """See also: https://docs.github.com/rest/migrations/orgs#list-repositories-in-an-organization-migration"""
+
         from typing import List
 
         from ..models import BasicError, MinimalRepository
@@ -521,6 +549,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#get-an-import-status"""
+
         from ..models import Import, BasicError
 
         url = f"/repos/{owner}/{repo}/import"
@@ -545,6 +575,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#get-an-import-status"""
+
         from ..models import Import, BasicError
 
         url = f"/repos/{owner}/{repo}/import"
@@ -598,6 +630,8 @@ class MigrationsClient:
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#start-an-import"""
+
         from ..models import (
             Import,
             BasicError,
@@ -665,6 +699,8 @@ class MigrationsClient:
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#start-an-import"""
+
         from ..models import (
             Import,
             BasicError,
@@ -703,6 +739,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/source-imports#cancel-an-import"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/import"
@@ -725,6 +763,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/source-imports#cancel-an-import"""
+
         from ..models import BasicError
 
         url = f"/repos/{owner}/{repo}/import"
@@ -775,6 +815,8 @@ class MigrationsClient:
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#update-an-import"""
+
         from typing import Union
 
         from ..models import Import, BasicError, ReposOwnerRepoImportPatchBody
@@ -836,6 +878,8 @@ class MigrationsClient:
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#update-an-import"""
+
         from typing import Union
 
         from ..models import Import, BasicError, ReposOwnerRepoImportPatchBody
@@ -870,6 +914,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PorterAuthor]]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#get-commit-authors"""
+
         from typing import List
 
         from ..models import BasicError, PorterAuthor
@@ -902,6 +948,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PorterAuthor]]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#get-commit-authors"""
+
         from typing import List
 
         from ..models import BasicError, PorterAuthor
@@ -962,6 +1010,8 @@ class MigrationsClient:
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#map-a-commit-author"""
+
         from ..models import (
             BasicError,
             PorterAuthor,
@@ -1029,6 +1079,8 @@ class MigrationsClient:
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#map-a-commit-author"""
+
         from ..models import (
             BasicError,
             PorterAuthor,
@@ -1067,6 +1119,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PorterLargeFile]]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#get-large-files"""
+
         from typing import List
 
         from ..models import BasicError, PorterLargeFile
@@ -1092,6 +1146,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[PorterLargeFile]]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#get-large-files"""
+
         from typing import List
 
         from ..models import BasicError, PorterLargeFile
@@ -1142,6 +1198,8 @@ class MigrationsClient:
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#update-git-lfs-preference"""
+
         from ..models import (
             Import,
             BasicError,
@@ -1204,6 +1262,8 @@ class MigrationsClient:
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
+        """See also: https://docs.github.com/rest/migrations/source-imports#update-git-lfs-preference"""
+
         from ..models import (
             Import,
             BasicError,
@@ -1241,6 +1301,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Migration]]:
+        """See also: https://docs.github.com/rest/migrations/users#list-user-migrations"""
+
         from typing import List
 
         from ..models import Migration, BasicError
@@ -1273,6 +1335,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Migration]]:
+        """See also: https://docs.github.com/rest/migrations/users#list-user-migrations"""
+
         from typing import List
 
         from ..models import Migration, BasicError
@@ -1332,6 +1396,8 @@ class MigrationsClient:
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/users#start-a-user-migration"""
+
         from ..models import (
             Migration,
             BasicError,
@@ -1397,6 +1463,8 @@ class MigrationsClient:
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/users#start-a-user-migration"""
+
         from ..models import (
             Migration,
             BasicError,
@@ -1435,6 +1503,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/users#get-a-user-migration-status"""
+
         from ..models import Migration, BasicError
 
         url = f"/user/migrations/{migration_id}"
@@ -1465,6 +1535,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[Migration]:
+        """See also: https://docs.github.com/rest/migrations/users#get-a-user-migration-status"""
+
         from ..models import Migration, BasicError
 
         url = f"/user/migrations/{migration_id}"
@@ -1494,6 +1566,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/users#download-a-user-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/user/migrations/{migration_id}/archive"
@@ -1516,6 +1590,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/users#download-a-user-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/user/migrations/{migration_id}/archive"
@@ -1538,6 +1614,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/users#delete-a-user-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/user/migrations/{migration_id}/archive"
@@ -1561,6 +1639,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/users#delete-a-user-migration-archive"""
+
         from ..models import BasicError
 
         url = f"/user/migrations/{migration_id}/archive"
@@ -1585,6 +1665,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/users#unlock-a-user-repository"""
+
         from ..models import BasicError
 
         url = f"/user/migrations/{migration_id}/repos/{repo_name}/lock"
@@ -1609,6 +1691,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
+        """See also: https://docs.github.com/rest/migrations/users#unlock-a-user-repository"""
+
         from ..models import BasicError
 
         url = f"/user/migrations/{migration_id}/repos/{repo_name}/lock"
@@ -1634,6 +1718,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """See also: https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration"""
+
         from typing import List
 
         from ..models import BasicError, MinimalRepository
@@ -1666,6 +1752,8 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[MinimalRepository]]:
+        """See also: https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration"""
+
         from typing import List
 
         from ..models import BasicError, MinimalRepository

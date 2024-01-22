@@ -66,6 +66,8 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#get-copilot-business-seat-information-and-settings-for-an-organization"""
+
         from ..models import BasicError, CopilotOrganizationDetails
 
         url = f"/orgs/{org}/copilot/billing"
@@ -91,6 +93,8 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#get-copilot-business-seat-information-and-settings-for-an-organization"""
+
         from ..models import BasicError, CopilotOrganizationDetails
 
         url = f"/orgs/{org}/copilot/billing"
@@ -118,6 +122,8 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCopilotBillingSeatsGetResponse200]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#list-all-copilot-business-seat-assignments-for-an-organization"""
+
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
 
         url = f"/orgs/{org}/copilot/billing/seats"
@@ -151,6 +157,8 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrgsOrgCopilotBillingSeatsGetResponse200]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#list-all-copilot-business-seat-assignments-for-an-organization"""
+
         from ..models import BasicError, OrgsOrgCopilotBillingSeatsGetResponse200
 
         url = f"/orgs/{org}/copilot/billing/seats"
@@ -205,6 +213,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#add-teams-to-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedTeamsPostBody,
@@ -265,6 +275,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#add-teams-to-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedTeamsPostBody,
@@ -325,6 +337,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#remove-teams-from-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedTeamsDeleteBody,
@@ -385,6 +399,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#remove-teams-from-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedTeamsDeleteBody,
@@ -445,6 +461,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#add-users-to-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedUsersPostBody,
@@ -505,6 +523,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#add-users-to-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedUsersPostBody,
@@ -565,6 +585,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#remove-users-from-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedUsersDeleteBody,
@@ -625,6 +647,8 @@ class CopilotClient:
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#remove-users-from-the-copilot-business-subscription-for-an-organization"""
+
         from ..models import (
             BasicError,
             OrgsOrgCopilotBillingSelectedUsersDeleteBody,
@@ -663,6 +687,8 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CopilotSeatDetails]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#get-copilot-business-seat-assignment-details-for-a-user"""
+
         from ..models import BasicError, CopilotSeatDetails
 
         url = f"/orgs/{org}/members/{username}/copilot"
@@ -689,6 +715,8 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[CopilotSeatDetails]:
+        """See also: https://docs.github.com/rest/copilot/copilot-business#get-copilot-business-seat-assignment-details-for-a-user"""
+
         from ..models import BasicError, CopilotSeatDetails
 
         url = f"/orgs/{org}/members/{username}/copilot"

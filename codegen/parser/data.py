@@ -113,6 +113,7 @@ class EndpointData:
     tags: list[str] | None = None
     description: str | None = None
     operation_id: str | None = None
+    external_docs: str | None = None
     deprecated: bool = False
 
     parameters: list[Parameter] = field(default_factory=list)

@@ -10,14 +10,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoTopicsPutBodyType(TypedDict):
-    """ReposOwnerRepoTopicsPutBody"""
+class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    names: List[str]
+    pattern: str
 
 
-__all__ = ("ReposOwnerRepoTopicsPutBodyType",)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBodyType",)
