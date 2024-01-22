@@ -177,7 +177,7 @@ github = GitHub(
     follow_redirects=True,
     timeout=None,
     http_cache=True,
-    auto_retry=True
+    auto_retry=True,
 )
 ```
 
