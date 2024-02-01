@@ -14,27 +14,31 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0744 import (
-    WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisserType,
+from .group_0743 import (
+    WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType,
 )
 
 
-class WebhookRepositoryVulnerabilityAlertReopenPropAlertType(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertReopenPropAlert"""
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0Type(TypedDict):
+    """Repository Vulnerability Alert Alert
+
+    The security alert of the vulnerable dependency.
+    """
 
     affected_package_name: str
     affected_range: str
     created_at: str
+    dismiss_comment: NotRequired[Union[str, None]]
     dismiss_reason: NotRequired[str]
     dismissed_at: NotRequired[str]
     dismisser: NotRequired[
         Union[
-            WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisserType,
+            WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType,
             None,
         ]
     ]
     external_identifier: str
-    external_reference: Union[Union[str, None], None]
+    external_reference: Union[str, None]
     fix_reason: NotRequired[str]
     fixed_at: NotRequired[datetime]
     fixed_in: NotRequired[str]
@@ -43,7 +47,7 @@ class WebhookRepositoryVulnerabilityAlertReopenPropAlertType(TypedDict):
     node_id: str
     number: int
     severity: str
-    state: Literal["open"]
+    state: Literal["open", "dismissed", "fixed"]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0Type",)

@@ -10,15 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    name: str
+    value: str
 
 
-__all__ = ("ReposOwnerRepoAutolinksPostBodyType",)
+__all__ = ("ReposOwnerRepoActionsVariablesPostBodyType",)

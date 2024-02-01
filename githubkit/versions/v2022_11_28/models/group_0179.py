@@ -10,49 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0177 import Commit
-from .group_0172 import BranchProtection
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
+class DiffEntry(GitHubModel):
+    """Diff Entry
 
-    Branch With Protection
+    Diff Entry
     """
 
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
-    )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    sha: str = Field()
+    filename: str = Field()
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ] = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changes: int = Field()
+    blob_url: str = Field()
+    raw_url: str = Field()
+    contents_url: str = Field()
+    patch: Missing[str] = Field(default=UNSET)
+    previous_filename: Missing[str] = Field(default=UNSET)
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
+model_rebuild(DiffEntry)
 
-    html: str = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
-
-__all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
-)
+__all__ = ("DiffEntry",)

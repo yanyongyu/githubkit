@@ -10,11 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0005 import IntegrationType
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+
+class WebhookIssueCommentDeletedPropCommentType(TypedDict):
+    """issue comment
+
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
+    """
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    created_at: datetime
+    html_url: str
+    id: int
+    issue_url: str
+    node_id: str
+    performed_via_github_app: Union[None, IntegrationType]
+    reactions: WebhookIssueCommentDeletedPropCommentPropReactionsType
+    updated_at: datetime
+    url: str
+    user: Union[WebhookIssueCommentDeletedPropCommentPropUserType, None]
+
+
+class WebhookIssueCommentDeletedPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssueCommentDeletedPropCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -40,4 +88,8 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(Type
     url: NotRequired[str]
 
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType",)
+__all__ = (
+    "WebhookIssueCommentDeletedPropCommentType",
+    "WebhookIssueCommentDeletedPropCommentPropReactionsType",
+    "WebhookIssueCommentDeletedPropCommentPropUserType",
+)

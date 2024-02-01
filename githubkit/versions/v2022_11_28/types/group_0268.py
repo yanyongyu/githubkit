@@ -14,77 +14,42 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationType
+from .group_0033 import ReactionRollupType
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
 
-    Timeline Committed Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
+
+    Timeline Comment Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    event: Literal["commented"]
+    actor: SimpleUserType
+    id: int
     node_id: str
     url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: List[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
+    user: SimpleUserType
+    created_at: datetime
+    updated_at: datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-
-
-__all__ = (
-    "TimelineCommittedEventType",
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropVerificationType",
-)
+__all__ = ("TimelineCommentEventType",)

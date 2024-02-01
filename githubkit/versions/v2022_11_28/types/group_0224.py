@@ -10,15 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0025 import DependabotAlertPackageType
 
 
-class MetadataType(TypedDict):
-    """metadata
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Details for the vulnerable dependency.
     """
 
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
 
-__all__ = ("MetadataType",)
+
+__all__ = ("DependabotAlertPropDependencyType",)

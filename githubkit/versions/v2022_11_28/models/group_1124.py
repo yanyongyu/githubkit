@@ -10,22 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+from .group_0070 import CodespaceMachine
 
 
-model_rebuild(UserGpgKeysPostBody)
+class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-__all__ = ("UserGpgKeysPostBody",)
+    total_count: int = Field()
+    machines: List[CodespaceMachine] = Field()
+
+
+model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)

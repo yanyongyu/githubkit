@@ -14,29 +14,35 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0075 import TeamType
 from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class ReviewRequestRemovedIssueEventType(TypedDict):
-    """Review Request Removed Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Review Request Removed Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_request_removed"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-__all__ = ("ReviewRequestRemovedIssueEventType",)
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+__all__ = (
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventPropMilestoneType",
+)

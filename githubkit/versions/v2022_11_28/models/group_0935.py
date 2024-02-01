@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -18,19 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
-
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
+from .group_0151 import Artifact
 
 
-model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)
+    total_count: int = Field()
+    artifacts: List[Artifact] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)

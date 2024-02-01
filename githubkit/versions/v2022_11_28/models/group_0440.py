@@ -20,16 +20,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0015 import Installation
-from .group_0351 import EnterpriseWebhooks
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationRepositoriesRemoved(GitHubModel):
-    """installation_repositories removed event"""
+class WebhookInstallationCreated(GitHubModel):
+    """installation created event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,26 +41,19 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories_added: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems
+    repositories: Missing[
+        List[WebhookInstallationCreatedPropRepositoriesItems]
     ] = Field(
-        description="An array of repository objects, which were added to the installation."
-    )
-    repositories_removed: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems
-    ] = Field(
-        description="An array of repository objects, which were removed from the installation."
+        default=UNSET,
+        description="An array of repository objects that the installation can access.",
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
-    )
-    requester: Union[WebhookInstallationRepositoriesRemovedPropRequester, None] = Field(
-        title="User"
+    requester: Missing[Union[WebhookInstallationCreatedPropRequester, None]] = Field(
+        default=UNSET, title="User"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -68,8 +61,8 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
     )
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems(GitHubModel):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems"""
+class WebhookInstallationCreatedPropRepositoriesItems(GitHubModel):
+    """WebhookInstallationCreatedPropRepositoriesItems"""
 
     full_name: str = Field()
     id: int = Field(description="Unique identifier of the repository")
@@ -78,17 +71,7 @@ class WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems(GitHubMod
     private: bool = Field(description="Whether the repository is private or public.")
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
-
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
-
-
-class WebhookInstallationRepositoriesRemovedPropRequester(GitHubModel):
+class WebhookInstallationCreatedPropRequester(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -114,14 +97,12 @@ class WebhookInstallationRepositoriesRemovedPropRequester(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookInstallationRepositoriesRemoved)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRequester)
+model_rebuild(WebhookInstallationCreated)
+model_rebuild(WebhookInstallationCreatedPropRepositoriesItems)
+model_rebuild(WebhookInstallationCreatedPropRequester)
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemoved",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems",
-    "WebhookInstallationRepositoriesRemovedPropRequester",
+    "WebhookInstallationCreated",
+    "WebhookInstallationCreatedPropRepositoriesItems",
+    "WebhookInstallationCreatedPropRequester",
 )

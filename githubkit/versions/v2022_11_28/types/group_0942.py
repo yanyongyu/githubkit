@@ -10,20 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0150 import JobType
+
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: List[str]
+    work_folder: NotRequired[str]
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
-
-    total_count: int
-    jobs: List[JobType]
-
-
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",)

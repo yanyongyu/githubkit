@@ -10,59 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0106 import RepositoryRuleUpdateType
-from .group_0125 import RepositoryRuleWorkflowsType
-from .group_0111 import RepositoryRulePullRequestType
-from .group_0097 import RepositoryRulesetConditionsType
-from .group_0096 import RepositoryRulesetBypassActorType
-from .group_0123 import RepositoryRuleTagNamePatternType
-from .group_0121 import RepositoryRuleBranchNamePatternType
-from .group_0109 import RepositoryRuleRequiredDeploymentsType
-from .group_0113 import RepositoryRuleRequiredStatusChecksType
-from .group_0115 import RepositoryRuleCommitMessagePatternType
-from .group_0108 import RepositoryRuleRequiredLinearHistoryType
-from .group_0119 import RepositoryRuleCommitterEmailPatternType
-from .group_0117 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0105 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
+
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str
-    target: NotRequired[Literal["branch", "tag"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleWorkflowsType,
-            ]
-        ]
-    ]
-
-
-__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)
+__all__ = ("ReposOwnerRepoReleasesPostBodyType",)

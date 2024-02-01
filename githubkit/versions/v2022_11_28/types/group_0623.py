@@ -14,38 +14,20 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0362 import ProjectsV2ItemType
-from .group_0352 import SimpleInstallationType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0365 import ProjectsV2Type
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectsV2ProjectClosedType(TypedDict):
+    """Projects v2 Project Closed Event"""
 
-    action: Literal["archived"]
-    changes: WebhookProjectsV2ItemArchivedPropChangesType
+    action: Literal["closed"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemArchivedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemArchivedPropChanges"""
-
-    archived_at: NotRequired[WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType]
-
-
-class WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType(TypedDict):
-    """WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
-
-
-__all__ = (
-    "WebhookProjectsV2ItemArchivedType",
-    "WebhookProjectsV2ItemArchivedPropChangesType",
-    "WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType",
-)
+__all__ = ("WebhookProjectsV2ProjectClosedType",)

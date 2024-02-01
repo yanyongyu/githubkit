@@ -10,18 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0050 import MinimalRepositoryType
+from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    total_count: int
-    repositories: List[MinimalRepositoryType]
+    The total number of seat assignments created.
+    """
+
+    seats_created: int
 
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",)

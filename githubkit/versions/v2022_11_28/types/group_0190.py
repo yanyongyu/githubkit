@@ -10,31 +10,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0067 import CodeScanningAnalysisToolType
+from .group_0050 import MinimalRepositoryType
 
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: datetime
-    results_count: int
-    rules_count: int
-    id: int
-    url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-__all__ = ("CodeScanningAnalysisType",)
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        List[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+__all__ = (
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+)

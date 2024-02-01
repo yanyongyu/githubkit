@@ -10,28 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0131 import RepositoryAdvisoryType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from typing_extensions import TypedDict
 
 
-class WebhookRepositoryAdvisoryReportedType(TypedDict):
-    """Repository advisory reported event"""
+class WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType(TypedDict):
+    """Reactions"""
 
-    action: Literal["reported"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
-    sender: NotRequired[SimpleUserWebhooksType]
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-__all__ = ("WebhookRepositoryAdvisoryReportedType",)
+__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType",)

@@ -10,20 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0116 import RepositoryRuleCommitMessagePatternPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-    Parameters to be used for the commit_message_pattern rule
-    """
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
 
-
-__all__ = ("RepositoryRuleCommitMessagePatternType",)
+__all__ = ("RepositoryRulePullRequestPropParametersType",)

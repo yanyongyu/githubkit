@@ -14,27 +14,24 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0163 import DeploymentType
-from .group_0283 import PullRequestType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0223 import DependabotAlertType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertReopenedType(TypedDict):
+    """Dependabot alert reopened event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentType]
-    pull_requests: NotRequired[List[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["reopened"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDeploymentProtectionRuleRequestedType",)
+__all__ = ("WebhookDependabotAlertReopenedType",)

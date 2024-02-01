@@ -10,13 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0498 import WebhookIssuesDemilestonedPropIssueType
 
-class WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
-    TypedDict
-):
+
+class WebhookIssuesDemilestonedType(TypedDict):
+    """issues demilestoned event"""
+
+    action: Literal["demilestoned"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssuesDemilestonedPropIssueType
+    milestone: NotRequired[WebhookIssuesDemilestonedPropMilestoneType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookIssuesDemilestonedPropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhookIssuesDemilestonedPropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
+
+
+class WebhookIssuesDemilestonedPropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -38,56 +81,12 @@ class WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
-class WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
-    TypedDict
-):
-    """WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-
-    The set of permissions for the GitHub app
-    """
-
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    team_discussions: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
-
-
 __all__ = (
-    "WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesDemilestonedType",
+    "WebhookIssuesDemilestonedPropMilestoneType",
+    "WebhookIssuesDemilestonedPropMilestonePropCreatorType",
 )

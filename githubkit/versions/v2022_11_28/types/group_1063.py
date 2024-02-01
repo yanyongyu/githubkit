@@ -10,16 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[float]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBodyType",)

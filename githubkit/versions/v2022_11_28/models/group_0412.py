@@ -19,19 +19,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0358 import Discussion
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0362 import Discussion
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCommentDeleted(GitHubModel):
-    """discussion_comment deleted event"""
+class WebhookDiscussionAnswered(GitHubModel):
+    """discussion answered event"""
 
-    action: Literal["deleted"] = Field()
-    comment: WebhookDiscussionCommentDeletedPropComment = Field()
+    action: Literal["answered"] = Field()
+    answer: WebhookDiscussionAnsweredPropAnswer = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -60,8 +60,8 @@ class WebhookDiscussionCommentDeleted(GitHubModel):
     )
 
 
-class WebhookDiscussionCommentDeletedPropComment(GitHubModel):
-    """WebhookDiscussionCommentDeletedPropComment"""
+class WebhookDiscussionAnsweredPropAnswer(GitHubModel):
+    """WebhookDiscussionAnsweredPropAnswer"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -78,23 +78,21 @@ class WebhookDiscussionCommentDeletedPropComment(GitHubModel):
     )
     body: str = Field()
     child_comment_count: int = Field()
-    created_at: str = Field()
+    created_at: datetime = Field()
     discussion_id: int = Field()
     html_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: WebhookDiscussionCommentDeletedPropCommentPropReactions = Field(
-        title="Reactions"
+    parent_id: None = Field()
+    reactions: Missing[WebhookDiscussionAnsweredPropAnswerPropReactions] = Field(
+        default=UNSET, title="Reactions"
     )
     repository_url: str = Field()
-    updated_at: str = Field()
-    user: Union[WebhookDiscussionCommentDeletedPropCommentPropUser, None] = Field(
-        title="User"
-    )
+    updated_at: datetime = Field()
+    user: Union[WebhookDiscussionAnsweredPropAnswerPropUser, None] = Field(title="User")
 
 
-class WebhookDiscussionCommentDeletedPropCommentPropReactions(GitHubModel):
+class WebhookDiscussionAnsweredPropAnswerPropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -109,7 +107,7 @@ class WebhookDiscussionCommentDeletedPropCommentPropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookDiscussionCommentDeletedPropCommentPropUser(GitHubModel):
+class WebhookDiscussionAnsweredPropAnswerPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -135,14 +133,14 @@ class WebhookDiscussionCommentDeletedPropCommentPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDiscussionCommentDeleted)
-model_rebuild(WebhookDiscussionCommentDeletedPropComment)
-model_rebuild(WebhookDiscussionCommentDeletedPropCommentPropReactions)
-model_rebuild(WebhookDiscussionCommentDeletedPropCommentPropUser)
+model_rebuild(WebhookDiscussionAnswered)
+model_rebuild(WebhookDiscussionAnsweredPropAnswer)
+model_rebuild(WebhookDiscussionAnsweredPropAnswerPropReactions)
+model_rebuild(WebhookDiscussionAnsweredPropAnswerPropUser)
 
 __all__ = (
-    "WebhookDiscussionCommentDeleted",
-    "WebhookDiscussionCommentDeletedPropComment",
-    "WebhookDiscussionCommentDeletedPropCommentPropReactions",
-    "WebhookDiscussionCommentDeletedPropCommentPropUser",
+    "WebhookDiscussionAnswered",
+    "WebhookDiscussionAnsweredPropAnswer",
+    "WebhookDiscussionAnsweredPropAnswerPropReactions",
+    "WebhookDiscussionAnsweredPropAnswerPropUser",
 )

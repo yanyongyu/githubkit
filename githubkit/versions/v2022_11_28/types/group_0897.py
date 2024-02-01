@@ -13,59 +13,13 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0106 import RepositoryRuleUpdateType
-from .group_0125 import RepositoryRuleWorkflowsType
-from .group_0111 import RepositoryRulePullRequestType
-from .group_0103 import OrgRulesetConditionsOneof0Type
-from .group_0104 import OrgRulesetConditionsOneof1Type
-from .group_0096 import RepositoryRulesetBypassActorType
-from .group_0123 import RepositoryRuleTagNamePatternType
-from .group_0121 import RepositoryRuleBranchNamePatternType
-from .group_0109 import RepositoryRuleRequiredDeploymentsType
-from .group_0113 import RepositoryRuleRequiredStatusChecksType
-from .group_0115 import RepositoryRuleCommitMessagePatternType
-from .group_0108 import RepositoryRuleRequiredLinearHistoryType
-from .group_0119 import RepositoryRuleCommitterEmailPatternType
-from .group_0117 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0105 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+from .group_0091 import OrgCustomPropertyType
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
-    ]
-    rules: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleWorkflowsType,
-            ]
-        ]
-    ]
+    properties: List[OrgCustomPropertyType]
 
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)

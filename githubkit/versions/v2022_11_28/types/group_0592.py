@@ -10,28 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0593 import WebhookPackageUpdatedPropPackageType
+
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[List[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
 
 
-class WebhookPackageUpdatedType(TypedDict):
-    """package updated event"""
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    action: Literal["updated"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackageUpdatedPropPackageType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    version: NotRequired[str]
 
 
-__all__ = ("WebhookPackageUpdatedType",)
+class WebhookRubygemsMetadataPropMetadataType(TypedDict):
+    """WebhookRubygemsMetadataPropMetadata"""
+
+
+class WebhookRubygemsMetadataPropDependenciesItemsType(TypedDict):
+    """WebhookRubygemsMetadataPropDependenciesItems"""
+
+
+__all__ = (
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+)

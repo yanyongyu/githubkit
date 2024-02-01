@@ -23,34 +23,35 @@ from .group_0001 import SimpleUser
 from .group_0005 import Integration
 
 
-class MilestonedIssueEvent(GitHubModel):
-    """Milestoned Issue Event
+class UnlabeledIssueEvent(GitHubModel):
+    """Unlabeled Issue Event
 
-    Milestoned Issue Event
+    Unlabeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["milestoned"] = Field()
+    event: Literal["unlabeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration] = Field()
-    milestone: MilestonedIssueEventPropMilestone = Field()
+    label: UnlabeledIssueEventPropLabel = Field()
 
 
-class MilestonedIssueEventPropMilestone(GitHubModel):
-    """MilestonedIssueEventPropMilestone"""
+class UnlabeledIssueEventPropLabel(GitHubModel):
+    """UnlabeledIssueEventPropLabel"""
 
-    title: str = Field()
+    name: str = Field()
+    color: str = Field()
 
 
-model_rebuild(MilestonedIssueEvent)
-model_rebuild(MilestonedIssueEventPropMilestone)
+model_rebuild(UnlabeledIssueEvent)
+model_rebuild(UnlabeledIssueEventPropLabel)
 
 __all__ = (
-    "MilestonedIssueEvent",
-    "MilestonedIssueEventPropMilestone",
+    "UnlabeledIssueEvent",
+    "UnlabeledIssueEventPropLabel",
 )

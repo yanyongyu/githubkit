@@ -18,34 +18,61 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0563 import (
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan,
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount,
-)
 
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0(
-    GitHubModel
-):
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0(GitHubModel):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount = (
+    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount = (
         Field()
     )
     billing_cycle: str = Field()
-    free_trial_ends_on: None = Field()
+    free_trial_ends_on: Union[str, None] = Field()
     next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
     on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan = (
+    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan = (
         Field()
     )
     unit_count: int = Field()
 
 
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount"""
+
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
+
+
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan"""
+
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0)
 model_rebuild(
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0
+    WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount
+)
+model_rebuild(
+    WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan
 )
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan",
 )

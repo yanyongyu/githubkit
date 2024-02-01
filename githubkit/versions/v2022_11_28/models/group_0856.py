@@ -10,23 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import Annotated
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
-
-    selected_usernames: List[str] = Field(
-        max_length=100,
-        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
-    )
+from .group_0050 import MinimalRepository
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)
+    total_count: int = Field()
+    repositories: List[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",)

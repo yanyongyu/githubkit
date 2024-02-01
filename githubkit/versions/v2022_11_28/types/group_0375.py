@@ -14,17 +14,17 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0357 import CheckRunWithSimpleCheckSuiteType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0361 import CheckRunWithSimpleCheckSuiteType
 
 
-class WebhookCheckRunRerequestedType(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunCreatedType(TypedDict):
+    """Check Run Created Event"""
 
-    action: Literal["rerequested"]
+    action: Literal["created"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookCheckRunRerequestedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCheckRunRerequestedType",)
+__all__ = ("WebhookCheckRunCreatedType",)

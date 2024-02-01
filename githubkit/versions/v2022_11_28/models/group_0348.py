@@ -11,27 +11,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0017 import Repository
 
+class Key(GitHubModel):
+    """Key
 
-class StarredRepository(GitHubModel):
-    """Starred Repository
-
-    Starred Repository
+    Key
     """
 
-    starred_at: datetime = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    key: str = Field()
+    id: int = Field()
+    url: str = Field()
+    title: str = Field()
+    created_at: datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
 
 
-model_rebuild(StarredRepository)
+model_rebuild(Key)
 
-__all__ = ("StarredRepository",)
+__all__ = ("Key",)

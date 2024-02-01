@@ -14,44 +14,57 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectClosedType(TypedDict):
-    """project closed event"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["closed"]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhookProjectClosedPropProjectType
+    project_card: WebhookProjectCardEditedPropProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectClosedPropProjectType(TypedDict):
-    """Project"""
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
 
-    body: Union[str, None]
-    columns_url: str
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+class WebhookProjectCardEditedPropProjectCardType(TypedDict):
+    """Project Card"""
+
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
     created_at: datetime
-    creator: Union[WebhookProjectClosedPropProjectPropCreatorType, None]
-    html_url: str
+    creator: Union[WebhookProjectCardEditedPropProjectCardPropCreatorType, None]
     id: int
-    name: str
     node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
+    note: Union[str, None]
+    project_url: str
     updated_at: datetime
     url: str
 
 
-class WebhookProjectClosedPropProjectPropCreatorType(TypedDict):
+class WebhookProjectCardEditedPropProjectCardPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -78,7 +91,9 @@ class WebhookProjectClosedPropProjectPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectClosedType",
-    "WebhookProjectClosedPropProjectType",
-    "WebhookProjectClosedPropProjectPropCreatorType",
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropProjectCardType",
+    "WebhookProjectCardEditedPropProjectCardPropCreatorType",
 )

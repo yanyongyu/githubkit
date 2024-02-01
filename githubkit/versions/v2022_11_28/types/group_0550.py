@@ -11,75 +11,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0546 import WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType
 
 
-class WebhookLabelEditedType(TypedDict):
-    """label edited event"""
+class WebhookIssuesUnlockedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssuesUnlockedPropIssueMergedMilestone"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookLabelEditedPropChangesType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    label: WebhookLabelEditedPropLabelType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-class WebhookLabelEditedPropLabelType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[
+        WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
     description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
     id: int
-    name: str
+    labels_url: str
     node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
     url: str
 
 
-class WebhookLabelEditedPropChangesType(TypedDict):
-    """WebhookLabelEditedPropChanges
-
-    The changes to the label if the action was `edited`.
-    """
-
-    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
-    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
-    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
-
-
-class WebhookLabelEditedPropChangesPropColorType(TypedDict):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropNameType(TypedDict):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookLabelEditedType",
-    "WebhookLabelEditedPropLabelType",
-    "WebhookLabelEditedPropChangesType",
-    "WebhookLabelEditedPropChangesPropColorType",
-    "WebhookLabelEditedPropChangesPropDescriptionType",
-    "WebhookLabelEditedPropChangesPropNameType",
-)
+__all__ = ("WebhookIssuesUnlockedPropIssueMergedMilestoneType",)

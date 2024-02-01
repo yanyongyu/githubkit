@@ -10,7 +10,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -18,125 +20,61 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0224 import DependabotAlertPropDependency
+from .group_0027 import DependabotAlertSecurityAdvisory
+from .group_0026 import DependabotAlertSecurityVulnerability
 
-class DependencyGraphSpdxSbom(GitHubModel):
-    """Dependency Graph SPDX SBOM
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+class DependabotAlert(GitHubModel):
+    """DependabotAlert
+
+    A Dependabot alert.
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbom = Field()
-
-
-class DependencyGraphSpdxSbomPropSbom(GitHubModel):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str = Field(
-        alias="SPDXID", description="The SPDX identifier for the SPDX document."
+    number: int = Field(description="The security alert number.")
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert."
     )
-    spdx_version: str = Field(
-        alias="spdxVersion",
-        description="The version of the SPDX specification that this document conforms to.",
+    dependency: DependabotAlertPropDependency = Field(
+        description="Details for the vulnerable dependency."
     )
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfo = Field(
-        alias="creationInfo"
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory."
     )
-    name: str = Field(description="The name of the SPDX document.")
-    data_license: str = Field(
-        alias="dataLicense",
-        description="The license under which the SPDX document is licensed.",
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory."
     )
-    document_describes: List[str] = Field(
-        alias="documentDescribes",
-        description="The name of the repository that the SPDX document describes.",
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    document_namespace: str = Field(
-        alias="documentNamespace", description="The namespace for the SPDX document."
+    updated_at: datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    packages: List[DependencyGraphSpdxSbomPropSbomPropPackagesItems] = Field()
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfo(GitHubModel):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str = Field(description="The date and time the SPDX document was created.")
-    creators: List[str] = Field(
-        description="The tools that were used to generate the SPDX document."
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItems(GitHubModel):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: Missing[str] = Field(
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(description="The reason that the alert was dismissed.")
+    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
+        description="An optional comment associated with the alert's dismissal."
+    )
+    fixed_at: Union[datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        alias="SPDXID",
-        description="A unique SPDX identifier for the package.",
-    )
-    name: Missing[str] = Field(default=UNSET, description="The name of the package.")
-    version_info: Missing[str] = Field(
-        default=UNSET,
-        alias="versionInfo",
-        description="The version of the package. If the package does not have an exact version specified,\na version range is given.",
-    )
-    download_location: Missing[str] = Field(
-        default=UNSET,
-        alias="downloadLocation",
-        description="The location where the package can be downloaded,\nor NOASSERTION if this has not been determined.",
-    )
-    files_analyzed: Missing[bool] = Field(
-        default=UNSET,
-        alias="filesAnalyzed",
-        description="Whether the package's file content has been subjected to\nanalysis during the creation of the SPDX document.",
-    )
-    license_concluded: Missing[str] = Field(
-        default=UNSET,
-        alias="licenseConcluded",
-        description="The license of the package as determined while creating the SPDX document.",
-    )
-    license_declared: Missing[str] = Field(
-        default=UNSET,
-        alias="licenseDeclared",
-        description="The license of the package as declared by its author, or NOASSERTION if this information\nwas not available when the SPDX document was created.",
-    )
-    supplier: Missing[str] = Field(
-        default=UNSET,
-        description="The distribution source of this package, or NOASSERTION if this was not determined.",
-    )
-    external_refs: Missing[
-        List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems]
-    ] = Field(default=UNSET, alias="externalRefs")
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems(
-    GitHubModel
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str = Field(
-        alias="referenceCategory",
-        description="The category of reference to an external resource this reference refers to.",
-    )
-    reference_locator: str = Field(
-        alias="referenceLocator",
-        description="A locator for the particular external resource this reference refers to.",
-    )
-    reference_type: str = Field(
-        alias="referenceType",
-        description="The category of reference to an external resource this reference refers to.",
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(DependencyGraphSpdxSbom)
-model_rebuild(DependencyGraphSpdxSbomPropSbom)
-model_rebuild(DependencyGraphSpdxSbomPropSbomPropCreationInfo)
-model_rebuild(DependencyGraphSpdxSbomPropSbomPropPackagesItems)
-model_rebuild(DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems)
+model_rebuild(DependabotAlert)
 
-__all__ = (
-    "DependencyGraphSpdxSbom",
-    "DependencyGraphSpdxSbomPropSbom",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfo",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItems",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems",
-)
+__all__ = ("DependabotAlert",)

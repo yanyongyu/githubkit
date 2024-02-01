@@ -11,22 +11,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import Annotated
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: List[str] = Field(
-        max_length=100,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-    )
+from .group_0155 import ActionsSecret
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)
+    total_count: int = Field()
+    secrets: List[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",)

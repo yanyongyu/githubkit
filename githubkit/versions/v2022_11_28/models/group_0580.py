@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookMilestoneOpened(GitHubModel):
-    """milestone opened event"""
+class WebhookMilestoneClosed(GitHubModel):
+    """milestone closed event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["closed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,7 +40,7 @@ class WebhookMilestoneOpened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhookMilestoneOpenedPropMilestone = Field(
+    milestone: WebhookMilestoneClosedPropMilestone = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
     )
@@ -59,7 +59,7 @@ class WebhookMilestoneOpened(GitHubModel):
     )
 
 
-class WebhookMilestoneOpenedPropMilestone(GitHubModel):
+class WebhookMilestoneClosedPropMilestone(GitHubModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -68,7 +68,7 @@ class WebhookMilestoneOpenedPropMilestone(GitHubModel):
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
     created_at: datetime = Field()
-    creator: Union[WebhookMilestoneOpenedPropMilestonePropCreator, None] = Field(
+    creator: Union[WebhookMilestoneClosedPropMilestonePropCreator, None] = Field(
         title="User"
     )
     description: Union[str, None] = Field()
@@ -85,7 +85,7 @@ class WebhookMilestoneOpenedPropMilestone(GitHubModel):
     url: str = Field()
 
 
-class WebhookMilestoneOpenedPropMilestonePropCreator(GitHubModel):
+class WebhookMilestoneClosedPropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -107,16 +107,18 @@ class WebhookMilestoneOpenedPropMilestonePropCreator(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMilestoneOpened)
-model_rebuild(WebhookMilestoneOpenedPropMilestone)
-model_rebuild(WebhookMilestoneOpenedPropMilestonePropCreator)
+model_rebuild(WebhookMilestoneClosed)
+model_rebuild(WebhookMilestoneClosedPropMilestone)
+model_rebuild(WebhookMilestoneClosedPropMilestonePropCreator)
 
 __all__ = (
-    "WebhookMilestoneOpened",
-    "WebhookMilestoneOpenedPropMilestone",
-    "WebhookMilestoneOpenedPropMilestonePropCreator",
+    "WebhookMilestoneClosed",
+    "WebhookMilestoneClosedPropMilestone",
+    "WebhookMilestoneClosedPropMilestonePropCreator",
 )

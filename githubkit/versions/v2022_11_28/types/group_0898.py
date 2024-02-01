@@ -10,23 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[List[str]]
-    repo_names: NotRequired[List[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    value_type: Literal["string", "single_select"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[List[str], None]]
 
 
-__all__ = ("OrgsOrgTeamsPostBodyType",)
+__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",)

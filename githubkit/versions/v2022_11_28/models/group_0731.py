@@ -10,53 +10,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
-from .group_0732 import WebhookRepositoryVulnerabilityAlertCreatePropAlert
-
-
-class WebhookRepositoryVulnerabilityAlertCreate(GitHubModel):
-    """repository_vulnerability_alert create event"""
-
-    action: Literal["create"] = Field()
-    alert: WebhookRepositoryVulnerabilityAlertCreatePropAlert = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+from .group_0109 import RepositoryRuleUpdate
+from .group_0128 import RepositoryRuleWorkflows
+from .group_0114 import RepositoryRulePullRequest
+from .group_0126 import RepositoryRuleTagNamePattern
+from .group_0124 import RepositoryRuleBranchNamePattern
+from .group_0112 import RepositoryRuleRequiredDeployments
+from .group_0116 import RepositoryRuleRequiredStatusChecks
+from .group_0118 import RepositoryRuleCommitMessagePattern
+from .group_0111 import RepositoryRuleRequiredLinearHistory
+from .group_0122 import RepositoryRuleCommitterEmailPattern
+from .group_0120 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0732 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
+)
+from .group_0108 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertCreate)
+class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreate",)
+    added: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    deleted: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    updated: Missing[
+        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
+    ] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
+
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)

@@ -10,19 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import Annotated
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningAlertsGetResponse503)
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",)

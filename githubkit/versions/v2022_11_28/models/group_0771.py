@@ -19,44 +19,38 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookStatus(GitHubModel):
-    """status event"""
+class WebhookSponsorshipPendingCancellation(GitHubModel):
+    """sponsorship pending_cancellation event"""
 
-    avatar_url: Missing[Union[str, None]] = Field(default=UNSET)
-    branches: List[WebhookStatusPropBranchesItems] = Field(
-        description="An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches."
-    )
-    commit: WebhookStatusPropCommit = Field()
-    context: str = Field()
-    created_at: str = Field()
-    description: Union[str, None] = Field(
-        description="The optional human-readable description added to the status."
+    action: Literal["pending_cancellation"] = Field()
+    effective_date: Missing[str] = Field(
+        default=UNSET,
+        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    id: int = Field(description="The unique identifier of the status.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    name: str = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -64,46 +58,54 @@ class WebhookStatus(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sha: str = Field(description="The Commit SHA.")
-    state: Literal["pending", "success", "failure", "error"] = Field(
-        description="The new state. Can be `pending`, `success`, `failure`, or `error`."
-    )
-    target_url: Union[str, None] = Field(
-        description="The optional link added to the status."
-    )
-    updated_at: str = Field()
+    sponsorship: WebhookSponsorshipPendingCancellationPropSponsorship = Field()
 
 
-class WebhookStatusPropBranchesItems(GitHubModel):
-    """WebhookStatusPropBranchesItems"""
+class WebhookSponsorshipPendingCancellationPropSponsorship(GitHubModel):
+    """WebhookSponsorshipPendingCancellationPropSponsorship"""
 
-    commit: WebhookStatusPropBranchesItemsPropCommit = Field()
-    name: str = Field()
-    protected: bool = Field()
-
-
-class WebhookStatusPropBranchesItemsPropCommit(GitHubModel):
-    """WebhookStatusPropBranchesItemsPropCommit"""
-
-    sha: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-
-
-class WebhookStatusPropCommit(GitHubModel):
-    """WebhookStatusPropCommit"""
-
-    author: Union[WebhookStatusPropCommitPropAuthor, None] = Field(title="User")
-    comments_url: str = Field()
-    commit: WebhookStatusPropCommitPropCommit = Field()
-    committer: Union[WebhookStatusPropCommitPropCommitter, None] = Field(title="User")
-    html_url: str = Field()
+    created_at: str = Field()
+    maintainer: Missing[
+        WebhookSponsorshipPendingCancellationPropSponsorshipPropMaintainer
+    ] = Field(default=UNSET)
     node_id: str = Field()
-    parents: List[WebhookStatusPropCommitPropParentsItems] = Field()
-    sha: str = Field()
-    url: str = Field()
+    privacy_level: str = Field()
+    sponsor: Union[
+        WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsor, None
+    ] = Field(title="User")
+    sponsorable: Union[
+        WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsorable, None
+    ] = Field(title="User")
+    tier: WebhookSponsorshipPendingCancellationPropSponsorshipPropTier = Field(
+        title="Sponsorship Tier",
+        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
+    )
 
 
-class WebhookStatusPropCommitPropAuthor(GitHubModel):
+class WebhookSponsorshipPendingCancellationPropSponsorshipPropMaintainer(GitHubModel):
+    """WebhookSponsorshipPendingCancellationPropSponsorshipPropMaintainer"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -115,8 +117,8 @@ class WebhookStatusPropCommitPropAuthor(GitHubModel):
     gists_url: Missing[str] = Field(default=UNSET)
     gravatar_id: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
     name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     organizations_url: Missing[str] = Field(default=UNSET)
@@ -129,7 +131,7 @@ class WebhookStatusPropCommitPropAuthor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookStatusPropCommitPropCommitter(GitHubModel):
+class WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsorable(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -141,8 +143,8 @@ class WebhookStatusPropCommitPropCommitter(GitHubModel):
     gists_url: Missing[str] = Field(default=UNSET)
     gravatar_id: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
     name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     organizations_url: Missing[str] = Field(default=UNSET)
@@ -155,100 +157,37 @@ class WebhookStatusPropCommitPropCommitter(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookStatusPropCommitPropParentsItems(GitHubModel):
-    """WebhookStatusPropCommitPropParentsItems"""
+class WebhookSponsorshipPendingCancellationPropSponsorshipPropTier(GitHubModel):
+    """Sponsorship Tier
 
-    html_url: str = Field()
-    sha: str = Field()
-    url: str = Field()
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
 
-
-class WebhookStatusPropCommitPropCommit(GitHubModel):
-    """WebhookStatusPropCommitPropCommit"""
-
-    author: WebhookStatusPropCommitPropCommitPropAuthor = Field()
-    comment_count: int = Field()
-    committer: WebhookStatusPropCommitPropCommitPropCommitter = Field()
-    message: str = Field()
-    tree: WebhookStatusPropCommitPropCommitPropTree = Field()
-    url: str = Field()
-    verification: WebhookStatusPropCommitPropCommitPropVerification = Field()
-
-
-class WebhookStatusPropCommitPropCommitPropAuthor(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropAuthor"""
-
-    date: datetime = Field()
-    email: str = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
+    created_at: str = Field()
+    description: str = Field()
+    is_custom_ammount: Missing[bool] = Field(default=UNSET)
+    is_custom_amount: Missing[bool] = Field(default=UNSET)
+    is_one_time: bool = Field()
+    monthly_price_in_cents: int = Field()
+    monthly_price_in_dollars: int = Field()
+    name: str = Field()
+    node_id: str = Field()
 
 
-class WebhookStatusPropCommitPropCommitPropCommitter(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropCommitter"""
-
-    date: datetime = Field()
-    email: str = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
-
-
-class WebhookStatusPropCommitPropCommitPropTree(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-class WebhookStatusPropCommitPropCommitPropVerification(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropVerification"""
-
-    payload: Union[str, None] = Field()
-    reason: Literal[
-        "expired_key",
-        "not_signing_key",
-        "gpgverify_error",
-        "gpgverify_unavailable",
-        "unsigned",
-        "unknown_signature_type",
-        "no_user",
-        "unverified_email",
-        "bad_email",
-        "unknown_key",
-        "malformed_signature",
-        "invalid",
-        "valid",
-        "bad_cert",
-        "ocsp_pending",
-    ] = Field()
-    signature: Union[str, None] = Field()
-    verified: bool = Field()
-
-
-model_rebuild(WebhookStatus)
-model_rebuild(WebhookStatusPropBranchesItems)
-model_rebuild(WebhookStatusPropBranchesItemsPropCommit)
-model_rebuild(WebhookStatusPropCommit)
-model_rebuild(WebhookStatusPropCommitPropAuthor)
-model_rebuild(WebhookStatusPropCommitPropCommitter)
-model_rebuild(WebhookStatusPropCommitPropParentsItems)
-model_rebuild(WebhookStatusPropCommitPropCommit)
-model_rebuild(WebhookStatusPropCommitPropCommitPropAuthor)
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitter)
-model_rebuild(WebhookStatusPropCommitPropCommitPropTree)
-model_rebuild(WebhookStatusPropCommitPropCommitPropVerification)
+model_rebuild(WebhookSponsorshipPendingCancellation)
+model_rebuild(WebhookSponsorshipPendingCancellationPropSponsorship)
+model_rebuild(WebhookSponsorshipPendingCancellationPropSponsorshipPropMaintainer)
+model_rebuild(WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsor)
+model_rebuild(WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsorable)
+model_rebuild(WebhookSponsorshipPendingCancellationPropSponsorshipPropTier)
 
 __all__ = (
-    "WebhookStatus",
-    "WebhookStatusPropBranchesItems",
-    "WebhookStatusPropBranchesItemsPropCommit",
-    "WebhookStatusPropCommit",
-    "WebhookStatusPropCommitPropAuthor",
-    "WebhookStatusPropCommitPropCommitter",
-    "WebhookStatusPropCommitPropParentsItems",
-    "WebhookStatusPropCommitPropCommit",
-    "WebhookStatusPropCommitPropCommitPropAuthor",
-    "WebhookStatusPropCommitPropCommitPropCommitter",
-    "WebhookStatusPropCommitPropCommitPropTree",
-    "WebhookStatusPropCommitPropCommitPropVerification",
+    "WebhookSponsorshipPendingCancellation",
+    "WebhookSponsorshipPendingCancellationPropSponsorship",
+    "WebhookSponsorshipPendingCancellationPropSponsorshipPropMaintainer",
+    "WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsor",
+    "WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsorable",
+    "WebhookSponsorshipPendingCancellationPropSponsorshipPropTier",
 )

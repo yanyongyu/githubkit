@@ -10,37 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0227 import MetadataType
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    The status of a deployment.
-    """
-
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: datetime
-    updated_at: datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType]]
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[List[str]]
 
 
-__all__ = ("DeploymentStatusType",)
+__all__ = ("DependencyType",)

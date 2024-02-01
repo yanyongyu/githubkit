@@ -12,50 +12,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
-
-    ref: str
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
-
-    ref: str
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-__all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType",
+from .group_0801 import (
+    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
+    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
 )
+
+
+class WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType(TypedDict):
+    """WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests"""
+
+    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
+    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
+    id: float
+    number: float
+    url: str
+
+
+__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType",)

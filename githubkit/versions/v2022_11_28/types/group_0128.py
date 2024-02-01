@@ -10,25 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class RuleSuitesItemsType(TypedDict):
-    """RuleSuitesItems"""
-
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail"]]
+from .group_0129 import RepositoryRuleWorkflowsPropParametersType
 
 
-__all__ = ("RuleSuitesItemsType",)
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
+
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
+    """
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+
+
+__all__ = ("RepositoryRuleWorkflowsType",)

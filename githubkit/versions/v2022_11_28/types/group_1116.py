@@ -14,14 +14,14 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0050 import MinimalRepositoryType
+from .group_0071 import CodespaceType
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class UserCodespacesGetResponse200Type(TypedDict):
+    """UserCodespacesGetResponse200"""
 
     total_count: int
-    repositories: List[MinimalRepositoryType]
+    codespaces: List[CodespaceType]
 
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("UserCodespacesGetResponse200Type",)

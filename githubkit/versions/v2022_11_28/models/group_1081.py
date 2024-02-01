@@ -10,6 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -17,17 +19,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
-    label: Missing[str] = Field(
-        default=UNSET,
-        description="An alternate short description of the asset. Used in place of the filename.",
+    message: str = Field(
+        description="The message for the pull request review dismissal"
     )
-    state: Missing[str] = Field(default=UNSET)
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

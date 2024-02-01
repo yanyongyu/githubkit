@@ -10,63 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryCollaboratorPermissionType(TypedDict):
-    """Repository Collaborator Permission
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    Repository Collaborator Permission
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    permission: str
-    role_name: str
-    user: Union[None, CollaboratorType]
+    errors: List[CodeownersErrorsPropErrorsItemsType]
 
 
-class CollaboratorType(TypedDict):
-    """Collaborator
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    Collaborator
-    """
-
-    login: str
-    id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsType]
-    role_name: str
-
-
-class CollaboratorPropPermissionsType(TypedDict):
-    """CollaboratorPropPermissions"""
-
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "RepositoryCollaboratorPermissionType",
-    "CollaboratorType",
-    "CollaboratorPropPermissionsType",
+    "CodeownersErrorsType",
+    "CodeownersErrorsPropErrorsItemsType",
 )

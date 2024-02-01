@@ -10,40 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0182 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-)
+from .group_0177 import GitUser
+from .group_0178 import Verification
 
 
-class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
     url: str = Field()
-    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
-    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
-    )
-    dismissal_restrictions: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-    ] = Field(default=UNSET)
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
+
+__all__ = (
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
+)

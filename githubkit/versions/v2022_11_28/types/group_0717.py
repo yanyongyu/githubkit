@@ -14,22 +14,22 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryImportType(TypedDict):
-    """repository_import event"""
+class WebhookRepositoryCreatedType(TypedDict):
+    """repository created event"""
 
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
-    status: Literal["success", "cancelled", "failure"]
 
 
-__all__ = ("WebhookRepositoryImportType",)
+__all__ = ("WebhookRepositoryCreatedType",)

@@ -10,20 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0126 import RepositoryRuleWorkflowsPropParametersType
+from .group_0121 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
 
-class RepositoryRuleDetailedOneof14Type(TypedDict):
-    """RepositoryRuleDetailedOneof14"""
+class RepositoryRuleDetailedOneof10Type(TypedDict):
+    """RepositoryRuleDetailedOneof10"""
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof14Type",)
+__all__ = ("RepositoryRuleDetailedOneof10Type",)

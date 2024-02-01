@@ -10,26 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class HookResponse(GitHubModel):
+    """Hook Response"""
 
-    Porter Author
-    """
-
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
-    email: str = Field()
-    name: str = Field()
-    url: str = Field()
-    import_url: str = Field()
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-model_rebuild(PorterAuthor)
+model_rebuild(HookResponse)
 
-__all__ = ("PorterAuthor",)
+__all__ = ("HookResponse",)

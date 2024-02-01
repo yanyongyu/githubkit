@@ -10,18 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody(GitHubModel):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody"""
+class ReposOwnerRepoTransferPostBody(GitHubModel):
+    """ReposOwnerRepoTransferPostBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    new_owner: str = Field(
+        description="The username or organization name the repository will be transferred to."
+    )
+    new_name: Missing[str] = Field(
+        default=UNSET, description="The new name to be given to the repository."
+    )
+    team_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+    )
 
 
-model_rebuild(RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody)
+model_rebuild(ReposOwnerRepoTransferPostBody)
 
-__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody",)
+__all__ = ("ReposOwnerRepoTransferPostBody",)

@@ -10,18 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class TopicType(TypedDict):
+    """Topic
 
-    Referrer Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    names: List[str]
 
 
-__all__ = ("ReferrerTrafficType",)
+__all__ = ("TopicType",)

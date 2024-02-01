@@ -14,58 +14,58 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectCardMovedType(TypedDict):
-    """project_card moved event"""
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    action: Literal["moved"]
-    changes: NotRequired[WebhookProjectCardMovedPropChangesType]
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardMovedPropProjectCardType
+    project_card: WebhookProjectCardConvertedPropProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectCardMovedPropChangesType(TypedDict):
-    """WebhookProjectCardMovedPropChanges"""
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    column_id: WebhookProjectCardMovedPropChangesPropColumnIdType
-
-
-class WebhookProjectCardMovedPropChangesPropColumnIdType(TypedDict):
-    """WebhookProjectCardMovedPropChangesPropColumnId"""
-
-    from_: int
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
 
 
-class WebhookProjectCardMovedPropProjectCardType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCard"""
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
 
-    after_id: Union[Union[int, None], None]
+    from_: str
+
+
+class WebhookProjectCardConvertedPropProjectCardType(TypedDict):
+    """Project Card"""
+
+    after_id: NotRequired[Union[int, None]]
     archived: bool
     column_id: int
     column_url: str
     content_url: NotRequired[str]
     created_at: datetime
-    creator: Union[WebhookProjectCardMovedPropProjectCardMergedCreatorType, None]
+    creator: Union[WebhookProjectCardConvertedPropProjectCardPropCreatorType, None]
     id: int
     node_id: str
-    note: Union[Union[str, None], None]
+    note: Union[str, None]
     project_url: str
     updated_at: datetime
     url: str
 
 
-class WebhookProjectCardMovedPropProjectCardMergedCreatorType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardMergedCreator"""
+class WebhookProjectCardConvertedPropProjectCardPropCreatorType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -86,14 +86,14 @@ class WebhookProjectCardMovedPropProjectCardMergedCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardMovedType",
-    "WebhookProjectCardMovedPropChangesType",
-    "WebhookProjectCardMovedPropChangesPropColumnIdType",
-    "WebhookProjectCardMovedPropProjectCardType",
-    "WebhookProjectCardMovedPropProjectCardMergedCreatorType",
+    "WebhookProjectCardConvertedType",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+    "WebhookProjectCardConvertedPropProjectCardType",
+    "WebhookProjectCardConvertedPropProjectCardPropCreatorType",
 )

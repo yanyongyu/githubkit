@@ -14,24 +14,83 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0540 import WebhookIssuesUnlockedPropIssueType
+from .group_0534 import (
+    WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+)
 
 
-class WebhookIssuesUnlockedType(TypedDict):
-    """issues unlocked event"""
+class WebhookIssuesReopenedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssuesReopenedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["unlocked"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesUnlockedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    created_at: Union[datetime, None]
+    description: Union[str, None]
+    events: NotRequired[
+        List[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+                "pull_request_review_thread",
+                "reminder",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
+    ]
+    permissions: NotRequired[
+        WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
 
 
-__all__ = ("WebhookIssuesUnlockedType",)
+__all__ = ("WebhookIssuesReopenedPropIssueMergedPerformedViaGithubAppType",)

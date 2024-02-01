@@ -10,27 +10,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Autolink(GitHubModel):
-    """Autolink reference
+class WorkflowRunUsage(GitHubModel):
+    """Workflow Run Usage
 
-    An autolink reference.
+    Workflow Run Usage
     """
 
-    id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    billable: WorkflowRunUsagePropBillable = Field()
+    run_duration_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowRunUsagePropBillable(GitHubModel):
+    """WorkflowRunUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
 
 
-model_rebuild(Autolink)
+class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
 
-__all__ = ("Autolink",)
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[
+        List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]
+    ] = Field(default=UNSET)
+
+
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[
+        List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]
+    ] = Field(default=UNSET)
+
+
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[
+        List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]
+    ] = Field(default=UNSET)
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+model_rebuild(WorkflowRunUsage)
+model_rebuild(WorkflowRunUsagePropBillable)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropMacos)
+model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropWindows)
+model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
+
+__all__ = (
+    "WorkflowRunUsage",
+    "WorkflowRunUsagePropBillable",
+    "WorkflowRunUsagePropBillablePropUbuntu",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropMacos",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropWindows",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+)

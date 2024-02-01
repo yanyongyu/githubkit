@@ -14,20 +14,20 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0362 import ProjectsV2ItemType
-from .group_0352 import SimpleInstallationType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0365 import ProjectsV2Type
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemCreatedType(TypedDict):
-    """Projects v2 Item Created Event"""
+class WebhookProjectsV2ProjectDeletedType(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    action: Literal["created"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectsV2ItemCreatedType",)
+__all__ = ("WebhookProjectsV2ProjectDeletedType",)

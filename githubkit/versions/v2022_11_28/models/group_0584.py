@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationMemberAdded(GitHubModel):
-    """organization member_added event"""
+class WebhookMilestoneOpened(GitHubModel):
+    """milestone opened event"""
 
-    action: Literal["member_added"] = Field()
+    action: Literal["opened"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,16 +40,16 @@ class WebhookOrganizationMemberAdded(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: WebhookOrganizationMemberAddedPropMembership = Field(
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    milestone: WebhookMilestoneOpenedPropMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -59,23 +59,33 @@ class WebhookOrganizationMemberAdded(GitHubModel):
     )
 
 
-class WebhookOrganizationMemberAddedPropMembership(GitHubModel):
-    """Membership
+class WebhookMilestoneOpenedPropMilestone(GitHubModel):
+    """Milestone
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+    A collection of related issues and pull requests.
     """
 
-    organization_url: str = Field()
-    role: str = Field()
-    state: str = Field()
-    url: str = Field()
-    user: Union[WebhookOrganizationMemberAddedPropMembershipPropUser, None] = Field(
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhookMilestoneOpenedPropMilestonePropCreator, None] = Field(
         title="User"
     )
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: datetime = Field()
+    url: str = Field()
 
 
-class WebhookOrganizationMemberAddedPropMembershipPropUser(GitHubModel):
+class WebhookMilestoneOpenedPropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -101,12 +111,12 @@ class WebhookOrganizationMemberAddedPropMembershipPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookOrganizationMemberAdded)
-model_rebuild(WebhookOrganizationMemberAddedPropMembership)
-model_rebuild(WebhookOrganizationMemberAddedPropMembershipPropUser)
+model_rebuild(WebhookMilestoneOpened)
+model_rebuild(WebhookMilestoneOpenedPropMilestone)
+model_rebuild(WebhookMilestoneOpenedPropMilestonePropCreator)
 
 __all__ = (
-    "WebhookOrganizationMemberAdded",
-    "WebhookOrganizationMemberAddedPropMembership",
-    "WebhookOrganizationMemberAddedPropMembershipPropUser",
+    "WebhookMilestoneOpened",
+    "WebhookMilestoneOpenedPropMilestone",
+    "WebhookMilestoneOpenedPropMilestonePropCreator",
 )

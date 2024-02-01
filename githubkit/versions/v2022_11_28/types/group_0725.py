@@ -10,25 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0097 import RepositoryRulesetConditionsType
-from .group_0726 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
-)
+from .group_0130 import RepositoryRulesetType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookRepositoryRulesetCreatedType(TypedDict):
+    """repository ruleset created event"""
 
-    added: NotRequired[List[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[List[RepositoryRulesetConditionsType]]
-    updated: NotRequired[
-        List[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
-        ]
-    ]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)
+__all__ = ("WebhookRepositoryRulesetCreatedType",)

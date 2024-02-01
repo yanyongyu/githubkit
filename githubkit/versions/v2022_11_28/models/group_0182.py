@@ -11,7 +11,8 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,40 +20,39 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0075 import Team
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
+from .group_0180 import Commit
+from .group_0175 import BranchProtection
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class BranchWithProtection(GitHubModel):
+    """Branch With Protection
 
-    url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Integration]] = Field(default=UNSET)
+    Branch With Protection
+    """
 
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Integration]] = Field(default=UNSET)
+    name: str = Field()
+    commit: Commit = Field(title="Commit", description="Commit")
+    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    protected: bool = Field()
+    protection: BranchProtection = Field(
+        title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: str = Field()
+    pattern: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
-model_rebuild(
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
+class BranchWithProtectionPropLinks(GitHubModel):
+    """BranchWithProtectionPropLinks"""
+
+    html: str = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(BranchWithProtection)
+model_rebuild(BranchWithProtectionPropLinks)
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "BranchWithProtection",
+    "BranchWithProtectionPropLinks",
 )

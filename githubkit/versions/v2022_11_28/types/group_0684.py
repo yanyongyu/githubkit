@@ -10,184 +10,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0685 import (
+    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType,
+)
 
 
-class WebhookReleaseEditedType(TypedDict):
-    """release edited event"""
+class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
 
-    action: Literal["edited"]
-    changes: WebhookReleaseEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseEditedPropReleaseType
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
-
-
-class WebhookReleaseEditedPropChangesType(TypedDict):
-    """WebhookReleaseEditedPropChanges"""
-
-    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
-    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
-
-
-class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool
-
-
-class WebhookReleaseEditedPropReleaseType(TypedDict):
-    """Release
-
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
-    """
-
-    assets: List[WebhookReleaseEditedPropReleasePropAssetsItemsType]
-    assets_url: str
-    author: Union[WebhookReleaseEditedPropReleasePropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
+    created_at: str
+    description: None
+    ecosystem: str
     html_url: str
     id: int
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseEditedPropReleasePropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
-
-
-class WebhookReleaseEditedPropReleasePropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookReleaseEditedPropReleasePropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookReleaseEditedPropReleasePropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
     name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType, None]
+    namespace: str
+    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
+    package_type: str
+    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
+    registry: Union[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
     ]
+    updated_at: str
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
     url: str
 
 
-class WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
 
 
 __all__ = (
-    "WebhookReleaseEditedType",
-    "WebhookReleaseEditedPropChangesType",
-    "WebhookReleaseEditedPropChangesPropBodyType",
-    "WebhookReleaseEditedPropChangesPropNameType",
-    "WebhookReleaseEditedPropChangesPropMakeLatestType",
-    "WebhookReleaseEditedPropReleaseType",
-    "WebhookReleaseEditedPropReleasePropAuthorType",
-    "WebhookReleaseEditedPropReleasePropReactionsType",
-    "WebhookReleaseEditedPropReleasePropAssetsItemsType",
-    "WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
 )

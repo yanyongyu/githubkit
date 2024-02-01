@@ -19,16 +19,13 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0697 import (
-    WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsPropUploader,
+from .group_0693 import (
+    WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader,
 )
 
 
-class WebhookReleasePublishedPropReleaseAllof0PropAssetsItems(GitHubModel):
-    """Release Asset
-
-    Data related to a release.
-    """
+class WebhookReleasePrereleasedPropReleaseMergedAssets(GitHubModel):
+    """WebhookReleasePrereleasedPropReleaseMergedAssets"""
 
     browser_download_url: str = Field()
     content_type: str = Field()
@@ -42,11 +39,13 @@ class WebhookReleasePublishedPropReleaseAllof0PropAssetsItems(GitHubModel):
     state: Literal["uploaded"] = Field(description="State of the release asset.")
     updated_at: datetime = Field()
     uploader: Missing[
-        Union[WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsPropUploader, None]
+        Union[
+            WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader, None
+        ]
     ] = Field(default=UNSET, title="User")
     url: str = Field()
 
 
-model_rebuild(WebhookReleasePublishedPropReleaseAllof0PropAssetsItems)
+model_rebuild(WebhookReleasePrereleasedPropReleaseMergedAssets)
 
-__all__ = ("WebhookReleasePublishedPropReleaseAllof0PropAssetsItems",)
+__all__ = ("WebhookReleasePrereleasedPropReleaseMergedAssets",)

@@ -92,6 +92,7 @@ if TYPE_CHECKING:
         CombinedCommitStatus,
         RepositoryInvitation,
         ContentDirectoryItems,
+        PagesDeploymentStatus,
         DeploymentBranchPolicy,
         BranchRestrictionPolicy,
         DeploymentProtectionRule,
@@ -134,6 +135,7 @@ if TYPE_CHECKING:
         RepositoryRulePullRequestType,
         OrgRulesetConditionsOneof0Type,
         OrgRulesetConditionsOneof1Type,
+        OrgRulesetConditionsOneof2Type,
         ReposOwnerRepoKeysPostBodyType,
         RepositoryRulesetConditionsType,
         ReposOwnerRepoForksPostBodyType,
@@ -173,9 +175,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoContentsPathDeleteBodyType,
         ReposOwnerRepoTagsProtectionPostBodyType,
         ReposOwnerRepoHooksPostBodyPropConfigType,
-        ReposOwnerRepoPagesDeploymentPostBodyType,
         ReposOwnerRepoPagesPostBodyPropSourceType,
         RepositoryRuleCommitAuthorEmailPatternType,
+        ReposOwnerRepoPagesDeploymentsPostBodyType,
         ReposOwnerRepoRulesetsRulesetIdPutBodyType,
         ReposOwnerRepoPropertiesValuesPatchBodyType,
         OrgsOrgReposPostBodyPropCustomPropertiesType,
@@ -593,7 +595,11 @@ class ReposClient:
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
-            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+            Union[
+                OrgRulesetConditionsOneof0Type,
+                OrgRulesetConditionsOneof1Type,
+                OrgRulesetConditionsOneof2Type,
+            ]
         ] = UNSET,
         rules: Missing[
             List[
@@ -676,7 +682,11 @@ class ReposClient:
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
-            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+            Union[
+                OrgRulesetConditionsOneof0Type,
+                OrgRulesetConditionsOneof1Type,
+                OrgRulesetConditionsOneof2Type,
+            ]
         ] = UNSET,
         rules: Missing[
             List[
@@ -951,7 +961,11 @@ class ReposClient:
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
-            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+            Union[
+                OrgRulesetConditionsOneof0Type,
+                OrgRulesetConditionsOneof1Type,
+                OrgRulesetConditionsOneof2Type,
+            ]
         ] = UNSET,
         rules: Missing[
             List[
@@ -1041,7 +1055,11 @@ class ReposClient:
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
-            Union[OrgRulesetConditionsOneof0Type, OrgRulesetConditionsOneof1Type]
+            Union[
+                OrgRulesetConditionsOneof0Type,
+                OrgRulesetConditionsOneof1Type,
+                OrgRulesetConditionsOneof2Type,
+            ]
         ] = UNSET,
         rules: Missing[
             List[
@@ -12208,7 +12226,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: ReposOwnerRepoPagesDeploymentPostBodyType,
+        data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment]:
         ...
 
@@ -12220,7 +12238,8 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        artifact_url: str,
+        artifact_id: Missing[float] = UNSET,
+        artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
@@ -12233,7 +12252,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment]:
         """See also: https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment"""
@@ -12242,10 +12261,10 @@ class ReposClient:
             BasicError,
             PageDeployment,
             ValidationError,
-            ReposOwnerRepoPagesDeploymentPostBody,
+            ReposOwnerRepoPagesDeploymentsPostBody,
         )
 
-        url = f"/repos/{owner}/{repo}/pages/deployment"
+        url = f"/repos/{owner}/{repo}/pages/deployments"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -12253,7 +12272,7 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPagesDeploymentPostBody, json)
+        json = type_validate_python(ReposOwnerRepoPagesDeploymentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -12276,7 +12295,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: ReposOwnerRepoPagesDeploymentPostBodyType,
+        data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment]:
         ...
 
@@ -12288,7 +12307,8 @@ class ReposClient:
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        artifact_url: str,
+        artifact_id: Missing[float] = UNSET,
+        artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
@@ -12301,7 +12321,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[ReposOwnerRepoPagesDeploymentPostBodyType] = UNSET,
+        data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment]:
         """See also: https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment"""
@@ -12310,10 +12330,10 @@ class ReposClient:
             BasicError,
             PageDeployment,
             ValidationError,
-            ReposOwnerRepoPagesDeploymentPostBody,
+            ReposOwnerRepoPagesDeploymentsPostBody,
         )
 
-        url = f"/repos/{owner}/{repo}/pages/deployment"
+        url = f"/repos/{owner}/{repo}/pages/deployments"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -12321,7 +12341,7 @@ class ReposClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPagesDeploymentPostBody, json)
+        json = type_validate_python(ReposOwnerRepoPagesDeploymentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -12333,6 +12353,108 @@ class ReposClient:
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    def get_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        pages_deployment_id: Union[int, str],
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[PagesDeploymentStatus]:
+        """See also: https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
+
+        from ..models import BasicError, PagesDeploymentStatus
+
+        url = f"/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=PagesDeploymentStatus,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        pages_deployment_id: Union[int, str],
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[PagesDeploymentStatus]:
+        """See also: https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
+
+        from ..models import BasicError, PagesDeploymentStatus
+
+        url = f"/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=PagesDeploymentStatus,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def cancel_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        pages_deployment_id: Union[int, str],
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment"""
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_cancel_pages_deployment(
+        self,
+        owner: str,
+        repo: str,
+        pages_deployment_id: Union[int, str],
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment"""
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
                 "404": BasicError,
             },
         )

@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import Annotated
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,20 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
-
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
-    )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
-    )
+from .group_0153 import Job
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+    total_count: int = Field()
+    jobs: List[Job] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsRunsRunIdJobsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",)

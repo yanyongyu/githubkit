@@ -19,13 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0461 import (
+from .group_0465 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueMergedMilestone(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropMilestone(GitHubModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
 
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
@@ -47,6 +50,6 @@ class WebhookIssueCommentDeletedPropIssueMergedMilestone(GitHubModel):
     url: str = Field()
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedMilestone)
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropMilestone)
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueMergedMilestone",)
+__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestone",)

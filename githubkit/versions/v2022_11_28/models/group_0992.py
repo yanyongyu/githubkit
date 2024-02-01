@@ -10,23 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment."
+class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ReposOwnerRepoCommentsCommentIdReactionsPostBody)
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-__all__ = ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",)
+    location: str = Field()
+    devcontainer_path: Union[str, None] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesNewGetResponse200",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
+)

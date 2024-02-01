@@ -10,38 +10,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0727 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
-from .group_0725 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class WebhookRepositoryRenamedType(TypedDict):
+    """repository renamed event"""
 
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
-    ]
-    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
-    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
-
-    from_: NotRequired[str]
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+class WebhookRepositoryRenamedPropChangesType(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
 
-    from_: NotRequired[str]
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "WebhookRepositoryRenamedType",
+    "WebhookRepositoryRenamedPropChangesType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
 )

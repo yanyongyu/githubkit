@@ -18,16 +18,11 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0122 import RepositoryRuleBranchNamePatternPropParameters
 
+class RepositoryRuleDetailedOneof8(GitHubModel):
+    """RepositoryRuleDetailedOneof8"""
 
-class RepositoryRuleDetailedOneof12(GitHubModel):
-    """RepositoryRuleDetailedOneof12"""
-
-    type: Literal["branch_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["non_fast_forward"] = Field()
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -41,6 +36,6 @@ class RepositoryRuleDetailedOneof12(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof12)
+model_rebuild(RepositoryRuleDetailedOneof8)
 
-__all__ = ("RepositoryRuleDetailedOneof12",)
+__all__ = ("RepositoryRuleDetailedOneof8",)

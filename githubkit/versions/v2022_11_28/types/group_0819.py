@@ -13,8 +13,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EmojisGetResponse200Type(TypedDict):
-    """EmojisGetResponse200"""
+class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
+
+    access_token: str
 
 
-__all__ = ("EmojisGetResponse200Type",)
+__all__ = ("ApplicationsClientIdGrantDeleteBodyType",)

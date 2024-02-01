@@ -11,27 +11,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0737 import WebhookRepositoryVulnerabilityAlertDismissPropAlertType
+from .group_0738 import (
+    WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisserType,
+)
 
 
-class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
+class WebhookRepositoryVulnerabilityAlertCreatePropAlertType(TypedDict):
+    """WebhookRepositoryVulnerabilityAlertCreatePropAlert"""
 
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[
+        Union[
+            WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisserType,
+            None,
+        ]
+    ]
+    external_identifier: str
+    external_reference: Union[Union[str, None], None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["open"]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertDismissType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertType",)

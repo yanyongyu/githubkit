@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,22 +18,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0110 import RepositoryRuleRequiredDeploymentsPropParameters
+from .group_0110 import RepositoryRuleUpdatePropParameters
 
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
+class RepositoryRuleUpdate(GitHubModel):
+    """update
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["update"] = Field()
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleRequiredDeployments)
+model_rebuild(RepositoryRuleUpdate)
 
-__all__ = ("RepositoryRuleRequiredDeployments",)
+__all__ = ("RepositoryRuleUpdate",)

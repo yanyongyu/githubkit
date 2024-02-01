@@ -14,18 +14,18 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0220 import DependabotAlertType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0223 import DependabotAlertType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertReintroducedType(TypedDict):
-    """Dependabot alert reintroduced event"""
+class WebhookDependabotAlertAutoReopenedType(TypedDict):
+    """Dependabot alert auto-reopened event"""
 
-    action: Literal["reintroduced"]
+    action: Literal["auto_reopened"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -34,4 +34,4 @@ class WebhookDependabotAlertReintroducedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDependabotAlertReintroducedType",)
+__all__ = ("WebhookDependabotAlertAutoReopenedType",)

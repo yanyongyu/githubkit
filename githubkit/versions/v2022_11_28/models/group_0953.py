@@ -10,42 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing_extensions import Annotated
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
 
-    ref: str = Field(
-        description="The git reference for the workflow. The reference can be a branch or tag name."
-    )
-    inputs: Missing[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-    ] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
 
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 10. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
-    """
-
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
-)
+__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)

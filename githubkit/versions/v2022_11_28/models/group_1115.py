@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import Annotated
+from typing import Union
 
 from pydantic import Field
 
@@ -20,21 +19,33 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class UserPatchBody(GitHubModel):
+    """UserPatchBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
+    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
+    email: Missing[str] = Field(
+        default=UNSET, description="The publicly visible email address of the user."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    selected_repository_ids: Missing[List[Union[int, str]]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
+    blog: Missing[str] = Field(
+        default=UNSET, description="The new blog URL of the user."
+    )
+    twitter_username: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The new Twitter username of the user."
+    )
+    company: Missing[str] = Field(
+        default=UNSET, description="The new company of the user."
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="The new location of the user."
+    )
+    hireable: Missing[bool] = Field(
+        default=UNSET, description="The new hiring availability of the user."
+    )
+    bio: Missing[str] = Field(
+        default=UNSET, description="The new short biography of the user."
     )
 
 
-model_rebuild(UserCodespacesSecretsSecretNamePutBody)
+model_rebuild(UserPatchBody)
 
-__all__ = ("UserCodespacesSecretsSecretNamePutBody",)
+__all__ = ("UserPatchBody",)

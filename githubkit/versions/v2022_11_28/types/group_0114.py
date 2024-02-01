@@ -10,28 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
-
-    required_status_checks: List[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
+from .group_0115 import RepositoryRulePullRequestPropParametersType
 
 
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    Required status check
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-__all__ = (
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-)
+__all__ = ("RepositoryRulePullRequestType",)

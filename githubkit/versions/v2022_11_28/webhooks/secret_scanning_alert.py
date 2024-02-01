@@ -20,6 +20,7 @@ from ..models import (
     WebhookSecretScanningAlertRevoked,
     WebhookSecretScanningAlertReopened,
     WebhookSecretScanningAlertResolved,
+    WebhookSecretScanningAlertValidated,
 )
 
 Event: TypeAlias = Annotated[
@@ -28,6 +29,7 @@ Event: TypeAlias = Annotated[
         WebhookSecretScanningAlertReopened,
         WebhookSecretScanningAlertResolved,
         WebhookSecretScanningAlertRevoked,
+        WebhookSecretScanningAlertValidated,
     ],
     Field(discriminator="action"),
 ]
@@ -39,6 +41,7 @@ action_types: Dict[str, Type[GitHubModel]] = {
     "reopened": WebhookSecretScanningAlertReopened,
     "resolved": WebhookSecretScanningAlertResolved,
     "revoked": WebhookSecretScanningAlertRevoked,
+    "validated": WebhookSecretScanningAlertValidated,
 }
 
 secret_scanning_alert_action_types = action_types

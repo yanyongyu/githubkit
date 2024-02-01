@@ -10,46 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0014 import AppPermissions
 
 
-class GistsGistIdPatchBody(GitHubModel):
-    """GistsGistIdPatchBody"""
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the gist."
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+    target: Missing[str] = Field(
         default=UNSET,
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+    )
+    target_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+    )
+    repositories: Missing[List[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
-    """GistsGistIdPatchBodyPropFiles
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
-
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
-
-    Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-    """
-
-
-model_rebuild(GistsGistIdPatchBody)
-model_rebuild(GistsGistIdPatchBodyPropFiles)
-
-__all__ = (
-    "GistsGistIdPatchBody",
-    "GistsGistIdPatchBodyPropFiles",
-)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

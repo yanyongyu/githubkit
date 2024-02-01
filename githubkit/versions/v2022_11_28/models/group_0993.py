@@ -10,29 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+from datetime import datetime
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    body: str = Field(description="The contents of the comment.")
-    path: Missing[str] = Field(
-        default=UNSET, description="Relative path of the file to comment on."
-    )
-    position: Missing[int] = Field(
-        default=UNSET, description="Line index in the diff to comment on."
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="**Deprecated**. Use **position** parameter instead. Line number in the file to comment on.",
-    )
+    total_count: int = Field()
+    secrets: List[RepoCodespacesSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
+class RepoCodespacesSecret(GitHubModel):
+    """Codespaces Secret
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
+model_rebuild(RepoCodespacesSecret)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesSecretsGetResponse200",
+    "RepoCodespacesSecret",
+)

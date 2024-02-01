@@ -10,21 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
-
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
-    )
+from .group_0161 import WorkflowRun
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
+class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)
+    total_count: int = Field()
+    workflow_runs: List[WorkflowRun] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsRunsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsRunsGetResponse200",)

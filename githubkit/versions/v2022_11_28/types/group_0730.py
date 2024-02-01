@@ -10,26 +10,89 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0097 import RepositoryRulesetConditionsType
 
 
-class WebhookRepositoryUnarchivedType(TypedDict):
-    """repository unarchived event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
 
-    action: Literal["unarchived"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    condition: NotRequired[RepositoryRulesetConditionsType]
+    changes: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType
+    ]
 
 
-__all__ = ("WebhookRepositoryUnarchivedType",)
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    es
+    """
+
+    condition_type: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType
+    ]
+    target: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType
+    ]
+    include: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType
+    ]
+    exclude: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropConditionType
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropTarget
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropInclude
+    """
+
+    from_: NotRequired[List[str]]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropExclude
+    """
+
+    from_: NotRequired[List[str]]
+
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType",
+)

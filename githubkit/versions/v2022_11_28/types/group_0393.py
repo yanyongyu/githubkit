@@ -11,27 +11,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0220 import DependabotAlertType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertAutoDismissedType(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["auto_dismissed"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookDependabotAlertAutoDismissedType",)
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+__all__ = (
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+)

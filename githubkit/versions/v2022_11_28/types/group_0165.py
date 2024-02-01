@@ -10,48 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0075 import TeamType
+from .group_0001 import SimpleUserType
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
 
-    Workflow Usage
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    billable: WorkflowUsagePropBillableType
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[datetime, None]
+    current_user_can_approve: bool
+    reviewers: List[PendingDeploymentPropReviewersItemsType]
 
 
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
 
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "WorkflowUsageType",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropWindowsType",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentType",
+    "PendingDeploymentPropEnvironmentType",
 )

@@ -10,21 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserMembershipsOrgsOrgPatchBody(GitHubModel):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
-    state: Literal["active"] = Field(
-        description='The state that the membership should be in. Only `"active"` will be accepted.'
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UserMembershipsOrgsOrgPatchBody)
+model_rebuild(UserGpgKeysPostBody)
 
-__all__ = ("UserMembershipsOrgsOrgPatchBody",)
+__all__ = ("UserGpgKeysPostBody",)

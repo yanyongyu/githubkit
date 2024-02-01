@@ -19,48 +19,37 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0015 import Installation
-from .group_0351 import EnterpriseWebhooks
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationRepositoriesAdded(GitHubModel):
-    """installation_repositories added event"""
+class WebhookGollum(GitHubModel):
+    """gollum event"""
 
-    action: Literal["added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    installation: Installation = Field(title="Installation", description="Installation")
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories_added: List[
-        WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems
-    ] = Field(
-        description="An array of repository objects, which were added to the installation."
+    pages: List[WebhookGollumPropPagesItems] = Field(
+        description="The pages that were updated."
     )
-    repositories_removed: List[
-        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems
-    ] = Field(
-        description="An array of repository objects, which were removed from the installation."
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
-    )
-    requester: Union[WebhookInstallationRepositoriesAddedPropRequester, None] = Field(
-        title="User"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -68,64 +57,23 @@ class WebhookInstallationRepositoriesAdded(GitHubModel):
     )
 
 
-class WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems(GitHubModel):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems"""
+class WebhookGollumPropPagesItems(GitHubModel):
+    """WebhookGollumPropPagesItems"""
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
-
-
-class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubModel):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
-
-    full_name: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the repository"
+    action: Literal["created", "edited"] = Field(
+        description="The action that was performed on the page. Can be `created` or `edited`."
     )
-    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
-    node_id: Missing[str] = Field(default=UNSET)
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the repository is private or public."
-    )
+    html_url: str = Field(description="Points to the HTML wiki page.")
+    page_name: str = Field(description="The name of the page.")
+    sha: str = Field(description="The latest commit SHA of the page.")
+    summary: Union[str, None] = Field()
+    title: str = Field(description="The current page title.")
 
 
-class WebhookInstallationRepositoriesAddedPropRequester(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookInstallationRepositoriesAdded)
-model_rebuild(WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems)
-model_rebuild(WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems)
-model_rebuild(WebhookInstallationRepositoriesAddedPropRequester)
+model_rebuild(WebhookGollum)
+model_rebuild(WebhookGollumPropPagesItems)
 
 __all__ = (
-    "WebhookInstallationRepositoriesAdded",
-    "WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems",
-    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems",
-    "WebhookInstallationRepositoriesAddedPropRequester",
+    "WebhookGollum",
+    "WebhookGollumPropPagesItems",
 )

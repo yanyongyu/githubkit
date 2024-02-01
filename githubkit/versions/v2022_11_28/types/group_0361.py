@@ -10,33 +10,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationType
+from .group_0186 import DeploymentSimpleType
+from .group_0360 import SimpleCheckSuiteType
+from .group_0159 import PullRequestMinimalType
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
 
-    A projects v2 project
+    A check performed on the code of a given code change
     """
 
-    id: float
+    app: Union[None, IntegrationType]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
+    id: int
+    name: str
     node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
-    deleted_by: Union[None, SimpleUserType]
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: List[PullRequestMinimalType]
+    started_at: datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
+    url: str
 
 
-__all__ = ("ProjectsV2Type",)
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
+
+
+__all__ = (
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+)

@@ -15,27 +15,27 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0015 import InstallationType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["suspend"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[List[WebhookInstallationSuspendPropRepositoriesItemsType]]
+    repositories: NotRequired[List[WebhookInstallationDeletedPropRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
     requester: NotRequired[None]
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationSuspendPropRepositoriesItemsType(TypedDict):
-    """WebhookInstallationSuspendPropRepositoriesItems"""
+class WebhookInstallationDeletedPropRepositoriesItemsType(TypedDict):
+    """WebhookInstallationDeletedPropRepositoriesItems"""
 
     full_name: str
     id: int
@@ -45,6 +45,6 @@ class WebhookInstallationSuspendPropRepositoriesItemsType(TypedDict):
 
 
 __all__ = (
-    "WebhookInstallationSuspendType",
-    "WebhookInstallationSuspendPropRepositoriesItemsType",
+    "WebhookInstallationDeletedType",
+    "WebhookInstallationDeletedPropRepositoriesItemsType",
 )

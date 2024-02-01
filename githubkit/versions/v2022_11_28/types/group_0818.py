@@ -16,15 +16,12 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0014 import AppPermissionsType
 
 
-class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
     repositories: NotRequired[List[str]]
     repository_ids: NotRequired[List[int]]
     permissions: NotRequired[AppPermissionsType]
 
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBodyType",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBodyType",)

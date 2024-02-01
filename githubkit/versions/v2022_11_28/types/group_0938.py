@@ -11,13 +11,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
+from datetime import datetime
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: List[str]
+from .group_0155 import ActionsSecretType
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: List[ActionsSecretType]
+
+
+__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",)

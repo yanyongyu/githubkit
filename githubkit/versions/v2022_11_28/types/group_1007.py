@@ -13,14 +13,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
-    integration_id: NotRequired[int]
+    message: NotRequired[str]
 
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
-)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202Type",)

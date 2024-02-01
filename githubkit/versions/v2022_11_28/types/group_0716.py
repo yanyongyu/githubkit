@@ -14,18 +14,17 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryEditedType(TypedDict):
-    """repository edited event"""
+class WebhookRepositoryArchivedType(TypedDict):
+    """repository archived event"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesType
+    action: Literal["archived"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,44 +32,4 @@ class WebhookRepositoryEditedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookRepositoryEditedPropChangesType(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
-    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: NotRequired[Union[List[str], None]]
-
-
-__all__ = (
-    "WebhookRepositoryEditedType",
-    "WebhookRepositoryEditedPropChangesType",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
-    "WebhookRepositoryEditedPropChangesPropDescriptionType",
-    "WebhookRepositoryEditedPropChangesPropHomepageType",
-    "WebhookRepositoryEditedPropChangesPropTopicsType",
-)
+__all__ = ("WebhookRepositoryArchivedType",)

@@ -10,42 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
-
-
-class SecretScanningAlertWebhookType(TypedDict):
-    """SecretScanningAlertWebhook"""
-
-    number: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[None, datetime]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    resolution: NotRequired[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ]
-    resolved_at: NotRequired[Union[datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+from .group_0160 import SimpleCommitType
 
 
-__all__ = ("SecretScanningAlertWebhookType",)
+class MergeGroupType(TypedDict):
+    """Merge Group
+
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitType
+
+
+__all__ = ("MergeGroupType",)

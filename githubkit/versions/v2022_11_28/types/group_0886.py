@@ -10,14 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgMigrationsPostBodyType(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    repositories: List[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[List[Literal["repositories"]]]
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",)
+__all__ = ("OrgsOrgMigrationsPostBodyType",)

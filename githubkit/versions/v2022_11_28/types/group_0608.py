@@ -11,11 +11,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
-class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
+
+class WebhookProjectCardCreatedType(TypedDict):
+    """project_card created event"""
+
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhookProjectCardCreatedPropProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
+
+
+class WebhookProjectCardCreatedPropProjectCardType(TypedDict):
     """Project Card"""
 
     after_id: NotRequired[Union[int, None]]
@@ -24,7 +42,7 @@ class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
     column_url: str
     content_url: NotRequired[str]
     created_at: datetime
-    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType, None]
+    creator: Union[WebhookProjectCardCreatedPropProjectCardPropCreatorType, None]
     id: int
     node_id: str
     note: Union[str, None]
@@ -33,7 +51,7 @@ class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
     url: str
 
 
-class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
+class WebhookProjectCardCreatedPropProjectCardPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -55,11 +73,12 @@ class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof0Type",
-    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType",
+    "WebhookProjectCardCreatedType",
+    "WebhookProjectCardCreatedPropProjectCardType",
+    "WebhookProjectCardCreatedPropProjectCardPropCreatorType",
 )

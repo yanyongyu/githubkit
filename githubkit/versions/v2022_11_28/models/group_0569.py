@@ -19,20 +19,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookMemberEdited(GitHubModel):
-    """member edited event"""
+class WebhookMarketplacePurchasePurchased(GitHubModel):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookMemberEditedPropChanges = Field(
-        description="The changes to the collaborator permissions"
-    )
+    action: Literal["purchased"] = Field()
+    effective_date: str = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,13 +41,19 @@ class WebhookMemberEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    member: Union[WebhookMemberEditedPropMember, None] = Field(title="User")
+    marketplace_purchase: WebhookMarketplacePurchasePurchasedPropMarketplacePurchase = (
+        Field()
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    previous_marketplace_purchase: Missing[
+        WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase
+    ] = Field(default=UNSET, title="Marketplace Purchase")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -59,72 +63,108 @@ class WebhookMemberEdited(GitHubModel):
     )
 
 
-class WebhookMemberEditedPropMember(GitHubModel):
-    """User"""
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchase(GitHubModel):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchase"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
+    account: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount = (
+        Field()
+    )
+    billing_cycle: str = Field()
+    free_trial_ends_on: Union[Union[str, None], None] = Field()
+    next_billing_date: Union[Union[str, None], None] = Field()
+    on_free_trial: bool = Field()
+    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan = Field()
+    unit_count: int = Field()
+
+
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount"""
+
     id: int = Field()
     login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    node_id: str = Field()
+    organization_billing_email: Union[Union[str, None], None] = Field()
+    type: str = Field()
 
 
-class WebhookMemberEditedPropChanges(GitHubModel):
-    """WebhookMemberEditedPropChanges
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan(GitHubModel):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan"""
 
-    The changes to the collaborator permissions
-    """
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[Union[str, None], None] = Field()
+    yearly_price_in_cents: int = Field()
 
-    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
-        default=UNSET
+
+class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount = (
+        Field()
     )
-    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
-        default=UNSET
+    billing_cycle: str = Field()
+    free_trial_ends_on: None = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: bool = Field()
+    plan: WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan = (
+        Field()
     )
+    unit_count: int = Field()
 
 
-class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
+class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous permissions of the collaborator if the action was edited.",
-    )
-
-
-class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
 
 
-model_rebuild(WebhookMemberEdited)
-model_rebuild(WebhookMemberEditedPropMember)
-model_rebuild(WebhookMemberEditedPropChanges)
-model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
-model_rebuild(WebhookMemberEditedPropChangesPropPermission)
+class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan"""
+
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhookMarketplacePurchasePurchased)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchase)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase)
+model_rebuild(
+    WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount
+)
+model_rebuild(
+    WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan
+)
 
 __all__ = (
-    "WebhookMemberEdited",
-    "WebhookMemberEditedPropMember",
-    "WebhookMemberEditedPropChanges",
-    "WebhookMemberEditedPropChangesPropOldPermission",
-    "WebhookMemberEditedPropChangesPropPermission",
+    "WebhookMarketplacePurchasePurchased",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchase",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan",
+    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase",
+    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount",
+    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan",
 )

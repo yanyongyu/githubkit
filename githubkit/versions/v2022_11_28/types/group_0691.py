@@ -10,51 +10,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookReleasePrereleasedPropReleaseAllof1Type(TypedDict):
-    """WebhookReleasePrereleasedPropReleaseAllof1"""
-
-    assets: NotRequired[
-        List[Union[WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItemsType, None]]
-    ]
-    assets_url: NotRequired[str]
-    author: NotRequired[WebhookReleasePrereleasedPropReleaseAllof1PropAuthorType]
-    body: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    draft: NotRequired[bool]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[Union[str, None]]
-    node_id: NotRequired[str]
-    prerelease: Literal[True]
-    published_at: NotRequired[Union[str, None]]
-    tag_name: NotRequired[str]
-    tarball_url: NotRequired[Union[str, None]]
-    target_commitish: NotRequired[str]
-    upload_url: NotRequired[str]
-    url: NotRequired[str]
-    zipball_url: NotRequired[Union[str, None]]
+from .group_0694 import WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType
+from .group_0692 import WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType
 
 
-class WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItemsType(TypedDict):
-    """WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItems"""
+class WebhookReleasePrereleasedPropReleaseAllof0Type(TypedDict):
+    """Release
+
+    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
+    object.
+    """
+
+    assets: List[WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType]
+    assets_url: str
+    author: Union[WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType, None]
+    body: Union[str, None]
+    created_at: Union[datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    name: Union[str, None]
+    node_id: str
+    prerelease: bool
+    published_at: Union[datetime, None]
+    reactions: NotRequired[WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
 
 
-class WebhookReleasePrereleasedPropReleaseAllof1PropAuthorType(TypedDict):
-    """WebhookReleasePrereleasedPropReleaseAllof1PropAuthor"""
+class WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -62,12 +69,11 @@ class WebhookReleasePrereleasedPropReleaseAllof1PropAuthorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookReleasePrereleasedPropReleaseAllof1Type",
-    "WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItemsType",
-    "WebhookReleasePrereleasedPropReleaseAllof1PropAuthorType",
+    "WebhookReleasePrereleasedPropReleaseAllof0Type",
+    "WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType",
 )

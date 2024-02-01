@@ -14,67 +14,26 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0801 import (
+    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase,
+    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead,
+)
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
+class WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests(GitHubModel):
+    """WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests"""
+
+    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase = (
+        Field()
     )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
+    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead = (
+        Field()
+    )
+    id: float = Field()
+    number: float = Field()
     url: str = Field()
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests)
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase
-)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead
-)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo
-)
-
-__all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo",
-)
+__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests",)

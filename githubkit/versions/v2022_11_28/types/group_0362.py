@@ -14,24 +14,132 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
 
+class DiscussionType(TypedDict):
+    """Discussion
 
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
+    A Discussion in a repository.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
+    answer_html_url: Union[str, None]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    category: DiscussionPropCategoryType
+    comments: int
     created_at: datetime
+    html_url: str
+    id: int
+    locked: bool
+    node_id: str
+    number: int
+    reactions: NotRequired[DiscussionPropReactionsType]
+    repository_url: str
+    state: Literal["open", "closed", "locked", "converting", "transferring"]
+    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
+    timeline_url: NotRequired[str]
+    title: str
     updated_at: datetime
-    archived_at: Union[datetime, None]
+    user: Union[DiscussionPropUserType, None]
 
 
-__all__ = ("ProjectsV2ItemType",)
+class DiscussionPropAnswerChosenByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class DiscussionPropCategoryType(TypedDict):
+    """DiscussionPropCategory"""
+
+    created_at: datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class DiscussionPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class DiscussionPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "DiscussionType",
+    "DiscussionPropAnswerChosenByType",
+    "DiscussionPropCategoryType",
+    "DiscussionPropReactionsType",
+    "DiscussionPropUserType",
+)

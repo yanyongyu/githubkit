@@ -10,15 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
-
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+from .group_0151 import ArtifactType
 
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBodyType",)
+class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: List[ArtifactType]
+
+
+__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200Type",)

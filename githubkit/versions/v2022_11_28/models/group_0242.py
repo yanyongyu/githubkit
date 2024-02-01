@@ -10,44 +10,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitTree(GitHubModel):
-    """Git Tree
+class GitCommit(GitHubModel):
+    """Git Commit
 
-    The hierarchy between files in a Git repository.
+    Low-level Git commit operations within a repository
     """
 
-    sha: str = Field()
+    sha: str = Field(description="SHA for the commit")
+    node_id: str = Field()
     url: str = Field()
-    truncated: bool = Field()
-    tree: List[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
+    author: GitCommitPropAuthor = Field(
+        description="Identifying information for the git-user"
     )
+    committer: GitCommitPropCommitter = Field(
+        description="Identifying information for the git-user"
+    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: GitCommitPropTree = Field()
+    parents: List[GitCommitPropParentsItems] = Field()
+    verification: GitCommitPropVerification = Field()
+    html_url: str = Field()
 
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
+class GitCommitPropAuthor(GitHubModel):
+    """GitCommitPropAuthor
 
-    path: Missing[str] = Field(default=UNSET)
-    mode: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
 
 
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
+class GitCommitPropCommitter(GitHubModel):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropTree(GitHubModel):
+    """GitCommitPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class GitCommitPropParentsItems(GitHubModel):
+    """GitCommitPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class GitCommitPropVerification(GitHubModel):
+    """GitCommitPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+
+
+model_rebuild(GitCommit)
+model_rebuild(GitCommitPropAuthor)
+model_rebuild(GitCommitPropCommitter)
+model_rebuild(GitCommitPropTree)
+model_rebuild(GitCommitPropParentsItems)
+model_rebuild(GitCommitPropVerification)
 
 __all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
+    "GitCommit",
+    "GitCommitPropAuthor",
+    "GitCommitPropCommitter",
+    "GitCommitPropTree",
+    "GitCommitPropParentsItems",
+    "GitCommitPropVerification",
 )

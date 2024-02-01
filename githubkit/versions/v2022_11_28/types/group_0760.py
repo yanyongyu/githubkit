@@ -14,23 +14,24 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0095 import FullRepositoryType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0761 import WebhookSecurityAndAnalysisPropChangesType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0367 import SecretScanningAlertWebhookType
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertRevokedType(TypedDict):
+    """secret_scanning_alert revoked event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
+    action: Literal["revoked"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisType",)
+__all__ = ("WebhookSecretScanningAlertRevokedType",)

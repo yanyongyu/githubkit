@@ -14,113 +14,72 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchaseChangedType(TypedDict):
-    """marketplace_purchase changed event"""
+class WebhookLabelEditedType(TypedDict):
+    """label edited event"""
 
-    action: Literal["changed"]
-    effective_date: str
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType
+    label: WebhookLabelEditedPropLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType(TypedDict):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchase"""
+class WebhookLabelEditedPropLabelType(TypedDict):
+    """Label"""
 
-    account: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[Union[str, None], None]
-    next_billing_date: Union[Union[str, None], None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccount"""
-
+    color: str
+    default: bool
+    description: Union[str, None]
     id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[Union[str, None], None]
-    type: str
-
-
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType(TypedDict):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[Union[str, None], None]
-    yearly_price_in_cents: int
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
     node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    url: str
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+class WebhookLabelEditedPropChangesType(TypedDict):
+    """WebhookLabelEditedPropChanges
 
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
+    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
+
+
+class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
+    "WebhookLabelEditedType",
+    "WebhookLabelEditedPropLabelType",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropNameType",
 )

@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,40 +20,34 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsPostBody(GitHubModel):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+    value_type: Literal["string", "single_select"] = Field(
+        description="The type of the value for the property"
     )
-    maintainers: Missing[List[str]] = Field(
-        default=UNSET,
-        description="List GitHub IDs for organization members who will become team maintainers.",
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
-    repo_names: Missing[List[str]] = Field(
-        default=UNSET,
-        description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
+    default_value: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Default value of the property"
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
-        default=UNSET,
-        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    allowed_values: Missing[
+        Union[
+            Annotated[
+                List[Annotated[str, Field(max_length=75)]], Field(max_length=200)
+            ],
+            None,
+        ]
     ] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. The options are:  \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.  \nDefault: `notifications_enabled`",
-    )
-    permission: Missing[Literal["pull", "push"]] = Field(
-        default=UNSET,
-        description="**Deprecated**. The permission that new repositories will be added to the team with when none is specified.",
-    )
-    parent_team_id: Missing[int] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
 
 
-model_rebuild(OrgsOrgTeamsPostBody)
+model_rebuild(OrgsOrgPropertiesSchemaCustomPropertyNamePutBody)
 
-__all__ = ("OrgsOrgTeamsPostBody",)
+__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",)

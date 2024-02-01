@@ -10,127 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
 
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1Type(TypedDict):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1"""
 
-class WebhookMembershipAddedType(TypedDict):
-    """membership added event"""
-
-    action: Literal["added"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhookMembershipAddedPropMemberType, None]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team"]
-    sender: Union[WebhookMembershipAddedPropSenderType, None]
-    team: WebhookMembershipAddedPropTeamType
-
-
-class WebhookMembershipAddedPropMemberType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookMembershipAddedPropSenderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookMembershipAddedPropTeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhookMembershipAddedPropTeamPropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    account: NotRequired[
+        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccountType
     ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    billing_cycle: NotRequired[str]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    next_billing_date: Union[str, None]
+    on_free_trial: NotRequired[bool]
+    plan: NotRequired[
+        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlanType
+    ]
+    unit_count: NotRequired[int]
 
 
-class WebhookMembershipAddedPropTeamPropParentType(TypedDict):
-    """WebhookMembershipAddedPropTeamPropParent"""
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount"""
 
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organization_billing_email: NotRequired[Union[str, None]]
+    type: NotRequired[str]
+
+
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan"""
+
+    bullets: NotRequired[List[Union[str, None]]]
+    description: NotRequired[str]
+    has_free_trial: NotRequired[bool]
+    id: NotRequired[int]
+    monthly_price_in_cents: NotRequired[int]
+    name: NotRequired[str]
+    price_model: NotRequired[Literal["FREE", "FLAT_RATE", "PER_UNIT"]]
+    unit_name: NotRequired[Union[str, None]]
+    yearly_price_in_cents: NotRequired[int]
 
 
 __all__ = (
-    "WebhookMembershipAddedType",
-    "WebhookMembershipAddedPropMemberType",
-    "WebhookMembershipAddedPropSenderType",
-    "WebhookMembershipAddedPropTeamType",
-    "WebhookMembershipAddedPropTeamPropParentType",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1Type",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccountType",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlanType",
 )

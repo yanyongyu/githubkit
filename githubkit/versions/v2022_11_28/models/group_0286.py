@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,143 +18,95 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0016 import LicenseSimple
 
+class PagesHealthCheck(GitHubModel):
+    """Pages Health Check Status
 
-class PullRequestPropBasePropRepo(GitHubModel):
-    """PullRequestPropBasePropRepo"""
+    Pages Health Check Status
+    """
 
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    description: Union[str, None] = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: bool = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    hooks_url: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    is_template: Missing[bool] = Field(default=UNSET)
-    node_id: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    name: str = Field()
-    notifications_url: str = Field()
-    owner: PullRequestPropBasePropRepoPropOwner = Field()
-    private: bool = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    url: str = Field()
-    clone_url: str = Field()
-    default_branch: str = Field()
-    forks: int = Field()
-    forks_count: int = Field()
-    git_url: str = Field()
-    has_downloads: bool = Field()
-    has_issues: bool = Field()
-    has_projects: bool = Field()
-    has_wiki: bool = Field()
-    has_pages: bool = Field()
-    has_discussions: bool = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    archived: bool = Field()
-    disabled: bool = Field()
-    visibility: Missing[str] = Field(
-        default=UNSET,
-        description="The repository visibility: public, private, or internal.",
-    )
-    mirror_url: Union[str, None] = Field()
-    open_issues: int = Field()
-    open_issues_count: int = Field()
-    permissions: Missing[PullRequestPropBasePropRepoPropPermissions] = Field(
+    domain: Missing[PagesHealthCheckPropDomain] = Field(default=UNSET)
+    alt_domain: Missing[Union[PagesHealthCheckPropAltDomain, None]] = Field(
         default=UNSET
     )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    pushed_at: datetime = Field()
-    size: int = Field()
-    ssh_url: str = Field()
-    stargazers_count: int = Field()
-    svn_url: str = Field()
-    topics: Missing[List[str]] = Field(default=UNSET)
-    watchers: int = Field()
-    watchers_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
 
 
-class PullRequestPropBasePropRepoPropOwner(GitHubModel):
-    """PullRequestPropBasePropRepoPropOwner"""
+class PagesHealthCheckPropDomain(GitHubModel):
+    """PagesHealthCheckPropDomain"""
 
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    login: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class PullRequestPropBasePropRepoPropPermissions(GitHubModel):
-    """PullRequestPropBasePropRepoPropPermissions"""
+class PagesHealthCheckPropAltDomain(GitHubModel):
+    """PagesHealthCheckPropAltDomain"""
 
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestPropBasePropRepo)
-model_rebuild(PullRequestPropBasePropRepoPropOwner)
-model_rebuild(PullRequestPropBasePropRepoPropPermissions)
+model_rebuild(PagesHealthCheck)
+model_rebuild(PagesHealthCheckPropDomain)
+model_rebuild(PagesHealthCheckPropAltDomain)
 
 __all__ = (
-    "PullRequestPropBasePropRepo",
-    "PullRequestPropBasePropRepoPropOwner",
-    "PullRequestPropBasePropRepoPropPermissions",
+    "PagesHealthCheck",
+    "PagesHealthCheckPropDomain",
+    "PagesHealthCheckPropAltDomain",
 )

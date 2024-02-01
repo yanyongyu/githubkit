@@ -14,10 +14,10 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    labels: List[str]
+    selected_repository_ids: List[int]
 
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",)
+__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBodyType",)

@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,17 +20,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    lock_reason: Missing[
-        Literal["off-topic", "too heated", "resolved", "spam"]
-    ] = Field(
-        default=UNSET,
-        description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
-    )
+    labels: Missing[
+        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1, default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLockPutBody)
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBody",)
+    name: str = Field()
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
+)

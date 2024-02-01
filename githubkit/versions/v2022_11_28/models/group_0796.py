@@ -10,71 +10,107 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0166 import Deployment
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
+class WebhookWorkflowJobWaiting(GitHubModel):
+    """workflow_job waiting event"""
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
+    action: Literal["waiting"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    sha: str = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
+    deployment: Missing[Deployment] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A request for a specific ref(branch,sha,tag) to be deployed",
+    )
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
+class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
 
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
     id: int = Field()
+    labels: List[str] = Field()
     name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field()
+    runner_group_name: Union[str, None] = Field()
+    runner_id: Union[int, None] = Field()
+    runner_name: Union[str, None] = Field()
+    started_at: datetime = Field()
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
+    steps: List[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
     url: str = Field()
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
+    """Workflow Step"""
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[
+        None, Literal["failure", "skipped", "success", "cancelled"]
+    ] = Field()
     name: str = Field()
-    url: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal[
+        "completed", "in_progress", "queued", "pending", "waiting"
+    ] = Field()
 
 
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo
-)
+model_rebuild(WebhookWorkflowJobWaiting)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
 
 __all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo",
+    "WebhookWorkflowJobWaiting",
+    "WebhookWorkflowJobWaitingPropWorkflowJob",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
 )

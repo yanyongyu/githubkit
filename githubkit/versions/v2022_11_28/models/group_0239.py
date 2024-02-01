@@ -10,94 +10,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0238 import CustomDeploymentRuleApp
 
-class GitCommit(GitHubModel):
-    """Git Commit
 
-    Low-level Git commit operations within a repository
+class DeploymentProtectionRule(GitHubModel):
+    """Deployment protection rule
+
+    Deployment protection rule
     """
 
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: GitCommitPropAuthor = Field(
-        description="Identifying information for the git-user"
+    id: int = Field(
+        description="The unique identifier for the deployment protection rule."
     )
-    committer: GitCommitPropCommitter = Field(
-        description="Identifying information for the git-user"
+    node_id: str = Field(description="The node ID for the deployment protection rule.")
+    enabled: bool = Field(
+        description="Whether the deployment protection rule is enabled for the environment."
     )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: GitCommitPropTree = Field()
-    parents: List[GitCommitPropParentsItems] = Field()
-    verification: GitCommitPropVerification = Field()
-    html_url: str = Field()
+    app: CustomDeploymentRuleApp = Field(
+        title="Custom deployment protection rule app",
+        description="A GitHub App that is providing a custom deployment protection rule.",
+    )
 
 
-class GitCommitPropAuthor(GitHubModel):
-    """GitCommitPropAuthor
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    Identifying information for the git-user
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
     """
 
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of enabled custom deployment protection rules for this environment",
+    )
+    custom_deployment_protection_rules: Missing[List[DeploymentProtectionRule]] = Field(
+        default=UNSET
+    )
 
 
-class GitCommitPropCommitter(GitHubModel):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropTree(GitHubModel):
-    """GitCommitPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class GitCommitPropParentsItems(GitHubModel):
-    """GitCommitPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class GitCommitPropVerification(GitHubModel):
-    """GitCommitPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-
-
-model_rebuild(GitCommit)
-model_rebuild(GitCommitPropAuthor)
-model_rebuild(GitCommitPropCommitter)
-model_rebuild(GitCommitPropTree)
-model_rebuild(GitCommitPropParentsItems)
-model_rebuild(GitCommitPropVerification)
+model_rebuild(DeploymentProtectionRule)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+)
 
 __all__ = (
-    "GitCommit",
-    "GitCommitPropAuthor",
-    "GitCommitPropCommitter",
-    "GitCommitPropTree",
-    "GitCommitPropParentsItems",
-    "GitCommitPropVerification",
+    "DeploymentProtectionRule",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
 )

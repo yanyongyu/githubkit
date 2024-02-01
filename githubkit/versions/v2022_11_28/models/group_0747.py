@@ -19,13 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0749 import (
-    WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser,
+from .group_0748 import (
+    WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser,
 )
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertResolvePropAlert"""
+class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0(GitHubModel):
+    """Repository Vulnerability Alert Alert
+
+    The security alert of the vulnerable dependency.
+    """
 
     affected_package_name: str = Field()
     affected_range: str = Field()
@@ -34,11 +37,11 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
     dismissed_at: Missing[str] = Field(default=UNSET)
     dismisser: Missing[
         Union[
-            WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser, None
+            WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser, None
         ]
     ] = Field(default=UNSET, title="User")
     external_identifier: str = Field()
-    external_reference: Union[Union[str, None], None] = Field()
+    external_reference: Union[str, None] = Field()
     fix_reason: Missing[str] = Field(default=UNSET)
     fixed_at: Missing[datetime] = Field(default=UNSET)
     fixed_in: Missing[str] = Field(default=UNSET)
@@ -47,9 +50,9 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     severity: str = Field()
-    state: Literal["fixed", "open"] = Field()
+    state: Literal["open", "dismissed", "fixed"] = Field()
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertResolvePropAlert",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0",)

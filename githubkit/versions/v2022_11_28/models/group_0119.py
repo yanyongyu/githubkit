@@ -18,21 +18,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0120 import RepositoryRuleCommitterEmailPatternPropParameters
 
+class RepositoryRuleCommitMessagePatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
 
-class RepositoryRuleCommitterEmailPattern(GitHubModel):
-    """committer_email_pattern
-
-    Parameters to be used for the committer_email_pattern rule
-    """
-
-    type: Literal["committer_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
-        default=UNSET
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleCommitterEmailPattern)
+model_rebuild(RepositoryRuleCommitMessagePatternPropParameters)
 
-__all__ = ("RepositoryRuleCommitterEmailPattern",)
+__all__ = ("RepositoryRuleCommitMessagePatternPropParameters",)

@@ -17,15 +17,13 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsPostBody(GitHubModel):
-    """OrgsOrgProjectsPostBody"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    name: str = Field(description="The name of the project.")
-    body: Missing[str] = Field(
-        default=UNSET, description="The description of the project."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgProjectsPostBody)
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
 
-__all__ = ("OrgsOrgProjectsPostBody",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)

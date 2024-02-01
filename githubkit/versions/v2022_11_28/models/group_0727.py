@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import Annotated
 
@@ -17,80 +18,52 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0106 import RepositoryRuleUpdate
-from .group_0125 import RepositoryRuleWorkflows
-from .group_0111 import RepositoryRulePullRequest
-from .group_0123 import RepositoryRuleTagNamePattern
-from .group_0121 import RepositoryRuleBranchNamePattern
-from .group_0109 import RepositoryRuleRequiredDeployments
-from .group_0113 import RepositoryRuleRequiredStatusChecks
-from .group_0115 import RepositoryRuleCommitMessagePattern
-from .group_0108 import RepositoryRuleRequiredLinearHistory
-from .group_0119 import RepositoryRuleCommitterEmailPattern
-from .group_0117 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0728 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
-)
-from .group_0105 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
+from .group_0130 import RepositoryRuleset
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
+from .group_0728 import WebhookRepositoryRulesetEditedPropChanges
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookRepositoryRulesetEdited(GitHubModel):
+    """repository ruleset edited event"""
 
-    added: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    deleted: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    updated: Missing[
-        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
-    ] = Field(default=UNSET)
+    action: Literal["edited"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    repository_ruleset: RepositoryRuleset = Field(
+        title="Repository ruleset",
+        description="A set of rules to apply when specified conditions are met.",
+    )
+    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
+model_rebuild(WebhookRepositoryRulesetEdited)
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)
+__all__ = ("WebhookRepositoryRulesetEdited",)

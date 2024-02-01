@@ -10,38 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class SearchResultTextMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItems"""
-
-    object_url: Missing[str] = Field(default=UNSET)
-    object_type: Missing[Union[str, None]] = Field(default=UNSET)
-    property_: Missing[str] = Field(default=UNSET, alias="property")
-    fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[List[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
-        default=UNSET
-    )
+from .group_0328 import Traffic
 
 
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+class CloneTraffic(GitHubModel):
+    """Clone Traffic
 
-    text: Missing[str] = Field(default=UNSET)
-    indices: Missing[List[int]] = Field(default=UNSET)
+    Clone Traffic
+    """
+
+    count: int = Field()
+    uniques: int = Field()
+    clones: List[Traffic] = Field()
 
 
-model_rebuild(SearchResultTextMatchesItems)
-model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
+model_rebuild(CloneTraffic)
 
-__all__ = (
-    "SearchResultTextMatchesItems",
-    "SearchResultTextMatchesItemsPropMatchesItems",
-)
+__all__ = ("CloneTraffic",)

@@ -14,14 +14,14 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
+from .group_0050 import MinimalRepositoryType
 
 
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int
-    installations: List[InstallationType]
+    repositories: List[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgInstallationsGetResponse200Type",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)

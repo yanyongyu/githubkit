@@ -18,36 +18,34 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
 
-    Moved Column in Project Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
 
 
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventType",
-    "MovedColumnInProjectIssueEventPropProjectCardType",
+    "ReviewDismissedIssueEventType",
+    "ReviewDismissedIssueEventPropDismissedReviewType",
 )

@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -19,70 +18,40 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0333 import SearchResultTextMatchesItems
 
-class PrivateUser(GitHubModel):
-    """Private User
 
-    Private User
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    login: str = Field()
     id: int = Field()
     node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    private_gists: int = Field()
-    total_private_repos: int = Field()
-    owned_private_repos: int = Field()
-    disk_usage: int = Field()
-    collaborators: int = Field()
-    two_factor_authentication: bool = Field()
-    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
-    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    business_plus: Missing[bool] = Field(default=UNSET)
-    ldap_dn: Missing[str] = Field(default=UNSET)
-
-
-class PrivateUserPropPlan(GitHubModel):
-    """PrivateUserPropPlan"""
-
-    collaborators: int = Field()
     name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
+    color: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    score: float = Field()
+    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(PrivateUser)
-model_rebuild(PrivateUserPropPlan)
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: List[LabelSearchResultItem] = Field()
+
+
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
 
 __all__ = (
-    "PrivateUser",
-    "PrivateUserPropPlan",
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
 )

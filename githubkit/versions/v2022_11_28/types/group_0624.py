@@ -14,40 +14,23 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0362 import ProjectsV2ItemType
-from .group_0352 import SimpleInstallationType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0365 import ProjectsV2Type
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemConvertedType(TypedDict):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectsV2ProjectCreatedType(TypedDict):
+    """WebhookProjectsV2ProjectCreated
 
-    action: Literal["converted"]
-    changes: WebhookProjectsV2ItemConvertedPropChangesType
+    A project was created
+    """
+
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
-
-    content_type: NotRequired[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
-    ]
-
-
-class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[str]
-
-
-__all__ = (
-    "WebhookProjectsV2ItemConvertedType",
-    "WebhookProjectsV2ItemConvertedPropChangesType",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
-)
+__all__ = ("WebhookProjectsV2ProjectCreatedType",)

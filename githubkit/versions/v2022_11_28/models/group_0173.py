@@ -12,7 +12,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union
-from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -20,35 +19,52 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0172 import BranchProtection
+from .group_0075 import Team
+from .group_0001 import SimpleUser
+from .group_0005 import Integration
 
 
-class ShortBranch(GitHubModel):
-    """Short Branch
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Short Branch
+    users: Missing[List[SimpleUser]] = Field(
+        default=UNSET, description="The list of users with review dismissal access."
+    )
+    teams: Missing[List[Team]] = Field(
+        default=UNSET, description="The list of teams with review dismissal access."
+    )
+    apps: Missing[List[Integration]] = Field(
+        default=UNSET, description="The list of apps with review dismissal access."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    users_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
+    users: Missing[List[SimpleUser]] = Field(
+        default=UNSET,
+        description="The list of users allowed to bypass pull request requirements.",
     )
-    protection_url: Missing[str] = Field(default=UNSET)
+    teams: Missing[List[Team]] = Field(
+        default=UNSET,
+        description="The list of teams allowed to bypass pull request requirements.",
+    )
+    apps: Missing[List[Integration]] = Field(
+        default=UNSET,
+        description="The list of apps allowed to bypass pull request requirements.",
+    )
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
+model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
+model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
 
 __all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
 )

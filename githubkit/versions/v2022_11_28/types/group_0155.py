@@ -10,14 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class ActionsWorkflowAccessToRepositoryType(TypedDict):
-    """ActionsWorkflowAccessToRepository"""
+class ActionsSecretType(TypedDict):
+    """Actions Secret
 
-    access_level: Literal["none", "user", "organization"]
+    Set secrets for GitHub Actions.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("ActionsWorkflowAccessToRepositoryType",)
+__all__ = ("ActionsSecretType",)

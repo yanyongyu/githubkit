@@ -10,14 +10,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleUpdatePropParametersType(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    required_deployment_environments: List[str]
+    update_allows_fetch_and_merge: bool
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)
+__all__ = ("RepositoryRuleUpdatePropParametersType",)

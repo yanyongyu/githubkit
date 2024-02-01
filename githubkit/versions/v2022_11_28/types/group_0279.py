@@ -11,35 +11,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0016 import LicenseSimpleType
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class LicenseContentType(TypedDict):
+    """License Content
 
-    Page Build
+    License Content
     """
 
+    name: str
+    path: str
+    sha: str
+    size: int
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
 
-    message: Union[str, None]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "PageBuildType",
-    "PageBuildPropErrorType",
+    "LicenseContentType",
+    "LicenseContentPropLinksType",
 )

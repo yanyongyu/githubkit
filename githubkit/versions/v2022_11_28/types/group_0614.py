@@ -14,40 +14,71 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectColumnMovedType(TypedDict):
-    """project_column moved event"""
+class WebhookProjectClosedType(TypedDict):
+    """project closed event"""
 
-    action: Literal["moved"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhookProjectColumnMovedPropProjectColumnType
+    project: WebhookProjectClosedPropProjectType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectColumnMovedPropProjectColumnType(TypedDict):
-    """Project Column"""
+class WebhookProjectClosedPropProjectType(TypedDict):
+    """Project"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
+    body: Union[str, None]
+    columns_url: str
     created_at: datetime
+    creator: Union[WebhookProjectClosedPropProjectPropCreatorType, None]
+    html_url: str
     id: int
     name: str
     node_id: str
-    project_url: str
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
     updated_at: datetime
     url: str
 
 
+class WebhookProjectClosedPropProjectPropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
 __all__ = (
-    "WebhookProjectColumnMovedType",
-    "WebhookProjectColumnMovedPropProjectColumnType",
+    "WebhookProjectClosedType",
+    "WebhookProjectClosedPropProjectType",
+    "WebhookProjectClosedPropProjectPropCreatorType",
 )

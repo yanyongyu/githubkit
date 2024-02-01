@@ -14,26 +14,26 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserEmailsDeleteBodyOneof0(GitHubModel):
-    """UserEmailsDeleteBodyOneof0
+class UserCodespacesCodespaceNamePatchBody(GitHubModel):
+    """UserCodespacesCodespaceNamePatchBody"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str] = Field(
-        description="Email addresses associated with the GitHub user account."
+    machine: Missing[str] = Field(
+        default=UNSET, description="A valid machine to transition this codespace to."
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    recent_folders: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
     )
 
 
-model_rebuild(UserEmailsDeleteBodyOneof0)
+model_rebuild(UserCodespacesCodespaceNamePatchBody)
 
-__all__ = ("UserEmailsDeleteBodyOneof0",)
+__all__ = ("UserCodespacesCodespaceNamePatchBody",)

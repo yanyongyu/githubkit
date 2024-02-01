@@ -14,35 +14,22 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0357 import CheckRunWithSimpleCheckSuiteType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0361 import CheckRunWithSimpleCheckSuiteType
 
 
-class WebhookCheckRunRequestedActionType(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookCheckRunCompletedType(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["requested_action"]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
-__all__ = (
-    "WebhookCheckRunRequestedActionType",
-    "WebhookCheckRunRequestedActionPropRequestedActionType",
-)
+__all__ = ("WebhookCheckRunCompletedType",)

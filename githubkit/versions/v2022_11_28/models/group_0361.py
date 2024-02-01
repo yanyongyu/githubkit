@@ -10,40 +10,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0005 import Integration
+from .group_0186 import DeploymentSimple
+from .group_0360 import SimpleCheckSuite
+from .group_0159 import PullRequestMinimal
 
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
+class CheckRunWithSimpleCheckSuite(GitHubModel):
+    """CheckRun
 
-    A projects v2 project
+    A check performed on the code of a given code change
     """
 
-    id: float = Field()
+    app: Union[None, Integration] = Field()
+    check_suite: SimpleCheckSuite = Field(
+        description="A suite of checks performed on the code of a given code change"
+    )
+    completed_at: Union[datetime, None] = Field()
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field()
+    deployment: Missing[DeploymentSimple] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
+    )
+    details_url: str = Field()
+    external_id: str = Field()
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
+    html_url: str = Field()
+    id: int = Field(description="The id of the check.")
+    name: str = Field(description="The name of the check.")
     node_id: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field()
-    description: Union[str, None] = Field()
-    public: bool = Field()
-    closed_at: Union[datetime, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    number: int = Field()
-    short_description: Union[str, None] = Field()
-    deleted_at: Union[datetime, None] = Field()
-    deleted_by: Union[None, SimpleUser] = Field()
+    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
+    pull_requests: List[PullRequestMinimal] = Field()
+    started_at: datetime = Field()
+    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
+        description="The phase of the lifecycle that the check is currently in."
+    )
+    url: str = Field()
 
 
-model_rebuild(ProjectsV2)
+class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-__all__ = ("ProjectsV2",)
+    annotations_count: int = Field()
+    annotations_url: str = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+
+
+model_rebuild(CheckRunWithSimpleCheckSuite)
+model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
+
+__all__ = (
+    "CheckRunWithSimpleCheckSuite",
+    "CheckRunWithSimpleCheckSuitePropOutput",
+)

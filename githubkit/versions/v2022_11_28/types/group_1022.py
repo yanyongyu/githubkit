@@ -10,14 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0007 import WebhookConfigType
 
 
-class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    use_lfs: Literal["opt_in", "opt_out"]
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[List[str]]
+    add_events: NotRequired[List[str]]
+    remove_events: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoImportLfsPatchBodyType",)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)

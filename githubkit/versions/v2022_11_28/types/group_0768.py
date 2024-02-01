@@ -14,44 +14,43 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipTierChangedType(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookSponsorshipCancelledType(TypedDict):
+    """sponsorship cancelled event"""
 
-    action: Literal["tier_changed"]
-    changes: WebhookSponsorshipTierChangedPropChangesType
+    action: Literal["cancelled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
-    sponsorship: WebhookSponsorshipTierChangedPropSponsorshipType
+    sponsorship: WebhookSponsorshipCancelledPropSponsorshipType
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipType(TypedDict):
-    """WebhookSponsorshipTierChangedPropSponsorship"""
+class WebhookSponsorshipCancelledPropSponsorshipType(TypedDict):
+    """WebhookSponsorshipCancelledPropSponsorship"""
 
     created_at: str
     maintainer: NotRequired[
-        WebhookSponsorshipTierChangedPropSponsorshipPropMaintainerType
+        WebhookSponsorshipCancelledPropSponsorshipPropMaintainerType
     ]
     node_id: str
     privacy_level: str
-    sponsor: Union[WebhookSponsorshipTierChangedPropSponsorshipPropSponsorType, None]
+    sponsor: Union[WebhookSponsorshipCancelledPropSponsorshipPropSponsorType, None]
     sponsorable: Union[
-        WebhookSponsorshipTierChangedPropSponsorshipPropSponsorableType, None
+        WebhookSponsorshipCancelledPropSponsorshipPropSponsorableType, None
     ]
-    tier: WebhookSponsorshipTierChangedPropSponsorshipPropTierType
+    tier: WebhookSponsorshipCancelledPropSponsorshipPropTierType
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropMaintainerType(TypedDict):
-    """WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer"""
+class WebhookSponsorshipCancelledPropSponsorshipPropMaintainerType(TypedDict):
+    """WebhookSponsorshipCancelledPropSponsorshipPropMaintainer"""
 
     avatar_url: NotRequired[str]
     events_url: NotRequired[str]
@@ -73,7 +72,7 @@ class WebhookSponsorshipTierChangedPropSponsorshipPropMaintainerType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropSponsorType(TypedDict):
+class WebhookSponsorshipCancelledPropSponsorshipPropSponsorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -99,7 +98,7 @@ class WebhookSponsorshipTierChangedPropSponsorshipPropSponsorType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropSponsorableType(TypedDict):
+class WebhookSponsorshipCancelledPropSponsorshipPropSponsorableType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -125,38 +124,7 @@ class WebhookSponsorshipTierChangedPropSponsorshipPropSponsorableType(TypedDict)
     url: NotRequired[str]
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropTierType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
-
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
-    node_id: str
-
-
-class WebhookSponsorshipTierChangedPropChangesType(TypedDict):
-    """WebhookSponsorshipTierChangedPropChanges"""
-
-    tier: WebhookSponsorshipTierChangedPropChangesPropTierType
-
-
-class WebhookSponsorshipTierChangedPropChangesPropTierType(TypedDict):
-    """WebhookSponsorshipTierChangedPropChangesPropTier"""
-
-    from_: WebhookSponsorshipTierChangedPropChangesPropTierPropFromType
-
-
-class WebhookSponsorshipTierChangedPropChangesPropTierPropFromType(TypedDict):
+class WebhookSponsorshipCancelledPropSponsorshipPropTierType(TypedDict):
     """Sponsorship Tier
 
     The `tier_changed` and `pending_tier_change` will include the original tier
@@ -176,13 +144,10 @@ class WebhookSponsorshipTierChangedPropChangesPropTierPropFromType(TypedDict):
 
 
 __all__ = (
-    "WebhookSponsorshipTierChangedType",
-    "WebhookSponsorshipTierChangedPropSponsorshipType",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropMaintainerType",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropSponsorType",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropSponsorableType",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropTierType",
-    "WebhookSponsorshipTierChangedPropChangesType",
-    "WebhookSponsorshipTierChangedPropChangesPropTierType",
-    "WebhookSponsorshipTierChangedPropChangesPropTierPropFromType",
+    "WebhookSponsorshipCancelledType",
+    "WebhookSponsorshipCancelledPropSponsorshipType",
+    "WebhookSponsorshipCancelledPropSponsorshipPropMaintainerType",
+    "WebhookSponsorshipCancelledPropSponsorshipPropSponsorType",
+    "WebhookSponsorshipCancelledPropSponsorshipPropSponsorableType",
+    "WebhookSponsorshipCancelledPropSponsorshipPropTierType",
 )

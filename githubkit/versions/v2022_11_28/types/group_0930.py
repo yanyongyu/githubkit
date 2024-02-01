@@ -10,18 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0148 import ArtifactType
+
+class ProjectsProjectIdPatchResponse403Type(TypedDict):
+    """ProjectsProjectIdPatchResponse403"""
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[List[str]]
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: List[ArtifactType]
-
-
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200Type",)
+__all__ = ("ProjectsProjectIdPatchResponse403Type",)

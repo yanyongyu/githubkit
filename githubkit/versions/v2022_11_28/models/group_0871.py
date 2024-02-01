@@ -10,25 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0050 import MinimalRepository
+
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seat assignments created.
+    """
+
+    seats_created: int = Field()
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
 
-    total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)

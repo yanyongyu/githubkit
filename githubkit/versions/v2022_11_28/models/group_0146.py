@@ -10,26 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0145 import RateLimit
-from .group_0147 import RateLimitOverviewPropResources
 
+class ProjectColumn(GitHubModel):
+    """Project Column
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
-
-    Rate Limit Overview
+    Project columns contain cards of work.
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
+    url: str = Field()
+    project_url: str = Field()
+    cards_url: str = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    node_id: str = Field()
+    name: str = Field(description="Name of the project column")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(RateLimitOverview)
+model_rebuild(ProjectColumn)
 
-__all__ = ("RateLimitOverview",)
+__all__ = ("ProjectColumn",)

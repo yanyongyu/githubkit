@@ -10,26 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class UserMembershipsOrgsOrgPatchBody(GitHubModel):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: List[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    state: Literal["active"] = Field(
+        description='The state that the membership should be in. Only `"active"` will be accepted.'
     )
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(UserMembershipsOrgsOrgPatchBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("UserMembershipsOrgsOrgPatchBody",)

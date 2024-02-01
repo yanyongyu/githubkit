@@ -10,25 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from datetime import datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0158 import WorkflowRun
+from .group_0156 import ActionsVariable
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+class ReposOwnerRepoActionsVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
     total_count: int = Field()
-    workflow_runs: List[WorkflowRun] = Field()
+    variables: List[ActionsVariable] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200)
+model_rebuild(ReposOwnerRepoActionsVariablesGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200",)

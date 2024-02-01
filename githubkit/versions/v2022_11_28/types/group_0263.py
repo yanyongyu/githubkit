@@ -18,26 +18,26 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class AddedToProjectIssueEventType(TypedDict):
+    """Added to Project Issue Event
 
-    Converted Note to Issue Issue Event
+    Added to Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
+    event: Literal["added_to_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: IntegrationType
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    performed_via_github_app: Union[None, IntegrationType]
+    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class AddedToProjectIssueEventPropProjectCardType(TypedDict):
+    """AddedToProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -48,6 +48,6 @@ class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
+    "AddedToProjectIssueEventType",
+    "AddedToProjectIssueEventPropProjectCardType",
 )

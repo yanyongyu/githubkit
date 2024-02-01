@@ -14,55 +14,84 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookCodeScanningAlertReopenedType(TypedDict):
-    """code_scanning_alert reopened event"""
+class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["reopened"]
-    alert: Union[WebhookCodeScanningAlertReopenedPropAlertType, None]
-    commit_oid: Union[str, None]
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: Union[str, None]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookCodeScanningAlertReopenedPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlert
+class WebhookCodeScanningAlertAppearedInBranchPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlert
 
     The code scanning alert involved in the event.
     """
 
     created_at: datetime
-    dismissed_at: Union[str, None]
+    dismissed_at: Union[datetime, None]
     dismissed_by: Union[
-        WebhookCodeScanningAlertReopenedPropAlertPropDismissedByType, None
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType, None
     ]
-    dismissed_reason: Union[str, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
     html_url: str
     most_recent_instance: NotRequired[
-        Union[WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstanceType, None]
+        Union[
+            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType,
+            None,
+        ]
     ]
     number: int
-    rule: WebhookCodeScanningAlertReopenedPropAlertPropRuleType
+    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType
     state: Literal["open", "dismissed", "fixed"]
-    tool: WebhookCodeScanningAlertReopenedPropAlertPropToolType
+    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType
     url: str
 
 
-class WebhookCodeScanningAlertReopenedPropAlertPropDismissedByType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlertPropDismissedBy"""
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
-class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstanceType(TypedDict):
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType(
+    TypedDict
+):
     """Alert Instance"""
 
     analysis_key: str
@@ -71,19 +100,21 @@ class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstanceType(TypedD
     commit_sha: NotRequired[str]
     environment: str
     location: NotRequired[
-        WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocationType
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType
     ]
     message: NotRequired[
-        WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessageType
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType
     ]
     ref: str
     state: Literal["open", "dismissed", "fixed"]
 
 
-class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocationType(
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType(
     TypedDict
 ):
-    """WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation"""
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
+    ion
+    """
 
     end_column: NotRequired[int]
     end_line: NotRequired[int]
@@ -92,42 +123,38 @@ class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocatio
     start_line: NotRequired[int]
 
 
-class WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessageType(
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType(
     TypedDict
 ):
-    """WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessage"""
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
+    ge
+    """
 
     text: NotRequired[str]
 
 
-class WebhookCodeScanningAlertReopenedPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlertPropRule"""
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
 
     description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
     id: str
-    name: NotRequired[str]
     severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[List[str], None]]
 
 
-class WebhookCodeScanningAlertReopenedPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertReopenedPropAlertPropTool"""
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
 
-    guid: NotRequired[Union[str, None]]
     name: str
     version: Union[str, None]
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedType",
-    "WebhookCodeScanningAlertReopenedPropAlertType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropDismissedByType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropRuleType",
-    "WebhookCodeScanningAlertReopenedPropAlertPropToolType",
+    "WebhookCodeScanningAlertAppearedInBranchType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType",
 )

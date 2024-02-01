@@ -10,67 +10,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0(GitHubModel):
-    """Marketplace Purchase"""
+class WebhookLabelCreated(GitHubModel):
+    """label created event"""
 
-    account: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount = (
-        Field()
+    action: Literal["created"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan = (
-        Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    unit_count: int = Field()
+    label: WebhookLabelCreatedPropLabel = Field(title="Label")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount"""
+class WebhookLabelCreatedPropLabel(GitHubModel):
+    """Label"""
 
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
     id: int = Field()
-    login: str = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan"""
-
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0)
-model_rebuild(
-    WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount
-)
-model_rebuild(WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan)
+model_rebuild(WebhookLabelCreated)
+model_rebuild(WebhookLabelCreatedPropLabel)
 
 __all__ = (
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan",
+    "WebhookLabelCreated",
+    "WebhookLabelCreatedPropLabel",
 )

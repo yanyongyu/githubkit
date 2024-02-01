@@ -10,32 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    total_count: int
-    branch_policies: List[DeploymentBranchPolicyType]
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[List[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
+    ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "DeploymentBranchPolicyType",
+    "ReposOwnerRepoDeploymentsPostBodyType",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
 )

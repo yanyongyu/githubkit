@@ -14,24 +14,25 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0220 import DependabotAlertType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0092 import CustomPropertyValueType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertCreatedType(TypedDict):
-    """Dependabot alert created event"""
+class WebhookCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["created"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
+    new_property_values: List[CustomPropertyValueType]
+    old_property_values: List[CustomPropertyValueType]
 
 
-__all__ = ("WebhookDependabotAlertCreatedType",)
+__all__ = ("WebhookCustomPropertyValuesUpdatedType",)

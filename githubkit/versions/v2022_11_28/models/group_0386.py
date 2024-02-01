@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,21 +20,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookCommitCommentCreated(GitHubModel):
-    """commit_comment created event"""
+class WebhookCodeScanningAlertCreated(GitHubModel):
+    """code_scanning_alert created event"""
 
-    action: Literal["created"] = Field(
-        description="The action performed. Can be `created`."
+    action: Literal["created"] = Field()
+    alert: WebhookCodeScanningAlertCreatedPropAlert = Field(
+        description="The code scanning alert involved in the event."
     )
-    comment: WebhookCommitCommentCreatedPropComment = Field(
-        description="The [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment) resource."
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -50,6 +52,9 @@ class WebhookCommitCommentCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -60,102 +65,143 @@ class WebhookCommitCommentCreated(GitHubModel):
     )
 
 
-class WebhookCommitCommentCreatedPropComment(GitHubModel):
-    """WebhookCommitCommentCreatedPropComment
+class WebhookCodeScanningAlertCreatedPropAlert(GitHubModel):
+    """WebhookCodeScanningAlertCreatedPropAlert
 
-    The [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-
-    comment) resource.
+    The code scanning alert involved in the event.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    created_at: Union[datetime, None] = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
+    )
+    dismissed_at: None = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: None = Field()
+    dismissed_comment: Missing[
+        Union[Annotated[str, Field(max_length=280)], None]
     ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+        default=UNSET,
+        description="The dismissal comment associated with the dismissal of the alert.",
     )
-    body: str = Field(description="The text of the comment.")
-    commit_id: str = Field(
-        description="The SHA of the commit to which the comment applies."
+    dismissed_reason: None = Field(
+        description="The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`."
     )
-    created_at: str = Field()
-    html_url: str = Field()
-    id: int = Field(description="The ID of the commit comment.")
-    line: Union[int, None] = Field(
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    fixed_at: Missing[None] = Field(default=UNSET)
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: Missing[str] = Field(default=UNSET)
+    most_recent_instance: Missing[
+        Union[WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance, None]
+    ] = Field(default=UNSET, title="Alert Instance")
+    number: int = Field(description="The code scanning alert number.")
+    rule: WebhookCodeScanningAlertCreatedPropAlertPropRule = Field()
+    state: Literal["open", "dismissed"] = Field(
+        description="State of a code scanning alert."
     )
-    node_id: str = Field(description="The node ID of the commit comment.")
-    path: Union[str, None] = Field(
-        description="The relative path of the file to which the comment applies."
-    )
-    position: Union[int, None] = Field(
-        description="The line index in the diff to which the comment applies."
-    )
-    reactions: Missing[WebhookCommitCommentCreatedPropCommentPropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    updated_at: str = Field()
-    url: str = Field()
-    user: Union[WebhookCommitCommentCreatedPropCommentPropUser, None] = Field(
-        title="User"
-    )
-
-
-class WebhookCommitCommentCreatedPropCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
+    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropTool, None] = Field()
+    updated_at: Missing[Union[str, None]] = Field(default=UNSET)
     url: str = Field()
 
 
-class WebhookCommitCommentCreatedPropCommentPropUser(GitHubModel):
-    """User"""
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance(GitHubModel):
+    """Alert Instance"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
+    analysis_key: str = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed.",
+    )
+    classifications: Missing[List[str]] = Field(default=UNSET)
+    commit_sha: Missing[str] = Field(default=UNSET)
+    environment: str = Field(
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
+    )
+    location: Missing[
+        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
+    ] = Field(default=UNSET)
+    message: Missing[
+        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage
+    ] = Field(default=UNSET)
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    )
+    state: Literal["open", "dismissed", "fixed"] = Field(
+        description="State of a code scanning alert."
+    )
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation(
+    GitHubModel
+):
+    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage(
+    GitHubModel
+):
+    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
+
+    text: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropRule(GitHubModel):
+    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
+
+    description: str = Field(
+        description="A short description of the rule used to detect the alert."
+    )
+    full_description: Missing[str] = Field(default=UNSET)
+    help_: Missing[Union[str, None]] = Field(default=UNSET, alias="help")
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
+    )
+    id: str = Field(
+        description="A unique identifier for the rule used to detect the alert."
+    )
     name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
+        description="The severity of the alert."
+    )
+    tags: Missing[Union[List[str], None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookCommitCommentCreated)
-model_rebuild(WebhookCommitCommentCreatedPropComment)
-model_rebuild(WebhookCommitCommentCreatedPropCommentPropReactions)
-model_rebuild(WebhookCommitCommentCreatedPropCommentPropUser)
+class WebhookCodeScanningAlertCreatedPropAlertPropTool(GitHubModel):
+    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
+
+    guid: Missing[Union[str, None]] = Field(default=UNSET)
+    name: str = Field(
+        description="The name of the tool used to generate the code scanning analysis alert."
+    )
+    version: Union[str, None] = Field(
+        description="The version of the tool used to detect the alert."
+    )
+
+
+model_rebuild(WebhookCodeScanningAlertCreated)
+model_rebuild(WebhookCodeScanningAlertCreatedPropAlert)
+model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance)
+model_rebuild(
+    WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
+)
+model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage)
+model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropRule)
+model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropTool)
 
 __all__ = (
-    "WebhookCommitCommentCreated",
-    "WebhookCommitCommentCreatedPropComment",
-    "WebhookCommitCommentCreatedPropCommentPropReactions",
-    "WebhookCommitCommentCreatedPropCommentPropUser",
+    "WebhookCodeScanningAlertCreated",
+    "WebhookCodeScanningAlertCreatedPropAlert",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage",
+    "WebhookCodeScanningAlertCreatedPropAlertPropRule",
+    "WebhookCodeScanningAlertCreatedPropAlertPropTool",
 )

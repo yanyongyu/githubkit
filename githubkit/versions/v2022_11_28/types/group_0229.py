@@ -10,18 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0227 import MetadataType
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
 
-
-__all__ = ("DeploymentBranchPolicySettingsType",)
+__all__ = (
+    "ManifestType",
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+)

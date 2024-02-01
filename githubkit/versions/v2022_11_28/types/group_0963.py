@@ -11,19 +11,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    Examples:
-        {'apps': ['my-app']}
+    strict: NotRequired[bool]
+    contexts: NotRequired[List[str]]
+    checks: NotRequired[
+        List[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
+        ]
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
     """
 
-    apps: List[str]
+    context: str
+    app_id: NotRequired[int]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type",)
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
+)

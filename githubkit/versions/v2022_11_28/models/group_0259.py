@@ -19,28 +19,39 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
+from .group_0075 import Team
 from .group_0001 import SimpleUser
 from .group_0005 import Integration
 
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
+class ReviewRequestedIssueEvent(GitHubModel):
+    """Review Requested Issue Event
 
-    Locked Issue Event
+    Review Requested Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
+    event: Literal["review_requested"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration] = Field()
-    lock_reason: Union[str, None] = Field()
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(LockedIssueEvent)
+model_rebuild(ReviewRequestedIssueEvent)
 
-__all__ = ("LockedIssueEvent",)
+__all__ = ("ReviewRequestedIssueEvent",)

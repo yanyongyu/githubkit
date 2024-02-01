@@ -10,19 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0235 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
-class DeploymentBranchPolicyNamePattern(GitHubModel):
-    """Deployment branch policy name pattern"""
 
-    name: str = Field(
-        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
+
+    id: int = Field()
+    node_id: str = Field()
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+    )
+    type: str = Field()
+    reviewers: Missing[
+        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
 
 
-model_rebuild(DeploymentBranchPolicyNamePattern)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-__all__ = ("DeploymentBranchPolicyNamePattern",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

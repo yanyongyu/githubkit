@@ -673,6 +673,9 @@ if TYPE_CHECKING:
         LabelSearchResultItem as LabelSearchResultItem,
     )
     from githubkit.versions.v2022_11_28.models import (
+        PagesDeploymentStatus as PagesDeploymentStatus,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         PagesHttpsCertificate as PagesHttpsCertificate,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1205,6 +1208,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgRulesetConditionsOneof1 as OrgRulesetConditionsOneof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgRulesetConditionsOneof2 as OrgRulesetConditionsOneof2,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationSimpleWebhooks as OrganizationSimpleWebhooks,
@@ -2632,6 +2638,9 @@ if TYPE_CHECKING:
         WebhookRubygemsMetadataPropMetadata as WebhookRubygemsMetadataPropMetadata,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookSecretScanningAlertValidated as WebhookSecretScanningAlertValidated,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipEditedPropChanges as WebhookSponsorshipEditedPropChanges,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2824,9 +2833,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoHooksPostBodyPropConfig as ReposOwnerRepoHooksPostBodyPropConfig,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoPagesDeploymentPostBody as ReposOwnerRepoPagesDeploymentPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPagesPostBodyPropSource as ReposOwnerRepoPagesPostBodyPropSource,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2933,6 +2939,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodespacesGetResponse200 as ReposOwnerRepoCodespacesGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPagesDeploymentsPostBody as ReposOwnerRepoPagesDeploymentsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberPatchBody as ReposOwnerRepoPullsPullNumberPatchBody,
@@ -4828,6 +4837,9 @@ if TYPE_CHECKING:
         RepositoryRuleCommitterEmailPatternPropParameters as RepositoryRuleCommitterEmailPatternPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryPropertySpec as RepositoryRulesetConditionsRepositoryPropertySpec,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryWebhooksPropTemplateRepositoryPropOwner as RepositoryWebhooksPropTemplateRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5240,6 +5252,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryPropertyTarget as RepositoryRulesetConditionsRepositoryPropertyTarget,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropSecretScanningPushProtection as SecurityAndAnalysisPropSecretScanningPushProtection,
@@ -8959,6 +8974,9 @@ if TYPE_CHECKING:
         RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -10716,8 +10734,12 @@ else:
             "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",
             "RepositoryRulesetConditionsRepositoryIdTarget",
             "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",
+            "RepositoryRulesetConditionsRepositoryPropertyTarget",
+            "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
+            "RepositoryRulesetConditionsRepositoryPropertySpec",
             "OrgRulesetConditionsOneof0",
             "OrgRulesetConditionsOneof1",
+            "OrgRulesetConditionsOneof2",
             "RepositoryRuleCreation",
             "RepositoryRuleDeletion",
             "RepositoryRuleRequiredSignatures",
@@ -11063,6 +11085,7 @@ else:
             "PageBuildPropError",
             "PageBuildStatus",
             "PageDeployment",
+            "PagesDeploymentStatus",
             "PagesHealthCheck",
             "PagesHealthCheckPropDomain",
             "PagesHealthCheckPropAltDomain",
@@ -13492,6 +13515,7 @@ else:
             "WebhookSecretScanningAlertReopened",
             "WebhookSecretScanningAlertResolved",
             "WebhookSecretScanningAlertRevoked",
+            "WebhookSecretScanningAlertValidated",
             "WebhookSecurityAdvisoryPublished",
             "WebhookSecurityAdvisoryPublishedPropSecurityAdvisory",
             "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss",
@@ -14064,7 +14088,7 @@ else:
             "ReposOwnerRepoPagesPostBodyPropSource",
             "ReposOwnerRepoPagesPostBodyAnyof0",
             "ReposOwnerRepoPagesPostBodyAnyof1",
-            "ReposOwnerRepoPagesDeploymentPostBody",
+            "ReposOwnerRepoPagesDeploymentsPostBody",
             "ReposOwnerRepoProjectsPostBody",
             "ReposOwnerRepoPropertiesValuesPatchBody",
             "ReposOwnerRepoPullsPostBody",

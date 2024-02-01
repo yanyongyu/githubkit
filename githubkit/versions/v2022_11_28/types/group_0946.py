@@ -10,13 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
-
-    enable_debug_logging: NotRequired[bool]
+from .group_0151 import ArtifactType
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",)
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: List[ArtifactType]
+
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",)

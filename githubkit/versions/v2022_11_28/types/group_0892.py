@@ -13,13 +13,13 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0091 import OrgCustomPropertyType
+
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: NotRequired[List[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: List[OrgCustomPropertyType]
-
-
-__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",)

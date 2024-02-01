@@ -11,67 +11,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0229 import DeploymentBranchPolicySettingsType
-from .group_0231 import EnvironmentPropProtectionRulesItemsAnyof1Type
+from .group_0227 import MetadataType
 
 
-class EnvironmentType(TypedDict):
-    """Environment
+class SnapshotType(TypedDict):
+    """snapshot
 
-    Details of a deployment environment
+    Create a new snapshot of a repository's dependencies.
     """
 
-    id: int
-    node_id: str
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: datetime
+
+
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
     name: str
+    version: str
     url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    protection_rules: NotRequired[
-        List[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class SnapshotPropManifestsType(TypedDict):
+    """SnapshotPropManifests
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[List[EnvironmentType]]
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
+    """
 
 
 __all__ = (
-    "EnvironmentType",
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "SnapshotType",
+    "SnapshotPropJobType",
+    "SnapshotPropDetectorType",
+    "SnapshotPropManifestsType",
 )

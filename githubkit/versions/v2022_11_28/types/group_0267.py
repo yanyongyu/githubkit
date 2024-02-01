@@ -10,18 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0034 import IssueType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class TimelineCrossReferencedEventPropSourceType(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
+class LabelType(TypedDict):
+    """Label
 
-    type: NotRequired[str]
-    issue: NotRequired[IssueType]
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
-__all__ = ("TimelineCrossReferencedEventPropSourceType",)
+__all__ = ("LabelType",)

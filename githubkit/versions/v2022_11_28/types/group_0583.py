@@ -14,40 +14,80 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookOrganizationDeletedType(TypedDict):
-    """organization deleted event"""
+class WebhookMilestoneEditedType(TypedDict):
+    """milestone edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookMilestoneEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhookOrganizationDeletedPropMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    milestone: WebhookMilestoneEditedPropMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookOrganizationDeletedPropMembershipType(TypedDict):
-    """Membership
+class WebhookMilestoneEditedPropChangesType(TypedDict):
+    """WebhookMilestoneEditedPropChanges
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+    The changes to the milestone if the action was `edited`.
     """
 
-    organization_url: str
-    role: str
-    state: str
+    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
+    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
+    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
+
+
+class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhookMilestoneEditedPropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
     url: str
-    user: Union[WebhookOrganizationDeletedPropMembershipPropUserType, None]
 
 
-class WebhookOrganizationDeletedPropMembershipPropUserType(TypedDict):
+class WebhookMilestoneEditedPropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -69,12 +109,16 @@ class WebhookOrganizationDeletedPropMembershipPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookOrganizationDeletedType",
-    "WebhookOrganizationDeletedPropMembershipType",
-    "WebhookOrganizationDeletedPropMembershipPropUserType",
+    "WebhookMilestoneEditedType",
+    "WebhookMilestoneEditedPropChangesType",
+    "WebhookMilestoneEditedPropChangesPropDescriptionType",
+    "WebhookMilestoneEditedPropChangesPropDueOnType",
+    "WebhookMilestoneEditedPropChangesPropTitleType",
+    "WebhookMilestoneEditedPropMilestoneType",
+    "WebhookMilestoneEditedPropMilestonePropCreatorType",
 )

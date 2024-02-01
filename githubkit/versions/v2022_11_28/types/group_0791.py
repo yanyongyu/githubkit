@@ -10,72 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0163 import DeploymentType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
+
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[str]
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[List[Union[str, None]]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: NotRequired[
+        List[
+            Union[
+                WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType, None
+            ]
+        ]
+    ]
+    url: NotRequired[str]
 
 
-class WebhookWorkflowJobWaitingType(TypedDict):
-    """workflow_job waiting event"""
-
-    action: Literal["waiting"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: List[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: datetime
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    steps: List[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType]
-    url: str
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
 
 
 __all__ = (
-    "WebhookWorkflowJobWaitingType",
-    "WebhookWorkflowJobWaitingPropWorkflowJobType",
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType",
 )

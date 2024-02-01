@@ -12,23 +12,29 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0091 import OrgCustomProperty
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookDelete(GitHubModel):
-    """delete event"""
+class WebhookCustomPropertyCreated(GitHubModel):
+    """custom property created event"""
 
+    action: Literal["created"] = Field()
+    definition: OrgCustomProperty = Field(
+        title="Organization Custom Property",
+        description="Custom property defined on an organization",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,30 +45,17 @@ class WebhookDelete(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pusher_type: str = Field(
-        description="The pusher type for the event. Can be either `user` or a deploy key."
-    )
-    ref: str = Field(
-        description="The [`git ref`](https://docs.github.com/rest/git/refs#get-a-reference) resource."
-    )
-    ref_type: Literal["tag", "branch"] = Field(
-        description="The type of Git ref object deleted in the repository."
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookDelete)
+model_rebuild(WebhookCustomPropertyCreated)
 
-__all__ = ("WebhookDelete",)
+__all__ = ("WebhookCustomPropertyCreated",)

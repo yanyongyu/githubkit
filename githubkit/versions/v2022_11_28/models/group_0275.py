@@ -10,16 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from datetime import datetime
+from typing import List, Union, Literal
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0001 import SimpleUser
+from .group_0005 import Integration
 
 
-class Language(ExtraGitHubModel):
-    """Language
+class TimelineUnassignedIssueEvent(GitHubModel):
+    """Timeline Unassigned Issue Event
 
-    Language
+    Timeline Unassigned Issue Event
     """
 
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["unassigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
-model_rebuild(Language)
 
-__all__ = ("Language",)
+model_rebuild(TimelineUnassignedIssueEvent)
+
+__all__ = ("TimelineUnassignedIssueEvent",)

@@ -13,20 +13,18 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0098 import RepositoryRulesetConditionsPropRefNameType
-from .group_0100 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+from .group_0104 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
 )
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Conditions to target repositories by name and refs by name
+    Parameters for a repository property condition
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
 
 
-__all__ = ("OrgRulesetConditionsOneof0Type",)
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTargetType",)

@@ -14,42 +14,40 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0362 import ProjectsV2ItemType
-from .group_0352 import SimpleInstallationType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0366 import ProjectsV2ItemType
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemConvertedType(TypedDict):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    action: Literal["converted"]
+    changes: WebhookProjectsV2ItemConvertedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
 
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    content_type: NotRequired[
+        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
     ]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
 
     from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    to: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemReorderedType",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
+    "WebhookProjectsV2ItemConvertedType",
+    "WebhookProjectsV2ItemConvertedPropChangesType",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
 )

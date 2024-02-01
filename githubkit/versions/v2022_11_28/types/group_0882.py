@@ -10,16 +10,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class OrgsOrgOrganizationRolesPostBodyType(TypedDict):
-    """OrgsOrgOrganizationRolesPostBody"""
-
-    name: str
-    description: NotRequired[str]
-    permissions: List[str]
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("OrgsOrgOrganizationRolesPostBodyType",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)

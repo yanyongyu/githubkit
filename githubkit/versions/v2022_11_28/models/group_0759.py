@@ -19,17 +19,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
+from .group_0367 import SecretScanningAlertWebhook
 
 
-class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningAlertResolved(GitHubModel):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["withdrawn"] = Field()
+    action: Literal["resolved"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,13 +47,9 @@ class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
@@ -60,127 +58,6 @@ class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
     )
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubModel):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+model_rebuild(WebhookSecretScanningAlertResolved)
 
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss = Field()
-    cwes: List[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems
-    ] = Field()
-    description: str = Field()
-    ghsa_id: str = Field()
-    identifiers: List[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems
-    ] = Field()
-    published_at: str = Field()
-    references: List[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems
-    ] = Field()
-    severity: str = Field()
-    summary: str = Field()
-    updated_at: str = Field()
-    vulnerabilities: List[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems
-    ] = Field()
-    withdrawn_at: str = Field()
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss(GitHubModel):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
-
-    score: float = Field()
-    vector_string: Union[str, None] = Field()
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field()
-    name: str = Field()
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str = Field()
-    value: str = Field()
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
-
-    url: str = Field()
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
-        None,
-    ] = Field()
-    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = (
-        Field()
-    )
-    severity: str = Field()
-    vulnerable_version_range: str = Field()
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    FirstPatchedVersion
-    """
-
-    identifier: str = Field()
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    Package
-    """
-
-    ecosystem: str = Field()
-    name: str = Field()
-
-
-model_rebuild(WebhookSecurityAdvisoryWithdrawn)
-model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory)
-model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss)
-model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems)
-model_rebuild(
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems
-)
-model_rebuild(
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion
-)
-model_rebuild(
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage
-)
-
-__all__ = (
-    "WebhookSecurityAdvisoryWithdrawn",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
-)
+__all__ = ("WebhookSecretScanningAlertResolved",)

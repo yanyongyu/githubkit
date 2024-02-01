@@ -21,27 +21,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0014 import AppPermissions
 
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    access_token: str = Field(
-        description="The access token used to authenticate to the GitHub API."
-    )
-    target: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
-    )
-    target_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
-    )
     repositories: Missing[List[str]] = Field(
         default=UNSET,
-        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+        description="List of repository names that the token should have access to",
     )
     repository_ids: Missing[List[int]] = Field(
         default=UNSET,
-        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+        description="List of repository IDs that the token should have access to",
     )
     permissions: Missing[AppPermissions] = Field(
         default=UNSET,
@@ -50,6 +39,6 @@ class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
     )
 
 
-model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBody",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

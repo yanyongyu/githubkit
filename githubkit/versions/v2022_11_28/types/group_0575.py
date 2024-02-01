@@ -14,109 +14,123 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookMetaDeletedType(TypedDict):
-    """meta deleted event"""
+class WebhookMembershipAddedType(TypedDict):
+    """membership added event"""
 
-    action: Literal["deleted"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    hook: WebhookMetaDeletedPropHookType
-    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserWebhooksType]
+    member: Union[WebhookMembershipAddedPropMemberType, None]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderType, None]
+    team: WebhookMembershipAddedPropTeamType
 
 
-class WebhookMetaDeletedPropHookType(TypedDict):
-    """WebhookMetaDeletedPropHook
+class WebhookMembershipAddedPropMemberType(TypedDict):
+    """User"""
 
-    The modified webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookMembershipAddedPropSenderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookMembershipAddedPropTeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigType
-    created_at: str
-    events: List[
-        Literal[
-            "*",
-            "branch_protection_rule",
-            "check_run",
-            "check_suite",
-            "code_scanning_alert",
-            "commit_comment",
-            "create",
-            "delete",
-            "deployment",
-            "deployment_status",
-            "deploy_key",
-            "discussion",
-            "discussion_comment",
-            "fork",
-            "gollum",
-            "issues",
-            "issue_comment",
-            "label",
-            "member",
-            "membership",
-            "meta",
-            "milestone",
-            "organization",
-            "org_block",
-            "package",
-            "page_build",
-            "project",
-            "project_card",
-            "project_column",
-            "public",
-            "pull_request",
-            "pull_request_review",
-            "pull_request_review_comment",
-            "pull_request_review_thread",
-            "push",
-            "registry_package",
-            "release",
-            "repository",
-            "repository_import",
-            "repository_vulnerability_alert",
-            "secret_scanning_alert",
-            "secret_scanning_alert_location",
-            "security_and_analysis",
-            "star",
-            "status",
-            "team",
-            "team_add",
-            "watch",
-            "workflow_job",
-            "workflow_run",
-            "repository_dispatch",
-            "projects_v2_item",
-        ]
-    ]
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
     id: int
+    members_url: NotRequired[str]
     name: str
-    type: str
-    updated_at: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhookMembershipAddedPropTeamPropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
+class WebhookMembershipAddedPropTeamPropParentType(TypedDict):
+    """WebhookMembershipAddedPropTeamPropParent"""
 
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
     url: str
 
 
 __all__ = (
-    "WebhookMetaDeletedType",
-    "WebhookMetaDeletedPropHookType",
-    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMembershipAddedType",
+    "WebhookMembershipAddedPropMemberType",
+    "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropTeamType",
+    "WebhookMembershipAddedPropTeamPropParentType",
 )

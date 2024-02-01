@@ -10,51 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class RuleSuiteType(TypedDict):
-    """Rule Suite
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    Response
+    workflows: List[RepositoryRuleParamsWorkflowFileReferenceType]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
+    path: str
     ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail"]]
-    rule_evaluations: NotRequired[List[RuleSuitePropRuleEvaluationsItemsType]]
-
-
-class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItems"""
-
-    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
-    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
-    result: NotRequired[Literal["pass", "fail"]]
-    rule_type: NotRequired[str]
-    details: NotRequired[str]
-
-
-class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
-
-    type: NotRequired[str]
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
+    repository_id: int
+    sha: NotRequired[str]
 
 
 __all__ = (
-    "RuleSuiteType",
-    "RuleSuitePropRuleEvaluationsItemsType",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+    "RepositoryRuleWorkflowsPropParametersType",
+    "RepositoryRuleParamsWorkflowFileReferenceType",
 )

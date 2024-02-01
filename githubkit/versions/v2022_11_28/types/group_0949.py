@@ -10,18 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict
 
-from .group_0153 import ActionsVariableType
+
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+
+    environment_ids: List[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
-class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsVariablesGetResponse200"""
-
-    total_count: int
-    variables: List[ActionsVariableType]
-
-
-__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",)

@@ -14,26 +14,77 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
 
+class TimelineCommittedEventType(TypedDict):
+    """Timeline Committed Event
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
-
-    Timeline Assigned Issue Event
+    Timeline Committed Event
     """
 
-    id: int
+    event: NotRequired[Literal["committed"]]
+    sha: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["assigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    assignee: SimpleUserType
+    author: TimelineCommittedEventPropAuthorType
+    committer: TimelineCommittedEventPropCommitterType
+    message: str
+    tree: TimelineCommittedEventPropTreeType
+    parents: List[TimelineCommittedEventPropParentsItemsType]
+    verification: TimelineCommittedEventPropVerificationType
+    html_url: str
 
 
-__all__ = ("TimelineAssignedIssueEventType",)
+class TimelineCommittedEventPropAuthorType(TypedDict):
+    """TimelineCommittedEventPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterType(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropTreeType(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropParentsItemsType(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropVerificationType(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+
+
+__all__ = (
+    "TimelineCommittedEventType",
+    "TimelineCommittedEventPropAuthorType",
+    "TimelineCommittedEventPropCommitterType",
+    "TimelineCommittedEventPropTreeType",
+    "TimelineCommittedEventPropParentsItemsType",
+    "TimelineCommittedEventPropVerificationType",
+)

@@ -10,15 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    encrypted_value: str
+    key_id: str
 
 
-__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)
+__all__ = (
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+)

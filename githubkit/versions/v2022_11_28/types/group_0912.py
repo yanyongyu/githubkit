@@ -10,15 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsCardsCardIdPatchBodyType(TypedDict):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
-    note: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",)

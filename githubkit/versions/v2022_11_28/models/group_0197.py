@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,23 +19,34 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningSarifsStatus(GitHubModel):
-    """CodeScanningSarifsStatus"""
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
-    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
-        default=UNSET,
-        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    Configuration for code scanning default setup.
+    """
+
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code scanning default setup."
     )
-    analyses_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The REST API URL for getting the analyses associated with the upload.",
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
     )
-    errors: Missing[Union[List[str], None]] = Field(
-        default=UNSET,
-        description="Any errors that ocurred during processing of the delivery.",
-    )
+    languages: Missing[
+        List[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(CodeScanningSarifsStatus)
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-__all__ = ("CodeScanningSarifsStatus",)
+__all__ = ("CodeScanningDefaultSetupUpdate",)

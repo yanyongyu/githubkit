@@ -14,13 +14,45 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class RepositoryRuleCreationType(TypedDict):
+    """creation
 
-    Prevent merge commits from being pushed to matching refs.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["required_linear_history"]
+    type: Literal["creation"]
 
 
-__all__ = ("RepositoryRuleRequiredLinearHistoryType",)
+class RepositoryRuleDeletionType(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleRequiredSignaturesType(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
+
+
+__all__ = (
+    "RepositoryRuleCreationType",
+    "RepositoryRuleDeletionType",
+    "RepositoryRuleRequiredSignaturesType",
+    "RepositoryRuleNonFastForwardType",
+)

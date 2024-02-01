@@ -10,18 +10,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0071 import CodespaceType
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesGetResponse200"""
+class ReposOwnerRepoCheckSuitesPostBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPostBody"""
 
-    total_count: int
-    codespaces: List[CodespaceType]
+    head_sha: str
 
 
-__all__ = ("ReposOwnerRepoCodespacesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoCheckSuitesPostBodyType",)

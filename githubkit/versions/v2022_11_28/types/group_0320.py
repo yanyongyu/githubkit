@@ -12,21 +12,19 @@ from __future__ import annotations
 
 from typing import Union
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class StargazerType(TypedDict):
+    """Stargazer
 
-    Repository invitations let you manage who you collaborate with.
+    Stargazer
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: datetime
-    url: str
-    repository_url: str
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("RepositorySubscriptionType",)
+__all__ = ("StargazerType",)

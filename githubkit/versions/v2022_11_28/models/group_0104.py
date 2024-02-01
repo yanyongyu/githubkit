@@ -18,22 +18,38 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0098 import RepositoryRulesetConditionsPropRefName
-from .group_0102 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
+    GitHubModel
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-class OrgRulesetConditionsOneof1(GitHubModel):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
-    """
-
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
+    include: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
     )
 
 
-model_rebuild(OrgRulesetConditionsOneof1)
+class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
 
-__all__ = ("OrgRulesetConditionsOneof1",)
+    Parameters for a targeting a repository property
+    """
+
+    name: str = Field(description="The name of the repository property to target")
+    property_values: List[str] = Field(
+        description="The values to match for the repository property"
+    )
+
+
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
+
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
+    "RepositoryRulesetConditionsRepositoryPropertySpec",
+)

@@ -20,16 +20,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0015 import Installation
-from .group_0351 import EnterpriseWebhooks
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationSuspend(GitHubModel):
-    """installation suspend event"""
+class WebhookInstallationDeleted(GitHubModel):
+    """installation deleted event"""
 
-    action: Literal["suspend"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,7 +42,7 @@ class WebhookInstallationSuspend(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     repositories: Missing[
-        List[WebhookInstallationSuspendPropRepositoriesItems]
+        List[WebhookInstallationDeletedPropRepositoriesItems]
     ] = Field(
         default=UNSET,
         description="An array of repository objects that the installation can access.",
@@ -59,8 +59,8 @@ class WebhookInstallationSuspend(GitHubModel):
     )
 
 
-class WebhookInstallationSuspendPropRepositoriesItems(GitHubModel):
-    """WebhookInstallationSuspendPropRepositoriesItems"""
+class WebhookInstallationDeletedPropRepositoriesItems(GitHubModel):
+    """WebhookInstallationDeletedPropRepositoriesItems"""
 
     full_name: str = Field()
     id: int = Field(description="Unique identifier of the repository")
@@ -69,10 +69,10 @@ class WebhookInstallationSuspendPropRepositoriesItems(GitHubModel):
     private: bool = Field(description="Whether the repository is private or public.")
 
 
-model_rebuild(WebhookInstallationSuspend)
-model_rebuild(WebhookInstallationSuspendPropRepositoriesItems)
+model_rebuild(WebhookInstallationDeleted)
+model_rebuild(WebhookInstallationDeletedPropRepositoriesItems)
 
 __all__ = (
-    "WebhookInstallationSuspend",
-    "WebhookInstallationSuspendPropRepositoriesItems",
+    "WebhookInstallationDeleted",
+    "WebhookInstallationDeletedPropRepositoriesItems",
 )

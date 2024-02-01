@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,16 +18,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0148 import Artifact
+from .group_0062 import Runner
 
 
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
     total_count: int = Field()
-    artifacts: List[Artifact] = Field()
+    runners: List[Runner] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200)
+model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)

@@ -14,18 +14,18 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCodeScanningAlertClosedByUserType(TypedDict):
+    """code_scanning_alert closed_by_user event"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    action: Literal["closed_by_user"]
+    alert: WebhookCodeScanningAlertClosedByUserPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,31 +35,61 @@ class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertReopenedByUserPropAlert
+class WebhookCodeScanningAlertClosedByUserPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlert
 
     The code scanning alert involved in the event.
     """
 
     created_at: datetime
-    dismissed_at: None
-    dismissed_by: None
-    dismissed_reason: None
+    dismissed_at: datetime
+    dismissed_by: Union[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType, None
+    ]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
     html_url: str
     most_recent_instance: NotRequired[
         Union[
-            WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType,
+            WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType,
             None,
         ]
     ]
     number: int
-    rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType
-    state: Literal["open", "fixed"]
-    tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType
+    rule: WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType
+    state: Literal["dismissed", "fixed"]
+    tool: WebhookCodeScanningAlertClosedByUserPropAlertPropToolType
     url: str
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType(
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType(
     TypedDict
 ):
     """Alert Instance"""
@@ -70,21 +100,19 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType(
     commit_sha: NotRequired[str]
     environment: str
     location: NotRequired[
-        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType
     ]
     message: NotRequired[
-        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType
     ]
     ref: str
     state: Literal["open", "dismissed", "fixed"]
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType(
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType(
     TypedDict
 ):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocatio
-    n
-    """
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation"""
 
     end_column: NotRequired[int]
     end_line: NotRequired[int]
@@ -93,35 +121,42 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropL
     start_line: NotRequired[int]
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType(
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType(
     TypedDict
 ):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage"""
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage"""
 
     text: NotRequired[str]
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropRule"""
+class WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropRule"""
 
     description: str
+    full_description: NotRequired[str]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
     id: str
+    name: NotRequired[str]
     severity: Union[None, Literal["none", "note", "warning", "error"]]
+    tags: NotRequired[Union[List[str], None]]
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropTool"""
+class WebhookCodeScanningAlertClosedByUserPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropTool"""
 
+    guid: NotRequired[Union[str, None]]
     name: str
     version: Union[str, None]
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedByUserType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType",
+    "WebhookCodeScanningAlertClosedByUserType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropToolType",
 )

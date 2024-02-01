@@ -10,60 +10,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
-    ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
-    ]
+    total_count: int
+    workflows: List[WorkflowType]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
+class WorkflowType(TypedDict):
+    """Workflow
 
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
+    A GitHub Actions workflow
     """
 
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ]
+    created_at: datetime
+    updated_at: datetime
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[datetime]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "WorkflowType",
 )

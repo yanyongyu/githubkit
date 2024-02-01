@@ -10,16 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0050 import MinimalRepositoryType
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    The total number of seat assignments cancelled.
-    """
-
-    seats_cancelled: int
+    total_count: int
+    repositories: List[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)

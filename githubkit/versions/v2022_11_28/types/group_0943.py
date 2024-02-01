@@ -10,18 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0150 import JobType
+from typing import List
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    total_count: int
-    jobs: List[JobType]
+    labels: List[str]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",)

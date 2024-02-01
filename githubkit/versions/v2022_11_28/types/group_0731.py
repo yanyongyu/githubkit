@@ -10,28 +10,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0732 import WebhookRepositoryVulnerabilityAlertCreatePropAlertType
+from .group_0109 import RepositoryRuleUpdateType
+from .group_0128 import RepositoryRuleWorkflowsType
+from .group_0114 import RepositoryRulePullRequestType
+from .group_0126 import RepositoryRuleTagNamePatternType
+from .group_0124 import RepositoryRuleBranchNamePatternType
+from .group_0112 import RepositoryRuleRequiredDeploymentsType
+from .group_0116 import RepositoryRuleRequiredStatusChecksType
+from .group_0118 import RepositoryRuleCommitMessagePatternType
+from .group_0111 import RepositoryRuleRequiredLinearHistoryType
+from .group_0122 import RepositoryRuleCommitterEmailPatternType
+from .group_0120 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0732 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
+)
+from .group_0108 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
 
-class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
-    """repository_vulnerability_alert create event"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
 
-    action: Literal["create"]
-    alert: WebhookRepositoryVulnerabilityAlertCreatePropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    added: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+            ]
+        ]
+    ]
+    deleted: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+            ]
+        ]
+    ]
+    updated: NotRequired[
+        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
+    ]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreateType",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)

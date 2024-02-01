@@ -10,138 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationType
+from .group_0050 import MinimalRepositoryType
+from .group_0159 import PullRequestMinimalType
 
 
-class PersonalAccessTokenRequestType(TypedDict):
-    """Personal Access Token Request
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
 
-    Details of a Personal Access Token Request.
+    A suite of checks performed on the code of a given code change
     """
 
-    id: int
-    owner: SimpleUserType
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
-    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[List[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
-    created_at: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
-
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
-
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[IntegrationType]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
     ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
+    created_at: NotRequired[datetime]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[List[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
     ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
+    updated_at: NotRequired[datetime]
+    url: NotRequired[str]
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultPropOtherType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
-
-
-__all__ = (
-    "PersonalAccessTokenRequestType",
-    "PersonalAccessTokenRequestPropRepositoriesItemsType",
-    "PersonalAccessTokenRequestPropPermissionsAddedType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsResultType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
-)
+__all__ = ("SimpleCheckSuiteType",)

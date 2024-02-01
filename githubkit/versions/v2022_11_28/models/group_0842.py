@@ -10,24 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import Annotated
+from typing import List, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
-
-    labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
-        description="The names of the custom labels to add to the runner.",
-    )
+from .group_0062 import Runner
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
+class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)
+    total_count: int = Field()
+    runners: List[Runner] = Field()
+
+
+model_rebuild(OrgsOrgActionsRunnersGetResponse200)
+
+__all__ = ("OrgsOrgActionsRunnersGetResponse200",)

@@ -10,29 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
 
 
-class StatusType(TypedDict):
-    """Status
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    The status of a commit.
-    """
-
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("StatusType",)
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = (
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropBaseType",
+)

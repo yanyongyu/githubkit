@@ -10,47 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0801 import WebhookWorkflowRunInProgressPropWorkflowRunType
+from .group_0801 import (
+    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
+    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
+)
 
 
-class WebhookWorkflowRunInProgressType(TypedDict):
-    """workflow_run in_progress event"""
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType(
+    TypedDict
+):
+    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems"""
 
-    action: Literal["in_progress"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    workflow: Union[WebhookWorkflowRunInProgressPropWorkflowType, None]
-    workflow_run: WebhookWorkflowRunInProgressPropWorkflowRunType
-
-
-class WebhookWorkflowRunInProgressPropWorkflowType(TypedDict):
-    """Workflow"""
-
-    badge_url: str
-    created_at: datetime
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: datetime
+    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
+    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
+    id: float
+    number: float
     url: str
 
 
-__all__ = (
-    "WebhookWorkflowRunInProgressType",
-    "WebhookWorkflowRunInProgressPropWorkflowType",
-)
+__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType",)

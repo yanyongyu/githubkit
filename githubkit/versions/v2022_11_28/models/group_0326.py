@@ -12,21 +12,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ContentTraffic(GitHubModel):
-    """Content Traffic
+class TagProtection(GitHubModel):
+    """Tag protection
 
-    Content Traffic
+    Tag protection
     """
 
-    path: str = Field()
-    title: str = Field()
-    count: int = Field()
-    uniques: int = Field()
+    id: Missing[int] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    pattern: str = Field()
 
 
-model_rebuild(ContentTraffic)
+model_rebuild(TagProtection)
 
-__all__ = ("ContentTraffic",)
+__all__ = ("TagProtection",)

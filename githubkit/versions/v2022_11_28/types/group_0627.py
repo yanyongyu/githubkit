@@ -14,58 +14,38 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0362 import ProjectsV2ItemType
-from .group_0352 import SimpleInstallationType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0366 import ProjectsV2ItemType
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemEditedType(TypedDict):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectsV2ItemArchivedType(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0Type,
-            WebhookProjectsV2ItemEditedPropChangesOneof1Type,
-        ]
-    ]
+    action: Literal["archived"]
+    changes: WebhookProjectsV2ItemArchivedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof0Type(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
+class WebhookProjectsV2ItemArchivedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemArchivedPropChanges"""
 
-    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
-
-    field_node_id: NotRequired[str]
-    field_type: NotRequired[str]
+    archived_at: NotRequired[WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType]
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof1Type(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
+class WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType(TypedDict):
+    """WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt"""
 
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    from_: NotRequired[Union[datetime, None]]
+    to: NotRequired[Union[datetime, None]]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemEditedType",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
+    "WebhookProjectsV2ItemArchivedType",
+    "WebhookProjectsV2ItemArchivedPropChangesType",
+    "WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType",
 )

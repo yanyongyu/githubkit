@@ -10,25 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1"""
-
-    affected_package_name: NotRequired[str]
-    affected_range: NotRequired[str]
-    created_at: NotRequired[str]
-    external_identifier: NotRequired[str]
-    external_reference: NotRequired[Union[str, None]]
-    fixed_in: NotRequired[str]
-    ghsa_id: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    severity: NotRequired[str]
-    state: Literal["open"]
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0736 import WebhookRepositoryVulnerabilityAlertCreatePropAlertType
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type",)
+class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
+    """repository_vulnerability_alert create event"""
+
+    action: Literal["create"]
+    alert: WebhookRepositoryVulnerabilityAlertCreatePropAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreateType",)

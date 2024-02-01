@@ -14,68 +14,22 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0163 import DeploymentType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookWorkflowJobInProgressType(TypedDict):
-    """workflow_job in_progress event"""
+class WebhookWatchStartedType(TypedDict):
+    """watch started event"""
 
-    action: Literal["in_progress"]
+    action: Literal["started"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
-    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: List[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[Union[int, None], None]
-    runner_group_name: Union[Union[str, None], None]
-    runner_id: Union[Union[int, None], None]
-    runner_name: Union[Union[str, None], None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed"]
-    head_branch: Union[Union[str, None], None]
-    workflow_name: Union[Union[str, None], None]
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType]
-    url: str
-
-
-class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
-
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
-    name: str
-    number: int
-    started_at: Union[Union[str, None], None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
-
-
-__all__ = (
-    "WebhookWorkflowJobInProgressType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
-)
+__all__ = ("WebhookWatchStartedType",)

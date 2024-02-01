@@ -10,20 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0118 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
+
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    required_status_checks: List[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
 
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Required status check
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    context: str
+    integration_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)
+__all__ = (
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+)

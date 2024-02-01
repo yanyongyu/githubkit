@@ -17,21 +17,12 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the custom app that will be enabled on the environment.",
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
-)
+model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
-)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)

@@ -10,123 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
 
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type(TypedDict):
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1"""
 
-class WebhookMarketplacePurchasePendingChangeType(TypedDict):
-    """marketplace_purchase pending_change event"""
-
-    action: Literal["pending_change"]
-    effective_date: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
+    account: NotRequired[
+        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType
     ]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    billing_cycle: NotRequired[str]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    next_billing_date: Union[str, None]
+    on_free_trial: NotRequired[bool]
+    plan: NotRequired[
+        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType
+    ]
+    unit_count: NotRequired[int]
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType(TypedDict):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchase"""
-
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[Union[str, None], None]
-    next_billing_date: Union[Union[str, None], None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType(
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount"""
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccount"""
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[Union[str, None], None]
-    type: str
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organization_billing_email: NotRequired[Union[str, None]]
+    type: NotRequired[str]
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlanType(
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan"""
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlan"""
 
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[Union[str, None], None]
-    yearly_price_in_cents: int
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
-    TypedDict
-):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
-    t
-    """
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    bullets: NotRequired[List[Union[str, None]]]
+    description: NotRequired[str]
+    has_free_trial: NotRequired[bool]
+    id: NotRequired[int]
+    monthly_price_in_cents: NotRequired[int]
+    name: NotRequired[str]
+    price_model: NotRequired[Literal["FREE", "FLAT_RATE", "PER_UNIT"]]
+    unit_name: NotRequired[Union[str, None]]
+    yearly_price_in_cents: NotRequired[int]
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeType",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlanType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType",
 )

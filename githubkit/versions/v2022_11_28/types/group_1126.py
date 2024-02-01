@@ -10,19 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0017 import RepositoryType
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserEmailVisibilityPatchBodyType(TypedDict):
+    """UserEmailVisibilityPatchBody"""
 
-    total_count: int
-    repository_selection: NotRequired[str]
-    repositories: List[RepositoryType]
+    visibility: Literal["public", "private"]
 
 
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)
+__all__ = ("UserEmailVisibilityPatchBodyType",)

@@ -14,31 +14,24 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0134 import RepositoryAdvisoryType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryDispatchSampleType(TypedDict):
-    """repository_dispatch event"""
+class WebhookRepositoryAdvisoryReportedType(TypedDict):
+    """Repository advisory reported event"""
 
-    action: Literal["sample.collected"]
-    branch: str
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    action: Literal["reported"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    repository_advisory: RepositoryAdvisoryType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookRepositoryDispatchSamplePropClientPayloadType(TypedDict):
-    """WebhookRepositoryDispatchSamplePropClientPayload"""
-
-
-__all__ = (
-    "WebhookRepositoryDispatchSampleType",
-    "WebhookRepositoryDispatchSamplePropClientPayloadType",
-)
+__all__ = ("WebhookRepositoryAdvisoryReportedType",)

@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipCreated(GitHubModel):
-    """sponsorship created event"""
+class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
+    """security_advisory withdrawn event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["withdrawn"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,140 +50,137 @@ class WebhookSponsorshipCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sponsorship: WebhookSponsorshipCreatedPropSponsorship = Field()
 
 
-class WebhookSponsorshipCreatedPropSponsorship(GitHubModel):
-    """WebhookSponsorshipCreatedPropSponsorship"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubModel):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-    created_at: str = Field()
-    maintainer: Missing[WebhookSponsorshipCreatedPropSponsorshipPropMaintainer] = Field(
-        default=UNSET
-    )
-    node_id: str = Field()
-    privacy_level: str = Field()
-    sponsor: Union[WebhookSponsorshipCreatedPropSponsorshipPropSponsor, None] = Field(
-        title="User"
-    )
-    sponsorable: Union[
-        WebhookSponsorshipCreatedPropSponsorshipPropSponsorable, None
-    ] = Field(title="User")
-    tier: WebhookSponsorshipCreatedPropSponsorshipPropTier = Field(
-        title="Sponsorship Tier",
-        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
-    )
-
-
-class WebhookSponsorshipCreatedPropSponsorshipPropMaintainer(GitHubModel):
-    """WebhookSponsorshipCreatedPropSponsorshipPropMaintainer"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookSponsorshipCreatedPropSponsorshipPropSponsor(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookSponsorshipCreatedPropSponsorshipPropSponsorable(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookSponsorshipCreatedPropSponsorshipPropTier(GitHubModel):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    created_at: str = Field()
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss = Field()
+    cwes: List[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems
+    ] = Field()
     description: str = Field()
-    is_custom_ammount: Missing[bool] = Field(default=UNSET)
-    is_custom_amount: Missing[bool] = Field(default=UNSET)
-    is_one_time: bool = Field()
-    monthly_price_in_cents: int = Field()
-    monthly_price_in_dollars: int = Field()
+    ghsa_id: str = Field()
+    identifiers: List[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems
+    ] = Field()
+    published_at: str = Field()
+    references: List[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems
+    ] = Field()
+    severity: str = Field()
+    summary: str = Field()
+    updated_at: str = Field()
+    vulnerabilities: List[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems
+    ] = Field()
+    withdrawn_at: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss(GitHubModel):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
+
+    score: float = Field()
+    vector_string: Union[str, None] = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems(GitHubModel):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field()
     name: str = Field()
-    node_id: str = Field()
 
 
-model_rebuild(WebhookSponsorshipCreated)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorship)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropMaintainer)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropSponsor)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropSponsorable)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropTier)
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str = Field()
+    value: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
+    url: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
+        None,
+    ] = Field()
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = (
+        Field()
+    )
+    severity: str = Field()
+    vulnerable_version_range: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
+    """
+
+    identifier: str = Field()
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str = Field()
+    name: str = Field()
+
+
+model_rebuild(WebhookSecurityAdvisoryWithdrawn)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems)
+model_rebuild(
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems
+)
+model_rebuild(
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion
+)
+model_rebuild(
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage
+)
 
 __all__ = (
-    "WebhookSponsorshipCreated",
-    "WebhookSponsorshipCreatedPropSponsorship",
-    "WebhookSponsorshipCreatedPropSponsorshipPropMaintainer",
-    "WebhookSponsorshipCreatedPropSponsorshipPropSponsor",
-    "WebhookSponsorshipCreatedPropSponsorshipPropSponsorable",
-    "WebhookSponsorshipCreatedPropSponsorshipPropTier",
+    "WebhookSecurityAdvisoryWithdrawn",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
 )

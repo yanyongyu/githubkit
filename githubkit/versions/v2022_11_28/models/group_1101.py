@@ -10,24 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+from datetime import datetime
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
-
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
-    )
+from .group_0156 import ActionsVariable
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200(
+    GitHubModel
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)
+    total_count: int = Field()
+    variables: List[ActionsVariable] = Field()
+
+
+model_rebuild(
+    RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200
+)
+
+__all__ = (
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200",
+)

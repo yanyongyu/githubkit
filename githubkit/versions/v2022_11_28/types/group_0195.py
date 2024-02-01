@@ -10,19 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
 
-class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
+
+    A CodeQL database.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: datetime
+    updated_at: datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)
+__all__ = ("CodeScanningCodeqlDatabaseType",)

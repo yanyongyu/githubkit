@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,14 +18,14 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0120 import RepositoryRuleCommitterEmailPatternPropParameters
+from .group_0117 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleDetailedOneof11(GitHubModel):
-    """RepositoryRuleDetailedOneof11"""
+class RepositoryRuleDetailedOneof7(GitHubModel):
+    """RepositoryRuleDetailedOneof7"""
 
-    type: Literal["committer_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof11(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof11)
+model_rebuild(RepositoryRuleDetailedOneof7)
 
-__all__ = ("RepositoryRuleDetailedOneof11",)
+__all__ = ("RepositoryRuleDetailedOneof7",)

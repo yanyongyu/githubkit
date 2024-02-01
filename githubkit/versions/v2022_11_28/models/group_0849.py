@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
@@ -19,20 +20,32 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    total_count: int = Field()
+    secrets: List[OrganizationActionsSecret] = Field()
+
+
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
+
+    Secrets for GitHub Actions for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
     visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
+        description="Visibility of a secret"
     )
-    selected_repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrganizationActionsSecret)
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+__all__ = (
+    "OrgsOrgActionsSecretsGetResponse200",
+    "OrganizationActionsSecret",
+)

@@ -10,16 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[List[str], None]]
+    Configuration for code scanning default setup.
+    """
+
+    state: NotRequired[Literal["configured", "not-configured"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    languages: NotRequired[
+        List[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
-__all__ = ("CodeScanningSarifsStatusType",)
+__all__ = ("CodeScanningDefaultSetupUpdateType",)

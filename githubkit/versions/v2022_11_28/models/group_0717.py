@@ -19,16 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryImport(GitHubModel):
-    """repository_import event"""
+class WebhookRepositoryCreated(GitHubModel):
+    """repository created event"""
 
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,9 +53,8 @@ class WebhookRepositoryImport(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    status: Literal["success", "cancelled", "failure"] = Field()
 
 
-model_rebuild(WebhookRepositoryImport)
+model_rebuild(WebhookRepositoryCreated)
 
-__all__ = ("WebhookRepositoryImport",)
+__all__ = ("WebhookRepositoryCreated",)

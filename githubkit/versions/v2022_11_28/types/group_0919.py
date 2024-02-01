@@ -13,11 +13,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof1Type(TypedDict):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
-
-    content_id: int
-    content_type: str
+class ProjectsColumnsCardsCardIdMovesPostResponse201Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1Type",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201Type",)

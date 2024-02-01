@@ -10,29 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0116 import RepositoryRuleCommitMessagePatternPropParameters
 
+class RepositoryRulePullRequestPropParameters(GitHubModel):
+    """RepositoryRulePullRequestPropParameters"""
 
-class RepositoryRuleCommitMessagePattern(GitHubModel):
-    """commit_message_pattern
-
-    Parameters to be used for the commit_message_pattern rule
-    """
-
-    type: Literal["commit_message_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
-        default=UNSET
+    dismiss_stale_reviews_on_push: bool = Field(
+        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
+    )
+    require_code_owner_review: bool = Field(
+        description="Require an approving review in pull requests that modify files that have a designated code owner."
+    )
+    require_last_push_approval: bool = Field(
+        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
+    )
+    required_approving_review_count: int = Field(
+        le=10.0,
+        description="The number of approving reviews that are required before a pull request can be merged.",
+    )
+    required_review_thread_resolution: bool = Field(
+        description="All conversations on code must be resolved before a pull request can be merged."
     )
 
 
-model_rebuild(RepositoryRuleCommitMessagePattern)
+model_rebuild(RepositoryRulePullRequestPropParameters)
 
-__all__ = ("RepositoryRuleCommitMessagePattern",)
+__all__ = ("RepositoryRulePullRequestPropParameters",)

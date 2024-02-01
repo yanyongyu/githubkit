@@ -10,8 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,37 +19,116 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0734 import (
-    WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser,
+from .group_0109 import RepositoryRuleUpdate
+from .group_0128 import RepositoryRuleWorkflows
+from .group_0114 import RepositoryRulePullRequest
+from .group_0126 import RepositoryRuleTagNamePattern
+from .group_0124 import RepositoryRuleBranchNamePattern
+from .group_0112 import RepositoryRuleRequiredDeployments
+from .group_0116 import RepositoryRuleRequiredStatusChecks
+from .group_0118 import RepositoryRuleCommitMessagePattern
+from .group_0111 import RepositoryRuleRequiredLinearHistory
+from .group_0122 import RepositoryRuleCommitterEmailPattern
+from .group_0120 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0108 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
 
 
-class WebhookRepositoryVulnerabilityAlertCreatePropAlert(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlert"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
 
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[
+    rule: Missing[
         Union[
-            WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser, None
+            RepositoryRuleCreation,
+            RepositoryRuleUpdate,
+            RepositoryRuleDeletion,
+            RepositoryRuleRequiredLinearHistory,
+            RepositoryRuleRequiredDeployments,
+            RepositoryRuleRequiredSignatures,
+            RepositoryRulePullRequest,
+            RepositoryRuleRequiredStatusChecks,
+            RepositoryRuleNonFastForward,
+            RepositoryRuleCommitMessagePattern,
+            RepositoryRuleCommitAuthorEmailPattern,
+            RepositoryRuleCommitterEmailPattern,
+            RepositoryRuleBranchNamePattern,
+            RepositoryRuleTagNamePattern,
+            RepositoryRuleWorkflows,
         ]
-    ] = Field(default=UNSET, title="User")
-    external_identifier: str = Field()
-    external_reference: Union[Union[str, None], None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["open"] = Field()
+    ] = Field(default=UNSET, title="Repository Rule", description="A repository rule.")
+    changes: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+    ] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertCreatePropAlert)
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlert",)
+    configuration: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+    ] = Field(default=UNSET)
+    rule_type: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+    ] = Field(default=UNSET)
+    pattern: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
+    ] = Field(default=UNSET)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
+)
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern",
+)

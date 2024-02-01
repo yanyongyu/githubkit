@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,15 +19,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    role: Missing[Literal["admin", "member"]] = Field(
-        default=UNSET,
-        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
 
-__all__ = ("OrgsOrgMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)

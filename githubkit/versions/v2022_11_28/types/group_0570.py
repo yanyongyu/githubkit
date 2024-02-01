@@ -10,56 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0Type(TypedDict):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType
+    unit_count: int
 
 
-class WebhookMemberRemovedType(TypedDict):
-    """member removed event"""
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount"""
 
-    action: Literal["removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhookMemberRemovedPropMemberType, None]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-class WebhookMemberRemovedPropMemberType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan"""
+
+    bullets: List[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookMemberRemovedType",
-    "WebhookMemberRemovedPropMemberType",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0Type",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType",
 )

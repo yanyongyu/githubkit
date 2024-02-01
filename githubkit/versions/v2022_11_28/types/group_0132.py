@@ -10,39 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsBillingUsageType(TypedDict):
-    """ActionsBillingUsage"""
+class RuleSuiteType(TypedDict):
+    """Rule Suite
 
-    total_minutes_used: int
-    total_paid_minutes_used: int
-    included_minutes: int
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
+    Response
+    """
+
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail"]]
+    rule_evaluations: NotRequired[List[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    ubuntu: NotRequired[int]
-    macos: NotRequired[int]
-    windows: NotRequired[int]
-    ubuntu_4_core: NotRequired[int]
-    ubuntu_8_core: NotRequired[int]
-    ubuntu_16_core: NotRequired[int]
-    ubuntu_32_core: NotRequired[int]
-    ubuntu_64_core: NotRequired[int]
-    windows_4_core: NotRequired[int]
-    windows_8_core: NotRequired[int]
-    windows_16_core: NotRequired[int]
-    windows_32_core: NotRequired[int]
-    windows_64_core: NotRequired[int]
-    macos_12_core: NotRequired[int]
-    total: NotRequired[int]
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[str]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ActionsBillingUsageType",
-    "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "RuleSuiteType",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
 )

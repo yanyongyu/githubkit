@@ -10,17 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0061 import RunnerLabelType
+
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: List[str]
+    work_folder: NotRequired[str]
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int
-    labels: List[RunnerLabelType]
-
-
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",)

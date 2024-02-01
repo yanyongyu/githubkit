@@ -10,34 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import Annotated
+from typing import List, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0113 import RepositoryRuleRequiredDeploymentsPropParameters
 
-class RepositoryRulePullRequestPropParameters(GitHubModel):
-    """RepositoryRulePullRequestPropParameters"""
 
-    dismiss_stale_reviews_on_push: bool = Field(
-        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
-    )
-    require_code_owner_review: bool = Field(
-        description="Require an approving review in pull requests that modify files that have a designated code owner."
-    )
-    require_last_push_approval: bool = Field(
-        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
-    )
-    required_approving_review_count: int = Field(
-        le=10.0,
-        description="The number of approving reviews that are required before a pull request can be merged.",
-    )
-    required_review_thread_resolution: bool = Field(
-        description="All conversations on code must be resolved before a pull request can be merged."
+class RepositoryRuleRequiredDeployments(GitHubModel):
+    """required_deployments
+
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
+    """
+
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRulePullRequestPropParameters)
+model_rebuild(RepositoryRuleRequiredDeployments)
 
-__all__ = ("RepositoryRulePullRequestPropParameters",)
+__all__ = ("RepositoryRuleRequiredDeployments",)

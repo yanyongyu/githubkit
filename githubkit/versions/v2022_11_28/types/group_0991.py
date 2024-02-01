@@ -10,13 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdPatchBody"""
-
-    body: str
+from .group_0070 import CodespaceMachineType
 
 
-__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBodyType",)
+class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
+
+    total_count: int
+    machines: List[CodespaceMachineType]
+
+
+__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",)

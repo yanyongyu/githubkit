@@ -19,17 +19,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectClosed(GitHubModel):
-    """project closed event"""
+class WebhookProjectCardEdited(GitHubModel):
+    """project_card edited event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectCardEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +46,7 @@ class WebhookProjectClosed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhookProjectClosedPropProject = Field(title="Project")
+    project_card: WebhookProjectCardEditedPropProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -57,29 +58,39 @@ class WebhookProjectClosed(GitHubModel):
     )
 
 
-class WebhookProjectClosedPropProject(GitHubModel):
-    """Project"""
+class WebhookProjectCardEditedPropChanges(GitHubModel):
+    """WebhookProjectCardEditedPropChanges"""
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
+    note: WebhookProjectCardEditedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+class WebhookProjectCardEditedPropProjectCard(GitHubModel):
+    """Project Card"""
+
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field()
-    creator: Union[WebhookProjectClosedPropProjectPropCreator, None] = Field(
+    creator: Union[WebhookProjectCardEditedPropProjectCardPropCreator, None] = Field(
         title="User"
     )
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field(description="Name of the project")
+    id: int = Field(description="The project card's ID")
     node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
-    )
+    note: Union[str, None] = Field()
+    project_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
 
 
-class WebhookProjectClosedPropProjectPropCreator(GitHubModel):
+class WebhookProjectCardEditedPropProjectCardPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -105,12 +116,16 @@ class WebhookProjectClosedPropProjectPropCreator(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectClosed)
-model_rebuild(WebhookProjectClosedPropProject)
-model_rebuild(WebhookProjectClosedPropProjectPropCreator)
+model_rebuild(WebhookProjectCardEdited)
+model_rebuild(WebhookProjectCardEditedPropChanges)
+model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
+model_rebuild(WebhookProjectCardEditedPropProjectCard)
+model_rebuild(WebhookProjectCardEditedPropProjectCardPropCreator)
 
 __all__ = (
-    "WebhookProjectClosed",
-    "WebhookProjectClosedPropProject",
-    "WebhookProjectClosedPropProjectPropCreator",
+    "WebhookProjectCardEdited",
+    "WebhookProjectCardEditedPropChanges",
+    "WebhookProjectCardEditedPropChangesPropNote",
+    "WebhookProjectCardEditedPropProjectCard",
+    "WebhookProjectCardEditedPropProjectCardPropCreator",
 )

@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 
 from pydantic import Field
@@ -18,31 +19,46 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0177 import Commit
-from .group_0176 import DiffEntry
+from .group_0050 import MinimalRepository
 
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    Commit Comparison
+    Combined Commit Status
     """
 
+    state: str = Field()
+    statuses: List[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    commit_url: str = Field()
     url: str = Field()
-    html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: List[Commit] = Field()
-    files: Missing[List[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(CommitComparison)
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
 
-__all__ = ("CommitComparison",)
+    description: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
+
+__all__ = (
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
+)

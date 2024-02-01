@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,26 +20,18 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    value_type: Literal["string", "single_select"] = Field(
-        description="The type of the value for the property"
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request."
     )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="Ordered list of allowed values of the property"
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the request. Max 1024 characters.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaCustomPropertyNamePutBody)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
 
-__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)

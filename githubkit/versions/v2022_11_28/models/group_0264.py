@@ -10,31 +10,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0001 import SimpleUser
+from .group_0005 import Integration
 
 
-class Label(GitHubModel):
-    """Label
+class MovedColumnInProjectIssueEvent(GitHubModel):
+    """Moved Column in Project Issue Event
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Moved Column in Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field()
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["moved_columns_in_project"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration] = Field()
+    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
+        default=UNSET
     )
-    default: bool = Field()
 
 
-model_rebuild(Label)
+class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
-__all__ = ("Label",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(MovedColumnInProjectIssueEvent)
+model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+
+__all__ = (
+    "MovedColumnInProjectIssueEvent",
+    "MovedColumnInProjectIssueEventPropProjectCard",
+)

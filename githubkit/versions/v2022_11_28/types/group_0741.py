@@ -11,27 +11,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0742 import WebhookRepositoryVulnerabilityAlertReopenPropAlertType
+from .group_0743 import (
+    WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType,
+)
 
 
-class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertType(TypedDict):
+    """WebhookRepositoryVulnerabilityAlertDismissPropAlert"""
 
-    action: Literal["reopen"]
-    alert: WebhookRepositoryVulnerabilityAlertReopenPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_comment: NotRequired[Union[Union[str, None], None]]
+    dismiss_reason: str
+    dismissed_at: str
+    dismisser: Union[
+        Union[
+            WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType,
+            None,
+        ],
+        None,
+    ]
+    external_identifier: str
+    external_reference: Union[Union[str, None], None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["dismissed"]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlertType",)

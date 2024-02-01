@@ -14,24 +14,22 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0127 import RepositoryRulesetType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRulesetDeletedType(TypedDict):
-    """repository ruleset deleted event"""
+class WebhookRepositoryPrivatizedType(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["deleted"]
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookRepositoryRulesetDeletedType",)
+__all__ = ("WebhookRepositoryPrivatizedType",)

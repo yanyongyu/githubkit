@@ -19,18 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryEdited(GitHubModel):
-    """repository edited event"""
+class WebhookRepositoryArchived(GitHubModel):
+    """repository archived event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookRepositoryEditedPropChanges = Field()
+    action: Literal["archived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,57 +55,6 @@ class WebhookRepositoryEdited(GitHubModel):
     )
 
 
-class WebhookRepositoryEditedPropChanges(GitHubModel):
-    """WebhookRepositoryEditedPropChanges"""
+model_rebuild(WebhookRepositoryArchived)
 
-    default_branch: Missing[
-        WebhookRepositoryEditedPropChangesPropDefaultBranch
-    ] = Field(default=UNSET)
-    description: Missing[WebhookRepositoryEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    homepage: Missing[WebhookRepositoryEditedPropChangesPropHomepage] = Field(
-        default=UNSET
-    )
-    topics: Missing[WebhookRepositoryEditedPropChangesPropTopics] = Field(default=UNSET)
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranch(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropDescription(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropHomepage(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropTopics(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: Missing[Union[List[str], None]] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryEdited)
-model_rebuild(WebhookRepositoryEditedPropChanges)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDefaultBranch)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDescription)
-model_rebuild(WebhookRepositoryEditedPropChangesPropHomepage)
-model_rebuild(WebhookRepositoryEditedPropChangesPropTopics)
-
-__all__ = (
-    "WebhookRepositoryEdited",
-    "WebhookRepositoryEditedPropChanges",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranch",
-    "WebhookRepositoryEditedPropChangesPropDescription",
-    "WebhookRepositoryEditedPropChangesPropHomepage",
-    "WebhookRepositoryEditedPropChangesPropTopics",
-)
+__all__ = ("WebhookRepositoryArchived",)

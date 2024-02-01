@@ -10,43 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0359 import SimpleUserWebhooksType
 
 
-class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookGithubAppAuthorizationRevokedType(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["new_permissions_accepted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[
-        List[WebhookInstallationNewPermissionsAcceptedPropRepositoriesItemsType]
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    action: Literal["revoked"]
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationNewPermissionsAcceptedPropRepositoriesItemsType(TypedDict):
-    """WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems"""
-
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
-
-
-__all__ = (
-    "WebhookInstallationNewPermissionsAcceptedType",
-    "WebhookInstallationNewPermissionsAcceptedPropRepositoriesItemsType",
-)
+__all__ = ("WebhookGithubAppAuthorizationRevokedType",)

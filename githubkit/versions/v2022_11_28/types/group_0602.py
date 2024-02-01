@@ -10,16 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0364 import PersonalAccessTokenRequestType
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
+    """personal_access_token_request created event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserWebhooksType
+    installation: SimpleInstallationType
 
-    payload: str
 
-
-__all__ = ("WebhookPingFormEncodedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)

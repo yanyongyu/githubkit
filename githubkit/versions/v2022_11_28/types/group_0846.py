@@ -10,18 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0050 import MinimalRepositoryType
+from typing import List
+from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    total_count: int
-    repositories: List[MinimalRepositoryType]
+    labels: List[str]
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",)

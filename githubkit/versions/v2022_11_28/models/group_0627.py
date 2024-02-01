@@ -19,22 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0362 import ProjectsV2Item
-from .group_0352 import SimpleInstallation
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0366 import ProjectsV2Item
+from .group_0356 import SimpleInstallation
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemEdited(GitHubModel):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectsV2ItemArchived(GitHubModel):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0,
-            WebhookProjectsV2ItemEditedPropChangesOneof1,
-        ]
-    ] = Field(default=UNSET)
+    action: Literal["archived"] = Field()
+    changes: WebhookProjectsV2ItemArchivedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -53,42 +48,27 @@ class WebhookProjectsV2ItemEdited(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof0(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
+class WebhookProjectsV2ItemArchivedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemArchivedPropChanges"""
 
-    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue = Field()
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
-
-    field_node_id: Missing[str] = Field(default=UNSET)
-    field_type: Missing[str] = Field(default=UNSET)
+    archived_at: Missing[
+        WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt
+    ] = Field(default=UNSET)
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof1(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
+class WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt(GitHubModel):
+    """WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt"""
 
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBody = Field()
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBody(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
+    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectsV2ItemEdited)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1PropBody)
+model_rebuild(WebhookProjectsV2ItemArchived)
+model_rebuild(WebhookProjectsV2ItemArchivedPropChanges)
+model_rebuild(WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt)
 
 __all__ = (
-    "WebhookProjectsV2ItemEdited",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBody",
+    "WebhookProjectsV2ItemArchived",
+    "WebhookProjectsV2ItemArchivedPropChanges",
+    "WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt",
 )

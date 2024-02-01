@@ -10,89 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0097 import RepositoryRulesetConditionsType
+from .group_0130 import RepositoryRulesetType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
+class WebhookRepositoryRulesetDeletedType(TypedDict):
+    """repository ruleset deleted event"""
 
-    condition: NotRequired[RepositoryRulesetConditionsType]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType
-    ]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    es
-    """
-
-    condition_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType
-    ]
-    target: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType
-    ]
-    include: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType
-    ]
-    exclude: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType
-    ]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropConditionType
-    """
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropTarget
-    """
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropInclude
-    """
-
-    from_: NotRequired[List[str]]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropExclude
-    """
-
-    from_: NotRequired[List[str]]
-
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType",
-)
+__all__ = ("WebhookRepositoryRulesetDeletedType",)

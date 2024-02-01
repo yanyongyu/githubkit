@@ -14,18 +14,20 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0358 import DiscussionType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0362 import DiscussionType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionDeletedType(TypedDict):
-    """discussion deleted event"""
+class WebhookDiscussionCommentEditedType(TypedDict):
+    """discussion_comment edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesType
+    comment: WebhookDiscussionCommentEditedPropCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -34,4 +36,91 @@ class WebhookDiscussionDeletedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDiscussionDeletedType",)
+class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
+
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionCommentEditedPropCommentType(TypedDict):
+    """WebhookDiscussionCommentEditedPropComment"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: Union[int, None]
+    reactions: WebhookDiscussionCommentEditedPropCommentPropReactionsType
+    repository_url: str
+    updated_at: str
+    user: Union[WebhookDiscussionCommentEditedPropCommentPropUserType, None]
+
+
+class WebhookDiscussionCommentEditedPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookDiscussionCommentEditedPropCommentPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookDiscussionCommentEditedType",
+    "WebhookDiscussionCommentEditedPropChangesType",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
+    "WebhookDiscussionCommentEditedPropCommentType",
+    "WebhookDiscussionCommentEditedPropCommentPropReactionsType",
+    "WebhookDiscussionCommentEditedPropCommentPropUserType",
+)

@@ -20,18 +20,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0220 import DependabotAlert
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0223 import DependabotAlert
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookDependabotAlertReintroduced(GitHubModel):
-    """Dependabot alert reintroduced event"""
+class WebhookDependabotAlertAutoReopened(GitHubModel):
+    """Dependabot alert auto-reopened event"""
 
-    action: Literal["reintroduced"] = Field()
+    action: Literal["auto_reopened"] = Field()
     alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -58,6 +58,6 @@ class WebhookDependabotAlertReintroduced(GitHubModel):
     )
 
 
-model_rebuild(WebhookDependabotAlertReintroduced)
+model_rebuild(WebhookDependabotAlertAutoReopened)
 
-__all__ = ("WebhookDependabotAlertReintroduced",)
+__all__ = ("WebhookDependabotAlertAutoReopened",)

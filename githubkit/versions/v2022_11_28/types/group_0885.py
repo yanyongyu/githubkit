@@ -10,11 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
+    """OrgsOrgMembershipsUsernamePutBody"""
+
+    role: NotRequired[Literal["admin", "member"]]
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",)
+__all__ = ("OrgsOrgMembershipsUsernamePutBodyType",)

@@ -10,14 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0062 import RunnerType
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-    labels: List[str]
+    total_count: int
+    runners: List[RunnerType]
 
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType",)
+__all__ = ("OrgsOrgActionsRunnersGetResponse200Type",)

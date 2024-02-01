@@ -10,20 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0145 import RateLimitType
-from .group_0147 import RateLimitOverviewPropResourcesType
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    Rate Limit Overview
+    Project columns contain cards of work.
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("RateLimitOverviewType",)
+__all__ = ("ProjectColumnType",)

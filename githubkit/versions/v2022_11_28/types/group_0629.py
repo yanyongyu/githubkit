@@ -14,38 +14,20 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0362 import ProjectsV2ItemType
-from .group_0352 import SimpleInstallationType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0366 import ProjectsV2ItemType
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredType(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ItemCreatedType(TypedDict):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["restored"]
-    changes: WebhookProjectsV2ItemRestoredPropChangesType
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChanges"""
-
-    archived_at: NotRequired[WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType]
-
-
-class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
-
-
-__all__ = (
-    "WebhookProjectsV2ItemRestoredType",
-    "WebhookProjectsV2ItemRestoredPropChangesType",
-    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType",
-)
+__all__ = ("WebhookProjectsV2ItemCreatedType",)

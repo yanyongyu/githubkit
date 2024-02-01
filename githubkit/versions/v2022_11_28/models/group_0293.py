@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
@@ -19,32 +18,20 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0075 import Team
 from .group_0001 import SimpleUser
 
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
+class PullRequestReviewRequest(GitHubModel):
+    """Pull Request Review Request
 
-    Data related to a release.
+    Pull Request Review Request
     """
 
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
-    )
-    content_type: str = Field()
-    size: int = Field()
-    download_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    users: List[SimpleUser] = Field()
+    teams: List[Team] = Field()
 
 
-model_rebuild(ReleaseAsset)
+model_rebuild(PullRequestReviewRequest)
 
-__all__ = ("ReleaseAsset",)
+__all__ = ("PullRequestReviewRequest",)

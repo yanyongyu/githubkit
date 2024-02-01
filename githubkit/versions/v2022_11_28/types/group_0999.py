@@ -10,14 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
-
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+from .group_0187 import CheckRunType
 
 
-__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",)
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+
+    total_count: int
+    check_runs: List[CheckRunType]
+
+
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)

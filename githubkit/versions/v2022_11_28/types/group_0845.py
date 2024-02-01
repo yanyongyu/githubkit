@@ -13,14 +13,14 @@ from __future__ import annotations
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
-
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[List[int]]
+from .group_0061 import RunnerLabelType
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNamePutBodyType",)
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
+
+    total_count: int
+    labels: List[RunnerLabelType]
+
+
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",)

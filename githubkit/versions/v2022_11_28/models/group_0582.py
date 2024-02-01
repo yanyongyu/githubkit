@@ -19,20 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookOrgBlockUnblocked(GitHubModel):
-    """org_block unblocked event"""
+class WebhookMilestoneDeleted(GitHubModel):
+    """milestone deleted event"""
 
-    action: Literal["unblocked"] = Field()
-    blocked_user: Union[WebhookOrgBlockUnblockedPropBlockedUser, None] = Field(
-        title="User"
-    )
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,12 +40,16 @@ class WebhookOrgBlockUnblocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    milestone: WebhookMilestoneDeletedPropMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -58,7 +59,33 @@ class WebhookOrgBlockUnblocked(GitHubModel):
     )
 
 
-class WebhookOrgBlockUnblockedPropBlockedUser(GitHubModel):
+class WebhookMilestoneDeletedPropMilestone(GitHubModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhookMilestoneDeletedPropMilestonePropCreator, None] = Field(
+        title="User"
+    )
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: datetime = Field()
+    url: str = Field()
+
+
+class WebhookMilestoneDeletedPropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -80,14 +107,18 @@ class WebhookOrgBlockUnblockedPropBlockedUser(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookOrgBlockUnblocked)
-model_rebuild(WebhookOrgBlockUnblockedPropBlockedUser)
+model_rebuild(WebhookMilestoneDeleted)
+model_rebuild(WebhookMilestoneDeletedPropMilestone)
+model_rebuild(WebhookMilestoneDeletedPropMilestonePropCreator)
 
 __all__ = (
-    "WebhookOrgBlockUnblocked",
-    "WebhookOrgBlockUnblockedPropBlockedUser",
+    "WebhookMilestoneDeleted",
+    "WebhookMilestoneDeletedPropMilestone",
+    "WebhookMilestoneDeletedPropMilestonePropCreator",
 )

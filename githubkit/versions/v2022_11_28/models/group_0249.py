@@ -10,48 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class LabeledIssueEvent(GitHubModel):
-    """Labeled Issue Event
+class PorterAuthor(GitHubModel):
+    """Porter Author
 
-    Labeled Issue Event
+    Porter Author
     """
 
     id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["labeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration] = Field()
-    label: LabeledIssueEventPropLabel = Field()
-
-
-class LabeledIssueEventPropLabel(GitHubModel):
-    """LabeledIssueEventPropLabel"""
-
+    remote_id: str = Field()
+    remote_name: str = Field()
+    email: str = Field()
     name: str = Field()
-    color: str = Field()
+    url: str = Field()
+    import_url: str = Field()
 
 
-model_rebuild(LabeledIssueEvent)
-model_rebuild(LabeledIssueEventPropLabel)
+model_rebuild(PorterAuthor)
 
-__all__ = (
-    "LabeledIssueEvent",
-    "LabeledIssueEventPropLabel",
-)
+__all__ = ("PorterAuthor",)

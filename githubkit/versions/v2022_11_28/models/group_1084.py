@@ -10,21 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)

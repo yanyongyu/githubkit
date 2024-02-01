@@ -19,20 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookOrgBlockBlocked(GitHubModel):
-    """org_block blocked event"""
+class WebhookMilestoneCreated(GitHubModel):
+    """milestone created event"""
 
-    action: Literal["blocked"] = Field()
-    blocked_user: Union[WebhookOrgBlockBlockedPropBlockedUser, None] = Field(
-        title="User"
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,12 +40,16 @@ class WebhookOrgBlockBlocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    milestone: WebhookMilestoneCreatedPropMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -58,7 +59,33 @@ class WebhookOrgBlockBlocked(GitHubModel):
     )
 
 
-class WebhookOrgBlockBlockedPropBlockedUser(GitHubModel):
+class WebhookMilestoneCreatedPropMilestone(GitHubModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhookMilestoneCreatedPropMilestonePropCreator, None] = Field(
+        title="User"
+    )
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: datetime = Field()
+    url: str = Field()
+
+
+class WebhookMilestoneCreatedPropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -84,10 +111,12 @@ class WebhookOrgBlockBlockedPropBlockedUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookOrgBlockBlocked)
-model_rebuild(WebhookOrgBlockBlockedPropBlockedUser)
+model_rebuild(WebhookMilestoneCreated)
+model_rebuild(WebhookMilestoneCreatedPropMilestone)
+model_rebuild(WebhookMilestoneCreatedPropMilestonePropCreator)
 
 __all__ = (
-    "WebhookOrgBlockBlocked",
-    "WebhookOrgBlockBlockedPropBlockedUser",
+    "WebhookMilestoneCreated",
+    "WebhookMilestoneCreatedPropMilestone",
+    "WebhookMilestoneCreatedPropMilestonePropCreator",
 )

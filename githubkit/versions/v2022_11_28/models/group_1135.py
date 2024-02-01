@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import Annotated
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,18 +19,42 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSshSigningKeysPostBody(GitHubModel):
-    """UserSshSigningKeysPostBody"""
+class UserMigrationsPostBody(GitHubModel):
+    """UserMigrationsPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    lock_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Lock the repositories being migrated at the start of the migration",
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
-        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
+    exclude_metadata: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
+    )
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET, description="Do not include attachments in the migration"
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET, description="Do not include releases in the migration"
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[List[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude attributes from the API response to improve performance",
+    )
+    repositories: List[str] = Field()
 
 
-model_rebuild(UserSshSigningKeysPostBody)
+model_rebuild(UserMigrationsPostBody)
 
-__all__ = ("UserSshSigningKeysPostBody",)
+__all__ = ("UserMigrationsPostBody",)

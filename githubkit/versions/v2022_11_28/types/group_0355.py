@@ -11,37 +11,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class SimpleUserWebhooksType(TypedDict):
-    """Simple User
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    The GitHub user that triggered the event. This property is included in every
-    webhook payload.
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
     node_id: str
+    name: str
+    slug: str
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
     avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
 
 
-__all__ = ("SimpleUserWebhooksType",)
+__all__ = ("EnterpriseWebhooksType",)

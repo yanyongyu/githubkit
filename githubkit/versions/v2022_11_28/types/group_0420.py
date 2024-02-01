@@ -10,28 +10,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0358 import DiscussionType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+
+class WebhookDiscussionCreatedPropDiscussionAllof1Type(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionAllof1"""
+
+    active_lock_reason: NotRequired[None]
+    answer_chosen_at: None
+    answer_chosen_by: None
+    answer_html_url: Union[str, None]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    category: NotRequired[WebhookDiscussionCreatedPropDiscussionAllof1PropCategoryType]
+    comments: NotRequired[int]
+    created_at: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    locked: Literal[False]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    reactions: NotRequired[
+        WebhookDiscussionCreatedPropDiscussionAllof1PropReactionsType
+    ]
+    repository_url: NotRequired[str]
+    state: Literal["open", "converting", "transferring"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    user: NotRequired[WebhookDiscussionCreatedPropDiscussionAllof1PropUserType]
 
 
-class WebhookDiscussionLockedType(TypedDict):
-    """discussion locked event"""
+class WebhookDiscussionCreatedPropDiscussionAllof1PropCategoryType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionAllof1PropCategory"""
 
-    action: Literal["locked"]
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    created_at: NotRequired[str]
+    description: NotRequired[str]
+    emoji: NotRequired[str]
+    id: NotRequired[int]
+    is_answerable: NotRequired[bool]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    repository_id: NotRequired[int]
+    slug: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-__all__ = ("WebhookDiscussionLockedType",)
+class WebhookDiscussionCreatedPropDiscussionAllof1PropReactionsType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookDiscussionCreatedPropDiscussionAllof1PropUserType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionAllof1PropUser"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookDiscussionCreatedPropDiscussionAllof1Type",
+    "WebhookDiscussionCreatedPropDiscussionAllof1PropCategoryType",
+    "WebhookDiscussionCreatedPropDiscussionAllof1PropReactionsType",
+    "WebhookDiscussionCreatedPropDiscussionAllof1PropUserType",
+)

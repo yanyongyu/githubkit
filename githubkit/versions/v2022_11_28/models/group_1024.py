@@ -19,17 +19,28 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoImportPutBody(GitHubModel):
+    """ReposOwnerRepoImportPutBody"""
 
-    permissions: Missing[
-        Literal["read", "write", "maintain", "triage", "admin"]
-    ] = Field(
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
         default=UNSET,
-        description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
+        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
+    )
+    vcs_username: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the username to provide to `vcs_url`.",
+    )
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the password to provide to `vcs_url`.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(ReposOwnerRepoImportPutBody)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = ("ReposOwnerRepoImportPutBody",)

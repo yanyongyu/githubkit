@@ -13,49 +13,26 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0567 import (
+    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType,
+    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType,
+)
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0Type(TypedDict):
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0Type(
+    TypedDict
+):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType
     billing_cycle: str
-    free_trial_ends_on: Union[str, None]
+    free_trial_ends_on: None
     next_billing_date: NotRequired[Union[str, None]]
     on_free_trial: bool
-    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType
     unit_count: int
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
 __all__ = (
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0Type",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0Type",
 )

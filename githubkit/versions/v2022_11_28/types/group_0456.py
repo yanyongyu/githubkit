@@ -14,26 +14,90 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
-from .group_0458 import WebhookIssueCommentDeletedPropIssueType
-from .group_0457 import WebhookIssueCommentDeletedPropCommentType
+from .group_0455 import (
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+)
 
 
-class WebhookIssueCommentDeletedType(TypedDict):
-    """issue_comment deleted event"""
+class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    action: Literal["deleted"]
-    comment: WebhookIssueCommentDeletedPropCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentDeletedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[datetime, None]
+    description: Union[str, None]
+    events: NotRequired[
+        List[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+                "reminder",
+                "pull_request_review_thread",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
 
 
-__all__ = ("WebhookIssueCommentDeletedType",)
+__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType",)

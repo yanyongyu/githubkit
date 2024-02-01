@@ -10,42 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+
+class WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssuesUnlockedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookLabelCreatedType(TypedDict):
-    """label created event"""
-
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    label: WebhookLabelCreatedPropLabelType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
-
-
-class WebhookLabelCreatedPropLabelType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-__all__ = (
-    "WebhookLabelCreatedType",
-    "WebhookLabelCreatedPropLabelType",
-)
+__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType",)

@@ -16,35 +16,22 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-    event_type: str = Field(
-        min_length=1,
-        max_length=100,
-        description="A custom webhook event name. Must be 100 characters or fewer.",
-    )
-    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
 
 
-class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
-    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+model_rebuild(ReposOwnerRepoDependabotSecretsSecretNamePutBody)
 
-    JSON payload with extra information about the webhook event that your action or
-    workflow may use. The maximum number of top-level properties is 10.
-    """
-
-
-model_rebuild(ReposOwnerRepoDispatchesPostBody)
-model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
-
-__all__ = (
-    "ReposOwnerRepoDispatchesPostBody",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
-)
+__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",)

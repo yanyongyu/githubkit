@@ -14,71 +14,21 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0605 import WebhookPingPropHookType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectCardCreatedType(TypedDict):
-    """project_card created event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardCreatedPropProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
+    zen: NotRequired[str]
 
 
-class WebhookProjectCardCreatedPropProjectCardType(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: datetime
-    creator: Union[WebhookProjectCardCreatedPropProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: datetime
-    url: str
-
-
-class WebhookProjectCardCreatedPropProjectCardPropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookProjectCardCreatedType",
-    "WebhookProjectCardCreatedPropProjectCardType",
-    "WebhookProjectCardCreatedPropProjectCardPropCreatorType",
-)
+__all__ = ("WebhookPingType",)

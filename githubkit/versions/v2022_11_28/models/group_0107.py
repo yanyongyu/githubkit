@@ -10,19 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0098 import RepositoryRulesetConditionsPropRefName
+from .group_0104 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
-class RepositoryRuleUpdatePropParameters(GitHubModel):
-    """RepositoryRuleUpdatePropParameters"""
 
-    update_allows_fetch_and_merge: bool = Field(
-        description="Branch can pull changes from its upstream repository"
+class OrgRulesetConditionsOneof2(GitHubModel):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = (
+        Field()
     )
 
 
-model_rebuild(RepositoryRuleUpdatePropParameters)
+model_rebuild(OrgRulesetConditionsOneof2)
 
-__all__ = ("RepositoryRuleUpdatePropParameters",)
+__all__ = ("OrgRulesetConditionsOneof2",)

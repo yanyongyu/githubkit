@@ -19,20 +19,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0358 import Discussion
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
-from .group_0424 import WebhookDiscussionTransferredPropChanges
+from .group_0362 import Discussion
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionTransferred(GitHubModel):
-    """discussion transferred event"""
+class WebhookDiscussionLabeled(GitHubModel):
+    """discussion labeled event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookDiscussionTransferredPropChanges = Field()
+    action: Literal["labeled"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -46,6 +44,7 @@ class WebhookDiscussionTransferred(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    label: WebhookDiscussionLabeledPropLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -61,6 +60,24 @@ class WebhookDiscussionTransferred(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionTransferred)
+class WebhookDiscussionLabeledPropLabel(GitHubModel):
+    """Label"""
 
-__all__ = ("WebhookDiscussionTransferred",)
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+
+
+model_rebuild(WebhookDiscussionLabeled)
+model_rebuild(WebhookDiscussionLabeledPropLabel)
+
+__all__ = (
+    "WebhookDiscussionLabeled",
+    "WebhookDiscussionLabeledPropLabel",
+)

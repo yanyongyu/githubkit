@@ -14,42 +14,34 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0075 import TeamType
 from .group_0001 import SimpleUserType
 
 
-class PendingDeploymentPropReviewersItemsType(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
-
-
-class PendingDeploymentType(TypedDict):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    An entry in the reviews log for environment deployments
     """
 
-    environment: PendingDeploymentPropEnvironmentType
-    wait_timer: int
-    wait_timer_started_at: Union[datetime, None]
-    current_user_can_approve: bool
-    reviewers: List[PendingDeploymentPropReviewersItemsType]
+    environments: List[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-class PendingDeploymentPropEnvironmentType(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
     id: NotRequired[int]
     node_id: NotRequired[str]
     name: NotRequired[str]
     url: NotRequired[str]
     html_url: NotRequired[str]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
 __all__ = (
-    "PendingDeploymentPropReviewersItemsType",
-    "PendingDeploymentType",
-    "PendingDeploymentPropEnvironmentType",
+    "EnvironmentApprovalsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
 )

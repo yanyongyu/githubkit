@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
@@ -19,33 +18,20 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: List[OrganizationActionsSecret] = Field()
+from .group_0062 import Runner
 
 
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    runner: Runner = Field(
+        title="Self hosted runners", description="A self hosted runner"
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    encoded_jit_config: str = Field(
+        description="The base64 encoded runner configuration."
+    )
 
 
-model_rebuild(OrgsOrgActionsSecretsGetResponse200)
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
 
-__all__ = (
-    "OrgsOrgActionsSecretsGetResponse200",
-    "OrganizationActionsSecret",
-)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)

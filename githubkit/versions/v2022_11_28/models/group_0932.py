@@ -10,30 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class ProjectsProjectIdColumnsPostBody(GitHubModel):
+    """ProjectsProjectIdColumnsPostBody"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[List[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    name: str = Field(description="Name of the project column")
 
 
-model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
+model_rebuild(ProjectsProjectIdColumnsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)
+__all__ = ("ProjectsProjectIdColumnsPostBody",)

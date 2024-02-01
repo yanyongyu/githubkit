@@ -11,6 +11,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -38,8 +39,16 @@ class OrgCustomProperty(GitHubModel):
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Short description of the property"
     )
-    allowed_values: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="Ordered list of allowed values of the property"
+    allowed_values: Missing[
+        Union[
+            Annotated[
+                List[Annotated[str, Field(max_length=75)]], Field(max_length=200)
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
     values_editable_by: Missing[
         Union[None, Literal["org_actors", "org_and_repo_actors"]]

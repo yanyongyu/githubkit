@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from typing_extensions import TypedDict
 
 
@@ -21,7 +21,7 @@ class CustomPropertyValueType(TypedDict):
     """
 
     property_name: str
-    value: Union[str, None]
+    value: Union[str, List[str], None]
 
 
 __all__ = ("CustomPropertyValueType",)

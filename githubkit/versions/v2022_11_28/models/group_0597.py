@@ -18,34 +18,71 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0352 import SimpleInstallation
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
-from .group_0360 import PersonalAccessTokenRequest
+from .group_0598 import WebhookPackageUpdatedPropPackagePropPackageVersion
 
 
-class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
-    """personal_access_token_request cancelled event"""
+class WebhookPackageUpdatedPropPackage(GitHubModel):
+    """WebhookPackageUpdatedPropPackage
 
-    action: Literal["cancelled"] = Field()
-    personal_access_token_request: PersonalAccessTokenRequest = Field(
-        title="Personal Access Token Request",
-        description="Details of a Personal Access Token Request.",
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-    installation: SimpleInstallation = Field(
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
+    Information about the package.
+    """
+
+    created_at: str = Field()
+    description: Union[str, None] = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwner, None] = Field(title="User")
+    package_type: str = Field()
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersion = Field()
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistry, None] = Field()
+    updated_at: str = Field()
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestCancelled)
+class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelled",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPackageUpdatedPropPackagePropRegistry(GitHubModel):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
+
+    about_url: str = Field()
+    name: str = Field()
+    type: str = Field()
+    url: str = Field()
+    vendor: str = Field()
+
+
+model_rebuild(WebhookPackageUpdatedPropPackage)
+model_rebuild(WebhookPackageUpdatedPropPackagePropOwner)
+model_rebuild(WebhookPackageUpdatedPropPackagePropRegistry)
+
+__all__ = (
+    "WebhookPackageUpdatedPropPackage",
+    "WebhookPackageUpdatedPropPackagePropOwner",
+    "WebhookPackageUpdatedPropPackagePropRegistry",
+)

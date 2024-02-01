@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectReopened(GitHubModel):
-    """project reopened event"""
+class WebhookProjectColumnMoved(GitHubModel):
+    """project_column moved event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["moved"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +45,9 @@ class WebhookProjectReopened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhookProjectReopenedPropProject = Field(title="Project")
+    project_column: WebhookProjectColumnMovedPropProjectColumn = Field(
+        title="Project Column"
+    )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -57,60 +59,24 @@ class WebhookProjectReopened(GitHubModel):
     )
 
 
-class WebhookProjectReopenedPropProject(GitHubModel):
-    """Project"""
+class WebhookProjectColumnMovedPropProjectColumn(GitHubModel):
+    """Project Column"""
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    cards_url: str = Field()
     created_at: datetime = Field()
-    creator: Union[WebhookProjectReopenedPropProjectPropCreator, None] = Field(
-        title="User"
-    )
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field(description="Name of the project")
+    id: int = Field(description="The unique identifier of the project column")
+    name: str = Field(description="Name of the project column")
     node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
-    )
+    project_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
 
 
-class WebhookProjectReopenedPropProjectPropCreator(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectReopened)
-model_rebuild(WebhookProjectReopenedPropProject)
-model_rebuild(WebhookProjectReopenedPropProjectPropCreator)
+model_rebuild(WebhookProjectColumnMoved)
+model_rebuild(WebhookProjectColumnMovedPropProjectColumn)
 
 __all__ = (
-    "WebhookProjectReopened",
-    "WebhookProjectReopenedPropProject",
-    "WebhookProjectReopenedPropProjectPropCreator",
+    "WebhookProjectColumnMoved",
+    "WebhookProjectColumnMovedPropProjectColumn",
 )

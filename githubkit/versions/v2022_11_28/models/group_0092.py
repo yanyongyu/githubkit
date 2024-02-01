@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 
 from pydantic import Field
 
@@ -24,7 +24,9 @@ class CustomPropertyValue(GitHubModel):
     """
 
     property_name: str = Field(description="The name of the property")
-    value: Union[str, None] = Field(description="The value assigned to the property")
+    value: Union[str, List[str], None] = Field(
+        description="The value assigned to the property"
+    )
 
 
 model_rebuild(CustomPropertyValue)

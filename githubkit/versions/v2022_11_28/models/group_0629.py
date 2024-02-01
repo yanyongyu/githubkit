@@ -19,17 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0362 import ProjectsV2Item
-from .group_0352 import SimpleInstallation
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0366 import ProjectsV2Item
+from .group_0356 import SimpleInstallation
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemRestored(GitHubModel):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ItemCreated(GitHubModel):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["restored"] = Field()
-    changes: WebhookProjectsV2ItemRestoredPropChanges = Field()
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -48,27 +47,6 @@ class WebhookProjectsV2ItemRestored(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemRestoredPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemRestoredPropChanges"""
+model_rebuild(WebhookProjectsV2ItemCreated)
 
-    archived_at: Missing[
-        WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt
-    ] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt(GitHubModel):
-    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
-
-    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[datetime, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemRestored)
-model_rebuild(WebhookProjectsV2ItemRestoredPropChanges)
-model_rebuild(WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt)
-
-__all__ = (
-    "WebhookProjectsV2ItemRestored",
-    "WebhookProjectsV2ItemRestoredPropChanges",
-    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt",
-)
+__all__ = ("WebhookProjectsV2ItemCreated",)

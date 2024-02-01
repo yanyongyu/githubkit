@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -19,27 +20,33 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
+from .group_0017 import Repository
 
 
-class Status(GitHubModel):
-    """Status
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    The status of a commit.
-    """
-
-    url: str = Field()
-    avatar_url: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    description: Union[str, None] = Field()
-    target_url: Union[str, None] = Field()
-    context: str = Field()
-    created_at: str = Field()
-    updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(Status)
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
 
-__all__ = ("Status",)
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
+
+
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
+
+__all__ = (
+    "PullRequestSimplePropHead",
+    "PullRequestSimplePropBase",
+)

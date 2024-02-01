@@ -10,44 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0033 import ReactionRollup
 
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-class TeamDiscussionComment(GitHubModel):
-    """Team Discussion Comment
-
-    A reply to a discussion within a team.
-    """
-
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the comment.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
     )
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
-    discussion_url: str = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(
-        description="The unique sequence number of a team discussion comment."
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
     )
-    updated_at: datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    )
 
 
-model_rebuild(TeamDiscussionComment)
+model_rebuild(CombinedBillingUsage)
 
-__all__ = ("TeamDiscussionComment",)
+__all__ = ("CombinedBillingUsage",)

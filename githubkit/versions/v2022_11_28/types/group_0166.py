@@ -11,33 +11,44 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationType
 
 
-class ActivityType(TypedDict):
-    """Activity
+class DeploymentType(TypedDict):
+    """Deployment
 
-    Activity
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
+    url: str
     id: int
     node_id: str
-    before: str
-    after: str
+    sha: str
     ref: str
-    timestamp: datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    task: str
+    payload: Union[DeploymentPropPayloadOneof0Type, str]
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType]]
 
 
-__all__ = ("ActivityType",)
+class DeploymentPropPayloadOneof0Type(TypedDict):
+    """DeploymentPropPayloadOneof0"""
+
+
+__all__ = (
+    "DeploymentType",
+    "DeploymentPropPayloadOneof0Type",
+)

@@ -13,10 +13,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    body: str
+    name: str
+    value: str
 
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",)
+__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType",)

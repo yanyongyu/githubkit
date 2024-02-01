@@ -14,40 +14,29 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0075 import TeamType
 from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class AddedToProjectIssueEventType(TypedDict):
-    """Added to Project Issue Event
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
 
-    Added to Project Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["added_to_project"]
+    event: Literal["review_request_removed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-class AddedToProjectIssueEventPropProjectCardType(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-__all__ = (
-    "AddedToProjectIssueEventType",
-    "AddedToProjectIssueEventPropProjectCardType",
-)
+__all__ = ("ReviewRequestRemovedIssueEventType",)

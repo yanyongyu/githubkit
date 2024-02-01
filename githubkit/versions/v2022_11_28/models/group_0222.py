@@ -10,43 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DependencyGraphDiffItems(GitHubModel):
-    """DependencyGraphDiffItems"""
+class Contributor(GitHubModel):
+    """Contributor
 
-    change_type: Literal["added", "removed"] = Field()
-    manifest: str = Field()
-    ecosystem: str = Field()
-    name: str = Field()
-    version: str = Field()
-    package_url: Union[str, None] = Field()
-    license_: Union[str, None] = Field(alias="license")
-    source_repository_url: Union[str, None] = Field()
-    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
-    scope: Literal["unknown", "runtime", "development"] = Field(
-        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
-    )
+    Contributor
+    """
+
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: str = Field()
+    site_admin: Missing[bool] = Field(default=UNSET)
+    contributions: int = Field()
+    email: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+model_rebuild(Contributor)
 
-    severity: str = Field()
-    advisory_ghsa_id: str = Field()
-    advisory_summary: str = Field()
-    advisory_url: str = Field()
-
-
-model_rebuild(DependencyGraphDiffItems)
-model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
-
-__all__ = (
-    "DependencyGraphDiffItems",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
-)
+__all__ = ("Contributor",)

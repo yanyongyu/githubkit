@@ -10,58 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0224 import MetadataType
+from typing_extensions import TypedDict
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class MetadataType(TypedDict):
+    """metadata
 
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: datetime
-
-
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-class SnapshotPropManifestsType(TypedDict):
-    """SnapshotPropManifests
-
-    A collection of package manifests, which are a collection of related
-    dependencies declared in a file or representing a logical group of dependencies.
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
 
-__all__ = (
-    "SnapshotType",
-    "SnapshotPropJobType",
-    "SnapshotPropDetectorType",
-    "SnapshotPropManifestsType",
-)
+__all__ = ("MetadataType",)

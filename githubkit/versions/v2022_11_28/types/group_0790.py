@@ -10,37 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0163 import DeploymentType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from typing_extensions import TypedDict
 
 
-class WebhookWorkflowJobQueuedType(TypedDict):
-    """workflow_job queued event"""
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
+    """Workflow Job
 
-    action: Literal["queued"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
-
-
-class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
+    """
 
     check_run_url: str
     completed_at: Union[str, None]
-    conclusion: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "skipped",
+            "cancelled",
+            "action_required",
+            "neutral",
+            "timed_out",
+        ],
+    ]
     created_at: str
     head_sha: str
     html_url: str
@@ -55,15 +49,15 @@ class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
     runner_group_name: Union[str, None]
     runner_id: Union[int, None]
     runner_name: Union[str, None]
-    started_at: datetime
+    started_at: str
     status: Literal["queued", "in_progress", "completed", "waiting"]
     head_branch: Union[str, None]
     workflow_name: Union[str, None]
-    steps: List[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType]
+    steps: List[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
     url: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType(TypedDict):
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
     """Workflow Step"""
 
     completed_at: Union[str, None]
@@ -71,11 +65,10 @@ class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType(TypedDict):
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending"]
+    status: Literal["in_progress", "completed", "queued"]
 
 
 __all__ = (
-    "WebhookWorkflowJobQueuedType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType",
 )

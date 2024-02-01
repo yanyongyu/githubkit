@@ -13,15 +13,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(
-    TypedDict
-):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    encrypted_value: str
-    key_id: str
+    pattern: str
 
 
-__all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
-)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBodyType",)

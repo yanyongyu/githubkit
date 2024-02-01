@@ -11,38 +11,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0075 import TeamType
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0180 import CommitType
+from .group_0175 import BranchProtectionType
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    url: str
-    users_url: str
-    teams_url: str
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[IntegrationType]]
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
 
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[IntegrationType]]
+    html: str
+    self_: str
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "BranchWithProtectionType",
+    "BranchWithProtectionPropLinksType",
 )

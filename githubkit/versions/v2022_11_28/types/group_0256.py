@@ -14,29 +14,35 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0075 import TeamType
 from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class ReviewRequestedIssueEventType(TypedDict):
-    """Review Requested Issue Event
+class MilestonedIssueEventType(TypedDict):
+    """Milestoned Issue Event
 
-    Review Requested Issue Event
+    Milestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_requested"]
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    milestone: MilestonedIssueEventPropMilestoneType
 
 
-__all__ = ("ReviewRequestedIssueEventType",)
+class MilestonedIssueEventPropMilestoneType(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+__all__ = (
+    "MilestonedIssueEventType",
+    "MilestonedIssueEventPropMilestoneType",
+)

@@ -10,18 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
+
+class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
+
+    name: NotRequired[str]
+    private: NotRequired[bool]
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int
-    installations: List[InstallationType]
-
-
-__all__ = ("UserInstallationsGetResponse200Type",)
+__all__ = ("UserCodespacesCodespaceNamePublishPostBodyType",)

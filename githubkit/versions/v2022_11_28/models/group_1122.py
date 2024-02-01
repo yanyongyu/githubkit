@@ -17,18 +17,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
+class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str] = Field(
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key."
+    selected_repository_ids: List[int] = Field(
+        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
     )
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)

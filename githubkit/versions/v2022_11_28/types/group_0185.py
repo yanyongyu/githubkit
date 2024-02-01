@@ -10,26 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0075 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationType
 
 
-class CheckAnnotationType(TypedDict):
-    """Check Annotation
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    Check Annotation
-    """
-
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    url: str
+    users_url: str
+    teams_url: str
+    users: List[SimpleUserType]
+    teams: List[TeamType]
+    apps: NotRequired[List[IntegrationType]]
 
 
-__all__ = ("CheckAnnotationType",)
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: List[SimpleUserType]
+    teams: List[TeamType]
+    apps: NotRequired[List[IntegrationType]]
+
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+)

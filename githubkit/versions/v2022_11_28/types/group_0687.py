@@ -14,20 +14,35 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0690 import WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType
-from .group_0688 import WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleasePrereleasedPropReleaseAllof0Type(TypedDict):
+class WebhookReleaseDeletedType(TypedDict):
+    """release deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhookReleaseDeletedPropReleaseType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookReleaseDeletedPropReleaseType(TypedDict):
     """Release
 
     The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
     object.
     """
 
-    assets: List[WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType]
+    assets: List[WebhookReleaseDeletedPropReleasePropAssetsItemsType]
     assets_url: str
-    author: Union[WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType, None]
+    author: Union[WebhookReleaseDeletedPropReleasePropAuthorType, None]
     body: Union[str, None]
     created_at: Union[datetime, None]
     discussion_url: NotRequired[str]
@@ -38,7 +53,7 @@ class WebhookReleasePrereleasedPropReleaseAllof0Type(TypedDict):
     node_id: str
     prerelease: bool
     published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType]
+    reactions: NotRequired[WebhookReleaseDeletedPropReleasePropReactionsType]
     tag_name: str
     tarball_url: Union[str, None]
     target_commitish: str
@@ -47,7 +62,71 @@ class WebhookReleasePrereleasedPropReleaseAllof0Type(TypedDict):
     zipball_url: Union[str, None]
 
 
-class WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType(TypedDict):
+class WebhookReleaseDeletedPropReleasePropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookReleaseDeletedPropReleasePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookReleaseDeletedPropReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[
+        Union[WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType, None]
+    ]
+    url: str
+
+
+class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -74,6 +153,10 @@ class WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType(TypedDict):
 
 
 __all__ = (
-    "WebhookReleasePrereleasedPropReleaseAllof0Type",
-    "WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType",
+    "WebhookReleaseDeletedType",
+    "WebhookReleaseDeletedPropReleaseType",
+    "WebhookReleaseDeletedPropReleasePropAuthorType",
+    "WebhookReleaseDeletedPropReleasePropReactionsType",
+    "WebhookReleaseDeletedPropReleasePropAssetsItemsType",
+    "WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType",
 )

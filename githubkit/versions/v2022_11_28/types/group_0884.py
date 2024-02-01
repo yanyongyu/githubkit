@@ -10,13 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
-
-    async_: NotRequired[bool]
+from .group_0071 import CodespaceType
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBodyType",)
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+
+    total_count: int
+    codespaces: List[CodespaceType]
+
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)

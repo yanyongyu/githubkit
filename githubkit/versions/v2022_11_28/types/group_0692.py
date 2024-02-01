@@ -14,13 +14,16 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0689 import (
+from .group_0693 import (
     WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploaderType,
 )
 
 
-class WebhookReleasePrereleasedPropReleaseMergedAssetsType(TypedDict):
-    """WebhookReleasePrereleasedPropReleaseMergedAssets"""
+class WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
 
     browser_download_url: str
     content_type: str
@@ -42,4 +45,4 @@ class WebhookReleasePrereleasedPropReleaseMergedAssetsType(TypedDict):
     url: str
 
 
-__all__ = ("WebhookReleasePrereleasedPropReleaseMergedAssetsType",)
+__all__ = ("WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType",)

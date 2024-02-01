@@ -10,25 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0601 import WebhookPingPropHookType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0364 import PersonalAccessTokenRequestType
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
+    """personal_access_token_request approved event"""
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
-    zen: NotRequired[str]
+    action: Literal["approved"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserWebhooksType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPingType",)
+__all__ = ("WebhookPersonalAccessTokenRequestApprovedType",)

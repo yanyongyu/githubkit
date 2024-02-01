@@ -10,14 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
-    labels: NotRequired[List[str]]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",)

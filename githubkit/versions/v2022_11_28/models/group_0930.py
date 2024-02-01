@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List
 
 from pydantic import Field
 
@@ -19,16 +18,15 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0148 import Artifact
+
+class ProjectsProjectIdPatchResponse403(GitHubModel):
+    """ProjectsProjectIdPatchResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+model_rebuild(ProjectsProjectIdPatchResponse403)
 
-    total_count: int = Field()
-    artifacts: List[Artifact] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+__all__ = ("ProjectsProjectIdPatchResponse403",)

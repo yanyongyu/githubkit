@@ -10,16 +10,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0005 import Integration
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator(GitHubModel):
+class WebhookIssueCommentDeletedPropComment(GitHubModel):
+    """issue comment
+
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
+    """
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field(description="Contents of the issue comment")
+    created_at: datetime = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the issue comment")
+    issue_url: str = Field()
+    node_id: str = Field()
+    performed_via_github_app: Union[None, Integration] = Field()
+    reactions: WebhookIssueCommentDeletedPropCommentPropReactions = Field(
+        title="Reactions"
+    )
+    updated_at: datetime = Field()
+    url: str = Field(description="URL for the issue comment")
+    user: Union[WebhookIssueCommentDeletedPropCommentPropUser, None] = Field(
+        title="User"
+    )
+
+
+class WebhookIssueCommentDeletedPropCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookIssueCommentDeletedPropCommentPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -47,6 +102,12 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator(GitHubMo
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator)
+model_rebuild(WebhookIssueCommentDeletedPropComment)
+model_rebuild(WebhookIssueCommentDeletedPropCommentPropReactions)
+model_rebuild(WebhookIssueCommentDeletedPropCommentPropUser)
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator",)
+__all__ = (
+    "WebhookIssueCommentDeletedPropComment",
+    "WebhookIssueCommentDeletedPropCommentPropReactions",
+    "WebhookIssueCommentDeletedPropCommentPropUser",
+)

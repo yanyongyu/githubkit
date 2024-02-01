@@ -19,18 +19,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0095 import FullRepository
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
-from .group_0761 import WebhookSecurityAndAnalysisPropChanges
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
+from .group_0367 import SecretScanningAlertWebhook
 
 
-class WebhookSecurityAndAnalysis(GitHubModel):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertRevoked(GitHubModel):
+    """secret_scanning_alert revoked event"""
 
-    changes: WebhookSecurityAndAnalysisPropChanges = Field()
+    action: Literal["revoked"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,8 +47,9 @@ class WebhookSecurityAndAnalysis(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: FullRepository = Field(
-        title="Full Repository", description="Full Repository"
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
@@ -56,6 +58,6 @@ class WebhookSecurityAndAnalysis(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysis)
+model_rebuild(WebhookSecretScanningAlertRevoked)
 
-__all__ = ("WebhookSecurityAndAnalysis",)
+__all__ = ("WebhookSecretScanningAlertRevoked",)

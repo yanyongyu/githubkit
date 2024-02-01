@@ -12,7 +12,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -20,19 +19,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0220 import DependabotAlert
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookDependabotAlertDismissed(GitHubModel):
-    """Dependabot alert dismissed event"""
+class WebhookDelete(GitHubModel):
+    """delete event"""
 
-    action: Literal["dismissed"] = Field()
-    alert: DependabotAlert = Field(description="A Dependabot alert.")
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -43,10 +44,14 @@ class WebhookDependabotAlertDismissed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    pusher_type: str = Field(
+        description="The pusher type for the event. Can be either `user` or a deploy key."
+    )
+    ref: str = Field(
+        description="The [`git ref`](https://docs.github.com/rest/git/refs#get-a-reference) resource."
+    )
+    ref_type: Literal["tag", "branch"] = Field(
+        description="The type of Git ref object deleted in the repository."
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -58,6 +63,6 @@ class WebhookDependabotAlertDismissed(GitHubModel):
     )
 
 
-model_rebuild(WebhookDependabotAlertDismissed)
+model_rebuild(WebhookDelete)
 
-__all__ = ("WebhookDependabotAlertDismissed",)
+__all__ = ("WebhookDelete",)

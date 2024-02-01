@@ -10,18 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0050 import MinimalRepositoryType
+
+class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
+
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ]
+    selected_usernames: NotRequired[List[str]]
 
 
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: List[MinimalRepositoryType]
-
-
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgCodespacesAccessPutBodyType",)

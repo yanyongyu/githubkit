@@ -17,11 +17,11 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0050 import MinimalRepositoryType
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int
     repositories: List[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",)

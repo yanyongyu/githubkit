@@ -14,23 +14,52 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0359 import MergeGroupType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookMergeGroupDestroyedType(TypedDict):
-    """WebhookMergeGroupDestroyed"""
+class WebhookMemberRemovedType(TypedDict):
+    """member removed event"""
 
-    action: Literal["destroyed"]
-    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    merge_group: MergeGroupType
+    member: Union[WebhookMemberRemovedPropMemberType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookMergeGroupDestroyedType",)
+class WebhookMemberRemovedPropMemberType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookMemberRemovedType",
+    "WebhookMemberRemovedPropMemberType",
+)

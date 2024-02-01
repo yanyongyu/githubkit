@@ -18,36 +18,22 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
+class LockedIssueEventType(TypedDict):
+    """Locked Issue Event
 
-    Removed from Project Issue Event
+    Locked Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["removed_from_project"]
+    event: Literal["locked"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    lock_reason: Union[str, None]
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-__all__ = (
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventPropProjectCardType",
-)
+__all__ = ("LockedIssueEventType",)

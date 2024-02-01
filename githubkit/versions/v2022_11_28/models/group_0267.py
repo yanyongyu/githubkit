@@ -10,29 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0034 import Issue
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TimelineCrossReferencedEventPropSource(GitHubModel):
-    """TimelineCrossReferencedEventPropSource"""
+class Label(GitHubModel):
+    """Label
 
-    type: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field()
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
+    default: bool = Field()
 
 
-model_rebuild(TimelineCrossReferencedEventPropSource)
+model_rebuild(Label)
 
-__all__ = ("TimelineCrossReferencedEventPropSource",)
+__all__ = ("Label",)

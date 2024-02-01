@@ -14,27 +14,27 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookMemberAddedType(TypedDict):
+    """member added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
+    changes: NotRequired[WebhookMemberAddedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhookMembershipRemovedPropMemberType, None]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
-    team: WebhookMembershipRemovedPropTeamType
+    member: Union[WebhookMemberAddedPropMemberType, None]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookMembershipRemovedPropMemberType(TypedDict):
+class WebhookMemberAddedPropMemberType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -60,77 +60,21 @@ class WebhookMembershipRemovedPropMemberType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookMembershipRemovedPropSenderType(TypedDict):
-    """User"""
+class WebhookMemberAddedPropChangesType(TypedDict):
+    """WebhookMemberAddedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionType]
 
 
-class WebhookMembershipRemovedPropTeamType(TypedDict):
-    """Team
+class WebhookMemberAddedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberAddedPropChangesPropPermission"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhookMembershipRemovedPropTeamPropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookMembershipRemovedPropTeamPropParentType(TypedDict):
-    """WebhookMembershipRemovedPropTeamPropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
+    to: Literal["write", "admin", "read"]
 
 
 __all__ = (
-    "WebhookMembershipRemovedType",
-    "WebhookMembershipRemovedPropMemberType",
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedPropTeamType",
-    "WebhookMembershipRemovedPropTeamPropParentType",
+    "WebhookMemberAddedType",
+    "WebhookMemberAddedPropMemberType",
+    "WebhookMemberAddedPropChangesType",
+    "WebhookMemberAddedPropChangesPropPermissionType",
 )

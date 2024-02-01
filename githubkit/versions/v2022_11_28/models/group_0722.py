@@ -12,7 +12,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -20,18 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0127 import RepositoryRuleset
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryRulesetDeleted(GitHubModel):
-    """repository ruleset deleted event"""
+class WebhookRepositoryPrivatized(GitHubModel):
+    """repository privatized event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["privatized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -47,14 +45,9 @@ class WebhookRepositoryRulesetDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -62,6 +55,6 @@ class WebhookRepositoryRulesetDeleted(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryRulesetDeleted)
+model_rebuild(WebhookRepositoryPrivatized)
 
-__all__ = ("WebhookRepositoryRulesetDeleted",)
+__all__ = ("WebhookRepositoryPrivatized",)

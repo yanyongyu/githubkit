@@ -10,17 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    name: str = Field()
+    assignees: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",)

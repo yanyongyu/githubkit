@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,97 +20,38 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    dismissal_restrictions: Missing[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
-    ] = Field(
-        default=UNSET,
-        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
-    )
-    dismiss_stale_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
-    )
-    require_code_owner_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) have reviewed.",
-    )
-    required_approving_review_count: Missing[int] = Field(
-        default=UNSET,
-        description="Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
-    )
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
-    )
-    bypass_pull_request_allowances: Missing[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
-    )
+    total_count: int = Field()
+    workflows: List[Workflow] = Field()
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
+class Workflow(GitHubModel):
+    """Workflow
 
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
+    A GitHub Actions workflow
     """
 
-    users: Missing[List[str]] = Field(
-        default=UNSET, description="The list of user `login`s with dismissal access"
-    )
-    teams: Missing[List[str]] = Field(
-        default=UNSET, description="The list of team `slug`s with dismissal access"
-    )
-    apps: Missing[List[str]] = Field(
-        default=UNSET, description="The list of app `slug`s with dismissal access"
-    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    path: str = Field()
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
+    html_url: str = Field()
+    badge_url: str = Field()
+    deleted_at: Missing[datetime] = Field(default=UNSET)
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of user `login`s allowed to bypass pull request requirements.",
-    )
-    teams: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of team `slug`s allowed to bypass pull request requirements.",
-    )
-    apps: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of app `slug`s allowed to bypass pull request requirements.",
-    )
-
-
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
-)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
-)
+model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
+model_rebuild(Workflow)
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200",
+    "Workflow",
 )

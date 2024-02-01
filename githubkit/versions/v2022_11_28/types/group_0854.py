@@ -14,16 +14,13 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgActionsVariablesPostBodyType(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ]
-    selected_usernames: NotRequired[List[str]]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[List[int]]
 
 
-__all__ = ("OrgsOrgCodespacesAccessPutBodyType",)
+__all__ = ("OrgsOrgActionsVariablesPostBodyType",)

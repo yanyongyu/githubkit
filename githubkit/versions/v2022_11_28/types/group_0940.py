@@ -10,18 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0158 import WorkflowRunType
+
+class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: List[WorkflowRunType]
-
-
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBodyType",)

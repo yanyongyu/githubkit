@@ -10,91 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookProjectColumnEdited(GitHubModel):
-    """project_column edited event"""
+class WebhookProjectCardMovedPropProjectCardAllof1(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectColumnEditedPropChanges = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    project_column: WebhookProjectColumnEditedPropProjectColumn = Field(
-        title="Project Column"
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    after_id: Union[int, None] = Field()
+    archived: Missing[bool] = Field(default=UNSET)
+    column_id: Missing[int] = Field(default=UNSET)
+    column_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    creator: Missing[
+        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreator, None]
+    ] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    note: Missing[Union[str, None]] = Field(default=UNSET)
+    project_url: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookProjectColumnEditedPropProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreator(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
-    node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-class WebhookProjectColumnEditedPropChanges(GitHubModel):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str = Field(alias="from")
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectColumnEdited)
-model_rebuild(WebhookProjectColumnEditedPropProjectColumn)
-model_rebuild(WebhookProjectColumnEditedPropChanges)
-model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1PropCreator)
 
 __all__ = (
-    "WebhookProjectColumnEdited",
-    "WebhookProjectColumnEditedPropProjectColumn",
-    "WebhookProjectColumnEditedPropChanges",
-    "WebhookProjectColumnEditedPropChangesPropName",
+    "WebhookProjectCardMovedPropProjectCardAllof1",
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreator",
 )

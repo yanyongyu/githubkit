@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
 
 from pydantic import Field
@@ -17,14 +18,24 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Traffic(GitHubModel):
-    """Traffic"""
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-    timestamp: datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
+    )
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
+    )
+    reason: Union[str, None] = Field()
+    created_at: datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-model_rebuild(Traffic)
+model_rebuild(RepositorySubscription)
 
-__all__ = ("Traffic",)
+__all__ = ("RepositorySubscription",)

@@ -19,22 +19,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0358 import Discussion
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionEdited(GitHubModel):
-    """discussion edited event"""
+class WebhookDiscussionCreated(GitHubModel):
+    """discussion created event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookDiscussionEditedPropChanges] = Field(default=UNSET)
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
+    action: Literal["created"] = Field()
+    discussion: WebhookDiscussionCreatedPropDiscussion = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -60,33 +56,112 @@ class WebhookDiscussionEdited(GitHubModel):
     )
 
 
-class WebhookDiscussionEditedPropChanges(GitHubModel):
-    """WebhookDiscussionEditedPropChanges"""
+class WebhookDiscussionCreatedPropDiscussion(GitHubModel):
+    """WebhookDiscussionCreatedPropDiscussion"""
 
-    body: Missing[WebhookDiscussionEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookDiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
+    active_lock_reason: Union[None, None] = Field()
+    answer_chosen_at: Union[None, None] = Field()
+    answer_chosen_by: Union[None, None] = Field()
+    answer_html_url: Union[Union[str, None], None] = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: Union[Union[str, None], None] = Field()
+    category: WebhookDiscussionCreatedPropDiscussionMergedCategory = Field()
+    comments: int = Field()
+    created_at: datetime = Field()
+    html_url: str = Field()
+    id: int = Field()
+    locked: Literal[False] = Field()
+    node_id: str = Field()
+    number: int = Field()
+    reactions: Missing[WebhookDiscussionCreatedPropDiscussionMergedReactions] = Field(
+        default=UNSET
+    )
+    repository_url: str = Field()
+    state: Literal["open", "converting", "transferring"] = Field()
+    timeline_url: Missing[str] = Field(default=UNSET)
+    title: str = Field()
+    updated_at: datetime = Field()
+    user: WebhookDiscussionCreatedPropDiscussionMergedUser = Field()
 
 
-class WebhookDiscussionEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropBody"""
+class WebhookDiscussionCreatedPropDiscussionMergedCategory(GitHubModel):
+    """WebhookDiscussionCreatedPropDiscussionMergedCategory"""
 
-    from_: str = Field(alias="from")
+    created_at: datetime = Field()
+    description: str = Field()
+    emoji: str = Field()
+    id: int = Field()
+    is_answerable: bool = Field()
+    name: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    repository_id: int = Field()
+    slug: str = Field()
+    updated_at: str = Field()
 
 
-class WebhookDiscussionEditedPropChangesPropTitle(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
+class WebhookDiscussionCreatedPropDiscussionMergedReactions(GitHubModel):
+    """WebhookDiscussionCreatedPropDiscussionMergedReactions"""
 
-    from_: str = Field(alias="from")
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
 
 
-model_rebuild(WebhookDiscussionEdited)
-model_rebuild(WebhookDiscussionEditedPropChanges)
-model_rebuild(WebhookDiscussionEditedPropChangesPropBody)
-model_rebuild(WebhookDiscussionEditedPropChangesPropTitle)
+class WebhookDiscussionCreatedPropDiscussionMergedUser(GitHubModel):
+    """WebhookDiscussionCreatedPropDiscussionMergedUser"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookDiscussionCreated)
+model_rebuild(WebhookDiscussionCreatedPropDiscussion)
+model_rebuild(WebhookDiscussionCreatedPropDiscussionMergedCategory)
+model_rebuild(WebhookDiscussionCreatedPropDiscussionMergedReactions)
+model_rebuild(WebhookDiscussionCreatedPropDiscussionMergedUser)
 
 __all__ = (
-    "WebhookDiscussionEdited",
-    "WebhookDiscussionEditedPropChanges",
-    "WebhookDiscussionEditedPropChangesPropBody",
-    "WebhookDiscussionEditedPropChangesPropTitle",
+    "WebhookDiscussionCreated",
+    "WebhookDiscussionCreatedPropDiscussion",
+    "WebhookDiscussionCreatedPropDiscussionMergedCategory",
+    "WebhookDiscussionCreatedPropDiscussionMergedReactions",
+    "WebhookDiscussionCreatedPropDiscussionMergedUser",
 )

@@ -10,35 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0591 import WebhookPackagePublishedPropPackagePropPackageVersionType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookPackagePublishedPropPackageType(TypedDict):
-    """WebhookPackagePublishedPropPackage
+class WebhookOrganizationMemberRemovedType(TypedDict):
+    """organization member_removed event"""
 
-    Information about the package.
+    action: Literal["member_removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: WebhookOrganizationMemberRemovedPropMembershipType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
+
+
+class WebhookOrganizationMemberRemovedPropMembershipType(TypedDict):
+    """Membership
+
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionType, None
-    ]
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
-    updated_at: Union[str, None]
+    organization_url: str
+    role: str
+    state: str
+    url: str
+    user: Union[WebhookOrganizationMemberRemovedPropMembershipPropUserType, None]
 
 
-class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
+class WebhookOrganizationMemberRemovedPropMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -64,18 +73,8 @@ class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
-
-
 __all__ = (
-    "WebhookPackagePublishedPropPackageType",
-    "WebhookPackagePublishedPropPackagePropOwnerType",
-    "WebhookPackagePublishedPropPackagePropRegistryType",
+    "WebhookOrganizationMemberRemovedType",
+    "WebhookOrganizationMemberRemovedPropMembershipType",
+    "WebhookOrganizationMemberRemovedPropMembershipPropUserType",
 )

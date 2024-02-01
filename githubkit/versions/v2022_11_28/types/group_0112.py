@@ -10,17 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0113 import RepositoryRuleRequiredDeploymentsPropParametersType
 
 
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
+    """
+
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-__all__ = ("RepositoryRulePullRequestPropParametersType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsType",)

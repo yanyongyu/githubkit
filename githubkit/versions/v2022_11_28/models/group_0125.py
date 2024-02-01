@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,20 +18,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0126 import RepositoryRuleWorkflowsPropParameters
+
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
+
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
-    """
-
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleWorkflows)
-
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

@@ -10,38 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0177 import CommitType
-from .group_0172 import BranchProtectionType
 
+class DiffEntryType(TypedDict):
+    """Diff Entry
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
-
-    Branch With Protection
+    Diff Entry
     """
 
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    sha: str
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: str
+    raw_url: str
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
-
-    html: str
-    self_: str
-
-
-__all__ = (
-    "BranchWithProtectionType",
-    "BranchWithProtectionPropLinksType",
-)
+__all__ = ("DiffEntryType",)

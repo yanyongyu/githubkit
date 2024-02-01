@@ -12,7 +12,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -20,44 +19,49 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0220 import DependabotAlert
-from .group_0351 import EnterpriseWebhooks
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0092 import CustomPropertyValue
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookDependabotAlertCreated(GitHubModel):
-    """Dependabot alert created event"""
+class WebhookCustomPropertyValuesUpdated(GitHubModel):
+    """Custom property values updated event"""
 
-    action: Literal["created"] = Field()
-    alert: DependabotAlert = Field(description="A Dependabot alert.")
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
+    new_property_values: List[CustomPropertyValue] = Field(
+        description="The new custom property values for the repository."
+    )
+    old_property_values: List[CustomPropertyValue] = Field(
+        description="The old custom property values for the repository."
+    )
 
 
-model_rebuild(WebhookDependabotAlertCreated)
+model_rebuild(WebhookCustomPropertyValuesUpdated)
 
-__all__ = ("WebhookDependabotAlertCreated",)
+__all__ = ("WebhookCustomPropertyValuesUpdated",)

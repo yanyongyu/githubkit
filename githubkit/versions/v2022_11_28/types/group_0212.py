@@ -10,32 +10,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0177 import CommitType
-from .group_0176 import DiffEntryType
+from .group_0050 import MinimalRepositoryType
 
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    Commit Comparison
+    Combined Commit Status
     """
 
+    state: str
+    statuses: List[SimpleCommitStatusType]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
     url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: List[CommitType]
-    files: NotRequired[List[DiffEntryType]]
 
 
-__all__ = ("CommitComparisonType",)
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: datetime
+    updated_at: datetime
+
+
+__all__ = (
+    "CombinedCommitStatusType",
+    "SimpleCommitStatusType",
+)

@@ -17,15 +17,27 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody(
-    GitHubModel
-):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+    )
+    name: str = Field(description="The name of the new repository.")
+    description: Missing[str] = Field(
+        default=UNSET, description="A short description of the new repository."
+    )
+    include_all_branches: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Either `true` to create a new private repository or `false` to create a new public one.",
+    )
 
 
-model_rebuild(RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody)
+model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
 
-__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody",)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)

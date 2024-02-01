@@ -10,18 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0071 import CodespaceType
+
+class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
+
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
+    events: NotRequired[List[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
 
-    total_count: int
-    codespaces: List[CodespaceType]
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)
+__all__ = (
+    "OrgsOrgHooksHookIdPatchBodyType",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
+)

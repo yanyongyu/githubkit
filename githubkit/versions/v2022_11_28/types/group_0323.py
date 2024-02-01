@@ -14,13 +14,11 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    A topic aggregates entities that are related to a subject.
-    """
-
-    names: List[str]
+    all_: List[int]
+    owner: List[int]
 
 
-__all__ = ("TopicType",)
+__all__ = ("ParticipationStatsType",)

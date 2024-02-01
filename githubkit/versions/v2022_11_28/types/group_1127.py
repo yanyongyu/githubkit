@@ -10,11 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserEmailsPostBodyOneof0Type(TypedDict):
+    """UserEmailsPostBodyOneof0
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: List[str]
 
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("UserEmailsPostBodyOneof0Type",)

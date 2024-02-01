@@ -10,34 +10,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import List, Union
+from typing_extensions import TypedDict
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class GitCommitType(TypedDict):
+    """Git Commit
 
-    The hierarchy between files in a Git repository.
+    Low-level Git commit operations within a repository
     """
 
     sha: str
+    node_id: str
     url: str
-    truncated: bool
-    tree: List[GitTreePropTreeItemsType]
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: List[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
 
-    path: NotRequired[str]
-    mode: NotRequired[str]
-    type: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
 
 
 __all__ = (
-    "GitTreeType",
-    "GitTreePropTreeItemsType",
+    "GitCommitType",
+    "GitCommitPropAuthorType",
+    "GitCommitPropCommitterType",
+    "GitCommitPropTreeType",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropVerificationType",
 )

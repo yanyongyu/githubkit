@@ -13,102 +13,35 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0106 import RepositoryRuleUpdateType
-from .group_0125 import RepositoryRuleWorkflowsType
-from .group_0111 import RepositoryRulePullRequestType
-from .group_0123 import RepositoryRuleTagNamePatternType
-from .group_0121 import RepositoryRuleBranchNamePatternType
-from .group_0109 import RepositoryRuleRequiredDeploymentsType
-from .group_0113 import RepositoryRuleRequiredStatusChecksType
-from .group_0115 import RepositoryRuleCommitMessagePatternType
-from .group_0108 import RepositoryRuleRequiredLinearHistoryType
-from .group_0119 import RepositoryRuleCommitterEmailPatternType
-from .group_0117 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0105 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+from .group_0731 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
+from .group_0729 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    rule: NotRequired[
-        Union[
-            RepositoryRuleCreationType,
-            RepositoryRuleUpdateType,
-            RepositoryRuleDeletionType,
-            RepositoryRuleRequiredLinearHistoryType,
-            RepositoryRuleRequiredDeploymentsType,
-            RepositoryRuleRequiredSignaturesType,
-            RepositoryRulePullRequestType,
-            RepositoryRuleRequiredStatusChecksType,
-            RepositoryRuleNonFastForwardType,
-            RepositoryRuleCommitMessagePatternType,
-            RepositoryRuleCommitAuthorEmailPatternType,
-            RepositoryRuleCommitterEmailPatternType,
-            RepositoryRuleBranchNamePatternType,
-            RepositoryRuleTagNamePatternType,
-            RepositoryRuleWorkflowsType,
-        ]
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
     ]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
-    ]
+    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
+    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
-
-    configuration: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
-    ]
-    rule_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
-    ]
-    pattern: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
-    ]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pConfiguration
-    """
+class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
 
     from_: NotRequired[str]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pRuleType
-    """
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pPattern
-    """
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
 
     from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
+    "WebhookRepositoryRulesetEditedPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
 )

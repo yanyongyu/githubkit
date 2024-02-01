@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import Annotated
+from typing import List
 
 from pydantic import Field
 
@@ -20,18 +19,22 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
     )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+        description="A short description about the intended usage of this role or what permissions it grants.",
+    )
+    permissions: Missing[List[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)

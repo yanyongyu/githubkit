@@ -18,14 +18,14 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0124 import RepositoryRuleTagNamePatternPropParameters
+from .group_0119 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class RepositoryRuleDetailedOneof13(GitHubModel):
-    """RepositoryRuleDetailedOneof13"""
+class RepositoryRuleDetailedOneof9(GitHubModel):
+    """RepositoryRuleDetailedOneof9"""
 
-    type: Literal["tag_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+    type: Literal["commit_message_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof13(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof13)
+model_rebuild(RepositoryRuleDetailedOneof9)
 
-__all__ = ("RepositoryRuleDetailedOneof13",)
+__all__ = ("RepositoryRuleDetailedOneof9",)

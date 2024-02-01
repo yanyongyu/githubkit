@@ -17,15 +17,50 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
+class RepositoryRuleCreation(GitHubModel):
+    """creation
 
-    Prevent merge commits from being pushed to matching refs.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["required_linear_history"] = Field()
+    type: Literal["creation"] = Field()
 
 
-model_rebuild(RepositoryRuleRequiredLinearHistory)
+class RepositoryRuleDeletion(GitHubModel):
+    """deletion
 
-__all__ = ("RepositoryRuleRequiredLinearHistory",)
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"] = Field()
+
+
+class RepositoryRuleRequiredSignatures(GitHubModel):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"] = Field()
+
+
+class RepositoryRuleNonFastForward(GitHubModel):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"] = Field()
+
+
+model_rebuild(RepositoryRuleCreation)
+model_rebuild(RepositoryRuleDeletion)
+model_rebuild(RepositoryRuleRequiredSignatures)
+model_rebuild(RepositoryRuleNonFastForward)
+
+__all__ = (
+    "RepositoryRuleCreation",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleRequiredSignatures",
+    "RepositoryRuleNonFastForward",
+)

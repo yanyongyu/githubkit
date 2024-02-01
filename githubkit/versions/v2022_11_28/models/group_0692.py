@@ -19,13 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0689 import (
+from .group_0693 import (
     WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader,
 )
 
 
-class WebhookReleasePrereleasedPropReleaseMergedAssets(GitHubModel):
-    """WebhookReleasePrereleasedPropReleaseMergedAssets"""
+class WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems(GitHubModel):
+    """Release Asset
+
+    Data related to a release.
+    """
 
     browser_download_url: str = Field()
     content_type: str = Field()
@@ -46,6 +49,6 @@ class WebhookReleasePrereleasedPropReleaseMergedAssets(GitHubModel):
     url: str = Field()
 
 
-model_rebuild(WebhookReleasePrereleasedPropReleaseMergedAssets)
+model_rebuild(WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems)
 
-__all__ = ("WebhookReleasePrereleasedPropReleaseMergedAssets",)
+__all__ = ("WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems",)

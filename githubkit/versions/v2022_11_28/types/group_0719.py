@@ -14,22 +14,31 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryPublicizedType(TypedDict):
-    """repository publicized event"""
+class WebhookRepositoryDispatchSampleType(TypedDict):
+    """repository_dispatch event"""
 
-    action: Literal["publicized"]
+    action: Literal["sample.collected"]
+    branch: str
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    installation: SimpleInstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookRepositoryPublicizedType",)
+class WebhookRepositoryDispatchSamplePropClientPayloadType(TypedDict):
+    """WebhookRepositoryDispatchSamplePropClientPayload"""
+
+
+__all__ = (
+    "WebhookRepositoryDispatchSampleType",
+    "WebhookRepositoryDispatchSamplePropClientPayloadType",
+)

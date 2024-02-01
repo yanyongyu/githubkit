@@ -10,18 +10,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
+from .group_0498 import WebhookIssuesDemilestonedPropIssue
 
 
-class WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
-    GitHubModel
-):
+class WebhookIssuesDemilestoned(GitHubModel):
+    """issues demilestoned event"""
+
+    action: Literal["demilestoned"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    issue: WebhookIssuesDemilestonedPropIssue = Field()
+    milestone: Missing[WebhookIssuesDemilestonedPropMilestone] = Field(
+        default=UNSET,
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+
+
+class WebhookIssuesDemilestonedPropMilestone(GitHubModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhookIssuesDemilestonedPropMilestonePropCreator, None] = Field(
+        title="User"
+    )
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: datetime = Field()
+    url: str = Field()
+
+
+class WebhookIssuesDemilestonedPropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -43,69 +110,18 @@ class WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
-    GitHubModel
-):
-    """WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-
-    The set of permissions for the GitHub app
-    """
-
-    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_administration: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
-        default=UNSET
-    )
-    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
-
-
-model_rebuild(
-    WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner
-)
-model_rebuild(
-    WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-)
+model_rebuild(WebhookIssuesDemilestoned)
+model_rebuild(WebhookIssuesDemilestonedPropMilestone)
+model_rebuild(WebhookIssuesDemilestonedPropMilestonePropCreator)
 
 __all__ = (
-    "WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-    "WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+    "WebhookIssuesDemilestoned",
+    "WebhookIssuesDemilestonedPropMilestone",
+    "WebhookIssuesDemilestonedPropMilestonePropCreator",
 )

@@ -807,6 +807,9 @@ if TYPE_CHECKING:
         LabelSearchResultItemType as LabelSearchResultItemType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        PagesDeploymentStatusType as PagesDeploymentStatusType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         PagesHttpsCertificateType as PagesHttpsCertificateType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1339,6 +1342,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgRulesetConditionsOneof1Type as OrgRulesetConditionsOneof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgRulesetConditionsOneof2Type as OrgRulesetConditionsOneof2Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationSimpleWebhooksType as OrganizationSimpleWebhooksType,
@@ -2766,6 +2772,9 @@ if TYPE_CHECKING:
         WebhookRubygemsMetadataPropMetadataType as WebhookRubygemsMetadataPropMetadataType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookSecretScanningAlertValidatedType as WebhookSecretScanningAlertValidatedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookSponsorshipEditedPropChangesType as WebhookSponsorshipEditedPropChangesType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2958,9 +2967,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoHooksPostBodyPropConfigType as ReposOwnerRepoHooksPostBodyPropConfigType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoPagesDeploymentPostBodyType as ReposOwnerRepoPagesDeploymentPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPagesPostBodyPropSourceType as ReposOwnerRepoPagesPostBodyPropSourceType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3067,6 +3073,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCodespacesGetResponse200Type as ReposOwnerRepoCodespacesGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPagesDeploymentsPostBodyType as ReposOwnerRepoPagesDeploymentsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPullsPullNumberPatchBodyType as ReposOwnerRepoPullsPullNumberPatchBodyType,
@@ -4962,6 +4971,9 @@ if TYPE_CHECKING:
         RepositoryRuleCommitterEmailPatternPropParametersType as RepositoryRuleCommitterEmailPatternPropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRulesetConditionsRepositoryPropertySpecType as RepositoryRulesetConditionsRepositoryPropertySpecType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RepositoryWebhooksPropTemplateRepositoryPropOwnerType as RepositoryWebhooksPropTemplateRepositoryPropOwnerType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5374,6 +5386,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRulesetConditionsRepositoryPropertyTargetType as RepositoryRulesetConditionsRepositoryPropertyTargetType,
     )
     from githubkit.versions.v2022_11_28.types import (
         SecurityAndAnalysisPropSecretScanningPushProtectionType as SecurityAndAnalysisPropSecretScanningPushProtectionType,
@@ -9093,6 +9108,9 @@ if TYPE_CHECKING:
         RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -10850,8 +10868,12 @@ else:
             "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
             "RepositoryRulesetConditionsRepositoryIdTargetType",
             "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+            "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+            "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+            "RepositoryRulesetConditionsRepositoryPropertySpecType",
             "OrgRulesetConditionsOneof0Type",
             "OrgRulesetConditionsOneof1Type",
+            "OrgRulesetConditionsOneof2Type",
             "RepositoryRuleCreationType",
             "RepositoryRuleDeletionType",
             "RepositoryRuleRequiredSignaturesType",
@@ -11197,6 +11219,7 @@ else:
             "PageBuildPropErrorType",
             "PageBuildStatusType",
             "PageDeploymentType",
+            "PagesDeploymentStatusType",
             "PagesHealthCheckType",
             "PagesHealthCheckPropDomainType",
             "PagesHealthCheckPropAltDomainType",
@@ -13626,6 +13649,7 @@ else:
             "WebhookSecretScanningAlertReopenedType",
             "WebhookSecretScanningAlertResolvedType",
             "WebhookSecretScanningAlertRevokedType",
+            "WebhookSecretScanningAlertValidatedType",
             "WebhookSecurityAdvisoryPublishedType",
             "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryType",
             "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvssType",
@@ -14198,7 +14222,7 @@ else:
             "ReposOwnerRepoPagesPostBodyPropSourceType",
             "ReposOwnerRepoPagesPostBodyAnyof0Type",
             "ReposOwnerRepoPagesPostBodyAnyof1Type",
-            "ReposOwnerRepoPagesDeploymentPostBodyType",
+            "ReposOwnerRepoPagesDeploymentsPostBodyType",
             "ReposOwnerRepoProjectsPostBodyType",
             "ReposOwnerRepoPropertiesValuesPatchBodyType",
             "ReposOwnerRepoPullsPostBodyType",

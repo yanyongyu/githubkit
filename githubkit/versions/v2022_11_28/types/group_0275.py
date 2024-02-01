@@ -10,14 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationType
 
 
-class LanguageType(TypedDict):
-    """Language
+class TimelineUnassignedIssueEventType(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    Language
+    Timeline Unassigned Issue Event
     """
 
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType]
+    assignee: SimpleUserType
 
-__all__ = ("LanguageType",)
+
+__all__ = ("TimelineUnassignedIssueEventType",)

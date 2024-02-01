@@ -10,18 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0148 import ArtifactType
+from .group_0062 import RunnerType
 
 
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
     total_count: int
-    artifacts: List[ArtifactType]
+    runners: List[RunnerType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200Type",)

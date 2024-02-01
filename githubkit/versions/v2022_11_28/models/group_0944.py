@@ -10,25 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
+from typing_extensions import Annotated
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    environment_ids: List[int] = Field(
-        description="The list of environment ids to approve or reject"
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner.",
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)

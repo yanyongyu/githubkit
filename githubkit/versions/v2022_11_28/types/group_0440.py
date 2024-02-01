@@ -15,33 +15,27 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0015 import InstallationType
-from .group_0351 import EnterpriseWebhooksType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationRepositoriesRemovedType(TypedDict):
-    """installation_repositories removed event"""
+class WebhookInstallationCreatedType(TypedDict):
+    """installation created event"""
 
-    action: Literal["removed"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItemsType
-    ]
-    repositories_removed: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
-    ]
+    repositories: NotRequired[List[WebhookInstallationCreatedPropRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhookInstallationRepositoriesRemovedPropRequesterType, None]
+    requester: NotRequired[Union[WebhookInstallationCreatedPropRequesterType, None]]
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems"""
+class WebhookInstallationCreatedPropRepositoriesItemsType(TypedDict):
+    """WebhookInstallationCreatedPropRepositoriesItems"""
 
     full_name: str
     id: int
@@ -50,17 +44,7 @@ class WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItemsType(Typed
     private: bool
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
-
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
-
-
-class WebhookInstallationRepositoriesRemovedPropRequesterType(TypedDict):
+class WebhookInstallationCreatedPropRequesterType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -87,8 +71,7 @@ class WebhookInstallationRepositoriesRemovedPropRequesterType(TypedDict):
 
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemovedType",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItemsType",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesRemovedPropRequesterType",
+    "WebhookInstallationCreatedType",
+    "WebhookInstallationCreatedPropRepositoriesItemsType",
+    "WebhookInstallationCreatedPropRequesterType",
 )

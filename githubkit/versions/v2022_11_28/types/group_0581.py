@@ -14,26 +14,50 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookOrgBlockBlockedType(TypedDict):
-    """org_block blocked event"""
+class WebhookMilestoneCreatedType(TypedDict):
+    """milestone created event"""
 
-    action: Literal["blocked"]
-    blocked_user: Union[WebhookOrgBlockBlockedPropBlockedUserType, None]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    milestone: WebhookMilestoneCreatedPropMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookOrgBlockBlockedPropBlockedUserType(TypedDict):
+class WebhookMilestoneCreatedPropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhookMilestoneCreatedPropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
+
+
+class WebhookMilestoneCreatedPropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -60,6 +84,7 @@ class WebhookOrgBlockBlockedPropBlockedUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookOrgBlockBlockedType",
-    "WebhookOrgBlockBlockedPropBlockedUserType",
+    "WebhookMilestoneCreatedType",
+    "WebhookMilestoneCreatedPropMilestoneType",
+    "WebhookMilestoneCreatedPropMilestonePropCreatorType",
 )

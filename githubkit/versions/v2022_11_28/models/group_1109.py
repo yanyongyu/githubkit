@@ -14,20 +14,25 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
+    GitHubModel
+):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment."
     )
 
 
-model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
+model_rebuild(
+    TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody
+)
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)
+__all__ = (
+    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
+)

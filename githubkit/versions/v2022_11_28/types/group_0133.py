@@ -10,15 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class PackagesBillingUsageType(TypedDict):
-    """PackagesBillingUsage"""
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    total_gigabytes_bandwidth_used: int
-    total_paid_gigabytes_bandwidth_used: int
-    included_gigabytes_bandwidth: int
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-__all__ = ("PackagesBillingUsageType",)
+__all__ = ("RepositoryAdvisoryCreditType",)

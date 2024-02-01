@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0015 import Installation
+from .group_0050 import MinimalRepository
 
 
-class OrgsOrgInstallationsGetResponse200(GitHubModel):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
     total_count: int = Field()
-    installations: List[Installation] = Field()
+    repositories: List[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgInstallationsGetResponse200)
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgInstallationsGetResponse200",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)

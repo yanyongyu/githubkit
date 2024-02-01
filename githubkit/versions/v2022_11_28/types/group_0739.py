@@ -14,34 +14,21 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType(
-    TypedDict
-):
-    """User"""
+class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type(TypedDict):
+    """WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    affected_package_name: NotRequired[str]
+    affected_range: NotRequired[str]
+    created_at: NotRequired[str]
+    external_identifier: NotRequired[str]
+    external_reference: NotRequired[Union[str, None]]
+    fixed_in: NotRequired[str]
+    ghsa_id: NotRequired[str]
+    id: NotRequired[int]
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    number: NotRequired[int]
+    severity: NotRequired[str]
+    state: Literal["open"]
 
 
-__all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType",
-)
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type",)

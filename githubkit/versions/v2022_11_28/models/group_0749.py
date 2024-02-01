@@ -19,34 +19,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser(
-    GitHubModel
-):
-    """User"""
+class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1(GitHubModel):
+    """WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
+    affected_package_name: Missing[str] = Field(default=UNSET)
+    affected_range: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    external_identifier: Missing[str] = Field(default=UNSET)
+    external_reference: Missing[Union[str, None]] = Field(default=UNSET)
+    fixed_in: Missing[str] = Field(default=UNSET)
+    ghsa_id: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    number: Missing[int] = Field(default=UNSET)
+    severity: Missing[str] = Field(default=UNSET)
+    state: Literal["open"] = Field()
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser)
+model_rebuild(WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1",)

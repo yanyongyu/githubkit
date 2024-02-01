@@ -10,74 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0160 import SimpleCommit
 
 
-class SecretScanningAlertWebhook(GitHubModel):
-    """SecretScanningAlertWebhook"""
+class MergeGroup(GitHubModel):
+    """Merge Group
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str = Field(description="The SHA of the merge group.")
+    head_ref: str = Field(description="The full ref of the merge group.")
+    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into."
     )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
-    )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
-    )
-    resolution: Missing[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ] = Field(default=UNSET, description="The reason for resolving the alert.")
-    resolved_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
 
 
-model_rebuild(SecretScanningAlertWebhook)
+model_rebuild(MergeGroup)
 
-__all__ = ("SecretScanningAlertWebhook",)
+__all__ = ("MergeGroup",)

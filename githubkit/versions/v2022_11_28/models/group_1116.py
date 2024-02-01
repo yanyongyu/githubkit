@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0050 import MinimalRepository
+from .group_0071 import Codespace
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class UserCodespacesGetResponse200(GitHubModel):
+    """UserCodespacesGetResponse200"""
 
     total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
+    codespaces: List[Codespace] = Field()
 
 
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
+model_rebuild(UserCodespacesGetResponse200)
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("UserCodespacesGetResponse200",)

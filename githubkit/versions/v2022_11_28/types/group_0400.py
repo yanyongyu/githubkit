@@ -14,44 +14,24 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0223 import DependabotAlertType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertDismissedType(TypedDict):
+    """Dependabot alert dismissed event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["dismissed"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    key: WebhookDeployKeyCreatedPropKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookDeployKeyCreatedPropKeyType(TypedDict):
-    """WebhookDeployKeyCreatedPropKey
-
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
-    """
-
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-
-
-__all__ = (
-    "WebhookDeployKeyCreatedType",
-    "WebhookDeployKeyCreatedPropKeyType",
-)
+__all__ = ("WebhookDependabotAlertDismissedType",)

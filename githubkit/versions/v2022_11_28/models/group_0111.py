@@ -11,28 +11,21 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import Annotated
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0112 import RepositoryRulePullRequestPropParameters
 
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
-
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

@@ -11,29 +11,65 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
 
-    Timeline Unassigned Issue Event
+    Timeline Reviewed Event
     """
 
+    event: Literal["reviewed"]
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["unassigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    assignee: SimpleUserType
+    user: SimpleUserType
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[datetime]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-__all__ = ("TimelineUnassignedIssueEventType",)
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
+
+
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
+
+
+__all__ = (
+    "TimelineReviewedEventType",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
+)

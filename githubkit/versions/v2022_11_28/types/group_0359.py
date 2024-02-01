@@ -11,23 +11,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import datetime
-from typing_extensions import TypedDict
-
-from .group_0157 import SimpleCommitType
+from typing_extensions import TypedDict, NotRequired
 
 
-class MergeGroupType(TypedDict):
-    """Merge Group
+class SimpleUserWebhooksType(TypedDict):
+    """Simple User
 
-    A group of pull requests that the merge queue has grouped together to be merged.
+    The GitHub user that triggered the event. This property is included in every
+    webhook payload.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
 
 
-__all__ = ("MergeGroupType",)
+__all__ = ("SimpleUserWebhooksType",)

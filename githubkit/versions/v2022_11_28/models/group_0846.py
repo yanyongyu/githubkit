@@ -10,25 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
+from typing_extensions import Annotated
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0050 import MinimalRepository
+
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+
+    labels: List[str] = Field(
+        max_length=100,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    )
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
 
-    total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)

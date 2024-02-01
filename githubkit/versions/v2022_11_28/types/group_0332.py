@@ -10,43 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0174 import GitUserType
-from .group_0175 import VerificationType
-
-
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
-
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
+from .group_0328 import TrafficType
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    name: str
-    email: str
-    date: datetime
+    View Traffic
+    """
 
-
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
+    count: int
+    uniques: int
+    views: List[TrafficType]
 
 
-__all__ = (
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropTreeType",
-)
+__all__ = ("ViewTrafficType",)

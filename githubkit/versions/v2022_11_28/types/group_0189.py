@@ -14,50 +14,60 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0067 import CodeScanningAnalysisToolType
-from .group_0068 import CodeScanningAlertInstanceType
+from .group_0005 import IntegrationType
+from .group_0160 import SimpleCommitType
+from .group_0050 import MinimalRepositoryType
+from .group_0159 import PullRequestMinimalType
 
 
-class CodeScanningAlertType(TypedDict):
-    """CodeScanningAlert"""
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    number: int
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Literal["open", "dismissed", "fixed"]
-    fixed_at: NotRequired[Union[datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[None, Literal["queued", "in_progress", "completed"]]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[List[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType]
+    repository: MinimalRepositoryType
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-class CodeScanningAlertRuleType(TypedDict):
-    """CodeScanningAlertRule"""
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[List[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    total_count: int
+    check_suites: List[CheckSuiteType]
 
 
 __all__ = (
-    "CodeScanningAlertType",
-    "CodeScanningAlertRuleType",
+    "CheckSuiteType",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
 )

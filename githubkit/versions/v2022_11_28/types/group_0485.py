@@ -11,34 +11,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0484 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0486 import WebhookIssuesClosedPropIssueType
 
 
-class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookIssuesClosedType(TypedDict):
+    """issues closed event"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    action: Literal["closed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssuesClosedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropMilestoneType",)
+__all__ = ("WebhookIssuesClosedType",)

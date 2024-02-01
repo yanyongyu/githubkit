@@ -10,32 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0001 import SimpleUser
+from .group_0005 import Integration
 
 
-class DeployKey(GitHubModel):
-    """Deploy Key
+class TimelineAssignedIssueEvent(GitHubModel):
+    """Timeline Assigned Issue Event
 
-    An SSH key granting access to a single repository.
+    Timeline Assigned Issue Event
     """
 
     id: int = Field()
-    key: str = Field()
+    node_id: str = Field()
     url: str = Field()
-    title: str = Field()
-    verified: bool = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["assigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    read_only: bool = Field()
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    performed_via_github_app: Union[None, Integration] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(DeployKey)
+model_rebuild(TimelineAssignedIssueEvent)
 
-__all__ = ("DeployKey",)
+__all__ = ("TimelineAssignedIssueEvent",)

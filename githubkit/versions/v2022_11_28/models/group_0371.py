@@ -19,20 +19,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0352 import SimpleInstallation
-from .group_0354 import RepositoryWebhooks
-from .group_0355 import SimpleUserWebhooks
-from .group_0353 import OrganizationSimpleWebhooks
-from .group_0357 import CheckRunWithSimpleCheckSuite
+from .group_0355 import EnterpriseWebhooks
+from .group_0356 import SimpleInstallation
+from .group_0358 import RepositoryWebhooks
+from .group_0359 import SimpleUserWebhooks
+from .group_0357 import OrganizationSimpleWebhooks
 
 
-class WebhookCheckRunCreated(GitHubModel):
-    """Check Run Created Event"""
+class WebhookBranchProtectionRuleDeleted(GitHubModel):
+    """branch protection rule deleted event"""
 
-    action: Literal["created"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    action: Literal["deleted"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -48,12 +49,78 @@ class WebhookCheckRunCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    rule: WebhookBranchProtectionRuleDeletedPropRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookCheckRunCreated)
+class WebhookBranchProtectionRuleDeletedPropRule(GitHubModel):
+    """branch protection rule
 
-__all__ = ("WebhookCheckRunCreated",)
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool = Field()
+    allow_deletions_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    allow_force_pushes_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    authorized_actor_names: List[str] = Field()
+    authorized_actors_only: bool = Field()
+    authorized_dismissal_actors_only: bool = Field()
+    create_protected: Missing[bool] = Field(default=UNSET)
+    created_at: datetime = Field()
+    dismiss_stale_reviews_on_push: bool = Field()
+    id: int = Field()
+    ignore_approvals_from_contributors: bool = Field()
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
+    name: str = Field()
+    pull_request_reviews_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    repository_id: int = Field()
+    require_code_owner_review: bool = Field()
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it",
+    )
+    required_approving_review_count: int = Field()
+    required_conversation_resolution_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    required_deployments_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    required_status_checks: List[str] = Field()
+    required_status_checks_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    signature_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    strict_required_status_checks_policy: bool = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(WebhookBranchProtectionRuleDeleted)
+model_rebuild(WebhookBranchProtectionRuleDeletedPropRule)
+
+__all__ = (
+    "WebhookBranchProtectionRuleDeleted",
+    "WebhookBranchProtectionRuleDeletedPropRule",
+)

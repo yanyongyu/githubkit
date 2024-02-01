@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
@@ -19,38 +18,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0061 import RunnerLabel
 
-class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesGetResponse200"""
+
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
     total_count: int = Field()
-    variables: List[OrganizationActionsVariable] = Field()
+    labels: List[RunnerLabel] = Field()
 
 
-class OrganizationActionsVariable(GitHubModel):
-    """Actions Variable for an Organization
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200)
 
-    Organization variable for GitHub Actions.
-    """
-
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a variable"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgActionsVariablesGetResponse200)
-model_rebuild(OrganizationActionsVariable)
-
-__all__ = (
-    "OrgsOrgActionsVariablesGetResponse200",
-    "OrganizationActionsVariable",
-)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",)

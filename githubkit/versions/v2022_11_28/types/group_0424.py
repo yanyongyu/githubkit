@@ -14,15 +14,24 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0358 import DiscussionType
-from .group_0354 import RepositoryWebhooksType
+from .group_0362 import DiscussionType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionLockedType(TypedDict):
+    """discussion locked event"""
 
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+    action: Literal["locked"]
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDiscussionTransferredPropChangesType",)
+__all__ = ("WebhookDiscussionLockedType",)

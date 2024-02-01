@@ -10,21 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
+class ActionsSecret(GitHubModel):
+    """Actions Secret
 
-    access_level: Literal["none", "user", "organization"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization."
-    )
+    Set secrets for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+model_rebuild(ActionsSecret)
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+__all__ = ("ActionsSecret",)

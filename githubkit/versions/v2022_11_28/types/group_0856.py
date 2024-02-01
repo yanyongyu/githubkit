@@ -10,14 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0050 import MinimalRepositoryType
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
-    selected_usernames: List[str]
+    total_count: int
+    repositories: List[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",)

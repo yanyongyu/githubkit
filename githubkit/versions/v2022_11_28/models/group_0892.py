@@ -19,19 +19,25 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0091 import OrgCustomProperty
 
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: List[OrgCustomProperty] = Field(
+    pat_request_ids: Missing[List[int]] = Field(
         max_length=100,
         min_length=1,
-        description="The array of custom properties to create or update.",
+        default=UNSET,
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
+    )
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the requests. Max 1024 characters.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)

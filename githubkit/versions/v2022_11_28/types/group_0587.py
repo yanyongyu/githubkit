@@ -14,39 +14,26 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import EnterpriseWebhooksType
-from .group_0352 import SimpleInstallationType
-from .group_0354 import RepositoryWebhooksType
-from .group_0355 import SimpleUserWebhooksType
-from .group_0353 import OrganizationSimpleWebhooksType
+from .group_0355 import EnterpriseWebhooksType
+from .group_0356 import SimpleInstallationType
+from .group_0358 import RepositoryWebhooksType
+from .group_0359 import SimpleUserWebhooksType
+from .group_0357 import OrganizationSimpleWebhooksType
 
 
-class WebhookOrganizationRenamedType(TypedDict):
-    """organization renamed event"""
+class WebhookOrganizationDeletedType(TypedDict):
+    """organization deleted event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhookOrganizationRenamedPropMembershipType]
+    membership: NotRequired[WebhookOrganizationDeletedPropMembershipType]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookOrganizationRenamedPropChangesType(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
-
-
-class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: NotRequired[str]
-
-
-class WebhookOrganizationRenamedPropMembershipType(TypedDict):
+class WebhookOrganizationDeletedPropMembershipType(TypedDict):
     """Membership
 
     The membership between the user and the organization. Not present when the
@@ -57,10 +44,10 @@ class WebhookOrganizationRenamedPropMembershipType(TypedDict):
     role: str
     state: str
     url: str
-    user: Union[WebhookOrganizationRenamedPropMembershipPropUserType, None]
+    user: Union[WebhookOrganizationDeletedPropMembershipPropUserType, None]
 
 
-class WebhookOrganizationRenamedPropMembershipPropUserType(TypedDict):
+class WebhookOrganizationDeletedPropMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -87,9 +74,7 @@ class WebhookOrganizationRenamedPropMembershipPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookOrganizationRenamedType",
-    "WebhookOrganizationRenamedPropChangesType",
-    "WebhookOrganizationRenamedPropChangesPropLoginType",
-    "WebhookOrganizationRenamedPropMembershipType",
-    "WebhookOrganizationRenamedPropMembershipPropUserType",
+    "WebhookOrganizationDeletedType",
+    "WebhookOrganizationDeletedPropMembershipType",
+    "WebhookOrganizationDeletedPropMembershipPropUserType",
 )

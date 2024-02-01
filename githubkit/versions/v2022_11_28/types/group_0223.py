@@ -10,69 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
+from .group_0224 import DependabotAlertPropDependencyType
+from .group_0027 import DependabotAlertSecurityAdvisoryType
+from .group_0026 import DependabotAlertSecurityVulnerabilityType
 
-class DependencyGraphSpdxSbomType(TypedDict):
-    """Dependency Graph SPDX SBOM
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
+
+    A Dependabot alert.
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomType
-
-
-class DependencyGraphSpdxSbomPropSbomType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str
-    spdx_version: str
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
-    name: str
-    data_license: str
-    document_describes: List[str]
-    document_namespace: str
-    packages: List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str
-    creators: List[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    external_refs: NotRequired[
-        List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
     ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
 
 
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
-
-
-__all__ = (
-    "DependencyGraphSpdxSbomType",
-    "DependencyGraphSpdxSbomPropSbomType",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
-)
+__all__ = ("DependabotAlertType",)
