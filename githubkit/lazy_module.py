@@ -106,15 +106,13 @@ class LazyModuleFinder(MetaPathFinder):
         path: Optional[Sequence[str]],
         target: Optional[ModuleType] = None,
     ) -> Optional[ModuleSpec]:
-        module_spec = PathFinder.find_spec(fullname, path, target)
-        if not module_spec or not module_spec.origin:
-            return module_spec
+        if any(re.match(pattern, fullname) for pattern in LAZY_MODULES):
+            module_spec = PathFinder.find_spec(fullname, path, target)
+            if not module_spec or not module_spec.origin:
+                return
 
-        if module_spec and any(
-            re.match(pattern, module_spec.name) for pattern in LAZY_MODULES
-        ):
             module_spec.loader = LazyModuleLoader(module_spec.name, module_spec.origin)
-        return module_spec
+            return module_spec
 
 
 def apply():
