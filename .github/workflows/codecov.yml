@@ -56,3 +56,5 @@ jobs:
           env_vars: OS,PYTHON_VERSION,PYDANTIC_VERSION
           files: ./coverage.xml
           flags: unittests
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
