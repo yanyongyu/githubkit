@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -41,11 +40,11 @@ class WebhookInstallationSuspend(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories: Missing[
-        List[WebhookInstallationSuspendPropRepositoriesItems]
-    ] = Field(
-        default=UNSET,
-        description="An array of repository objects that the installation can access.",
+    repositories: Missing[List[WebhookInstallationSuspendPropRepositoriesItems]] = (
+        Field(
+            default=UNSET,
+            description="An array of repository objects that the installation can access.",
+        )
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,

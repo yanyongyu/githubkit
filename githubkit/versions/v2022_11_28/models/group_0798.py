@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -123,9 +122,9 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommit(GitHubModel):
     author: WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthor = (
         Field()
     )
-    committer: WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitter = (
-        Field()
-    )
+    committer: (
+        WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitter
+    ) = Field()
     id: str = Field()
     message: str = Field()
     timestamp: str = Field()

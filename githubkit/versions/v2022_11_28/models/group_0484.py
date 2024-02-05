@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -100,9 +99,9 @@ class WebhookIssuesAssignedPropIssue(GitHubModel):
     assignee: Missing[Union[WebhookIssuesAssignedPropIssuePropAssignee, None]] = Field(
         default=UNSET, title="User"
     )
-    assignees: List[
-        Union[WebhookIssuesAssignedPropIssuePropAssigneesItems, None]
-    ] = Field()
+    assignees: List[Union[WebhookIssuesAssignedPropIssuePropAssigneesItems, None]] = (
+        Field()
+    )
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -238,9 +237,9 @@ class WebhookIssuesAssignedPropIssuePropMilestone(GitHubModel):
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
     created_at: datetime = Field()
-    creator: Union[
-        WebhookIssuesAssignedPropIssuePropMilestonePropCreator, None
-    ] = Field(title="User")
+    creator: Union[WebhookIssuesAssignedPropIssuePropMilestonePropCreator, None] = (
+        Field(title="User")
+    )
     description: Union[str, None] = Field()
     due_on: Union[datetime, None] = Field()
     html_url: str = Field()

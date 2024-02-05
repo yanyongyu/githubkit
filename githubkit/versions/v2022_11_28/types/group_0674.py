@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -338,14 +337,20 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserType(TypedD
 class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksType(TypedDict):
     """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsType
-    commits: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsType
+    comments: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsType
+    )
+    commits: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsType
+    )
     html: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueType
     review_comment: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentType
     review_comments: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentsType
     self_: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesType
+    statuses: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesType
+    )
 
 
 class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsType(
@@ -934,7 +939,9 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType(
     for-a-pull-request) itself.
     """
 
-    links: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType
+    links: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType
+    )
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",

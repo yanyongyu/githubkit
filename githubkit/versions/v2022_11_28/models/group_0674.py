@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -375,30 +374,30 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUser(GitHubMode
 class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks(GitHubModel):
     """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropComments = Field(
-        title="Link"
-    )
-    commits: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommits = Field(
-        title="Link"
-    )
+    comments: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropComments
+    ) = Field(title="Link")
+    commits: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommits
+    ) = Field(title="Link")
     html: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtml = (
         Field(title="Link")
     )
     issue: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssue = (
         Field(title="Link")
     )
-    review_comment: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComment = Field(
-        title="Link"
-    )
-    review_comments: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComments = Field(
-        title="Link"
-    )
+    review_comment: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComment
+    ) = Field(title="Link")
+    review_comments: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComments
+    ) = Field(title="Link")
     self_: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelf = (
         Field(alias="self", title="Link")
     )
-    statuses: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatuses = Field(
-        title="Link"
-    )
+    statuses: (
+        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatuses
+    ) = Field(title="Link")
 
 
 class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropComments(
@@ -1053,9 +1052,9 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems(GitHub
     for-a-pull-request) itself.
     """
 
-    links: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks = Field(
-        alias="_links"
-    )
+    links: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks
+    ) = Field(alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -1110,9 +1109,9 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems(GitHub
     pull_request_url: str = Field(
         description="URL for the pull request that the review comment belongs to."
     )
-    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions = Field(
-        title="Reactions"
-    )
+    reactions: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions
+    ) = Field(title="Reactions")
     side: Literal["LEFT", "RIGHT"] = Field(
         description="The side of the first line of the range for a multi-line comment."
     )
@@ -1185,15 +1184,15 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLin
 ):
     """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
 
-    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml = Field(
-        title="Link"
-    )
-    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest = Field(
-        title="Link"
-    )
-    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf = Field(
-        alias="self", title="Link"
-    )
+    html: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml
+    ) = Field(title="Link")
+    pull_request: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest
+    ) = Field(title="Link")
+    self_: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf
+    ) = Field(alias="self", title="Link")
 
 
 class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml(

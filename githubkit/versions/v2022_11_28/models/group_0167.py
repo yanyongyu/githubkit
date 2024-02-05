@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List
@@ -48,9 +47,9 @@ class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
 
     total_ms: int = Field()
     jobs: int = Field()
-    job_runs: Missing[
-        List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]
-    ] = Field(default=UNSET)
+    job_runs: Missing[List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
 
 
 class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
@@ -65,9 +64,9 @@ class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
 
     total_ms: int = Field()
     jobs: int = Field()
-    job_runs: Missing[
-        List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]
-    ] = Field(default=UNSET)
+    job_runs: Missing[List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
 
 
 class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
@@ -82,9 +81,9 @@ class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
 
     total_ms: int = Field()
     jobs: int = Field()
-    job_runs: Missing[
-        List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]
-    ] = Field(default=UNSET)
+    job_runs: Missing[List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
 
 
 class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):

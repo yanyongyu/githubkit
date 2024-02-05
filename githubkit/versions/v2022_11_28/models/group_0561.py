@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -41,9 +40,9 @@ class WebhookMarketplacePurchasePendingChange(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangePropMarketplacePurchase = (
-        Field()
-    )
+    marketplace_purchase: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchase
+    ) = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -66,9 +65,9 @@ class WebhookMarketplacePurchasePendingChange(GitHubModel):
 class WebhookMarketplacePurchasePendingChangePropMarketplacePurchase(GitHubModel):
     """WebhookMarketplacePurchasePendingChangePropMarketplacePurchase"""
 
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount = (
-        Field()
-    )
+    account: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount
+    ) = Field()
     billing_cycle: str = Field()
     free_trial_ends_on: Union[Union[str, None], None] = Field()
     next_billing_date: Union[Union[str, None], None] = Field()
@@ -112,16 +111,14 @@ class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase(
 ):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount = (
-        Field()
-    )
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount = (Field())
     billing_cycle: str = Field()
     free_trial_ends_on: Union[str, None] = Field()
     next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
     on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan = (
-        Field()
-    )
+    plan: (
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan
+    ) = Field()
     unit_count: int = Field()
 
 

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -119,8 +118,7 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     @overload
     def set_restrictions_for_org(
@@ -133,8 +131,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     def set_restrictions_for_org(
         self,
@@ -177,8 +174,7 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     @overload
     async def async_set_restrictions_for_org(
@@ -191,8 +187,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     async def async_set_restrictions_for_org(
         self,
@@ -342,8 +337,7 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     @overload
     def set_restrictions_for_repo(
@@ -357,8 +351,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     def set_restrictions_for_repo(
         self,
@@ -401,8 +394,7 @@ class InteractionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     @overload
     async def async_set_restrictions_for_repo(
@@ -416,8 +408,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     async def async_set_restrictions_for_repo(
         self,
@@ -553,8 +544,7 @@ class InteractionsClient:
     @overload
     def set_restrictions_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: InteractionLimitType
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     @overload
     def set_restrictions_for_authenticated_user(
@@ -566,8 +556,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     def set_restrictions_for_authenticated_user(
         self,
@@ -605,8 +594,7 @@ class InteractionsClient:
     @overload
     async def async_set_restrictions_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: InteractionLimitType
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     @overload
     async def async_set_restrictions_for_authenticated_user(
@@ -618,8 +606,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]:
-        ...
+    ) -> Response[InteractionLimitResponse]: ...
 
     async def async_set_restrictions_for_authenticated_user(
         self,

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -158,11 +157,11 @@ class RepositoryWebhooks(GitHubModel):
         default=UNSET,
         description="Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     squash_merge_commit_message: Missing[
         Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
@@ -296,9 +295,9 @@ class RepositoryWebhooksPropTemplateRepository(GitHubModel):
     pushed_at: Missing[str] = Field(default=UNSET)
     created_at: Missing[str] = Field(default=UNSET)
     updated_at: Missing[str] = Field(default=UNSET)
-    permissions: Missing[
-        RepositoryWebhooksPropTemplateRepositoryPropPermissions
-    ] = Field(default=UNSET)
+    permissions: Missing[RepositoryWebhooksPropTemplateRepositoryPropPermissions] = (
+        Field(default=UNSET)
+    )
     allow_rebase_merge: Missing[bool] = Field(default=UNSET)
     temp_clone_token: Missing[str] = Field(default=UNSET)
     allow_squash_merge: Missing[bool] = Field(default=UNSET)
@@ -306,11 +305,11 @@ class RepositoryWebhooksPropTemplateRepository(GitHubModel):
     delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
     allow_update_branch: Missing[bool] = Field(default=UNSET)
     use_squash_pr_title_as_default: Missing[bool] = Field(default=UNSET)
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     squash_merge_commit_message: Missing[
         Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]

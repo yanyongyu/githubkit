@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -75,12 +74,12 @@ class WebhookBranchProtectionRuleEditedPropRule(GitHubModel):
     """
 
     admin_enforced: bool = Field()
-    allow_deletions_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    allow_force_pushes_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
     authorized_actor_names: List[str] = Field()
     authorized_actors_only: bool = Field()
     authorized_dismissal_actors_only: bool = Field()
@@ -94,9 +93,9 @@ class WebhookBranchProtectionRuleEditedPropRule(GitHubModel):
     ] = Field()
     merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
     name: str = Field()
-    pull_request_reviews_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
     repository_id: int = Field()
     require_code_owner_review: bool = Field()
     require_last_push_approval: Missing[bool] = Field(
@@ -104,12 +103,12 @@ class WebhookBranchProtectionRuleEditedPropRule(GitHubModel):
         description="Whether the most recent push must be approved by someone other than the person who pushed it",
     )
     required_approving_review_count: int = Field()
-    required_conversation_resolution_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    required_deployments_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
     required_status_checks: List[str] = Field()
     required_status_checks_enforcement_level: Literal[
         "off", "non_admins", "everyone"

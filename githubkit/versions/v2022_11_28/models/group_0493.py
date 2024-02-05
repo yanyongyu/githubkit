@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -23,9 +22,9 @@ class WebhookIssuesClosedPropIssueAllof1(GitHubModel):
     """WebhookIssuesClosedPropIssueAllof1"""
 
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Missing[
-        Union[WebhookIssuesClosedPropIssueAllof1PropAssignee, None]
-    ] = Field(default=UNSET)
+    assignee: Missing[Union[WebhookIssuesClosedPropIssueAllof1PropAssignee, None]] = (
+        Field(default=UNSET)
+    )
     assignees: Missing[
         List[Union[WebhookIssuesClosedPropIssueAllof1PropAssigneesItems, None]]
     ] = Field(default=UNSET)
@@ -43,9 +42,9 @@ class WebhookIssuesClosedPropIssueAllof1(GitHubModel):
     ] = Field(default=UNSET)
     labels_url: Missing[str] = Field(default=UNSET)
     locked: Missing[bool] = Field(default=UNSET)
-    milestone: Missing[
-        Union[WebhookIssuesClosedPropIssueAllof1PropMilestone, None]
-    ] = Field(default=UNSET)
+    milestone: Missing[Union[WebhookIssuesClosedPropIssueAllof1PropMilestone, None]] = (
+        Field(default=UNSET)
+    )
     node_id: Missing[str] = Field(default=UNSET)
     number: Missing[int] = Field(default=UNSET)
     performed_via_github_app: Missing[

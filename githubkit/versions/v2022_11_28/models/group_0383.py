@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -105,10 +104,10 @@ class WebhookCheckSuiteRerequestedPropCheckSuite(GitHubModel):
     )
     rerequestable: Missing[bool] = Field(default=UNSET)
     runs_rerequestable: Missing[bool] = Field(default=UNSET)
-    status: Union[
-        None, Literal["requested", "in_progress", "completed", "queued"]
-    ] = Field(
-        description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
+    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]] = (
+        Field(
+            description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
+        )
     )
     updated_at: datetime = Field()
     url: str = Field(description="URL that points to the check suite API resource.")
@@ -184,9 +183,9 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropApp(GitHubModel):
     id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
-    owner: Union[
-        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner, None
-    ] = Field(title="User")
+    owner: Union[WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner, None] = (
+        Field(title="User")
+    )
     permissions: Missing[
         WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
@@ -338,9 +337,9 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase(
     """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 
@@ -360,9 +359,9 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead(
     """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 

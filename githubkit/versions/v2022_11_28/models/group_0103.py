@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List
@@ -29,9 +28,9 @@ class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
     Parameters for a repository property condition
     """
 
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = (
-        Field()
-    )
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty
+    ) = Field()
 
 
 model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)

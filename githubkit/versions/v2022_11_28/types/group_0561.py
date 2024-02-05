@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -28,7 +27,9 @@ class WebhookMarketplacePurchasePendingChangeType(TypedDict):
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType
+    marketplace_purchase: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType
+    )
     organization: NotRequired[OrganizationSimpleWebhooksType]
     previous_marketplace_purchase: NotRequired[
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
@@ -40,7 +41,9 @@ class WebhookMarketplacePurchasePendingChangeType(TypedDict):
 class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType(TypedDict):
     """WebhookMarketplacePurchasePendingChangePropMarketplacePurchase"""
 
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType
+    account: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType
+    )
     billing_cycle: str
     free_trial_ends_on: Union[Union[str, None], None]
     next_billing_date: Union[Union[str, None], None]

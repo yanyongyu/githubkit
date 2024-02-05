@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -67,9 +66,9 @@ class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
 
     check_run_url: str = Field()
     completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[
-        Literal["success", "failure", "cancelled", "neutral"], None
-    ] = Field()
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None] = (
+        Field()
+    )
     created_at: str = Field(description="The time that the job created.")
     head_sha: str = Field()
     html_url: str = Field()
@@ -112,9 +111,9 @@ class WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps(GitHubModel):
     """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
 
     completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[
-        Literal["failure", "skipped", "success", "cancelled"], None
-    ] = Field()
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
+        Field()
+    )
     name: str = Field()
     number: int = Field()
     started_at: Union[Union[str, None], None] = Field()

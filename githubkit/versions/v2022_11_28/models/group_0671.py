@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -483,30 +482,30 @@ class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUser(GitHubModel
 class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks(GitHubModel):
     """WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments = Field(
-        title="Link"
-    )
-    commits: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits = Field(
-        title="Link"
-    )
+    comments: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments
+    ) = Field(title="Link")
+    commits: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits
+    ) = Field(title="Link")
     html: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml = (
         Field(title="Link")
     )
     issue: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue = (
         Field(title="Link")
     )
-    review_comment: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment = Field(
-        title="Link"
-    )
-    review_comments: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComments = Field(
-        title="Link"
-    )
+    review_comment: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment
+    ) = Field(title="Link")
+    review_comments: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComments
+    ) = Field(title="Link")
     self_: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf = (
         Field(alias="self", title="Link")
     )
-    statuses: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses = Field(
-        title="Link"
-    )
+    statuses: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses
+    ) = Field(title="Link")
 
 
 class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments(
@@ -741,11 +740,11 @@ class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepo(
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)
@@ -996,11 +995,11 @@ class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepo(
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -133,8 +132,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     @overload
     def start_for_org(
@@ -152,8 +150,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     def start_for_org(
         self,
@@ -202,8 +199,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     @overload
     async def async_start_for_org(
@@ -221,8 +217,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     async def async_start_for_org(
         self,
@@ -602,8 +597,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     @overload
     def start_import(
@@ -618,8 +612,7 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     def start_import(
         self,
@@ -671,8 +664,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     @overload
     async def async_start_import(
@@ -687,8 +679,7 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     async def async_start_import(
         self,
@@ -788,8 +779,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     @overload
     def update_import(
@@ -803,8 +793,7 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     def update_import(
         self,
@@ -851,8 +840,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     @overload
     async def async_update_import(
@@ -866,8 +854,7 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     async def async_update_import(
         self,
@@ -983,8 +970,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor]:
-        ...
+    ) -> Response[PorterAuthor]: ...
 
     @overload
     def map_commit_author(
@@ -997,8 +983,7 @@ class MigrationsClient:
         headers: Optional[Dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor]:
-        ...
+    ) -> Response[PorterAuthor]: ...
 
     def map_commit_author(
         self,
@@ -1052,8 +1037,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor]:
-        ...
+    ) -> Response[PorterAuthor]: ...
 
     @overload
     async def async_map_commit_author(
@@ -1066,8 +1050,7 @@ class MigrationsClient:
         headers: Optional[Dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor]:
-        ...
+    ) -> Response[PorterAuthor]: ...
 
     async def async_map_commit_author(
         self,
@@ -1174,8 +1157,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     @overload
     def set_lfs_preference(
@@ -1186,8 +1168,7 @@ class MigrationsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     def set_lfs_preference(
         self,
@@ -1238,8 +1219,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     @overload
     async def async_set_lfs_preference(
@@ -1250,8 +1230,7 @@ class MigrationsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import]:
-        ...
+    ) -> Response[Import]: ...
 
     async def async_set_lfs_preference(
         self,
@@ -1368,8 +1347,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     @overload
     def start_for_authenticated_user(
@@ -1386,8 +1364,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
         repositories: List[str],
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     def start_for_authenticated_user(
         self,
@@ -1435,8 +1412,7 @@ class MigrationsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     @overload
     async def async_start_for_authenticated_user(
@@ -1453,8 +1429,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[List[Literal["repositories"]]] = UNSET,
         repositories: List[str],
-    ) -> Response[Migration]:
-        ...
+    ) -> Response[Migration]: ...
 
     async def async_start_for_authenticated_user(
         self,

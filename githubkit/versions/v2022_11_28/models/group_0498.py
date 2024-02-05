@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -32,9 +31,9 @@ class WebhookIssuesDemilestonedPropIssue(GitHubModel):
     active_lock_reason: Union[
         Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
-    assignee: Missing[
-        Union[WebhookIssuesDemilestonedPropIssueMergedAssignee, None]
-    ] = Field(default=UNSET)
+    assignee: Missing[Union[WebhookIssuesDemilestonedPropIssueMergedAssignee, None]] = (
+        Field(default=UNSET)
+    )
     assignees: List[WebhookIssuesDemilestonedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
@@ -74,9 +73,9 @@ class WebhookIssuesDemilestonedPropIssue(GitHubModel):
     performed_via_github_app: Missing[
         Union[WebhookIssuesDemilestonedPropIssueMergedPerformedViaGithubApp, None]
     ] = Field(default=UNSET)
-    pull_request: Missing[
-        WebhookIssuesDemilestonedPropIssueAllof0PropPullRequest
-    ] = Field(default=UNSET)
+    pull_request: Missing[WebhookIssuesDemilestonedPropIssueAllof0PropPullRequest] = (
+        Field(default=UNSET)
+    )
     reactions: WebhookIssuesDemilestonedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     state: Missing[Literal["open", "closed"]] = Field(

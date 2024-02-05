@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -113,9 +112,9 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequest(GitHubModel):
     html_url: str = Field()
     id: int = Field()
     issue_url: str = Field()
-    labels: List[
-        WebhookPullRequestAutoMergeEnabledPropPullRequestPropLabelsItems
-    ] = Field()
+    labels: List[WebhookPullRequestAutoMergeEnabledPropPullRequestPropLabelsItems] = (
+        Field()
+    )
     locked: bool = Field()
     maintainer_can_modify: Missing[bool] = Field(
         default=UNSET,
@@ -161,9 +160,9 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequest(GitHubModel):
     title: str = Field(description="The title of the pull request.")
     updated_at: datetime = Field()
     url: str = Field()
-    user: Union[
-        WebhookPullRequestAutoMergeEnabledPropPullRequestPropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestAutoMergeEnabledPropPullRequestPropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssignee(GitHubModel):
@@ -436,12 +435,12 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinks(GitHubModel):
     issue: WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropIssue = Field(
         title="Link"
     )
-    review_comment: WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComment = Field(
-        title="Link"
-    )
-    review_comments: WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComments = Field(
-        title="Link"
-    )
+    review_comment: (
+        WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComment
+    ) = Field(title="Link")
+    review_comments: (
+        WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComments
+    ) = Field(title="Link")
     self_: WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropSelf = Field(
         alias="self", title="Link"
     )
@@ -671,11 +670,11 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepo(GitHubMo
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)
@@ -919,11 +918,11 @@ class WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepo(GitHubMo
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -68,9 +67,9 @@ class WebhookPullRequestMilestonedPropPullRequest(GitHubModel):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
     additions: Missing[int] = Field(default=UNSET)
-    assignee: Union[
-        WebhookPullRequestMilestonedPropPullRequestPropAssignee, None
-    ] = Field(title="User")
+    assignee: Union[WebhookPullRequestMilestonedPropPullRequestPropAssignee, None] = (
+        Field(title="User")
+    )
     assignees: List[
         Union[WebhookPullRequestMilestonedPropPullRequestPropAssigneesItems, None]
     ] = Field()
@@ -125,11 +124,11 @@ class WebhookPullRequestMilestonedPropPullRequest(GitHubModel):
     merged_by: Missing[
         Union[WebhookPullRequestMilestonedPropPullRequestPropMergedBy, None]
     ] = Field(default=UNSET, title="User")
-    milestone: Union[
-        WebhookPullRequestMilestonedPropPullRequestPropMilestone, None
-    ] = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    milestone: Union[WebhookPullRequestMilestonedPropPullRequestPropMilestone, None] = (
+        Field(
+            title="Milestone",
+            description="A collection of related issues and pull requests.",
+        )
     )
     node_id: str = Field()
     number: int = Field(
@@ -433,12 +432,12 @@ class WebhookPullRequestMilestonedPropPullRequestPropLinks(GitHubModel):
     issue: WebhookPullRequestMilestonedPropPullRequestPropLinksPropIssue = Field(
         title="Link"
     )
-    review_comment: WebhookPullRequestMilestonedPropPullRequestPropLinksPropReviewComment = Field(
-        title="Link"
-    )
-    review_comments: WebhookPullRequestMilestonedPropPullRequestPropLinksPropReviewComments = Field(
-        title="Link"
-    )
+    review_comment: (
+        WebhookPullRequestMilestonedPropPullRequestPropLinksPropReviewComment
+    ) = Field(title="Link")
+    review_comments: (
+        WebhookPullRequestMilestonedPropPullRequestPropLinksPropReviewComments
+    ) = Field(title="Link")
     self_: WebhookPullRequestMilestonedPropPullRequestPropLinksPropSelf = Field(
         alias="self", title="Link"
     )
@@ -508,9 +507,9 @@ class WebhookPullRequestMilestonedPropPullRequestPropBase(GitHubModel):
         title="Repository", description="A git repository"
     )
     sha: str = Field()
-    user: Union[
-        WebhookPullRequestMilestonedPropPullRequestPropBasePropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestMilestonedPropPullRequestPropBasePropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestMilestonedPropPullRequestPropBasePropUser(GitHubModel):
@@ -661,11 +660,11 @@ class WebhookPullRequestMilestonedPropPullRequestPropBasePropRepo(GitHubModel):
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)
@@ -753,9 +752,9 @@ class WebhookPullRequestMilestonedPropPullRequestPropHead(GitHubModel):
         title="Repository", description="A git repository"
     )
     sha: str = Field()
-    user: Union[
-        WebhookPullRequestMilestonedPropPullRequestPropHeadPropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestMilestonedPropPullRequestPropHeadPropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestMilestonedPropPullRequestPropHeadPropUser(GitHubModel):
@@ -906,11 +905,11 @@ class WebhookPullRequestMilestonedPropPullRequestPropHeadPropRepo(GitHubModel):
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)

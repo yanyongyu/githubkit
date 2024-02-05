@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -44,9 +43,9 @@ class WebhookMarketplacePurchasePendingChangeCancelled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase = (
-        Field()
-    )
+    marketplace_purchase: (
+        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase
+    ) = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -71,16 +70,12 @@ class WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePur
 ):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccount = (
-        Field()
-    )
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccount = (Field())
     billing_cycle: str = Field()
     free_trial_ends_on: None = Field()
     next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
     on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlan = (
-        Field()
-    )
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlan = (Field())
     unit_count: int = Field()
 
 

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from pydantic import Field
@@ -25,12 +24,12 @@ class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems(
 ):
     """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems"""
 
-    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase = (
-        Field()
-    )
-    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead = (
-        Field()
-    )
+    base: (
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase
+    ) = Field()
+    head: (
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead
+    ) = Field()
     id: float = Field()
     number: float = Field()
     url: str = Field()

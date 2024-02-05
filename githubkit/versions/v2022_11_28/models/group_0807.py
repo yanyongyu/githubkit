@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -30,9 +29,9 @@ from .group_0810 import (
 class WebhookWorkflowRunInProgressPropWorkflowRunAllof0(GitHubModel):
     """Workflow Run"""
 
-    actor: Union[
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropActor, None
-    ] = Field(title="User")
+    actor: Union[WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropActor, None] = (
+        Field(title="User")
+    )
     artifacts_url: str = Field()
     cancel_url: str = Field()
     check_suite_id: int = Field()
@@ -57,9 +56,9 @@ class WebhookWorkflowRunInProgressPropWorkflowRunAllof0(GitHubModel):
     head_commit: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommit = (
         Field(title="SimpleCommit")
     )
-    head_repository: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepository = Field(
-        title="Repository Lite"
-    )
+    head_repository: (
+        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepository
+    ) = Field(title="Repository Lite")
     head_sha: str = Field()
     html_url: str = Field()
     id: int = Field()
@@ -87,9 +86,9 @@ class WebhookWorkflowRunInProgressPropWorkflowRunAllof0(GitHubModel):
     run_attempt: int = Field()
     run_number: int = Field()
     run_started_at: datetime = Field()
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "pending"
-    ] = Field()
+    status: Literal["requested", "in_progress", "completed", "queued", "pending"] = (
+        Field()
+    )
     triggering_actor: Union[
         WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropTriggeringActor, None
     ] = Field(title="User")
@@ -154,11 +153,15 @@ class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropTriggeringActor(GitHu
 class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommit(GitHubModel):
     """SimpleCommit"""
 
-    author: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropAuthor = Field(
+    author: (
+        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropAuthor
+    ) = Field(
         title="Committer",
         description="Metaproperties for Git author/committer information.",
     )
-    committer: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropCommitter = Field(
+    committer: (
+        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropCommitter
+    ) = Field(
         title="Committer",
         description="Metaproperties for Git author/committer information.",
     )

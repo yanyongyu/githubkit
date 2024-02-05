@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -46,10 +45,10 @@ class PersonalAccessTokenRequest(GitHubModel):
     repository_count: Union[int, None] = Field(
         description="The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
     )
-    repositories: Union[
-        List[PersonalAccessTokenRequestPropRepositoriesItems], None
-    ] = Field(
-        description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
+    repositories: Union[List[PersonalAccessTokenRequestPropRepositoriesItems], None] = (
+        Field(
+            description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
+        )
     )
     created_at: str = Field(
         description="Date and time when the request for access was created."

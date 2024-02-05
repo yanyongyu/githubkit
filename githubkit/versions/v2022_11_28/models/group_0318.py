@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -39,11 +38,11 @@ class PrivateVulnerabilityReportCreate(GitHubModel):
     cwe_ids: Missing[Union[List[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
     )
-    severity: Missing[
-        Union[None, Literal["critical", "high", "medium", "low"]]
-    ] = Field(
-        default=UNSET,
-        description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
     )
     cvss_vector_string: Missing[Union[str, None]] = Field(
         default=UNSET,

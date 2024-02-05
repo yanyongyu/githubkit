@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -61,9 +60,9 @@ class WebhookSponsorshipCancelledPropSponsorship(GitHubModel):
     """WebhookSponsorshipCancelledPropSponsorship"""
 
     created_at: str = Field()
-    maintainer: Missing[
-        WebhookSponsorshipCancelledPropSponsorshipPropMaintainer
-    ] = Field(default=UNSET)
+    maintainer: Missing[WebhookSponsorshipCancelledPropSponsorshipPropMaintainer] = (
+        Field(default=UNSET)
+    )
     node_id: str = Field()
     privacy_level: str = Field()
     sponsor: Union[WebhookSponsorshipCancelledPropSponsorshipPropSponsor, None] = Field(

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -99,9 +98,9 @@ class WebhookOrganizationMemberInvitedPropInvitation(GitHubModel):
     failed_reason: Union[str, None] = Field()
     id: float = Field()
     invitation_teams_url: str = Field()
-    inviter: Union[
-        WebhookOrganizationMemberInvitedPropInvitationPropInviter, None
-    ] = Field(title="User")
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviter, None] = (
+        Field(title="User")
+    )
     login: Union[str, None] = Field()
     node_id: str = Field()
     role: str = Field()

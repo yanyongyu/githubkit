@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -437,9 +436,9 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase(
     """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 
@@ -459,9 +458,9 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead(
     """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union
@@ -35,9 +34,9 @@ class WebhookRegistryPackageUpdatedPropRegistryPackage(GitHubModel):
     namespace: str = Field()
     owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner = Field()
     package_type: str = Field()
-    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion = (
-        Field()
-    )
+    package_version: (
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion
+    ) = Field()
     registry: Union[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry, None
     ] = Field()

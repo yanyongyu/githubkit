@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union
@@ -19,7 +18,9 @@ from .group_0592 import WebhookRubygemsMetadataType
 class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(TypedDict):
     """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
 
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType
+    author: (
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType
+    )
     body: str
     body_html: str
     created_at: str

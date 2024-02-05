@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -49,8 +48,7 @@ class MarkdownClient:
     @overload
     def render(
         self, *, headers: Optional[Dict[str, str]] = None, data: MarkdownPostBodyType
-    ) -> Response[str]:
-        ...
+    ) -> Response[str]: ...
 
     @overload
     def render(
@@ -61,8 +59,7 @@ class MarkdownClient:
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[str]:
-        ...
+    ) -> Response[str]: ...
 
     def render(
         self,
@@ -97,8 +94,7 @@ class MarkdownClient:
     @overload
     async def async_render(
         self, *, headers: Optional[Dict[str, str]] = None, data: MarkdownPostBodyType
-    ) -> Response[str]:
-        ...
+    ) -> Response[str]: ...
 
     @overload
     async def async_render(
@@ -109,8 +105,7 @@ class MarkdownClient:
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[str]:
-        ...
+    ) -> Response[str]: ...
 
     async def async_render(
         self,

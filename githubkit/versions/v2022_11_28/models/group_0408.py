@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -60,9 +59,9 @@ class WebhookDeploymentReviewApproved(GitHubModel):
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
     since: str = Field()
-    workflow_job_run: Missing[
-        WebhookDeploymentReviewApprovedPropWorkflowJobRun
-    ] = Field(default=UNSET)
+    workflow_job_run: Missing[WebhookDeploymentReviewApprovedPropWorkflowJobRun] = (
+        Field(default=UNSET)
+    )
     workflow_job_runs: Missing[
         List[WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems]
     ] = Field(default=UNSET)
@@ -452,12 +451,12 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner(
 class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems(GitHubModel):
     """Check Run Pull Request"""
 
-    base: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase = (
-        Field()
-    )
-    head: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead = (
-        Field()
-    )
+    base: (
+        WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase
+    ) = Field()
+    head: (
+        WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead
+    ) = Field()
     id: int = Field()
     number: int = Field()
     url: str = Field()
@@ -469,9 +468,9 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBas
     """WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 
@@ -491,9 +490,9 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHea
     """WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 

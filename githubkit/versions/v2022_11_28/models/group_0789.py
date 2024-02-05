@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -118,9 +117,9 @@ class WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps(GitHubModel):
     """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
     completed_at: Union[str, None] = Field()
-    conclusion: Union[
-        None, Literal["failure", "skipped", "success", "cancelled"]
-    ] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()

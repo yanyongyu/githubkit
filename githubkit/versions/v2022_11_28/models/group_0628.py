@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -51,9 +50,9 @@ class WebhookProjectsV2ItemConverted(GitHubModel):
 class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
     """WebhookProjectsV2ItemConvertedPropChanges"""
 
-    content_type: Missing[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentType
-    ] = Field(default=UNSET)
+    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
+        Field(default=UNSET)
+    )
 
 
 class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):

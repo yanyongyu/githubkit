@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -53,9 +52,11 @@ class WebhookPullRequestReviewRequestRemovedOneof1(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam = (
+        Field(
+            title="Team",
+            description="Groups of organization members that gives permissions on specified repositories.",
+        )
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -488,30 +489,30 @@ class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUser(GitHub
 class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks(GitHubModel):
     """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropComments = Field(
-        title="Link"
-    )
-    commits: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits = Field(
-        title="Link"
-    )
-    html: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtml = Field(
-        title="Link"
-    )
-    issue: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue = Field(
-        title="Link"
-    )
-    review_comment: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment = Field(
-        title="Link"
-    )
-    review_comments: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComments = Field(
-        title="Link"
-    )
-    self_: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelf = Field(
-        alias="self", title="Link"
-    )
-    statuses: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses = Field(
-        title="Link"
-    )
+    comments: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropComments
+    ) = Field(title="Link")
+    commits: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits
+    ) = Field(title="Link")
+    html: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtml
+    ) = Field(title="Link")
+    issue: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue
+    ) = Field(title="Link")
+    review_comment: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment
+    ) = Field(title="Link")
+    review_comments: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComments
+    ) = Field(title="Link")
+    self_: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelf
+    ) = Field(alias="self", title="Link")
+    statuses: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses
+    ) = Field(title="Link")
 
 
 class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropComments(
@@ -583,9 +584,9 @@ class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBase(GitHub
 
     label: str = Field()
     ref: str = Field()
-    repo: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepo = Field(
-        title="Repository", description="A git repository"
-    )
+    repo: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepo
+    ) = Field(title="Repository", description="A git repository")
     sha: str = Field()
     user: Union[
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUser,
@@ -747,11 +748,11 @@ class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRep
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)
@@ -839,9 +840,9 @@ class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHead(GitHub
 
     label: str = Field()
     ref: str = Field()
-    repo: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepo = Field(
-        title="Repository", description="A git repository"
-    )
+    repo: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepo
+    ) = Field(title="Repository", description="A git repository")
     sha: str = Field()
     user: Union[
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUser,
@@ -1003,11 +1004,11 @@ class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRep
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)
