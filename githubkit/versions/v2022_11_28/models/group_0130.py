@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import Annotated
 
 from pydantic import Field
 

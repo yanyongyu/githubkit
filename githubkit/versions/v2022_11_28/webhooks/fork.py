@@ -7,13 +7,7 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import Dict, Type, Union
-from typing_extensions import Annotated, TypeAlias
-
-from pydantic import Field
-
-from githubkit.utils import TaggedUnion
-from githubkit.compat import GitHubModel
+from typing_extensions import TypeAlias
 
 from ..models import WebhookFork
 

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType

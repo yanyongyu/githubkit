@@ -10,14 +10,10 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing_extensions import Annotated
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
-
-from pydantic import Field, BaseModel
+from typing import TYPE_CHECKING, Dict, Optional
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
-from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from typing import List
