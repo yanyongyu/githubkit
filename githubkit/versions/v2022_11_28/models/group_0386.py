@@ -17,7 +17,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0355 import EnterpriseWebhooks
 from .group_0356 import SimpleInstallation
