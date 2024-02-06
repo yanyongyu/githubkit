@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -421,11 +420,15 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksType(
 
     comments: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommentsType
     commits: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommitsType
-    html: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropHtmlType
+    html: (
+        WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropHtmlType
+    )
     issue: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropIssueType
     review_comment: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewCommentType
     review_comments: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewCommentsType
-    self_: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropSelfType
+    self_: (
+        WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropSelfType
+    )
     statuses: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropStatusesType
 
 
@@ -500,7 +503,9 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBaseType(
 
     label: str
     ref: str
-    repo: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoType
+    repo: (
+        WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoType
+    )
     sha: str
     user: Union[
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropUserType,
@@ -713,7 +718,9 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadType(
 
     label: str
     ref: str
-    repo: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoType
+    repo: (
+        WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoType
+    )
     sha: str
     user: Union[
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropUserType,

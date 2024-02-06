@@ -50,8 +50,7 @@ class GitHub(GitHubCore[A]):
             auth: None = None,
             *,
             config: Config,
-        ):
-            ...
+        ): ...
 
         # token auth with config
         @overload
@@ -60,8 +59,7 @@ class GitHub(GitHubCore[A]):
             auth: str,
             *,
             config: Config,
-        ):
-            ...
+        ): ...
 
         # other auth strategies with config
         @overload
@@ -70,8 +68,7 @@ class GitHub(GitHubCore[A]):
             auth: A,
             *,
             config: Config,
-        ):
-            ...
+        ): ...
 
         # none auth without config
         @overload
@@ -87,8 +84,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-        ):
-            ...
+        ): ...
 
         # token auth without config
         @overload
@@ -104,8 +100,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-        ):
-            ...
+        ): ...
 
         # other auth strategies without config
         @overload
@@ -121,11 +116,9 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-        ):
-            ...
+        ): ...
 
-        def __init__(self, *args, **kwargs):
-            ...
+        def __init__(self, *args, **kwargs): ...
 
     # copy github instance with other auth
     def with_auth(self, auth: A_o) -> "GitHub[A_o]":
@@ -172,8 +165,7 @@ class GitHub(GitHubCore[A]):
         map_func: None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ) -> Paginator[RT]:
-        ...
+    ) -> Paginator[RT]: ...
 
     @overload
     @staticmethod
@@ -184,8 +176,7 @@ class GitHub(GitHubCore[A]):
         map_func: Callable[[Response[CT]], List[RT]] = ...,  # type: ignore
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ) -> Paginator[RT]:
-        ...
+    ) -> Paginator[RT]: ...
 
     @staticmethod
     def paginate(

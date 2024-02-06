@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -59,9 +58,9 @@ class WebhookRepositoryEdited(GitHubModel):
 class WebhookRepositoryEditedPropChanges(GitHubModel):
     """WebhookRepositoryEditedPropChanges"""
 
-    default_branch: Missing[
-        WebhookRepositoryEditedPropChangesPropDefaultBranch
-    ] = Field(default=UNSET)
+    default_branch: Missing[WebhookRepositoryEditedPropChangesPropDefaultBranch] = (
+        Field(default=UNSET)
+    )
     description: Missing[WebhookRepositoryEditedPropChangesPropDescription] = Field(
         default=UNSET
     )

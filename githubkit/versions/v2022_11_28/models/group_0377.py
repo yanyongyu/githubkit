@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -48,9 +47,9 @@ class WebhookCheckRunRequestedAction(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requested_action: Missing[
-        WebhookCheckRunRequestedActionPropRequestedAction
-    ] = Field(default=UNSET, description="The action requested by the user.")
+    requested_action: Missing[WebhookCheckRunRequestedActionPropRequestedAction] = (
+        Field(default=UNSET, description="The action requested by the user.")
+    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",

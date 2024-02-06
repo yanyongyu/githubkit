@@ -18,13 +18,11 @@ PYDANTIC_V2 = int(VERSION.split(".", 1)[0]) == 2
 if TYPE_CHECKING:
 
     class ModelBeforeValidator(Protocol):
-        def __call__(self, cls: Any, __value: Any) -> Any:
-            ...
+        def __call__(self, cls: Any, __value: Any) -> Any: ...
 
     class CustomValidationClass(Protocol):
         @classmethod
-        def __get_validators__(cls) -> Generator[Callable[..., Any], None, None]:
-            ...
+        def __get_validators__(cls) -> Generator[Callable[..., Any], None, None]: ...
 
     CVC = TypeVar("CVC", bound=CustomValidationClass)
 

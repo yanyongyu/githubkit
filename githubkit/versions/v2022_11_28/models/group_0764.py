@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -68,9 +67,9 @@ class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubModel):
     """
 
     cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss = Field()
-    cwes: List[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems
-    ] = Field()
+    cwes: List[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems] = (
+        Field()
+    )
     description: str = Field()
     ghsa_id: str = Field()
     identifiers: List[
@@ -129,9 +128,7 @@ class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesIte
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
         None,
     ] = Field()
-    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = (
-        Field()
-    )
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = (Field())
     severity: str = Field()
     vulnerable_version_range: str = Field()
 

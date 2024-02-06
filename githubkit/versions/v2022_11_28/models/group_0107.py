@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List
@@ -31,9 +30,9 @@ class OrgRulesetConditionsOneof2(GitHubModel):
     """
 
     ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = (
-        Field()
-    )
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty
+    ) = Field()
 
 
 model_rebuild(OrgRulesetConditionsOneof2)

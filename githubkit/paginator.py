@@ -34,8 +34,7 @@ class Paginator(Generic[RT]):
         map_func: None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ):
-        ...
+    ): ...
 
     @overload
     def __init__(
@@ -46,8 +45,7 @@ class Paginator(Generic[RT]):
         map_func: Callable[[Response[CT]], List[RT]] = ...,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ):
-        ...
+    ): ...
 
     def __init__(
         self,

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -17,7 +16,9 @@ from typing_extensions import TypedDict, NotRequired
 class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0Type(TypedDict):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropAccountType
+    account: (
+        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropAccountType
+    )
     billing_cycle: str
     free_trial_ends_on: Union[str, None]
     next_billing_date: NotRequired[Union[str, None]]

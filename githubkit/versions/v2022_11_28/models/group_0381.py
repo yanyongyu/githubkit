@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -190,9 +189,9 @@ class WebhookCheckSuiteCompletedPropCheckSuitePropApp(GitHubModel):
     id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
-    owner: Union[
-        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner, None
-    ] = Field(title="User")
+    owner: Union[WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner, None] = (
+        Field(title="User")
+    )
     permissions: Missing[
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
@@ -342,9 +341,9 @@ class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase(
     """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 
@@ -364,9 +363,9 @@ class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead(
     """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -92,7 +91,9 @@ class WebhookPullRequestReviewDismissedPropReviewPropLinksType(TypedDict):
     """WebhookPullRequestReviewDismissedPropReviewPropLinks"""
 
     html: WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlType
-    pull_request: WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestType
+    pull_request: (
+        WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequestType
+    )
 
 
 class WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtmlType(TypedDict):
@@ -402,8 +403,12 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropLinksType(TypedDict):
     commits: WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommitsType
     html: WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropIssueType
-    review_comment: WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewCommentType
-    review_comments: WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewCommentsType
+    review_comment: (
+        WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewCommentType
+    )
+    review_comments: (
+        WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewCommentsType
+    )
     self_: WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropSelfType
     statuses: WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropStatusesType
 

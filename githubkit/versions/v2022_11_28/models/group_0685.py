@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union
@@ -24,9 +23,9 @@ from .group_0592 import WebhookRubygemsMetadata
 class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion(GitHubModel):
     """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
 
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor = (
-        Field()
-    )
+    author: (
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor
+    ) = Field()
     body: str = Field()
     body_html: str = Field()
     created_at: str = Field()
@@ -133,9 +132,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRele
 ):
     """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
 
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor = (
-        Field()
-    )
+    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor = (Field())
     created_at: str = Field()
     draft: bool = Field()
     html_url: str = Field()

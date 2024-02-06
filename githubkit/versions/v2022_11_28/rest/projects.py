@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -147,8 +146,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     def create_for_org(
@@ -159,8 +157,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     def create_for_org(
         self,
@@ -212,8 +209,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     async def async_create_for_org(
@@ -224,8 +220,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     async def async_create_for_org(
         self,
@@ -379,8 +374,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     @overload
     def update_card(
@@ -391,8 +385,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     def update_card(
         self,
@@ -443,8 +436,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     @overload
     async def async_update_card(
@@ -455,8 +447,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     async def async_update_card(
         self,
@@ -507,8 +498,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
 
     @overload
     def move_card(
@@ -519,8 +509,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
 
     def move_card(
         self,
@@ -573,8 +562,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
 
     @overload
     async def async_move_card(
@@ -585,8 +573,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
-    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
 
     async def async_move_card(
         self,
@@ -739,8 +726,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     @overload
     def update_column(
@@ -750,8 +736,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     def update_column(
         self,
@@ -795,8 +780,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     @overload
     async def async_update_column(
@@ -806,8 +790,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     async def async_update_column(
         self,
@@ -928,8 +911,7 @@ class ProjectsClient:
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     @overload
     def create_card(
@@ -939,8 +921,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         note: Union[str, None],
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     @overload
     def create_card(
@@ -951,8 +932,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         content_id: int,
         content_type: str,
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     def create_card(
         self,
@@ -1022,8 +1002,7 @@ class ProjectsClient:
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     @overload
     async def async_create_card(
@@ -1033,8 +1012,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         note: Union[str, None],
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     @overload
     async def async_create_card(
@@ -1045,8 +1023,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         content_id: int,
         content_type: str,
-    ) -> Response[ProjectCard]:
-        ...
+    ) -> Response[ProjectCard]: ...
 
     async def async_create_card(
         self,
@@ -1113,8 +1090,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
     @overload
     def move_column(
@@ -1124,8 +1100,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         position: str,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
     def move_column(
         self,
@@ -1175,8 +1150,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
     @overload
     async def async_move_column(
@@ -1186,8 +1160,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         position: str,
-    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
-        ...
+    ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
     async def async_move_column(
         self,
@@ -1339,8 +1312,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     def update(
@@ -1356,8 +1328,7 @@ class ProjectsClient:
             Literal["read", "write", "admin", "none"]
         ] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     def update(
         self,
@@ -1409,8 +1380,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     async def async_update(
@@ -1426,8 +1396,7 @@ class ProjectsClient:
             Literal["read", "write", "admin", "none"]
         ] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     async def async_update(
         self,
@@ -1560,8 +1529,7 @@ class ProjectsClient:
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def add_collaborator(
@@ -1572,8 +1540,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def add_collaborator(
         self,
@@ -1632,8 +1599,7 @@ class ProjectsClient:
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_add_collaborator(
@@ -1644,8 +1610,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_add_collaborator(
         self,
@@ -1881,8 +1846,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     @overload
     def create_column(
@@ -1892,8 +1856,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     def create_column(
         self,
@@ -1943,8 +1906,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     @overload
     async def async_create_column(
@@ -1954,8 +1916,7 @@ class ProjectsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-    ) -> Response[ProjectColumn]:
-        ...
+    ) -> Response[ProjectColumn]: ...
 
     async def async_create_column(
         self,
@@ -2088,8 +2049,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     def create_for_repo(
@@ -2101,8 +2061,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     def create_for_repo(
         self,
@@ -2156,8 +2115,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     async def async_create_for_repo(
@@ -2169,8 +2127,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     async def async_create_for_repo(
         self,
@@ -2222,8 +2179,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserProjectsPostBodyType,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -2233,8 +2189,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     def create_for_authenticated_user(
         self,
@@ -2282,8 +2237,7 @@ class ProjectsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserProjectsPostBodyType,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -2293,8 +2247,7 @@ class ProjectsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Project]:
-        ...
+    ) -> Response[Project]: ...
 
     async def async_create_for_authenticated_user(
         self,

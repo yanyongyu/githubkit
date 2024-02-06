@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -407,14 +406,20 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestPropUserType(TypedDi
 class WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksType(TypedDict):
     """WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommentsType
-    commits: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommitsType
+    comments: (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommentsType
+    )
+    commits: (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommitsType
+    )
     html: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssueType
     review_comment: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewCommentType
     review_comments: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewCommentsType
     self_: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatusesType
+    statuses: (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatusesType
+    )
 
 
 class WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommentsType(

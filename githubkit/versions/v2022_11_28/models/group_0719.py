@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -31,9 +30,9 @@ class WebhookRepositoryDispatchSample(GitHubModel):
 
     action: Literal["sample.collected"] = Field()
     branch: str = Field()
-    client_payload: Union[
-        WebhookRepositoryDispatchSamplePropClientPayload, None
-    ] = Field()
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayload, None] = (
+        Field()
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",

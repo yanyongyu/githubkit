@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -422,8 +421,12 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsType(
 ):
     """Check Run Pull Request"""
 
-    base: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBaseType
-    head: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadType
+    base: (
+        WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBaseType
+    )
+    head: (
+        WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadType
+    )
     id: int
     number: int
     url: str

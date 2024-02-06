@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -367,14 +366,20 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequestPropUserType(TypedDict):
 class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksType(TypedDict):
     """WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsType
+    comments: (
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsType
+    )
     commits: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommitsType
     html: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssueType
-    review_comment: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentType
+    review_comment: (
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentType
+    )
     review_comments: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentsType
     self_: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesType
+    statuses: (
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesType
+    )
 
 
 class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsType(

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -94,8 +93,7 @@ class OidcClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OidcCustomSubType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def update_oidc_custom_sub_template_for_org(
@@ -105,8 +103,7 @@ class OidcClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         include_claim_keys: List[str],
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def update_oidc_custom_sub_template_for_org(
         self,
@@ -150,8 +147,7 @@ class OidcClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OidcCustomSubType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_update_oidc_custom_sub_template_for_org(
@@ -161,8 +157,7 @@ class OidcClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         include_claim_keys: List[str],
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(
         self,

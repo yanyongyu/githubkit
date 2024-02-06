@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -29,16 +28,12 @@ class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAll
 ):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount = (
-        Field()
-    )
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount = (Field())
     billing_cycle: str = Field()
     free_trial_ends_on: None = Field()
     next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
     on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan = (
-        Field()
-    )
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan = (Field())
     unit_count: int = Field()
 
 

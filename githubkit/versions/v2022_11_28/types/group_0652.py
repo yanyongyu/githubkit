@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -353,8 +352,12 @@ class WebhookPullRequestLockedPropPullRequestPropLinksType(TypedDict):
     commits: WebhookPullRequestLockedPropPullRequestPropLinksPropCommitsType
     html: WebhookPullRequestLockedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestLockedPropPullRequestPropLinksPropIssueType
-    review_comment: WebhookPullRequestLockedPropPullRequestPropLinksPropReviewCommentType
-    review_comments: WebhookPullRequestLockedPropPullRequestPropLinksPropReviewCommentsType
+    review_comment: (
+        WebhookPullRequestLockedPropPullRequestPropLinksPropReviewCommentType
+    )
+    review_comments: (
+        WebhookPullRequestLockedPropPullRequestPropLinksPropReviewCommentsType
+    )
     self_: WebhookPullRequestLockedPropPullRequestPropLinksPropSelfType
     statuses: WebhookPullRequestLockedPropPullRequestPropLinksPropStatusesType
 

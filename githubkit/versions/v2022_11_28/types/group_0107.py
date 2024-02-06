@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List
@@ -26,7 +25,9 @@ class OrgRulesetConditionsOneof2Type(TypedDict):
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
 __all__ = ("OrgRulesetConditionsOneof2Type",)

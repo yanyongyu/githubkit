@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -48,7 +47,9 @@ class WebhookWorkflowRunInProgressPropWorkflowRunAllof0Type(TypedDict):
     event: str
     head_branch: Union[str, None]
     head_commit: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitType
-    head_repository: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepositoryType
+    head_repository: (
+        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepositoryType
+    )
     head_sha: str
     html_url: str
     id: int
@@ -141,8 +142,12 @@ class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropTriggeringActorType(
 class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitType(TypedDict):
     """SimpleCommit"""
 
-    author: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropAuthorType
-    committer: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropCommitterType
+    author: (
+        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropAuthorType
+    )
+    committer: (
+        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropCommitterType
+    )
     id: str
     message: str
     timestamp: str

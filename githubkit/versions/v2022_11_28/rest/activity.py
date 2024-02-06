@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -346,8 +345,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
-    ) -> Response[NotificationsPutResponse202]:
-        ...
+    ) -> Response[NotificationsPutResponse202]: ...
 
     @overload
     def mark_notifications_as_read(
@@ -357,8 +355,7 @@ class ActivityClient:
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
-    ) -> Response[NotificationsPutResponse202]:
-        ...
+    ) -> Response[NotificationsPutResponse202]: ...
 
     def mark_notifications_as_read(
         self,
@@ -404,8 +401,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
-    ) -> Response[NotificationsPutResponse202]:
-        ...
+    ) -> Response[NotificationsPutResponse202]: ...
 
     @overload
     async def async_mark_notifications_as_read(
@@ -415,8 +411,7 @@ class ActivityClient:
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
-    ) -> Response[NotificationsPutResponse202]:
-        ...
+    ) -> Response[NotificationsPutResponse202]: ...
 
     async def async_mark_notifications_as_read(
         self,
@@ -645,8 +640,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
-    ) -> Response[ThreadSubscription]:
-        ...
+    ) -> Response[ThreadSubscription]: ...
 
     @overload
     def set_thread_subscription(
@@ -656,8 +650,7 @@ class ActivityClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[ThreadSubscription]:
-        ...
+    ) -> Response[ThreadSubscription]: ...
 
     def set_thread_subscription(
         self,
@@ -707,8 +700,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
-    ) -> Response[ThreadSubscription]:
-        ...
+    ) -> Response[ThreadSubscription]: ...
 
     @overload
     async def async_set_thread_subscription(
@@ -718,8 +710,7 @@ class ActivityClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[ThreadSubscription]:
-        ...
+    ) -> Response[ThreadSubscription]: ...
 
     async def async_set_thread_subscription(
         self,
@@ -1024,8 +1015,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
     @overload
     def mark_repo_notifications_as_read(
@@ -1036,8 +1026,7 @@ class ActivityClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
     def mark_repo_notifications_as_read(
         self,
@@ -1082,8 +1071,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
     @overload
     async def async_mark_repo_notifications_as_read(
@@ -1094,8 +1082,7 @@ class ActivityClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
-    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
     async def async_mark_repo_notifications_as_read(
         self,
@@ -1324,8 +1311,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
-    ) -> Response[RepositorySubscription]:
-        ...
+    ) -> Response[RepositorySubscription]: ...
 
     @overload
     def set_repo_subscription(
@@ -1337,8 +1323,7 @@ class ActivityClient:
         headers: Optional[Dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[RepositorySubscription]:
-        ...
+    ) -> Response[RepositorySubscription]: ...
 
     def set_repo_subscription(
         self,
@@ -1380,8 +1365,7 @@ class ActivityClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
-    ) -> Response[RepositorySubscription]:
-        ...
+    ) -> Response[RepositorySubscription]: ...
 
     @overload
     async def async_set_repo_subscription(
@@ -1393,8 +1377,7 @@ class ActivityClient:
         headers: Optional[Dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
-    ) -> Response[RepositorySubscription]:
-        ...
+    ) -> Response[RepositorySubscription]: ...
 
     async def async_set_repo_subscription(
         self,

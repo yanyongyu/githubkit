@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -22,16 +21,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0(GitHubModel):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount = (
-        Field()
-    )
+    account: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount
+    ) = Field()
     billing_cycle: str = Field()
     free_trial_ends_on: Union[str, None] = Field()
     next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
     on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan = (
-        Field()
-    )
+    plan: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan
+    ) = Field()
     unit_count: int = Field()
 
 

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -82,12 +81,12 @@ class WebhookWorkflowRunInProgressPropWorkflowRun(GitHubModel):
     run_attempt: int = Field()
     run_number: int = Field()
     run_started_at: datetime = Field()
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "pending"
-    ] = Field()
-    triggering_actor: WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActor = (
+    status: Literal["requested", "in_progress", "completed", "queued", "pending"] = (
         Field()
     )
+    triggering_actor: (
+        WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActor
+    ) = Field()
     updated_at: datetime = Field()
     url: str = Field()
     workflow_id: int = Field()
@@ -126,9 +125,9 @@ class WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommit(GitHubModel):
     author: WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropAuthor = (
         Field()
     )
-    committer: WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropCommitter = (
-        Field()
-    )
+    committer: (
+        WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropCommitter
+    ) = Field()
     id: str = Field()
     message: str = Field()
     timestamp: str = Field()

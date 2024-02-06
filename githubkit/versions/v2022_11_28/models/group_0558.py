@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -106,9 +105,9 @@ class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlan(GitHubM
 class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase(GitHubModel):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount = (
-        Field()
-    )
+    account: (
+        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount
+    ) = Field()
     billing_cycle: str = Field()
     free_trial_ends_on: Union[str, None] = Field()
     next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)

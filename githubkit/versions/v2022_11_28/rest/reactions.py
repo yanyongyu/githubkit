@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -147,8 +146,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_team_discussion_comment_in_org(
@@ -163,8 +161,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_team_discussion_comment_in_org(
         self,
@@ -218,8 +215,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_team_discussion_comment_in_org(
@@ -234,8 +230,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_team_discussion_comment_in_org(
         self,
@@ -410,8 +405,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_team_discussion_in_org(
@@ -425,8 +419,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_team_discussion_in_org(
         self,
@@ -477,8 +470,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_team_discussion_in_org(
@@ -492,8 +484,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_team_discussion_in_org(
         self,
@@ -670,8 +661,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_commit_comment(
@@ -685,8 +675,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_commit_comment(
         self,
@@ -739,8 +728,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_commit_comment(
@@ -754,8 +742,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_commit_comment(
         self,
@@ -934,8 +921,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_issue_comment(
@@ -949,8 +935,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_issue_comment(
         self,
@@ -1005,8 +990,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_issue_comment(
@@ -1020,8 +1004,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_issue_comment(
         self,
@@ -1204,8 +1187,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_issue(
@@ -1219,8 +1201,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_issue(
         self,
@@ -1273,8 +1254,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_issue(
@@ -1288,8 +1268,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_issue(
         self,
@@ -1468,8 +1447,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_pull_request_review_comment(
@@ -1483,8 +1461,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_pull_request_review_comment(
         self,
@@ -1539,8 +1516,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_pull_request_review_comment(
@@ -1554,8 +1530,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_pull_request_review_comment(
         self,
@@ -1736,8 +1711,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_release(
@@ -1749,8 +1723,7 @@ class ReactionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_release(
         self,
@@ -1803,8 +1776,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_release(
@@ -1816,8 +1788,7 @@ class ReactionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_release(
         self,
@@ -1990,8 +1961,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_team_discussion_comment_legacy(
@@ -2005,8 +1975,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_team_discussion_comment_legacy(
         self,
@@ -2058,8 +2027,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_team_discussion_comment_legacy(
@@ -2073,8 +2041,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_team_discussion_comment_legacy(
         self,
@@ -2201,8 +2168,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     def create_for_team_discussion_legacy(
@@ -2215,8 +2181,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     def create_for_team_discussion_legacy(
         self,
@@ -2265,8 +2230,7 @@ class ReactionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     @overload
     async def async_create_for_team_discussion_legacy(
@@ -2279,8 +2243,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction]:
-        ...
+    ) -> Response[Reaction]: ...
 
     async def async_create_for_team_discussion_legacy(
         self,

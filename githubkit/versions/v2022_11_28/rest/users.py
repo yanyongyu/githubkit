@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -126,8 +125,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
-    ) -> Response[PrivateUser]:
-        ...
+    ) -> Response[PrivateUser]: ...
 
     @overload
     def update_authenticated(
@@ -143,8 +141,7 @@ class UsersClient:
         location: Missing[str] = UNSET,
         hireable: Missing[bool] = UNSET,
         bio: Missing[str] = UNSET,
-    ) -> Response[PrivateUser]:
-        ...
+    ) -> Response[PrivateUser]: ...
 
     def update_authenticated(
         self,
@@ -188,8 +185,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserPatchBodyType] = UNSET,
-    ) -> Response[PrivateUser]:
-        ...
+    ) -> Response[PrivateUser]: ...
 
     @overload
     async def async_update_authenticated(
@@ -205,8 +201,7 @@ class UsersClient:
         location: Missing[str] = UNSET,
         hireable: Missing[bool] = UNSET,
         bio: Missing[str] = UNSET,
-    ) -> Response[PrivateUser]:
-        ...
+    ) -> Response[PrivateUser]: ...
 
     async def async_update_authenticated(
         self,
@@ -472,8 +467,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserEmailVisibilityPatchBodyType,
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     @overload
     def set_primary_email_visibility_for_authenticated_user(
@@ -482,8 +476,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         visibility: Literal["public", "private"],
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     def set_primary_email_visibility_for_authenticated_user(
         self,
@@ -534,8 +527,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserEmailVisibilityPatchBodyType,
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     @overload
     async def async_set_primary_email_visibility_for_authenticated_user(
@@ -544,8 +536,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         visibility: Literal["public", "private"],
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
@@ -666,8 +657,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     @overload
     def add_email_for_authenticated_user(
@@ -676,8 +666,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     def add_email_for_authenticated_user(
         self,
@@ -730,8 +719,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsPostBodyOneof0Type, List[str], str]] = UNSET,
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     @overload
     async def async_add_email_for_authenticated_user(
@@ -740,8 +728,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
-    ) -> Response[List[Email]]:
-        ...
+    ) -> Response[List[Email]]: ...
 
     async def async_add_email_for_authenticated_user(
         self,
@@ -794,8 +781,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def delete_email_for_authenticated_user(
@@ -804,8 +790,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def delete_email_for_authenticated_user(
         self,
@@ -852,8 +837,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[UserEmailsDeleteBodyOneof0Type, List[str], str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_delete_email_for_authenticated_user(
@@ -862,8 +846,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_delete_email_for_authenticated_user(
         self,
@@ -1263,8 +1246,7 @@ class UsersClient:
     @overload
     def create_gpg_key_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserGpgKeysPostBodyType
-    ) -> Response[GpgKey]:
-        ...
+    ) -> Response[GpgKey]: ...
 
     @overload
     def create_gpg_key_for_authenticated_user(
@@ -1274,8 +1256,7 @@ class UsersClient:
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
-    ) -> Response[GpgKey]:
-        ...
+    ) -> Response[GpgKey]: ...
 
     def create_gpg_key_for_authenticated_user(
         self,
@@ -1316,8 +1297,7 @@ class UsersClient:
     @overload
     async def async_create_gpg_key_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserGpgKeysPostBodyType
-    ) -> Response[GpgKey]:
-        ...
+    ) -> Response[GpgKey]: ...
 
     @overload
     async def async_create_gpg_key_for_authenticated_user(
@@ -1327,8 +1307,7 @@ class UsersClient:
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
-    ) -> Response[GpgKey]:
-        ...
+    ) -> Response[GpgKey]: ...
 
     async def async_create_gpg_key_for_authenticated_user(
         self,
@@ -1543,8 +1522,7 @@ class UsersClient:
     @overload
     def create_public_ssh_key_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserKeysPostBodyType
-    ) -> Response[Key]:
-        ...
+    ) -> Response[Key]: ...
 
     @overload
     def create_public_ssh_key_for_authenticated_user(
@@ -1554,8 +1532,7 @@ class UsersClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[Key]:
-        ...
+    ) -> Response[Key]: ...
 
     def create_public_ssh_key_for_authenticated_user(
         self,
@@ -1596,8 +1573,7 @@ class UsersClient:
     @overload
     async def async_create_public_ssh_key_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserKeysPostBodyType
-    ) -> Response[Key]:
-        ...
+    ) -> Response[Key]: ...
 
     @overload
     async def async_create_public_ssh_key_for_authenticated_user(
@@ -1607,8 +1583,7 @@ class UsersClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[Key]:
-        ...
+    ) -> Response[Key]: ...
 
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
@@ -1894,8 +1869,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserSocialAccountsPostBodyType,
-    ) -> Response[List[SocialAccount]]:
-        ...
+    ) -> Response[List[SocialAccount]]: ...
 
     @overload
     def add_social_account_for_authenticated_user(
@@ -1904,8 +1878,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
-    ) -> Response[List[SocialAccount]]:
-        ...
+    ) -> Response[List[SocialAccount]]: ...
 
     def add_social_account_for_authenticated_user(
         self,
@@ -1956,8 +1929,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserSocialAccountsPostBodyType,
-    ) -> Response[List[SocialAccount]]:
-        ...
+    ) -> Response[List[SocialAccount]]: ...
 
     @overload
     async def async_add_social_account_for_authenticated_user(
@@ -1966,8 +1938,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
-    ) -> Response[List[SocialAccount]]:
-        ...
+    ) -> Response[List[SocialAccount]]: ...
 
     async def async_add_social_account_for_authenticated_user(
         self,
@@ -2018,8 +1989,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserSocialAccountsDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def delete_social_account_for_authenticated_user(
@@ -2028,8 +1998,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def delete_social_account_for_authenticated_user(
         self,
@@ -2072,8 +2041,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserSocialAccountsDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_delete_social_account_for_authenticated_user(
@@ -2082,8 +2050,7 @@ class UsersClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_delete_social_account_for_authenticated_user(
         self,
@@ -2196,8 +2163,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserSshSigningKeysPostBodyType,
-    ) -> Response[SshSigningKey]:
-        ...
+    ) -> Response[SshSigningKey]: ...
 
     @overload
     def create_ssh_signing_key_for_authenticated_user(
@@ -2207,8 +2173,7 @@ class UsersClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[SshSigningKey]:
-        ...
+    ) -> Response[SshSigningKey]: ...
 
     def create_ssh_signing_key_for_authenticated_user(
         self,
@@ -2257,8 +2222,7 @@ class UsersClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserSshSigningKeysPostBodyType,
-    ) -> Response[SshSigningKey]:
-        ...
+    ) -> Response[SshSigningKey]: ...
 
     @overload
     async def async_create_ssh_signing_key_for_authenticated_user(
@@ -2268,8 +2232,7 @@ class UsersClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
-    ) -> Response[SshSigningKey]:
-        ...
+    ) -> Response[SshSigningKey]: ...
 
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,

@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -30,9 +29,9 @@ from .group_0802 import (
 class WebhookWorkflowRunCompletedPropWorkflowRunAllof0(GitHubModel):
     """Workflow Run"""
 
-    actor: Union[
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActor, None
-    ] = Field(title="User")
+    actor: Union[WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActor, None] = (
+        Field(title="User")
+    )
     artifacts_url: str = Field()
     cancel_url: str = Field()
     check_suite_id: int = Field()
@@ -57,9 +56,9 @@ class WebhookWorkflowRunCompletedPropWorkflowRunAllof0(GitHubModel):
     head_commit: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommit = Field(
         title="SimpleCommit"
     )
-    head_repository: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepository = Field(
-        title="Repository Lite"
-    )
+    head_repository: (
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepository
+    ) = Field(title="Repository Lite")
     head_sha: str = Field()
     html_url: str = Field()
     id: int = Field()
@@ -160,7 +159,9 @@ class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommit(GitHubModel
             description="Metaproperties for Git author/committer information.",
         )
     )
-    committer: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitter = Field(
+    committer: (
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitter
+    ) = Field(
         title="Committer",
         description="Metaproperties for Git author/committer information.",
     )

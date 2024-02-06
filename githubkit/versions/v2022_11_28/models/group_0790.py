@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -68,9 +67,9 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0(GitHubModel):
     )
     head_branch: Union[str, None] = Field(description="The name of the current branch.")
     workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    steps: List[
-        WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems
-    ] = Field()
+    steps: List[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems] = (
+        Field()
+    )
     url: str = Field()
 
 
@@ -78,9 +77,9 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems(GitHubModel
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
-    conclusion: Union[
-        None, Literal["failure", "skipped", "success", "cancelled"]
-    ] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()

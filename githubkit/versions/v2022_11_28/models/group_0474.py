@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -73,9 +72,9 @@ class WebhookIssueCommentEditedPropIssue(GitHubModel):
     performed_via_github_app: Missing[
         Union[WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp, None]
     ] = Field(default=UNSET)
-    pull_request: Missing[
-        WebhookIssueCommentEditedPropIssueAllof0PropPullRequest
-    ] = Field(default=UNSET)
+    pull_request: Missing[WebhookIssueCommentEditedPropIssueAllof0PropPullRequest] = (
+        Field(default=UNSET)
+    )
     reactions: WebhookIssueCommentEditedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     state: Literal["open", "closed"] = Field(

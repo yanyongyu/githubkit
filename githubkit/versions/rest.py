@@ -20,8 +20,7 @@ if TYPE_CHECKING:
 
 if TYPE_CHECKING:
 
-    class _VersionProxy(V20221128RestNamespace):
-        ...
+    class _VersionProxy(V20221128RestNamespace): ...
 
 else:
     _VersionProxy = object
@@ -55,12 +54,10 @@ class RestVersionSwitcher(_VersionProxy):
         )
 
     @overload
-    def __call__(self, version: Literal["2022-11-28"]) -> "V20221128RestNamespace":
-        ...
+    def __call__(self, version: Literal["2022-11-28"]) -> "V20221128RestNamespace": ...
 
     @overload
-    def __call__(self) -> "V20221128RestNamespace":
-        ...
+    def __call__(self) -> "V20221128RestNamespace": ...
 
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
         g = self._github

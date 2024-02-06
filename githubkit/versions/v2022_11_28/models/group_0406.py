@@ -7,7 +7,6 @@ python -m codegen && isort . && black .
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -96,9 +95,9 @@ class WebhookDeploymentCreatedPropDeployment(GitHubModel):
     id: int = Field()
     node_id: str = Field()
     original_environment: str = Field()
-    payload: Union[
-        WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0, str
-    ] = Field()
+    payload: Union[WebhookDeploymentCreatedPropDeploymentPropPayloadOneof0, str] = (
+        Field()
+    )
     performed_via_github_app: Missing[
         Union[WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp, None]
     ] = Field(
@@ -549,9 +548,9 @@ class WebhookDeploymentCreatedPropWorkflowRunPropRepository(GitHubModel):
     name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     notifications_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[
-        WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner
-    ] = Field(default=UNSET)
+    owner: Missing[WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner] = (
+        Field(default=UNSET)
+    )
     private: Missing[bool] = Field(default=UNSET)
     pulls_url: Missing[str] = Field(default=UNSET)
     releases_url: Missing[str] = Field(default=UNSET)
@@ -602,9 +601,9 @@ class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase(GitHu
     """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 
@@ -622,9 +621,9 @@ class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead(GitHu
     """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
+    repo: (
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
+    ) = Field(title="Repo Ref")
     sha: str = Field()
 
 
