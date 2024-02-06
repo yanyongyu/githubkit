@@ -85,11 +85,11 @@ extra_standard_library = ["typing_extensions"]
 [tool.ruff]
 line-length = 88
 target-version = "py38"
+extend-exclude = ["githubkit/rest/", "githubkit/versions/"]
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "UP", "C", "T", "PYI", "PT", "Q", "TID", "RUF"]
 ignore = ["E402", "C901", "UP037"]
-exclude = ["githubkit/rest/", "githubkit/versions/"]
 
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
