@@ -1,14 +1,15 @@
-from datetime import timedelta
 from typing import TYPE_CHECKING
+from datetime import timedelta
 
 import httpx
 
 if TYPE_CHECKING:
-    from .response import Response
     from .graphql import GraphQLResponse
+    from .response import Response
 
 
-class GitHubException(Exception): ...
+class GitHubException(Exception):
+    ...
 
 
 class AuthCredentialError(GitHubException):

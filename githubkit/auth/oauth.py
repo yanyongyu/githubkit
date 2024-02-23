@@ -1,6 +1,4 @@
 from time import sleep
-from dataclasses import field, dataclass
-from datetime import datetime, timezone, timedelta
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -15,20 +13,22 @@ from typing import (
     AsyncGenerator,
     cast,
 )
+from datetime import datetime, timezone, timedelta
+from dataclasses import field, dataclass
 
 import httpx
 
 from githubkit.utils import is_async
 from githubkit.exception import AuthExpiredError
 
-from .base import BaseAuthStrategy
 from ._url import require_bypass, get_oauth_base_url, require_basic_auth
+from .base import BaseAuthStrategy
 
 try:
     import anyio
     from anyio.to_thread import run_sync
-    from anyio.from_thread import threadlocals
     from anyio.from_thread import run as run_async
+    from anyio.from_thread import threadlocals
 except ImportError:
     anyio = None
     run_sync = None

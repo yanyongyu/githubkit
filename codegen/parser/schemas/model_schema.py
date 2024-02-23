@@ -2,8 +2,8 @@ from typing import TYPE_CHECKING, TypeVar
 
 import openapi_pydantic as oas
 
-from .. import add_schema
 from . import parse_schema
+from .. import add_schema
 from ..utils import (
     build_prop_name,
     build_class_name,

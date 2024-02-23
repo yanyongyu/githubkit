@@ -1,8 +1,5 @@
 import time
 from types import TracebackType
-from contextvars import ContextVar
-from datetime import datetime, timezone, timedelta
-from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
     Dict,
@@ -17,15 +14,17 @@ from typing import (
     cast,
     overload,
 )
+from datetime import datetime, timezone, timedelta
+from contextlib import contextmanager, asynccontextmanager
+from contextvars import ContextVar
 
 import anyio
 import httpx
 import hishel
 
-from .response import Response
+from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .compat import to_jsonable_python
 from .config import Config, get_config
-from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .typing import (
     URLTypes,
     CookieTypes,
@@ -35,6 +34,7 @@ from .typing import (
     QueryParamTypes,
     RetryDecisionFunc,
 )
+from .response import Response
 from .exception import (
     RequestError,
     RequestFailed,
@@ -56,7 +56,8 @@ class GitHubCore(Generic[A]):
         auth: None = None,
         *,
         config: Config,
-    ): ...
+    ):
+        ...
 
     # token auth with config
     @overload
@@ -65,7 +66,8 @@ class GitHubCore(Generic[A]):
         auth: str,
         *,
         config: Config,
-    ): ...
+    ):
+        ...
 
     # other auth strategies with config
     @overload
@@ -74,7 +76,8 @@ class GitHubCore(Generic[A]):
         auth: A,
         *,
         config: Config,
-    ): ...
+    ):
+        ...
 
     # none auth without config
     @overload
@@ -90,7 +93,8 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
-    ): ...
+    ):
+        ...
 
     # token auth without config
     @overload
@@ -106,7 +110,8 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
-    ): ...
+    ):
+        ...
 
     # other auth strategies without config
     @overload
@@ -122,7 +127,8 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
-    ): ...
+    ):
+        ...
 
     def __init__(
         self,

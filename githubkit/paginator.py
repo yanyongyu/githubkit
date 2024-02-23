@@ -1,4 +1,3 @@
-from typing_extensions import Self, ParamSpec
 from typing import (
     List,
     Union,
@@ -10,6 +9,7 @@ from typing import (
     cast,
     overload,
 )
+from typing_extensions import Self, ParamSpec
 
 from .utils import is_async
 from .response import Response
@@ -34,7 +34,8 @@ class Paginator(Generic[RT]):
         map_func: None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ): ...
+    ):
+        ...
 
     @overload
     def __init__(
@@ -45,7 +46,8 @@ class Paginator(Generic[RT]):
         map_func: Callable[[Response[CT]], List[RT]] = ...,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ): ...
+    ):
+        ...
 
     def __init__(
         self,

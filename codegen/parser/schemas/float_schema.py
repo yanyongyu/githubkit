@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
-from .schema import FloatSchema
 from ..utils import schema_from_source
+from .schema import FloatSchema
 
 if TYPE_CHECKING:
     from ...source import Source

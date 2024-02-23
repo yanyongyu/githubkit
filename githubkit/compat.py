@@ -18,18 +18,18 @@ PYDANTIC_V2 = int(VERSION.split(".", 1)[0]) == 2
 if TYPE_CHECKING:
 
     class ModelBeforeValidator(Protocol):
-        def __call__(self, cls: Any, __value: Any) -> Any: ...
+        def __call__(self, cls: Any, __value: Any) -> Any:
+            ...
 
     class CustomValidationClass(Protocol):
         @classmethod
-        def __get_validators__(cls) -> Generator[Callable[..., Any], None, None]: ...
+        def __get_validators__(cls) -> Generator[Callable[..., Any], None, None]:
+            ...
 
     CVC = TypeVar("CVC", bound=CustomValidationClass)
 
 
 if PYDANTIC_V2:  # pragma: pydantic-v2
-    from pydantic_core import CoreSchema, core_schema
-    from pydantic_core import to_jsonable_python as to_jsonable_python
     from pydantic import (
         BaseModel,
         ConfigDict,
@@ -37,6 +37,8 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
         GetCoreSchemaHandler,
         model_validator,
     )
+    from pydantic_core import CoreSchema, core_schema
+    from pydantic_core import to_jsonable_python as to_jsonable_python
 
     class GitHubModel(BaseModel):
         model_config = ConfigDict(populate_by_name=True)
@@ -80,8 +82,8 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
         return class_
 
 else:  # pragma: pydantic-v1
-    from pydantic.json import pydantic_encoder
     from pydantic import Extra, BaseModel, parse_obj_as, parse_raw_as, root_validator
+    from pydantic.json import pydantic_encoder
 
     class GitHubModel(BaseModel):
         class Config:

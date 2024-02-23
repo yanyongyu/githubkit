@@ -1,5 +1,3 @@
-from datetime import timedelta
-from typing_extensions import Annotated, TypeAlias
 from typing import (
     IO,
     Dict,
@@ -13,6 +11,8 @@ from typing import (
     Optional,
     NamedTuple,
 )
+from datetime import timedelta
+from typing_extensions import Annotated, TypeAlias
 
 import httpx
 from pydantic import Field

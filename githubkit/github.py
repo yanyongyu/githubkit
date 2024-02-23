@@ -1,5 +1,3 @@
-from functools import cached_property
-from typing_extensions import ParamSpec
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -12,20 +10,22 @@ from typing import (
     Awaitable,
     overload,
 )
+from functools import cached_property
+from typing_extensions import ParamSpec
 
-from .core import GitHubCore
-from .response import Response
-from .paginator import Paginator
 from .auth import BaseAuthStrategy
+from .core import GitHubCore
 from .typing import RetryDecisionFunc
-from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
+from .response import Response
+from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
+from .paginator import Paginator
 
 if TYPE_CHECKING:
     import httpx
 
-    from .config import Config
     from .auth import TokenAuthStrategy, UnauthAuthStrategy
+    from .config import Config
 
 
 A = TypeVar("A", bound=BaseAuthStrategy)
@@ -50,7 +50,8 @@ class GitHub(GitHubCore[A]):
             auth: None = None,
             *,
             config: Config,
-        ): ...
+        ):
+            ...
 
         # token auth with config
         @overload
@@ -59,7 +60,8 @@ class GitHub(GitHubCore[A]):
             auth: str,
             *,
             config: Config,
-        ): ...
+        ):
+            ...
 
         # other auth strategies with config
         @overload
@@ -68,7 +70,8 @@ class GitHub(GitHubCore[A]):
             auth: A,
             *,
             config: Config,
-        ): ...
+        ):
+            ...
 
         # none auth without config
         @overload
@@ -84,7 +87,8 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-        ): ...
+        ):
+            ...
 
         # token auth without config
         @overload
@@ -100,7 +104,8 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-        ): ...
+        ):
+            ...
 
         # other auth strategies without config
         @overload
@@ -116,9 +121,11 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-        ): ...
+        ):
+            ...
 
-        def __init__(self, *args, **kwargs): ...
+        def __init__(self, *args, **kwargs):
+            ...
 
     # copy github instance with other auth
     def with_auth(self, auth: A_o) -> "GitHub[A_o]":
@@ -165,7 +172,8 @@ class GitHub(GitHubCore[A]):
         map_func: None = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ) -> Paginator[RT]: ...
+    ) -> Paginator[RT]:
+        ...
 
     @overload
     @staticmethod
@@ -176,7 +184,8 @@ class GitHub(GitHubCore[A]):
         map_func: Callable[[Response[CT]], List[RT]] = ...,  # type: ignore
         *args: CP.args,
         **kwargs: CP.kwargs,
-    ) -> Paginator[RT]: ...
+    ) -> Paginator[RT]:
+        ...
 
     @staticmethod
     def paginate(
@@ -188,5 +197,10 @@ class GitHub(GitHubCore[A]):
         **kwargs: CP.kwargs,
     ) -> Paginator[RT]:
         return Paginator(
-            request, page, per_page, map_func, *args, **kwargs  # type: ignore
+            request,
+            page,
+            per_page,
+            map_func,
+            *args,
+            **kwargs,  # type: ignore
         )

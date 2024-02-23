@@ -1,17 +1,17 @@
-from dataclasses import dataclass
-from datetime import datetime, timezone, timedelta
 from typing import TYPE_CHECKING, List, Union, Optional, Generator, AsyncGenerator
+from datetime import datetime, timezone, timedelta
+from dataclasses import dataclass
 
 import httpx
 
-from githubkit.exception import AuthCredentialError
 from githubkit.cache import DEFAULT_CACHE, BaseCache
 from githubkit.utils import UNSET, Unset, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
+from githubkit.exception import AuthCredentialError
 
+from ._url import require_bypass, require_app_auth, require_basic_auth
 from .base import BaseAuthStrategy
 from .oauth import OAuthAppAuthStrategy
-from ._url import require_bypass, require_app_auth, require_basic_auth
 
 try:
     import jwt
@@ -20,8 +20,8 @@ except ImportError:
 
 if TYPE_CHECKING:
     from githubkit import Response, GitHubCore
-    from githubkit.versions.latest.models import InstallationToken
     from githubkit.versions.latest.types import AppPermissionsType
+    from githubkit.versions.latest.models import InstallationToken
 
 
 @dataclass

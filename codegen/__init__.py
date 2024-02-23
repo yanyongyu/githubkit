@@ -6,10 +6,8 @@ from pathlib import Path
 import httpx
 from jinja2 import Environment, PackageLoader
 
-from .config import Config
-from .source import get_source
 from .log import logger as logger
-from .parser.schemas import UnionSchema
+from .config import Config
 from .parser import (
     ModelGroup,
     WebhookData,
@@ -20,6 +18,8 @@ from .parser import (
     pascal_case,
     parse_openapi_spec,
 )
+from .source import get_source
+from .parser.schemas import UnionSchema
 
 if sys.version_info >= (3, 11):
     import tomllib
@@ -269,37 +269,34 @@ def build():
     latest_event_names: list[str] = []
 
     for description in config.descriptions:
-        logger.info(
-            f"Start getting OpenAPI source for version {description.version}..."
-        )
+        logger.info(f"Start getting OpenAPI source for {description.identifier}...")
         source = get_source(httpx.URL(description.source))
         logger.info(f"Getting schema from {source.uri} succeeded!")
 
-        logger.info(f"Start parsing OpenAPI spec for {description.version}...")
-        override = config.get_override_config_for_version(description.version)
+        logger.info(f"Start parsing OpenAPI spec for {description.identifier}...")
+        override = config.get_override_config_for_version(description.identifier)
         parsed_data = parse_openapi_spec(source, override)
         logger.info(
-            f"Successfully parsed OpenAPI spec {description.version}: "
+            f"Successfully parsed OpenAPI spec {description.identifier}: "
             f"{len(parsed_data.model_groups)} model groups, "
             f"{len(parsed_data.models)} models, "
             f"{len(parsed_data.endpoints)} endpoints, "
             f"{len(parsed_data.webhooks)} webhooks"
         )
 
-        logger.info(f"Start generating codes for {description.version}...")
-        version_module = f"{config.version_prefix}{snake_case(description.version)}"
-        versions[description.version] = version_module
+        logger.info(f"Start generating codes for {description.identifier}...")
+        versions[description.identifier] = description.module
         if description.is_latest:
             if latest_version is not None:
                 raise RuntimeError(
                     "Found multiple latest versions: "
-                    f"{latest_version}, {description.version}"
+                    f"{latest_version}, {description.identifier}"
                 )
-            latest_version = description.version
+            latest_version = description.identifier
             latest_model_names = [model.class_name for model in parsed_data.models]
             latest_event_names = list(parsed_data.webhooks_by_event.keys())
 
-        version_path = config.output_dir / version_module
+        version_path = config.output_dir / description.module
         version_path.mkdir(parents=True, exist_ok=True)
 
         # generate __init__.py
@@ -325,7 +322,7 @@ def build():
         webhook_path.mkdir(parents=True, exist_ok=True)
         build_webhooks(webhook_path, parsed_data.webhooks_by_event)
 
-        logger.info(f"Successfully generated codes for {description.version}!")
+        logger.info(f"Successfully generated codes for {description.identifier}!")
 
         del source, override, parsed_data
 

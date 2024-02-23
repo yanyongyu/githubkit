@@ -1,5 +1,5 @@
-from dataclasses import dataclass
 from typing import TYPE_CHECKING, Generator
+from dataclasses import dataclass
 
 import httpx
 

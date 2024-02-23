@@ -278,6 +278,11 @@ You can also get the latest version name of GitHub API and all versions mapping 
 from githubkit.versions import LATEST_VERSION, VERSIONS
 ```
 
+Current supported versions are: (you can find it in the section `[[tool.codegen.descriptions]]` of the `pyproject.toml` file)
+
+- 2022-11-28 (latest)
+- ghec-2022-11-28
+
 ### Pagination
 
 Pagination type checking is also supported:

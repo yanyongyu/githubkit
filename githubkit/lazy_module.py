@@ -1,10 +1,10 @@
 import re
 import sys
+from types import ModuleType
+from typing import Any, Dict, List, Tuple, Optional, Sequence
 import importlib
 from itertools import chain
-from types import ModuleType
 from importlib.abc import MetaPathFinder
-from typing import Any, Dict, List, Tuple, Optional, Sequence
 from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 
 LAZY_MODULES = (
